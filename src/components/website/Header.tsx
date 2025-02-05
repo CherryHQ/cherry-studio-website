@@ -1,4 +1,6 @@
 import { FC } from 'react'
+import { Link } from 'react-router-dom'
+import cherryLogo from '/src/assets/images/cherry_logo.png'
 
 const Header: FC = () => {
   return (
@@ -9,9 +11,9 @@ const Header: FC = () => {
             <div className="outer-container">
               <div className="logo-box">
                 <div className="logo">
-                  <a href="index.html">
-                    <img src="src/assets/images/cherry_logo.png" alt="" />
-                  </a>
+                  <Link to="/">
+                    <img src={cherryLogo} alt="" />
+                  </Link>
                 </div>
               </div>
 
@@ -25,10 +27,10 @@ const Header: FC = () => {
                   <div className="navbar-collapse collapse show" id="navbarSupportedContent">
                     <ul className="navigation">
                       <li className={location.pathname === '/' ? 'current' : ''}>
-                        <a href="/">主页</a>
+                        <Link to="/">主页</Link>
                       </li>
                       <li className={location.pathname === '/download' ? 'current' : ''}>
-                        <a href="/download">下载</a>
+                        <Link to="/download">下载</Link>
                       </li>
                       <li className="dropdown">
                         <a href="https://docs.cherry-ai.com/">文档</a>
@@ -89,9 +91,9 @@ const Header: FC = () => {
             <div className="outer-container">
               {/* <!--Logo--> */}
               <div className="logo">
-                <a href="index.html" className="img-responsive">
-                  <img src="src/assets/images/cherry_logo.png" alt="" title="" />
-                </a>
+                <Link to="/" className="img-responsive">
+                  <img src={cherryLogo} alt="" title="" />
+                </Link>
               </div>
 
               {/* <!--Right Col--> */}
@@ -131,9 +133,9 @@ const Header: FC = () => {
 
         <nav className="menu-box">
           <div className="nav-logo">
-            <a href="index.html">
-              <img src="src/assets/images/cherry_logo.png" alt="" title="" />
-            </a>
+            <Link to="/">
+              <img src={cherryLogo} alt="" title="" />
+            </Link>
           </div>
           <div className="menu-outer">
             {/* <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header--> */}

@@ -1,5 +1,11 @@
 import { FC } from 'react'
 import { copyRSSLink } from '@/utils'
+import cherryLogo from '@/assets/images/cherry_logo.png'
+import xIcon from '@/assets/images/icons/x.svg'
+import tgIcon from '@/assets/images/icons/tg.svg'
+import githubIcon from '@/assets/images/icons/github.svg'
+import pIcon from '@/assets/images/icons/p.svg'
+import rssIcon from '@/assets/images/icons/rss.svg'
 
 const Footer: FC = () => {
   return (
@@ -11,34 +17,34 @@ const Footer: FC = () => {
               <div className="footer-widget logo-widget">
                 <figure className="footer-logo">
                   <a href="index.html">
-                    <img src="src/assets/images/cherry_logo.png" alt="" />
+                    <img src={cherryLogo} alt="" />
                   </a>
                 </figure>
                 <p>CherryStudio是一个支持多平台的AI客户端，我们致力于让更多人能够享受到AI带来的便利。</p>
                 <ul className="social-links">
                   <li>
                     <a href="https://x.com/kangfenmao" className="social-icon">
-                      <img src="src/assets/images/icons/x.svg" alt="X Icon" />
+                      <img src={xIcon} alt="X Icon" />
                     </a>
                   </li>
                   <li>
                     <a href="https://t.me/CherryStudioAI" className="social-icon">
-                      <img src="src/assets/images/icons/tg.svg" alt="T Icon" />
+                      <img src={tgIcon} alt="T Icon" />
                     </a>
                   </li>
                   <li>
                     <a href="https://github.com/CherryHQ/cherry-studio" className="social-icon">
-                      <img src="src/assets/images/icons/github.svg" alt="GitHub Icon" />
+                      <img src={githubIcon} alt="GitHub Icon" />
                     </a>
                   </li>
                   <li>
                     <a href="https://www.producthunt.com/products/cherry-studio" className="social-icon">
-                      <img src="src/assets/images/icons/p.svg" alt="P Icon" />
+                      <img src={pIcon} alt="P Icon" />
                     </a>
                   </li>
                   <li>
                     <a href="javascript:void(0);" className="social-icon" onClick={copyRSSLink}>
-                      <img src="src/assets/images/icons/rss.svg" alt="RSS Icon" />
+                      <img src={rssIcon} alt="RSS Icon" />
                     </a>
                   </li>
                 </ul>

@@ -4,6 +4,14 @@ import ProviderLogo from '@/assets/js/providerLogo'
 import StarHistory from './components/StarHistory'
 import Header from '@/components/website/Header'
 import Footer from '@/components/website/Footer'
+import cherrysDashboard from '@/assets/images/resource/cherrys.jpg'
+import duihuaIcon from '@/assets/images/icons/duihua.svg'
+import huihuaIcon from '@/assets/images/icons/huihua.svg'
+import fanyiIcon from '@/assets/images/icons/fanyi.svg'
+import zhushouIcon from '@/assets/images/icons/zhushou.svg'
+import zhishikuIcon from '@/assets/images/icons/zhishiku.svg'
+import beifenIcon from '@/assets/images/icons/beifen.svg'
+import { Link } from 'react-router-dom'
 
 const HomePage: FC = () => {
   useEffect(() => {
@@ -70,9 +78,9 @@ const HomePage: FC = () => {
                     CherryStudio目前支持市面上绝大多数服务商的集成,并且支持多服务商的模型统一调度。
                   </div>
                   <div className="link-box">
-                    <a href="/download" className="btn-large">
+                    <Link to="/download" className="btn-large">
                       下载客户端
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -88,9 +96,9 @@ const HomePage: FC = () => {
                     您的所有使用数据都储存在本地，不会上传到任何第三方服务器，并且支持本地部署的模型调用。
                   </div>
                   <div className="link-box">
-                    <a href="/download" className="btn-large">
+                    <Link to="/download" className="btn-large">
                       下载客户端
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -106,16 +114,16 @@ const HomePage: FC = () => {
                     CherryStudio目前已上线知识库功能，支持多种格式文件的导入和网页导入等来组件您的个性化知识库。
                   </div>
                   <div className="link-box">
-                    <a href="/download" className="btn-large">
+                    <Link to="/download" className="btn-large">
                       下载客户端
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
             </div>
             <div className="banner-dots"></div>
             <div className="banner-dasboard float-bob-y">
-              <img src="src/assets/images/resource/cherrys.jpg" alt="" style={{ width: '1270px' }} />
+              <img src={cherrysDashboard} alt="" style={{ width: '1270px' }} />
             </div>
           </div>
         </section>
@@ -158,7 +166,7 @@ const HomePage: FC = () => {
               <div className="service-style-one col-md-4 col-sm-6 col-xs-12">
                 <div className="inner-box wow fadeIn" data-wow-delay="0ms" data-wow-duration="1500ms">
                   <div className="icon-box">
-                    <img src="src/assets/images/icons/duihua.svg" alt="对话" />
+                    <img src={duihuaIcon} alt="对话" />
                   </div>
                   <h3>
                     <a href="https://docs.cherry-ai.com/cherrystudio/preview/chat">大模型对话</a>
@@ -174,7 +182,7 @@ const HomePage: FC = () => {
               <div className="service-style-one col-md-4 col-sm-6 col-xs-12">
                 <div className="inner-box wow fadeIn" data-wow-delay="0ms" data-wow-duration="1500ms">
                   <div className="icon-box">
-                    <img src="src/assets/images/icons/huihua.svg" alt="绘图" />
+                    <img src={huihuaIcon} alt="绘图" />
                   </div>
                   <h3>
                     <a href="https://docs.cherry-ai.com/cherrystudio/preview/drawing">AI绘图</a>
@@ -190,7 +198,7 @@ const HomePage: FC = () => {
               <div className="service-style-one col-md-4 col-sm-6 col-xs-12">
                 <div className="inner-box wow fadeIn" data-wow-delay="0ms" data-wow-duration="1500ms">
                   <div className="icon-box">
-                    <img src="src/assets/images/icons/fanyi.svg" alt="翻译" />
+                    <img src={fanyiIcon} alt="翻译" />
                   </div>
                   <h3>
                     <a href="https://docs.cherry-ai.com/cherrystudio/preview/translation">AI翻译</a>
@@ -206,7 +214,7 @@ const HomePage: FC = () => {
               <div className="service-style-one col-md-4 col-sm-6 col-xs-12">
                 <div className="inner-box wow fadeIn" data-wow-delay="0ms" data-wow-duration="1500ms">
                   <div className="icon-box">
-                    <img src="src/assets/images/icons/zhushou.svg" alt="助手" />
+                    <img src={zhushouIcon} alt="助手" />
                   </div>
                   <h3>
                     <a href="https://docs.cherry-ai.com/cherrystudio/preview/agents">千余内置助手</a>
@@ -222,7 +230,7 @@ const HomePage: FC = () => {
               <div className="service-style-one col-md-4 col-sm-6 col-xs-12">
                 <div className="inner-box wow fadeIn" data-wow-delay="0ms" data-wow-duration="1500ms">
                   <div className="icon-box">
-                    <img src="src/assets/images/icons/zhishiku.svg" alt="知识库" />
+                    <img src={zhishikuIcon} alt="知识库" />
                   </div>
                   <h3>
                     <a href="https://docs.cherry-ai.com/advanced-basic/knowledge-base">多数据源知识库</a>
@@ -238,7 +246,7 @@ const HomePage: FC = () => {
               <div className="service-style-one col-md-4 col-sm-6 col-xs-12">
                 <div className="inner-box wow fadeIn" data-wow-delay="0ms" data-wow-duration="1500ms">
                   <div className="icon-box">
-                    <img src="src/assets/images/icons/beifen.svg" alt="备份" />
+                    <img src={beifenIcon} alt="备份" />
                   </div>
                   <h3>
                     <a href="https://docs.cherry-ai.com/cherrystudio/preview/settings/data">多种备份方式</a>
@@ -423,7 +431,7 @@ const HomePage: FC = () => {
       <div id="copy-message" className="copy-message" style={{ display: 'none' }}>
         已复制 RSS 链接!
       </div>
-      <script src="src/assets/js/starhistory.js"></script>
+      <script src="/src/assets/js/starhistory.js"></script>
     </>
   )
 }
