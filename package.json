@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "release": "yarn build && rsync -rvztl --delete ./dist/* tencent.vm:/opt/1panel/apps/openresty/openresty/www/sites/cherry-ai.com/index"
   },
   "dependencies": {
     "react": "^18.3.1",

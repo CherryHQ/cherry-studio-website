@@ -1,11 +1,6 @@
-import { FC, useEffect } from 'react'
-import SearchOverlay from '@/assets/js/search'
+import { FC } from 'react'
 
 const Header: FC = () => {
-  useEffect(() => {
-    new SearchOverlay()
-  }, [])
-
   return (
     <>
       <header className="main-header header-style-one">
@@ -65,13 +60,15 @@ const Header: FC = () => {
 
                 <div className="outer-box">
                   {/* <!--Search Box--> */}
-                  <div className="search-box-outer">
-                    <div className="dropdown">
-                      <button className="search-box-btn one search-toggler">
-                        <span className="icon-1"></span>
-                      </button>
+                  <a href="https://docs.cherry-ai.com/?q=" target="_blank">
+                    <div className="search-box-outer">
+                      <div className="dropdown">
+                        <button className="search-box-btn one search-toggler">
+                          <span className="icon-1"></span>
+                        </button>
+                      </div>
                     </div>
-                  </div>
+                  </a>
 
                   {/* <!--Button--> */}
                   <div className="start_trils_btn">
