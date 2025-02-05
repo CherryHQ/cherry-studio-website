@@ -1,0 +1,315 @@
+/* 加载动画样式 */
+.preloader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999999;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.6s ease;
+}
+
+.preloader.loaded {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.preloader .loader {
+  position: relative;
+  width: 60px;
+  height: 60px;
+}
+
+.preloader .loader:before,
+.preloader .loader:after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  animation: pulse 1.8s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+.preloader .loader:before {
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 95, 95, 0.1);
+  animation-delay: 0.2s;
+}
+
+.preloader .loader:after {
+  width: 75%;
+  height: 75%;
+  background: rgba(255, 95, 95, 0.3);
+  top: 12.5%;
+  left: 12.5%;
+  animation-delay: 0.4s;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.6);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.2);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: scale(0.6);
+    opacity: 1;
+  }
+}
+
+/* 页面内容初始隐藏 */
+.page-wrapper {
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.page-wrapper.loaded {
+  opacity: 1;
+}
+
+/* 下载页面的自定义样式 */
+.download-section {
+  padding: 120px 0;
+  background: linear-gradient(180deg, #fff6f6 0%, #ffffff 100%);
+}
+
+.download-section .auto-container {
+  max-width: 1000px;
+}
+
+/* 版本信息样式 */
+.version-info {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.version-info h1 {
+  font-size: 48px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 15px;
+}
+
+.version-info p {
+  font-size: 18px;
+  color: #666;
+}
+
+/* 下载按钮区域 */
+.download-buttons {
+  text-align: center;
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  margin-bottom: 60px;
+}
+
+.system-info {
+  display: none;
+  /* 初始隐藏，等待 JS 加载完成后显示 */
+  margin-bottom: 25px;
+  transition: all 0.3s ease;
+  color: #666;
+}
+
+.system-info.loaded {
+  display: block;
+}
+
+.system-info p {
+  margin: 5px 0;
+  font-size: 15px;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.system-info strong {
+  color: #111;
+  font-weight: 500;
+}
+
+.button-group {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.download-buttons .theme-btn {
+  font-size: 18px;
+  padding: 15px 50px;
+  background: linear-gradient(270deg, #ff5f5f 0%, #ff8f8f 100%);
+  border-radius: 50px;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 200px;
+}
+
+.download-buttons .theme-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(255, 95, 95, 0.2);
+}
+
+/* 副按钮样式 */
+.download-buttons .alt-btn {
+  background: #fff;
+  color: #ff5f5f;
+  border: 2px solid #ff5f5f;
+  transition: all 0.3s ease;
+}
+
+.download-buttons .alt-btn:hover {
+  background: linear-gradient(270deg, #ff5f5f 0%, #ff8f8f 100%);
+  color: #fff;
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(255, 95, 95, 0.2);
+}
+
+/* 更新日志样式 */
+.changelog {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  margin-bottom: 60px;
+}
+
+.changelog-header {
+  text-align: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.changelog-header h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 10px;
+}
+
+.changelog-version {
+  font-size: 16px;
+  color: #666;
+}
+
+.changelog-content {
+  color: #444;
+  line-height: 1.8;
+}
+
+.changelog-content h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 25px 0 15px;
+  color: #111;
+}
+
+.changelog-content ul {
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.changelog-content li {
+  margin-bottom: 8px;
+}
+
+/* 其他版本下载区域 */
+.other-downloads {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.other-downloads h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #111;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.other-downloads h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #111;
+  margin: 30px 0 15px;
+  padding-left: 15px;
+  border-left: 4px solid #ff5f5f;
+}
+
+.other-downloads ul {
+  list-style: none;
+  padding: 0;
+}
+
+.other-downloads li {
+  margin-bottom: 15px;
+}
+
+.download-item-btn {
+  width: 100%;
+  padding: 15px 20px;
+  background: #f8f9fa;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  font-size: 15px;
+  color: #444;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.download-item-btn:hover {
+  background: #fff6f6;
+  border-color: #ffe0e0;
+  color: #ff5f5f;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .download-section {
+    padding: 80px 0;
+  }
+
+  .version-info h1 {
+    font-size: 36px;
+  }
+
+  .download-buttons,
+  .changelog,
+  .other-downloads {
+    padding: 30px 20px;
+  }
+
+  .other-downloads h2 {
+    font-size: 28px;
+  }
+
+  .download-buttons {
+    padding: 30px 20px;
+  }
+
+  .download-buttons .theme-btn {
+    font-size: 16px;
+    padding: 12px 30px;
+    min-width: 160px;
+  }
+}

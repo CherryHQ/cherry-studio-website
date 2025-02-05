@@ -1,0 +1,172 @@
+body {
+  background: #FBF7FF;
+}
+
+.star-history-chart {
+  width: 100%;
+  height: 450px;
+  background: #FBF7FF;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.project-section .sec-title {
+  padding-top: 7px;
+}
+
+.contributors-wrapper {
+  padding: 30px;
+  background: #FBF7FF;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+  margin: 50px 0;
+}
+
+.contributors-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.contributor-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 120px;
+  transition: transform 0.3s ease;
+  position: relative;
+}
+
+.contributor-item:hover {
+  transform: translateY(-5px);
+}
+
+.contributor-item:hover .contributor-details {
+  opacity: 1;
+  visibility: visible;
+}
+
+.contributor-details {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.contributor-details::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: rgba(0, 0, 0, 0.8);
+}
+
+.contributor-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 10px;
+  border: 3px solid #FF6262;
+}
+
+.contributor-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.contributor-info {
+  width: 100%;
+}
+
+.contributor-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.contributor-contributions {
+  font-size: 12px;
+  color: #666;
+}
+
+.contribution-rate {
+  font-size: 12px;
+  color: #FF6262;
+}
+
+.contributors-section {
+  padding-top: 50px;
+}
+
+@media (max-width: 768px) {
+  .project-section {
+    margin-bottom: 10px !important;
+  }
+  
+  .project-section-custom {
+    margin-bottom: 10px !important;
+  }
+  
+  .star-history-chart {
+    height: 300px;
+    margin: 0 -15px;
+    width: calc(100% + 30px);
+  }
+  
+  .project-section .sec-title .heading_title {
+    font-size: 20px;
+    line-height: 1.4;
+    margin-bottom: 15px;
+  }
+  
+  .contributors-section {
+    padding-top: 5px;
+  }
+  
+  .contributors-section .sec-title {
+    margin-bottom: 15px;
+  }
+  
+  .contributor-item {
+    width: 80px;
+  }
+  
+  .contributor-avatar {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 2px;
+  }
+  
+  .contributor-name {
+    font-size: 12px;
+    line-height: 1.2;
+  }
+  
+  .contributors-wrapper {
+    padding: 15px;
+    margin: 5px 0;
+  }
+  
+  .contributors-list {
+    gap: 10px;
+  }
+} 

@@ -1,0 +1,119 @@
+/*** 
+
+====================================================================
+	Progress Section
+====================================================================
+
+ ***/
+
+ .progress-section{
+	position:relative;
+	padding:150px 0px 450px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.progress-section.three {
+    position: relative;
+    padding-top: 30px;
+}
+
+.services-block-six{
+	position:relative;
+	margin-top: 20px;
+	margin-bottom:35px;
+}
+
+.services-block-six .inner-box{
+	position:relative;
+	text-align:center;
+}
+.services-block-six .inner-box .line-shape {
+    position: absolute;
+    top: 54px;
+    right: -152px;
+    width: 265px;
+    height: 53px;
+    background-repeat: no-repeat;
+}
+
+.services-block-six .inner-box .line-shape-one {
+    position: absolute;
+    top: 13px;
+    right: -154px;
+    width: 265px;
+    height: 50px;
+    background-repeat: no-repeat;
+}
+
+.services-block-six .inner-box h3{
+	position:relative;
+	font-weight:600;
+	font-size:24px;
+	line-height: 32px;
+	margin-top: 35px;
+	margin-bottom: 25px;
+}
+
+.services-block-six .inner-box h3 a{
+	color:var(--title-color);
+    transition: all 300ms ease;
+}
+
+.services-block-six .inner-box h3 a:hover{
+	color:#CB38FF;
+}
+
+.services-block-six .inner-box .text{
+	position:relative;
+	color:var(--text-color);
+	font-size:16px;
+	line-height:28px;
+    font-weight: 400;
+}
+.services-block-six .inner-box .text-box {
+    position: relative;
+    display: inline-block;
+    background-color: var(--white-color);
+    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.1);
+    border-radius: 100px;
+    width: 110px;
+    height: 110px;
+    line-height: 120px;
+    text-align: center;
+    vertical-align: middle;
+    z-index: 1;
+    -webkit-transition: all 300ms ease;
+    -ms-transition: all 300ms ease;
+    -o-transition: all 300ms ease;
+    -moz-transition: all 300ms ease;
+    transition: all 300ms ease;
+}
+
+.services-block-six .inner-box .text-box:before{
+    position: absolute;
+    content: '';
+    background: linear-gradient(270deg, #CB38FF 0%, #682FFF 100%);
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    border-radius: 50%;
+    transform: scale(0, 0);
+    z-index: -1;
+    transition: all 500ms ease;
+}
+.services-block-six .inner-box:hover .text-box:before{
+    transform: scale(1,1);
+  }
+
+.services-block-six .inner-box:hover .text-box span{
+    color: var(--white-color);
+}
+
+.services-block-six .inner-box .text-box span {
+    font-size: 30px;
+    line-height: 32px;
+    font-weight: 400;
+    font-family: var(--title-font);
+    color: var(--title-color);
+}

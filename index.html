@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Cherry Studio - 全能的AI助手</title>
+  <link rel="shortcut icon" href="src/assets/images/favicon.png" type="image/x-icon" />
+  <link rel="icon" href="src/assets/images/favicon.png" type="image/x-icon" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <!-- Stylesheets -->
+  <link href="https://unpkg.com/@fortawesome/fontawesome-free@6.5.1/css/all.min.css" rel="stylesheet" />
+  <link href="https://unpkg.com/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://unpkg.com/animate.css@4.1.1/animate.min.css" rel="stylesheet" />
+  <link href="https://unpkg.com/owl.carousel@2.3.4/dist/assets/owl.carousel.min.css" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <link href="src/assets/css/icomoon.css" rel="stylesheet" />
+  <link href="src/assets/css/style.css" rel="stylesheet" />
+  <link href="src/assets/css/module-css/banner.css" rel="stylesheet" />
+  <link href="src/assets/css/module-css/about.css" rel="stylesheet" />
+  <link href="src/assets/css/module-css/blog.css" rel="stylesheet" />
+  <link href="src/assets/css/module-css/cta.css" rel="stylesheet" />
+  <link href="src/assets/css/module-css/faq.css" rel="stylesheet" />
+  <link href="src/assets/css/module-css/features.css" rel="stylesheet" />
+  <link href="src/assets/css/module-css/footer.css" rel="stylesheet" />
+  <link href="src/assets/css/module-css/fun_facts.css" rel="stylesheet" />
+  <link href="src/assets/css/module-css/header.css" rel="stylesheet" />
+  <link href="src/assets/css/module-css/pricing.css" rel="stylesheet" />
+  <link href="src/assets/css/module-css/services.css" rel="stylesheet" />
+  <link href="src/assets/css/module-css/sponsor.css" rel="stylesheet" />
+  <link href="src/assets/css/module-css/testimonial.css" rel="stylesheet" />
+  <link href="src/assets/css/module-css/project.css" rel="stylesheet" />
+  <link href="src/assets/css/module-css/starhistory.css" rel="stylesheet" />
+  <link href="src/assets/css/responsive.css" rel="stylesheet" />
+  <!-- 基础设置 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#FF5F5F" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <!-- SEO 基础信息 -->
+  <meta name="description"
+    content="Cherry Studio AI 是一款强大的多模型 AI 助手，支持 iOS、macOS 和 Windows 平台。快速切换多个先进的 LLM 模型，提升工作学习效率。" />
+  <meta name="keywords" content="Cherry Studio, AI助手, LLM, GPT, 人工智能, macOS, Windows, iOS" />
+  <meta name="author" content="Cherry Studio Team" />
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://cherry-ai.com/" />
+  <meta property="og:title" content="Cherry Studio - 全能的AI助手" />
+  <meta property="og:description"
+    content="Cherry Studio AI 是一款强大的多模型 AI 助手，支持 iOS、macOS 和 Windows 平台。快速切换多个先进的 LLM 模型，提升工作学习效率。" />
+  <meta property="og:image" content="https://cherry-ai.com/assets/images/social-card.jpg" />
+  <meta property="og:site_name" content="Cherry Studio" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Cherry Studio AI 助手界面预览" />
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@CherryStudioAI" />
+  <meta name="twitter:creator" content="@CherryStudioAI" />
+  <meta name="twitter:title" content="Cherry Studio - 全能的AI助手" />
+  <meta name="twitter:description"
+    content="Cherry Studio AI 是一款强大的多模型 AI 助手，支持 iOS、macOS 和 Windows 平台。快速切换多个先进的 LLM 模型，提升工作学习效率。" />
+  <meta name="twitter:image" content="https://cherry-ai.com/assets/images/social-card.jpg" />
+  <meta name="twitter:image:alt" content="Cherry Studio AI 助手界面预览" />
+  <!-- 微信分享 -->
+  <meta itemprop="name" content="Cherry Studio - 全能的AI助手" />
+  <meta itemprop="description"
+    content="Cherry Studio AI 是一款强大的多模型 AI 助手，支持 iOS、macOS 和 Windows 平台。快速切换多个先进的 LLM 模型，提升工作学习效率。" />
+  <meta itemprop="image" content="https://cherry-ai.com/assets/images/social-card.jpg" />
+  <!-- QQ分享 -->
+  <meta name="qq:card" content="article" />
+  <meta name="qq:title" content="Cherry Studio - 全能的AI助手" />
+  <meta name="qq:description"
+    content="Cherry Studio AI 是一款强大的多模型 AI 助手，支持 iOS、macOS 和 Windows 平台。快速切换多个先进的 LLM 模型，提升工作学习效率。" />
+  <meta name="qq:image" content="https://cherry-ai.com/assets/images/social-card.jpg" />
+  <!-- RSS Feed -->
+  <link rel="alternate" type="application/rss+xml" title="Cherry Studio 更新日志" href="https://cherry-rss.ocool.online/" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+
+<body>
+  <div id="root"></div>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/zh.js"></script>
+  <script src="https://unpkg.com/jquery@1.12.4/dist/jquery.min.js"></script>
+  <script src="https://unpkg.com/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/malihu-custom-scrollbar-plugin@3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="https://unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  <script src="https://unpkg.com/owl.carousel@2.3.4/dist/owl.carousel.min.js"></script>
+  <script src="https://unpkg.com/jquery-nice-select@1.1.0/js/jquery.nice-select.min.js"></script>
+  <script src="https://unpkg.com/jquery-circle-progress@1.2.2/dist/circle-progress.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/parallax.js/1.4.2/parallax.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="src/assets/js/appear.js"></script>
+  <script src="src/assets/js/wow.js"></script>
+  <script src="src/assets/js/script.js"></script>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
+</html>

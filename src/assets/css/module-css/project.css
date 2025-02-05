@@ -1,0 +1,189 @@
+body .page-wrapper .project-section:not(.project-section-custom) {
+  position: relative;
+  padding-bottom: 0px !important;
+  margin-bottom: 200px !important;
+}
+.project_left_content {
+  padding-right: 25px;
+}
+.project_right_img .project_shape_one {
+  padding-left: 85px;
+}
+.project_right_img .project_shape_one:before {
+  content: '';
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background-color: #fbf7ff;
+  width: 510px;
+  height: 352px;
+  border-radius: 10px;
+  display: block;
+  z-index: -1;
+}
+.project_left_content .start_trils_btn {
+  position: relative;
+  display: inline-block;
+  margin-top: 10px;
+}
+.project_right_img {
+  position: relative;
+}
+.project_right_img .project_shape_two {
+  position: absolute;
+  top: 140px;
+  left: 30px;
+  background-color: var(--white-color);
+  box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  border-radius: 10px;
+}
+.project_shape_three {
+  position: relative;
+}
+.project_shape_three img {
+  position: absolute;
+  right: 20px;
+  top: 25px;
+  z-index: -1;
+  -webkit-animation: zoom-fade 5s infinite linear;
+  animation: zoom-fade 5s infinite linear;
+}
+
+/* ------------------------------ */
+progress section style
+/* ------------------------------ */
+.progress-section {
+  margin-bottom: 150px;
+}
+.progress-section {
+  position: relative;
+  padding-top: 70px;
+  padding-bottom: 183px;
+}
+.progress_right_content {
+  padding-left: 30px;
+}
+.progress_left_img .progress_shape_one {
+  padding-right: 85px;
+}
+.progress_left_img .progress_shape_one:before {
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: #fbf7ff;
+  width: 510px;
+  height: 352px;
+  border-radius: 10px;
+  display: block;
+  z-index: -1;
+}
+.progress_left_img {
+  position: relative;
+}
+.progress_left_img .progress_shape_two {
+  position: absolute;
+  top: 140px;
+  right: 30px;
+  background-color: var(--white-color);
+  box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  border-radius: 10px;
+}
+.progress_shape_three {
+  position: relative;
+}
+.progress_shape_three img {
+  position: absolute;
+  left: 20px;
+  top: 25px;
+  z-index: -1;
+  -webkit-animation: zoom-fade 5s infinite linear;
+  animation: zoom-fade 5s infinite linear;
+}
+.progress-box .bar {
+  position: relative;
+  width: 100%;
+  height: 7px;
+  background: #ece5ff;
+  border-radius: 25px;
+}
+.progress-box .bar-inner {
+  position: relative;
+  display: block;
+  background: #682fff;
+  width: 0px;
+  height: 6px;
+  border-radius: 5px;
+  overflow: visible;
+  -webkit-transition: all 1500ms ease;
+  -ms-transition: all 1500ms ease;
+  -o-transition: all 1500ms ease;
+  -moz-transition: all 1500ms ease;
+  transition: all 1500ms ease;
+}
+
+.progress-inner .progress-box {
+  position: relative;
+  margin-bottom: 40px;
+}
+.progress-box:last-child {
+  margin-bottom: 0px;
+}
+.progress-box .count-text {
+  position: absolute;
+  top: -32px;
+  right: 0px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #6a6a6a;
+}
+.progress-box p {
+  display: block;
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: 400;
+  color: #6a6a6a;
+  margin-bottom: 6px;
+  font-family: var(--text-font);
+  padding-bottom: 15px;
+}
+.progress_bar {
+  position: absolute;
+  top: 30%;
+  right: 23px;
+  background-color: var(--white-color);
+  box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  border-radius: 10px;
+  width: 470px;
+}
+.progress_bar_title {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+  font-family: var(--text-font);
+  color: #1e1b39;
+  padding-bottom: 50px;
+}
+.project-section-custom {
+  padding-bottom: 0px !important;
+}
+
+@media (max-width: 768px) {
+  .project-section,
+  .project-section-custom,
+  body .page-wrapper .project-section,
+  body .page-wrapper .project-section-custom {
+    margin-bottom: 10px !important;
+    padding-bottom: 10px !important;
+  }
+
+  .project-section .auto-container,
+  .project-section .row,
+  .project-section .column {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+}

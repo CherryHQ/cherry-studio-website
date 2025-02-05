@@ -1,0 +1,178 @@
+/*** 
+
+====================================================================
+	Fun Facts Section
+====================================================================
+
+***/
+
+.fun-facts-section{
+	position:relative;
+	margin: 50px 0;
+}
+
+.fun-facts-section .column{
+	position:relative;
+	margin-bottom: 50px;
+	margin-top: 50px;
+}
+
+.fun-facts-section .column .inner{
+	position:relative;
+}
+
+/* .column.count-box .inner .content .count-outer */
+
+.column.count-box .content{
+	position:relative;
+	display: flex;
+	gap: 30px;
+	align-items: center;
+}
+
+.column.count-box .inner .content .count-outer{
+	position:relative;
+	font-size: 30px;
+	font-weight: 500;
+	font-family: var(--title-font);
+	background: linear-gradient(270deg, #FF5F5F 0%, #FF8F8F 100%);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.1);
+	border-radius: 100px;
+	width: 110px;
+	height: 110px;
+	text-align: center;
+	line-height: 110px;
+}
+
+.column.count-box .inner .content .count-outer.two{
+	font-size: 60px;
+	box-shadow:none;
+	width: auto;
+}
+
+.column.count-box .inner .content .counter-title{
+	position:relative;
+	font-size: 24px;
+	line-height: 32px;
+	font-weight:500;
+	color: #18181B;
+	font-family: var(--title-font);
+}
+
+
+/* ---------------------------- */
+
+.fun-facts-section.two {
+    position: relative;
+    background-color: #19191A;
+	padding: 50px 10px 20px 10px;
+    z-index: 2;
+}
+.fun-facts-section.two .column .counter-title {
+    color: var(--white-color);
+}
+.fun-facts-section.two .count-outer {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.fun-facts-section.two .column .inner {
+    position: relative;
+}
+
+
+/* --------- Fun Facts Three ----------- */
+.fun-facts-section.three .count-outer {
+    font-size: 60px;
+    line-height: 48px;
+    background-color: inherit;
+    box-shadow: none;
+    width: 33%;
+    height: auto;
+}
+.fun-facts-section.three {
+    padding: 100px 0px 70px 0px;
+    border-top: 1px solid #E9E6ED;
+    background-color: #FBF7FF;
+}
+
+
+/* ---------- Fun Facts Four ------------- */
+.fun-facts-section-four {
+    position: relative;
+    padding: 50px 0px 20px 0px;
+	background: linear-gradient(225deg, #CB38FF 2.55%, #682FFF 112.05%);
+}
+
+.column.count-box{
+	margin-bottom: 30px;
+}
+
+.column.count-box .inner .content .count-outer-two{
+	position:relative;
+	font-size: 30px;
+	font-weight: 500;
+	font-family: var(--title-font);
+	color: var(--white-color);
+	box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.1);
+	border-radius: 100px;
+	background: rgba(255, 255, 255, 0.10);
+	width: 110px;
+	height: 110px;
+	margin: 0 auto;
+	text-align: center;
+	line-height: 110px;
+}
+
+.column.count-box .inner .content .counter-title-two{
+	position:relative;
+	font-size: 24px;
+	line-height: 32px;
+	font-weight:500;
+	color: rgba(255, 255, 255, 1);
+	font-family: var(--title-font);
+}
+.column.count-box .inner .content .counter-title.two {
+    color: var(--white-color);
+}
+
+/* ---------------------------------- */
+.fun-facts-section-three{
+	position:relative;
+	padding-top: 150px;
+}
+.fun-facts-section-three .column .inner{
+	position:relative;
+}
+
+@media (max-width: 768px) {
+    .fun-facts-section .row {
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        margin: 0 -15px;
+        padding: 0 15px;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .fun-facts-section .column.count-box {
+        flex: 0 0 auto;
+        width: auto;
+        min-width: 150px;
+        margin: 0 10px;
+    }
+
+    .fun-facts-section .column.count-box:first-child {
+        margin-left: 0;
+    }
+
+    .fun-facts-section .column.count-box:last-child {
+        margin-right: 0;
+    }
+
+    /* 隐藏滚动条但保持功能 */
+    .fun-facts-section .row::-webkit-scrollbar {
+        display: none;
+    }
+}
