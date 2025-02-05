@@ -3,7 +3,7 @@ name: Deploy to Production
 on:
   push:
     branches:
-      - main # 或者你的主分支名称
+      - main
 
 jobs:
   deploy:
@@ -20,7 +20,7 @@ jobs:
           cache: 'yarn'
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install
 
       - name: Build
         run: yarn build
@@ -33,7 +33,7 @@ jobs:
       - name: Add host key
         run: |
           mkdir -p ~/.ssh
-          ssh-keyscan tencent.vm >> ~/.ssh/known_hosts
+          ssh-keyscan -p 46110 81.68.154.73 >> ~/.ssh/known_hosts
 
       - name: Deploy
-        run: rsync -rvztl --delete ./dist/* tencent.vm:/opt/1panel/apps/openresty/openresty/www/sites/cherry-ai.com/index
+        run: rsync -rvztl --delete -e "ssh -p 46110" ./dist/* root@81.68.154.73:/opt/1panel/apps/openresty/openresty/www/sites/cherry-ai.com/index
