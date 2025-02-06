@@ -20,14 +20,15 @@ const DownloadPage: FC = () => {
   }, [])
 
   useEffect(() => {
-    fetch('https://cherry.ocool.online/')
+    fetch('https://api.github.com/repos/kangfenmao/cherry-studio/releases/latest')
       .then((response) => response.json())
       .then((data) => {
-        const version = data.version
+        console.log(data)
+        const version = data.name
         const cleanVersion = version.replace(/^v/, '')
-        const publishedAt = new Date(data.publishedAt).toLocaleDateString()
-        const changelog = data.changelog
-        const downloads = data.downloads
+        const publishedAt = new Date(data.created_at).toLocaleDateString()
+        const changelog = data.body
+        const downloads = data.assets
 
         // 检查是否为移动设备
         function isMobileDevice() {
@@ -47,7 +48,7 @@ const DownloadPage: FC = () => {
           if (ua.includes('windows') || platform.includes('win')) {
             return {
               name: `Cherry-Studio-${cleanVersion}-setup.exe`,
-              url: `https://cherrystudio.ocool.online/Cherry-Studio-${cleanVersion}-setup.exe`,
+              url: `https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-setup.exe`,
               type: 'Windows',
               arch: ua.includes('win64') || ua.includes('wow64') ? 'x64' : 'x86'
             }
@@ -61,7 +62,7 @@ const DownloadPage: FC = () => {
 
             return {
               name: `Cherry-Studio-${cleanVersion}-${isAppleSilicon ? 'arm64' : 'x64'}.dmg`,
-              url: `https://cherrystudio.ocool.online/Cherry-Studio-${cleanVersion}-${
+              url: `https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-${
                 isAppleSilicon ? 'arm64' : 'x64'
               }.dmg`,
               type: `macOS (${isAppleSilicon ? 'M芯片' : 'Intel芯片'})`,
@@ -73,7 +74,7 @@ const DownloadPage: FC = () => {
           if (ua.includes('linux') || platform.includes('linux')) {
             return {
               name: `Cherry-Studio-${cleanVersion}-x86_64.AppImage`,
-              url: `https://cherrystudio.ocool.online/Cherry-Studio-${cleanVersion}-x86_64.AppImage`,
+              url: `https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-x86_64.AppImage`,
               type: 'Linux',
               arch: 'x86_64'
             }
@@ -89,12 +90,12 @@ const DownloadPage: FC = () => {
             items: [
               {
                 name: `Cherry-Studio-${cleanVersion}-setup.exe`,
-                url: `https://cherrystudio.ocool.online/Cherry-Studio-${cleanVersion}-setup.exe`,
+                url: `https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-setup.exe`,
                 desc: 'Windows标准安装包'
               },
               {
                 name: `Cherry-Studio-${cleanVersion}-portable.exe`,
-                url: `https://cherrystudio.ocool.online/Cherry-Studio-${cleanVersion}-portable.exe`,
+                url: `https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-portable.exe`,
                 desc: 'Windows便携版'
               }
             ]
@@ -104,12 +105,12 @@ const DownloadPage: FC = () => {
             items: [
               {
                 name: `Cherry-Studio-${cleanVersion}-x64.dmg`,
-                url: `https://cherrystudio.ocool.online/Cherry-Studio-${cleanVersion}-x64.dmg`,
+                url: `https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-x64.dmg`,
                 desc: 'Intel芯片Mac'
               },
               {
                 name: `Cherry-Studio-${cleanVersion}-arm64.dmg`,
-                url: `https://cherrystudio.ocool.online/Cherry-Studio-${cleanVersion}-arm64.dmg`,
+                url: `https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-arm64.dmg`,
                 desc: 'Apple Silicon芯片Mac'
               }
             ]
@@ -119,12 +120,12 @@ const DownloadPage: FC = () => {
             items: [
               {
                 name: `Cherry-Studio-${cleanVersion}-x86_64.AppImage`,
-                url: `https://cherrystudio.ocool.online/Cherry-Studio-${cleanVersion}-x86_64.AppImage`,
+                url: `https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-x86_64.AppImage`,
                 desc: 'x86_64架构'
               },
               {
                 name: `Cherry-Studio-${cleanVersion}-arm64.AppImage`,
-                url: `https://cherrystudio.ocool.online/Cherry-Studio-${cleanVersion}-arm64.AppImage`,
+                url: `https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-arm64.AppImage`,
                 desc: 'ARM架构'
               }
             ]
@@ -154,7 +155,7 @@ const DownloadPage: FC = () => {
           systemInfoElement.innerHTML = `
                         <p>您的系统为 <strong>${systemInfo.type}</strong></p>
                         <p>建议下载 <strong>${systemInfo.name}</strong>${
-            matchedDownload ? ` (${matchedDownload.size})` : ''
+            matchedDownload ? ` (${(matchedDownload.size / 1024 / 1024).toFixed(1)} MB)` : ''
           }</p>
                     `
 
@@ -216,7 +217,9 @@ const DownloadPage: FC = () => {
             }
 
             // 构建按钮文本
-            const buttonText = `${name}${matchedDownload ? ` (${matchedDownload.size})` : ''} - ${desc}`
+            const buttonText = `${name}${
+              matchedDownload ? ` (${(matchedDownload.size / 1024 / 1024).toFixed(1)} MB)` : ''
+            } - ${desc}`
             button.textContent = buttonText
 
             button.addEventListener('click', function () {
@@ -241,11 +244,11 @@ const DownloadPage: FC = () => {
 
           // 绑定下载链接（使用实际的版本号）
           $('#apple-download-btn').on('click', function () {
-            window.location.href = `https://cherrystudio.ocool.online/Cherry-Studio-${cleanVersion}-arm64.dmg`
+            window.location.href = `https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-arm64.dmg`
           })
 
           $('#intel-download-btn').on('click', function () {
-            window.location.href = `https://cherrystudio.ocool.online/Cherry-Studio-${cleanVersion}-x64.dmg`
+            window.location.href = `https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-x64.dmg`
           })
         } else {
           $('#apple-download-btn').hide()
