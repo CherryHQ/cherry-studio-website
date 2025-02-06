@@ -4,7 +4,7 @@ import ProviderLogo from '@/assets/js/providerLogo'
 import StarHistory from './components/StarHistory'
 import Header from '@/components/website/Header'
 import Footer from '@/components/website/Footer'
-import cherrysDashboard from '@/assets/images/resource/cherrys.jpg'
+import cherrysDashboard from '@/assets/images/resource/cherrys.webp'
 import duihuaIcon from '@/assets/images/icons/duihua.svg'
 import huihuaIcon from '@/assets/images/icons/huihua.svg'
 import fanyiIcon from '@/assets/images/icons/fanyi.svg'
@@ -146,7 +146,7 @@ const HomePage: FC = () => {
         <section
           className="services-section"
           style={{
-            backgroundImage: `url(${new URL('@/assets/images/background/service-bd-image.png', import.meta.url)})`
+            backgroundImage: `url(${new URL('@/assets/images/background/service-bd-image.webp', import.meta.url)})`
           }}>
           <div className="auto-container">
             {/* <!--Sec Title--> */}
@@ -392,7 +392,7 @@ const HomePage: FC = () => {
             className="cta-1-bg"
             data-parallax='{"y": 30}'
             style={{
-              backgroundImage: `url(${new URL('@/assets/images/background/cta-bg-image-one.png', import.meta.url)})`
+              backgroundImage: `url(${new URL('@/assets/images/background/cta-bg-image-one.webp', import.meta.url)})`
             }}></div>
           <div className="auto-container">
             <div className="section_heading text-center">
