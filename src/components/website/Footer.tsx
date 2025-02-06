@@ -113,13 +113,9 @@ const Footer: FC = () => {
                   <h4>联系我们</h4>
                 </div>
                 <p>
-                  如果您有使用上的问题可以先查看文档或者在
-                  <a href="https://t.me/CherryStudioAI" target="_blank">
-                    官方频道
-                  </a>
-                  中提问。
+                  如果您有使用上的问题可以先查看文档或社群中提问
                   <br />
-                  如果有其他问题可以发送邮件至<a href="mailto:support@cherry-ai.com">support@cherry-ai.com</a>
+                  或邮件联系 <a href="mailto:support@cherry-ai.com">support@cherry-ai.com</a>
                 </p>
               </div>
             </div>

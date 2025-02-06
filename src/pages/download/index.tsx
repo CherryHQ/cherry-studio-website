@@ -393,7 +393,7 @@ const DownloadPage: FC = () => {
               <div className="button-group">
                 {/* <!-- 立即下载按钮 (需要根据UA隐藏) --> */}
                 <button id="main-download-btn" className="theme-btn">
-                  立即下载
+                  立即下载（Win8/10/11）
                 </button>
 
                 {/* <!-- 新增Apple芯片下载按钮 --> */}

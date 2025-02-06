@@ -1,22 +1,22 @@
 body {
-  background: #FBF7FF;
+  background: #fbf7ff;
 }
 
 .star-history-chart {
   width: 100%;
   height: 450px;
-  background: #FBF7FF;
+  background: #fbf7ff;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .project-section .sec-title {
-  padding-top: 7px;
+  /* padding-top: 7px; */
 }
 
 .contributors-wrapper {
   padding: 30px;
-  background: #FBF7FF;
+  background: #fbf7ff;
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
   margin: 50px 0;
@@ -81,7 +81,7 @@ body {
   border-radius: 50%;
   overflow: hidden;
   margin-bottom: 10px;
-  border: 3px solid #FF6262;
+  border: 3px solid #ff6262;
 }
 
 .contributor-avatar img {
@@ -110,7 +110,7 @@ body {
 
 .contribution-rate {
   font-size: 12px;
-  color: #FF6262;
+  color: #ff6262;
 }
 
 .contributors-section {
@@ -121,52 +121,52 @@ body {
   .project-section {
     margin-bottom: 10px !important;
   }
-  
+
   .project-section-custom {
     margin-bottom: 10px !important;
   }
-  
+
   .star-history-chart {
     height: 300px;
     margin: 0 -15px;
     width: calc(100% + 30px);
   }
-  
+
   .project-section .sec-title .heading_title {
     font-size: 20px;
     line-height: 1.4;
     margin-bottom: 15px;
   }
-  
+
   .contributors-section {
     padding-top: 5px;
   }
-  
+
   .contributors-section .sec-title {
     margin-bottom: 15px;
   }
-  
+
   .contributor-item {
     width: 80px;
   }
-  
+
   .contributor-avatar {
     width: 60px;
     height: 60px;
     margin-bottom: 2px;
   }
-  
+
   .contributor-name {
     font-size: 12px;
     line-height: 1.2;
   }
-  
+
   .contributors-wrapper {
     padding: 15px;
     margin: 5px 0;
   }
-  
+
   .contributors-list {
     gap: 10px;
   }
-} 
+}

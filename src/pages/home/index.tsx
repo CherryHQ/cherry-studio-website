@@ -325,14 +325,12 @@ const HomePage: FC = () => {
               {/* <!--Counter Column--> */}
               <div className="column col-lg-6 col-md-6 col-sm-12">
                 <div className="sec-title">
-                  <h2 className="heading_title" style={{ paddingTop: '7px' }}>
-                    项目相关
-                  </h2>
+                  <h2 className="heading_title">项目相关</h2>
                 </div>
                 {/* <!--Accordion Box--> */}
                 <div className="accordion-box style-two">
                   {/* <!-- Accordion --> */}
-                  <div className="accordion accordion-block">
+                  <div className="accordion accordion-block active-block">
                     <div className="accord-btn active">
                       <h4>项目简介</h4>
                     </div>
@@ -409,7 +407,7 @@ const HomePage: FC = () => {
                   Discord 频道
                 </a>
                 <a
-                  href="https://qm.qq.com/cgi-bin/qm/qr?authKey=xe5nfGVZLMYnlJq%2F%2B4kN03YWcDBB2lnD7tc9rWus2mxS0JHUbOzk79cO7MYuqyGR&k=UKVgl3YPHmwPaU8qeO1VG03NcUkACKsc&noverify=0"
+                  href="https://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=mPMbCwUo40lYODSp-SUeY9ju9sSBeMbS&authKey=Tt8SyX2p4i1Aopn2OzPwi88tc81AW%2F4m%2Fkt4ETHTPGnM6TKOXuRxKJuUMWu5Hgay&noverify=0&group_code=534635975"
                   className="btn-1">
                   QQ 群
                 </a>
