@@ -420,6 +420,33 @@ const DownloadPage: FC = () => {
                 </button>
               </div>
             </div>
+            {/* <!-- 网盘下载 --> */}
+            <div className="cloud-downloads">
+              <h2 className="cloud-download-title">网盘下载</h2>
+              <ul className="cloud-download-list">
+                <li>
+                  <strong>百度云盘：</strong>
+                  <a
+                    href="https://pan.baidu.com/s/1EgMxS-pdb4wq1zMdxjHNpw?pwd=mcy2"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    点击下载 (提取码: mcy2)
+                  </a>
+                </li>
+                <li>
+                  <strong>阿里云盘：</strong>
+                  <a href="https://www.alipan.com/s/F2h4tPTs3kE" target="_blank" rel="noopener noreferrer">
+                    点击下载
+                  </a>
+                </li>
+                <li>
+                  <strong>123网盘：</strong>
+                  <a href="https://www.123865.com/s/IvG7jv-YEahd" target="_blank" rel="noopener noreferrer">
+                    点击下载
+                  </a>
+                </li>
+              </ul>
+            </div>
             {/* <!-- 更新日志 --> */}
             <div id="changelog" className="changelog">
               {/* <!-- 更新日志内容将动态加载 --> */}

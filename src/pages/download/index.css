@@ -313,3 +313,37 @@
     min-width: 160px;
   }
 }
+
+.cloud-downloads {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  margin-bottom: 60px;
+}
+
+.cloud-download-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 20px;
+}
+
+.cloud-download-list {
+  list-style: none;
+  padding: 0;
+}
+
+.cloud-download-list li {
+  margin: 1rem 0;
+}
+
+.cloud-download-list a {
+  color: #007bff;
+  text-decoration: none;
+  margin-left: 0.5rem;
+}
+
+.cloud-download-list a:hover {
+  text-decoration: underline;
+}

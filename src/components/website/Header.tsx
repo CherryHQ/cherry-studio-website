@@ -1,8 +1,53 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import cherryLogo from '/src/assets/images/cherry_logo.png'
 
 const Header: FC = () => {
+  useEffect(() => {
+    //Update Header Style and Scroll to Top
+    function headerStyle() {
+      if ($('.main-header').length) {
+        const windowpos = $(window).scrollTop()
+        const siteHeader = $('.main-header')
+        const scrollLink = $('.scroll-to-top')
+        if (windowpos >= 200) {
+          siteHeader.addClass('fixed-header')
+          scrollLink.fadeIn(300)
+        } else {
+          siteHeader.removeClass('fixed-header')
+          scrollLink.fadeOut(300)
+        }
+      }
+    }
+
+    headerStyle()
+
+    //Update Header Style and Scroll to Top
+    function headerSticky() {
+      if ($('.header-style-one').length) {
+        const Windowpos = $(window).scrollTop()
+        const Mheader = $('.header-style-one')
+        const MsLiderHeight = $('.main-slider').height()
+        if (Windowpos >= MsLiderHeight) {
+          Mheader.addClass('sticked-header')
+        } else {
+          Mheader.removeClass('sticked-header')
+        }
+      }
+    }
+
+    headerSticky()
+
+    /* ==========================================================================
+    When document is Scrollig, do
+   ========================================================================== */
+
+    $(window).on('scroll', function () {
+      headerStyle()
+      headerSticky()
+    })
+  }, [])
+
   return (
     <>
       <header className="main-header header-style-one">
