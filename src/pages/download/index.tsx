@@ -434,8 +434,8 @@ const DownloadPage: FC = () => {
                   </a>
                 </li>
                 <li>
-                  <strong>阿里云盘：</strong>
-                  <a href="https://www.alipan.com/s/F2h4tPTs3kE" target="_blank" rel="noopener noreferrer">
+                  <strong>夸克网盘：</strong>
+                  <a href="https://pan.quark.cn/s/377075e69c83" target="_blank" rel="noopener noreferrer">
                     点击下载
                   </a>
                 </li>
