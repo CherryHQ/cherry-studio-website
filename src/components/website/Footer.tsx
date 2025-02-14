@@ -94,13 +94,8 @@ const Footer: FC = () => {
                       </a>
                     </li>
                     <li>
-                      <a href="https://hao.logosc.cn/p/3748" target="_blank">
-                        神器集
-                      </a>
-                    </li>
-                    <li>
-                      <a href="https://top.aibase.com/tool/cherry-studio" target="_blank">
-                        AIBase
+                      <a href="https://ai-bot.cn" target="_blank">
+                        AI 工具集
                       </a>
                     </li>
                   </ul>

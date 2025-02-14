@@ -29,6 +29,7 @@ import togetherLogo from '../images/provider_logo/together-color.svg'
 import xaiLogo from '../images/provider_logo/xai.svg'
 import zerooneLogo from '../images/provider_logo/zeroone.svg'
 import zhipuLogo from '../images/provider_logo/zhipu-color.svg'
+import giteeaiLogo from '../images/provider_logo/gitee-ai.svg'
 
 export default class ProviderLogo {
   container: HTMLElement
@@ -45,27 +46,26 @@ export default class ProviderLogo {
   async init() {
     try {
       this.logos = [
-        ai360Logo,
-        aimassLogo,
         anthropicLogo,
+        deepseekLogo,
         azureLogo,
-        baichuanLogo,
+        ollamaLogo,
+        openaiLogo,
+        giteeaiLogo,
         baiducloudLogo,
         bytedanceLogo,
-        deepseekLogo,
         githubLogo,
         googleLogo,
         groqLogo,
         higressLogo,
         huggingfaceLogo,
         hunyuanLogo,
+        baichuanLogo,
         metaLogo,
         minimaxLogo,
         mistralLogo,
         moonshotLogo,
         nvidiaLogo,
-        ollamaLogo,
-        openaiLogo,
         openrouterLogo,
         qwenLogo,
         siliconcloudLogo,
@@ -74,7 +74,9 @@ export default class ProviderLogo {
         togetherLogo,
         xaiLogo,
         zerooneLogo,
-        zhipuLogo
+        zhipuLogo,
+        ai360Logo,
+        aimassLogo
       ]
 
       if (this.logos.length > 0) {

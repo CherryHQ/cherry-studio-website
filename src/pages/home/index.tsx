@@ -133,7 +133,7 @@ const HomePage: FC = () => {
         <section className="sponsors-section-two">
           <div className="auto-container">
             <h3 className="sonsors_title">
-              CherryStudio内置众多服务商
+              Cherry Studio 内置众多服务商
               <br />
               同时也支持其他兼容OpenAI/Anthropic等API格式的服务商接入。
             </h3>
