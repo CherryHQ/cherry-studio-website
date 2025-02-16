@@ -91,7 +91,17 @@ const DownloadPage: FC = () => {
               {
                 name: `Cherry-Studio-${cleanVersion}-setup.exe`,
                 url: `https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-setup.exe`,
-                desc: 'Windows标准安装包'
+                desc: 'Windows标准安装包(主下载线路)'
+              },
+              {
+                name: `Cherry-Studio-${cleanVersion}-setup.exe`,
+                url: `https://download-cf.ocoolai.com/https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-setup.exe`,
+                desc: 'Windows标准安装包(备用下载线路1)'
+              },
+              {
+                name: `Cherry-Studio-${cleanVersion}-setup.exe`,
+                url: `https://download.ocoolai.com/https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-setup.exe`,
+                desc: 'Windows标准安装包(备用下载线路2)'
               },
               {
                 name: `Cherry-Studio-${cleanVersion}-portable.exe`,
