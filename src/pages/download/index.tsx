@@ -105,7 +105,7 @@ const DownloadPage: FC = () => {
               },
               {
                 name: `Cherry-Studio-${cleanVersion}-setup.exe`,
-                url: `https://gh.api.99988866.xyz/https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-setup.exe`,
+                url: `https://download.ocoolai.online/https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-setup.exe`,
                 desc: 'Windows标准安装包【备用下载线路3】'
               },
               {
@@ -125,7 +125,7 @@ const DownloadPage: FC = () => {
               },
               {
                 name: `Cherry-Studio-${cleanVersion}-portable.exe`,
-                url: `https://gh.api.99988866.xyz/https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-portable.exe`,
+                url: `https://download.ocoolai.online/https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-portable.exe`,
                 desc: 'Windows便携版【备用下载线路3】'
               }
             ]
@@ -150,7 +150,7 @@ const DownloadPage: FC = () => {
               },
                             {
                 name: `Cherry-Studio-${cleanVersion}-x64.dmg`,
-                url: `https://gh.api.99988866.xyz/https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-x64.dmg`,
+                url: `https://download.ocoolai.online/https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-x64.dmg`,
                 desc: 'Intel芯片Mac【备用下载线路3】'
               },
               {
@@ -170,7 +170,7 @@ const DownloadPage: FC = () => {
               },
               {
                 name: `Cherry-Studio-${cleanVersion}-arm64.dmg`,
-                url: `https://gh.api.99988866.xyz/https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-arm64.dmg`,
+                url: `https://download.ocoolai.online/https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-arm64.dmg`,
                 desc: 'Apple Silicon芯片Mac【备用下载线路3】'
               }
             ]
@@ -195,7 +195,7 @@ const DownloadPage: FC = () => {
               },
               {
                 name: `Cherry-Studio-${cleanVersion}-x86_64.AppImage`,
-                url: `https://gh.api.99988866.xyz/https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-x86_64.AppImage`,
+                url: `https://download.ocoolai.online/https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-x86_64.AppImage`,
                 desc: 'x86_64架构【备用下载线路3】'
               },
               {
@@ -215,7 +215,7 @@ const DownloadPage: FC = () => {
               },
               {
                 name: `Cherry-Studio-${cleanVersion}-arm64.AppImage`,
-                url: `https://gh.api.99988866.xyz/https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-arm64.AppImage`,
+                url: `https://download.ocoolai.online/https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-arm64.AppImage`,
                 desc: 'ARM架构【备用下载线路3】'
               }
             ]
