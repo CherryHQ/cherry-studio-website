@@ -91,22 +91,42 @@ const DownloadPage: FC = () => {
               {
                 name: `Cherry-Studio-${cleanVersion}-setup.exe`,
                 url: `https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-setup.exe`,
-                desc: 'Windows标准安装包(主下载线路)'
+                desc: 'Windows标准安装包【主下载线路】'
               },
               {
                 name: `Cherry-Studio-${cleanVersion}-setup.exe`,
                 url: `https://download-cf.ocoolai.com/https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-setup.exe`,
-                desc: 'Windows标准安装包(备用下载线路1)'
+                desc: 'Windows标准安装包【备用下载线路1】'
               },
               {
                 name: `Cherry-Studio-${cleanVersion}-setup.exe`,
                 url: `https://download.ocoolai.com/https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-setup.exe`,
-                desc: 'Windows标准安装包(备用下载线路2)'
+                desc: 'Windows标准安装包【备用下载线路2】'
+              },
+              {
+                name: `Cherry-Studio-${cleanVersion}-setup.exe`,
+                url: `https://gh.api.99988866.xyz/https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-setup.exe`,
+                desc: 'Windows标准安装包【备用下载线路3】'
               },
               {
                 name: `Cherry-Studio-${cleanVersion}-portable.exe`,
                 url: `https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-portable.exe`,
-                desc: 'Windows便携版'
+                desc: 'Windows便携版【主下载线路】'
+              },
+              {
+                name: `Cherry-Studio-${cleanVersion}-portable.exe`,
+                url: `https://download-cf.ocoolai.com/https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-portable.exe`,
+                desc: 'Windows便携版【备用下载线路1】'
+              },
+              {
+                name: `Cherry-Studio-${cleanVersion}-portable.exe`,
+                url: `https://download.ocoolai.com/https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-portable.exe`,
+                desc: 'Windows便携版【备用下载线路2】'
+              },
+              {
+                name: `Cherry-Studio-${cleanVersion}-portable.exe`,
+                url: `https://gh.api.99988866.xyz/https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-portable.exe`,
+                desc: 'Windows便携版【备用下载线路3】'
               }
             ]
           },
@@ -116,12 +136,42 @@ const DownloadPage: FC = () => {
               {
                 name: `Cherry-Studio-${cleanVersion}-x64.dmg`,
                 url: `https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-x64.dmg`,
-                desc: 'Intel芯片Mac'
+                desc: 'Intel芯片Mac【主下载线路】'
+              },
+              {
+                name: `Cherry-Studio-${cleanVersion}-x64.dmg`,
+                url: `https://download-cf.ocoolai.com/https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-x64.dmg`,
+                desc: 'Intel芯片Mac【备用下载线路1】'
+              },
+              {
+                name: `Cherry-Studio-${cleanVersion}-x64.dmg`,
+                url: `https://download.ocoolai.com/https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-x64.dmg`,
+                desc: 'Intel芯片Mac【备用下载线路2】'
+              },
+                            {
+                name: `Cherry-Studio-${cleanVersion}-x64.dmg`,
+                url: `https://gh.api.99988866.xyz/https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-x64.dmg`,
+                desc: 'Intel芯片Mac【备用下载线路3】'
               },
               {
                 name: `Cherry-Studio-${cleanVersion}-arm64.dmg`,
                 url: `https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-arm64.dmg`,
-                desc: 'Apple Silicon芯片Mac'
+                desc: 'Apple Silicon芯片Mac【主下载线路】'
+              },
+              {
+                name: `Cherry-Studio-${cleanVersion}-arm64.dmg`,
+                url: `https://download-cf.ocoolai.com/https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-arm64.dmg`,
+                desc: 'Apple Silicon芯片Mac【备用下载线路1】'
+              },
+              {
+                name: `Cherry-Studio-${cleanVersion}-arm64.dmg`,
+                url: `https://download.ocoolai.com/https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-arm64.dmg`,
+                desc: 'Apple Silicon芯片Mac【备用下载线路2】'
+              },
+              {
+                name: `Cherry-Studio-${cleanVersion}-arm64.dmg`,
+                url: `https://gh.api.99988866.xyz/https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-arm64.dmg`,
+                desc: 'Apple Silicon芯片Mac【备用下载线路3】'
               }
             ]
           },
@@ -131,12 +181,42 @@ const DownloadPage: FC = () => {
               {
                 name: `Cherry-Studio-${cleanVersion}-x86_64.AppImage`,
                 url: `https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-x86_64.AppImage`,
-                desc: 'x86_64架构'
+                desc: 'x86_64架构【主下载线路】'
+              },
+              {
+                name: `Cherry-Studio-${cleanVersion}-x86_64.AppImage`,
+                url: `https://download-cf.ocoolai.com/https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-x86_64.AppImage`,
+                desc: 'x86_64架构【备用下载线路1】'
+              },
+              {
+                name: `Cherry-Studio-${cleanVersion}-x86_64.AppImage`,
+                url: `https://download.ocoolai.com/https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-x86_64.AppImage`,
+                desc: 'x86_64架构【备用下载线路2】'
+              },
+              {
+                name: `Cherry-Studio-${cleanVersion}-x86_64.AppImage`,
+                url: `https://gh.api.99988866.xyz/https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-x86_64.AppImage`,
+                desc: 'x86_64架构【备用下载线路3】'
               },
               {
                 name: `Cherry-Studio-${cleanVersion}-arm64.AppImage`,
                 url: `https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-arm64.AppImage`,
-                desc: 'ARM架构'
+                desc: 'ARM架构【主下载线路】'
+              },
+              {
+                name: `Cherry-Studio-${cleanVersion}-arm64.AppImage`,
+                url: `https://download-cf.ocoolai.com/https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-arm64.AppImage`,
+                desc: 'ARM架构【备用下载线路1】'
+              },
+              {
+                name: `Cherry-Studio-${cleanVersion}-arm64.AppImage`,
+                url: `https://download.ocoolai.com/https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-arm64.AppImage`,
+                desc: 'ARM架构【备用下载线路2】'
+              },
+              {
+                name: `Cherry-Studio-${cleanVersion}-arm64.AppImage`,
+                url: `https://gh.api.99988866.xyz/https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-arm64.AppImage`,
+                desc: 'ARM架构【备用下载线路3】'
               }
             ]
           }
@@ -426,7 +506,7 @@ const DownloadPage: FC = () => {
                     document.querySelector('.other-downloads')?.scrollIntoView({ behavior: 'smooth' })
                   }}
                   className="theme-btn alt-btn">
-                  下载其他版本
+                  其他版本或备用线路下载
                 </button>
               </div>
             </div>
