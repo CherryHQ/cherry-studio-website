@@ -400,11 +400,8 @@ const HomePage: FC = () => {
             </div>
             <div className="text-center">
               <div className="cta-1-link-bt" style={{ display: 'flex', justifyContent: 'center', gap: 10 }}>
-                <a href="tg://resolve?domain=CherryStudioAI" className="btn-1">
-                  Telegram 频道
-                </a>
-                <a href="https://discord.gg/wez8HtpxqQ" className="btn-1">
-                  Discord 频道
+                <a href="https://work.weixin.qq.com/kfid/kfcc97e12e8bd14887c" className="btn-1">
+                  微信群
                 </a>
                 <a
                   href="https://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=mPMbCwUo40lYODSp-SUeY9ju9sSBeMbS&authKey=Tt8SyX2p4i1Aopn2OzPwi88tc81AW%2F4m%2Fkt4ETHTPGnM6TKOXuRxKJuUMWu5Hgay&noverify=0&group_code=534635975"
