@@ -408,6 +408,11 @@ const HomePage: FC = () => {
                   className="btn-1">
                   QQ 群
                 </a>
+                <a
+                  href="https://t.zsxq.com/sJyfK"
+                  className="btn-1">
+                  知识星球(问题解答)
+                </a>
               </div>
             </div>
           </div>
