@@ -442,7 +442,7 @@ const HomePage: FC = () => {
                         borderRadius: '8px',
                         boxShadow: '0 2px 12px rgba(0,0,0,0.15)',
                         zIndex: 9999,
-                        width: '340px',
+                        width: '240px',
                         isolation: 'isolate',
                         pointerEvents: 'auto'
                       }}
@@ -451,8 +451,8 @@ const HomePage: FC = () => {
                         src="https://vip.123pan.cn/1821083851/CherryStudio/cherry.png" 
                         alt="微信群二维码"
                         style={{
-                          width: '300px',
-                          height: '300px',
+                          width: '200px',
+                          height: '200px',
                           objectFit: 'contain',
                           display: 'block',
                           margin: '0 auto'
