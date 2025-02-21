@@ -437,7 +437,7 @@ const HomePage: FC = () => {
                         left: '50%',
                         transform: 'translateX(-50%)',
                         marginBottom: '20px',
-                        padding: '20px',
+                        padding: '10px',
                         background: 'white',
                         borderRadius: '8px',
                         boxShadow: '0 2px 12px rgba(0,0,0,0.15)',
