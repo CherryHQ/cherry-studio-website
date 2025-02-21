@@ -437,20 +437,22 @@ const HomePage: FC = () => {
                         left: '50%',
                         transform: 'translateX(-50%)',
                         marginBottom: '10px',
-                        padding: '10px',
+                        padding: '20px',
                         background: 'white',
                         borderRadius: '8px',
                         boxShadow: '0 2px 12px rgba(0,0,0,0.15)',
-                        zIndex: 1000
+                        zIndex: 1000,
+                        maxWidth: 'min(90vw, 400px)'
                       }}
                     >
                       <img 
                         src="https://vip.123pan.cn/1821083851/CherryStudio/cherry.png" 
                         alt="微信群二维码"
                         style={{
-                          width: '200px',
-                          height: '200px',
-                          objectFit: 'contain'
+                          width: '100%',
+                          height: 'auto',
+                          objectFit: 'contain',
+                          display: 'block'
                         }}
                       />
                     </div>
