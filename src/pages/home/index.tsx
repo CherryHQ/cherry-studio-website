@@ -442,17 +442,18 @@ const HomePage: FC = () => {
                         borderRadius: '8px',
                         boxShadow: '0 2px 12px rgba(0,0,0,0.15)',
                         zIndex: 1000,
-                        maxWidth: 'min(90vw, 400px)'
+                        width: '340px'
                       }}
                     >
                       <img 
                         src="https://vip.123pan.cn/1821083851/CherryStudio/cherry.png" 
                         alt="微信群二维码"
                         style={{
-                          width: '100%',
-                          height: 'auto',
+                          width: '300px',
+                          height: '300px',
                           objectFit: 'contain',
-                          display: 'block'
+                          display: 'block',
+                          margin: '0 auto'
                         }}
                       />
                     </div>
