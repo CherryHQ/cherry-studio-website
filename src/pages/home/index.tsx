@@ -436,13 +436,15 @@ const HomePage: FC = () => {
                         bottom: '100%',
                         left: '50%',
                         transform: 'translateX(-50%)',
-                        marginBottom: '10px',
+                        marginBottom: '20px',
                         padding: '20px',
                         background: 'white',
                         borderRadius: '8px',
                         boxShadow: '0 2px 12px rgba(0,0,0,0.15)',
-                        zIndex: 1000,
-                        width: '340px'
+                        zIndex: 9999,
+                        width: '340px',
+                        isolation: 'isolate',
+                        pointerEvents: 'auto'
                       }}
                     >
                       <img 
