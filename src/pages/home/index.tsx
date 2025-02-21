@@ -442,7 +442,7 @@ const HomePage: FC = () => {
                         borderRadius: '8px',
                         boxShadow: '0 2px 12px rgba(0,0,0,0.15)',
                         zIndex: 9999,
-                        width: '240px',
+                        width: '220px',
                         isolation: 'isolate',
                         pointerEvents: 'auto'
                       }}
