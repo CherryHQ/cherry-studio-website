@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react'
+import { FC, useEffect, useState } from 'react'
 import './index.css'
 import ProviderLogo from '@/assets/js/providerLogo'
 import StarHistory from './components/StarHistory'
@@ -55,6 +55,30 @@ const HomePage: FC = () => {
       document?.querySelector('.preloader')?.classList.add('loaded')
       document?.querySelector('.page-wrapper')?.classList.add('loaded')
     }, 3000)
+  }, [])
+
+  // 添加状态控制 tips 显示
+  const [showWechatTips, setShowWechatTips] = useState(false)
+
+  // 添加处理点击事件的函数
+  const handleWechatClick = (e: React.MouseEvent) => {
+    e.preventDefault()
+    setShowWechatTips(true)
+  }
+
+  // 添加处理点击外部的函数
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement
+      if (!target.closest('.wechat-tips') && !target.closest('.wechat-btn')) {
+        setShowWechatTips(false)
+      }
+    }
+
+    document.addEventListener('click', handleClickOutside)
+    return () => {
+      document.removeEventListener('click', handleClickOutside)
+    }
   }, [])
 
   return (
@@ -400,9 +424,38 @@ const HomePage: FC = () => {
             </div>
             <div className="text-center">
               <div className="cta-1-link-bt" style={{ display: 'flex', justifyContent: 'center', gap: 10 }}>
-                <a href="https://work.weixin.qq.com/kfid/kfcc97e12e8bd14887c" className="btn-1">
-                  微信群
-                </a>
+                <div style={{ position: 'relative' }}>
+                  <a href="#" onClick={handleWechatClick} className="btn-1 wechat-btn">
+                    微信群
+                  </a>
+                  {showWechatTips && (
+                    <div 
+                      className="wechat-tips" 
+                      style={{
+                        position: 'absolute',
+                        bottom: '100%',
+                        left: '50%',
+                        transform: 'translateX(-50%)',
+                        marginBottom: '10px',
+                        padding: '10px',
+                        background: 'white',
+                        borderRadius: '8px',
+                        boxShadow: '0 2px 12px rgba(0,0,0,0.15)',
+                        zIndex: 1000
+                      }}
+                    >
+                      <img 
+                        src="https://vip.123pan.cn/1821083851/CherryStudio/cherry.png" 
+                        alt="微信群二维码"
+                        style={{
+                          width: '200px',
+                          height: '200px',
+                          objectFit: 'contain'
+                        }}
+                      />
+                    </div>
+                  )}
+                </div>
                 <a
                   href="https://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=mPMbCwUo40lYODSp-SUeY9ju9sSBeMbS&authKey=Tt8SyX2p4i1Aopn2OzPwi88tc81AW%2F4m%2Fkt4ETHTPGnM6TKOXuRxKJuUMWu5Hgay&noverify=0&group_code=534635975"
                   className="btn-1">
