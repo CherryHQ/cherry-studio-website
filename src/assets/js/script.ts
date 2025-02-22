@@ -1,4 +1,3 @@
-/* eslint-disable prefer-rest-params */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // @ts-nocheck
 
@@ -151,6 +150,7 @@ export function script() {
       { accY: -50 }
     )
   }
+
   //Product Tabs
   if ($('.project-tab').length) {
     $('.project-tab .product-tab-btns .p-tab-btn').on('click', function (e) {
@@ -799,21 +799,6 @@ export function script() {
       }
     })
   }
-
-  window.dataLayer = window.dataLayer || []
-  function gtag() {
-    dataLayer.push(arguments)
-  }
-  gtag('js', new Date())
-
-  gtag('config', 'UA-80520768-2')
-  window.dataLayer = window.dataLayer || []
-  function gtag() {
-    dataLayer.push(arguments)
-  }
-  gtag('js', new Date())
-
-  gtag('config', 'G-2BMVGTJJG1')
 
   //Progress Bar
   if ($('.progress-line').length) {

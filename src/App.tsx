@@ -6,7 +6,7 @@ import { script } from './assets/js/script'
 
 function App() {
   useEffect(() => {
-    setTimeout(script, 500)
+    setTimeout(script, 1200)
   }, [])
 
   return (
