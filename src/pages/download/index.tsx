@@ -349,7 +349,7 @@ const DownloadPage: FC = () => {
       })
       .catch((error) => {
         console.error('获取版本信息失败：', error)
-        document.getElementById('version-title')!.textContent = '无法获取版本信息，请稍后重试'
+        document.getElementById('version-title')!.textContent = '无法获取版本信息，请暂时通过网盘链接下载'
       })
 
     // 检测系统信息
