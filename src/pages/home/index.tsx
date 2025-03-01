@@ -101,11 +101,6 @@ const HomePage: FC = () => {
                   <div className="text">
                     CherryStudio目前支持市面上绝大多数服务商的集成,并且支持多服务商的模型统一调度。
                   </div>
-                  <div className="link-box">
-                    <Link to="/download" className="btn-large">
-                      下载客户端
-                    </Link>
-                  </div>
                 </div>
               </div>
               <div className="content-box">
@@ -118,11 +113,6 @@ const HomePage: FC = () => {
                   </h1>
                   <div className="text">
                     您的所有使用数据都储存在本地，不会上传到任何第三方服务器，并且支持本地部署的模型调用。
-                  </div>
-                  <div className="link-box">
-                    <Link to="/download" className="btn-large">
-                      下载客户端
-                    </Link>
                   </div>
                 </div>
               </div>
@@ -137,15 +127,18 @@ const HomePage: FC = () => {
                   <div className="text">
                     CherryStudio目前已上线知识库功能，支持多种格式文件的导入和网页导入等来组件您的个性化知识库。
                   </div>
-                  <div className="link-box">
-                    <Link to="/download" className="btn-large">
-                      下载客户端
-                    </Link>
-                  </div>
                 </div>
               </div>
             </div>
             <div className="banner-dots"></div>
+            <div className="text" style={{ color: 'red', textAlign: 'center', margin: '0 auto', fontSize: '22px' }}>
+              ⚠️ Cherry Studio 是免费软件，如果有人收费卖给你，你被骗了，请立即报警
+            </div>
+            <div className="link-box">
+              <Link to="/download" className="btn-large">
+                下载客户端
+              </Link>
+            </div>
             <div className="banner-dasboard float-bob-y">
               <img src={cherrysDashboard} alt="" style={{ width: '1270px' }} />
             </div>
@@ -429,8 +422,8 @@ const HomePage: FC = () => {
                     微信群
                   </a>
                   {showWechatTips && (
-                    <div 
-                      className="wechat-tips" 
+                    <div
+                      className="wechat-tips"
                       style={{
                         position: 'absolute',
                         bottom: '100%',
@@ -445,10 +438,9 @@ const HomePage: FC = () => {
                         width: '220px',
                         isolation: 'isolate',
                         pointerEvents: 'auto'
-                      }}
-                    >
-                      <img 
-                        src="https://vip.123pan.cn/1821083851/CherryStudio/cherry.png" 
+                      }}>
+                      <img
+                        src="https://vip.123pan.cn/1821083851/CherryStudio/cherry.png"
                         alt="微信群二维码"
                         style={{
                           width: '200px',
@@ -466,9 +458,7 @@ const HomePage: FC = () => {
                   className="btn-1">
                   QQ 群
                 </a>
-                <a
-                  href="https://t.zsxq.com/sJyfK"
-                  className="btn-1">
+                <a href="https://t.zsxq.com/sJyfK" className="btn-1">
                   知识星球(问题解答)
                 </a>
               </div>
