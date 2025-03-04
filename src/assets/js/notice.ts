@@ -29,7 +29,15 @@ export interface NoticeTopResponse {
 
 export const fetchNotice = async (): Promise<NoticeResponse['data'] | null> => {
   try {
-    const response = await fetch('http://rack1.raincs.cc:18192/items/notice');
+    const response = await fetch('http://rack1.raincs.cc:18192/items/notice', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      },
+      mode: 'cors',
+      credentials: 'include'
+    });
     const data: NoticeResponse = await response.json();
     return data.data;
   } catch (error) {
@@ -40,7 +48,15 @@ export const fetchNotice = async (): Promise<NoticeResponse['data'] | null> => {
 
 export const fetchTopNotice = async (): Promise<NoticeTopResponse['data'] | null> => {
   try {
-    const response = await fetch('http://rack1.raincs.cc:18192/items/notice_top');
+    const response = await fetch('http://rack1.raincs.cc:18192/items/notice_top', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      },
+      mode: 'cors',
+      credentials: 'include'
+    });
     const data: NoticeTopResponse = await response.json();
     return data.data;
   } catch (error) {
