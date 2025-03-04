@@ -12,7 +12,7 @@ import zhushouIcon from '@/assets/images/icons/zhushou.svg'
 import zhishikuIcon from '@/assets/images/icons/zhishiku.svg'
 import beifenIcon from '@/assets/images/icons/beifen.svg'
 import { Link } from 'react-router-dom'
-import { fetchNotice, fetchTopNotice } from '../../assets/js/notice'
+import { fetchNotice, fetchTopNotice, NoticeResponse } from '../../assets/js/notice'
 import { fetchChannelData, getRandomWechatQRCode } from '@/assets/js/data'
 
 const HomePage: FC = () => {
