@@ -9,7 +9,7 @@ interface ChannelResponse {
   }
 }
 
-const BASE_URL = 'http://rack1.raincs.cc:18192';
+const BASE_URL = 'http://103.40.13.68:18192';
 
 export const fetchChannelData = async () => {
   try {
