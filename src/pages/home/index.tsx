@@ -12,6 +12,8 @@ import zhushouIcon from '@/assets/images/icons/zhushou.svg'
 import zhishikuIcon from '@/assets/images/icons/zhishiku.svg'
 import beifenIcon from '@/assets/images/icons/beifen.svg'
 import { Link } from 'react-router-dom'
+import { fetchNotice, fetchTopNotice } from '../../assets/js/notice'
+import { fetchChannelData, getRandomWechatQRCode } from '@/assets/js/data'
 
 const HomePage: FC = () => {
   useEffect(() => {
@@ -81,8 +83,107 @@ const HomePage: FC = () => {
     }
   }, [])
 
+  const [notice, setNotice] = useState<NoticeResponse['data'] | null>(null)
+  const [topNotice, setTopNotice] = useState<any>(null)
+  const [showTopNotice, setShowTopNotice] = useState(true)
+  const [channelData, setChannelData] = useState<any>(null);
+  const [wechatQRCode, setWechatQRCode] = useState<string>('');
+
+  useEffect(() => {
+    const getNotices = async () => {
+      const noticeContent = await fetchNotice()
+      const topNoticeContent = await fetchTopNotice()
+      if (noticeContent?.status) {
+        setNotice(noticeContent)
+      }
+      if (topNoticeContent?.status) {
+        setTopNotice(topNoticeContent)
+      }
+    }
+    getNotices()
+
+    // Fetch channel data
+    const getChannelData = async () => {
+      const data = await fetchChannelData();
+      if (data) {
+        setChannelData(data);
+        setWechatQRCode(getRandomWechatQRCode(data));
+      }
+    };
+
+    getChannelData();
+  }, [])
+
   return (
     <>
+      {showTopNotice && topNotice && (
+        <div 
+          style={{ 
+            backgroundColor: topNotice.card_color,
+            height: `${topNotice.card_height}px`,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            position: 'relative',
+            width: '100%',
+            color: topNotice.card_text_color,
+            padding: '0 20px'
+          }}
+        >
+          <div 
+            style={{ 
+              flex: 1,
+              maxWidth: '1200px',
+              margin: '0 auto',
+              padding: '0 15px',
+              textAlign: 'center'
+            }}
+          >
+            <div dangerouslySetInnerHTML={{ __html: topNotice.notice_top }} />
+          </div>
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '15px',
+            marginLeft: 'auto'
+          }}>
+            {topNotice.button_status && (
+              <a 
+                href={topNotice.button_link}
+                style={{
+                  color: topNotice.button_text_color,
+                  padding: '4px 12px',
+                  backgroundColor: topNotice.button_color,
+                  borderRadius: '4px',
+                  textDecoration: 'none',
+                  whiteSpace: 'nowrap',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  height: '28px'
+                }}
+              >
+                {topNotice.button}
+              </a>
+            )}
+            <button
+              onClick={() => setShowTopNotice(false)}
+              style={{
+                background: 'none',
+                border: 'none',
+                color: topNotice.card_text_color,
+                cursor: 'pointer',
+                fontSize: '20px',
+                padding: '5px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
+            >
+              ×
+            </button>
+          </div>
+        </div>
+      )}
       <div className="page-wrapper">
         <Header />
 
@@ -131,9 +232,17 @@ const HomePage: FC = () => {
               </div>
             </div>
             <div className="banner-dots"></div>
-            <div className="text" style={{ color:"red", textAlign: 'center', margin: '0 auto', fontSize: '22px' }}>
-              Cherry Studio针对个人用户免费，企业用户请联系官方合作。如存在个人版付费销售则为诈骗行为，请联系相关部门投诉处理。
-            </div>
+            {notice && notice.status && (
+              <div 
+                dangerouslySetInnerHTML={{ __html: notice.notice }}
+                style={{
+                  color: notice.text_color,
+                  fontSize: `${notice.text_size}px`,
+                  textAlign: 'center',
+                  margin: '0 auto'
+                }}
+              />
+            )}
             <div className="link-box">
               <Link to="/download" className="btn-large">
                 下载客户端
@@ -440,7 +549,7 @@ const HomePage: FC = () => {
                         pointerEvents: 'auto'
                       }}>
                       <img
-                        src="https://vip.123pan.cn/1821083851/CherryStudio/cherry.png"
+                        src={wechatQRCode}
                         alt="微信群二维码"
                         style={{
                           width: '200px',
@@ -453,14 +562,24 @@ const HomePage: FC = () => {
                     </div>
                   )}
                 </div>
-                <a
-                  href="https://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=mPMbCwUo40lYODSp-SUeY9ju9sSBeMbS&authKey=Tt8SyX2p4i1Aopn2OzPwi88tc81AW%2F4m%2Fkt4ETHTPGnM6TKOXuRxKJuUMWu5Hgay&noverify=0&group_code=534635975"
-                  className="btn-1">
-                  QQ 群
-                </a>
-                <a href="https://t.zsxq.com/sJyfK" className="btn-1">
-                  知识星球(问题解答)
-                </a>
+                {channelData?.data?.qq_group_link && (
+                  <a
+                    href={channelData.data.qq_group_link}
+                    className="btn-1"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    QQ 群
+                  </a>
+                )}
+                {channelData?.data?.zsxq && (
+                  <a 
+                    href={channelData.data.zsxq}
+                    className="btn-1"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    知识星球(问题解答)
+                  </a>
+                )}
               </div>
             </div>
           </div>
