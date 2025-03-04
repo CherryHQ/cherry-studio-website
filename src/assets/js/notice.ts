@@ -1,4 +1,4 @@
-interface NoticeResponse {
+export interface NoticeResponse {
   data: {
     id: number;
     date_created: string;
@@ -11,7 +11,7 @@ interface NoticeResponse {
   }
 }
 
-interface NoticeTopResponse {
+export interface NoticeTopResponse {
   data: {
     id: number;
     notice_top: string;
