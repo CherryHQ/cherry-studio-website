@@ -15,11 +15,6 @@ export const fetchChannelData = async () => {
   try {
     const response = await fetch(`${BASE_URL}/items/channel`, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-      },
-      mode: 'cors',
       credentials: 'include'
     });
     const data: ChannelResponse = await response.json();
