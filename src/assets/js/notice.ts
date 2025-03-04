@@ -30,8 +30,7 @@ export interface NoticeTopResponse {
 export const fetchNotice = async (): Promise<NoticeResponse['data'] | null> => {
   try {
     const response = await fetch('http://rack1.raincs.cc:18192/items/notice', {
-      method: 'GET',
-      credentials: 'include'
+      method: 'GET'
     });
     const data: NoticeResponse = await response.json();
     return data.data;
@@ -44,8 +43,7 @@ export const fetchNotice = async (): Promise<NoticeResponse['data'] | null> => {
 export const fetchTopNotice = async (): Promise<NoticeTopResponse['data'] | null> => {
   try {
     const response = await fetch('http://rack1.raincs.cc:18192/items/notice_top', {
-      method: 'GET',
-      credentials: 'include'
+      method: 'GET'
     });
     const data: NoticeTopResponse = await response.json();
     return data.data;

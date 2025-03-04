@@ -14,8 +14,7 @@ const BASE_URL = 'http://rack1.raincs.cc:18192';
 export const fetchChannelData = async () => {
   try {
     const response = await fetch(`${BASE_URL}/items/channel`, {
-      method: 'GET',
-      credentials: 'include'
+      method: 'GET'
     });
     const data: ChannelResponse = await response.json();
     return data;
