@@ -132,7 +132,7 @@ const HomePage: FC = () => {
             </div>
             <div className="banner-dots"></div>
             <div className="text" style={{ color: 'red', textAlign: 'center', margin: '0 auto', fontSize: '22px' }}>
-              ⚠️ Cherry Studio 是免费软件，如果有人收费卖给你，你被骗了，请立即报警
+              Cherry Studio针对个人用户免费，企业用户请联系官方合作。<br>如存在个人版付费销售则为诈骗行为，请联系相关部门投诉处理。
             </div>
             <div className="link-box">
               <Link to="/download" className="btn-large">
