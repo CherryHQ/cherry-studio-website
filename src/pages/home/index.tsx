@@ -88,7 +88,6 @@ const HomePage: FC = () => {
   const [showTopNotice, setShowTopNotice] = useState(true)
   const [channelData, setChannelData] = useState<any>(null);
   const [wechatQRCode, setWechatQRCode] = useState<string>('');
-  const [docContributors, setDocContributors] = useState<any>(null);
 
   useEffect(() => {
     const getNotices = async () => {
@@ -113,46 +112,7 @@ const HomePage: FC = () => {
     };
 
     getChannelData();
-    fetchDocContributors();
   }, [])
-
-  async function fetchDocContributors() {
-    try {
-      const response = await fetch('https://data1.cherry-ai.com:48443/items/cherry_docs_contributors');
-      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-      const data = await response.json();
-      setDocContributors(data);
-      renderDocContributors(data);
-    } catch (error) {
-      console.error('Error fetching doc contributors:', error);
-    }
-  }
-
-  function renderDocContributors(data: any) {
-    const contributorsList = document.getElementById('doc-contributors-list');
-    const contributors = data.data.contributors.contributors;
-    const sortedContributors = contributors.sort((a: any, b: any) => b.contributions - a.contributions);
-
-    if (contributorsList) {
-      contributorsList.innerHTML = sortedContributors
-        .map(
-          (contributor: any) => `
-            <a href="${contributor.html_url}" target="_blank" class="contributor-item">
-              <div class="contributor-avatar">
-                <img src="${contributor.avatar_url}" alt="${contributor.login}">
-              </div>
-              <div class="contributor-info">
-                <div class="contributor-name">${contributor.login}</div>
-                <div class="contributor-details">
-                  贡献: ${contributor.contributions} commits (${contributor.contribution_rate.toFixed(1)}%)
-                </div>
-              </div>
-            </a>
-          `
-        )
-        .join('');
-    }
-  }
 
   return (
     <>

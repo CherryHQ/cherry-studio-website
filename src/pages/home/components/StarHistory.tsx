@@ -336,7 +336,7 @@ const StarHistory: FC = () => {
       </div>
       <div class="stats-item">
         <span>频道成员：</span>
-        <span class="stats-number">${telegramData.members}k</span>
+        <span class="stats-number">${telegramData.members}</span>
       </div>
       <div class="stats-item">
         <span>当前在线：</span>
