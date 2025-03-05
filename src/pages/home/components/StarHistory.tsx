@@ -2,14 +2,14 @@ import { FC, memo, useEffect } from 'react'
 
 const StarHistory: FC = () => {
   useEffect(() => {
-    const API_URL = 'https://githubinfo.ocool.online/'
+    const API_URL = 'https://data1.cherry-ai.com:48443/items/github_cherrystudio'
     let chart: any = null
     let fullData: any = null
     let startPicker: any = null
     let endPicker: any = null
 
     function initDatePickers(data: any) {
-      const dates = data.starHistory.map((item: any) => item.date)
+      const dates = data.data.cherrystudio_data.starHistory.map((item: any) => item.date)
       const minDate = dates[0]
       const maxDate = dates[dates.length - 1]
 
@@ -37,10 +37,16 @@ const StarHistory: FC = () => {
 
       const filteredData = {
         ...fullData,
-        starHistory: fullData.starHistory.filter((item: any) => {
-          const date = new Date(item.date)
-          return date >= startDate && date <= endDate
-        })
+        data: {
+          ...fullData.data,
+          cherrystudio_data: {
+            ...fullData.data.cherrystudio_data,
+            starHistory: fullData.data.cherrystudio_data.starHistory.filter((item: any) => {
+              const date = new Date(item.date)
+              return date >= startDate && date <= endDate
+            })
+          }
+        }
       }
 
       renderChart(filteredData)
@@ -51,6 +57,7 @@ const StarHistory: FC = () => {
       chart = chart || window.echarts.init(chartDom)
 
       const isMobile = window.innerWidth <= 768
+      const starHistory = data.data.cherrystudio_data.starHistory
 
       const option = {
         animation: true,
@@ -215,7 +222,7 @@ const StarHistory: FC = () => {
             name: '总 Star 数',
             type: 'line',
             smooth: true,
-            data: data.starHistory.map((item: any) => [item.date, item.total_stars]),
+            data: starHistory.map((item: any) => [item.date, item.total_stars]),
             lineStyle: {
               width: 2,
               color: '#FF6262'
@@ -237,7 +244,7 @@ const StarHistory: FC = () => {
             name: '日增 Star 数',
             type: 'bar',
             yAxisIndex: 1,
-            data: data.starHistory.map((item: any) => [item.date, item.new_stars]),
+            data: starHistory.map((item: any) => [item.date, item.new_stars]),
             itemStyle: {
               color: new window.echarts.graphic.LinearGradient(0, 1, 0, 0, [
                 {
@@ -293,8 +300,9 @@ const StarHistory: FC = () => {
       }
     })
 
-    function renderContributors(contributors: any) {
+    function renderContributors(data: any) {
       const contributorsList = document.getElementById('contributors-list')
+      const contributors = data.data.cherrystudio_data.contributors.contributors
       const sortedContributors = contributors.sort((a: any, b: any) => b.contributions - a.contributions)
 
       if (contributorsList) {
@@ -318,7 +326,8 @@ const StarHistory: FC = () => {
       }
     }
 
-    function renderTelegramStats(telegramData: any) {
+    function renderTelegramStats(data: any) {
+      const telegramData = data.data.cherrystudio_data.telegram
       const titleSection = document.querySelector('.cta-section .section_heading')
       const statsHtml = `
     <div class="telegram-stats">
@@ -342,22 +351,21 @@ const StarHistory: FC = () => {
     }
 
     function updateFunFacts(data: any) {
-      // 创建 Intersection Observer
+      const repoData = data.data.cherrystudio_data.repo
+      const contributorsStats = data.data.cherrystudio_data.contributors.stats
+
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              // 获取所有计数器元素
               const daysCount = document.getElementById('days-count')
               const contributorsCount = document.getElementById('contributors-count')
               const starsCount = document.getElementById('stars-count')
 
-              // 触发动画
-              animateValue(daysCount, 0, data.repo.age_days, 2000)
-              animateValue(contributorsCount, 0, data.contributors.stats.total_contributors, 2000)
-              animateValue(starsCount, 0, data.repo.stars, 2000)
+              animateValue(daysCount, 0, repoData.age_days, 2000)
+              animateValue(contributorsCount, 0, contributorsStats.total_contributors, 2000)
+              animateValue(starsCount, 0, repoData.stars, 2000)
 
-              // 取消观察
               observer.unobserve(entry.target)
             }
           })
@@ -365,7 +373,6 @@ const StarHistory: FC = () => {
         { threshold: 0.2 }
       )
 
-      // 开始观察计数器区域
       const funFactsSection = document.querySelector('.fun-facts-section')
 
       if (funFactsSection) {
@@ -389,16 +396,16 @@ const StarHistory: FC = () => {
       }
     }
 
-    async function fetchData(owner = 'CherryHQ', repo = 'cherry-studio') {
+    async function fetchData() {
       try {
-        const response = await fetch(`${API_URL}?owner=${owner}&repo=${repo}`)
+        const response = await fetch(API_URL)
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`)
         const data = await response.json()
         fullData = data
         renderChart(data)
         initDatePickers(data)
-        renderContributors(data.contributors.contributors)
-        renderTelegramStats(data.telegram)
+        renderContributors(data)
+        renderTelegramStats(data)
         updateFunFacts(data)
       } catch (error) {
         console.error('Error:', error)

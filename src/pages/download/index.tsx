@@ -20,13 +20,15 @@ const DownloadPage: FC = () => {
   }, [])
 
   useEffect(() => {
-    fetch('https://api.github.com/repos/kangfenmao/cherry-studio/releases/latest')
+    fetch('https://data1.cherry-ai.com:48443/items/cherry_version')
       .then((response) => response.json())
-      .then((data) => {
-        console.log(data)
-        const version = data.name
+      .then((responseData) => {
+        console.log(responseData)
+        // Extract data from the new API structure
+        const data = responseData.data.cherry_version
+        const version = data.version
         const cleanVersion = version.replace(/^v/, '')
-        const publishedAt = new Date(data.created_at).toLocaleDateString()
+        const publishedAt = new Date(data.published_at).toLocaleDateString()
         const changelog = data.body
         const downloads = data.assets
 
@@ -346,117 +348,118 @@ const DownloadPage: FC = () => {
           $('#main-download-btn').show()
           $('#system-name').text(getSystemName())
         }
+
+        // 检测系统信息
+        function detectSystem() {
+          const userAgent = navigator.userAgent.toLowerCase()
+          let systemName = ''
+          let recommendedVersion = ''
+          let architecture = ''
+
+          // 检测 Windows 系统
+          if (userAgent.includes('win')) {
+            systemName = 'Windows'
+            // 检测 Windows 架构
+            if (userAgent.includes('win64') || userAgent.includes('wow64')) {
+              architecture = '64位'
+              systemName = 'Windows (64位)'
+            } else if (userAgent.includes('win32')) {
+              architecture = '32位'
+              systemName = 'Windows (32位)'
+            }
+          }
+          // 检测 macOS 系统
+          else if (userAgent.includes('mac')) {
+            systemName = 'macOS'
+            // 检测 Mac 芯片
+            if (userAgent.includes('arm') || userAgent.includes('aarch64')) {
+              architecture = 'Apple Silicon'
+              systemName = 'macOS'
+            } else {
+              architecture = 'Intel'
+              systemName = 'macOS'
+            }
+          }
+          // 检测 Linux 系统
+          else if (userAgent.includes('linux')) {
+            systemName = 'Linux'
+            // 检测 Linux 架构
+            if (userAgent.includes('x86_64') || userAgent.includes('amd64')) {
+              architecture = 'x86_64'
+              systemName = 'Linux (x86_64)'
+            } else if (userAgent.includes('aarch64')) {
+              architecture = 'ARM64'
+              systemName = 'Linux (ARM64)'
+            } else if (userAgent.includes('armv7')) {
+              architecture = 'ARM32'
+              systemName = 'Linux (ARM32)'
+            }
+          } else {
+            systemName = '未知系统'
+            architecture = '未知架构'
+          }
+
+          // 更新系统名称
+          document.getElementById('system-name')!.textContent = systemName
+
+          // 从 API 获取最新版本信息
+          fetch('https://data1.cherry-ai.com:48443/items/cherry_version')
+            .then((response) => response.json())
+            .then((responseData) => {
+              const data = responseData.data.cherry_version
+              const version = data.version
+              // 根据系统和架构设置对应的文件名
+              if (userAgent.includes('win')) {
+                if (architecture === '64位') {
+                  recommendedVersion = `Cherry-Studio-${version}-win-x64.exe`
+                } else {
+                  recommendedVersion = `Cherry-Studio-${version}-win-ia32.exe`
+                }
+              } else if (userAgent.includes('mac')) {
+                if (architecture === 'Apple Silicon') {
+                  recommendedVersion = `Cherry-Studio-${version}-mac-arm64.dmg`
+                } else {
+                  recommendedVersion = `Cherry-Studio-${version}-mac-x64.dmg`
+                }
+              } else if (userAgent.includes('linux')) {
+                if (architecture === 'x86_64') {
+                  recommendedVersion = `Cherry-Studio-${version}-linux-x64.AppImage`
+                } else if (architecture === 'ARM64') {
+                  recommendedVersion = `Cherry-Studio-${version}-linux-arm64.AppImage`
+                } else {
+                  recommendedVersion = `Cherry-Studio-${version}-linux-armv7l.AppImage`
+                }
+              } else {
+                recommendedVersion = `Cherry-Studio-${version}-universal.zip`
+              }
+              document.getElementById('recommended-version')!.textContent = recommendedVersion
+            })
+            .catch((error) => {
+              console.error('获取版本信息失败：', error)
+              document.getElementById('recommended-version')!.textContent = '获取版本信息失败'
+            })
+
+          // 显示系统信息区域
+          document.querySelector('.system-info')!.classList.add('loaded')
+        }
+
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', function () {
+          detectSystem()
+        })
+
+        // 获取系统名称的辅助函数
+        function getSystemName() {
+          const ua = navigator.userAgent.toLowerCase()
+          if (ua.includes('win')) return 'Windows'
+          if (ua.includes('linux')) return 'Linux'
+          return '其他系统'
+        }
       })
       .catch((error) => {
         console.error('获取版本信息失败：', error)
         document.getElementById('version-title')!.textContent = '无法获取版本信息，请暂时通过网盘链接下载'
       })
-
-    // 检测系统信息
-    function detectSystem() {
-      const userAgent = navigator.userAgent.toLowerCase()
-      let systemName = ''
-      let recommendedVersion = ''
-      let architecture = ''
-
-      // 检测 Windows 系统
-      if (userAgent.includes('win')) {
-        systemName = 'Windows'
-        // 检测 Windows 架构
-        if (userAgent.includes('win64') || userAgent.includes('wow64')) {
-          architecture = '64位'
-          systemName = 'Windows (64位)'
-        } else if (userAgent.includes('win32')) {
-          architecture = '32位'
-          systemName = 'Windows (32位)'
-        }
-      }
-      // 检测 macOS 系统
-      else if (userAgent.includes('mac')) {
-        systemName = 'macOS'
-        // 检测 Mac 芯片
-        if (userAgent.includes('arm') || userAgent.includes('aarch64')) {
-          architecture = 'Apple Silicon'
-          systemName = 'macOS'
-        } else {
-          architecture = 'Intel'
-          systemName = 'macOS'
-        }
-      }
-      // 检测 Linux 系统
-      else if (userAgent.includes('linux')) {
-        systemName = 'Linux'
-        // 检测 Linux 架构
-        if (userAgent.includes('x86_64') || userAgent.includes('amd64')) {
-          architecture = 'x86_64'
-          systemName = 'Linux (x86_64)'
-        } else if (userAgent.includes('aarch64')) {
-          architecture = 'ARM64'
-          systemName = 'Linux (ARM64)'
-        } else if (userAgent.includes('armv7')) {
-          architecture = 'ARM32'
-          systemName = 'Linux (ARM32)'
-        }
-      } else {
-        systemName = '未知系统'
-        architecture = '未知架构'
-      }
-
-      // 更新系统名称
-      document.getElementById('system-name')!.textContent = systemName
-
-      // 从 API 获取最新版本信息
-      fetch('https://api.github.com/repos/CherryHQ/cherry-studio/releases/latest')
-        .then((response) => response.json())
-        .then((data) => {
-          const version = data.tag_name
-          // 根据系统和架构设置对应的文件名
-          if (userAgent.includes('win')) {
-            if (architecture === '64位') {
-              recommendedVersion = `Cherry-Studio-${version}-win-x64.exe`
-            } else {
-              recommendedVersion = `Cherry-Studio-${version}-win-ia32.exe`
-            }
-          } else if (userAgent.includes('mac')) {
-            if (architecture === 'Apple Silicon') {
-              recommendedVersion = `Cherry-Studio-${version}-mac-arm64.dmg`
-            } else {
-              recommendedVersion = `Cherry-Studio-${version}-mac-x64.dmg`
-            }
-          } else if (userAgent.includes('linux')) {
-            if (architecture === 'x86_64') {
-              recommendedVersion = `Cherry-Studio-${version}-linux-x64.AppImage`
-            } else if (architecture === 'ARM64') {
-              recommendedVersion = `Cherry-Studio-${version}-linux-arm64.AppImage`
-            } else {
-              recommendedVersion = `Cherry-Studio-${version}-linux-armv7l.AppImage`
-            }
-          } else {
-            recommendedVersion = `Cherry-Studio-${version}-universal.zip`
-          }
-          document.getElementById('recommended-version')!.textContent = recommendedVersion
-        })
-        .catch((error) => {
-          console.error('获取版本信息失败：', error)
-          document.getElementById('recommended-version')!.textContent = '获取版本信息失败'
-        })
-
-      // 显示系统信息区域
-      document.querySelector('.system-info')!.classList.add('loaded')
-    }
-
-    // 页面加载完成后执行
-    document.addEventListener('DOMContentLoaded', function () {
-      detectSystem()
-    })
-
-    // 获取系统名称的辅助函数
-    function getSystemName() {
-      const ua = navigator.userAgent.toLowerCase()
-      if (ua.includes('win')) return 'Windows'
-      if (ua.includes('linux')) return 'Linux'
-      return '其他系统'
-    }
   }, [])
 
   return (
@@ -529,7 +532,9 @@ const DownloadPage: FC = () => {
             {/* <!-- 其他版本下载 --> */}
             <div className="other-downloads">
               <h2>其他版本下载</h2>
-              <ul id="download-list">{/* <!-- 其他版本的下载链接将动态生成 --> */}</ul>
+              <ul id="download-list">
+                {/* 其他版本的下载链接将动态生成 */}
+              </ul>
             </div>
           </div>
         </section>

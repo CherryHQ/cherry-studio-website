@@ -29,7 +29,7 @@ export interface NoticeTopResponse {
 
 export const fetchNotice = async (): Promise<NoticeResponse['data'] | null> => {
   try {
-    const response = await fetch('https://cherry-data.ocoolai.com/items/notice', {
+    const response = await fetch('https://data1.cherry-ai.com:48443/items/notice', {
       method: 'GET'
     });
     const data: NoticeResponse = await response.json();
@@ -42,7 +42,7 @@ export const fetchNotice = async (): Promise<NoticeResponse['data'] | null> => {
 
 export const fetchTopNotice = async (): Promise<NoticeTopResponse['data'] | null> => {
   try {
-    const response = await fetch('https://cherry-data.ocoolai.com/items/notice_top', {
+    const response = await fetch('https://data1.cherry-ai.com:48443/items/notice_top', {
       method: 'GET'
     });
     const data: NoticeTopResponse = await response.json();

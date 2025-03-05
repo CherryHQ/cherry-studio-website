@@ -9,7 +9,7 @@ interface ChannelResponse {
   }
 }
 
-const BASE_URL = 'https://cherry-data.ocoolai.com';
+const BASE_URL = 'https://data1.cherry-ai.com:48443';
 
 export const fetchChannelData = async () => {
   try {
