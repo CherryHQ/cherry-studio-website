@@ -121,7 +121,7 @@ const Footer: FC = () => {
         <div className="auto-container">
           <div className="copyright">
             <p>
-              Copyright © 2024 Cherry Studio, Inc.
+              Copyright © 2025 上海千彗科技有限公司{' '}
               <a href="https://beian.miit.gov.cn/" target="_blank">
                 沪ICP备2021031071号-3
               </a>
