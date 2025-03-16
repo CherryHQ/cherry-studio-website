@@ -66,3 +66,18 @@
   border-top: 1px solid #eee;
   padding-top: 30px;
 }
+
+/* 贡献者部分标记样式 */
+.contributor-partial {
+  font-size: 14px;
+  font-weight: normal;
+  color: #888;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+
+@media (max-width: 768px) {
+  .contributor-partial {
+    font-size: 12px;
+  }
+}

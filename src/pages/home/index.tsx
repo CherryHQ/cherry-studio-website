@@ -130,9 +130,30 @@ const HomePage: FC = () => {
     const contributorsList = document.getElementById('doc-contributors-list');
     const contributors = data.data.contributors.contributors;
     const sortedContributors = contributors.sort((a: any, b: any) => b.contributions - a.contributions);
+    
+    // 获取要显示的贡献者数量，如果未指定则显示全部
+    const showCount = data.data.show_contributor_count || sortedContributors.length;
+    
+    // 添加调试日志
+    console.log('文档贡献者总数:', sortedContributors.length);
+    console.log('显示数量设置:', data.data.show_contributor_count);
+    console.log('实际显示数量:', showCount);
+    
+    // 只显示指定数量的贡献者
+    const displayContributors = sortedContributors.slice(0, showCount);
+    
+    // 更新标题，仅当显示的数量小于总数时才显示"(部分)"
+    const titleElement = document.querySelector('.doc-contributors-section .heading_title');
+    if (titleElement) {
+      if (showCount < sortedContributors.length) {
+        titleElement.innerHTML = '文档贡献者<span class="contributor-partial">(部分)</span>';
+      } else {
+        titleElement.innerHTML = '文档贡献者';
+      }
+    }
 
     if (contributorsList) {
-      contributorsList.innerHTML = sortedContributors
+      contributorsList.innerHTML = displayContributors
         .map(
           (contributor: any) => `
             <a href="${contributor.html_url}" target="_blank" class="contributor-item">
