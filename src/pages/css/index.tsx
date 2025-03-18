@@ -61,6 +61,12 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
   }
 }
 
+// 首先添加SubmitModalProps接口定义
+interface SubmitModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
 const CssPage: React.FC = () => {
   // 原始数据和筛选后的数据分开存储
   const [cssItems, setCssItems] = useState<CssItem[]>([]);
@@ -659,18 +665,18 @@ const CssPage: React.FC = () => {
       const header = document.querySelector('.main-header');
       if (header) {
         if (isOpen) {
-          // 当模态框打开时，隐藏header
-          header.style.display = 'none';
+          // 使用类型断言解决style属性不存在的问题
+          (header as HTMLElement).style.display = 'none';
         } else {
-          // 当模态框关闭时，显示header
-          header.style.display = '';
+          // 使用类型断言解决style属性不存在的问题
+          (header as HTMLElement).style.display = '';
         }
       }
       
       // 清理函数：确保在组件卸载时恢复header显示
       return () => {
         if (header) {
-          header.style.display = '';
+          (header as HTMLElement).style.display = '';
         }
       };
     }, [isOpen]);

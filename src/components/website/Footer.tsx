@@ -1,5 +1,4 @@
 import React from 'react'
-import { FC } from 'react'
 import { copyRSSLink } from '@/utils'
 import cherryLogo from '@/assets/images/cherry_logo.png'
 import xIcon from '@/assets/images/icons/x.svg'
