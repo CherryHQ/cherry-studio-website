@@ -104,7 +104,33 @@ const CssPage: React.FC = () => {
   // 在状态声明区域添加
   const [submitModalOpen, setSubmitModalOpen] = useState(false);
 
-  // 在组件内部添加这些状态和refs
+  // 添加一个新的状态来控制示例图片预览
+  const [previewImageUrl, setPreviewImageUrl] = useState<string | null>(null);
+
+  // 添加一个处理函数，在点击示例图片链接时触发
+  const handleExamplePreview = (e: React.MouseEvent, url: string) => {
+    e.preventDefault(); // 阻止默认的链接跳转行为
+    setPreviewImageUrl(url);
+  };
+
+  // 添加关闭预览的处理函数
+  const closeImagePreview = () => {
+    setPreviewImageUrl(null);
+  };
+
+  // 示例图片预览模态框组件
+  const ImagePreviewModal: React.FC<{url: string | null, onClose: () => void}> = ({ url, onClose }) => {
+    if (!url) return null;
+    
+    return (
+      <div className="css-image-preview-modal-overlay" onClick={onClose}>
+        <div className="css-image-preview-modal" onClick={e => e.stopPropagation()}>
+          <button className="css-image-preview-close" onClick={onClose}>×</button>
+          <img src={url} alt="示例预览" />
+        </div>
+      </div>
+    );
+  };
 
   // 添加解析搜索输入的函数
   const parseSearchInput = (input: string) => {
@@ -700,6 +726,35 @@ const CssPage: React.FC = () => {
     const [submitError, setSubmitError] = useState<string | null>(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
     
+    // 添加内部预览状态，独立于外部全局状态
+    const [internalPreviewUrl, setInternalPreviewUrl] = useState<string | null>(null);
+    
+    // 内部预览处理函数，阻止事件冒泡
+    const handleInternalPreview = (e: React.MouseEvent, url: string) => {
+      e.preventDefault();
+      e.stopPropagation(); // 阻止冒泡，防止触发外部事件
+      setInternalPreviewUrl(url);
+    };
+    
+    // 关闭内部预览
+    const closeInternalPreview = () => {
+      setInternalPreviewUrl(null);
+    };
+    
+    // 内部预览组件
+    const InternalPreviewModal = () => {
+      if (!internalPreviewUrl) return null;
+      
+      return (
+        <div className="css-image-preview-modal-overlay" onClick={closeInternalPreview}>
+          <div className="css-image-preview-modal" onClick={e => e.stopPropagation()}>
+            <button className="css-image-preview-close" onClick={closeInternalPreview}>×</button>
+            <img src={internalPreviewUrl} alt="示例预览" />
+          </div>
+        </div>
+      );
+    };
+    
     // 重置所有状态
     const resetForm = useCallback(() => {
       setLocalFormData({
@@ -876,7 +931,7 @@ const CssPage: React.FC = () => {
     
     // 渲染模态框
     return (
-      <div className="css-submit-modal-overlay">
+      <div className="css-submit-modal-overlay" style={{ display: isOpen ? 'flex' : 'none' }}>
         <div className="css-submit-modal">
           <div className="css-submit-modal-header">
             <h2>主题投稿</h2>
@@ -984,7 +1039,7 @@ const CssPage: React.FC = () => {
                     name="cdn_link" 
                     value={localFormData.cdn_link}
                     onChange={(e) => updateField('cdn_link', e.target.value)}
-                    placeholder="如果提公开的cdn链接或文件链接等可以填写"
+                    placeholder="如果提供公开的cdn链接或文件链接等可以填写"
                   />
                 </div>
                 
@@ -1023,7 +1078,10 @@ const CssPage: React.FC = () => {
                       />
                     </div>
                     <div className="css-submit-form-hint">
-                      预览图应留有窗口外的背景，示例图: <a href="https://data1.cherry-ai.com:48443/assets/a4391dd7-473a-4cad-b6f5-6a429e3bbf0f" target="_blank">查看示例</a>
+                      预览图应留有窗口外的背景，示例图: 
+                      <a href="#" onClick={(e) => handleInternalPreview(e, "https://data1.cherry-ai.com:48443/assets/a4391dd7-473a-4cad-b6f5-6a429e3bbf0f")}>
+                        查看示例
+                      </a>
                     </div>
                   </div>
                 )}
@@ -1063,7 +1121,10 @@ const CssPage: React.FC = () => {
                       />
                     </div>
                     <div className="css-submit-form-hint">
-                      预览图应留有窗口外的背景，示例图: <a href="https://data1.cherry-ai.com:48443/assets/a4391dd7-473a-4cad-b6f5-6a429e3bbf0f" target="_blank">查看示例</a>
+                      预览图应留有窗口外的背景，示例图: 
+                      <a href="#" onClick={(e) => handleInternalPreview(e, "https://data1.cherry-ai.com:48443/assets/a4391dd7-473a-4cad-b6f5-6a429e3bbf0f")}>
+                        查看示例
+                      </a>
                     </div>
                   </div>
                 )}
@@ -1124,6 +1185,9 @@ const CssPage: React.FC = () => {
               </form>
             )}
           </div>
+          
+          {/* 添加内部预览模态框 */}
+          {internalPreviewUrl && <InternalPreviewModal />}
         </div>
       </div>
     );
@@ -1328,7 +1392,7 @@ const CssPage: React.FC = () => {
                               作者: 
                               <span 
                                 className={`css-card-author-name ${authorFilter === item.author ? 'active' : ''}`}
-                                onClick={() => handleAuthorClick(item.author)}
+                                onClick={(e) => handleExamplePreview(e, getImageUrl(item.light_pic))}
                               >
                                 {item.author}
                               </span>
@@ -1450,6 +1514,14 @@ const CssPage: React.FC = () => {
           isOpen={submitModalOpen}
           onClose={() => setSubmitModalOpen(false)}
         />
+        
+        {/* 示例图片预览模态框 */}
+        {previewImageUrl && (
+          <ImagePreviewModal 
+            url={previewImageUrl}
+            onClose={closeImagePreview}
+          />
+        )}
         
         <Footer />
       </div>

@@ -937,4 +937,52 @@ body::before {
   opacity: 1 !important;
   position: relative;
   z-index: 1;
+}
+
+/* 示例图片预览模态框样式 */
+.css-image-preview-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 10003;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.css-image-preview-modal {
+  position: relative;
+  background: white;
+  padding: 10px;
+  border-radius: 4px;
+  max-width: 90%;
+  max-height: 90%;
+  overflow: auto;
+}
+
+.css-image-preview-modal img {
+  display: block;
+  max-width: 100%;
+  max-height: 80vh;
+}
+
+.css-image-preview-close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: #EA5E5D;
+  color: white;
+  border: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  cursor: pointer;
+  z-index: 1;
 } 
