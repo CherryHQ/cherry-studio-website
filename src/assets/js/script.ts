@@ -1,6 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // @ts-nocheck
 
+declare global {
+  interface Window {
+    headerSticky: () => void;
+  }
+}
+
 export function script() {
   'use strict'
 
@@ -847,4 +853,11 @@ export function script() {
     headerSticky()
     enableMasonry()
   })
+
+  function headerSticky() {
+    // 原有实现
+  }
+
+  // 暴露到全局
+  window.headerSticky = headerSticky;
 }

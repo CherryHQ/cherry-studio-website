@@ -1,3 +1,4 @@
+import React from 'react'
 import { FC } from 'react'
 import { copyRSSLink } from '@/utils'
 import cherryLogo from '@/assets/images/cherry_logo.png'
@@ -7,7 +8,7 @@ import githubIcon from '@/assets/images/icons/github.svg'
 import pIcon from '@/assets/images/icons/p.svg'
 import rssIcon from '@/assets/images/icons/rss.svg'
 
-const Footer: FC = () => {
+const Footer: React.FC = () => {
   return (
     <footer className="main-footer">
       <div className="widget-section">
