@@ -1197,7 +1197,7 @@ const CssPage: React.FC = () => {
           <div className="css-container">
             <h1 className="css-page-title">主题素材库</h1>
             <div className="css-page-description">
-              <div>精选的 CSS 样式和组件，帮助您快速构建美观的界面</div>
+              <div>精选的CherryStudio主题，帮助您快速实现个性化界面。</div>
               <div className="css-buttons-container">
                 <div className="css-search-help-icon" 
                   onClick={() => setHelpTooltipVisible(!helpTooltipVisible)}
