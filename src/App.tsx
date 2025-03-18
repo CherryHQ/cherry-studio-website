@@ -3,6 +3,7 @@ import HomePage from './pages/home'
 import DownloadPage from './pages/download'
 import { useEffect } from 'react'
 import { script } from './assets/js/script'
+import CSSPage from './pages/css'
 
 function App() {
   useEffect(() => {
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/download" element={<DownloadPage />} />
+        <Route path="/css" element={<CSSPage />} />
       </Routes>
     </BrowserRouter>
   )
