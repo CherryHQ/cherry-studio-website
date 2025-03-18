@@ -111,20 +111,20 @@ const HomePage: FC = () => {
       }
     };
 
+    async function fetchDocContributors() {
+      try {
+        const response = await fetch('https://data1.cherry-ai.com:48443/items/cherry_docs_contributors');
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        const data = await response.json();
+        renderDocContributors(data);
+      } catch (error) {
+        console.error('Error fetching doc contributors:', error);
+      }
+    }
+
     getChannelData();
     fetchDocContributors();
   }, [])
-
-  async function fetchDocContributors() {
-    try {
-      const response = await fetch('https://data1.cherry-ai.com:48443/items/cherry_docs_contributors');
-      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-      const data = await response.json();
-      renderDocContributors(data);
-    } catch (error) {
-      console.error('Error fetching doc contributors:', error);
-    }
-  }
 
   function renderDocContributors(data: any) {
     const contributorsList = document.getElementById('doc-contributors-list');

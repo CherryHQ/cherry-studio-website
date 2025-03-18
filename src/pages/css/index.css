@@ -828,13 +828,14 @@ body::before {
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 9999;
+  z-index: 10001;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .css-submit-modal {
+  z-index: 10002;
   background: white;
   width: 90%;
   max-width: 600px;
@@ -928,4 +929,12 @@ body::before {
   z-index: 1 !important; /* 只降低内容层级 */
 }
 
-/* 删除其他所有可能影响原有交互的样式 */ 
+/* 删除其他所有可能影响原有交互的样式 */
+
+.visible-wrapper {
+  display: block !important; 
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative;
+  z-index: 1;
+} 

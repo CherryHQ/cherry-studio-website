@@ -652,11 +652,29 @@ const CssPage: React.FC = () => {
     }
   };
 
-  // 全新设计的表单模态框组件
-  const SubmitModal = React.memo(({ isOpen, onClose }: {
-    isOpen: boolean;
-    onClose: () => void;
-  }) => {
+  // 修改SubmitModal组件，增加对header的控制
+  const SubmitModal: React.FC<SubmitModalProps> = ({ isOpen, onClose }) => {
+    // 在模态框打开/关闭时控制header的显示/隐藏
+    useEffect(() => {
+      const header = document.querySelector('.main-header');
+      if (header) {
+        if (isOpen) {
+          // 当模态框打开时，隐藏header
+          header.style.display = 'none';
+        } else {
+          // 当模态框关闭时，显示header
+          header.style.display = '';
+        }
+      }
+      
+      // 清理函数：确保在组件卸载时恢复header显示
+      return () => {
+        if (header) {
+          header.style.display = '';
+        }
+      };
+    }, [isOpen]);
+
     // 所有状态都保持在模态框内部
     const [localFormData, setLocalFormData] = useState({
       name: '',
@@ -1103,7 +1121,7 @@ const CssPage: React.FC = () => {
         </div>
       </div>
     );
-  });
+  };
 
   // 添加与下载页面相同的初始化逻辑
   useEffect(() => {
@@ -1155,8 +1173,8 @@ const CssPage: React.FC = () => {
 
       {/* 使用与下载页面相同的页面结构，但添加关键内联样式 */}
       <div className="page-wrapper" style={{ 
-        display: 'block !important', 
-        visibility: 'visible !important',
+        display: 'block', 
+        visibility: 'visible',
         opacity: 1,
         position: 'relative',
         zIndex: 1
