@@ -94,6 +94,11 @@ const Footer: FC = () => {
                       </a>
                     </li>
                     <li>
+                      <a href="https://suanleme.cn" target="_blank">
+                        算了么
+                      </a>
+                    </li>
+                    <li>
                       <a href="https://ai-bot.cn" target="_blank">
                         AI 工具集
                       </a>
