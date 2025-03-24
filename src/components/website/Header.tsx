@@ -114,6 +114,14 @@ const Header: React.FC = () => {
                         </li>
                       </ul>
                     </li>
+                    <li className="dropdown">
+                      <a href="">社区</a>
+                      <ul>
+                        <li>
+                          <a href="/css">主题社区</a>
+                        </li>
+                      </ul>
+                    </li>
                     <li>
                       <a href="https://docs.cherry-ai.com/contact-us/questions">联系我们</a>
                     </li>

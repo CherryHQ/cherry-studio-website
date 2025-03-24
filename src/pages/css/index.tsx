@@ -1372,7 +1372,7 @@ const CssPage: React.FC = () => {
                 <div className="css-grid">
                   {cssItems.map(item => (
                     <div className="css-card" key={item.id}>
-                      <div className="css-card-preview">
+                      <div className="css-card-preview" onClick={(e) => handleExamplePreview(e, getImageUrl(activeImageMode[item.id] === 'light' ? item.light_pic : item.dark_pic))}>
                         {activeImageMode[item.id] === 'light' && item.light_pic ? (
                           <img src={getImageUrl(item.light_pic)} alt={item.name} className="css-card-image" />
                         ) : activeImageMode[item.id] === 'dark' && item.dark_pic ? (
@@ -1392,7 +1392,7 @@ const CssPage: React.FC = () => {
                               作者: 
                               <span 
                                 className={`css-card-author-name ${authorFilter === item.author ? 'active' : ''}`}
-                                onClick={(e) => handleExamplePreview(e, getImageUrl(item.light_pic))}
+                                onClick={() => handleAuthorClick(item.author)}
                               >
                                 {item.author}
                               </span>
