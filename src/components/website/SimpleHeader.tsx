@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import cherryLogo from '/src/assets/images/cherry_logo.png'
+
+import cherryLogo from '@/assets/images/cherry-logo.svg'
 
 // 创建一个不依赖jQuery的简化版Header
 const SimpleHeader: React.FC = () => {
@@ -32,11 +33,21 @@ const SimpleHeader: React.FC = () => {
                   <li className="dropdown">
                     <a href="https://docs.cherry-ai.com/">文档</a>
                     <ul>
-                      <li><a href="https://docs.cherry-ai.com">CherryStudio简介</a></li>
-                      <li><a href="https://docs.cherry-ai.com/pre-basic/installation">基础教程</a></li>
-                      <li><a href="https://docs.cherry-ai.com/advanced-basic/knowledge-base">进阶教程</a></li>
-                      <li><a href="https://docs.cherry-ai.com/contribution/code">项目贡献</a></li>
-                      <li><a href="https://docs.cherry-ai.com/question-contact/questions">问题&反馈</a></li>
+                      <li>
+                        <a href="https://docs.cherry-ai.com">CherryStudio简介</a>
+                      </li>
+                      <li>
+                        <a href="https://docs.cherry-ai.com/pre-basic/installation">基础教程</a>
+                      </li>
+                      <li>
+                        <a href="https://docs.cherry-ai.com/advanced-basic/knowledge-base">进阶教程</a>
+                      </li>
+                      <li>
+                        <a href="https://docs.cherry-ai.com/contribution/code">项目贡献</a>
+                      </li>
+                      <li>
+                        <a href="https://docs.cherry-ai.com/question-contact/questions">问题&反馈</a>
+                      </li>
                     </ul>
                   </li>
                   <li>
@@ -46,10 +57,10 @@ const SimpleHeader: React.FC = () => {
               </nav>
 
               <div className="outer-box">
-                <a href="https://docs.cherry-ai.com/?q=" target="_blank">
+                <a href="https://docs.cherry-ai.com/?q=" target="_blank" rel="noopener noreferrer">
                   <div className="search-box-outer">
                     <div className="dropdown">
-                      <button className="search-box-btn one search-toggler">
+                      <button className="search-box-btn one search-toggler" type="button">
                         <span className="icon-1"></span>
                       </button>
                     </div>
@@ -57,7 +68,11 @@ const SimpleHeader: React.FC = () => {
                 </a>
 
                 <div className="start_trils_btn">
-                  <a href="https://github.com/CherryHQ/cherry-studio" className="theme-btn" target="_blank">
+                  <a
+                    href="https://github.com/CherryHQ/cherry-studio"
+                    className="theme-btn"
+                    target="_blank"
+                    rel="noopener noreferrer">
                     GitHub
                   </a>
                 </div>
@@ -70,4 +85,4 @@ const SimpleHeader: React.FC = () => {
   )
 }
 
-export default SimpleHeader 
+export default SimpleHeader

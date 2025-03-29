@@ -7,6 +7,7 @@ import baichuanLogo from '../images/provider_logo/baichuan-color.svg'
 import baiducloudLogo from '../images/provider_logo/baiducloud-color.svg'
 import bytedanceLogo from '../images/provider_logo/bytedance-color.svg'
 import deepseekLogo from '../images/provider_logo/deepseek-color.svg'
+import giteeaiLogo from '../images/provider_logo/gitee-ai.svg'
 import githubLogo from '../images/provider_logo/github.svg'
 import googleLogo from '../images/provider_logo/google-color.svg'
 import groqLogo from '../images/provider_logo/groq.svg'
@@ -29,7 +30,6 @@ import togetherLogo from '../images/provider_logo/together-color.svg'
 import xaiLogo from '../images/provider_logo/xai.svg'
 import zerooneLogo from '../images/provider_logo/zeroone.svg'
 import zhipuLogo from '../images/provider_logo/zhipu-color.svg'
-import giteeaiLogo from '../images/provider_logo/gitee-ai.svg'
 
 export default class ProviderLogo {
   container: HTMLElement

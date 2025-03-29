@@ -3,7 +3,7 @@
 
 declare global {
   interface Window {
-    headerSticky: () => void;
+    headerSticky: () => void
   }
 }
 
@@ -108,42 +108,6 @@ export function script() {
       }
     }, speed)
   })
-
-  //Accordion Box
-  if ($('.accordion-box').length) {
-    // Attach a click event handler to elements with class 'acc-btn' inside '.accordion-box'
-    $('.accordion-box').on('click', '.accord-btn', function () {
-      // Get the outer accordion box and the specific accordion associated with the clicked button
-      const outerBox = $(this).closest('.accordion-box')
-      const target = $(this).closest('.accordion')
-
-      // Check if the clicked button does not have the class 'active'
-      if (!$(this).hasClass('active')) {
-        // Remove the 'active' class from all accordion buttons within the same accordion box
-        outerBox.find('.accordion .accord-btn').removeClass('active')
-      }
-
-      // Check if the next '.acc-content' element is visible
-      if ($(this).next('.accord-content').is(':visible')) {
-        return false // Prevent further action if it's visible
-      } else {
-        // Add the 'active' class to the clicked button
-        $(this).addClass('active')
-
-        // Remove the 'active-block' class from all '.accordion' elements within the same accordion box
-        outerBox.find('.accordion').removeClass('active-block')
-
-        // Slide up all '.acc-content' elements within the accordion box
-        outerBox.find('.accordion .accord-content').slideUp(300)
-
-        // Add the 'active-block' class to the specific '.accordion'
-        target.addClass('active-block')
-
-        // Slide down the next '.acc-content' element
-        $(this).next('.accord-content').slideDown(300)
-      }
-    })
-  }
 
   // Progress Bar
   if ($('.count-bar').length) {
@@ -372,67 +336,6 @@ export function script() {
           items: 5
         },
         1400: {
-          items: 5
-        }
-      }
-    })
-  }
-
-  //Sponsors Carousel
-  if ($('.sponsors-carousel').length) {
-    $('.sponsors-carousel').owlCarousel({
-      loop: true,
-      margin: 30,
-      nav: true,
-      smartSpeed: 500,
-      autoplay: 5000,
-      navText: ['<span class="fa fa-angle-left"></span>', '<span class="fa fa-angle-right"></span>'],
-      responsive: {
-        0: {
-          items: 1
-        },
-        600: {
-          items: 2
-        },
-        800: {
-          items: 3
-        },
-        1024: {
-          items: 4
-        },
-        1200: {
-          items: 4
-        }
-      }
-    })
-  }
-
-  //Sponsors Carousel Two
-  if ($('.sponsors-carousel-two').length) {
-    $('.sponsors-carousel-two').owlCarousel({
-      loop: true,
-      margin: 30,
-      nav: true,
-      smartSpeed: 500,
-      autoplay: 5000,
-      navText: ['<span class="fa fa-angle-left"></span>', '<span class="fa fa-angle-right"></span>'],
-      responsive: {
-        0: {
-          items: 1
-        },
-        400: {
-          items: 2
-        },
-        600: {
-          items: 3
-        },
-        800: {
-          items: 4
-        },
-        1024: {
-          items: 5
-        },
-        1200: {
           items: 5
         }
       }
@@ -859,5 +762,5 @@ export function script() {
   }
 
   // 暴露到全局
-  window.headerSticky = headerSticky;
+  window.headerSticky = headerSticky
 }

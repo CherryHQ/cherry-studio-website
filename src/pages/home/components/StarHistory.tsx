@@ -304,25 +304,25 @@ const StarHistory: FC = () => {
       const contributorsList = document.getElementById('contributors-list')
       const contributors = data.data.cherrystudio_data.contributors.contributors
       const sortedContributors = contributors.sort((a: any, b: any) => b.contributions - a.contributions)
-      
+
       // 修正字段路径 - 从 data.data 获取 show_contributor_count
       const showCount = data.data.show_contributor_count || sortedContributors.length
-      
+
       // 添加调试日志
-      console.log('项目贡献者总数:', sortedContributors.length);
-      console.log('显示数量设置:', data.data.show_contributor_count);
-      console.log('实际显示数量:', showCount);
-      
+      console.log('项目贡献者总数:', sortedContributors.length)
+      console.log('显示数量设置:', data.data.show_contributor_count)
+      console.log('实际显示数量:', showCount)
+
       // 只显示指定数量的贡献者
       const displayContributors = sortedContributors.slice(0, showCount)
-      
+
       // 更新标题，仅当显示的数量小于总数时才显示"(部分)"
-      const titleElement = document.querySelector('.contributors-section .heading_title');
+      const titleElement = document.querySelector('.contributors-section .heading_title')
       if (titleElement) {
         if (showCount < sortedContributors.length) {
-          titleElement.innerHTML = '项目贡献者<span class="contributor-partial">(部分)</span>';
+          titleElement.innerHTML = '项目贡献者<span class="contributor-partial">(部分)</span>'
         } else {
-          titleElement.innerHTML = '项目贡献者';
+          titleElement.innerHTML = '项目贡献者'
         }
       }
 

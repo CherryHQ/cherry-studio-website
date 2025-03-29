@@ -1,13 +1,14 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import HomePage from './pages/home'
-import DownloadPage from './pages/download'
 import { useEffect } from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+
 import { script } from './assets/js/script'
 import CSSPage from './pages/css'
+import DownloadPage from './pages/download'
+import HomePage from './pages/home'
 
 function App() {
   useEffect(() => {
-    setTimeout(script, 1200)
+    setTimeout(script, 500)
   }, [])
 
   return (

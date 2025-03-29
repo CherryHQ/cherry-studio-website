@@ -1,11 +1,12 @@
 import React from 'react'
-import { copyRSSLink } from '@/utils'
-import cherryLogo from '@/assets/images/cherry_logo.png'
-import xIcon from '@/assets/images/icons/x.svg'
-import tgIcon from '@/assets/images/icons/tg.svg'
+
+import cherryLogo from '@/assets/images/cherry-logo.svg'
 import githubIcon from '@/assets/images/icons/github.svg'
 import pIcon from '@/assets/images/icons/p.svg'
 import rssIcon from '@/assets/images/icons/rss.svg'
+import tgIcon from '@/assets/images/icons/tg.svg'
+import xIcon from '@/assets/images/icons/x.svg'
+import { copyRSSLink } from '@/utils'
 
 const Footer: React.FC = () => {
   return (
@@ -17,7 +18,7 @@ const Footer: React.FC = () => {
               <div className="footer-widget logo-widget">
                 <figure className="footer-logo">
                   <a href="index.html">
-                    <img src={cherryLogo} alt="" />
+                    <img src={cherryLogo} style={{ width: 150 }} alt="" />
                   </a>
                 </figure>
                 <p>CherryStudio是一个支持多平台的AI客户端，我们致力于让更多人能够享受到AI带来的便利。</p>
@@ -43,7 +44,7 @@ const Footer: React.FC = () => {
                     </a>
                   </li>
                   <li>
-                    <a href="javascript:void(0);" className="social-icon" onClick={copyRSSLink}>
+                    <a className="social-icon" onClick={copyRSSLink}>
                       <img src={rssIcon} alt="RSS Icon" />
                     </a>
                   </li>
@@ -53,27 +54,30 @@ const Footer: React.FC = () => {
             <div className="col-lg-2 col-md-6 col-sm-12 footer-column">
               <div className="footer-widget links-widget ml_40">
                 <div className="widget-title">
-                  <h4>CherryStudio</h4>
+                  <h4 style={{ whiteSpace: 'nowrap' }}>Cherry Studio</h4>
                 </div>
                 <div className="widget-content">
                   <ul className="links-list clearfix">
                     <li>
-                      <a href="https://github.com/CherryHQ/cherry-studio" target="_blank">
+                      <a href="https://github.com/CherryHQ/cherry-studio" target="_blank" rel="noopener noreferrer">
                         Github
                       </a>
                     </li>
                     <li>
-                      <a href="https://docs.cherry-ai.com" target="_blank">
+                      <a href="https://docs.cherry-ai.com" target="_blank" rel="noopener noreferrer">
                         使用文档
                       </a>
                     </li>
                     <li>
-                      <a href="https://github.com/CherryHQ/cherry-studio/issues" target="_blank">
+                      <a
+                        href="https://github.com/CherryHQ/cherry-studio/issues"
+                        target="_blank"
+                        rel="noopener noreferrer">
                         问题反馈
                       </a>
                     </li>
                     <li>
-                      <a href="https://github.com/CherryHQ/cherry-studio/fork" target="_blank">
+                      <a href="https://docs.cherry-ai.com/contribution/code" target="_blank" rel="noopener noreferrer">
                         贡献代码
                       </a>
                     </li>
@@ -89,17 +93,17 @@ const Footer: React.FC = () => {
                 <div className="widget-content">
                   <ul className="links-list clearfix">
                     <li>
-                      <a href="https://one.ocoolai.com" target="_blank">
+                      <a href="https://one.ocoolai.com" target="_blank" rel="noopener noreferrer">
                         ocoolAI
                       </a>
                     </li>
                     <li>
-                      <a href="https://suanleme.cn" target="_blank">
+                      <a href="https://suanleme.cn" target="_blank" rel="noopener noreferrer">
                         算了么
                       </a>
                     </li>
                     <li>
-                      <a href="https://ai-bot.cn" target="_blank">
+                      <a href="https://ai-bot.cn" target="_blank" rel="noopener noreferrer">
                         AI 工具集
                       </a>
                     </li>
@@ -127,7 +131,7 @@ const Footer: React.FC = () => {
           <div className="copyright">
             <p>
               Copyright © 2025 上海千彗科技有限公司{' '}
-              <a href="https://beian.miit.gov.cn/" target="_blank">
+              <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">
                 沪ICP备2021031071号-3
               </a>
             </p>
