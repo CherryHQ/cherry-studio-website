@@ -23,11 +23,18 @@ export function getSystemInfo(version: string): SystemInfo[] | null {
   if (ua.includes('windows') || platform.includes('win')) {
     return [
       {
-        name: `Cherry-Studio-${cleanVersion}-setup.exe`,
-        url: `https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-setup.exe`,
+        name: `Cherry-Studio-${cleanVersion}-x64-setup.exe`,
+        url: `https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-x64-setup.exe`,
         type: 'Windows',
-        arch: ua.includes('win64') || ua.includes('wow64') ? 'x64' : 'x86',
-        text: '立即下载'
+        arch: 'x64',
+        text: '立即下载(x64)'
+      },
+      {
+        name: `Cherry-Studio-${cleanVersion}-arm64-setup.exe`,
+        url: `https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-arm64-setup.exe`,
+        type: 'Windows',
+        arch: 'arm64',
+        text: '立即下载(ARM64)'
       }
     ]
   }

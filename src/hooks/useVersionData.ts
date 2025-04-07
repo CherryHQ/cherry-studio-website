@@ -60,43 +60,43 @@ export function useVersionData() {
             title: 'Windows系统安装包',
             items: [
               {
-                name: `Cherry-Studio-${cleanVersion}-setup.exe`,
-                url: `https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-setup.exe`,
+                name: `Cherry-Studio-${cleanVersion}-x64-setup.exe`,
+                url: `https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-x64-setup.exe`,
                 desc: 'Windows标准安装包【主下载线路】'
               },
               {
-                name: `Cherry-Studio-${cleanVersion}-setup.exe`,
-                url: `https://download-cf.ocoolai.com/https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-setup.exe`,
+                name: `Cherry-Studio-${cleanVersion}-x64-setup.exe`,
+                url: `https://download-cf.ocoolai.com/https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-x64-setup.exe`,
                 desc: 'Windows标准安装包【备用下载线路1】'
               },
               {
-                name: `Cherry-Studio-${cleanVersion}-setup.exe`,
-                url: `https://download.ocoolai.com/https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-setup.exe`,
+                name: `Cherry-Studio-${cleanVersion}-x64-setup.exe`,
+                url: `https://download.ocoolai.com/https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-x64-setup.exe`,
                 desc: 'Windows标准安装包【备用下载线路2】'
               },
               {
-                name: `Cherry-Studio-${cleanVersion}-setup.exe`,
-                url: `https://download.ocoolai.online/https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-setup.exe`,
+                name: `Cherry-Studio-${cleanVersion}-x64-setup.exe`,
+                url: `https://download.ocoolai.online/https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-x64-setup.exe`,
                 desc: 'Windows标准安装包【备用下载线路3】'
               },
               {
-                name: `Cherry-Studio-${cleanVersion}-portable.exe`,
-                url: `https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-portable.exe`,
+                name: `Cherry-Studio-${cleanVersion}-x64-portable.exe`,
+                url: `https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-x64-portable.exe`,
                 desc: 'Windows便携版【主下载线路】'
               },
               {
-                name: `Cherry-Studio-${cleanVersion}-portable.exe`,
-                url: `https://download-cf.ocoolai.com/https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-portable.exe`,
+                name: `Cherry-Studio-${cleanVersion}-x64-portable.exe`,
+                url: `https://download-cf.ocoolai.com/https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-x64-portable.exe`,
                 desc: 'Windows便携版【备用下载线路1】'
               },
               {
-                name: `Cherry-Studio-${cleanVersion}-portable.exe`,
-                url: `https://download.ocoolai.com/https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-portable.exe`,
+                name: `Cherry-Studio-${cleanVersion}-x64-portable.exe`,
+                url: `https://download.ocoolai.com/https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-x64-portable.exe`,
                 desc: 'Windows便携版【备用下载线路2】'
               },
               {
-                name: `Cherry-Studio-${cleanVersion}-portable.exe`,
-                url: `https://download.ocoolai.online/https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-portable.exe`,
+                name: `Cherry-Studio-${cleanVersion}-x64-portable.exe`,
+                url: `https://download.ocoolai.online/https://github.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-x64-portable.exe`,
                 desc: 'Windows便携版【备用下载线路3】'
               }
             ]
