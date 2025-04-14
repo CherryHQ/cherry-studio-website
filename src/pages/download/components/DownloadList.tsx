@@ -1,4 +1,5 @@
 import { FC } from 'react'
+import styled from 'styled-components'
 
 import { Asset, DownloadItem, DownloadUrls } from '@/hooks/useVersionData'
 
@@ -7,13 +8,13 @@ interface DownloadListProps {
   assets: Asset[]
 }
 
-const DownloadList: FC<DownloadListProps> = ({ downloadUrls, assets }) => {
+const DownloadList: FC<DownloadListProps> = ({ downloadUrls }) => {
   if (!downloadUrls) return null
 
-  const getFileSize = (fileName: string) => {
-    const matchedDownload = assets.find((item) => item.name.toLowerCase().includes(fileName.toLowerCase()))
-    return matchedDownload ? ` (${(matchedDownload.size / 1024 / 1024).toFixed(1)} MB)` : ''
-  }
+  // const getFileSize = (fileName: string) => {
+  //   const matchedDownload = assets.find((item) => item.name.toLowerCase().includes(fileName.toLowerCase()))
+  //   return matchedDownload ? ` (${(matchedDownload.size / 1024 / 1024).toFixed(1)} MB)` : ''
+  // }
 
   return (
     <div className="other-downloads">
@@ -25,8 +26,7 @@ const DownloadList: FC<DownloadListProps> = ({ downloadUrls, assets }) => {
             {items.map(({ name, url, desc }: DownloadItem) => (
               <li key={url}>
                 <button className="download-item-btn" onClick={() => (window.location.href = url)} type="button">
-                  {name}
-                  {getFileSize(name)} - {desc}
+                  <DownloadItemName>{desc}</DownloadItemName> <DownloadItemDesc>{name}</DownloadItemDesc>
                 </button>
               </li>
             ))}
@@ -36,5 +36,16 @@ const DownloadList: FC<DownloadListProps> = ({ downloadUrls, assets }) => {
     </div>
   )
 }
+
+const DownloadItemName = styled.span`
+  font-size: 14px;
+  font-weight: bold;
+  margin-right: 10px;
+`
+
+const DownloadItemDesc = styled.span`
+  font-size: 14px;
+  color: #666;
+`
 
 export default DownloadList
