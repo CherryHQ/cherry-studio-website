@@ -25,15 +25,27 @@ jobs:
       - name: Build
         run: yarn build
 
-      - name: Setup SSH
+      - name: Setup SSH for Server 1
         uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: Add host key
+      - name: Add host key for Server 1
         run: |
           mkdir -p ~/.ssh
           ssh-keyscan -p 22 154.64.230.68 >> ~/.ssh/known_hosts
 
-      - name: Deploy
+      - name: Deploy to Server 1
         run: rsync -rvztl --delete -e "ssh -p 22" ./dist/* root@154.64.230.68:/www/wwwroot/cherry-ai.com
+
+      - name: Setup SSH for Server 2
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_CN_PRIVATE_KEY }}
+
+      - name: Add host key for Server 2
+        run: |
+          ssh-keyscan -p 22 114.66.58.51 >> ~/.ssh/known_hosts
+
+      - name: Deploy to Server 2
+        run: rsync -rvztl --delete -e "ssh -p 22" ./dist/* root@114.66.58.51:/www/wwwroot/cherry-ai.com
