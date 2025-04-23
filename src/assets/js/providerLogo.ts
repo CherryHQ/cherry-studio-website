@@ -30,6 +30,7 @@ import togetherLogo from '../images/provider_logo/together-color.svg'
 import xaiLogo from '../images/provider_logo/xai.svg'
 import zerooneLogo from '../images/provider_logo/zeroone.svg'
 import zhipuLogo from '../images/provider_logo/zhipu-color.svg'
+import alayaLogo from '../images/provider_logo/alaya.png'
 
 export default class ProviderLogo {
   container: HTMLElement
@@ -52,6 +53,7 @@ export default class ProviderLogo {
         ollamaLogo,
         openaiLogo,
         giteeaiLogo,
+        alayaLogo,
         baiducloudLogo,
         bytedanceLogo,
         githubLogo,
