@@ -6,6 +6,7 @@ import pIcon from '@/assets/images/icons/p.svg'
 import rssIcon from '@/assets/images/icons/rss.svg'
 import tgIcon from '@/assets/images/icons/tg.svg'
 import xIcon from '@/assets/images/icons/x.svg'
+import cherryWxQR from '@/assets/images/resource/cherrywx.png'
 import { copyRSSLink } from '@/utils'
 
 const Footer: React.FC = () => {
@@ -115,6 +116,10 @@ const Footer: React.FC = () => {
               <div className="footer-widget contact-widget">
                 <div className="widget-title">
                   <h4>联系我们</h4>
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: 'fit-content' }} className="mt-3">
+                  <img src={cherryWxQR} alt="微信公众号二维码" style={{ maxWidth: '150px' }} />
+                  <p>官方微信公众号</p><br />
                 </div>
                 <p>
                   如果您有使用上的问题可以先查看文档或社群中提问
