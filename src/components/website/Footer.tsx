@@ -1,6 +1,7 @@
 import React from 'react'
 
 import cherryLogo from '@/assets/images/cherry-logo.svg'
+import gitcodeIcon from '@/assets/images/icons/gitcode.svg'
 import githubIcon from '@/assets/images/icons/github.svg'
 import pIcon from '@/assets/images/icons/p.svg'
 import rssIcon from '@/assets/images/icons/rss.svg'
@@ -17,7 +18,7 @@ const Footer: React.FC = () => {
           <div className="row clearfix">
             <div className="col-lg-3 col-md-6 col-sm-12 footer-column">
               <div className="footer-widget logo-widget">
-                <figure className="footer-logo">
+                <figure className="footer-logo no-hover">
                   <a href="index.html">
                     <img src={cherryLogo} style={{ width: 150 }} alt="" />
                   </a>
@@ -37,6 +38,11 @@ const Footer: React.FC = () => {
                   <li>
                     <a href="https://github.com/CherryHQ/cherry-studio" className="social-icon">
                       <img src={githubIcon} alt="GitHub Icon" />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://gitcode.com/CherryHQ/cherry-studio" className="social-icon">
+                      <img src={gitcodeIcon} alt="GitCode Icon" className="gitcode-icon" />
                     </a>
                   </li>
                   <li>
@@ -65,6 +71,11 @@ const Footer: React.FC = () => {
                       </a>
                     </li>
                     <li>
+                      <a href="https://gitcode.com/CherryHQ/cherry-studio" target="_blank" rel="noopener noreferrer">
+                        GitCode
+                      </a>
+                    </li>
+                    <li>
                       <a href="https://docs.cherry-ai.com" target="_blank" rel="noopener noreferrer">
                         使用文档
                       </a>
@@ -75,11 +86,6 @@ const Footer: React.FC = () => {
                         target="_blank"
                         rel="noopener noreferrer">
                         问题反馈
-                      </a>
-                    </li>
-                    <li>
-                      <a href="https://docs.cherry-ai.com/contribution/code" target="_blank" rel="noopener noreferrer">
-                        贡献代码
                       </a>
                     </li>
                   </ul>
@@ -117,9 +123,17 @@ const Footer: React.FC = () => {
                 <div className="widget-title">
                   <h4>联系我们</h4>
                 </div>
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: 'fit-content' }} className="mt-3">
+                <div
+                  className="mt-3"
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    width: 'fit-content'
+                  }}>
                   <img src={cherryWxQR} alt="微信公众号二维码" style={{ maxWidth: '150px' }} />
-                  <p>官方微信公众号</p><br />
+                  <p>官方微信公众号</p>
+                  <br />
                 </div>
                 <p>
                   如果您有使用上的问题可以先查看文档或社群中提问

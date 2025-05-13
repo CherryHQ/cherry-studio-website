@@ -54,31 +54,28 @@
   background: var(--white-color);
   border-radius: 50%;
   box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.07);
-  transition: transform 0.3s ease;
 }
 
 .main-footer .social-links li a::before {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0%;
-  height: 100%;
-  content: '';
-  z-index: -1;
-  background: linear-gradient(270deg, #ff5f5f 0%, #ff8f8f 100%);
-  color: var(--white-color);
-  transition: all 900ms ease;
-  -moz-transition: all 900ms ease;
-  -webkit-transition: all 900ms ease;
-  -ms-transition: all 900ms ease;
-  -o-transition: all 900ms ease;
+  display: none;
 }
-.main-footer .social-links li a:hover:before {
-  width: 100%;
-}
+
 .main-footer .social-links li a:hover {
-  color: var(--white-color);
+  background: var(--white-color);
+  transform: none;
+  color: inherit;
 }
+
+.main-footer .social-links li a img {
+  width: 24px;
+  height: 24px;
+}
+
+.main-footer .social-links li a:hover img {
+  transform: none;
+  filter: none;
+}
+
 .main-footer .widget-title {
   position: relative;
   display: block;
@@ -235,16 +232,6 @@
   color: #ff5f5f;
 }
 
-.main-footer .social-links li a img {
-  width: 24px;
-  height: 24px;
-  transition: transform 0.3s ease;
-}
-
-.main-footer .social-links li a:hover img {
-  transform: scale(1.05);
-}
-
 .copy-message {
   position: fixed;
   bottom: 20px; /* 根据需要调整位置 */
@@ -269,4 +256,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.footer-logo.no-hover a:hover {
+  transform: none !important;
+}
+
+.gitcode-icon {
+  filter: brightness(0);
 }

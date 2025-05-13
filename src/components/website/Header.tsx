@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import cherryLogo from '@/assets/images/cherry-logo.svg'
+import gitcodeIcon from '@/assets/images/icons/gitcode.svg'
+import githubIcon from '@/assets/images/icons/github.svg'
 
 const Header: React.FC = () => {
   // 使用React状态控制菜单展开
@@ -191,13 +193,22 @@ const Header: React.FC = () => {
                   </div>
                 </a>
 
-                <div className="start_trils_btn">
+                <div className="social-icons">
                   <a
                     href="https://github.com/CherryHQ/cherry-studio"
-                    className="theme-btn"
+                    className="social-icon"
                     target="_blank"
-                    rel="noopener noreferrer">
-                    GitHub
+                    rel="noopener noreferrer"
+                    title="GitHub">
+                    <img src={githubIcon} alt="GitHub" />
+                  </a>
+                  <a
+                    href="https://gitcode.com/CherryHQ/cherry-studio"
+                    className="social-icon"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="GitCode">
+                    <img src={gitcodeIcon} alt="GitCode" />
                   </a>
                 </div>
               </div>
@@ -230,13 +241,22 @@ const Header: React.FC = () => {
                     </div>
                   </div>
 
-                  <div className="start_trils_btn">
+                  <div className="social-icons">
                     <a
                       href="https://github.com/CherryHQ/cherry-studio"
-                      className="theme-btn"
+                      className="social-icon"
                       target="_blank"
-                      rel="noopener noreferrer">
-                      GitHub
+                      rel="noopener noreferrer"
+                      title="GitHub">
+                      <img src={githubIcon} alt="GitHub" />
+                    </a>
+                    <a
+                      href="https://gitcode.com/CherryHQ/cherry-studio"
+                      className="social-icon"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="GitCode">
+                      <img src={gitcodeIcon} alt="GitCode" />
                     </a>
                   </div>
                 </div>
