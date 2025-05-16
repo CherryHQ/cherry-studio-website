@@ -3,8 +3,6 @@ import './index.css'
 import { FC } from 'react'
 
 import Footer from '@/components/website/Footer'
-import Header from '@/components/website/Header'
-import { usePreloader } from '@/hooks/usePreloader'
 
 import HomeBanner from './components/Banner'
 import Contributors from './components/Contributors'
@@ -12,16 +10,11 @@ import Features from './components/Features'
 import JoinCommunity from './components/JoinCommunity'
 import Project from './components/Project'
 import Sponsors from './components/Sponsors'
-import TopNotice from './components/TopNotice'
 
 const HomePage: FC = () => {
-  usePreloader()
-
   return (
     <>
-      <TopNotice />
       <div className="page-wrapper">
-        <Header />
         <HomeBanner />
         <Sponsors />
         <Features />

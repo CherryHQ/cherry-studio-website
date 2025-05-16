@@ -10,46 +10,6 @@ declare global {
 export function script() {
   'use strict'
 
-  //Hide Loading Box (Preloader)
-  function handlePreloader() {
-    if ($('.preloader').length) {
-      $('.preloader').delay(200).fadeOut(500)
-    }
-  }
-
-  //Submenu Dropdown Toggle
-  if ($('.main-header li.dropdown ul').length) {
-    $('.main-header .navigation li.dropdown').append(
-      '<div class="dropdown-btn"><span class="fa fa-angle-down"></span></div>'
-    )
-  }
-
-  //Mobile Nav Hide Show
-  if ($('.mobile-menu').length) {
-    const mobileMenuContent = $('.main-header .menu-area .main-menu').html()
-    $('.mobile-menu .menu-box .menu-outer').append(mobileMenuContent)
-    $('.sticky-header .main-menu').append(mobileMenuContent)
-
-    //Dropdown Button
-    $('.mobile-menu li.dropdown .dropdown-btn').on('click', function () {
-      $(this).toggleClass('open')
-      $(this).prev('ul').slideToggle(500)
-    })
-    //Dropdown Button
-    $('.mobile-menu li.dropdown .dropdown-btn').on('click', function () {
-      $(this).prev('.megamenu').slideToggle(900)
-    })
-    //Menu Toggle Btn
-    $('.mobile-nav-toggler').on('click', function () {
-      $('body').addClass('mobile-menu-visible')
-    })
-
-    //Menu Toggle Btn
-    $('.mobile-menu .menu-backdrop,.mobile-menu .close-btn').on('click', function () {
-      $('body').removeClass('mobile-menu-visible')
-    })
-  }
-
   //Fact Counter + Text Count
   if ($('.count-box').length) {
     $('.count-box').appear(
@@ -212,10 +172,6 @@ export function script() {
       })
     }
   }
-
-  $(document).ready(function () {
-    $('select:not(.ignore)').niceSelect()
-  })
 
   // banner-carousel
   if ($('.banner-carousel').length) {
@@ -752,8 +708,6 @@ export function script() {
    ========================================================================== */
 
   $(window).on('load', function () {
-    handlePreloader()
-    headerSticky()
     enableMasonry()
   })
 

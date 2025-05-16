@@ -9,6 +9,7 @@
 .fun-facts-section {
   position: relative;
   margin: 50px 0;
+  background-color: #fff;
 }
 
 .fun-facts-section .column {
@@ -96,12 +97,6 @@
 }
 
 /* ---------- Fun Facts Four ------------- */
-.fun-facts-section-four {
-  position: relative;
-  padding: 50px 0px 20px 0px;
-  background: linear-gradient(225deg, #cb38ff 2.55%, #682fff 112.05%);
-}
-
 .column.count-box .inner .content .count-outer-two {
   position: relative;
   font-size: 30px;

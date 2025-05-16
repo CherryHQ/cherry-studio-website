@@ -4,7 +4,6 @@ import './submit.css'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 
 import Footer from '@/components/website/Footer'
-import Header from '@/components/website/Header'
 
 // 添加 jQuery 类型声明
 declare const $: any // 或者使用完整的 jQuery 类型
@@ -69,7 +68,7 @@ interface SubmitModalProps {
   onClose: () => void
 }
 
-const CssPage: React.FC = () => {
+const ThemePage: React.FC = () => {
   // 原始数据和筛选后的数据分开存储
   const [cssItems, setCssItems] = useState<CssItem[]>([])
   const [activeImageMode, setActiveImageMode] = useState<Record<string, 'light' | 'dark'>>({})
@@ -1228,22 +1227,6 @@ const CssPage: React.FC = () => {
     )
   }
 
-  // 添加与下载页面相同的初始化逻辑
-  useEffect(() => {
-    setTimeout(function () {
-      // 隐藏加载动画
-      document?.querySelector('.preloader')?.classList.add('loaded')
-      // 显示页面内容
-      document?.querySelector('.page-wrapper')?.classList.add('loaded')
-    }, 500)
-
-    // 如果加载时间超过3秒，也显示页面内容（防止加载卡住）
-    setTimeout(function () {
-      document?.querySelector('.preloader')?.classList.add('loaded')
-      document?.querySelector('.page-wrapper')?.classList.add('loaded')
-    }, 3000)
-  }, [])
-
   useEffect(() => {
     // 这段代码与Header.tsx中相同，确保Header正确初始化
     function headerStyle() {
@@ -1271,11 +1254,6 @@ const CssPage: React.FC = () => {
 
   return (
     <ErrorBoundary>
-      {/* 添加加载动画 */}
-      <div className="preloader">
-        <div className="loader"></div>
-      </div>
-
       {/* 使用与下载页面相同的页面结构，但添加关键内联样式 */}
       <div
         className="page-wrapper"
@@ -1286,8 +1264,6 @@ const CssPage: React.FC = () => {
           position: 'relative',
           zIndex: 1
         }}>
-        <Header />
-
         <main
           className="main-content"
           style={{
@@ -1552,4 +1528,4 @@ const CssPage: React.FC = () => {
   )
 }
 
-export default CssPage
+export default ThemePage

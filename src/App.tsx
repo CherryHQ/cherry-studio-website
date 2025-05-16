@@ -2,9 +2,10 @@ import { useEffect } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import { script } from './assets/js/script'
-import CSSPage from './pages/css'
+import SimpleHeader from './components/website/SimpleHeader'
 import DownloadPage from './pages/download'
 import HomePage from './pages/home'
+import ThemePage from './pages/theme'
 
 function App() {
   useEffect(() => {
@@ -13,10 +14,11 @@ function App() {
 
   return (
     <BrowserRouter>
+      <SimpleHeader />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/download" element={<DownloadPage />} />
-        <Route path="/css" element={<CSSPage />} />
+        <Route path="/theme" element={<ThemePage />} />
       </Routes>
     </BrowserRouter>
   )

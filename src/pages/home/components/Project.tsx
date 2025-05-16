@@ -58,7 +58,7 @@ const Project: FC = () => {
               <StarHistory />
             </div>
             {/* <!--Counter Column--> */}
-            <div className="column col-lg-6 col-md-6 col-sm-12">
+            <div className="column col-lg-6 col-md-6 col-sm-12 project-faq">
               <div className="sec-title">
                 <h2 className="heading_title">项目相关</h2>
               </div>

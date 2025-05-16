@@ -1,6 +1,7 @@
 // Import all logos
 import ai360Logo from '../images/provider_logo/ai360-color.svg'
 import aimassLogo from '../images/provider_logo/aimass-color.svg'
+import alayaLogo from '../images/provider_logo/alaya.png'
 import anthropicLogo from '../images/provider_logo/anthropic.svg'
 import azureLogo from '../images/provider_logo/azure-color.svg'
 import baichuanLogo from '../images/provider_logo/baichuan-color.svg'
@@ -30,7 +31,6 @@ import togetherLogo from '../images/provider_logo/together-color.svg'
 import xaiLogo from '../images/provider_logo/xai.svg'
 import zerooneLogo from '../images/provider_logo/zeroone.svg'
 import zhipuLogo from '../images/provider_logo/zhipu-color.svg'
-import alayaLogo from '../images/provider_logo/alaya.png'
 
 export default class ProviderLogo {
   container: HTMLElement
@@ -132,57 +132,13 @@ export default class ProviderLogo {
   addStyles() {
     const style = document.createElement('style')
     style.textContent = `
-            .logo-wrapper {
-                width: 100%;
-                overflow: hidden;
-                position: relative;
-                padding: 20px 0;
-            }
-
-            .logo-track {
-                display: flex;
-                align-items: center;
-                animation: scroll ${60 / this.speed}s linear infinite;
-                width: fit-content;
-            }
-
-            .logo-box {
-                flex: 0 0 auto;
-                padding: 0 28px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                min-width: 140px;
-                height: 112px;
-            }
-
-            .logo-box img {
-                height: 63px;
-                min-width: 63px;
-                width: auto;
-                object-fit: contain;
-                opacity: 0.85;
-                transition: all 0.3s ease;
-            }
-
-            .logo-box img:hover {
-                opacity: 1;
-                transform: scale(1.15);
-            }
-
-            @keyframes scroll {
-                0% {
-                    transform: translateX(0);
-                }
-                100% {
-                    transform: translateX(-50%);
-                }
-            }
-
-            .logo-track:hover {
-                animation-play-state: paused;
-            }
-        `
+      .logo-track {
+        display: flex;
+        align-items: center;
+        animation: scroll ${60 / this.speed}s linear infinite;
+        width: fit-content;
+      }
+    `
 
     document.head.appendChild(style)
   }

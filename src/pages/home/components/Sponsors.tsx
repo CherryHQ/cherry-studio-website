@@ -74,7 +74,7 @@ const Sponsors: FC = () => {
         <h3 className="sonsors_title">
           Cherry Studio 内置众多服务商
           <br />
-          同时也支持其他兼容OpenAI/Anthropic等API格式的服务商接入。
+          同时也支持其他兼容 OpenAI/Anthropic 等 API 格式的服务商接入
         </h3>
         <div id="providerLogos"></div>
       </div>

@@ -10,10 +10,14 @@
   margin-bottom: -100px;
 }
 
-.sponsors-section-two {
-  position: relative;
-  z-index: 1;
-  padding-top: 120px;
+.sonsors_title {
+  font-size: 32px;
+  line-height: 1.4;
+  text-align: center;
+  font-weight: 500;
+  font-family: var(--title-font);
+  color: #111111;
+  margin-bottom: 50px;
 }
 
 /* Add these styles to the existing CSS file */

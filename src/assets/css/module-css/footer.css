@@ -122,7 +122,6 @@
   max-width: 370px;
 }
 
-.main-footer .contact-widget .form-inner .form-group .nice-select,
 .main-footer .contact-widget .form-inner .form-group input[type='text'] {
   position: relative;
   display: block;
@@ -136,20 +135,6 @@
   background: transparent;
   border-radius: 0px;
   transition: all 500ms ease;
-}
-
-.main-footer .contact-widget .form-inner .form-group .nice-select .option {
-  color: #222;
-}
-
-.nice-select:before {
-  position: absolute;
-  content: '\e92e';
-  font-family: 'icomoon';
-  font-size: 12px;
-  top: 0px;
-  right: 20px;
-  color: rgba(255, 255, 255, 0.5);
 }
 
 .main-footer .contact-widget .form-inner .form-group .theme-btn:before,
@@ -190,6 +175,7 @@
 .footer-widget.links-widget {
   padding-left: 50px;
 }
+
 .contact-widget .form-inner .form-group input {
   background-color: var(--white-color);
   padding: 17px 128px 17px 30px;
@@ -199,21 +185,6 @@
   font-weight: 400;
   color: #6a6a6a;
   box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.07);
-}
-.form-group .subscribe-btn {
-  position: absolute;
-  max-width: 100%;
-  top: -86px;
-  right: 0px;
-  display: inline;
-  font-size: 18px;
-  line-height: 30px;
-  font-weight: 500;
-  font-family: var(--title-font);
-  color: var(--white-color);
-  padding: 12px 30px;
-  border-radius: 55px;
-  background: linear-gradient(270deg, #ff5f5f 0%, #ff8f8f 100%);
 }
 
 .footer-widget .footer-list li a:hover {

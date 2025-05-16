@@ -30,7 +30,7 @@ const JoinCommunity: FC = () => {
         <div className="section_heading text-center">
           <h2 className="section_heading_title_big">加入我们的社群</h2>
         </div>
-        
+
         {/* QR Code Display */}
         <div className="text-center" style={{ marginBottom: '30px' }}>
           <div
@@ -70,7 +70,7 @@ const JoinCommunity: FC = () => {
             )}
           </div>
         </div>
-        
+
         <div className="text-center">
           <div className="cta-1-link-bt" style={{ display: 'flex', justifyContent: 'center', gap: 10 }}>
             {channelData?.data?.qq_group_link && (

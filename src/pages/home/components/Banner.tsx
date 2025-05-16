@@ -95,7 +95,8 @@ const HomeBanner: FC = () => {
                 color: notice.text_color,
                 fontSize: `${notice.text_size}px`,
                 textAlign: 'center',
-                margin: '0 auto'
+                margin: '0 auto',
+                marginTop: '10px'
               }}
             />
           )}
@@ -104,7 +105,13 @@ const HomeBanner: FC = () => {
               下载客户端
             </Link>
           </div>
-          <div className="banner-dasboard float-bob-y">
+          <div
+            className="banner-dasboard float-bob-y"
+            style={{
+              background: 'linear-gradient(115deg, #fce378 50%, #743AED 50%)',
+              borderRadius: '20px',
+              boxShadow: '0 20px 40px rgba(0,0,0,0.1)'
+            }}>
             <img src={cherrysDashboard} alt="" style={{ width: '1270px' }} />
           </div>
         </div>
