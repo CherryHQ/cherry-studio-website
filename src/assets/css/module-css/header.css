@@ -689,14 +689,27 @@ header.main-header.five.header-style-one {
   justify-content: center;
   width: 36px;
   height: 36px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  color: var(--theme-color);
   transition: all 0.3s ease;
 }
 
 .social-icon:hover {
   transform: translateY(-3px);
+  background-color: #ff5f5f;
+  color: white;
 }
 
-.social-icon img {
+.social-icon img,
+.social-icon svg {
   width: 20px;
   height: 20px;
+  color: var(--theme-color);
+}
+
+.social-icon:hover img,
+.social-icon:hover svg {
+  color: white;
+  filter: brightness(0) invert(1);
 }

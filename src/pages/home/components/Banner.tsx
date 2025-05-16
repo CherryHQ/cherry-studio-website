@@ -108,7 +108,7 @@ const HomeBanner: FC = () => {
           <div
             className="banner-dasboard float-bob-y"
             style={{
-              background: 'linear-gradient(115deg, #fce378 50%, #743AED 50%)',
+              background: 'linear-gradient(115deg, #FCE379 50%, #9060F1 50%)',
               borderRadius: '20px',
               boxShadow: '0 20px 40px rgba(0,0,0,0.1)'
             }}>
