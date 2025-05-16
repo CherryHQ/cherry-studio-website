@@ -17,6 +17,7 @@
   top: 0px;
   width: 100%;
   padding: 0;
+  background-color: #fbf7ff;
 }
 .main-header .auto-container {
   position: relative;
@@ -1584,7 +1585,7 @@ div#mCSB_1_container {
 
 .social-icon:hover {
   transform: translateY(-3px);
-  background-color: #FF5F5F;
+  background-color: #ff5f5f;
   color: white;
 }
 

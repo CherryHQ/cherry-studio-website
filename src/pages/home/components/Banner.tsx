@@ -88,7 +88,6 @@ const HomeBanner: FC = () => {
               </div>
             </div>
           </div>
-          <div className="banner-dots"></div>
           {notice && notice.status && (
             <div
               dangerouslySetInnerHTML={{ __html: notice.notice }}
