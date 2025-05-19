@@ -1268,7 +1268,7 @@ const ThemePage: React.FC = () => {
           className="main-content"
           style={{
             display: 'block !important',
-            marginTop: '80px', // 给header留出空间
+            marginTop: 120, // 给header留出空间
             position: 'relative',
             zIndex: 2,
             padding: '20px 0'

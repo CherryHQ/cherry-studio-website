@@ -43,6 +43,11 @@ const SimpleHeader: React.FC = () => {
                   <li className={location.pathname === '/theme' ? 'current' : ''}>
                     <Link to="/theme">主题</Link>
                   </li>
+                  <li className={location.pathname === '/forum' ? 'current' : ''}>
+                    <Link target="_blank" to="https://github.com/CherryHQ/cherry-studio/discussions">
+                      论坛
+                    </Link>
+                  </li>
                   <li className="dropdown">
                     <a href="https://docs.cherry-ai.com/">文档</a>
                     <ul>
@@ -99,7 +104,7 @@ const SimpleHeader: React.FC = () => {
                   </a>
                 </div>
 
-                <button className="mobile-nav-toggler" onClick={toggleMobileMenu}>
+                <button type="button" className="mobile-nav-toggler" onClick={toggleMobileMenu}>
                   <i className="fas fa-bars"></i>
                 </button>
               </div>

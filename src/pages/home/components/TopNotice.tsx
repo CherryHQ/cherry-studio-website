@@ -34,10 +34,10 @@ const TopNotice: FC = () => {
       <div
         style={{
           flex: 1,
-          maxWidth: '1200px',
           margin: '0 auto',
           padding: '0 15px',
-          textAlign: 'center'
+          textAlign: 'center',
+          justifyContent: 'center'
         }}>
         <div dangerouslySetInnerHTML={{ __html: topNotice.notice_top }} />
       </div>
