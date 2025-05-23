@@ -61,22 +61,22 @@ export function useVersionData() {
             items: [
               {
                 name: `Cherry-Studio-${cleanVersion}-x64-setup.exe`,
-                url: `https://gitcode.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-x64-setup.exe`,
+                url: `https://gitcode.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-x64-setup.signed.exe`,
                 desc: 'Windows 标准版'
               },
               {
                 name: `Cherry-Studio-${cleanVersion}-x64-portable.exe`,
-                url: `https://gitcode.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-x64-portable.exe`,
+                url: `https://gitcode.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-x64-portable.signed.exe`,
                 desc: 'Windows 便携版'
               },
               {
                 name: `Cherry-Studio-${cleanVersion}-arm64-setup.exe`,
-                url: `https://gitcode.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-arm64-setup.exe`,
+                url: `https://gitcode.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-arm64-setup.signed.exe`,
                 desc: 'Windows 标准版 (ARM 版)'
               },
               {
                 name: `Cherry-Studio-${cleanVersion}-arm64-portable.exe`,
-                url: `https://gitcode.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-arm64-portable.exe`,
+                url: `https://gitcode.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-arm64-portable.signed.exe`,
                 desc: 'Windows 便携版 (ARM 版)'
               }
             ]
