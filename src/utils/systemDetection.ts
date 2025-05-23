@@ -24,14 +24,14 @@ export function getSystemInfo(version: string): SystemInfo[] | null {
     return [
       {
         name: `Cherry-Studio-${cleanVersion}-x64-setup.exe`,
-        url: `https://gitcode.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-x64-setup.exe`,
+        url: `https://gitcode.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-x64-setup.signed.exe`,
         type: 'Windows',
         arch: 'x64',
         text: '立即下载(x64)'
       },
       {
         name: `Cherry-Studio-${cleanVersion}-arm64-setup.exe`,
-        url: `https://gitcode.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-arm64-setup.exe`,
+        url: `https://gitcode.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-arm64-setup.signed.exe`,
         type: 'Windows',
         arch: 'arm64',
         text: '立即下载(ARM64)'
