@@ -110,6 +110,11 @@ const Footer: React.FC = () => {
                       </a>
                     </li>
                     <li>
+                      <a href="https://gongke.net/" target="_blank" rel="noopener noreferrer">
+                        攻壳智能体
+                      </a>
+                    </li>
+                    <li>
                       <a href="https://ai-bot.cn" target="_blank" rel="noopener noreferrer">
                         AI 工具集
                       </a>
