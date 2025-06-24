@@ -21,7 +21,8 @@ const VersionInfo: FC<VersionInfoProps> = ({ versionData, loading }) => {
       </h1>
       {versionData && (
         <p id="published-at">
-          {t('download_page.published_at')}：{versionData.publishedAt}
+          {t('download_page.published_at_label')}
+          {versionData.publishedAt}
         </p>
       )}
     </div>

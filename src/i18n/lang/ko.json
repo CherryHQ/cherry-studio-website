@@ -128,8 +128,12 @@
     "loading_version": "버전 정보 가져오는 중...",
     "version_error": "버전 정보를 가져올 수 없습니다. 임시로 클라우드 링크를 통해 다운로드해 주세요",
     "published_at": "게시 시간",
+    "published_at_label": "게시 시간: ",
     "current_system": "현재 시스템",
-    "other_versions": "다른 버전 또는 대체 경로 다운로드"
+    "other_versions": "다른 버전 또는 대체 경로 다운로드",
+    "changelog": "변경 로그",
+    "version": "버전",
+    "other_downloads_title": "다른 버전 다운로드"
   },
   "enterprise_page": {
     "hero": {

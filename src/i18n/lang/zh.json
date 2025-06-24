@@ -118,22 +118,26 @@
     "stars": "收藏量"
   },
   "sponsors": {
-    "title": "Cherry Studio 内置众多服务商",
-    "subtitle": "同时也支持其他兼容 OpenAI/Anthropic 等 API 格式的服务商接入"
+    "title": "Cherry Studio 内置了多种服务商",
+    "subtitle": "同时也支持接入兼容 OpenAI/Anthropic 等 API 格式的其他服务商"
   },
   "download_page": {
     "cloud_download": "网盘下载",
     "quark_drive": "夸克网盘",
-    "click_download": "点击下载",
+    "click_download": "点此下载",
     "loading_version": "正在获取版本信息...",
-    "version_error": "无法获取版本信息，请暂时通过网盘链接下载",
+    "version_error": "无法获取版本信息，请临时使用网盘链接下载",
     "published_at": "发布时间",
+    "published_at_label": "发布时间：",
     "current_system": "当前系统",
-    "other_versions": "其他版本或备用线路下载"
+    "other_versions": "其他版本或备用线路下载",
+    "changelog": "更新日志",
+    "version": "版本",
+    "other_downloads_title": "其他版本下载"
   },
   "enterprise_page": {
     "hero": {
-      "title": "Cherry Studio Enterprise",
+      "title": "Cherry Studio 企业版",
       "subtitle": "专为现代团队和企业打造的 AI 生产力与管理平台",
       "contact_us": "联系我们",
       "learn_more": "了解更多"

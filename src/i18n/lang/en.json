@@ -121,18 +121,22 @@
     "stars": "Stars"
   },
   "sponsors": {
-    "title": "Cherry Studio supports numerous service providers",
-    "subtitle": "Also supports other service providers compatible with OpenAI/Anthropic API formats"
+    "title": "Cherry Studio has a variety of service providers built-in",
+    "subtitle": "It also supports connecting to other service providers compatible with the API format of OpenAI/Anthropic."
   },
   "download_page": {
     "cloud_download": "Cloud Download",
     "quark_drive": "Quark Drive",
     "click_download": "Click to Download",
-    "loading_version": "Loading version information...",
-    "version_error": "Unable to get version information, please download via cloud links temporarily",
-    "published_at": "Published at",
+    "loading_version": "Getting version info...",
+    "version_error": "Failed to get version info, please download from the cloud drive temporarily",
+    "published_at": "Published At",
+    "published_at_label": "Published At: ",
     "current_system": "Current System",
-    "other_versions": "Other Versions or Alternative Download Routes"
+    "other_versions": "Other Versions or Alternative Download",
+    "changelog": "Changelog",
+    "version": "Version",
+    "other_downloads_title": "Other Versions Download"
   },
   "enterprise_page": {
     "hero": {

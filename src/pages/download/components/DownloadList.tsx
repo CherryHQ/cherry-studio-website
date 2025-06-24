@@ -1,4 +1,5 @@
 import { FC } from 'react'
+import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
 
 import { Asset, DownloadItem, DownloadUrls } from '@/hooks/useVersionData'
@@ -9,6 +10,7 @@ interface DownloadListProps {
 }
 
 const DownloadList: FC<DownloadListProps> = ({ downloadUrls }) => {
+  const { t } = useTranslation()
   if (!downloadUrls) return null
 
   // const getFileSize = (fileName: string) => {
@@ -18,7 +20,7 @@ const DownloadList: FC<DownloadListProps> = ({ downloadUrls }) => {
 
   return (
     <div className="other-downloads">
-      <h2>其他版本下载</h2>
+      <h2>{t('download_page.other_downloads_title')}</h2>
       <ul id="download-list">
         {Object.values(downloadUrls).map(({ title, items }) => (
           <div key={title}>

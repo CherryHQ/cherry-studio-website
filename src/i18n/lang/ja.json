@@ -118,18 +118,22 @@
     "stars": "スター数"
   },
   "sponsors": {
-    "title": "Cherry Studio 多数のサービスプロバイダーを内蔵",
-    "subtitle": "OpenAI/Anthropic等のAPI形式と互換性のある他のサービスプロバイダーの接続もサポート"
+    "title": "Cherry Studioには様々なサービスプロバイダーが組み込まれています",
+    "subtitle": "また、OpenAI/AnthropicなどのAPI形式と互換性のある他のサービスプロバイダーへの接続もサポートしています"
   },
   "download_page": {
-    "cloud_download": "クラウドストレージダウンロード",
-    "quark_drive": "Quarkクラウドストレージ",
-    "click_download": "ダウンロード",
-    "loading_version": "バージョン情報を取得中...",
-    "version_error": "バージョン情報を取得できません。一時的にクラウドストレージリンクからダウンロードしてください",
-    "published_at": "リリース日時",
+    "cloud_download": "クラウドからダウンロード",
+    "quark_drive": "Quark Drive",
+    "click_download": "クリックしてダウンロード",
+    "loading_version": "バージョン情報を取得しています...",
+    "version_error": "バージョン情報を取得できませんでした。一時的にクラウドリンクからダウンロードしてください",
+    "published_at": "公開日時",
+    "published_at_label": "公開日時：",
     "current_system": "現在のシステム",
-    "other_versions": "その他のバージョンまたは代替ダウンロードルート"
+    "other_versions": "他のバージョンまたは代替ダウンロード",
+    "changelog": "更新履歴",
+    "version": "バージョン",
+    "other_downloads_title": "他のバージョンをダウンロード"
   },
   "enterprise_page": {
     "hero": {

@@ -128,8 +128,12 @@
     "loading_version": "Récupération des informations de version...",
     "version_error": "Impossible d'obtenir les informations de version, veuillez télécharger temporairement via le lien cloud",
     "published_at": "Heure de publication",
+    "published_at_label": "Heure de publication : ",
     "current_system": "Système actuel",
-    "other_versions": "Télécharger d'autres versions ou via des liens alternatifs"
+    "other_versions": "Autres versions ou téléchargement alternatif",
+    "changelog": "Journal des modifications",
+    "version": "Version",
+    "other_downloads_title": "Télécharger d'autres versions"
   },
   "enterprise_page": {
     "hero": {
