@@ -100,8 +100,8 @@ const EnterprisePage: FC = () => {
               <thead>
                 <tr>
                   <th>特性</th>
-                  <th>Community</th>
-                  <th>Enterprise</th>
+                  <th>社区版</th>
+                  <th>企业版</th>
                 </tr>
               </thead>
               <tbody>
