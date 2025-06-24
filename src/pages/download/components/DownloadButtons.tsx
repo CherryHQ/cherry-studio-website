@@ -1,4 +1,5 @@
 import { FC } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { SystemInfo } from '@/utils/systemDetection'
 
@@ -8,12 +9,13 @@ interface DownloadButtonsProps {
 }
 
 const DownloadButtons: FC<DownloadButtonsProps> = ({ systemInfo, onOtherVersionsClick }) => {
+  const { t } = useTranslation()
   return (
     <div className="download-buttons">
       <div className="system-info">
         {systemInfo && (
           <p>
-            当前系统: <strong>{systemInfo?.[0].type}</strong>
+            {t('download_page.current_system')}: <strong>{systemInfo?.[0].type}</strong>
           </p>
         )}
       </div>
@@ -32,7 +34,7 @@ const DownloadButtons: FC<DownloadButtonsProps> = ({ systemInfo, onOtherVersions
 
         {/* Other versions button */}
         <button id="other-download-btn" onClick={onOtherVersionsClick} className="theme-btn alt-btn" type="button">
-          其他版本或备用线路下载
+          {t('download_page.other_versions')}
         </button>
       </div>
     </div>

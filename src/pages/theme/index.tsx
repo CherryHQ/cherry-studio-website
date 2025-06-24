@@ -2,6 +2,7 @@ import './index.css'
 import './submit.css'
 
 import React, { useCallback, useEffect, useRef, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import Footer from '@/components/website/Footer'
 
@@ -34,6 +35,19 @@ interface ErrorBoundaryState {
   hasError: boolean
 }
 
+// 创建一个支持翻译的错误边界组件
+const ErrorBoundaryContent: React.FC = () => {
+  const { t } = useTranslation()
+  return (
+    <div style={{ padding: '20px', textAlign: 'center' }}>
+      <h2>{t('theme_page.loading_error')}</h2>
+      <button onClick={() => window.location.reload()} type="button">
+        {t('theme_page.refresh_page')}
+      </button>
+    </div>
+  )
+}
+
 class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
   constructor(props: ErrorBoundaryProps) {
     super(props)
@@ -48,14 +62,7 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
 
   render() {
     if (this.state.hasError) {
-      return (
-        <div style={{ padding: '20px', textAlign: 'center' }}>
-          <h2>页面加载出错</h2>
-          <button onClick={() => window.location.reload()} type="button">
-            刷新页面
-          </button>
-        </div>
-      )
+      return <ErrorBoundaryContent />
     }
 
     return this.props.children
@@ -69,6 +76,8 @@ interface SubmitModalProps {
 }
 
 const ThemePage: React.FC = () => {
+  const { t } = useTranslation()
+
   // 原始数据和筛选后的数据分开存储
   const [cssItems, setCssItems] = useState<CssItem[]>([])
   const [activeImageMode, setActiveImageMode] = useState<Record<string, 'light' | 'dark'>>({})
@@ -129,7 +138,7 @@ const ThemePage: React.FC = () => {
           <button className="css-image-preview-close" onClick={onClose} type="button">
             ×
           </button>
-          <img src={url} alt="示例预览" />
+          <img src={url} alt={t('theme_page.example_image')} />
         </div>
       </div>
     )
@@ -274,14 +283,17 @@ const ThemePage: React.FC = () => {
 
           // 如果是筛选且结果为空，显示提示
           if ((tag || author) && filteredData.length === 0) {
-            showNotification('info', `没有找到符合${tag ? '该标签' : '该作者'}的 CSS 素材`)
+            showNotification(
+              'info',
+              tag ? t('theme_page.notifications.not_found_tag') : t('theme_page.notifications.not_found_author')
+            )
           }
         } else {
           throw new Error('Invalid data format')
         }
       } catch (error) {
         console.error('Error fetching CSS data:', error)
-        showNotification('error', '获取 CSS 素材数据失败')
+        showNotification('error', t('theme_page.notifications.data_fetch_error'))
         setHasMore(false)
       } finally {
         if (isInitialLoad) setLoading(false)
@@ -294,7 +306,7 @@ const ThemePage: React.FC = () => {
         }, 500)
       }
     },
-    []
+    [t]
   )
 
   // 修改初始加载
@@ -766,7 +778,7 @@ const ThemePage: React.FC = () => {
             <button className="css-image-preview-close" onClick={closeInternalPreview} type="button">
               ×
             </button>
-            <img src={internalPreviewUrl} alt="示例预览" />
+            <img src={internalPreviewUrl} alt={t('theme_page.preview_example')} />
           </div>
         </div>
       )
@@ -838,12 +850,12 @@ const ThemePage: React.FC = () => {
         const isLt2M = file.size / 1024 / 1024 < 2
 
         if (!isImage) {
-          alert('只能上传图片文件!')
+          alert(t('theme_page.submit_modal.validation.file_type_error'))
           return
         }
 
         if (!isLt2M) {
-          alert('图片大小不能超过2MB!')
+          alert(t('theme_page.submit_modal.image_size_error'))
           return
         }
 
@@ -863,32 +875,32 @@ const ThemePage: React.FC = () => {
 
         // 表单验证保持不变
         if (!localFormData.name.trim()) {
-          setSubmitError('请输入主题名称')
+          setSubmitError(t('theme_page.submit_modal.validation.name_required'))
           return
         }
 
         if (!localFormData.author.trim()) {
-          setSubmitError('请输入作者名称')
+          setSubmitError(t('theme_page.submit_modal.author_required'))
           return
         }
 
         if (!localFormData.version.trim() || !/^\d+(\.\d+)*$/.test(localFormData.version)) {
-          setSubmitError('请输入有效的版本号')
+          setSubmitError(t('theme_page.submit_modal.version_invalid'))
           return
         }
 
         if (!localFormData.code.trim()) {
-          setSubmitError('请输入CSS代码')
+          setSubmitError(t('theme_page.submit_modal.validation.code_required'))
           return
         }
 
         if (localFormData.light_mode && !lightImage) {
-          setSubmitError('请上传亮色模式预览图')
+          setSubmitError(t('theme_page.submit_modal.validation.light_image_required'))
           return
         }
 
         if (localFormData.dark_mode && !darkImage) {
-          setSubmitError('请上传暗色模式预览图')
+          setSubmitError(t('theme_page.submit_modal.validation.dark_image_required'))
           return
         }
 
@@ -941,7 +953,7 @@ const ThemePage: React.FC = () => {
           }, 1500)
         } catch (error) {
           console.error('提交失败:', error)
-          setSubmitError(error instanceof Error ? error.message : '提交失败，请稍后重试')
+          setSubmitError(error instanceof Error ? error.message : t('theme_page.submit_modal.submit_error'))
         } finally {
           setIsSubmitting(false)
         }
@@ -957,7 +969,7 @@ const ThemePage: React.FC = () => {
       <div className="css-submit-modal-overlay" style={{ display: isOpen ? 'flex' : 'none' }}>
         <div className="css-submit-modal">
           <div className="css-submit-modal-header">
-            <h2>主题投稿</h2>
+            <h2>{t('theme_page.submit_modal.title')}</h2>
             <button className="css-submit-modal-close" onClick={handleClose} type="button">
               ×
             </button>
@@ -967,16 +979,16 @@ const ThemePage: React.FC = () => {
             {submitSuccess ? (
               <div className="css-submit-success">
                 <div className="css-submit-success-icon">✓</div>
-                <h3>提交成功！</h3>
-                <p>感谢您的投稿，您的主题素材将在审核后显示。</p>
+                <h3>{t('theme_page.submit_modal.success_title')}</h3>
+                <p>{t('theme_page.submit_modal.success_message')}</p>
                 <button className="css-btn primary" onClick={handleClose} type="button">
-                  关闭
+                  {t('theme_page.submit_modal.close')}
                 </button>
               </div>
             ) : (
               <form className="css-submit-form" onSubmit={handleSubmit}>
                 <div className="css-submit-form-group">
-                  <label htmlFor="name">主题名称</label>
+                  <label htmlFor="name">{t('theme_page.submit_modal.name_label')}</label>
                   <input
                     type="text"
                     id="name"
@@ -984,12 +996,12 @@ const ThemePage: React.FC = () => {
                     required
                     value={localFormData.name}
                     onChange={(e) => updateField('name', e.target.value)}
-                    placeholder="输入 CSS 主题名称"
+                    placeholder={t('theme_page.submit_modal.name_placeholder')}
                   />
                 </div>
 
                 <div className="css-submit-form-group">
-                  <label htmlFor="author">作者名称</label>
+                  <label htmlFor="author">{t('theme_page.submit_modal.author_label')}</label>
                   <input
                     type="text"
                     id="author"
@@ -997,7 +1009,7 @@ const ThemePage: React.FC = () => {
                     required
                     value={localFormData.author}
                     onChange={(e) => updateField('author', e.target.value)}
-                    placeholder="输入作者名称"
+                    placeholder={t('theme_page.submit_modal.author_placeholder')}
                   />
                 </div>
 
@@ -1010,7 +1022,7 @@ const ThemePage: React.FC = () => {
                       checked={localFormData.light_mode}
                       onChange={(e) => updateField('light_mode', e.target.checked)}
                     />
-                    <label htmlFor="light_mode">支持亮色模式</label>
+                    <label htmlFor="light_mode">{t('theme_page.submit_modal.support_light_mode')}</label>
                   </div>
 
                   <div className="css-submit-form-group checkbox">
@@ -1021,12 +1033,12 @@ const ThemePage: React.FC = () => {
                       checked={localFormData.dark_mode}
                       onChange={(e) => updateField('dark_mode', e.target.checked)}
                     />
-                    <label htmlFor="dark_mode">支持暗色模式</label>
+                    <label htmlFor="dark_mode">{t('theme_page.submit_modal.support_dark_mode')}</label>
                   </div>
                 </div>
 
                 <div className="css-submit-form-group">
-                  <label htmlFor="version">版本号</label>
+                  <label htmlFor="version">{t('theme_page.submit_modal.version_label')}</label>
                   <input
                     type="text"
                     id="version"
@@ -1039,13 +1051,13 @@ const ThemePage: React.FC = () => {
                         updateField('version', e.target.value)
                       }
                     }}
-                    placeholder="输入版本号，例如: 1.0.0（只支持数字和点）"
+                    placeholder={t('theme_page.submit_modal.version_placeholder')}
                   />
-                  <div className="css-submit-form-hint">请只输入版本号，不需要加 V</div>
+                  <div className="css-submit-form-hint">{t('theme_page.submit_modal.version_hint')}</div>
                 </div>
 
                 <div className="css-submit-form-group">
-                  <label htmlFor="code">CSS 代码</label>
+                  <label htmlFor="code">{t('theme_page.submit_modal.code_label')}</label>
                   <textarea
                     id="code"
                     name="code"
@@ -1053,38 +1065,38 @@ const ThemePage: React.FC = () => {
                     required
                     value={localFormData.code}
                     onChange={(e) => updateField('code', e.target.value)}
-                    placeholder="粘贴您的 CSS 代码"
+                    placeholder={t('theme_page.submit_modal.code_placeholder')}
                     rows={10}
                   />
                 </div>
 
                 <div className="css-submit-form-group">
-                  <label htmlFor="cdn_link">CSS 文件链接（可选）</label>
+                  <label htmlFor="cdn_link">{t('theme_page.submit_modal.cdn_link_label')}</label>
                   <input
                     type="url"
                     id="cdn_link"
                     name="cdn_link"
                     value={localFormData.cdn_link}
                     onChange={(e) => updateField('cdn_link', e.target.value)}
-                    placeholder="如果提供公开的cdn链接或文件链接等可以填写"
+                    placeholder={t('theme_page.submit_modal.cdn_link_placeholder')}
                   />
                 </div>
 
                 {/* 亮色模式图片上传 */}
                 {localFormData.light_mode && (
                   <div className="css-submit-form-group">
-                    <label htmlFor="light_pic">亮色模式预览图</label>
+                    <label htmlFor="light_pic">{t('theme_page.submit_modal.light_image_label')}</label>
                     <div className="css-image-upload">
                       {lightImage ? (
                         <div className="css-image-preview">
-                          <img src={URL.createObjectURL(lightImage)} alt="亮色模式预览" />
+                          <img src={URL.createObjectURL(lightImage)} alt={t('theme_page.light_mode_preview')} />
                           <button
                             type="button"
                             className="css-image-remove"
                             onClick={() => {
                               setLightImage(null)
                             }}>
-                            移除图片
+                            {t('theme_page.submit_modal.remove_image')}
                           </button>
                         </div>
                       ) : (
@@ -1092,10 +1104,8 @@ const ThemePage: React.FC = () => {
                           className="css-image-dropzone"
                           onClick={() => document.getElementById('light_pic')?.click()}>
                           <i className="css-icon-upload"></i>
-                          <span>点击上传图片</span>
-                          <div className="css-image-hint">
-                            支持 JPG、PNG、GIF、WEBP 格式，最大 2MB，图片比例建议 16:9，不符合将被裁切。
-                          </div>
+                          <span>{t('theme_page.submit_modal.upload_image')}</span>
+                          <div className="css-image-hint">{t('theme_page.submit_modal.image_format_hint')}</div>
                         </div>
                       )}
                       <input
@@ -1108,7 +1118,7 @@ const ThemePage: React.FC = () => {
                       />
                     </div>
                     <div className="css-submit-form-hint">
-                      预览图应留有窗口外的背景，示例图:
+                      {t('theme_page.submit_modal.preview_background_hint')}
                       <a
                         href="#"
                         onClick={(e) =>
@@ -1117,7 +1127,7 @@ const ThemePage: React.FC = () => {
                             'https://data1.cherry-ai.com:48443/assets/a4391dd7-473a-4cad-b6f5-6a429e3bbf0f'
                           )
                         }>
-                        查看示例
+                        {t('theme_page.view_example')}
                       </a>
                     </div>
                   </div>
@@ -1126,18 +1136,18 @@ const ThemePage: React.FC = () => {
                 {/* 暗色模式图片上传 */}
                 {localFormData.dark_mode && (
                   <div className="css-submit-form-group">
-                    <label htmlFor="dark_pic">暗色模式预览图</label>
+                    <label htmlFor="dark_pic">{t('theme_page.submit_modal.dark_image_label')}</label>
                     <div className="css-image-upload">
                       {darkImage ? (
                         <div className="css-image-preview">
-                          <img src={URL.createObjectURL(darkImage)} alt="暗色模式预览" />
+                          <img src={URL.createObjectURL(darkImage)} alt={t('theme_page.dark_mode_preview')} />
                           <button
                             type="button"
                             className="css-image-remove"
                             onClick={() => {
                               setDarkImage(null)
                             }}>
-                            移除图片
+                            {t('theme_page.submit_modal.remove_image')}
                           </button>
                         </div>
                       ) : (
@@ -1145,10 +1155,8 @@ const ThemePage: React.FC = () => {
                           className="css-image-dropzone"
                           onClick={() => document.getElementById('dark_pic')?.click()}>
                           <i className="css-icon-upload"></i>
-                          <span>点击上传图片</span>
-                          <div className="css-image-hint">
-                            支持 JPG、PNG、GIF、WEBP 格式，最大 2MB，图片比例建议 16:9，不符合将被裁切。
-                          </div>
+                          <span>{t('theme_page.submit_modal.upload_image')}</span>
+                          <div className="css-image-hint">{t('theme_page.submit_modal.image_format_hint')}</div>
                         </div>
                       )}
                       <input
@@ -1161,7 +1169,7 @@ const ThemePage: React.FC = () => {
                       />
                     </div>
                     <div className="css-submit-form-hint">
-                      预览图应留有窗口外的背景，示例图:
+                      {t('theme_page.submit_modal.preview_background_hint')}
                       <a
                         href="#"
                         onClick={(e) =>
@@ -1170,7 +1178,7 @@ const ThemePage: React.FC = () => {
                             'https://data1.cherry-ai.com:48443/assets/a4391dd7-473a-4cad-b6f5-6a429e3bbf0f'
                           )
                         }>
-                        查看示例
+                        {t('theme_page.view_example')}
                       </a>
                     </div>
                   </div>
@@ -1178,7 +1186,7 @@ const ThemePage: React.FC = () => {
 
                 {/* 标签输入 */}
                 <div className="css-submit-form-group">
-                  <label htmlFor="title">标签</label>
+                  <label htmlFor="title">{t('theme_page.submit_modal.tags_label')}</label>
                   <div className="css-tags-input-container">
                     <input
                       type="text"
@@ -1186,7 +1194,7 @@ const ThemePage: React.FC = () => {
                       value={currentTag}
                       onChange={(e) => setCurrentTag(e.target.value.replace(/[^\w\u4e00-\u9fa5]/g, ''))}
                       onKeyDown={handleTagKeyDown}
-                      placeholder="输入标签后回车，多个标签用逗号分隔"
+                      placeholder={t('theme_page.submit_modal.tags_placeholder')}
                     />
                     <div className="css-tags-container">
                       {localFormData.title.map((tag, index) => (
@@ -1199,7 +1207,7 @@ const ThemePage: React.FC = () => {
                       ))}
                     </div>
                   </div>
-                  <div className="css-submit-form-hint">标签不支持标点符号，只支持中英文和数字</div>
+                  <div className="css-submit-form-hint">{t('theme_page.submit_modal.tags_hint')}</div>
                 </div>
 
                 {submitError && (
@@ -1210,10 +1218,10 @@ const ThemePage: React.FC = () => {
 
                 <div className="css-submit-form-actions">
                   <button type="button" className="css-btn secondary" onClick={handleClose} disabled={isSubmitting}>
-                    取消
+                    {t('theme_page.submit_modal.cancel')}
                   </button>
                   <button type="submit" className="css-btn primary" disabled={isSubmitting}>
-                    {isSubmitting ? '提交中...' : '提交'}
+                    {isSubmitting ? t('theme_page.submit_modal.submitting') : t('theme_page.submit_modal.submit')}
                   </button>
                 </div>
               </form>
@@ -1274,9 +1282,9 @@ const ThemePage: React.FC = () => {
             padding: '20px 0'
           }}>
           <div className="css-container">
-            <h1 className="css-page-title">主题素材库</h1>
+            <h1 className="css-page-title">{t('theme_page.title')}</h1>
             <div className="css-page-description">
-              <div>精选的CherryStudio主题，帮助您快速实现个性化界面。</div>
+              <div>{t('theme_page.subtitle')}</div>
               <div className="css-buttons-container">
                 <div
                   className="css-search-help-icon"
@@ -1285,20 +1293,16 @@ const ThemePage: React.FC = () => {
                   onMouseLeave={() => setHelpTooltipVisible(false)}>
                   <span className="css-help-icon">?</span>
                   <div className={`css-search-tooltip ${helpTooltipVisible ? 'visible' : ''}`}>
-                    <p>搜索提示:</p>
+                    <p>{t('theme_page.search_help')}</p>
                     <ul>
-                      <li>
-                        使用 <code>#关键词</code> 搜索包含该标签的内容
-                      </li>
-                      <li>
-                        使用 <code>@作者名</code> 搜索特定作者
-                      </li>
-                      <li>支持组合搜索，# @ 搜索内容用空格隔开</li>
+                      <li>{t('theme_page.search_help_tips.tag_search')}</li>
+                      <li>{t('theme_page.search_help_tips.author_search')}</li>
+                      <li>{t('theme_page.search_help_tips.combined_search')}</li>
                     </ul>
                   </div>
                 </div>
                 <button className="css-submit-button" onClick={() => setSubmitModalOpen(true)} type="button">
-                  投稿
+                  {t('theme_page.submit_theme')}
                 </button>
               </div>
             </div>
@@ -1310,13 +1314,13 @@ const ThemePage: React.FC = () => {
                   ref={searchInputRef}
                   type="text"
                   className="css-search-input"
-                  placeholder="搜索CSS素材..."
+                  placeholder={t('theme_page.search_placeholder')}
                   defaultValue={searchTerm}
                   onChange={handleSearchInputChange}
                 />
                 <button type="submit" className="css-search-button" disabled={!searchInputValue.trim()}>
                   <i className="css-icon-search"></i>
-                  搜索
+                  {t('theme_page.search_button')}
                 </button>
                 {searchTerm && (
                   <button type="button" className="css-search-clear" onClick={handleClearSearchInput}>
@@ -1332,7 +1336,7 @@ const ThemePage: React.FC = () => {
                 <div className="css-active-filters">
                   {authorFilter && (
                     <span className="css-filter-tag">
-                      作者: {authorFilter}
+                      {t('theme_page.author_by')} {authorFilter}
                       <button
                         className="css-filter-remove"
                         onClick={() => handleAuthorClick(authorFilter)}
@@ -1343,7 +1347,7 @@ const ThemePage: React.FC = () => {
                   )}
                   {tagFilter && (
                     <span className="css-filter-tag">
-                      标签: {tagFilter}
+                      {t('theme_page.tags')} {tagFilter}
                       <button className="css-filter-remove" onClick={() => handleTagClick(tagFilter)} type="button">
                         ×
                       </button>
@@ -1352,7 +1356,7 @@ const ThemePage: React.FC = () => {
                   {/* 显示普通搜索内容的标签 */}
                   {searchTerm && parseSearchInput(searchTerm).plainText && (
                     <span className="css-filter-tag">
-                      搜索: {parseSearchInput(searchTerm).plainText}
+                      {t('theme_page.search_filter.search_label')} {parseSearchInput(searchTerm).plainText}
                       <button className="css-filter-remove" onClick={clearAllFilters} type="button">
                         ×
                       </button>
@@ -1360,7 +1364,7 @@ const ThemePage: React.FC = () => {
                   )}
                 </div>
                 <button className="css-btn secondary small clear-filter-btn" onClick={clearAllFilters} type="button">
-                  清除全部筛选
+                  {t('theme_page.clear_filters')}
                 </button>
               </div>
             )}
@@ -1368,7 +1372,7 @@ const ThemePage: React.FC = () => {
             {loading || isSearching ? (
               <div className="css-loading">
                 <div className="css-loading-spinner"></div>
-                <p>{isSearching ? '正在搜索...' : '正在加载...'}</p>
+                <p>{isSearching ? t('theme_page.loading') : t('theme_page.loading')}</p>
               </div>
             ) : (
               <>
@@ -1377,6 +1381,7 @@ const ThemePage: React.FC = () => {
                     <div className="css-card" key={item.id}>
                       <div
                         className="css-card-preview"
+                        data-preview-text={t('theme_page.preview_button')}
                         onClick={(e) =>
                           handleExamplePreview(
                             e,
@@ -1389,7 +1394,7 @@ const ThemePage: React.FC = () => {
                           <img src={getImageUrl(item.dark_pic)} alt={item.name} className="css-card-image" />
                         ) : (
                           <div className="css-card-no-image">
-                            <span>无预览图</span>
+                            <span>{t('theme_page.no_preview')}</span>
                           </div>
                         )}
                       </div>
@@ -1399,7 +1404,7 @@ const ThemePage: React.FC = () => {
                           <h3 className="css-card-name">{item.name}</h3>
                           <div className="css-card-meta">
                             <span className="css-card-author-label">
-                              作者:
+                              {t('theme_page.author_by')}
                               <span
                                 className={`css-card-author-name ${authorFilter === item.author ? 'active' : ''}`}
                                 onClick={() => handleAuthorClick(item.author)}>
@@ -1414,14 +1419,14 @@ const ThemePage: React.FC = () => {
                             <span
                               className={`css-mode-tag light ${activeImageMode[item.id] === 'light' ? 'active' : ''}`}
                               onClick={() => handleImageModeChange(item.id, 'light')}>
-                              亮色模式
+                              {t('theme_page.light_mode')}
                             </span>
                           )}
                           {item.dark_mode && (
                             <span
                               className={`css-mode-tag dark ${activeImageMode[item.id] === 'dark' ? 'active' : ''}`}
                               onClick={() => handleImageModeChange(item.id, 'dark')}>
-                              暗色模式
+                              {t('theme_page.dark_mode')}
                             </span>
                           )}
                         </div>
@@ -1456,7 +1461,7 @@ const ThemePage: React.FC = () => {
                             className={`css-btn primary small ${copySuccess === `${item.id}-code` ? 'success' : ''}`}
                             onClick={() => copyToClipboard(item.code, item.id, 'code')}>
                             <i className="css-icon-copy"></i>
-                            {copySuccess === `${item.id}-code` ? '已复制' : '复制代码'}
+                            {copySuccess === `${item.id}-code` ? t('theme_page.copied') : t('theme_page.copy_code')}
                           </button>
 
                           {item.cdn_link && typeof item.cdn_link === 'string' && item.cdn_link.startsWith('http') && (
@@ -1465,16 +1470,18 @@ const ThemePage: React.FC = () => {
                               className={`css-btn secondary small ${copySuccess === `${item.id}-cdn` ? 'success' : ''}`}
                               onClick={() => copyToClipboard(item.cdn_link as string, item.id, 'cdn')}>
                               <i className="css-icon-link"></i>
-                              {copySuccess === `${item.id}-cdn` ? '已复制' : '复制引用链接'}
+                              {copySuccess === `${item.id}-cdn` ? t('theme_page.copied') : t('theme_page.copy_cdn')}
                             </button>
                           )}
                         </div>
                         <div className="css-card-info">
                           <span className="css-card-version-label">
-                            版本: <span className="css-card-version-value">v{formatVersion(item.version)}</span>
+                            {t('theme_page.version')}{' '}
+                            <span className="css-card-version-value">v{formatVersion(item.version)}</span>
                           </span>
                           <span className="css-card-date-label">
-                            发布: <span className="css-card-date-value">{formatDate(item.date_created)}</span>
+                            {t('theme_page.created')}{' '}
+                            <span className="css-card-date-value">{formatDate(item.date_created)}</span>
                           </span>
                         </div>
                       </div>
@@ -1485,9 +1492,9 @@ const ThemePage: React.FC = () => {
                 {/* 没有结果时显示提示 */}
                 {cssItems.length === 0 && !loading && (
                   <div className="css-no-results">
-                    <p>没有找到符合条件的 CSS 素材</p>
+                    <p>{t('theme_page.no_results')}</p>
                     <button className="css-btn secondary clear-filter-btn" onClick={clearAllFilters} type="button">
-                      清除筛选，查看所有素材
+                      {t('theme_page.clear_all_filters')}
                     </button>
                   </div>
                 )}
@@ -1497,17 +1504,17 @@ const ThemePage: React.FC = () => {
                   {loadingMore && (
                     <div className="css-loading-more">
                       <div className="css-loading-spinner small"></div>
-                      <p>加载更多...</p>
+                      <p>{t('theme_page.loading_more')}</p>
                     </div>
                   )}
                   {!hasMore && cssItems.length > 0 && (
                     <div className="css-no-more">
-                      <p>已加载全部内容</p>
+                      <p>{t('theme_page.all_loaded')}</p>
                     </div>
                   )}
                   {hasMore && !loadingMore && cssItems.length > 0 && (
                     <button className="css-btn primary load-more-btn" onClick={handleManualLoad} type="button">
-                      加载更多
+                      {t('theme_page.load_more')}
                     </button>
                   )}
                 </div>

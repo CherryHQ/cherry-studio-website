@@ -1,6 +1,7 @@
 import './index.css'
 
 import { FC, useEffect, useRef } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import Footer from '@/components/website/Footer'
 import { useVersionData } from '@/hooks/useVersionData'
@@ -11,6 +12,7 @@ import DownloadList from './components/DownloadList'
 import VersionInfo from './components/VersionInfo'
 
 const DownloadPage: FC = () => {
+  const { t } = useTranslation()
   const otherDownloadsRef = useRef<HTMLDivElement>(null)
   const { loading, versionData, systemInfo, downloadUrls } = useVersionData()
 
@@ -39,12 +41,12 @@ const DownloadPage: FC = () => {
           <DownloadButtons systemInfo={systemInfo} onOtherVersionsClick={scrollToOtherDownloads} />
           {/* Cloud downloads */}
           <div className="cloud-downloads">
-            <h2 className="cloud-download-title">网盘下载</h2>
+            <h2 className="cloud-download-title">{t('download_page.cloud_download')}</h2>
             <ul className="cloud-download-list">
               <li>
-                <strong>夸克网盘：</strong>
+                <strong>{t('download_page.quark_drive')}：</strong>
                 <a href="https://pan.quark.cn/s/c8533a1ec63e" target="_blank" rel="noopener noreferrer">
-                  点击下载
+                  {t('download_page.click_download')}
                 </a>
               </li>
             </ul>

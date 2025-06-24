@@ -1,9 +1,11 @@
 import { FC, useEffect } from 'react'
+import { Trans, useTranslation } from 'react-i18next'
 
 import StarHistory from './StarHistory'
 import Statistics from './Statistics'
 
 const Project: FC = () => {
+  const { t } = useTranslation()
   useEffect(() => {
     //Accordion Box
     if ($('.accordion-box').length) {
@@ -60,45 +62,47 @@ const Project: FC = () => {
             {/* <!--Counter Column--> */}
             <div className="column col-lg-6 col-md-6 col-sm-12 project-faq">
               <div className="sec-title">
-                <h2 className="heading_title">项目相关</h2>
+                <h2 className="heading_title">{t('project.title')}</h2>
               </div>
               {/* <!--Accordion Box--> */}
               <div className="accordion-box style-two">
                 {/* <!-- Accordion --> */}
                 <div className="accordion accordion-block active-block">
                   <div className="accord-btn active">
-                    <h4>项目简介</h4>
+                    <h4>{t('project.intro.title')}</h4>
                   </div>
                   <div className="accord-content collapsed">
-                    <p>
-                      CherryStudio是一个支持多平台的AI客户端，支持Win、macOS、Linux平台,未来也会支持移动端。项目自24年7月至今已迭代数百个版本,我们致力于打造一个更加高效、安全、易用的客户端，让更多人能够享受到AI带来的便利。
-                    </p>
+                    <p>{t('project.intro.description')}</p>
                   </div>
                 </div>
                 {/* <!-- Accordion --> */}
                 <div className="accordion accordion-block">
                   <div className="accord-btn">
-                    <h4>CherryStudio的目标</h4>
+                    <h4>{t('project.goal.title')}</h4>
                   </div>
                   <div className="accord-content">
-                    <p>
-                      CherryStudio致力于让用户专注于创作或享受AI带来的便利，而不是让很多小白用户被各种繁琐的配置拒之门外。因此您只需要填写秘钥即可马上使用。同时我们也提供了详细的使用文档供您参考学习。我们的社群也非常活跃，可以快速帮您解决各种使用上的问题。
-                    </p>
+                    <p>{t('project.goal.description')}</p>
                   </div>
                 </div>
                 {/* <!-- Accordion --> */}
                 <div className="accordion accordion-block">
                   <div className="accord-btn">
-                    <h4>我想为项目做一些贡献，都能做什么？</h4>
+                    <h4>{t('project.contribution.title')}</h4>
                   </div>
                   <div className="accord-content">
                     <p>
-                      如果您喜欢我们的项目，欢迎在
-                      <a href="https://github.com/CherryHQ/cherry-studio" target="_blank" rel="noopener noreferrer">
-                        Github
-                      </a>
-                      给我们一个star来简单的支持我们，如果您是技术大佬欢迎成为我们的贡献者之一，当然您也可以参与到我们的文档编辑当中，将您的使用经验分享给大家或者在社群为其他用户答疑解惑。如果您有任何想法或建议，欢迎通过GitHub
-                      Issues 或在官方社群与我们联系。
+                      <Trans
+                        i18nKey="project.contribution.description"
+                        components={{
+                          1: (
+                            <a
+                              href="https://github.com/CherryHQ/cherry-studio"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            />
+                          )
+                        }}
+                      />
                     </p>
                   </div>
                 </div>

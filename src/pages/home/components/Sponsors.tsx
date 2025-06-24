@@ -1,8 +1,10 @@
 import { FC, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import ProviderLogo from '@/assets/js/providerLogo'
 
 const Sponsors: FC = () => {
+  const { t } = useTranslation()
   useEffect(() => {
     new ProviderLogo('providerLogos', 1) // 1是滚动速度，可以调整
 
@@ -72,9 +74,9 @@ const Sponsors: FC = () => {
     <section className="sponsors-section-two">
       <div className="auto-container">
         <h3 className="sonsors_title">
-          Cherry Studio 内置众多服务商
+          {t('sponsors.title')}
           <br />
-          同时也支持其他兼容 OpenAI/Anthropic 等 API 格式的服务商接入
+          {t('sponsors.subtitle')}
         </h3>
         <div id="providerLogos"></div>
       </div>

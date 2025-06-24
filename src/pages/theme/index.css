@@ -128,7 +128,7 @@
 }
 
 .css-card-preview:hover::after {
-  content: "预览";
+  content: attr(data-preview-text);
   position: absolute;
   top: 50%;
   left: 50%;

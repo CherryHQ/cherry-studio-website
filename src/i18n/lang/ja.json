@@ -1,0 +1,343 @@
+{
+  "nav": {
+    "home": "ホーム",
+    "download": "ダウンロード",
+    "theme": "テーマ",
+    "docs": "ドキュメント",
+    "contact": "お問い合わせ",
+    "docs_menu": {
+      "project_intro": "プロジェクト紹介",
+      "basic_tutorial": "基本チュートリアル",
+      "advanced_tutorial": "上級チュートリアル",
+      "project_contribution": "プロジェクト貢献",
+      "questions_feedback": "質問・フィードバック"
+    }
+  },
+  "test": "テスト",
+  "home": "ホーム",
+  "download": "ダウンロード",
+  "enterprise": "エンタープライズ版",
+  "theme": "テーマ",
+  "forum": "フォーラム",
+  "docs": "ドキュメント",
+  "project_intro": "プロジェクト紹介",
+  "basic_tutorial": "基本チュートリアル",
+  "advanced_tutorial": "上級チュートリアル",
+  "contribution": "プロジェクト貢献",
+  "feedback": "質問・フィードバック",
+  "contact": "お問い合わせ",
+  "banner": {
+    "powerful_ai_assistant": "あなたの万能AIアシスタント",
+    "cherry_studio_title": "Cherry Studio",
+    "multi_provider_client": "複数プロバイダー統合対応のAI対話クライアント",
+    "multi_provider_description": "CherryStudioは現在市場のほとんどのサービスプロバイダーの統合をサポートし、複数プロバイダーのモデル統一スケジューリングをサポートしています。",
+    "privacy_security": "プライバシーセキュリティの保障",
+    "local_storage_title": "データローカル保存",
+    "no_privacy_leak": "プライバシー漏洩の心配不要",
+    "local_storage_description": "すべての使用データはローカルに保存され、第三者サーバーにアップロードされることはなく、ローカル展開のモデル呼び出しもサポートします。",
+    "personalized_knowledge_base": "パーソナライズされた知識ベース",
+    "knowledge_base_integration_title": "AI知識ベース統合",
+    "your_personal_assistant": "あなたの最も親身なアシスタント",
+    "knowledge_base_description": "CherryStudioは現在知識ベース機能がリリースされており、様々な形式のファイルインポートやWebページインポートなどでパーソナライズされた知識ベースを構築できます。",
+    "download_client": "クライアントをダウンロード"
+  },
+  "features": {
+    "title": "主な機能紹介",
+    "description": "以下は一部の機能紹介のみです。より多くの機能はクライアントをダウンロードして体験するか、<1>公式ドキュメント</1>でご確認ください。",
+    "learn_more": "詳細を見る",
+    "conversation": {
+      "title": "大規模モデル対話",
+      "description": "基本的なAI対話、ドキュメントや画像対話に加えて、数式やHTMLプレビューまで完成をサポートします。"
+    },
+    "drawing": {
+      "title": "AI描画",
+      "description": "複数の描画モデルをサポートし、あなたの想像力を存分に発揮してCherryStudioに完成させることができます。"
+    },
+    "translation": {
+      "title": "AI翻訳",
+      "description": "翻訳ページでも対話バーでも、CherryStudioはあなたが入力した内容を素早く翻訳できます。"
+    },
+    "assistants": {
+      "title": "千以上の内蔵アシスタント",
+      "description": "CherryStudioには様々なカテゴリーの千以上のアシスタントが内蔵されており、大規模モデルの使用をより効率的にします。"
+    },
+    "knowledge_base": {
+      "title": "マルチデータソース知識ベース",
+      "description": "ローカルファイルでもWebページでも、知識ソースとしてあなた専用の知識ベースを迅速に構築できます。"
+    },
+    "backup": {
+      "title": "多様なバックアップ方式",
+      "description": "ローカルバックアップとクラウドバックアップを含む、複数デバイス間の無憂切り替え、より便利でより安全。"
+    }
+  },
+  "project": {
+    "title": "プロジェクト関連",
+    "intro": {
+      "title": "プロジェクト紹介",
+      "description": "CherryStudioはマルチプラットフォーム対応のAIクライアントで、Win、macOS、Linuxプラットフォームをサポートし、将来的にはモバイル端末もサポート予定です。プロジェクトは24年7月から現在まで数百のバージョンを重ね、より効率的で安全で使いやすいクライアントの構築に取り組み、より多くの人がAIの利便性を享受できるようにしています。"
+    },
+    "goal": {
+      "title": "CherryStudioの目標",
+      "description": "CherryStudioはユーザーが創作やAIの利便性の享受に集中できるようにし、多くの初心者ユーザーが複雑な設定で門前払いされることのないようにすることを目指しています。そのため、キーを入力するだけですぐに使用できます。同時に、学習参考用の詳細な使用ドキュメントも提供しています。私たちのコミュニティも非常に活発で、使用上の様々な問題を迅速に解決できます。"
+    },
+    "contribution": {
+      "title": "プロジェクトに何らかの貢献をしたいのですが、何ができますか？",
+      "description": "私たちのプロジェクトを気に入っていただけましたら、<1>Github</1>でstarを付けて簡単にサポートしてください。技術エキスパートの方は貢献者の一人になることを歓迎します。もちろん、ドキュメントの編集に参加し、使用経験をみんなと共有したり、コミュニティで他のユーザーの質問に答えたりすることもできます。何かアイデアや提案がございましたら、GitHub Issuesやオフィシャルコミュニティでお気軽にお問い合わせください。"
+    }
+  },
+  "community": {
+    "title": "コミュニティに参加",
+    "wechat_qr_alt": "WeChatグループQRコード",
+    "wechat_scan_prompt": "QRコードをスキャンしてWeChatグループに参加",
+    "qq_group": "QQ グループ",
+    "zsxq": "知识星球（質問回答）"
+  },
+  "footer": {
+    "description": "CherryStudioはマルチプラットフォーム対応のAIクライアントで、より多くの人がAIの利便性を享受できるよう取り組んでいます。",
+    "cherry_studio": {
+      "title": "Cherry Studio",
+      "github": "Github",
+      "gitcode": "GitCode",
+      "docs": "使用ドキュメント",
+      "feedback": "問題フィードバック"
+    },
+    "friendly_links": {
+      "title": "友好リンク"
+    },
+    "contact_us": {
+      "title": "お問い合わせ",
+      "wechat_qr_alt": "WeChat公式アカウントQRコード",
+      "wechat_official_account": "公式WeChatアカウント",
+      "contact_info": "使用上の問題がある場合は、まずドキュメントを確認するかコミュニティで質問<0/>またはメールでお問い合わせください <1>support@cherry-ai.com</1>"
+    },
+    "copyright": "Copyright © 2025 上海千彗科技有限公司 <1>沪ICP备2021031071号-3</1>"
+  },
+  "statistics": {
+    "days_online": "稼働日数",
+    "contributors": "貢献者",
+    "stars": "スター数"
+  },
+  "sponsors": {
+    "title": "Cherry Studio 多数のサービスプロバイダーを内蔵",
+    "subtitle": "OpenAI/Anthropic等のAPI形式と互換性のある他のサービスプロバイダーの接続もサポート"
+  },
+  "download_page": {
+    "cloud_download": "クラウドストレージダウンロード",
+    "quark_drive": "Quarkクラウドストレージ",
+    "click_download": "ダウンロード",
+    "loading_version": "バージョン情報を取得中...",
+    "version_error": "バージョン情報を取得できません。一時的にクラウドストレージリンクからダウンロードしてください",
+    "published_at": "リリース日時",
+    "current_system": "現在のシステム",
+    "other_versions": "その他のバージョンまたは代替ダウンロードルート"
+  },
+  "enterprise_page": {
+    "hero": {
+      "title": "Cherry Studio Enterprise",
+      "subtitle": "現代のチームと企業向けに構築されたAI生産性・管理プラットフォーム",
+      "contact_us": "お問い合わせ",
+      "learn_more": "詳細を見る"
+    },
+    "features": {
+      "title": "コア機能",
+      "subtitle": "プロフェッショナルなエンタープライズ級機能でチームの生産性向上をサポート",
+      "model_management": {
+        "title": "統一モデル管理",
+        "description": "各種クラウド大規模モデルの集中接続・管理、ローカルプライベート展開をサポート、従業員は設定不要で使用可能"
+      },
+      "knowledge_base": {
+        "title": "エンタープライズ級知識ベース",
+        "description": "チーム共有知識ベースの構築・管理、統一知識に基づくAIインタラクションで回答品質を向上"
+      },
+      "permission_control": {
+        "title": "細かい権限制御",
+        "description": "統一管理バックエンド、ロールベースの権限割り当て、柔軟なリソースアクセス制御"
+      },
+      "private_deployment": {
+        "title": "完全プライベート展開",
+        "description": "企業内部サーバー展開、プライベートクラウド環境展開をサポート、データ100%プライベート制御可能"
+      },
+      "backend_service": {
+        "title": "信頼性の高いバックエンドサービス",
+        "description": "安定したAPIサービス、エンタープライズ級データバックアップ・復旧メカニズムを提供し、ビジネス継続性を保障"
+      },
+      "security_compliance": {
+        "title": "セキュリティコンプライアンス保障",
+        "description": "最も厳格なデータセキュリティ・コンプライアンス要件を満たし、監査ログをサポートし、データ使用の追跡可能性を確保"
+      }
+    },
+    "comparison": {
+      "title": "バージョン比較",
+      "subtitle": "あなたのチームに最適なソリューションを選択",
+      "table": {
+        "feature": "機能",
+        "community": "コミュニティ版",
+        "enterprise": "エンタープライズ版",
+        "license": "オープンソースライセンス",
+        "license_community": "オープンソース",
+        "license_enterprise": "商用ライセンス",
+        "cost": "使用料金",
+        "cost_community": "個人無料/商用ライセンス",
+        "cost_enterprise": "買い切り + オプションサービス料",
+        "deployment": "展開方式",
+        "deployment_community": "シングルマシン展開",
+        "deployment_enterprise": "プライベート展開",
+        "features": "機能特性",
+        "features_community": "基本機能",
+        "features_enterprise": {
+          "model_management": "モデル管理",
+          "employee_management": "従業員管理",
+          "knowledge_base": "共有知識ベース",
+          "workflow": "Dify ワークフロー",
+          "permission": "権限制御",
+          "backup": "データバックアップ"
+        },
+        "support": "技術サポート",
+        "support_community": "コミュニティサポート",
+        "support_enterprise": "専用サポートサービス",
+        "system_support": "システムサポート",
+        "system_community": "Windows 10+, macOS, Linux",
+        "system_enterprise": "Windows 7+, macOS, Linux"
+      }
+    },
+    "beta": {
+      "title": "ベータテスト説明",
+      "description": "エンタープライズ版は現在ベータテスト段階にあり、機能の継続的な最適化を行っています。問題や提案がございましたら、お気軽にフィードバックをお寄せください！",
+      "demo": {
+        "title": "体験環境",
+        "admin_portal": "管理バックエンド：",
+        "account": "アカウント：",
+        "password": "パスワード："
+      },
+      "download": {
+        "title": "クライアントダウンロード",
+        "description": "完全な体験を得るために、エンタープライズ版クライアントをダウンロードしてください：",
+        "system_support": "macOSとWindowsシステムをサポート",
+        "download_button": "クライアントをダウンロード"
+      },
+      "manual": {
+        "title": "使用マニュアル",
+        "description": "Cherry Studio エンタープライズ版の体験活動にご参加いただき、ありがとうございます。すべての機能を迅速に習得していただけるよう、詳細な使用マニュアルを提供しています。",
+        "view_manual": "使用マニュアルを見る"
+      }
+    },
+    "support": {
+      "title": "サポートを受ける",
+      "description": "Cherry Studio エンタープライズ版にご興味がございましたら、お気軽に営業チームまでお問い合わせください",
+      "send_email": "メール送信",
+      "business_cooperation": "ビジネス協力"
+    }
+  },
+  "contributors": {
+    "project_contributors": "プロジェクト貢献者",
+    "doc_contributors": "ドキュメント貢献者",
+    "contribution_stats": "貢献：{{contributions}} commits（{{rate}}%）",
+    "partial": "（一部）"
+  },
+  "star_history": {
+    "total_stars": "総スター数",
+    "daily_stars": "日次スター増加数",
+    "cumulative_stars": "累積スター数",
+    "daily_increase": "日次スター増加数",
+    "data_view": "データビュー",
+    "close": "閉じる",
+    "refresh": "リフレッシュ",
+    "restore": "復元",
+    "save_as_image": "画像として保存",
+    "year_suffix": "年",
+    "month_suffix": "月",
+    "day_suffix": "日"
+  },
+  "telegram": {
+    "channel_members": "チャンネルメンバー：",
+    "current_online": "現在オンライン："
+  },
+  "theme_page": {
+    "title": "テーママーケット",
+    "subtitle": "Cherry Studio テーマスタイルの発見と共有",
+    "preview_button": "プレビュー",
+    "search_placeholder": "テーマを検索...（#タグ @作者 キーワードをサポート）",
+    "search_button": "検索",
+    "search_help": "検索ヘルプ：",
+    "search_help_tips": {
+      "tag_search": "#キーワード を使用してそのタグを含むコンテンツを検索",
+      "author_search": "@作者名 を使用して特定の作者を検索",
+      "combined_search": "複合検索をサポート、# @ 検索内容はスペースで区切る"
+    },
+    "submit_theme": "テーマ投稿",
+    "author_by": "作者：",
+    "tags": "タグ：",
+    "version": "バージョン",
+    "created": "作成日",
+    "light_mode": "ライト",
+    "dark_mode": "ダーク",
+    "copy_code": "コードをコピー",
+    "copy_cdn": "CDNをコピー",
+    "copied": "コピー済み",
+    "no_preview": "プレビューなし",
+    "example_image": "サンプル画像",
+    "light_mode_preview": "ライトモードプレビュー",
+    "dark_mode_preview": "ダークモードプレビュー",
+    "preview_example": "サンプルプレビュー",
+    "view_example": "サンプルを見る",
+    "loading": "検索中...",
+    "loading_more": "さらに読み込み中...",
+    "all_loaded": "すべてのテーマを読み込み完了",
+    "load_more": "さらに読み込む",
+    "clear_filters": "フィルターをクリア",
+    "clear_all_filters": "すべてのフィルターをクリア",
+    "no_results": "一致するテーマが見つかりません",
+    "loading_error": "読み込みに失敗しました",
+    "refresh_page": "ページを更新",
+    "search_filter": {
+      "search_label": "検索："
+    },
+    "notifications": {
+      "not_found_tag": "そのタグを含むテーマが見つかりません",
+      "not_found_author": "その作者のテーマが見つかりません",
+      "data_fetch_error": "データの読み込みに失敗しました。しばらくしてから再試行してください"
+    },
+    "submit_modal": {
+      "title": "テーマ投稿",
+      "name_label": "テーマ名",
+      "name_placeholder": "テーマ名を入力してください",
+      "author_label": "作者名",
+      "author_placeholder": "作者名を入力してください",
+      "author_required": "作者名を入力してください",
+      "support_light_mode": "ライトモードをサポート",
+      "support_dark_mode": "ダークモードをサポート",
+      "version_label": "バージョン番号",
+      "version_placeholder": "例：1.0",
+      "version_hint": "形式：数字とドット、例 1.0 または 1.2.3",
+      "code_label": "CSS コード",
+      "code_placeholder": "CSS コードを貼り付けてください...",
+      "cdn_link_label": "CSS ファイルリンク（オプション）",
+      "cdn_link_placeholder": "公開CDNリンクまたはファイルリンクをお持ちの場合は記入できます",
+      "light_image_label": "ライトモードプレビュー画像",
+      "dark_image_label": "ダークモードプレビュー画像",
+      "upload_image": "クリックして画像をアップロード",
+      "remove_image": "画像を削除",
+      "image_size_error": "画像サイズは2MBを超えることはできません",
+      "image_format_hint": "JPG、PNG、GIF、WEBP形式をサポート、最大2MB、画像比率は16:9を推奨、不適合の場合はトリミングされます。",
+      "preview_background_hint": "プレビュー画像にはウィンドウ外の背景を含める必要があります。サンプル画像：",
+      "tags_label": "タグ",
+      "tags_placeholder": "タグを入力してEnterキーを押す、複数のタグはカンマで区切る",
+      "tags_hint": "タグは句読点をサポートしません、中国語、英語、数字のみサポート",
+      "submit": "送信",
+      "cancel": "キャンセル",
+      "submitting": "送信中...",
+      "close": "閉じる",
+      "success_title": "送信成功！",
+      "success_message": "あなたのテーマは審査に送信されました。迅速に処理いたします。",
+      "submit_error": "送信に失敗しました。再試行してください",
+      "validation": {
+        "name_required": "テーマ名を入力してください",
+        "code_required": "CSSコードを入力してください",
+        "light_image_required": "ライトモードプレビュー画像をアップロードしてください",
+        "dark_image_required": "ダークモードプレビュー画像をアップロードしてください",
+        "file_type_error": "正しい形式の画像ファイルをアップロードしてください"
+      },
+      "version_invalid": "バージョン番号の形式が間違っています"
+    }
+  }
+} 

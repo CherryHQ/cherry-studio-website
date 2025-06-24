@@ -1,8 +1,10 @@
 import { FC, useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { fetchChannelData, getRandomWechatQRCode } from '@/assets/js/data'
 
 const JoinCommunity: FC = () => {
+  const { t } = useTranslation()
   const [channelData, setChannelData] = useState<any>(null)
   const [wechatQRCode, setWechatQRCode] = useState<string>('')
 
@@ -28,7 +30,7 @@ const JoinCommunity: FC = () => {
         }}></div>
       <div className="auto-container">
         <div className="section_heading text-center">
-          <h2 className="section_heading_title_big">加入我们的社群</h2>
+          <h2 className="section_heading_title_big">{t('community.title')}</h2>
         </div>
 
         {/* QR Code Display */}
@@ -47,7 +49,7 @@ const JoinCommunity: FC = () => {
               <>
                 <img
                   src={wechatQRCode}
-                  alt="微信群二维码"
+                  alt={t('community.wechat_qr_alt')}
                   style={{
                     width: '200px',
                     height: '200px',
@@ -64,7 +66,7 @@ const JoinCommunity: FC = () => {
                     fontWeight: '500',
                     color: '#333'
                   }}>
-                  扫码加入微信群
+                  {t('community.wechat_scan_prompt')}
                 </p>
               </>
             )}
@@ -75,12 +77,12 @@ const JoinCommunity: FC = () => {
           <div className="cta-1-link-bt" style={{ display: 'flex', justifyContent: 'center', gap: 10 }}>
             {channelData?.data?.qq_group_link && (
               <a href={channelData.data.qq_group_link} className="btn-1" target="_blank" rel="noopener noreferrer">
-                QQ 群
+                {t('community.qq_group')}
               </a>
             )}
             {channelData?.data?.zsxq && (
               <a href={channelData.data.zsxq} className="btn-1" target="_blank" rel="noopener noreferrer">
-                知识星球(问题解答)
+                {t('community.zsxq')}
               </a>
             )}
           </div>

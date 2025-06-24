@@ -1,0 +1,343 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "download": "Télécharger",
+    "theme": "Thèmes",
+    "docs": "Documentation",
+    "contact": "Contact",
+    "docs_menu": {
+      "project_intro": "Introduction au projet",
+      "basic_tutorial": "Tutoriel de base",
+      "advanced_tutorial": "Tutoriel avancé",
+      "project_contribution": "Contribution au projet",
+      "questions_feedback": "Questions et commentaires"
+    }
+  },
+  "test": "Test",
+  "home": "Accueil",
+  "download": "Télécharger",
+  "enterprise": "Entreprise",
+  "theme": "Thèmes",
+  "forum": "Forum",
+  "docs": "Documentation",
+  "project_intro": "Introduction au projet",
+  "basic_tutorial": "Tutoriel de base",
+  "advanced_tutorial": "Tutoriel avancé",
+  "contribution": "Contribution au projet",
+  "feedback": "Questions et commentaires",
+  "contact": "Contact",
+  "banner": {
+    "powerful_ai_assistant": "Votre assistant IA tout-puissant",
+    "cherry_studio_title": "Cherry Studio",
+    "multi_provider_client": "Un client de conversation IA prenant en charge l'intégration de plusieurs fournisseurs",
+    "multi_provider_description": "CherryStudio prend en charge l'intégration de la plupart des fournisseurs du marché et peut planifier de manière centralisée les modèles de plusieurs fournisseurs.",
+    "privacy_security": "Garantie de confidentialité et de sécurité",
+    "local_storage_title": "Données stockées localement",
+    "no_privacy_leak": "Ne vous inquiétez pas des fuites de confidentialité",
+    "local_storage_description": "Toutes les données utilisateur sont stockées localement, ne sont téléchargées sur aucun serveur tiers et prennent en charge les appels de modèles déployés localement.",
+    "personalized_knowledge_base": "Base de connaissances personnalisée",
+    "knowledge_base_integration_title": "Intégration de la base de connaissances IA",
+    "your_personal_assistant": "Votre assistant le plus attentionné",
+    "knowledge_base_description": "CherryStudio a lancé la fonctionnalité de base de connaissances, prenant en charge l'importation de fichiers de différents formats, l'importation de pages Web, etc., pour créer une base de connaissances personnalisée.",
+    "download_client": "Télécharger le client"
+  },
+  "features": {
+    "title": "Présentation des fonctionnalités principales",
+    "description": "Ce qui suit n'est qu'une introduction à certaines fonctionnalités. Pour plus de fonctionnalités, vous pouvez télécharger le client pour l'essayer ou en savoir plus dans la <1>documentation officielle</1>.",
+    "learn_more": "En savoir plus",
+    "conversation": {
+      "title": "Conversation avec de grands modèles",
+      "description": "En plus de la conversation IA de base, de la conversation sur des documents ou des images, il peut également vous aider à prévisualiser des formules et du HTML."
+    },
+    "drawing": {
+      "title": "Dessin par IA",
+      "description": "Prend en charge plusieurs modèles de dessin, vous permettant de laisser libre cours à votre imagination, et CherryStudio s'occupe de la réalisation."
+    },
+    "translation": {
+      "title": "Traduction par IA",
+      "description": "Que ce soit sur la page de traduction ou dans la boîte de dialogue, CherryStudio peut traduire rapidement le contenu que vous saisissez."
+    },
+    "assistants": {
+      "title": "Des milliers d'assistants intégrés",
+      "description": "CherryStudio intègre des milliers d'assistants de différentes catégories pour vous aider à utiliser plus efficacement les grands modèles."
+    },
+    "knowledge_base": {
+      "title": "Base de connaissances multi-sources",
+      "description": "Qu'il s'agisse de fichiers locaux ou de pages Web, ils peuvent être utilisés comme sources de connaissances pour créer rapidement votre propre base de connaissances exclusive."
+    },
+    "backup": {
+      "title": "Méthodes de sauvegarde multiples",
+      "description": "Y compris la sauvegarde locale et la sauvegarde dans le cloud, permettant une commutation transparente entre plusieurs appareils, ce qui est plus pratique et plus sûr."
+    }
+  },
+  "project": {
+    "title": "À propos du projet",
+    "intro": {
+      "title": "Présentation du projet",
+      "description": "CherryStudio est un client IA multiplateforme qui prend en charge Windows, macOS, Linux et, à l'avenir, les appareils mobiles. Le projet a connu des centaines d'itérations depuis juillet 2024, dans le but de créer un client plus efficace, plus sûr et plus facile à utiliser, afin que davantage de personnes puissent profiter de la commodité apportée par l'IA."
+    },
+    "goal": {
+      "title": "L'objectif de CherryStudio",
+      "description": "CherryStudio se consacre à permettre aux utilisateurs de se concentrer sur la création ou de profiter de la commodité apportée par l'IA, sans que les novices soient découragés par des configurations complexes. Il suffit donc d'entrer une clé pour commencer. Nous fournissons également des manuels d'utilisation détaillés pour référence. Notre communauté est très active et peut rapidement aider à résoudre divers problèmes d'utilisation."
+    },
+    "contribution": {
+      "title": "Vous voulez contribuer au projet, que pouvez-vous faire ?",
+      "description": "Si vous aimez notre projet, vous pouvez simplement le soutenir en lui donnant une étoile sur <1>Github</1>. Si vous êtes un expert technique, nous vous invitons à devenir l'un de nos contributeurs. Bien sûr, vous pouvez également participer à la rédaction de la documentation, partager votre expérience d'utilisation ou répondre aux questions d'autres utilisateurs dans la communauté. Si vous avez des idées ou des suggestions, veuillez nous contacter via les problèmes GitHub ou la communauté officielle."
+    }
+  },
+  "community": {
+    "title": "Rejoignez la communauté",
+    "wechat_qr_alt": "Code QR du groupe WeChat",
+    "wechat_scan_prompt": "Scannez le code QR pour rejoindre le groupe WeChat",
+    "qq_group": "Groupe QQ",
+    "zsxq": "ZhiShiXingQiu (Q&R)"
+  },
+  "footer": {
+    "description": "CherryStudio est un client IA multiplateforme, qui s'efforce de permettre à davantage de personnes de profiter de la commodité apportée par l'IA.",
+    "cherry_studio": {
+      "title": "Cherry Studio",
+      "github": "Github",
+      "gitcode": "GitCode",
+      "docs": "Manuel d'utilisation",
+      "feedback": "Signaler un problème"
+    },
+    "friendly_links": {
+      "title": "Liens utiles"
+    },
+    "contact_us": {
+      "title": "Contactez-nous",
+      "wechat_qr_alt": "Code QR du compte officiel WeChat",
+      "wechat_official_account": "Compte officiel WeChat",
+      "contact_info": "Si vous rencontrez des problèmes d'utilisation, veuillez d'abord consulter la documentation, poser une question dans la communauté<0/> ou nous contacter par e-mail à <1>support@cherry-ai.com</1>."
+    },
+    "copyright": "Copyright © 2025 Shanghai Qianhui Technology Co., Ltd. <1>沪ICP备2021031071号-3</1>"
+  },
+  "statistics": {
+    "days_online": "Jours en ligne",
+    "contributors": "Contributeurs",
+    "stars": "Étoiles"
+  },
+  "sponsors": {
+    "title": "Cherry Studio intègre une variété de fournisseurs de services",
+    "subtitle": "Il prend également en charge la connexion à d'autres fournisseurs compatibles avec le format API d'OpenAI/Anthropic."
+  },
+  "download_page": {
+    "cloud_download": "Téléchargement Cloud",
+    "quark_drive": "Quark Drive",
+    "click_download": "Cliquez pour télécharger",
+    "loading_version": "Récupération des informations de version...",
+    "version_error": "Impossible d'obtenir les informations de version, veuillez télécharger temporairement via le lien cloud",
+    "published_at": "Heure de publication",
+    "current_system": "Système actuel",
+    "other_versions": "Télécharger d'autres versions ou via des liens alternatifs"
+  },
+  "enterprise_page": {
+    "hero": {
+      "title": "Cherry Studio Entreprise",
+      "subtitle": "Une plateforme de productivité et de gestion de l'IA conçue pour les équipes et les entreprises modernes",
+      "contact_us": "Contactez-nous",
+      "learn_more": "En savoir plus"
+    },
+    "features": {
+      "title": "Avantages clés",
+      "subtitle": "Fonctionnalités professionnelles de niveau entreprise pour aider à améliorer la productivité de l'équipe",
+      "model_management": {
+        "title": "Gestion unifiée des modèles",
+        "description": "Connectez et gérez de manière centralisée divers grands modèles cloud, prenez en charge le déploiement privé local, les employés peuvent l'utiliser sans configuration."
+      },
+      "knowledge_base": {
+        "title": "Base de connaissances de niveau entreprise",
+        "description": "Créez et gérez des bases de connaissances partagées par l'équipe, interagissez avec l'IA sur la base de connaissances unifiées pour améliorer la qualité des réponses."
+      },
+      "permission_control": {
+        "title": "Contrôle d'accès granulaire",
+        "description": "Back-end de gestion unifié, attribution d'autorisations basée sur les rôles, contrôle d'accès flexible aux ressources."
+      },
+      "private_deployment": {
+        "title": "Déploiement entièrement privé",
+        "description": "Prend en charge le déploiement sur les serveurs internes de l'entreprise ou dans un environnement cloud privé, les données sont contrôlées à 100% de manière privée."
+      },
+      "backend_service": {
+        "title": "Service back-end fiable",
+        "description": "Fournit des services d'API stables, des mécanismes de sauvegarde et de récupération des données de niveau entreprise pour garantir la continuité des activités."
+      },
+      "security_compliance": {
+        "title": "Garantie de sécurité et de conformité",
+        "description": "Répond aux exigences les plus strictes en matière de sécurité et de conformité des données, prend en charge les journaux d'audit pour garantir la traçabilité de l'utilisation des données."
+      }
+    },
+    "comparison": {
+      "title": "Comparaison des versions",
+      "subtitle": "Choisissez la solution la plus adaptée à votre équipe",
+      "table": {
+        "feature": "Fonctionnalité",
+        "community": "Version Communauté",
+        "enterprise": "Version Entreprise",
+        "license": "Licence open source",
+        "license_community": "Open source",
+        "license_enterprise": "Licence commerciale",
+        "cost": "Coût d'utilisation",
+        "cost_community": "Gratuit pour un usage personnel / Licence commerciale",
+        "cost_enterprise": "Paiement unique + frais de service en option",
+        "deployment": "Mode de déploiement",
+        "deployment_community": "Déploiement unique",
+        "deployment_enterprise": "Déploiement privé",
+        "features": "Fonctionnalités",
+        "features_community": "Fonctionnalités de base",
+        "features_enterprise": {
+          "model_management": "Gestion des modèles",
+          "employee_management": "Gestion des employés",
+          "knowledge_base": "Base de connaissances partagée",
+          "workflow": "Flux de travail Dify",
+          "permission": "Contrôle d'accès",
+          "backup": "Sauvegarde des données"
+        },
+        "support": "Support technique",
+        "support_community": "Support communautaire",
+        "support_enterprise": "Service de support dédié",
+        "system_support": "Systèmes pris en charge",
+        "system_community": "Windows 10+, macOS, Linux",
+        "system_enterprise": "Windows 7+, macOS, Linux"
+      }
+    },
+    "beta": {
+      "title": "Instructions pour le test bêta",
+      "description": "La version entreprise est actuellement en phase de test bêta, et nous optimisons continuellement ses fonctionnalités. Nous apprécions vos commentaires sur les problèmes ou suggestions !",
+      "demo": {
+        "title": "Environnement de démonstration",
+        "admin_portal": "Back-end administrateur :",
+        "account": "Compte :",
+        "password": "Mot de passe :"
+      },
+      "download": {
+        "title": "Télécharger le client",
+        "description": "Pour une expérience complète, veuillez télécharger le client de la version entreprise :",
+        "system_support": "Prise en charge des systèmes macOS et Windows",
+        "download_button": "Télécharger le client"
+      },
+      "manual": {
+        "title": "Manuel d'utilisation",
+        "description": "Merci de participer au test de la version entreprise de Cherry Studio. Nous fournissons un manuel d'utilisation détaillé pour vous aider à maîtriser rapidement toutes les fonctionnalités.",
+        "view_manual": "Consulter le manuel"
+      }
+    },
+    "support": {
+      "title": "Obtenir de l'aide",
+      "description": "Si vous êtes intéressé par la version entreprise de Cherry Studio, veuillez contacter notre équipe commerciale.",
+      "send_email": "Envoyer un e-mail",
+      "business_cooperation": "Coopération commerciale"
+    }
+  },
+  "contributors": {
+    "project_contributors": "Contributeurs du projet",
+    "doc_contributors": "Contributeurs de la documentation",
+    "contribution_stats": "Contribution : {{contributions}} commits ({{rate}}%)",
+    "partial": "(partiel)"
+  },
+  "star_history": {
+    "total_stars": "Total des étoiles",
+    "daily_stars": "Augmentation quotidienne des étoiles",
+    "cumulative_stars": "Étoiles cumulées",
+    "daily_increase": "Augmentation quotidienne",
+    "data_view": "Vue des données",
+    "close": "Fermer",
+    "refresh": "Actualiser",
+    "restore": "Restaurer",
+    "save_as_image": "Enregistrer en tant qu'image",
+    "year_suffix": "année",
+    "month_suffix": "mois",
+    "day_suffix": "jour"
+  },
+  "telegram": {
+    "channel_members": "Membres du canal :",
+    "current_online": "En ligne actuellement :"
+  },
+  "theme_page": {
+    "title": "Marché des thèmes",
+    "subtitle": "Découvrez et partagez des styles de thèmes pour Cherry Studio",
+    "preview_button": "Aperçu",
+    "search_placeholder": "Rechercher des thèmes... (prend en charge les #tags, @auteurs et mots-clés)",
+    "search_button": "Rechercher",
+    "search_help": "Aide à la recherche :",
+    "search_help_tips": {
+      "tag_search": "Utilisez #mot-clé pour rechercher du contenu avec ce tag",
+      "author_search": "Utilisez @nom_auteur pour rechercher par auteur spécifique",
+      "combined_search": "La recherche combinée est prise en charge, les requêtes avec # et @ sont séparées par des espaces"
+    },
+    "submit_theme": "Soumettre un thème",
+    "author_by": "Par :",
+    "tags": "Tags :",
+    "version": "Version",
+    "created": "Créé le",
+    "light_mode": "Clair",
+    "dark_mode": "Sombre",
+    "copy_code": "Copier le code",
+    "copy_cdn": "Copier le CDN",
+    "copied": "Copié",
+    "no_preview": "Aucun aperçu",
+    "example_image": "Image d'exemple",
+    "light_mode_preview": "Aperçu du mode clair",
+    "dark_mode_preview": "Aperçu du mode sombre",
+    "preview_example": "Exemple d'aperçu",
+    "view_example": "Voir l'exemple",
+    "loading": "Recherche en cours...",
+    "loading_more": "Chargement...",
+    "all_loaded": "Tous les thèmes ont été chargés",
+    "load_more": "Charger plus",
+    "clear_filters": "Effacer les filtres",
+    "clear_all_filters": "Effacer tous les filtres",
+    "no_results": "Aucun thème correspondant trouvé",
+    "loading_error": "Échec du chargement",
+    "refresh_page": "Actualiser la page",
+    "search_filter": {
+      "search_label": "Recherche :"
+    },
+    "notifications": {
+      "not_found_tag": "Aucun thème contenant ce tag n'a été trouvé",
+      "not_found_author": "Aucun thème de cet auteur n'a été trouvé",
+      "data_fetch_error": "Échec du chargement des données, veuillez réessayer plus tard"
+    },
+    "submit_modal": {
+      "title": "Soumettre un thème",
+      "name_label": "Nom du thème",
+      "name_placeholder": "Entrez le nom du thème",
+      "author_label": "Nom de l'auteur",
+      "author_placeholder": "Entrez le nom de l'auteur",
+      "author_required": "Veuillez entrer le nom de l'auteur",
+      "support_light_mode": "Supporte le mode clair",
+      "support_dark_mode": "Supporte le mode sombre",
+      "version_label": "Numéro de version",
+      "version_placeholder": "Par exemple : 1.0",
+      "version_hint": "Format : chiffres et points, ex. 1.0 ou 1.2.3",
+      "code_label": "Code CSS",
+      "code_placeholder": "Collez votre code CSS ici...",
+      "cdn_link_label": "Lien vers le fichier CSS (facultatif)",
+      "cdn_link_placeholder": "Entrez si vous fournissez un lien CDN public ou un lien de fichier",
+      "light_image_label": "Image d'aperçu du mode clair",
+      "dark_image_label": "Image d'aperçu du mode sombre",
+      "upload_image": "Cliquez pour télécharger une image",
+      "remove_image": "Supprimer l'image",
+      "image_size_error": "La taille de l'image ne peut pas dépasser 2 Mo",
+      "image_format_hint": "Formats pris en charge : JPG, PNG, GIF, WEBP, jusqu'à 2 Mo, rapport d'aspect recommandé 16:9, sera recadré si non respecté",
+      "preview_background_hint": "L'image d'aperçu doit inclure l'arrière-plan en dehors de la fenêtre, voir l'exemple :",
+      "tags_label": "Tags",
+      "tags_placeholder": "Entrez un tag et appuyez sur Entrée, séparez plusieurs tags par des virgules",
+      "tags_hint": "Les tags ne prennent pas en charge la ponctuation, uniquement les caractères chinois, les lettres et les chiffres",
+      "submit": "Soumettre",
+      "cancel": "Annuler",
+      "submitting": "Envoi en cours...",
+      "close": "Fermer",
+      "success_title": "Soumis avec succès !",
+      "success_message": "Votre thème a été soumis pour examen. Nous le traiterons dès que possible.",
+      "submit_error": "Échec de la soumission, veuillez réessayer",
+      "validation": {
+        "name_required": "Veuillez entrer le nom du thème",
+        "code_required": "Veuillez entrer le code CSS",
+        "light_image_required": "Veuillez télécharger une image d'aperçu pour le mode clair",
+        "dark_image_required": "Veuillez télécharger une image d'aperçu pour le mode sombre",
+        "file_type_error": "Veuillez télécharger un fichier image au format correct"
+      },
+      "version_invalid": "Format du numéro de version invalide"
+    }
+  }
+} 

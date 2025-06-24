@@ -1,4 +1,5 @@
 import { FC } from 'react'
+import { Trans, useTranslation } from 'react-i18next'
 
 import beifenIcon from '@/assets/images/icons/beifen.svg'
 import duihuaIcon from '@/assets/images/icons/duihua.svg'
@@ -8,6 +9,7 @@ import zhishikuIcon from '@/assets/images/icons/zhishiku.svg'
 import zhushouIcon from '@/assets/images/icons/zhushou.svg'
 
 const Features: FC = () => {
+  const { t } = useTranslation()
   return (
     <section
       className="services-section"
@@ -17,13 +19,15 @@ const Features: FC = () => {
       <div className="auto-container">
         {/* <!--Sec Title--> */}
         <div className="sec-title">
-          <h2 className="heading_title">主要功能介绍</h2>
+          <h2 className="heading_title">{t('features.title')}</h2>
           <div className="text">
-            以下仅为部分功能介绍，更多功能可以下载客户端体验，或在
-            <a href="https://docs.cherry-ai.com" target="_blank" rel="noopener noreferrer">
-              官方文档
-            </a>
-            中了解。
+            <Trans i18nKey="features.description">
+              以下仅为部分功能介绍，更多功能可以下载客户端体验，或在
+              <a href="https://docs.cherry-ai.com" target="_blank" rel="noopener noreferrer">
+                官方文档
+              </a>
+              中了解。
+            </Trans>
           </div>
         </div>
 
@@ -32,14 +36,15 @@ const Features: FC = () => {
           <div className="service-style-one col-md-4 col-sm-6 col-xs-12">
             <div className="inner-box wow fadeIn" data-wow-delay="0ms" data-wow-duration="1500ms">
               <div className="icon-box">
-                <img src={duihuaIcon} alt="对话" />
+                <img src={duihuaIcon} alt={t('features.conversation.title')} />
               </div>
               <h3>
-                <a href="https://docs.cherry-ai.com/cherrystudio/preview/chat">大模型对话</a>
+                <a href="https://docs.cherry-ai.com/cherrystudio/preview/chat">{t('features.conversation.title')}</a>
               </h3>
-              <div className="text">除了基础的AI对话，文档或图像对话，甚至是公式和HTML预览都能帮你完成。</div>
+              <div className="text">{t('features.conversation.description')}</div>
               <a href="https://docs.cherry-ai.com/cherrystudio/preview/chat" className="read-more one">
-                详细了解<span className="icon icon-38"></span>
+                {t('features.learn_more')}
+                <span className="icon icon-38"></span>
               </a>
             </div>
           </div>
@@ -48,14 +53,15 @@ const Features: FC = () => {
           <div className="service-style-one col-md-4 col-sm-6 col-xs-12">
             <div className="inner-box wow fadeIn" data-wow-delay="0ms" data-wow-duration="1500ms">
               <div className="icon-box">
-                <img src={huihuaIcon} alt="绘图" />
+                <img src={huihuaIcon} alt={t('features.drawing.title')} />
               </div>
               <h3>
-                <a href="https://docs.cherry-ai.com/cherrystudio/preview/drawing">AI绘图</a>
+                <a href="https://docs.cherry-ai.com/cherrystudio/preview/drawing">{t('features.drawing.title')}</a>
               </h3>
-              <div className="text">支持多种绘图模型，你可以尽情发挥你的想象让CherryStudio帮你完成。</div>
+              <div className="text">{t('features.drawing.description')}</div>
               <a href="https://docs.cherry-ai.com/cherrystudio/preview/drawing" className="read-more">
-                详细了解<span className="icon icon-38"></span>
+                {t('features.learn_more')}
+                <span className="icon icon-38"></span>
               </a>
             </div>
           </div>
@@ -64,14 +70,17 @@ const Features: FC = () => {
           <div className="service-style-one col-md-4 col-sm-6 col-xs-12">
             <div className="inner-box wow fadeIn" data-wow-delay="0ms" data-wow-duration="1500ms">
               <div className="icon-box">
-                <img src={fanyiIcon} alt="翻译" />
+                <img src={fanyiIcon} alt={t('features.translation.title')} />
               </div>
               <h3>
-                <a href="https://docs.cherry-ai.com/cherrystudio/preview/translation">AI翻译</a>
+                <a href="https://docs.cherry-ai.com/cherrystudio/preview/translation">
+                  {t('features.translation.title')}
+                </a>
               </h3>
-              <div className="text">无论是翻译页还是对话栏，CherryStudio都能快速翻译你输入的内容。</div>
+              <div className="text">{t('features.translation.description')}</div>
               <a href="https://docs.cherry-ai.com/cherrystudio/preview/translation" className="read-more">
-                详细了解<span className="icon icon-38"></span>
+                {t('features.learn_more')}
+                <span className="icon icon-38"></span>
               </a>
             </div>
           </div>
@@ -80,14 +89,15 @@ const Features: FC = () => {
           <div className="service-style-one col-md-4 col-sm-6 col-xs-12">
             <div className="inner-box wow fadeIn" data-wow-delay="0ms" data-wow-duration="1500ms">
               <div className="icon-box">
-                <img src={zhushouIcon} alt="助手" />
+                <img src={zhushouIcon} alt={t('features.assistants.title')} />
               </div>
               <h3>
-                <a href="https://docs.cherry-ai.com/cherrystudio/preview/agents">千余内置助手</a>
+                <a href="https://docs.cherry-ai.com/cherrystudio/preview/agents">{t('features.assistants.title')}</a>
               </h3>
-              <div className="text">CherryStudio内置了各种分类的千余助手，让你使用大模型更加高效。</div>
+              <div className="text">{t('features.assistants.description')}</div>
               <a href="https://docs.cherry-ai.com/cherrystudio/preview/agents" className="read-more">
-                详细了解<span className="icon icon-38"></span>
+                {t('features.learn_more')}
+                <span className="icon icon-38"></span>
               </a>
             </div>
           </div>
@@ -96,14 +106,17 @@ const Features: FC = () => {
           <div className="service-style-one col-md-4 col-sm-6 col-xs-12">
             <div className="inner-box wow fadeIn" data-wow-delay="0ms" data-wow-duration="1500ms">
               <div className="icon-box">
-                <img src={zhishikuIcon} alt="知识库" />
+                <img src={zhishikuIcon} alt={t('features.knowledge_base.title')} />
               </div>
               <h3>
-                <a href="https://docs.cherry-ai.com/advanced-basic/knowledge-base">多数据源知识库</a>
+                <a href="https://docs.cherry-ai.com/advanced-basic/knowledge-base">
+                  {t('features.knowledge_base.title')}
+                </a>
               </h3>
-              <div className="text">无论是本地文件还是网页，都能作为知识源快速构建你的专属知识库。</div>
+              <div className="text">{t('features.knowledge_base.description')}</div>
               <a href="https://docs.cherry-ai.com/advanced-basic/knowledge-base" className="read-more">
-                详细了解<span className="icon icon-38"></span>
+                {t('features.learn_more')}
+                <span className="icon icon-38"></span>
               </a>
             </div>
           </div>
@@ -112,14 +125,15 @@ const Features: FC = () => {
           <div className="service-style-one col-md-4 col-sm-6 col-xs-12">
             <div className="inner-box wow fadeIn" data-wow-delay="0ms" data-wow-duration="1500ms">
               <div className="icon-box">
-                <img src={beifenIcon} alt="备份" />
+                <img src={beifenIcon} alt={t('features.backup.title')} />
               </div>
               <h3>
-                <a href="https://docs.cherry-ai.com/cherrystudio/preview/settings/data">多种备份方式</a>
+                <a href="https://docs.cherry-ai.com/cherrystudio/preview/settings/data">{t('features.backup.title')}</a>
               </h3>
-              <div className="text">包括本地备份和云端备份，多个设备无忧切换，更便捷更安全。</div>
+              <div className="text">{t('features.backup.description')}</div>
               <a href="https://docs.cherry-ai.com/cherrystudio/preview/settings/data" className="read-more">
-                详细了解<span className="icon icon-38"></span>
+                {t('features.learn_more')}
+                <span className="icon icon-38"></span>
               </a>
             </div>
           </div>

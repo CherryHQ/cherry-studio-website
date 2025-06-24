@@ -1,6 +1,9 @@
 import { FC, memo, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 
 const StarHistory: FC = () => {
+  const { t } = useTranslation()
+
   useEffect(() => {
     const API_URL = 'https://data1.cherry-ai.com:48443/items/github_cherrystudio'
     let chart: any = null
@@ -71,11 +74,19 @@ const StarHistory: FC = () => {
           },
           formatter: function (params: any) {
             const date = new Date(params[0].value[0])
-            const dateStr = `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日`
+            const yearSuffix = t('star_history.year_suffix')
+            const monthSuffix = t('star_history.month_suffix')
+            const daySuffix = t('star_history.day_suffix')
+            const dateStr = yearSuffix
+              ? `${date.getFullYear()}${yearSuffix}${date.getMonth() + 1}${monthSuffix}${date.getDate()}${daySuffix}`
+              : `${date.getFullYear()}${monthSuffix}${date.getMonth() + 1}${monthSuffix}${date.getDate()}`
             let html = `<div style="font-weight:bold">${dateStr}</div>`
             params.forEach((param: any) => {
               const value = param.value[1]
-              const name = param.seriesName === '总 Star 数' ? '累计 Star 数' : '日增 Star 数'
+              const name =
+                param.seriesName === t('star_history.total_stars')
+                  ? t('star_history.cumulative_stars')
+                  : t('star_history.daily_increase')
               html += `<div style="color:${param.color}">${name}: ${value}</div>`
             })
             return html
@@ -92,20 +103,20 @@ const StarHistory: FC = () => {
             dataView: {
               show: true,
               readOnly: false,
-              lang: ['数据视图', '关闭', '刷新']
+              lang: [t('star_history.data_view'), t('star_history.close'), t('star_history.refresh')]
             },
             restore: {
               show: true,
-              title: '还原'
+              title: t('star_history.restore')
             },
             saveAsImage: {
               show: true,
-              title: '保存为图片'
+              title: t('star_history.save_as_image')
             }
           }
         },
         legend: {
-          data: ['总 Star 数', '日增 Star 数']
+          data: [t('star_history.total_stars'), t('star_history.daily_stars')]
         },
         xAxis: {
           type: 'time',
@@ -115,13 +126,17 @@ const StarHistory: FC = () => {
               const date = new Date(value)
               const month = date.getMonth() + 1
               const day = date.getDate()
+              const yearSuffix = t('star_history.year_suffix')
+              const monthSuffix = t('star_history.month_suffix')
+              const daySuffix = t('star_history.day_suffix')
+
               if (isMobile) {
-                return month + '/' + day
+                return yearSuffix ? `${month}${monthSuffix}${day}` : `${month}/${day}`
               }
               if (month === 1 && day === 1) {
-                return date.getFullYear() + '年'
+                return yearSuffix ? `${date.getFullYear()}${yearSuffix}` : `${date.getFullYear()}`
               }
-              return month + '月' + day + '日'
+              return yearSuffix ? `${month}${monthSuffix}${day}${daySuffix}` : `${month}/${day}`
             },
             fontSize: isMobile ? 10 : 12,
             rotate: 45,
@@ -132,7 +147,7 @@ const StarHistory: FC = () => {
         yAxis: [
           {
             type: 'value',
-            name: '总 Star 数',
+            name: t('star_history.total_stars'),
             position: 'left',
             axisLine: {
               show: true,
@@ -146,7 +161,7 @@ const StarHistory: FC = () => {
           },
           {
             type: 'value',
-            name: '日增 Star 数',
+            name: t('star_history.daily_stars'),
             position: 'right',
             axisLine: {
               show: true,
@@ -219,7 +234,7 @@ const StarHistory: FC = () => {
         ],
         series: [
           {
-            name: '总 Star 数',
+            name: t('star_history.total_stars'),
             type: 'line',
             smooth: true,
             data: starHistory.map((item: any) => [item.date, item.total_stars]),
@@ -241,7 +256,7 @@ const StarHistory: FC = () => {
             }
           },
           {
-            name: '日增 Star 数',
+            name: t('star_history.daily_stars'),
             type: 'bar',
             yAxisIndex: 1,
             data: starHistory.map((item: any) => [item.date, item.new_stars]),
@@ -316,20 +331,30 @@ const StarHistory: FC = () => {
       // 只显示指定数量的贡献者
       const displayContributors = sortedContributors.slice(0, showCount)
 
+      // 获取翻译文本
+      const projectContributorsText = t('contributors.project_contributors')
+      const partialText = t('contributors.partial')
+
       // 更新标题，仅当显示的数量小于总数时才显示"(部分)"
       const titleElement = document.querySelector('.contributors-section .heading_title')
       if (titleElement) {
         if (showCount < sortedContributors.length) {
-          titleElement.innerHTML = '项目贡献者<span class="contributor-partial">(部分)</span>'
+          titleElement.innerHTML = `${projectContributorsText}<span class="contributor-partial">${partialText}</span>`
         } else {
-          titleElement.innerHTML = '项目贡献者'
+          titleElement.innerHTML = projectContributorsText
         }
       }
 
       if (contributorsList) {
         contributorsList.innerHTML = displayContributors
-          .map(
-            (contributor: any) => `
+          .map((contributor: any) => {
+            // 为每个贡献者生成翻译文本
+            const contributionStats = t('contributors.contribution_stats', {
+              contributions: contributor.contributions,
+              rate: contributor.contribution_rate.toFixed(1)
+            })
+
+            return `
     <a href="${contributor.html_url}" target="_blank" class="contributor-item">
       <div class="contributor-avatar">
         <img src="${contributor.avatar_url}" alt="${contributor.login}">
@@ -337,12 +362,12 @@ const StarHistory: FC = () => {
       <div class="contributor-info">
         <div class="contributor-name">${contributor.login}</div>
         <div class="contributor-details">
-          贡献: ${contributor.contributions} commits (${contributor.contribution_rate.toFixed(1)}%)
+          ${contributionStats}
         </div>
       </div>
     </a>
   `
-          )
+          })
           .join('')
       }
     }
@@ -350,17 +375,28 @@ const StarHistory: FC = () => {
     function renderTelegramStats(data: any) {
       const telegramData = data.data.cherrystudio_data.telegram
       const titleSection = document.querySelector('.cta-section .section_heading')
+
+      // 检查是否已经存在 telegram-stats，如果存在则先移除
+      const existingStats = document.querySelector('.telegram-stats')
+      if (existingStats) {
+        existingStats.remove()
+      }
+
+      // 获取翻译文本
+      const channelMembersText = t('telegram.channel_members')
+      const currentOnlineText = t('telegram.current_online')
+
       const statsHtml = `
     <div class="telegram-stats">
       <div class="stats-item">
         <span>${telegramData.title}</span>
       </div>
       <div class="stats-item">
-        <span>频道成员：</span>
+        <span>${channelMembersText}</span>
         <span class="stats-number">${telegramData.members}</span>
       </div>
       <div class="stats-item">
-        <span>当前在线：</span>
+        <span>${currentOnlineText}</span>
         <span class="stats-number">${telegramData.online}</span>
       </div>
     </div>
@@ -434,7 +470,7 @@ const StarHistory: FC = () => {
     }
 
     fetchData()
-  }, [])
+  }, [t])
 
   return <div id="star-history-chart" className="star-history-chart"></div>
 }

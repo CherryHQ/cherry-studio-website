@@ -1,4 +1,5 @@
 import { FC } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { VersionData } from '@/hooks/useVersionData'
 
@@ -8,16 +9,21 @@ interface VersionInfoProps {
 }
 
 const VersionInfo: FC<VersionInfoProps> = ({ versionData, loading }) => {
+  const { t } = useTranslation()
   return (
     <div className="version-info">
       <h1 id="version-title">
         {loading
-          ? '正在获取版本信息...'
+          ? t('download_page.loading_version')
           : versionData
             ? `Cherry Studio ${versionData.version}`
-            : '无法获取版本信息，请暂时通过网盘链接下载'}
+            : t('download_page.version_error')}
       </h1>
-      {versionData && <p id="published-at">发布时间：{versionData.publishedAt}</p>}
+      {versionData && (
+        <p id="published-at">
+          {t('download_page.published_at')}：{versionData.publishedAt}
+        </p>
+      )}
     </div>
   )
 }

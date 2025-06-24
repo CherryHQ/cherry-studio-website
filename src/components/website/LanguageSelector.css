@@ -1,0 +1,113 @@
+.language-selector {
+  position: relative;
+  display: inline-block;
+}
+
+.language-selector-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background: white;
+  border: 1px solid #e1e5e9;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  transition: all 0.2s ease;
+  min-width: 80px;
+  justify-content: center;
+}
+
+.language-selector-button:hover {
+  border-color: #ea5e5d;
+  background: #f9fafb;
+}
+
+.language-flag {
+  font-size: 16px;
+}
+
+.language-code {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.language-arrow {
+  font-size: 10px;
+  transition: transform 0.2s ease;
+  color: #9ca3af;
+}
+
+.language-arrow.open {
+  transform: rotate(180deg);
+}
+
+.language-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 1000;
+  min-width: 160px;
+  background: white;
+  border: 1px solid #e1e5e9;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  padding: 6px 0;
+  margin-top: 4px;
+}
+
+.language-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 16px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: #374151;
+  transition: background-color 0.2s ease;
+  position: relative;
+}
+
+.language-option:hover {
+  background-color: #f3f4f6;
+}
+
+.language-option.active {
+  background-color: #fef2f2;
+  color: #ea5e5d;
+}
+
+.language-name {
+  flex: 1;
+  text-align: left;
+}
+
+.checkmark {
+  color: #ea5e5d;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+/* 移动端样式 */
+@media (max-width: 768px) {
+  .language-selector-button {
+    min-width: 70px;
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+  
+  .language-dropdown {
+    min-width: 140px;
+    right: -10px;
+  }
+  
+  .language-option {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+} 

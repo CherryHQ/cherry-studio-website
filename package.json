@@ -11,9 +11,12 @@
     "release": "yarn build && rsync -rvztl --delete ./dist/* tencent.vm:/opt/1panel/apps/openresty/openresty/www/sites/cherry-ai.com/index"
   },
   "dependencies": {
+    "i18next": "^25.2.1",
+    "i18next-browser-languagedetector": "^8.2.0",
     "lucide-react": "^0.522.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-i18next": "^15.5.3",
     "react-router-dom": "^7.1.5",
     "styled-components": "^6.1.14"
   },

@@ -1,7 +1,10 @@
 import { FC, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
 
 const Contributors: FC = () => {
+  const { t } = useTranslation()
+
   useEffect(() => {
     function renderDocContributors(data: any) {
       const contributorsList = document.getElementById('doc-contributors-list')
@@ -19,20 +22,30 @@ const Contributors: FC = () => {
       // 只显示指定数量的贡献者
       const displayContributors = sortedContributors.slice(0, showCount)
 
+      // 获取翻译文本
+      const docContributorsText = t('contributors.doc_contributors')
+      const partialText = t('contributors.partial')
+
       // 更新标题，仅当显示的数量小于总数时才显示"(部分)"
       const titleElement = document.querySelector('.doc-contributors-section .heading_title')
       if (titleElement) {
         if (showCount < sortedContributors.length) {
-          titleElement.innerHTML = '文档贡献者<span class="contributor-partial">(部分)</span>'
+          titleElement.innerHTML = `${docContributorsText}<span class="contributor-partial">${partialText}</span>`
         } else {
-          titleElement.innerHTML = '文档贡献者'
+          titleElement.innerHTML = docContributorsText
         }
       }
 
       if (contributorsList) {
         contributorsList.innerHTML = displayContributors
-          .map(
-            (contributor: any) => `
+          .map((contributor: any) => {
+            // 为每个贡献者生成翻译文本
+            const contributionStats = t('contributors.contribution_stats', {
+              contributions: contributor.contributions,
+              rate: contributor.contribution_rate.toFixed(1)
+            })
+
+            return `
               <a href="${contributor.html_url}" target="_blank" class="contributor-item">
                 <div class="contributor-avatar">
                   <img src="${contributor.avatar_url}" alt="${contributor.login}">
@@ -40,12 +53,12 @@ const Contributors: FC = () => {
                 <div class="contributor-info">
                   <div class="contributor-name">${contributor.login}</div>
                   <div class="contributor-details">
-                    贡献: ${contributor.contributions} commits (${contributor.contribution_rate.toFixed(1)}%)
+                    ${contributionStats}
                   </div>
                 </div>
               </a>
             `
-          )
+          })
           .join('')
       }
     }
@@ -62,7 +75,7 @@ const Contributors: FC = () => {
     }
 
     fetchDocContributors()
-  }, [])
+  }, [t])
 
   return (
     <Container>
@@ -70,7 +83,7 @@ const Contributors: FC = () => {
       <section className="contributors-section">
         <div className="auto-container">
           <div className="sec-title text-center">
-            <h2 className="heading_title">项目贡献者</h2>
+            <h2 className="heading_title">{t('contributors.project_contributors')}</h2>
           </div>
           <div className="contributors-wrapper">
             <div id="contributors-list" className="contributors-list"></div>
@@ -82,7 +95,7 @@ const Contributors: FC = () => {
       <section className="contributors-section doc-contributors-section">
         <div className="auto-container">
           <div className="sec-title text-center">
-            <h2 className="heading_title">文档贡献者</h2>
+            <h2 className="heading_title">{t('contributors.doc_contributors')}</h2>
           </div>
           <div className="contributors-wrapper">
             <div id="doc-contributors-list" className="contributors-list"></div>

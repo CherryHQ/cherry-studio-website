@@ -1,4 +1,5 @@
 import { FC, useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
@@ -6,6 +7,7 @@ import cherrysDashboard from '@/assets/images/resource/cherrys.webp'
 import { fetchNotice, NoticeResponse } from '@/assets/js/notice'
 
 const HomeBanner: FC = () => {
+  const { t } = useTranslation()
   const [notice, setNotice] = useState<NoticeResponse['data'] | null>(null)
 
   useEffect(() => {
@@ -50,41 +52,35 @@ const HomeBanner: FC = () => {
           <div className="banner-carousel owl-theme owl-carousel">
             <div className="content-box">
               <div className="inner">
-                <h4>您的全能AI助手</h4>
+                <h4>{t('banner.powerful_ai_assistant')}</h4>
                 <h1>
-                  Cherry Studio
+                  {t('banner.cherry_studio_title')}
                   <br />
-                  支持多服务商集成的AI对话客户端
+                  {t('banner.multi_provider_client')}
                 </h1>
-                <div className="text">
-                  CherryStudio目前支持市面上绝大多数服务商的集成,并且支持多服务商的模型统一调度。
-                </div>
+                <div className="text">{t('banner.multi_provider_description')}</div>
               </div>
             </div>
             <div className="content-box">
               <div className="inner">
-                <h4>保障隐私安全</h4>
+                <h4>{t('banner.privacy_security')}</h4>
                 <h1>
-                  数据本地储存
+                  {t('banner.local_storage_title')}
                   <br />
-                  无需担心隐私泄露
+                  {t('banner.no_privacy_leak')}
                 </h1>
-                <div className="text">
-                  您的所有使用数据都储存在本地，不会上传到任何第三方服务器，并且支持本地部署的模型调用。
-                </div>
+                <div className="text">{t('banner.local_storage_description')}</div>
               </div>
             </div>
             <div className="content-box">
               <div className="inner">
-                <h4>个性化知识库</h4>
+                <h4>{t('banner.personalized_knowledge_base')}</h4>
                 <h1>
-                  AI知识库集成
+                  {t('banner.knowledge_base_integration_title')}
                   <br />
-                  做您最贴心的助手
+                  {t('banner.your_personal_assistant')}
                 </h1>
-                <div className="text">
-                  CherryStudio目前已上线知识库功能，支持多种格式文件的导入和网页导入等来组件您的个性化知识库。
-                </div>
+                <div className="text">{t('banner.knowledge_base_description')}</div>
               </div>
             </div>
           </div>
@@ -102,7 +98,7 @@ const HomeBanner: FC = () => {
           )}
           <div className="link-box">
             <Link to="/download" className="btn-large">
-              下载客户端
+              {t('banner.download_client')}
             </Link>
           </div>
           <div
