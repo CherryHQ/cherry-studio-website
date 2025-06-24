@@ -448,6 +448,7 @@
 .enterprise-page .support-section {
   padding: 80px 0;
   background-color: #f8f9fa;
+  border-bottom: 1px solid #e5e7eb;
   position: relative;
   text-align: center;
 }
@@ -476,23 +477,57 @@
   justify-content: center;
 }
 
+.enterprise-page .contact-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.enterprise-page .contact-info .email {
+  font-size: 24px;
+  color: #0066ff;
+  font-weight: 500;
+  margin: 0;
+}
+
+.enterprise-page .contact-buttons {
+  display: flex;
+  gap: 16px;
+}
+
 .enterprise-page .contact-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 14px 36px;
-  background-color: #0066ff;
-  color: white;
-  text-decoration: none;
+  padding: 12px 24px;
   border-radius: 8px;
-  font-weight: 600;
+  font-weight: 500;
+  text-decoration: none;
   transition: all 0.3s ease;
-  min-width: 160px;
+  min-width: 140px;
 }
 
-.enterprise-page .contact-button:hover {
+.enterprise-page .contact-button:not(.secondary) {
+  background-color: #0066ff;
+  color: white;
+}
+
+.enterprise-page .contact-button:not(.secondary):hover {
   background-color: #0052cc;
   transform: translateY(-1px);
+}
+
+.enterprise-page .contact-button.secondary {
+  background-color: white;
+  color: #0066ff;
+  border: 1px solid #0066ff;
+}
+
+.enterprise-page .contact-button.secondary:hover {
+  background-color: rgba(0, 102, 255, 0.04);
+  border-color: #0052cc;
+  color: #0052cc;
 }
 
 /* Container */
@@ -554,5 +589,18 @@
   .enterprise-page .comparison-table th:first-child,
   .enterprise-page .comparison-table td:first-child {
     padding-left: 20px;
+  }
+
+  .enterprise-page .contact-info .email {
+    font-size: 20px;
+  }
+
+  .enterprise-page .contact-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .enterprise-page .contact-button {
+    width: 100%;
   }
 }

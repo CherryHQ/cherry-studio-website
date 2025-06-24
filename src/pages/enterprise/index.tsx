@@ -11,6 +11,7 @@ import {
   FileText
 } from 'lucide-react'
 import './index.css'
+import Footer from '@/components/website/Footer'
 
 const EnterprisePage: FC = () => {
   return (
@@ -116,7 +117,7 @@ const EnterprisePage: FC = () => {
                 <tr>
                   <td>使用费用</td>
                   <td>个人免费/商用授权</td>
-                  <td>买断/订阅制</td>
+                  <td>买断 + 可选服务费</td>
                 </tr>
                 <tr>
                   <td>部署方式</td>
@@ -137,7 +138,10 @@ const EnterprisePage: FC = () => {
                         <span className="check">✓</span> 员工管理
                       </li>
                       <li>
-                        <span className="check">✓</span> 知识库
+                        <span className="check">✓</span> 共享知识库
+                      </li>
+                      <li>
+                        <span className="check">✓</span> Dify 工作流
                       </li>
                       <li>
                         <span className="check">✓</span> 权限控制
@@ -154,6 +158,11 @@ const EnterprisePage: FC = () => {
                   <td>
                     <span className="check">✓</span> 专属支持服务
                   </td>
+                </tr>
+                <tr>
+                  <td>系统支持</td>
+                  <td>Windows 10+, macOS, Linux</td>
+                  <td>Windows 7+, macOS, Linux</td>
                 </tr>
               </tbody>
             </table>
@@ -243,12 +252,25 @@ const EnterprisePage: FC = () => {
             <p>如果您对 Cherry Studio 企业版感兴趣，欢迎联系我们的商务团队</p>
           </div>
           <div className="support-actions">
-            <a href="mailto:bd@cherry-ai.com" className="contact-button">
-              商务咨询
-            </a>
+            <div className="contact-info">
+              <p className="email">bd@cherry-ai.com</p>
+              <div className="contact-buttons">
+                <a href="mailto:bd@cherry-ai.com" className="contact-button">
+                  发送邮件
+                </a>
+                <a
+                  href="https://docs.cherry-ai.com/contact-us/questions"
+                  className="contact-button secondary"
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  商务合作
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   )
 }
