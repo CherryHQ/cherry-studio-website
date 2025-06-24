@@ -133,7 +133,22 @@
     "other_versions": "他のバージョンまたは代替ダウンロード",
     "changelog": "更新履歴",
     "version": "バージョン",
-    "other_downloads_title": "他のバージョンをダウンロード"
+    "other_downloads_title": "他のバージョンをダウンロード",
+    "download_with_arch": "ダウンロード ({{arch}})",
+    "download_apple": "ダウンロード (Apple Silicon)",
+    "download_intel": "ダウンロード (Intel)",
+    "download_now": "今すぐダウンロード",
+    "windows_package": "Windows インストーラーパッケージ",
+    "windows_standard": "Windows 標準",
+    "windows_portable": "Windows ポータブル",
+    "windows_standard_arm": "Windows 標準 (ARM)",
+    "windows_portable_arm": "Windows ポータブル (ARM)",
+    "macos_package": "macOS インストーラーパッケージ",
+    "macos_intel": "Intel チップ",
+    "macos_apple": "Apple チップ",
+    "linux_package": "Linux インストーラーパッケージ",
+    "linux_appimage": "AppImage バージョン",
+    "linux_appimage_arm": "AppImage バージョン (ARM)"
   },
   "enterprise_page": {
     "hero": {

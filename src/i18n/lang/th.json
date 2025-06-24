@@ -133,7 +133,22 @@
     "other_versions": "ดาวน์โหลดเวอร์ชันอื่นหรือผ่านลิงก์สำรอง",
     "changelog": "บันทึกการเปลี่ยนแปลง",
     "version": "เวอร์ชัน",
-    "other_downloads_title": "ดาวน์โหลดเวอร์ชันอื่น"
+    "other_downloads_title": "ดาวน์โหลดเวอร์ชันอื่นๆ",
+    "download_with_arch": "ดาวน์โหลด ({{arch}})",
+    "download_apple": "ดาวน์โหลด (Apple Silicon)",
+    "download_intel": "ดาวน์โหลด (Intel)",
+    "download_now": "ดาวน์โหลดทันที",
+    "windows_package": "แพ็คเกจติดตั้ง Windows",
+    "windows_standard": "Windows Standard",
+    "windows_portable": "Windows Portable",
+    "windows_standard_arm": "Windows Standard (ARM)",
+    "windows_portable_arm": "Windows Portable (ARM)",
+    "macos_package": "แพ็คเกจติดตั้ง macOS",
+    "macos_intel": "ชิป Intel",
+    "macos_apple": "ชิป Apple",
+    "linux_package": "แพ็คเกจติดตั้ง Linux",
+    "linux_appimage": "เวอร์ชัน AppImage",
+    "linux_appimage_arm": "เวอร์ชัน AppImage (ARM)"
   },
   "enterprise_page": {
     "hero": {

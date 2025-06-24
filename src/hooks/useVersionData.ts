@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { getSystemInfo, SystemInfo } from '../utils/systemDetection'
 
@@ -33,6 +34,7 @@ export interface DownloadUrls {
 }
 
 export function useVersionData() {
+  const { t } = useTranslation()
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [versionData, setVersionData] = useState<VersionData | null>(null)
@@ -57,57 +59,57 @@ export function useVersionData() {
 
         const downloadUrls: DownloadUrls = {
           windows: {
-            title: 'Windows系统安装包',
+            title: t('download_page.windows_package'),
             items: [
               {
                 name: `Cherry-Studio-${cleanVersion}-x64-setup.exe`,
                 url: `https://gitcode.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-x64-setup.signed.exe`,
-                desc: 'Windows 标准版'
+                desc: t('download_page.windows_standard')
               },
               {
                 name: `Cherry-Studio-${cleanVersion}-x64-portable.exe`,
                 url: `https://gitcode.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-x64-portable.signed.exe`,
-                desc: 'Windows 便携版'
+                desc: t('download_page.windows_portable')
               },
               {
                 name: `Cherry-Studio-${cleanVersion}-arm64-setup.exe`,
                 url: `https://gitcode.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-arm64-setup.signed.exe`,
-                desc: 'Windows 标准版 (ARM 版)'
+                desc: t('download_page.windows_standard_arm')
               },
               {
                 name: `Cherry-Studio-${cleanVersion}-arm64-portable.exe`,
                 url: `https://gitcode.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-arm64-portable.signed.exe`,
-                desc: 'Windows 便携版 (ARM 版)'
+                desc: t('download_page.windows_portable_arm')
               }
             ]
           },
           macos: {
-            title: 'MacOS系统安装包',
+            title: t('download_page.macos_package'),
             items: [
               {
                 name: `Cherry-Studio-${cleanVersion}-x64.dmg`,
                 url: `https://gitcode.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-x64.dmg`,
-                desc: 'Intel 芯片'
+                desc: t('download_page.macos_intel')
               },
               {
                 name: `Cherry-Studio-${cleanVersion}-arm64.dmg`,
                 url: `https://gitcode.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-arm64.dmg`,
-                desc: 'Apple 芯片'
+                desc: t('download_page.macos_apple')
               }
             ]
           },
           linux: {
-            title: 'Linux 系统安装包',
+            title: t('download_page.linux_package'),
             items: [
               {
                 name: `Cherry-Studio-${cleanVersion}-x86_64.AppImage`,
                 url: `https://gitcode.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-x86_64.AppImage`,
-                desc: 'AppImage 版本'
+                desc: t('download_page.linux_appimage')
               },
               {
                 name: `Cherry-Studio-${cleanVersion}-arm64.AppImage`,
                 url: `https://gitcode.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-arm64.AppImage`,
-                desc: 'AppImage 版本 (ARM 版)'
+                desc: t('download_page.linux_appimage_arm')
               }
             ]
           }
@@ -124,7 +126,7 @@ export function useVersionData() {
     }
 
     fetchVersionData()
-  }, [])
+  }, [t])
 
   return { loading, error, versionData, systemInfo, downloadUrls }
 }

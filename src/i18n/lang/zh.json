@@ -133,7 +133,22 @@
     "other_versions": "其他版本或备用线路下载",
     "changelog": "更新日志",
     "version": "版本",
-    "other_downloads_title": "其他版本下载"
+    "other_downloads_title": "其他版本下载",
+    "download_with_arch": "立即下载 ({{arch}})",
+    "download_apple": "下载 (Apple 芯片)",
+    "download_intel": "下载 (Intel 芯片)",
+    "download_now": "立即下载",
+    "windows_package": "Windows系统安装包",
+    "windows_standard": "Windows 标准版",
+    "windows_portable": "Windows 便携版",
+    "windows_standard_arm": "Windows 标准版 (ARM 版)",
+    "windows_portable_arm": "Windows 便携版 (ARM 版)",
+    "macos_package": "MacOS系统安装包",
+    "macos_intel": "Intel 芯片",
+    "macos_apple": "Apple 芯片",
+    "linux_package": "Linux 系统安装包",
+    "linux_appimage": "AppImage 版本",
+    "linux_appimage_arm": "AppImage 版本 (ARM 版)"
   },
   "enterprise_page": {
     "hero": {

@@ -3,7 +3,6 @@ export interface SystemInfo {
   url: string
   type: string
   arch: string
-  text: string
 }
 
 export function isMobileDevice(): boolean {
@@ -26,15 +25,13 @@ export function getSystemInfo(version: string): SystemInfo[] | null {
         name: `Cherry-Studio-${cleanVersion}-x64-setup.exe`,
         url: `https://gitcode.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-x64-setup.signed.exe`,
         type: 'Windows',
-        arch: 'x64',
-        text: '立即下载(x64)'
+        arch: 'x64'
       },
       {
         name: `Cherry-Studio-${cleanVersion}-arm64-setup.exe`,
         url: `https://gitcode.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-arm64-setup.signed.exe`,
         type: 'Windows',
-        arch: 'arm64',
-        text: '立即下载(ARM64)'
+        arch: 'arm64'
       }
     ]
   }
@@ -46,15 +43,13 @@ export function getSystemInfo(version: string): SystemInfo[] | null {
         name: `Cherry-Studio-${cleanVersion}-arm64.dmg`,
         url: `https://gitcode.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-arm64.dmg`,
         type: `macOS (M芯片)`,
-        arch: 'arm64',
-        text: '下载（Apple 芯片）'
+        arch: 'arm64'
       },
       {
         name: `Cherry-Studio-${cleanVersion}-x64.dmg`,
         url: `https://gitcode.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-x64.dmg`,
         type: `macOS (Intel芯片)`,
-        arch: 'x64',
-        text: '下载（Intel 芯片）'
+        arch: 'x64'
       }
     ]
   }
@@ -66,8 +61,7 @@ export function getSystemInfo(version: string): SystemInfo[] | null {
         name: `Cherry-Studio-${cleanVersion}-x86_64.AppImage`,
         url: `https://gitcode.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-x86_64.AppImage`,
         type: 'Linux',
-        arch: 'x86_64',
-        text: '立即下载'
+        arch: 'x86_64'
       }
     ]
   }

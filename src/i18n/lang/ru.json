@@ -133,7 +133,22 @@
     "other_versions": "Скачать другие версии или по альтернативным ссылкам",
     "changelog": "Журнал изменений",
     "version": "Версия",
-    "other_downloads_title": "Скачать другие версии"
+    "other_downloads_title": "Загрузка других версий",
+    "download_with_arch": "Скачать ({{arch}})",
+    "download_apple": "Скачать (Apple Silicon)",
+    "download_intel": "Скачать (Intel)",
+    "download_now": "Скачать сейчас",
+    "windows_package": "Установочные пакеты Windows",
+    "windows_standard": "Windows стандартная",
+    "windows_portable": "Windows портативная",
+    "windows_standard_arm": "Windows стандартная (ARM)",
+    "windows_portable_arm": "Windows портативная (ARM)",
+    "macos_package": "Установочные пакеты macOS",
+    "macos_intel": "Чип Intel",
+    "macos_apple": "Чип Apple",
+    "linux_package": "Установочные пакеты Linux",
+    "linux_appimage": "Версия AppImage",
+    "linux_appimage_arm": "Версия AppImage (ARM)"
   },
   "enterprise_page": {
     "hero": {

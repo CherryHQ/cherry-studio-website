@@ -10,6 +10,21 @@ interface DownloadButtonsProps {
 
 const DownloadButtons: FC<DownloadButtonsProps> = ({ systemInfo, onOtherVersionsClick }) => {
   const { t } = useTranslation()
+
+  const getButtonText = (item: SystemInfo) => {
+    const platform = item.type.toLowerCase()
+    if (platform.includes('windows')) {
+      return t('download_page.download_with_arch', { arch: item.arch.toUpperCase() })
+    }
+    if (platform.includes('macos')) {
+      if (item.arch === 'arm64') {
+        return t('download_page.download_apple')
+      }
+      return t('download_page.download_intel')
+    }
+    return t('download_page.download_now')
+  }
+
   return (
     <div className="download-buttons">
       <div className="system-info">
@@ -28,7 +43,7 @@ const DownloadButtons: FC<DownloadButtonsProps> = ({ systemInfo, onOtherVersions
               className="theme-btn"
               type="button"
               onClick={() => (window.location.href = item.url)}>
-              {item.text}
+              {getButtonText(item)}
             </button>
           ))}
 

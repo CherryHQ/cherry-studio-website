@@ -1,18 +1,20 @@
 import { FC } from 'react'
-import { useTranslation } from 'react-i18next'
 import {
-  KeyRound,
+  AlertTriangle,
   BookOpen,
-  Users,
   Building2,
+  Download,
+  FileText,
+  KeyRound,
   RefreshCw,
   ShieldCheck,
-  AlertTriangle,
-  Download,
-  FileText
+  Users
 } from 'lucide-react'
-import './index.css'
+import { useTranslation } from 'react-i18next'
+
 import Footer from '@/components/website/Footer'
+
+import './index.css'
 
 const EnterprisePage: FC = () => {
   const { t } = useTranslation()

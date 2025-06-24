@@ -136,7 +136,22 @@
     "other_versions": "Other Versions or Alternative Download",
     "changelog": "Changelog",
     "version": "Version",
-    "other_downloads_title": "Other Versions Download"
+    "other_downloads_title": "Other Versions Download",
+    "download_with_arch": "Download ({{arch}})",
+    "download_apple": "Download (Apple Silicon)",
+    "download_intel": "Download (Intel)",
+    "download_now": "Download Now",
+    "windows_package": "Windows Installer Packages",
+    "windows_standard": "Windows Standard",
+    "windows_portable": "Windows Portable",
+    "windows_standard_arm": "Windows Standard (ARM)",
+    "windows_portable_arm": "Windows Portable (ARM)",
+    "macos_package": "macOS Installer Packages",
+    "macos_intel": "Intel Chip",
+    "macos_apple": "Apple Chip",
+    "linux_package": "Linux Installer Packages",
+    "linux_appimage": "AppImage Version",
+    "linux_appimage_arm": "AppImage Version (ARM)"
   },
   "enterprise_page": {
     "hero": {

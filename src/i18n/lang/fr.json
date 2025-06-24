@@ -133,7 +133,22 @@
     "other_versions": "Autres versions ou téléchargement alternatif",
     "changelog": "Journal des modifications",
     "version": "Version",
-    "other_downloads_title": "Télécharger d'autres versions"
+    "other_downloads_title": "Autres téléchargements de versions",
+    "download_with_arch": "Télécharger ({{arch}})",
+    "download_apple": "Télécharger (Apple Silicon)",
+    "download_intel": "Télécharger (Intel)",
+    "download_now": "Télécharger maintenant",
+    "windows_package": "Packages d'installation Windows",
+    "windows_standard": "Windows Standard",
+    "windows_portable": "Windows Portable",
+    "windows_standard_arm": "Windows Standard (ARM)",
+    "windows_portable_arm": "Windows Portable (ARM)",
+    "macos_package": "Packages d'installation macOS",
+    "macos_intel": "Puce Intel",
+    "macos_apple": "Puce Apple",
+    "linux_package": "Packages d'installation Linux",
+    "linux_appimage": "Version AppImage",
+    "linux_appimage_arm": "Version AppImage (ARM)"
   },
   "enterprise_page": {
     "hero": {
