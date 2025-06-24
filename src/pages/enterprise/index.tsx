@@ -111,7 +111,7 @@ const EnterprisePage: FC = () => {
                     <span className="check">✓</span> 开源
                   </td>
                   <td>
-                    <span className="cross">×</span> 商业授权
+                    <span className="cross">◎</span> 商业授权
                   </td>
                 </tr>
                 <tr>
