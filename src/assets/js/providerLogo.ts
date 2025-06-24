@@ -30,6 +30,7 @@ import xaiLogo from '../images/provider_logo/xai.svg'
 import zerooneLogo from '../images/provider_logo/zeroone.svg'
 import zhipuLogo from '../images/provider_logo/zhipu-color.svg'
 import modelscopeLogo from '../images/provider_logo/modelscope.webp'
+import ai302Logo from '../images/provider_logo/302ai.svg'
 
 interface LogoInfo {
   src: string
@@ -58,7 +59,7 @@ export default class ProviderLogo {
         { src: modelscopeLogo, url: 'https://www.modelscope.cn/', name: 'ModelScope' },
         { src: ollamaLogo, url: 'https://ollama.ai/', name: 'Ollama' },
         { src: openaiLogo, url: 'https://openai.com/', name: 'OpenAI' },
-        { src: giteeaiLogo, url: 'https://ai.gitee.com/', name: 'Gitee AI' },
+        { src: ai302Logo, url: 'https://302.ai/', name: '302.AI' },
         { src: alayaLogo, url: 'https://www.alayanew.com/', name: 'Alaya' },
         { src: baiducloudLogo, url: 'https://cloud.baidu.com/', name: 'Baidu Cloud' },
         { src: bytedanceLogo, url: 'https://www.bytedance.com/', name: 'ByteDance' },
@@ -82,7 +83,8 @@ export default class ProviderLogo {
         { src: togetherLogo, url: 'https://www.together.ai/', name: 'Together' },
         { src: xaiLogo, url: 'https://x.ai/', name: 'xAI' },
         { src: zerooneLogo, url: 'https://01.ai/', name: '01.AI' },
-        { src: zhipuLogo, url: 'https://www.zhipuai.cn/', name: 'Zhipu AI' }
+        { src: zhipuLogo, url: 'https://www.zhipuai.cn/', name: 'Zhipu AI' },
+        { src: giteeaiLogo, url: 'https://ai.gitee.com/', name: 'Gitee AI' }
       ]
 
       if (this.logos.length > 0) {
