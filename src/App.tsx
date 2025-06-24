@@ -6,6 +6,7 @@ import SimpleHeader from './components/website/SimpleHeader'
 import DownloadPage from './pages/download'
 import HomePage from './pages/home'
 import ThemePage from './pages/theme'
+import EnterprisePage from './pages/enterprise'
 
 function App() {
   useEffect(() => {
@@ -19,6 +20,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/download" element={<DownloadPage />} />
         <Route path="/theme" element={<ThemePage />} />
+        <Route path="/enterprise" element={<EnterprisePage />} />
       </Routes>
     </BrowserRouter>
   )

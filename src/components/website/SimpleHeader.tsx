@@ -40,6 +40,9 @@ const SimpleHeader: React.FC = () => {
                   <li className={location.pathname === '/download' ? 'current' : ''}>
                     <Link to="/download">下载</Link>
                   </li>
+                  <li className={location.pathname === '/enterprise' ? 'current' : ''}>
+                    <Link to="/enterprise">企业版</Link>
+                  </li>
                   <li className={location.pathname === '/theme' ? 'current' : ''}>
                     <Link to="/theme">主题</Link>
                   </li>
@@ -69,7 +72,7 @@ const SimpleHeader: React.FC = () => {
                     </ul>
                   </li>
                   <li>
-                    <a href="https://docs.cherry-ai.com/contact-us/questions">联系我们</a>
+                    <a href="https://docs.cherry-ai.com/contact-us/questions">联系</a>
                   </li>
                 </ul>
               </nav>
