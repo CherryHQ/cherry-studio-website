@@ -651,9 +651,9 @@ img {
 }
 
 .logo-box img {
-  height: 63px;
-  min-width: 63px;
-  width: auto;
+  width: 104px;
+  height: 35px;
+  min-width: 104px;
   object-fit: contain;
   opacity: 0.85;
   transition: all 0.3s ease;

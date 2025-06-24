@@ -26,7 +26,7 @@ const SimpleHeader: React.FC = () => {
             <div className="logo-box">
               <div className="logo">
                 <Link to="/">
-                  <img src={cherryLogo} alt="Cherry Studio" />
+                  <img src={cherryLogo} alt="Cherry Studio" className="logo-img" />
                 </Link>
               </div>
             </div>

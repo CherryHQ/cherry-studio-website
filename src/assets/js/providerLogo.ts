@@ -1,6 +1,4 @@
 // Import all logos
-import ai360Logo from '../images/provider_logo/ai360-color.svg'
-import aimassLogo from '../images/provider_logo/aimass-color.svg'
 import alayaLogo from '../images/provider_logo/alaya.png'
 import anthropicLogo from '../images/provider_logo/anthropic.svg'
 import azureLogo from '../images/provider_logo/azure-color.svg'
@@ -31,11 +29,18 @@ import togetherLogo from '../images/provider_logo/together-color.svg'
 import xaiLogo from '../images/provider_logo/xai.svg'
 import zerooneLogo from '../images/provider_logo/zeroone.svg'
 import zhipuLogo from '../images/provider_logo/zhipu-color.svg'
+import modelscopeLogo from '../images/provider_logo/modelscope.webp'
+
+interface LogoInfo {
+  src: string
+  url: string
+  name: string
+}
 
 export default class ProviderLogo {
   container: HTMLElement
   speed: number
-  logos: string[]
+  logos: LogoInfo[]
 
   constructor(containerId: string, speed = 1) {
     this.container = document.getElementById(containerId) as HTMLElement
@@ -47,38 +52,37 @@ export default class ProviderLogo {
   async init() {
     try {
       this.logos = [
-        anthropicLogo,
-        deepseekLogo,
-        azureLogo,
-        ollamaLogo,
-        openaiLogo,
-        giteeaiLogo,
-        alayaLogo,
-        baiducloudLogo,
-        bytedanceLogo,
-        githubLogo,
-        googleLogo,
-        groqLogo,
-        higressLogo,
-        huggingfaceLogo,
-        hunyuanLogo,
-        baichuanLogo,
-        metaLogo,
-        minimaxLogo,
-        mistralLogo,
-        moonshotLogo,
-        nvidiaLogo,
-        openrouterLogo,
-        qwenLogo,
-        siliconcloudLogo,
-        sparkLogo,
-        stepfunLogo,
-        togetherLogo,
-        xaiLogo,
-        zerooneLogo,
-        zhipuLogo,
-        ai360Logo,
-        aimassLogo
+        { src: anthropicLogo, url: 'https://www.anthropic.com/', name: 'Anthropic' },
+        { src: deepseekLogo, url: 'https://www.deepseek.com/', name: 'Deepseek' },
+        { src: azureLogo, url: 'https://azure.microsoft.com/', name: 'Azure' },
+        { src: modelscopeLogo, url: 'https://www.modelscope.cn/', name: 'ModelScope' },
+        { src: ollamaLogo, url: 'https://ollama.ai/', name: 'Ollama' },
+        { src: openaiLogo, url: 'https://openai.com/', name: 'OpenAI' },
+        { src: giteeaiLogo, url: 'https://ai.gitee.com/', name: 'Gitee AI' },
+        { src: alayaLogo, url: 'https://www.alayanew.com/', name: 'Alaya' },
+        { src: baiducloudLogo, url: 'https://cloud.baidu.com/', name: 'Baidu Cloud' },
+        { src: bytedanceLogo, url: 'https://www.bytedance.com/', name: 'ByteDance' },
+        { src: githubLogo, url: 'https://github.com/', name: 'GitHub' },
+        { src: googleLogo, url: 'https://ai.google/', name: 'Google' },
+        { src: groqLogo, url: 'https://groq.com/', name: 'Groq' },
+        { src: higressLogo, url: 'https://higress.cn/', name: 'Higress' },
+        { src: huggingfaceLogo, url: 'https://huggingface.co/', name: 'Hugging Face' },
+        { src: hunyuanLogo, url: 'https://hunyuan.tencent.com/', name: 'Hunyuan' },
+        { src: baichuanLogo, url: 'https://www.baichuan-ai.com/', name: 'Baichuan' },
+        { src: metaLogo, url: 'https://ai.meta.com/', name: 'Meta' },
+        { src: minimaxLogo, url: 'https://www.minimaxi.com/', name: 'MiniMax' },
+        { src: mistralLogo, url: 'https://mistral.ai/', name: 'Mistral AI' },
+        { src: moonshotLogo, url: 'https://www.moonshot.cn/', name: 'Moonshot' },
+        { src: nvidiaLogo, url: 'https://www.nvidia.com/', name: 'NVIDIA' },
+        { src: openrouterLogo, url: 'https://openrouter.ai/', name: 'OpenRouter' },
+        { src: qwenLogo, url: 'https://qianwen.aliyun.com/', name: 'Qwen' },
+        { src: siliconcloudLogo, url: 'https://siliconflow.cn/', name: 'Silicon Cloud' },
+        { src: sparkLogo, url: 'https://xinghuo.xfyun.cn/', name: 'Spark' },
+        { src: stepfunLogo, url: 'https://stepfun.ai/', name: 'Stepfun' },
+        { src: togetherLogo, url: 'https://www.together.ai/', name: 'Together' },
+        { src: xaiLogo, url: 'https://x.ai/', name: 'xAI' },
+        { src: zerooneLogo, url: 'https://01.ai/', name: '01.AI' },
+        { src: zhipuLogo, url: 'https://www.zhipuai.cn/', name: 'Zhipu AI' }
       ]
 
       if (this.logos.length > 0) {
@@ -100,25 +104,31 @@ export default class ProviderLogo {
     track.className = 'logo-track'
 
     // 创建足够多的副本以确保滚动流畅
-    const itemWidth = 380 // logo项的估计宽度(包含padding)
+    const itemWidth = 160 // logo项的宽度
     const containerWidth = this.container.offsetWidth
-    const copiesNeeded = Math.ceil((containerWidth * 1) / (itemWidth * this.logos.length))
+    const copiesNeeded = Math.ceil((containerWidth * 2) / (itemWidth * this.logos.length)) // 增加复制次数确保流畅滚动
 
     for (let i = 0; i < copiesNeeded; i++) {
       this.logos.forEach((logo) => {
         const logoBox = document.createElement('div')
         logoBox.className = 'logo-box'
 
+        const link = document.createElement('a')
+        link.href = logo.url
+        link.target = '_blank'
+        link.rel = 'noopener noreferrer'
+
         const img = document.createElement('img')
-        img.src = logo
-        img.alt = 'Provider Logo'
+        img.src = logo.src
+        img.alt = `${logo.name} Logo`
         // 添加加载错误处理
         img.onerror = () => {
-          console.log(`Failed to load: ${logo}`)
+          console.log(`Failed to load: ${logo.src}`)
           logoBox.style.display = 'none'
         }
 
-        logoBox.appendChild(img)
+        link.appendChild(img)
+        logoBox.appendChild(link)
         track.appendChild(logoBox)
       })
     }
@@ -135,8 +145,38 @@ export default class ProviderLogo {
       .logo-track {
         display: flex;
         align-items: center;
-        animation: scroll ${60 / this.speed}s linear infinite;
+        animation: scroll ${30 / this.speed}s linear infinite;
         width: fit-content;
+      }
+
+      .logo-box {
+        padding: 0 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 160px;
+        height: 80px;
+      }
+
+      .logo-box a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.3s ease;
+      }
+
+      .logo-box a:hover {
+        transform: scale(1.1);
+      }
+
+      .logo-box img {
+        max-width: 120px;
+        max-height: 60px;
+        width: auto;
+        height: auto;
+        object-fit: contain;
       }
     `
 
@@ -149,7 +189,7 @@ export default class ProviderLogo {
       track.addEventListener('animationend', () => {
         track.style.animation = 'none'
         void track.offsetHeight
-        track.style.animation = `scroll ${30 / this.speed}s linear infinite`
+        track.style.animation = `scroll ${15 / this.speed}s linear infinite`
       })
     }
   }

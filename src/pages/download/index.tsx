@@ -35,10 +35,8 @@ const DownloadPage: FC = () => {
       <section className="download-section" style={{ marginTop: 50 }}>
         <div className="auto-container">
           <VersionInfo versionData={versionData} loading={loading} />
-
           {/* Main download buttons */}
           <DownloadButtons systemInfo={systemInfo} onOtherVersionsClick={scrollToOtherDownloads} />
-
           {/* Cloud downloads */}
           <div className="cloud-downloads">
             <h2 className="cloud-download-title">网盘下载</h2>
@@ -51,17 +49,14 @@ const DownloadPage: FC = () => {
               </li>
             </ul>
           </div>
-
-          {/* Changelog */}
-          <Changelog versionData={versionData} />
-
           {/* Other downloads */}
           <div ref={otherDownloadsRef}>
             <DownloadList downloadUrls={downloadUrls} assets={versionData?.assets || []} />
           </div>
+          {/* Changelog */}
+          <Changelog versionData={versionData} />
         </div>
       </section>
-
       <Footer />
     </div>
   )
