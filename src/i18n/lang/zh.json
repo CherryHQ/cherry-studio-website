@@ -1,9 +1,9 @@
 {
   "page_title": {
-    "home": "Cherry Studio 官方网站 - 全能的AI助手",
-    "download": "下载 Cherry Studio - 多平台AI客户端",
-    "enterprise": "Cherry Studio 企业版 - 企业级AI解决方案",
-    "theme": "Cherry Studio 主题库 - 美化你的AI助手"
+    "home": "Cherry Studio 官方网站 - 全能的 AI 助手",
+    "download": "下载 Cherry Studio - 多平台 AI 客户端",
+    "enterprise": "Cherry Studio 企业版 - 企业级 AI 解决方案",
+    "theme": "Cherry Studio 主题库 - 美化你的 AI 助手"
   },
   "page_description": {
     "home": "Cherry Studio AI 是一款强大的多模型 AI 助手，支持 iOS、macOS 和 Windows 平台。快速切换多个先进的 LLM 模型，提升工作学习效率。",
@@ -39,18 +39,18 @@
   "feedback": "问题&反馈",
   "contact": "联系",
   "banner": {
-    "powerful_ai_assistant": "您的全能AI助手",
+    "powerful_ai_assistant": "您的全能 AI 助手",
     "cherry_studio_title": "Cherry Studio",
-    "multi_provider_client": "支持多服务商集成的AI对话客户端",
-    "multi_provider_description": "CherryStudio目前支持市面上绝大多数服务商的集成,并且支持多服务商的模型统一调度。",
+    "multi_provider_client": "支持多服务商集成的 AI 对话客户端",
+    "multi_provider_description": "Cherry Studio 目前支持市面上绝大多数服务商的集成,并且支持多服务商的模型统一调度。",
     "privacy_security": "保障隐私安全",
     "local_storage_title": "数据本地储存",
     "no_privacy_leak": "无需担心隐私泄露",
     "local_storage_description": "您的所有使用数据都储存在本地，不会上传到任何第三方服务器，并且支持本地部署的模型调用。",
     "personalized_knowledge_base": "个性化知识库",
-    "knowledge_base_integration_title": "AI知识库集成",
+    "knowledge_base_integration_title": "AI 知识库集成",
     "your_personal_assistant": "做您最贴心的助手",
-    "knowledge_base_description": "CherryStudio目前已上线知识库功能，支持多种格式文件的导入和网页导入等来组件您的个性化知识库。",
+    "knowledge_base_description": "Cherry Studio 目前已上线知识库功能，支持多种格式文件的导入和网页导入等来组件您的个性化知识库。",
     "download_client": "下载客户端"
   },
   "features": {
@@ -59,19 +59,19 @@
     "learn_more": "详细了解",
     "conversation": {
       "title": "大模型对话",
-      "description": "除了基础的AI对话，文档或图像对话，甚至是公式和HTML预览都能帮你完成。"
+      "description": "除了基础的 AI 对话，文档或图像对话，甚至是公式和 HTML 预览都能帮你完成。"
     },
     "drawing": {
-      "title": "AI绘图",
-      "description": "支持多种绘图模型，你可以尽情发挥你的想象让CherryStudio帮你完成。"
+      "title": "AI 绘图",
+      "description": "支持多种绘图模型，你可以尽情发挥你的想象让 Cherry Studio 帮你完成。"
     },
     "translation": {
-      "title": "AI翻译",
-      "description": "无论是翻译页还是对话栏，CherryStudio都能快速翻译你输入的内容。"
+      "title": "AI 翻译",
+      "description": "无论是翻译页还是对话栏，Cherry Studio 都能快速翻译你输入的内容。"
     },
     "assistants": {
       "title": "千余内置助手",
-      "description": "CherryStudio内置了各种分类的千余助手，让你使用大模型更加高效。"
+      "description": "Cherry Studio 内置了各种分类的千余助手，让你使用大模型更加高效。"
     },
     "knowledge_base": {
       "title": "多数据源知识库",
@@ -86,15 +86,15 @@
     "title": "项目相关",
     "intro": {
       "title": "项目简介",
-      "description": "CherryStudio是一个支持多平台的AI客户端，支持Win、macOS、Linux平台,未来也会支持移动端。项目自24年7月至今已迭代数百个版本,我们致力于打造一个更加高效、安全、易用的客户端，让更多人能够享受到AI带来的便利。"
+      "description": "Cherry Studio 是一个支持多平台的 AI 客户端，支持 Windows、macOS、Linux 平台,未来也会支持移动端。项目自 2024 年 7 月至今已迭代数百个版本,我们致力于打造一个更加高效、安全、易用的客户端，让更多人能够享受到 AI 带来的便利。"
     },
     "goal": {
-      "title": "CherryStudio的目标",
-      "description": "CherryStudio致力于让用户专注于创作或享受AI带来的便利，而不是让很多小白用户被各种繁琐的配置拒之门外。因此您只需要填写秘钥即可马上使用。同时我们也提供了详细的使用文档供您参考学习。我们的社群也非常活跃，可以快速帮您解决各种使用上的问题。"
+      "title": "Cherry Studio 的目标",
+      "description": "Cherry Studio 致力于让用户专注于创作或享受 AI 带来的便利，而不是让很多小白用户被各种繁琐的配置拒之门外。因此您只需要填写秘钥即可马上使用。同时我们也提供了详细的使用文档供您参考学习。我们的社群也非常活跃，可以快速帮您解决各种使用上的问题。"
     },
     "contribution": {
       "title": "我想为项目做一些贡献，都能做什么？",
-      "description": "如果您喜欢我们的项目，欢迎在<1>Github</1>给我们一个star来简单的支持我们，如果您是技术大佬欢迎成为我们的贡献者之一，当然您也可以参与到我们的文档编辑当中，将您的使用经验分享给大家或者在社群为其他用户答疑解惑。如果您有任何想法或建议，欢迎通过GitHub Issues 或在官方社群与我们联系。"
+      "description": "如果您喜欢我们的项目，欢迎在<1>Github</1>给我们一个 star 来简单的支持我们，如果您是技术大佬欢迎成为我们的贡献者之一，当然您也可以参与到我们的文档编辑当中，将您的使用经验分享给大家或者在社群为其他用户答疑解惑。如果您有任何想法或建议，欢迎通过 GitHub Issues 或在官方社群与我们联系。"
     }
   },
   "community": {
@@ -105,7 +105,7 @@
     "zsxq": "知识星球(问题解答)"
   },
   "footer": {
-    "description": "CherryStudio是一个支持多平台的AI客户端，我们致力于让更多人能够享受到AI带来的便利。",
+    "description": "Cherry Studio 是一个支持多平台的 AI 客户端，我们致力于让更多人能够享受到 AI 带来的便利。",
     "cherry_studio": {
       "title": "Cherry Studio",
       "github": "Github",
@@ -150,12 +150,12 @@
     "download_apple": "下载 (Apple 芯片)",
     "download_intel": "下载 (Intel 芯片)",
     "download_now": "立即下载",
-    "windows_package": "Windows系统安装包",
+    "windows_package": "Windows 系统安装包",
     "windows_standard": "Windows 标准版",
     "windows_portable": "Windows 便携版",
     "windows_standard_arm": "Windows 标准版 (ARM 版)",
     "windows_portable_arm": "Windows 便携版 (ARM 版)",
-    "macos_package": "MacOS系统安装包",
+    "macos_package": "MacOS 系统安装包",
     "macos_intel": "Intel 芯片",
     "macos_apple": "Apple 芯片",
     "linux_package": "Linux 系统安装包",
@@ -186,7 +186,7 @@
       },
       "private_deployment": {
         "title": "完全私有化部署",
-        "description": "支持企业内部服务器部署，私有云环境部署，数据100%私有可控"
+        "description": "支持企业内部服务器部署，私有云环境部署，数据 100% 私有可控"
       },
       "backend_service": {
         "title": "可靠的后端服务",
@@ -303,7 +303,7 @@
     "light_mode": "亮色",
     "dark_mode": "暗色",
     "copy_code": "复制代码",
-    "copy_cdn": "复制CDN",
+    "copy_cdn": "复制 CDN",
     "copied": "已复制",
     "no_preview": "暂无预览",
     "example_image": "示例图片",
@@ -363,7 +363,7 @@
       "submit_error": "提交失败，请重试",
       "validation": {
         "name_required": "请输入主题名称",
-        "code_required": "请输入CSS代码",
+        "code_required": "请输入 CSS 代码",
         "light_image_required": "请上传亮色模式预览图",
         "dark_image_required": "请上传暗色模式预览图",
         "file_type_error": "请上传正确格式的图片文件"
