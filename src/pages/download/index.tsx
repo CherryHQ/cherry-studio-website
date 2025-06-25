@@ -4,6 +4,7 @@ import { FC, useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import Footer from '@/components/website/Footer'
+import { usePageMeta } from '@/hooks/usePageMeta'
 import { useVersionData } from '@/hooks/useVersionData'
 
 import Changelog from './components/Changelog'
@@ -13,6 +14,8 @@ import VersionInfo from './components/VersionInfo'
 
 const DownloadPage: FC = () => {
   const { t } = useTranslation()
+  usePageMeta('download')
+
   const otherDownloadsRef = useRef<HTMLDivElement>(null)
   const { loading, versionData, systemInfo, downloadUrls } = useVersionData()
 

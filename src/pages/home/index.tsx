@@ -1,8 +1,9 @@
 import './index.css'
 
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 
 import Footer from '@/components/website/Footer'
+import { usePageMeta } from '@/hooks/usePageMeta'
 
 import HomeBanner from './components/Banner'
 import Contributors from './components/Contributors'
@@ -12,6 +13,23 @@ import Project from './components/Project'
 import Sponsors from './components/Sponsors'
 
 const HomePage: FC = () => {
+  // 使用页面元数据 hook
+  usePageMeta('home')
+
+  useEffect(() => {
+    // 处理页面加载时的哈希值
+    const hash = window.location.hash
+    if (hash) {
+      // 等待页面渲染完成后再滚动
+      setTimeout(() => {
+        const element = document.getElementById(hash.substring(1))
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+      }, 100)
+    }
+  }, [])
+
   return (
     <>
       <div className="page-wrapper">

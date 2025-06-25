@@ -9,17 +9,17 @@ const LanguageSelector: React.FC = () => {
   const dropdownRef = useRef<HTMLDivElement>(null)
 
   const languages = [
-    { code: 'zh', name: '简体中文', flag: '🇨🇳' },
-    { code: 'zh-TW', name: '繁體中文', flag: '🇹🇼' },
-    { code: 'en', name: 'English', flag: '🇺🇸' },
-    { code: 'ja', name: '日本語', flag: '🇯🇵' },
-    { code: 'ko', name: '한국어', flag: '🇰🇷' },
-    { code: 'ru', name: 'Русский', flag: '🇷🇺' },
-    { code: 'fr', name: 'Français', flag: '🇫🇷' },
-    { code: 'th', name: 'ไทย', flag: '🇹🇭' }
+    { code: 'zh', name: '简体中文', flag: '🇨🇳', short: '简' },
+    { code: 'zh-TW', name: '繁體中文', flag: 'cn', short: '繁' },
+    { code: 'en', name: 'English', flag: '🇺🇸', short: 'EN' },
+    { code: 'ja', name: '日本語', flag: '🇯🇵', short: '日' },
+    { code: 'ko', name: '한국어', flag: '🇰🇷', short: '한' },
+    { code: 'ru', name: 'Русский', flag: '🇷🇺', short: 'RU' },
+    { code: 'fr', name: 'Français', flag: '🇫🇷', short: 'FR' },
+    { code: 'th', name: 'ไทย', flag: '🇹🇭', short: 'TH' }
   ]
 
-  const currentLanguage = languages.find((lang) => i18n.language.startsWith(lang.code)) || languages[0]
+  const currentLanguage = languages.find((lang) => i18n.language === lang.code) || languages[0]
 
   const handleLanguageChange = (languageCode: string) => {
     i18n.changeLanguage(languageCode)
@@ -47,7 +47,7 @@ const LanguageSelector: React.FC = () => {
         type="button"
         aria-label="Select Language">
         <span className="language-flag">{currentLanguage.flag}</span>
-        <span className="language-code">{currentLanguage.code.toUpperCase()}</span>
+        <span className="language-code">{currentLanguage.short}</span>
         <span className={`language-arrow ${isOpen ? 'open' : ''}`}>▼</span>
       </button>
 

@@ -1,4 +1,16 @@
 {
+  "page_title": {
+    "home": "Cherry Studio - 올인원 AI 어시스턴트",
+    "download": "Cherry Studio 다운로드 - 멀티플랫폼 AI 클라이언트",
+    "enterprise": "Cherry Studio 엔터프라이즈 - 기업용 AI 솔루션",
+    "theme": "Cherry Studio 테마 라이브러리 - AI 어시스턴트 커스터마이징"
+  },
+  "page_description": {
+    "home": "Cherry Studio AI는 iOS, macOS, Windows 플랫폼을 지원하는 강력한 멀티모델 AI 어시스턴트입니다. 여러 첨단 LLM 모델을 빠르게 전환하여 작업과 학습 효율성을 높입니다.",
+    "download": "Windows, macOS, Linux 플랫폼을 지원하는 Cherry Studio AI 클라이언트를 다운로드하세요. 100+ AI 모델을 통합하며 완전 무료 오픈소스입니다.",
+    "enterprise": "Cherry Studio 엔터프라이즈는 현대 팀과 기업을 위한 프라이빗 배포 AI 생산성 플랫폼을 제공하며, 모델 관리, 권한 제어, 데이터 보안을 지원합니다.",
+    "theme": "아름다운 Cherry Studio 테마를 발견하고 공유하여 AI 어시스턴트 인터페이스를 개인화하세요. 라이트 모드와 다크 모드 테마를 모두 지원합니다."
+  },
   "nav": {
     "home": "홈",
     "download": "다운로드",

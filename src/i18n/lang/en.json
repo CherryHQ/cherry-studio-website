@@ -1,4 +1,16 @@
 {
+  "page_title": {
+    "home": "Cherry Studio - The All-in-One AI Assistant",
+    "download": "Download Cherry Studio - Multi-Platform AI Client",
+    "enterprise": "Cherry Studio Enterprise - Enterprise AI Solutions",
+    "theme": "Cherry Studio Theme Library - Customize Your AI Assistant"
+  },
+  "page_description": {
+    "home": "Cherry Studio AI is a powerful multi-model AI assistant supporting iOS, macOS, and Windows platforms. Quickly switch between multiple advanced LLM models to boost work and study efficiency.",
+    "download": "Download Cherry Studio AI client supporting Windows, macOS, and Linux platforms. Integrates 100+ AI models, completely free and open source.",
+    "enterprise": "Cherry Studio Enterprise provides private deployment AI productivity platform for modern teams and enterprises, supporting model management, permission control, and data security.",
+    "theme": "Discover and share beautiful Cherry Studio themes to personalize your AI assistant interface. Supports both light and dark mode themes."
+  },
   "nav": {
     "home": "Home",
     "download": "Download",

@@ -80,6 +80,22 @@ const detectBrowserLanguage = (): string => {
   return 'en'
 }
 
+// 更新HTML lang属性的函数
+const updateHtmlLang = (language: string) => {
+  const langMap: Record<string, string> = {
+    zh: 'zh-CN',
+    'zh-TW': 'zh-TW',
+    en: 'en',
+    ja: 'ja',
+    ko: 'ko',
+    ru: 'ru',
+    fr: 'fr',
+    th: 'th'
+  }
+  const langCode = langMap[language] || 'zh-CN'
+  document.documentElement.setAttribute('lang', langCode)
+}
+
 i18n.use(initReactI18next).init({
   resources,
   lng: detectBrowserLanguage(),
@@ -89,4 +105,13 @@ i18n.use(initReactI18next).init({
   }
 })
 
+// 监听语言变化，更新HTML lang属性
+i18n.on('languageChanged', (lng) => {
+  updateHtmlLang(lng)
+})
+
+// 初始化时设置HTML lang属性
+updateHtmlLang(i18n.language)
+
 export default i18n
+ 

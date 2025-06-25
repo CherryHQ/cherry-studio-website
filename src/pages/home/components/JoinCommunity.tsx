@@ -21,7 +21,7 @@ const JoinCommunity: FC = () => {
   }, [])
 
   return (
-    <section className="cta-section">
+    <section className="cta-section" id="Community">
       <div
         className="cta-1-bg"
         data-parallax='{"y": 30}'

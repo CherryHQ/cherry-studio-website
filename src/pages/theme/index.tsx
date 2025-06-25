@@ -5,6 +5,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import Footer from '@/components/website/Footer'
+import { usePageMeta } from '@/hooks/usePageMeta'
 
 // 添加 jQuery 类型声明
 declare const $: any // 或者使用完整的 jQuery 类型
@@ -77,6 +78,8 @@ interface SubmitModalProps {
 
 const ThemePage: React.FC = () => {
   const { t } = useTranslation()
+  // 使用页面元数据 hook
+  usePageMeta('theme')
 
   // 原始数据和筛选后的数据分开存储
   const [cssItems, setCssItems] = useState<CssItem[]>([])

@@ -11,13 +11,14 @@ import {
   Users
 } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
-
 import Footer from '@/components/website/Footer'
-
+import { usePageMeta } from '@/hooks/usePageMeta'
 import './index.css'
 
 const EnterprisePage: FC = () => {
   const { t } = useTranslation()
+  usePageMeta('enterprise')
+
   return (
     <div className="enterprise-page">
       {/* Hero Section */}
