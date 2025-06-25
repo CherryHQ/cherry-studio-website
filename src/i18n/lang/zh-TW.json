@@ -1,10 +1,22 @@
 {
+  "page_title": {
+    "home": "Cherry Studio 官方網站 - 全能的AI助手",
+    "download": "下載 Cherry Studio - 多平台AI客戶端",
+    "enterprise": "Cherry Studio 企業版 - 企業級AI解決方案",
+    "theme": "Cherry Studio 主題庫 - 美化你的AI助手"
+  },
+  "page_description": {
+    "home": "Cherry Studio AI 是一款強大的多模型 AI 助手，支持 iOS、macOS 和 Windows 平台。快速切換多個先進的 LLM 模型，提升工作學習效率。",
+    "download": "下載 Cherry Studio AI 客戶端，支持 Windows、macOS、Linux 平台。集成 100+ AI 模型，完全免費開源。",
+    "enterprise": "Cherry Studio 企業版為現代團隊和企業提供私有化部署的 AI 生產力平台，支持模型管理、權限控制、數據安全。",
+    "theme": "發現和分享美麗的 Cherry Studio 主題，個性化你的 AI 助手界面。支持淺色和深色模式主題。"
+  },
   "nav": {
     "home": "首頁",
     "download": "下載",
     "theme": "主題",
     "docs": "文檔",
-    "contact": "聯絡我們",
+    "contact": "聯繫",
     "docs_menu": {
       "project_intro": "專案介紹",
       "basic_tutorial": "基礎教學",
@@ -25,7 +37,8 @@
   "advanced_tutorial": "進階教學",
   "contribution": "專案貢獻",
   "feedback": "問題與回饋",
-  "contact": "聯絡",
+  "contact": "聯繫",
+  "language": "語言",
   "banner": {
     "powerful_ai_assistant": "您的全能AI助手",
     "cherry_studio_title": "Cherry Studio",
@@ -39,54 +52,71 @@
     "knowledge_base_integration_title": "AI知識庫整合",
     "your_personal_assistant": "做您最貼心的助手",
     "knowledge_base_description": "CherryStudio目前已上線知識庫功能，支援多種格式檔案的匯入和網頁匯入等來組建您的個人化知識庫。",
-    "download_client": "下載客戶端"
+    "download_client": "下載客戶端",
+    "slides": {
+      "slide1": {
+        "title": "您的全能AI助手",
+        "description": "Cherry Studio 是一個桌面客戶端，它將多個大語言模型集成到一個應用程序中，為您提供最好的AI體驗。",
+        "download_button": "免費下載"
+      },
+      "slide2": {
+        "title": "支持多種主流模型",
+        "description": "支持 OpenAI、Claude、Gemini、本地模型等 100+ 種主流大語言模型，滿足您的多樣化需求。",
+        "download_button": "立即體驗"
+      },
+      "slide3": {
+        "title": "開源且完全免費",
+        "description": "Cherry Studio 是開源軟件，完全免費使用，無任何使用限制和隱藏費用。",
+        "download_button": "查看代碼"
+      }
+    }
   },
   "features": {
-    "title": "主要功能介紹",
-    "description": "以下僅為部分功能介紹，更多功能可以下載客戶端體驗，或在<1>官方文件</1>中了解。",
-    "learn_more": "詳細了解",
+    "title": "主要功能",
+    "description": "以下僅為部分功能介紹，更多功能可以下載客戶端體驗，或在<1>官方文檔</1>中了解。",
+    "learn_more": "了解更多",
     "conversation": {
-      "title": "大模型對話",
-      "description": "除了基礎的AI對話，文件或圖像對話，甚至是公式和HTML預覽都能幫你完成。"
+      "title": "多模型對話",
+      "description": "支持同時與多個AI模型對話，比較不同模型的回答效果。"
     },
     "drawing": {
-      "title": "AI繪圖",
-      "description": "支援多種繪圖模型，你可以盡情發揮你的想象讓CherryStudio幫你完成。"
+      "title": "AI繪畫",
+      "description": "集成多種AI繪畫模型，輕鬆創作精美圖片。"
     },
     "translation": {
-      "title": "AI翻譯",
-      "description": "無論是翻譯頁還是對話欄，CherryStudio都能快速翻譯你輸入的內容。"
+      "title": "智能翻譯",
+      "description": "支持多語言翻譯，準確理解上下文語境。"
     },
     "assistants": {
-      "title": "千余內置助手",
-      "description": "CherryStudio內置了各種分類的千余助手，讓你使用大模型更加高效。"
+      "title": "AI助手",
+      "description": "預設多種專業助手，滿足不同場景需求。"
     },
     "knowledge_base": {
-      "title": "多數據源知識庫",
-      "description": "無論是本地文件還是網頁，都能作為知識源快速構建你的專屬知識庫。"
+      "title": "知識庫",
+      "description": "構建個人知識庫，讓AI基於您的資料回答問題。"
     },
     "backup": {
-      "title": "多種備份方式",
-      "description": "包括本地備份和雲端備份，多個設備無憂切換，更便捷更安全。"
+      "title": "數據備份",
+      "description": "支持雲端同步，數據安全有保障。"
     }
   },
   "project": {
-    "title": "專案相關",
+    "title": "項目相關",
     "intro": {
-      "title": "專案介紹",
-      "description": "CherryStudio是一個支援多平台的AI客戶端，支援Win、macOS、Linux平台,未來也會支援移動端。專案自24年7月至今已迭代數百個版本,我們致力於打造一個更加高效、安全、易用的客戶端，讓更多人能夠享受到AI帶來的便利。"
+      "title": "項目介紹",
+      "content": "Cherry Studio 是一個開源的桌面AI客戶端，旨在為用戶提供最好的AI體驗。"
     },
     "goal": {
-      "title": "CherryStudio的目標",
-      "description": "CherryStudio致力於讓用戶專注於創作或享受AI帶來的便利，而不是讓很多小白用戶被各種繁瑣的配置拒之門外。因此您只需要填寫秘鑰即可馬上使用。同時我們也提供了詳細的使用文件供您參考學習。我們的社群也非常活躍，可以快速幫您解決各種使用上的問題。"
+      "title": "項目目標",
+      "content": "我們致力於打造一個功能強大、易於使用的AI助手工具。"
     },
     "contribution": {
-      "title": "我想為專案做一些貢獻，都能做什麼？",
-      "description": "如果您喜歡我們的專案，歡迎在<1>Github</1>給我們一個star來簡單的支持我們，如果您是技術大佬歡迎成為我們的貢獻者之一，當然您也可以參與到我們的文件編輯當中，將您的使用經驗分享給大家或者在社群為其他用戶答疑解惑。如果您有任何想法或建議，歡迎透過GitHub Issues 或在官方社群與我們聯繫。"
+      "title": "參與貢獻",
+      "content": "歡迎開發者參與項目貢獻，共同改進產品。"
     }
   },
   "community": {
-    "title": "加入我們的社群",
+    "title": "加入社群",
     "wechat_qr_alt": "微信群二維碼",
     "wechat_scan_prompt": "掃碼加入微信群",
     "qq_group": "QQ 群",
@@ -105,7 +135,7 @@
       "title": "友情連結"
     },
     "contact_us": {
-      "title": "聯絡我們",
+      "title": "聯繫我們",
       "wechat_qr_alt": "官方微信公眾號二維碼",
       "wechat_official_account": "官方微信公眾號",
       "contact_info": "如果您有使用上的問題可以先查看文件或社群中提問<0/>或郵件聯繫 <1>support@cherry-ai.com</1>"
@@ -113,133 +143,151 @@
     "copyright": "Copyright © 2025 上海千彗科技有限公司 <1>滬ICP備2021031071號-3</1>"
   },
   "statistics": {
-    "days_online": "上線天數",
+    "days_online": "天在線",
     "contributors": "貢獻者",
-    "stars": "收藏量"
+    "github_stars": "GitHub 星標"
   },
   "sponsors": {
-    "title": "Cherry Studio 內置眾多服務商",
-    "subtitle": "同時也支援其他兼容 OpenAI/Anthropic 等 API 格式的服務商接入"
+    "title": "贊助商"
   },
   "download_page": {
     "cloud_download": "網盤下載",
     "quark_drive": "夸克網盤",
-    "click_download": "點擊下載",
-    "loading_version": "正在獲取版本信息...",
-    "version_error": "無法獲取版本信息，請暫時透過網盤連結下載",
-    "published_at": "發布時間",
-    "current_system": "當前系統",
-    "other_versions": "其他版本或備用線路下載"
+    "click_download": "點此下載",
+    "loading_version": "正在取得版本資訊...",
+    "version_error": "無法取得版本資訊，請暫時使用網盤連結下載",
+    "published_at": "發佈時間",
+    "published_at_label": "發佈時間：",
+    "current_system": "目前系統",
+    "other_versions": "其他版本或備用線路下載",
+    "changelog": "更新日誌",
+    "version": "版本",
+    "other_downloads_title": "其他版本下載",
+    "download_with_arch": "立即下載 ({{arch}})",
+    "download_apple": "下載 (Apple 晶片)",
+    "download_intel": "下載 (Intel 晶片)",
+    "download_now": "立即下載",
+    "windows_package": "Windows系統安裝包",
+    "windows_standard": "Windows 標準版",
+    "windows_portable": "Windows 可攜式版",
+    "windows_standard_arm": "Windows 標準版 (ARM 版)",
+    "windows_portable_arm": "Windows 可攜式版 (ARM 版)",
+    "macos_package": "MacOS系統安裝包",
+    "macos_intel": "Intel 晶片",
+    "macos_apple": "Apple 晶片",
+    "linux_package": "Linux 系統安裝包",
+    "linux_appimage": "AppImage 版本",
+    "linux_appimage_arm": "AppImage 版本 (ARM 版)"
   },
   "enterprise_page": {
     "hero": {
-      "title": "Cherry Studio Enterprise",
-      "subtitle": "專為現代團隊和企業打造的 AI 生產力與管理平台",
-      "contact_us": "聯絡我們",
+      "title": "Cherry Studio 企業版",
+      "subtitle": "專為企業級用戶設計的AI解決方案",
+      "contact_us": "聯繫我們",
       "learn_more": "了解更多"
     },
     "features": {
-      "title": "核心優勢",
-      "subtitle": "專業的企業級功能，助力團隊提升生產力",
+      "title": "企業級功能",
+      "subtitle": "強大的功能集合，滿足企業級需求",
       "model_management": {
-        "title": "統一模型管理",
-        "description": "集中接入和管理各類雲端大模型，支援本地私有化部署，員工無需配置即可使用"
+        "title": "模型管理",
+        "description": "統一管理企業內部的AI模型資源"
       },
       "knowledge_base": {
-        "title": "企業級知識庫",
-        "description": "構建和管理團隊共享知識庫，基於統一知識進行 AI 交互，提升回答質量"
+        "title": "企業知識庫",
+        "description": "構建企業專屬知識庫，提升工作效率"
       },
       "permission_control": {
-        "title": "精細化權限控制",
-        "description": "統一的管理後台，基於角色的權限分配，靈活的資源訪問控制"
+        "title": "權限控制",
+        "description": "細粒度的用戶權限管理系統"
       },
       "private_deployment": {
-        "title": "完全私有化部署",
-        "description": "支援企業內部伺服器部署，私有雲環境部署，資料100%私有可控"
+        "title": "私有部署",
+        "description": "支持本地私有部署，保障數據安全"
       },
       "backend_service": {
-        "title": "可靠的後端服務",
-        "description": "提供穩定的 API 服務、企業級資料備份與恢復機制，保障業務連續性"
+        "title": "後端服務",
+        "description": "提供穩定可靠的後端API服務"
       },
       "security_compliance": {
-        "title": "安全合規保障",
-        "description": "滿足最嚴格的資料安全與合規要求，支援審計日誌，確保資料使用可追溯"
+        "title": "安全合規",
+        "description": "符合企業級安全標準和合規要求"
       }
     },
     "comparison": {
       "title": "版本對比",
-      "subtitle": "選擇最適合您團隊的方案",
+      "subtitle": "選擇最適合您的版本",
       "table": {
-        "feature": "特性",
-        "community": "社區版",
+        "feature": "功能",
+        "community": "社群版",
         "enterprise": "企業版",
-        "license": "開源許可",
-        "license_community": "開源",
-        "license_enterprise": "商業授權",
-        "cost": "使用費用",
-        "cost_community": "個人免費/商用授權",
-        "cost_enterprise": "買斷 + 可選服務費",
+        "license": "許可證",
+        "license_community": "開源許可證",
+        "license_enterprise": "商業許可證",
+        "cost": "成本",
+        "cost_community": "免費",
+        "cost_enterprise": "聯繫銷售",
         "deployment": "部署方式",
-        "deployment_community": "單機部署",
-        "deployment_enterprise": "私有化部署",
+        "deployment_community": "本地安裝",
+        "deployment_enterprise": "私有部署",
         "features": "功能特性",
         "features_community": "基礎功能",
         "features_enterprise": {
           "model_management": "模型管理",
           "employee_management": "員工管理",
-          "knowledge_base": "共享知識庫",
-          "workflow": "Dify 工作流",
+          "knowledge_base": "企業知識庫",
+          "workflow": "工作流程",
           "permission": "權限控制",
-          "backup": "資料備份"
+          "backup": "數據備份"
         },
-        "support": "技術支援",
-        "support_community": "社區支援",
-        "support_enterprise": "專屬支援服務",
-        "system_support": "系統支援",
-        "system_community": "Windows 10+, macOS, Linux",
-        "system_enterprise": "Windows 7+, macOS, Linux"
+        "support": "技術支持",
+        "support_community": "社群支持",
+        "support_enterprise": "專業技術支持",
+        "system_support": "系統支持",
+        "system_community": "Windows/macOS/Linux",
+        "system_enterprise": "Windows/macOS/Linux + 私有雲"
       }
     },
     "beta": {
-      "title": "公測說明",
-      "description": "企業版目前處於公測階段，我們正在持續優化功能。如遇問題或有建議，歡迎回饋！",
+      "title": "Beta 測試",
+      "description": "企業版目前處於Beta測試階段，歡迎體驗並提供反饋",
       "demo": {
-        "title": "體驗環境",
-        "admin_portal": "管理後台：",
+        "title": "在線演示",
+        "admin_portal": "管理門戶：",
         "account": "帳號：",
         "password": "密碼："
       },
       "download": {
-        "title": "客戶端下載",
-        "description": "為獲得完整體驗，請下載企業版客戶端：",
-        "system_support": "支援 macOS 和 Windows 系統",
-        "download_button": "下載客戶端"
+        "title": "下載體驗",
+        "description": "下載企業版客戶端，體驗完整功能",
+        "system_support": "支持 Windows x64 系統",
+        "download_button": "下載企業版"
       },
       "manual": {
         "title": "使用手冊",
-        "description": "感謝您參與 Cherry Studio 企業版的體驗活動。我們提供詳細的使用手冊，幫助您快速上手所有功能。",
+        "description": "詳細的企業版使用指南和部署文檔",
         "view_manual": "查看使用手冊"
       }
     },
     "support": {
-      "title": "獲取支援",
-      "description": "如果您對 Cherry Studio 企業版感興趣，歡迎聯繫我們的商務團隊",
+      "title": "聯繫我們",
+      "description": "有任何問題或需求，請隨時聯繫我們的企業服務團隊",
       "send_email": "發送郵件",
       "business_cooperation": "商務合作"
     }
   },
   "contributors": {
-    "project_contributors": "專案貢獻者",
-    "doc_contributors": "文件貢獻者",
-    "contribution_stats": "貢獻: {{contributions}} commits ({{rate}}%)",
-    "partial": "(部分)"
+    "project_contributors": "項目貢獻者",
+    "doc_contributors": "文檔貢獻者",
+    "partial": "(部分)",
+    "contribution_stats": "{{contributions}} 次貢獻 ({{rate}}%)"
   },
   "star_history": {
-    "total_stars": "總 Star 數",
-    "daily_stars": "日增 Star 數",
-    "cumulative_stars": "累計 Star 數",
-    "daily_increase": "日增 Star 數",
-    "data_view": "資料視圖",
+    "total_stars": "總星標數",
+    "daily_stars": "每日新增",
+    "cumulative_stars": "累計星標",
+    "daily_increase": "每日增量",
+    "data_view": "數據視圖",
     "close": "關閉",
     "refresh": "刷新",
     "restore": "還原",
@@ -249,95 +297,95 @@
     "day_suffix": "日"
   },
   "telegram": {
-    "channel_members": "頻道成員：",
-    "current_online": "當前線上："
+    "channel_members": "頻道成員",
+    "current_online": "當前在線"
   },
   "theme_page": {
-    "title": "主題市場",
-    "subtitle": "發現和分享 Cherry Studio 主題樣式",
+    "title": "Cherry Studio 主題庫",
+    "subtitle": "發現和分享美麗的 Cherry Studio 主題",
     "preview_button": "預覽",
-    "search_placeholder": "搜索主題... (支援 #標籤 @作者 關鍵詞)",
+    "search_placeholder": "搜索主題... (支持 #標籤 @作者 搜索)",
     "search_button": "搜索",
-    "search_help": "搜索幫助：",
+    "search_help": "搜索幫助",
     "search_help_tips": {
-      "tag_search": "使用 #關鍵詞 搜索包含該標籤的內容",
-      "author_search": "使用 @作者名 搜索特定作者",
-      "combined_search": "支援組合搜索，# @ 搜索內容用空格隔開"
+      "tag_search": "#標籤名 - 按標籤搜索",
+      "author_search": "@作者名 - 按作者搜索",
+      "combined_search": "可組合使用：#暗色 @張三 主題"
     },
-    "submit_theme": "投稿主題",
+    "submit_theme": "提交主題",
     "author_by": "作者：",
     "tags": "標籤：",
     "version": "版本",
-    "created": "創建於",
-    "light_mode": "亮色",
-    "dark_mode": "暗色",
+    "created": "創建",
+    "light_mode": "淺色",
+    "dark_mode": "深色",
     "copy_code": "複製代碼",
     "copy_cdn": "複製CDN",
     "copied": "已複製",
     "no_preview": "暫無預覽",
     "example_image": "示例圖片",
-    "light_mode_preview": "亮色模式預覽",
-    "dark_mode_preview": "暗色模式預覽",
-    "preview_example": "示例預覽",
+    "light_mode_preview": "淺色模式預覽",
+    "dark_mode_preview": "深色模式預覽",
+    "preview_example": "預覽示例",
     "view_example": "查看示例",
-    "loading": "正在搜索...",
-    "loading_more": "加載更多...",
-    "all_loaded": "已加載全部主題",
-    "load_more": "加載更多",
+    "loading": "載入中...",
+    "loading_more": "載入更多...",
+    "all_loaded": "已載入全部",
+    "load_more": "載入更多",
     "clear_filters": "清除篩選",
     "clear_all_filters": "清除所有篩選",
-    "no_results": "未找到匹配的主題",
-    "loading_error": "加載失敗",
+    "no_results": "未找到相關主題",
+    "loading_error": "載入失敗",
     "refresh_page": "刷新頁面",
     "search_filter": {
       "search_label": "搜索："
     },
     "notifications": {
-      "not_found_tag": "未找到包含該標籤的主題",
+      "not_found_tag": "未找到相關標籤的主題",
       "not_found_author": "未找到該作者的主題",
-      "data_fetch_error": "資料加載失敗，請稍後重試"
+      "data_fetch_error": "載入數據失敗，請稍後重試"
     },
     "submit_modal": {
-      "title": "投稿主題",
+      "title": "提交主題",
       "name_label": "主題名稱",
       "name_placeholder": "請輸入主題名稱",
-      "author_label": "作者名稱",
+      "author_label": "作者",
       "author_placeholder": "請輸入作者名稱",
-      "author_required": "請輸入作者名稱",
-      "support_light_mode": "支援亮色模式",
-      "support_dark_mode": "支援暗色模式",
+      "support_light_mode": "支持淺色模式",
+      "support_dark_mode": "支持深色模式",
       "version_label": "版本號",
-      "version_placeholder": "例如：1.0",
-      "version_hint": "格式：數字和點，例如 1.0 或 1.2.3",
+      "version_placeholder": "如：1.0",
+      "version_hint": "請使用數字格式，如：1.0、2.1.3",
       "code_label": "CSS 代碼",
-      "code_placeholder": "請粘貼您的 CSS 代碼...",
-      "cdn_link_label": "CSS 檔案連結（可選）",
-      "cdn_link_placeholder": "如果您提供公開的 CDN 連結或檔案連結，可以填寫",
-      "light_image_label": "亮色模式預覽圖",
-      "dark_image_label": "暗色模式預覽圖",
+      "code_placeholder": "請輸入主題的CSS代碼...",
+      "cdn_link_label": "CDN 鏈接（可選）",
+      "cdn_link_placeholder": "https://example.com/theme.css",
+      "light_image_label": "淺色模式截圖",
+      "dark_image_label": "深色模式截圖",
       "upload_image": "點擊上傳圖片",
+      "image_format_hint": "支持 JPG、PNG、GIF、WebP 格式，檔案大小不超過 2MB",
+      "preview_background_hint": "預覽圖片建議使用應用截圖，背景可參考：",
       "remove_image": "移除圖片",
-      "image_size_error": "圖片大小不能超過 2MB",
-      "image_format_hint": "支援 JPG、PNG、GIF、WEBP 格式，最大 2MB，圖片比例建議 16:9，不符合將被裁切。",
-      "preview_background_hint": "預覽圖應留有窗口外的背景，示例圖：",
       "tags_label": "標籤",
-      "tags_placeholder": "輸入標籤後按 Enter，多個標籤用逗號分隔",
-      "tags_hint": "標籤不支援標點符號，僅支援中英文和數字",
-      "submit": "提交",
-      "cancel": "取消",
+      "tags_placeholder": "輸入標籤後按回車鍵添加",
+      "tags_hint": "按回車鍵或逗號添加標籤，只能包含字母、數字和中文",
+      "submit": "提交主題",
       "submitting": "提交中...",
+      "cancel": "取消",
       "close": "關閉",
       "success_title": "提交成功！",
-      "success_message": "您的專題已提交審核，我們會盡快處理。",
-      "submit_error": "提交失敗，請重試",
+      "success_message": "您的主題已提交，我們會在審核後發佈。感謝您的貢獻！",
+      "submit_error": "提交失敗，請稍後重試",
       "validation": {
         "name_required": "請輸入主題名稱",
         "code_required": "請輸入CSS代碼",
-        "light_image_required": "請上傳亮色模式預覽圖",
-        "dark_image_required": "請上傳暗色模式預覽圖",
-        "file_type_error": "請上傳正確格式的圖片文件"
+        "light_image_required": "請上傳淺色模式截圖",
+        "dark_image_required": "請上傳深色模式截圖",
+        "file_type_error": "請上傳正確格式的圖片檔案"
       },
-      "version_invalid": "版本號格式錯誤"
+      "author_required": "請輸入作者名稱",
+      "version_invalid": "版本號格式不正確",
+      "image_size_error": "圖片檔案不能超過 2MB"
     }
   }
 } 
