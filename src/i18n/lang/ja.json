@@ -1,9 +1,9 @@
 {
   "page_title": {
-    "home": "Cherry Studio - オールインワンAIアシスタント",
-    "download": "Cherry Studio をダウンロード - マルチプラットフォームAIクライアント",
-    "enterprise": "Cherry Studio エンタープライズ版 - 企業向けAIソリューション",
-    "theme": "Cherry Studio テーマライブラリ - AIアシスタントをカスタマイズ"
+    "home": "Cherry Studio - オールインワン AI アシスタント",
+    "download": "Cherry Studio をダウンロード - マルチプラットフォーム AI クライアント",
+    "enterprise": "Cherry Studio エンタープライズ版 - 企業向け AI ソリューション",
+    "theme": "Cherry Studio テーマライブラリ - AI アシスタントをカスタマイズ"
   },
   "page_description": {
     "home": "Cherry Studio AI は iOS、macOS、Windows プラットフォームをサポートする強力なマルチモデル AI アシスタントです。複数の先進的な LLM モデルを素早く切り替えて、作業と学習の効率を向上させます。",
@@ -39,18 +39,18 @@
   "feedback": "質問・フィードバック",
   "contact": "お問い合わせ",
   "banner": {
-    "powerful_ai_assistant": "あなたの万能AIアシスタント",
+    "powerful_ai_assistant": "あなたの万能 AI アシスタント",
     "cherry_studio_title": "Cherry Studio",
-    "multi_provider_client": "複数プロバイダー統合対応のAI対話クライアント",
-    "multi_provider_description": "CherryStudioは現在市場のほとんどのサービスプロバイダーの統合をサポートし、複数プロバイダーのモデル統一スケジューリングをサポートしています。",
+    "multi_provider_client": "複数プロバイダー統合対応の AI 対話クライアント",
+    "multi_provider_description": "Cherry Studio は現在市場のほとんどのサービスプロバイダーの統合をサポートし、複数プロバイダーのモデル統一スケジューリングをサポートしています。",
     "privacy_security": "プライバシーセキュリティの保障",
     "local_storage_title": "データローカル保存",
     "no_privacy_leak": "プライバシー漏洩の心配不要",
     "local_storage_description": "すべての使用データはローカルに保存され、第三者サーバーにアップロードされることはなく、ローカル展開のモデル呼び出しもサポートします。",
     "personalized_knowledge_base": "パーソナライズされた知識ベース",
-    "knowledge_base_integration_title": "AI知識ベース統合",
+    "knowledge_base_integration_title": "AI 知識ベース統合",
     "your_personal_assistant": "あなたの最も親身なアシスタント",
-    "knowledge_base_description": "CherryStudioは現在知識ベース機能がリリースされており、様々な形式のファイルインポートやWebページインポートなどでパーソナライズされた知識ベースを構築できます。",
+    "knowledge_base_description": "Cherry Studio は現在知識ベース機能がリリースされており、様々な形式のファイルインポートや Web ページインポートなどでパーソナライズされた知識ベースを構築できます。",
     "download_client": "クライアントをダウンロード"
   },
   "features": {
@@ -59,23 +59,23 @@
     "learn_more": "詳細を見る",
     "conversation": {
       "title": "大規模モデル対話",
-      "description": "基本的なAI対話、ドキュメントや画像対話に加えて、数式やHTMLプレビューまで完成をサポートします。"
+      "description": "基本的な AI 対話、ドキュメントや画像対話に加えて、数式や HTML プレビューまで完成をサポートします。"
     },
     "drawing": {
-      "title": "AI描画",
-      "description": "複数の描画モデルをサポートし、あなたの想像力を存分に発揮してCherryStudioに完成させることができます。"
+      "title": "AI 描画",
+      "description": "複数の描画モデルをサポートし、あなたの想像力を存分に発揮して Cherry Studio に完成させることができます。"
     },
     "translation": {
-      "title": "AI翻訳",
-      "description": "翻訳ページでも対話バーでも、CherryStudioはあなたが入力した内容を素早く翻訳できます。"
+      "title": "AI 翻訳",
+      "description": "翻訳ページでも対話バーでも、Cherry Studio はあなたが入力した内容を素早く翻訳できます。"
     },
     "assistants": {
       "title": "千以上の内蔵アシスタント",
-      "description": "CherryStudioには様々なカテゴリーの千以上のアシスタントが内蔵されており、大規模モデルの使用をより効率的にします。"
+      "description": "Cherry Studio には様々なカテゴリーの千以上のアシスタントが内蔵されており、大規模モデルの使用をより効率的にします。"
     },
     "knowledge_base": {
       "title": "マルチデータソース知識ベース",
-      "description": "ローカルファイルでもWebページでも、知識ソースとしてあなた専用の知識ベースを迅速に構築できます。"
+      "description": "ローカルファイルでも Web ページでも、知識ソースとしてあなた専用の知識ベースを迅速に構築できます。"
     },
     "backup": {
       "title": "多様なバックアップ方式",
@@ -86,26 +86,26 @@
     "title": "プロジェクト関連",
     "intro": {
       "title": "プロジェクト紹介",
-      "description": "CherryStudioはマルチプラットフォーム対応のAIクライアントで、Win、macOS、Linuxプラットフォームをサポートし、将来的にはモバイル端末もサポート予定です。プロジェクトは24年7月から現在まで数百のバージョンを重ね、より効率的で安全で使いやすいクライアントの構築に取り組み、より多くの人がAIの利便性を享受できるようにしています。"
+      "description": "Cherry Studio はマルチプラットフォーム対応の AI クライアントで、Windows、macOS、Linux プラットフォームをサポートし、将来的にはモバイル端末もサポート予定です。プロジェクトは 2024 年 7 月から現在まで数百のバージョンを重ね、より効率的で安全で使いやすいクライアントの構築に取り組み、より多くの人が AI の利便性を享受できるようにしています。"
     },
     "goal": {
-      "title": "CherryStudioの目標",
-      "description": "CherryStudioはユーザーが創作やAIの利便性の享受に集中できるようにし、多くの初心者ユーザーが複雑な設定で門前払いされることのないようにすることを目指しています。そのため、キーを入力するだけですぐに使用できます。同時に、学習参考用の詳細な使用ドキュメントも提供しています。私たちのコミュニティも非常に活発で、使用上の様々な問題を迅速に解決できます。"
+      "title": "Cherry Studio の目標",
+      "description": "Cherry Studio はユーザーが創作や AI の利便性の享受に集中できるようにし、多くの初心者ユーザーが複雑な設定で門前払いされることのないようにすることを目指しています。そのため、キーを入力するだけですぐに使用できます。同時に、学習参考用の詳細な使用ドキュメントも提供しています。私たちのコミュニティも非常に活発で、使用上の様々な問題を迅速に解決できます。"
     },
     "contribution": {
       "title": "プロジェクトに何らかの貢献をしたいのですが、何ができますか？",
-      "description": "私たちのプロジェクトを気に入っていただけましたら、<1>Github</1>でstarを付けて簡単にサポートしてください。技術エキスパートの方は貢献者の一人になることを歓迎します。もちろん、ドキュメントの編集に参加し、使用経験をみんなと共有したり、コミュニティで他のユーザーの質問に答えたりすることもできます。何かアイデアや提案がございましたら、GitHub Issuesやオフィシャルコミュニティでお気軽にお問い合わせください。"
+      "description": "私たちのプロジェクトを気に入っていただけましたら、<1>Github</1>で star を付けて簡単にサポートしてください。技術エキスパートの方は貢献者の一人になることを歓迎します。もちろん、ドキュメントの編集に参加し、使用経験をみんなと共有したり、コミュニティで他のユーザーの質問に答えたりすることもできます。何かアイデアや提案がございましたら、GitHub Issues やオフィシャルコミュニティでお気軽にお問い合わせください。"
     }
   },
   "community": {
     "title": "コミュニティに参加",
-    "wechat_qr_alt": "WeChatグループQRコード",
-    "wechat_scan_prompt": "QRコードをスキャンしてWeChatグループに参加",
+    "wechat_qr_alt": "WeChat グループ QR コード",
+    "wechat_scan_prompt": "QR コードをスキャンして WeChat グループに参加",
     "qq_group": "QQ グループ",
     "zsxq": "知识星球（質問回答）"
   },
   "footer": {
-    "description": "CherryStudioはマルチプラットフォーム対応のAIクライアントで、より多くの人がAIの利便性を享受できるよう取り組んでいます。",
+    "description": "Cherry Studio はマルチプラットフォーム対応の AI クライアントで、より多くの人が AI の利便性を享受できるよう取り組んでいます。",
     "cherry_studio": {
       "title": "Cherry Studio",
       "github": "Github",
@@ -118,8 +118,8 @@
     },
     "contact_us": {
       "title": "お問い合わせ",
-      "wechat_qr_alt": "WeChat公式アカウントQRコード",
-      "wechat_official_account": "公式WeChatアカウント",
+      "wechat_qr_alt": "WeChat 公式アカウント QR コード",
+      "wechat_official_account": "公式 WeChat アカウント",
       "contact_info": "使用上の問題がある場合は、まずドキュメントを確認するかコミュニティで質問<0/>またはメールでお問い合わせください <1>support@cherry-ai.com</1>"
     },
     "copyright": "Copyright © 2025 上海千彗科技有限公司 <1>沪ICP备2021031071号-3</1>"
@@ -130,8 +130,8 @@
     "stars": "スター数"
   },
   "sponsors": {
-    "title": "Cherry Studioには様々なサービスプロバイダーが組み込まれています",
-    "subtitle": "また、OpenAI/AnthropicなどのAPI形式と互換性のある他のサービスプロバイダーへの接続もサポートしています"
+    "title": "Cherry Studio には様々なサービスプロバイダーが組み込まれています",
+    "subtitle": "また、OpenAI/Anthropic などの API 形式と互換性のある他のサービスプロバイダーへの接続もサポートしています"
   },
   "download_page": {
     "cloud_download": "クラウドからダウンロード",
@@ -165,7 +165,7 @@
   "enterprise_page": {
     "hero": {
       "title": "Cherry Studio Enterprise",
-      "subtitle": "現代のチームと企業向けに構築されたAI生産性・管理プラットフォーム",
+      "subtitle": "現代のチームと企業向けに構築された AI 生産性・管理プラットフォーム",
       "contact_us": "お問い合わせ",
       "learn_more": "詳細を見る"
     },
@@ -178,7 +178,7 @@
       },
       "knowledge_base": {
         "title": "エンタープライズ級知識ベース",
-        "description": "チーム共有知識ベースの構築・管理、統一知識に基づくAIインタラクションで回答品質を向上"
+        "description": "チーム共有知識ベースの構築・管理、統一知識に基づく AI インタラクションで回答品質を向上"
       },
       "permission_control": {
         "title": "細かい権限制御",
@@ -186,11 +186,11 @@
       },
       "private_deployment": {
         "title": "完全プライベート展開",
-        "description": "企業内部サーバー展開、プライベートクラウド環境展開をサポート、データ100%プライベート制御可能"
+        "description": "企業内部サーバー展開、プライベートクラウド環境展開をサポート、データ 100%プライベート制御可能"
       },
       "backend_service": {
         "title": "信頼性の高いバックエンドサービス",
-        "description": "安定したAPIサービス、エンタープライズ級データバックアップ・復旧メカニズムを提供し、ビジネス継続性を保障"
+        "description": "安定した API サービス、エンタープライズ級データバックアップ・復旧メカニズムを提供し、ビジネス継続性を保障"
       },
       "security_compliance": {
         "title": "セキュリティコンプライアンス保障",
@@ -243,7 +243,7 @@
       "download": {
         "title": "クライアントダウンロード",
         "description": "完全な体験を得るために、エンタープライズ版クライアントをダウンロードしてください：",
-        "system_support": "macOSとWindowsシステムをサポート",
+        "system_support": "macOS と Windows システムをサポート",
         "download_button": "クライアントをダウンロード"
       },
       "manual": {
@@ -303,7 +303,7 @@
     "light_mode": "ライト",
     "dark_mode": "ダーク",
     "copy_code": "コードをコピー",
-    "copy_cdn": "CDNをコピー",
+    "copy_cdn": "CDN をコピー",
     "copied": "コピー済み",
     "no_preview": "プレビューなし",
     "example_image": "サンプル画像",
@@ -343,16 +343,16 @@
       "code_label": "CSS コード",
       "code_placeholder": "CSS コードを貼り付けてください...",
       "cdn_link_label": "CSS ファイルリンク（オプション）",
-      "cdn_link_placeholder": "公開CDNリンクまたはファイルリンクをお持ちの場合は記入できます",
+      "cdn_link_placeholder": "公開 CDN リンクまたはファイルリンクをお持ちの場合は記入できます",
       "light_image_label": "ライトモードプレビュー画像",
       "dark_image_label": "ダークモードプレビュー画像",
       "upload_image": "クリックして画像をアップロード",
       "remove_image": "画像を削除",
-      "image_size_error": "画像サイズは2MBを超えることはできません",
-      "image_format_hint": "JPG、PNG、GIF、WEBP形式をサポート、最大2MB、画像比率は16:9を推奨、不適合の場合はトリミングされます。",
+      "image_size_error": "画像サイズは 2MB を超えることはできません",
+      "image_format_hint": "JPG、PNG、GIF、WEBP 形式をサポート、最大 2MB、画像比率は 16:9 を推奨、不適合の場合はトリミングされます。",
       "preview_background_hint": "プレビュー画像にはウィンドウ外の背景を含める必要があります。サンプル画像：",
       "tags_label": "タグ",
-      "tags_placeholder": "タグを入力してEnterキーを押す、複数のタグはカンマで区切る",
+      "tags_placeholder": "タグを入力して Enter キーを押す、複数のタグはカンマで区切る",
       "tags_hint": "タグは句読点をサポートしません、中国語、英語、数字のみサポート",
       "submit": "送信",
       "cancel": "キャンセル",
@@ -363,7 +363,7 @@
       "submit_error": "送信に失敗しました。再試行してください",
       "validation": {
         "name_required": "テーマ名を入力してください",
-        "code_required": "CSSコードを入力してください",
+        "code_required": "CSS コードを入力してください",
         "light_image_required": "ライトモードプレビュー画像をアップロードしてください",
         "dark_image_required": "ダークモードプレビュー画像をアップロードしてください",
         "file_type_error": "正しい形式の画像ファイルをアップロードしてください"

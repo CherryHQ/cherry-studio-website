@@ -1,9 +1,9 @@
 {
   "page_title": {
-    "home": "Cherry Studio 官方網站 - 全能的AI助手",
-    "download": "下載 Cherry Studio - 多平台AI客戶端",
-    "enterprise": "Cherry Studio 企業版 - 企業級AI解決方案",
-    "theme": "Cherry Studio 主題庫 - 美化你的AI助手"
+    "home": "Cherry Studio 官方網站 - 全能的 AI 助手",
+    "download": "下載 Cherry Studio - 多平台 AI 客戶端",
+    "enterprise": "Cherry Studio 企業版 - 企業級 AI 解決方案",
+    "theme": "Cherry Studio 主題庫 - 美化你的 AI 助手"
   },
   "page_description": {
     "home": "Cherry Studio AI 是一款強大的多模型 AI 助手，支持 iOS、macOS 和 Windows 平台。快速切換多個先進的 LLM 模型，提升工作學習效率。",
@@ -40,23 +40,23 @@
   "contact": "聯繫",
   "language": "語言",
   "banner": {
-    "powerful_ai_assistant": "您的全能AI助手",
+    "powerful_ai_assistant": "您的全能 AI 助手",
     "cherry_studio_title": "Cherry Studio",
-    "multi_provider_client": "支援多服務商整合的AI對話客戶端",
-    "multi_provider_description": "CherryStudio目前支援市面上絕大多數服務商的整合，並且支援多服務商的模型統一調度。",
+    "multi_provider_client": "支援多服務商整合的 AI 對話客戶端",
+    "multi_provider_description": "Cherry Studio 目前支援市面上絕大多數服務商的整合，並且支援多服務商的模型統一調度。",
     "privacy_security": "保障隱私安全",
     "local_storage_title": "資料本機儲存",
     "no_privacy_leak": "無需擔心隱私洩露",
     "local_storage_description": "您的所有使用資料都儲存在本機，不會上傳到任何第三方伺服器，並且支援本機部署的模型呼叫。",
     "personalized_knowledge_base": "個人化知識庫",
-    "knowledge_base_integration_title": "AI知識庫整合",
+    "knowledge_base_integration_title": "AI 知識庫整合",
     "your_personal_assistant": "做您最貼心的助手",
-    "knowledge_base_description": "CherryStudio目前已上線知識庫功能，支援多種格式檔案的匯入和網頁匯入等來組建您的個人化知識庫。",
+    "knowledge_base_description": "Cherry Studio 目前已上線知識庫功能，支援多種格式檔案的匯入和網頁匯入等來組建您的個人化知識庫。",
     "download_client": "下載客戶端",
     "slides": {
       "slide1": {
-        "title": "您的全能AI助手",
-        "description": "Cherry Studio 是一個桌面客戶端，它將多個大語言模型集成到一個應用程序中，為您提供最好的AI體驗。",
+        "title": "您的全能 AI 助手",
+        "description": "Cherry Studio 是一個桌面客戶端，它將多個大語言模型集成到一個應用程序中，為您提供最好的 AI 體驗。",
         "download_button": "免費下載"
       },
       "slide2": {
@@ -77,23 +77,23 @@
     "learn_more": "了解更多",
     "conversation": {
       "title": "多模型對話",
-      "description": "支持同時與多個AI模型對話，比較不同模型的回答效果。"
+      "description": "支持同時與多個 AI 模型對話，比較不同模型的回答效果。"
     },
     "drawing": {
-      "title": "AI繪畫",
-      "description": "集成多種AI繪畫模型，輕鬆創作精美圖片。"
+      "title": "AI 繪畫",
+      "description": "集成多種 AI 繪畫模型，輕鬆創作精美圖片。"
     },
     "translation": {
       "title": "智能翻譯",
       "description": "支持多語言翻譯，準確理解上下文語境。"
     },
     "assistants": {
-      "title": "AI助手",
+      "title": "AI 助手",
       "description": "預設多種專業助手，滿足不同場景需求。"
     },
     "knowledge_base": {
       "title": "知識庫",
-      "description": "構建個人知識庫，讓AI基於您的資料回答問題。"
+      "description": "構建個人知識庫，讓 AI 基於您的資料回答問題。"
     },
     "backup": {
       "title": "數據備份",
@@ -104,11 +104,11 @@
     "title": "項目相關",
     "intro": {
       "title": "項目介紹",
-      "content": "Cherry Studio 是一個開源的桌面AI客戶端，旨在為用戶提供最好的AI體驗。"
+      "content": "Cherry Studio 是一個開源的桌面 AI 客戶端，旨在為用戶提供最好的 AI 體驗。"
     },
     "goal": {
       "title": "項目目標",
-      "content": "我們致力於打造一個功能強大、易於使用的AI助手工具。"
+      "content": "我們致力於打造一個功能強大、易於使用的 AI 助手工具。"
     },
     "contribution": {
       "title": "參與貢獻",
@@ -123,7 +123,7 @@
     "zsxq": "知識星球(問題解答)"
   },
   "footer": {
-    "description": "CherryStudio是一個支援多平台的AI客戶端，我們致力於讓更多人能夠享受到AI帶來的便利。",
+    "description": "Cherry Studio 是一個支援多平台的 AI 客戶端，我們致力於讓更多人能夠享受到 AI 帶來的便利。",
     "cherry_studio": {
       "title": "Cherry Studio",
       "github": "Github",
@@ -167,12 +167,12 @@
     "download_apple": "下載 (Apple 晶片)",
     "download_intel": "下載 (Intel 晶片)",
     "download_now": "立即下載",
-    "windows_package": "Windows系統安裝包",
+    "windows_package": "Windows 系統安裝包",
     "windows_standard": "Windows 標準版",
     "windows_portable": "Windows 可攜式版",
     "windows_standard_arm": "Windows 標準版 (ARM 版)",
     "windows_portable_arm": "Windows 可攜式版 (ARM 版)",
-    "macos_package": "MacOS系統安裝包",
+    "macos_package": "MacOS 系統安裝包",
     "macos_intel": "Intel 晶片",
     "macos_apple": "Apple 晶片",
     "linux_package": "Linux 系統安裝包",
@@ -182,7 +182,7 @@
   "enterprise_page": {
     "hero": {
       "title": "Cherry Studio 企業版",
-      "subtitle": "專為企業級用戶設計的AI解決方案",
+      "subtitle": "專為企業級用戶設計的 AI 解決方案",
       "contact_us": "聯繫我們",
       "learn_more": "了解更多"
     },
@@ -191,7 +191,7 @@
       "subtitle": "強大的功能集合，滿足企業級需求",
       "model_management": {
         "title": "模型管理",
-        "description": "統一管理企業內部的AI模型資源"
+        "description": "統一管理企業內部的 AI 模型資源"
       },
       "knowledge_base": {
         "title": "企業知識庫",
@@ -207,7 +207,7 @@
       },
       "backend_service": {
         "title": "後端服務",
-        "description": "提供穩定可靠的後端API服務"
+        "description": "提供穩定可靠的後端 API 服務"
       },
       "security_compliance": {
         "title": "安全合規",
@@ -250,7 +250,7 @@
     },
     "beta": {
       "title": "Beta 測試",
-      "description": "企業版目前處於Beta測試階段，歡迎體驗並提供反饋",
+      "description": "企業版目前處於 Beta 測試階段，歡迎體驗並提供反饋",
       "demo": {
         "title": "在線演示",
         "admin_portal": "管理門戶：",
@@ -320,7 +320,7 @@
     "light_mode": "淺色",
     "dark_mode": "深色",
     "copy_code": "複製代碼",
-    "copy_cdn": "複製CDN",
+    "copy_cdn": "複製 CDN",
     "copied": "已複製",
     "no_preview": "暫無預覽",
     "example_image": "示例圖片",
@@ -357,7 +357,7 @@
       "version_placeholder": "如：1.0",
       "version_hint": "請使用數字格式，如：1.0、2.1.3",
       "code_label": "CSS 代碼",
-      "code_placeholder": "請輸入主題的CSS代碼...",
+      "code_placeholder": "請輸入主題的 CSS 代碼...",
       "cdn_link_label": "CDN 鏈接（可選）",
       "cdn_link_placeholder": "https://example.com/theme.css",
       "light_image_label": "淺色模式截圖",
@@ -378,7 +378,7 @@
       "submit_error": "提交失敗，請稍後重試",
       "validation": {
         "name_required": "請輸入主題名稱",
-        "code_required": "請輸入CSS代碼",
+        "code_required": "請輸入 CSS 代碼",
         "light_image_required": "請上傳淺色模式截圖",
         "dark_image_required": "請上傳深色模式截圖",
         "file_type_error": "請上傳正確格式的圖片檔案"

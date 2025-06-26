@@ -42,7 +42,7 @@
     "powerful_ai_assistant": "Votre assistant IA tout-puissant",
     "cherry_studio_title": "Cherry Studio",
     "multi_provider_client": "Un client de conversation IA prenant en charge l'intégration de plusieurs fournisseurs",
-    "multi_provider_description": "CherryStudio prend en charge l'intégration de la plupart des fournisseurs du marché et peut planifier de manière centralisée les modèles de plusieurs fournisseurs.",
+    "multi_provider_description": "Cherry Studio prend en charge l'intégration de la plupart des fournisseurs du marché et peut planifier de manière centralisée les modèles de plusieurs fournisseurs.",
     "privacy_security": "Garantie de confidentialité et de sécurité",
     "local_storage_title": "Données stockées localement",
     "no_privacy_leak": "Ne vous inquiétez pas des fuites de confidentialité",
@@ -50,7 +50,7 @@
     "personalized_knowledge_base": "Base de connaissances personnalisée",
     "knowledge_base_integration_title": "Intégration de la base de connaissances IA",
     "your_personal_assistant": "Votre assistant le plus attentionné",
-    "knowledge_base_description": "CherryStudio a lancé la fonctionnalité de base de connaissances, prenant en charge l'importation de fichiers de différents formats, l'importation de pages Web, etc., pour créer une base de connaissances personnalisée.",
+    "knowledge_base_description": "Cherry Studio a lancé la fonctionnalité de base de connaissances, prenant en charge l'importation de fichiers de différents formats, l'importation de pages Web, etc., pour créer une base de connaissances personnalisée.",
     "download_client": "Télécharger le client"
   },
   "features": {
@@ -63,15 +63,15 @@
     },
     "drawing": {
       "title": "Dessin par IA",
-      "description": "Prend en charge plusieurs modèles de dessin, vous permettant de laisser libre cours à votre imagination, et CherryStudio s'occupe de la réalisation."
+      "description": "Prend en charge plusieurs modèles de dessin, vous permettant de laisser libre cours à votre imagination, et Cherry Studio s'occupe de la réalisation."
     },
     "translation": {
       "title": "Traduction par IA",
-      "description": "Que ce soit sur la page de traduction ou dans la boîte de dialogue, CherryStudio peut traduire rapidement le contenu que vous saisissez."
+      "description": "Que ce soit sur la page de traduction ou dans la boîte de dialogue, Cherry Studio peut traduire rapidement le contenu que vous saisissez."
     },
     "assistants": {
       "title": "Des milliers d'assistants intégrés",
-      "description": "CherryStudio intègre des milliers d'assistants de différentes catégories pour vous aider à utiliser plus efficacement les grands modèles."
+      "description": "Cherry Studio intègre des milliers d'assistants de différentes catégories pour vous aider à utiliser plus efficacement les grands modèles."
     },
     "knowledge_base": {
       "title": "Base de connaissances multi-sources",
@@ -86,11 +86,11 @@
     "title": "À propos du projet",
     "intro": {
       "title": "Présentation du projet",
-      "description": "CherryStudio est un client IA multiplateforme qui prend en charge Windows, macOS, Linux et, à l'avenir, les appareils mobiles. Le projet a connu des centaines d'itérations depuis juillet 2024, dans le but de créer un client plus efficace, plus sûr et plus facile à utiliser, afin que davantage de personnes puissent profiter de la commodité apportée par l'IA."
+      "description": "Cherry Studio est un client IA multiplateforme qui prend en charge Windows, macOS, Linux et, à l'avenir, les appareils mobiles. Le projet a connu des centaines d'itérations depuis juillet 2024, dans le but de créer un client plus efficace, plus sûr et plus facile à utiliser, afin que davantage de personnes puissent profiter de la commodité apportée par l'IA."
     },
     "goal": {
-      "title": "L'objectif de CherryStudio",
-      "description": "CherryStudio se consacre à permettre aux utilisateurs de se concentrer sur la création ou de profiter de la commodité apportée par l'IA, sans que les novices soient découragés par des configurations complexes. Il suffit donc d'entrer une clé pour commencer. Nous fournissons également des manuels d'utilisation détaillés pour référence. Notre communauté est très active et peut rapidement aider à résoudre divers problèmes d'utilisation."
+      "title": "L'objectif de Cherry Studio",
+      "description": "Cherry Studio se consacre à permettre aux utilisateurs de se concentrer sur la création ou de profiter de la commodité apportée par l'IA, sans que les novices soient découragés par des configurations complexes. Il suffit donc d'entrer une clé pour commencer. Nous fournissons également des manuels d'utilisation détaillés pour référence. Notre communauté est très active et peut rapidement aider à résoudre divers problèmes d'utilisation."
     },
     "contribution": {
       "title": "Vous voulez contribuer au projet, que pouvez-vous faire ?",
@@ -105,7 +105,7 @@
     "zsxq": "ZhiShiXingQiu (Q&R)"
   },
   "footer": {
-    "description": "CherryStudio est un client IA multiplateforme, qui s'efforce de permettre à davantage de personnes de profiter de la commodité apportée par l'IA.",
+    "description": "Cherry Studio est un client IA multiplateforme, qui s'efforce de permettre à davantage de personnes de profiter de la commodité apportée par l'IA.",
     "cherry_studio": {
       "title": "Cherry Studio",
       "github": "Github",

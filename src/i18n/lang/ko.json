@@ -6,7 +6,7 @@
     "theme": "Cherry Studio 테마 라이브러리 - AI 어시스턴트 커스터마이징"
   },
   "page_description": {
-    "home": "Cherry Studio AI는 iOS, macOS, Windows 플랫폼을 지원하는 강력한 멀티모델 AI 어시스턴트입니다. 여러 첨단 LLM 모델을 빠르게 전환하여 작업과 학습 효율성을 높입니다.",
+    "home": "Cherry Studio AI 는 iOS, macOS, Windows 플랫폼을 지원하는 강력한 멀티모델 AI 어시스턴트입니다. 여러 첨단 LLM 모델을 빠르게 전환하여 작업과 학습 효율성을 높입니다.",
     "download": "Windows, macOS, Linux 플랫폼을 지원하는 Cherry Studio AI 클라이언트를 다운로드하세요. 100+ AI 모델을 통합하며 완전 무료 오픈소스입니다.",
     "enterprise": "Cherry Studio 엔터프라이즈는 현대 팀과 기업을 위한 프라이빗 배포 AI 생산성 플랫폼을 제공하며, 모델 관리, 권한 제어, 데이터 보안을 지원합니다.",
     "theme": "아름다운 Cherry Studio 테마를 발견하고 공유하여 AI 어시스턴트 인터페이스를 개인화하세요. 라이트 모드와 다크 모드 테마를 모두 지원합니다."
@@ -42,15 +42,15 @@
     "powerful_ai_assistant": "당신의 만능 AI 어시스턴트",
     "cherry_studio_title": "Cherry Studio",
     "multi_provider_client": "다중 서비스 제공업체 통합을 지원하는 AI 대화 클라이언트",
-    "multi_provider_description": "CherryStudio는 현재 시장의 대부분 서비스 제공업체 통합을 지원하며 다중 서비스 제공업체의 모델을 통합적으로 스케줄링할 수 있습니다.",
+    "multi_provider_description": "Cherry Studio 는 현재 시장의 대부분 서비스 제공업체 통합을 지원하며 다중 서비스 제공업체의 모델을 통합적으로 스케줄링할 수 있습니다.",
     "privacy_security": "개인정보 보안 보장",
     "local_storage_title": "데이터 로컬 저장",
     "no_privacy_leak": "개인정보 유출 걱정 없음",
-    "local_storage_description": "모든 사용 데이터는 로컬에 저장되며, 어떤 제3자 서버에도 업로드되지 않으며 로컬 배포 모델 호출을 지원합니다.",
+    "local_storage_description": "모든 사용 데이터는 로컬에 저장되며, 어떤 제 3 자 서버에도 업로드되지 않으며 로컬 배포 모델 호출을 지원합니다.",
     "personalized_knowledge_base": "개인화된 지식 베이스",
     "knowledge_base_integration_title": "AI 지식 베이스 통합",
     "your_personal_assistant": "가장 세심한 당신의 비서",
-    "knowledge_base_description": "CherryStudio는 현재 지식 베이스 기능을 출시했으며, 다양한 형식의 파일 가져오기 및 웹 페이지 가져오기 등을 지원하여 개인화된 지식 베이스를 구축할 수 있습니다.",
+    "knowledge_base_description": "Cherry Studio 는 현재 지식 베이스 기능을 출시했으며, 다양한 형식의 파일 가져오기 및 웹 페이지 가져오기 등을 지원하여 개인화된 지식 베이스를 구축할 수 있습니다.",
     "download_client": "클라이언트 다운로드"
   },
   "features": {
@@ -63,15 +63,15 @@
     },
     "drawing": {
       "title": "AI 드로잉",
-      "description": "다양한 드로잉 모델을 지원하여 상상력을 마음껏 발휘하여 CherryStudio가 완성하도록 할 수 있습니다."
+      "description": "다양한 드로잉 모델을 지원하여 상상력을 마음껏 발휘하여 Cherry Studio 가 완성하도록 할 수 있습니다."
     },
     "translation": {
       "title": "AI 번역",
-      "description": "번역 페이지든 대화창이든 CherryStudio는 입력한 내용을 빠르게 번역할 수 있습니다."
+      "description": "번역 페이지든 대화창이든 Cherry Studio 는 입력한 내용을 빠르게 번역할 수 있습니다."
     },
     "assistants": {
       "title": "천여 개의 내장 어시스턴트",
-      "description": "CherryStudio에는 다양한 카테고리의 천여 개 어시스턴트가 내장되어 있어 대형 모델을 더욱 효율적으로 사용할 수 있습니다."
+      "description": "Cherry Studio 에는 다양한 카테고리의 천여 개 어시스턴트가 내장되어 있어 대형 모델을 더욱 효율적으로 사용할 수 있습니다."
     },
     "knowledge_base": {
       "title": "다중 데이터 소스 지식 베이스",
@@ -86,15 +86,15 @@
     "title": "프로젝트 관련",
     "intro": {
       "title": "프로젝트 소개",
-      "description": "CherryStudio는 Win, macOS, Linux 플랫폼을 지원하는 멀티 플랫폼 AI 클라이언트이며, 미래에는 모바일도 지원할 예정입니다. 프로젝트는 24년 7월부터 지금까지 수백 개의 버전을 거듭했으며, 더 효율적이고 안전하며 사용하기 쉬운 클라이언트를 만들어 더 많은 사람들이 AI가 가져다주는 편리함을 누릴 수 있도록 노력하고 있습니다."
+      "description": "Cherry Studio 는 Windows, macOS, Linux 플랫폼을 지원하는 멀티 플랫폼 AI 클라이언트이며, 미래에는 모바일도 지원할 예정입니다。프로젝트는 24 년 7 월부터 지금까지 수백 개의 버전을 거쳐 업데이트 되었으며, 우리는 보다 효율적이고 안전하며 사용하기 쉬운 클라이언트를 만들어 더 많은 사람들이 AI 가 제공하는 편리함을 누릴 수 있도록 노력하고 있습니다."
     },
     "goal": {
-      "title": "CherryStudio의 목표",
-      "description": "CherryStudio는 사용자가 창작에 집중하거나 AI가 제공하는 편리함을 즐길 수 있도록 하는 데 전념하며, 많은 초보 사용자가 복잡한 설정에 의해 외면당하지 않도록 합니다. 따라서 키를 입력하기만 하면 바로 사용할 수 있습니다. 또한 참고 학습을 위한 상세한 사용 설명서도 제공합니다. 저희 커뮤니티도 매우 활발하여 다양한 사용 문제를 신속하게 해결해 드립니다."
+      "title": "Cherry Studio 의 목표",
+      "description": "Cherry Studio 는 사용자가 창작에 집중하거나 AI 가 제공하는 편리함을 즐길 수 있도록 하는 데 전념하며, 많은 초보 사용자가 복잡한 설정에 의해 외면당하지 않도록 합니다. 따라서 키를 입력하기만 하면 바로 사용할 수 있습니다. 또한 참고 학습을 위한 상세한 사용 설명서도 제공합니다. 저희 커뮤니티도 매우 활발하여 다양한 사용 문제를 신속하게 해결해 드립니다."
     },
     "contribution": {
       "title": "프로젝트에 기여하고 싶은데, 무엇을 할 수 있나요?",
-      "description": "저희 프로젝트가 마음에 드셨다면, <1>Github</1>에서 스타를 눌러 간단하게 지원해 주세요. 기술 전문가시라면 저희 기여자 중 한 명이 되는 것을 환영합니다. 물론 문서 편집에 참여하여 사용 경험을 공유하거나 커뮤니티에서 다른 사용자들의 질문에 답변할 수도 있습니다. 아이디어나 제안이 있으시면 GitHub Issues나 공식 커뮤니티를 통해 연락 주세요."
+      "description": "저희 프로젝트가 마음에 드셨다면, <1>Github</1>에서 스타를 눌러 간단하게 지원해 주세요. 기술 전문가시라면 저희 기여자 중 한 명이 되는 것을 환영합니다. 물론 문서 편집에 참여하여 사용 경험을 공유하거나 커뮤니티에서 다른 사용자들의 질문에 답변할 수도 있습니다. 아이디어나 제안이 있으시면 GitHub Issues 나 공식 커뮤니티를 통해 연락 주세요."
     }
   },
   "community": {
@@ -105,7 +105,7 @@
     "zsxq": "지식의 별(질문 답변)"
   },
   "footer": {
-    "description": "CherryStudio는 멀티 플랫폼을 지원하는 AI 클라이언트로서, 더 많은 사람들이 AI의 편리함을 누릴 수 있도록 노력하고 있습니다.",
+    "description": "Cherry Studio 는 멀티 플랫폼을 지원하는 AI 클라이언트로서, 더 많은 사람들이 AI 의 편리함을 누릴 수 있도록 노력하고 있습니다.",
     "cherry_studio": {
       "title": "Cherry Studio",
       "github": "Github",
@@ -130,7 +130,7 @@
     "stars": "즐겨찾기 수"
   },
   "sponsors": {
-    "title": "Cherry Studio에는 다양한 서비스 제공 업체가 내장되어 있습니다",
+    "title": "Cherry Studio 에는 다양한 서비스 제공 업체가 내장되어 있습니다",
     "subtitle": "동시에 OpenAI/Anthropic 등 API 형식과 호환되는 다른 서비스 제공 업체의 연결도 지원합니다"
   },
   "download_page": {
@@ -178,7 +178,7 @@
       },
       "knowledge_base": {
         "title": "엔터프라이즈급 지식 베이스",
-        "description": "팀 공유 지식 베이스를 구축하고 관리하며, 통일된 지식을 기반으로 AI와 상호 작용하여 답변 품질을 향상시킵니다."
+        "description": "팀 공유 지식 베이스를 구축하고 관리하며, 통일된 지식을 기반으로 AI 와 상호 작용하여 답변 품질을 향상시킵니다."
       },
       "permission_control": {
         "title": "세분화된 권한 제어",
@@ -348,7 +348,7 @@
       "dark_image_label": "다크 모드 미리보기 이미지",
       "upload_image": "클릭하여 이미지 업로드",
       "remove_image": "이미지 제거",
-      "image_size_error": "이미지 크기는 2MB를 초과할 수 없습니다",
+      "image_size_error": "이미지 크기는 2MB 를 초과할 수 없습니다",
       "image_format_hint": "JPG, PNG, GIF, WEBP 형식 지원, 최대 2MB, 이미지 비율 16:9 권장, 맞지 않으면 잘립니다.",
       "preview_background_hint": "미리보기 이미지는 창 외부 배경을 포함해야 합니다. 예시 이미지:",
       "tags_label": "태그",

@@ -45,7 +45,7 @@
     "powerful_ai_assistant": "Your Almighty AI Assistant",
     "cherry_studio_title": "Cherry Studio",
     "multi_provider_client": "AI conversation client with multi-provider integration",
-    "multi_provider_description": "CherryStudio currently supports the integration of most service providers on the market and supports unified scheduling of models from multiple service providers.",
+    "multi_provider_description": "Cherry Studio currently supports the integration of most service providers on the market and supports unified scheduling of models from multiple service providers.",
     "privacy_security": "Ensure Privacy and Security",
     "local_storage_title": "Local Data Storage",
     "no_privacy_leak": "No need to worry about privacy leakage",
@@ -53,7 +53,7 @@
     "personalized_knowledge_base": "Personalized Knowledge Base",
     "knowledge_base_integration_title": "AI Knowledge Base Integration",
     "your_personal_assistant": "Be your most intimate assistant",
-    "knowledge_base_description": "CherryStudio has now launched the knowledge base function, which supports importing files in various formats and importing web pages to build your personalized knowledge base.",
+    "knowledge_base_description": "Cherry Studio has now launched the knowledge base function, which supports importing files in various formats and importing web pages to build your personalized knowledge base.",
     "download_client": "Download Client"
   },
   "features": {
@@ -66,15 +66,15 @@
     },
     "drawing": {
       "title": "AI Drawing",
-      "description": "Supports a variety of drawing models, so you can give full play to your imagination and let CherryStudio help you complete it."
+      "description": "Supports a variety of drawing models, so you can give full play to your imagination and let Cherry Studio help you complete it."
     },
     "translation": {
       "title": "AI Translation",
-      "description": "Whether it's the translation page or the conversation bar, CherryStudio can quickly translate the content you enter."
+      "description": "Whether it's the translation page or the conversation bar, Cherry Studio can quickly translate the content you enter."
     },
     "assistants": {
       "title": "Over a Thousand Built-in Assistants",
-      "description": "CherryStudio has built-in thousands of assistants in various categories, making you more efficient when using large models."
+      "description": "Cherry Studio has built-in thousands of assistants in various categories, making you more efficient when using large models."
     },
     "knowledge_base": {
       "title": "Multi-source Knowledge Base",
@@ -89,11 +89,11 @@
     "title": "Project Related",
     "intro": {
       "title": "Project Introduction",
-      "description": "CherryStudio is a multi-platform AI client that supports Windows, macOS, and Linux platforms, with mobile support coming in the future. Since July 2024, the project has iterated hundreds of versions. We are committed to creating a more efficient, secure, and user-friendly client that allows more people to enjoy the convenience of AI."
+      "description": "Cherry Studio is a multi-platform AI client that supports Windows, macOS, and Linux platforms, with mobile support coming in the future. Since July 2024, the project has iterated hundreds of versions. We are committed to creating a more efficient, secure, and user-friendly client that allows more people to enjoy the convenience of AI."
     },
     "goal": {
-      "title": "CherryStudio's Goals",
-      "description": "CherryStudio is dedicated to allowing users to focus on creation or enjoying the convenience of AI, rather than being shut out by various complicated configurations. Therefore, you only need to fill in the API key to start using it immediately. We also provide detailed usage documentation for your reference and learning. Our community is also very active and can quickly help you solve various usage problems."
+      "title": "Cherry Studio's Goals",
+      "description": "Cherry Studio is dedicated to allowing users to focus on creation or enjoying the convenience of AI, rather than being shut out by various complicated configurations. Therefore, you only need to fill in the API key to start using it immediately. We also provide detailed usage documentation for your reference and learning. Our community is also very active and can quickly help you solve various usage problems."
     },
     "contribution": {
       "title": "I want to contribute to the project, what can I do?",
@@ -108,7 +108,7 @@
     "zsxq": "ZhiShiXingQiu (Q&A)"
   },
   "footer": {
-    "description": "CherryStudio is a multi-platform AI client, and we are committed to allowing more people to enjoy the convenience brought by AI.",
+    "description": "Cherry Studio is a multi-platform AI client, and we are committed to allowing more people to enjoy the convenience brought by AI.",
     "cherry_studio": {
       "title": "Cherry Studio",
       "github": "Github",
