@@ -67,11 +67,11 @@
     },
     "translation": {
       "title": "Traduction par IA",
-      "description": "Que ce soit sur la page de traduction ou dans la boîte de dialogue, Cherry Studio peut traduire rapidement le contenu que vous saisissez。"
+      "description": "Que ce soit sur la page de traduction ou dans la boîte de dialogue, Cherry Studio peut traduire rapidement le contenu que vous saisissez."
     },
     "assistants": {
       "title": "Des milliers d'assistants intégrés",
-      "description": "Cherry Studio intègre des milliers d'assistants de différentes catégories pour vous aider à utiliser plus efficacement les grands modèles。"
+      "description": "Cherry Studio intègre des milliers d'assistants de différentes catégories pour vous aider à utiliser plus efficacement les grands modèles."
     },
     "knowledge_base": {
       "title": "Base de connaissances multi-sources",
@@ -86,11 +86,11 @@
     "title": "À propos du projet",
     "intro": {
       "title": "Présentation du projet",
-      "description": "Cherry Studio est un client IA multiplateforme qui prend en charge Windows, macOS, Linux et, à l'avenir, les appareils mobiles. Le projet a connu des centaines d'itérations depuis juillet 2024, dans le but de créer un client plus efficace, plus sûr et plus facile à utiliser, afin que davantage de personnes puissent profiter de la commodité apportée par l'IA。"
+      "description": "Cherry Studio est un client IA multiplateforme qui prend en charge Windows, macOS, Linux et, à l'avenir, les appareils mobiles. Le projet a connu des centaines d'itérations depuis juillet 2024, dans le but de créer un client plus efficace, plus sûr et plus facile à utiliser, afin que davantage de personnes puissent profiter de la commodité apportée par l'IA."
     },
     "goal": {
       "title": "L'objectif de Cherry Studio",
-      "description": "Cherry Studio se consacre à permettre aux utilisateurs de se concentrer sur la création ou de profiter de la commodité apportée par l'IA, sans que les novices soient découragés par des configurations complexes. Il suffit donc d'entrer une clé pour commencer. Nous fournissons également des manuels d'utilisation détaillés pour référence. Notre communauté est très active et peut rapidement aider à résoudre divers problèmes d'utilisation。"
+      "description": "Cherry Studio se consacre à permettre aux utilisateurs de se concentrer sur la création ou de profiter de la commodité apportée par l'IA, sans que les novices soient découragés par des configurations complexes. Il suffit donc d'entrer une clé pour commencer. Nous fournissons également des manuels d'utilisation détaillés pour référence. Notre communauté est très active et peut rapidement aider à résoudre divers problèmes d'utilisation."
     },
     "contribution": {
       "title": "Vous voulez contribuer au projet, que pouvez-vous faire ?",
@@ -105,7 +105,7 @@
     "zsxq": "ZhiShiXingQiu (Q&R)"
   },
   "footer": {
-    "description": "Cherry Studio est un client IA multiplateforme, qui s'efforce de permettre à davantage de personnes de profiter de la commodité apportée par l'IA。",
+    "description": "Cherry Studio est un client IA multiplateforme, qui s'efforce de permettre à davantage de personnes de profiter de la commodité apportée par l'IA.",
     "cherry_studio": {
       "title": "Cherry Studio",
       "github": "Github",
