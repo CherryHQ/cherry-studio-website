@@ -57,18 +57,25 @@ const AgentsPage: React.FC = () => {
     setCurrentPage(1) // 重置页码
   }
 
-  // 订阅所有功能
-  const subscribeAll = () => {
-    const langPrefix = i18n.language.startsWith('zh') ? 'zh' : 'en'
-    const url = `${window.location.origin}/agent/agents-${langPrefix}.json`
-    navigator.clipboard.writeText(url).then(() => alert(t('agents_page.copied')))
+  // TODO
+  const showComingSoon = () => {
+    alert('Coming Soon')
   }
 
-  // 复制URL功能
-  const copyUrl = (template: Template) => {
-    const langPrefix = i18n.language.startsWith('zh') ? 'zh' : 'en'
-    const url = `${window.location.origin}/agent/${langPrefix}/${template.id}.json`
-    navigator.clipboard.writeText(url).then(() => alert(t('agents_page.copied')))
+  // TODO
+  const subscribeAll = () => {
+    alert('Coming Soon')
+    // const langPrefix = i18n.language.startsWith('zh') ? 'zh' : 'en'
+    // const url = `${window.location.origin}/agent/agents-${langPrefix}.json`
+    // navigator.clipboard.writeText(url).then(() => alert(t('agents_page.copied')))
+  }
+
+  // TODO
+  const copyUrl = () => {
+    alert('Coming Soon')
+    // const langPrefix = i18n.language.startsWith('zh') ? 'zh' : 'en'
+    // const url = `${window.location.origin}/agent/${langPrefix}/${template.id}.json`
+    // navigator.clipboard.writeText(url).then(() => alert(t('agents_page.copied')))
   }
 
   // 导出JSON功能
@@ -119,7 +126,7 @@ const AgentsPage: React.FC = () => {
           <div className="css-page-description">
             <div>{t('agents_page.subtitle')}</div>
             <div className="css-buttons-container">
-              <button className="css-submit-button" type="button">
+              <button className="css-submit-button" type="button" onClick={showComingSoon}>
                 {t('agents_page.submit_agent')}
               </button>
               <button className="css-subcribe-button" type="button" onClick={subscribeAll}>
@@ -175,7 +182,7 @@ const AgentsPage: React.FC = () => {
                   </div>
 
                   <div className="css-card-actions-4">
-                    <button className="css-btn primary small" type="button" onClick={() => copyUrl(template)}>
+                    <button className="css-btn primary small" type="button" onClick={() => copyUrl()}>
                       {t('agents_page.copy_url')}
                     </button>
                     <button className="css-btn secondary small" type="button" onClick={() => exportJson(template)}>
