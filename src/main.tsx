@@ -1,4 +1,3 @@
-
 import './assets/css/style.css'
 import './i18n'
 

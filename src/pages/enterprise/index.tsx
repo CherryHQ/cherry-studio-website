@@ -1,5 +1,5 @@
-import { FC } from 'react'
-import { useTranslation } from 'react-i18next'
+import './index.css'
+
 import {
   AlertTriangle,
   BookOpen,
@@ -11,11 +11,11 @@ import {
   ShieldCheck,
   Users
 } from 'lucide-react'
+import { FC } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import Footer from '@/components/website/Footer'
 import { usePageMeta } from '@/hooks/usePageMeta'
-
-import './index.css'
 
 const EnterprisePage: FC = () => {
   const { t } = useTranslation()

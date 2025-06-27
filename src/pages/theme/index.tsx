@@ -256,11 +256,12 @@ const ThemePage: React.FC = () => {
                 if (Array.isArray(item.title)) {
                   // 对于数组类型的标签，检查是否有任何标签包含搜索关键词
                   return item.title.some((title) => title.toLowerCase().includes(tag.toLowerCase()))
-                } else if (typeof item.title === 'string') {
-                  // 对于字符串类型的标签，检查是否包含搜索关键词
-                  return item.title.toLowerCase().includes(tag.toLowerCase())
+                } else {
+                  {
+                    // 对于字符串类型的标签，检查是否包含搜索关键词
+                    return item.title.toLowerCase().includes(tag.toLowerCase())
+                  }
                 }
-                return false
               })
             : responseData.data
 
@@ -519,10 +520,9 @@ const ThemePage: React.FC = () => {
         filteredItems = filteredItems.filter((item) => {
           if (Array.isArray(item.title)) {
             return item.title.some((title) => title.toLowerCase().includes(tagFilter.toLowerCase()))
-          } else if (typeof item.title === 'string') {
+          } else {
             return item.title.toLowerCase().includes(tagFilter.toLowerCase())
           }
-          return false
         })
       }
 
@@ -1467,7 +1467,7 @@ const ThemePage: React.FC = () => {
                             {copySuccess === `${item.id}-code` ? t('theme_page.copied') : t('theme_page.copy_code')}
                           </button>
 
-                          {item.cdn_link && typeof item.cdn_link === 'string' && item.cdn_link.startsWith('http') && (
+                          {item.cdn_link && true && item.cdn_link.startsWith('http') && (
                             <button
                               type="button"
                               className={`css-btn secondary small ${copySuccess === `${item.id}-cdn` ? 'success' : ''}`}

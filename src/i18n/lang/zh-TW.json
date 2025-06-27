@@ -387,5 +387,20 @@
       "version_invalid": "版本號格式不正確",
       "image_size_error": "圖片檔案不能超過 2MB"
     }
+  },
+  "agents_page": {
+    "title": "助手市場",
+    "subtitle": "發現和分享助手，一鍵應用到您的 Cherry Studio",
+    "search_placeholder": "搜索助手...",
+    "search_button": "搜索",
+    "submit_agent": "投稿助手",
+    "subscribe_all": "訂閱全部",
+    "copy_url": "複製 URL",
+    "copied": "已複製",
+    "export_json": "導出 JSON",
+    "exported": "導出成功",
+    "previous": "上一頁",
+    "next": "下一頁"
   }
+
 } 

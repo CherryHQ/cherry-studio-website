@@ -370,5 +370,19 @@
       },
       "version_invalid": "Format du numéro de version invalide"
     }
+  },
+  "agents_page": {
+    "title": "Marché des agents",
+    "subtitle": "Découvrez et partagez des agents, appliquez-les facilement à votre Cherry Studio en un clic",
+    "search_placeholder": "Rechercher un agent...",
+    "search_button": "Rechercher",
+    "submit_agent": "Soumettre un agent",
+    "subscribe_all": "S'abonner à tous",
+    "copy_url": "Copier l'URL",
+    "copied": "Copié",
+    "export_json": "Exporter en JSON",
+    "exported": "Export réussi",
+    "previous": "Précédent",
+    "next": "Suivant"
   }
 } 

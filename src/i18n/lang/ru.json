@@ -370,5 +370,19 @@
       },
       "version_invalid": "Неверный формат номера версии"
     }
+  },
+  "agents_page": {
+    "title": "Маркет агентов",
+    "subtitle": "Открывайте и делитесь агентами, применяйте их в вашем Cherry Studio одним кликом",
+    "search_placeholder": "Поиск агента...",
+    "search_button": "Поиск",
+    "submit_agent": "Добавить агента",
+    "subscribe_all": "Подписаться на все",
+    "copy_url": "Скопировать URL",
+    "copied": "Скопировано",
+    "export_json": "Экспортировать JSON",
+    "exported": "Экспортировано успешно",
+    "previous": "Предыдущая",
+    "next": "Следующая"
   }
 } 

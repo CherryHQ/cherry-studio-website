@@ -370,5 +370,19 @@
       },
       "version_invalid": "รูปแบบหมายเลขเวอร์ชันไม่ถูกต้อง"
     }
+  },
+  "agents_page": {
+    "title": "ตลาดตัวช่วย",
+    "subtitle": "ค้นพบและแบ่งปันตัวช่วย ติดตั้งได้ใน Cherry Studio ด้วยการคลิกเดียว",
+    "search_placeholder": "ค้นหาตัวช่วย...",
+    "search_button": "ค้นหา",
+    "submit_agent": "ส่งตัวช่วย",
+    "subscribe_all": "สมัครสมาชิกทั้งหมด",
+    "copy_url": "คัดลอก URL",
+    "copied": "คัดลอกแล้ว",
+    "export_json": "ส่งออก JSON",
+    "exported": "ส่งออกสำเร็จ",
+    "previous": "ก่อนหน้า",
+    "next": "ต่อไป"
   }
 } 

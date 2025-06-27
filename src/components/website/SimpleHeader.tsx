@@ -50,9 +50,7 @@ const SimpleHeader: React.FC = () => {
                     <Link to="/theme">{t('nav.theme')}</Link>
                   </li>
                   <li className={location.pathname === '/forum' ? 'current' : ''}>
-                    <Link target="_blank" to="https://github.com/CherryHQ/cherry-studio/discussions">
-                      {t('forum')}
-                    </Link>
+                    <Link to="/agents">{t('agents')}</Link>
                   </li>
                   <li className="dropdown">
                     <a href="https://docs.cherry-ai.com/">{t('nav.docs')}</a>

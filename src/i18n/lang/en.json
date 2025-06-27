@@ -373,5 +373,19 @@
       },
       "version_invalid": "Invalid version format"
     }
+  },
+  "agents_page": {
+    "title": "Agent Marketplace",
+    "subtitle": "Discover and share agents, apply them to your Cherry Studio with one click",
+    "search_placeholder": "Search agents...",
+    "search_button": "Search",
+    "submit_agent": "Submit Agent",
+    "subscribe_all": "Subscribe All",
+    "copy_url": "Copy URL",
+    "copied": "Copied",
+    "export_json": "Export JSON",
+    "exported": "Exported successfully",
+    "previous": "Previous",
+    "next": "Next"
   }
-} 
+}

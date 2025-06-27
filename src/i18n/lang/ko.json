@@ -370,5 +370,19 @@
       },
       "version_invalid": "버전 번호 형식이 잘못되었습니다"
     }
+  },
+  "agents_page": {
+    "title": "어시스턴트 마켓",
+    "subtitle": "어시스턴트를 찾아보고 공유하고, 단 한 번의 클릭으로 Cherry Studio에 적용하세요",
+    "search_placeholder": "어시스턴트 검색...",
+    "search_button": "검색",
+    "submit_agent": "어시스턴트 제출",
+    "subscribe_all": "전체 구독",
+    "copy_url": "URL 복사",
+    "copied": "복사됨",
+    "export_json": "JSON 내보내기",
+    "exported": "내보내기가 완료되었습니다.",
+    "previous": "이전",
+    "next": "다음"
   }
 } 

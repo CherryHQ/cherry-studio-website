@@ -370,5 +370,19 @@
       },
       "version_invalid": "バージョン番号の形式が間違っています"
     }
+  },
+  "agents_page": {
+    "title": "アシスタントマーケット",
+    "subtitle": "アシスタントを発見・共有し、ワンクリックでCherry Studioに適用",
+    "search_placeholder": "アシスタントを検索...",
+    "search_button": "検索",
+    "submit_agent": "アシスタントを投稿",
+    "subscribe_all": "すべて購読",
+    "copy_url": "URLをコピー",
+    "copied": "コピーしました",
+    "export_json": "JSONをエクスポート",
+    "exported": "エクスポート成功",
+    "previous": "前のページ",
+    "next": "次のページ"
   }
 } 
