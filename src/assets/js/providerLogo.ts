@@ -156,7 +156,7 @@ export default class ProviderLogo {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 160px;
+        width: 104px;
         height: 80px;
       }
 

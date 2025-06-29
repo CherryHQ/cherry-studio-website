@@ -642,11 +642,10 @@ img {
 
 .logo-box {
   flex: 0 0 auto;
-  padding: 0 28px;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 140px;
+  min-width: 110px;
   height: 112px;
 }
 
