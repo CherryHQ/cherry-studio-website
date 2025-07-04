@@ -160,7 +160,9 @@
     "macos_apple": "Puce Apple",
     "linux_package": "Packages d'installation Linux",
     "linux_appimage": "Version AppImage",
-    "linux_appimage_arm": "Version AppImage (ARM)"
+    "linux_appimage_arm": "Version AppImage (ARM)",
+    "linux_deb": "Version Deb",
+    "linux_deb_arm": "Version Deb (ARM)"
   },
   "enterprise_page": {
     "hero": {
@@ -385,4 +387,4 @@
     "previous": "Précédent",
     "next": "Suivant"
   }
-} 
+}

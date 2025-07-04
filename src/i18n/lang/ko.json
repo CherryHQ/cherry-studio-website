@@ -160,7 +160,9 @@
     "macos_apple": "Apple 칩",
     "linux_package": "Linux 설치 프로그램 패키지",
     "linux_appimage": "AppImage 버전",
-    "linux_appimage_arm": "AppImage 버전 (ARM)"
+    "linux_appimage_arm": "AppImage 버전 (ARM)",
+    "linux_deb": "Deb 버전",
+    "linux_deb_arm": "Deb 버전 (ARM)"
   },
   "enterprise_page": {
     "hero": {
@@ -385,4 +387,4 @@
     "previous": "이전",
     "next": "다음"
   }
-} 
+}

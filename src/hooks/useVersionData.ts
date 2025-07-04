@@ -110,6 +110,16 @@ export function useVersionData() {
                 name: `Cherry-Studio-${cleanVersion}-arm64.AppImage`,
                 url: `https://gitcode.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-arm64.AppImage`,
                 desc: t('download_page.linux_appimage_arm')
+              },
+              {
+                name: `Cherry-Studio-${cleanVersion}-amd64.deb`,
+                url: `https://gitcode.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-amd64.deb`,
+                desc: t('download_page.linux_deb')
+              },
+              {
+                name: `Cherry-Studio-${cleanVersion}-arm64.deb`,
+                url: `https://gitcode.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-arm64.deb`,
+                desc: t('download_page.linux_deb_arm')
               }
             ]
           }

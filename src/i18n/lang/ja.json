@@ -160,7 +160,9 @@
     "macos_apple": "Apple チップ",
     "linux_package": "Linux インストーラーパッケージ",
     "linux_appimage": "AppImage バージョン",
-    "linux_appimage_arm": "AppImage バージョン (ARM)"
+    "linux_appimage_arm": "AppImage バージョン (ARM)",
+    "linux_deb": "Deb バージョン",
+    "linux_deb_arm": "Deb バージョン (ARM)"
   },
   "enterprise_page": {
     "hero": {
@@ -385,4 +387,4 @@
     "previous": "前のページ",
     "next": "次のページ"
   }
-} 
+}

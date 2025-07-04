@@ -161,7 +161,9 @@
     "macos_apple": "Apple 芯片",
     "linux_package": "Linux 系统安装包",
     "linux_appimage": "AppImage 版本",
-    "linux_appimage_arm": "AppImage 版本 (ARM 版)"
+    "linux_appimage_arm": "AppImage 版本 (ARM 版)",
+    "linux_deb": "Deb 版本",
+    "linux_deb_arm": "Deb 版本 (ARM 版)"
   },
   "enterprise_page": {
     "hero": {
@@ -386,4 +388,4 @@
     "previous": "上一页",
     "next": "下一页"
   }
-} 
+}

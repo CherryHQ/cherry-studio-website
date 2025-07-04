@@ -163,7 +163,9 @@
     "macos_apple": "Apple Chip",
     "linux_package": "Linux Installer Packages",
     "linux_appimage": "AppImage Version",
-    "linux_appimage_arm": "AppImage Version (ARM)"
+    "linux_appimage_arm": "AppImage Version (ARM)",
+    "linux_deb": "Deb Version",
+    "linux_deb_arm": "Deb Version (ARM)"
   },
   "enterprise_page": {
     "hero": {

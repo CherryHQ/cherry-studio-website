@@ -160,7 +160,9 @@
     "macos_apple": "Чип Apple",
     "linux_package": "Установочные пакеты Linux",
     "linux_appimage": "Версия AppImage",
-    "linux_appimage_arm": "Версия AppImage (ARM)"
+    "linux_appimage_arm": "Версия AppImage (ARM)",
+    "linux_deb": "Версия Deb",
+    "linux_deb_arm": "Версия Deb (ARM)"
   },
   "enterprise_page": {
     "hero": {
@@ -385,4 +387,4 @@
     "previous": "Предыдущая",
     "next": "Следующая"
   }
-} 
+}
