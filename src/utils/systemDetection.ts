@@ -23,13 +23,13 @@ export function getSystemInfo(version: string): SystemInfo[] | null {
     return [
       {
         name: `Cherry-Studio-${cleanVersion}-x64-setup.exe`,
-        url: `https://gitcode.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-x64-setup.signed.exe`,
+        url: `https://gitcode.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-x64-setup.exe`,
         type: 'Windows',
         arch: 'x64'
       },
       {
         name: `Cherry-Studio-${cleanVersion}-arm64-setup.exe`,
-        url: `https://gitcode.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-arm64-setup.signed.exe`,
+        url: `https://gitcode.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-arm64-setup.exe`,
         type: 'Windows',
         arch: 'arm64'
       }
