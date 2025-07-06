@@ -61,8 +61,9 @@ i18n
     resources,
     fallbackLng: 'en',
     detection: {
-      order: ['querystring', 'navigator'], // 优先从URL查询参数中检测语言，然后是浏览器语言
-      lookupQuerystring: 'lang' // URL参数名为'lang'
+      order: ['localStorage', 'navigator'], // 优先从本地存储中检测语言，然后是浏览器语言
+      caches: ['localStorage'], // 缓存语言到localStorage
+      lookupLocalStorage: 'i18nextLng' // localStorage中存储语言的键名
     },
     interpolation: {
       escapeValue: false
