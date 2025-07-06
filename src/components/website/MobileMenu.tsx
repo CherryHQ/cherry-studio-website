@@ -35,9 +35,19 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
                 {t('nav.download')}
               </Link>
             </li>
+            <li className={location.pathname === '/enterprise' ? 'current' : ''}>
+              <Link to="/enterprise" onClick={onClose}>
+                {t('enterprise')}
+              </Link>
+            </li>
             <li className={location.pathname === '/theme' ? 'current' : ''}>
               <Link to="/theme" onClick={onClose}>
                 {t('nav.theme')}
+              </Link>
+            </li>
+            <li className={location.pathname === '/forum' ? 'current' : ''}>
+              <Link to="/agents" onClick={onClose}>
+                {t('agents')}
               </Link>
             </li>
             <li className="mobile-dropdown">

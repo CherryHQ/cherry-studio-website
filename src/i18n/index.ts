@@ -1,4 +1,5 @@
 import i18n from 'i18next'
+import LanguageDetector from 'i18next-browser-languagedetector'
 import { initReactI18next } from 'react-i18next'
 
 import en from './lang/en.json'
@@ -37,49 +38,6 @@ const resources = {
   }
 }
 
-// 检测浏览器语言并返回支持的语言
-const detectBrowserLanguage = (): string => {
-  const browserLang = navigator.language || navigator.languages?.[0] || 'en'
-
-  // 繁体中文检测
-  if (browserLang === 'zh-TW' || browserLang === 'zh-HK' || browserLang === 'zh-MO') {
-    return 'zh-TW'
-  }
-
-  // 简体中文检测
-  if (browserLang.startsWith('zh')) {
-    return 'zh'
-  }
-
-  // 日语检测
-  if (browserLang.startsWith('ja')) {
-    return 'ja'
-  }
-
-  // 韩语检测
-  if (browserLang.startsWith('ko')) {
-    return 'ko'
-  }
-
-  // 俄语检测
-  if (browserLang.startsWith('ru')) {
-    return 'ru'
-  }
-
-  // 法语检测
-  if (browserLang.startsWith('fr')) {
-    return 'fr'
-  }
-
-  // 泰语检测
-  if (browserLang.startsWith('th')) {
-    return 'th'
-  }
-
-  // 其他情况返回英文
-  return 'en'
-}
-
 // 更新HTML lang属性的函数
 const updateHtmlLang = (language: string) => {
   const langMap: Record<string, string> = {
@@ -96,17 +54,23 @@ const updateHtmlLang = (language: string) => {
   document.documentElement.setAttribute('lang', langCode)
 }
 
-i18n.use(initReactI18next).init({
-  resources,
-  lng: detectBrowserLanguage(),
-  fallbackLng: 'en',
-  interpolation: {
-    escapeValue: false
-  }
-})
+i18n
+  .use(LanguageDetector) // 使用语言检测器
+  .use(initReactI18next)
+  .init({
+    resources,
+    fallbackLng: 'en',
+    detection: {
+      order: ['querystring', 'navigator'], // 优先从URL查询参数中检测语言，然后是浏览器语言
+      lookupQuerystring: 'lang' // URL参数名为'lang'
+    },
+    interpolation: {
+      escapeValue: false
+    }
+  })
 
 // 监听语言变化，更新HTML lang属性
-i18n.on('languageChanged', (lng) => {
+i18n.on('languageChanged', (lng: string) => {
   updateHtmlLang(lng)
 })
 
