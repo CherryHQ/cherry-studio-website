@@ -28,7 +28,7 @@ const Footer: React.FC = () => {
                 <p>{t('footer.description')}</p>
                 <ul className="social-links">
                   <li>
-                    <a href="https://x.com/kangfenmao" className="social-icon">
+                    <a href="https://x.com/CherryStudioHQ" className="social-icon">
                       <img src={xIcon} alt="X Icon" />
                     </a>
                   </li>
