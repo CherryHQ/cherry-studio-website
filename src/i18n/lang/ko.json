@@ -162,7 +162,31 @@
     "linux_appimage": "AppImage 버전",
     "linux_appimage_arm": "AppImage 버전 (ARM)",
     "linux_deb": "Deb 버전",
-    "linux_deb_arm": "Deb 버전 (ARM)"
+    "linux_deb_arm": "Deb 버전 (ARM)",
+    "intel_version": {
+      "title": "Cherry Studio Intel Core™ Ultra 에디션",
+      "subtitle": "Intel 하드웨어에 깊게 최적화된 로컬화 AI 솔루션",
+      "description": "Intel Core™ Ultra 프로세서에 최적화되어 진정한 로컬 AI 경험을 제공",
+      "download_button": "Intel Core™ Ultra 에디션 다운로드",
+      "features": {
+        "local_model": {
+          "title": "로컬 대형 모델 실행 능력",
+          "description": "클라우드 연결 없이 장치에서 Qwen3-4B, 8B, 심지어 14B 등 다양한 매개변수 규모의 언어 모델을 원활하게 실행"
+        },
+        "long_context": {
+          "title": "긴 컨텍스트 처리",
+          "description": "최대 32K 컨텍스트 윈도우를 지원하여 AI가 긴 문서나 복잡한 대화 기록을 이해하고 처리하여 더 깊이 있는 콘텐츠 생성 및 분석 수행"
+        },
+        "knowledge_base": {
+          "title": "로컬 지식 베이스 구축",
+          "description": "RAG(검색 증강 생성) 원리 기반 기술을 통합하여 사용자가 개인 문서와 데이터베이스를 장치에 가져와 전용 지식을 학습한 개인 어시스턴트 생성"
+        },
+        "protocol_extension": {
+          "title": "프로토콜 확장 능력",
+          "description": "MCP(모델 컨텍스트 프로토콜) 확장을 구현하여 향후 더 다양한 AI 애플리케이션과 개발자 생태계를 위한 인터페이스 제공"
+        }
+      }
+    }
   },
   "enterprise_page": {
     "hero": {

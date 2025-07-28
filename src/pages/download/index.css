@@ -214,6 +214,142 @@
   color: #ff5f5f;
 }
 
+/* Intel 版本下载区域 */
+.intel-version {
+  background: linear-gradient(135deg, #0071c5 0%, #0088e6 100%);
+  padding: 50px;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 113, 197, 0.15);
+  margin-bottom: 60px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  margin-top: 60px;
+}
+
+.intel-version::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  transform: translate(50%, -50%);
+}
+
+.intel-version-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.intel-version-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.intel-version-title img {
+  height: 45px;
+  width: auto;
+}
+
+.intel-version-subtitle {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 15px;
+}
+
+.intel-version-description {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+}
+
+.intel-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin: 40px 0;
+}
+
+.intel-feature-item {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 25px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.intel-feature-item:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-3px);
+}
+
+.intel-feature-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.intel-feature-title::before {
+  content: '✦';
+  color: #00d4ff;
+  font-size: 16px;
+}
+
+.intel-feature-description {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.6;
+}
+
+.intel-download-section {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.intel-download-button {
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.intel-download-button a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 40px;
+  background: linear-gradient(270deg, #ff5f5f 0%, #ff8f8f 100%);
+  border-radius: 50px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(255, 95, 95, 0.3);
+}
+
+.intel-download-button a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(255, 95, 95, 0.4);
+}
+
+.intel-download-button a::after {
+  content: '↓';
+  font-size: 20px;
+}
+
 /* 响应式调整 */
 @media (max-width: 768px) {
   .download-section {
@@ -242,6 +378,39 @@
     font-size: 16px;
     padding: 12px 30px;
     min-width: 160px;
+  }
+
+  .intel-version {
+    padding: 30px 20px;
+  }
+
+  .intel-version-title {
+    font-size: 28px;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .intel-version-title img {
+    height: 35px;
+  }
+
+  .intel-version-subtitle {
+    font-size: 16px;
+  }
+
+  .intel-features {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin: 30px 0;
+  }
+
+  .intel-feature-item {
+    padding: 20px;
+  }
+
+  .intel-download-button a {
+    font-size: 16px;
+    padding: 15px 30px;
   }
 }
 

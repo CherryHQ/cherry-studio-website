@@ -162,7 +162,31 @@
     "linux_appimage": "Version AppImage",
     "linux_appimage_arm": "Version AppImage (ARM)",
     "linux_deb": "Version Deb",
-    "linux_deb_arm": "Version Deb (ARM)"
+    "linux_deb_arm": "Version Deb (ARM)",
+    "intel_version": {
+      "title": "Cherry Studio Intel Core™ Ultra Edition",
+      "subtitle": "Solution d'IA localisée profondément optimisée pour le matériel Intel",
+      "description": "Optimisé pour les processeurs Intel Core™ Ultra, vous offrant une véritable expérience d'IA locale",
+      "download_button": "Télécharger Intel Core™ Ultra Edition",
+      "features": {
+        "local_model": {
+          "title": "Capacité d'exécution de modèles larges locaux",
+          "description": "Pas besoin de se connecter au cloud, exécutez en douceur les modèles de langage Qwen3-4B, 8B et même 14B de différentes échelles de paramètres sur votre appareil"
+        },
+        "long_context": {
+          "title": "Traitement de contexte long",
+          "description": "Prend en charge jusqu'à 32K de fenêtre de contexte, permettant à l'IA de comprendre et traiter des documents longs ou des historiques de conversation complexes pour une génération et analyse de contenu plus approfondies"
+        },
+        "knowledge_base": {
+          "title": "Construction de base de connaissances locale",
+          "description": "Intègre la technologie basée sur le principe RAG (génération augmentée par récupération), les utilisateurs peuvent importer des documents personnels et des bases de données dans l'appareil, faisant de l'IA un assistant personnel qui a appris vos connaissances exclusives"
+        },
+        "protocol_extension": {
+          "title": "Capacité d'extension de protocole",
+          "description": "Implémente l'extension MCP (protocole de contexte de modèle), laissant des interfaces pour des applications d'IA plus diversifiées et l'écosystème des développeurs à l'avenir"
+        }
+      }
+    }
   },
   "enterprise_page": {
     "hero": {

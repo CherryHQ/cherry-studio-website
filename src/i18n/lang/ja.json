@@ -160,9 +160,33 @@
     "macos_apple": "Apple チップ",
     "linux_package": "Linux インストーラーパッケージ",
     "linux_appimage": "AppImage バージョン",
-    "linux_appimage_arm": "AppImage バージョン (ARM)",
-    "linux_deb": "Deb バージョン",
-    "linux_deb_arm": "Deb バージョン (ARM)"
+    "linux_appimage_arm": "AppImageバージョン (ARM版)",
+    "linux_deb": "Debバージョン",
+    "linux_deb_arm": "Debバージョン (ARM版)",
+    "intel_version": {
+      "title": "Cherry Studio Intel Core™ Ultra エディション",
+      "subtitle": "Intel ハードウェア向けに深く最適化されたローカライズ AI ソリューション",
+      "description": "Intel Core™ Ultra プロセッサー向けに最適化され、真のローカル AI エクスペリエンスを提供",
+      "download_button": "Intel Core™ Ultra エディションをダウンロード",
+      "features": {
+        "local_model": {
+          "title": "ローカル大規模モデル実行能力",
+          "description": "クラウドに接続する必要なく、デバイス上で Qwen3-4B、8B、さらに 14B などの異なるパラメータスケールの言語モデルをスムーズに実行"
+        },
+        "long_context": {
+          "title": "長いコンテキスト処理",
+          "description": "最大 32K のコンテキストウィンドウをサポートし、AI が長文書や複雑な会話履歴を理解・処理し、より深いコンテンツ生成と分析を実行"
+        },
+        "knowledge_base": {
+          "title": "ローカル知識ベース構築",
+          "description": "RAG（検索拡張生成）原理に基づく技術を統合し、ユーザーは個人文書やデータベースをデバイスにインポートして、あなた専用の知識を学習した個人アシスタントを作成"
+        },
+        "protocol_extension": {
+          "title": "プロトコル拡張機能",
+          "description": "MCP（モデルコンテキストプロトコル）の拡張を実装し、将来のより多様な AI アプリケーションと開発者エコシステムのためのインターフェースを提供"
+        }
+      }
+    }
   },
   "enterprise_page": {
     "hero": {

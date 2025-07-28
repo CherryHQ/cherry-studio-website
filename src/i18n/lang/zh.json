@@ -163,7 +163,31 @@
     "linux_appimage": "AppImage 版本",
     "linux_appimage_arm": "AppImage 版本 (ARM 版)",
     "linux_deb": "Deb 版本",
-    "linux_deb_arm": "Deb 版本 (ARM 版)"
+    "linux_deb_arm": "Deb 版本 (ARM 版)",
+    "intel_version": {
+      "title": "Cherry Studio 酷睿™ Ultra 版",
+      "subtitle": "专为 Intel 硬件深度优化的本地化 AI 解决方案",
+      "description": "基于 Intel 酷睿™ Ultra 处理器优化，为您提供真正的本地 AI 体验",
+      "download_button": "下载酷睿™ Ultra 版",
+      "features": {
+        "local_model": {
+          "title": "本地大模型运行能力",
+          "description": "无需连接云端，即可在设备上流畅运行 Qwen3-4B、8B 甚至 14B 等不同参数规模的语言模型"
+        },
+        "long_context": {
+          "title": "长上下文处理",
+          "description": "支持高达 32K 的上下文窗口，使得 AI 能够理解和处理长篇文档或复杂的对话历史，进行更具深度的内容生成与分析"
+        },
+        "knowledge_base": {
+          "title": "本地知识库构建",
+          "description": "集成了基于 RAG（检索增强生成）原理的技术，用户可以将个人文档、资料库导入设备，让 AI 成为一个学习了你专属知识的个人助理"
+        },
+        "protocol_extension": {
+          "title": "协议扩展能力",
+          "description": "实现了 MCP（模型上下文协议）的扩展，为未来更多样化的 AI 应用和开发者生态留出了接口"
+        }
+      }
+    }
   },
   "enterprise_page": {
     "hero": {
