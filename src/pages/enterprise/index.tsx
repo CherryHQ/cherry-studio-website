@@ -204,14 +204,14 @@ const EnterprisePage: FC = () => {
                   <li>
                     <strong>{t('enterprise_page.beta.demo.admin_portal')}</strong>
                     <a href="https://demo.admin.cherry-ai.com" target="_blank" rel="noopener noreferrer">
-                      demo.admin.cherry-ai.com
+                      admin.demo.cherry-ai.com
                     </a>
                   </li>
                   <li>
                     <strong>{t('enterprise_page.beta.demo.account')}</strong>admin
                   </li>
                   <li>
-                    <strong>{t('enterprise_page.beta.demo.password')}</strong>admin123
+                    <strong>{t('enterprise_page.beta.demo.password')}</strong>password
                   </li>
                 </ul>
               </div>
