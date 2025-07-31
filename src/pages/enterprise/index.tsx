@@ -203,7 +203,7 @@ const EnterprisePage: FC = () => {
                 <ul>
                   <li>
                     <strong>{t('enterprise_page.beta.demo.admin_portal')}</strong>
-                    <a href="https://demo.admin.cherry-ai.com" target="_blank" rel="noopener noreferrer">
+                    <a href="https://admin.demo.cherry-ai.com" target="_blank" rel="noopener noreferrer">
                       admin.demo.cherry-ai.com
                     </a>
                   </li>
