@@ -220,9 +220,16 @@ const EnterprisePage: FC = () => {
             <div className="beta-card">
               <h3>{t('enterprise_page.beta.download.title')}</h3>
               <div className="card-content">
-                <p>{t('enterprise_page.beta.download.description')}</p>
+                <ul>
+                  <li>{t('enterprise_page.beta.download.description')}</li>
+                  <li>
+                    <strong>{t('enterprise_page.beta.demo.account')}</strong>user
+                  </li>
+                  <li>
+                    <strong>{t('enterprise_page.beta.demo.password')}</strong>password
+                  </li>
+                </ul>
                 <div className="download-info">
-                  <p className="system-support">{t('enterprise_page.beta.download.system_support')}</p>
                   <a
                     href="https://gitcode.com/CherryHQ/cherry-studio-enterprise/releases"
                     className="download-button"
