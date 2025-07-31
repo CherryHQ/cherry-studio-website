@@ -224,7 +224,7 @@ const EnterprisePage: FC = () => {
                 <div className="download-info">
                   <p className="system-support">{t('enterprise_page.beta.download.system_support')}</p>
                   <a
-                    href="https://pan.quark.cn/s/2e5696d25483"
+                    href="https://gitcode.com/CherryHQ/cherry-studio-enterprise/releases"
                     className="download-button"
                     target="_blank"
                     rel="noopener noreferrer">
