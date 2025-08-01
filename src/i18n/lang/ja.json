@@ -267,8 +267,8 @@
         "password": "パスワード："
       },
       "download": {
-        "title": "クライアントダウンロード",
-        "description": "完全な体験を得るために、エンタープライズ版クライアントをダウンロードしてください：",
+        "title": "クライアント",
+        "server_url": "サーバーのアドレス：",
         "system_support": "macOS と Windows システムをサポート",
         "download_button": "クライアントをダウンロード"
       },

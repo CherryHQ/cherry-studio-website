@@ -267,8 +267,8 @@
         "password": "Mot de passe :"
       },
       "download": {
-        "title": "Télécharger le client",
-        "description": "Pour une expérience complète, veuillez télécharger le client de la version entreprise :",
+        "title": "Client",
+        "server_url": "Adresse du serveur :",
         "system_support": "Prise en charge des systèmes macOS et Windows",
         "download_button": "Télécharger le client"
       },

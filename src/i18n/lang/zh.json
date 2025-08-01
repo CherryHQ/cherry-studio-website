@@ -268,8 +268,8 @@
         "password": "密码："
       },
       "download": {
-        "title": "客户端下载",
-        "description": "为获得完整体验，请下载企业版客户端：",
+        "title": "客户端",
+        "server_url": "服务端地址：",
         "system_support": "支持 macOS 和 Windows 系统",
         "download_button": "下载客户端"
       },

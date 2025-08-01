@@ -221,7 +221,7 @@ const EnterprisePage: FC = () => {
               <h3>{t('enterprise_page.beta.download.title')}</h3>
               <div className="card-content">
                 <ul>
-                  <li>{t('enterprise_page.beta.download.description')}</li>
+                  <li>{t('enterprise_page.beta.download.server_url')} https://api.demo.cherry-ai.com</li>
                   <li>
                     <strong>{t('enterprise_page.beta.demo.account')}</strong>user
                   </li>

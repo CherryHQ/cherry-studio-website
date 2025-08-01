@@ -270,8 +270,8 @@
         "password": "Password: "
       },
       "download": {
-        "title": "Client Download",
-        "description": "For the complete experience, please download the Enterprise Edition client:",
+        "title": "Client",
+        "server_url": "Server Address: ",
         "system_support": "Supports macOS and Windows systems",
         "download_button": "Download Client"
       },

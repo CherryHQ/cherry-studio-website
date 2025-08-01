@@ -284,8 +284,8 @@
         "password": "密碼："
       },
       "download": {
-        "title": "下載體驗",
-        "description": "下載企業版客戶端，體驗完整功能",
+        "title": "客戶端",
+        "server_url": "服務端地址：",
         "system_support": "支持 Windows x64 系統",
         "download_button": "下載企業版"
       },

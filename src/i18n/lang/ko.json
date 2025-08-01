@@ -267,8 +267,8 @@
         "password": "비밀번호:"
       },
       "download": {
-        "title": "클라이언트 다운로드",
-        "description": "완벽한 경험을 위해 엔터프라이즈 버전 클라이언트를 다운로드하세요:",
+        "title": "클라이언트",
+        "server_url": "서버 주소:",
         "system_support": "macOS 및 Windows 시스템 지원",
         "download_button": "클라이언트 다운로드"
       },

@@ -45,14 +45,14 @@
 
 ### 体验环境
 
-- **管理后台：** https://demo.admin.cherry-ai.com
+- **管理后台：** https://admin.demo.cherry-ai.com
 - **账号：** admin
 - **密码：** admin123
 
 ### 客户端下载
 
 为获得完整体验，请下载企业版客户端：
-📥 [下载链接](https://pan.quark.cn/s/2e5696d25483)
+📥 [下载链接](https://gitcode.com/CherryHQ/cherry-studio-enterprise/releases)
 
 ## 🆚 版本对比
 
