@@ -49,7 +49,7 @@ const DownloadPage: FC = () => {
             <ul className="cloud-download-list">
               <li>
                 <strong>{t('download_page.quark_drive')}：</strong>
-                <a href="https://pan.quark.cn/s/c8533a1ec63e" target="_blank" rel="noopener noreferrer">
+                <a href="https://pan.quark.cn/s/4044324d0ecd" target="_blank" rel="noopener noreferrer">
                   {t('download_page.click_download')}
                 </a>
               </li>
