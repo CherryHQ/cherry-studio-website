@@ -104,10 +104,20 @@ const DownloadPage: FC = () => {
             </div>
 
             <div className="intel-download-section">
-              <div className="intel-download-button">
-                <a href="https://pan.quark.cn/s/705e01ff21d9" target="_blank" rel="noopener noreferrer">
-                  {t('download_page.intel_version.download_button')}
-                </a>
+              <div className="intel-download-buttons gap-2">
+                <div className="intel-download-button">
+                  <a href="https://pan.quark.cn/s/705e01ff21d9" target="_blank" rel="noopener noreferrer">
+                    {t('download_page.quark_drive')}
+                  </a>
+                </div>
+                <div className="intel-download-button">
+                  <a
+                    href="https://1drv.ms/f/c/100833ac71368975/Eg6uwM0KlbhKuDIDzXnQjSoBEYHlX7lFpkvdWSZVnMtmtg"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    OneDrive
+                  </a>
+                </div>
               </div>
             </div>
           </div>

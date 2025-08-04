@@ -320,9 +320,24 @@
   margin-top: 40px;
 }
 
+.intel-download-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  margin-top: 20px;
+}
+
+@media (min-width: 768px) {
+  .intel-download-buttons {
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+  }
+}
+
 .intel-download-button {
   display: inline-block;
-  margin-top: 20px;
 }
 
 .intel-download-button a {
