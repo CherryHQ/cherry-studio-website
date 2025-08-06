@@ -228,34 +228,45 @@
       "title": "版本对比",
       "subtitle": "选择最适合您团队的方案",
       "table": {
-        "feature": "特性",
+        "feature_category": "特性分类",
+        "specific_item": "具体项目",
         "community": "社区版",
+        "enterprise_startup": "企业启航版",
         "enterprise": "企业版",
-        "license": "开源许可",
-        "license_community": "开源",
-        "license_enterprise": "商业授权",
-        "cost": "使用费用",
-        "cost_community": "个人免费/商用授权",
-        "cost_enterprise": "买断 + 可选服务费",
-        "deployment": "部署方式",
-        "deployment_community": "单机部署",
-        "deployment_enterprise": "私有化部署",
-        "features": "功能特性",
-        "features_community": "基础功能",
-        "features_enterprise": {
-          "model_management": "模型管理",
-          "employee_management": "员工管理",
-          "knowledge_base": "共享知识库",
-          "workflow": "Dify 工作流",
-          "permission": "权限控制",
-          "backup": "数据备份"
-        },
-        "support": "技术支持",
+
+        "license_and_cost": "许可与费用",
+        "pricing_plan": "定价方案 (规模与买断价格)",
+        "pricing_community_title": "个人 / 10人及以内企业:",
+        "pricing_community_price": "免费",
+        "pricing_startup_title": "1 - 50 人团队:",
+        "pricing_startup_price": "¥ 20,000",
+        "pricing_enterprise_title": "1 - 50 人: ¥ 50,000<br/>51 - 200 人: ¥ 100,000<br/>201 - 1,000 人: ¥ 200,000<br/>1,000 人以上: ¥ 350,000",
+        "pricing_enterprise_price": "1 - 50 人: <strong>¥ 50,000</strong><br/>51 - 200 人: <strong>¥ 100,000</strong><br/>201 - 1,000 人: <strong>¥ 200,000</strong><br/>1,000 人以上: <strong>¥ 350,000</strong>",
+        "annual_service_fee": "年度服务费 (可选)",
+        "annual_fee_rate": "买断价的 20%",
+
+        "deployment_and_support": "部署与支持",
+        "deployment_method": "部署方式",
+        "deployment_single": "单机部署",
+        "deployment_private": "私有化部署",
+        "tech_support": "技术支持",
         "support_community": "社区支持",
-        "support_enterprise": "专属支持服务",
+        "support_dedicated": "专属支持服务 (需服务费)",
         "system_support": "系统支持",
         "system_community": "Windows 10+, macOS, Linux",
-        "system_enterprise": "Windows 7+, macOS, Linux"
+        "system_enterprise": "Windows 7+, macOS, Linux",
+
+        "core_features": "核心功能",
+        "basic_features": "基础功能",
+        "model_management": "模型管理",
+        "employee_management": "员工管理",
+        "shared_knowledge_base": "共享知识库",
+        "permission_control": "权限控制",
+        "data_backup": "数据备份",
+        "assistant_management": "助手管理",
+        "agent_management": "智能体管理",
+        "mcp_management": "MCP 管理",
+        "miniprogram_management": "小程序管理"
       }
     },
     "beta": {
@@ -397,19 +408,5 @@
       },
       "version_invalid": "版本号格式错误"
     }
-  },
-  "agents_page": {
-    "title": "助手市场",
-    "subtitle": "发现和分享助手，一键应用到您的 Cherry Studio ",
-    "search_placeholder": "搜索助手...",
-    "search_button": "搜索",
-    "submit_agent": "投稿助手",
-    "subscribe_all": "订阅全部",
-    "copy_url": "复制 URL",
-    "copied": "已复制",
-    "export_json": "导出 JSON",
-    "exported": "导出成功",
-    "previous": "上一页",
-    "next": "下一页"
   }
 }

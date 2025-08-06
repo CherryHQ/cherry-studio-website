@@ -160,11 +160,13 @@
 
 .enterprise-page .comparison-table {
   width: 100%;
-  background: white;
-  border-radius: 12px;
+  background: hsl(0 0% 100%);
+  border-radius: 0.75rem;
   overflow: hidden;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  border: 1px solid hsl(214.3 31.8% 91.4%);
+  box-shadow:
+    0 1px 3px 0 hsl(0 0% 0% / 0.1),
+    0 1px 2px -1px hsl(0 0% 0% / 0.1);
 }
 
 .enterprise-page .comparison-table table {
@@ -174,32 +176,45 @@
 }
 
 .enterprise-page .comparison-table th {
-  background-color: #f1f3f5;
-  padding: 20px;
-  text-align: left;
+  background: hsl(210 40% 98%);
+  padding: 1rem 1.5rem;
+  text-align: center;
   font-weight: 600;
-  color: #212529;
-  border-bottom: 1px solid #dee2e6;
+  color: hsl(222.2 84% 4.9%);
+  border-bottom: 1px solid hsl(214.3 31.8% 91.4%);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  letter-spacing: 0.025em;
 }
 
-.enterprise-page .comparison-table th:first-child {
-  padding-left: 32px;
+.enterprise-page .comparison-table th:nth-child(1) {
+  width: 10%;
+  background: transparent;
+}
+
+.enterprise-page .comparison-table th:nth-child(2) {
   width: 25%;
+  background: transparent;
 }
 
-.enterprise-page .comparison-table th:not(:first-child) {
-  width: 37.5%;
+.enterprise-page .comparison-table th:not(.feature-column):not(:nth-child(2)) {
+  width: 21.67%;
 }
 
-.enterprise-page .comparison-table td {
-  padding: 20px;
-  border-top: 1px solid #dee2e6;
+/* 版本列特殊样式 */
+.enterprise-page .comparison-table th:nth-child(3) {
+  background: hsl(142 71% 45% / 0.1);
+  color: hsl(142 71% 45%);
 }
 
-.enterprise-page .comparison-table td:first-child {
-  padding-left: 32px;
-  color: #212529;
-  font-weight: 500;
+.enterprise-page .comparison-table th:nth-child(4) {
+  background: hsl(32 95% 44% / 0.1);
+  color: hsl(32 95% 44%);
+}
+
+.enterprise-page .comparison-table th:nth-child(5) {
+  background: hsl(221 83% 53% / 0.1);
+  color: hsl(221 83% 53%);
 }
 
 .enterprise-page .comparison-table tr:first-child td {
@@ -233,6 +248,184 @@
   margin-bottom: 0;
 }
 
+/* New table styles for 5-column layout */
+.enterprise-page .comparison-table .category-row {
+  background-color: transparent;
+}
+
+.enterprise-page .comparison-table .category-cell {
+  font-weight: 600;
+  background: transparent;
+  color: hsl(222.2 84% 4.9%);
+  text-align: center;
+  vertical-align: top;
+  border-right: 1px solid hsl(214.3 31.8% 91.4%);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  padding-top: 1.5rem;
+}
+
+.enterprise-page .comparison-table .item-cell {
+  font-weight: 500;
+  color: hsl(215.4 16.3% 46.9%);
+  background: transparent;
+  border-right: 1px solid hsl(214.3 31.8% 91.4%);
+  text-align: center;
+  padding: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.enterprise-page .comparison-table .plan-cell {
+  text-align: center;
+  vertical-align: middle;
+  padding: 1rem 0.75rem;
+  background: hsl(0 0% 100%);
+}
+
+.enterprise-page .comparison-table .plan-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.enterprise-page .comparison-table .plan-title {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: hsl(215.4 16.3% 46.9%);
+}
+
+.enterprise-page .comparison-table .plan-price {
+  font-weight: 600;
+  color: hsl(222.2 84% 4.9%);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+/* 企业版价格右对齐 */
+.enterprise-page .comparison-table td:nth-child(5) .plan-price {
+  text-align: right;
+}
+
+.enterprise-page .comparison-table td {
+  text-align: center;
+  vertical-align: middle;
+  padding: 1rem 0.75rem;
+  border-right: 1px solid hsl(214.3 31.8% 91.4%);
+  background: hsl(0 0% 100%);
+  border-bottom: 1px solid hsl(214.3 31.8% 91.4%);
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.enterprise-page .comparison-table td:first-child {
+  text-align: center;
+  border-right: 1px solid hsl(214.3 31.8% 91.4%);
+}
+
+.enterprise-page .comparison-table td:nth-child(2) {
+  text-align: center;
+  border-right: 1px solid hsl(214.3 31.8% 91.4%);
+}
+
+.enterprise-page .comparison-table td:last-child {
+  border-right: none;
+}
+
+.enterprise-page .comparison-table td:not(.category-cell):not(.item-cell):not(.plan-cell) {
+  font-weight: 500;
+  color: #495057;
+  text-align: center;
+}
+
+/* 交替行背景色，增强可读性 */
+.enterprise-page .comparison-table tbody tr:nth-child(even) td:not(.category-cell):not(.item-cell) {
+  background-color: #fafbfc;
+}
+
+/* 悬停效果 */
+.enterprise-page .comparison-table tbody tr:hover td:not(.category-cell) {
+  background-color: #f0f4ff !important;
+}
+
+/* 表头悬停效果 */
+.enterprise-page .comparison-table thead tr:hover th:nth-child(2) {
+  background-color: #f0f4ff !important;
+}
+
+.enterprise-page .comparison-table thead tr:hover th:nth-child(3) {
+  background-color: #e6f7e6 !important;
+}
+
+.enterprise-page .comparison-table thead tr:hover th:nth-child(4) {
+  background-color: #fff4e6 !important;
+}
+
+.enterprise-page .comparison-table thead tr:hover th:nth-child(5) {
+  background-color: #e6f2ff !important;
+}
+
+/* 分类行分隔效果 */
+.enterprise-page .comparison-table .category-row td {
+  border-top: 3px solid #dee2e6;
+}
+
+.enterprise-page .comparison-table .category-row:first-child td {
+  border-top: none;
+}
+
+/* 功能标记增强样式 */
+.enterprise-page .comparison-table .check {
+  color: #28a745;
+  font-weight: 700;
+  font-size: 18px;
+  text-shadow: 0 1px 2px rgba(40, 167, 69, 0.2);
+}
+
+/* 占位符样式增强 */
+.enterprise-page .comparison-table td[data-placeholder] {
+  color: #adb5bd;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+/* Responsive styles for comparison table */
+@media (max-width: 1200px) {
+  .enterprise-page .comparison-table {
+    overflow-x: auto;
+  }
+
+  .enterprise-page .comparison-table table {
+    min-width: 800px;
+  }
+
+  .enterprise-page .comparison-table th.feature-column {
+    width: 12%;
+  }
+
+  .enterprise-page .comparison-table th:not(.feature-column) {
+    width: 22%;
+  }
+}
+
+@media (max-width: 768px) {
+  .enterprise-page .comparison-table th,
+  .enterprise-page .comparison-table td {
+    padding: 12px 8px;
+    font-size: 14px;
+  }
+
+  .enterprise-page .comparison-table .plan-price {
+    font-size: 14px;
+  }
+
+  .enterprise-page .comparison-table .plan-title {
+    font-size: 12px;
+  }
+}
+
 /* Beta Section */
 .enterprise-page .beta-section {
   padding: 80px 0;
@@ -253,7 +446,7 @@
 .enterprise-page .beta-notice {
   background-color: #fff8e6;
   border-radius: 12px;
-  padding: 24px;
+  padding: 15px 24px;
   margin-bottom: 40px;
   display: flex;
   align-items: center;
@@ -276,7 +469,7 @@
 }
 
 .enterprise-page .notice-content p {
-  margin: 8px 0 0;
+  margin: 4px 0 0;
   color: #6c757d;
 }
 
@@ -464,7 +657,7 @@
 }
 
 .enterprise-page .support-section .section-header {
-  margin-bottom: 40px;
+  margin-bottom: 10px;
 }
 
 .enterprise-page .support-section .section-header p {
@@ -472,7 +665,7 @@
 }
 
 .enterprise-page .support-actions {
-  margin-top: 40px;
+  margin-top: 25px;
   display: flex;
   justify-content: center;
 }

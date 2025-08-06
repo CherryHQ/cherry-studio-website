@@ -12,7 +12,7 @@
   width: 100%;
   top: 0;
   left: 0;
-  background-color: #ffffffee;
+  background-color: rgba(255, 255, 255, 0.98);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 .main-header.header-style-one {
@@ -21,7 +21,7 @@
   top: 0;
   width: 100%;
   padding: 0;
-  background-color: #ffffffee;
+  background-color: rgba(255, 255, 255, 0.98);
 }
 .main-header .auto-container {
   position: relative;

@@ -19,10 +19,6 @@ body .page-wrapper .project-section:not(.project-section-custom) {
   animation: zoom-fade 5s infinite linear;
 }
 
-.project-section-custom {
-  padding-bottom: 0px !important;
-}
-
 @media (max-width: 768px) {
   .project-section,
   .project-section-custom,

@@ -61,9 +61,6 @@ const Project: FC = () => {
             </div>
             {/* <!--Counter Column--> */}
             <div className="column col-lg-6 col-md-6 col-sm-12 project-faq">
-              <div className="sec-title">
-                <h2 className="heading_title">{t('project.title')}</h2>
-              </div>
               {/* <!--Accordion Box--> */}
               <div className="accordion-box style-two">
                 {/* <!-- Accordion --> */}

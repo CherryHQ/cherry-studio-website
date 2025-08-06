@@ -1265,7 +1265,6 @@ const ThemePage: React.FC = () => {
 
   return (
     <ErrorBoundary>
-      {/* 使用与下载页面相同的页面结构，但添加关键内联样式 */}
       <div
         className="page-wrapper"
         style={{
@@ -1279,10 +1278,10 @@ const ThemePage: React.FC = () => {
           className="main-content"
           style={{
             display: 'block !important',
-            marginTop: 120, // 给header留出空间
             position: 'relative',
             zIndex: 2,
-            padding: '20px 0'
+            padding: '20px 0',
+            paddingTop: 120
           }}>
           <div className="css-container">
             <h1 className="css-page-title">{t('theme_page.title')}</h1>

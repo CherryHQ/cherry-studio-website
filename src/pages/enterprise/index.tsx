@@ -106,76 +106,171 @@ const EnterprisePage: FC = () => {
             <table>
               <thead>
                 <tr>
-                  <th>{t('enterprise_page.comparison.table.feature')}</th>
+                  <th className="feature-column">{t('enterprise_page.comparison.table.feature_category')}</th>
+                  <th className="feature-column">{t('enterprise_page.comparison.table.specific_item')}</th>
                   <th>{t('enterprise_page.comparison.table.community')}</th>
+                  <th>{t('enterprise_page.comparison.table.enterprise_startup')}</th>
                   <th>{t('enterprise_page.comparison.table.enterprise')}</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>{t('enterprise_page.comparison.table.license')}</td>
-                  <td>
-                    <span className="check">✓</span> {t('enterprise_page.comparison.table.license_community')}
+                {/* 许可与费用 */}
+                <tr className="category-row">
+                  <td rowSpan={2} className="category-cell">
+                    {t('enterprise_page.comparison.table.license_and_cost')}
                   </td>
-                  <td>
-                    <span className="cross">◎</span> {t('enterprise_page.comparison.table.license_enterprise')}
+                  <td className="item-cell">{t('enterprise_page.comparison.table.pricing_plan')}</td>
+                  <td className="plan-cell">
+                    <div className="plan-content">
+                      <div className="plan-title">{t('enterprise_page.comparison.table.pricing_community_title')}</div>
+                      <div className="plan-price">{t('enterprise_page.comparison.table.pricing_community_price')}</div>
+                    </div>
                   </td>
-                </tr>
-                <tr>
-                  <td>{t('enterprise_page.comparison.table.cost')}</td>
-                  <td>{t('enterprise_page.comparison.table.cost_community')}</td>
-                  <td>{t('enterprise_page.comparison.table.cost_enterprise')}</td>
-                </tr>
-                <tr>
-                  <td>{t('enterprise_page.comparison.table.deployment')}</td>
-                  <td>{t('enterprise_page.comparison.table.deployment_community')}</td>
-                  <td>
-                    <span className="check">✓</span> {t('enterprise_page.comparison.table.deployment_enterprise')}
+                  <td className="plan-cell">
+                    <div className="plan-content">
+                      <div className="plan-title">{t('enterprise_page.comparison.table.pricing_startup_title')}</div>
+                      <div className="plan-price">{t('enterprise_page.comparison.table.pricing_startup_price')}</div>
+                    </div>
                   </td>
-                </tr>
-                <tr>
-                  <td>{t('enterprise_page.comparison.table.features')}</td>
-                  <td>{t('enterprise_page.comparison.table.features_community')}</td>
-                  <td>
-                    <ul className="feature-list">
-                      <li>
-                        <span className="check">✓</span>{' '}
-                        {t('enterprise_page.comparison.table.features_enterprise.model_management')}
-                      </li>
-                      <li>
-                        <span className="check">✓</span>{' '}
-                        {t('enterprise_page.comparison.table.features_enterprise.employee_management')}
-                      </li>
-                      <li>
-                        <span className="check">✓</span>{' '}
-                        {t('enterprise_page.comparison.table.features_enterprise.knowledge_base')}
-                      </li>
-                      <li>
-                        <span className="check">✓</span>{' '}
-                        {t('enterprise_page.comparison.table.features_enterprise.workflow')}
-                      </li>
-                      <li>
-                        <span className="check">✓</span>{' '}
-                        {t('enterprise_page.comparison.table.features_enterprise.permission')}
-                      </li>
-                      <li>
-                        <span className="check">✓</span>{' '}
-                        {t('enterprise_page.comparison.table.features_enterprise.backup')}
-                      </li>
-                    </ul>
+                  <td className="plan-cell">
+                    <div className="plan-content">
+                      <div
+                        className="plan-price"
+                        dangerouslySetInnerHTML={{
+                          __html: t('enterprise_page.comparison.table.pricing_enterprise_price')
+                        }}></div>
+                    </div>
                   </td>
                 </tr>
                 <tr>
-                  <td>{t('enterprise_page.comparison.table.support')}</td>
+                  <td className="item-cell">{t('enterprise_page.comparison.table.annual_service_fee')}</td>
+                  <td data-placeholder="true">-</td>
+                  <td>{t('enterprise_page.comparison.table.annual_fee_rate')}</td>
+                  <td>{t('enterprise_page.comparison.table.annual_fee_rate')}</td>
+                </tr>
+
+                {/* 部署与支持 */}
+                <tr className="category-row">
+                  <td rowSpan={3} className="category-cell">
+                    {t('enterprise_page.comparison.table.deployment_and_support')}
+                  </td>
+                  <td className="item-cell">{t('enterprise_page.comparison.table.deployment_method')}</td>
+                  <td>{t('enterprise_page.comparison.table.deployment_single')}</td>
+                  <td>
+                    <span className="check">✓</span> {t('enterprise_page.comparison.table.deployment_private')}
+                  </td>
+                  <td>
+                    <span className="check">✓</span> {t('enterprise_page.comparison.table.deployment_private')}
+                  </td>
+                </tr>
+                <tr>
+                  <td className="item-cell">{t('enterprise_page.comparison.table.tech_support')}</td>
                   <td>{t('enterprise_page.comparison.table.support_community')}</td>
                   <td>
-                    <span className="check">✓</span> {t('enterprise_page.comparison.table.support_enterprise')}
+                    <span className="check">✓</span> {t('enterprise_page.comparison.table.support_dedicated')}
+                  </td>
+                  <td>
+                    <span className="check">✓</span> {t('enterprise_page.comparison.table.support_dedicated')}
                   </td>
                 </tr>
                 <tr>
-                  <td>{t('enterprise_page.comparison.table.system_support')}</td>
+                  <td className="item-cell">{t('enterprise_page.comparison.table.system_support')}</td>
                   <td>{t('enterprise_page.comparison.table.system_community')}</td>
                   <td>{t('enterprise_page.comparison.table.system_enterprise')}</td>
+                  <td>{t('enterprise_page.comparison.table.system_enterprise')}</td>
+                </tr>
+
+                {/* 核心功能 */}
+                <tr className="category-row">
+                  <td rowSpan={10} className="category-cell">
+                    {t('enterprise_page.comparison.table.core_features')}
+                  </td>
+                  <td className="item-cell">{t('enterprise_page.comparison.table.basic_features')}</td>
+                  <td>
+                    <span className="check">✓</span>
+                  </td>
+                  <td>
+                    <span className="check">✓</span>
+                  </td>
+                  <td>
+                    <span className="check">✓</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td className="item-cell">{t('enterprise_page.comparison.table.model_management')}</td>
+                  <td data-placeholder="true">-</td>
+                  <td>
+                    <span className="check">✓</span>
+                  </td>
+                  <td>
+                    <span className="check">✓</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td className="item-cell">{t('enterprise_page.comparison.table.employee_management')}</td>
+                  <td data-placeholder="true">-</td>
+                  <td>
+                    <span className="check">✓</span>
+                  </td>
+                  <td>
+                    <span className="check">✓</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td className="item-cell">{t('enterprise_page.comparison.table.shared_knowledge_base')}</td>
+                  <td data-placeholder="true">-</td>
+                  <td data-placeholder="true">-</td>
+                  <td>
+                    <span className="check">✓</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td className="item-cell">{t('enterprise_page.comparison.table.permission_control')}</td>
+                  <td data-placeholder="true">-</td>
+                  <td data-placeholder="true">-</td>
+                  <td>
+                    <span className="check">✓</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td className="item-cell">{t('enterprise_page.comparison.table.data_backup')}</td>
+                  <td data-placeholder="true">-</td>
+                  <td data-placeholder="true">-</td>
+                  <td>
+                    <span className="check">✓</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td className="item-cell">{t('enterprise_page.comparison.table.assistant_management')}</td>
+                  <td data-placeholder="true">-</td>
+                  <td data-placeholder="true">-</td>
+                  <td>
+                    <span className="check">✓</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td className="item-cell">{t('enterprise_page.comparison.table.agent_management')}</td>
+                  <td data-placeholder="true">-</td>
+                  <td data-placeholder="true">-</td>
+                  <td>
+                    <span className="check">✓</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td className="item-cell">{t('enterprise_page.comparison.table.mcp_management')}</td>
+                  <td data-placeholder="true">-</td>
+                  <td data-placeholder="true">-</td>
+                  <td>
+                    <span className="check">✓</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td className="item-cell">{t('enterprise_page.comparison.table.miniprogram_management')}</td>
+                  <td data-placeholder="true">-</td>
+                  <td data-placeholder="true">-</td>
+                  <td>
+                    <span className="check">✓</span>
+                  </td>
                 </tr>
               </tbody>
             </table>
