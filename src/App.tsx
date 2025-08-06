@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import { script } from '@/assets/js/script.ts'
 import SimpleHeader from '@/components/website/SimpleHeader.tsx'
-import AgentsPage from '@/pages/agents'
 import DownloadPage from '@/pages/download'
 import EnterprisePage from '@/pages/enterprise'
 import HomePage from '@/pages/home'
@@ -21,7 +20,6 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/download" element={<DownloadPage />} />
         <Route path="/theme" element={<ThemePage />} />
-        <Route path="/agents" element={<AgentsPage />} />
         <Route path="/enterprise" element={<EnterprisePage />} />
       </Routes>
     </BrowserRouter>
