@@ -3,52 +3,27 @@ import LanguageDetector from 'i18next-browser-languagedetector'
 import { initReactI18next } from 'react-i18next'
 
 import en from './lang/en.json'
-import fr from './lang/fr.json'
-import ja from './lang/ja.json'
-import ko from './lang/ko.json'
-import ru from './lang/ru.json'
-import th from './lang/th.json'
 import zh from './lang/zh.json'
-import zhTW from './lang/zh-TW.json'
+import zhTW from './lang/zh-tw.json'
 
 const resources = {
-  en: {
+  'en-US': {
     translation: en
   },
-  zh: {
+  'zh-CN': {
     translation: zh
   },
   'zh-TW': {
     translation: zhTW
-  },
-  ja: {
-    translation: ja
-  },
-  ko: {
-    translation: ko
-  },
-  ru: {
-    translation: ru
-  },
-  fr: {
-    translation: fr
-  },
-  th: {
-    translation: th
   }
 }
 
 // 更新HTML lang属性的函数
 const updateHtmlLang = (language: string) => {
   const langMap: Record<string, string> = {
-    zh: 'zh-CN',
+    'zh-CN': 'zh-CN',
     'zh-TW': 'zh-TW',
-    en: 'en',
-    ja: 'ja',
-    ko: 'ko',
-    ru: 'ru',
-    fr: 'fr',
-    th: 'th'
+    'en-US': 'en-US'
   }
   const langCode = langMap[language] || 'zh-CN'
   document.documentElement.setAttribute('lang', langCode)
@@ -79,4 +54,3 @@ i18n.on('languageChanged', (lng: string) => {
 updateHtmlLang(i18n.language)
 
 export default i18n
- 

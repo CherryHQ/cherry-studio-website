@@ -9,14 +9,9 @@ const LanguageSelector: React.FC = () => {
   const dropdownRef = useRef<HTMLDivElement>(null)
 
   const languages = [
-    { code: 'zh', name: '简体中文', flag: '🇨🇳', short: '简中' },
+    { code: 'zh-CN', name: '简体中文', flag: '🇨🇳', short: '简中' },
     { code: 'zh-TW', name: '繁體中文', flag: '🇨🇳', short: '繁中' },
-    { code: 'en', name: 'English', flag: '🇺🇸', short: 'EN' },
-    { code: 'ja', name: '日本語', flag: '🇯🇵', short: '日' },
-    { code: 'ko', name: '한국어', flag: '🇰🇷', short: '한' },
-    { code: 'ru', name: 'Русский', flag: '🇷🇺', short: 'RU' },
-    { code: 'fr', name: 'Français', flag: '🇫🇷', short: 'FR' },
-    { code: 'th', name: 'ไทย', flag: '🇹🇭', short: 'TH' }
+    { code: 'en-US', name: 'English', flag: '🇺🇸', short: 'EN' }
   ]
 
   const currentLanguage = languages.find((lang) => i18n.language === lang.code) || languages[0]
