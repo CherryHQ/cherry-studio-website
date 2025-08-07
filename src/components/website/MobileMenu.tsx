@@ -45,11 +45,6 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
                 {t('nav.theme')}
               </Link>
             </li>
-            <li className={location.pathname === '/forum' ? 'current' : ''}>
-              <Link to="/agents" onClick={onClose}>
-                {t('agents')}
-              </Link>
-            </li>
             <li className="mobile-dropdown">
               <a href="https://docs.cherry-ai.com/">{t('nav.docs')}</a>
               <ul>
