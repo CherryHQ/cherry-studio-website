@@ -34,11 +34,11 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    fallbackLng: 'en',
+    fallbackLng: 'en-US',
     detection: {
       order: ['localStorage', 'navigator'], // 优先从本地存储中检测语言，然后是浏览器语言
       caches: ['localStorage'], // 缓存语言到localStorage
-      lookupLocalStorage: 'i18nextLng' // localStorage中存储语言的键名
+      lookupLocalStorage: 'i18n-language' // localStorage中存储语言的键名
     },
     interpolation: {
       escapeValue: false
