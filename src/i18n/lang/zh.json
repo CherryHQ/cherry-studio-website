@@ -164,6 +164,8 @@
     "linux_appimage_arm": "AppImage 版本 (ARM 版)",
     "linux_deb": "Deb 版本",
     "linux_deb_arm": "Deb 版本 (ARM 版)",
+    "linux_rpm": "RPM 版本",
+    "linux_rpm_arm": "RPM 版本 (ARM 版)",
     "intel_version": {
       "title": "Cherry Studio 酷睿™ Ultra 版",
       "subtitle": "专为 Intel 硬件深度优化的本地化 AI 解决方案",

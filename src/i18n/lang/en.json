@@ -166,6 +166,8 @@
     "linux_appimage_arm": "AppImage Version (ARM)",
     "linux_deb": "Deb Version",
     "linux_deb_arm": "Deb Version (ARM)",
+    "linux_rpm": "RPM Version",
+    "linux_rpm_arm": "RPM Version (ARM)",
     "intel_version": {
       "title": "Cherry Studio Intel Core™ Ultra Edition",
       "subtitle": "Localized AI solution deeply optimized for Intel hardware",
