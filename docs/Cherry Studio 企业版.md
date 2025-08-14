@@ -72,4 +72,4 @@
 
 ## 📖 产品文档
 
-**产品文档：** 📚 [企业版使用手册](https://doc.weixin.qq.com/doc/w3_ASIAPQaBALgCNdQv1pcxUTJGhXLsX?scode=APkA7AeJABIVWchL1vASIAPQaBALg)
+**产品文档：** 📚 [企业版使用手册](https://docs.enterprise.cherry-ai.com/)

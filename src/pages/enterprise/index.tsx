@@ -344,7 +344,7 @@ const EnterprisePage: FC = () => {
               <div className="card-content">
                 <p>{t('enterprise_page.beta.manual.description')}</p>
                 <a
-                  href="https://doc.weixin.qq.com/doc/w3_ASIAPQaBALgCNdQv1pcxUTJGhXLsX?scode=APkA7AeJABIVWchL1vASIAPQaBALg"
+                  href="https://docs.enterprise.cherry-ai.com/"
                   className="doc-link"
                   target="_blank"
                   rel="noopener noreferrer">
