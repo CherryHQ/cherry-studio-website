@@ -1,0 +1,162 @@
+.start-building-section {
+  width: 100%;
+  padding: 80px 0;
+  background: transparent;
+  position: relative;
+  z-index: 22;
+}
+
+.start-building-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.start-building-card {
+  width: 100%;
+  max-width: 1200px;
+  user-select: none;
+  margin: 0 auto;
+  background: linear-gradient(135deg,
+      #7c3aed,
+      rgba(93, 24, 255, 0.6));
+  background-size: 200% 200%;
+  border-radius: 16px;
+  padding: 4rem 3rem;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.start-building-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/assets/grain.webp');
+  background-size: 500px 500px;
+  filter: invert(100%);
+  mix-blend-mode: multiply;
+  background-repeat: repeat;
+  opacity: 1;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.start-building-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+.start-building-title {
+  color: white;
+  font-size: 2.6rem;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1;
+}
+
+.start-building-subtitle {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin: -1rem 0 0 0;
+  opacity: 0.9;
+  max-width: 600px;
+  line-height: 1.4;
+}
+
+.start-building-button {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+  padding: .6rem 1.6rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.start-building-button:hover {
+  background: white;
+  color: #7c3aed;
+}
+
+@media (max-width: 1280px) {
+  .start-building-container {
+    max-width: 1000px;
+    padding: 0 30px;
+  }
+
+  .start-building-card {
+    padding: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .start-building-section {
+    padding: 60px 0;
+  }
+
+  .start-building-container {
+    padding: 0 20px;
+  }
+
+  .start-building-card {
+    padding: 3rem 2rem;
+    border-radius: 12px;
+    gap: 1.25rem;
+  }
+
+  .start-building-title {
+    font-size: 2rem;
+  }
+
+  .start-building-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .start-building-button {
+    padding: 0.875rem 1.75rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .start-building-section {
+    padding: 40px 0;
+  }
+
+  .start-building-container {
+    padding: 0 16px;
+  }
+
+  .start-building-card {
+    padding: 2.5rem 1.5rem;
+    gap: 1rem;
+  }
+
+  .start-building-title {
+    font-size: 1.5rem;
+  }
+
+  .start-building-subtitle {
+    font-size: 1rem;
+    margin: 0;
+    padding: 0 0.6rem;
+  }
+
+  .start-building-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+  }
+}
