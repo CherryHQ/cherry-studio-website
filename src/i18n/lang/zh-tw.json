@@ -288,8 +288,6 @@
       }
     },
     "beta": {
-      "title": "Beta 測試",
-      "description": "企業版目前處於 Beta 測試階段，歡迎體驗並提供反饋",
       "demo": {
         "title": "在線演示",
         "admin_portal": "管理門戶：",

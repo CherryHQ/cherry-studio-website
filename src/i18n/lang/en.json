@@ -274,8 +274,6 @@
       }
     },
     "beta": {
-      "title": "Beta Notice",
-      "description": "The Enterprise Edition is currently in public beta. We are continuously optimizing features. If you encounter issues or have suggestions, please feel free to provide feedback!",
       "demo": {
         "title": "Demo Environment",
         "admin_portal": "Admin Portal: ",

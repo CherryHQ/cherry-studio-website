@@ -1,16 +1,6 @@
 import './index.css'
 
-import {
-  AlertTriangle,
-  BookOpen,
-  Building2,
-  Download,
-  FileText,
-  KeyRound,
-  RefreshCw,
-  ShieldCheck,
-  Users
-} from 'lucide-react'
+import { BookOpen, Building2, Download, FileText, KeyRound, RefreshCw, ShieldCheck, Users } from 'lucide-react'
 import { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -281,16 +271,6 @@ const EnterprisePage: FC = () => {
       {/* Beta Notice Section */}
       <section className="beta-section">
         <div className="container">
-          <div className="beta-notice">
-            <div className="notice-icon">
-              <AlertTriangle size={24} />
-            </div>
-            <div className="notice-content">
-              <h2>{t('enterprise_page.beta.title')}</h2>
-              <p>{t('enterprise_page.beta.description')}</p>
-            </div>
-          </div>
-
           <div className="beta-content">
             <div className="beta-card">
               <h3>{t('enterprise_page.beta.demo.title')}</h3>

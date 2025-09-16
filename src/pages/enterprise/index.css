@@ -443,36 +443,6 @@
   background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.05), transparent);
 }
 
-.enterprise-page .beta-notice {
-  background-color: #fff8e6;
-  border-radius: 12px;
-  padding: 15px 24px;
-  margin-bottom: 40px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  border: 1px solid rgba(255, 193, 7, 0.2);
-  box-shadow: 0 8px 24px rgba(255, 193, 7, 0.08);
-}
-
-.enterprise-page .notice-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #ffc107;
-}
-
-.enterprise-page .notice-content h2 {
-  margin: 0;
-  font-size: 20px;
-  font-weight: 600;
-}
-
-.enterprise-page .notice-content p {
-  margin: 4px 0 0;
-  color: #6c757d;
-}
-
 .enterprise-page .beta-content {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
