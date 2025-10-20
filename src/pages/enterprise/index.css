@@ -767,3 +767,251 @@
     width: 100%;
   }
 }
+
+/* Express Highlight Section */
+.express-highlight-section {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.express-highlight-card {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 24px;
+  padding: 60px;
+  box-shadow: 0 20px 60px rgba(0, 102, 255, 0.1);
+  border: 2px solid rgba(0, 102, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.express-highlight-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #0066ff 0%, #5c6bc0 100%);
+}
+
+.express-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, #0066ff 0%, #5c6bc0 100%);
+  color: white;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.express-title {
+  font-size: 40px;
+  font-weight: 700;
+  color: #212529;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.express-subtitle {
+  font-size: 18px;
+  color: #6c757d;
+  text-align: center;
+  margin-bottom: 48px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.express-price-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 48px;
+  padding: 32px;
+  background: #f8f9fa;
+  border-radius: 16px;
+}
+
+.price-tag {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.price-label {
+  font-size: 14px;
+  color: #6c757d;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.price-amount {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.price-amount .currency {
+  font-size: 32px;
+  font-weight: 700;
+  color: #0066ff;
+}
+
+.price-amount .amount {
+  font-size: 56px;
+  font-weight: 700;
+  color: #0066ff;
+  line-height: 1;
+}
+
+.price-amount .period {
+  font-size: 16px;
+  color: #6c757d;
+  margin-left: 4px;
+}
+
+.express-features {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  color: #212529;
+}
+
+.feature-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #0066ff;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.express-benefits {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+.benefit-card {
+  padding: 24px;
+  border-radius: 12px;
+  border: 1px solid #e9ecef;
+  background: white;
+  transition: all 0.3s ease;
+}
+
+.benefit-card:hover {
+  border-color: #0066ff;
+  box-shadow: 0 8px 24px rgba(0, 102, 255, 0.1);
+  transform: translateY(-4px);
+}
+
+.benefit-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  color: #0066ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.benefit-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #212529;
+  margin-bottom: 8px;
+}
+
+.benefit-card p {
+  font-size: 14px;
+  color: #6c757d;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.express-cta {
+  text-align: center;
+}
+
+.express-cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 48px;
+  background: linear-gradient(135deg, #0066ff 0%, #5c6bc0 100%);
+  color: white;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(0, 102, 255, 0.3);
+}
+
+.express-cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 102, 255, 0.4);
+}
+
+.express-cta-note {
+  margin-top: 16px;
+  font-size: 14px;
+  color: #6c757d;
+}
+
+/* Responsive Design for Express Section */
+@media (max-width: 768px) {
+  .express-highlight-card {
+    padding: 32px 24px;
+  }
+
+  .express-title {
+    font-size: 28px;
+  }
+
+  .express-subtitle {
+    font-size: 16px;
+  }
+
+  .express-price-section {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 24px;
+  }
+
+  .price-amount .amount {
+    font-size: 42px;
+  }
+
+  .express-benefits {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .express-cta-button {
+    padding: 14px 32px;
+    font-size: 16px;
+  }
+}

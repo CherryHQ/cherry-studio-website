@@ -235,15 +235,15 @@
         "feature_category": "Feature Category",
         "specific_item": "Specific Item",
         "community": "Community",
-        "enterprise_startup": "Startup Plan",
+        "enterprise_startup": "Express Plan",
         "enterprise": "Enterprise Plan",
 
         "license_and_cost": "License & Cost",
         "pricing_plan": "Pricing Plan (Scale & One-time Price)",
         "pricing_community_title": "Personal / Enterprise within 10 people:",
         "pricing_community_price": "Free",
-        "pricing_startup_title": "1 - 50 person team:",
-        "pricing_startup_price": "¥ 20,000",
+        "pricing_startup_title": "Unlimited users:",
+        "pricing_startup_price": "¥ 5,000",
         "pricing_enterprise_title": "1 - 50 people: ¥ 50,000<br/>51 - 200 people: ¥ 100,000<br/>201 - 1,000 people: ¥ 200,000<br/>1,000+ people: ¥ 350,000",
         "pricing_enterprise_price": "1 - 50 people: <strong>¥ 50,000</strong><br/>51 - 200 people: <strong>¥ 100,000</strong><br/>201 - 1,000 people: <strong>¥ 200,000</strong><br/>1,000+ people: <strong>¥ 350,000</strong>",
         "annual_service_fee": "Annual Service Fee (Optional)",
@@ -262,6 +262,9 @@
 
         "core_features": "Core Features",
         "basic_features": "Basic Features",
+        "provider_management": "Provider Management",
+        "provider_management_full": "Provider Management Support",
+        "provider_management_builtin": "Use Built-in Provider",
         "model_management": "Model Management",
         "employee_management": "Employee Management",
         "shared_knowledge_base": "Shared Knowledge Base",
@@ -291,6 +294,35 @@
         "description": "Thank you for participating in the Cherry Studio Enterprise Edition experience program. We provide detailed user manuals to help you quickly get started with all features.",
         "view_manual": "View User Manual"
       }
+    },
+    "express": {
+      "badge": "Recommended",
+      "title": "Cherry Studio Express Edition",
+      "subtitle": "Cost-effective AI solution designed for small and medium teams, one-time purchase, lifetime use",
+      "price_label": "One-time Price",
+      "period": "/ Lifetime",
+      "features": {
+        "unlimited_users": "Unlimited users",
+        "builtin_provider": "Built-in provider",
+        "quick_deployment": "Quick deployment",
+        "one_time_payment": "One-time payment"
+      },
+      "benefits": {
+        "fast_start": {
+          "title": "Quick Start",
+          "description": "No complex configuration required, use built-in provider to get online instantly, let your team start using AI quickly"
+        },
+        "cost_effective": {
+          "title": "Cost-Effective",
+          "description": "¥5,000 one-time price, unlimited users, ideal for small and medium teams with limited budget"
+        },
+        "enterprise_grade": {
+          "title": "Enterprise Features",
+          "description": "Includes core enterprise features such as employee management and model management to meet team collaboration needs"
+        }
+      },
+      "cta_button": "Contact for Express Edition",
+      "cta_note": "Contact us for detailed plans and demos"
     },
     "support": {
       "title": "Get Support",

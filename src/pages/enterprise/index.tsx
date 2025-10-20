@@ -1,6 +1,18 @@
 import './index.css'
 
-import { BookOpen, Building2, Download, FileText, KeyRound, RefreshCw, ShieldCheck, Users } from 'lucide-react'
+import {
+  BookOpen,
+  Building2,
+  Check,
+  Download,
+  FileText,
+  KeyRound,
+  RefreshCw,
+  ShieldCheck,
+  Sparkles,
+  Users,
+  Zap
+} from 'lucide-react'
 import { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -172,7 +184,7 @@ const EnterprisePage: FC = () => {
 
                 {/* 核心功能 */}
                 <tr className="category-row">
-                  <td rowSpan={10} className="category-cell">
+                  <td rowSpan={11} className="category-cell">
                     {t('enterprise_page.comparison.table.core_features')}
                   </td>
                   <td className="item-cell">{t('enterprise_page.comparison.table.basic_features')}</td>
@@ -182,6 +194,16 @@ const EnterprisePage: FC = () => {
                   <td>
                     <span className="check">✓</span>
                   </td>
+                  <td>
+                    <span className="check">✓</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td className="item-cell">{t('enterprise_page.comparison.table.provider_management')}</td>
+                  <td>
+                    <span className="check">✓</span>
+                  </td>
+                  <td>{t('enterprise_page.comparison.table.provider_management_builtin')}</td>
                   <td>
                     <span className="check">✓</span>
                   </td>
@@ -264,6 +286,90 @@ const EnterprisePage: FC = () => {
                 </tr>
               </tbody>
             </table>
+          </div>
+        </div>
+      </section>
+
+      {/* Express Edition Highlight */}
+      <section className="express-highlight-section">
+        <div className="container">
+          <div className="express-highlight-card">
+            <div className="express-badge">
+              <Sparkles className="w-5 h-5" />
+              <span>{t('enterprise_page.express.badge')}</span>
+            </div>
+
+            <h2 className="express-title">{t('enterprise_page.express.title')}</h2>
+            <p className="express-subtitle">{t('enterprise_page.express.subtitle')}</p>
+
+            <div className="express-price-section">
+              <div className="price-tag">
+                <span className="price-label">{t('enterprise_page.express.price_label')}</span>
+                <div className="price-amount">
+                  <span className="currency">¥</span>
+                  <span className="amount">5,000</span>
+                  <span className="period">{t('enterprise_page.express.period')}</span>
+                </div>
+              </div>
+
+              <div className="express-features">
+                <div className="feature-item">
+                  <div className="feature-icon">
+                    <Check className="w-5 h-5" />
+                  </div>
+                  <span>{t('enterprise_page.express.features.unlimited_users')}</span>
+                </div>
+                <div className="feature-item">
+                  <div className="feature-icon">
+                    <Check className="w-5 h-5" />
+                  </div>
+                  <span>{t('enterprise_page.express.features.builtin_provider')}</span>
+                </div>
+                <div className="feature-item">
+                  <div className="feature-icon">
+                    <Check className="w-5 h-5" />
+                  </div>
+                  <span>{t('enterprise_page.express.features.quick_deployment')}</span>
+                </div>
+                <div className="feature-item">
+                  <div className="feature-icon">
+                    <Check className="w-5 h-5" />
+                  </div>
+                  <span>{t('enterprise_page.express.features.one_time_payment')}</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="express-benefits">
+              <div className="benefit-card">
+                <div className="benefit-icon">
+                  <Zap className="w-8 h-8" />
+                </div>
+                <h3>{t('enterprise_page.express.benefits.fast_start.title')}</h3>
+                <p>{t('enterprise_page.express.benefits.fast_start.description')}</p>
+              </div>
+              <div className="benefit-card">
+                <div className="benefit-icon">
+                  <Building2 className="w-8 h-8" />
+                </div>
+                <h3>{t('enterprise_page.express.benefits.cost_effective.title')}</h3>
+                <p>{t('enterprise_page.express.benefits.cost_effective.description')}</p>
+              </div>
+              <div className="benefit-card">
+                <div className="benefit-icon">
+                  <ShieldCheck className="w-8 h-8" />
+                </div>
+                <h3>{t('enterprise_page.express.benefits.enterprise_grade.title')}</h3>
+                <p>{t('enterprise_page.express.benefits.enterprise_grade.description')}</p>
+              </div>
+            </div>
+
+            <div className="express-cta">
+              <a href="mailto:bd@cherry-ai.com" className="express-cta-button">
+                {t('enterprise_page.express.cta_button')}
+              </a>
+              <p className="express-cta-note">{t('enterprise_page.express.cta_note')}</p>
+            </div>
           </div>
         </div>
       </section>
