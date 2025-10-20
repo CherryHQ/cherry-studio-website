@@ -17,8 +17,8 @@ const Footer: React.FC = () => {
     <footer className="main-footer">
       <div className="widget-section">
         <div className="auto-container">
-          <div className="row clearfix">
-            <div className="col-lg-3 col-md-6 col-sm-12 footer-column">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="footer-column">
               <div className="footer-widget logo-widget">
                 <figure className="footer-logo no-hover">
                   <a href="index.html">
@@ -60,7 +60,7 @@ const Footer: React.FC = () => {
                 </ul>
               </div>
             </div>
-            <div className="col-lg-2 col-md-6 col-sm-12 footer-column">
+            <div className="footer-column">
               <div className="footer-widget links-widget ml_40">
                 <div className="widget-title">
                   <h4 style={{ whiteSpace: 'nowrap' }}>{t('footer.cherry_studio.title')}</h4>
@@ -94,7 +94,7 @@ const Footer: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div className="col-lg-3 col-md-6 col-sm-12 footer-column">
+            <div className="footer-column">
               <div className="footer-widget links-widget">
                 <div className="widget-title">
                   <h4>{t('footer.friendly_links.title')}</h4>
@@ -125,7 +125,7 @@ const Footer: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div className="col-lg-4 col-md-6 col-sm-12 footer-column">
+            <div className="footer-column">
               <div className="footer-widget contact-widget">
                 <div className="widget-title">
                   <h4>{t('footer.contact_us.title')}</h4>

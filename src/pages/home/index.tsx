@@ -1,5 +1,3 @@
-import './index.css'
-
 import { FC, useEffect } from 'react'
 
 import Footer from '@/components/website/Footer'
@@ -10,7 +8,7 @@ import Contributors from './components/Contributors'
 import Features from './components/Features'
 import JoinCommunity from './components/JoinCommunity'
 import Project from './components/Project'
-import Sponsors from './components/Sponsors'
+import Providers from './components/Providers'
 
 const HomePage: FC = () => {
   // 使用页面元数据 hook
@@ -34,7 +32,7 @@ const HomePage: FC = () => {
     <>
       <div className="page-wrapper">
         <HomeBanner />
-        <Sponsors />
+        <Providers />
         <Features />
         <Project />
         <Contributors />

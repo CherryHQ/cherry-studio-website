@@ -54,13 +54,13 @@ const Project: FC = () => {
         className="project-section project-section-custom"
         style={{ marginBottom: '10px !important', paddingBottom: '10px !important' }}>
         <div className="auto-container">
-          <div className="row clearfix">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {/* <!--Counter Column--> */}
-            <div className="column col-lg-6 col-md-6 col-sm-12 mb-20">
+            <div className="mb-5">
               <StarHistory />
             </div>
             {/* <!--Counter Column--> */}
-            <div className="column col-lg-6 col-md-6 col-sm-12 project-faq">
+            <div className="project-faq">
               {/* <!--Accordion Box--> */}
               <div className="accordion-box style-two">
                 {/* <!-- Accordion --> */}

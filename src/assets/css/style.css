@@ -43,20 +43,6 @@
 /***
 
 ====================================================================
-	Reset
-====================================================================
-
- ***/
-* {
-  margin: 0px;
-  padding: 0px;
-  border: none;
-  outline: none;
-}
-
-/***
-
-====================================================================
   Global Settings
 ====================================================================
 
@@ -94,27 +80,6 @@ a:focus,
 a:visited {
   text-decoration: none;
   outline: none;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  position: relative;
-  font-weight: normal;
-  margin: 0px;
-  background: none;
-  line-height: 1.6em;
-  font-family: var(--title-font);
-}
-
-input,
-button,
-select,
-textarea {
-  font-family: var(--title-font);
 }
 
 ::-ms-input-placeholder {

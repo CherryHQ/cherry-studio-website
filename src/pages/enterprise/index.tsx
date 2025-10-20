@@ -29,7 +29,7 @@ const EnterprisePage: FC = () => {
       <section className="hero-section">
         <div className="container">
           <div className="hero-content">
-            <h1>{t('enterprise_page.hero.title')}</h1>
+            <h1 className="text-4xl font-semibold text-gray-900">{t('enterprise_page.hero.title')}</h1>
             <p className="subtitle">{t('enterprise_page.hero.subtitle')}</p>
             <div className="hero-actions">
               <a href="mailto:bd@cherry-ai.com" className="primary-button">
@@ -295,7 +295,7 @@ const EnterprisePage: FC = () => {
         <div className="container">
           <div className="express-highlight-card">
             <div className="express-badge">
-              <Sparkles className="w-5 h-5" />
+              <Sparkles className="h-5 w-5" />
               <span>{t('enterprise_page.express.badge')}</span>
             </div>
 
@@ -315,25 +315,25 @@ const EnterprisePage: FC = () => {
               <div className="express-features">
                 <div className="feature-item">
                   <div className="feature-icon">
-                    <Check className="w-5 h-5" />
+                    <Check className="h-5 w-5" />
                   </div>
                   <span>{t('enterprise_page.express.features.unlimited_users')}</span>
                 </div>
                 <div className="feature-item">
                   <div className="feature-icon">
-                    <Check className="w-5 h-5" />
+                    <Check className="h-5 w-5" />
                   </div>
                   <span>{t('enterprise_page.express.features.builtin_provider')}</span>
                 </div>
                 <div className="feature-item">
                   <div className="feature-icon">
-                    <Check className="w-5 h-5" />
+                    <Check className="h-5 w-5" />
                   </div>
                   <span>{t('enterprise_page.express.features.quick_deployment')}</span>
                 </div>
                 <div className="feature-item">
                   <div className="feature-icon">
-                    <Check className="w-5 h-5" />
+                    <Check className="h-5 w-5" />
                   </div>
                   <span>{t('enterprise_page.express.features.one_time_payment')}</span>
                 </div>
@@ -343,21 +343,21 @@ const EnterprisePage: FC = () => {
             <div className="express-benefits">
               <div className="benefit-card">
                 <div className="benefit-icon">
-                  <Zap className="w-8 h-8" />
+                  <Zap className="h-8 w-8" />
                 </div>
                 <h3>{t('enterprise_page.express.benefits.fast_start.title')}</h3>
                 <p>{t('enterprise_page.express.benefits.fast_start.description')}</p>
               </div>
               <div className="benefit-card">
                 <div className="benefit-icon">
-                  <Building2 className="w-8 h-8" />
+                  <Building2 className="h-8 w-8" />
                 </div>
                 <h3>{t('enterprise_page.express.benefits.cost_effective.title')}</h3>
                 <p>{t('enterprise_page.express.benefits.cost_effective.description')}</p>
               </div>
               <div className="benefit-card">
                 <div className="benefit-icon">
-                  <ShieldCheck className="w-8 h-8" />
+                  <ShieldCheck className="h-8 w-8" />
                 </div>
                 <h3>{t('enterprise_page.express.benefits.enterprise_grade.title')}</h3>
                 <p>{t('enterprise_page.express.benefits.enterprise_grade.description')}</p>

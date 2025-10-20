@@ -29,8 +29,7 @@ body .page-wrapper .project-section:not(.project-section-custom) {
   }
 
   .project-section .auto-container,
-  .project-section .row,
-  .project-section .column {
+  .project-section > div {
     margin-bottom: 0 !important;
     padding-bottom: 0 !important;
   }

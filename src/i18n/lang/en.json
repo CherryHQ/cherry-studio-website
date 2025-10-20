@@ -132,7 +132,7 @@
     "contributors": "Contributors",
     "stars": "Stars"
   },
-  "sponsors": {
+  "providers": {
     "title": "Cherry Studio has a variety of service providers built-in",
     "subtitle": "It also supports connecting to other service providers compatible with the API format of OpenAI/Anthropic."
   },

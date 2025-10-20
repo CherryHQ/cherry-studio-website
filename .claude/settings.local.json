@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(yarn build)",
+      "Bash(npx shadcn@latest add https://www.shadcn.io/registry/particles.json)",
+      "Bash(npx shadcn@latest add https://www.shadcn.io/registry/ripple.json)",
+      "Bash(git checkout src/components/ui/shadcn-io/ripple/index.tsx)",
+      "Bash(npx prettier --write src/pages/home/components/Banner.tsx)",
+      "Bash(yarn dev)",
+      "Bash(curl -s http://localhost:5173)",
+      "Bash(yarn add -D prettier-plugin-tailwindcss)",
+      "Bash(npx prettier --write src/pages/home/components/Providers.tsx)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

@@ -4,5 +4,6 @@
   "printWidth": 120,
   "trailingComma": "none",
   "endOfLine": "lf",
-  "bracketSameLine": true
+  "bracketSameLine": true,
+  "plugins": ["prettier-plugin-tailwindcss"]
 }

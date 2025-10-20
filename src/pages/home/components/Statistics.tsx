@@ -6,9 +6,9 @@ const Statistics: FC = () => {
   return (
     <section className="fun-facts-section">
       <div className="auto-container">
-        <div className="row clearfix">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* <!--Column--> */}
-          <div className="column count-box col-lg-4 col-md-6 col-sm-12">
+          <div className="count-box">
             <div className="inner">
               <div className="content">
                 <div className="count-outer">
@@ -22,7 +22,7 @@ const Statistics: FC = () => {
           </div>
 
           {/* <!--Column--> */}
-          <div className="column count-box col-lg-4 col-md-6 col-sm-12">
+          <div className="count-box">
             <div className="inner">
               <div className="content">
                 <div className="count-outer">
@@ -36,7 +36,7 @@ const Statistics: FC = () => {
           </div>
 
           {/* <!--Column--> */}
-          <div className="column count-box col-lg-4 col-md-6 col-sm-12">
+          <div className="count-box">
             <div className="inner">
               <div className="content">
                 <div className="count-outer">

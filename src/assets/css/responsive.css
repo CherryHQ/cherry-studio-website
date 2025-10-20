@@ -238,9 +238,8 @@
     margin-top: 30px;
   }
 
-  .fun-facts-section .auto-container .row {
+  .fun-facts-section .auto-container > div {
     padding: 20px 0;
-    gap: 10px;
   }
 
   header.main-header.header-style-one .menu-area.two {
@@ -310,14 +309,14 @@
 /* --------------------------------------------- */
 
 @media only screen and (max-width: 414px) {
-  .column.count-box .content {
+  .count-box .content {
     display: block;
   }
-  .column.count-box .inner .content .counter-title {
+  .count-box .inner .content .counter-title {
     padding-left: 0px;
     text-align: center;
   }
-  .column.count-box .inner .content .count-outer {
+  .count-box .inner .content .count-outer {
     margin: 0 auto;
   }
   .image-inner .inner-box .video-btn a {
@@ -328,19 +327,13 @@
     left: 10px;
     right: 5px;
   }
-  .column.count-box .inner .content .counter-title.two {
+  .count-box .inner .content .counter-title.two {
     padding-top: 10px;
   }
   .services-section {
     padding-bottom: 0px !important;
   }
-  .fun-facts-section .row {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  .fun-facts-section .column .inner .content {
+  .fun-facts-section .count-box .inner .content {
     display: flex;
     flex-direction: column;
     gap: 10px;

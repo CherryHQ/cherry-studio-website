@@ -31,9 +31,9 @@ const Features: FC = () => {
           </div>
         </div>
 
-        <div className="row clearfix">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {/* <!--Service Style One--> */}
-          <div className="service-style-one col-md-4 col-sm-6 col-xs-12">
+          <div className="service-style-one">
             <div className="inner-box wow fadeIn" data-wow-delay="0ms" data-wow-duration="1500ms">
               <div className="icon-box">
                 <img src={duihuaIcon} alt={t('features.conversation.title')} />
@@ -50,7 +50,7 @@ const Features: FC = () => {
           </div>
 
           {/* <!--Service Style One--> */}
-          <div className="service-style-one col-md-4 col-sm-6 col-xs-12">
+          <div className="service-style-one">
             <div className="inner-box wow fadeIn" data-wow-delay="0ms" data-wow-duration="1500ms">
               <div className="icon-box">
                 <img src={huihuaIcon} alt={t('features.drawing.title')} />
@@ -67,7 +67,7 @@ const Features: FC = () => {
           </div>
 
           {/* <!--Service Style One--> */}
-          <div className="service-style-one col-md-4 col-sm-6 col-xs-12">
+          <div className="service-style-one">
             <div className="inner-box wow fadeIn" data-wow-delay="0ms" data-wow-duration="1500ms">
               <div className="icon-box">
                 <img src={fanyiIcon} alt={t('features.translation.title')} />
@@ -86,7 +86,7 @@ const Features: FC = () => {
           </div>
 
           {/* <!--Service Style One--> */}
-          <div className="service-style-one col-md-4 col-sm-6 col-xs-12">
+          <div className="service-style-one">
             <div className="inner-box wow fadeIn" data-wow-delay="0ms" data-wow-duration="1500ms">
               <div className="icon-box">
                 <img src={zhushouIcon} alt={t('features.assistants.title')} />
@@ -103,7 +103,7 @@ const Features: FC = () => {
           </div>
 
           {/* <!--Service Style One--> */}
-          <div className="service-style-one col-md-4 col-sm-6 col-xs-12">
+          <div className="service-style-one">
             <div className="inner-box wow fadeIn" data-wow-delay="0ms" data-wow-duration="1500ms">
               <div className="icon-box">
                 <img src={zhishikuIcon} alt={t('features.knowledge_base.title')} />
@@ -122,7 +122,7 @@ const Features: FC = () => {
           </div>
 
           {/* <!--Service Style One--> */}
-          <div className="service-style-one col-md-4 col-sm-6 col-xs-12">
+          <div className="service-style-one">
             <div className="inner-box wow fadeIn" data-wow-delay="0ms" data-wow-duration="1500ms">
               <div className="icon-box">
                 <img src={beifenIcon} alt={t('features.backup.title')} />

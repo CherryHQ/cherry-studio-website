@@ -147,8 +147,9 @@
     "contributors": "貢獻者",
     "github_stars": "GitHub 星標"
   },
-  "sponsors": {
-    "title": "贊助商"
+  "providers": {
+    "title": "Cherry Studio 內建了多種服務商",
+    "subtitle": "同時也支援接入相容 OpenAI/Anthropic 等 API 格式的其他服務商"
   },
   "download_page": {
     "cloud_download": "網盤下載",

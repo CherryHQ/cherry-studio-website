@@ -130,7 +130,7 @@
     "contributors": "贡献者",
     "stars": "收藏量"
   },
-  "sponsors": {
+  "providers": {
     "title": "Cherry Studio 内置了多种服务商",
     "subtitle": "同时也支持接入兼容 OpenAI/Anthropic 等 API 格式的其他服务商"
   },
