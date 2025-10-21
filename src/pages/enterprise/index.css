@@ -7,14 +7,18 @@
 /* Hero Section */
 .enterprise-page .hero-section {
   background: linear-gradient(135deg, #f1f3f5 0%, #e9ecef 100%);
-  padding: 120px 0;
+  padding: 40px 0;
   text-align: center;
-  padding-top: 180px;
+  padding-top: 150px;
+  position: relative;
+  overflow: hidden;
 }
 
 .enterprise-page .hero-content {
   max-width: 800px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .enterprise-page .hero-section h1 {

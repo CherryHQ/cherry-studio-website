@@ -31,14 +31,6 @@ const EnterprisePage: FC = () => {
           <div className="hero-content">
             <h1 className="text-4xl font-semibold text-gray-900">{t('enterprise_page.hero.title')}</h1>
             <p className="subtitle">{t('enterprise_page.hero.subtitle')}</p>
-            <div className="hero-actions">
-              <a href="mailto:bd@cherry-ai.com" className="primary-button">
-                {t('enterprise_page.hero.contact_us')}
-              </a>
-              <a href="#features" className="secondary-button">
-                {t('enterprise_page.hero.learn_more')}
-              </a>
-            </div>
           </div>
         </div>
       </section>
@@ -231,7 +223,9 @@ const EnterprisePage: FC = () => {
                 <tr>
                   <td className="item-cell">{t('enterprise_page.comparison.table.shared_knowledge_base')}</td>
                   <td data-placeholder="true">-</td>
-                  <td data-placeholder="true">✓</td>
+                  <td data-placeholder="true">
+                    <span className="check">✓</span>
+                  </td>
                   <td>
                     <span className="check">✓</span>
                   </td>
@@ -239,7 +233,9 @@ const EnterprisePage: FC = () => {
                 <tr>
                   <td className="item-cell">{t('enterprise_page.comparison.table.permission_control')}</td>
                   <td data-placeholder="true">-</td>
-                  <td data-placeholder="true">✓</td>
+                  <td data-placeholder="true">
+                    <span className="check">✓</span>
+                  </td>
                   <td>
                     <span className="check">✓</span>
                   </td>
@@ -247,7 +243,9 @@ const EnterprisePage: FC = () => {
                 <tr>
                   <td className="item-cell">{t('enterprise_page.comparison.table.data_backup')}</td>
                   <td data-placeholder="true">-</td>
-                  <td data-placeholder="true">✓</td>
+                  <td data-placeholder="true">
+                    <span className="check">✓</span>
+                  </td>
                   <td>
                     <span className="check">✓</span>
                   </td>
@@ -255,7 +253,9 @@ const EnterprisePage: FC = () => {
                 <tr>
                   <td className="item-cell">{t('enterprise_page.comparison.table.assistant_management')}</td>
                   <td data-placeholder="true">-</td>
-                  <td data-placeholder="true">✓</td>
+                  <td data-placeholder="true">
+                    <span className="check">✓</span>
+                  </td>
                   <td>
                     <span className="check">✓</span>
                   </td>
@@ -263,7 +263,9 @@ const EnterprisePage: FC = () => {
                 <tr>
                   <td className="item-cell">{t('enterprise_page.comparison.table.agent_management')}</td>
                   <td data-placeholder="true">-</td>
-                  <td data-placeholder="true">✓</td>
+                  <td data-placeholder="true">
+                    <span className="check">✓</span>
+                  </td>
                   <td>
                     <span className="check">✓</span>
                   </td>
@@ -271,7 +273,9 @@ const EnterprisePage: FC = () => {
                 <tr>
                   <td className="item-cell">{t('enterprise_page.comparison.table.mcp_management')}</td>
                   <td data-placeholder="true">-</td>
-                  <td data-placeholder="true">✓</td>
+                  <td data-placeholder="true">
+                    <span className="check">✓</span>
+                  </td>
                   <td>
                     <span className="check">✓</span>
                   </td>
@@ -279,7 +283,9 @@ const EnterprisePage: FC = () => {
                 <tr>
                   <td className="item-cell">{t('enterprise_page.comparison.table.miniprogram_management')}</td>
                   <td data-placeholder="true">-</td>
-                  <td data-placeholder="true">✓</td>
+                  <td data-placeholder="true">
+                    <span className="check">✓</span>
+                  </td>
                   <td>
                     <span className="check">✓</span>
                   </td>

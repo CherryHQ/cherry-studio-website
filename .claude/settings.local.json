@@ -9,7 +9,8 @@
       "Bash(yarn dev)",
       "Bash(curl -s http://localhost:5173)",
       "Bash(yarn add -D prettier-plugin-tailwindcss)",
-      "Bash(npx prettier --write src/pages/home/components/Providers.tsx)"
+      "Bash(npx prettier --write src/pages/home/components/Providers.tsx)",
+      "Bash(yarn lint --fix)"
     ],
     "deny": [],
     "ask": []

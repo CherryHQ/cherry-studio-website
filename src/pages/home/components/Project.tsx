@@ -54,7 +54,7 @@ const Project: FC = () => {
         className="project-section project-section-custom"
         style={{ marginBottom: '10px !important', paddingBottom: '10px !important' }}>
         <div className="auto-container">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
             {/* <!--Counter Column--> */}
             <div className="mb-5">
               <StarHistory />

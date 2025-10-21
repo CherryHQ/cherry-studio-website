@@ -31,7 +31,7 @@ const Features: FC = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
           {/* <!--Service Style One--> */}
           <div className="service-style-one">
             <div className="inner-box wow fadeIn" data-wow-delay="0ms" data-wow-duration="1500ms">

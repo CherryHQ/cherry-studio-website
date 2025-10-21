@@ -17,7 +17,7 @@ const Footer: React.FC = () => {
     <footer className="main-footer">
       <div className="widget-section">
         <div className="auto-container">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
             <div className="footer-column">
               <div className="footer-widget logo-widget">
                 <figure className="footer-logo no-hover">
