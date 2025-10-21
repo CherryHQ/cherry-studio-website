@@ -340,20 +340,22 @@ const EnterprisePage: FC = () => {
             <div className="comparison-card enterprise">
               <div className="card-header">
                 <h3>{t('enterprise_page.comparison.table.enterprise')}</h3>
-                <div className="pricing" style={{ marginTop: -5 }}>
-                  <Select value={selectedUserRange} onValueChange={setSelectedUserRange}>
-                    <SelectTrigger className="user-range-select">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="1-50">1 - 50 {t('enterprise_page.comparison.table.people')}</SelectItem>
-                      <SelectItem value="51-200">51 - 200 {t('enterprise_page.comparison.table.people')}</SelectItem>
-                      <SelectItem value="201-1000">
-                        201 - 1,000 {t('enterprise_page.comparison.table.people')}
-                      </SelectItem>
-                      <SelectItem value="1000+">1,000+ {t('enterprise_page.comparison.table.people')}</SelectItem>
-                    </SelectContent>
-                  </Select>
+                <div className="pricing">
+                  <div className="m-auto mt-[-5px] w-50">
+                    <Select value={selectedUserRange} onValueChange={setSelectedUserRange}>
+                      <SelectTrigger className="user-range-select">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="1-50">1 - 50 {t('enterprise_page.comparison.table.people')}</SelectItem>
+                        <SelectItem value="51-200">51 - 200 {t('enterprise_page.comparison.table.people')}</SelectItem>
+                        <SelectItem value="201-1000">
+                          201 - 1,000 {t('enterprise_page.comparison.table.people')}
+                        </SelectItem>
+                        <SelectItem value="1000+">1,000+ {t('enterprise_page.comparison.table.people')}</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
                   <div className="plan-price">¥ {getCurrentPrice()}</div>
                 </div>
               </div>
