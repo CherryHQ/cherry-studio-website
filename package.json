@@ -11,6 +11,7 @@
     "release": "yarn build && rsync -rvztl --delete ./dist/* tencent.vm:/opt/1panel/apps/openresty/openresty/www/sites/cherry-ai.com/index"
   },
   "dependencies": {
+    "@radix-ui/react-select": "^2.2.6",
     "@tailwindcss/vite": "^4.1.14",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

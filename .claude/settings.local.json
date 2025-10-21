@@ -11,7 +11,13 @@
       "Bash(yarn add -D prettier-plugin-tailwindcss)",
       "Bash(npx prettier --write src/pages/home/components/Providers.tsx)",
       "Bash(yarn lint --fix)",
-      "Bash(npx shadcn@latest add https://www.shadcn.io/registry/background-beams.json)"
+      "Bash(npx shadcn@latest add https://www.shadcn.io/registry/background-beams.json)",
+      "Bash(curl -s http://localhost:5181/enterprise)",
+      "Bash(npx prettier --write src/pages/enterprise/index.tsx src/i18n/lang/zh.json src/i18n/lang/en.json src/i18n/lang/zh-tw.json)",
+      "Bash(npx shadcn@latest add select)",
+      "Bash(npx prettier --write src/pages/enterprise/index.tsx)",
+      "Bash(npx prettier --write src/pages/enterprise/index.css)",
+      "Bash(curl -s http://localhost:5182/enterprise)"
     ],
     "deny": [],
     "ask": []

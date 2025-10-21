@@ -13,9 +13,10 @@ import {
   Users,
   Zap
 } from 'lucide-react'
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { BackgroundBeams } from '@/components/ui/shadcn-io/background-beams'
 import Footer from '@/components/website/Footer'
 import { useEnterpriseData } from '@/hooks/useEnterpriseData'
@@ -26,12 +27,28 @@ const EnterprisePage: FC = () => {
   usePageMeta('enterprise')
   const enterpriseData = useEnterpriseData()
 
+  // 企业版人数选择器
+  const [selectedUserRange, setSelectedUserRange] = useState('1-50')
+
+  // 企业版价格配置
+  const enterprisePricing = {
+    '1-50': { range: '1 - 50', price: '50,000' },
+    '51-200': { range: '51 - 200', price: '100,000' },
+    '201-1000': { range: '201 - 1,000', price: '200,000' },
+    '1000+': { range: '1,000+', price: '350,000' }
+  }
+
+  const getCurrentPrice = () => {
+    const pricing = enterprisePricing[selectedUserRange as keyof typeof enterprisePricing]
+    return pricing ? pricing.price : '50,000'
+  }
+
   return (
     <div className="enterprise-page">
       {/* Hero Section */}
       <section className="hero-section relative overflow-hidden">
         <BackgroundBeams className="absolute inset-0 z-0" />
-        <div className="container relative z-10">
+        <div className="relative z-10 container">
           <div className="hero-content">
             <h1 className="text-4xl font-semibold text-gray-900">{t('enterprise_page.hero.title')}</h1>
             <p className="subtitle">{t('enterprise_page.hero.subtitle')}</p>
@@ -100,202 +117,356 @@ const EnterprisePage: FC = () => {
             <h2>{t('enterprise_page.comparison.title')}</h2>
             <p>{t('enterprise_page.comparison.subtitle')}</p>
           </div>
-          <div className="comparison-table">
-            <table>
-              <thead>
-                <tr>
-                  <th className="feature-column">{t('enterprise_page.comparison.table.feature_category')}</th>
-                  <th className="feature-column">{t('enterprise_page.comparison.table.specific_item')}</th>
-                  <th>{t('enterprise_page.comparison.table.community')}</th>
-                  <th>{t('enterprise_page.comparison.table.enterprise_startup')}</th>
-                  <th>{t('enterprise_page.comparison.table.enterprise')}</th>
-                </tr>
-              </thead>
-              <tbody>
-                {/* 许可与费用 */}
-                <tr className="category-row">
-                  <td rowSpan={2} className="category-cell">
-                    {t('enterprise_page.comparison.table.license_and_cost')}
-                  </td>
-                  <td className="item-cell">{t('enterprise_page.comparison.table.pricing_plan')}</td>
-                  <td className="plan-cell">
-                    <div className="plan-content">
-                      <div className="plan-title">{t('enterprise_page.comparison.table.pricing_community_title')}</div>
-                      <div className="plan-price">{t('enterprise_page.comparison.table.pricing_community_price')}</div>
-                    </div>
-                  </td>
-                  <td className="plan-cell">
-                    <div className="plan-content">
-                      <div className="plan-title">{t('enterprise_page.comparison.table.pricing_startup_title')}</div>
-                      <div className="plan-price">{t('enterprise_page.comparison.table.pricing_startup_price')}</div>
-                    </div>
-                  </td>
-                  <td className="plan-cell">
-                    <div className="plan-content">
-                      <div
-                        className="plan-price"
-                        dangerouslySetInnerHTML={{
-                          __html: t('enterprise_page.comparison.table.pricing_enterprise_price')
-                        }}></div>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="item-cell">{t('enterprise_page.comparison.table.annual_service_fee')}</td>
-                  <td data-placeholder="true">-</td>
-                  <td>{t('enterprise_page.comparison.table.annual_fee_rate')}</td>
-                  <td>{t('enterprise_page.comparison.table.annual_fee_rate')}</td>
-                </tr>
+          <div className="comparison-grid">
+            {/* Community Edition */}
+            <div className="comparison-card community">
+              <div className="card-header">
+                <h3>{t('enterprise_page.comparison.table.community')}</h3>
+                <div className="pricing">
+                  <div className="plan-title">{t('enterprise_page.comparison.table.pricing_community_title')}</div>
+                  <div className="plan-price">{t('enterprise_page.comparison.table.pricing_community_price')}</div>
+                </div>
+              </div>
+              <div className="card-body">
+                <div className="feature-group">
+                  <h4>{t('enterprise_page.comparison.table.license_and_cost')}</h4>
+                  <ul>
+                    <li>
+                      <span className="feature-label">{t('enterprise_page.comparison.table.annual_service_fee')}</span>
+                      <span className="feature-value disabled">-</span>
+                    </li>
+                  </ul>
+                </div>
+                <div className="feature-group">
+                  <h4>{t('enterprise_page.comparison.table.deployment_and_support')}</h4>
+                  <ul>
+                    <li>
+                      <span className="feature-label">{t('enterprise_page.comparison.table.deployment_method')}</span>
+                      <span className="feature-value">{t('enterprise_page.comparison.table.deployment_single')}</span>
+                    </li>
+                    <li>
+                      <span className="feature-label">{t('enterprise_page.comparison.table.tech_support')}</span>
+                      <span className="feature-value">{t('enterprise_page.comparison.table.support_community')}</span>
+                    </li>
+                    <li>
+                      <span className="feature-label">{t('enterprise_page.comparison.table.system_support')}</span>
+                      <span className="feature-value">{t('enterprise_page.comparison.table.system_community')}</span>
+                    </li>
+                  </ul>
+                </div>
+                <div className="feature-group">
+                  <h4>{t('enterprise_page.comparison.table.core_features')}</h4>
+                  <ul>
+                    <li>
+                      <span className="feature-label">{t('enterprise_page.comparison.table.basic_features')}</span>
+                      <span className="feature-value check">
+                        <Check size={16} />
+                      </span>
+                    </li>
+                    <li>
+                      <span className="feature-label">{t('enterprise_page.comparison.table.provider_management')}</span>
+                      <span className="feature-value check">
+                        <Check size={16} />
+                      </span>
+                    </li>
+                    <li>
+                      <span className="feature-label">{t('enterprise_page.comparison.table.model_management')}</span>
+                      <span className="feature-value disabled">-</span>
+                    </li>
+                    <li>
+                      <span className="feature-label">{t('enterprise_page.comparison.table.employee_management')}</span>
+                      <span className="feature-value disabled">-</span>
+                    </li>
+                    <li>
+                      <span className="feature-label">
+                        {t('enterprise_page.comparison.table.shared_knowledge_base')}
+                      </span>
+                      <span className="feature-value disabled">-</span>
+                    </li>
+                    <li>
+                      <span className="feature-label">{t('enterprise_page.comparison.table.permission_control')}</span>
+                      <span className="feature-value disabled">-</span>
+                    </li>
+                    <li>
+                      <span className="feature-label">{t('enterprise_page.comparison.table.data_backup')}</span>
+                      <span className="feature-value disabled">-</span>
+                    </li>
+                    <li>
+                      <span className="feature-label">
+                        {t('enterprise_page.comparison.table.assistant_management')}
+                      </span>
+                      <span className="feature-value disabled">-</span>
+                    </li>
+                    <li>
+                      <span className="feature-label">{t('enterprise_page.comparison.table.agent_management')}</span>
+                      <span className="feature-value disabled">-</span>
+                    </li>
+                    <li>
+                      <span className="feature-label">{t('enterprise_page.comparison.table.mcp_management')}</span>
+                      <span className="feature-value disabled">-</span>
+                    </li>
+                    <li>
+                      <span className="feature-label">
+                        {t('enterprise_page.comparison.table.miniprogram_management')}
+                      </span>
+                      <span className="feature-value disabled">-</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
 
-                {/* 部署与支持 */}
-                <tr className="category-row">
-                  <td rowSpan={3} className="category-cell">
-                    {t('enterprise_page.comparison.table.deployment_and_support')}
-                  </td>
-                  <td className="item-cell">{t('enterprise_page.comparison.table.deployment_method')}</td>
-                  <td>{t('enterprise_page.comparison.table.deployment_single')}</td>
-                  <td>
-                    <span className="check">✓</span> {t('enterprise_page.comparison.table.deployment_private')}
-                  </td>
-                  <td>
-                    <span className="check">✓</span> {t('enterprise_page.comparison.table.deployment_private')}
-                  </td>
-                </tr>
-                <tr>
-                  <td className="item-cell">{t('enterprise_page.comparison.table.tech_support')}</td>
-                  <td>{t('enterprise_page.comparison.table.support_community')}</td>
-                  <td>
-                    <span className="check">✓</span> {t('enterprise_page.comparison.table.support_dedicated')}
-                  </td>
-                  <td>
-                    <span className="check">✓</span> {t('enterprise_page.comparison.table.support_dedicated')}
-                  </td>
-                </tr>
-                <tr>
-                  <td className="item-cell">{t('enterprise_page.comparison.table.system_support')}</td>
-                  <td>{t('enterprise_page.comparison.table.system_community')}</td>
-                  <td>{t('enterprise_page.comparison.table.system_enterprise')}</td>
-                  <td>{t('enterprise_page.comparison.table.system_enterprise')}</td>
-                </tr>
+            {/* Enterprise Startup Edition */}
+            <div className="comparison-card startup">
+              <div className="card-header">
+                <h3>{t('enterprise_page.comparison.table.enterprise_startup')}</h3>
+                <div className="pricing">
+                  <div className="plan-title">{t('enterprise_page.comparison.table.pricing_startup_title')}</div>
+                  <div className="plan-price">{t('enterprise_page.comparison.table.pricing_startup_price')}</div>
+                </div>
+              </div>
+              <div className="card-body">
+                <div className="feature-group">
+                  <h4>{t('enterprise_page.comparison.table.license_and_cost')}</h4>
+                  <ul>
+                    <li>
+                      <span className="feature-label">{t('enterprise_page.comparison.table.annual_service_fee')}</span>
+                      <span className="feature-value">{t('enterprise_page.comparison.table.annual_fee_rate')}</span>
+                    </li>
+                  </ul>
+                </div>
+                <div className="feature-group">
+                  <h4>{t('enterprise_page.comparison.table.deployment_and_support')}</h4>
+                  <ul>
+                    <li>
+                      <span className="feature-label">{t('enterprise_page.comparison.table.deployment_method')}</span>
+                      <span className="feature-value check">
+                        <Check size={16} /> {t('enterprise_page.comparison.table.deployment_private')}
+                      </span>
+                    </li>
+                    <li>
+                      <span className="feature-label">{t('enterprise_page.comparison.table.tech_support')}</span>
+                      <span className="feature-value check">
+                        <Check size={16} /> {t('enterprise_page.comparison.table.support_dedicated')}
+                      </span>
+                    </li>
+                    <li>
+                      <span className="feature-label">{t('enterprise_page.comparison.table.system_support')}</span>
+                      <span className="feature-value">{t('enterprise_page.comparison.table.system_enterprise')}</span>
+                    </li>
+                  </ul>
+                </div>
+                <div className="feature-group">
+                  <h4>{t('enterprise_page.comparison.table.core_features')}</h4>
+                  <ul>
+                    <li>
+                      <span className="feature-label">{t('enterprise_page.comparison.table.basic_features')}</span>
+                      <span className="feature-value check">
+                        <Check size={16} />
+                      </span>
+                    </li>
+                    <li>
+                      <span className="feature-label">{t('enterprise_page.comparison.table.provider_management')}</span>
+                      <span className="feature-value">
+                        {t('enterprise_page.comparison.table.provider_management_builtin')}
+                      </span>
+                    </li>
+                    <li>
+                      <span className="feature-label">{t('enterprise_page.comparison.table.model_management')}</span>
+                      <span className="feature-value check">
+                        <Check size={16} />
+                      </span>
+                    </li>
+                    <li>
+                      <span className="feature-label">{t('enterprise_page.comparison.table.employee_management')}</span>
+                      <span className="feature-value check">
+                        <Check size={16} />
+                      </span>
+                    </li>
+                    <li>
+                      <span className="feature-label">
+                        {t('enterprise_page.comparison.table.shared_knowledge_base')}
+                      </span>
+                      <span className="feature-value check">
+                        <Check size={16} />
+                      </span>
+                    </li>
+                    <li>
+                      <span className="feature-label">{t('enterprise_page.comparison.table.permission_control')}</span>
+                      <span className="feature-value check">
+                        <Check size={16} />
+                      </span>
+                    </li>
+                    <li>
+                      <span className="feature-label">{t('enterprise_page.comparison.table.data_backup')}</span>
+                      <span className="feature-value check">
+                        <Check size={16} />
+                      </span>
+                    </li>
+                    <li>
+                      <span className="feature-label">
+                        {t('enterprise_page.comparison.table.assistant_management')}
+                      </span>
+                      <span className="feature-value check">
+                        <Check size={16} />
+                      </span>
+                    </li>
+                    <li>
+                      <span className="feature-label">{t('enterprise_page.comparison.table.agent_management')}</span>
+                      <span className="feature-value check">
+                        <Check size={16} />
+                      </span>
+                    </li>
+                    <li>
+                      <span className="feature-label">{t('enterprise_page.comparison.table.mcp_management')}</span>
+                      <span className="feature-value check">
+                        <Check size={16} />
+                      </span>
+                    </li>
+                    <li>
+                      <span className="feature-label">
+                        {t('enterprise_page.comparison.table.miniprogram_management')}
+                      </span>
+                      <span className="feature-value check">
+                        <Check size={16} />
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
 
-                {/* 核心功能 */}
-                <tr className="category-row">
-                  <td rowSpan={11} className="category-cell">
-                    {t('enterprise_page.comparison.table.core_features')}
-                  </td>
-                  <td className="item-cell">{t('enterprise_page.comparison.table.basic_features')}</td>
-                  <td>
-                    <span className="check">✓</span>
-                  </td>
-                  <td>
-                    <span className="check">✓</span>
-                  </td>
-                  <td>
-                    <span className="check">✓</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="item-cell">{t('enterprise_page.comparison.table.provider_management')}</td>
-                  <td>
-                    <span className="check">✓</span>
-                  </td>
-                  <td>{t('enterprise_page.comparison.table.provider_management_builtin')}</td>
-                  <td>
-                    <span className="check">✓</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="item-cell">{t('enterprise_page.comparison.table.model_management')}</td>
-                  <td data-placeholder="true">-</td>
-                  <td>
-                    <span className="check">✓</span>
-                  </td>
-                  <td>
-                    <span className="check">✓</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="item-cell">{t('enterprise_page.comparison.table.employee_management')}</td>
-                  <td data-placeholder="true">-</td>
-                  <td>
-                    <span className="check">✓</span>
-                  </td>
-                  <td>
-                    <span className="check">✓</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="item-cell">{t('enterprise_page.comparison.table.shared_knowledge_base')}</td>
-                  <td data-placeholder="true">-</td>
-                  <td data-placeholder="true">
-                    <span className="check">✓</span>
-                  </td>
-                  <td>
-                    <span className="check">✓</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="item-cell">{t('enterprise_page.comparison.table.permission_control')}</td>
-                  <td data-placeholder="true">-</td>
-                  <td data-placeholder="true">
-                    <span className="check">✓</span>
-                  </td>
-                  <td>
-                    <span className="check">✓</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="item-cell">{t('enterprise_page.comparison.table.data_backup')}</td>
-                  <td data-placeholder="true">-</td>
-                  <td data-placeholder="true">
-                    <span className="check">✓</span>
-                  </td>
-                  <td>
-                    <span className="check">✓</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="item-cell">{t('enterprise_page.comparison.table.assistant_management')}</td>
-                  <td data-placeholder="true">-</td>
-                  <td data-placeholder="true">
-                    <span className="check">✓</span>
-                  </td>
-                  <td>
-                    <span className="check">✓</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="item-cell">{t('enterprise_page.comparison.table.agent_management')}</td>
-                  <td data-placeholder="true">-</td>
-                  <td data-placeholder="true">
-                    <span className="check">✓</span>
-                  </td>
-                  <td>
-                    <span className="check">✓</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="item-cell">{t('enterprise_page.comparison.table.mcp_management')}</td>
-                  <td data-placeholder="true">-</td>
-                  <td data-placeholder="true">
-                    <span className="check">✓</span>
-                  </td>
-                  <td>
-                    <span className="check">✓</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="item-cell">{t('enterprise_page.comparison.table.miniprogram_management')}</td>
-                  <td data-placeholder="true">-</td>
-                  <td data-placeholder="true">
-                    <span className="check">✓</span>
-                  </td>
-                  <td>
-                    <span className="check">✓</span>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+            {/* Enterprise Edition */}
+            <div className="comparison-card enterprise">
+              <div className="card-header">
+                <h3>{t('enterprise_page.comparison.table.enterprise')}</h3>
+                <div className="pricing" style={{ marginTop: -5 }}>
+                  <Select value={selectedUserRange} onValueChange={setSelectedUserRange}>
+                    <SelectTrigger className="user-range-select">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="1-50">1 - 50 {t('enterprise_page.comparison.table.people')}</SelectItem>
+                      <SelectItem value="51-200">51 - 200 {t('enterprise_page.comparison.table.people')}</SelectItem>
+                      <SelectItem value="201-1000">
+                        201 - 1,000 {t('enterprise_page.comparison.table.people')}
+                      </SelectItem>
+                      <SelectItem value="1000+">1,000+ {t('enterprise_page.comparison.table.people')}</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <div className="plan-price">¥ {getCurrentPrice()}</div>
+                </div>
+              </div>
+              <div className="card-body">
+                <div className="feature-group">
+                  <h4>{t('enterprise_page.comparison.table.license_and_cost')}</h4>
+                  <ul>
+                    <li>
+                      <span className="feature-label">{t('enterprise_page.comparison.table.annual_service_fee')}</span>
+                      <span className="feature-value">{t('enterprise_page.comparison.table.annual_fee_rate')}</span>
+                    </li>
+                  </ul>
+                </div>
+                <div className="feature-group">
+                  <h4>{t('enterprise_page.comparison.table.deployment_and_support')}</h4>
+                  <ul>
+                    <li>
+                      <span className="feature-label">{t('enterprise_page.comparison.table.deployment_method')}</span>
+                      <span className="feature-value check">
+                        <Check size={16} /> {t('enterprise_page.comparison.table.deployment_private')}
+                      </span>
+                    </li>
+                    <li>
+                      <span className="feature-label">{t('enterprise_page.comparison.table.tech_support')}</span>
+                      <span className="feature-value check">
+                        <Check size={16} /> {t('enterprise_page.comparison.table.support_dedicated')}
+                      </span>
+                    </li>
+                    <li>
+                      <span className="feature-label">{t('enterprise_page.comparison.table.system_support')}</span>
+                      <span className="feature-value">{t('enterprise_page.comparison.table.system_enterprise')}</span>
+                    </li>
+                  </ul>
+                </div>
+                <div className="feature-group">
+                  <h4>{t('enterprise_page.comparison.table.core_features')}</h4>
+                  <ul>
+                    <li>
+                      <span className="feature-label">{t('enterprise_page.comparison.table.basic_features')}</span>
+                      <span className="feature-value check">
+                        <Check size={16} />
+                      </span>
+                    </li>
+                    <li>
+                      <span className="feature-label">{t('enterprise_page.comparison.table.provider_management')}</span>
+                      <span className="feature-value check">
+                        <Check size={16} />
+                      </span>
+                    </li>
+                    <li>
+                      <span className="feature-label">{t('enterprise_page.comparison.table.model_management')}</span>
+                      <span className="feature-value check">
+                        <Check size={16} />
+                      </span>
+                    </li>
+                    <li>
+                      <span className="feature-label">{t('enterprise_page.comparison.table.employee_management')}</span>
+                      <span className="feature-value check">
+                        <Check size={16} />
+                      </span>
+                    </li>
+                    <li>
+                      <span className="feature-label">
+                        {t('enterprise_page.comparison.table.shared_knowledge_base')}
+                      </span>
+                      <span className="feature-value check">
+                        <Check size={16} />
+                      </span>
+                    </li>
+                    <li>
+                      <span className="feature-label">{t('enterprise_page.comparison.table.permission_control')}</span>
+                      <span className="feature-value check">
+                        <Check size={16} />
+                      </span>
+                    </li>
+                    <li>
+                      <span className="feature-label">{t('enterprise_page.comparison.table.data_backup')}</span>
+                      <span className="feature-value check">
+                        <Check size={16} />
+                      </span>
+                    </li>
+                    <li>
+                      <span className="feature-label">
+                        {t('enterprise_page.comparison.table.assistant_management')}
+                      </span>
+                      <span className="feature-value check">
+                        <Check size={16} />
+                      </span>
+                    </li>
+                    <li>
+                      <span className="feature-label">{t('enterprise_page.comparison.table.agent_management')}</span>
+                      <span className="feature-value check">
+                        <Check size={16} />
+                      </span>
+                    </li>
+                    <li>
+                      <span className="feature-label">{t('enterprise_page.comparison.table.mcp_management')}</span>
+                      <span className="feature-value check">
+                        <Check size={16} />
+                      </span>
+                    </li>
+                    <li>
+                      <span className="feature-label">
+                        {t('enterprise_page.comparison.table.miniprogram_management')}
+                      </span>
+                      <span className="feature-value check">
+                        <Check size={16} />
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -303,82 +474,112 @@ const EnterprisePage: FC = () => {
       {/* Express Edition Highlight */}
       <section className="express-highlight-section">
         <div className="container">
-          <div className="express-highlight-card">
-            <div className="express-badge">
-              <Sparkles className="h-5 w-5" />
-              <span>{t('enterprise_page.express.badge')}</span>
-            </div>
+          <div className="express-highlight-wrapper">
+            {/* Left Side - Main Info */}
+            <div className="express-main-content">
+              <div className="express-badge">
+                <Sparkles className="h-4 w-4" />
+                <span>{t('enterprise_page.express.badge')}</span>
+              </div>
 
-            <h2 className="express-title">{t('enterprise_page.express.title')}</h2>
-            <p className="express-subtitle">{t('enterprise_page.express.subtitle')}</p>
+              <h2 className="express-title">{t('enterprise_page.express.title')}</h2>
+              <p className="express-subtitle">{t('enterprise_page.express.subtitle')}</p>
 
-            <div className="express-price-section">
-              <div className="price-tag">
-                <span className="price-label">{t('enterprise_page.express.price_label')}</span>
-                <div className="price-amount">
-                  <span className="currency">¥</span>
-                  <span className="amount">5,000</span>
-                  <span className="period">{t('enterprise_page.express.period')}</span>
+              <div className="express-feature-highlights">
+                <div className="highlight-item">
+                  <div className="highlight-icon">
+                    <Check className="h-5 w-5" />
+                  </div>
+                  <div className="highlight-text">
+                    <span className="highlight-label">{t('enterprise_page.express.features.unlimited_users')}</span>
+                  </div>
+                </div>
+                <div className="highlight-item">
+                  <div className="highlight-icon">
+                    <Check className="h-5 w-5" />
+                  </div>
+                  <div className="highlight-text">
+                    <span className="highlight-label">{t('enterprise_page.express.features.builtin_provider')}</span>
+                  </div>
+                </div>
+                <div className="highlight-item">
+                  <div className="highlight-icon">
+                    <Check className="h-5 w-5" />
+                  </div>
+                  <div className="highlight-text">
+                    <span className="highlight-label">{t('enterprise_page.express.features.quick_deployment')}</span>
+                  </div>
+                </div>
+                <div className="highlight-item">
+                  <div className="highlight-icon">
+                    <Check className="h-5 w-5" />
+                  </div>
+                  <div className="highlight-text">
+                    <span className="highlight-label">{t('enterprise_page.express.features.one_time_payment')}</span>
+                  </div>
                 </div>
               </div>
 
-              <div className="express-features">
-                <div className="feature-item">
-                  <div className="feature-icon">
-                    <Check className="h-5 w-5" />
-                  </div>
-                  <span>{t('enterprise_page.express.features.unlimited_users')}</span>
-                </div>
-                <div className="feature-item">
-                  <div className="feature-icon">
-                    <Check className="h-5 w-5" />
-                  </div>
-                  <span>{t('enterprise_page.express.features.builtin_provider')}</span>
-                </div>
-                <div className="feature-item">
-                  <div className="feature-icon">
-                    <Check className="h-5 w-5" />
-                  </div>
-                  <span>{t('enterprise_page.express.features.quick_deployment')}</span>
-                </div>
-                <div className="feature-item">
-                  <div className="feature-icon">
-                    <Check className="h-5 w-5" />
-                  </div>
-                  <span>{t('enterprise_page.express.features.one_time_payment')}</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="express-benefits">
-              <div className="benefit-card">
-                <div className="benefit-icon">
-                  <Zap className="h-8 w-8" />
-                </div>
-                <h3>{t('enterprise_page.express.benefits.fast_start.title')}</h3>
-                <p>{t('enterprise_page.express.benefits.fast_start.description')}</p>
-              </div>
-              <div className="benefit-card">
-                <div className="benefit-icon">
-                  <Building2 className="h-8 w-8" />
-                </div>
-                <h3>{t('enterprise_page.express.benefits.cost_effective.title')}</h3>
-                <p>{t('enterprise_page.express.benefits.cost_effective.description')}</p>
-              </div>
-              <div className="benefit-card">
-                <div className="benefit-icon">
-                  <ShieldCheck className="h-8 w-8" />
-                </div>
-                <h3>{t('enterprise_page.express.benefits.enterprise_grade.title')}</h3>
-                <p>{t('enterprise_page.express.benefits.enterprise_grade.description')}</p>
+              <div className="express-cta-wrapper">
+                <a href="mailto:bd@cherry-ai.com" className="express-cta-button">
+                  {t('enterprise_page.express.cta_button')}
+                </a>
+                <p className="express-cta-note">{t('enterprise_page.express.cta_note')}</p>
               </div>
             </div>
 
-            <div className="express-cta">
-              <a href="mailto:bd@cherry-ai.com" className="express-cta-button">
-                {t('enterprise_page.express.cta_button')}
-              </a>
-              <p className="express-cta-note">{t('enterprise_page.express.cta_note')}</p>
+            {/* Right Side - Pricing Card */}
+            <div className="express-pricing-card">
+              <div className="pricing-card-inner">
+                <div className="pricing-header">
+                  <span className="pricing-label">{t('enterprise_page.express.price_label')}</span>
+                  <div className="pricing-amount">
+                    <span className="pricing-currency">¥</span>
+                    <span className="pricing-value">5,000</span>
+                  </div>
+                  <span className="pricing-period">{t('enterprise_page.express.period')}</span>
+                </div>
+
+                <div className="pricing-divider" />
+
+                <div className="pricing-benefits">
+                  <div className="pricing-benefit-item">
+                    <div className="benefit-icon-wrapper">
+                      <Zap className="h-6 w-6" />
+                    </div>
+                    <div className="benefit-content">
+                      <h4 className="benefit-title">{t('enterprise_page.express.benefits.fast_start.title')}</h4>
+                      <p className="benefit-description">
+                        {t('enterprise_page.express.benefits.fast_start.description')}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="pricing-benefit-item">
+                    <div className="benefit-icon-wrapper">
+                      <Building2 className="h-6 w-6" />
+                    </div>
+                    <div className="benefit-content">
+                      <h4 className="benefit-title">{t('enterprise_page.express.benefits.cost_effective.title')}</h4>
+                      <p className="benefit-description">
+                        {t('enterprise_page.express.benefits.cost_effective.description')}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="pricing-benefit-item">
+                    <div className="benefit-icon-wrapper">
+                      <ShieldCheck className="h-6 w-6" />
+                    </div>
+                    <div className="benefit-content">
+                      <h4 className="benefit-title">{t('enterprise_page.express.benefits.enterprise_grade.title')}</h4>
+                      <p className="benefit-description">
+                        {t('enterprise_page.express.benefits.enterprise_grade.description')}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

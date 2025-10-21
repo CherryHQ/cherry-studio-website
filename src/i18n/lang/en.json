@@ -244,8 +244,9 @@
         "pricing_community_price": "Free",
         "pricing_startup_title": "Unlimited users:",
         "pricing_startup_price": "¥ 5,000",
-        "pricing_enterprise_title": "1 - 50 people: ¥ 50,000<br/>51 - 200 people: ¥ 100,000<br/>201 - 1,000 people: ¥ 200,000<br/>1,000+ people: ¥ 350,000",
+        "pricing_enterprise_title": "Select company size:",
         "pricing_enterprise_price": "1 - 50 people: <strong>¥ 50,000</strong><br/>51 - 200 people: <strong>¥ 100,000</strong><br/>201 - 1,000 people: <strong>¥ 200,000</strong><br/>1,000+ people: <strong>¥ 350,000</strong>",
+        "people": "people",
         "annual_service_fee": "Annual Service Fee (Optional)",
         "annual_fee_rate": "20% of one-time price",
 
