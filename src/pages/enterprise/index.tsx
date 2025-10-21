@@ -231,7 +231,7 @@ const EnterprisePage: FC = () => {
                 <tr>
                   <td className="item-cell">{t('enterprise_page.comparison.table.shared_knowledge_base')}</td>
                   <td data-placeholder="true">-</td>
-                  <td data-placeholder="true">-</td>
+                  <td data-placeholder="true">✓</td>
                   <td>
                     <span className="check">✓</span>
                   </td>
@@ -239,7 +239,7 @@ const EnterprisePage: FC = () => {
                 <tr>
                   <td className="item-cell">{t('enterprise_page.comparison.table.permission_control')}</td>
                   <td data-placeholder="true">-</td>
-                  <td data-placeholder="true">-</td>
+                  <td data-placeholder="true">✓</td>
                   <td>
                     <span className="check">✓</span>
                   </td>
@@ -247,7 +247,7 @@ const EnterprisePage: FC = () => {
                 <tr>
                   <td className="item-cell">{t('enterprise_page.comparison.table.data_backup')}</td>
                   <td data-placeholder="true">-</td>
-                  <td data-placeholder="true">-</td>
+                  <td data-placeholder="true">✓</td>
                   <td>
                     <span className="check">✓</span>
                   </td>
@@ -255,7 +255,7 @@ const EnterprisePage: FC = () => {
                 <tr>
                   <td className="item-cell">{t('enterprise_page.comparison.table.assistant_management')}</td>
                   <td data-placeholder="true">-</td>
-                  <td data-placeholder="true">-</td>
+                  <td data-placeholder="true">✓</td>
                   <td>
                     <span className="check">✓</span>
                   </td>
@@ -263,7 +263,7 @@ const EnterprisePage: FC = () => {
                 <tr>
                   <td className="item-cell">{t('enterprise_page.comparison.table.agent_management')}</td>
                   <td data-placeholder="true">-</td>
-                  <td data-placeholder="true">-</td>
+                  <td data-placeholder="true">✓</td>
                   <td>
                     <span className="check">✓</span>
                   </td>
@@ -271,7 +271,7 @@ const EnterprisePage: FC = () => {
                 <tr>
                   <td className="item-cell">{t('enterprise_page.comparison.table.mcp_management')}</td>
                   <td data-placeholder="true">-</td>
-                  <td data-placeholder="true">-</td>
+                  <td data-placeholder="true">✓</td>
                   <td>
                     <span className="check">✓</span>
                   </td>
@@ -279,7 +279,7 @@ const EnterprisePage: FC = () => {
                 <tr>
                   <td className="item-cell">{t('enterprise_page.comparison.table.miniprogram_management')}</td>
                   <td data-placeholder="true">-</td>
-                  <td data-placeholder="true">-</td>
+                  <td data-placeholder="true">✓</td>
                   <td>
                     <span className="check">✓</span>
                   </td>
