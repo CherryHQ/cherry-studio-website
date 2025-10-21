@@ -108,11 +108,27 @@ API requests to `/api` are proxied to `http://rack1.raincs.cc:18192` during deve
 
 ## Styling Approach
 
-- Uses Tailwind CSS v4 with Vite plugin
-- Legacy CSS modules in [src/assets/css/module-css/](src/assets/css/module-css/)
-- Styled Components (v6) for some component styling
+**Primary styling method (REQUIRED for all new code):**
+- ✅ Use Tailwind CSS v4 classes directly in components
+- ✅ Use `cn()` utility from [src/lib/utils.ts](src/lib/utils.ts) for conditional class merging
+
+**Legacy code (do NOT use for new development):**
+- ❌ CSS modules in [src/assets/css/module-css/](src/assets/css/module-css/)
+- ❌ Styled Components (v6)
+- ❌ Separate CSS files
+
+**Other styling tools:**
 - Custom icon font (icomoon) for UI icons
-- Utility function `cn()` from [src/lib/utils.ts](src/lib/utils.ts) for conditional class merging
+
+**Example:**
+```tsx
+// Good - Use Tailwind classes
+<div className={cn("flex items-center gap-4", isActive && "bg-blue-500")}>
+
+// Bad - Don't use styled-components or CSS modules
+import styled from 'styled-components'
+import styles from './styles.module.css'
+```
 
 ## Asset Organization
 
