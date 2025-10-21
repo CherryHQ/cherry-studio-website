@@ -343,7 +343,8 @@
       "title": "聯繫我們",
       "description": "有任何問題或需求，請隨時聯繫我們的企業服務團隊",
       "send_email": "發送郵件",
-      "business_cooperation": "商務合作"
+      "business_cooperation": "商務合作",
+      "scan_qrcode": "掃碼聯繫我們"
     }
   },
   "contributors": {

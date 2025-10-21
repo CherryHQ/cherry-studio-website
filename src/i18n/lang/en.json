@@ -328,7 +328,8 @@
       "title": "Get Support",
       "description": "If you are interested in Cherry Studio Enterprise Edition, please contact our business team",
       "send_email": "Send Email",
-      "business_cooperation": "Business Cooperation"
+      "business_cooperation": "Business Cooperation",
+      "scan_qrcode": "Scan to Contact Us"
     }
   },
   "contributors": {

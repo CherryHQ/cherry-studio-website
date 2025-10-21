@@ -16,18 +16,22 @@ import {
 import { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import { BackgroundBeams } from '@/components/ui/shadcn-io/background-beams'
 import Footer from '@/components/website/Footer'
+import { useEnterpriseData } from '@/hooks/useEnterpriseData'
 import { usePageMeta } from '@/hooks/usePageMeta'
 
 const EnterprisePage: FC = () => {
   const { t } = useTranslation()
   usePageMeta('enterprise')
+  const enterpriseData = useEnterpriseData()
 
   return (
     <div className="enterprise-page">
       {/* Hero Section */}
-      <section className="hero-section">
-        <div className="container">
+      <section className="hero-section relative overflow-hidden">
+        <BackgroundBeams className="absolute inset-0 z-0" />
+        <div className="container relative z-10">
           <div className="hero-content">
             <h1 className="text-4xl font-semibold text-gray-900">{t('enterprise_page.hero.title')}</h1>
             <p className="subtitle">{t('enterprise_page.hero.subtitle')}</p>
@@ -459,21 +463,13 @@ const EnterprisePage: FC = () => {
             <p>{t('enterprise_page.support.description')}</p>
           </div>
           <div className="support-actions">
-            <div className="contact-info">
-              <p className="email">bd@cherry-ai.com</p>
-              <div className="contact-buttons">
-                <a href="mailto:bd@cherry-ai.com" className="contact-button">
-                  {t('enterprise_page.support.send_email')}
-                </a>
-                <a
-                  href="https://docs.cherry-ai.com/contact-us/questions"
-                  className="contact-button secondary"
-                  target="_blank"
-                  rel="noopener noreferrer">
-                  {t('enterprise_page.support.business_cooperation')}
-                </a>
+            <p className="email">bd@cherry-ai.com</p>
+            {enterpriseData?.data?.contact_qrcode && (
+              <div className="contact-qrcode">
+                <img src={enterpriseData.data.contact_qrcode} alt="Contact QR Code" />
+                <p className="qrcode-hint">{t('enterprise_page.support.scan_qrcode')}</p>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </section>

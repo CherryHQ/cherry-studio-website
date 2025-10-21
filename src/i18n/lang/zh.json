@@ -326,7 +326,8 @@
       "title": "获取支持",
       "description": "如果您对 Cherry Studio 企业版感兴趣，欢迎联系我们的商务团队",
       "send_email": "发送邮件",
-      "business_cooperation": "商务合作"
+      "business_cooperation": "商务合作",
+      "scan_qrcode": "扫码联系我们"
     }
   },
   "contributors": {

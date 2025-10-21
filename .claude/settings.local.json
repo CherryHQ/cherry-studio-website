@@ -10,7 +10,8 @@
       "Bash(curl -s http://localhost:5173)",
       "Bash(yarn add -D prettier-plugin-tailwindcss)",
       "Bash(npx prettier --write src/pages/home/components/Providers.tsx)",
-      "Bash(yarn lint --fix)"
+      "Bash(yarn lint --fix)",
+      "Bash(npx shadcn@latest add https://www.shadcn.io/registry/background-beams.json)"
     ],
     "deny": [],
     "ask": []
