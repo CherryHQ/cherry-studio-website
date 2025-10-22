@@ -1,6 +1,6 @@
 import './index.css'
 
-import { FC, useEffect, useRef } from 'react'
+import { FC, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import intelLogo from '@/assets/images/cherry-studio-intel-logo.webp'
@@ -19,17 +19,6 @@ const DownloadPage: FC = () => {
 
   const otherDownloadsRef = useRef<HTMLDivElement>(null)
   const { loading, versionData, systemInfo, downloadUrls } = useVersionData()
-
-  useEffect(() => {
-    const handleFocus = () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-    }
-
-    window.addEventListener('focus', handleFocus)
-    return () => {
-      window.removeEventListener('focus', handleFocus)
-    }
-  }, [])
 
   const scrollToOtherDownloads = () => {
     otherDownloadsRef.current?.scrollIntoView({ behavior: 'smooth' })

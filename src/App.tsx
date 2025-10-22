@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import { script } from '@/assets/js/script.ts'
+import ScrollToTop from '@/components/ScrollToTop'
 import SimpleHeader from '@/components/website/SimpleHeader.tsx'
 import DownloadPage from '@/pages/download'
 import EnterprisePage from '@/pages/enterprise'
@@ -15,6 +16,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <SimpleHeader />
       <Routes>
         <Route path="/" element={<HomePage />} />

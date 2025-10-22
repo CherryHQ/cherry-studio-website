@@ -24,7 +24,8 @@
       "Bash(npx prettier --write src/components/website/SimpleHeader.tsx)",
       "Bash(npx prettier --write src/i18n/lang/zh.json src/i18n/lang/en.json)",
       "Bash(npx prettier --write src/components/AnimatedBubbles.tsx src/pages/home/components/Features.tsx)",
-      "Bash(npx prettier --write src/components/AnimatedBubbles.tsx)"
+      "Bash(npx prettier --write src/components/AnimatedBubbles.tsx)",
+      "Bash(npx prettier --write src/components/ScrollToTop.tsx src/App.tsx)"
     ],
     "deny": [],
     "ask": []
