@@ -17,7 +17,8 @@
       "Bash(npx shadcn@latest add select)",
       "Bash(npx prettier --write src/pages/enterprise/index.tsx)",
       "Bash(npx prettier --write src/pages/enterprise/index.css)",
-      "Bash(curl -s http://localhost:5182/enterprise)"
+      "Bash(curl -s http://localhost:5182/enterprise)",
+      "Bash(curl -s http://localhost:5175)"
     ],
     "deny": [],
     "ask": []

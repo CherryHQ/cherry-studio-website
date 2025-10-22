@@ -40,12 +40,12 @@ All routes are defined in [src/App.tsx](src/App.tsx) with a shared header compon
 
 The project uses i18next with browser language detection:
 - Configuration: [src/i18n/index.ts](src/i18n/index.ts)
-- Supported languages: `en-US`, `zh-CN`, `zh-TW`
+- Supported languages: `en-US`, `zh-CN`
 - Translation files: [src/i18n/lang/](src/i18n/lang/)
 - Language preference stored in localStorage with key `i18n-language`
 - Automatically updates `<html lang>` attribute on language change
 
-When adding new translatable strings, add them to all three language files.
+When adding new translatable strings, add them to both language files.
 
 ### Version & Download Management
 

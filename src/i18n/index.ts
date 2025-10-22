@@ -4,7 +4,6 @@ import { initReactI18next } from 'react-i18next'
 
 import en from './lang/en.json'
 import zh from './lang/zh.json'
-import zhTW from './lang/zh-tw.json'
 
 const resources = {
   'en-US': {
@@ -12,9 +11,6 @@ const resources = {
   },
   'zh-CN': {
     translation: zh
-  },
-  'zh-TW': {
-    translation: zhTW
   }
 }
 
@@ -22,7 +18,6 @@ const resources = {
 const updateHtmlLang = (language: string) => {
   const langMap: Record<string, string> = {
     'zh-CN': 'zh-CN',
-    'zh-TW': 'zh-TW',
     'en-US': 'en-US'
   }
   const langCode = langMap[language] || 'zh-CN'

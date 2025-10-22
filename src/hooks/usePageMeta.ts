@@ -70,7 +70,6 @@ export const usePageMeta = (pageType: PageType) => {
     const htmlElement = document.documentElement
     const langMap: Record<string, string> = {
       zh: 'zh-CN',
-      'zh-tw': 'zh-tw',
       en: 'en',
       ja: 'ja',
       ko: 'ko',
@@ -86,7 +85,6 @@ export const usePageMeta = (pageType: PageType) => {
     if (ogLocale) {
       const localeMap: Record<string, string> = {
         zh: 'zh_CN',
-        'zh-tw': 'zh_TW',
         en: 'en_US',
         ja: 'ja_JP',
         ko: 'ko_KR',
