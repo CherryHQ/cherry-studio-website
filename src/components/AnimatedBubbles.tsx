@@ -85,15 +85,7 @@ const AnimatedBubbles: FC = () => {
     }
   }, [])
 
-  return (
-    <canvas
-      ref={canvasRef}
-      className="pointer-events-none absolute inset-0 h-full w-full"
-      style={{
-        background: 'linear-gradient(to bottom, #f0f9ff, #e0f2fe)'
-      }}
-    />
-  )
+  return <canvas ref={canvasRef} className="pointer-events-none absolute inset-0 h-full w-full" />
 }
 
 export default AnimatedBubbles
