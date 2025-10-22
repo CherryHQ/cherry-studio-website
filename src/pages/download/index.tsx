@@ -38,7 +38,7 @@ const DownloadPage: FC = () => {
   return (
     <div className="page-wrapper">
       {/* Download page content */}
-      <section className="download-section" style={{ marginTop: 50 }}>
+      <section className="download-section">
         <div className="auto-container">
           <VersionInfo versionData={versionData} loading={loading} />
           {/* Main download buttons */}

@@ -7,7 +7,7 @@
 ***/
 
 .main-header {
-  position: fixed;
+  position: sticky;
   z-index: 999;
   width: 100%;
   top: 0;
@@ -16,7 +16,7 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 .main-header.header-style-one {
-  position: fixed;
+  position: sticky;
   left: 0;
   top: 0;
   width: 100%;

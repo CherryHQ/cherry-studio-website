@@ -49,36 +49,15 @@ const SimpleHeader: React.FC = () => {
                   <li className={location.pathname === '/theme' ? 'current' : ''}>
                     <Link to="/theme">{t('nav.theme')}</Link>
                   </li>
-                  <li className="dropdown">
-                    <a href="https://docs.cherry-ai.com/">{t('nav.docs')}</a>
-                    <ul>
-                      <li>
-                        <a href="https://docs.cherry-ai.com">{t('nav.docs_menu.project_intro')}</a>
-                      </li>
-                      <li>
-                        <a href="https://docs.cherry-ai.com/pre-basic/installation">
-                          {t('nav.docs_menu.basic_tutorial')}
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://docs.cherry-ai.com/advanced-basic/knowledge-base">
-                          {t('nav.docs_menu.advanced_tutorial')}
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://docs.cherry-ai.com/contribution/code">
-                          {t('nav.docs_menu.project_contribution')}
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://docs.cherry-ai.com/question-contact/questions">
-                          {t('nav.docs_menu.questions_feedback')}
-                        </a>
-                      </li>
-                    </ul>
+                  <li>
+                    <a href="https://docs.cherry-ai.com/" target="_blank" rel="noopener noreferrer">
+                      {t('nav.docs')}
+                    </a>
                   </li>
                   <li>
-                    <a href="https://docs.cherry-ai.com/contact-us/questions">{t('nav.contact')}</a>
+                    <a href="https://docs.cherry-ai.com/contact-us/questions" target="_blank" rel="noopener noreferrer">
+                      {t('nav.contact')}
+                    </a>
                   </li>
                 </ul>
               </nav>

@@ -16,14 +16,7 @@
     "download": "下载",
     "theme": "主题",
     "docs": "文档",
-    "contact": "联系我们",
-    "docs_menu": {
-      "project_intro": "项目简介",
-      "basic_tutorial": "基础教程",
-      "advanced_tutorial": "进阶教程",
-      "project_contribution": "项目贡献",
-      "questions_feedback": "问题&反馈"
-    }
+    "contact": "联系我们"
   },
   "test": "测试",
   "home": "主页",

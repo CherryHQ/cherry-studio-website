@@ -16,14 +16,7 @@
     "download": "Download",
     "theme": "Theme",
     "docs": "Docs",
-    "contact": "Contact Us",
-    "docs_menu": {
-      "project_intro": "Project Introduction",
-      "basic_tutorial": "Basic Tutorial",
-      "advanced_tutorial": "Advanced Tutorial",
-      "project_contribution": "Project Contribution",
-      "questions_feedback": "Questions & Feedback"
-    }
+    "contact": "Contact Us"
   },
   "test": "Test",
   "home": "Home",

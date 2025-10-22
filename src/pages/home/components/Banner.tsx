@@ -61,7 +61,7 @@ const HomeBanner: FC = () => {
   return (
     <div className="relative min-h-[80vh] overflow-visible bg-gradient-to-br from-[#ff5f5f] via-[#ff8f8f] to-[#ffc3c3] pb-[60px]">
       <Ripple className="z-0" mainCircleSize={500} mainCircleOpacity={0.3} numCircles={12} />
-      <section className="relative z-10 pt-[140px]">
+      <section className="relative z-10 pt-[60px]">
         <div className="mx-auto max-w-[1400px] px-4">
           <div className="relative flex min-h-[180px] flex-col items-center justify-center">
             <AnimatePresence mode="wait">
