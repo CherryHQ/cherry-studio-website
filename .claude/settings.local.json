@@ -22,7 +22,9 @@
       "Bash(npx prettier --write src/pages/home/components/Banner.tsx src/pages/download/index.tsx src/pages/enterprise/index.css src/pages/theme/index.css src/assets/css/module-css/header.css)",
       "Bash(curl -s http://localhost:5181)",
       "Bash(npx prettier --write src/components/website/SimpleHeader.tsx)",
-      "Bash(npx prettier --write src/i18n/lang/zh.json src/i18n/lang/en.json)"
+      "Bash(npx prettier --write src/i18n/lang/zh.json src/i18n/lang/en.json)",
+      "Bash(npx prettier --write src/components/AnimatedBubbles.tsx src/pages/home/components/Features.tsx)",
+      "Bash(npx prettier --write src/components/AnimatedBubbles.tsx)"
     ],
     "deny": [],
     "ask": []

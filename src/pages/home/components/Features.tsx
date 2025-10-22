@@ -7,16 +7,14 @@ import fanyiIcon from '@/assets/images/icons/fanyi.svg'
 import huihuaIcon from '@/assets/images/icons/huihua.svg'
 import zhishikuIcon from '@/assets/images/icons/zhishiku.svg'
 import zhushouIcon from '@/assets/images/icons/zhushou.svg'
+import AnimatedBubbles from '@/components/AnimatedBubbles'
 
 const Features: FC = () => {
   const { t } = useTranslation()
   return (
-    <section
-      className="services-section"
-      style={{
-        backgroundImage: `url(${new URL('@/assets/images/background/service-bd-image.webp', import.meta.url)})`
-      }}>
-      <div className="auto-container">
+    <section className="services-section relative overflow-hidden">
+      <AnimatedBubbles />
+      <div className="auto-container relative z-10">
         {/* <!--Sec Title--> */}
         <div className="sec-title">
           <h2 className="heading_title">{t('features.title')}</h2>
