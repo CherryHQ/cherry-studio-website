@@ -107,6 +107,11 @@ const Footer: React.FC = () => {
                       </a>
                     </li>
                     <li>
+                      <a href="https://poe.com/" target="_blank" rel="noopener noreferrer">
+                        Poe
+                      </a>
+                    </li>
+                    <li>
                       <a href="https://suanleme.cn" target="_blank" rel="noopener noreferrer">
                         算了么
                       </a>

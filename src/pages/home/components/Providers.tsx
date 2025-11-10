@@ -26,6 +26,7 @@ import nvidiaLogo from '@/assets/images/provider_logo/nvidia-color.svg'
 import ollamaLogo from '@/assets/images/provider_logo/ollama.svg'
 import openaiLogo from '@/assets/images/provider_logo/openai.svg'
 import openrouterLogo from '@/assets/images/provider_logo/openrouter.svg'
+import poeLogo from '@/assets/images/provider_logo/poe.webp'
 import qwenLogo from '@/assets/images/provider_logo/qwen-color.svg'
 import siliconcloudLogo from '@/assets/images/provider_logo/siliconcloud-color.svg'
 import sparkLogo from '@/assets/images/provider_logo/spark-color.svg'
@@ -49,6 +50,7 @@ const logos: LogoInfo[] = [
   { src: ollamaLogo, url: 'https://ollama.ai/', name: 'Ollama' },
   { src: openaiLogo, url: 'https://openai.com/', name: 'OpenAI' },
   { src: ai302Logo, url: 'https://302.ai/', name: '302.AI' },
+  { src: poeLogo, url: 'https://poe.com/', name: 'Poe' },
   { src: alayaLogo, url: 'https://www.alayanew.com/', name: 'Alaya' },
   { src: baiducloudLogo, url: 'https://cloud.baidu.com/', name: 'Baidu Cloud' },
   { src: bytedanceLogo, url: 'https://www.bytedance.com/', name: 'ByteDance' },
