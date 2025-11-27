@@ -279,7 +279,9 @@
         "title": "客户端",
         "server_url": "服务端地址：",
         "system_support": "支持 macOS 和 Windows 系统",
-        "download_button": "下载客户端"
+        "download_button": "下载客户端",
+        "fallback_notice": "无法获取版本信息，请前往 GitCode 下载",
+        "goto_gitcode": "前往 GitCode 下载"
       },
       "manual": {
         "title": "使用手册",

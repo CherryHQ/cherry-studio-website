@@ -6,6 +6,7 @@ import ScrollToTop from '@/components/ScrollToTop'
 import SimpleHeader from '@/components/website/SimpleHeader.tsx'
 import DownloadPage from '@/pages/download'
 import EnterprisePage from '@/pages/enterprise'
+import EnterpriseDownloadPage from '@/pages/enterprise-download'
 import HomePage from '@/pages/home'
 import ThemePage from '@/pages/theme'
 
@@ -23,6 +24,7 @@ function App() {
         <Route path="/download" element={<DownloadPage />} />
         <Route path="/theme" element={<ThemePage />} />
         <Route path="/enterprise" element={<EnterprisePage />} />
+        <Route path="/enterprise/download" element={<EnterpriseDownloadPage />} />
       </Routes>
     </BrowserRouter>
   )

@@ -15,6 +15,7 @@ import {
 } from 'lucide-react'
 import { FC, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
 
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { BackgroundBeams } from '@/components/ui/shadcn-io/background-beams'
@@ -614,7 +615,7 @@ const EnterprisePage: FC = () => {
             <div className="beta-card">
               <h3>{t('enterprise_page.beta.download.title')}</h3>
               <div className="card-content">
-                <ul>
+                <ul className="server-info">
                   <li>{t('enterprise_page.beta.download.server_url')} https://api.demo.cherry-ai.com</li>
                   <li>
                     <strong>{t('enterprise_page.beta.demo.account')}</strong>user
@@ -623,18 +624,10 @@ const EnterprisePage: FC = () => {
                     <strong>{t('enterprise_page.beta.demo.password')}</strong>password
                   </li>
                 </ul>
-                <div className="download-info">
-                  <a
-                    href="https://gitcode.com/CherryHQ/cherry-studio-enterprise/releases"
-                    className="download-button"
-                    target="_blank"
-                    rel="noopener noreferrer">
-                    <span className="icon">
-                      <Download size={20} />
-                    </span>
-                    <span className="button-text">{t('enterprise_page.beta.download.download_button')}</span>
-                  </a>
-                </div>
+                <Link to="/enterprise/download" className="download-page-link">
+                  <Download size={18} />
+                  {t('enterprise_page.beta.download.download_button')}
+                </Link>
               </div>
             </div>
 
