@@ -16,7 +16,7 @@ interface EnterpriseResponse {
   }
 }
 
-const BASE_URL = 'https://data1.cherry-ai.com:48443'
+const BASE_URL = 'https://data1.cherry-ai.com'
 
 export const fetchChannelData = async () => {
   try {

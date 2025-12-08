@@ -65,7 +65,7 @@ const Contributors: FC = () => {
 
     async function fetchDocContributors() {
       try {
-        const response = await fetch('https://data1.cherry-ai.com:48443/items/cherry_docs_contributors')
+        const response = await fetch('https://data1.cherry-ai.com/items/cherry_docs_contributors')
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`)
         const data = await response.json()
         renderDocContributors(data)

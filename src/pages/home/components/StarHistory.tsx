@@ -5,7 +5,7 @@ const StarHistory: FC = () => {
   const { t } = useTranslation()
 
   useEffect(() => {
-    const API_URL = 'https://data1.cherry-ai.com:48443/items/github_cherrystudio'
+    const API_URL = 'https://data1.cherry-ai.com/items/github_cherrystudio'
     let chart: any = null
     let fullData: any = null
     let startPicker: any = null

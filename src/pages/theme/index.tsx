@@ -209,7 +209,7 @@ const ThemePage: React.FC = () => {
         )
 
         // 构建API URL，添加筛选参数
-        let apiUrl = `https://data1.cherry-ai.com:48443/items/cherry_css?id&sort=-id&limit=${limit}&page=${pageNum}`
+        let apiUrl = `https://data1.cherry-ai.com/items/cherry_css?id&sort=-id&limit=${limit}&page=${pageNum}`
 
         // 如果有作者筛选，添加筛选参数
         if (author) {
@@ -605,7 +605,7 @@ const ThemePage: React.FC = () => {
   const getImageUrl = (url?: string): string => {
     if (!url) return ''
     if (url.startsWith('http')) return url
-    return `https://data1.cherry-ai.com:48443/assets/${url}`
+    return `https://data1.cherry-ai.com/assets/${url}`
   }
 
   // 处理搜索输入变化
@@ -670,7 +670,7 @@ const ThemePage: React.FC = () => {
     formData.append('file', file) // 添加文件
 
     try {
-      const response = await fetch('https://data1.cherry-ai.com:48443/files', {
+      const response = await fetch('https://data1.cherry-ai.com/files', {
         method: 'POST',
         headers: {
           Authorization: 'Bearer y8j8uycl07xwSkyrssHCRd7nIecUeRwC' // 使用正确的上传文件令牌
@@ -927,7 +927,7 @@ const ThemePage: React.FC = () => {
           }
 
           // 提交表单数据
-          const response = await fetch('https://data1.cherry-ai.com:48443/items/cherry_css_pr', {
+          const response = await fetch('https://data1.cherry-ai.com/items/cherry_css_pr', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -1127,7 +1127,7 @@ const ThemePage: React.FC = () => {
                         onClick={(e) =>
                           handleInternalPreview(
                             e,
-                            'https://data1.cherry-ai.com:48443/assets/a4391dd7-473a-4cad-b6f5-6a429e3bbf0f'
+                            'https://data1.cherry-ai.com/assets/a4391dd7-473a-4cad-b6f5-6a429e3bbf0f'
                           )
                         }>
                         {t('theme_page.view_example')}
@@ -1178,7 +1178,7 @@ const ThemePage: React.FC = () => {
                         onClick={(e) =>
                           handleInternalPreview(
                             e,
-                            'https://data1.cherry-ai.com:48443/assets/a4391dd7-473a-4cad-b6f5-6a429e3bbf0f'
+                            'https://data1.cherry-ai.com/assets/a4391dd7-473a-4cad-b6f5-6a429e3bbf0f'
                           )
                         }>
                         {t('theme_page.view_example')}

@@ -28,7 +28,9 @@ yarn release
 ## Project Architecture
 
 ### Routing Structure
+
 The application uses React Router v7 with four main routes:
+
 - `/` - Home page ([src/pages/home/index.tsx](src/pages/home/index.tsx))
 - `/download` - Download page with auto-detection and version info ([src/pages/download/index.tsx](src/pages/download/index.tsx))
 - `/theme` - Theme showcase ([src/pages/theme/index.tsx](src/pages/theme/index.tsx))
@@ -39,6 +41,7 @@ All routes are defined in [src/App.tsx](src/App.tsx) with a shared header compon
 ### Internationalization (i18n)
 
 The project uses i18next with browser language detection:
+
 - Configuration: [src/i18n/index.ts](src/i18n/index.ts)
 - Supported languages: `en-US`, `zh-CN`
 - Translation files: [src/i18n/lang/](src/i18n/lang/)
@@ -50,12 +53,14 @@ When adding new translatable strings, add them to both language files.
 ### Version & Download Management
 
 The [useVersionData](src/hooks/useVersionData.ts) hook is central to download functionality:
+
 - Fetches latest release from `https://releases.cherry-ai.com`
 - Auto-generates download URLs for all platforms and architectures
 - Provides structured download groups for Windows, macOS, and Linux
 - All downloads point to GitCode mirror: `https://gitcode.com/CherryHQ/cherry-studio/releases/download/`
 
 Platform detection is handled by [src/utils/systemDetection.ts](src/utils/systemDetection.ts):
+
 - Detects user's OS and architecture
 - Returns appropriate download links
 - Hides download buttons on mobile devices
@@ -63,7 +68,8 @@ Platform detection is handled by [src/utils/systemDetection.ts](src/utils/system
 ### Data Fetching
 
 Community channel data (QQ groups, WeChat QR codes, ZSXQ) is fetched from:
-- Base URL: `https://data1.cherry-ai.com:48443`
+
+- Base URL: `https://data1.cherry-ai.com`
 - API function: `fetchChannelData()` in [src/assets/js/data.ts](src/assets/js/data.ts)
 - Used in JoinCommunity component to display social links
 
@@ -74,6 +80,7 @@ Community channel data (QQ groups, WeChat QR codes, ZSXQ) is fetched from:
 ## Code Style & Linting
 
 ### ESLint Configuration
+
 - Auto-sorts imports using `eslint-plugin-simple-import-sort`
 - Removes unused imports automatically via `eslint-plugin-unused-imports`
 - Import order enforced (errors on incorrect order)
@@ -81,6 +88,7 @@ Community channel data (QQ groups, WeChat QR codes, ZSXQ) is fetched from:
 - React hooks rules enforced, React Refresh warnings for non-component exports
 
 ### Prettier Settings
+
 - Single quotes
 - No semicolons
 - 120 character line width
@@ -93,10 +101,12 @@ Run `yarn lint` to check code style before committing.
 ## Path Aliases
 
 The `@` alias points to the `src` directory:
+
 - Configured in [vite.config.ts:11](vite.config.ts#L11) and [tsconfig.json:13-14](tsconfig.json#L13-L14)
 - Use `@/` for all absolute imports within src
 
 Example:
+
 ```typescript
 import { fetchChannelData } from '@/assets/js/data'
 import SimpleHeader from '@/components/website/SimpleHeader'
@@ -109,18 +119,22 @@ API requests to `/api` are proxied to `http://rack1.raincs.cc:18192` during deve
 ## Styling Approach
 
 **Primary styling method (REQUIRED for all new code):**
+
 - ✅ Use Tailwind CSS v4 classes directly in components
 - ✅ Use `cn()` utility from [src/lib/utils.ts](src/lib/utils.ts) for conditional class merging
 
 **Legacy code (do NOT use for new development):**
+
 - ❌ CSS modules in [src/assets/css/module-css/](src/assets/css/module-css/)
 - ❌ Styled Components (v6)
 - ❌ Separate CSS files
 
 **Other styling tools:**
+
 - Custom icon font (icomoon) for UI icons
 
 **Example:**
+
 ```tsx
 // Good - Use Tailwind classes
 <div className={cn("flex items-center gap-4", isActive && "bg-blue-500")}>
@@ -140,6 +154,7 @@ import styles from './styles.module.css'
 ## Deployment
 
 The `yarn release` command builds and deploys to production via rsync:
+
 - Target server: `tencent.vm`
 - Destination: `/opt/1panel/apps/openresty/openresty/www/sites/cherry-ai.com/index`
 - Flags: `-rvztl --delete` (recursive, verbose, compressed, preserve timestamps/symlinks, delete extraneous files)
