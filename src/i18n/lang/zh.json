@@ -88,7 +88,7 @@
     },
     "contribution": {
       "title": "我想为项目做一些贡献，都能做什么？",
-      "description": "如果您喜欢我们的项目，欢迎在<1>Github</1>给我们一个 star 来简单的支持我们，如果您是技术大佬欢迎成为我们的贡献者之一，当然您也可以参与到我们的文档编辑当中，将您的使用经验分享给大家或者在社群为其他用户答疑解惑。如果您有任何想法或建议，欢迎通过 GitHub Issues 或在官方社群与我们联系。"
+      "description": "如果您喜欢我们的项目，欢迎在<1>GitHub</1>给我们一个 star 来简单的支持我们，如果您是技术大佬欢迎成为我们的贡献者之一，当然您也可以参与到我们的文档编辑当中，将您的使用经验分享给大家或者在社群为其他用户答疑解惑。如果您有任何想法或建议，欢迎通过 GitHub Issues 或在官方社群与我们联系。"
     }
   },
   "community": {
@@ -102,7 +102,7 @@
     "description": "Cherry Studio 是一个支持多平台的 AI 客户端，我们致力于让更多人能够享受到 AI 带来的便利。",
     "cherry_studio": {
       "title": "Cherry Studio",
-      "github": "Github",
+      "github": "GitHub",
       "gitcode": "GitCode",
       "docs": "使用文档",
       "feedback": "问题反馈"

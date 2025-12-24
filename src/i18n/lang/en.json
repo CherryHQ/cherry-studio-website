@@ -30,7 +30,7 @@
   "advanced_tutorial": "Advanced Tutorial",
   "contribution": {
     "title": "I want to contribute to the project, what can I do?",
-    "description": "If you like our project, please give us a star on <1>Github</1> to simply support us. If you are a technical expert, you are welcome to become one of our contributors. Of course, you can also participate in our documentation editing, share your experience with everyone, or answer questions for other users in the community. If you have any ideas or suggestions, please contact us via GitHub Issues or in the official community."
+    "description": "If you like our project, please give us a star on <1>GitHub</1> to simply support us. If you are a technical expert, you are welcome to become one of our contributors. Of course, you can also participate in our documentation editing, share your experience with everyone, or answer questions for other users in the community. If you have any ideas or suggestions, please contact us via GitHub Issues or in the official community."
   },
   "feedback": "Feedback",
   "contact": "Contact",
@@ -90,7 +90,7 @@
     },
     "contribution": {
       "title": "I want to contribute to the project, what can I do?",
-      "description": "If you like our project, welcome to give us a star on <1>Github</1> to simply support us. If you are a technical expert, you are welcome to become one of our contributors. Of course, you can also participate in our documentation editing to share your usage experience with everyone or help answer questions for other users in the community. If you have any ideas or suggestions, feel free to contact us through GitHub Issues or in the official community."
+      "description": "If you like our project, welcome to give us a star on <1>GitHub</1> to simply support us. If you are a technical expert, you are welcome to become one of our contributors. Of course, you can also participate in our documentation editing to share your usage experience with everyone or help answer questions for other users in the community. If you have any ideas or suggestions, feel free to contact us through GitHub Issues or in the official community."
     }
   },
   "community": {
@@ -104,7 +104,7 @@
     "description": "Cherry Studio is a multi-platform AI client, and we are committed to allowing more people to enjoy the convenience brought by AI.",
     "cherry_studio": {
       "title": "Cherry Studio",
-      "github": "Github",
+      "github": "GitHub",
       "gitcode": "GitCode",
       "docs": "Documentation",
       "feedback": "Feedback"
