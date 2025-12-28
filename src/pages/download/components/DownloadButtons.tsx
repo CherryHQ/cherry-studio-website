@@ -8,7 +8,7 @@ interface DownloadButtonsProps {
   onOtherVersionsClick: () => void
 }
 
-const DownloadButtons: FC<DownloadButtonsProps> = ({ systemInfo, onOtherVersionsClick }) => {
+const DownloadButtons: FC<DownloadButtonsProps> = ({ systemInfo }) => {
   const { t } = useTranslation()
 
   const getButtonText = (item: SystemInfo) => {
@@ -46,11 +46,6 @@ const DownloadButtons: FC<DownloadButtonsProps> = ({ systemInfo, onOtherVersions
               {getButtonText(item)}
             </button>
           ))}
-
-        {/* Other versions button */}
-        <button id="other-download-btn" onClick={onOtherVersionsClick} className="theme-btn alt-btn" type="button">
-          {t('download_page.other_versions')}
-        </button>
       </div>
     </div>
   )
