@@ -92,7 +92,7 @@ const SimpleHeader: React.FC = () => {
               rel="noopener noreferrer"
               className="border-border/50 bg-secondary/50 text-muted-foreground hover:bg-secondary hover:text-foreground hidden items-center gap-2 rounded-lg border px-3 py-1.5 text-sm font-medium transition-colors duration-200 sm:flex"
               title="GitHub">
-              <img src={githubIcon} alt="GitHub" className="h-4 w-4 opacity-70 invert" />
+              <img src={githubIcon} alt="GitHub" className="h-4 w-4 dark:invert" />
               {starCount !== null && (
                 <span className="flex items-center gap-1">
                   <Star className="h-3.5 w-3.5 fill-yellow-500 text-yellow-500" />

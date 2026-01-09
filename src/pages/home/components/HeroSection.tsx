@@ -208,7 +208,7 @@ const HeroSection: FC = () => {
         <div className="relative overflow-hidden rounded-2xl border border-white/10 shadow-2xl">
           {/* Tab Navigation - Embedded in image */}
           <div className="absolute top-4 left-1/2 z-10 -translate-x-1/2">
-            <div className="inline-flex gap-1 rounded-full border border-white/20 bg-black/40 p-1 backdrop-blur-md">
+            <div className="inline-flex gap-1 rounded-full border border-black/10 bg-white/80 p-1 backdrop-blur-md dark:border-white/20 dark:bg-black/40">
               {featureTabs.map((tab) => (
                 <button
                   type="button"
@@ -217,8 +217,8 @@ const HeroSection: FC = () => {
                   className={cn(
                     'flex items-center gap-2 rounded-full px-3 py-2 text-sm font-medium transition-all duration-200 sm:px-4',
                     activeTab === tab.id
-                      ? 'bg-white/20 text-white shadow-sm'
-                      : 'text-white/70 hover:text-white'
+                      ? 'bg-black/10 text-black shadow-sm dark:bg-white/20 dark:text-white'
+                      : 'text-black/70 hover:text-black dark:text-white/70 dark:hover:text-white'
                   )}>
                   {tab.icon}
                   <span className="hidden sm:inline">{isZh ? tab.labelZh : tab.labelEn}</span>

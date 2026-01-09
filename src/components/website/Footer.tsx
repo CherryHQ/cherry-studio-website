@@ -82,7 +82,7 @@ const Footer: React.FC = () => {
                   <img
                     src={link.icon}
                     alt={link.alt}
-                    className="h-4 w-4 opacity-70 invert transition-opacity duration-200 group-hover:opacity-0"
+                    className={`h-4 w-4 transition-opacity duration-200 group-hover:opacity-0 ${link.darkInvert ? 'dark:invert' : ''}`}
                   />
                   <img
                     src={link.colorIcon}
@@ -98,7 +98,7 @@ const Footer: React.FC = () => {
                 <img
                   src={rssIcon}
                   alt="RSS"
-                  className="h-4 w-4 opacity-70 invert transition-opacity duration-200 group-hover:opacity-0"
+                  className="h-4 w-4 transition-opacity duration-200 group-hover:opacity-0"
                 />
                 <img
                   src={rssColorIcon}

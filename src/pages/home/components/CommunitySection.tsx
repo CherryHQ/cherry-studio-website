@@ -88,7 +88,7 @@ const CommunitySection: FC = () => {
               <img
                 src={link.icon}
                 alt={link.alt}
-                className="h-5 w-5 opacity-70 invert transition-opacity duration-200 group-hover:opacity-0"
+                className={`h-5 w-5 transition-opacity duration-200 group-hover:opacity-0 ${link.darkInvert ? 'dark:invert' : ''}`}
               />
               <img
                 src={link.colorIcon}
