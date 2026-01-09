@@ -1,4 +1,4 @@
-import { ExternalLink, Menu, Star, X } from 'lucide-react'
+import { Download, ExternalLink, Menu, Star, X } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, useLocation } from 'react-router-dom'
@@ -48,7 +48,6 @@ const SimpleHeader: React.FC = () => {
 
   const navLinks = [
     { path: '/', label: t('nav.home') },
-    { path: '/download', label: t('nav.download') },
     { path: '/enterprise', label: t('enterprise') },
     { path: '/theme', label: t('nav.theme') },
     { path: '/careers', label: t('nav.careers') },
@@ -99,13 +98,21 @@ const SimpleHeader: React.FC = () => {
                     key={link.path}
                     to={link.path}
                     className={cn(
-                      'relative px-4 py-2 text-sm font-medium transition-colors duration-200',
+                      'relative flex items-center gap-1.5 px-4 py-2 text-sm font-medium transition-colors duration-200',
                       location.pathname === link.path ? 'text-primary' : 'text-muted-foreground hover:text-foreground'
                     )}>
-                    {link.label}
-                    {location.pathname === link.path && (
-                      <span className="bg-primary absolute bottom-0 left-1/2 h-0.5 w-4 -translate-x-1/2 rounded-full" />
+                    {link.path === '/careers' && (
+                      <span className="relative flex h-1.5 w-1.5">
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
+                        <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-green-500" />
+                      </span>
                     )}
+                    <span className="relative">
+                      {link.label}
+                      {location.pathname === link.path && (
+                        <span className="bg-primary absolute -bottom-2 left-1/2 h-0.5 w-4 -translate-x-1/2 rounded-full" />
+                      )}
+                    </span>
                   </Link>
                 )
               )}
@@ -126,6 +133,14 @@ const SimpleHeader: React.FC = () => {
                 </span>
               )}
             </a>
+
+            {/* Download Button */}
+            <Link
+              to="/download"
+              className="ml-2 hidden items-center gap-2 rounded-lg bg-black px-4 py-1.5 text-sm font-medium text-white transition-colors duration-200 hover:bg-black/80 sm:flex dark:bg-white dark:text-black dark:hover:bg-white/80">
+              <Download className="h-4 w-4" />
+              {t('nav.download')}
+            </Link>
 
             {/* Mobile Menu Toggle */}
             <button
