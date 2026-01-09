@@ -1,3 +1,4 @@
+import { marked } from 'marked'
 import { FC, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -28,7 +29,7 @@ const Changelog: FC<ChangelogProps> = ({ versionData }) => {
       </div>
       <div
         className="prose prose-invert prose-headings:text-foreground prose-p:text-muted-foreground prose-li:text-muted-foreground prose-strong:text-foreground max-w-none"
-        dangerouslySetInnerHTML={{ __html: window.marked.parse(parsedChangelog) }}
+        dangerouslySetInnerHTML={{ __html: marked.parse(parsedChangelog) as string }}
       />
     </div>
   )

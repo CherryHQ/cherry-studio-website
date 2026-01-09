@@ -1,7 +1,5 @@
-import { useEffect } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
-import { script } from '@/assets/js/script.ts'
 import ScrollToTop from '@/components/ScrollToTop'
 import SimpleHeader from '@/components/website/SimpleHeader.tsx'
 import { ThemeProvider } from '@/contexts/ThemeContext'
@@ -13,10 +11,6 @@ import HomePage from '@/pages/home'
 import ThemePage from '@/pages/theme'
 
 function App() {
-  useEffect(() => {
-    setTimeout(script, 500)
-  }, [])
-
   return (
     <ThemeProvider>
       <BrowserRouter>

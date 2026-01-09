@@ -26,7 +26,10 @@
       "Bash(npx prettier --write src/components/AnimatedBubbles.tsx src/pages/home/components/Features.tsx)",
       "Bash(npx prettier --write src/components/AnimatedBubbles.tsx)",
       "Bash(npx prettier --write src/components/ScrollToTop.tsx src/App.tsx)",
-      "Bash(pnpm add @radix-ui/react-dialog @radix-ui/react-dropdown-menu @radix-ui/react-navigation-menu @radix-ui/react-slot)"
+      "Bash(pnpm add @radix-ui/react-dialog @radix-ui/react-dropdown-menu @radix-ui/react-navigation-menu @radix-ui/react-slot)",
+      "Bash(rm:*)",
+      "Bash(pnpm add:*)",
+      "Bash(pnpm remove:*)"
     ],
     "deny": [],
     "ask": []

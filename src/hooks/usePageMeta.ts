@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 
-type PageType = 'home' | 'download' | 'enterprise' | 'theme'
+type PageType = 'home' | 'download' | 'enterprise' | 'theme' | 'careers'
 
 export const usePageMeta = (pageType: PageType) => {
   const { t, i18n } = useTranslation()
