@@ -12,13 +12,8 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
 
-const THEME_KEY = 'cherry-studio-theme'
-
 export const ThemeProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const [theme, setThemeState] = useState<Theme>(() => {
-    if (typeof window === 'undefined') return 'system'
-    return (localStorage.getItem(THEME_KEY) as Theme) || 'system'
-  })
+  const [theme, setThemeState] = useState<Theme>('system')
 
   const [resolvedTheme, setResolvedTheme] = useState<'light' | 'dark'>('dark')
 
@@ -59,7 +54,6 @@ export const ThemeProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
   const setTheme = (newTheme: Theme) => {
     setThemeState(newTheme)
-    localStorage.setItem(THEME_KEY, newTheme)
   }
 
   return (
