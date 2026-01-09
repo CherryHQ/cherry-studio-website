@@ -1,21 +1,89 @@
-import { ArrowRight, Download } from 'lucide-react'
+import { ArrowRight, Bot, BrushIcon, Download, MessageSquare, ServerIcon } from 'lucide-react'
 import { FC, useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import { annotate } from 'rough-notation'
 
-import screenshotDark from '@/assets/images/screenshots/home-page-dark.png'
-import screenshotLight from '@/assets/images/screenshots/home-page-light.png'
+import aiCodingDark from '@/assets/images/screenshots/ai-coding-dark.png'
+import aiCodingLight from '@/assets/images/screenshots/ai-coding-light.png'
+import aiPaintingsDark from '@/assets/images/screenshots/ai-paintings-dark.png'
+import aiPaintingsLight from '@/assets/images/screenshots/ai-paintings-light.png'
+import aiProvidersDark from '@/assets/images/screenshots/ai-providers-dark.png'
+import aiProvidersLight from '@/assets/images/screenshots/ai-providers-light.png'
+import homePageDark from '@/assets/images/screenshots/home-page-dark.png'
+import homePageLight from '@/assets/images/screenshots/home-page-light.png'
 import { fetchNotice, NoticeResponse } from '@/assets/js/notice'
 import { Button } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 import { useTheme } from '@/hooks/useTheme'
+
+interface FeatureTab {
+  id: string
+  labelZh: string
+  labelEn: string
+  icon: React.ReactNode
+  screenshotDark: string
+  screenshotLight: string
+}
+
+const featureTabs: FeatureTab[] = [
+  {
+    id: 'chat',
+    labelZh: 'AI 对话',
+    labelEn: 'AI Chat',
+    icon: <MessageSquare className="h-4 w-4" />,
+    screenshotDark: homePageDark,
+    screenshotLight: homePageLight
+  },
+  {
+    id: 'coding',
+    labelZh: 'AI 编程',
+    labelEn: 'AI Coding',
+    icon: <Bot className="h-4 w-4" />,
+    screenshotDark: aiCodingDark,
+    screenshotLight: aiCodingLight
+  },
+  {
+    id: 'paintings',
+    labelZh: 'AI 绘画',
+    labelEn: 'AI Art',
+    icon: <BrushIcon className="h-4 w-4" />,
+    screenshotDark: aiPaintingsDark,
+    screenshotLight: aiPaintingsLight
+  },
+  {
+    id: 'providers',
+    labelZh: '多服务商',
+    labelEn: 'Providers',
+    icon: <ServerIcon className="h-4 w-4" />,
+    screenshotDark: aiProvidersDark,
+    screenshotLight: aiProvidersLight
+  }
+]
 
 const HeroSection: FC = () => {
   const { t, i18n } = useTranslation()
   const { isDark } = useTheme()
   const [notice, setNotice] = useState<NoticeResponse['data'] | null>(null)
+  const [activeTab, setActiveTab] = useState('chat')
+  const [isPaused, setIsPaused] = useState(false)
 
   const isZh = i18n.language === 'zh-CN'
+
+  // Auto-switch tabs every 5 seconds
+  useEffect(() => {
+    if (isPaused) return
+
+    const interval = setInterval(() => {
+      setActiveTab((current) => {
+        const currentIndex = featureTabs.findIndex((tab) => tab.id === current)
+        const nextIndex = (currentIndex + 1) % featureTabs.length
+        return featureTabs[nextIndex].id
+      })
+    }, 5000)
+
+    return () => clearInterval(interval)
+  }, [isPaused])
 
   const ref1 = useRef<HTMLSpanElement>(null)
   const ref2 = useRef<HTMLSpanElement>(null)
@@ -128,9 +196,46 @@ const HeroSection: FC = () => {
         </div>
       </div>
 
-      {/* Product Screenshot */}
-      <div className="relative mx-auto mt-16 max-w-6xl px-4 sm:mt-20 sm:px-6 lg:px-8">
-        <img src={isDark ? screenshotDark : screenshotLight} alt="Cherry Studio Dashboard" className="w-full" />
+      {/* Feature Tabs */}
+      <div
+        className="relative mx-auto mt-16 max-w-6xl px-4 sm:mt-20 sm:px-6 lg:px-8"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}>
+        {/* Tab Navigation */}
+        <div className="mb-6 flex justify-center">
+          <div className="bg-muted/50 inline-flex gap-1 rounded-full p-1 backdrop-blur-sm">
+            {featureTabs.map((tab) => (
+              <button
+                type="button"
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={cn(
+                  'flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-all duration-200',
+                  activeTab === tab.id
+                    ? 'bg-background text-foreground shadow-sm'
+                    : 'text-muted-foreground hover:text-foreground'
+                )}>
+                {tab.icon}
+                <span>{isZh ? tab.labelZh : tab.labelEn}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Screenshot Display */}
+        <div className="relative overflow-hidden rounded-lg">
+          {featureTabs.map((tab) => (
+            <img
+              key={tab.id}
+              src={isDark ? tab.screenshotDark : tab.screenshotLight}
+              alt={isZh ? tab.labelZh : tab.labelEn}
+              className={cn(
+                'w-full transition-opacity duration-300',
+                activeTab === tab.id ? 'block opacity-100' : 'hidden opacity-0'
+              )}
+            />
+          ))}
+        </div>
       </div>
 
       {/* Bottom Gradient Fade */}

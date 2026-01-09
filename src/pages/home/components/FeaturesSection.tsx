@@ -9,7 +9,7 @@ interface Feature {
   titleKey: string
   descriptionKey: string
   href: string
-  gradient: string
+  borderColor: string
   iconColor: string
   iconBg: string
 }
@@ -20,7 +20,7 @@ const features: Feature[] = [
     titleKey: 'features.conversation.title',
     descriptionKey: 'features.conversation.description',
     href: 'https://docs.cherry-ai.com/cherrystudio/preview/chat',
-    gradient: 'from-blue-500/20 to-cyan-500/20',
+    borderColor: 'hover:border-blue-500',
     iconColor: 'text-blue-500',
     iconBg: 'bg-blue-500/10'
   },
@@ -29,7 +29,7 @@ const features: Feature[] = [
     titleKey: 'features.drawing.title',
     descriptionKey: 'features.drawing.description',
     href: 'https://docs.cherry-ai.com/cherrystudio/preview/drawing',
-    gradient: 'from-purple-500/20 to-pink-500/20',
+    borderColor: 'hover:border-purple-500',
     iconColor: 'text-purple-500',
     iconBg: 'bg-purple-500/10'
   },
@@ -38,7 +38,7 @@ const features: Feature[] = [
     titleKey: 'features.translation.title',
     descriptionKey: 'features.translation.description',
     href: 'https://docs.cherry-ai.com/cherrystudio/preview/translation',
-    gradient: 'from-green-500/20 to-emerald-500/20',
+    borderColor: 'hover:border-green-500',
     iconColor: 'text-green-500',
     iconBg: 'bg-green-500/10'
   },
@@ -47,7 +47,7 @@ const features: Feature[] = [
     titleKey: 'features.assistants.title',
     descriptionKey: 'features.assistants.description',
     href: 'https://docs.cherry-ai.com/cherrystudio/preview/agents',
-    gradient: 'from-orange-500/20 to-amber-500/20',
+    borderColor: 'hover:border-orange-500',
     iconColor: 'text-orange-500',
     iconBg: 'bg-orange-500/10'
   },
@@ -56,7 +56,7 @@ const features: Feature[] = [
     titleKey: 'features.knowledge_base.title',
     descriptionKey: 'features.knowledge_base.description',
     href: 'https://docs.cherry-ai.com/advanced-basic/knowledge-base',
-    gradient: 'from-red-500/20 to-rose-500/20',
+    borderColor: 'hover:border-red-500',
     iconColor: 'text-red-500',
     iconBg: 'bg-red-500/10'
   },
@@ -65,7 +65,7 @@ const features: Feature[] = [
     titleKey: 'features.backup.title',
     descriptionKey: 'features.backup.description',
     href: 'https://docs.cherry-ai.com/cherrystudio/preview/settings/data',
-    gradient: 'from-indigo-500/20 to-violet-500/20',
+    borderColor: 'hover:border-indigo-500',
     iconColor: 'text-indigo-500',
     iconBg: 'bg-indigo-500/10'
   }
@@ -109,17 +109,8 @@ const FeaturesSection: FC = () => {
               className={cn(
                 'border-border/50 bg-card/50 group relative overflow-hidden rounded-2xl border p-6',
                 'transition-all duration-300',
-                'hover:border-primary/30 hover:bg-card'
+                feature.borderColor
               )}>
-              {/* Gradient Background */}
-              <div
-                className={cn(
-                  'absolute -inset-px rounded-2xl bg-gradient-to-br opacity-0 transition-opacity duration-300',
-                  feature.gradient,
-                  'group-hover:opacity-100'
-                )}
-              />
-
               {/* Content */}
               <div className="relative z-10">
                 {/* Icon */}
