@@ -98,8 +98,12 @@
   },
   "community": {
     "title": "Join Our Community",
+    "subtitle": "Connect with developers and users around the world",
+    "follow_us": "Follow Us",
+    "wechat_group": "WeChat Group",
     "wechat_qr_alt": "WeChat Group QR Code",
     "wechat_scan_prompt": "Scan to join WeChat group",
+    "contact_us": "Contact Us",
     "qq_group": "QQ Group",
     "zsxq": "ZhiShiXingQiu (Q&A)"
   },

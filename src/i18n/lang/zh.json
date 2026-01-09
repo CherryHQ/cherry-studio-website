@@ -96,8 +96,12 @@
   },
   "community": {
     "title": "加入我们的社群",
+    "subtitle": "与全球开发者和用户建立联系",
+    "follow_us": "关注我们",
+    "wechat_group": "微信群",
     "wechat_qr_alt": "微信群二维码",
     "wechat_scan_prompt": "扫码加入微信群",
+    "contact_us": "联系我们",
     "qq_group": "QQ 群",
     "zsxq": "知识星球(问题解答)"
   },
