@@ -10,19 +10,19 @@ This is the official website for Cherry Studio - a React + TypeScript + Vite app
 
 ```bash
 # Start development server with HMR
-yarn dev
+pnpm dev
 
 # Build for production (TypeScript compilation + Vite build)
-yarn build
+pnpm build
 
 # Run ESLint
-yarn lint
+pnpm lint
 
 # Preview production build locally
-yarn preview
+pnpm preview
 
 # Build and deploy to remote server
-yarn release
+pnpm release
 ```
 
 ## Project Architecture
@@ -96,7 +96,7 @@ Community channel data (QQ groups, WeChat QR codes, ZSXQ) is fetched from:
 - LF line endings
 - Brackets on same line
 
-Run `yarn lint` to check code style before committing.
+Run `pnpm lint` to check code style before committing.
 
 ## Path Aliases
 
@@ -153,7 +153,7 @@ import styles from './styles.module.css'
 
 ## Deployment
 
-The `yarn release` command builds and deploys to production via rsync:
+The `pnpm release` command builds and deploys to production via rsync:
 
 - Target server: `tencent.vm`
 - Destination: `/opt/1panel/apps/openresty/openresty/www/sites/cherry-ai.com/index`

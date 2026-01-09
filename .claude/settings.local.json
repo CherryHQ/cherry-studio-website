@@ -1,16 +1,16 @@
 {
   "permissions": {
     "allow": [
-      "Bash(yarn build)",
+      "Bash(pnpm build)",
       "Bash(npx shadcn@latest add https://www.shadcn.io/registry/particles.json)",
       "Bash(npx shadcn@latest add https://www.shadcn.io/registry/ripple.json)",
       "Bash(git checkout src/components/ui/shadcn-io/ripple/index.tsx)",
       "Bash(npx prettier --write src/pages/home/components/Banner.tsx)",
-      "Bash(yarn dev)",
+      "Bash(pnpm dev)",
       "Bash(curl -s http://localhost:5173)",
-      "Bash(yarn add -D prettier-plugin-tailwindcss)",
+      "Bash(pnpm add -D prettier-plugin-tailwindcss)",
       "Bash(npx prettier --write src/pages/home/components/Providers.tsx)",
-      "Bash(yarn lint --fix)",
+      "Bash(pnpm lint --fix)",
       "Bash(npx shadcn@latest add https://www.shadcn.io/registry/background-beams.json)",
       "Bash(curl -s http://localhost:5181/enterprise)",
       "Bash(npx prettier --write src/pages/enterprise/index.tsx src/i18n/lang/zh.json src/i18n/lang/en.json src/i18n/lang/zh-tw.json)",

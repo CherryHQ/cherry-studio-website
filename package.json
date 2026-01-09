@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "release": "yarn build && rsync -rvztl --delete ./dist/* tencent.vm:/opt/1panel/apps/openresty/openresty/www/sites/cherry-ai.com/index"
+    "release": "pnpm build && rsync -rvztl --delete ./dist/* tencent.vm:/opt/1panel/apps/openresty/openresty/www/sites/cherry-ai.com/index"
   },
   "dependencies": {
     "@radix-ui/react-select": "^2.2.6",
@@ -47,6 +47,5 @@
     "typescript": "~5.6.2",
     "typescript-eslint": "^8.18.2",
     "vite": "^6.0.5"
-  },
-  "packageManager": "yarn@4.7.0+sha256.293632d8a095d8ea4786eb2c5798c83c37544abed17ed31186a3ec4549a07c06"
+  }
 }
