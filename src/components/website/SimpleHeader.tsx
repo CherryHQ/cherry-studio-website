@@ -63,27 +63,46 @@ const SimpleHeader: React.FC = () => {
       )}>
       <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          {/* Logo */}
-          <Link to="/" className="group flex items-center gap-3">
-            <div className="relative">
-              {/* Mobile: SVG logo */}
-              <img
-                src={cherryLogoSvg}
-                alt="Cherry Studio"
-                className="h-8 w-auto transition-transform duration-300 group-hover:scale-105 sm:hidden"
-              />
-              {/* Desktop: PNG logo with iOS rounded corners */}
-              <img
-                src={cherryLogoPng}
-                alt="Cherry Studio"
-                className="hidden h-8 w-auto rounded-[22%] transition-transform duration-300 group-hover:scale-105 sm:block"
-              />
-              <div className="bg-primary/20 absolute -inset-1 -z-10 rounded-full opacity-0 blur-lg transition-opacity duration-300 group-hover:opacity-100" />
-            </div>
-            <span className="text-foreground hidden text-lg font-semibold sm:block">Cherry Studio</span>
-          </Link>
+          {/* Left Section - Logo + GitHub */}
+          <div className="flex items-center gap-4">
+            {/* Logo */}
+            <Link to="/" className="group flex items-center gap-3">
+              <div className="relative">
+                {/* Mobile: SVG logo */}
+                <img
+                  src={cherryLogoSvg}
+                  alt="Cherry Studio"
+                  className="h-8 w-auto transition-transform duration-300 group-hover:scale-105 sm:hidden"
+                />
+                {/* Desktop: PNG logo with iOS rounded corners */}
+                <img
+                  src={cherryLogoPng}
+                  alt="Cherry Studio"
+                  className="hidden h-8 w-auto rounded-[22%] transition-transform duration-300 group-hover:scale-105 sm:block"
+                />
+                <div className="bg-primary/20 absolute -inset-1 -z-10 rounded-full opacity-0 blur-lg transition-opacity duration-300 group-hover:opacity-100" />
+              </div>
+              <span className="text-foreground hidden text-lg font-semibold sm:block">Cherry Studio</span>
+            </Link>
 
-          {/* Right Section - Navigation + GitHub */}
+            {/* GitHub with Star Count */}
+            <a
+              href="https://github.com/CherryHQ/cherry-studio"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border-border/50 bg-secondary/50 text-muted-foreground hover:bg-secondary hover:text-foreground hidden items-center gap-2 rounded-lg border px-3 py-1.5 text-sm font-medium transition-colors duration-200 sm:flex"
+              title="GitHub">
+              <img src={githubIcon} alt="GitHub" className="h-4 w-4 opacity-70 invert" />
+              {starCount !== null && (
+                <span className="flex items-center gap-1">
+                  <Star className="h-3.5 w-3.5 fill-yellow-500 text-yellow-500" />
+                  {formatStarCount(starCount)}
+                </span>
+              )}
+            </a>
+          </div>
+
+          {/* Right Section - Navigation + Download */}
           <div className="flex items-center gap-1">
             {/* Desktop Navigation */}
             <nav className="hidden items-center gap-1 lg:flex">
@@ -120,22 +139,6 @@ const SimpleHeader: React.FC = () => {
                 )
               )}
             </nav>
-
-            {/* GitHub with Star Count */}
-            <a
-              href="https://github.com/CherryHQ/cherry-studio"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border-border/50 bg-secondary/50 text-muted-foreground hover:bg-secondary hover:text-foreground ml-2 hidden items-center gap-2 rounded-lg border px-3 py-1.5 text-sm font-medium transition-colors duration-200 sm:flex"
-              title="GitHub">
-              <img src={githubIcon} alt="GitHub" className="h-4 w-4 opacity-70 invert" />
-              {starCount !== null && (
-                <span className="flex items-center gap-1">
-                  <Star className="h-3.5 w-3.5 fill-yellow-500 text-yellow-500" />
-                  {formatStarCount(starCount)}
-                </span>
-              )}
-            </a>
 
             {/* Download Button */}
             <Link
