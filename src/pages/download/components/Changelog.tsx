@@ -11,7 +11,6 @@ interface ChangelogProps {
 const Changelog: FC<ChangelogProps> = ({ versionData }) => {
   const { t, i18n } = useTranslation()
 
-  // Parse changelog based on current language
   const parsedChangelog = useMemo(() => {
     if (!versionData) return ''
     return parseChangelog(versionData.changelog, i18n.language)
@@ -20,14 +19,17 @@ const Changelog: FC<ChangelogProps> = ({ versionData }) => {
   if (!versionData) return null
 
   return (
-    <div id="changelog" className="changelog">
-      <div className="changelog-header">
-        <h2>{t('download_page.changelog')}</h2>
-        <p className="changelog-version">
+    <div className="mt-10 rounded-2xl border border-border bg-card p-8">
+      <div className="mb-8 border-b border-border pb-6 text-center">
+        <h2 className="mb-2 text-2xl font-bold text-foreground">{t('download_page.changelog')}</h2>
+        <p className="text-muted-foreground">
           {t('download_page.version')} {versionData.version}
         </p>
       </div>
-      <div className="changelog-content" dangerouslySetInnerHTML={{ __html: window.marked.parse(parsedChangelog) }} />
+      <div
+        className="prose prose-invert max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-li:text-muted-foreground prose-strong:text-foreground"
+        dangerouslySetInnerHTML={{ __html: window.marked.parse(parsedChangelog) }}
+      />
     </div>
   )
 }

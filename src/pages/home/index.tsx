@@ -7,18 +7,14 @@ import HomeBanner from './components/Banner'
 import Contributors from './components/Contributors'
 import Features from './components/Features'
 import JoinCommunity from './components/JoinCommunity'
-import Project from './components/Project'
 import Providers from './components/Providers'
 
 const HomePage: FC = () => {
-  // 使用页面元数据 hook
   usePageMeta('home')
 
   useEffect(() => {
-    // 处理页面加载时的哈希值
     const hash = window.location.hash
     if (hash) {
-      // 等待页面渲染完成后再滚动
       setTimeout(() => {
         const element = document.getElementById(hash.substring(1))
         if (element) {
@@ -29,24 +25,14 @@ const HomePage: FC = () => {
   }, [])
 
   return (
-    <>
-      <div className="page-wrapper">
-        <HomeBanner />
-        <Providers />
-        <Features />
-        <Project />
-        <Contributors />
-        <JoinCommunity />
-        <Footer />
-      </div>
-      {/* <!--Scroll to top--> */}
-      <div className="scroll-to-top scroll-to-target" data-target="html">
-        <span className="fa fa-arrow-up"></span>
-      </div>
-      <div id="copy-message" className="copy-message" style={{ display: 'none' }}>
-        已复制 RSS 链接!
-      </div>
-    </>
+    <div className="bg-background min-h-screen">
+      <HomeBanner />
+      <Providers />
+      <Features />
+      <Contributors />
+      <JoinCommunity />
+      <Footer />
+    </div>
   )
 }
 

@@ -1,9 +1,8 @@
-import './index.css'
-
 import { Download, ExternalLink, FileText, Monitor } from 'lucide-react'
 import { FC, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import { Button } from '@/components/ui/button'
 import { BackgroundBeams } from '@/components/ui/shadcn-io/background-beams'
 import Footer from '@/components/website/Footer'
 import {
@@ -34,10 +33,12 @@ const DownloadButton: FC<DownloadButtonProps> = ({ info }) => {
   }
 
   return (
-    <a href={info.url} className="enterprise-main-download-btn" target="_blank" rel="noopener noreferrer">
-      <Download size={20} />
-      <span>{getButtonLabel()}</span>
-    </a>
+    <Button asChild variant="glow" size="lg">
+      <a href={info.url} target="_blank" rel="noopener noreferrer" className="gap-2.5">
+        <Download className="h-5 w-5" />
+        <span>{getButtonLabel()}</span>
+      </a>
+    </Button>
   )
 }
 
@@ -52,15 +53,17 @@ const VersionInfo: FC<VersionInfoProps> = ({ versionData, loading, error }) => {
 
   if (error) {
     return (
-      <div className="enterprise-version-info">
-        <h1>Cherry Studio Enterprise</h1>
+      <div className="relative z-10 mx-auto mb-10 max-w-4xl text-center">
+        <h1 className="bg-gradient-to-r from-white to-blue-100 bg-clip-text text-3xl font-bold text-transparent sm:text-4xl lg:text-5xl">
+          Cherry Studio Enterprise
+        </h1>
       </div>
     )
   }
 
   return (
-    <div className="enterprise-version-info">
-      <h1>
+    <div className="relative z-10 mx-auto mb-10 max-w-4xl text-center">
+      <h1 className="bg-gradient-to-r from-white to-blue-100 bg-clip-text text-3xl font-bold leading-tight text-transparent sm:text-4xl lg:text-5xl">
         {loading
           ? t('download_page.loading_version')
           : versionData
@@ -68,7 +71,7 @@ const VersionInfo: FC<VersionInfoProps> = ({ versionData, loading, error }) => {
             : t('download_page.version_error')}
       </h1>
       {versionData && (
-        <p className="version-date">
+        <p className="mt-4 text-lg text-white/70">
           {t('download_page.published_at_label')}
           {versionData.publishedAt}
         </p>
@@ -81,20 +84,16 @@ const FallbackDownload: FC = () => {
   const { t } = useTranslation()
 
   return (
-    <div className="enterprise-download-buttons">
-      <p className="fallback-notice">
+    <div className="mx-auto max-w-2xl rounded-2xl border border-white/10 bg-white/5 p-10 text-center backdrop-blur-xl">
+      <p className="mb-5 text-[15px] text-white/80">
         {t('enterprise_page.beta.download.fallback_notice') || '无法获取版本信息，请前往 GitCode 下载'}
       </p>
-      <div className="button-group">
-        <a
-          href={GITCODE_RELEASE_URL}
-          className="enterprise-main-download-btn"
-          target="_blank"
-          rel="noopener noreferrer">
-          <ExternalLink size={20} />
+      <Button asChild variant="glow" size="lg">
+        <a href={GITCODE_RELEASE_URL} target="_blank" rel="noopener noreferrer" className="gap-2.5">
+          <ExternalLink className="h-5 w-5" />
           <span>{t('enterprise_page.beta.download.goto_gitcode') || '前往 GitCode 下载'}</span>
         </a>
-      </div>
+      </Button>
     </div>
   )
 }
@@ -117,22 +116,24 @@ const DownloadButtons: FC<DownloadButtonsProps> = ({ systemInfo, onOtherVersions
   }
 
   return (
-    <div className="enterprise-download-buttons">
+    <div className="mx-auto max-w-2xl rounded-2xl border border-white/10 bg-white/5 p-10 backdrop-blur-xl">
       {systemInfo && systemInfo.length > 0 && (
-        <div className="system-detection">
-          <div className="detected-system">
-            <Monitor size={18} />
-            <span>
-              {t('download_page.current_system')}: <strong>{getSystemName()}</strong>
-            </span>
-          </div>
+        <div className="mb-6 flex items-center justify-center gap-2 text-[15px] text-white/80">
+          <Monitor className="h-[18px] w-[18px] text-blue-400" />
+          <span>
+            {t('download_page.current_system')}: <strong className="text-white">{getSystemName()}</strong>
+          </span>
         </div>
       )}
-      <div className="button-group">
+      <div className="flex flex-wrap items-center justify-center gap-3">
         {systemInfo && systemInfo.map((info) => <DownloadButton key={info.name} info={info} />)}
-        <button className="enterprise-alt-btn" onClick={onOtherVersionsClick} type="button">
+        <Button
+          variant="outline"
+          size="lg"
+          onClick={onOtherVersionsClick}
+          className="border-white/30 bg-transparent text-white/90 hover:border-white/50 hover:bg-white/10 hover:text-white">
           {t('download_page.other_versions')}
-        </button>
+        </Button>
       </div>
     </div>
   )
@@ -148,17 +149,22 @@ const DownloadList: FC<DownloadListProps> = ({ downloadUrls }) => {
   if (!downloadUrls) return null
 
   return (
-    <div className="other-downloads">
-      <h2>{t('download_page.other_downloads_title')}</h2>
-      <ul id="download-list">
+    <div className="rounded-2xl border border-border bg-card p-8 shadow-sm">
+      <h2 className="mb-10 text-center text-3xl font-bold text-foreground">{t('download_page.other_downloads_title')}</h2>
+      <ul className="space-y-0">
         {Object.values(downloadUrls).map((group) => (
           <div key={group.title}>
-            <h3>{group.title}</h3>
+            <h3 className="mb-4 mt-8 border-l-4 border-primary pl-4 text-xl font-semibold text-foreground first:mt-0">
+              {group.title}
+            </h3>
             {group.items.map((item: { name: string; url: string; desc: string }) => (
-              <li key={item.name}>
-                <button className="download-item-btn" onClick={() => window.open(item.url, '_blank')} type="button">
-                  <span className="download-item-name">{item.desc}</span>
-                  <span className="download-item-desc">{item.name}</span>
+              <li key={item.name} className="mb-4">
+                <button
+                  className="w-full rounded-xl border border-border bg-secondary/30 px-5 py-4 text-left transition-all duration-200 hover:border-primary/30 hover:bg-primary/5 hover:text-primary"
+                  onClick={() => window.open(item.url, '_blank')}
+                  type="button">
+                  <span className="mr-2.5 text-sm font-bold text-foreground">{item.desc}</span>
+                  <span className="text-sm text-muted-foreground">{item.name}</span>
                 </button>
               </li>
             ))}
@@ -186,69 +192,83 @@ const EnterpriseDownloadPage: FC = () => {
   }
 
   return (
-    <div className="enterprise-download-page enterprise-page">
+    <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="hero-section">
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#0a0e27] to-[#1a1f3a] px-6 pb-20 pt-32 text-center">
         <BackgroundBeams className="absolute inset-0 z-0" />
-        <div className="relative z-10 container">
+        <div className="relative z-10 mx-auto max-w-6xl">
           <VersionInfo versionData={versionData} loading={loading} error={error} />
           {renderDownloadContent()}
         </div>
       </section>
 
-      {/* Beta Notice Section - 直接复用企业版样式 */}
-      <section className="beta-section">
-        <div className="container">
-          <div className="beta-content">
-            <div className="beta-card">
-              <h3>{t('enterprise_page.beta.demo.title')}</h3>
-              <div className="card-content">
-                <ul>
-                  <li>
-                    <strong>{t('enterprise_page.beta.demo.admin_portal')}</strong>
-                    <a href="https://admin.demo.cherry-ai.com" target="_blank" rel="noopener noreferrer">
+      {/* Beta Notice Section */}
+      <section className="border-t border-border bg-secondary/30 px-6 py-20">
+        <div className="mx-auto max-w-6xl">
+          <div className="grid gap-6 md:grid-cols-3">
+            {/* Demo Card */}
+            <div className="flex h-full flex-col rounded-xl border border-border bg-card p-7 shadow-sm">
+              <h3 className="mb-5 flex items-center gap-2 text-base font-semibold text-foreground">
+                <span className="h-4 w-1 rounded bg-primary" />
+                {t('enterprise_page.beta.demo.title')}
+              </h3>
+              <div className="flex flex-1 flex-col text-sm leading-relaxed text-muted-foreground">
+                <ul className="space-y-3">
+                  <li className="flex gap-2">
+                    <strong className="min-w-[80px] font-medium text-foreground">{t('enterprise_page.beta.demo.admin_portal')}</strong>
+                    <a href="https://admin.demo.cherry-ai.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
                       admin.demo.cherry-ai.com
                     </a>
                   </li>
-                  <li>
-                    <strong>{t('enterprise_page.beta.demo.account')}</strong>admin
+                  <li className="flex gap-2">
+                    <strong className="min-w-[80px] font-medium text-foreground">{t('enterprise_page.beta.demo.account')}</strong>
+                    admin
                   </li>
-                  <li>
-                    <strong>{t('enterprise_page.beta.demo.password')}</strong>password
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="beta-card">
-              <h3>{t('enterprise_page.beta.download.title')}</h3>
-              <div className="card-content">
-                <ul className="server-info">
-                  <li>{t('enterprise_page.beta.download.server_url')} https://api.demo.cherry-ai.com</li>
-                  <li>
-                    <strong>{t('enterprise_page.beta.demo.account')}</strong>user
-                  </li>
-                  <li>
-                    <strong>{t('enterprise_page.beta.demo.password')}</strong>password
+                  <li className="flex gap-2">
+                    <strong className="min-w-[80px] font-medium text-foreground">{t('enterprise_page.beta.demo.password')}</strong>
+                    password
                   </li>
                 </ul>
               </div>
             </div>
 
-            <div className="beta-card">
-              <h3>{t('enterprise_page.beta.manual.title')}</h3>
-              <div className="card-content">
-                <p>{t('enterprise_page.beta.manual.description')}</p>
-                <a
-                  href="https://docs.enterprise.cherry-ai.com/"
-                  className="doc-link"
-                  target="_blank"
-                  rel="noopener noreferrer">
-                  <span className="icon">
-                    <FileText size={20} />
-                  </span>
-                  {t('enterprise_page.beta.manual.view_manual')}
-                </a>
+            {/* Download Info Card */}
+            <div className="flex h-full flex-col rounded-xl border border-border bg-card p-7 shadow-sm">
+              <h3 className="mb-5 flex items-center gap-2 text-base font-semibold text-foreground">
+                <span className="h-4 w-1 rounded bg-primary" />
+                {t('enterprise_page.beta.download.title')}
+              </h3>
+              <div className="flex flex-1 flex-col text-sm leading-relaxed text-muted-foreground">
+                <ul className="space-y-3">
+                  <li className="flex flex-wrap gap-2">
+                    {t('enterprise_page.beta.download.server_url')} https://api.demo.cherry-ai.com
+                  </li>
+                  <li className="flex gap-2">
+                    <strong className="min-w-[80px] font-medium text-foreground">{t('enterprise_page.beta.demo.account')}</strong>
+                    user
+                  </li>
+                  <li className="flex gap-2">
+                    <strong className="min-w-[80px] font-medium text-foreground">{t('enterprise_page.beta.demo.password')}</strong>
+                    password
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Manual Card */}
+            <div className="flex h-full flex-col rounded-xl border border-border bg-card p-7 shadow-sm">
+              <h3 className="mb-5 flex items-center gap-2 text-base font-semibold text-foreground">
+                <span className="h-4 w-1 rounded bg-primary" />
+                {t('enterprise_page.beta.manual.title')}
+              </h3>
+              <div className="flex flex-1 flex-col text-sm leading-relaxed text-muted-foreground">
+                <p className="mb-4">{t('enterprise_page.beta.manual.description')}</p>
+                <Button variant="outline" asChild className="mt-auto w-full">
+                  <a href="https://docs.enterprise.cherry-ai.com/" target="_blank" rel="noopener noreferrer" className="gap-2">
+                    <FileText className="h-4 w-4" />
+                    {t('enterprise_page.beta.manual.view_manual')}
+                  </a>
+                </Button>
               </div>
             </div>
           </div>
@@ -256,8 +276,8 @@ const EnterpriseDownloadPage: FC = () => {
       </section>
 
       {/* Other Downloads Section */}
-      <section className="other-downloads-section" ref={otherDownloadsRef}>
-        <div className="container">
+      <section className="bg-card px-6 py-20" ref={otherDownloadsRef}>
+        <div className="mx-auto max-w-4xl">
           <DownloadList downloadUrls={downloadUrls} />
         </div>
       </section>

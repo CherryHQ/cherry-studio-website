@@ -1,6 +1,5 @@
 import { FC } from 'react'
 import { useTranslation } from 'react-i18next'
-import styled from 'styled-components'
 
 import { Asset, DownloadItem, DownloadUrls } from '@/hooks/useVersionData'
 
@@ -13,41 +12,31 @@ const DownloadList: FC<DownloadListProps> = ({ downloadUrls }) => {
   const { t } = useTranslation()
   if (!downloadUrls) return null
 
-  // const getFileSize = (fileName: string) => {
-  //   const matchedDownload = assets.find((item) => item.name.toLowerCase().includes(fileName.toLowerCase()))
-  //   return matchedDownload ? ` (${(matchedDownload.size / 1024 / 1024).toFixed(1)} MB)` : ''
-  // }
-
   return (
-    <div className="other-downloads">
-      <h2>{t('download_page.other_downloads_title')}</h2>
-      <ul id="download-list">
+    <div className="rounded-2xl border border-border bg-card p-8">
+      <h2 className="mb-8 text-center text-2xl font-bold text-foreground">{t('download_page.other_downloads_title')}</h2>
+      <div className="space-y-6">
         {Object.values(downloadUrls).map(({ title, items }) => (
           <div key={title}>
-            <h3 style={{ marginTop: '20px' }}>{title}</h3>
-            {items.map(({ name, url, desc }: DownloadItem) => (
-              <li key={url}>
-                <button className="download-item-btn" onClick={() => (window.location.href = url)} type="button">
-                  <DownloadItemName>{desc}</DownloadItemName> <DownloadItemDesc>{name}</DownloadItemDesc>
-                </button>
-              </li>
-            ))}
+            <h3 className="mb-4 border-l-4 border-primary pl-4 text-lg font-semibold text-foreground">{title}</h3>
+            <ul className="space-y-3">
+              {items.map(({ name, url, desc }: DownloadItem) => (
+                <li key={url}>
+                  <button
+                    onClick={() => (window.location.href = url)}
+                    type="button"
+                    className="w-full rounded-xl border border-border bg-secondary/30 px-5 py-4 text-left transition-all duration-200 hover:border-primary/30 hover:bg-secondary">
+                    <span className="mr-3 font-medium text-foreground">{desc}</span>
+                    <span className="text-sm text-muted-foreground">{name}</span>
+                  </button>
+                </li>
+              ))}
+            </ul>
           </div>
         ))}
-      </ul>
+      </div>
     </div>
   )
 }
-
-const DownloadItemName = styled.span`
-  font-size: 14px;
-  font-weight: bold;
-  margin-right: 10px;
-`
-
-const DownloadItemDesc = styled.span`
-  font-size: 14px;
-  color: #666;
-`
 
 export default DownloadList

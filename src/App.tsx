@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { script } from '@/assets/js/script.ts'
 import ScrollToTop from '@/components/ScrollToTop'
 import SimpleHeader from '@/components/website/SimpleHeader.tsx'
+import { ThemeProvider } from '@/contexts/ThemeContext'
 import DownloadPage from '@/pages/download'
 import EnterprisePage from '@/pages/enterprise'
 import EnterpriseDownloadPage from '@/pages/enterprise-download'
@@ -16,17 +17,19 @@ function App() {
   }, [])
 
   return (
-    <BrowserRouter>
-      <ScrollToTop />
-      <SimpleHeader />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/download" element={<DownloadPage />} />
-        <Route path="/theme" element={<ThemePage />} />
-        <Route path="/enterprise" element={<EnterprisePage />} />
-        <Route path="/enterprise/download" element={<EnterpriseDownloadPage />} />
-      </Routes>
-    </BrowserRouter>
+    <ThemeProvider>
+      <BrowserRouter>
+        <ScrollToTop />
+        <SimpleHeader />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/download" element={<DownloadPage />} />
+          <Route path="/theme" element={<ThemePage />} />
+          <Route path="/enterprise" element={<EnterprisePage />} />
+          <Route path="/enterprise/download" element={<EnterpriseDownloadPage />} />
+        </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
   )
 }
 

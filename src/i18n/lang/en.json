@@ -160,31 +160,7 @@
     "linux_deb": "Deb Version",
     "linux_deb_arm": "Deb Version (ARM)",
     "linux_rpm": "RPM Version",
-    "linux_rpm_arm": "RPM Version (ARM)",
-    "intel_version": {
-      "title": "Cherry Studio Intel Core™ Ultra Edition",
-      "subtitle": "Localized AI solution deeply optimized for Intel hardware",
-      "description": "Optimized for Intel Core™ Ultra processors, providing you with a true local AI experience",
-      "download_button": "Download Intel Core™ Ultra Edition",
-      "features": {
-        "local_model": {
-          "title": "Local Large Model Running Capability",
-          "description": "No need to connect to the cloud, run Qwen3-4B, 8B, and even 14B language models of different parameter scales smoothly on your device"
-        },
-        "long_context": {
-          "title": "Long Context Processing",
-          "description": "Support up to 32K context window, enabling AI to understand and process long documents or complex conversation history for more in-depth content generation and analysis"
-        },
-        "knowledge_base": {
-          "title": "Local Knowledge Base Construction",
-          "description": "Integrated with RAG (Retrieval-Augmented Generation) technology, users can import personal documents and databases into the device, making AI a personal assistant that has learned your exclusive knowledge"
-        },
-        "protocol_extension": {
-          "title": "Protocol Extension Capability",
-          "description": "Implemented MCP (Model Context Protocol) extension, leaving interfaces for more diverse AI applications and developer ecosystem in the future"
-        }
-      }
-    }
+    "linux_rpm_arm": "RPM Version (ARM)"
   },
   "enterprise_page": {
     "hero": {
@@ -333,20 +309,6 @@
     "doc_contributors": "Documentation Contributors",
     "contribution_stats": "Contributions: {{contributions}} commits ({{rate}}%)",
     "partial": "(Partial)"
-  },
-  "star_history": {
-    "total_stars": "Total Stars",
-    "daily_stars": "Daily Stars",
-    "cumulative_stars": "Cumulative Stars",
-    "daily_increase": "Daily Increase",
-    "data_view": "Data View",
-    "close": "Close",
-    "refresh": "Refresh",
-    "restore": "Restore",
-    "save_as_image": "Save as Image",
-    "year_suffix": "",
-    "month_suffix": "/",
-    "day_suffix": ""
   },
   "telegram": {
     "channel_members": "Channel Members: ",

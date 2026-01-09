@@ -35,7 +35,7 @@
   "banner": {
     "powerful_ai_assistant": "您的全能 AI 助手",
     "cherry_studio_title": "Cherry Studio",
-    "multi_provider_client": "支持多服务商集成的 AI 对话客户端",
+    "multi_provider_client": "您的全能 AI 助手",
     "multi_provider_description": "Cherry Studio 目前支持市面上绝大多数服务商的集成,并且支持多服务商的模型统一调度。",
     "privacy_security": "保障隐私安全",
     "local_storage_title": "数据本地储存",
@@ -158,31 +158,7 @@
     "linux_deb": "Deb 版本",
     "linux_deb_arm": "Deb 版本 (ARM 版)",
     "linux_rpm": "RPM 版本",
-    "linux_rpm_arm": "RPM 版本 (ARM 版)",
-    "intel_version": {
-      "title": "Cherry Studio 酷睿™ Ultra 版",
-      "subtitle": "专为 Intel 硬件深度优化的本地化 AI 解决方案",
-      "description": "基于 Intel 酷睿™ Ultra 处理器优化，为您提供真正的本地 AI 体验",
-      "download_button": "下载酷睿™ Ultra 版",
-      "features": {
-        "local_model": {
-          "title": "本地大模型运行能力",
-          "description": "无需连接云端，即可在设备上流畅运行 Qwen3-4B、8B 甚至 14B 等不同参数规模的语言模型"
-        },
-        "long_context": {
-          "title": "长上下文处理",
-          "description": "支持高达 32K 的上下文窗口，使得 AI 能够理解和处理长篇文档或复杂的对话历史，进行更具深度的内容生成与分析"
-        },
-        "knowledge_base": {
-          "title": "本地知识库构建",
-          "description": "集成了基于 RAG（检索增强生成）原理的技术，用户可以将个人文档、资料库导入设备，让 AI 成为一个学习了你专属知识的个人助理"
-        },
-        "protocol_extension": {
-          "title": "协议扩展能力",
-          "description": "实现了 MCP（模型上下文协议）的扩展，为未来更多样化的 AI 应用和开发者生态留出了接口"
-        }
-      }
-    }
+    "linux_rpm_arm": "RPM 版本 (ARM 版)"
   },
   "enterprise_page": {
     "hero": {
@@ -331,20 +307,6 @@
     "doc_contributors": "文档贡献者",
     "contribution_stats": "贡献: {{contributions}} commits ({{rate}}%)",
     "partial": "(部分)"
-  },
-  "star_history": {
-    "total_stars": "总 Star 数",
-    "daily_stars": "日增 Star 数",
-    "cumulative_stars": "累计 Star 数",
-    "daily_increase": "日增 Star 数",
-    "data_view": "数据视图",
-    "close": "关闭",
-    "refresh": "刷新",
-    "restore": "还原",
-    "save_as_image": "保存为图片",
-    "year_suffix": "年",
-    "month_suffix": "月",
-    "day_suffix": "日"
   },
   "telegram": {
     "channel_members": "频道成员：",

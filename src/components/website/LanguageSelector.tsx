@@ -1,3 +1,4 @@
+import { ChevronDown, Globe } from 'lucide-react'
 import React, { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -34,38 +35,37 @@ const LanguageSelector: React.FC = () => {
   }, [])
 
   return (
-    <div className="relative inline-block" ref={dropdownRef}>
+    <div className="relative" ref={dropdownRef}>
       <button
         className={cn(
-          'flex items-center justify-center gap-1.5',
-          'min-w-[70px] px-2.5 py-1.5',
-          'rounded-md border border-gray-200 bg-white',
-          'text-sm font-medium text-gray-700',
-          'transition-all duration-200 ease-in-out',
-          'hover:border-[#ea5e5d] hover:bg-gray-50',
-          'focus:ring-2 focus:ring-[#ea5e5d]/20 focus:outline-none',
-          'active:scale-95',
-          'sm:min-w-[80px] sm:gap-1.5 sm:px-3 sm:py-2'
+          'flex items-center gap-1.5',
+          'h-9 px-3',
+          'rounded-lg border border-border bg-secondary/50',
+          'text-sm font-medium text-foreground',
+          'transition-all duration-200',
+          'hover:bg-secondary hover:border-primary/30',
+          'focus:ring-2 focus:ring-primary/20 focus:outline-none',
+          'active:scale-95'
         )}
         onClick={() => setIsOpen(!isOpen)}
         type="button"
         aria-label="Select Language"
         aria-expanded={isOpen}>
-        <span className="text-xs font-semibold tracking-wide sm:text-sm">{currentLanguage.short}</span>
-        <span className={cn('text-[10px] text-gray-400 transition-transform duration-200', isOpen && 'rotate-180')}>
-          ▼
-        </span>
+        <Globe className="h-4 w-4 text-muted-foreground" />
+        <span className="text-xs font-semibold tracking-wide">{currentLanguage.short}</span>
+        <ChevronDown
+          className={cn('h-3 w-3 text-muted-foreground transition-transform duration-200', isOpen && 'rotate-180')}
+        />
       </button>
 
       {isOpen && (
         <div
           className={cn(
-            'absolute top-full right-0 z-[1000]',
-            'mt-1 min-w-[140px]',
-            'rounded-lg border border-gray-200 bg-white shadow-lg',
+            'absolute bottom-full right-0 z-[1000]',
+            'mb-2 min-w-[160px]',
+            'rounded-xl border border-border bg-card shadow-2xl',
             'py-1.5',
-            'animate-in fade-in slide-in-from-top-2 duration-200',
-            'sm:mt-1 sm:min-w-[160px]'
+            'animate-in fade-in slide-in-from-bottom-2 duration-200'
           )}>
           {languages.map((language) => {
             const isActive = language.code === i18n.language
@@ -73,20 +73,22 @@ const LanguageSelector: React.FC = () => {
               <button
                 key={language.code}
                 className={cn(
-                  'flex w-full items-center gap-2.5',
-                  'px-3 py-2',
-                  'text-left text-sm text-gray-700',
+                  'flex w-full items-center gap-3',
+                  'px-4 py-2.5',
+                  'text-left text-sm',
                   'transition-colors duration-200',
-                  'hover:bg-gray-100',
-                  'active:bg-gray-200',
-                  'sm:px-4 sm:py-2.5',
-                  isActive && 'bg-red-50 text-[#ea5e5d]'
+                  'hover:bg-accent',
+                  isActive ? 'text-primary bg-primary/10' : 'text-foreground'
                 )}
                 onClick={() => handleLanguageChange(language.code)}
                 type="button">
-                <span className="text-base sm:text-lg">{language.flag}</span>
-                <span className="flex-1 text-xs sm:text-sm">{language.name}</span>
-                {isActive && <span className="text-xs font-bold text-[#ea5e5d]">✓</span>}
+                <span className="text-lg">{language.flag}</span>
+                <span className="flex-1">{language.name}</span>
+                {isActive && (
+                  <span className="flex h-5 w-5 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-primary-foreground">
+                    ✓
+                  </span>
+                )}
               </button>
             )
           })}

@@ -1,6 +1,8 @@
+import { Download } from 'lucide-react'
 import { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import { Button } from '@/components/ui/button'
 import { SystemInfo } from '@/utils/systemDetection'
 
 interface DownloadButtonsProps {
@@ -26,25 +28,24 @@ const DownloadButtons: FC<DownloadButtonsProps> = ({ systemInfo }) => {
   }
 
   return (
-    <div className="download-buttons">
-      <div className="system-info">
-        {systemInfo && (
-          <p>
-            {t('download_page.current_system')}: <strong>{systemInfo?.[0].type}</strong>
-          </p>
-        )}
-      </div>
-      <div className="button-group">
+    <div className="mb-12 rounded-2xl border border-border bg-card p-8 text-center">
+      {systemInfo && (
+        <p className="mb-6 text-muted-foreground">
+          {t('download_page.current_system')}: <strong className="text-foreground">{systemInfo?.[0].type}</strong>
+        </p>
+      )}
+      <div className="flex flex-wrap items-center justify-center gap-4">
         {systemInfo &&
           systemInfo.map((item) => (
-            <button
+            <Button
               key={item.url}
-              id="main-download-btn"
-              className="theme-btn"
-              type="button"
-              onClick={() => (window.location.href = item.url)}>
+              variant="glow"
+              size="lg"
+              onClick={() => (window.location.href = item.url)}
+              className="gap-2">
+              <Download className="h-5 w-5" />
               {getButtonText(item)}
-            </button>
+            </Button>
           ))}
       </div>
     </div>

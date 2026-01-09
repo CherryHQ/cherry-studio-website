@@ -1,7 +1,9 @@
+import { motion } from 'framer-motion'
 import { FC, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { fetchChannelData, getRandomWechatQRCode } from '@/assets/js/data'
+import { Button } from '@/components/ui/button'
 
 const JoinCommunity: FC = () => {
   const { t } = useTranslation()
@@ -21,72 +23,66 @@ const JoinCommunity: FC = () => {
   }, [])
 
   return (
-    <section className="cta-section" id="Community">
-      <div
-        className="cta-1-bg"
-        data-parallax='{"y": 30}'
-        style={{
-          backgroundImage: `url(${new URL('@/assets/images/background/cta-bg-image-one.webp', import.meta.url)})`
-        }}></div>
-      <div className="auto-container">
-        <div className="section_heading text-center">
-          <h2 className="section_heading_title_big">{t('community.title')}</h2>
-        </div>
+    <section className="relative overflow-hidden bg-secondary/30 py-24" id="Community">
+      {/* Background */}
+      <div className="absolute inset-0 grid-pattern opacity-20" />
 
-        {/* QR Code Display */}
-        <div className="text-center" style={{ marginBottom: '30px' }}>
-          <div
-            className="wechat-qrcode-container"
-            style={{
-              display: 'inline-block',
-              padding: '15px',
-              background: 'white',
-              borderRadius: '12px',
-              boxShadow: '0 2px 12px rgba(0,0,0,0.1)',
-              marginTop: '20px'
-            }}>
-            {wechatQRCode && (
-              <>
+      {/* Gradient Orbs */}
+      <div className="absolute top-0 left-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/5 blur-[100px]" />
+
+      <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-center">
+          {/* Title */}
+          <h2 className="mb-4 text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl">{t('community.title')}</h2>
+          <p className="mx-auto mb-10 max-w-2xl text-muted-foreground">{t('community.subtitle')}</p>
+
+          {/* WeChat QR Code */}
+          {wechatQRCode && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="mb-10 inline-block">
+              <div className="overflow-hidden rounded-2xl border border-border bg-white p-4 shadow-xl">
                 <img
                   src={wechatQRCode}
                   alt={t('community.wechat_qr_alt')}
-                  style={{
-                    width: '200px',
-                    height: '200px',
-                    objectFit: 'contain',
-                    display: 'block',
-                    margin: '0 auto'
-                  }}
+                  className="h-48 w-48 object-contain"
                 />
-                <p
-                  style={{
-                    marginTop: '10px',
-                    marginBottom: '0',
-                    fontSize: '16px',
-                    fontWeight: '500',
-                    color: '#333'
-                  }}>
-                  {t('community.wechat_scan_prompt')}
-                </p>
-              </>
-            )}
-          </div>
-        </div>
+              </div>
+              <p className="mt-4 text-sm text-muted-foreground">{t('community.wechat_scan_prompt')}</p>
+            </motion.div>
+          )}
 
-        <div className="text-center">
-          <div className="cta-1-link-bt" style={{ display: 'flex', justifyContent: 'center', gap: 10 }}>
+          {/* Action Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="flex flex-wrap items-center justify-center gap-4">
             {channelData?.data?.qq_group_link && (
-              <a href={channelData.data.qq_group_link} className="btn-1" target="_blank" rel="noopener noreferrer">
-                {t('community.qq_group')}
-              </a>
+              <Button variant="outline" size="lg" asChild>
+                <a href={channelData.data.qq_group_link} target="_blank" rel="noopener noreferrer">
+                  {t('community.qq_group')}
+                </a>
+              </Button>
             )}
             {channelData?.data?.zsxq && (
-              <a href={channelData.data.zsxq} className="btn-1" target="_blank" rel="noopener noreferrer">
-                {t('community.zsxq')}
-              </a>
+              <Button variant="outline" size="lg" asChild>
+                <a href={channelData.data.zsxq} target="_blank" rel="noopener noreferrer">
+                  {t('community.zsxq')}
+                </a>
+              </Button>
             )}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   )

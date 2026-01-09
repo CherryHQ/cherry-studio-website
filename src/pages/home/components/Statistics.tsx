@@ -1,53 +1,69 @@
+import { motion } from 'framer-motion'
+import { Calendar, Star, Users } from 'lucide-react'
 import { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
 const Statistics: FC = () => {
   const { t } = useTranslation()
+
+  const stats = [
+    {
+      icon: Calendar,
+      id: 'days-count',
+      label: t('statistics.days_online'),
+      gradient: 'from-blue-500/20 to-cyan-500/20'
+    },
+    {
+      icon: Users,
+      id: 'contributors-count',
+      label: t('statistics.contributors'),
+      gradient: 'from-purple-500/20 to-pink-500/20'
+    },
+    {
+      icon: Star,
+      id: 'stars-count',
+      label: t('statistics.stars'),
+      gradient: 'from-orange-500/20 to-amber-500/20'
+    }
+  ]
+
   return (
-    <section className="fun-facts-section">
-      <div className="auto-container">
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {/* <!--Column--> */}
-          <div className="count-box">
-            <div className="inner">
-              <div className="content">
-                <div className="count-outer">
-                  <div className="stat-number" id="days-count">
-                    0
-                  </div>
-                </div>
-                <div className="counter-title">{t('statistics.days_online')}</div>
-              </div>
-            </div>
-          </div>
+    <section className="fun-facts-section relative overflow-hidden bg-secondary/30 py-16">
+      <div className="absolute inset-0 grid-pattern opacity-20" />
 
-          {/* <!--Column--> */}
-          <div className="count-box">
-            <div className="inner">
-              <div className="content">
-                <div className="count-outer">
-                  <div className="stat-number" id="contributors-count">
-                    0
-                  </div>
-                </div>
-                <div className="counter-title">{t('statistics.contributors')}</div>
-              </div>
-            </div>
-          </div>
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {stats.map((stat, index) => (
+            <motion.div
+              key={stat.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="group relative overflow-hidden rounded-2xl border border-border/50 bg-card/50 p-6 transition-all duration-300 hover:border-primary/30 hover:bg-card">
+              {/* Gradient Background */}
+              <div
+                className={`absolute -inset-px rounded-2xl bg-gradient-to-br opacity-0 transition-opacity duration-300 group-hover:opacity-100 ${stat.gradient}`}
+              />
 
-          {/* <!--Column--> */}
-          <div className="count-box">
-            <div className="inner">
-              <div className="content">
-                <div className="count-outer">
-                  <div className="stat-number" id="stars-count">
-                    0
-                  </div>
+              <div className="relative z-10 text-center">
+                {/* Icon */}
+                <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                  <stat.icon className="h-7 w-7" />
                 </div>
-                <div className="counter-title">{t('statistics.stars')}</div>
+
+                {/* Number */}
+                <div
+                  id={stat.id}
+                  className="mb-2 text-4xl font-bold tabular-nums text-foreground lg:text-5xl">
+                  0
+                </div>
+
+                {/* Label */}
+                <p className="text-sm text-muted-foreground">{stat.label}</p>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
