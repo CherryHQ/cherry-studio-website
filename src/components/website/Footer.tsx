@@ -22,28 +22,26 @@ const Footer: React.FC = () => {
   const { t } = useTranslation()
 
   const socialLinks = [
-    { href: 'https://x.com/CherryStudioHQ', icon: xIcon, colorIcon: xColorIcon, alt: 'X', darkInvert: true },
-    { href: 'https://t.me/CherryStudioAI', icon: tgIcon, colorIcon: tgColorIcon, alt: 'Telegram', darkInvert: false },
+    { href: 'https://x.com/CherryStudioHQ', icon: xIcon, colorIcon: xColorIcon, alt: 'X', colorDarkInvert: true },
+    { href: 'https://t.me/CherryStudioAI', icon: tgIcon, colorIcon: tgColorIcon, alt: 'Telegram' },
     {
       href: 'https://github.com/CherryHQ/cherry-studio',
       icon: githubIcon,
       colorIcon: githubColorIcon,
       alt: 'GitHub',
-      darkInvert: true
+      colorDarkInvert: true
     },
     {
       href: 'https://gitcode.com/CherryHQ/cherry-studio',
       icon: gitcodeIcon,
       colorIcon: gitcodeColorIcon,
-      alt: 'GitCode',
-      darkInvert: false
+      alt: 'GitCode'
     },
     {
       href: 'https://www.producthunt.com/products/cherry-studio',
       icon: pIcon,
       colorIcon: pColorIcon,
-      alt: 'Product Hunt',
-      darkInvert: false
+      alt: 'Product Hunt'
     }
   ]
 
@@ -82,12 +80,12 @@ const Footer: React.FC = () => {
                   <img
                     src={link.icon}
                     alt={link.alt}
-                    className={`h-4 w-4 transition-opacity duration-200 group-hover:opacity-0 ${link.darkInvert ? 'dark:invert' : ''}`}
+                    className="h-4 w-4 transition-opacity duration-200 group-hover:opacity-0 dark:invert"
                   />
                   <img
                     src={link.colorIcon}
                     alt={link.alt}
-                    className={`absolute h-4 w-4 opacity-0 transition-opacity duration-200 group-hover:opacity-100 ${link.darkInvert ? 'dark:invert' : ''}`}
+                    className={`absolute h-4 w-4 opacity-0 transition-opacity duration-200 group-hover:opacity-100 ${link.colorDarkInvert ? 'dark:invert' : ''}`}
                   />
                 </a>
               ))}
@@ -98,7 +96,7 @@ const Footer: React.FC = () => {
                 <img
                   src={rssIcon}
                   alt="RSS"
-                  className="h-4 w-4 transition-opacity duration-200 group-hover:opacity-0"
+                  className="h-4 w-4 transition-opacity duration-200 group-hover:opacity-0 dark:invert"
                 />
                 <img
                   src={rssColorIcon}
