@@ -27,6 +27,7 @@ import Footer from '@/components/website/Footer'
 import { useEnterpriseData } from '@/hooks/useEnterpriseData'
 import { useEnterpriseVersionData } from '@/hooks/useEnterpriseVersionData'
 import { usePageMeta } from '@/hooks/usePageMeta'
+import { useTheme } from '@/hooks/useTheme'
 import { detectPlatform, isMobileDevice } from '@/utils/systemDetection'
 import EnterpriseFAQ from './components/EnterpriseFAQ'
 import EnterprisePlatformDownloads from './components/EnterprisePlatformDownloads'
@@ -36,6 +37,7 @@ import EnterprisePlatformTabs from './components/EnterprisePlatformTabs'
 const EnterprisePage: FC = () => {
   const { t } = useTranslation()
   usePageMeta('enterprise')
+  const { isDark } = useTheme()
   const enterpriseData = useEnterpriseData()
   const { loading, error, versionData } = useEnterpriseVersionData()
 
@@ -108,20 +110,20 @@ const EnterprisePage: FC = () => {
   return (
     <div className="bg-background min-h-screen">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-black px-6 pb-20 pt-32">
+      <section className="relative overflow-hidden bg-white px-6 pb-20 pt-24 dark:bg-black sm:pt-32 lg:pt-40">
         {/* Subtle grid */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:64px_64px]" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:64px_64px] dark:bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)]" />
         {/* Particles */}
-        <Particles className="absolute inset-0" quantity={60} color="#ffffff" size={0.4} staticity={40} />
+        <Particles className="absolute inset-0" quantity={60} color={isDark ? '#ffffff' : '#000000'} size={0.4} staticity={40} />
         {/* Subtle center glow */}
         <div className="absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500/5 blur-[120px]" />
         <div className="relative z-10 mx-auto max-w-[1400px] text-center">
-          <h1 className="mb-6 text-4xl font-bold text-white sm:text-5xl">{t('enterprise_page.hero.title')}</h1>
-          <p className="mb-8 text-lg text-neutral-400 sm:text-xl">{t('enterprise_page.hero.subtitle')}</p>
+          <h1 className="mb-6 text-4xl font-bold text-black dark:text-white sm:text-5xl">{t('enterprise_page.hero.title')}</h1>
+          <p className="mb-8 text-lg text-neutral-500 dark:text-neutral-400 sm:text-xl">{t('enterprise_page.hero.subtitle')}</p>
           <Button
             asChild
             size="lg"
-            className="cursor-pointer gap-2 bg-white font-semibold text-black hover:bg-white/90">
+            className="cursor-pointer gap-2 bg-black font-semibold text-white hover:bg-black/80 dark:bg-white dark:text-black dark:hover:bg-white/90">
             <a href="#download">
               <PlayCircle className="h-5 w-5" />
               {t('enterprise_page.hero.quick_start')}

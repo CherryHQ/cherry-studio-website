@@ -407,7 +407,7 @@
     },
     "standard": {
       "badge": "Enterprise",
-      "title": "Cherry Studio Enterprise Standard",
+      "title": "Cherry Studio Enterprise Premium",
       "subtitle": "Complete solution for large enterprises and special security requirements, with full private deployment and deep customization.",
       "price_label": "Scale-based Pricing",
       "price_range": "From ¥50,000",
@@ -464,7 +464,7 @@
         },
         {
           "question": "What models are built into Express Edition? Can I add my own?",
-          "answer": "Built-in models include OpenAI, Anthropic, Google and other top closed-source models, plus DeepSeek, Kimi, Qwen and other quality Chinese models. Express Edition doesn't support adding custom models - choose Enterprise Standard for this need."
+          "answer": "Built-in models include OpenAI, Anthropic, Google and other top closed-source models, plus DeepSeek, Kimi, Qwen and other quality Chinese models. Express Edition doesn't support adding custom models - choose Enterprise Premium for this need."
         },
         {
           "question": "What are the server requirements for private deployment?",

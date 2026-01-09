@@ -405,7 +405,7 @@
     },
     "standard": {
       "badge": "企业版",
-      "title": "Cherry Studio 企业标准版",
+      "title": "Cherry Studio 企业旗舰版",
       "subtitle": "为大型企业和特殊安全需求场景打造的完整解决方案，支持完全私有化部署和深度定制。",
       "price_label": "按规模定价",
       "price_range": "¥50,000 起",
@@ -462,7 +462,7 @@
         },
         {
           "question": "Express 版内置了哪些模型？可以自己添加吗？",
-          "answer": "内置 OpenAI、Anthropic、Google 等顶级闭源模型以及 DeepSeek、Kimi、通义千问等国产优质模型。Express 版不支持自行添加模型，如有此需求请选择企业标准版。"
+          "answer": "内置 OpenAI、Anthropic、Google 等顶级闭源模型以及 DeepSeek、Kimi、通义千问等国产优质模型。Express 版不支持自行添加模型，如有此需求请选择企业旗舰版。"
         },
         {
           "question": "私有化部署对服务器有什么要求？",
