@@ -5,8 +5,33 @@ export interface SystemInfo {
   arch: string
 }
 
+export type DetectedPlatform = 'windows' | 'macos' | 'linux' | null
+
 export function isMobileDevice(): boolean {
   return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+}
+
+export function detectPlatform(): DetectedPlatform {
+  if (isMobileDevice()) {
+    return null
+  }
+
+  const ua = navigator.userAgent.toLowerCase()
+  const platform = navigator.platform.toLowerCase()
+
+  if (ua.includes('windows') || platform.includes('win')) {
+    return 'windows'
+  }
+
+  if (ua.includes('mac') || platform.includes('mac')) {
+    return 'macos'
+  }
+
+  if (ua.includes('linux') || platform.includes('linux')) {
+    return 'linux'
+  }
+
+  return null
 }
 
 export function getSystemInfo(version: string): SystemInfo[] | null {

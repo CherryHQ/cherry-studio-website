@@ -187,9 +187,9 @@ const TestimonialsSection: FC = () => {
       <div className="dot-pattern absolute inset-0 opacity-20" />
 
       <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
-        <div className="mb-8 text-center sm:mb-12">
-          <h2 className="text-foreground text-2xl font-bold sm:text-3xl">{t('testimonials.title')}</h2>
-          <p className="text-muted-foreground mt-2 text-sm sm:mt-3 sm:text-lg">{t('testimonials.subtitle')}</p>
+        <div className="mb-8 text-center sm:mb-16">
+          <h2 className="text-foreground mb-3 text-2xl font-bold sm:mb-4 sm:text-4xl lg:text-5xl">{t('testimonials.title')}</h2>
+          <p className="text-muted-foreground text-sm sm:text-base">{t('testimonials.subtitle')}</p>
         </div>
 
         <div className="grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">

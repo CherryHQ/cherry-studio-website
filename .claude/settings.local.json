@@ -35,7 +35,8 @@
       "Bash(pnpm biome:*)",
       "Bash(for f in src/assets/images/screenshots/*.png)",
       "Bash(do cwebp:*)",
-      "Bash(done)"
+      "Bash(done)",
+      "Bash(pnpm lint:*)"
     ],
     "deny": [],
     "ask": []

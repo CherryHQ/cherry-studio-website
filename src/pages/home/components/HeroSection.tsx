@@ -130,7 +130,7 @@ const HeroSection: FC = () => {
         a3.remove()
       }
     }
-  }, [])
+  }, [i18n.language])
 
   return (
     <section className="bg-background relative overflow-hidden pt-16 sm:pt-20">

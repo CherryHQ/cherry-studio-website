@@ -51,7 +51,7 @@ const ContributorsSection: FC = () => {
       <section className="bg-background relative overflow-hidden py-12 sm:py-16">
         <div className="dot-pattern absolute inset-0 opacity-20" />
         <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
-          <h2 className="text-foreground mb-8 text-center text-2xl font-bold sm:mb-10 sm:text-3xl">
+          <h2 className="text-foreground mb-8 text-center text-2xl font-bold sm:mb-10 sm:text-4xl lg:text-5xl">
             {t('contributors.project_contributors')}
           </h2>
           <div className="flex justify-center">
@@ -67,8 +67,8 @@ const ContributorsSection: FC = () => {
       <div className="dot-pattern absolute inset-0 opacity-20" />
 
       <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
-        <div className="mb-6 text-center sm:mb-10">
-          <h2 className="text-foreground mb-3 text-2xl font-bold sm:mb-4 sm:text-3xl">
+        <div className="mx-auto mb-8 max-w-3xl text-center sm:mb-16">
+          <h2 className="text-foreground mb-3 text-2xl font-bold sm:mb-4 sm:text-4xl lg:text-5xl">
             {t('contributors.project_contributors')}
           </h2>
           <p className="text-muted-foreground text-sm sm:text-base">{t('contributors.project_contributors_subtitle')}</p>

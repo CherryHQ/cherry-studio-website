@@ -194,7 +194,7 @@
     "subtitle": "Seamlessly integrate 300+ leading AI models. Switch freely, use effortlessly."
   },
   "download_page": {
-    "cloud_download": "Cloud Download",
+    "cloud_download": "Cloud Download (Backup)",
     "quark_drive": "Quark Cloud Drive",
     "click_download": "Click to Download",
     "loading_version": "Getting version info...",
@@ -227,14 +227,30 @@
     "linux_rpm_arm": "RPM Version (ARM)",
     "mobile_detected": "Mobile Device Detected",
     "mobile_hint": "Cherry Studio is a desktop application. Please download on your computer.",
-    "view_all_downloads": "View All Downloads"
+    "view_all_downloads": "View All Downloads",
+    "platform_windows": "Windows",
+    "platform_macos": "macOS",
+    "platform_linux": "Linux",
+    "recommended": "Recommended",
+    "recommended_download": "Recommended Download",
+    "other_versions_expand": "Other Versions",
+    "best_for_most": "Best for most computers",
+    "no_install_needed": "No installation needed, portable",
+    "for_arm_devices": "For ARM devices",
+    "apple_silicon": "Apple Silicon (M1/M2/M3/M4)",
+    "intel_mac": "Intel Chip",
+    "universal_linux": "Universal Linux version",
+    "for_debian_ubuntu": "For Debian/Ubuntu",
+    "for_fedora_rhel": "For Fedora/RHEL",
+    "download_slow": "Slow download? Try"
   },
   "enterprise_page": {
     "hero": {
       "title": "Cherry Studio Enterprise",
       "subtitle": "AI productivity and management platform built for modern teams and enterprises",
       "contact_us": "Contact Us",
-      "learn_more": "Learn More"
+      "learn_more": "Learn More",
+      "quick_start": "Quick Start"
     },
     "features": {
       "title": "Core Advantages",
@@ -314,6 +330,28 @@
       }
     },
     "beta": {
+      "section_title": "Quick Start",
+      "section_subtitle": "Get started with Enterprise Edition in three easy steps",
+      "step1": {
+        "title": "Experience Admin System",
+        "description": "Log in to the admin portal to explore management features",
+        "admin_portal": "Admin Portal",
+        "account": "Account",
+        "password": "Password",
+        "open_admin": "Open Admin Portal"
+      },
+      "step2": {
+        "title": "Download and Use Client",
+        "description": "Download the client, configure the server address to start",
+        "server_url": "Server URL",
+        "account": "Account",
+        "password": "Password"
+      },
+      "step3": {
+        "title": "View User Manual",
+        "description": "Detailed documentation to help you master all features",
+        "view_manual": "View User Manual"
+      },
       "demo": {
         "title": "Demo Environment",
         "admin_portal": "Admin Portal: ",
@@ -337,31 +375,69 @@
     "express": {
       "badge": "Recommended",
       "title": "Cherry Studio Express Edition",
-      "subtitle": "Cost-effective AI solution designed for small and medium teams, one-time purchase, lifetime use",
+      "subtitle": "Cost-effective AI solution for small and medium teams. One-time purchase, lifetime use. No need to build your own model service - ready to use out of the box.",
       "price_label": "One-time Price",
-      "period": "/ Lifetime",
+      "period": "/ Lifetime License",
       "features": {
         "unlimited_users": "Unlimited users",
-        "builtin_provider": "Built-in provider",
-        "quick_deployment": "Quick deployment",
-        "one_time_payment": "One-time payment"
+        "builtin_provider": "Built-in premium models",
+        "quick_deployment": "10-minute deployment",
+        "one_time_payment": "One-time fee, no hidden costs"
       },
-      "benefits": {
-        "fast_start": {
-          "title": "Quick Start",
-          "description": "No complex configuration required, use built-in provider to get online instantly, let your team start using AI quickly"
+      "values": {
+        "save_money": {
+          "title": "Cost Savings",
+          "description": "¥5,000 one-time price with unlimited seats. No per-user fees, predictable budget."
         },
-        "cost_effective": {
-          "title": "Cost-Effective",
-          "description": "¥5,000 one-time price, unlimited users, ideal for small and medium teams with limited budget"
+        "save_effort": {
+          "title": "Effortless",
+          "description": "Built-in AI models, no API keys needed, no network hassle. Ready to use out of the box."
         },
-        "enterprise_grade": {
-          "title": "Enterprise Features",
-          "description": "Includes core enterprise features such as employee management and model management to meet team collaboration needs"
+        "peace_of_mind": {
+          "title": "Streamlined",
+          "description": "Unified admin console for employees, models, and knowledge base. Say goodbye to chaos."
+        },
+        "security": {
+          "title": "Secure",
+          "description": "Private deployment with all data on your own servers. 100% under your control."
         }
       },
-      "cta_button": "Contact for Express Edition",
+      "cta_button": "Contact Us",
       "cta_note": "Contact us for detailed plans and demos"
+    },
+    "standard": {
+      "badge": "Enterprise",
+      "title": "Cherry Studio Enterprise Standard",
+      "subtitle": "Complete solution for large enterprises and special security requirements, with full private deployment and deep customization.",
+      "price_label": "Scale-based Pricing",
+      "price_range": "From ¥50,000",
+      "period": "/ Lifetime License",
+      "features": {
+        "custom_models": "Custom model API integration",
+        "full_isolation": "Full intranet isolation",
+        "sso_integration": "SSO integration",
+        "dedicated_support": "Dedicated tech support"
+      },
+      "values": {
+        "flexibility": {
+          "title": "Flexible Customization",
+          "description": "Connect your own local LLMs, custom API integration to meet special business needs."
+        },
+        "compliance": {
+          "title": "Compliance Ready",
+          "description": "Meet strict data security requirements for finance, government sectors. Full audit logging."
+        },
+        "scalability": {
+          "title": "Elastic Scaling",
+          "description": "K8s cluster deployment, scale elastically based on business needs for high concurrency."
+        },
+        "integration": {
+          "title": "System Integration",
+          "description": "Integrate with existing SSO, OA systems for unified identity authentication and management."
+        }
+      },
+      "cta_button": "Contact for Enterprise",
+      "cta_note": "Get custom solutions and pricing"
     },
     "support": {
       "title": "Get Support",
@@ -369,6 +445,36 @@
       "send_email": "Send Email",
       "business_cooperation": "Business Cooperation",
       "scan_qrcode": "Scan to Contact Us"
+    },
+    "faq": {
+      "title": "FAQ",
+      "subtitle": "Common questions about the Enterprise Edition",
+      "items": [
+        {
+          "question": "Is Express Edition really a one-time payment for lifetime use? Are there other costs?",
+          "answer": "Yes, ¥5,000 for permanent software license, plus ¥5,000 for initial model usage credits. Subsequent model fees are deducted based on actual usage. From the second year, you can optionally pay ¥1,000/year for updates and technical support - the software remains usable even without this."
+        },
+        {
+          "question": "Does \"unlimited seats\" mean I can create accounts for any number of people? Will it affect performance?",
+          "answer": "Yes, one license supports unlimited employees within your company without per-seat fees. Performance mainly depends on your server configuration, not the number of users."
+        },
+        {
+          "question": "What's the difference between Express Edition and Community Edition?",
+          "answer": "Three key differences: 1) Express has built-in model services, ready to use; 2) Provides enterprise features like employee management and shared knowledge base; 3) Offers official paid technical support. Community Edition is mainly for personal use."
+        },
+        {
+          "question": "What models are built into Express Edition? Can I add my own?",
+          "answer": "Built-in models include OpenAI, Anthropic, Google and other top closed-source models, plus DeepSeek, Kimi, Qwen and other quality Chinese models. Express Edition doesn't support adding custom models - choose Enterprise Standard for this need."
+        },
+        {
+          "question": "What are the server requirements for private deployment?",
+          "answer": "Typically a basic cloud server or physical server (e.g., 4 cores, 8GB RAM) is sufficient. Official deployment documentation is provided, or choose Tencent Cloud deployment which requires almost no professional DevOps knowledge."
+        },
+        {
+          "question": "Is data security guaranteed?",
+          "answer": "With private deployment, all data (employee info, chat records, knowledge base files) is stored on your own servers, never uploaded to any third party. Data security is completely under your control."
+        }
+      ]
     }
   },
   "contributors": {

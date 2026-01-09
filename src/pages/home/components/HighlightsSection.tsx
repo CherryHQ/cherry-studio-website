@@ -73,7 +73,7 @@ const HighlightsSection: FC = () => {
           <h2 className="text-foreground mb-3 text-2xl font-bold sm:mb-4 sm:text-4xl lg:text-5xl">
             {t('highlights.title')}
           </h2>
-          <p className="text-muted-foreground text-base sm:text-lg">{t('highlights.subtitle')}</p>
+          <p className="text-muted-foreground text-sm sm:text-base">{t('highlights.subtitle')}</p>
         </div>
 
         {/* Highlights Grid */}
