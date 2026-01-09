@@ -4,7 +4,8 @@ import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, useLocation } from 'react-router-dom'
 
-import cherryLogo from '@/assets/images/cherry-logo.svg'
+import cherryLogoSvg from '@/assets/images/cherry-logo.svg'
+import cherryLogoPng from '@/assets/images/logo.png'
 import githubIcon from '@/assets/images/icons/github.svg'
 import { cn } from '@/lib/utils'
 import MobileMenu from './MobileMenu'
@@ -65,10 +66,17 @@ const SimpleHeader: React.FC = () => {
           {/* Logo */}
           <Link to="/" className="group flex items-center gap-3">
             <div className="relative">
+              {/* Mobile: SVG logo */}
               <img
-                src={cherryLogo}
+                src={cherryLogoSvg}
                 alt="Cherry Studio"
-                className="h-8 w-auto transition-transform duration-300 group-hover:scale-105"
+                className="h-8 w-auto transition-transform duration-300 group-hover:scale-105 sm:hidden"
+              />
+              {/* Desktop: PNG logo with iOS rounded corners */}
+              <img
+                src={cherryLogoPng}
+                alt="Cherry Studio"
+                className="hidden h-8 w-auto rounded-[22%] transition-transform duration-300 group-hover:scale-105 sm:block"
               />
               <div className="bg-primary/20 absolute -inset-1 -z-10 rounded-full opacity-0 blur-lg transition-opacity duration-300 group-hover:opacity-100" />
             </div>
