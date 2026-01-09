@@ -68,7 +68,8 @@ const ContributorsSection: FC = () => {
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-10 text-center">
-          <h2 className="text-foreground text-2xl font-bold sm:text-3xl">{t('contributors.project_contributors')}</h2>
+          <h2 className="text-foreground mb-4 text-2xl font-bold sm:text-3xl">{t('contributors.project_contributors')}</h2>
+          <p className="text-muted-foreground">{t('contributors.project_contributors_subtitle')}</p>
         </div>
 
         <div className="grid grid-cols-4 gap-3 sm:grid-cols-5 md:grid-cols-8 lg:grid-cols-10">

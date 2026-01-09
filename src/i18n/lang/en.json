@@ -53,8 +53,8 @@
     "download_client": "Download Client"
   },
   "features": {
-    "title": "Main Features Introduction",
-    "description": "The following is only a partial introduction to the features. For more features, you can download the client to experience, or learn more in the <1>Official Documentation</1>.",
+    "title": "Unlock the Power of AI",
+    "description": "From creative conversations to knowledge management, enjoy a complete AI experience. Learn more in the <1>Official Documentation</1>.",
     "learn_more": "Learn More",
     "conversation": {
       "title": "Large Model Conversation",
@@ -97,8 +97,8 @@
     }
   },
   "community": {
-    "title": "Join Our Community",
-    "subtitle": "Connect with developers and users around the world",
+    "title": "Become Part of the Cherry Family",
+    "subtitle": "Share experiences and grow together with AI enthusiasts worldwide",
     "follow_us": "Follow Us",
     "wechat_group": "WeChat Group",
     "wechat_qr_alt": "WeChat Group QR Code",
@@ -188,8 +188,8 @@
     "stars": "Stars"
   },
   "providers": {
-    "title": "Cherry Studio has a variety of service providers built-in",
-    "subtitle": "It also supports connecting to other service providers compatible with the API format of OpenAI/Anthropic."
+    "title": "One Hub, All AI Models",
+    "subtitle": "Seamlessly integrate 300+ leading AI models. Switch freely, use effortlessly."
   },
   "download_page": {
     "cloud_download": "Cloud Download",
@@ -367,10 +367,45 @@
     }
   },
   "contributors": {
-    "project_contributors": "Project Contributors",
+    "project_contributors": "Built by Amazing People",
+    "project_contributors_subtitle": "Thank you to every contributor for your passion and dedication",
     "doc_contributors": "Documentation Contributors",
     "contribution_stats": "Contributions: {{contributions}} commits ({{rate}}%)",
     "partial": "(Partial)"
+  },
+  "highlights": {
+    "title": "Why Choose Cherry Studio",
+    "subtitle": "Your all-in-one AI assistant platform, making AI accessible to everyone",
+    "multi_model": {
+      "title": "Multi-Model Freedom",
+      "description": "Support 50+ AI providers including OpenAI, Claude, Gemini cloud models, plus local models via Ollama and LM Studio. One client for all your AI needs."
+    },
+    "assistants": {
+      "title": "300+ Smart Assistants",
+      "description": "Pre-configured assistants for writing, coding, learning, translation, marketing and more. No prompt engineering needed, ready to use instantly."
+    },
+    "documents": {
+      "title": "Smart Document Handling",
+      "description": "Work with text, images, Office docs, PDFs. WebDAV file management, Mermaid chart rendering, and syntax highlighting built-in."
+    },
+    "productivity": {
+      "title": "Productivity Tools",
+      "description": "Global search, topic management, AI translation, drag-and-drop organization. Streamline your workflow effortlessly."
+    },
+    "customizable": {
+      "title": "Customizable Experience",
+      "description": "Light/dark themes, transparent windows, full Markdown rendering. Beautiful interface, ready to use out of the box."
+    },
+    "extensible": {
+      "title": "Powerful Extensibility",
+      "description": "Support for mini-programs and MCP servers. Extend functionality infinitely, build your personalized AI workspace."
+    },
+    "stats": {
+      "providers": "AI Providers",
+      "assistants": "Built-in Assistants",
+      "stars": "GitHub Stars",
+      "platforms": "Platforms"
+    }
   },
   "testimonials": {
     "title": "Why Users Love Cherry Studio",

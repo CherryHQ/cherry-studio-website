@@ -51,8 +51,8 @@
     "download_client": "下载客户端"
   },
   "features": {
-    "title": "主要功能介绍",
-    "description": "以下仅为部分功能介绍，更多功能可以下载客户端体验，或在<1>官方文档</1>中了解。",
+    "title": "释放 AI 的无限可能",
+    "description": "从对话创作到知识管理，为你打造全方位的 AI 体验。更多功能可在<1>官方文档</1>中了解。",
     "learn_more": "详细了解",
     "conversation": {
       "title": "大模型对话",
@@ -95,8 +95,8 @@
     }
   },
   "community": {
-    "title": "加入我们的社群",
-    "subtitle": "与全球开发者和用户建立联系",
+    "title": "成为 Cherry 社区的一员",
+    "subtitle": "与全球 AI 爱好者分享经验、共同成长",
     "follow_us": "关注我们",
     "wechat_group": "微信群",
     "wechat_qr_alt": "微信群二维码",
@@ -186,8 +186,8 @@
     "stars": "收藏量"
   },
   "providers": {
-    "title": "Cherry Studio 内置了多种服务商",
-    "subtitle": "同时也支持接入兼容 OpenAI/Anthropic 等 API 格式的其他服务商"
+    "title": "一个入口，连接所有 AI",
+    "subtitle": "无缝集成 300+ 主流大模型，自由切换，随心所用"
   },
   "download_page": {
     "cloud_download": "网盘下载",
@@ -365,10 +365,45 @@
     }
   },
   "contributors": {
-    "project_contributors": "项目贡献者",
+    "project_contributors": "与优秀的人同行",
+    "project_contributors_subtitle": "感谢每一位贡献者的热情与付出",
     "doc_contributors": "文档贡献者",
     "contribution_stats": "贡献: {{contributions}} commits ({{rate}}%)",
     "partial": "(部分)"
+  },
+  "highlights": {
+    "title": "为什么选择 Cherry Studio",
+    "subtitle": "一站式 AI 助手平台，让 AI 触手可及",
+    "multi_model": {
+      "title": "多模型自由切换",
+      "description": "支持 50+ AI 服务商，包括 OpenAI、Claude、Gemini 等云端模型，以及 Ollama、LM Studio 等本地模型，一个客户端满足所有需求。"
+    },
+    "assistants": {
+      "title": "300+ 智能助手",
+      "description": "内置海量预配置助手，覆盖写作、编程、学习、翻译、营销等场景，无需编写提示词，开箱即用。"
+    },
+    "documents": {
+      "title": "智能文档处理",
+      "description": "支持文本、图片、Office 文档、PDF 等多种格式，WebDAV 文件管理，Mermaid 图表渲染，代码高亮显示。"
+    },
+    "productivity": {
+      "title": "效率工具集成",
+      "description": "全局搜索、话题管理、AI 翻译、拖拽排序等功能，让工作流程更加顺畅高效。"
+    },
+    "customizable": {
+      "title": "个性化体验",
+      "description": "支持亮色/暗色主题、透明窗口、完整 Markdown 渲染，界面美观，即开即用。"
+    },
+    "extensible": {
+      "title": "强大的扩展能力",
+      "description": "支持小程序和 MCP 服务器，功能可无限扩展，打造属于你的专属 AI 工作台。"
+    },
+    "stats": {
+      "providers": "AI 服务商",
+      "assistants": "内置助手",
+      "stars": "GitHub Stars",
+      "platforms": "支持平台"
+    }
   },
   "testimonials": {
     "title": "用户为何喜欢 Cherry Studio",
