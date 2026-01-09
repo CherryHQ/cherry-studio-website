@@ -155,6 +155,8 @@
     },
     "location_title": "工作地点",
     "location": "上海市嘉定区南翔",
+    "location_detail": "上海市嘉定区沪宜公路1188号3A号楼206室",
+    "click_to_view_map": "点击查看地图",
     "cta_title": "准备好了吗？",
     "cta_subtitle": "期待与你一起创造下一代 AI 产品"
   },

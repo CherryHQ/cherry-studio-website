@@ -157,6 +157,8 @@
     },
     "location_title": "Location",
     "location": "Nanxiang, Jiading District, Shanghai",
+    "location_detail": "Room 206, Building 3A, No.1188 Huyi Road, Jiading, Shanghai",
+    "click_to_view_map": "Click to view map",
     "cta_title": "Ready to Join?",
     "cta_subtitle": "We look forward to building the next generation of AI products with you"
   },

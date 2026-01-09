@@ -141,27 +141,28 @@ const HeroSection: FC = () => {
         <div className="pt-8 pb-4 text-center sm:pt-24 sm:pb-8 lg:pt-32">
           {/* Main Heading */}
           <h1 className="text-foreground mb-4 text-3xl font-semibold tracking-tight sm:mb-6 sm:text-5xl lg:text-6xl">
-            {isZh ? 'Agentic AI 全平台客户端' : 'Agentic AI for Desktop & Mobile'}
+            {isZh ? '你的超级 AI 工作站' : 'Your AI Productivity Studio'}
           </h1>
 
           {/* Subtitle */}
-          <p className="text-muted-foreground mx-auto mb-6 max-w-2xl text-base sm:mb-10 sm:text-lg">
+          <p className="text-muted-foreground mx-auto mb-6 max-w-2xl whitespace-nowrap text-base sm:mb-10 sm:text-lg">
             {isZh ? (
               <>
-                <span ref={ref1}>AI Agent</span>
-                {' + '}
-                <span ref={ref2}>Coding Agent</span>
-                {' + '}
-                <span ref={ref3}>300+ 智能助手</span>
+                <span ref={ref1}>智能对话</span>
+                {' · '}
+                <span ref={ref2}>自主 Agent</span>
+                {' · '}
+                <span ref={ref3}>无限创造</span>
                 ，统一接入主流大模型
               </>
             ) : (
               <>
-                <span ref={ref1}>AI Agent</span>
-                {' + '}
-                <span ref={ref2}>Coding Agent</span>
-                {' + '}
-                <span ref={ref3}>300+ assistants</span>, unified access to frontier LLMs.
+                <span ref={ref1}>Smart Chat</span>
+                {' · '}
+                <span ref={ref2}>Autonomous Agent</span>
+                {' · '}
+                <span ref={ref3}>Limitless Creation</span>
+                {' — Unified Access to Frontier LLMs'}
               </>
             )}
           </p>

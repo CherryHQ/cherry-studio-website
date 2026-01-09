@@ -115,12 +115,7 @@ const SimpleHeader: React.FC = () => {
                         <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-green-500" />
                       </span>
                     )}
-                    <span className="relative">
-                      {link.label}
-                      {location.pathname === link.path && (
-                        <span className="bg-primary absolute -bottom-2 left-1/2 h-0.5 w-4 -translate-x-1/2 rounded-full" />
-                      )}
-                    </span>
+                    {link.label}
                   </Link>
                 )
               )}
