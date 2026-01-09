@@ -16,7 +16,7 @@ const DownloadPage: FC = () => {
   const { t } = useTranslation()
   usePageMeta('download')
 
-  const { loading, versionData, downloadUrls } = useVersionData()
+  const { loading, versionData } = useVersionData()
   const [activePlatform, setActivePlatform] = useState<Platform>('windows')
   const [detectedPlatform, setDetectedPlatform] = useState<Platform | null>(null)
   const isMobile = isMobileDevice()
@@ -31,7 +31,7 @@ const DownloadPage: FC = () => {
 
   return (
     <div className="bg-background min-h-screen">
-      <section className="pt-32 pb-20">
+      <section className="min-h-screen pt-32 pb-20">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <VersionInfo versionData={versionData} loading={loading} />
 
@@ -51,11 +51,7 @@ const DownloadPage: FC = () => {
           />
 
           {/* Platform Downloads */}
-          <PlatformDownloads
-            platform={activePlatform}
-            downloadGroup={downloadUrls?.[activePlatform] || null}
-            version={versionData?.version || ''}
-          />
+          <PlatformDownloads platform={activePlatform} versionData={versionData} loading={loading} />
 
           {/* Cloud download backup link */}
           <div className="text-muted-foreground mt-6 text-center text-sm">

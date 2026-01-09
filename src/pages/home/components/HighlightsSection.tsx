@@ -66,7 +66,7 @@ const HighlightsSection: FC = () => {
           <Button variant="glow" size="lg" asChild>
             <Link to="/download" className="gap-2">
               <Download className="h-5 w-5" />
-              Download {versionData?.version}
+              {t('download')} {versionData?.version}
             </Link>
           </Button>
         </div>

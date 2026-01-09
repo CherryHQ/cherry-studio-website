@@ -3,7 +3,7 @@ import { type FC, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { Button } from '@/components/ui/button'
-import type { DownloadGroup } from '@/hooks/useVersionData'
+import type { VersionData } from '@/hooks/useVersionData'
 import { cn } from '@/lib/utils'
 
 import type { Platform } from './PlatformTabs'
@@ -18,8 +18,8 @@ interface DownloadItemConfig {
 
 interface PlatformDownloadsProps {
   platform: Platform
-  downloadGroup: DownloadGroup | null
-  version: string
+  versionData: VersionData | null
+  loading: boolean
 }
 
 const getDownloadItems = (platform: Platform, version: string, t: (key: string) => string): DownloadItemConfig[] => {
@@ -113,13 +113,47 @@ const getDownloadItems = (platform: Platform, version: string, t: (key: string) 
   return configs[platform]
 }
 
-const PlatformDownloads: FC<PlatformDownloadsProps> = ({ platform, version }) => {
+const SkeletonLoader: FC = () => {
+  return (
+    <div className="space-y-6">
+      {/* Recommended Download Skeleton */}
+      <div className="rounded-2xl border-2 border-green-500/30 bg-green-500/10 p-6">
+        <div className="mb-4 flex items-center gap-2">
+          <div className="h-5 w-5 animate-pulse rounded bg-green-500/30" />
+          <div className="h-5 w-32 animate-pulse rounded bg-green-500/30" />
+        </div>
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="min-w-0 flex-1 space-y-2">
+            <div className="bg-muted h-6 w-48 animate-pulse rounded" />
+            <div className="bg-muted h-4 w-32 animate-pulse rounded" />
+            <div className="bg-muted h-3 w-64 animate-pulse rounded" />
+          </div>
+          <div className="h-11 w-32 shrink-0 animate-pulse rounded-lg bg-green-500/30" />
+        </div>
+      </div>
+
+      {/* Other Downloads Skeleton */}
+      <div className="border-border bg-card rounded-2xl border">
+        <div className="flex w-full items-center justify-between px-6 py-4">
+          <div className="bg-muted h-5 w-40 animate-pulse rounded" />
+          <div className="bg-muted h-5 w-5 animate-pulse rounded" />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+const PlatformDownloads: FC<PlatformDownloadsProps> = ({ platform, versionData, loading }) => {
   const { t } = useTranslation()
   const [showOthers, setShowOthers] = useState(false)
 
-  if (!version) return null
+  if (loading) {
+    return <SkeletonLoader />
+  }
 
-  const items = getDownloadItems(platform, version, t)
+  if (!versionData) return null
+
+  const items = getDownloadItems(platform, versionData.version, t)
   const recommendedItem = items.find((item) => item.isRecommended)
   const otherItems = items.filter((item) => !item.isRecommended)
 

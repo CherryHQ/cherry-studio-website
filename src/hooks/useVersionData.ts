@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react'
-import { useTranslation } from 'react-i18next'
+import { useEffect, useRef, useState } from 'react'
 
 import { getSystemInfo, type SystemInfo } from '../utils/systemDetection'
 
@@ -11,6 +10,7 @@ export interface Asset {
 
 export interface VersionData {
   version: string
+  cleanVersion: string
   publishedAt: string
   changelog: string
   assets: Asset[]
@@ -34,14 +34,16 @@ export interface DownloadUrls {
 }
 
 export function useVersionData() {
-  const { t } = useTranslation()
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [versionData, setVersionData] = useState<VersionData | null>(null)
   const [systemInfo, setSystemInfo] = useState<SystemInfo[] | null>(null)
-  const [downloadUrls, setDownloadUrls] = useState<DownloadUrls | null>(null)
+  const fetchedRef = useRef(false)
 
   useEffect(() => {
+    if (fetchedRef.current) return
+    fetchedRef.current = true
+
     const fetchVersionData = async () => {
       try {
         const response = await fetch('https://releases.cherry-ai.com')
@@ -54,90 +56,12 @@ export function useVersionData() {
           version,
           publishedAt: new Date(data.created_at).toLocaleDateString(),
           changelog: data.body,
-          assets: data.assets.filter((asset: Asset) => asset.type === 'attach')
-        }
-
-        const downloadUrls: DownloadUrls = {
-          windows: {
-            title: t('download_page.windows_package'),
-            items: [
-              {
-                name: `Cherry-Studio-${cleanVersion}-x64-setup.exe`,
-                url: `https://gitcode.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-x64-setup.exe`,
-                desc: t('download_page.windows_standard')
-              },
-              {
-                name: `Cherry-Studio-${cleanVersion}-x64-portable.exe`,
-                url: `https://gitcode.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-x64-portable.exe`,
-                desc: t('download_page.windows_portable')
-              },
-              {
-                name: `Cherry-Studio-${cleanVersion}-arm64-setup.exe`,
-                url: `https://gitcode.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-arm64-setup.exe`,
-                desc: t('download_page.windows_standard_arm')
-              },
-              {
-                name: `Cherry-Studio-${cleanVersion}-arm64-portable.exe`,
-                url: `https://gitcode.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-arm64-portable.exe`,
-                desc: t('download_page.windows_portable_arm')
-              }
-            ]
-          },
-          macos: {
-            title: t('download_page.macos_package'),
-            items: [
-              {
-                name: `Cherry-Studio-${cleanVersion}-x64.dmg`,
-                url: `https://gitcode.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-x64.dmg`,
-                desc: t('download_page.macos_intel')
-              },
-              {
-                name: `Cherry-Studio-${cleanVersion}-arm64.dmg`,
-                url: `https://gitcode.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-arm64.dmg`,
-                desc: t('download_page.macos_apple')
-              }
-            ]
-          },
-          linux: {
-            title: t('download_page.linux_package'),
-            items: [
-              {
-                name: `Cherry-Studio-${cleanVersion}-x86_64.AppImage`,
-                url: `https://gitcode.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-x86_64.AppImage`,
-                desc: t('download_page.linux_appimage')
-              },
-              {
-                name: `Cherry-Studio-${cleanVersion}-arm64.AppImage`,
-                url: `https://gitcode.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-arm64.AppImage`,
-                desc: t('download_page.linux_appimage_arm')
-              },
-              {
-                name: `Cherry-Studio-${cleanVersion}-amd64.deb`,
-                url: `https://gitcode.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-amd64.deb`,
-                desc: t('download_page.linux_deb')
-              },
-              {
-                name: `Cherry-Studio-${cleanVersion}-arm64.deb`,
-                url: `https://gitcode.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-arm64.deb`,
-                desc: t('download_page.linux_deb_arm')
-              },
-              {
-                name: `Cherry-Studio-${cleanVersion}-x86_64.rpm`,
-                url: `https://gitcode.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-x86_64.rpm`,
-                desc: t('download_page.linux_rpm')
-              },
-              {
-                name: `Cherry-Studio-${cleanVersion}-arm64.rpm`,
-                url: `https://gitcode.com/CherryHQ/cherry-studio/releases/download/${version}/Cherry-Studio-${cleanVersion}-aarch64.rpm`,
-                desc: t('download_page.linux_rpm_arm')
-              }
-            ]
-          }
+          assets: data.assets.filter((asset: Asset) => asset.type === 'attach'),
+          cleanVersion
         }
 
         setVersionData(versionData)
         setSystemInfo(getSystemInfo(version))
-        setDownloadUrls(downloadUrls)
         setLoading(false)
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Failed to fetch version data')
@@ -146,7 +70,7 @@ export function useVersionData() {
     }
 
     fetchVersionData()
-  }, [t])
+  }, [])
 
-  return { loading, error, versionData, systemInfo, downloadUrls }
+  return { loading, error, versionData, systemInfo }
 }
