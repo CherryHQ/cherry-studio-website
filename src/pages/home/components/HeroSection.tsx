@@ -14,8 +14,8 @@ import homePageDark from '@/assets/images/screenshots/home-page-dark.png'
 import homePageLight from '@/assets/images/screenshots/home-page-light.png'
 import { fetchNotice, NoticeResponse } from '@/assets/js/notice'
 import { Button } from '@/components/ui/button'
-import { cn } from '@/lib/utils'
 import { useTheme } from '@/hooks/useTheme'
+import { cn } from '@/lib/utils'
 
 interface FeatureTab {
   id: string
@@ -198,7 +198,7 @@ const HeroSection: FC = () => {
 
       {/* Feature Tabs */}
       <div
-        className="relative mx-auto mt-16 max-w-6xl px-4 sm:mt-20 sm:px-6 lg:px-8"
+        className="relative mx-auto mt-8 max-w-6xl px-4 sm:mt-10 sm:px-6 lg:px-8"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}>
         {/* Tab Navigation */}
