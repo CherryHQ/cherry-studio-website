@@ -1,7 +1,7 @@
-import { FC } from 'react'
+import type { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { VersionData } from '@/hooks/useVersionData'
+import type { VersionData } from '@/hooks/useVersionData'
 
 interface VersionInfoProps {
   versionData: VersionData | null

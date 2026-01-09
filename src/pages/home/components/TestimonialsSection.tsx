@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import type { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
 interface Testimonial {
@@ -19,7 +19,8 @@ const testimonials: Testimonial[] = [
     id: 1,
     name: 'Eric Hu',
     handle: '@erichudev',
-    avatar: 'https://ph-avatars.imgix.net/7081066/af4d0d2d-5f4e-4635-8d8c-efb3e4f96d22.png?auto=compress&codec=mozjpeg&cs=strip&auto=format&w=120&h=120&fit=crop&dpr=1',
+    avatar:
+      'https://ph-avatars.imgix.net/7081066/af4d0d2d-5f4e-4635-8d8c-efb3e4f96d22.png?auto=compress&codec=mozjpeg&cs=strip&auto=format&w=120&h=120&fit=crop&dpr=1',
     platform: 'producthunt',
     content: {
       en: "This has become one of those can't-live-without-it, first-thing-I-open kind of tools. The side-by-side model debugging is the core magic here. No more copy-pasting prompts between ten different windows.",

@@ -1,10 +1,9 @@
 import { X } from 'lucide-react'
-import React from 'react'
+import type React from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, useLocation } from 'react-router-dom'
 
 import { cn } from '@/lib/utils'
-
 import LanguageSelector from './LanguageSelector'
 
 interface MobileMenuProps {
@@ -22,8 +21,16 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
     { path: '/enterprise', label: t('enterprise') },
     { path: '/theme', label: t('nav.theme') },
     { path: '/careers', label: t('nav.careers') },
-    { path: 'https://docs.cherry-ai.com/', label: t('nav.docs'), external: true },
-    { path: 'https://docs.cherry-ai.com/contact-us/questions', label: t('nav.contact'), external: true }
+    {
+      path: 'https://docs.cherry-ai.com/',
+      label: t('nav.docs'),
+      external: true
+    },
+    {
+      path: 'https://docs.cherry-ai.com/contact-us/questions',
+      label: t('nav.contact'),
+      external: true
+    }
   ]
 
   return (

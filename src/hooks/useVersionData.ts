@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { getSystemInfo, SystemInfo } from '../utils/systemDetection'
+import { getSystemInfo, type SystemInfo } from '../utils/systemDetection'
 
 export interface Asset {
   name: string

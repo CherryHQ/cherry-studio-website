@@ -1,8 +1,8 @@
 import { marked } from 'marked'
-import { FC, useMemo } from 'react'
+import { type FC, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { VersionData } from '@/hooks/useVersionData'
+import type { VersionData } from '@/hooks/useVersionData'
 import { parseChangelog } from '@/utils/parseChangelog'
 
 interface ChangelogProps {

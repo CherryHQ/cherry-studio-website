@@ -29,7 +29,10 @@
       "Bash(pnpm add @radix-ui/react-dialog @radix-ui/react-dropdown-menu @radix-ui/react-navigation-menu @radix-ui/react-slot)",
       "Bash(rm:*)",
       "Bash(pnpm add:*)",
-      "Bash(pnpm remove:*)"
+      "Bash(pnpm remove:*)",
+      "Bash(cat:*)",
+      "Bash(pnpm check:*)",
+      "Bash(pnpm biome:*)"
     ],
     "deny": [],
     "ask": []

@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react'
+import { type FC, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 interface Contributor {
@@ -68,7 +68,9 @@ const ContributorsSection: FC = () => {
 
       <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
         <div className="mb-10 text-center">
-          <h2 className="text-foreground mb-4 text-2xl font-bold sm:text-3xl">{t('contributors.project_contributors')}</h2>
+          <h2 className="text-foreground mb-4 text-2xl font-bold sm:text-3xl">
+            {t('contributors.project_contributors')}
+          </h2>
           <p className="text-muted-foreground">{t('contributors.project_contributors_subtitle')}</p>
         </div>
 

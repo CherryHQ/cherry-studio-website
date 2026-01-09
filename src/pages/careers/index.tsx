@@ -1,8 +1,8 @@
-import { FC } from 'react'
+import type { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import Footer from '@/components/website/Footer'
 import { Button } from '@/components/ui/button'
+import Footer from '@/components/website/Footer'
 import { usePageMeta } from '@/hooks/usePageMeta'
 
 const CareersPage: FC = () => {
@@ -33,8 +33,7 @@ const CareersPage: FC = () => {
             <a
               href="https://mcnnox2fhjfq.feishu.cn/share/base/form/shrcnaepLR6BrddSI3mv0899Wpf"
               target="_blank"
-              rel="noopener noreferrer"
-            >
+              rel="noopener noreferrer">
               {t('careers.apply_button')}
             </a>
           </Button>
@@ -64,8 +63,7 @@ const CareersPage: FC = () => {
             {positions.map((pos) => (
               <div
                 key={pos.key}
-                className="flex items-center justify-between rounded-lg border border-border/50 bg-card/50 p-5 transition-colors hover:border-border"
-              >
+                className="flex items-center justify-between rounded-lg border border-border/50 bg-card/50 p-5 transition-colors hover:border-border">
                 <div className="flex items-center gap-4">
                   <span className="text-2xl">{pos.icon}</span>
                   <div>
@@ -81,8 +79,7 @@ const CareersPage: FC = () => {
               <a
                 href="https://github.com/CherryHQ/cherry-studio/issues/11953"
                 target="_blank"
-                rel="noopener noreferrer"
-              >
+                rel="noopener noreferrer">
                 {t('careers.view_full_jd')}
               </a>
             </Button>
@@ -107,8 +104,7 @@ const CareersPage: FC = () => {
             <a
               href="https://mcnnox2fhjfq.feishu.cn/share/base/form/shrcnaepLR6BrddSI3mv0899Wpf"
               target="_blank"
-              rel="noopener noreferrer"
-            >
+              rel="noopener noreferrer">
               {t('careers.apply_button')}
             </a>
           </Button>

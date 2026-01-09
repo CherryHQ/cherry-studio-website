@@ -1,5 +1,5 @@
 import { Bot, FileText, Palette, Puzzle, Sparkles, Zap } from 'lucide-react'
-import { FC } from 'react'
+import type { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { cn } from '@/lib/utils'
@@ -70,9 +70,7 @@ const HighlightsSection: FC = () => {
       <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="mx-auto mb-16 max-w-3xl text-center">
-          <h2 className="text-foreground mb-4 text-3xl font-bold sm:text-4xl lg:text-5xl">
-            {t('highlights.title')}
-          </h2>
+          <h2 className="text-foreground mb-4 text-3xl font-bold sm:text-4xl lg:text-5xl">{t('highlights.title')}</h2>
           <p className="text-muted-foreground text-lg">{t('highlights.subtitle')}</p>
         </div>
 
@@ -85,7 +83,7 @@ const HighlightsSection: FC = () => {
                 'group relative overflow-hidden rounded-2xl p-6',
                 'border-border/50 hover:border-border border bg-gradient-to-br transition-all duration-300',
                 highlight.gradient,
-                'hover:shadow-lg hover:-translate-y-1'
+                'hover:-translate-y-1 hover:shadow-lg'
               )}
               style={{ animationDelay: `${index * 100}ms` }}>
               {/* Icon */}
@@ -119,7 +117,7 @@ const HighlightsSection: FC = () => {
             { value: '50+', labelKey: 'highlights.stats.providers' },
             { value: '300+', labelKey: 'highlights.stats.assistants' },
             { value: '30K+', labelKey: 'highlights.stats.stars' },
-            { value: '3', labelKey: 'highlights.stats.platforms' }
+            { value: '5', labelKey: 'highlights.stats.platforms' }
           ].map((stat) => (
             <div key={stat.labelKey} className="text-center">
               <div className="text-primary mb-2 text-3xl font-bold sm:text-4xl">{stat.value}</div>

@@ -11,7 +11,7 @@ import {
   Users,
   Zap
 } from 'lucide-react'
-import { FC, useState } from 'react'
+import { type FC, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 

@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef } from 'react'
+import { type FC, useEffect, useRef } from 'react'
 
 interface Bubble {
   x: number

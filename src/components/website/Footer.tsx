@@ -1,22 +1,21 @@
-import React from 'react'
+import type React from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 
 import cherryLogo from '@/assets/images/cherry-logo.svg'
-import gitcodeColorIcon from '@/assets/images/icons/gitcode-color.svg'
 import gitcodeIcon from '@/assets/images/icons/gitcode.svg'
-import githubColorIcon from '@/assets/images/icons/github-color.svg'
+import gitcodeColorIcon from '@/assets/images/icons/gitcode-color.svg'
 import githubIcon from '@/assets/images/icons/github.svg'
-import pColorIcon from '@/assets/images/icons/p-color.svg'
+import githubColorIcon from '@/assets/images/icons/github-color.svg'
 import pIcon from '@/assets/images/icons/p.svg'
-import rssColorIcon from '@/assets/images/icons/rss-color.svg'
+import pColorIcon from '@/assets/images/icons/p-color.svg'
 import rssIcon from '@/assets/images/icons/rss.svg'
-import tgColorIcon from '@/assets/images/icons/tg-color.svg'
+import rssColorIcon from '@/assets/images/icons/rss-color.svg'
 import tgIcon from '@/assets/images/icons/tg.svg'
-import xColorIcon from '@/assets/images/icons/x-color.svg'
+import tgColorIcon from '@/assets/images/icons/tg-color.svg'
 import xIcon from '@/assets/images/icons/x.svg'
+import xColorIcon from '@/assets/images/icons/x-color.svg'
 import cherryWxQR from '@/assets/images/resource/cherrywx.png'
 import { copyRSSLink } from '@/utils'
-
 import LanguageSelector from './LanguageSelector'
 
 const Footer: React.FC = () => {
@@ -25,9 +24,27 @@ const Footer: React.FC = () => {
   const socialLinks = [
     { href: 'https://x.com/CherryStudioHQ', icon: xIcon, colorIcon: xColorIcon, alt: 'X', darkInvert: true },
     { href: 'https://t.me/CherryStudioAI', icon: tgIcon, colorIcon: tgColorIcon, alt: 'Telegram', darkInvert: false },
-    { href: 'https://github.com/CherryHQ/cherry-studio', icon: githubIcon, colorIcon: githubColorIcon, alt: 'GitHub', darkInvert: true },
-    { href: 'https://gitcode.com/CherryHQ/cherry-studio', icon: gitcodeIcon, colorIcon: gitcodeColorIcon, alt: 'GitCode', darkInvert: false },
-    { href: 'https://www.producthunt.com/products/cherry-studio', icon: pIcon, colorIcon: pColorIcon, alt: 'Product Hunt', darkInvert: false }
+    {
+      href: 'https://github.com/CherryHQ/cherry-studio',
+      icon: githubIcon,
+      colorIcon: githubColorIcon,
+      alt: 'GitHub',
+      darkInvert: true
+    },
+    {
+      href: 'https://gitcode.com/CherryHQ/cherry-studio',
+      icon: gitcodeIcon,
+      colorIcon: gitcodeColorIcon,
+      alt: 'GitCode',
+      darkInvert: false
+    },
+    {
+      href: 'https://www.producthunt.com/products/cherry-studio',
+      icon: pIcon,
+      colorIcon: pColorIcon,
+      alt: 'Product Hunt',
+      darkInvert: false
+    }
   ]
 
   const cherryLinks = [
@@ -78,7 +95,11 @@ const Footer: React.FC = () => {
                 type="button"
                 onClick={copyRSSLink}
                 className="group border-border bg-secondary/50 hover:bg-secondary relative flex h-9 w-9 items-center justify-center rounded-lg border transition-all duration-200">
-                <img src={rssIcon} alt="RSS" className="h-4 w-4 opacity-70 invert transition-opacity duration-200 group-hover:opacity-0" />
+                <img
+                  src={rssIcon}
+                  alt="RSS"
+                  className="h-4 w-4 opacity-70 invert transition-opacity duration-200 group-hover:opacity-0"
+                />
                 <img
                   src={rssColorIcon}
                   alt="RSS"

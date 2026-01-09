@@ -1,9 +1,8 @@
-import { FC } from 'react'
+import type { FC } from 'react'
 
 import Footer from '@/components/website/Footer'
 import SectionDivider from '@/components/website/SectionDivider'
 import { usePageMeta } from '@/hooks/usePageMeta'
-
 import CommunitySection from './components/CommunitySection'
 import ContributorsSection from './components/ContributorsSection'
 import FeaturesSection from './components/FeaturesSection'

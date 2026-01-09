@@ -1,5 +1,5 @@
 import { ArrowRight, Bot, BrushIcon, Download, MessageSquare, ServerIcon } from 'lucide-react'
-import { FC, useEffect, useRef, useState } from 'react'
+import { type FC, useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import { annotate } from 'rough-notation'
@@ -12,7 +12,7 @@ import aiProvidersDark from '@/assets/images/screenshots/ai-providers-dark.png'
 import aiProvidersLight from '@/assets/images/screenshots/ai-providers-light.png'
 import homePageDark from '@/assets/images/screenshots/home-page-dark.png'
 import homePageLight from '@/assets/images/screenshots/home-page-light.png'
-import { fetchNotice, NoticeResponse } from '@/assets/js/notice'
+import { fetchNotice, type NoticeResponse } from '@/assets/js/notice'
 import { Button } from '@/components/ui/button'
 import { useTheme } from '@/hooks/useTheme'
 import { cn } from '@/lib/utils'
@@ -130,7 +130,7 @@ const HeroSection: FC = () => {
         a3.remove()
       }
     }
-  }, [isZh])
+  }, [])
 
   return (
     <section className="bg-background relative min-h-screen overflow-hidden pt-20">
@@ -167,7 +167,7 @@ const HeroSection: FC = () => {
           </p>
 
           {/* Notice */}
-          {notice && notice.status && (
+          {notice?.status && (
             <div
               className="mb-8"
               style={{
@@ -202,7 +202,7 @@ const HeroSection: FC = () => {
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}>
         {/* Tab Navigation */}
-        <div className="mb-6 flex justify-center">
+        <div className="flex justify-center">
           <div className="bg-muted/50 inline-flex gap-1 rounded-full p-1 backdrop-blur-sm">
             {featureTabs.map((tab) => (
               <button

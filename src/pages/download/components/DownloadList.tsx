@@ -1,7 +1,7 @@
-import { FC } from 'react'
+import type { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { Asset, DownloadItem, DownloadUrls } from '@/hooks/useVersionData'
+import type { Asset, DownloadItem, DownloadUrls } from '@/hooks/useVersionData'
 
 interface DownloadListProps {
   downloadUrls: DownloadUrls | null

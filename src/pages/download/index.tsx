@@ -1,10 +1,9 @@
-import { FC, useRef } from 'react'
+import { type FC, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import Footer from '@/components/website/Footer'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { useVersionData } from '@/hooks/useVersionData'
-
 import Changelog from './components/Changelog'
 import DownloadButtons from './components/DownloadButtons'
 import DownloadList from './components/DownloadList'

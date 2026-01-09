@@ -1,9 +1,9 @@
 import { Download } from 'lucide-react'
-import { FC } from 'react'
+import type { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { Button } from '@/components/ui/button'
-import { SystemInfo } from '@/utils/systemDetection'
+import type { SystemInfo } from '@/utils/systemDetection'
 
 interface DownloadButtonsProps {
   systemInfo: SystemInfo[] | null
@@ -35,18 +35,17 @@ const DownloadButtons: FC<DownloadButtonsProps> = ({ systemInfo }) => {
         </p>
       )}
       <div className="flex flex-wrap items-center justify-center gap-4">
-        {systemInfo &&
-          systemInfo.map((item) => (
-            <Button
-              key={item.url}
-              variant="glow"
-              size="lg"
-              onClick={() => (window.location.href = item.url)}
-              className="gap-2">
-              <Download className="h-5 w-5" />
-              {getButtonText(item)}
-            </Button>
-          ))}
+        {systemInfo?.map((item) => (
+          <Button
+            key={item.url}
+            variant="glow"
+            size="lg"
+            onClick={() => (window.location.href = item.url)}
+            className="gap-2">
+            <Download className="h-5 w-5" />
+            {getButtonText(item)}
+          </Button>
+        ))}
       </div>
     </div>
   )

@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { Calendar, Star, Users } from 'lucide-react'
-import { FC } from 'react'
+import type { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
 const Statistics: FC = () => {

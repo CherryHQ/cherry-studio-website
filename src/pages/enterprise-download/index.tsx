@@ -1,14 +1,14 @@
 import { Download, ExternalLink, FileText, Monitor } from 'lucide-react'
-import { FC, useRef } from 'react'
+import { type FC, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { Button } from '@/components/ui/button'
 import { BackgroundBeams } from '@/components/ui/shadcn-io/background-beams'
 import Footer from '@/components/website/Footer'
 import {
-  EnterpriseDownloadUrls,
-  EnterpriseSystemInfo,
-  EnterpriseVersionData,
+  type EnterpriseDownloadUrls,
+  type EnterpriseSystemInfo,
+  type EnterpriseVersionData,
   useEnterpriseVersionData
 } from '@/hooks/useEnterpriseVersionData'
 import { usePageMeta } from '@/hooks/usePageMeta'
@@ -126,7 +126,9 @@ const DownloadButtons: FC<DownloadButtonsProps> = ({ systemInfo, onOtherVersions
         </div>
       )}
       <div className="flex flex-wrap items-center justify-center gap-3">
-        {systemInfo && systemInfo.map((info) => <DownloadButton key={info.name} info={info} />)}
+        {systemInfo?.map((info) => (
+          <DownloadButton key={info.name} info={info} />
+        ))}
         <Button
           variant="outline"
           size="lg"

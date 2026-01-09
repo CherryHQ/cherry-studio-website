@@ -256,7 +256,7 @@ const ThemePage: React.FC = () => {
         }, 500)
       }
     },
-    [t]
+    [t, showNotification]
   )
 
   useEffect(() => {
@@ -441,17 +441,7 @@ const ThemePage: React.FC = () => {
         return nextPage
       })
     }
-  }, [
-    hasMore,
-    loadingMore,
-    fetchCssData,
-    authorFilter,
-    searchTerm,
-    tagFilter,
-    allLoadedItems,
-    displayPage,
-    ITEMS_PER_PAGE_DISPLAY
-  ])
+  }, [hasMore, loadingMore, fetchCssData, authorFilter, searchTerm, tagFilter, allLoadedItems, displayPage])
 
   const formatVersion = (version: number): string => {
     return version.toFixed(1)
@@ -675,7 +665,7 @@ const ThemePage: React.FC = () => {
     }, [])
 
     const handleImageChange = useCallback((e: React.ChangeEvent<HTMLInputElement>, type: 'light' | 'dark') => {
-      if (e.target.files && e.target.files[0]) {
+      if (e.target.files?.[0]) {
         const file = e.target.files[0]
 
         const isImage = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'].includes(file.type)
@@ -1346,7 +1336,7 @@ const ThemePage: React.FC = () => {
                             {copySuccess === `${item.id}-code` ? t('theme_page.copied') : t('theme_page.copy_code')}
                           </Button>
 
-                          {item.cdn_link && item.cdn_link.startsWith('http') && (
+                          {item.cdn_link?.startsWith('http') && (
                             <Button
                               variant={copySuccess === `${item.id}-cdn` ? 'default' : 'outline'}
                               size="sm"

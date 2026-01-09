@@ -1,12 +1,12 @@
 import { Download, ExternalLink, Menu, Star, X } from 'lucide-react'
-import React, { useEffect, useState } from 'react'
+import type React from 'react'
+import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, useLocation } from 'react-router-dom'
 
 import cherryLogo from '@/assets/images/cherry-logo.svg'
 import githubIcon from '@/assets/images/icons/github.svg'
 import { cn } from '@/lib/utils'
-
 import MobileMenu from './MobileMenu'
 
 const SimpleHeader: React.FC = () => {
@@ -41,7 +41,7 @@ const SimpleHeader: React.FC = () => {
 
   const formatStarCount = (count: number) => {
     if (count >= 1000) {
-      return (count / 1000).toFixed(1) + 'k'
+      return `${(count / 1000).toFixed(1)}k`
     }
     return count.toString()
   }

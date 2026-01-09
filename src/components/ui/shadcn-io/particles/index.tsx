@@ -1,6 +1,7 @@
 'use client'
 
-import React, { useEffect, useRef, useState } from 'react'
+import type React from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import { cn } from '@/lib/utils'
 
@@ -90,15 +91,18 @@ export const Particles: React.FC<ParticlesProps> = ({
     return () => {
       window.removeEventListener('resize', initCanvas)
     }
-  }, [color])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   useEffect(() => {
     onMouseMove()
-  }, [mousePosition.x, mousePosition.y])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [mousePosition])
 
   useEffect(() => {
     initCanvas()
-  }, [refresh])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [color])
 
   const initCanvas = () => {
     resizeCanvas()
