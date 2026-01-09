@@ -202,29 +202,30 @@ const HeroSection: FC = () => {
         className="relative mx-auto mt-8 max-w-[1200px] px-4 sm:mt-10 sm:px-6 lg:px-8"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}>
-        {/* Tab Navigation */}
-        <div className="flex justify-center">
-          <div className="bg-muted/50 inline-flex gap-1 rounded-full p-1 backdrop-blur-sm">
-            {featureTabs.map((tab) => (
-              <button
-                type="button"
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={cn(
-                  'flex items-center gap-2 rounded-full px-3 py-2 text-sm font-medium transition-all duration-200 sm:px-4',
-                  activeTab === tab.id
-                    ? 'bg-background text-foreground shadow-sm'
-                    : 'text-muted-foreground hover:text-foreground'
-                )}>
-                {tab.icon}
-                <span className="hidden sm:inline">{isZh ? tab.labelZh : tab.labelEn}</span>
-              </button>
-            ))}
+        {/* Screenshot Display with Embedded Tabs */}
+        <div className="relative overflow-hidden rounded-2xl border border-white/10 shadow-2xl">
+          {/* Tab Navigation - Embedded in image */}
+          <div className="absolute top-4 left-1/2 z-10 -translate-x-1/2">
+            <div className="inline-flex gap-1 rounded-full border border-white/20 bg-black/40 p-1 backdrop-blur-md">
+              {featureTabs.map((tab) => (
+                <button
+                  type="button"
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={cn(
+                    'flex items-center gap-2 rounded-full px-3 py-2 text-sm font-medium transition-all duration-200 sm:px-4',
+                    activeTab === tab.id
+                      ? 'bg-white/20 text-white shadow-sm'
+                      : 'text-white/70 hover:text-white'
+                  )}>
+                  {tab.icon}
+                  <span className="hidden sm:inline">{isZh ? tab.labelZh : tab.labelEn}</span>
+                </button>
+              ))}
+            </div>
           </div>
-        </div>
 
-        {/* Screenshot Display */}
-        <div className="relative overflow-hidden rounded-lg">
+          {/* Screenshots */}
           {featureTabs.map((tab) => (
             <img
               key={tab.id}
