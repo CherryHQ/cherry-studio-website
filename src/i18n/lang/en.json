@@ -48,7 +48,7 @@
     "local_storage_description": "All your usage data is stored locally and will not be uploaded to any third-party servers, and it supports model calls deployed locally.",
     "personalized_knowledge_base": "Personalized Knowledge Base",
     "knowledge_base_integration_title": "AI Knowledge Base Integration",
-    "your_personal_assistant": "Be your most intimate assistant",
+    "your_personal_assistant": "Your most trusted assistant",
     "knowledge_base_description": "Cherry Studio has now launched the knowledge base function, which supports importing files in various formats and importing web pages to build your personalized knowledge base.",
     "download_client": "Download Client"
   },
@@ -57,7 +57,7 @@
     "description": "From creative conversations to knowledge management, enjoy a complete AI experience. Learn more in the <1>Official Documentation</1>.",
     "learn_more": "Learn More",
     "conversation": {
-      "title": "Large Model Conversation",
+      "title": "AI Chat",
       "description": "In addition to basic AI conversations, it can also help you with document or image conversations, and even formula and HTML previews."
     },
     "drawing": {
@@ -69,8 +69,8 @@
       "description": "Whether it's the translation page or the conversation bar, Cherry Studio can quickly translate the content you enter."
     },
     "assistants": {
-      "title": "Over a Thousand Built-in Assistants",
-      "description": "Cherry Studio has built-in thousands of assistants in various categories, making you more efficient when using large models."
+      "title": "1000+ Built-in Assistants",
+      "description": "Cherry Studio has built-in thousands of assistants in various categories, making you more efficient when using AI."
     },
     "knowledge_base": {
       "title": "Multi-source Knowledge Base",
@@ -85,7 +85,7 @@
     "title": "Project Related",
     "intro": {
       "title": "Project Introduction",
-      "description": "Cherry Studio is a multi-platform AI client that supports Windows, macOS, and Linux platforms, with mobile support coming in the future. Since July 2024, the project has iterated hundreds of versions. We are committed to creating a more efficient, secure, and user-friendly client that allows more people to enjoy the convenience of AI."
+      "description": "Cherry Studio is a multi-platform AI client that supports Windows, macOS, and Linux platforms, with mobile support coming in the future. Since July 2024, the project has released hundreds of updates. We are committed to creating a more efficient, secure, and user-friendly client that allows more people to enjoy the convenience of AI."
     },
     "goal": {
       "title": "Cherry Studio's Goals",
@@ -105,7 +105,7 @@
     "wechat_scan_prompt": "Scan to join WeChat group",
     "contact_us": "Contact Us",
     "qq_group": "QQ Group",
-    "zsxq": "ZhiShiXingQiu (Q&A)"
+    "zsxq": "Knowledge Planet (Q&A)"
   },
   "careers": {
     "badge": "We're Hiring",
@@ -193,7 +193,7 @@
   },
   "download_page": {
     "cloud_download": "Cloud Download",
-    "quark_drive": "Quark Drive",
+    "quark_drive": "Quark Cloud Drive",
     "click_download": "Click to Download",
     "loading_version": "Getting version info...",
     "version_error": "Failed to get version info, please download from the cloud drive temporarily",
@@ -266,7 +266,7 @@
         "feature_category": "Feature Category",
         "specific_item": "Specific Item",
         "community": "Community",
-        "enterprise_startup": "Express Plan",
+        "enterprise_startup": "Express Edition",
         "enterprise": "Enterprise Plan",
 
         "license_and_cost": "License & Cost",
