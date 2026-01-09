@@ -17,7 +17,7 @@ import { Link } from 'react-router-dom'
 
 import { Button } from '@/components/ui/button'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { BackgroundBeams } from '@/components/ui/shadcn-io/background-beams'
+import { Particles } from '@/components/ui/shadcn-io/particles'
 import Footer from '@/components/website/Footer'
 import { useEnterpriseData } from '@/hooks/useEnterpriseData'
 import { usePageMeta } from '@/hooks/usePageMeta'
@@ -42,24 +42,57 @@ const EnterprisePage: FC = () => {
   }
 
   const features = [
-    { icon: KeyRound, titleKey: 'model_management', descKey: 'model_management' },
-    { icon: BookOpen, titleKey: 'knowledge_base', descKey: 'knowledge_base' },
-    { icon: Users, titleKey: 'permission_control', descKey: 'permission_control' },
-    { icon: Building2, titleKey: 'private_deployment', descKey: 'private_deployment' },
-    { icon: RefreshCw, titleKey: 'backend_service', descKey: 'backend_service' },
-    { icon: ShieldCheck, titleKey: 'security_compliance', descKey: 'security_compliance' }
+    {
+      icon: KeyRound,
+      titleKey: 'model_management',
+      descKey: 'model_management',
+      color: 'text-blue-500 bg-blue-500/10'
+    },
+    {
+      icon: BookOpen,
+      titleKey: 'knowledge_base',
+      descKey: 'knowledge_base',
+      color: 'text-emerald-500 bg-emerald-500/10'
+    },
+    {
+      icon: Users,
+      titleKey: 'permission_control',
+      descKey: 'permission_control',
+      color: 'text-violet-500 bg-violet-500/10'
+    },
+    {
+      icon: Building2,
+      titleKey: 'private_deployment',
+      descKey: 'private_deployment',
+      color: 'text-orange-500 bg-orange-500/10'
+    },
+    {
+      icon: RefreshCw,
+      titleKey: 'backend_service',
+      descKey: 'backend_service',
+      color: 'text-cyan-500 bg-cyan-500/10'
+    },
+    {
+      icon: ShieldCheck,
+      titleKey: 'security_compliance',
+      descKey: 'security_compliance',
+      color: 'text-rose-500 bg-rose-500/10'
+    }
   ]
 
   return (
     <div className="bg-background min-h-screen">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#0a0e27] to-[#1a1f3a] px-6 pt-24 pb-12">
-        <BackgroundBeams className="absolute inset-0 z-0" />
+      <section className="relative overflow-hidden bg-black px-6 pt-32 pb-20">
+        {/* Subtle grid */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:64px_64px]" />
+        {/* Particles */}
+        <Particles className="absolute inset-0" quantity={60} color="#ffffff" size={0.4} staticity={40} />
+        {/* Subtle center glow */}
+        <div className="absolute top-1/2 left-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500/5 blur-[120px]" />
         <div className="relative z-10 mx-auto max-w-4xl text-center">
-          <h1 className="mb-6 bg-gradient-to-r from-white to-blue-100 bg-clip-text text-4xl font-bold text-transparent sm:text-5xl">
-            {t('enterprise_page.hero.title')}
-          </h1>
-          <p className="text-lg text-white/80 sm:text-xl">{t('enterprise_page.hero.subtitle')}</p>
+          <h1 className="mb-6 text-4xl font-bold text-white sm:text-5xl">{t('enterprise_page.hero.title')}</h1>
+          <p className="text-lg text-neutral-400 sm:text-xl">{t('enterprise_page.hero.subtitle')}</p>
         </div>
       </section>
 
@@ -73,11 +106,11 @@ const EnterprisePage: FC = () => {
             <p className="text-muted-foreground mx-auto max-w-xl text-lg">{t('enterprise_page.features.subtitle')}</p>
           </div>
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {features.map(({ icon: Icon, titleKey, descKey }) => (
+            {features.map(({ icon: Icon, titleKey, descKey, color }) => (
               <div
                 key={titleKey}
                 className="group border-border bg-card rounded-xl border p-8 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg">
-                <div className="bg-primary/10 text-primary mb-6 flex h-12 w-12 items-center justify-center rounded-xl">
+                <div className={`mb-6 flex h-12 w-12 items-center justify-center rounded-xl ${color}`}>
                   <Icon className="h-6 w-6" />
                 </div>
                 <h3 className="text-foreground mb-4 text-xl font-semibold">
@@ -164,7 +197,7 @@ const EnterprisePage: FC = () => {
                     <div key={key} className="flex items-center justify-between text-sm">
                       <span className="text-muted-foreground">{t(`enterprise_page.comparison.table.${key}`)}</span>
                       {hasCheck ? (
-                        <span className="text-primary">
+                        <span className="text-blue-500">
                           <Check className="h-4 w-4" />
                         </span>
                       ) : (
@@ -211,13 +244,13 @@ const EnterprisePage: FC = () => {
                     <span className="text-muted-foreground">
                       {t('enterprise_page.comparison.table.deployment_method')}
                     </span>
-                    <span className="text-primary flex items-center gap-1">
+                    <span className="flex items-center gap-1 text-blue-500">
                       <Check className="h-4 w-4" /> {t('enterprise_page.comparison.table.deployment_private')}
                     </span>
                   </div>
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-muted-foreground">{t('enterprise_page.comparison.table.tech_support')}</span>
-                    <span className="text-primary flex items-center gap-1">
+                    <span className="flex items-center gap-1 text-blue-500">
                       <Check className="h-4 w-4" /> {t('enterprise_page.comparison.table.support_dedicated')}
                     </span>
                   </div>
@@ -248,7 +281,7 @@ const EnterprisePage: FC = () => {
                     <div key={key} className="flex items-center justify-between text-sm">
                       <span className="text-muted-foreground">{t(`enterprise_page.comparison.table.${key}`)}</span>
                       {hasCheck ? (
-                        <span className="text-primary">
+                        <span className="text-blue-500">
                           <Check className="h-4 w-4" />
                         </span>
                       ) : text ? (
@@ -263,9 +296,9 @@ const EnterprisePage: FC = () => {
             </div>
 
             {/* Enterprise Edition */}
-            <div className="border-primary/30 bg-card flex flex-col overflow-hidden rounded-xl border shadow-sm transition-all hover:shadow-md">
-              <div className="from-primary/10 flex min-h-[200px] flex-col justify-start bg-gradient-to-b to-transparent p-8 text-center">
-                <h3 className="text-primary mb-2 text-2xl font-bold">
+            <div className="bg-card flex flex-col overflow-hidden rounded-xl border border-blue-500/30 shadow-sm transition-all hover:shadow-md">
+              <div className="flex min-h-[200px] flex-col justify-start bg-gradient-to-b from-blue-500/10 to-transparent p-8 text-center">
+                <h3 className="mb-2 text-2xl font-bold text-blue-500">
                   {t('enterprise_page.comparison.table.enterprise')}
                 </h3>
                 <div className="mt-3 flex flex-1 flex-col gap-3">
@@ -307,13 +340,13 @@ const EnterprisePage: FC = () => {
                     <span className="text-muted-foreground">
                       {t('enterprise_page.comparison.table.deployment_method')}
                     </span>
-                    <span className="text-primary flex items-center gap-1">
+                    <span className="flex items-center gap-1 text-blue-500">
                       <Check className="h-4 w-4" /> {t('enterprise_page.comparison.table.deployment_private')}
                     </span>
                   </div>
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-muted-foreground">{t('enterprise_page.comparison.table.tech_support')}</span>
-                    <span className="text-primary flex items-center gap-1">
+                    <span className="flex items-center gap-1 text-blue-500">
                       <Check className="h-4 w-4" /> {t('enterprise_page.comparison.table.support_dedicated')}
                     </span>
                   </div>
@@ -343,7 +376,7 @@ const EnterprisePage: FC = () => {
                   ].map((key) => (
                     <div key={key} className="flex items-center justify-between text-sm">
                       <span className="text-muted-foreground">{t(`enterprise_page.comparison.table.${key}`)}</span>
-                      <span className="text-primary">
+                      <span className="text-blue-500">
                         <Check className="h-4 w-4" />
                       </span>
                     </div>
@@ -357,12 +390,12 @@ const EnterprisePage: FC = () => {
 
       {/* Express Edition Highlight */}
       <section className="border-border from-secondary/30 to-background relative overflow-hidden border-t bg-gradient-to-br px-6 py-24">
-        <div className="bg-primary/5 absolute -top-24 -right-24 h-96 w-96 rounded-full blur-3xl" />
+        <div className="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-blue-500/5 blur-3xl" />
         <div className="mx-auto max-w-6xl">
           <div className="relative z-10 grid items-start gap-16 lg:grid-cols-[1fr_480px]">
             {/* Left Side - Main Info */}
             <div className="flex flex-col gap-8 lg:pr-8">
-              <span className="from-primary to-primary/80 inline-flex w-fit items-center gap-2 rounded-full bg-gradient-to-r px-4 py-2 text-xs font-semibold tracking-wider text-white uppercase shadow-lg">
+              <span className="inline-flex w-fit items-center gap-2 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 px-4 py-2 text-xs font-semibold tracking-wider text-white uppercase shadow-lg">
                 <Sparkles className="h-4 w-4" />
                 {t('enterprise_page.express.badge')}
               </span>
@@ -376,8 +409,8 @@ const EnterprisePage: FC = () => {
                 {['unlimited_users', 'builtin_provider', 'quick_deployment', 'one_time_payment'].map((key) => (
                   <div
                     key={key}
-                    className="border-border bg-card hover:border-primary flex items-start gap-3 rounded-lg border p-4 transition-all hover:-translate-y-0.5 hover:shadow-md">
-                    <div className="bg-primary/10 text-primary flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-md">
+                    className="border-border bg-card flex items-start gap-3 rounded-lg border p-4 transition-all hover:-translate-y-0.5 hover:border-blue-500 hover:shadow-md">
+                    <div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-md bg-blue-500/10 text-blue-500">
                       <Check className="h-4 w-4" />
                     </div>
                     <span className="text-foreground text-sm font-medium">
@@ -404,7 +437,7 @@ const EnterprisePage: FC = () => {
                   </span>
                   <div className="mb-3 flex items-baseline justify-center gap-1">
                     <span className="text-foreground text-3xl font-normal">¥</span>
-                    <span className="text-primary text-7xl font-bold tracking-tight">5,000</span>
+                    <span className="text-7xl font-bold tracking-tight text-blue-500">5,000</span>
                   </div>
                   <span className="text-muted-foreground text-sm font-medium">
                     {t('enterprise_page.express.period')}
@@ -420,7 +453,7 @@ const EnterprisePage: FC = () => {
                     { icon: ShieldCheck, key: 'enterprise_grade' }
                   ].map(({ icon: Icon, key }) => (
                     <div key={key} className="flex items-start gap-4">
-                      <div className="from-primary/10 to-primary/5 text-primary flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br transition-transform hover:scale-105">
+                      <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500/10 to-blue-500/5 text-blue-500 transition-transform hover:scale-105">
                         <Icon className="h-6 w-6" />
                       </div>
                       <div className="pt-0.5">
@@ -447,7 +480,7 @@ const EnterprisePage: FC = () => {
             {/* Demo Card */}
             <div className="border-border bg-card flex h-full flex-col rounded-xl border p-7 shadow-sm">
               <h3 className="text-foreground mb-5 flex items-center gap-2 text-base font-semibold">
-                <span className="bg-primary h-4 w-1 rounded" />
+                <span className="h-4 w-1 rounded bg-blue-500" />
                 {t('enterprise_page.beta.demo.title')}
               </h3>
               <div className="text-muted-foreground flex flex-1 flex-col text-sm leading-relaxed">
@@ -460,7 +493,7 @@ const EnterprisePage: FC = () => {
                       href="https://admin.demo.cherry-ai.com"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-primary hover:underline">
+                      className="text-blue-500 hover:underline">
                       admin.demo.cherry-ai.com
                     </a>
                   </li>
@@ -483,7 +516,7 @@ const EnterprisePage: FC = () => {
             {/* Download Card */}
             <div className="border-border bg-card flex h-full flex-col rounded-xl border p-7 shadow-sm">
               <h3 className="text-foreground mb-5 flex items-center gap-2 text-base font-semibold">
-                <span className="bg-primary h-4 w-1 rounded" />
+                <span className="h-4 w-1 rounded bg-blue-500" />
                 {t('enterprise_page.beta.download.title')}
               </h3>
               <div className="text-muted-foreground flex flex-1 flex-col text-sm leading-relaxed">
@@ -516,7 +549,7 @@ const EnterprisePage: FC = () => {
             {/* Manual Card */}
             <div className="border-border bg-card flex h-full flex-col rounded-xl border p-7 shadow-sm">
               <h3 className="text-foreground mb-5 flex items-center gap-2 text-base font-semibold">
-                <span className="bg-primary h-4 w-1 rounded" />
+                <span className="h-4 w-1 rounded bg-blue-500" />
                 {t('enterprise_page.beta.manual.title')}
               </h3>
               <div className="text-muted-foreground flex flex-1 flex-col text-sm leading-relaxed">
@@ -545,7 +578,7 @@ const EnterprisePage: FC = () => {
             {t('enterprise_page.support.description')}
           </p>
           <div className="flex flex-col items-center gap-6">
-            <p className="text-primary text-2xl font-medium">bd@cherry-ai.com</p>
+            <p className="text-2xl font-medium text-blue-500">bd@cherry-ai.com</p>
             {enterpriseData?.data?.contact_qrcode && (
               <div className="mt-4 flex flex-col items-center gap-5">
                 <img
