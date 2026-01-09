@@ -2,10 +2,15 @@ import { FC, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import gitcodeIcon from '@/assets/images/icons/gitcode.svg'
+import gitcodeColorIcon from '@/assets/images/icons/gitcode-color.svg'
 import githubIcon from '@/assets/images/icons/github.svg'
+import githubColorIcon from '@/assets/images/icons/github-color.svg'
 import pIcon from '@/assets/images/icons/p.svg'
+import pColorIcon from '@/assets/images/icons/p-color.svg'
 import tgIcon from '@/assets/images/icons/tg.svg'
+import tgColorIcon from '@/assets/images/icons/tg-color.svg'
 import xIcon from '@/assets/images/icons/x.svg'
+import xColorIcon from '@/assets/images/icons/x-color.svg'
 import { fetchChannelData, getRandomWechatQRCode } from '@/assets/js/data'
 import { Button } from '@/components/ui/button'
 
@@ -28,11 +33,29 @@ const CommunitySection: FC = () => {
   }, [])
 
   const socialLinks = [
-    { href: 'https://x.com/CherryStudioHQ', icon: xIcon, alt: 'X' },
-    { href: 'https://t.me/CherryStudioAI', icon: tgIcon, alt: 'Telegram' },
-    { href: 'https://github.com/CherryHQ/cherry-studio', icon: githubIcon, alt: 'GitHub' },
-    { href: 'https://gitcode.com/CherryHQ/cherry-studio', icon: gitcodeIcon, alt: 'GitCode' },
-    { href: 'https://www.producthunt.com/products/cherry-studio', icon: pIcon, alt: 'Product Hunt' }
+    { href: 'https://x.com/CherryStudioHQ', icon: xIcon, colorIcon: xColorIcon, alt: 'X', darkInvert: true },
+    { href: 'https://t.me/CherryStudioAI', icon: tgIcon, colorIcon: tgColorIcon, alt: 'Telegram', darkInvert: false },
+    {
+      href: 'https://github.com/CherryHQ/cherry-studio',
+      icon: githubIcon,
+      colorIcon: githubColorIcon,
+      alt: 'GitHub',
+      darkInvert: true
+    },
+    {
+      href: 'https://gitcode.com/CherryHQ/cherry-studio',
+      icon: gitcodeIcon,
+      colorIcon: gitcodeColorIcon,
+      alt: 'GitCode',
+      darkInvert: false
+    },
+    {
+      href: 'https://www.producthunt.com/products/cherry-studio',
+      icon: pIcon,
+      colorIcon: pColorIcon,
+      alt: 'Product Hunt',
+      darkInvert: false
+    }
   ]
 
   return (
@@ -58,9 +81,18 @@ const CommunitySection: FC = () => {
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="border-border bg-card/50 hover:border-primary/30 hover:bg-card flex h-12 w-12 items-center justify-center rounded-xl border backdrop-blur-sm transition-all duration-200"
+              className="group border-border bg-card/50 hover:border-primary/30 hover:bg-card relative flex h-12 w-12 items-center justify-center rounded-xl border backdrop-blur-sm transition-all duration-200"
               title={link.alt}>
-              <img src={link.icon} alt={link.alt} className="h-5 w-5 opacity-70 invert" />
+              <img
+                src={link.icon}
+                alt={link.alt}
+                className="h-5 w-5 opacity-70 invert transition-opacity duration-200 group-hover:opacity-0"
+              />
+              <img
+                src={link.colorIcon}
+                alt={link.alt}
+                className={`absolute h-5 w-5 opacity-0 transition-opacity duration-200 group-hover:opacity-100 ${link.darkInvert ? 'dark:invert' : ''}`}
+              />
             </a>
           ))}
         </div>

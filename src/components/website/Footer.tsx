@@ -2,11 +2,17 @@ import React from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 
 import cherryLogo from '@/assets/images/cherry-logo.svg'
+import gitcodeColorIcon from '@/assets/images/icons/gitcode-color.svg'
 import gitcodeIcon from '@/assets/images/icons/gitcode.svg'
+import githubColorIcon from '@/assets/images/icons/github-color.svg'
 import githubIcon from '@/assets/images/icons/github.svg'
+import pColorIcon from '@/assets/images/icons/p-color.svg'
 import pIcon from '@/assets/images/icons/p.svg'
+import rssColorIcon from '@/assets/images/icons/rss-color.svg'
 import rssIcon from '@/assets/images/icons/rss.svg'
+import tgColorIcon from '@/assets/images/icons/tg-color.svg'
 import tgIcon from '@/assets/images/icons/tg.svg'
+import xColorIcon from '@/assets/images/icons/x-color.svg'
 import xIcon from '@/assets/images/icons/x.svg'
 import cherryWxQR from '@/assets/images/resource/cherrywx.png'
 import { copyRSSLink } from '@/utils'
@@ -17,11 +23,11 @@ const Footer: React.FC = () => {
   const { t } = useTranslation()
 
   const socialLinks = [
-    { href: 'https://x.com/CherryStudioHQ', icon: xIcon, alt: 'X' },
-    { href: 'https://t.me/CherryStudioAI', icon: tgIcon, alt: 'Telegram' },
-    { href: 'https://github.com/CherryHQ/cherry-studio', icon: githubIcon, alt: 'GitHub' },
-    { href: 'https://gitcode.com/CherryHQ/cherry-studio', icon: gitcodeIcon, alt: 'GitCode' },
-    { href: 'https://www.producthunt.com/products/cherry-studio', icon: pIcon, alt: 'Product Hunt' }
+    { href: 'https://x.com/CherryStudioHQ', icon: xIcon, colorIcon: xColorIcon, alt: 'X', darkInvert: true },
+    { href: 'https://t.me/CherryStudioAI', icon: tgIcon, colorIcon: tgColorIcon, alt: 'Telegram', darkInvert: false },
+    { href: 'https://github.com/CherryHQ/cherry-studio', icon: githubIcon, colorIcon: githubColorIcon, alt: 'GitHub', darkInvert: true },
+    { href: 'https://gitcode.com/CherryHQ/cherry-studio', icon: gitcodeIcon, colorIcon: gitcodeColorIcon, alt: 'GitCode', darkInvert: false },
+    { href: 'https://www.producthunt.com/products/cherry-studio', icon: pIcon, colorIcon: pColorIcon, alt: 'Product Hunt', darkInvert: false }
   ]
 
   const cherryLinks = [
@@ -55,15 +61,29 @@ const Footer: React.FC = () => {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="border-border bg-secondary/50 hover:border-primary/30 hover:bg-secondary flex h-9 w-9 items-center justify-center rounded-lg border transition-all duration-200">
-                  <img src={link.icon} alt={link.alt} className="h-4 w-4 opacity-70 invert" />
+                  className="group border-border bg-secondary/50 hover:bg-secondary relative flex h-9 w-9 items-center justify-center rounded-lg border transition-all duration-200">
+                  <img
+                    src={link.icon}
+                    alt={link.alt}
+                    className="h-4 w-4 opacity-70 invert transition-opacity duration-200 group-hover:opacity-0"
+                  />
+                  <img
+                    src={link.colorIcon}
+                    alt={link.alt}
+                    className={`absolute h-4 w-4 opacity-0 transition-opacity duration-200 group-hover:opacity-100 ${link.darkInvert ? 'dark:invert' : ''}`}
+                  />
                 </a>
               ))}
               <button
                 type="button"
                 onClick={copyRSSLink}
-                className="border-border bg-secondary/50 hover:border-primary/30 hover:bg-secondary flex h-9 w-9 items-center justify-center rounded-lg border transition-all duration-200">
-                <img src={rssIcon} alt="RSS" className="h-4 w-4 opacity-70 invert" />
+                className="group border-border bg-secondary/50 hover:bg-secondary relative flex h-9 w-9 items-center justify-center rounded-lg border transition-all duration-200">
+                <img src={rssIcon} alt="RSS" className="h-4 w-4 opacity-70 invert transition-opacity duration-200 group-hover:opacity-0" />
+                <img
+                  src={rssColorIcon}
+                  alt="RSS"
+                  className="absolute h-4 w-4 opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+                />
               </button>
             </div>
           </div>
@@ -165,6 +185,14 @@ const Footer: React.FC = () => {
                   </a>
                 ]}
               />
+              <span className="mx-2">|</span>
+              <a
+                href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011402021679"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-primary">
+                沪公网安备31011402021679号
+              </a>
             </p>
 
             {/* Language Selector */}
