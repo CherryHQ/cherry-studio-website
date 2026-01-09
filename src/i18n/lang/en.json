@@ -372,6 +372,11 @@
     "contribution_stats": "Contributions: {{contributions}} commits ({{rate}}%)",
     "partial": "(Partial)"
   },
+  "testimonials": {
+    "title": "Why Users Love Cherry Studio",
+    "subtitle": "See what our community has to say about Cherry Studio",
+    "source_hint": "Reviews from across the web"
+  },
   "telegram": {
     "channel_members": "Channel Members: ",
     "current_online": "Currently Online: "

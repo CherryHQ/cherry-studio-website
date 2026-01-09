@@ -9,6 +9,7 @@ import ContributorsSection from './components/ContributorsSection'
 import FeaturesSection from './components/FeaturesSection'
 import HeroSection from './components/HeroSection'
 import ProvidersSection from './components/ProvidersSection'
+import TestimonialsSection from './components/TestimonialsSection'
 
 const HomePage: FC = () => {
   usePageMeta('home')
@@ -20,6 +21,8 @@ const HomePage: FC = () => {
       <FeaturesSection />
       <SectionDivider />
       <ProvidersSection />
+      <SectionDivider />
+      <TestimonialsSection />
       <SectionDivider />
       <ContributorsSection />
       <CommunitySection />

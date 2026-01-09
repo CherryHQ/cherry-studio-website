@@ -370,6 +370,11 @@
     "contribution_stats": "贡献: {{contributions}} commits ({{rate}}%)",
     "partial": "(部分)"
   },
+  "testimonials": {
+    "title": "用户为何喜欢 Cherry Studio",
+    "subtitle": "听听社区用户对 Cherry Studio 的真实评价",
+    "source_hint": "来自各平台的真实评价"
+  },
   "telegram": {
     "channel_members": "频道成员：",
     "current_online": "当前在线："
