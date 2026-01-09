@@ -32,7 +32,10 @@
       "Bash(pnpm remove:*)",
       "Bash(cat:*)",
       "Bash(pnpm check:*)",
-      "Bash(pnpm biome:*)"
+      "Bash(pnpm biome:*)",
+      "Bash(for f in src/assets/images/screenshots/*.png)",
+      "Bash(do cwebp:*)",
+      "Bash(done)"
     ],
     "deny": [],
     "ask": []

@@ -152,6 +152,11 @@ const ThemePage: React.FC = () => {
     return result
   }
 
+  const showNotification = (type: 'info' | 'error', message: string) => {
+    console.log(`${type}: ${message}`)
+    alert(message)
+  }
+
   const fetchCssData = useCallback(
     async (
       pageNum: number,
@@ -460,11 +465,6 @@ const ThemePage: React.FC = () => {
       ...prev,
       [itemId]: mode
     }))
-  }
-
-  const showNotification = (type: 'info' | 'error', message: string) => {
-    console.log(`${type}: ${message}`)
-    alert(message)
   }
 
   const getImageUrl = (url?: string): string => {
