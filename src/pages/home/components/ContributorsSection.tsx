@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { FC, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -10,7 +9,7 @@ interface Contributor {
   contributions: number
 }
 
-const Contributors: FC = () => {
+const ContributorsSection: FC = () => {
   const { t } = useTranslation()
   const [contributors, setContributors] = useState<Contributor[]>([])
   const [totalContributions, setTotalContributions] = useState(0)
@@ -49,14 +48,14 @@ const Contributors: FC = () => {
 
   if (loading) {
     return (
-      <section className="relative overflow-hidden bg-background py-16">
-        <div className="absolute inset-0 dot-pattern opacity-20" />
+      <section className="bg-background relative overflow-hidden py-16">
+        <div className="dot-pattern absolute inset-0 opacity-20" />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="mb-10 text-center text-2xl font-bold text-foreground sm:text-3xl">
+          <h2 className="text-foreground mb-10 text-center text-2xl font-bold sm:text-3xl">
             {t('contributors.project_contributors')}
           </h2>
           <div className="flex justify-center">
-            <div className="h-8 w-8 animate-spin rounded-full border-2 border-primary border-t-transparent" />
+            <div className="border-primary h-8 w-8 animate-spin rounded-full border-2 border-t-transparent" />
           </div>
         </div>
       </section>
@@ -64,59 +63,45 @@ const Contributors: FC = () => {
   }
 
   return (
-    <section className="relative overflow-hidden bg-background py-16">
-      <div className="absolute inset-0 dot-pattern opacity-20" />
+    <section className="bg-background relative overflow-hidden py-16">
+      <div className="dot-pattern absolute inset-0 opacity-20" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="mb-10 text-center">
-          <h2 className="text-2xl font-bold text-foreground sm:text-3xl">{t('contributors.project_contributors')}</h2>
-        </motion.div>
+        <div className="mb-10 text-center">
+          <h2 className="text-foreground text-2xl font-bold sm:text-3xl">{t('contributors.project_contributors')}</h2>
+        </div>
 
         <div className="grid grid-cols-4 gap-3 sm:grid-cols-5 md:grid-cols-8 lg:grid-cols-10">
-          {contributors.map((contributor, index) => (
-            <motion.a
+          {contributors.map((contributor) => (
+            <a
               key={contributor.id}
               href={contributor.html_url}
               target="_blank"
               rel="noopener noreferrer"
               title={`${contributor.login}: ${contributor.contributions} commits (${getContributionPercent(contributor.contributions)}%)`}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: Math.min(index * 0.02, 0.5) }}
-              className="group flex flex-col items-center gap-1.5 rounded-lg border border-border/50 bg-card/50 p-2 transition-all duration-300 hover:border-primary/30 hover:bg-card sm:p-3">
+              className="border-border/50 bg-card/50 hover:border-primary/30 hover:bg-card group flex flex-col items-center gap-1.5 rounded-lg border p-2 transition-all duration-300 sm:p-3">
               <img
                 src={contributor.avatar_url}
                 alt={contributor.login}
-                className="h-10 w-10 rounded-full ring-2 ring-border transition-all duration-300 group-hover:ring-primary/50 sm:h-12 sm:w-12"
+                className="ring-border group-hover:ring-primary/50 h-10 w-10 rounded-full ring-2 transition-all duration-300 sm:h-12 sm:w-12"
               />
-              <span className="max-w-full truncate text-[10px] text-muted-foreground transition-colors group-hover:text-foreground sm:text-xs">
+              <span className="text-muted-foreground group-hover:text-foreground max-w-full truncate text-[10px] transition-colors sm:text-xs">
                 {contributor.login}
               </span>
-              <span className="text-[9px] text-muted-foreground/60 sm:text-[10px]">
+              <span className="text-muted-foreground/60 text-[9px] sm:text-[10px]">
                 {contributor.contributions} commits
               </span>
-            </motion.a>
+            </a>
           ))}
         </div>
 
         {/* View all on GitHub link */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-8 text-center">
+        <div className="mt-8 text-center">
           <a
             href="https://github.com/CherryHQ/cherry-studio/graphs/contributors"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-primary">
+            className="text-muted-foreground hover:text-primary inline-flex items-center gap-2 text-sm transition-colors">
             <span>View all contributors on GitHub</span>
             <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path
@@ -127,10 +112,10 @@ const Contributors: FC = () => {
               />
             </svg>
           </a>
-        </motion.div>
+        </div>
       </div>
     </section>
   )
 }
 
-export default Contributors
+export default ContributorsSection

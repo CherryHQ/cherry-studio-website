@@ -57,8 +57,8 @@ const SimpleHeader: React.FC = () => {
   return (
     <header
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        isScrolled ? 'glass border-b border-border/50 py-3' : 'bg-transparent py-4'
+        'fixed top-0 left-0 right-0 z-50 border-b border-border/50 transition-all duration-300',
+        isScrolled ? 'glass py-3' : 'bg-background/80 backdrop-blur-sm py-4'
       )}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">

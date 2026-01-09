@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { FC, useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -80,7 +79,7 @@ const logos: LogoInfo[] = [
   { src: giteeaiLogo, url: 'https://ai.gitee.com/', name: 'Gitee AI' }
 ]
 
-const Providers: FC = () => {
+const ProvidersSection: FC = () => {
   const { t } = useTranslation()
   const trackRef = useRef<HTMLDivElement>(null)
   const [isPaused, setIsPaused] = useState(false)
@@ -91,7 +90,7 @@ const Providers: FC = () => {
 
     const setupAnimation = () => {
       const contentWidth = track.scrollWidth / 2
-      const speed = 30
+      const speed = 60
       track.style.setProperty('--scroll-width', `-${contentWidth}px`)
       track.style.setProperty('--animation-duration', `${speed}s`)
     }
@@ -111,15 +110,10 @@ const Providers: FC = () => {
 
       <div className="relative z-10">
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="mx-auto mb-12 max-w-3xl px-4 text-center">
-          <h2 className="mb-4 text-2xl font-bold text-foreground sm:text-3xl lg:text-4xl">{t('providers.title')}</h2>
+        <div className="mx-auto mb-12 max-w-3xl px-4 text-center">
+          <h2 className="text-foreground mb-4 text-2xl font-bold sm:text-3xl lg:text-4xl">{t('providers.title')}</h2>
           <p className="text-muted-foreground">{t('providers.subtitle')}</p>
-        </motion.div>
+        </div>
 
         {/* Logo Marquee */}
         <div
@@ -188,4 +182,4 @@ const Providers: FC = () => {
   )
 }
 
-export default Providers
+export default ProvidersSection

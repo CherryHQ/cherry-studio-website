@@ -3,11 +3,11 @@ import { FC, useEffect } from 'react'
 import Footer from '@/components/website/Footer'
 import { usePageMeta } from '@/hooks/usePageMeta'
 
-import HomeBanner from './components/Banner'
-import Contributors from './components/Contributors'
-import Features from './components/Features'
-import JoinCommunity from './components/JoinCommunity'
-import Providers from './components/Providers'
+import CommunitySection from './components/CommunitySection'
+import ContributorsSection from './components/ContributorsSection'
+import FeaturesSection from './components/FeaturesSection'
+import HeroSection from './components/HeroSection'
+import ProvidersSection from './components/ProvidersSection'
 
 const HomePage: FC = () => {
   usePageMeta('home')
@@ -26,11 +26,11 @@ const HomePage: FC = () => {
 
   return (
     <div className="bg-background min-h-screen">
-      <HomeBanner />
-      <Providers />
-      <Features />
-      <Contributors />
-      <JoinCommunity />
+      <HeroSection />
+      <ProvidersSection />
+      <FeaturesSection />
+      <ContributorsSection />
+      <CommunitySection />
       <Footer />
     </div>
   )

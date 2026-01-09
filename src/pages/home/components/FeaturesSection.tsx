@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { ArrowUpRight, Cloud, Image, Languages, MessageSquare, Shield, Users } from 'lucide-react'
 import { FC } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
@@ -58,24 +57,19 @@ const features: Feature[] = [
   }
 ]
 
-const Features: FC = () => {
+const FeaturesSection: FC = () => {
   const { t } = useTranslation()
 
   return (
-    <section className="relative overflow-hidden bg-background py-24">
+    <section className="bg-background relative overflow-hidden py-24">
       {/* Background */}
-      <div className="absolute inset-0 dot-pattern opacity-30" />
+      <div className="dot-pattern absolute inset-0 opacity-30" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="mb-16 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl">{t('features.title')}</h2>
-          <p className="mx-auto max-w-2xl text-muted-foreground">
+        <div className="mb-16 text-center">
+          <h2 className="text-foreground mb-4 text-3xl font-bold sm:text-4xl lg:text-5xl">{t('features.title')}</h2>
+          <p className="text-muted-foreground mx-auto max-w-2xl">
             <Trans i18nKey="features.description">
               以下仅为部分功能介绍，更多功能可以下载客户端体验，或在
               <a
@@ -88,22 +82,18 @@ const Features: FC = () => {
               中了解。
             </Trans>
           </p>
-        </motion.div>
+        </div>
 
         {/* Features Grid */}
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {features.map((feature, index) => (
-            <motion.a
+          {features.map((feature) => (
+            <a
               key={feature.titleKey}
               href={feature.href}
               target="_blank"
               rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
               className={cn(
-                'group relative overflow-hidden rounded-2xl border border-border/50 bg-card/50 p-6',
+                'border-border/50 bg-card/50 group relative overflow-hidden rounded-2xl border p-6',
                 'transition-all duration-300',
                 'hover:border-primary/30 hover:bg-card'
               )}>
@@ -119,20 +109,20 @@ const Features: FC = () => {
               {/* Content */}
               <div className="relative z-10">
                 {/* Icon */}
-                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                <div className="bg-primary/10 text-primary mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl">
                   <feature.icon className="h-6 w-6" />
                 </div>
 
                 {/* Title */}
-                <h3 className="mb-2 flex items-center gap-2 text-lg font-semibold text-foreground">
+                <h3 className="text-foreground mb-2 flex items-center gap-2 text-lg font-semibold">
                   {t(feature.titleKey)}
                   <ArrowUpRight className="h-4 w-4 opacity-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100" />
                 </h3>
 
                 {/* Description */}
-                <p className="text-sm leading-relaxed text-muted-foreground">{t(feature.descriptionKey)}</p>
+                <p className="text-muted-foreground text-sm leading-relaxed">{t(feature.descriptionKey)}</p>
               </div>
-            </motion.a>
+            </a>
           ))}
         </div>
       </div>
@@ -140,4 +130,4 @@ const Features: FC = () => {
   )
 }
 
-export default Features
+export default FeaturesSection
