@@ -8,7 +8,7 @@ interface SectionDividerProps {
 
 const SectionDivider: FC<SectionDividerProps> = ({ className }) => {
   return (
-    <div className={cn('flex items-center justify-center py-8', className)}>
+    <div className={cn('flex items-center justify-center py-4 sm:py-8', className)}>
       <div className="relative h-px w-full max-w-4xl">
         {/* 主线条 - 两边渐变淡出 */}
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-border to-transparent" />

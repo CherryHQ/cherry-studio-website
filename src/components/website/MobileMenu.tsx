@@ -1,5 +1,6 @@
 import { X } from 'lucide-react'
 import type React from 'react'
+import { createPortal } from 'react-dom'
 import { useTranslation } from 'react-i18next'
 import { Link, useLocation } from 'react-router-dom'
 
@@ -33,12 +34,12 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
     }
   ]
 
-  return (
+  return createPortal(
     <>
       {/* Overlay */}
       <div
         className={cn(
-          'fixed inset-0 z-40 bg-black/60 backdrop-blur-sm transition-opacity duration-300',
+          'fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm transition-opacity duration-300',
           isOpen ? 'opacity-100' : 'pointer-events-none opacity-0'
         )}
         onClick={onClose}
@@ -47,8 +48,9 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
       {/* Menu Panel */}
       <div
         className={cn(
-          'fixed top-0 right-0 z-50 h-full w-[280px] max-w-[80vw]',
-          'bg-card border-border border-l',
+          'fixed top-0 right-0 z-[101] h-full w-[280px] max-w-[80vw]',
+          'border-border border-l shadow-xl',
+          'bg-[#141416]',
           'transform transition-transform duration-300 ease-out',
           isOpen ? 'translate-x-0' : 'translate-x-full'
         )}>
@@ -110,7 +112,8 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
           <p className="text-muted-foreground text-center text-xs">Cherry Studio</p>
         </div>
       </div>
-    </>
+    </>,
+    document.body
   )
 }
 

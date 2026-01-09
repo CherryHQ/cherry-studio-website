@@ -48,10 +48,10 @@ const ContributorsSection: FC = () => {
 
   if (loading) {
     return (
-      <section className="bg-background relative overflow-hidden py-16">
+      <section className="bg-background relative overflow-hidden py-12 sm:py-16">
         <div className="dot-pattern absolute inset-0 opacity-20" />
         <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
-          <h2 className="text-foreground mb-10 text-center text-2xl font-bold sm:text-3xl">
+          <h2 className="text-foreground mb-8 text-center text-2xl font-bold sm:mb-10 sm:text-3xl">
             {t('contributors.project_contributors')}
           </h2>
           <div className="flex justify-center">
@@ -63,18 +63,18 @@ const ContributorsSection: FC = () => {
   }
 
   return (
-    <section className="bg-background relative overflow-hidden py-16">
+    <section className="bg-background relative overflow-hidden py-12 sm:py-16">
       <div className="dot-pattern absolute inset-0 opacity-20" />
 
       <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
-        <div className="mb-10 text-center">
-          <h2 className="text-foreground mb-4 text-2xl font-bold sm:text-3xl">
+        <div className="mb-6 text-center sm:mb-10">
+          <h2 className="text-foreground mb-3 text-2xl font-bold sm:mb-4 sm:text-3xl">
             {t('contributors.project_contributors')}
           </h2>
-          <p className="text-muted-foreground">{t('contributors.project_contributors_subtitle')}</p>
+          <p className="text-muted-foreground text-sm sm:text-base">{t('contributors.project_contributors_subtitle')}</p>
         </div>
 
-        <div className="grid grid-cols-4 gap-3 sm:grid-cols-5 md:grid-cols-8 lg:grid-cols-10">
+        <div className="grid grid-cols-4 gap-2 sm:grid-cols-5 sm:gap-3 md:grid-cols-8 lg:grid-cols-10">
           {contributors.map((contributor) => (
             <a
               key={contributor.id}

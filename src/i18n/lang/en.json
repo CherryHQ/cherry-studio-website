@@ -222,7 +222,10 @@
     "linux_deb": "Deb Version",
     "linux_deb_arm": "Deb Version (ARM)",
     "linux_rpm": "RPM Version",
-    "linux_rpm_arm": "RPM Version (ARM)"
+    "linux_rpm_arm": "RPM Version (ARM)",
+    "mobile_detected": "Mobile Device Detected",
+    "mobile_hint": "Cherry Studio is a desktop application. Please download on your computer.",
+    "view_all_downloads": "View All Downloads"
   },
   "enterprise_page": {
     "hero": {

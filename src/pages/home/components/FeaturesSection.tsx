@@ -75,15 +75,17 @@ const FeaturesSection: FC = () => {
   const { t } = useTranslation()
 
   return (
-    <section className="bg-background relative overflow-hidden py-24">
+    <section className="bg-background relative overflow-hidden py-12 sm:py-24">
       {/* Background */}
       <div className="dot-pattern absolute inset-0 opacity-30" />
 
       <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="mb-16 text-center">
-          <h2 className="text-foreground mb-4 text-3xl font-bold sm:text-4xl lg:text-5xl">{t('features.title')}</h2>
-          <p className="text-muted-foreground mx-auto max-w-2xl">
+        <div className="mb-8 text-center sm:mb-16">
+          <h2 className="text-foreground mb-3 text-2xl font-bold sm:mb-4 sm:text-4xl lg:text-5xl">
+            {t('features.title')}
+          </h2>
+          <p className="text-muted-foreground mx-auto max-w-2xl text-sm sm:text-base">
             <Trans i18nKey="features.description">
               以下仅为部分功能介绍，更多功能可以下载客户端体验，或在
               <a
@@ -99,7 +101,7 @@ const FeaturesSection: FC = () => {
         </div>
 
         {/* Features Grid */}
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {features.map((feature) => (
             <a
               key={feature.titleKey}

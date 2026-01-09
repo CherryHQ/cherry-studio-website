@@ -133,19 +133,19 @@ const HeroSection: FC = () => {
   }, [])
 
   return (
-    <section className="bg-background relative min-h-screen overflow-hidden pt-20">
+    <section className="bg-background relative overflow-hidden pt-16 sm:pt-20">
       {/* Subtle gradient background */}
       <div className="via-primary/[0.02] absolute inset-0 bg-gradient-to-b from-transparent to-transparent" />
 
       <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
-        <div className="pt-16 pb-8 text-center sm:pt-24 lg:pt-32">
+        <div className="pt-8 pb-4 text-center sm:pt-24 sm:pb-8 lg:pt-32">
           {/* Main Heading */}
-          <h1 className="text-foreground mb-6 text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
+          <h1 className="text-foreground mb-4 text-3xl font-semibold tracking-tight sm:mb-6 sm:text-5xl lg:text-6xl">
             {isZh ? 'Agentic AI 全平台客户端' : 'Agentic AI for Desktop & Mobile'}
           </h1>
 
           {/* Subtitle */}
-          <p className="text-muted-foreground mx-auto mb-10 max-w-2xl text-lg">
+          <p className="text-muted-foreground mx-auto mb-6 max-w-2xl text-base sm:mb-10 sm:text-lg">
             {isZh ? (
               <>
                 <span ref={ref1}>AI Agent</span>
@@ -210,13 +210,13 @@ const HeroSection: FC = () => {
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
                 className={cn(
-                  'flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-all duration-200',
+                  'flex items-center gap-2 rounded-full px-3 py-2 text-sm font-medium transition-all duration-200 sm:px-4',
                   activeTab === tab.id
                     ? 'bg-background text-foreground shadow-sm'
                     : 'text-muted-foreground hover:text-foreground'
                 )}>
                 {tab.icon}
-                <span>{isZh ? tab.labelZh : tab.labelEn}</span>
+                <span className="hidden sm:inline">{isZh ? tab.labelZh : tab.labelEn}</span>
               </button>
             ))}
           </div>

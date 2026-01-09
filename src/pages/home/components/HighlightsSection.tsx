@@ -61,7 +61,7 @@ const HighlightsSection: FC = () => {
   const { t } = useTranslation()
 
   return (
-    <section className="bg-background relative overflow-hidden py-24">
+    <section className="bg-background relative overflow-hidden py-12 sm:py-24">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-30">
         <div className="from-primary/5 absolute inset-0 bg-gradient-to-br via-transparent to-transparent" />
@@ -69,13 +69,15 @@ const HighlightsSection: FC = () => {
 
       <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="mx-auto mb-16 max-w-3xl text-center">
-          <h2 className="text-foreground mb-4 text-3xl font-bold sm:text-4xl lg:text-5xl">{t('highlights.title')}</h2>
-          <p className="text-muted-foreground text-lg">{t('highlights.subtitle')}</p>
+        <div className="mx-auto mb-8 max-w-3xl text-center sm:mb-16">
+          <h2 className="text-foreground mb-3 text-2xl font-bold sm:mb-4 sm:text-4xl lg:text-5xl">
+            {t('highlights.title')}
+          </h2>
+          <p className="text-muted-foreground text-base sm:text-lg">{t('highlights.subtitle')}</p>
         </div>
 
         {/* Highlights Grid */}
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
           {highlights.map((highlight, index) => (
             <div
               key={highlight.titleKey}
@@ -112,7 +114,7 @@ const HighlightsSection: FC = () => {
         </div>
 
         {/* Bottom Stats */}
-        <div className="mt-16 grid grid-cols-2 gap-8 md:grid-cols-4">
+        <div className="mt-8 grid grid-cols-2 gap-4 sm:mt-16 sm:gap-8 md:grid-cols-4">
           {[
             { value: '50+', labelKey: 'highlights.stats.providers' },
             { value: '300+', labelKey: 'highlights.stats.assistants' },

@@ -92,16 +92,18 @@ const ProvidersSection: FC = () => {
   }
 
   return (
-    <section className="bg-background relative overflow-hidden py-24">
+    <section className="bg-background relative overflow-hidden py-12 sm:py-24">
       <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="mx-auto mb-16 max-w-3xl text-center">
-          <h2 className="text-foreground mb-4 text-2xl font-bold sm:text-3xl lg:text-4xl">{t('providers.title')}</h2>
-          <p className="text-muted-foreground">{t('providers.subtitle')}</p>
+        <div className="mx-auto mb-8 max-w-3xl text-center sm:mb-16">
+          <h2 className="text-foreground mb-3 text-2xl font-bold sm:mb-4 sm:text-3xl lg:text-4xl">
+            {t('providers.title')}
+          </h2>
+          <p className="text-muted-foreground text-sm sm:text-base">{t('providers.subtitle')}</p>
         </div>
 
         {/* Orbital Animation */}
-        <div className="relative mx-auto h-[400px] w-[400px] sm:h-[500px] sm:w-[500px] lg:h-[600px] lg:w-[600px]">
+        <div className="relative mx-auto h-[320px] w-[320px] sm:h-[500px] sm:w-[500px] lg:h-[600px] lg:w-[600px]">
           {/* Outer orbit ring */}
           <div className="border-border/60 absolute inset-0 rounded-full border" />
 

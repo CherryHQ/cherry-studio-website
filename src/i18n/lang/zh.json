@@ -220,7 +220,10 @@
     "linux_deb": "Deb 版本",
     "linux_deb_arm": "Deb 版本 (ARM 版)",
     "linux_rpm": "RPM 版本",
-    "linux_rpm_arm": "RPM 版本 (ARM 版)"
+    "linux_rpm_arm": "RPM 版本 (ARM 版)",
+    "mobile_detected": "检测到移动设备",
+    "mobile_hint": "Cherry Studio 是桌面应用，请在电脑上下载安装",
+    "view_all_downloads": "查看所有下载"
   },
   "enterprise_page": {
     "hero": {

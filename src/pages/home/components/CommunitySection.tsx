@@ -59,7 +59,7 @@ const CommunitySection: FC = () => {
   ]
 
   return (
-    <section className="bg-secondary/30 relative overflow-hidden py-24" id="Community">
+    <section className="bg-secondary/30 relative overflow-hidden py-12 sm:py-24" id="Community">
       {/* Background */}
       <div className="grid-pattern absolute inset-0 opacity-20" />
 
@@ -68,9 +68,11 @@ const CommunitySection: FC = () => {
 
       <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
         {/* Title */}
-        <div className="mb-10 text-center">
-          <h2 className="text-foreground mb-4 text-3xl font-bold sm:text-4xl lg:text-5xl">{t('community.title')}</h2>
-          <p className="text-muted-foreground mx-auto max-w-2xl">{t('community.subtitle')}</p>
+        <div className="mb-6 text-center sm:mb-10">
+          <h2 className="text-foreground mb-3 text-2xl font-bold sm:mb-4 sm:text-4xl lg:text-5xl">
+            {t('community.title')}
+          </h2>
+          <p className="text-muted-foreground mx-auto max-w-2xl text-sm sm:text-base">{t('community.subtitle')}</p>
         </div>
 
         {/* Social Links */}

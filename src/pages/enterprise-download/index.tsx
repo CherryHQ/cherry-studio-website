@@ -1,4 +1,4 @@
-import { Download, ExternalLink, FileText, Monitor } from 'lucide-react'
+import { Download, ExternalLink, FileText, Monitor, Smartphone } from 'lucide-react'
 import { type FC, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -11,6 +11,7 @@ import {
   type EnterpriseVersionData,
   useEnterpriseVersionData
 } from '@/hooks/useEnterpriseVersionData'
+import { isMobileDevice } from '@/utils/systemDetection'
 import { usePageMeta } from '@/hooks/usePageMeta'
 
 const GITCODE_RELEASE_URL = 'https://gitcode.com/CherryHQ/cherry-studio-enterprise/releases'
@@ -101,9 +102,10 @@ const FallbackDownload: FC = () => {
 interface DownloadButtonsProps {
   systemInfo: EnterpriseSystemInfo[] | null
   onOtherVersionsClick: () => void
+  isMobile: boolean
 }
 
-const DownloadButtons: FC<DownloadButtonsProps> = ({ systemInfo, onOtherVersionsClick }) => {
+const DownloadButtons: FC<DownloadButtonsProps> = ({ systemInfo, onOtherVersionsClick, isMobile }) => {
   const { t } = useTranslation()
 
   const getSystemName = () => {
@@ -115,8 +117,29 @@ const DownloadButtons: FC<DownloadButtonsProps> = ({ systemInfo, onOtherVersions
     return type
   }
 
+  // Mobile device - show prompt to view all downloads
+  if (isMobile) {
+    return (
+      <div className="mx-auto max-w-2xl rounded-2xl border border-white/10 bg-white/5 p-6 text-center backdrop-blur-xl sm:p-10">
+        <div className="mb-4 flex items-center justify-center gap-2 text-[15px] text-white/80">
+          <Smartphone className="h-5 w-5 text-blue-400" />
+          <span>{t('download_page.mobile_detected')}</span>
+        </div>
+        <p className="mb-6 text-sm text-white/60">{t('download_page.mobile_hint')}</p>
+        <Button
+          variant="glow"
+          size="lg"
+          onClick={onOtherVersionsClick}
+          className="gap-2">
+          <Download className="h-5 w-5" />
+          {t('download_page.view_all_downloads')}
+        </Button>
+      </div>
+    )
+  }
+
   return (
-    <div className="mx-auto max-w-2xl rounded-2xl border border-white/10 bg-white/5 p-10 backdrop-blur-xl">
+    <div className="mx-auto max-w-2xl rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl sm:p-10">
       {systemInfo && systemInfo.length > 0 && (
         <div className="mb-6 flex items-center justify-center gap-2 text-[15px] text-white/80">
           <Monitor className="h-[18px] w-[18px] text-blue-400" />
@@ -184,6 +207,7 @@ const EnterpriseDownloadPage: FC = () => {
   usePageMeta('enterprise')
   const otherDownloadsRef = useRef<HTMLDivElement>(null)
   const { loading, error, versionData, systemInfo, downloadUrls } = useEnterpriseVersionData()
+  const isMobile = isMobileDevice()
 
   const scrollToOtherDownloads = () => {
     otherDownloadsRef.current?.scrollIntoView({ behavior: 'smooth' })
@@ -192,7 +216,7 @@ const EnterpriseDownloadPage: FC = () => {
   const renderDownloadContent = () => {
     if (loading) return null
     if (error) return <FallbackDownload />
-    return <DownloadButtons systemInfo={systemInfo} onOtherVersionsClick={scrollToOtherDownloads} />
+    return <DownloadButtons systemInfo={systemInfo} onOtherVersionsClick={scrollToOtherDownloads} isMobile={isMobile} />
   }
 
   return (
