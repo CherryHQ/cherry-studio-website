@@ -487,27 +487,27 @@
     "subtitle": "一站式 AI 助手平台，让 AI 触手可及",
     "multi_model": {
       "title": "多模型自由切换",
-      "description": "支持 50+ AI 服务商，包括 OpenAI、Claude、Gemini 等云端模型，以及 Ollama、LM Studio 等本地模型，一个客户端满足所有需求。"
+      "description": "支持 <highlight>50+ AI 服务商</highlight>，包括 OpenAI、Claude、Gemini 等云端模型，以及 Ollama、LM Studio 等本地模型，<highlight>一个客户端满足所有需求</highlight>。"
     },
     "assistants": {
       "title": "300+ 智能助手",
-      "description": "内置海量预配置助手，覆盖写作、编程、学习、翻译、营销等场景，无需编写提示词，开箱即用。"
+      "description": "内置 <highlight>300+ 预配置助手</highlight>，覆盖写作、编程、学习、翻译、营销等场景，<highlight>无需编写提示词</highlight>，开箱即用。"
     },
     "documents": {
       "title": "智能文档处理",
-      "description": "支持文本、图片、Office 文档、PDF 等多种格式，WebDAV 文件管理，Mermaid 图表渲染，代码高亮显示。"
+      "description": "支持文本、图片、Office 文档、PDF 等多种格式，<highlight>WebDAV 文件管理</highlight>，Mermaid 图表渲染，代码高亮显示。"
     },
     "productivity": {
       "title": "效率工具集成",
-      "description": "全局搜索、话题管理、AI 翻译、拖拽排序等功能，让工作流程更加顺畅高效。"
+      "description": "<highlight>全局搜索</highlight>、话题管理、AI 翻译、拖拽排序等功能，让工作流程更加顺畅高效。"
     },
     "customizable": {
       "title": "个性化体验",
-      "description": "支持亮色/暗色主题、透明窗口、完整 Markdown 渲染，界面美观，即开即用。"
+      "description": "支持亮色/暗色主题、<highlight>透明窗口</highlight>、完整 Markdown 渲染，界面美观，<highlight>即开即用</highlight>。"
     },
     "extensible": {
       "title": "强大的扩展能力",
-      "description": "支持小程序和 MCP 服务器，功能可无限扩展，打造属于你的专属 AI 工作台。"
+      "description": "支持小程序和 <highlight>MCP 服务器</highlight>，功能可无限扩展，打造属于你的专属 AI 工作台。"
     },
     "stats": {
       "providers": "AI 服务商",

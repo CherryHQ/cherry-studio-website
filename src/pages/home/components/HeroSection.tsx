@@ -15,6 +15,7 @@ import homePageLight from '@/assets/images/screenshots/home-page-light.webp'
 import { fetchNotice, type NoticeResponse } from '@/assets/js/notice'
 import { Button } from '@/components/ui/button'
 import { useTheme } from '@/hooks/useTheme'
+import { useVersionData } from '@/hooks/useVersionData'
 import { cn } from '@/lib/utils'
 
 interface FeatureTab {
@@ -64,6 +65,7 @@ const featureTabs: FeatureTab[] = [
 const HeroSection: FC = () => {
   const { t, i18n } = useTranslation()
   const { isDark } = useTheme()
+  const { versionData } = useVersionData()
   const [notice, setNotice] = useState<NoticeResponse['data'] | null>(null)
   const [activeTab, setActiveTab] = useState('chat')
   const [isPaused, setIsPaused] = useState(false)
@@ -184,7 +186,7 @@ const HeroSection: FC = () => {
             <Button variant="glow" size="lg" asChild>
               <Link to="/download" className="gap-2">
                 <Download className="h-5 w-5" />
-                {t('banner.download_client')}
+                Download {versionData?.version}
               </Link>
             </Button>
             <Button variant="outline" size="lg" asChild>

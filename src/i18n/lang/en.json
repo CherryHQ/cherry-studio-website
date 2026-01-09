@@ -489,27 +489,27 @@
     "subtitle": "Your all-in-one AI assistant platform, making AI accessible to everyone",
     "multi_model": {
       "title": "Multi-Model Freedom",
-      "description": "Support 50+ AI providers including OpenAI, Claude, Gemini cloud models, plus local models via Ollama and LM Studio. One client for all your AI needs."
+      "description": "Support <highlight>50+ AI providers</highlight> including OpenAI, Claude, Gemini cloud models, plus local models via Ollama and LM Studio. <highlight>One client for all your AI needs</highlight>."
     },
     "assistants": {
       "title": "300+ Smart Assistants",
-      "description": "Pre-configured assistants for writing, coding, learning, translation, marketing and more. No prompt engineering needed, ready to use instantly."
+      "description": "<highlight>300+ pre-configured assistants</highlight> for writing, coding, learning, translation, marketing and more. <highlight>No prompt engineering needed</highlight>, ready to use instantly."
     },
     "documents": {
       "title": "Smart Document Handling",
-      "description": "Work with text, images, Office docs, PDFs. WebDAV file management, Mermaid chart rendering, and syntax highlighting built-in."
+      "description": "Work with text, images, Office docs, PDFs. <highlight>WebDAV file management</highlight>, Mermaid chart rendering, and syntax highlighting built-in."
     },
     "productivity": {
       "title": "Productivity Tools",
-      "description": "Global search, topic management, AI translation, drag-and-drop organization. Streamline your workflow effortlessly."
+      "description": "<highlight>Global search</highlight>, topic management, AI translation, drag-and-drop organization. Streamline your workflow effortlessly."
     },
     "customizable": {
       "title": "Customizable Experience",
-      "description": "Light/dark themes, transparent windows, full Markdown rendering. Beautiful interface, ready to use out of the box."
+      "description": "Light/dark themes, <highlight>transparent windows</highlight>, full Markdown rendering. Beautiful interface, <highlight>ready to use out of the box</highlight>."
     },
     "extensible": {
       "title": "Powerful Extensibility",
-      "description": "Support for mini-programs and MCP servers. Extend functionality infinitely, build your personalized AI workspace."
+      "description": "Support for mini-programs and <highlight>MCP servers</highlight>. Extend functionality infinitely, build your personalized AI workspace."
     },
     "stats": {
       "providers": "AI Providers",

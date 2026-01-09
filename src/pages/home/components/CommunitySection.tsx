@@ -69,7 +69,7 @@ const CommunitySection: FC = () => {
       <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
         {/* Title */}
         <div className="mx-auto mb-8 max-w-3xl text-center sm:mb-16">
-          <h2 className="text-foreground mb-3 text-2xl font-bold sm:mb-4 sm:text-4xl lg:text-5xl">
+          <h2 className="text-foreground mb-3 whitespace-nowrap text-2xl font-bold sm:mb-4 sm:text-4xl lg:text-5xl">
             {t('community.title')}
           </h2>
           <p className="text-muted-foreground text-sm sm:text-base">{t('community.subtitle')}</p>

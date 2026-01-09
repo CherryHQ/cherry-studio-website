@@ -18,8 +18,6 @@ const HomePage: FC = () => {
     <div className="bg-background min-h-screen">
       <HeroSection />
       <SectionDivider />
-      <HighlightsSection />
-      <SectionDivider />
       <FeaturesSection />
       <SectionDivider />
       <ProvidersSection />
@@ -27,6 +25,8 @@ const HomePage: FC = () => {
       <TestimonialsSection />
       <SectionDivider />
       <ContributorsSection />
+      <SectionDivider />
+      <HighlightsSection />
       <CommunitySection />
       <Footer />
     </div>
