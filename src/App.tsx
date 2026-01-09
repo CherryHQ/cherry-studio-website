@@ -5,6 +5,7 @@ import { script } from '@/assets/js/script.ts'
 import ScrollToTop from '@/components/ScrollToTop'
 import SimpleHeader from '@/components/website/SimpleHeader.tsx'
 import { ThemeProvider } from '@/contexts/ThemeContext'
+import CareersPage from '@/pages/careers'
 import DownloadPage from '@/pages/download'
 import EnterprisePage from '@/pages/enterprise'
 import EnterpriseDownloadPage from '@/pages/enterprise-download'
@@ -27,6 +28,7 @@ function App() {
           <Route path="/theme" element={<ThemePage />} />
           <Route path="/enterprise" element={<EnterprisePage />} />
           <Route path="/enterprise/download" element={<EnterpriseDownloadPage />} />
+          <Route path="/careers" element={<CareersPage />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

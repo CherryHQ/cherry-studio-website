@@ -119,17 +119,29 @@ const Footer: React.FC = () => {
           {/* Contact Info Column */}
           <div className="lg:col-span-3">
             <h4 className="text-foreground mb-4 text-sm font-semibold">{t('nav.contact')}</h4>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              <Trans
-                i18nKey="footer.contact_us.contact_info"
-                components={[
-                  <br key="br" />,
-                  <a key="email" href="mailto:support@cherry-ai.com" className="text-primary hover:underline">
-                    support@cherry-ai.com
-                  </a>
-                ]}
-              />
-            </p>
+            <ul className="space-y-2.5">
+              <li>
+                <span className="text-muted-foreground text-sm">{t('footer.contact_us.support_email')}: </span>
+                <a href="mailto:support@cherry-ai.com" className="text-primary text-sm hover:underline">
+                  support@cherry-ai.com
+                </a>
+              </li>
+              <li>
+                <span className="text-muted-foreground text-sm">{t('footer.contact_us.business_email')}: </span>
+                <a href="mailto:bd@cherry-ai.com" className="text-primary text-sm hover:underline">
+                  bd@cherry-ai.com
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://docs.cherry-ai.com/question-contact/suggestions"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-primary text-sm transition-colors duration-200">
+                  {t('footer.contact_us.feedback')}
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>

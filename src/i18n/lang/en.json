@@ -3,18 +3,21 @@
     "home": "Cherry Studio - The All-in-One AI Assistant",
     "download": "Download Cherry Studio - Multi-Platform AI Client",
     "enterprise": "Cherry Studio Enterprise - Enterprise AI Solutions",
-    "theme": "Cherry Studio Theme Library - Customize Your AI Assistant"
+    "theme": "Cherry Studio Theme Library - Customize Your AI Assistant",
+    "careers": "Join Cherry Studio - Careers"
   },
   "page_description": {
     "home": "Cherry Studio AI is a powerful multi-model AI assistant supporting iOS, macOS, and Windows platforms. Quickly switch between multiple advanced LLM models to boost work and study efficiency.",
     "download": "Download Cherry Studio AI client supporting Windows, macOS, and Linux platforms. Integrates 100+ AI models, completely free and open source.",
     "enterprise": "Cherry Studio Enterprise provides private deployment AI productivity platform for modern teams and enterprises, supporting model management, permission control, and data security.",
-    "theme": "Discover and share beautiful Cherry Studio themes to personalize your AI assistant interface. Supports both light and dark mode themes."
+    "theme": "Discover and share beautiful Cherry Studio themes to personalize your AI assistant interface. Supports both light and dark mode themes.",
+    "careers": "Join Cherry Studio core team. Looking for AI Native full-stack engineers to build next-gen AI products."
   },
   "nav": {
     "home": "Home",
     "download": "Download",
     "theme": "Theme",
+    "careers": "Careers",
     "docs": "Docs",
     "contact": "Contact Us"
   },
@@ -100,6 +103,59 @@
     "qq_group": "QQ Group",
     "zsxq": "ZhiShiXingQiu (Q&A)"
   },
+  "careers": {
+    "badge": "We're Hiring",
+    "title": "Join Cherry Studio",
+    "subtitle": "Looking for AI Native full-stack engineers to define the next generation of AI products with us",
+    "apply_button": "Apply Now",
+    "view_full_jd": "View Full JD",
+    "why_join": "Why Join Us",
+    "benefits": {
+      "no_clock": {
+        "title": "No Clock-in Policy",
+        "description": "No corporate bureaucracy, no formalism, focus on creating value"
+      },
+      "equity": {
+        "title": "Equity Incentives",
+        "description": "Early-stage core team member with generous equity incentive plan"
+      },
+      "ai_native": {
+        "title": "AI Native",
+        "description": "Fully embrace AI tools to boost efficiency, work with cutting-edge technology"
+      },
+      "growth": {
+        "title": "Rapid Growth",
+        "description": "Grow with an excellent team in the fast-developing AI industry"
+      }
+    },
+    "positions_title": "Open Positions",
+    "positions": {
+      "frontend": {
+        "title": "Frontend Engineer",
+        "description": "Proficient in React, TypeScript, TailwindCSS, shadcn/ui"
+      },
+      "backend": {
+        "title": "Backend Engineer",
+        "description": "Proficient in Go or Node.js with high-concurrency architecture experience"
+      },
+      "fullstack": {
+        "title": "Full Stack Engineer",
+        "description": "Experienced in React, Node.js, Electron for cross-platform desktop apps"
+      },
+      "mobile": {
+        "title": "Mobile Engineer",
+        "description": "Skilled in React Native, iOS/Android native development is a plus"
+      },
+      "ai": {
+        "title": "AI Application Engineer",
+        "description": "Proficient with AI coding tools, familiar with RAG, LangChain frameworks"
+      }
+    },
+    "location_title": "Location",
+    "location": "Nanxiang, Jiading District, Shanghai",
+    "cta_title": "Ready to Join?",
+    "cta_subtitle": "We look forward to building the next generation of AI products with you"
+  },
   "footer": {
     "description": "Cherry Studio is a multi-platform AI client, and we are committed to allowing more people to enjoy the convenience brought by AI.",
     "cherry_studio": {
@@ -116,9 +172,11 @@
       "title": "Contact Us",
       "wechat_qr_alt": "WeChat Official Account QR Code",
       "wechat_official_account": "Official WeChat Account",
-      "contact_info": "If you have any questions, you can check the documentation or ask in the community first.<0/>Or email us at <1>support@cherry-ai.com</1>"
+      "support_email": "Support",
+      "business_email": "Business",
+      "feedback": "Feedback"
     },
-    "copyright": "Copyright © 2025 Shanghai Qianhui Technology Co., Ltd. <1>沪ICP备2021031071号-3</1>"
+    "copyright": "Copyright © 2026 Shanghai Qianhui Technology Co., Ltd. <1>沪ICP备2021031071号-3</1>"
   },
   "statistics": {
     "days_online": "Days Online",

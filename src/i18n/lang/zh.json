@@ -3,18 +3,21 @@
     "home": "Cherry Studio 官方网站 - 全能的 AI 助手",
     "download": "下载 Cherry Studio - 多平台 AI 客户端",
     "enterprise": "Cherry Studio 企业版 - 企业级 AI 解决方案",
-    "theme": "Cherry Studio 主题库 - 美化你的 AI 助手"
+    "theme": "Cherry Studio 主题库 - 美化你的 AI 助手",
+    "careers": "加入 Cherry Studio - 招聘"
   },
   "page_description": {
     "home": "Cherry Studio AI 是一款强大的多模型 AI 助手，支持 iOS、macOS 和 Windows 平台。快速切换多个先进的 LLM 模型，提升工作学习效率。",
     "download": "下载 Cherry Studio AI 客户端，支持 Windows、macOS、Linux 平台。集成 100+ AI 模型，完全免费开源。",
     "enterprise": "Cherry Studio 企业版为现代团队和企业提供私有化部署的 AI 生产力平台，支持模型管理、权限控制、数据安全。",
-    "theme": "发现和分享美丽的 Cherry Studio 主题，个性化你的 AI 助手界面。支持浅色和深色模式主题。"
+    "theme": "发现和分享美丽的 Cherry Studio 主题，个性化你的 AI 助手界面。支持浅色和深色模式主题。",
+    "careers": "加入 Cherry Studio 核心团队，寻找 AI Native 全栈工程师，一起打造下一代 AI 产品。"
   },
   "nav": {
     "home": "主页",
     "download": "下载",
     "theme": "主题",
+    "careers": "招聘",
     "docs": "文档",
     "contact": "联系我们"
   },
@@ -98,6 +101,59 @@
     "qq_group": "QQ 群",
     "zsxq": "知识星球(问题解答)"
   },
+  "careers": {
+    "badge": "正在招聘",
+    "title": "加入 Cherry Studio",
+    "subtitle": "寻找 AI Native 的全栈工程师，与我们一起定义下一代 AI 产品",
+    "apply_button": "立即申请",
+    "view_full_jd": "查看完整 JD",
+    "why_join": "为什么加入我们",
+    "benefits": {
+      "no_clock": {
+        "title": "无打卡制度",
+        "description": "拒绝大厂病，没有形式主义，专注于创造价值"
+      },
+      "equity": {
+        "title": "股权激励",
+        "description": "早期核心成员，丰厚的股权激励计划"
+      },
+      "ai_native": {
+        "title": "AI Native",
+        "description": "全面使用 AI 工具提升效率，拥抱最前沿的技术"
+      },
+      "growth": {
+        "title": "快速成长",
+        "description": "与优秀的团队一起，在高速发展的 AI 行业中成长"
+      }
+    },
+    "positions_title": "开放职位",
+    "positions": {
+      "frontend": {
+        "title": "前端开发工程师",
+        "description": "精通 React、TypeScript、TailwindCSS、shadcn/ui"
+      },
+      "backend": {
+        "title": "后端开发工程师",
+        "description": "精通 Go 或 Node.js，具备高并发架构经验"
+      },
+      "fullstack": {
+        "title": "全栈开发工程师",
+        "description": "熟悉 React、Node.js、Electron 跨平台桌面应用开发"
+      },
+      "mobile": {
+        "title": "移动端开发工程师",
+        "description": "精通 React Native，有 iOS/Android 原生开发经验优先"
+      },
+      "ai": {
+        "title": "AI 应用工程师",
+        "description": "熟练使用 AI 编程工具，了解 RAG、LangChain 等框架"
+      }
+    },
+    "location_title": "工作地点",
+    "location": "上海市嘉定区南翔",
+    "cta_title": "准备好了吗？",
+    "cta_subtitle": "期待与你一起创造下一代 AI 产品"
+  },
   "footer": {
     "description": "Cherry Studio 是一个支持多平台的 AI 客户端，我们致力于让更多人能够享受到 AI 带来的便利。",
     "cherry_studio": {
@@ -114,9 +170,11 @@
       "title": "联系我们",
       "wechat_qr_alt": "微信公众号二维码",
       "wechat_official_account": "官方微信公众号",
-      "contact_info": "如果您有使用上的问题可以先查看文档或社群中提问<0/>或邮件联系 <1>support@cherry-ai.com</1>"
+      "support_email": "技术支持",
+      "business_email": "商务合作",
+      "feedback": "反馈建议"
     },
-    "copyright": "Copyright © 2025 上海千彗科技有限公司 <1>沪ICP备2021031071号-3</1>"
+    "copyright": "Copyright © 2026 上海千彗科技有限公司 <1>沪ICP备2021031071号-3</1>"
   },
   "statistics": {
     "days_online": "上线天数",
