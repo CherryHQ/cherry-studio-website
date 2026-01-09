@@ -185,7 +185,7 @@ const TestimonialsSection: FC = () => {
     <section className="bg-background relative overflow-hidden py-16">
       <div className="dot-pattern absolute inset-0 opacity-20" />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
           <h2 className="text-foreground text-2xl font-bold sm:text-3xl">{t('testimonials.title')}</h2>
           <p className="text-muted-foreground mt-3 text-base sm:text-lg">{t('testimonials.subtitle')}</p>

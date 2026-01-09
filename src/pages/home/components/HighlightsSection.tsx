@@ -67,7 +67,7 @@ const HighlightsSection: FC = () => {
         <div className="from-primary/5 absolute inset-0 bg-gradient-to-br via-transparent to-transparent" />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="mx-auto mb-16 max-w-3xl text-center">
           <h2 className="text-foreground mb-4 text-3xl font-bold sm:text-4xl lg:text-5xl">

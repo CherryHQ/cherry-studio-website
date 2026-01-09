@@ -60,7 +60,7 @@ const SimpleHeader: React.FC = () => {
         'border-border/50 fixed top-0 right-0 left-0 z-50 border-b transition-all duration-300',
         isScrolled ? 'glass py-3' : 'bg-background/80 py-4 backdrop-blur-sm'
       )}>
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="group flex items-center gap-3">

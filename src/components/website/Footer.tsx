@@ -48,7 +48,7 @@ const Footer: React.FC = () => {
   return (
     <footer className="border-border bg-card relative border-t">
       {/* Main Footer */}
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1400px] px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-12">
           {/* Brand Column */}
           <div className="space-y-5 lg:col-span-4">
@@ -168,7 +168,7 @@ const Footer: React.FC = () => {
 
       {/* Bottom Bar */}
       <div className="border-border border-t">
-        <div className="mx-auto max-w-7xl px-4 py-5 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-[1400px] px-4 py-5 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
             {/* Copyright */}
             <p className="text-muted-foreground text-xs">

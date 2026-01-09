@@ -137,7 +137,7 @@ const HeroSection: FC = () => {
       {/* Subtle gradient background */}
       <div className="via-primary/[0.02] absolute inset-0 bg-gradient-to-b from-transparent to-transparent" />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
         <div className="pt-16 pb-8 text-center sm:pt-24 lg:pt-32">
           {/* Main Heading */}
           <h1 className="text-foreground mb-6 text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
@@ -198,7 +198,7 @@ const HeroSection: FC = () => {
 
       {/* Feature Tabs */}
       <div
-        className="relative mx-auto mt-8 max-w-6xl px-4 sm:mt-10 sm:px-6 lg:px-8"
+        className="relative mx-auto mt-8 max-w-[1200px] px-4 sm:mt-10 sm:px-6 lg:px-8"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}>
         {/* Tab Navigation */}

@@ -90,7 +90,7 @@ const EnterprisePage: FC = () => {
         <Particles className="absolute inset-0" quantity={60} color="#ffffff" size={0.4} staticity={40} />
         {/* Subtle center glow */}
         <div className="absolute top-1/2 left-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500/5 blur-[120px]" />
-        <div className="relative z-10 mx-auto max-w-4xl text-center">
+        <div className="relative z-10 mx-auto max-w-[1400px] text-center">
           <h1 className="mb-6 text-4xl font-bold text-white sm:text-5xl">{t('enterprise_page.hero.title')}</h1>
           <p className="text-lg text-neutral-400 sm:text-xl">{t('enterprise_page.hero.subtitle')}</p>
         </div>
@@ -98,7 +98,7 @@ const EnterprisePage: FC = () => {
 
       {/* Core Features */}
       <section id="features" className="bg-card px-6 py-20">
-        <div className="mx-auto max-w-6xl">
+        <div className="mx-auto max-w-[1400px]">
           <div className="mb-16 text-center">
             <h2 className="text-foreground mb-4 text-3xl font-bold sm:text-4xl">
               {t('enterprise_page.features.title')}
@@ -127,7 +127,7 @@ const EnterprisePage: FC = () => {
 
       {/* Version Comparison */}
       <section className="border-border bg-secondary/30 border-t px-6 py-24">
-        <div className="mx-auto max-w-6xl">
+        <div className="mx-auto max-w-[1400px]">
           <div className="mb-16 text-center">
             <h2 className="text-foreground mb-4 text-3xl font-bold sm:text-4xl">
               {t('enterprise_page.comparison.title')}
@@ -391,7 +391,7 @@ const EnterprisePage: FC = () => {
       {/* Express Edition Highlight */}
       <section className="border-border from-secondary/30 to-background relative overflow-hidden border-t bg-gradient-to-br px-6 py-24">
         <div className="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-blue-500/5 blur-3xl" />
-        <div className="mx-auto max-w-6xl">
+        <div className="mx-auto max-w-[1400px]">
           <div className="relative z-10 grid items-start gap-16 lg:grid-cols-[1fr_480px]">
             {/* Left Side - Main Info */}
             <div className="flex flex-col gap-8 lg:pr-8">
@@ -475,7 +475,7 @@ const EnterprisePage: FC = () => {
 
       {/* Beta Notice Section */}
       <section className="border-border bg-secondary/30 border-t px-6 py-24">
-        <div className="mx-auto max-w-6xl">
+        <div className="mx-auto max-w-[1400px]">
           <div className="grid gap-6 md:grid-cols-3">
             {/* Demo Card */}
             <div className="border-border bg-card flex h-full flex-col rounded-xl border p-7 shadow-sm">
@@ -572,7 +572,7 @@ const EnterprisePage: FC = () => {
 
       {/* Support Section */}
       <section className="border-border bg-card border-t px-6 py-24 text-center">
-        <div className="mx-auto max-w-4xl">
+        <div className="mx-auto max-w-[1400px]">
           <h2 className="text-foreground mb-4 text-3xl font-bold sm:text-4xl">{t('enterprise_page.support.title')}</h2>
           <p className="text-muted-foreground mx-auto mb-8 max-w-xl text-lg">
             {t('enterprise_page.support.description')}

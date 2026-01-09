@@ -66,7 +66,7 @@ const CommunitySection: FC = () => {
       {/* Animated Gradient Orb */}
       <div className="animate-orb-breathe bg-primary/5 absolute top-0 left-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[100px]" />
 
-      <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
         {/* Title */}
         <div className="mb-10 text-center">
           <h2 className="text-foreground mb-4 text-3xl font-bold sm:text-4xl lg:text-5xl">{t('community.title')}</h2>

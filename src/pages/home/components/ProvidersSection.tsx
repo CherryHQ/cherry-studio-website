@@ -5,16 +5,22 @@ import { useTranslation } from 'react-i18next'
 import ai302Logo from '@/assets/images/provider_logo/302ai.svg'
 import anthropicLogo from '@/assets/images/provider_logo/anthropic.svg'
 import azureLogo from '@/assets/images/provider_logo/azure-color.svg'
+import baichuanLogo from '@/assets/images/provider_logo/baichuan-color.svg'
+import bytedanceLogo from '@/assets/images/provider_logo/bytedance-color.svg'
 import deepseekLogo from '@/assets/images/provider_logo/deepseek-color.svg'
 import googleLogo from '@/assets/images/provider_logo/google-color.svg'
 import groqLogo from '@/assets/images/provider_logo/groq.svg'
 import huggingfaceLogo from '@/assets/images/provider_logo/huggingface-color.svg'
 import metaLogo from '@/assets/images/provider_logo/meta-color.svg'
+import minimaxLogo from '@/assets/images/provider_logo/minimax-color.svg'
 import mistralLogo from '@/assets/images/provider_logo/mistral-color.svg'
+import moonshotLogo from '@/assets/images/provider_logo/moonshot.svg'
 import ollamaLogo from '@/assets/images/provider_logo/ollama.svg'
 import openaiLogo from '@/assets/images/provider_logo/openai.svg'
 import openrouterLogo from '@/assets/images/provider_logo/openrouter.svg'
 import qwenLogo from '@/assets/images/provider_logo/qwen-color.svg'
+import siliconcloudLogo from '@/assets/images/provider_logo/siliconcloud-color.svg'
+import stepfunLogo from '@/assets/images/provider_logo/stepfun-color.svg'
 import xaiLogo from '@/assets/images/provider_logo/xai.svg'
 import zhipuLogo from '@/assets/images/provider_logo/zhipu-color.svg'
 
@@ -34,7 +40,7 @@ const innerLogos: LogoInfo[] = [
   { src: deepseekLogo, name: 'DeepSeek' }
 ]
 
-// 外环 logos (12个) - 其他知名服务商
+// 外环 logos - 其他知名服务商
 const outerLogos: LogoInfo[] = [
   { src: mistralLogo, name: 'Mistral' },
   { src: azureLogo, name: 'Azure' },
@@ -44,7 +50,13 @@ const outerLogos: LogoInfo[] = [
   { src: huggingfaceLogo, name: 'Hugging Face' },
   { src: openrouterLogo, name: 'OpenRouter', darkInvert: true },
   { src: zhipuLogo, name: 'Zhipu AI' },
-  { src: ai302Logo, name: '302.AI' }
+  { src: ai302Logo, name: '302.AI' },
+  { src: bytedanceLogo, name: 'ByteDance' },
+  { src: moonshotLogo, name: 'Moonshot', darkInvert: true },
+  { src: baichuanLogo, name: 'Baichuan' },
+  { src: minimaxLogo, name: 'MiniMax' },
+  { src: siliconcloudLogo, name: 'SiliconCloud' },
+  { src: stepfunLogo, name: 'StepFun' }
 ]
 
 const ProvidersSection: FC = () => {
@@ -81,7 +93,7 @@ const ProvidersSection: FC = () => {
 
   return (
     <section className="bg-background relative overflow-hidden py-24">
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="mx-auto mb-16 max-w-3xl text-center">
           <h2 className="text-foreground mb-4 text-2xl font-bold sm:text-3xl lg:text-4xl">{t('providers.title')}</h2>
@@ -91,10 +103,10 @@ const ProvidersSection: FC = () => {
         {/* Orbital Animation */}
         <div className="relative mx-auto h-[400px] w-[400px] sm:h-[500px] sm:w-[500px] lg:h-[600px] lg:w-[600px]">
           {/* Outer orbit ring */}
-          <div className="border-border/30 absolute inset-0 rounded-full border" />
+          <div className="border-border/60 absolute inset-0 rounded-full border" />
 
           {/* Inner orbit ring */}
-          <div className="border-border/30 absolute inset-[25%] rounded-full border" />
+          <div className="border-border/60 absolute inset-[25%] rounded-full border" />
 
           {/* Outer orbit logos */}
           {outerLogos.map((logo, index) => {

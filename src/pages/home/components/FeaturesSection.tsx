@@ -79,7 +79,7 @@ const FeaturesSection: FC = () => {
       {/* Background */}
       <div className="dot-pattern absolute inset-0 opacity-30" />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="mb-16 text-center">
           <h2 className="text-foreground mb-4 text-3xl font-bold sm:text-4xl lg:text-5xl">{t('features.title')}</h2>
