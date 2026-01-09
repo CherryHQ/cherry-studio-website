@@ -28,8 +28,8 @@ const Statistics: FC = () => {
   ]
 
   return (
-    <section className="fun-facts-section relative overflow-hidden bg-secondary/30 py-16">
-      <div className="absolute inset-0 grid-pattern opacity-20" />
+    <section className="fun-facts-section bg-secondary/30 relative overflow-hidden py-16">
+      <div className="grid-pattern absolute inset-0 opacity-20" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -40,7 +40,7 @@ const Statistics: FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative overflow-hidden rounded-2xl border border-border/50 bg-card/50 p-6 transition-all duration-300 hover:border-primary/30 hover:bg-card">
+              className="group border-border/50 bg-card/50 hover:border-primary/30 hover:bg-card relative overflow-hidden rounded-2xl border p-6 transition-all duration-300">
               {/* Gradient Background */}
               <div
                 className={`absolute -inset-px rounded-2xl bg-gradient-to-br opacity-0 transition-opacity duration-300 group-hover:opacity-100 ${stat.gradient}`}
@@ -48,19 +48,17 @@ const Statistics: FC = () => {
 
               <div className="relative z-10 text-center">
                 {/* Icon */}
-                <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                <div className="bg-primary/10 text-primary mb-4 inline-flex h-14 w-14 items-center justify-center rounded-xl">
                   <stat.icon className="h-7 w-7" />
                 </div>
 
                 {/* Number */}
-                <div
-                  id={stat.id}
-                  className="mb-2 text-4xl font-bold tabular-nums text-foreground lg:text-5xl">
+                <div id={stat.id} className="text-foreground mb-2 text-4xl font-bold tabular-nums lg:text-5xl">
                   0
                 </div>
 
                 {/* Label */}
-                <p className="text-sm text-muted-foreground">{stat.label}</p>
+                <p className="text-muted-foreground text-sm">{stat.label}</p>
               </div>
             </motion.div>
           ))}

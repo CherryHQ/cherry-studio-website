@@ -40,30 +40,30 @@ const LanguageSelector: React.FC = () => {
         className={cn(
           'flex items-center gap-1.5',
           'h-9 px-3',
-          'rounded-lg border border-border bg-secondary/50',
-          'text-sm font-medium text-foreground',
+          'border-border bg-secondary/50 rounded-lg border',
+          'text-foreground text-sm font-medium',
           'transition-all duration-200',
           'hover:bg-secondary hover:border-primary/30',
-          'focus:ring-2 focus:ring-primary/20 focus:outline-none',
+          'focus:ring-primary/20 focus:ring-2 focus:outline-none',
           'active:scale-95'
         )}
         onClick={() => setIsOpen(!isOpen)}
         type="button"
         aria-label="Select Language"
         aria-expanded={isOpen}>
-        <Globe className="h-4 w-4 text-muted-foreground" />
+        <Globe className="text-muted-foreground h-4 w-4" />
         <span className="text-xs font-semibold tracking-wide">{currentLanguage.short}</span>
         <ChevronDown
-          className={cn('h-3 w-3 text-muted-foreground transition-transform duration-200', isOpen && 'rotate-180')}
+          className={cn('text-muted-foreground h-3 w-3 transition-transform duration-200', isOpen && 'rotate-180')}
         />
       </button>
 
       {isOpen && (
         <div
           className={cn(
-            'absolute bottom-full right-0 z-[1000]',
+            'absolute right-0 bottom-full z-[1000]',
             'mb-2 min-w-[160px]',
-            'rounded-xl border border-border bg-card shadow-2xl',
+            'border-border bg-card rounded-xl border shadow-2xl',
             'py-1.5',
             'animate-in fade-in slide-in-from-bottom-2 duration-200'
           )}>
@@ -85,7 +85,7 @@ const LanguageSelector: React.FC = () => {
                 <span className="text-lg">{language.flag}</span>
                 <span className="flex-1">{language.name}</span>
                 {isActive && (
-                  <span className="flex h-5 w-5 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-primary-foreground">
+                  <span className="bg-primary text-primary-foreground flex h-5 w-5 items-center justify-center rounded-full text-[10px] font-bold">
                     ✓
                   </span>
                 )}

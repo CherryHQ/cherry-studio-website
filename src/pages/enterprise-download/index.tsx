@@ -63,7 +63,7 @@ const VersionInfo: FC<VersionInfoProps> = ({ versionData, loading, error }) => {
 
   return (
     <div className="relative z-10 mx-auto mb-10 max-w-4xl text-center">
-      <h1 className="bg-gradient-to-r from-white to-blue-100 bg-clip-text text-3xl font-bold leading-tight text-transparent sm:text-4xl lg:text-5xl">
+      <h1 className="bg-gradient-to-r from-white to-blue-100 bg-clip-text text-3xl leading-tight font-bold text-transparent sm:text-4xl lg:text-5xl">
         {loading
           ? t('download_page.loading_version')
           : versionData
@@ -149,22 +149,24 @@ const DownloadList: FC<DownloadListProps> = ({ downloadUrls }) => {
   if (!downloadUrls) return null
 
   return (
-    <div className="rounded-2xl border border-border bg-card p-8 shadow-sm">
-      <h2 className="mb-10 text-center text-3xl font-bold text-foreground">{t('download_page.other_downloads_title')}</h2>
+    <div className="border-border bg-card rounded-2xl border p-8 shadow-sm">
+      <h2 className="text-foreground mb-10 text-center text-3xl font-bold">
+        {t('download_page.other_downloads_title')}
+      </h2>
       <ul className="space-y-0">
         {Object.values(downloadUrls).map((group) => (
           <div key={group.title}>
-            <h3 className="mb-4 mt-8 border-l-4 border-primary pl-4 text-xl font-semibold text-foreground first:mt-0">
+            <h3 className="border-primary text-foreground mt-8 mb-4 border-l-4 pl-4 text-xl font-semibold first:mt-0">
               {group.title}
             </h3>
             {group.items.map((item: { name: string; url: string; desc: string }) => (
               <li key={item.name} className="mb-4">
                 <button
-                  className="w-full rounded-xl border border-border bg-secondary/30 px-5 py-4 text-left transition-all duration-200 hover:border-primary/30 hover:bg-primary/5 hover:text-primary"
+                  className="border-border bg-secondary/30 hover:border-primary/30 hover:bg-primary/5 hover:text-primary w-full rounded-xl border px-5 py-4 text-left transition-all duration-200"
                   onClick={() => window.open(item.url, '_blank')}
                   type="button">
-                  <span className="mr-2.5 text-sm font-bold text-foreground">{item.desc}</span>
-                  <span className="text-sm text-muted-foreground">{item.name}</span>
+                  <span className="text-foreground mr-2.5 text-sm font-bold">{item.desc}</span>
+                  <span className="text-muted-foreground text-sm">{item.name}</span>
                 </button>
               </li>
             ))}
@@ -192,9 +194,9 @@ const EnterpriseDownloadPage: FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="bg-background min-h-screen">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#0a0e27] to-[#1a1f3a] px-6 pb-20 pt-32 text-center">
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#0a0e27] to-[#1a1f3a] px-6 pt-32 pb-20 text-center">
         <BackgroundBeams className="absolute inset-0 z-0" />
         <div className="relative z-10 mx-auto max-w-6xl">
           <VersionInfo versionData={versionData} loading={loading} error={error} />
@@ -203,29 +205,39 @@ const EnterpriseDownloadPage: FC = () => {
       </section>
 
       {/* Beta Notice Section */}
-      <section className="border-t border-border bg-secondary/30 px-6 py-20">
+      <section className="border-border bg-secondary/30 border-t px-6 py-20">
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-6 md:grid-cols-3">
             {/* Demo Card */}
-            <div className="flex h-full flex-col rounded-xl border border-border bg-card p-7 shadow-sm">
-              <h3 className="mb-5 flex items-center gap-2 text-base font-semibold text-foreground">
-                <span className="h-4 w-1 rounded bg-primary" />
+            <div className="border-border bg-card flex h-full flex-col rounded-xl border p-7 shadow-sm">
+              <h3 className="text-foreground mb-5 flex items-center gap-2 text-base font-semibold">
+                <span className="bg-primary h-4 w-1 rounded" />
                 {t('enterprise_page.beta.demo.title')}
               </h3>
-              <div className="flex flex-1 flex-col text-sm leading-relaxed text-muted-foreground">
+              <div className="text-muted-foreground flex flex-1 flex-col text-sm leading-relaxed">
                 <ul className="space-y-3">
                   <li className="flex gap-2">
-                    <strong className="min-w-[80px] font-medium text-foreground">{t('enterprise_page.beta.demo.admin_portal')}</strong>
-                    <a href="https://admin.demo.cherry-ai.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                    <strong className="text-foreground min-w-[80px] font-medium">
+                      {t('enterprise_page.beta.demo.admin_portal')}
+                    </strong>
+                    <a
+                      href="https://admin.demo.cherry-ai.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary hover:underline">
                       admin.demo.cherry-ai.com
                     </a>
                   </li>
                   <li className="flex gap-2">
-                    <strong className="min-w-[80px] font-medium text-foreground">{t('enterprise_page.beta.demo.account')}</strong>
+                    <strong className="text-foreground min-w-[80px] font-medium">
+                      {t('enterprise_page.beta.demo.account')}
+                    </strong>
                     admin
                   </li>
                   <li className="flex gap-2">
-                    <strong className="min-w-[80px] font-medium text-foreground">{t('enterprise_page.beta.demo.password')}</strong>
+                    <strong className="text-foreground min-w-[80px] font-medium">
+                      {t('enterprise_page.beta.demo.password')}
+                    </strong>
                     password
                   </li>
                 </ul>
@@ -233,22 +245,26 @@ const EnterpriseDownloadPage: FC = () => {
             </div>
 
             {/* Download Info Card */}
-            <div className="flex h-full flex-col rounded-xl border border-border bg-card p-7 shadow-sm">
-              <h3 className="mb-5 flex items-center gap-2 text-base font-semibold text-foreground">
-                <span className="h-4 w-1 rounded bg-primary" />
+            <div className="border-border bg-card flex h-full flex-col rounded-xl border p-7 shadow-sm">
+              <h3 className="text-foreground mb-5 flex items-center gap-2 text-base font-semibold">
+                <span className="bg-primary h-4 w-1 rounded" />
                 {t('enterprise_page.beta.download.title')}
               </h3>
-              <div className="flex flex-1 flex-col text-sm leading-relaxed text-muted-foreground">
+              <div className="text-muted-foreground flex flex-1 flex-col text-sm leading-relaxed">
                 <ul className="space-y-3">
                   <li className="flex flex-wrap gap-2">
                     {t('enterprise_page.beta.download.server_url')} https://api.demo.cherry-ai.com
                   </li>
                   <li className="flex gap-2">
-                    <strong className="min-w-[80px] font-medium text-foreground">{t('enterprise_page.beta.demo.account')}</strong>
+                    <strong className="text-foreground min-w-[80px] font-medium">
+                      {t('enterprise_page.beta.demo.account')}
+                    </strong>
                     user
                   </li>
                   <li className="flex gap-2">
-                    <strong className="min-w-[80px] font-medium text-foreground">{t('enterprise_page.beta.demo.password')}</strong>
+                    <strong className="text-foreground min-w-[80px] font-medium">
+                      {t('enterprise_page.beta.demo.password')}
+                    </strong>
                     password
                   </li>
                 </ul>
@@ -256,15 +272,19 @@ const EnterpriseDownloadPage: FC = () => {
             </div>
 
             {/* Manual Card */}
-            <div className="flex h-full flex-col rounded-xl border border-border bg-card p-7 shadow-sm">
-              <h3 className="mb-5 flex items-center gap-2 text-base font-semibold text-foreground">
-                <span className="h-4 w-1 rounded bg-primary" />
+            <div className="border-border bg-card flex h-full flex-col rounded-xl border p-7 shadow-sm">
+              <h3 className="text-foreground mb-5 flex items-center gap-2 text-base font-semibold">
+                <span className="bg-primary h-4 w-1 rounded" />
                 {t('enterprise_page.beta.manual.title')}
               </h3>
-              <div className="flex flex-1 flex-col text-sm leading-relaxed text-muted-foreground">
+              <div className="text-muted-foreground flex flex-1 flex-col text-sm leading-relaxed">
                 <p className="mb-4">{t('enterprise_page.beta.manual.description')}</p>
                 <Button variant="outline" asChild className="mt-auto w-full">
-                  <a href="https://docs.enterprise.cherry-ai.com/" target="_blank" rel="noopener noreferrer" className="gap-2">
+                  <a
+                    href="https://docs.enterprise.cherry-ai.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="gap-2">
                     <FileText className="h-4 w-4" />
                     {t('enterprise_page.beta.manual.view_manual')}
                   </a>

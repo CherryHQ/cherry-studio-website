@@ -28,9 +28,9 @@ const DownloadButtons: FC<DownloadButtonsProps> = ({ systemInfo }) => {
   }
 
   return (
-    <div className="mb-12 rounded-2xl border border-border bg-card p-8 text-center">
+    <div className="border-border bg-card mb-12 rounded-2xl border p-8 text-center">
       {systemInfo && (
-        <p className="mb-6 text-muted-foreground">
+        <p className="text-muted-foreground mb-6">
           {t('download_page.current_system')}: <strong className="text-foreground">{systemInfo?.[0].type}</strong>
         </p>
       )}

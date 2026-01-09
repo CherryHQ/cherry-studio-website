@@ -40,15 +40,15 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
       <div
         className={cn(
           'fixed top-0 right-0 z-50 h-full w-[280px] max-w-[80vw]',
-          'bg-card border-l border-border',
+          'bg-card border-border border-l',
           'transform transition-transform duration-300 ease-out',
           isOpen ? 'translate-x-0' : 'translate-x-full'
         )}>
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-border px-4 py-4">
+        <div className="border-border flex items-center justify-between border-b px-4 py-4">
           <LanguageSelector />
           <button
-            className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+            className="text-muted-foreground hover:bg-accent hover:text-foreground flex h-9 w-9 items-center justify-center rounded-lg transition-colors"
             onClick={onClose}
             type="button">
             <X className="h-5 w-5" />
@@ -88,7 +88,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
                       )}
                       onClick={onClose}>
                       {link.label}
-                      {isActive && <span className="ml-auto h-2 w-2 rounded-full bg-primary" />}
+                      {isActive && <span className="bg-primary ml-auto h-2 w-2 rounded-full" />}
                     </Link>
                   )}
                 </li>
@@ -98,8 +98,8 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
         </nav>
 
         {/* Footer */}
-        <div className="absolute bottom-0 left-0 right-0 border-t border-border p-4">
-          <p className="text-center text-xs text-muted-foreground">Cherry Studio</p>
+        <div className="border-border absolute right-0 bottom-0 left-0 border-t p-4">
+          <p className="text-muted-foreground text-center text-xs">Cherry Studio</p>
         </div>
       </div>
     </>

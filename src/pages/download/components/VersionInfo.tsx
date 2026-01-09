@@ -12,7 +12,7 @@ const VersionInfo: FC<VersionInfoProps> = ({ versionData, loading }) => {
   const { t } = useTranslation()
   return (
     <div className="mb-12 text-center">
-      <h1 className="mb-4 text-4xl font-bold text-foreground sm:text-5xl">
+      <h1 className="text-foreground mb-4 text-4xl font-bold sm:text-5xl">
         {loading
           ? t('download_page.loading_version')
           : versionData
@@ -20,7 +20,7 @@ const VersionInfo: FC<VersionInfoProps> = ({ versionData, loading }) => {
             : t('download_page.version_error')}
       </h1>
       {versionData && (
-        <p className="text-lg text-muted-foreground">
+        <p className="text-muted-foreground text-lg">
           {t('download_page.published_at_label')}
           {versionData.publishedAt}
         </p>

@@ -40,14 +40,14 @@ const Footer: React.FC = () => {
   ]
 
   return (
-    <footer className="relative border-t border-border bg-card">
+    <footer className="border-border bg-card relative border-t">
       {/* Main Footer */}
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-12">
           {/* Brand Column */}
           <div className="space-y-5 lg:col-span-4">
             <img src={cherryLogo} alt="Cherry Studio" className="h-8 w-auto" />
-            <p className="text-sm leading-relaxed text-muted-foreground">{t('footer.description')}</p>
+            <p className="text-muted-foreground text-sm leading-relaxed">{t('footer.description')}</p>
             <div className="flex flex-wrap gap-2">
               {socialLinks.map((link) => (
                 <a
@@ -55,14 +55,14 @@ const Footer: React.FC = () => {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-secondary/50 transition-all duration-200 hover:border-primary/30 hover:bg-secondary">
+                  className="border-border bg-secondary/50 hover:border-primary/30 hover:bg-secondary flex h-9 w-9 items-center justify-center rounded-lg border transition-all duration-200">
                   <img src={link.icon} alt={link.alt} className="h-4 w-4 opacity-70 invert" />
                 </a>
               ))}
               <button
                 type="button"
                 onClick={copyRSSLink}
-                className="flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-secondary/50 transition-all duration-200 hover:border-primary/30 hover:bg-secondary">
+                className="border-border bg-secondary/50 hover:border-primary/30 hover:bg-secondary flex h-9 w-9 items-center justify-center rounded-lg border transition-all duration-200">
                 <img src={rssIcon} alt="RSS" className="h-4 w-4 opacity-70 invert" />
               </button>
             </div>
@@ -72,7 +72,7 @@ const Footer: React.FC = () => {
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:col-span-5">
             {/* Cherry Studio Links */}
             <div>
-              <h4 className="mb-4 text-sm font-semibold text-foreground">{t('footer.cherry_studio.title')}</h4>
+              <h4 className="text-foreground mb-4 text-sm font-semibold">{t('footer.cherry_studio.title')}</h4>
               <ul className="space-y-2.5">
                 {cherryLinks.map((link) => (
                   <li key={link.href}>
@@ -80,7 +80,7 @@ const Footer: React.FC = () => {
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm text-muted-foreground transition-colors duration-200 hover:text-primary">
+                      className="text-muted-foreground hover:text-primary text-sm transition-colors duration-200">
                       {link.label}
                     </a>
                   </li>
@@ -90,7 +90,7 @@ const Footer: React.FC = () => {
 
             {/* Friendly Links */}
             <div>
-              <h4 className="mb-4 text-sm font-semibold text-foreground">{t('footer.friendly_links.title')}</h4>
+              <h4 className="text-foreground mb-4 text-sm font-semibold">{t('footer.friendly_links.title')}</h4>
               <ul className="space-y-2.5">
                 {friendlyLinks.map((link) => (
                   <li key={link.href}>
@@ -98,7 +98,7 @@ const Footer: React.FC = () => {
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm text-muted-foreground transition-colors duration-200 hover:text-primary">
+                      className="text-muted-foreground hover:text-primary text-sm transition-colors duration-200">
                       {link.label}
                     </a>
                   </li>
@@ -108,18 +108,18 @@ const Footer: React.FC = () => {
 
             {/* Contact - Compact */}
             <div>
-              <h4 className="mb-4 text-sm font-semibold text-foreground">{t('footer.contact_us.title')}</h4>
-              <div className="mb-3 inline-block overflow-hidden rounded-lg border border-border bg-white p-1.5">
+              <h4 className="text-foreground mb-4 text-sm font-semibold">{t('footer.contact_us.title')}</h4>
+              <div className="border-border mb-3 inline-block overflow-hidden rounded-lg border bg-white p-1.5">
                 <img src={cherryWxQR} alt={t('footer.contact_us.wechat_qr_alt')} className="h-24 w-24" />
               </div>
-              <p className="text-xs text-muted-foreground">{t('footer.contact_us.wechat_official_account')}</p>
+              <p className="text-muted-foreground text-xs">{t('footer.contact_us.wechat_official_account')}</p>
             </div>
           </div>
 
           {/* Contact Info Column */}
           <div className="lg:col-span-3">
-            <h4 className="mb-4 text-sm font-semibold text-foreground">{t('nav.contact')}</h4>
-            <p className="text-sm leading-relaxed text-muted-foreground">
+            <h4 className="text-foreground mb-4 text-sm font-semibold">{t('nav.contact')}</h4>
+            <p className="text-muted-foreground text-sm leading-relaxed">
               <Trans
                 i18nKey="footer.contact_us.contact_info"
                 components={[
@@ -135,11 +135,11 @@ const Footer: React.FC = () => {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-border">
+      <div className="border-border border-t">
         <div className="mx-auto max-w-7xl px-4 py-5 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
             {/* Copyright */}
-            <p className="text-xs text-muted-foreground">
+            <p className="text-muted-foreground text-xs">
               <Trans
                 i18nKey="footer.copyright"
                 components={[

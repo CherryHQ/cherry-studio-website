@@ -10,6 +10,8 @@ interface Feature {
   descriptionKey: string
   href: string
   gradient: string
+  iconColor: string
+  iconBg: string
 }
 
 const features: Feature[] = [
@@ -18,42 +20,54 @@ const features: Feature[] = [
     titleKey: 'features.conversation.title',
     descriptionKey: 'features.conversation.description',
     href: 'https://docs.cherry-ai.com/cherrystudio/preview/chat',
-    gradient: 'from-blue-500/20 to-cyan-500/20'
+    gradient: 'from-blue-500/20 to-cyan-500/20',
+    iconColor: 'text-blue-500',
+    iconBg: 'bg-blue-500/10'
   },
   {
     icon: Image,
     titleKey: 'features.drawing.title',
     descriptionKey: 'features.drawing.description',
     href: 'https://docs.cherry-ai.com/cherrystudio/preview/drawing',
-    gradient: 'from-purple-500/20 to-pink-500/20'
+    gradient: 'from-purple-500/20 to-pink-500/20',
+    iconColor: 'text-purple-500',
+    iconBg: 'bg-purple-500/10'
   },
   {
     icon: Languages,
     titleKey: 'features.translation.title',
     descriptionKey: 'features.translation.description',
     href: 'https://docs.cherry-ai.com/cherrystudio/preview/translation',
-    gradient: 'from-green-500/20 to-emerald-500/20'
+    gradient: 'from-green-500/20 to-emerald-500/20',
+    iconColor: 'text-green-500',
+    iconBg: 'bg-green-500/10'
   },
   {
     icon: Users,
     titleKey: 'features.assistants.title',
     descriptionKey: 'features.assistants.description',
     href: 'https://docs.cherry-ai.com/cherrystudio/preview/agents',
-    gradient: 'from-orange-500/20 to-amber-500/20'
+    gradient: 'from-orange-500/20 to-amber-500/20',
+    iconColor: 'text-orange-500',
+    iconBg: 'bg-orange-500/10'
   },
   {
     icon: Shield,
     titleKey: 'features.knowledge_base.title',
     descriptionKey: 'features.knowledge_base.description',
     href: 'https://docs.cherry-ai.com/advanced-basic/knowledge-base',
-    gradient: 'from-red-500/20 to-rose-500/20'
+    gradient: 'from-red-500/20 to-rose-500/20',
+    iconColor: 'text-red-500',
+    iconBg: 'bg-red-500/10'
   },
   {
     icon: Cloud,
     titleKey: 'features.backup.title',
     descriptionKey: 'features.backup.description',
     href: 'https://docs.cherry-ai.com/cherrystudio/preview/settings/data',
-    gradient: 'from-indigo-500/20 to-violet-500/20'
+    gradient: 'from-indigo-500/20 to-violet-500/20',
+    iconColor: 'text-indigo-500',
+    iconBg: 'bg-indigo-500/10'
   }
 ]
 
@@ -109,7 +123,12 @@ const FeaturesSection: FC = () => {
               {/* Content */}
               <div className="relative z-10">
                 {/* Icon */}
-                <div className="bg-primary/10 text-primary mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl">
+                <div
+                  className={cn(
+                    'mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl',
+                    feature.iconBg,
+                    feature.iconColor
+                  )}>
                   <feature.icon className="h-6 w-6" />
                 </div>
 

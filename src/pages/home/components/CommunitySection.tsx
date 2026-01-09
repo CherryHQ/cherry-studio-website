@@ -22,12 +22,12 @@ const CommunitySection: FC = () => {
   }, [])
 
   return (
-    <section className="relative overflow-hidden bg-secondary/30 py-24" id="Community">
+    <section className="bg-secondary/30 relative overflow-hidden py-24" id="Community">
       {/* Background */}
       <div className="grid-pattern absolute inset-0 opacity-20" />
 
-      {/* Gradient Orbs */}
-      <div className="bg-primary/5 absolute top-0 left-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[100px]" />
+      {/* Animated Gradient Orb */}
+      <div className="animate-orb-breathe bg-primary/5 absolute top-0 left-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[100px]" />
 
       <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">

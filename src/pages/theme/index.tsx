@@ -37,7 +37,7 @@ const ErrorBoundaryContent: React.FC = () => {
   const { t } = useTranslation()
   return (
     <div className="flex flex-col items-center justify-center p-8 text-center">
-      <h2 className="mb-4 text-xl font-semibold text-foreground">{t('theme_page.loading_error')}</h2>
+      <h2 className="text-foreground mb-4 text-xl font-semibold">{t('theme_page.loading_error')}</h2>
       <Button onClick={() => window.location.reload()}>{t('theme_page.refresh_page')}</Button>
     </div>
   )
@@ -110,14 +110,12 @@ const ThemePage: React.FC = () => {
     if (!url) return null
 
     return (
-      <div
-        className="fixed inset-0 z-[10003] flex items-center justify-center bg-black/70 p-5"
-        onClick={onClose}>
+      <div className="fixed inset-0 z-[10003] flex items-center justify-center bg-black/70 p-5" onClick={onClose}>
         <div
-          className="relative max-h-[90%] max-w-[90%] overflow-auto rounded-lg bg-card p-2.5"
+          className="bg-card relative max-h-[90%] max-w-[90%] overflow-auto rounded-lg p-2.5"
           onClick={(e) => e.stopPropagation()}>
           <button
-            className="absolute right-1.5 top-1.5 z-10 flex h-6 w-6 items-center justify-center rounded-full bg-primary text-sm text-white"
+            className="bg-primary absolute top-1.5 right-1.5 z-10 flex h-6 w-6 items-center justify-center rounded-full text-sm text-white"
             onClick={onClose}
             type="button">
             <X className="h-4 w-4" />
@@ -608,15 +606,19 @@ const ThemePage: React.FC = () => {
           className="fixed inset-0 z-[10004] flex items-center justify-center bg-black/70 p-5"
           onClick={closeInternalPreview}>
           <div
-            className="relative max-h-[90%] max-w-[90%] overflow-auto rounded-lg bg-card p-2.5"
+            className="bg-card relative max-h-[90%] max-w-[90%] overflow-auto rounded-lg p-2.5"
             onClick={(e) => e.stopPropagation()}>
             <button
-              className="absolute right-1.5 top-1.5 z-10 flex h-6 w-6 items-center justify-center rounded-full bg-primary text-sm text-white"
+              className="bg-primary absolute top-1.5 right-1.5 z-10 flex h-6 w-6 items-center justify-center rounded-full text-sm text-white"
               onClick={closeInternalPreview}
               type="button">
               <X className="h-4 w-4" />
             </button>
-            <img src={internalPreviewUrl} alt={t('theme_page.preview_example')} className="block max-h-[80vh] max-w-full" />
+            <img
+              src={internalPreviewUrl}
+              alt={t('theme_page.preview_example')}
+              className="block max-h-[80vh] max-w-full"
+            />
           </div>
         </div>
       )
@@ -786,10 +788,13 @@ const ThemePage: React.FC = () => {
 
     return (
       <div className="fixed inset-0 z-[10001] flex items-center justify-center overflow-y-auto bg-black/50 p-5">
-        <div className="relative flex max-h-[90vh] w-full max-w-2xl animate-in fade-in slide-in-from-bottom-4 flex-col overflow-hidden rounded-xl border border-border bg-card shadow-2xl">
-          <div className="flex items-center justify-between border-b border-border px-6 py-4">
-            <h2 className="text-xl font-semibold text-foreground">{t('theme_page.submit_modal.title')}</h2>
-            <button className="text-2xl text-muted-foreground transition-colors hover:text-foreground" onClick={handleClose} type="button">
+        <div className="animate-in fade-in slide-in-from-bottom-4 border-border bg-card relative flex max-h-[90vh] w-full max-w-2xl flex-col overflow-hidden rounded-xl border shadow-2xl">
+          <div className="border-border flex items-center justify-between border-b px-6 py-4">
+            <h2 className="text-foreground text-xl font-semibold">{t('theme_page.submit_modal.title')}</h2>
+            <button
+              className="text-muted-foreground hover:text-foreground text-2xl transition-colors"
+              onClick={handleClose}
+              type="button">
               <X className="h-6 w-6" />
             </button>
           </div>
@@ -797,17 +802,19 @@ const ThemePage: React.FC = () => {
           <div className="max-h-[calc(90vh-70px)] overflow-y-auto p-6">
             {submitSuccess ? (
               <div className="flex flex-col items-center py-10 text-center">
-                <div className="mb-5 flex h-24 w-24 items-center justify-center rounded-full bg-primary/10 text-5xl text-primary">
+                <div className="bg-primary/10 text-primary mb-5 flex h-24 w-24 items-center justify-center rounded-full text-5xl">
                   ✓
                 </div>
-                <h3 className="mb-3 text-2xl font-semibold text-foreground">{t('theme_page.submit_modal.success_title')}</h3>
-                <p className="mb-6 text-muted-foreground">{t('theme_page.submit_modal.success_message')}</p>
+                <h3 className="text-foreground mb-3 text-2xl font-semibold">
+                  {t('theme_page.submit_modal.success_title')}
+                </h3>
+                <p className="text-muted-foreground mb-6">{t('theme_page.submit_modal.success_message')}</p>
                 <Button onClick={handleClose}>{t('theme_page.submit_modal.close')}</Button>
               </div>
             ) : (
               <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="name" className="font-medium text-foreground">
+                  <label htmlFor="name" className="text-foreground font-medium">
                     {t('theme_page.submit_modal.name_label')}
                   </label>
                   <input
@@ -818,12 +825,12 @@ const ThemePage: React.FC = () => {
                     value={localFormData.name}
                     onChange={(e) => updateField('name', e.target.value)}
                     placeholder={t('theme_page.submit_modal.name_placeholder')}
-                    className="rounded-lg border border-border bg-secondary/30 px-3 py-2.5 text-foreground transition-colors focus:border-primary focus:outline-none"
+                    className="border-border bg-secondary/30 text-foreground focus:border-primary rounded-lg border px-3 py-2.5 transition-colors focus:outline-none"
                   />
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="author" className="font-medium text-foreground">
+                  <label htmlFor="author" className="text-foreground font-medium">
                     {t('theme_page.submit_modal.author_label')}
                   </label>
                   <input
@@ -834,7 +841,7 @@ const ThemePage: React.FC = () => {
                     value={localFormData.author}
                     onChange={(e) => updateField('author', e.target.value)}
                     placeholder={t('theme_page.submit_modal.author_placeholder')}
-                    className="rounded-lg border border-border bg-secondary/30 px-3 py-2.5 text-foreground transition-colors focus:border-primary focus:outline-none"
+                    className="border-border bg-secondary/30 text-foreground focus:border-primary rounded-lg border px-3 py-2.5 transition-colors focus:outline-none"
                   />
                 </div>
 
@@ -846,7 +853,7 @@ const ThemePage: React.FC = () => {
                       name="light_mode"
                       checked={localFormData.light_mode}
                       onChange={(e) => updateField('light_mode', e.target.checked)}
-                      className="h-4 w-4 rounded border-border text-primary focus:ring-primary"
+                      className="border-border text-primary focus:ring-primary h-4 w-4 rounded"
                     />
                     <label htmlFor="light_mode" className="text-foreground">
                       {t('theme_page.submit_modal.support_light_mode')}
@@ -860,7 +867,7 @@ const ThemePage: React.FC = () => {
                       name="dark_mode"
                       checked={localFormData.dark_mode}
                       onChange={(e) => updateField('dark_mode', e.target.checked)}
-                      className="h-4 w-4 rounded border-border text-primary focus:ring-primary"
+                      className="border-border text-primary focus:ring-primary h-4 w-4 rounded"
                     />
                     <label htmlFor="dark_mode" className="text-foreground">
                       {t('theme_page.submit_modal.support_dark_mode')}
@@ -869,7 +876,7 @@ const ThemePage: React.FC = () => {
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="version" className="font-medium text-foreground">
+                  <label htmlFor="version" className="text-foreground font-medium">
                     {t('theme_page.submit_modal.version_label')}
                   </label>
                   <input
@@ -884,13 +891,13 @@ const ThemePage: React.FC = () => {
                       }
                     }}
                     placeholder={t('theme_page.submit_modal.version_placeholder')}
-                    className="rounded-lg border border-border bg-secondary/30 px-3 py-2.5 text-foreground transition-colors focus:border-primary focus:outline-none"
+                    className="border-border bg-secondary/30 text-foreground focus:border-primary rounded-lg border px-3 py-2.5 transition-colors focus:outline-none"
                   />
-                  <p className="mt-1 text-xs text-muted-foreground">{t('theme_page.submit_modal.version_hint')}</p>
+                  <p className="text-muted-foreground mt-1 text-xs">{t('theme_page.submit_modal.version_hint')}</p>
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="code" className="font-medium text-foreground">
+                  <label htmlFor="code" className="text-foreground font-medium">
                     {t('theme_page.submit_modal.code_label')}
                   </label>
                   <textarea
@@ -901,12 +908,12 @@ const ThemePage: React.FC = () => {
                     onChange={(e) => updateField('code', e.target.value)}
                     placeholder={t('theme_page.submit_modal.code_placeholder')}
                     rows={10}
-                    className="min-h-[200px] whitespace-pre rounded-lg border border-border bg-secondary/30 px-3 py-2.5 font-mono text-foreground transition-colors focus:border-primary focus:outline-none"
+                    className="border-border bg-secondary/30 text-foreground focus:border-primary min-h-[200px] rounded-lg border px-3 py-2.5 font-mono whitespace-pre transition-colors focus:outline-none"
                   />
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="cdn_link" className="font-medium text-foreground">
+                  <label htmlFor="cdn_link" className="text-foreground font-medium">
                     {t('theme_page.submit_modal.cdn_link_label')}
                   </label>
                   <input
@@ -916,16 +923,16 @@ const ThemePage: React.FC = () => {
                     value={localFormData.cdn_link}
                     onChange={(e) => updateField('cdn_link', e.target.value)}
                     placeholder={t('theme_page.submit_modal.cdn_link_placeholder')}
-                    className="rounded-lg border border-border bg-secondary/30 px-3 py-2.5 text-foreground transition-colors focus:border-primary focus:outline-none"
+                    className="border-border bg-secondary/30 text-foreground focus:border-primary rounded-lg border px-3 py-2.5 transition-colors focus:outline-none"
                   />
                 </div>
 
                 {localFormData.light_mode && (
                   <div className="flex flex-col gap-2">
-                    <label htmlFor="light_pic" className="font-medium text-foreground">
+                    <label htmlFor="light_pic" className="text-foreground font-medium">
                       {t('theme_page.submit_modal.light_image_label')}
                     </label>
-                    <div className="overflow-hidden rounded-lg border-2 border-dashed border-border">
+                    <div className="border-border overflow-hidden rounded-lg border-2 border-dashed">
                       {lightImage ? (
                         <div className="relative">
                           <img
@@ -935,18 +942,18 @@ const ThemePage: React.FC = () => {
                           />
                           <button
                             type="button"
-                            className="absolute bottom-2.5 right-2.5 rounded bg-black/60 px-3 py-1.5 text-xs text-white"
+                            className="absolute right-2.5 bottom-2.5 rounded bg-black/60 px-3 py-1.5 text-xs text-white"
                             onClick={() => setLightImage(null)}>
                             {t('theme_page.submit_modal.remove_image')}
                           </button>
                         </div>
                       ) : (
                         <div
-                          className="flex cursor-pointer flex-col items-center justify-center gap-2.5 p-8 transition-colors hover:bg-secondary/30"
+                          className="hover:bg-secondary/30 flex cursor-pointer flex-col items-center justify-center gap-2.5 p-8 transition-colors"
                           onClick={() => document.getElementById('light_pic')?.click()}>
-                          <span className="text-2xl text-muted-foreground">📷</span>
+                          <span className="text-muted-foreground text-2xl">📷</span>
                           <span className="text-foreground">{t('theme_page.submit_modal.upload_image')}</span>
-                          <span className="mt-2 text-xs text-muted-foreground">
+                          <span className="text-muted-foreground mt-2 text-xs">
                             {t('theme_page.submit_modal.image_format_hint')}
                           </span>
                         </div>
@@ -960,14 +967,17 @@ const ThemePage: React.FC = () => {
                         className="hidden"
                       />
                     </div>
-                    <p className="mt-1 text-xs text-muted-foreground">
+                    <p className="text-muted-foreground mt-1 text-xs">
                       {t('theme_page.submit_modal.preview_background_hint')}
                       <a
                         href="#"
                         onClick={(e) =>
-                          handleInternalPreview(e, 'https://data1.cherry-ai.com/assets/a4391dd7-473a-4cad-b6f5-6a429e3bbf0f')
+                          handleInternalPreview(
+                            e,
+                            'https://data1.cherry-ai.com/assets/a4391dd7-473a-4cad-b6f5-6a429e3bbf0f'
+                          )
                         }
-                        className="ml-1 text-primary hover:underline">
+                        className="text-primary ml-1 hover:underline">
                         {t('theme_page.view_example')}
                       </a>
                     </p>
@@ -976,10 +986,10 @@ const ThemePage: React.FC = () => {
 
                 {localFormData.dark_mode && (
                   <div className="flex flex-col gap-2">
-                    <label htmlFor="dark_pic" className="font-medium text-foreground">
+                    <label htmlFor="dark_pic" className="text-foreground font-medium">
                       {t('theme_page.submit_modal.dark_image_label')}
                     </label>
-                    <div className="overflow-hidden rounded-lg border-2 border-dashed border-border">
+                    <div className="border-border overflow-hidden rounded-lg border-2 border-dashed">
                       {darkImage ? (
                         <div className="relative">
                           <img
@@ -989,18 +999,18 @@ const ThemePage: React.FC = () => {
                           />
                           <button
                             type="button"
-                            className="absolute bottom-2.5 right-2.5 rounded bg-black/60 px-3 py-1.5 text-xs text-white"
+                            className="absolute right-2.5 bottom-2.5 rounded bg-black/60 px-3 py-1.5 text-xs text-white"
                             onClick={() => setDarkImage(null)}>
                             {t('theme_page.submit_modal.remove_image')}
                           </button>
                         </div>
                       ) : (
                         <div
-                          className="flex cursor-pointer flex-col items-center justify-center gap-2.5 p-8 transition-colors hover:bg-secondary/30"
+                          className="hover:bg-secondary/30 flex cursor-pointer flex-col items-center justify-center gap-2.5 p-8 transition-colors"
                           onClick={() => document.getElementById('dark_pic')?.click()}>
-                          <span className="text-2xl text-muted-foreground">📷</span>
+                          <span className="text-muted-foreground text-2xl">📷</span>
                           <span className="text-foreground">{t('theme_page.submit_modal.upload_image')}</span>
-                          <span className="mt-2 text-xs text-muted-foreground">
+                          <span className="text-muted-foreground mt-2 text-xs">
                             {t('theme_page.submit_modal.image_format_hint')}
                           </span>
                         </div>
@@ -1014,14 +1024,17 @@ const ThemePage: React.FC = () => {
                         className="hidden"
                       />
                     </div>
-                    <p className="mt-1 text-xs text-muted-foreground">
+                    <p className="text-muted-foreground mt-1 text-xs">
                       {t('theme_page.submit_modal.preview_background_hint')}
                       <a
                         href="#"
                         onClick={(e) =>
-                          handleInternalPreview(e, 'https://data1.cherry-ai.com/assets/a4391dd7-473a-4cad-b6f5-6a429e3bbf0f')
+                          handleInternalPreview(
+                            e,
+                            'https://data1.cherry-ai.com/assets/a4391dd7-473a-4cad-b6f5-6a429e3bbf0f'
+                          )
                         }
-                        className="ml-1 text-primary hover:underline">
+                        className="text-primary ml-1 hover:underline">
                         {t('theme_page.view_example')}
                       </a>
                     </p>
@@ -1029,7 +1042,7 @@ const ThemePage: React.FC = () => {
                 )}
 
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="title" className="font-medium text-foreground">
+                  <label htmlFor="title" className="text-foreground font-medium">
                     {t('theme_page.submit_modal.tags_label')}
                   </label>
                   <div className="flex flex-col gap-2">
@@ -1040,26 +1053,29 @@ const ThemePage: React.FC = () => {
                       onChange={(e) => setCurrentTag(e.target.value.replace(/[^\w\u4e00-\u9fa5]/g, ''))}
                       onKeyDown={handleTagKeyDown}
                       placeholder={t('theme_page.submit_modal.tags_placeholder')}
-                      className="rounded-lg border border-border bg-secondary/30 px-3 py-2.5 text-foreground transition-colors focus:border-primary focus:outline-none"
+                      className="border-border bg-secondary/30 text-foreground focus:border-primary rounded-lg border px-3 py-2.5 transition-colors focus:outline-none"
                     />
                     <div className="flex flex-wrap gap-2">
                       {localFormData.title.map((tag, index) => (
                         <span
                           key={index}
-                          className="inline-flex items-center gap-1.5 rounded bg-primary/10 px-2 py-1 text-sm text-primary">
+                          className="bg-primary/10 text-primary inline-flex items-center gap-1.5 rounded px-2 py-1 text-sm">
                           {tag}
-                          <button type="button" className="text-primary hover:text-primary/80" onClick={() => handleRemoveTag(index)}>
+                          <button
+                            type="button"
+                            className="text-primary hover:text-primary/80"
+                            onClick={() => handleRemoveTag(index)}>
                             ×
                           </button>
                         </span>
                       ))}
                     </div>
                   </div>
-                  <p className="mt-1 text-xs text-muted-foreground">{t('theme_page.submit_modal.tags_hint')}</p>
+                  <p className="text-muted-foreground mt-1 text-xs">{t('theme_page.submit_modal.tags_hint')}</p>
                 </div>
 
                 {submitError && (
-                  <div className="flex items-center gap-2 rounded-lg bg-destructive/10 px-4 py-3 text-sm text-destructive">
+                  <div className="bg-destructive/10 text-destructive flex items-center gap-2 rounded-lg px-4 py-3 text-sm">
                     <span>⚠</span> {submitError}
                   </div>
                 )}
@@ -1091,10 +1107,10 @@ const ThemePage: React.FC = () => {
 
   return (
     <ErrorBoundary>
-      <div className="min-h-screen bg-background">
-        <main className="relative z-10 px-5 pb-16 pt-32">
+      <div className="bg-background min-h-screen">
+        <main className="relative z-10 px-5 pt-32 pb-16">
           <div className="mx-auto max-w-6xl">
-            <h1 className="mb-3 text-center text-3xl font-bold text-foreground sm:text-4xl">{t('theme_page.title')}</h1>
+            <h1 className="text-foreground mb-3 text-center text-3xl font-bold sm:text-4xl">{t('theme_page.title')}</h1>
             <div className="mb-10 text-center">
               <p className="text-muted-foreground">{t('theme_page.subtitle')}</p>
               <div className="mt-4 flex items-center justify-center gap-4">
@@ -1103,16 +1119,16 @@ const ThemePage: React.FC = () => {
                   onClick={() => setHelpTooltipVisible(!helpTooltipVisible)}
                   onMouseEnter={() => setHelpTooltipVisible(true)}
                   onMouseLeave={() => setHelpTooltipVisible(false)}>
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-secondary text-sm font-bold text-muted-foreground">
+                  <span className="bg-secondary text-muted-foreground flex h-6 w-6 items-center justify-center rounded-full text-sm font-bold">
                     <HelpCircle className="h-4 w-4" />
                   </span>
                   <div
                     className={cn(
-                      'absolute left-1/2 top-full z-50 mt-2.5 w-72 -translate-x-1/2 rounded-lg border border-border bg-card p-4 text-left shadow-lg transition-opacity',
+                      'border-border bg-card absolute top-full left-1/2 z-50 mt-2.5 w-72 -translate-x-1/2 rounded-lg border p-4 text-left shadow-lg transition-opacity',
                       helpTooltipVisible ? 'opacity-100' : 'pointer-events-none opacity-0'
                     )}>
-                    <p className="mb-2 text-sm font-medium text-foreground">{t('theme_page.search_help')}</p>
-                    <ul className="space-y-1 text-xs text-muted-foreground">
+                    <p className="text-foreground mb-2 text-sm font-medium">{t('theme_page.search_help')}</p>
+                    <ul className="text-muted-foreground space-y-1 text-xs">
                       <li>{t('theme_page.search_help_tips.tag_search')}</li>
                       <li>{t('theme_page.search_help_tips.author_search')}</li>
                       <li>{t('theme_page.search_help_tips.combined_search')}</li>
@@ -1120,7 +1136,7 @@ const ThemePage: React.FC = () => {
                   </div>
                 </div>
                 <button
-                  className="inline-flex items-center gap-1 text-sm font-medium text-primary transition-colors hover:text-primary/80"
+                  className="text-primary hover:text-primary/80 inline-flex items-center gap-1 text-sm font-medium transition-colors"
                   onClick={() => setSubmitModalOpen(true)}
                   type="button">
                   <Plus className="h-4 w-4" />
@@ -1135,14 +1151,14 @@ const ThemePage: React.FC = () => {
                 <input
                   ref={searchInputRef}
                   type="text"
-                  className="flex-1 rounded-l-lg border-2 border-border bg-card px-4 py-3 text-foreground transition-colors focus:border-primary focus:outline-none"
+                  className="border-border bg-card text-foreground focus:border-primary flex-1 rounded-l-lg border-2 px-4 py-3 transition-colors focus:outline-none"
                   placeholder={t('theme_page.search_placeholder')}
                   defaultValue={searchTerm}
                   onChange={handleSearchInputChange}
                 />
                 <button
                   type="submit"
-                  className="flex items-center gap-2 rounded-r-lg bg-primary px-5 text-white transition-colors hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-70"
+                  className="bg-primary hover:bg-primary/90 flex items-center gap-2 rounded-r-lg px-5 text-white transition-colors disabled:cursor-not-allowed disabled:opacity-70"
                   disabled={!searchInputValue.trim()}>
                   <Search className="h-4 w-4" />
                   {t('theme_page.search_button')}
@@ -1150,7 +1166,7 @@ const ThemePage: React.FC = () => {
                 {searchTerm && (
                   <button
                     type="button"
-                    className="absolute right-28 top-1/2 -translate-y-1/2 px-2 text-xl text-muted-foreground hover:text-primary"
+                    className="text-muted-foreground hover:text-primary absolute top-1/2 right-28 -translate-y-1/2 px-2 text-xl"
                     onClick={handleClearSearchInput}>
                     ×
                   </button>
@@ -1160,28 +1176,37 @@ const ThemePage: React.FC = () => {
 
             {/* Filter Info */}
             {(authorFilter || tagFilter || (searchTerm && parseSearchInput(searchTerm).plainText)) && (
-              <div className="mb-5 flex flex-wrap items-center justify-between gap-4 rounded-lg border border-border bg-card px-4 py-3">
+              <div className="border-border bg-card mb-5 flex flex-wrap items-center justify-between gap-4 rounded-lg border px-4 py-3">
                 <div className="flex flex-wrap gap-2">
                   {authorFilter && (
-                    <span className="inline-flex items-center gap-1.5 rounded bg-secondary px-2.5 py-1 text-sm text-foreground">
+                    <span className="bg-secondary text-foreground inline-flex items-center gap-1.5 rounded px-2.5 py-1 text-sm">
                       {t('theme_page.author_by')} {authorFilter}
-                      <button className="text-muted-foreground hover:text-primary" onClick={() => handleAuthorClick(authorFilter)} type="button">
+                      <button
+                        className="text-muted-foreground hover:text-primary"
+                        onClick={() => handleAuthorClick(authorFilter)}
+                        type="button">
                         ×
                       </button>
                     </span>
                   )}
                   {tagFilter && (
-                    <span className="inline-flex items-center gap-1.5 rounded bg-secondary px-2.5 py-1 text-sm text-foreground">
+                    <span className="bg-secondary text-foreground inline-flex items-center gap-1.5 rounded px-2.5 py-1 text-sm">
                       {t('theme_page.tags')} {tagFilter}
-                      <button className="text-muted-foreground hover:text-primary" onClick={() => handleTagClick(tagFilter)} type="button">
+                      <button
+                        className="text-muted-foreground hover:text-primary"
+                        onClick={() => handleTagClick(tagFilter)}
+                        type="button">
                         ×
                       </button>
                     </span>
                   )}
                   {searchTerm && parseSearchInput(searchTerm).plainText && (
-                    <span className="inline-flex items-center gap-1.5 rounded bg-secondary px-2.5 py-1 text-sm text-foreground">
+                    <span className="bg-secondary text-foreground inline-flex items-center gap-1.5 rounded px-2.5 py-1 text-sm">
                       {t('theme_page.search_filter.search_label')} {parseSearchInput(searchTerm).plainText}
-                      <button className="text-muted-foreground hover:text-primary" onClick={clearAllFilters} type="button">
+                      <button
+                        className="text-muted-foreground hover:text-primary"
+                        onClick={clearAllFilters}
+                        type="button">
                         ×
                       </button>
                     </span>
@@ -1195,7 +1220,7 @@ const ThemePage: React.FC = () => {
 
             {loading || isSearching ? (
               <div className="flex min-h-[300px] flex-col items-center justify-center">
-                <Loader2 className="mb-5 h-12 w-12 animate-spin text-primary" />
+                <Loader2 className="text-primary mb-5 h-12 w-12 animate-spin" />
                 <p className="text-muted-foreground">{t('theme_page.loading')}</p>
               </div>
             ) : (
@@ -1204,11 +1229,14 @@ const ThemePage: React.FC = () => {
                   {cssItems.map((item) => (
                     <div
                       key={item.id}
-                      className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-200 hover:-translate-y-1 hover:shadow-xl">
+                      className="group border-border bg-card flex flex-col overflow-hidden rounded-2xl border transition-all duration-200 hover:-translate-y-1 hover:shadow-xl">
                       <div
-                        className="relative cursor-pointer bg-secondary/30 pt-[56.25%]"
+                        className="bg-secondary/30 relative cursor-pointer pt-[56.25%]"
                         onClick={(e) =>
-                          handleExamplePreview(e, getImageUrl(activeImageMode[item.id] === 'light' ? item.light_pic : item.dark_pic))
+                          handleExamplePreview(
+                            e,
+                            getImageUrl(activeImageMode[item.id] === 'light' ? item.light_pic : item.dark_pic)
+                          )
                         }>
                         {activeImageMode[item.id] === 'light' && item.light_pic ? (
                           <img
@@ -1223,12 +1251,12 @@ const ThemePage: React.FC = () => {
                             className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                           />
                         ) : (
-                          <div className="absolute inset-0 flex items-center justify-center text-muted-foreground">
+                          <div className="text-muted-foreground absolute inset-0 flex items-center justify-center">
                             <span>{t('theme_page.no_preview')}</span>
                           </div>
                         )}
                         <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all group-hover:bg-black/40 group-hover:opacity-100">
-                          <span className="rounded bg-white/90 px-3 py-1.5 text-sm font-medium text-foreground">
+                          <span className="text-foreground rounded bg-white/90 px-3 py-1.5 text-sm font-medium">
                             {t('theme_page.preview_button')}
                           </span>
                         </div>
@@ -1236,12 +1264,12 @@ const ThemePage: React.FC = () => {
 
                       <div className="flex min-h-[200px] flex-1 flex-col p-5">
                         <div className="mb-3">
-                          <h3 className="mb-2 text-lg font-semibold text-foreground">{item.name}</h3>
-                          <div className="text-sm text-muted-foreground">
+                          <h3 className="text-foreground mb-2 text-lg font-semibold">{item.name}</h3>
+                          <div className="text-muted-foreground text-sm">
                             {t('theme_page.author_by')}
                             <span
                               className={cn(
-                                'ml-1 cursor-pointer font-medium transition-colors hover:text-primary hover:underline',
+                                'hover:text-primary ml-1 cursor-pointer font-medium transition-colors hover:underline',
                                 authorFilter === item.author && 'text-primary'
                               )}
                               onClick={() => handleAuthorClick(item.author)}>
@@ -1300,14 +1328,16 @@ const ThemePage: React.FC = () => {
                                   ? 'bg-primary text-white'
                                   : 'bg-secondary text-foreground hover:bg-secondary/80'
                               )}
-                              onClick={() => handleTagClick(Array.isArray(item.title) ? item.title[0] : (item.title as string))}>
+                              onClick={() =>
+                                handleTagClick(Array.isArray(item.title) ? item.title[0] : (item.title as string))
+                              }>
                               {Array.isArray(item.title) ? item.title[0] : item.title}
                             </span>
                           )}
                         </div>
                       </div>
 
-                      <div className="mt-auto flex items-center justify-between border-t border-border px-4 py-3">
+                      <div className="border-border mt-auto flex items-center justify-between border-t px-4 py-3">
                         <div className="flex gap-2">
                           <Button
                             variant={copySuccess === `${item.id}-code` ? 'default' : 'glow'}
@@ -1325,12 +1355,14 @@ const ThemePage: React.FC = () => {
                             </Button>
                           )}
                         </div>
-                        <div className="flex gap-3 text-xs text-muted-foreground">
+                        <div className="text-muted-foreground flex gap-3 text-xs">
                           <span>
-                            {t('theme_page.version')} <span className="font-medium text-foreground">v{formatVersion(item.version)}</span>
+                            {t('theme_page.version')}{' '}
+                            <span className="text-foreground font-medium">v{formatVersion(item.version)}</span>
                           </span>
                           <span>
-                            {t('theme_page.created')} <span className="font-medium text-foreground">{formatDate(item.date_created)}</span>
+                            {t('theme_page.created')}{' '}
+                            <span className="text-foreground font-medium">{formatDate(item.date_created)}</span>
                           </span>
                         </div>
                       </div>
@@ -1339,7 +1371,7 @@ const ThemePage: React.FC = () => {
                 </div>
 
                 {cssItems.length === 0 && !loading && (
-                  <div className="py-10 text-center text-muted-foreground">
+                  <div className="text-muted-foreground py-10 text-center">
                     <p className="mb-4">{t('theme_page.no_results')}</p>
                     <Button variant="outline" onClick={clearAllFilters}>
                       {t('theme_page.clear_all_filters')}
@@ -1350,11 +1382,13 @@ const ThemePage: React.FC = () => {
                 <div className="py-10 text-center">
                   {loadingMore && (
                     <div className="flex flex-col items-center justify-center">
-                      <Loader2 className="mb-2.5 h-8 w-8 animate-spin text-primary" />
+                      <Loader2 className="text-primary mb-2.5 h-8 w-8 animate-spin" />
                       <p className="text-muted-foreground">{t('theme_page.loading_more')}</p>
                     </div>
                   )}
-                  {!hasMore && cssItems.length > 0 && <p className="text-muted-foreground">{t('theme_page.all_loaded')}</p>}
+                  {!hasMore && cssItems.length > 0 && (
+                    <p className="text-muted-foreground">{t('theme_page.all_loaded')}</p>
+                  )}
                   {hasMore && !loadingMore && cssItems.length > 0 && (
                     <Button onClick={handleManualLoad}>{t('theme_page.load_more')}</Button>
                   )}

@@ -1,7 +1,8 @@
 import { ArrowRight, Download } from 'lucide-react'
-import { FC, useEffect, useState } from 'react'
+import { FC, useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
+import { annotate } from 'rough-notation'
 
 import screenshotDark from '@/assets/images/screenshots/home-page-dark.png'
 import screenshotLight from '@/assets/images/screenshots/home-page-light.png'
@@ -16,6 +17,10 @@ const HeroSection: FC = () => {
 
   const isZh = i18n.language === 'zh-CN'
 
+  const ref1 = useRef<HTMLSpanElement>(null)
+  const ref2 = useRef<HTMLSpanElement>(null)
+  const ref3 = useRef<HTMLSpanElement>(null)
+
   useEffect(() => {
     const getNotices = async () => {
       const noticeContent = await fetchNotice()
@@ -25,6 +30,39 @@ const HeroSection: FC = () => {
     }
     getNotices()
   }, [])
+
+  useEffect(() => {
+    if (ref1.current && ref2.current && ref3.current) {
+      const a1 = annotate(ref1.current, {
+        type: 'underline',
+        color: '#f472b6',
+        strokeWidth: 2,
+        padding: 2
+      })
+      const a2 = annotate(ref2.current, {
+        type: 'underline',
+        color: '#22d3ee',
+        strokeWidth: 2,
+        padding: 2
+      })
+      const a3 = annotate(ref3.current, {
+        type: 'underline',
+        color: '#a78bfa',
+        strokeWidth: 2,
+        padding: 2
+      })
+
+      a1.show()
+      a2.show()
+      a3.show()
+
+      return () => {
+        a1.remove()
+        a2.remove()
+        a3.remove()
+      }
+    }
+  }, [isZh])
 
   return (
     <section className="bg-background relative min-h-screen overflow-hidden pt-20">
@@ -40,9 +78,24 @@ const HeroSection: FC = () => {
 
           {/* Subtitle */}
           <p className="text-muted-foreground mx-auto mb-10 max-w-2xl text-lg">
-            {isZh
-              ? 'AI Agent + Coding Agent + 300+ 智能助手，统一接入主流大模型'
-              : 'AI Agent + Coding Agent + 300+ assistants, unified access to frontier LLMs.'}
+            {isZh ? (
+              <>
+                <span ref={ref1}>AI Agent</span>
+                {' + '}
+                <span ref={ref2}>Coding Agent</span>
+                {' + '}
+                <span ref={ref3}>300+ 智能助手</span>
+                ，统一接入主流大模型
+              </>
+            ) : (
+              <>
+                <span ref={ref1}>AI Agent</span>
+                {' + '}
+                <span ref={ref2}>Coding Agent</span>
+                {' + '}
+                <span ref={ref3}>300+ assistants</span>, unified access to frontier LLMs.
+              </>
+            )}
           </p>
 
           {/* Notice */}

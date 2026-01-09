@@ -51,9 +51,9 @@ const EnterprisePage: FC = () => {
   ]
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="bg-background min-h-screen">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#0a0e27] to-[#1a1f3a] px-6 pb-12 pt-24">
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#0a0e27] to-[#1a1f3a] px-6 pt-24 pb-12">
         <BackgroundBeams className="absolute inset-0 z-0" />
         <div className="relative z-10 mx-auto max-w-4xl text-center">
           <h1 className="mb-6 bg-gradient-to-r from-white to-blue-100 bg-clip-text text-4xl font-bold text-transparent sm:text-5xl">
@@ -67,21 +67,23 @@ const EnterprisePage: FC = () => {
       <section id="features" className="bg-card px-6 py-20">
         <div className="mx-auto max-w-6xl">
           <div className="mb-16 text-center">
-            <h2 className="mb-4 text-3xl font-bold text-foreground sm:text-4xl">{t('enterprise_page.features.title')}</h2>
-            <p className="mx-auto max-w-xl text-lg text-muted-foreground">{t('enterprise_page.features.subtitle')}</p>
+            <h2 className="text-foreground mb-4 text-3xl font-bold sm:text-4xl">
+              {t('enterprise_page.features.title')}
+            </h2>
+            <p className="text-muted-foreground mx-auto max-w-xl text-lg">{t('enterprise_page.features.subtitle')}</p>
           </div>
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {features.map(({ icon: Icon, titleKey, descKey }) => (
               <div
                 key={titleKey}
-                className="group rounded-xl border border-border bg-card p-8 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg">
-                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                className="group border-border bg-card rounded-xl border p-8 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg">
+                <div className="bg-primary/10 text-primary mb-6 flex h-12 w-12 items-center justify-center rounded-xl">
                   <Icon className="h-6 w-6" />
                 </div>
-                <h3 className="mb-4 text-xl font-semibold text-foreground">
+                <h3 className="text-foreground mb-4 text-xl font-semibold">
                   {t(`enterprise_page.features.${titleKey}.title`)}
                 </h3>
-                <p className="leading-relaxed text-muted-foreground">
+                <p className="text-muted-foreground leading-relaxed">
                   {t(`enterprise_page.features.${descKey}.description`)}
                 </p>
               </div>
@@ -91,41 +93,61 @@ const EnterprisePage: FC = () => {
       </section>
 
       {/* Version Comparison */}
-      <section className="border-t border-border bg-secondary/30 px-6 py-24">
+      <section className="border-border bg-secondary/30 border-t px-6 py-24">
         <div className="mx-auto max-w-6xl">
           <div className="mb-16 text-center">
-            <h2 className="mb-4 text-3xl font-bold text-foreground sm:text-4xl">{t('enterprise_page.comparison.title')}</h2>
-            <p className="mx-auto max-w-xl text-lg text-muted-foreground">{t('enterprise_page.comparison.subtitle')}</p>
+            <h2 className="text-foreground mb-4 text-3xl font-bold sm:text-4xl">
+              {t('enterprise_page.comparison.title')}
+            </h2>
+            <p className="text-muted-foreground mx-auto max-w-xl text-lg">{t('enterprise_page.comparison.subtitle')}</p>
           </div>
           <div className="grid gap-6 lg:grid-cols-3">
             {/* Community Edition */}
-            <div className="flex flex-col overflow-hidden rounded-xl border border-border bg-card shadow-sm transition-all hover:shadow-md">
+            <div className="border-border bg-card flex flex-col overflow-hidden rounded-xl border shadow-sm transition-all hover:shadow-md">
               <div className="flex min-h-[200px] flex-col justify-start bg-gradient-to-b from-green-500/10 to-transparent p-8 text-center">
-                <h3 className="mb-2 text-2xl font-bold text-green-600">{t('enterprise_page.comparison.table.community')}</h3>
+                <h3 className="mb-2 text-2xl font-bold text-green-600">
+                  {t('enterprise_page.comparison.table.community')}
+                </h3>
                 <div className="mt-3 flex flex-1 flex-col gap-3">
-                  <span className="text-sm text-muted-foreground">{t('enterprise_page.comparison.table.pricing_community_title')}</span>
-                  <span className="mt-auto text-2xl font-bold text-foreground">{t('enterprise_page.comparison.table.pricing_community_price')}</span>
+                  <span className="text-muted-foreground text-sm">
+                    {t('enterprise_page.comparison.table.pricing_community_title')}
+                  </span>
+                  <span className="text-foreground mt-auto text-2xl font-bold">
+                    {t('enterprise_page.comparison.table.pricing_community_price')}
+                  </span>
                 </div>
               </div>
               <div className="flex flex-1 flex-col gap-8 p-6">
                 <div className="flex flex-col gap-4">
-                  <h4 className="border-b border-border pb-3 text-sm font-semibold text-foreground">{t('enterprise_page.comparison.table.license_and_cost')}</h4>
+                  <h4 className="border-border text-foreground border-b pb-3 text-sm font-semibold">
+                    {t('enterprise_page.comparison.table.license_and_cost')}
+                  </h4>
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-muted-foreground">{t('enterprise_page.comparison.table.annual_service_fee')}</span>
+                    <span className="text-muted-foreground">
+                      {t('enterprise_page.comparison.table.annual_service_fee')}
+                    </span>
                     <span className="text-muted-foreground/50">-</span>
                   </div>
                 </div>
                 <div className="flex flex-col gap-4">
-                  <h4 className="border-b border-border pb-3 text-sm font-semibold text-foreground">{t('enterprise_page.comparison.table.deployment_and_support')}</h4>
+                  <h4 className="border-border text-foreground border-b pb-3 text-sm font-semibold">
+                    {t('enterprise_page.comparison.table.deployment_and_support')}
+                  </h4>
                   {['deployment_method', 'tech_support', 'system_support'].map((key, idx) => (
                     <div key={key} className="flex items-center justify-between text-sm">
                       <span className="text-muted-foreground">{t(`enterprise_page.comparison.table.${key}`)}</span>
-                      <span className="text-foreground">{t(`enterprise_page.comparison.table.${['deployment_single', 'support_community', 'system_community'][idx]}`)}</span>
+                      <span className="text-foreground">
+                        {t(
+                          `enterprise_page.comparison.table.${['deployment_single', 'support_community', 'system_community'][idx]}`
+                        )}
+                      </span>
                     </div>
                   ))}
                 </div>
                 <div className="flex flex-col gap-4">
-                  <h4 className="border-b border-border pb-3 text-sm font-semibold text-foreground">{t('enterprise_page.comparison.table.core_features')}</h4>
+                  <h4 className="border-border text-foreground border-b pb-3 text-sm font-semibold">
+                    {t('enterprise_page.comparison.table.core_features')}
+                  </h4>
                   {[
                     { key: 'basic_features', hasCheck: true },
                     { key: 'provider_management', hasCheck: true },
@@ -142,7 +164,9 @@ const EnterprisePage: FC = () => {
                     <div key={key} className="flex items-center justify-between text-sm">
                       <span className="text-muted-foreground">{t(`enterprise_page.comparison.table.${key}`)}</span>
                       {hasCheck ? (
-                        <span className="text-primary"><Check className="h-4 w-4" /></span>
+                        <span className="text-primary">
+                          <Check className="h-4 w-4" />
+                        </span>
                       ) : (
                         <span className="text-muted-foreground/50">-</span>
                       )}
@@ -153,39 +177,61 @@ const EnterprisePage: FC = () => {
             </div>
 
             {/* Enterprise Startup Edition */}
-            <div className="flex flex-col overflow-hidden rounded-xl border border-border bg-card shadow-sm transition-all hover:shadow-md">
+            <div className="border-border bg-card flex flex-col overflow-hidden rounded-xl border shadow-sm transition-all hover:shadow-md">
               <div className="flex min-h-[200px] flex-col justify-start bg-gradient-to-b from-orange-500/10 to-transparent p-8 text-center">
-                <h3 className="mb-2 text-2xl font-bold text-orange-600">{t('enterprise_page.comparison.table.enterprise_startup')}</h3>
+                <h3 className="mb-2 text-2xl font-bold text-orange-600">
+                  {t('enterprise_page.comparison.table.enterprise_startup')}
+                </h3>
                 <div className="mt-3 flex flex-1 flex-col gap-3">
-                  <span className="text-sm text-muted-foreground">{t('enterprise_page.comparison.table.pricing_startup_title')}</span>
-                  <span className="mt-auto text-2xl font-bold text-foreground">{t('enterprise_page.comparison.table.pricing_startup_price')}</span>
+                  <span className="text-muted-foreground text-sm">
+                    {t('enterprise_page.comparison.table.pricing_startup_title')}
+                  </span>
+                  <span className="text-foreground mt-auto text-2xl font-bold">
+                    {t('enterprise_page.comparison.table.pricing_startup_price')}
+                  </span>
                 </div>
               </div>
               <div className="flex flex-1 flex-col gap-8 p-6">
                 <div className="flex flex-col gap-4">
-                  <h4 className="border-b border-border pb-3 text-sm font-semibold text-foreground">{t('enterprise_page.comparison.table.license_and_cost')}</h4>
+                  <h4 className="border-border text-foreground border-b pb-3 text-sm font-semibold">
+                    {t('enterprise_page.comparison.table.license_and_cost')}
+                  </h4>
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-muted-foreground">{t('enterprise_page.comparison.table.annual_service_fee')}</span>
+                    <span className="text-muted-foreground">
+                      {t('enterprise_page.comparison.table.annual_service_fee')}
+                    </span>
                     <span className="text-foreground">{t('enterprise_page.comparison.table.annual_fee_rate')}</span>
                   </div>
                 </div>
                 <div className="flex flex-col gap-4">
-                  <h4 className="border-b border-border pb-3 text-sm font-semibold text-foreground">{t('enterprise_page.comparison.table.deployment_and_support')}</h4>
+                  <h4 className="border-border text-foreground border-b pb-3 text-sm font-semibold">
+                    {t('enterprise_page.comparison.table.deployment_and_support')}
+                  </h4>
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-muted-foreground">{t('enterprise_page.comparison.table.deployment_method')}</span>
-                    <span className="flex items-center gap-1 text-primary"><Check className="h-4 w-4" /> {t('enterprise_page.comparison.table.deployment_private')}</span>
+                    <span className="text-muted-foreground">
+                      {t('enterprise_page.comparison.table.deployment_method')}
+                    </span>
+                    <span className="text-primary flex items-center gap-1">
+                      <Check className="h-4 w-4" /> {t('enterprise_page.comparison.table.deployment_private')}
+                    </span>
                   </div>
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-muted-foreground">{t('enterprise_page.comparison.table.tech_support')}</span>
-                    <span className="flex items-center gap-1 text-primary"><Check className="h-4 w-4" /> {t('enterprise_page.comparison.table.support_dedicated')}</span>
+                    <span className="text-primary flex items-center gap-1">
+                      <Check className="h-4 w-4" /> {t('enterprise_page.comparison.table.support_dedicated')}
+                    </span>
                   </div>
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-muted-foreground">{t('enterprise_page.comparison.table.system_support')}</span>
+                    <span className="text-muted-foreground">
+                      {t('enterprise_page.comparison.table.system_support')}
+                    </span>
                     <span className="text-foreground">{t('enterprise_page.comparison.table.system_enterprise')}</span>
                   </div>
                 </div>
                 <div className="flex flex-col gap-4">
-                  <h4 className="border-b border-border pb-3 text-sm font-semibold text-foreground">{t('enterprise_page.comparison.table.core_features')}</h4>
+                  <h4 className="border-border text-foreground border-b pb-3 text-sm font-semibold">
+                    {t('enterprise_page.comparison.table.core_features')}
+                  </h4>
                   {[
                     { key: 'basic_features', hasCheck: true },
                     { key: 'provider_management', text: 'provider_management_builtin' },
@@ -202,7 +248,9 @@ const EnterprisePage: FC = () => {
                     <div key={key} className="flex items-center justify-between text-sm">
                       <span className="text-muted-foreground">{t(`enterprise_page.comparison.table.${key}`)}</span>
                       {hasCheck ? (
-                        <span className="text-primary"><Check className="h-4 w-4" /></span>
+                        <span className="text-primary">
+                          <Check className="h-4 w-4" />
+                        </span>
                       ) : text ? (
                         <span className="text-foreground">{t(`enterprise_page.comparison.table.${text}`)}</span>
                       ) : (
@@ -215,59 +263,89 @@ const EnterprisePage: FC = () => {
             </div>
 
             {/* Enterprise Edition */}
-            <div className="flex flex-col overflow-hidden rounded-xl border border-primary/30 bg-card shadow-sm transition-all hover:shadow-md">
-              <div className="flex min-h-[200px] flex-col justify-start bg-gradient-to-b from-primary/10 to-transparent p-8 text-center">
-                <h3 className="mb-2 text-2xl font-bold text-primary">{t('enterprise_page.comparison.table.enterprise')}</h3>
+            <div className="border-primary/30 bg-card flex flex-col overflow-hidden rounded-xl border shadow-sm transition-all hover:shadow-md">
+              <div className="from-primary/10 flex min-h-[200px] flex-col justify-start bg-gradient-to-b to-transparent p-8 text-center">
+                <h3 className="text-primary mb-2 text-2xl font-bold">
+                  {t('enterprise_page.comparison.table.enterprise')}
+                </h3>
                 <div className="mt-3 flex flex-1 flex-col gap-3">
                   <div className="mx-auto w-40">
                     <Select value={selectedUserRange} onValueChange={setSelectedUserRange}>
-                      <SelectTrigger className="h-9 border-border text-sm">
+                      <SelectTrigger className="border-border h-9 text-sm">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="1-50">1 - 50 {t('enterprise_page.comparison.table.people')}</SelectItem>
                         <SelectItem value="51-200">51 - 200 {t('enterprise_page.comparison.table.people')}</SelectItem>
-                        <SelectItem value="201-1000">201 - 1,000 {t('enterprise_page.comparison.table.people')}</SelectItem>
+                        <SelectItem value="201-1000">
+                          201 - 1,000 {t('enterprise_page.comparison.table.people')}
+                        </SelectItem>
                         <SelectItem value="1000+">1,000+ {t('enterprise_page.comparison.table.people')}</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
-                  <span className="mt-auto text-2xl font-bold text-foreground">¥ {getCurrentPrice()}</span>
+                  <span className="text-foreground mt-auto text-2xl font-bold">¥ {getCurrentPrice()}</span>
                 </div>
               </div>
               <div className="flex flex-1 flex-col gap-8 p-6">
                 <div className="flex flex-col gap-4">
-                  <h4 className="border-b border-border pb-3 text-sm font-semibold text-foreground">{t('enterprise_page.comparison.table.license_and_cost')}</h4>
+                  <h4 className="border-border text-foreground border-b pb-3 text-sm font-semibold">
+                    {t('enterprise_page.comparison.table.license_and_cost')}
+                  </h4>
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-muted-foreground">{t('enterprise_page.comparison.table.annual_service_fee')}</span>
+                    <span className="text-muted-foreground">
+                      {t('enterprise_page.comparison.table.annual_service_fee')}
+                    </span>
                     <span className="text-foreground">{t('enterprise_page.comparison.table.annual_fee_rate')}</span>
                   </div>
                 </div>
                 <div className="flex flex-col gap-4">
-                  <h4 className="border-b border-border pb-3 text-sm font-semibold text-foreground">{t('enterprise_page.comparison.table.deployment_and_support')}</h4>
+                  <h4 className="border-border text-foreground border-b pb-3 text-sm font-semibold">
+                    {t('enterprise_page.comparison.table.deployment_and_support')}
+                  </h4>
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-muted-foreground">{t('enterprise_page.comparison.table.deployment_method')}</span>
-                    <span className="flex items-center gap-1 text-primary"><Check className="h-4 w-4" /> {t('enterprise_page.comparison.table.deployment_private')}</span>
+                    <span className="text-muted-foreground">
+                      {t('enterprise_page.comparison.table.deployment_method')}
+                    </span>
+                    <span className="text-primary flex items-center gap-1">
+                      <Check className="h-4 w-4" /> {t('enterprise_page.comparison.table.deployment_private')}
+                    </span>
                   </div>
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-muted-foreground">{t('enterprise_page.comparison.table.tech_support')}</span>
-                    <span className="flex items-center gap-1 text-primary"><Check className="h-4 w-4" /> {t('enterprise_page.comparison.table.support_dedicated')}</span>
+                    <span className="text-primary flex items-center gap-1">
+                      <Check className="h-4 w-4" /> {t('enterprise_page.comparison.table.support_dedicated')}
+                    </span>
                   </div>
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-muted-foreground">{t('enterprise_page.comparison.table.system_support')}</span>
+                    <span className="text-muted-foreground">
+                      {t('enterprise_page.comparison.table.system_support')}
+                    </span>
                     <span className="text-foreground">{t('enterprise_page.comparison.table.system_enterprise')}</span>
                   </div>
                 </div>
                 <div className="flex flex-col gap-4">
-                  <h4 className="border-b border-border pb-3 text-sm font-semibold text-foreground">{t('enterprise_page.comparison.table.core_features')}</h4>
+                  <h4 className="border-border text-foreground border-b pb-3 text-sm font-semibold">
+                    {t('enterprise_page.comparison.table.core_features')}
+                  </h4>
                   {[
-                    'basic_features', 'provider_management', 'model_management', 'employee_management',
-                    'shared_knowledge_base', 'permission_control', 'data_backup', 'assistant_management',
-                    'agent_management', 'mcp_management', 'miniprogram_management'
+                    'basic_features',
+                    'provider_management',
+                    'model_management',
+                    'employee_management',
+                    'shared_knowledge_base',
+                    'permission_control',
+                    'data_backup',
+                    'assistant_management',
+                    'agent_management',
+                    'mcp_management',
+                    'miniprogram_management'
                   ].map((key) => (
                     <div key={key} className="flex items-center justify-between text-sm">
                       <span className="text-muted-foreground">{t(`enterprise_page.comparison.table.${key}`)}</span>
-                      <span className="text-primary"><Check className="h-4 w-4" /></span>
+                      <span className="text-primary">
+                        <Check className="h-4 w-4" />
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -278,27 +356,33 @@ const EnterprisePage: FC = () => {
       </section>
 
       {/* Express Edition Highlight */}
-      <section className="relative overflow-hidden border-t border-border bg-gradient-to-br from-secondary/30 to-background px-6 py-24">
-        <div className="absolute -right-24 -top-24 h-96 w-96 rounded-full bg-primary/5 blur-3xl" />
+      <section className="border-border from-secondary/30 to-background relative overflow-hidden border-t bg-gradient-to-br px-6 py-24">
+        <div className="bg-primary/5 absolute -top-24 -right-24 h-96 w-96 rounded-full blur-3xl" />
         <div className="mx-auto max-w-6xl">
           <div className="relative z-10 grid items-start gap-16 lg:grid-cols-[1fr_480px]">
             {/* Left Side - Main Info */}
             <div className="flex flex-col gap-8 lg:pr-8">
-              <span className="inline-flex w-fit items-center gap-2 rounded-full bg-gradient-to-r from-primary to-primary/80 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white shadow-lg">
+              <span className="from-primary to-primary/80 inline-flex w-fit items-center gap-2 rounded-full bg-gradient-to-r px-4 py-2 text-xs font-semibold tracking-wider text-white uppercase shadow-lg">
                 <Sparkles className="h-4 w-4" />
                 {t('enterprise_page.express.badge')}
               </span>
 
-              <h2 className="text-4xl font-bold tracking-tight text-foreground lg:text-5xl">{t('enterprise_page.express.title')}</h2>
-              <p className="text-lg leading-relaxed text-muted-foreground">{t('enterprise_page.express.subtitle')}</p>
+              <h2 className="text-foreground text-4xl font-bold tracking-tight lg:text-5xl">
+                {t('enterprise_page.express.title')}
+              </h2>
+              <p className="text-muted-foreground text-lg leading-relaxed">{t('enterprise_page.express.subtitle')}</p>
 
               <div className="mt-2 grid gap-4 sm:grid-cols-2">
                 {['unlimited_users', 'builtin_provider', 'quick_deployment', 'one_time_payment'].map((key) => (
-                  <div key={key} className="flex items-start gap-3 rounded-lg border border-border bg-card p-4 transition-all hover:-translate-y-0.5 hover:border-primary hover:shadow-md">
-                    <div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
+                  <div
+                    key={key}
+                    className="border-border bg-card hover:border-primary flex items-start gap-3 rounded-lg border p-4 transition-all hover:-translate-y-0.5 hover:shadow-md">
+                    <div className="bg-primary/10 text-primary flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-md">
                       <Check className="h-4 w-4" />
                     </div>
-                    <span className="text-sm font-medium text-foreground">{t(`enterprise_page.express.features.${key}`)}</span>
+                    <span className="text-foreground text-sm font-medium">
+                      {t(`enterprise_page.express.features.${key}`)}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -307,25 +391,27 @@ const EnterprisePage: FC = () => {
                 <Button asChild size="lg" className="w-fit shadow-lg">
                   <a href="mailto:bd@cherry-ai.com">{t('enterprise_page.express.cta_button')}</a>
                 </Button>
-                <p className="text-sm text-muted-foreground">{t('enterprise_page.express.cta_note')}</p>
+                <p className="text-muted-foreground text-sm">{t('enterprise_page.express.cta_note')}</p>
               </div>
             </div>
 
             {/* Right Side - Pricing Card */}
             <div className="lg:sticky lg:top-32">
-              <div className="rounded-2xl border border-border bg-card p-10 shadow-xl transition-all hover:-translate-y-1 hover:shadow-2xl">
+              <div className="border-border bg-card rounded-2xl border p-10 shadow-xl transition-all hover:-translate-y-1 hover:shadow-2xl">
                 <div className="pb-8 text-center">
-                  <span className="mb-5 block text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                  <span className="text-muted-foreground mb-5 block text-xs font-semibold tracking-widest uppercase">
                     {t('enterprise_page.express.price_label')}
                   </span>
                   <div className="mb-3 flex items-baseline justify-center gap-1">
-                    <span className="text-3xl font-normal text-foreground">¥</span>
-                    <span className="text-7xl font-bold tracking-tight text-primary">5,000</span>
+                    <span className="text-foreground text-3xl font-normal">¥</span>
+                    <span className="text-primary text-7xl font-bold tracking-tight">5,000</span>
                   </div>
-                  <span className="text-sm font-medium text-muted-foreground">{t('enterprise_page.express.period')}</span>
+                  <span className="text-muted-foreground text-sm font-medium">
+                    {t('enterprise_page.express.period')}
+                  </span>
                 </div>
 
-                <div className="mx-auto my-8 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+                <div className="via-border mx-auto my-8 h-px bg-gradient-to-r from-transparent to-transparent" />
 
                 <div className="flex flex-col gap-7">
                   {[
@@ -334,12 +420,16 @@ const EnterprisePage: FC = () => {
                     { icon: ShieldCheck, key: 'enterprise_grade' }
                   ].map(({ icon: Icon, key }) => (
                     <div key={key} className="flex items-start gap-4">
-                      <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 text-primary transition-transform hover:scale-105">
+                      <div className="from-primary/10 to-primary/5 text-primary flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br transition-transform hover:scale-105">
                         <Icon className="h-6 w-6" />
                       </div>
                       <div className="pt-0.5">
-                        <h4 className="mb-2 font-semibold text-foreground">{t(`enterprise_page.express.benefits.${key}.title`)}</h4>
-                        <p className="text-sm leading-relaxed text-muted-foreground">{t(`enterprise_page.express.benefits.${key}.description`)}</p>
+                        <h4 className="text-foreground mb-2 font-semibold">
+                          {t(`enterprise_page.express.benefits.${key}.title`)}
+                        </h4>
+                        <p className="text-muted-foreground text-sm leading-relaxed">
+                          {t(`enterprise_page.express.benefits.${key}.description`)}
+                        </p>
                       </div>
                     </div>
                   ))}
@@ -351,29 +441,39 @@ const EnterprisePage: FC = () => {
       </section>
 
       {/* Beta Notice Section */}
-      <section className="border-t border-border bg-secondary/30 px-6 py-24">
+      <section className="border-border bg-secondary/30 border-t px-6 py-24">
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-6 md:grid-cols-3">
             {/* Demo Card */}
-            <div className="flex h-full flex-col rounded-xl border border-border bg-card p-7 shadow-sm">
-              <h3 className="mb-5 flex items-center gap-2 text-base font-semibold text-foreground">
-                <span className="h-4 w-1 rounded bg-primary" />
+            <div className="border-border bg-card flex h-full flex-col rounded-xl border p-7 shadow-sm">
+              <h3 className="text-foreground mb-5 flex items-center gap-2 text-base font-semibold">
+                <span className="bg-primary h-4 w-1 rounded" />
                 {t('enterprise_page.beta.demo.title')}
               </h3>
-              <div className="flex flex-1 flex-col text-sm leading-relaxed text-muted-foreground">
+              <div className="text-muted-foreground flex flex-1 flex-col text-sm leading-relaxed">
                 <ul className="space-y-3">
                   <li className="flex gap-2">
-                    <strong className="min-w-[80px] font-medium text-foreground">{t('enterprise_page.beta.demo.admin_portal')}</strong>
-                    <a href="https://admin.demo.cherry-ai.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                    <strong className="text-foreground min-w-[80px] font-medium">
+                      {t('enterprise_page.beta.demo.admin_portal')}
+                    </strong>
+                    <a
+                      href="https://admin.demo.cherry-ai.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary hover:underline">
                       admin.demo.cherry-ai.com
                     </a>
                   </li>
                   <li className="flex gap-2">
-                    <strong className="min-w-[80px] font-medium text-foreground">{t('enterprise_page.beta.demo.account')}</strong>
+                    <strong className="text-foreground min-w-[80px] font-medium">
+                      {t('enterprise_page.beta.demo.account')}
+                    </strong>
                     admin
                   </li>
                   <li className="flex gap-2">
-                    <strong className="min-w-[80px] font-medium text-foreground">{t('enterprise_page.beta.demo.password')}</strong>
+                    <strong className="text-foreground min-w-[80px] font-medium">
+                      {t('enterprise_page.beta.demo.password')}
+                    </strong>
                     password
                   </li>
                 </ul>
@@ -381,22 +481,26 @@ const EnterprisePage: FC = () => {
             </div>
 
             {/* Download Card */}
-            <div className="flex h-full flex-col rounded-xl border border-border bg-card p-7 shadow-sm">
-              <h3 className="mb-5 flex items-center gap-2 text-base font-semibold text-foreground">
-                <span className="h-4 w-1 rounded bg-primary" />
+            <div className="border-border bg-card flex h-full flex-col rounded-xl border p-7 shadow-sm">
+              <h3 className="text-foreground mb-5 flex items-center gap-2 text-base font-semibold">
+                <span className="bg-primary h-4 w-1 rounded" />
                 {t('enterprise_page.beta.download.title')}
               </h3>
-              <div className="flex flex-1 flex-col text-sm leading-relaxed text-muted-foreground">
+              <div className="text-muted-foreground flex flex-1 flex-col text-sm leading-relaxed">
                 <ul className="space-y-3">
                   <li className="flex flex-wrap gap-2">
                     {t('enterprise_page.beta.download.server_url')} https://api.demo.cherry-ai.com
                   </li>
                   <li className="flex gap-2">
-                    <strong className="min-w-[80px] font-medium text-foreground">{t('enterprise_page.beta.demo.account')}</strong>
+                    <strong className="text-foreground min-w-[80px] font-medium">
+                      {t('enterprise_page.beta.demo.account')}
+                    </strong>
                     user
                   </li>
                   <li className="flex gap-2">
-                    <strong className="min-w-[80px] font-medium text-foreground">{t('enterprise_page.beta.demo.password')}</strong>
+                    <strong className="text-foreground min-w-[80px] font-medium">
+                      {t('enterprise_page.beta.demo.password')}
+                    </strong>
                     password
                   </li>
                 </ul>
@@ -410,15 +514,19 @@ const EnterprisePage: FC = () => {
             </div>
 
             {/* Manual Card */}
-            <div className="flex h-full flex-col rounded-xl border border-border bg-card p-7 shadow-sm">
-              <h3 className="mb-5 flex items-center gap-2 text-base font-semibold text-foreground">
-                <span className="h-4 w-1 rounded bg-primary" />
+            <div className="border-border bg-card flex h-full flex-col rounded-xl border p-7 shadow-sm">
+              <h3 className="text-foreground mb-5 flex items-center gap-2 text-base font-semibold">
+                <span className="bg-primary h-4 w-1 rounded" />
                 {t('enterprise_page.beta.manual.title')}
               </h3>
-              <div className="flex flex-1 flex-col text-sm leading-relaxed text-muted-foreground">
+              <div className="text-muted-foreground flex flex-1 flex-col text-sm leading-relaxed">
                 <p className="mb-4">{t('enterprise_page.beta.manual.description')}</p>
                 <Button variant="outline" asChild className="mt-auto w-full">
-                  <a href="https://docs.enterprise.cherry-ai.com/" target="_blank" rel="noopener noreferrer" className="gap-2">
+                  <a
+                    href="https://docs.enterprise.cherry-ai.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="gap-2">
                     <FileText className="h-4 w-4" />
                     {t('enterprise_page.beta.manual.view_manual')}
                   </a>
@@ -430,20 +538,22 @@ const EnterprisePage: FC = () => {
       </section>
 
       {/* Support Section */}
-      <section className="border-t border-border bg-card px-6 py-24 text-center">
+      <section className="border-border bg-card border-t px-6 py-24 text-center">
         <div className="mx-auto max-w-4xl">
-          <h2 className="mb-4 text-3xl font-bold text-foreground sm:text-4xl">{t('enterprise_page.support.title')}</h2>
-          <p className="mx-auto mb-8 max-w-xl text-lg text-muted-foreground">{t('enterprise_page.support.description')}</p>
+          <h2 className="text-foreground mb-4 text-3xl font-bold sm:text-4xl">{t('enterprise_page.support.title')}</h2>
+          <p className="text-muted-foreground mx-auto mb-8 max-w-xl text-lg">
+            {t('enterprise_page.support.description')}
+          </p>
           <div className="flex flex-col items-center gap-6">
-            <p className="text-2xl font-medium text-primary">bd@cherry-ai.com</p>
+            <p className="text-primary text-2xl font-medium">bd@cherry-ai.com</p>
             {enterpriseData?.data?.contact_qrcode && (
               <div className="mt-4 flex flex-col items-center gap-5">
                 <img
                   src={enterpriseData.data.contact_qrcode}
                   alt="Contact QR Code"
-                  className="h-56 w-56 rounded-2xl border border-border bg-white p-2 shadow-lg transition-transform hover:scale-105"
+                  className="border-border h-56 w-56 rounded-2xl border bg-white p-2 shadow-lg transition-transform hover:scale-105"
                 />
-                <p className="font-medium text-foreground">{t('enterprise_page.support.scan_qrcode')}</p>
+                <p className="text-foreground font-medium">{t('enterprise_page.support.scan_qrcode')}</p>
               </div>
             )}
           </div>

@@ -57,8 +57,8 @@ const SimpleHeader: React.FC = () => {
   return (
     <header
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 border-b border-border/50 transition-all duration-300',
-        isScrolled ? 'glass py-3' : 'bg-background/80 backdrop-blur-sm py-4'
+        'border-border/50 fixed top-0 right-0 left-0 z-50 border-b transition-all duration-300',
+        isScrolled ? 'glass py-3' : 'bg-background/80 py-4 backdrop-blur-sm'
       )}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
@@ -70,9 +70,9 @@ const SimpleHeader: React.FC = () => {
                 alt="Cherry Studio"
                 className="h-8 w-auto transition-transform duration-300 group-hover:scale-105"
               />
-              <div className="absolute -inset-1 -z-10 rounded-full bg-primary/20 opacity-0 blur-lg transition-opacity duration-300 group-hover:opacity-100" />
+              <div className="bg-primary/20 absolute -inset-1 -z-10 rounded-full opacity-0 blur-lg transition-opacity duration-300 group-hover:opacity-100" />
             </div>
-            <span className="hidden text-lg font-semibold text-foreground sm:block">Cherry Studio</span>
+            <span className="text-foreground hidden text-lg font-semibold sm:block">Cherry Studio</span>
           </Link>
 
           {/* Right Section - Navigation + GitHub */}
@@ -99,13 +99,11 @@ const SimpleHeader: React.FC = () => {
                     to={link.path}
                     className={cn(
                       'relative px-4 py-2 text-sm font-medium transition-colors duration-200',
-                      location.pathname === link.path
-                        ? 'text-primary'
-                        : 'text-muted-foreground hover:text-foreground'
+                      location.pathname === link.path ? 'text-primary' : 'text-muted-foreground hover:text-foreground'
                     )}>
                     {link.label}
                     {location.pathname === link.path && (
-                      <span className="absolute bottom-0 left-1/2 h-0.5 w-4 -translate-x-1/2 rounded-full bg-primary" />
+                      <span className="bg-primary absolute bottom-0 left-1/2 h-0.5 w-4 -translate-x-1/2 rounded-full" />
                     )}
                   </Link>
                 )
@@ -117,7 +115,7 @@ const SimpleHeader: React.FC = () => {
               href="https://github.com/CherryHQ/cherry-studio"
               target="_blank"
               rel="noopener noreferrer"
-              className="ml-2 hidden items-center gap-2 rounded-lg border border-border/50 bg-secondary/50 px-3 py-1.5 text-sm font-medium text-muted-foreground transition-colors duration-200 hover:bg-secondary hover:text-foreground sm:flex"
+              className="border-border/50 bg-secondary/50 text-muted-foreground hover:bg-secondary hover:text-foreground ml-2 hidden items-center gap-2 rounded-lg border px-3 py-1.5 text-sm font-medium transition-colors duration-200 sm:flex"
               title="GitHub">
               <img src={githubIcon} alt="GitHub" className="h-4 w-4 opacity-70 invert" />
               {starCount !== null && (
@@ -131,7 +129,7 @@ const SimpleHeader: React.FC = () => {
             {/* Mobile Menu Toggle */}
             <button
               type="button"
-              className="ml-2 flex h-9 w-9 items-center justify-center rounded-lg text-foreground transition-colors duration-200 hover:bg-accent lg:hidden"
+              className="text-foreground hover:bg-accent ml-2 flex h-9 w-9 items-center justify-center rounded-lg transition-colors duration-200 lg:hidden"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
               {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
