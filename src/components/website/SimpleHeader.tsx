@@ -114,7 +114,7 @@ const SimpleHeader: React.FC = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className={cn(
-                      'flex items-center gap-1 px-4 py-2 text-sm font-medium transition-colors duration-200',
+                      'flex items-center gap-1 px-4 py-2 text-base font-medium transition-colors duration-200',
                       'text-muted-foreground hover:text-foreground'
                     )}>
                     {link.label}
@@ -125,7 +125,7 @@ const SimpleHeader: React.FC = () => {
                     key={link.path}
                     to={link.path}
                     className={cn(
-                      'relative flex items-center gap-1.5 px-4 py-2 text-sm font-medium transition-colors duration-200',
+                      'relative flex items-center gap-1.5 px-4 py-2 text-base font-medium transition-colors duration-200',
                       location.pathname === link.path ? 'text-primary' : 'text-muted-foreground hover:text-foreground'
                     )}>
                     {link.path === '/careers' && (
@@ -143,7 +143,7 @@ const SimpleHeader: React.FC = () => {
             {/* Download Button */}
             <Link
               to="/download"
-              className="ml-2 hidden items-center gap-2 rounded-lg bg-black px-4 py-1.5 text-sm font-medium text-white transition-colors duration-200 hover:bg-black/80 sm:flex dark:bg-white dark:text-black dark:hover:bg-white/80">
+              className="ml-2 hidden items-center gap-2 rounded-lg bg-black px-4 py-2.5 text-sm font-medium text-white transition-colors duration-200 hover:bg-black/80 sm:flex dark:bg-white dark:text-black dark:hover:bg-white/80">
               <Download className="h-4 w-4" />
               {t('nav.download')}
             </Link>
