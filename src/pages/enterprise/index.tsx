@@ -638,7 +638,7 @@ const EnterprisePage: FC = () => {
               <div className="bg-secondary/50 mb-6 flex-1 space-y-3 rounded-xl p-4">
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-muted-foreground">{t('enterprise_page.beta.step1.admin_portal')}</span>
-                  <span className="text-foreground font-mono text-xs">admin.demo.cherry-ai.com</span>
+                  <span className="text-foreground font-mono text-xs">https://admin.demo.cherry-ai.com</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-muted-foreground">{t('enterprise_page.beta.step1.account')}</span>
