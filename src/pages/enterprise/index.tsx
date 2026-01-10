@@ -430,7 +430,7 @@ const EnterprisePage: FC = () => {
           <div className="relative z-10 grid items-stretch gap-8 lg:grid-cols-[420px_1fr] lg:gap-16">
             {/* Left Side - Pricing Card */}
             <div className="flex">
-              <div className="flex w-full flex-col overflow-hidden rounded-2xl border border-orange-500/20 bg-gradient-to-br from-orange-500 to-orange-600 p-8 shadow-xl">
+              <div className="flex w-full flex-col overflow-hidden rounded-2xl border border-orange-400/20 bg-gradient-to-br from-orange-400/90 to-orange-500/90 p-8 shadow-xl">
                 <span className="mb-6 inline-flex w-fit items-center gap-2 rounded-full bg-white/20 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white backdrop-blur-sm">
                   <Sparkles className="h-4 w-4" />
                   {t('enterprise_page.express.badge')}
@@ -519,7 +519,7 @@ const EnterprisePage: FC = () => {
           <div className="relative z-10 grid items-stretch gap-8 lg:grid-cols-[420px_1fr] lg:gap-16">
             {/* Left Side - Pricing Card */}
             <div className="flex">
-              <div className="flex w-full flex-col overflow-hidden rounded-2xl border border-blue-500/20 bg-gradient-to-br from-blue-500 to-blue-600 p-8 shadow-xl">
+              <div className="flex w-full flex-col overflow-hidden rounded-2xl border border-blue-400/20 bg-gradient-to-br from-blue-400/90 to-blue-500/90 p-8 shadow-xl">
                 <span className="mb-6 inline-flex w-fit items-center gap-2 rounded-full bg-white/20 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white backdrop-blur-sm">
                   <Building2 className="h-4 w-4" />
                   {t('enterprise_page.standard.badge')}
