@@ -1,10 +1,6 @@
-import { Bot, Download, FileText, Palette, Puzzle, Sparkles, Zap } from 'lucide-react'
+import { Bot, FileText, Palette, Puzzle, Sparkles, Zap } from 'lucide-react'
 import type { FC } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
-import { Link } from 'react-router-dom'
-
-import { Button } from '@/components/ui/button'
-import { useVersionData } from '@/hooks/useVersionData'
 
 const highlights = [
   { key: 'highlights.multi_model', color: '#60a5fa', icon: Bot },
@@ -17,28 +13,33 @@ const highlights = [
 
 const HighlightsSection: FC = () => {
   const { t } = useTranslation()
-  const { versionData } = useVersionData()
 
   return (
     <section className="bg-background relative overflow-hidden py-16 sm:py-24">
-      <div className="relative z-10 mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="mb-12 text-center sm:mb-16">
+        <div className="mx-auto mb-8 max-w-3xl text-center sm:mb-16">
           <h2 className="text-foreground mb-4 text-2xl font-bold sm:text-4xl lg:text-5xl">
             {t('highlights.title')}
           </h2>
           <p className="text-muted-foreground text-base sm:text-lg">{t('highlights.subtitle')}</p>
         </div>
 
-        {/* Highlights List */}
-        <div className="space-y-8 sm:space-y-10">
+        {/* Highlights Grid */}
+        <div className="grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-2">
           {highlights.map((highlight) => (
-            <div key={highlight.key} className="group">
-              <h3 className="text-foreground mb-2 flex items-center gap-2 text-xl font-bold sm:text-2xl">
-                <highlight.icon className="h-5 w-5 sm:h-6 sm:w-6" style={{ color: highlight.color }} />
+            <div
+              key={highlight.key}
+              className="group rounded-2xl border border-border/50 bg-card/50 p-6 transition-colors hover:border-border hover:bg-card/80">
+              <h3 className="text-foreground mb-3 flex items-center gap-3 text-lg font-bold sm:text-xl">
+                <div
+                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl"
+                  style={{ backgroundColor: `${highlight.color}15` }}>
+                  <highlight.icon className="h-5 w-5" style={{ color: highlight.color }} />
+                </div>
                 {t(`${highlight.key}.title`)}
               </h3>
-              <p className="text-muted-foreground text-base leading-relaxed sm:text-lg">
+              <p className="text-muted-foreground pl-13 text-sm leading-relaxed sm:text-base">
                 <Trans
                   i18nKey={`${highlight.key}.description`}
                   components={{
@@ -48,8 +49,8 @@ const HighlightsSection: FC = () => {
                         style={{
                           textDecoration: 'underline',
                           textDecorationColor: highlight.color,
-                          textDecorationThickness: '4px',
-                          textUnderlineOffset: '4px',
+                          textDecorationThickness: '3px',
+                          textUnderlineOffset: '3px',
                           textDecorationSkipInk: 'none'
                         }}
                       />
@@ -59,16 +60,6 @@ const HighlightsSection: FC = () => {
               </p>
             </div>
           ))}
-        </div>
-
-        {/* Download Button */}
-        <div className="border-border/50 mt-12 border-t pt-12 text-center sm:mt-16 sm:pt-16">
-          <Button variant="glow" size="lg" asChild>
-            <Link to="/download" className="gap-2">
-              <Download className="h-5 w-5" />
-              {t('download')} {versionData?.version}
-            </Link>
-          </Button>
         </div>
       </div>
     </section>

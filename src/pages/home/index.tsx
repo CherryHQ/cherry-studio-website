@@ -24,9 +24,9 @@ const HomePage: FC = () => {
       <SectionDivider />
       <TestimonialsSection />
       <SectionDivider />
-      <ContributorsSection />
-      <SectionDivider />
       <HighlightsSection />
+      <SectionDivider />
+      <ContributorsSection />
       <CommunitySection />
       <Footer />
     </div>
