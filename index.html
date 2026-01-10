@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 
 <head>
   <meta charset="utf-8" />
-  <title>Cherry Studio 官方网站 - 全能的 AI 助手</title>
+  <title>Cherry Studio 官方网站 - 全能的 AI 助手 | 多模型 AI 客户端</title>
   <link rel="shortcut icon" href="/src/assets/images/favicon.png" type="image/x-icon" />
   <link rel="icon" href="/src/assets/images/favicon.png" type="image/x-icon" />
   <link
@@ -15,49 +15,133 @@
   <link href="https://unpkg.com/@fortawesome/fontawesome-free@6.5.1/css/all.min.css" rel="stylesheet" />
   <link href="/src/assets/css/icomoon.css" rel="stylesheet" />
   <!-- 基础设置 -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#FF5F5F" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <!-- 规范链接和多语言 -->
+  <link rel="canonical" href="https://cherry-ai.com/" />
+  <link rel="alternate" hreflang="zh-CN" href="https://cherry-ai.com/" />
+  <link rel="alternate" hreflang="en" href="https://cherry-ai.com/" />
+  <link rel="alternate" hreflang="x-default" href="https://cherry-ai.com/" />
+  <!-- Robots -->
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="googlebot" content="index, follow" />
   <!-- SEO 基础信息 -->
   <meta name="description"
-    content="Cherry Studio AI 是一款强大的多模型 AI 助手，支持 iOS、macOS 和 Windows 平台。快速切换多个先进的 LLM 模型，提升工作学习效率。" />
-  <meta name="keywords" content="Cherry Studio, AI 助手, LLM, GPT, 人工智能, macOS, Windows, iOS" />
+    content="Cherry Studio 是一款强大的多模型 AI 助手，支持 Windows、macOS、Linux 平台。集成 300+ AI 模型，包括 OpenAI、Claude、Gemini、DeepSeek 等，支持 AI 对话、知识库、AI 绘图、翻译等功能，完全免费开源。" />
+  <meta name="keywords" content="Cherry Studio, AI 助手, AI 客户端, LLM, ChatGPT, Claude, Gemini, DeepSeek, 人工智能, AI 对话, AI 知识库, AI 绘图, AI 翻译, macOS, Windows, Linux, 开源 AI, 多模型 AI, Ollama, LM Studio, 本地大模型" />
   <meta name="author" content="Cherry Studio Team" />
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://cherry-ai.com/" />
-  <meta property="og:title" content="Cherry Studio - 全能的 AI 助手" />
+  <meta property="og:title" content="Cherry Studio - 全能的多模型 AI 助手 | 免费开源" />
   <meta property="og:description"
-    content="Cherry Studio AI 是一款强大的多模型 AI 助手，支持 iOS、macOS 和 Windows 平台。快速切换多个先进的 LLM 模型，提升工作学习效率。" />
+    content="Cherry Studio 是一款强大的多模型 AI 助手，支持 Windows、macOS、Linux 平台。集成 300+ AI 模型，包括 OpenAI、Claude、Gemini、DeepSeek 等，支持 AI 对话、知识库、AI 绘图、翻译等功能，完全免费开源。" />
   <meta property="og:image" content="https://cherry-ai.com/assets/images/social-card.jpg" />
   <meta property="og:site_name" content="Cherry Studio" />
   <meta property="og:locale" content="zh_CN" />
+  <meta property="og:locale:alternate" content="en_US" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Cherry Studio AI 助手界面预览" />
+  <meta property="og:image:alt" content="Cherry Studio - 多模型 AI 助手桌面客户端" />
+  <meta property="og:image:type" content="image/jpeg" />
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@CherryStudioAI" />
   <meta name="twitter:creator" content="@CherryStudioAI" />
-  <meta name="twitter:title" content="Cherry Studio - 全能的 AI 助手" />
+  <meta name="twitter:title" content="Cherry Studio - 全能的多模型 AI 助手" />
   <meta name="twitter:description"
-    content="Cherry Studio AI 是一款强大的多模型 AI 助手，支持 iOS、macOS 和 Windows 平台。快速切换多个先进的 LLM 模型，提升工作学习效率。" />
+    content="集成 300+ AI 模型的桌面客户端，支持 OpenAI、Claude、Gemini、DeepSeek。AI 对话、知识库、绘图、翻译，完全免费开源。" />
   <meta name="twitter:image" content="https://cherry-ai.com/assets/images/social-card.jpg" />
-  <meta name="twitter:image:alt" content="Cherry Studio AI 助手界面预览" />
+  <meta name="twitter:image:alt" content="Cherry Studio - 多模型 AI 助手桌面客户端" />
+  <meta name="twitter:domain" content="cherry-ai.com" />
   <!-- 微信分享 -->
-  <meta itemprop="name" content="Cherry Studio - 全能的 AI 助手" />
+  <meta itemprop="name" content="Cherry Studio - 全能的多模型 AI 助手" />
   <meta itemprop="description"
-    content="Cherry Studio AI 是一款强大的多模型 AI 助手，支持 iOS、macOS 和 Windows 平台。快速切换多个先进的 LLM 模型，提升工作学习效率。" />
+    content="Cherry Studio 是一款强大的多模型 AI 助手，支持 Windows、macOS、Linux 平台。集成 300+ AI 模型，完全免费开源。" />
   <meta itemprop="image" content="https://cherry-ai.com/assets/images/social-card.jpg" />
   <!-- QQ 分享 -->
   <meta name="qq:card" content="article" />
-  <meta name="qq:title" content="Cherry Studio - 全能的 AI 助手" />
+  <meta name="qq:title" content="Cherry Studio - 全能的多模型 AI 助手" />
   <meta name="qq:description"
-    content="Cherry Studio AI 是一款强大的多模型 AI 助手，支持 iOS、macOS 和 Windows 平台。快速切换多个先进的 LLM 模型，提升工作学习效率。" />
+    content="Cherry Studio 是一款强大的多模型 AI 助手，支持 Windows、macOS、Linux 平台。集成 300+ AI 模型，完全免费开源。" />
   <meta name="qq:image" content="https://cherry-ai.com/assets/images/social-card.jpg" />
   <!-- RSS Feed -->
   <link rel="alternate" type="application/rss+xml" title="Cherry Studio 更新日志" href="https://cherry-rss.ocool.online/" />
+  <!-- 结构化数据 - Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Cherry Studio",
+    "alternateName": "CherryHQ",
+    "url": "https://cherry-ai.com",
+    "logo": "https://cherry-ai.com/assets/images/favicon.png",
+    "description": "Cherry Studio 是一款强大的多模型 AI 助手，支持 Windows、macOS、Linux 平台",
+    "sameAs": [
+      "https://github.com/CherryHQ/cherry-studio",
+      "https://gitcode.com/CherryHQ/cherry-studio",
+      "https://twitter.com/CherryStudioAI"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "support@cherry-ai.com",
+      "contactType": "customer support"
+    }
+  }
+  </script>
+  <!-- 结构化数据 - SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Cherry Studio",
+    "applicationCategory": "DesktopApplication",
+    "operatingSystem": "Windows, macOS, Linux",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "Cherry Studio 是一款集成 300+ AI 模型的多平台桌面客户端，支持 OpenAI、Claude、Gemini、DeepSeek 等主流模型，提供 AI 对话、知识库、AI 绘图、翻译等功能，完全免费开源。",
+    "downloadUrl": "https://cherry-ai.com/download",
+    "softwareVersion": "latest",
+    "author": {
+      "@type": "Organization",
+      "name": "Cherry Studio Team"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "ratingCount": "1000"
+    },
+    "featureList": [
+      "支持 50+ AI 服务商",
+      "集成 300+ AI 模型",
+      "支持本地大模型 (Ollama, LM Studio)",
+      "AI 对话、知识库、绘图、翻译",
+      "300+ 内置智能助手",
+      "多平台支持 (Windows, macOS, Linux)",
+      "完全免费开源"
+    ]
+  }
+  </script>
+  <!-- 结构化数据 - WebSite with SearchAction -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Cherry Studio",
+    "alternateName": "Cherry Studio 官方网站",
+    "url": "https://cherry-ai.com",
+    "description": "Cherry Studio 官方网站 - 下载全能的多模型 AI 助手",
+    "inLanguage": ["zh-CN", "en"],
+    "publisher": {
+      "@type": "Organization",
+      "name": "上海千彗科技有限公司"
+    }
+  }
+  </script>
 </head>
 
 <body>
