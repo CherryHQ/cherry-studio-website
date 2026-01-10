@@ -1,6 +1,8 @@
 import { type FC, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import GitHubUserCard from '@/components/GitHubUserCard'
+
 interface Contributor {
   id: number
   login: string
@@ -122,25 +124,26 @@ const ContributorsSection: FC = () => {
 
         <div className="grid grid-cols-4 gap-2 sm:grid-cols-5 sm:gap-3 md:grid-cols-8 lg:grid-cols-10">
           {contributors.map((contributor) => (
-            <a
-              key={contributor.id}
-              href={contributor.html_url}
-              target="_blank"
-              rel="noopener noreferrer"
-              title={`${contributor.login}: ${contributor.contributions} commits (${getContributionPercent(contributor.contributions)}%)`}
-              className="border-border/50 bg-card/50 hover:border-primary/30 hover:bg-card group flex flex-col items-center gap-1.5 rounded-lg border p-2 transition-all duration-300 sm:p-3">
-              <img
-                src={contributor.avatar_url}
-                alt={contributor.login}
-                className="ring-border group-hover:ring-primary/50 h-10 w-10 rounded-full ring-2 transition-all duration-300 sm:h-12 sm:w-12"
-              />
-              <span className="text-muted-foreground group-hover:text-foreground max-w-full truncate text-[10px] transition-colors sm:text-xs">
-                {contributor.login}
-              </span>
-              <span className="text-muted-foreground/60 text-[9px] sm:text-[10px]">
-                {contributor.contributions} commits
-              </span>
-            </a>
+            <GitHubUserCard key={contributor.id} username={contributor.login}>
+              <a
+                href={contributor.html_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={`${contributor.login}: ${contributor.contributions} commits (${getContributionPercent(contributor.contributions)}%)`}
+                className="border-border/50 bg-card/50 hover:border-primary/30 hover:bg-card group flex flex-col items-center gap-1.5 rounded-lg border p-2 transition-all duration-300 sm:p-3">
+                <img
+                  src={contributor.avatar_url}
+                  alt={contributor.login}
+                  className="ring-border group-hover:ring-primary/50 h-10 w-10 rounded-full ring-2 transition-all duration-300 sm:h-12 sm:w-12"
+                />
+                <span className="text-muted-foreground group-hover:text-foreground max-w-full truncate text-[10px] transition-colors sm:text-xs">
+                  {contributor.login}
+                </span>
+                <span className="text-muted-foreground/60 text-[9px] sm:text-[10px]">
+                  {contributor.contributions} commits
+                </span>
+              </a>
+            </GitHubUserCard>
           ))}
         </div>
 
