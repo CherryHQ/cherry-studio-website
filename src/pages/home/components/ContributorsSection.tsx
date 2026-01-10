@@ -72,6 +72,52 @@ const ContributorsSection: FC = () => {
             {t('contributors.project_contributors')}
           </h2>
           <p className="text-muted-foreground text-sm sm:text-base">{t('contributors.project_contributors_subtitle')}</p>
+
+          {/* Badges */}
+          <div className="mt-6 flex flex-nowrap items-center justify-center gap-4">
+            <a
+              href="https://www.producthunt.com/posts/cherry-studio?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-cherry-studio"
+              target="_blank"
+              rel="noopener noreferrer">
+              <img
+                src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=496640&theme=light"
+                alt="Cherry Studio - AI Chatbots, AI Desktop Client | Product Hunt"
+                className="block h-[55px] w-auto dark:hidden"
+              />
+              <img
+                src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=496640&theme=dark"
+                alt="Cherry Studio - AI Chatbots, AI Desktop Client | Product Hunt"
+                className="hidden h-[55px] w-auto dark:block"
+              />
+            </a>
+            <a href="https://trendshift.io/repositories/14318" target="_blank" rel="noopener noreferrer">
+              <img
+                src="https://trendshift.io/api/badge/repositories/14318"
+                alt="CherryHQ/cherry-studio | Trendshift"
+                className="block h-[70px] w-auto dark:hidden"
+              />
+              <img
+                src="https://trendshift.io/api/badge/repositories/14318?theme=dark"
+                alt="CherryHQ/cherry-studio | Trendshift"
+                className="hidden h-[70px] w-auto dark:block"
+              />
+            </a>
+            <a
+              href="https://hellogithub.com/repository/1605492e1e2a4df3be07abfa4578dd37"
+              target="_blank"
+              rel="noopener noreferrer">
+              <img
+                src="https://api.hellogithub.com/v1/widgets/recommend.svg?rid=1605492e1e2a4df3be07abfa4578dd37"
+                alt="Featured | HelloGitHub"
+                className="block h-[55px] w-auto dark:hidden"
+              />
+              <img
+                src="https://api.hellogithub.com/v1/widgets/recommend.svg?rid=1605492e1e2a4df3be07abfa4578dd37&theme=dark"
+                alt="Featured | HelloGitHub"
+                className="hidden h-[55px] w-auto dark:block"
+              />
+            </a>
+          </div>
         </div>
 
         <div className="grid grid-cols-4 gap-2 sm:grid-cols-5 sm:gap-3 md:grid-cols-8 lg:grid-cols-10">
