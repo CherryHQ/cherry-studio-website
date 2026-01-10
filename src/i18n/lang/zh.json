@@ -521,6 +521,44 @@
     "subtitle": "听听社区用户对 Cherry Studio 的真实评价",
     "source_hint": "来自各平台的真实评价"
   },
+  "home_faq": {
+    "title": "常见问题",
+    "subtitle": "关于 Cherry Studio 的常见疑问解答",
+    "items": [
+      {
+        "question": "Cherry Studio 是什么？",
+        "answer": "Cherry Studio 是一款跨平台的 AI 对话客户端，支持 Windows、macOS 和 Linux。它集成了 300+ 主流 AI 模型，包括 OpenAI、Claude、Gemini 等云端模型，也支持通过 Ollama 和 LM Studio 使用本地模型。除了 AI 助手之外，Cherry Studio 还具备强大的 Agent 智能体能力——自主思考、规划和行动的 AI。给 Agent 一个目标，它会自动推理问题、拆解步骤、调用工具并独立执行，同时您始终保持控制权。"
+      },
+      {
+        "question": "Cherry Studio 是免费的吗？",
+        "answer": "是的，Cherry Studio 社区版完全免费且开源，采用 AGPL-3.0 开源协议。个人使用完全免费。如需商业使用，请遵守 AGPL 协议要求，或联系我们获取企业授权。"
+      },
+      {
+        "question": "我的数据是如何存储的？安全吗？",
+        "answer": "您的所有数据（对话记录、设置、知识库文件）都存储在本地设备上，Cherry Studio 不会将任何数据上传到第三方服务器。您对数据隐私拥有完全的控制权。我们还支持 WebDAV 备份，方便多设备同步。"
+      },
+      {
+        "question": "Cherry Studio 支持哪些 AI 模型？",
+        "answer": "Cherry Studio 支持 50+ AI 服务商，包括 OpenAI (GPT-4, GPT-4o)、Anthropic (Claude 3.5)、Google (Gemini)、DeepSeek、Kimi、通义千问等众多模型。同时支持通过 Ollama 和 LM Studio 使用本地模型，实现完全离线运行。"
+      },
+      {
+        "question": "知识库功能是什么？",
+        "answer": "知识库功能允许您导入文档（PDF、Word、Excel、TXT、Markdown）和网页来创建个人 AI 助手。AI 可以基于您导入的内容回答问题，非常适合研究、文档分析和个性化问答场景。"
+      },
+      {
+        "question": "Cherry Studio 支持 MCP（模型上下文协议）吗？",
+        "answer": "是的，Cherry Studio 完全支持 MCP 服务器，允许您通过外部工具和服务扩展其功能。您可以连接数据库、文件系统、Web 服务等，将 Cherry Studio 打造成强大的 AI 工作台。"
+      },
+      {
+        "question": "我想为项目做贡献，可以做什么？",
+        "answer": "您可以通过多种方式贡献：在 GitHub 给我们 Star、报告 Bug、提交代码改进的 PR、帮助完善文档，或在社区帮助其他用户答疑。请查看我们的 GitHub 仓库了解贡献指南和待解决的 Issue。"
+      },
+      {
+        "question": "遇到问题在哪里可以获得帮助？",
+        "answer": "您可以通过 Telegram、Discord 或 QQ 群加入我们的社区（链接在官网首页）。也可以在 GitHub 提交 Issue、发送邮件至 support@cherry-ai.com，或访问 docs.cherry-ai.com 查看详细的使用文档和教程。"
+      }
+    ]
+  },
   "telegram": {
     "channel_members": "频道成员：",
     "current_online": "当前在线："

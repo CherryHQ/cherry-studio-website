@@ -374,7 +374,7 @@
     },
     "express": {
       "badge": "Recommended",
-      "title": "Cherry Studio Express Edition",
+      "title": "Cherry Studio Enterprise Express",
       "subtitle": "Cost-effective AI solution for small and medium teams. One-time purchase, lifetime use. No need to build your own model service - ready to use out of the box.",
       "price_label": "One-time Price",
       "period": "/ Lifetime License",
@@ -522,6 +522,44 @@
     "title": "Why Users Love Cherry Studio",
     "subtitle": "See what our community has to say about Cherry Studio",
     "source_hint": "Reviews from across the web"
+  },
+  "home_faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Common questions about Cherry Studio",
+    "items": [
+      {
+        "question": "What is Cherry Studio?",
+        "answer": "Cherry Studio is a cross-platform desktop client for AI chatbots, supporting Windows, macOS, and Linux. It integrates 300+ AI models from major providers like OpenAI, Claude, Gemini, and supports local models via Ollama and LM Studio. Beyond AI Assistants, Cherry Studio features powerful Agent capabilities - autonomous AI that can think, plan, and act. Give Agent a goal, and it will reason through problems, break them into steps, call the right tools, and execute independently while you stay in control."
+      },
+      {
+        "question": "Is Cherry Studio free?",
+        "answer": "Yes, Cherry Studio Community Edition is completely free and open-source under the AGPL-3.0 license. You can use it for personal purposes without any cost. For commercial use, please comply with the AGPL license requirements or contact us for an enterprise license."
+      },
+      {
+        "question": "How is my data stored? Is it secure?",
+        "answer": "All your data (chat history, settings, knowledge base files) is stored locally on your device. Cherry Studio never uploads your data to any third-party servers. You have full control over your data privacy. We also support WebDAV backup for syncing across devices."
+      },
+      {
+        "question": "Which AI models does Cherry Studio support?",
+        "answer": "Cherry Studio supports 50+ AI providers including OpenAI (GPT-4, GPT-4o), Anthropic (Claude 3.5), Google (Gemini), DeepSeek, Kimi, Qwen, and many more. It also supports local models through Ollama and LM Studio, allowing you to run AI completely offline."
+      },
+      {
+        "question": "What is the Knowledge Base feature?",
+        "answer": "The Knowledge Base allows you to import documents (PDF, Word, Excel, TXT, Markdown) and web pages to create your personal AI assistant. The AI can then answer questions based on your imported content, making it perfect for research, document analysis, and personalized Q&A."
+      },
+      {
+        "question": "Does Cherry Studio support MCP (Model Context Protocol)?",
+        "answer": "Yes, Cherry Studio fully supports MCP servers, allowing you to extend its capabilities with external tools and services. You can connect to databases, file systems, web services, and more through MCP, making Cherry Studio a powerful AI workspace."
+      },
+      {
+        "question": "How can I contribute to the project?",
+        "answer": "You can contribute in many ways: give us a star on GitHub, report bugs, submit pull requests for code improvements, help with documentation, or assist other users in the community. Check our GitHub repository for contribution guidelines and open issues to get started."
+      },
+      {
+        "question": "Where can I get help if I have questions?",
+        "answer": "Join our community through Telegram, Discord, or QQ groups (links on our homepage). You can also submit issues on GitHub, email support@cherry-ai.com, or check our documentation at docs.cherry-ai.com for detailed guides and tutorials."
+      }
+    ]
   },
   "telegram": {
     "channel_members": "Channel Members: ",
