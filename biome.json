@@ -45,7 +45,11 @@
         "useExhaustiveDependencies": "off",
         "noInvalidUseBeforeDeclaration": "off",
         "noUnusedFunctionParameters": "off",
-        "noUnusedVariables": "warn"
+        "noUnusedVariables": "warn",
+        "noUnusedImports": {
+          "level": "warn",
+          "fix": "safe"
+        }
       },
       "a11y": {
         "noSvgWithoutTitle": "off",
