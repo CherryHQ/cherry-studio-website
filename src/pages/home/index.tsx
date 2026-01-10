@@ -7,6 +7,7 @@ import CommunitySection from './components/CommunitySection'
 import ContributorsSection from './components/ContributorsSection'
 import FAQSection from './components/FAQSection'
 import FeaturesSection from './components/FeaturesSection'
+import FreeModelsSection from './components/FreeModelsSection'
 import HeroSection from './components/HeroSection'
 import HighlightsSection from './components/HighlightsSection'
 import ProvidersSection from './components/ProvidersSection'
@@ -18,6 +19,8 @@ const HomePage: FC = () => {
   return (
     <div className="bg-background min-h-screen">
       <HeroSection />
+      <SectionDivider />
+      <FreeModelsSection />
       <SectionDivider />
       <FeaturesSection />
       <SectionDivider />

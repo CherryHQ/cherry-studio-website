@@ -565,6 +565,26 @@
     "channel_members": "Channel Members: ",
     "current_online": "Currently Online: "
   },
+  "free_models": {
+    "badge": "Free Access",
+    "title": "Free Models, Ready to Use",
+    "subtitle": "Free AI models provided by our partners. No API key required, just download and start",
+    "glm": {
+      "name": "BigModel GLM-4.5-Air",
+      "description": "BigModel's efficient model optimized for intelligent agents, featuring MoE architecture, 128K context, 100+ tokens/sec generation speed. Ideal for code generation, logical reasoning, and agent interactions.",
+      "feature1": "128K Context",
+      "feature2": "100+ tokens/sec",
+      "feature3": "Tool Calling"
+    },
+    "qwen": {
+      "name": "Qwen3-8B",
+      "description": "Alibaba's 3rd generation Qwen model, freely provided by SiliconFlow. Supports 119 languages with excellent code generation, mathematical reasoning, and intelligent Q&A capabilities.",
+      "feature1": "119 Languages",
+      "feature2": "128K Context",
+      "feature3": "Thinking Mode"
+    },
+    "cta": "More free models coming soon..."
+  },
   "theme_page": {
     "title": "Theme Market",
     "subtitle": "Discover and share Cherry Studio themes",

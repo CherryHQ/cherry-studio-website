@@ -92,7 +92,7 @@ const ProvidersSection: FC = () => {
   }
 
   return (
-    <section className="bg-background relative overflow-hidden py-12 sm:py-24">
+    <section className="bg-background relative overflow-hidden py-8 sm:py-16">
       <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="mx-auto mb-8 max-w-3xl text-center sm:mb-16">

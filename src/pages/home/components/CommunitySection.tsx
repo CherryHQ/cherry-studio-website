@@ -57,7 +57,7 @@ const CommunitySection: FC = () => {
   ]
 
   return (
-    <section className="bg-secondary/30 relative overflow-hidden py-12 sm:py-24" id="Community">
+    <section className="bg-secondary/30 relative overflow-hidden py-8 sm:py-16" id="Community">
       {/* Background */}
       <div className="grid-pattern absolute inset-0 opacity-20" />
 

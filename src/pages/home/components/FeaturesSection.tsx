@@ -75,7 +75,7 @@ const FeaturesSection: FC = () => {
   const { t } = useTranslation()
 
   return (
-    <section className="bg-background relative overflow-hidden py-12 sm:py-24">
+    <section className="bg-background relative overflow-hidden py-8 sm:py-16">
       {/* Background */}
       <div className="dot-pattern absolute inset-0 opacity-30" />
 

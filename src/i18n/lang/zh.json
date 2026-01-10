@@ -563,6 +563,26 @@
     "channel_members": "频道成员：",
     "current_online": "当前在线："
   },
+  "free_models": {
+    "badge": "免费体验",
+    "title": "免费模型，开箱即用",
+    "subtitle": "合作伙伴免费提供的 AI 模型，无需 API Key，下载即用",
+    "glm": {
+      "name": "智谱 GLM-4.5-Air",
+      "description": "智谱专为智能体应用打造的高效模型，采用混合专家架构，支持 128K 上下文，生成速度超 100 tokens/秒，适合代码生成、逻辑推理和智能体交互场景。",
+      "feature1": "128K 上下文",
+      "feature2": "100+ tokens/秒",
+      "feature3": "工具调用"
+    },
+    "qwen": {
+      "name": "通义千问 Qwen3-8B",
+      "description": "阿里巴巴通义千问第三代模型，由硅基流动免费提供服务。支持 119 种语言，具备出色的代码生成、数学推理和智能问答能力。",
+      "feature1": "119 种语言",
+      "feature2": "128K 上下文",
+      "feature3": "思考模式"
+    },
+    "cta": "更多免费模型持续更新中..."
+  },
   "theme_page": {
     "title": "主题市场",
     "subtitle": "发现和分享 Cherry Studio 主题样式",

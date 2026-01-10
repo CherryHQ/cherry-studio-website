@@ -36,7 +36,8 @@
       "Bash(for f in src/assets/images/screenshots/*.png)",
       "Bash(do cwebp:*)",
       "Bash(done)",
-      "Bash(pnpm lint:*)"
+      "Bash(pnpm lint:*)",
+      "Bash(cwebp:*)"
     ],
     "deny": [],
     "ask": []
