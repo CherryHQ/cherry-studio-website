@@ -73,7 +73,9 @@ const ContributorsSection: FC = () => {
           <h2 className="text-foreground mb-3 text-2xl font-bold sm:mb-4 sm:text-4xl lg:text-5xl">
             {t('contributors.project_contributors')}
           </h2>
-          <p className="text-muted-foreground text-sm sm:text-base">{t('contributors.project_contributors_subtitle')}</p>
+          <p className="text-muted-foreground text-sm sm:text-base">
+            {t('contributors.project_contributors_subtitle')}
+          </p>
 
           {/* Badges */}
           <div className="mt-6 flex flex-nowrap items-center justify-center gap-4">

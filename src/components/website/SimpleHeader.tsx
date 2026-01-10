@@ -126,7 +126,9 @@ const SimpleHeader: React.FC = () => {
                     to={link.path}
                     className={cn(
                       'relative flex items-center gap-1.5 px-4 py-2 text-base font-medium transition-colors duration-200',
-                      location.pathname === link.path ? 'text-black dark:text-white' : 'text-muted-foreground hover:text-foreground'
+                      location.pathname === link.path
+                        ? 'text-black dark:text-white'
+                        : 'text-muted-foreground hover:text-foreground'
                     )}>
                     {link.path === '/careers' && (
                       <span className="relative flex h-1.5 w-1.5">

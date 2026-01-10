@@ -23,9 +23,7 @@ const EnterpriseFAQ: FC = () => {
     <section className="border-border bg-card border-t px-6 py-24">
       <div className="mx-auto max-w-[900px]">
         <div className="mb-12 text-center">
-          <h2 className="text-foreground mb-4 text-3xl font-bold sm:text-4xl">
-            {t('enterprise_page.faq.title')}
-          </h2>
+          <h2 className="text-foreground mb-4 text-3xl font-bold sm:text-4xl">{t('enterprise_page.faq.title')}</h2>
           <p className="text-muted-foreground text-lg">{t('enterprise_page.faq.subtitle')}</p>
         </div>
 

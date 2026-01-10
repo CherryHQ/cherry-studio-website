@@ -27,9 +27,7 @@ const PlatformTabs: FC<PlatformTabsProps> = ({ activePlatform, detectedPlatform,
         <p className="text-muted-foreground mb-4 flex items-center justify-center gap-2 text-sm">
           <Monitor className="h-4 w-4" />
           {t('download_page.current_system')}:
-          <span className="text-foreground font-medium">
-            {t(`download_page.platform_${detectedPlatform}`)}
-          </span>
+          <span className="text-foreground font-medium">{t(`download_page.platform_${detectedPlatform}`)}</span>
         </p>
       )}
       <div className="flex justify-center">

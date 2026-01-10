@@ -164,7 +164,9 @@ const PlatformDownloads: FC<PlatformDownloadsProps> = ({ platform, versionData, 
         <div className="rounded-2xl border-2 border-green-500/30 bg-green-500/10 p-6">
           <div className="mb-4 flex items-center gap-2">
             <Star className="h-5 w-5 fill-current text-green-500" />
-            <span className="font-semibold text-green-600 dark:text-green-400">{t('download_page.recommended_download')}</span>
+            <span className="font-semibold text-green-600 dark:text-green-400">
+              {t('download_page.recommended_download')}
+            </span>
           </div>
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div className="min-w-0 flex-1">
@@ -193,7 +195,10 @@ const PlatformDownloads: FC<PlatformDownloadsProps> = ({ platform, versionData, 
             className="hover:bg-secondary/50 flex w-full cursor-pointer items-center justify-between rounded-2xl px-6 py-4 transition-colors">
             <span className="text-foreground font-medium">{t('download_page.other_versions_expand')}</span>
             <ChevronDown
-              className={cn('text-muted-foreground h-5 w-5 transition-transform duration-200', showOthers && 'rotate-180')}
+              className={cn(
+                'text-muted-foreground h-5 w-5 transition-transform duration-200',
+                showOthers && 'rotate-180'
+              )}
             />
           </button>
 

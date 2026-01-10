@@ -188,7 +188,9 @@ const TestimonialsSection: FC = () => {
 
       <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
         <div className="mb-8 text-center sm:mb-16">
-          <h2 className="text-foreground mb-3 text-2xl font-bold sm:mb-4 sm:text-4xl lg:text-5xl">{t('testimonials.title')}</h2>
+          <h2 className="text-foreground mb-3 text-2xl font-bold sm:mb-4 sm:text-4xl lg:text-5xl">
+            {t('testimonials.title')}
+          </h2>
           <p className="text-muted-foreground text-sm sm:text-base">{t('testimonials.subtitle')}</p>
         </div>
 

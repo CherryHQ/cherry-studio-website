@@ -134,7 +134,11 @@ const EnterprisePlatformDownloads: FC<EnterprisePlatformDownloadsProps> = ({ pla
               <p className={cn('mt-1 text-sm', isLight ? 'text-muted-foreground' : 'text-white/60')}>
                 {recommendedItem.hint}
               </p>
-              <p className={cn('mt-2 truncate font-mono text-xs', isLight ? 'text-muted-foreground/60' : 'text-white/40')}>
+              <p
+                className={cn(
+                  'mt-2 truncate font-mono text-xs',
+                  isLight ? 'text-muted-foreground/60' : 'text-white/40'
+                )}>
                 {recommendedItem.name}
               </p>
             </div>
@@ -177,8 +181,7 @@ const EnterprisePlatformDownloads: FC<EnterprisePlatformDownloadsProps> = ({ pla
           </button>
 
           {showOthers && (
-            <div
-              className={cn('space-y-2 border-t px-6 py-4', isLight ? 'border-border' : 'border-white/10')}>
+            <div className={cn('space-y-2 border-t px-6 py-4', isLight ? 'border-border' : 'border-white/10')}>
               {otherItems.map((item) => (
                 <button
                   type="button"
@@ -192,7 +195,9 @@ const EnterprisePlatformDownloads: FC<EnterprisePlatformDownloadsProps> = ({ pla
                   )}>
                   <div className="min-w-0 flex-1">
                     <div className={cn('font-medium', isLight ? 'text-foreground' : 'text-white/90')}>{item.desc}</div>
-                    <div className={cn('text-sm', isLight ? 'text-muted-foreground' : 'text-white/50')}>{item.hint}</div>
+                    <div className={cn('text-sm', isLight ? 'text-muted-foreground' : 'text-white/50')}>
+                      {item.hint}
+                    </div>
                   </div>
                   <Download className={cn('h-4 w-4 shrink-0', isLight ? 'text-muted-foreground' : 'text-white/50')} />
                 </button>

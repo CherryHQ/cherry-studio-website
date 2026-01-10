@@ -114,12 +114,22 @@ const EnterprisePage: FC = () => {
         {/* Subtle grid */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:64px_64px] dark:bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)]" />
         {/* Particles */}
-        <Particles className="absolute inset-0" quantity={60} color={isDark ? '#ffffff' : '#000000'} size={0.4} staticity={40} />
+        <Particles
+          className="absolute inset-0"
+          quantity={60}
+          color={isDark ? '#ffffff' : '#000000'}
+          size={0.4}
+          staticity={40}
+        />
         {/* Subtle center glow */}
         <div className="absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500/5 blur-[120px]" />
         <div className="relative z-10 mx-auto max-w-[1400px] text-center">
-          <h1 className="mb-6 text-4xl font-bold text-black dark:text-white sm:text-5xl">{t('enterprise_page.hero.title')}</h1>
-          <p className="mb-8 text-lg text-neutral-500 dark:text-neutral-400 sm:text-xl">{t('enterprise_page.hero.subtitle')}</p>
+          <h1 className="mb-6 text-4xl font-bold text-black dark:text-white sm:text-5xl">
+            {t('enterprise_page.hero.title')}
+          </h1>
+          <p className="mb-8 text-lg text-neutral-500 dark:text-neutral-400 sm:text-xl">
+            {t('enterprise_page.hero.subtitle')}
+          </p>
           <Button
             asChild
             size="lg"
