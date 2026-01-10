@@ -1,5 +1,5 @@
 import type React from 'react'
-import { Trans, useTranslation } from 'react-i18next'
+import { useTranslation } from 'react-i18next'
 
 import cherryLogo from '@/assets/images/cherry-logo.svg'
 import gitcodeIcon from '@/assets/images/icons/gitcode.svg'
@@ -19,7 +19,8 @@ import { copyRSSLink } from '@/utils'
 import LanguageSelector from './LanguageSelector'
 
 const Footer: React.FC = () => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const isZhCN = i18n.language === 'zh-CN'
 
   const socialLinks = [
     { href: 'https://x.com/CherryStudioHQ', icon: xIcon, colorIcon: xColorIcon, alt: 'X', colorDarkInvert: true },
@@ -55,9 +56,9 @@ const Footer: React.FC = () => {
   const friendlyLinks = [
     { href: 'https://one.ocoolai.com', label: 'ocoolAI' },
     { href: 'https://poe.com/', label: 'Poe' },
-    { href: 'https://suanleme.cn', label: '算了么' },
-    { href: 'https://gongke.net/', label: '攻壳智能体' },
-    { href: 'https://ai-bot.cn', label: 'AI 工具集' }
+    { href: 'https://suanleme.cn', label: isZhCN ? '算了么' : 'suanleme.cn' },
+    { href: 'https://gongke.net/', label: isZhCN ? '攻壳智能体' : 'gongke.net' },
+    { href: 'https://ai-bot.cn', label: isZhCN ? 'AI 工具集' : 'ai-bot.cn' }
   ]
 
   return (
@@ -191,27 +192,28 @@ const Footer: React.FC = () => {
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
             {/* Copyright */}
             <p className="text-muted-foreground text-xs">
-              <Trans
-                i18nKey="footer.copyright"
-                components={[
+              {isZhCN ? (
+                <>
+                  Copyright © 2026 上海千彗科技有限公司{' '}
                   <a
-                    key="icp"
                     href="https://beian.miit.gov.cn/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:text-primary">
                     沪ICP备2021031071号-3
                   </a>
-                ]}
-              />
-              <span className="mx-2">|</span>
-              <a
-                href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011402021679"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-primary">
-                沪公网安备31011402021679号
-              </a>
+                  <span className="mx-2">|</span>
+                  <a
+                    href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011402021679"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-primary">
+                    沪公网安备31011402021679号
+                  </a>
+                </>
+              ) : (
+                <>Copyright © 2026 Cherry Intelligence</>
+              )}
             </p>
 
             {/* Language Selector */}
