@@ -374,7 +374,7 @@
     },
     "express": {
       "badge": "Recommended",
-      "title": "Cherry Studio Enterprise Express",
+      "title": "Express Edition",
       "subtitle": "Cost-effective AI solution for small and medium teams. One-time purchase, lifetime use. No need to build your own model service - ready to use out of the box.",
       "price_label": "One-time Price",
       "period": "/ Lifetime License",
@@ -407,7 +407,7 @@
     },
     "standard": {
       "badge": "Enterprise",
-      "title": "Cherry Studio Enterprise Premium",
+      "title": "Premium Edition",
       "subtitle": "Complete solution for large enterprises and special security requirements, with full private deployment and deep customization.",
       "price_label": "Scale-based Pricing",
       "price_range": "From ¥50,000",
