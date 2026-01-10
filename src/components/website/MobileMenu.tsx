@@ -26,11 +26,6 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
       path: 'https://docs.cherry-ai.com/',
       label: t('nav.docs'),
       external: true
-    },
-    {
-      path: 'https://docs.cherry-ai.com/contact-us/questions',
-      label: t('nav.contact'),
-      external: true
     }
   ]
 
