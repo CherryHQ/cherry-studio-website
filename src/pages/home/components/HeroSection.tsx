@@ -205,7 +205,7 @@ const HeroSection: FC = () => {
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}>
         {/* Screenshot Display with Embedded Tabs */}
-        <div className="relative overflow-hidden rounded-2xl border border-white/10 shadow-2xl">
+        <div className="relative overflow-hidden">
           {/* Tab Navigation - Embedded in image */}
           <div className="absolute top-4 left-1/2 z-10 -translate-x-1/2">
             <div className="inline-flex gap-1 rounded-full border border-black/10 bg-white/80 p-1 backdrop-blur-md dark:border-white/20 dark:bg-black/40">
