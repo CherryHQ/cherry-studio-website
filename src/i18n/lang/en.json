@@ -100,9 +100,9 @@
     "title": "Become Part of the Cherry Family",
     "subtitle": "Share experiences and grow together with AI enthusiasts worldwide",
     "follow_us": "Follow Us",
-    "wechat_group": "WeChat Group",
-    "wechat_qr_alt": "WeChat Group QR Code",
-    "wechat_scan_prompt": "Scan to join WeChat group",
+    "wechat_group": "Discord Group",
+    "wechat_qr_alt": "Discord Group QR Code",
+    "wechat_scan_prompt": "Scan to join Discord group",
     "contact_us": "Contact Us",
     "qq_group": "QQ Group",
     "zsxq": "Knowledge Planet (Q&A)"
@@ -177,7 +177,7 @@
     "contact_us": {
       "title": "Contact Us",
       "wechat_qr_alt": "WeChat Official Account QR Code",
-      "wechat_official_account": "Official WeChat Account",
+      "wechat_official_account": "Official Instagram",
       "support_email": "Support",
       "business_email": "Business",
       "feedback": "Feedback"

@@ -11,26 +11,31 @@ import tgIcon from '@/assets/images/icons/tg.svg'
 import tgColorIcon from '@/assets/images/icons/tg-color.svg'
 import xIcon from '@/assets/images/icons/x.svg'
 import xColorIcon from '@/assets/images/icons/x-color.svg'
+import iGQR from '@/assets/images/resource/instagram.png'
 import { fetchChannelData, getRandomWechatQRCode } from '@/assets/js/data'
 import { Button } from '@/components/ui/button'
 
 const CommunitySection: FC = () => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const isEn = i18n.language.startsWith('en')
   const [channelData, setChannelData] = useState<any>(null)
   const [wechatQRCode, setWechatQRCode] = useState<string>('')
   const [showQRModal, setShowQRModal] = useState(false)
+  const qrCodeSrc = isEn ? iGQR : wechatQRCode
 
   useEffect(() => {
     const getChannelData = async () => {
       const data = await fetchChannelData()
       if (data) {
         setChannelData(data)
-        setWechatQRCode(getRandomWechatQRCode(data))
+        if (!isEn) {
+          setWechatQRCode(getRandomWechatQRCode(data))
+        }
       }
     }
 
     getChannelData()
-  }, [])
+  }, [isEn])
 
   const socialLinks = [
     { href: 'https://x.com/CherryStudioHQ', icon: xIcon, colorIcon: xColorIcon, alt: 'X', colorDarkInvert: true },
@@ -98,13 +103,13 @@ const CommunitySection: FC = () => {
         </div>
 
         {/* WeChat QR Code */}
-        {wechatQRCode && (
+        {qrCodeSrc && (
           <div className="mb-10 text-center">
             <button
               type="button"
               onClick={() => setShowQRModal(true)}
               className="border-border mx-auto inline-block cursor-pointer overflow-hidden rounded-2xl border bg-white p-3 shadow-lg transition-transform hover:scale-105">
-              <img src={wechatQRCode} alt={t('community.wechat_qr_alt')} className="h-44 w-44 object-contain" />
+              <img src={qrCodeSrc} alt={t('community.wechat_qr_alt')} className="h-44 w-44 object-contain" />
             </button>
             <p className="text-muted-foreground mt-4 text-sm">{t('community.wechat_scan_prompt')}</p>
           </div>
@@ -125,7 +130,7 @@ const CommunitySection: FC = () => {
                 <span className="text-xl leading-none">&times;</span>
               </button>
               <div className="overflow-hidden rounded-2xl bg-white p-4 shadow-2xl">
-                <img src={wechatQRCode} alt={t('community.wechat_qr_alt')} className="h-80 w-80 object-contain" />
+                <img src={qrCodeSrc} alt={t('community.wechat_qr_alt')} className="h-80 w-80 object-contain" />
               </div>
             </div>
           </div>
