@@ -15,12 +15,14 @@ import tgColorIcon from '@/assets/images/icons/tg-color.svg'
 import xIcon from '@/assets/images/icons/x.svg'
 import xColorIcon from '@/assets/images/icons/x-color.svg'
 import cherryWxQR from '@/assets/images/resource/cherrywx.png'
+import discordQR from '@/assets/images/resource/discord.png'
 import { copyRSSLink } from '@/utils'
 import LanguageSelector from './LanguageSelector'
 
 const Footer: React.FC = () => {
   const { t, i18n } = useTranslation()
   const isZhCN = i18n.language === 'zh-CN'
+  const isEn = i18n.language.startsWith('en')
 
   const socialLinks = [
     { href: 'https://x.com/CherryStudioHQ', icon: xIcon, colorIcon: xColorIcon, alt: 'X', colorDarkInvert: true },
@@ -150,7 +152,7 @@ const Footer: React.FC = () => {
             <div>
               <h4 className="text-foreground mb-4 text-sm font-semibold">{t('footer.contact_us.title')}</h4>
               <div className="border-border mb-3 inline-block overflow-hidden rounded-lg border bg-white p-1.5">
-                <img src={cherryWxQR} alt={t('footer.contact_us.wechat_qr_alt')} className="h-24 w-24" />
+                <img src={isEn ? discordQR : cherryWxQR} alt={t('footer.contact_us.wechat_qr_alt')} className="h-24 w-24" />
               </div>
               <p className="text-muted-foreground text-xs">{t('footer.contact_us.wechat_official_account')}</p>
             </div>
