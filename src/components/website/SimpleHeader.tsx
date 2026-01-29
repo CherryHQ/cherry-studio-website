@@ -49,7 +49,7 @@ const SimpleHeader: React.FC = () => {
 
   const navLinks = [
     { path: '/', label: t('nav.home') },
-    { path: '/enterprise', label: t('enterprise') },
+    { path: 'https://enterprise.cherry-ai.com', label: t('enterprise'), external: true },
     { path: '/theme', label: t('nav.theme') },
     { path: '/careers', label: t('nav.careers') },
     { path: 'https://docs.cherry-ai.com/', label: t('nav.docs'), external: true }
