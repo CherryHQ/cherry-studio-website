@@ -9,13 +9,6 @@ interface ChannelResponse {
   }
 }
 
-interface EnterpriseResponse {
-  data: {
-    id: number
-    contact_qrcode: string
-  }
-}
-
 const BASE_URL = 'https://data1.cherry-ai.com'
 
 export const fetchChannelData = async () => {
@@ -44,18 +37,4 @@ export const getRandomWechatQRCode = (channelData: ChannelResponse) => {
   const randomQRCode = qrCodes[randomIndex]
 
   return `${BASE_URL}/assets/${randomQRCode}`
-}
-
-export const getEnterpriseData = async () => {
-  try {
-    const response = await fetch(`${BASE_URL}/items/enterprise`, {
-      method: 'GET'
-    })
-    const data: EnterpriseResponse = await response.json()
-    data.data.contact_qrcode = `${BASE_URL}/assets/${data.data.contact_qrcode}`
-    return data
-  } catch (error) {
-    console.error('Error fetching enterprise data:', error)
-    return null
-  }
 }

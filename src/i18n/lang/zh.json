@@ -2,14 +2,12 @@
   "page_title": {
     "home": "Cherry Studio 官方网站 - 全能的 AI 助手",
     "download": "下载 Cherry Studio - 多平台 AI 客户端",
-    "enterprise": "Cherry Studio 企业版 - 企业级 AI 解决方案",
     "theme": "Cherry Studio 主题库 - 美化你的 AI 助手",
     "careers": "加入 Cherry Studio - 招聘"
   },
   "page_description": {
     "home": "Cherry Studio AI 是一款强大的多模型 AI 助手，支持 iOS、macOS 和 Windows 平台。快速切换多个先进的 LLM 模型，提升工作学习效率。",
     "download": "下载 Cherry Studio AI 客户端，支持 Windows、macOS、Linux 平台。集成 100+ AI 模型，完全免费开源。",
-    "enterprise": "Cherry Studio 企业版为现代团队和企业提供私有化部署的 AI 生产力平台，支持模型管理、权限控制、数据安全。",
     "theme": "发现和分享美丽的 Cherry Studio 主题，个性化你的 AI 助手界面。支持浅色和深色模式主题。",
     "careers": "加入 Cherry Studio 核心团队，寻找 AI Native 全栈工程师，一起打造下一代 AI 产品。"
   },
@@ -18,13 +16,13 @@
     "download": "下载",
     "theme": "主题",
     "careers": "招聘",
+    "enterprise": "企业版",
     "docs": "文档",
     "contact": "联系我们"
   },
   "test": "测试",
   "home": "主页",
   "download": "下载",
-  "enterprise": "企业版",
   "theme": "主题",
   "agents": "助手",
   "forum": "论坛",
@@ -241,239 +239,6 @@
     "for_debian_ubuntu": "适用于 Debian/Ubuntu",
     "for_fedora_rhel": "适用于 Fedora/RHEL",
     "download_slow": "下载慢？试试"
-  },
-  "enterprise_page": {
-    "hero": {
-      "title": "Cherry Studio 企业版",
-      "subtitle": "专为现代团队和企业打造的 AI 生产力与管理平台",
-      "contact_us": "联系我们",
-      "learn_more": "了解更多",
-      "quick_start": "快速体验"
-    },
-    "features": {
-      "title": "核心优势",
-      "subtitle": "专业的企业级功能，助力团队提升生产力",
-      "model_management": {
-        "title": "统一模型管理",
-        "description": "集中接入和管理各类云端大模型，支持本地私有化部署，员工无需配置即可使用"
-      },
-      "knowledge_base": {
-        "title": "企业级知识库",
-        "description": "构建和管理团队共享知识库，基于统一知识进行 AI 交互，提升回答质量"
-      },
-      "permission_control": {
-        "title": "精细化权限控制",
-        "description": "统一的管理后台，基于角色的权限分配，灵活的资源访问控制"
-      },
-      "private_deployment": {
-        "title": "完全私有化部署",
-        "description": "支持企业内部服务器部署，私有云环境部署，数据 100% 私有可控"
-      },
-      "backend_service": {
-        "title": "可靠的后端服务",
-        "description": "提供稳定的 API 服务、企业级数据备份与恢复机制，保障业务连续性"
-      },
-      "security_compliance": {
-        "title": "安全合规保障",
-        "description": "满足最严格的数据安全与合规要求，支持审计日志，确保数据使用可追溯"
-      }
-    },
-    "comparison": {
-      "title": "版本对比",
-      "subtitle": "选择最适合您团队的方案",
-      "table": {
-        "feature_category": "特性分类",
-        "specific_item": "具体项目",
-        "community": "社区版",
-        "enterprise_startup": "Express 版",
-        "enterprise": "企业版",
-
-        "license_and_cost": "许可与费用",
-        "pricing_plan": "定价方案 (规模与买断价格)",
-        "pricing_community_title": "AGPL 3.0 开源协议",
-        "pricing_community_price": "免费",
-        "pricing_startup_title": "不限制人数:",
-        "pricing_startup_price": "¥ 5,000",
-        "pricing_enterprise_title": "选择企业规模:",
-        "pricing_enterprise_price": "1 - 50 人: <strong>¥ 50,000</strong><br/>51 - 200 人: <strong>¥ 100,000</strong><br/>201 - 1,000 人: <strong>¥ 200,000</strong><br/>1,000 人以上: <strong>¥ 350,000</strong>",
-        "people": "人",
-        "annual_service_fee": "年度服务费 (可选)",
-        "annual_fee_rate": "买断价的 20%",
-
-        "deployment_and_support": "部署与支持",
-        "deployment_method": "部署方式",
-        "deployment_single": "单机部署",
-        "deployment_private": "私有化部署",
-        "tech_support": "技术支持",
-        "support_community": "社区支持",
-        "support_dedicated": "专属支持服务 (需服务费)",
-        "system_support": "系统支持",
-        "system_community": "Windows 10+, macOS, Linux",
-        "system_enterprise": "Windows 7+, macOS, Linux",
-
-        "core_features": "核心功能",
-        "basic_features": "基础功能",
-        "provider_management": "服务商管理",
-        "provider_management_full": "支持服务商管理",
-        "provider_management_builtin": "使用内置服务商",
-        "model_management": "模型管理",
-        "employee_management": "员工管理",
-        "shared_knowledge_base": "共享知识库",
-        "permission_control": "权限控制",
-        "data_backup": "数据备份",
-        "assistant_management": "助手管理",
-        "agent_management": "智能体管理",
-        "mcp_management": "MCP 管理",
-        "miniprogram_management": "小程序管理"
-      }
-    },
-    "beta": {
-      "section_title": "快速体验",
-      "section_subtitle": "三步开启企业版体验之旅",
-      "step1": {
-        "title": "体验后台管理系统",
-        "description": "登录管理后台，了解企业版的管理功能",
-        "admin_portal": "管理后台",
-        "account": "账号",
-        "password": "密码",
-        "open_admin": "打开管理后台"
-      },
-      "step2": {
-        "title": "下载客户端并使用",
-        "description": "下载安装客户端，配置服务端地址后即可体验",
-        "server_url": "服务端地址",
-        "account": "账号",
-        "password": "密码"
-      },
-      "step3": {
-        "title": "查看使用手册",
-        "description": "详细的使用文档，帮助您快速上手所有功能",
-        "view_manual": "查看使用手册"
-      },
-      "demo": {
-        "title": "体验环境",
-        "admin_portal": "管理后台：",
-        "account": "账号：",
-        "password": "密码："
-      },
-      "download": {
-        "title": "客户端",
-        "server_url": "服务端地址：",
-        "system_support": "支持 macOS 和 Windows 系统",
-        "download_button": "下载客户端",
-        "fallback_notice": "无法获取版本信息，请前往 GitCode 下载",
-        "goto_gitcode": "前往 GitCode 下载"
-      },
-      "manual": {
-        "title": "使用手册",
-        "description": "感谢您参与 Cherry Studio 企业版的体验活动。我们提供详细的使用手册，帮助您快速上手所有功能。",
-        "view_manual": "查看使用手册"
-      }
-    },
-    "express": {
-      "badge": "推荐方案",
-      "title": "Cherry Studio Express 版",
-      "subtitle": "专为中小团队打造的高性价比 AI 解决方案。一次买断，永久使用，无需自建模型服务，开箱即用。",
-      "price_label": "买断价格",
-      "period": "/ 永久授权",
-      "features": {
-        "unlimited_users": "不限制使用人数",
-        "builtin_provider": "内置顶级模型服务",
-        "quick_deployment": "10 分钟快速部署",
-        "one_time_payment": "一次买断，无隐藏费用"
-      },
-      "values": {
-        "save_money": {
-          "title": "省钱",
-          "description": "5000 元买断，不限席位。无需按人头付费，成本清晰可控。"
-        },
-        "save_effort": {
-          "title": "省事",
-          "description": "内置主流 AI 模型，无需申请 API Key，无需处理网络问题，开箱即用。"
-        },
-        "peace_of_mind": {
-          "title": "省心",
-          "description": "一站式管理后台，员工、模型、知识库统一管理，告别低效混乱。"
-        },
-        "security": {
-          "title": "安全",
-          "description": "私有化部署，数据存储在您自己的服务器，100% 私有可控。"
-        }
-      },
-      "cta_button": "立即咨询",
-      "cta_note": "联系我们获取详细方案和演示"
-    },
-    "standard": {
-      "badge": "企业版",
-      "title": "Cherry Studio 企业旗舰版",
-      "subtitle": "为大型企业和特殊安全需求场景打造的完整解决方案，支持完全私有化部署和深度定制。",
-      "price_label": "按规模定价",
-      "price_range": "¥50,000 起",
-      "period": "/ 永久授权",
-      "features": {
-        "custom_models": "自定义接入模型 API",
-        "full_isolation": "完全内网隔离部署",
-        "sso_integration": "SSO 单点登录集成",
-        "dedicated_support": "专属技术支持服务"
-      },
-      "values": {
-        "flexibility": {
-          "title": "灵活定制",
-          "description": "支持接入企业自有的本地大模型，自定义 API 对接，满足特殊业务需求。"
-        },
-        "compliance": {
-          "title": "合规保障",
-          "description": "满足金融、政府等行业严格的数据安全与合规要求，支持审计日志。"
-        },
-        "scalability": {
-          "title": "弹性扩展",
-          "description": "支持 K8s 集群部署，根据业务规模弹性扩容，保障高并发稳定运行。"
-        },
-        "integration": {
-          "title": "系统集成",
-          "description": "支持与企业现有 SSO、OA 等系统集成，实现统一身份认证和管理。"
-        }
-      },
-      "cta_button": "咨询企业版",
-      "cta_note": "获取定制方案和报价"
-    },
-    "support": {
-      "title": "获取支持",
-      "description": "如果您对 Cherry Studio 企业版感兴趣，欢迎联系我们的商务团队",
-      "send_email": "发送邮件",
-      "business_cooperation": "商务合作",
-      "scan_qrcode": "扫码联系我们"
-    },
-    "faq": {
-      "title": "常见问题",
-      "subtitle": "关于企业版的常见疑问解答",
-      "items": [
-        {
-          "question": "Express 版真的是一次性付费永久使用吗？还有其他费用吗？",
-          "answer": "是的，5000 元用于购买永久软件授权，另需 5000 元作为模型使用的首次充值。后续模型费用按实际使用量扣除，用完后按需充值。从第二年起可选择支付 1000 元/年的服务费获取更新和技术支持，不支付也可永久使用。"
-        },
-        {
-          "question": "\"不限席位\" 是指可以给任意多的人开账号吗？会影响性能吗？",
-          "answer": "是的，一套授权支持公司内部不限数量的员工使用，无需按席位付费。性能主要取决于部署软件的服务器配置，而非用户数量。"
-        },
-        {
-          "question": "Express 版和社区版有什么区别？",
-          "answer": "核心区别有三点：1) Express 版内置模型服务，开箱即用；2) 提供员工管理、共享知识库等企业功能；3) 提供官方付费技术支持。社区版主要面向个人使用。"
-        },
-        {
-          "question": "Express 版内置了哪些模型？可以自己添加吗？",
-          "answer": "内置 OpenAI、Anthropic、Google 等顶级闭源模型以及 DeepSeek、Kimi、通义千问等国产优质模型。Express 版不支持自行添加模型，如有此需求请选择企业旗舰版。"
-        },
-        {
-          "question": "私有化部署对服务器有什么要求？",
-          "answer": "通常要求一台基础配置的云服务器或物理服务器即可（例如 4核8G内存）。官方提供详细部署文档，也可选择腾讯云云应用部署方式，几乎无需专业运维知识。"
-        },
-        {
-          "question": "数据安全有保障吗？",
-          "answer": "选择私有化部署时，所有数据（员工信息、对话记录、知识库文件）都存储在您自己的服务器上，不会上传到任何第三方，数据安全完全由您掌控。"
-        }
-      ]
-    }
   },
   "contributors": {
     "project_contributors": "与优秀的人同行",

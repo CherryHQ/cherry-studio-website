@@ -21,7 +21,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
     { path: '/download', label: t('nav.download') },
     { path: '/theme', label: t('nav.theme') },
     { path: '/careers', label: t('nav.careers') },
-    { path: 'https://enterprise.cherry-ai.com', label: t('enterprise'), external: true },
+    { path: 'https://enterprise.cherry-ai.com', label: t('nav.enterprise'), external: true },
     { path: 'https://docs.cherry-ai.com/', label: t('nav.docs'), external: true }
   ]
 

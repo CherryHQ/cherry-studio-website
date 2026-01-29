@@ -5,7 +5,6 @@ import SimpleHeader from '@/components/website/SimpleHeader.tsx'
 import { ThemeProvider } from '@/contexts/ThemeContext'
 import CareersPage from '@/pages/careers'
 import DownloadPage from '@/pages/download'
-import EnterprisePage from '@/pages/enterprise'
 import HomePage from '@/pages/home'
 import ThemePage from '@/pages/theme'
 
@@ -19,7 +18,6 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/download" element={<DownloadPage />} />
           <Route path="/theme" element={<ThemePage />} />
-          <Route path="/enterprise" element={<EnterprisePage />} />
           <Route path="/careers" element={<CareersPage />} />
         </Routes>
       </BrowserRouter>
