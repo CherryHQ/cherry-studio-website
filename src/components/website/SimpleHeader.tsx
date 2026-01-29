@@ -1,4 +1,4 @@
-import { Download, ExternalLink, Menu, Star, X } from 'lucide-react'
+import { ArrowUpRight, Download, Menu, Star, X } from 'lucide-react'
 import type React from 'react'
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -49,9 +49,9 @@ const SimpleHeader: React.FC = () => {
 
   const navLinks = [
     { path: '/', label: t('nav.home') },
-    { path: 'https://enterprise.cherry-ai.com', label: t('enterprise'), external: true },
     { path: '/theme', label: t('nav.theme') },
     { path: '/careers', label: t('nav.careers') },
+    { path: 'https://enterprise.cherry-ai.com', label: t('enterprise'), external: true },
     { path: 'https://docs.cherry-ai.com/', label: t('nav.docs'), external: true }
   ]
 
@@ -114,11 +114,11 @@ const SimpleHeader: React.FC = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className={cn(
-                      'flex items-center gap-1 px-4 py-2 text-base font-medium transition-colors duration-200',
+                      'flex items-center gap-0.5 px-4 py-2 text-base font-medium transition-colors duration-200',
                       'text-muted-foreground hover:text-foreground'
                     )}>
                     {link.label}
-                    <ExternalLink className="h-3 w-3" />
+                    <ArrowUpRight className="h-3 w-3" />
                   </a>
                 ) : (
                   <Link

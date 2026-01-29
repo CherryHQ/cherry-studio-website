@@ -19,14 +19,10 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
   const navLinks = [
     { path: '/', label: t('nav.home') },
     { path: '/download', label: t('nav.download') },
-    { path: 'https://enterprise.cherry-ai.com', label: t('enterprise'), external: true },
     { path: '/theme', label: t('nav.theme') },
     { path: '/careers', label: t('nav.careers') },
-    {
-      path: 'https://docs.cherry-ai.com/',
-      label: t('nav.docs'),
-      external: true
-    }
+    { path: 'https://enterprise.cherry-ai.com', label: t('enterprise'), external: true },
+    { path: 'https://docs.cherry-ai.com/', label: t('nav.docs'), external: true }
   ]
 
   return createPortal(
