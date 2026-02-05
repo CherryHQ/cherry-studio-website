@@ -41,7 +41,9 @@
       "Skill(commit)",
       "Skill(commit:*)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(/opt/homebrew/bin/pnpm check:*)",
+      "Bash(npx biome check:*)"
     ],
     "deny": [],
     "ask": []

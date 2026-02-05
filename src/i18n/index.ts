@@ -2,6 +2,7 @@ import i18n from 'i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
 import { initReactI18next } from 'react-i18next'
 
+import { isInternationalDomain } from '@/utils/systemDetection'
 import en from './lang/en.json'
 import zh from './lang/zh.json'
 
@@ -24,16 +25,22 @@ const updateHtmlLang = (language: string) => {
   document.documentElement.setAttribute('lang', langCode)
 }
 
+// 判断是否是国际域名（cherryai.com / www.cherryai.com）
+const isInternational = isInternationalDomain()
+
 i18n
   .use(LanguageDetector) // 使用语言检测器
   .use(initReactI18next)
   .init({
     resources,
     fallbackLng: 'en-US',
+    // 国际域名强制使用英文
+    lng: isInternational ? 'en-US' : undefined,
     detection: {
-      order: ['localStorage', 'navigator'], // 优先从本地存储中检测语言，然后是浏览器语言
-      caches: ['localStorage'], // 缓存语言到localStorage
-      lookupLocalStorage: 'i18n-language' // localStorage中存储语言的键名
+      // 国际域名不使用语言检测，直接使用英文
+      order: isInternational ? [] : ['localStorage', 'navigator'],
+      caches: isInternational ? [] : ['localStorage'],
+      lookupLocalStorage: 'i18n-language'
     },
     interpolation: {
       escapeValue: false

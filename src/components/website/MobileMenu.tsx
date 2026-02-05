@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next'
 import { Link, useLocation } from 'react-router-dom'
 
 import { cn } from '@/lib/utils'
+import { isInternationalDomain } from '@/utils/systemDetection'
 import LanguageSelector from './LanguageSelector'
 
 interface MobileMenuProps {
@@ -15,6 +16,7 @@ interface MobileMenuProps {
 const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
   const location = useLocation()
   const { t } = useTranslation()
+  const showLanguageSelector = !isInternationalDomain()
 
   const navLinks = [
     { path: '/', label: t('nav.home') },
@@ -41,13 +43,13 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
         className={cn(
           'fixed top-0 right-0 z-[101] h-full w-[280px] max-w-[80vw]',
           'border-border border-l shadow-xl',
-          'bg-[#141416]',
+          'bg-background',
           'transform transition-transform duration-300 ease-out',
           isOpen ? 'translate-x-0' : 'translate-x-full'
         )}>
         {/* Header */}
         <div className="border-border flex items-center justify-between border-b px-4 py-4">
-          <LanguageSelector />
+          {showLanguageSelector && <LanguageSelector />}
           <button
             className="text-muted-foreground hover:bg-accent hover:text-foreground flex h-9 w-9 items-center justify-center rounded-lg transition-colors"
             onClick={onClose}

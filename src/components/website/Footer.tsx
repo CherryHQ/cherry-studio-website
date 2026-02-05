@@ -17,12 +17,14 @@ import xColorIcon from '@/assets/images/icons/x-color.svg'
 import cherryWxQR from '@/assets/images/resource/cherrywx.png'
 import discordQR from '@/assets/images/resource/discord.png'
 import { copyRSSLink } from '@/utils'
+import { isInternationalDomain } from '@/utils/systemDetection'
 import LanguageSelector from './LanguageSelector'
 
 const Footer: React.FC = () => {
   const { t, i18n } = useTranslation()
   const isZhCN = i18n.language === 'zh-CN'
   const isEn = i18n.language.startsWith('en')
+  const showLanguageSelector = !isInternationalDomain()
 
   const socialLinks = [
     { href: 'https://x.com/CherryStudioHQ', icon: xIcon, colorIcon: xColorIcon, alt: 'X', colorDarkInvert: true },
@@ -219,7 +221,7 @@ const Footer: React.FC = () => {
             </p>
 
             {/* Language Selector */}
-            <LanguageSelector />
+            {showLanguageSelector && <LanguageSelector />}
           </div>
         </div>
       </div>

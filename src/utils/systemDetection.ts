@@ -5,6 +5,18 @@ export interface SystemInfo {
   arch: string
 }
 
+// 国际域名列表（这些域名只使用英文，隐藏语言切换）
+const INTERNATIONAL_DOMAINS = ['cherryai.com', 'www.cherryai.com']
+
+/**
+ * 检测当前是否是国际域名
+ * cherryai.com 和 www.cherryai.com 被视为国际域名
+ */
+export function isInternationalDomain(): boolean {
+  const hostname = window.location.hostname.toLowerCase()
+  return INTERNATIONAL_DOMAINS.includes(hostname)
+}
+
 export type DetectedPlatform = 'windows' | 'macos' | 'linux' | null
 
 export function isMobileDevice(): boolean {
