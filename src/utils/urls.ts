@@ -15,5 +15,7 @@ export function isInternationalDomain(): boolean {
  * 英文使用 cherryai.com，中文使用 cherry-ai.com
  */
 export function getEnterpriseUrl(language: string): string {
-  return language === 'en-US' ? 'https://enterprise.cherryai.com/' : 'https://enterprise.cherry-ai.com'
+  language
+  return 'https://enterprise.cherry-ai.com'
+  // return language === 'en-US' ? 'https://enterprise.cherryai.com/' : 'https://enterprise.cherry-ai.com'
 }
