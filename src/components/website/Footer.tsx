@@ -17,7 +17,7 @@ import xColorIcon from '@/assets/images/icons/x-color.svg'
 import cherryWxQR from '@/assets/images/resource/cherrywx.png'
 import discordQR from '@/assets/images/resource/discord.png'
 import { copyRSSLink } from '@/utils'
-import { isInternationalDomain } from '@/utils/systemDetection'
+import { isInternationalDomain } from '@/utils/urls'
 import LanguageSelector from './LanguageSelector'
 
 const Footer: React.FC = () => {

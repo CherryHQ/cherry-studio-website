@@ -2,7 +2,7 @@ import i18n from 'i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
 import { initReactI18next } from 'react-i18next'
 
-import { isInternationalDomain } from '@/utils/systemDetection'
+import { isInternationalDomain } from '@/utils/urls'
 import en from './lang/en.json'
 import zh from './lang/zh.json'
 

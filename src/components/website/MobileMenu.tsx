@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next'
 import { Link, useLocation } from 'react-router-dom'
 
 import { cn } from '@/lib/utils'
-import { isInternationalDomain } from '@/utils/systemDetection'
+import { getEnterpriseUrl, isInternationalDomain } from '@/utils/urls'
 import LanguageSelector from './LanguageSelector'
 
 interface MobileMenuProps {
@@ -15,15 +15,17 @@ interface MobileMenuProps {
 
 const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
   const location = useLocation()
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const showLanguageSelector = !isInternationalDomain()
+
+  const enterpriseUrl = getEnterpriseUrl(i18n.language)
 
   const navLinks = [
     { path: '/', label: t('nav.home') },
     { path: '/download', label: t('nav.download') },
     { path: '/theme', label: t('nav.theme') },
     { path: '/careers', label: t('nav.careers') },
-    { path: 'https://enterprise.cherry-ai.com', label: t('nav.enterprise'), external: true },
+    { path: enterpriseUrl, label: t('nav.enterprise'), external: true },
     { path: 'https://docs.cherry-ai.com/', label: t('nav.docs'), external: true }
   ]
 

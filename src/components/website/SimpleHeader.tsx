@@ -8,14 +8,17 @@ import cherryLogoSvg from '@/assets/images/cherry-logo.svg'
 import githubIcon from '@/assets/images/icons/github.svg'
 import cherryLogoPng from '@/assets/images/logo.png'
 import { cn } from '@/lib/utils'
+import { getEnterpriseUrl } from '@/utils/urls'
 import MobileMenu from './MobileMenu'
 
 const SimpleHeader: React.FC = () => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const location = useLocation()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const [starCount, setStarCount] = useState<number | null>(null)
+
+  const enterpriseUrl = getEnterpriseUrl(i18n.language)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,7 +54,7 @@ const SimpleHeader: React.FC = () => {
     { path: '/', label: t('nav.home') },
     { path: '/theme', label: t('nav.theme') },
     { path: '/careers', label: t('nav.careers') },
-    { path: 'https://enterprise.cherry-ai.com', label: t('nav.enterprise'), external: true },
+    { path: enterpriseUrl, label: t('nav.enterprise'), external: true },
     { path: 'https://docs.cherry-ai.com/', label: t('nav.docs'), external: true }
   ]
 
