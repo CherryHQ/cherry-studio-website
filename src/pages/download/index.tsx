@@ -1,11 +1,10 @@
-import { type FC, useEffect, useState } from 'react'
+import { type FC, useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import Footer from '@/components/website/Footer'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { useVersionData } from '@/hooks/useVersionData'
-import { detectPlatform, isMobileDevice } from '@/utils/systemDetection'
-
+import { type DetectedArch, detectPlatform, detectSystem, isMobileDevice } from '@/utils/systemDetection'
 import Changelog from './components/Changelog'
 import PlatformDownloads from './components/PlatformDownloads'
 import type { Platform } from './components/PlatformTabs'
@@ -19,13 +18,64 @@ const DownloadPage: FC = () => {
   const { loading, versionData } = useVersionData()
   const [activePlatform, setActivePlatform] = useState<Platform>('windows')
   const [detectedPlatform, setDetectedPlatform] = useState<Platform | null>(null)
+  const [detectedArch, setDetectedArch] = useState<DetectedArch | null>(null)
+  const userSelectedPlatformRef = useRef(false)
   const isMobile = isMobileDevice()
 
   useEffect(() => {
+    let cancelled = false
+
+    // Optional debug overrides: /download?platform=windows&arch=arm64
+    // platform: windows|macos|linux
+    // arch: arm64|x64|ia32|unknown|null
+    const params = new URLSearchParams(window.location.search)
+    const platformParam = params.get('platform')
+    const archParam = params.get('arch')
+
+    const overridePlatform =
+      platformParam === 'windows' || platformParam === 'macos' || platformParam === 'linux' ? platformParam : null
+
+    const overrideArch: DetectedArch | null =
+      archParam === 'arm64'
+        ? 'arm64'
+        : archParam === 'x64'
+          ? 'x64'
+          : archParam === 'ia32'
+            ? 'ia32'
+            : archParam === 'null' || archParam === 'unknown'
+              ? null
+              : null
+
+    if (overridePlatform) {
+      setDetectedPlatform(overridePlatform)
+      setActivePlatform(overridePlatform)
+      setDetectedArch(overrideArch)
+      return
+    }
+
+    // Fast path: sync OS detection for immediate UX.
     const detected = detectPlatform()
     if (detected) {
       setDetectedPlatform(detected)
-      setActivePlatform(detected)
+      if (!userSelectedPlatformRef.current) {
+        setActivePlatform(detected)
+      }
+    }
+
+    // Best-effort: async architecture detection (UA-CH/WebGL heuristics etc.).
+    void (async () => {
+      const system = await detectSystem()
+      if (!system || cancelled) return
+
+      setDetectedPlatform(system.platform)
+      if (!userSelectedPlatformRef.current) {
+        setActivePlatform(system.platform)
+      }
+      setDetectedArch(system.arch)
+    })()
+
+    return () => {
+      cancelled = true
     }
   }, [])
 
@@ -47,11 +97,21 @@ const DownloadPage: FC = () => {
           <PlatformTabs
             activePlatform={activePlatform}
             detectedPlatform={detectedPlatform}
-            onPlatformChange={setActivePlatform}
+            detectedArch={detectedArch}
+            onPlatformChange={(platform) => {
+              userSelectedPlatformRef.current = true
+              setActivePlatform(platform)
+            }}
           />
 
           {/* Platform Downloads */}
-          <PlatformDownloads platform={activePlatform} versionData={versionData} loading={loading} />
+          <PlatformDownloads
+            platform={activePlatform}
+            detectedArch={detectedPlatform === activePlatform ? detectedArch : null}
+            isDetectedSystem={detectedPlatform === activePlatform}
+            versionData={versionData}
+            loading={loading}
+          />
 
           {/* Cloud download backup link */}
           <div className="text-muted-foreground mt-6 text-center text-sm">

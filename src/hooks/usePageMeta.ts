@@ -66,9 +66,12 @@ export const usePageMeta = (pageType: PageType) => {
       qqDescription.setAttribute('content', description)
     }
 
-    // 更新 HTML lang 属性
+    // 更新 HTML lang 属性（兼容 en / en-US / zh / zh-CN）
     const htmlElement = document.documentElement
-    const langMap: Record<string, string> = {
+    const resolvedLanguage = i18n.resolvedLanguage || i18n.language
+    const baseLang = resolvedLanguage.split('-')[0]
+
+    const htmlLangMap: Record<string, string> = {
       zh: 'zh-CN',
       en: 'en',
       ja: 'ja',
@@ -77,8 +80,8 @@ export const usePageMeta = (pageType: PageType) => {
       fr: 'fr',
       th: 'th'
     }
-    const langCode = langMap[i18n.language] || 'zh-CN'
-    htmlElement.setAttribute('lang', langCode)
+    const htmlLang = htmlLangMap[baseLang] || 'en'
+    htmlElement.setAttribute('lang', htmlLang)
 
     // 更新 og:locale
     const ogLocale = document.querySelector('meta[property="og:locale"]')
@@ -92,7 +95,7 @@ export const usePageMeta = (pageType: PageType) => {
         fr: 'fr_FR',
         th: 'th_TH'
       }
-      const locale = localeMap[i18n.language] || 'zh_CN'
+      const locale = localeMap[baseLang] || 'en_US'
       ogLocale.setAttribute('content', locale)
     }
   }, [t, i18n.language, pageType])

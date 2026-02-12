@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next'
 import { Button } from '@/components/ui/button'
 import type { VersionData } from '@/hooks/useVersionData'
 import { cn } from '@/lib/utils'
-
+import type { DetectedArch } from '@/utils/systemDetection'
 import type { Platform } from './PlatformTabs'
 
 interface DownloadItemConfig {
@@ -18,6 +18,8 @@ interface DownloadItemConfig {
 
 interface PlatformDownloadsProps {
   platform: Platform
+  detectedArch?: DetectedArch | null
+  isDetectedSystem?: boolean
   versionData: VersionData | null
   loading: boolean
 }
@@ -113,14 +115,20 @@ const getDownloadItems = (platform: Platform, version: string, t: (key: string) 
   return configs[platform]
 }
 
-const SkeletonLoader: FC = () => {
+const SkeletonLoader: FC<{ highlighted?: boolean }> = ({ highlighted = true }) => {
+  const containerClassName = highlighted
+    ? 'rounded-2xl border-2 border-green-500/30 bg-green-500/10 p-6'
+    : 'border-border rounded-2xl border bg-[rgb(250,250,250)] p-6 dark:bg-secondary/30'
+
+  const pillClassName = highlighted ? 'bg-green-500/30' : 'bg-muted'
+
   return (
     <div className="space-y-6">
       {/* Recommended Download Skeleton */}
-      <div className="rounded-2xl border-2 border-green-500/30 bg-green-500/10 p-6">
+      <div className={containerClassName}>
         <div className="mb-4 flex items-center gap-2">
-          <div className="h-5 w-5 animate-pulse rounded bg-green-500/30" />
-          <div className="h-5 w-32 animate-pulse rounded bg-green-500/30" />
+          <div className={cn('h-5 w-5 animate-pulse rounded', pillClassName)} />
+          <div className={cn('h-5 w-32 animate-pulse rounded', pillClassName)} />
         </div>
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="min-w-0 flex-1 space-y-2">
@@ -128,7 +136,7 @@ const SkeletonLoader: FC = () => {
             <div className="bg-muted h-4 w-32 animate-pulse rounded" />
             <div className="bg-muted h-3 w-64 animate-pulse rounded" />
           </div>
-          <div className="h-11 w-32 shrink-0 animate-pulse rounded-lg bg-green-500/30" />
+          <div className={cn('h-11 w-32 shrink-0 animate-pulse rounded-lg', pillClassName)} />
         </div>
       </div>
 
@@ -143,31 +151,84 @@ const SkeletonLoader: FC = () => {
   )
 }
 
-const PlatformDownloads: FC<PlatformDownloadsProps> = ({ platform, versionData, loading }) => {
+const pickRecommendedItem = (
+  items: DownloadItemConfig[],
+  platform: Platform,
+  detectedArch: DetectedArch | null
+): DownloadItemConfig | undefined => {
+  const fallback = items.find((item) => item.isRecommended) ?? items[0]
+  if (!items.length) return undefined
+
+  // This page does not provide 32-bit builds. Prefer x64 for ia32 detection.
+  const arch: Exclude<DetectedArch, 'ia32'> | null =
+    detectedArch === 'arm64' ? 'arm64' : detectedArch === 'x64' ? 'x64' : detectedArch === 'ia32' ? 'x64' : null
+  if (!arch) return fallback
+
+  const isArm64Name = (name: string) => {
+    const n = name.toLowerCase()
+    return n.includes('arm64') || n.includes('aarch64')
+  }
+
+  const isX64Name = (name: string) => {
+    const n = name.toLowerCase()
+    return n.includes('x64') || n.includes('x86_64') || n.includes('amd64')
+  }
+
+  const candidates = items.filter((item) => (arch === 'arm64' ? isArm64Name(item.name) : isX64Name(item.name)))
+  if (!candidates.length) return fallback
+
+  if (platform === 'windows') {
+    return candidates.find((item) => item.name.toLowerCase().includes('setup')) ?? candidates[0]
+  }
+
+  if (platform === 'macos') {
+    return candidates.find((item) => item.name.toLowerCase().endsWith('.dmg')) ?? candidates[0]
+  }
+
+  if (platform === 'linux') {
+    return candidates.find((item) => item.name.toLowerCase().endsWith('.appimage')) ?? candidates[0]
+  }
+
+  return candidates[0]
+}
+
+const PlatformDownloads: FC<PlatformDownloadsProps> = ({
+  platform,
+  detectedArch = null,
+  isDetectedSystem = false,
+  versionData,
+  loading
+}) => {
   const { t } = useTranslation()
   const [showOthers, setShowOthers] = useState(false)
 
   if (loading) {
-    return <SkeletonLoader />
+    return <SkeletonLoader highlighted={isDetectedSystem} />
   }
 
   if (!versionData) return null
 
   const items = getDownloadItems(platform, versionData.version, t)
-  const recommendedItem = items.find((item) => item.isRecommended)
-  const otherItems = items.filter((item) => !item.isRecommended)
+  const recommendedItem = pickRecommendedItem(items, platform, detectedArch)
+  const otherItems = recommendedItem ? items.filter((item) => item.url !== recommendedItem.url) : items
+
+  const recommendedContainerClassName = isDetectedSystem
+    ? 'rounded-2xl border-2 border-green-500/30 bg-green-500/10 p-6'
+    : 'border-border rounded-2xl border bg-[rgb(250,250,250)] p-6 dark:bg-secondary/30'
 
   return (
     <div className="space-y-6">
       {/* Recommended Download */}
       {recommendedItem && (
-        <div className="rounded-2xl border-2 border-green-500/30 bg-green-500/10 p-6">
-          <div className="mb-4 flex items-center gap-2">
-            <Star className="h-5 w-5 fill-current text-green-500" />
-            <span className="font-semibold text-green-600 dark:text-green-400">
-              {t('download_page.recommended_download')}
-            </span>
-          </div>
+        <div className={recommendedContainerClassName}>
+          {isDetectedSystem && (
+            <div className="mb-4 flex items-center gap-2">
+              <Star className="h-5 w-5 fill-current text-green-500" />
+              <span className="font-semibold text-green-600 dark:text-green-400">
+                {t('download_page.recommended_download')}
+              </span>
+            </div>
+          )}
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div className="min-w-0 flex-1">
               <h3 className="text-foreground text-lg font-semibold">{recommendedItem.desc}</h3>
