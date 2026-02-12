@@ -15,7 +15,12 @@ const LanguageSelector: React.FC = () => {
     { code: 'en-US', name: 'English', flag: '🇺🇸', short: 'EN' }
   ]
 
-  const currentLanguage = languages.find((lang) => i18n.language === lang.code) || languages[0]
+  // i18next 在未显式支持地区码时，可能返回 languageOnly（例如：'en'/'zh'）
+  // 但实际渲染可能走 fallback（例如：'en-US'）。这里做一次归一化，避免选择器显示错语言。
+  const resolvedLanguage = i18n.resolvedLanguage || i18n.language
+  const activeCode = resolvedLanguage.startsWith('en') ? 'en-US' : resolvedLanguage.startsWith('zh') ? 'zh-CN' : 'en-US'
+
+  const currentLanguage = languages.find((lang) => lang.code === activeCode) || languages[0]
 
   const handleLanguageChange = (languageCode: string) => {
     i18n.changeLanguage(languageCode)
@@ -69,7 +74,7 @@ const LanguageSelector: React.FC = () => {
             'animate-in fade-in slide-in-from-bottom-2 duration-200'
           )}>
           {languages.map((language) => {
-            const isActive = language.code === i18n.language
+            const isActive = language.code === activeCode
             return (
               <button
                 key={language.code}

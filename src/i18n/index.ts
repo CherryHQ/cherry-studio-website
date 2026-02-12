@@ -17,12 +17,20 @@ const resources = {
 
 // 更新HTML lang属性的函数
 const updateHtmlLang = (language: string) => {
-  const langMap: Record<string, string> = {
-    'zh-CN': 'zh-CN',
-    'en-US': 'en-US'
+  const lower = language.toLowerCase()
+
+  // 与 index.html 的 hreflang 保持一致：英文用 'en'，中文用 'zh-CN'
+  if (lower.startsWith('en')) {
+    document.documentElement.setAttribute('lang', 'en')
+    return
   }
-  const langCode = langMap[language] || 'zh-CN'
-  document.documentElement.setAttribute('lang', langCode)
+
+  if (lower.startsWith('zh')) {
+    document.documentElement.setAttribute('lang', 'zh-CN')
+    return
+  }
+
+  document.documentElement.setAttribute('lang', 'en')
 }
 
 // 判断是否是国际域名（cherryai.com / www.cherryai.com）
@@ -33,12 +41,13 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
+    supportedLngs: ['en-US', 'zh-CN'],
     fallbackLng: 'en-US',
     // 国际域名强制使用英文
     lng: isInternational ? 'en-US' : undefined,
     detection: {
-      // 国际域名不使用语言检测，直接使用英文
-      order: isInternational ? [] : ['localStorage', 'navigator'],
+      // 非国际域名：仅使用本地缓存决定语言；首次访问走 fallbackLng（英文）
+      order: isInternational ? [] : ['localStorage'],
       caches: isInternational ? [] : ['localStorage'],
       lookupLocalStorage: 'i18n-language'
     },
@@ -48,11 +57,11 @@ i18n
   })
 
 // 监听语言变化，更新HTML lang属性
-i18n.on('languageChanged', (lng: string) => {
-  updateHtmlLang(lng)
+i18n.on('languageChanged', () => {
+  updateHtmlLang(i18n.resolvedLanguage || i18n.language)
 })
 
 // 初始化时设置HTML lang属性
-updateHtmlLang(i18n.language)
+updateHtmlLang(i18n.resolvedLanguage || i18n.language)
 
 export default i18n

@@ -154,7 +154,11 @@ const Footer: React.FC = () => {
             <div>
               <h4 className="text-foreground mb-4 text-sm font-semibold">{t('footer.contact_us.title')}</h4>
               <div className="border-border mb-3 inline-block overflow-hidden rounded-lg border bg-white p-1.5">
-                <img src={isEn ? discordQR : cherryWxQR} alt={t('footer.contact_us.wechat_qr_alt')} className="h-24 w-24" />
+                <img
+                  src={isEn ? discordQR : cherryWxQR}
+                  alt={t('footer.contact_us.wechat_qr_alt')}
+                  className="h-24 w-24"
+                />
               </div>
               <p className="text-muted-foreground text-xs">{t('footer.contact_us.wechat_official_account')}</p>
             </div>

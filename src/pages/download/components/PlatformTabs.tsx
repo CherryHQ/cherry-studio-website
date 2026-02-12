@@ -3,12 +3,14 @@ import type { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { cn } from '@/lib/utils'
+import type { DetectedArch } from '@/utils/systemDetection'
 
 export type Platform = 'windows' | 'macos' | 'linux'
 
 interface PlatformTabsProps {
   activePlatform: Platform
   detectedPlatform: Platform | null
+  detectedArch?: DetectedArch | null
   onPlatformChange: (platform: Platform) => void
 }
 
@@ -18,16 +20,32 @@ const platforms: { id: Platform; icon: string }[] = [
   { id: 'linux', icon: 'icon-linux' }
 ]
 
-const PlatformTabs: FC<PlatformTabsProps> = ({ activePlatform, detectedPlatform, onPlatformChange }) => {
+const PlatformTabs: FC<PlatformTabsProps> = ({
+  activePlatform,
+  detectedPlatform,
+  detectedArch = null,
+  onPlatformChange
+}) => {
   const { t } = useTranslation()
+
+  const archLabel =
+    detectedArch === 'arm64'
+      ? t('download_page.arch_arm64')
+      : detectedArch === 'x64'
+        ? t('download_page.arch_x64')
+        : detectedArch === 'ia32'
+          ? t('download_page.arch_ia32')
+          : t('download_page.arch_unknown')
 
   return (
     <div className="mb-8">
       {detectedPlatform && (
         <p className="text-muted-foreground mb-4 flex items-center justify-center gap-2 text-sm">
           <Monitor className="h-4 w-4" />
-          {t('download_page.current_system')}:
-          <span className="text-foreground font-medium">{t(`download_page.platform_${detectedPlatform}`)}</span>
+          {t('download_page.detected_system_arch', {
+            platform: t(`download_page.platform_${detectedPlatform}`),
+            arch: archLabel
+          })}
         </p>
       )}
       <div className="flex justify-center">
