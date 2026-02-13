@@ -41,11 +41,13 @@ const PlatformTabs: FC<PlatformTabsProps> = ({
     <div className="mb-8">
       {detectedPlatform && (
         <p className="text-muted-foreground mb-4 flex items-center justify-center gap-2 text-sm">
-          <Monitor className="h-4 w-4" />
-          {t('download_page.detected_system_arch', {
-            platform: t(`download_page.platform_${detectedPlatform}`),
-            arch: archLabel
-          })}
+          <Monitor className="h-4 w-4 shrink-0" />
+          <span className="whitespace-pre-line text-left leading-relaxed">
+            {t('download_page.detected_system_arch', {
+              platform: t(`download_page.platform_${detectedPlatform}`),
+              arch: archLabel
+            })}
+          </span>
         </p>
       )}
       <div className="flex justify-center">
@@ -56,7 +58,7 @@ const PlatformTabs: FC<PlatformTabsProps> = ({
               key={id}
               onClick={() => onPlatformChange(id)}
               className={cn(
-                'flex items-center gap-2 rounded-lg px-6 py-3 text-sm font-medium transition-all duration-200',
+                'flex cursor-pointer items-center gap-2 rounded-lg px-6 py-3 text-sm font-medium transition-all duration-200',
                 activePlatform === id
                   ? 'bg-background text-foreground shadow-sm'
                   : 'text-muted-foreground hover:text-foreground'

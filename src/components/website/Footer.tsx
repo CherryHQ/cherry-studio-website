@@ -1,4 +1,4 @@
-import type React from 'react'
+import { type FC, useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import cherryLogo from '@/assets/images/cherry-logo.svg'
@@ -19,12 +19,39 @@ import discordQR from '@/assets/images/resource/discord.png'
 import { copyRSSLink } from '@/utils'
 import { isInternationalDomain } from '@/utils/urls'
 import LanguageSelector from './LanguageSelector'
+import ThemeSelector from './ThemeSelector'
 
-const Footer: React.FC = () => {
+const Footer: FC = () => {
   const { t, i18n } = useTranslation()
   const isZhCN = i18n.language === 'zh-CN'
   const isEn = i18n.language.startsWith('en')
   const showLanguageSelector = !isInternationalDomain()
+
+  const [rssCopied, setRssCopied] = useState(false)
+  const rssCopiedTimerRef = useRef<number | null>(null)
+
+  const handleCopyRSS = () => {
+    copyRSSLink()
+
+    setRssCopied(true)
+
+    if (rssCopiedTimerRef.current) {
+      window.clearTimeout(rssCopiedTimerRef.current)
+    }
+
+    rssCopiedTimerRef.current = window.setTimeout(() => {
+      setRssCopied(false)
+      rssCopiedTimerRef.current = null
+    }, 1600)
+  }
+
+  useEffect(() => {
+    return () => {
+      if (rssCopiedTimerRef.current) {
+        window.clearTimeout(rssCopiedTimerRef.current)
+      }
+    }
+  }, [])
 
   const socialLinks = [
     { href: 'https://x.com/CherryStudioHQ', icon: xIcon, colorIcon: xColorIcon, alt: 'X', colorDarkInvert: true },
@@ -94,21 +121,29 @@ const Footer: React.FC = () => {
                   />
                 </a>
               ))}
-              <button
-                type="button"
-                onClick={copyRSSLink}
-                className="group border-border bg-secondary/50 hover:bg-secondary relative flex h-9 w-9 items-center justify-center rounded-lg border transition-all duration-200">
-                <img
-                  src={rssIcon}
-                  alt="RSS"
-                  className="h-4 w-4 transition-opacity duration-200 group-hover:opacity-0 dark:invert"
-                />
-                <img
-                  src={rssColorIcon}
-                  alt="RSS"
-                  className="absolute h-4 w-4 opacity-0 transition-opacity duration-200 group-hover:opacity-100"
-                />
-              </button>
+              <div className="flex cursor-pointer items-center gap-2">
+                <button
+                  type="button"
+                  onClick={handleCopyRSS}
+                  className="group border-border bg-secondary/50 hover:bg-secondary relative flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg border transition-all duration-200">
+                  <img
+                    src={rssIcon}
+                    alt="RSS"
+                    className="h-4 w-4 cursor-pointer transition-opacity duration-200 group-hover:opacity-0 dark:invert"
+                  />
+                  <img
+                    src={rssColorIcon}
+                    alt="RSS"
+                    className="absolute h-4 w-4 cursor-pointer opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+                  />
+                </button>
+
+                <span
+                  aria-live="polite"
+                  className={`text-muted-foreground select-none whitespace-nowrap text-xs transition-opacity duration-300 ease-out ${rssCopied ? 'opacity-100' : 'pointer-events-none opacity-0'}`}>
+                  {t('footer.rss_copied')}
+                </span>
+              </div>
             </div>
           </div>
 
@@ -224,8 +259,13 @@ const Footer: React.FC = () => {
               )}
             </p>
 
-            {/* Language Selector */}
-            {showLanguageSelector && <LanguageSelector />}
+            {/* Language Selector + Theme Selector */}
+            {showLanguageSelector && (
+              <div className="flex items-center gap-4">
+                <LanguageSelector />
+                <ThemeSelector />
+              </div>
+            )}
           </div>
         </div>
       </div>

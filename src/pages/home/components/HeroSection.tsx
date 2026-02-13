@@ -1,5 +1,5 @@
 import { ArrowRight, Bot, BrushIcon, Download, MessageSquare, ServerIcon } from 'lucide-react'
-import { type FC, useEffect, useRef, useState } from 'react'
+import { type FC, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import { annotate } from 'rough-notation'
@@ -71,6 +71,47 @@ const HeroSection: FC = () => {
   const [isPaused, setIsPaused] = useState(false)
 
   const isZh = i18n.language === 'zh-CN'
+
+  const tabsContainerRef = useRef<HTMLDivElement>(null)
+  const tabButtonRefs = useRef<Record<string, HTMLButtonElement | null>>({})
+  const [indicatorReady, setIndicatorReady] = useState(false)
+  const [indicatorRect, setIndicatorRect] = useState<{ x: number; width: number }>({ x: 0, width: 0 })
+
+  const measureIndicator = useCallback(() => {
+    const container = tabsContainerRef.current
+    const activeButton = tabButtonRefs.current[activeTab]
+
+    if (!container || !activeButton) return
+
+    const containerRect = container.getBoundingClientRect()
+    const buttonRect = activeButton.getBoundingClientRect()
+
+    setIndicatorRect({
+      x: buttonRect.left - containerRect.left,
+      width: buttonRect.width
+    })
+
+    setIndicatorReady(true)
+  }, [activeTab])
+
+  useLayoutEffect(() => {
+    measureIndicator()
+  }, [measureIndicator, i18n.language])
+
+  useEffect(() => {
+    const container = tabsContainerRef.current
+    if (!container) return
+
+    const ro = new ResizeObserver(() => measureIndicator())
+    ro.observe(container)
+
+    window.addEventListener('resize', measureIndicator)
+
+    return () => {
+      ro.disconnect()
+      window.removeEventListener('resize', measureIndicator)
+    }
+  }, [measureIndicator])
 
   // Auto-switch tabs every 5 seconds
   useEffect(() => {
@@ -208,16 +249,35 @@ const HeroSection: FC = () => {
         <div className="relative overflow-hidden">
           {/* Tab Navigation - Embedded in image */}
           <div className="absolute top-4 left-1/2 z-10 -translate-x-1/2">
-            <div className="inline-flex gap-1 rounded-full border border-black/10 bg-white/80 p-1 backdrop-blur-md dark:border-white/20 dark:bg-black/40">
+            <div
+              ref={tabsContainerRef}
+              className="relative inline-flex gap-1 rounded-full border border-black/10 bg-white/80 p-1 backdrop-blur-md dark:border-white/20 dark:bg-black/40">
+              <div
+                aria-hidden="true"
+                className={cn(
+                  'pointer-events-none absolute top-1 bottom-1 left-0 rounded-full bg-black/10 shadow-sm dark:bg-white/20',
+                  indicatorReady
+                    ? 'opacity-100 transition-[transform,width,opacity] duration-[320ms] ease-[cubic-bezier(0.2,0.8,0.2,1)]'
+                    : 'opacity-0'
+                )}
+                style={{
+                  width: indicatorRect.width,
+                  transform: `translateX(${indicatorRect.x}px)`
+                }}
+              />
+
               {featureTabs.map((tab) => (
                 <button
                   type="button"
                   key={tab.id}
+                  ref={(el) => {
+                    tabButtonRefs.current[tab.id] = el
+                  }}
                   onClick={() => setActiveTab(tab.id)}
                   className={cn(
-                    'flex items-center gap-2 rounded-full px-3 py-2 text-sm font-medium transition-all duration-200 sm:px-4',
+                    'relative z-10 flex cursor-pointer items-center gap-2 rounded-full px-3 py-2 text-sm font-medium transition-colors duration-200 sm:px-4',
                     activeTab === tab.id
-                      ? 'bg-black/10 text-black shadow-sm dark:bg-white/20 dark:text-white'
+                      ? 'text-black dark:text-white'
                       : 'text-black/70 hover:text-black dark:text-white/70 dark:hover:text-white'
                   )}>
                   {tab.icon}

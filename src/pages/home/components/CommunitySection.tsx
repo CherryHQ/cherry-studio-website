@@ -1,5 +1,7 @@
-import { type FC, useEffect, useState } from 'react'
+import { type FC, useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+
+import { cn } from '@/lib/utils'
 
 import gitcodeIcon from '@/assets/images/icons/gitcode.svg'
 import gitcodeColorIcon from '@/assets/images/icons/gitcode-color.svg'
@@ -21,7 +23,30 @@ const CommunitySection: FC = () => {
   const [channelData, setChannelData] = useState<any>(null)
   const [wechatQRCode, setWechatQRCode] = useState<string>('')
   const [showQRModal, setShowQRModal] = useState(false)
+  const [qrModalClosing, setQrModalClosing] = useState(false)
+  const closeTimerRef = useRef<number | null>(null)
   const qrCodeSrc = isEn ? iGQR : wechatQRCode
+
+  const openQRModal = () => {
+    if (closeTimerRef.current) {
+      window.clearTimeout(closeTimerRef.current)
+      closeTimerRef.current = null
+    }
+
+    setShowQRModal(true)
+    setQrModalClosing(false)
+  }
+
+  const closeQRModal = () => {
+    if (qrModalClosing) return
+
+    setQrModalClosing(true)
+    closeTimerRef.current = window.setTimeout(() => {
+      setShowQRModal(false)
+      setQrModalClosing(false)
+      closeTimerRef.current = null
+    }, 200)
+  }
 
   useEffect(() => {
     const getChannelData = async () => {
@@ -36,6 +61,14 @@ const CommunitySection: FC = () => {
 
     getChannelData()
   }, [isEn])
+
+  useEffect(() => {
+    return () => {
+      if (closeTimerRef.current) {
+        window.clearTimeout(closeTimerRef.current)
+      }
+    }
+  }, [])
 
   const socialLinks = [
     { href: 'https://x.com/CherryStudioHQ', icon: xIcon, colorIcon: xColorIcon, alt: 'X', colorDarkInvert: true },
@@ -107,9 +140,11 @@ const CommunitySection: FC = () => {
           <div className="mb-10 text-center">
             <button
               type="button"
-              onClick={() => setShowQRModal(true)}
-              className="border-border mx-auto inline-block cursor-pointer overflow-hidden rounded-2xl border bg-white p-3 shadow-lg transition-transform hover:scale-105">
-              <img src={qrCodeSrc} alt={t('community.wechat_qr_alt')} className="h-44 w-44 object-contain" />
+              onClick={openQRModal}
+              aria-label={t('community.qr_click_to_enlarge')}
+              title={t('community.qr_click_to_enlarge')}
+              className="border-border mx-auto block w-[240px] max-w-[85vw] cursor-pointer overflow-hidden rounded-2xl border bg-white p-3 shadow-lg transition-transform hover:scale-105 sm:w-[280px]">
+              <img src={qrCodeSrc} alt={t('community.wechat_qr_alt')} className="h-auto w-full" />
             </button>
             <p className="text-muted-foreground mt-4 text-sm">{t('community.wechat_scan_prompt')}</p>
           </div>
@@ -118,19 +153,25 @@ const CommunitySection: FC = () => {
         {/* QR Code Modal */}
         {showQRModal && (
           <div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm"
-            onClick={() => setShowQRModal(false)}>
+            className={cn(
+              'fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm duration-200',
+              qrModalClosing ? 'animate-out fade-out-0' : 'animate-in fade-in-0'
+            )}
+            onClick={closeQRModal}>
             <div
-              className="animate-in zoom-in-95 fade-in relative max-w-md duration-200"
+              className={cn(
+                'relative w-[420px] max-w-[92vw] duration-200',
+                qrModalClosing ? 'animate-out fade-out-0 zoom-out-95' : 'animate-in fade-in-0 zoom-in-95'
+              )}
               onClick={(e) => e.stopPropagation()}>
               <button
                 type="button"
-                onClick={() => setShowQRModal(false)}
+                onClick={closeQRModal}
                 className="bg-background/80 hover:bg-background absolute -top-3 -right-3 flex h-8 w-8 items-center justify-center rounded-full shadow-lg transition-colors">
                 <span className="text-xl leading-none">&times;</span>
               </button>
-              <div className="overflow-hidden rounded-2xl bg-white p-4 shadow-2xl">
-                <img src={qrCodeSrc} alt={t('community.wechat_qr_alt')} className="h-80 w-80 object-contain" />
+              <div className="max-h-[90vh] overflow-auto rounded-2xl bg-white p-4 shadow-2xl">
+                <img src={qrCodeSrc} alt={t('community.wechat_qr_alt')} className="h-auto w-full" />
               </div>
             </div>
           </div>
