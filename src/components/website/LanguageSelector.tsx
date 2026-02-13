@@ -44,7 +44,7 @@ const LanguageSelector: React.FC = () => {
     <div className="relative" ref={dropdownRef}>
       <button
         className={cn(
-          'flex items-center gap-1.5',
+          'flex cursor-pointer items-center gap-1.5',
           'h-9 px-3',
           'border-border bg-secondary/50 rounded-lg border',
           'text-foreground text-sm font-medium',
@@ -79,7 +79,7 @@ const LanguageSelector: React.FC = () => {
               <button
                 key={language.code}
                 className={cn(
-                  'flex w-full items-center gap-3',
+                  'flex w-full cursor-pointer items-center gap-3',
                   'px-4 py-2.5',
                   'text-left text-sm',
                   'transition-colors duration-200',

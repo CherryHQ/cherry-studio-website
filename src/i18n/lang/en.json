@@ -20,6 +20,11 @@
     "docs": "Docs",
     "contact": "Contact Us"
   },
+  "theme_switcher": {
+    "dark": "Dark",
+    "light": "Light",
+    "system": "System"
+  },
   "test": "Test",
   "home": "Home",
   "download": "Download",
@@ -101,6 +106,7 @@
     "wechat_group": "Discord Group",
     "wechat_qr_alt": "Discord Group QR Code",
     "wechat_scan_prompt": "Scan to join Discord group",
+    "qr_click_to_enlarge": "Click to enlarge QR code",
     "contact_us": "Contact Us",
     "qq_group": "QQ Group",
     "zsxq": "Knowledge Planet (Q&A)"
@@ -161,6 +167,7 @@
     "cta_subtitle": "We look forward to building the next generation of AI products with you"
   },
   "footer": {
+    "rss_copied": "RSS copied",
     "description": "Cherry Studio is a multi-platform AI client, and we are committed to allowing more people to enjoy the convenience brought by AI.",
     "cherry_studio": {
       "title": "Cherry Studio",
@@ -200,7 +207,7 @@
     "published_at": "Published At",
     "published_at_label": "Published At: ",
     "current_system": "Current System",
-    "detected_system_arch": "Detected System: {{platform}} CPU Architecture: {{arch}}",
+    "detected_system_arch": "Detected System: {{platform}}\nCPU Architecture: {{arch}}",
     "arch_arm64": "ARM64",
     "arch_x64": "x64",
     "arch_ia32": "x86 (32-bit)",

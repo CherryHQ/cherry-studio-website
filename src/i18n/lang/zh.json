@@ -20,6 +20,11 @@
     "docs": "文档",
     "contact": "联系我们"
   },
+  "theme_switcher": {
+    "dark": "深色",
+    "light": "浅色",
+    "system": "跟随浏览器"
+  },
   "test": "测试",
   "home": "主页",
   "download": "下载",
@@ -99,6 +104,7 @@
     "wechat_group": "微信群",
     "wechat_qr_alt": "微信群二维码",
     "wechat_scan_prompt": "扫码加入微信群",
+    "qr_click_to_enlarge": "点击放大二维码",
     "contact_us": "联系我们",
     "qq_group": "QQ 群",
     "zsxq": "知识星球(问题解答)"
@@ -159,6 +165,7 @@
     "cta_subtitle": "期待与你一起创造下一代 AI 产品"
   },
   "footer": {
+    "rss_copied": "已复制RSS",
     "description": "Cherry Studio 是一个支持多平台的 AI 客户端，我们致力于让更多人能够享受到 AI 带来的便利。",
     "cherry_studio": {
       "title": "Cherry Studio",
@@ -198,7 +205,7 @@
     "published_at": "发布时间",
     "published_at_label": "发布时间：",
     "current_system": "当前系统",
-    "detected_system_arch": "检测到的系统：{{platform}} 芯片架构：{{arch}}",
+    "detected_system_arch": "检测到的系统：{{platform}}\n芯片架构：{{arch}}",
     "arch_arm64": "ARM64",
     "arch_x64": "x64",
     "arch_ia32": "x86 (32位)",

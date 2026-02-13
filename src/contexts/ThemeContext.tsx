@@ -1,5 +1,7 @@
 import { createContext, type FC, type ReactNode, useContext, useEffect, useState } from 'react'
 
+export const THEME_STORAGE_KEY = 'theme-preference'
+
 type Theme = 'light' | 'dark' | 'system'
 
 interface ThemeContextType {
@@ -13,9 +15,26 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
 
 export const ThemeProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const [theme, setThemeState] = useState<Theme>('system')
+  const [theme, setThemeState] = useState<Theme>(() => {
+    try {
+      const stored = window.localStorage.getItem(THEME_STORAGE_KEY)
+      if (stored === 'light' || stored === 'dark' || stored === 'system') return stored
+    } catch {
+      // ignore
+    }
+    return 'system'
+  })
 
-  const [resolvedTheme, setResolvedTheme] = useState<'light' | 'dark'>('dark')
+  const [resolvedTheme, setResolvedTheme] = useState<'light' | 'dark'>(() => {
+    try {
+      const stored = window.localStorage.getItem(THEME_STORAGE_KEY)
+      if (stored === 'light' || stored === 'dark') return stored
+    } catch {
+      // ignore
+    }
+
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+  })
 
   useEffect(() => {
     const root = document.documentElement
@@ -54,6 +73,11 @@ export const ThemeProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
   const setTheme = (newTheme: Theme) => {
     setThemeState(newTheme)
+    try {
+      window.localStorage.setItem(THEME_STORAGE_KEY, newTheme)
+    } catch {
+      // ignore
+    }
   }
 
   return (

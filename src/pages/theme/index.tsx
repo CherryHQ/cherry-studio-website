@@ -96,26 +96,67 @@ const ThemePage: React.FC = () => {
   const [helpTooltipVisible, setHelpTooltipVisible] = useState(false)
   const [submitModalOpen, setSubmitModalOpen] = useState(false)
   const [previewImageUrl, setPreviewImageUrl] = useState<string | null>(null)
+  const [previewClosing, setPreviewClosing] = useState(false)
+  const previewCloseTimerRef = useRef<number | null>(null)
 
   const handleExamplePreview = (e: React.MouseEvent, url: string) => {
     e.preventDefault()
+
+    if (previewCloseTimerRef.current) {
+      window.clearTimeout(previewCloseTimerRef.current)
+      previewCloseTimerRef.current = null
+    }
+
     setPreviewImageUrl(url)
+    setPreviewClosing(false)
   }
 
   const closeImagePreview = () => {
-    setPreviewImageUrl(null)
+    if (previewClosing) return
+
+    setPreviewClosing(true)
+
+    if (previewCloseTimerRef.current) {
+      window.clearTimeout(previewCloseTimerRef.current)
+    }
+
+    previewCloseTimerRef.current = window.setTimeout(() => {
+      setPreviewImageUrl(null)
+      setPreviewClosing(false)
+      previewCloseTimerRef.current = null
+    }, 200)
   }
 
-  const ImagePreviewModal: React.FC<{ url: string | null; onClose: () => void }> = ({ url, onClose }) => {
+  useEffect(() => {
+    return () => {
+      if (previewCloseTimerRef.current) {
+        window.clearTimeout(previewCloseTimerRef.current)
+      }
+    }
+  }, [])
+
+  const ImagePreviewModal: React.FC<{ url: string | null; isClosing: boolean; onClose: () => void }> = ({
+    url,
+    isClosing,
+    onClose
+  }) => {
     if (!url) return null
 
     return (
-      <div className="fixed inset-0 z-[10003] flex items-center justify-center bg-black/70 p-5" onClick={onClose}>
+      <div
+        className={cn(
+          'fixed inset-0 z-[10003] flex items-center justify-center bg-black/70 p-5 duration-200',
+          isClosing ? 'animate-out fade-out-0' : 'animate-in fade-in-0'
+        )}
+        onClick={onClose}>
         <div
-          className="bg-card relative max-h-[90%] max-w-[90%] overflow-auto rounded-lg p-2.5"
+          className={cn(
+            'bg-card relative max-h-[90%] max-w-[90%] overflow-auto rounded-lg p-2.5 duration-200',
+            isClosing ? 'animate-out fade-out-0 zoom-out-95' : 'animate-in fade-in-0 zoom-in-95'
+          )}
           onClick={(e) => e.stopPropagation()}>
           <button
-            className="bg-primary absolute top-1.5 right-1.5 z-10 flex h-6 w-6 items-center justify-center rounded-full text-sm text-white"
+            className="bg-primary absolute top-1.5 right-1.5 z-10 flex h-6 w-6 cursor-pointer items-center justify-center rounded-full text-sm text-white"
             onClick={onClose}
             type="button">
             <X className="h-4 w-4" />
@@ -152,10 +193,10 @@ const ThemePage: React.FC = () => {
     return result
   }
 
-  const showNotification = (type: 'info' | 'error', message: string) => {
+  const showNotification = useCallback((type: 'info' | 'error', message: string) => {
     console.log(`${type}: ${message}`)
     alert(message)
-  }
+  }, [])
 
   const fetchCssData = useCallback(
     async (
@@ -577,29 +618,64 @@ const ThemePage: React.FC = () => {
     const [submitError, setSubmitError] = useState<string | null>(null)
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [internalPreviewUrl, setInternalPreviewUrl] = useState<string | null>(null)
+    const [internalPreviewClosing, setInternalPreviewClosing] = useState(false)
+    const internalPreviewCloseTimerRef = useRef<number | null>(null)
 
     const handleInternalPreview = (e: React.MouseEvent, url: string) => {
       e.preventDefault()
       e.stopPropagation()
+
+      if (internalPreviewCloseTimerRef.current) {
+        window.clearTimeout(internalPreviewCloseTimerRef.current)
+        internalPreviewCloseTimerRef.current = null
+      }
+
       setInternalPreviewUrl(url)
+      setInternalPreviewClosing(false)
     }
 
     const closeInternalPreview = () => {
-      setInternalPreviewUrl(null)
+      if (internalPreviewClosing) return
+
+      setInternalPreviewClosing(true)
+
+      if (internalPreviewCloseTimerRef.current) {
+        window.clearTimeout(internalPreviewCloseTimerRef.current)
+      }
+
+      internalPreviewCloseTimerRef.current = window.setTimeout(() => {
+        setInternalPreviewUrl(null)
+        setInternalPreviewClosing(false)
+        internalPreviewCloseTimerRef.current = null
+      }, 200)
     }
+
+    useEffect(() => {
+      return () => {
+        if (internalPreviewCloseTimerRef.current) {
+          window.clearTimeout(internalPreviewCloseTimerRef.current)
+        }
+      }
+    }, [])
 
     const InternalPreviewModal = () => {
       if (!internalPreviewUrl) return null
 
       return (
         <div
-          className="fixed inset-0 z-[10004] flex items-center justify-center bg-black/70 p-5"
+          className={cn(
+            'fixed inset-0 z-[10004] flex items-center justify-center bg-black/70 p-5 duration-200',
+            internalPreviewClosing ? 'animate-out fade-out-0' : 'animate-in fade-in-0'
+          )}
           onClick={closeInternalPreview}>
           <div
-            className="bg-card relative max-h-[90%] max-w-[90%] overflow-auto rounded-lg p-2.5"
+            className={cn(
+              'bg-card relative max-h-[90%] max-w-[90%] overflow-auto rounded-lg p-2.5 duration-200',
+              internalPreviewClosing ? 'animate-out fade-out-0 zoom-out-95' : 'animate-in fade-in-0 zoom-in-95'
+            )}
             onClick={(e) => e.stopPropagation()}>
             <button
-              className="bg-primary absolute top-1.5 right-1.5 z-10 flex h-6 w-6 items-center justify-center rounded-full text-sm text-white"
+              className="bg-primary absolute top-1.5 right-1.5 z-10 flex h-6 w-6 cursor-pointer items-center justify-center rounded-full text-sm text-white"
               onClick={closeInternalPreview}
               type="button">
               <X className="h-4 w-4" />
@@ -1246,7 +1322,7 @@ const ThemePage: React.FC = () => {
                           </div>
                         )}
                         <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all group-hover:bg-black/40 group-hover:opacity-100">
-                          <span className="text-foreground rounded bg-white/90 px-3 py-1.5 text-sm font-medium">
+                          <span className="rounded bg-white/90 px-3 py-1.5 text-sm font-medium text-black dark:bg-black/70 dark:text-white">
                             {t('theme_page.preview_button')}
                           </span>
                         </div>
@@ -1390,7 +1466,9 @@ const ThemePage: React.FC = () => {
 
         <SubmitModal isOpen={submitModalOpen} onClose={() => setSubmitModalOpen(false)} />
 
-        {previewImageUrl && <ImagePreviewModal url={previewImageUrl} onClose={closeImagePreview} />}
+        {previewImageUrl && (
+          <ImagePreviewModal url={previewImageUrl} isClosing={previewClosing} onClose={closeImagePreview} />
+        )}
 
         <Footer />
       </div>
