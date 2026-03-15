@@ -1,5 +1,8 @@
+# Use --build-arg MIRROR=docker.1ms.run to specify a mirror registry
+ARG MIRROR
+
 # Stage 1: Build
-FROM docker.1ms.run/node:24-alpine AS builder
+FROM ${MIRROR:+${MIRROR}/}node:24-alpine AS builder
 
 WORKDIR /app
 
@@ -18,8 +21,10 @@ COPY . .
 # Build the application
 RUN pnpm build
 
+ARG MIRROR
+
 # Stage 2: Production
-FROM docker.1ms.run/nginx:alpine
+FROM ${MIRROR:+${MIRROR}/}nginx:alpine
 
 # Copy custom nginx config
 COPY nginx.conf /etc/nginx/conf.d/default.conf
