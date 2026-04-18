@@ -346,19 +346,19 @@
     "badge": "Free Access",
     "title": "Free Models, Ready to Use",
     "subtitle": "Free AI models provided by our partners. No API key required, just download and start",
-    "glm": {
-      "name": "BigModel GLM-4.5-Air",
-      "description": "BigModel's efficient model optimized for intelligent agents, featuring MoE architecture, 128K context, 100+ tokens/sec generation speed. Ideal for code generation, logical reasoning, and agent interactions.",
-      "feature1": "128K Context",
-      "feature2": "100+ tokens/sec",
-      "feature3": "Tool Calling"
-    },
-    "qwen": {
-      "name": "Qwen3-8B",
-      "description": "Alibaba's 3rd generation Qwen model, freely provided by SiliconFlow. Supports 119 languages with excellent code generation, mathematical reasoning, and intelligent Q&A capabilities.",
-      "feature1": "119 Languages",
+    "deepseek": {
+      "name": "DeepSeek V3.2",
+      "description": "DeepSeek's latest flagship model with sparse attention and MoE architecture. Top-tier general reasoning, coding and math capabilities — experience a frontier-class general-purpose model for free.",
+      "feature1": "MoE Architecture",
       "feature2": "128K Context",
-      "feature3": "Thinking Mode"
+      "feature3": "Reasoning + Code"
+    },
+    "glm": {
+      "name": "Zhipu GLM-4.6V",
+      "description": "Zhipu's flagship vision model from the GLM-4.6 family. Large-scale MoE with long context, native multimodal understanding and best-in-class tool calling for agent workflows.",
+      "feature1": "200K Context",
+      "feature2": "Native Vision",
+      "feature3": "Tool Calling"
     },
     "cta": "More free models coming soon..."
   },

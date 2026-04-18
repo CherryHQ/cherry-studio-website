@@ -18,19 +18,19 @@ interface FreeModel {
 
 const freeModels: FreeModel[] = [
   {
-    nameKey: 'free_models.glm.name',
-    descriptionKey: 'free_models.glm.description',
-    href: 'https://docs.cherry-ai.com/pre-basic/providers/cherryai/mian-fei-ti-yan-zhi-pu-glm4.5air-qing-liang-gao-xiao-xin-xuan-ze',
-    features: ['free_models.glm.feature1', 'free_models.glm.feature2', 'free_models.glm.feature3'],
+    nameKey: 'free_models.deepseek.name',
+    descriptionKey: 'free_models.deepseek.description',
+    href: 'https://docs.cherry-ai.com/pre-basic/providers/cherryai/mian-fei-ti-yan-deepseek-v3.2-qi-jian-xi-shu-zhu-yi-li-moe',
+    features: ['free_models.deepseek.feature1', 'free_models.deepseek.feature2', 'free_models.deepseek.feature3'],
     icon: Zap,
     iconColor: 'text-amber-500',
     iconBg: 'bg-amber-500/10'
   },
   {
-    nameKey: 'free_models.qwen.name',
-    descriptionKey: 'free_models.qwen.description',
-    href: 'https://docs.cherry-ai.com/pre-basic/providers/cherryai/mian-fei-ti-yan-qwen38b-you-gui-ji-liu-dong-ti-gong',
-    features: ['free_models.qwen.feature1', 'free_models.qwen.feature2', 'free_models.qwen.feature3'],
+    nameKey: 'free_models.glm.name',
+    descriptionKey: 'free_models.glm.description',
+    href: 'https://docs.cherry-ai.com/pre-basic/providers/cherryai/mian-fei-ti-yan-zhi-pu-glm-4.6v-shi-jue-qi-jian-duo-mo-tai-moe',
+    features: ['free_models.glm.feature1', 'free_models.glm.feature2', 'free_models.glm.feature3'],
     icon: Sparkles,
     iconColor: 'text-purple-500',
     iconBg: 'bg-purple-500/10'
