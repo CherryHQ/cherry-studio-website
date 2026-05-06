@@ -340,25 +340,24 @@
     "channel_members": "频道成员：",
     "current_online": "当前在线："
   },
-  "free_models": {
-    "badge": "免费体验",
-    "title": "免费模型，开箱即用",
-    "subtitle": "合作伙伴免费提供的 AI 模型，无需 API Key，下载即用",
-    "glm": {
-      "name": "智谱 GLM-4.5-Air",
-      "description": "智谱专为智能体应用打造的高效模型，采用混合专家架构，支持 128K 上下文，生成速度超 100 tokens/秒，适合代码生成、逻辑推理和智能体交互场景。",
-      "feature1": "128K 上下文",
-      "feature2": "100+ tokens/秒",
-      "feature3": "工具调用"
+  "flagship_models": {
+    "title": "旗舰模型，第一时间适配",
+    "subtitle": "通过 CherryIN、OpenRouter、硅基流动 等合作伙伴，使用最新旗舰模型",
+    "deepseek": {
+      "name": "DeepSeek V4",
+      "description": "DeepSeek 最新一代开源旗舰，1M 超长上下文可一次性处理整个代码库或长文档；代码、推理与长文本能力已逼近闭源顶配，是复杂任务的高性价比首选。",
+      "feature1": "1M 上下文",
+      "feature2": "开源",
+      "feature3": "代码 + 推理"
     },
-    "qwen": {
-      "name": "通义千问 Qwen3-8B",
-      "description": "阿里巴巴通义千问第三代模型，由硅基流动免费提供服务。支持 119 种语言，具备出色的代码生成、数学推理和智能问答能力。",
-      "feature1": "119 种语言",
-      "feature2": "128K 上下文",
-      "feature3": "思考模式"
+    "gpt": {
+      "name": "GPT-5.5",
+      "description": "OpenAI 最新一代旗舰，比上代更聪明、更主动；1M 上下文配合原生跨工具调用，自主串起代码、研究与文档处理，把复杂任务一气呵成。",
+      "feature1": "1M 上下文",
+      "feature2": "自主 Agent",
+      "feature3": "代码 + 研究"
     },
-    "cta": "更多免费模型持续更新中..."
+    "cta": "持续接入未来新模型…"
   },
   "theme_page": {
     "title": "主题市场",
