@@ -93,7 +93,7 @@ const CareersPage: FC = () => {
           <h2 className="mb-6 text-center text-2xl font-bold text-foreground">{t('careers.location_title')}</h2>
           <p className="mb-8 text-center text-muted-foreground">{t('careers.location')}</p>
           <a
-            href="https://amap.com/search?query=上海市嘉定区沪宜公路1188号"
+            href="https://amap.com/search?query=上海市徐汇滨江中心模速空间+T2+号楼+613&city=310000"
             target="_blank"
             rel="noopener noreferrer"
             className="group relative block overflow-hidden rounded-xl border border-border/50 transition-all hover:border-border hover:shadow-lg">
