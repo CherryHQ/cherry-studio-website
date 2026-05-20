@@ -1,5 +1,5 @@
 import { ChevronDown, Download, Star } from 'lucide-react'
-import { type FC, useState } from 'react'
+import { type FC, useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { Button } from '@/components/ui/button'
@@ -22,6 +22,8 @@ interface PlatformDownloadsProps {
   isDetectedSystem?: boolean
   versionData: VersionData | null
   loading: boolean
+  autoDownload?: boolean
+  autoDownloadReady?: boolean
 }
 
 const getDownloadItems = (platform: Platform, version: string, t: (key: string) => string): DownloadItemConfig[] => {
@@ -197,20 +199,32 @@ const PlatformDownloads: FC<PlatformDownloadsProps> = ({
   detectedArch = null,
   isDetectedSystem = false,
   versionData,
-  loading
+  loading,
+  autoDownload = false,
+  autoDownloadReady = true
 }) => {
   const { t } = useTranslation()
   const [showOthers, setShowOthers] = useState(false)
+  const autoDownloadTriggeredRef = useRef(false)
+
+  const items = versionData ? getDownloadItems(platform, versionData.version, t) : []
+  const recommendedItem = pickRecommendedItem(items, platform, detectedArch)
+  const otherItems = recommendedItem ? items.filter((item) => item.url !== recommendedItem.url) : items
+
+  useEffect(() => {
+    if (!autoDownload || !autoDownloadReady || loading || !recommendedItem?.url || autoDownloadTriggeredRef.current) {
+      return
+    }
+
+    autoDownloadTriggeredRef.current = true
+    window.location.href = recommendedItem.url
+  }, [autoDownload, autoDownloadReady, loading, recommendedItem?.url])
 
   if (loading) {
     return <SkeletonLoader highlighted={isDetectedSystem} />
   }
 
   if (!versionData) return null
-
-  const items = getDownloadItems(platform, versionData.version, t)
-  const recommendedItem = pickRecommendedItem(items, platform, detectedArch)
-  const otherItems = recommendedItem ? items.filter((item) => item.url !== recommendedItem.url) : items
 
   const recommendedContainerClassName = isDetectedSystem
     ? 'rounded-2xl border-2 border-green-500/30 bg-green-500/10 p-6'

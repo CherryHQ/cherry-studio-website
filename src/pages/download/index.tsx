@@ -19,8 +19,11 @@ const DownloadPage: FC = () => {
   const [activePlatform, setActivePlatform] = useState<Platform>('windows')
   const [detectedPlatform, setDetectedPlatform] = useState<Platform | null>(null)
   const [detectedArch, setDetectedArch] = useState<DetectedArch | null>(null)
+  const [systemDetectionReady, setSystemDetectionReady] = useState(false)
   const userSelectedPlatformRef = useRef(false)
   const isMobile = isMobileDevice()
+  const autoDownloadRequested =
+    new URLSearchParams(window.location.search).get('autodownload')?.toLowerCase() === 'true'
 
   useEffect(() => {
     let cancelled = false
@@ -50,6 +53,7 @@ const DownloadPage: FC = () => {
       setDetectedPlatform(overridePlatform)
       setActivePlatform(overridePlatform)
       setDetectedArch(overrideArch)
+      setSystemDetectionReady(true)
       return
     }
 
@@ -65,13 +69,19 @@ const DownloadPage: FC = () => {
     // Best-effort: async architecture detection (UA-CH/WebGL heuristics etc.).
     void (async () => {
       const system = await detectSystem()
-      if (!system || cancelled) return
+      if (cancelled) return
+
+      if (!system) {
+        setSystemDetectionReady(true)
+        return
+      }
 
       setDetectedPlatform(system.platform)
       if (!userSelectedPlatformRef.current) {
         setActivePlatform(system.platform)
       }
       setDetectedArch(system.arch)
+      setSystemDetectionReady(true)
     })()
 
     return () => {
@@ -111,6 +121,8 @@ const DownloadPage: FC = () => {
             isDetectedSystem={detectedPlatform === activePlatform}
             versionData={versionData}
             loading={loading}
+            autoDownload={autoDownloadRequested && !isMobile && detectedPlatform === activePlatform}
+            autoDownloadReady={systemDetectionReady}
           />
 
           {/* Cloud download backup link */}
