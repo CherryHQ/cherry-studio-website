@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next'
 import { Link, useLocation } from 'react-router-dom'
 
 import { cn } from '@/lib/utils'
-import { getEnterpriseUrl, isInternationalDomain } from '@/utils/urls'
+import { getEnterpriseUrl } from '@/utils/urls'
 import LanguageSelector from './LanguageSelector'
 
 interface MobileMenuProps {
@@ -16,7 +16,6 @@ interface MobileMenuProps {
 const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
   const location = useLocation()
   const { t, i18n } = useTranslation()
-  const showLanguageSelector = !isInternationalDomain()
 
   const enterpriseUrl = getEnterpriseUrl(i18n.language)
 
@@ -51,7 +50,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
         )}>
         {/* Header */}
         <div className="border-border flex items-center justify-between border-b px-4 py-4">
-          {showLanguageSelector && <LanguageSelector />}
+          <LanguageSelector />
           <button
             className="text-muted-foreground hover:bg-accent hover:text-foreground flex h-9 w-9 items-center justify-center rounded-lg transition-colors"
             onClick={onClose}

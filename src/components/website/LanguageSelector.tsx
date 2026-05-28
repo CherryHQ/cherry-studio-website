@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { cn } from '@/lib/utils'
+import { redirectToLanguageDomain } from '@/utils/urls'
 
 const LanguageSelector: React.FC = () => {
   const { i18n } = useTranslation()
@@ -23,6 +24,11 @@ const LanguageSelector: React.FC = () => {
   const currentLanguage = languages.find((lang) => lang.code === activeCode) || languages[0]
 
   const handleLanguageChange = (languageCode: string) => {
+    if (redirectToLanguageDomain(languageCode)) {
+      setIsOpen(false)
+      return
+    }
+
     i18n.changeLanguage(languageCode)
     setIsOpen(false)
   }

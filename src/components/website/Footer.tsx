@@ -17,7 +17,6 @@ import xColorIcon from '@/assets/images/icons/x-color.svg'
 import cherryWxQR from '@/assets/images/resource/cherrywx.png'
 import discordQR from '@/assets/images/resource/discord.png'
 import { copyRSSLink } from '@/utils'
-import { isInternationalDomain } from '@/utils/urls'
 import LanguageSelector from './LanguageSelector'
 import ThemeSelector from './ThemeSelector'
 
@@ -25,7 +24,6 @@ const Footer: FC = () => {
   const { t, i18n } = useTranslation()
   const isZhCN = i18n.language === 'zh-CN'
   const isEn = i18n.language.startsWith('en')
-  const showLanguageSelector = !isInternationalDomain()
 
   const [rssCopied, setRssCopied] = useState(false)
   const rssCopiedTimerRef = useRef<number | null>(null)
@@ -260,12 +258,10 @@ const Footer: FC = () => {
             </p>
 
             {/* Language Selector + Theme Selector */}
-            {showLanguageSelector && (
-              <div className="flex items-center gap-4">
-                <LanguageSelector />
-                <ThemeSelector />
-              </div>
-            )}
+            <div className="flex items-center gap-4">
+              <LanguageSelector />
+              <ThemeSelector />
+            </div>
           </div>
         </div>
       </div>

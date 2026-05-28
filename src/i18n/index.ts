@@ -2,7 +2,12 @@ import i18n from 'i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
 import { initReactI18next } from 'react-i18next'
 
-import { isInternationalDomain } from '@/utils/urls'
+import {
+  getDomainDefaultLanguage,
+  isLanguageRedirectDomain,
+  LANGUAGE_QUERY_PARAM,
+  redirectToLanguageDomain
+} from '@/utils/urls'
 import en from './lang/en.json'
 import zh from './lang/zh.json'
 
@@ -36,32 +41,75 @@ const normalizeToSupportedLanguage = (input: string | null | undefined): Support
   return null
 }
 
-const getInitialLanguage = (isInternational: boolean): SupportedLanguage => {
-  // 国际域名强制使用英文
-  if (isInternational) return 'en-US'
+const getUrlLanguage = (): SupportedLanguage | null => {
+  try {
+    const language = new URL(window.location.href).searchParams.get(LANGUAGE_QUERY_PARAM)
+    return normalizeToSupportedLanguage(language)
+  } catch {
+    return null
+  }
+}
 
-  // 1) localStorage：用户手动切换过则优先
+const getStoredLanguage = (): SupportedLanguage | null => {
   try {
     const stored = window.localStorage.getItem(LANGUAGE_STORAGE_KEY)
-    const normalized = normalizeToSupportedLanguage(stored)
-    if (normalized) return normalized
+    return normalizeToSupportedLanguage(stored)
   } catch {
-    // ignore
+    return null
   }
+}
 
-  // 2) 浏览器语言：简体/繁体中文都设为中文，其他设为英文
+const getBrowserLanguage = (): SupportedLanguage | null => {
   try {
     const browserLang =
       (typeof navigator !== 'undefined' && (navigator.languages?.[0] || navigator.language)) || undefined
 
-    if (browserLang) {
-      return normalizeToSupportedLanguage(browserLang) ?? 'en-US'
-    }
+    if (browserLang) return normalizeToSupportedLanguage(browserLang) ?? 'en-US'
+    return null
+  } catch {
+    return null
+  }
+}
+
+const persistUrlLanguage = (language: SupportedLanguage | null) => {
+  if (!language) return
+
+  try {
+    window.localStorage.setItem(LANGUAGE_STORAGE_KEY, language)
   } catch {
     // ignore
   }
 
-  // 3) 都没有：默认中文
+  try {
+    const url = new URL(window.location.href)
+    if (!url.searchParams.has(LANGUAGE_QUERY_PARAM)) return
+
+    url.searchParams.delete(LANGUAGE_QUERY_PARAM)
+    window.history.replaceState(window.history.state, '', `${url.pathname}${url.search}${url.hash}`)
+  } catch {
+    // ignore
+  }
+}
+
+const getInitialLanguage = (
+  domainDefaultLanguage: SupportedLanguage | null,
+  urlLanguage: SupportedLanguage | null,
+  storedLanguage: SupportedLanguage | null,
+  browserLanguage: SupportedLanguage | null
+): SupportedLanguage => {
+  // 固定语言域名优先：cherryai.com 只显示英文，cherryai.com.cn 只显示中文
+  if (domainDefaultLanguage) return domainDefaultLanguage
+
+  // 1) URL 参数：跨域语言切换落地时优先，随后会写入当前域名的 localStorage
+  if (urlLanguage) return urlLanguage
+
+  // 2) localStorage：用户手动切换过则优先
+  if (storedLanguage) return storedLanguage
+
+  // 3) 浏览器语言：简体/繁体中文都设为中文，其他设为英文
+  if (browserLanguage) return browserLanguage
+
+  // 4) 都没有：默认中文
   return 'zh-CN'
 }
 
@@ -83,10 +131,21 @@ const updateHtmlLang = (language: string) => {
   document.documentElement.setAttribute('lang', 'en')
 }
 
-// 判断是否是国际域名（cherryai.com / www.cherryai.com）
-const isInternational = isInternationalDomain()
+const domainDefaultLanguage = getDomainDefaultLanguage()
+const shouldRedirectLanguageDomain = isLanguageRedirectDomain()
+const urlLanguage = getUrlLanguage()
+const storedLanguage = getStoredLanguage()
+const browserLanguage = getBrowserLanguage()
+const preferredLanguage = urlLanguage ?? storedLanguage ?? browserLanguage
 
-const initialLanguage = getInitialLanguage(isInternational)
+const isRedirectingToPreferredDomain =
+  shouldRedirectLanguageDomain && !!preferredLanguage && redirectToLanguageDomain(preferredLanguage, { replace: true })
+
+if (!isRedirectingToPreferredDomain) {
+  persistUrlLanguage(urlLanguage)
+}
+
+const initialLanguage = getInitialLanguage(domainDefaultLanguage, urlLanguage, storedLanguage, browserLanguage)
 
 i18n
   .use(LanguageDetector) // 仅用于缓存到 localStorage（caches），初始语言由我们控制
@@ -94,12 +153,12 @@ i18n
   .init({
     resources,
     supportedLngs: [...SUPPORTED_LANGUAGES],
-    fallbackLng: isInternational ? 'en-US' : 'zh-CN',
+    fallbackLng: domainDefaultLanguage ?? 'zh-CN',
     lng: initialLanguage,
     detection: {
       // 缓存 key 兼容旧逻辑；未来 LanguageSelector 仍会触发 detector 写入该 key
-      order: isInternational ? [] : ['localStorage'],
-      caches: isInternational ? [] : ['localStorage'],
+      order: ['localStorage'],
+      caches: isRedirectingToPreferredDomain ? [] : ['localStorage'],
       lookupLocalStorage: LANGUAGE_STORAGE_KEY
     },
     interpolation: {

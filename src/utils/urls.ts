@@ -1,18 +1,82 @@
-// 国际域名列表（这些域名只使用英文，隐藏语言切换）
-const INTERNATIONAL_DOMAINS = ['cherryai.com', 'www.cherryai.com']
+const ENGLISH_DOMAIN = 'cherryai.com'
+const CHINESE_DOMAIN = 'cherryai.com.cn'
 
-/**
- * 检测当前是否是国际域名
- * cherryai.com 和 www.cherryai.com 被视为国际域名
- */
-export function isInternationalDomain(): boolean {
-  const hostname = window.location.hostname.toLowerCase()
-  return INTERNATIONAL_DOMAINS.includes(hostname)
+export const LANGUAGE_QUERY_PARAM = 'lng'
+
+const DOMAIN_LANGUAGE_MAP: Record<string, 'en-US' | 'zh-CN'> = {
+  [ENGLISH_DOMAIN]: 'en-US',
+  [`www.${ENGLISH_DOMAIN}`]: 'en-US',
+  [CHINESE_DOMAIN]: 'zh-CN',
+  [`www.${CHINESE_DOMAIN}`]: 'zh-CN'
+}
+
+const LANGUAGE_REDIRECT_DOMAINS = [
+  ENGLISH_DOMAIN,
+  `www.${ENGLISH_DOMAIN}`,
+  CHINESE_DOMAIN,
+  `www.${CHINESE_DOMAIN}`,
+  'cherry-ai.com',
+  'www.cherry-ai.com'
+]
+
+function getCurrentHostname(): string {
+  if (typeof window === 'undefined') return ''
+  return window.location.hostname.toLowerCase()
+}
+
+function isLocalDevelopmentHost(hostname: string): boolean {
+  return (
+    import.meta.env.DEV ||
+    hostname === '' ||
+    hostname === 'localhost' ||
+    hostname.endsWith('.localhost') ||
+    hostname === '127.0.0.1' ||
+    hostname === '0.0.0.0' ||
+    hostname === '::1'
+  )
+}
+
+export function getDomainDefaultLanguage(): 'en-US' | 'zh-CN' | null {
+  return DOMAIN_LANGUAGE_MAP[getCurrentHostname()] ?? null
+}
+
+export function isLanguageRedirectDomain(): boolean {
+  return LANGUAGE_REDIRECT_DOMAINS.includes(getCurrentHostname())
+}
+
+export function getLanguageDomain(language: string): string {
+  return language.toLowerCase().startsWith('zh') ? CHINESE_DOMAIN : ENGLISH_DOMAIN
+}
+
+function getRedirectLanguage(language: string): 'en-US' | 'zh-CN' {
+  return language.toLowerCase().startsWith('zh') ? 'zh-CN' : 'en-US'
+}
+
+export function redirectToLanguageDomain(language: string, options?: { replace?: boolean }): boolean {
+  if (typeof window === 'undefined') return false
+
+  const hostname = getCurrentHostname()
+  const targetLanguage = getRedirectLanguage(language)
+  const targetHostname = getLanguageDomain(language)
+
+  if (isLocalDevelopmentHost(hostname) || hostname === targetHostname) return false
+
+  const targetUrl = new URL(window.location.href)
+  targetUrl.protocol = 'https:'
+  targetUrl.host = targetHostname
+  targetUrl.searchParams.set(LANGUAGE_QUERY_PARAM, targetLanguage)
+
+  if (options?.replace) {
+    window.location.replace(targetUrl.toString())
+  } else {
+    window.location.assign(targetUrl.toString())
+  }
+
+  return true
 }
 
 /**
- * 根据当前语言获取企业版网址
- * 英文使用 cherryai.com，中文使用 cherry-ai.com
+ * 获取企业版网址
  */
 export function getEnterpriseUrl(language: string): string {
   language
