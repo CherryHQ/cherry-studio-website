@@ -14,7 +14,8 @@ const CareersPage: FC = () => {
     { key: 'backend', icon: '⚙️' },
     { key: 'fullstack', icon: '🔧' },
     { key: 'mobile', icon: '📱' },
-    { key: 'ai', icon: '🤖' }
+    { key: 'ai', icon: '🤖' },
+    { key: 'designer', icon: '🎨' }
   ]
 
   const benefits = ['no_clock', 'equity', 'ai_native', 'growth']

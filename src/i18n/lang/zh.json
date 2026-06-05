@@ -155,6 +155,10 @@
       "ai": {
         "title": "AI 应用工程师",
         "description": "熟练使用 AI 编程工具，了解 RAG、LangChain 等框架"
+      },
+      "designer": {
+        "title": "AI 产品设计师",
+        "description": "负责全平台 UI/UX 与品牌调性，打造 AI-native 设计系统"
       }
     },
     "location_title": "工作地点",
