@@ -78,7 +78,7 @@ const CareersPage: FC = () => {
           <div className="mt-8 text-center">
             <Button variant="outline" asChild>
               <a
-                href="https://github.com/CherryHQ/cherry-studio/issues/11953"
+                href="https://applink.feishu.cn/client/message/link/open?token=AmmuYiarQIzWaiqbRiQAjLo%3D"
                 target="_blank"
                 rel="noopener noreferrer">
                 {t('careers.view_full_jd')}
