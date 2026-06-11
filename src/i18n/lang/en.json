@@ -157,6 +157,10 @@
       "ai": {
         "title": "AI Application Engineer",
         "description": "Proficient with AI coding tools, familiar with RAG, LangChain frameworks"
+      },
+      "designer": {
+        "title": "AI Product Designer",
+        "description": "Own full-platform UI/UX and brand tone, building AI-native design systems"
       }
     },
     "location_title": "Location",
