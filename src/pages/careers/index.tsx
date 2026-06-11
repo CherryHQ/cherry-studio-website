@@ -78,7 +78,7 @@ const CareersPage: FC = () => {
           <div className="mt-8 text-center">
             <Button variant="outline" asChild>
               <a
-                href="https://applink.feishu.cn/client/message/link/open?token=AmmuYiarQIzWaiqbRiQAjLo%3D"
+                href="https://mcnnox2fhjfq.feishu.cn/wiki/SnERwz76Zi9HPEkMuG5cSTHanVd"
                 target="_blank"
                 rel="noopener noreferrer">
                 {t('careers.view_full_jd')}
