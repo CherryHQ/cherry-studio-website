@@ -184,7 +184,7 @@ const HeroSection: FC = () => {
         <div className="pt-8 pb-4 text-center sm:pt-24 sm:pb-8 lg:pt-32">
           {/* Main Heading */}
           <h1 className="text-foreground mb-4 text-3xl font-semibold tracking-tight sm:mb-6 sm:text-5xl lg:text-6xl">
-            {isZh ? '全能AI工作站' : 'The All-in-One AI Workstation'}
+            {isZh ? '你的超级 AI 工作站' : 'Your AI Productivity Studio'}
           </h1>
 
           {/* Subtitle */}
