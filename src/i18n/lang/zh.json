@@ -341,7 +341,7 @@
     "current_online": "当前在线："
   },
   "flagship_models": {
-    "title": "旗舰模型，第一时间适配",
+    "title": "旗舰模型，首发适配",
     "subtitle": "通过 CherryIN、OpenRouter、硅基流动 等合作伙伴，使用最新旗舰模型",
     "deepseek": {
       "name": "DeepSeek V4",
