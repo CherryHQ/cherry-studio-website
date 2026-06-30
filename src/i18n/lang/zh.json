@@ -249,7 +249,7 @@
     "best_for_most": "适合大多数电脑",
     "no_install_needed": "无需安装，解压即用",
     "for_arm_devices": "适用于 ARM 设备",
-    "apple_silicon": "Apple 芯片 (M 系列)",
+    "apple_silicon": "Apple 芯片 (M 系列 / A 系列)",
     "intel_mac": "Intel 芯片",
     "universal_linux": "通用 Linux 版本",
     "for_debian_ubuntu": "适用于 Debian/Ubuntu",
