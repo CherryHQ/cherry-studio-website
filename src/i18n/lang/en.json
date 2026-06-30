@@ -346,25 +346,24 @@
     "channel_members": "Channel Members: ",
     "current_online": "Currently Online: "
   },
-  "free_models": {
-    "badge": "Free Access",
-    "title": "Free Models, Ready to Use",
-    "subtitle": "Free AI models provided by our partners. No API key required, just download and start",
-    "glm": {
-      "name": "BigModel GLM-4.5-Air",
-      "description": "BigModel's efficient model optimized for intelligent agents, featuring MoE architecture, 128K context, 100+ tokens/sec generation speed. Ideal for code generation, logical reasoning, and agent interactions.",
-      "feature1": "128K Context",
-      "feature2": "100+ tokens/sec",
-      "feature3": "Tool Calling"
+  "flagship_models": {
+    "title": "Day-One Flagship Support",
+    "subtitle": "Latest flagship models through partners like CherryIN, OpenRouter, and SiliconFlow",
+    "deepseek": {
+      "name": "DeepSeek V4",
+      "description": "DeepSeek's newest open-source flagship. A 1M-token context handles whole codebases or long documents in one shot, with coding, reasoning and long-context capabilities closing in on top closed models — strong value for heavy daily use.",
+      "feature1": "1M Context",
+      "feature2": "Open Source",
+      "feature3": "Code + Reasoning"
     },
-    "qwen": {
-      "name": "Qwen3-8B",
-      "description": "Alibaba's 3rd generation Qwen model, freely provided by SiliconFlow. Supports 119 languages with excellent code generation, mathematical reasoning, and intelligent Q&A capabilities.",
-      "feature1": "119 Languages",
-      "feature2": "128K Context",
-      "feature3": "Thinking Mode"
+    "gpt": {
+      "name": "GPT-5.5",
+      "description": "OpenAI's newest flagship — sharper and more proactive than GPT-5. With 1M context and native cross-tool execution, it autonomously chains coding, research and document work into finished tasks.",
+      "feature1": "1M Context",
+      "feature2": "Autonomous Agent",
+      "feature3": "Code + Research"
     },
-    "cta": "More free models coming soon..."
+    "cta": "Continuously integrating future flagships…"
   },
   "theme_page": {
     "title": "Theme Market",
