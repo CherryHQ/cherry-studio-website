@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "pnpm build:en",
-    "build:cn": "tsc -b && vite build && SITE_LOCALE=zh node scripts/finalize-static-site.mjs",
-    "build:en": "tsc -b && vite build && SITE_LOCALE=en node scripts/finalize-static-site.mjs",
+    "build:cn": "tsc -b && VITE_SITE_LOCALE=zh vite build && SITE_LOCALE=zh node scripts/finalize-static-site.mjs",
+    "build:en": "tsc -b && VITE_SITE_LOCALE=en vite build && SITE_LOCALE=en node scripts/finalize-static-site.mjs",
     "format": "biome format --write .",
     "lint": "biome lint --write .",
     "check": "biome check --write .",
@@ -26,7 +26,6 @@
     "clsx": "^2.1.1",
     "framer-motion": "^12.23.24",
     "i18next": "^25.2.1",
-    "i18next-browser-languagedetector": "^8.2.0",
     "lucide-react": "^0.546.0",
     "marked": "^17.0.1",
     "react": "^18.3.1",

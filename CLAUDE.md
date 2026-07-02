@@ -47,12 +47,13 @@ All routes are defined in [src/App.tsx](src/App.tsx) with a shared header and Th
 
 ### Internationalization (i18n)
 
-The project uses i18next with browser language detection:
+The project uses i18next with domain-based language selection:
 
 - Configuration: [src/i18n/index.ts](src/i18n/index.ts)
 - Supported languages: `en-US`, `zh-CN`
 - Translation files: [src/i18n/lang/en.json](src/i18n/lang/en.json), [src/i18n/lang/zh.json](src/i18n/lang/zh.json)
-- Language preference stored in localStorage with key `i18n-language`
+- Production domains are fixed: `cherryai.com.cn` uses `zh-CN`, `cherryai.com` uses `en-US`
+- Local and non-fixed-domain language is controlled with `VITE_SITE_LOCALE=zh|en`
 - Automatically updates `<html lang>` attribute on language change
 
 When adding new translatable strings, add them to both language files.
