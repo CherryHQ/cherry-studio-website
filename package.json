@@ -5,12 +5,14 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "pnpm build:en",
+    "build:cn": "tsc -b && vite build && SITE_LOCALE=zh node scripts/finalize-static-site.mjs",
+    "build:en": "tsc -b && vite build && SITE_LOCALE=en node scripts/finalize-static-site.mjs",
     "format": "biome format --write .",
     "lint": "biome lint --write .",
     "check": "biome check --write .",
     "preview": "vite preview",
-    "release": "pnpm build && rsync -rvztl --delete ./dist/* tencent.vm:/opt/1panel/apps/openresty/openresty/www/sites/cherry-ai.com/index"
+    "release": "pnpm build:cn && rsync -rvztl --delete ./dist/* tencent.vm:/opt/1panel/apps/openresty/openresty/www/sites/cherry-ai.com/index"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.15",
