@@ -83,11 +83,9 @@ const Footer: FC = () => {
   ]
 
   const friendlyLinks = [
-    { href: 'https://one.ocoolai.com', label: 'ocoolAI' },
     { href: 'https://poe.com/', label: 'Poe' },
     { href: 'https://suanleme.cn', label: isZhCN ? '算了么' : 'suanleme.cn' },
-    { href: 'https://gongke.net/', label: isZhCN ? '攻壳智能体' : 'gongke.net' },
-    { href: 'https://ai-bot.cn', label: isZhCN ? 'AI 工具集' : 'ai-bot.cn' }
+    { href: 'https://gongke.net/', label: isZhCN ? '攻壳智能体' : 'gongke.net' }
   ]
 
   return (
@@ -241,7 +239,7 @@ const Footer: FC = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:text-primary">
-                    沪ICP备2021031071号-3
+                    沪ICP备2021031071号-4
                   </a>
                   <span className="mx-2">|</span>
                   <a

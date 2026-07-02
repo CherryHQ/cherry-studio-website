@@ -1,7 +1,16 @@
 import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import { getLanguageDomain } from '@/utils/urls'
+
 type PageType = 'home' | 'download' | 'theme' | 'careers'
+
+const CANONICAL_PATHS: Record<PageType, string> = {
+  home: '/',
+  download: '/download',
+  theme: '/theme',
+  careers: '/careers'
+}
 
 export const usePageMeta = (pageType: PageType) => {
   const { t, i18n } = useTranslation()
@@ -16,6 +25,32 @@ export const usePageMeta = (pageType: PageType) => {
     const metaDescription = document.querySelector('meta[name="description"]')
     if (metaDescription) {
       metaDescription.setAttribute('content', description)
+    }
+
+    // 更新 canonical 链接和多语言链接
+    const currentLanguage = i18n.resolvedLanguage || i18n.language
+    const canonicalOrigin = `https://${getLanguageDomain(currentLanguage)}`
+    const pagePath = CANONICAL_PATHS[pageType]
+    const canonicalUrl = `${canonicalOrigin}${pagePath}`
+
+    const canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]')
+    if (canonical) {
+      canonical.href = canonicalUrl
+    }
+
+    const zhAlternate = document.querySelector<HTMLLinkElement>('link[rel="alternate"][hreflang="zh-CN"]')
+    if (zhAlternate) {
+      zhAlternate.href = `https://cherryai.com.cn${pagePath}`
+    }
+
+    const enAlternate = document.querySelector<HTMLLinkElement>('link[rel="alternate"][hreflang="en"]')
+    if (enAlternate) {
+      enAlternate.href = `https://cherryai.com${pagePath}`
+    }
+
+    const defaultAlternate = document.querySelector<HTMLLinkElement>('link[rel="alternate"][hreflang="x-default"]')
+    if (defaultAlternate) {
+      defaultAlternate.href = canonicalUrl
     }
 
     // 更新 Open Graph 标题
