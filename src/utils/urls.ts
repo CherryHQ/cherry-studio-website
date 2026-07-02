@@ -80,6 +80,5 @@ export function redirectToLanguageDomain(language: string, options?: { replace?:
  */
 export function getEnterpriseUrl(language: string): string {
   language
-  return 'https://enterprise.cherry-ai.com'
-  // return language === 'en-US' ? 'https://enterprise.cherryai.com/' : 'https://enterprise.cherry-ai.com'
+  return 'https://enterprise.cherryai.com.cn'
 }

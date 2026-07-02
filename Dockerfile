@@ -18,8 +18,8 @@ RUN pnpm install --frozen-lockfile
 # Copy source code
 COPY . .
 
-# Build the application
-RUN pnpm build
+# Build the Chinese mainland deployment
+RUN pnpm build:cn
 
 ARG MIRROR
 

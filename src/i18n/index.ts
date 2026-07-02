@@ -71,15 +71,7 @@ const getBrowserLanguage = (): SupportedLanguage | null => {
   }
 }
 
-const persistUrlLanguage = (language: SupportedLanguage | null) => {
-  if (!language) return
-
-  try {
-    window.localStorage.setItem(LANGUAGE_STORAGE_KEY, language)
-  } catch {
-    // ignore
-  }
-
+const clearUrlLanguage = () => {
   try {
     const url = new URL(window.location.href)
     if (!url.searchParams.has(LANGUAGE_QUERY_PARAM)) return
@@ -89,6 +81,18 @@ const persistUrlLanguage = (language: SupportedLanguage | null) => {
   } catch {
     // ignore
   }
+}
+
+const persistUrlLanguage = (language: SupportedLanguage | null) => {
+  if (!language) return
+
+  try {
+    window.localStorage.setItem(LANGUAGE_STORAGE_KEY, language)
+  } catch {
+    // ignore
+  }
+
+  clearUrlLanguage()
 }
 
 const getInitialLanguage = (
@@ -132,7 +136,7 @@ const updateHtmlLang = (language: string) => {
 }
 
 const domainDefaultLanguage = getDomainDefaultLanguage()
-const shouldRedirectLanguageDomain = isLanguageRedirectDomain()
+const shouldRedirectLanguageDomain = !domainDefaultLanguage && isLanguageRedirectDomain()
 const urlLanguage = getUrlLanguage()
 const storedLanguage = getStoredLanguage()
 const browserLanguage = getBrowserLanguage()
@@ -141,7 +145,9 @@ const preferredLanguage = urlLanguage ?? storedLanguage ?? browserLanguage
 const isRedirectingToPreferredDomain =
   shouldRedirectLanguageDomain && !!preferredLanguage && redirectToLanguageDomain(preferredLanguage, { replace: true })
 
-if (!isRedirectingToPreferredDomain) {
+if (domainDefaultLanguage) {
+  clearUrlLanguage()
+} else if (!isRedirectingToPreferredDomain) {
   persistUrlLanguage(urlLanguage)
 }
 
