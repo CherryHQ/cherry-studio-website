@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
+import { getDomainDefaultLanguage } from '@/utils/urls'
 import { getSystemInfo, type SystemInfo } from '../utils/systemDetection'
 
 export interface Asset {
@@ -33,6 +34,13 @@ export interface DownloadUrls {
   linux: DownloadGroup
 }
 
+function getReleaseRegion(): 'cn' | 'global' {
+  const domainLanguage = getDomainDefaultLanguage()
+  if (domainLanguage) return domainLanguage === 'zh-CN' ? 'cn' : 'global'
+
+  return import.meta.env.VITE_SITE_LOCALE?.toLowerCase().startsWith('en') ? 'global' : 'cn'
+}
+
 export function useVersionData() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -46,7 +54,12 @@ export function useVersionData() {
 
     const fetchVersionData = async () => {
       try {
-        const response = await fetch('https://releases.cherry-ai.com')
+        const response = await fetch('https://releases.cherry-ai.com', {
+          headers: {
+            'X-Release-Channel': 'website',
+            'X-Region': getReleaseRegion()
+          }
+        })
         const data = await response.json()
 
         const version = data.tag_name
