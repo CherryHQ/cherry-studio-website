@@ -78,7 +78,7 @@ const Footer: FC = () => {
   const cherryLinks = [
     { href: 'https://github.com/CherryHQ/cherry-studio', label: t('footer.cherry_studio.github') },
     { href: 'https://gitcode.com/CherryHQ/cherry-studio', label: t('footer.cherry_studio.gitcode') },
-    { href: 'https://docs.cherry-ai.com', label: t('footer.cherry_studio.docs') },
+    { href: 'https://docs.cherryai.com.cn', label: t('footer.cherry_studio.docs') },
     { href: 'https://github.com/CherryHQ/cherry-studio/issues', label: t('footer.cherry_studio.feedback') }
   ]
 
@@ -213,7 +213,7 @@ const Footer: FC = () => {
               </li>
               <li>
                 <a
-                  href="https://docs.cherry-ai.com/question-contact/suggestions"
+                  href="https://docs.cherryai.com.cn/question-contact/suggestions"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-primary text-sm transition-colors duration-200">

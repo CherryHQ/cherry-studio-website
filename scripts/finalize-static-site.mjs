@@ -194,7 +194,7 @@ function applySitemapTarget() {
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${entries}
   <url>
-    <loc>https://docs.cherry-ai.com/</loc>
+    <loc>https://docs.cherryai.com.cn/</loc>
     <priority>0.8</priority>
   </url>
   <url>

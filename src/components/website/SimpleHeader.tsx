@@ -55,7 +55,7 @@ const SimpleHeader: React.FC = () => {
     { path: '/theme', label: t('nav.theme') },
     { path: '/careers', label: t('nav.careers') },
     { path: enterpriseUrl, label: t('nav.enterprise'), external: true },
-    { path: 'https://docs.cherry-ai.com/', label: t('nav.docs'), external: true }
+    { path: 'https://docs.cherryai.com.cn/', label: t('nav.docs'), external: true }
   ]
 
   return (
