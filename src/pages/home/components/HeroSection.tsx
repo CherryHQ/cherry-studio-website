@@ -231,7 +231,7 @@ const HeroSection: FC = () => {
               </Link>
             </Button>
             <Button variant="outline" size="lg" asChild>
-              <a href="https://docs.cherry-ai.com" target="_blank" rel="noopener noreferrer" className="gap-2">
+              <a href="https://docs.cherryai.com.cn" target="_blank" rel="noopener noreferrer" className="gap-2">
                 {t('nav.docs')}
                 <ArrowRight className="h-4 w-4" />
               </a>
