@@ -201,8 +201,6 @@
     "subtitle": "无缝集成 300+ 主流大模型，自由切换，随心所用"
   },
   "download_page": {
-    "cloud_download": "网盘下载（备用）",
-    "quark_drive": "夸克网盘",
     "click_download": "点此下载",
     "loading_version": "正在获取版本信息...",
     "version_error": "无法获取版本信息，请临时使用网盘链接下载",
@@ -246,6 +244,11 @@
     "recommended": "推荐",
     "recommended_download": "为您的设备推荐",
     "other_versions_expand": "其他版本",
+    "v2_entry_title": "Cherry Studio v2.0.0 RC",
+    "v2_entry_description": "体验 Cherry Studio 2.0 及后续公测版本",
+    "v2_notice_title": "Cherry Studio 2.0 公测版",
+    "v2_notice_description": "提前体验新版功能；公测版本可能不如正式版稳定。",
+    "v2_version_error": "暂时没有可下载的 Cherry Studio 2.0 公测版，请稍后再试",
     "best_for_most": "适合大多数电脑",
     "no_install_needed": "无需安装，解压即用",
     "for_arm_devices": "适用于 ARM 设备",
@@ -253,8 +256,7 @@
     "intel_mac": "Intel 芯片",
     "universal_linux": "通用 Linux 版本",
     "for_debian_ubuntu": "适用于 Debian/Ubuntu",
-    "for_fedora_rhel": "适用于 Fedora/RHEL",
-    "download_slow": "下载慢？试试"
+    "for_fedora_rhel": "适用于 Fedora/RHEL"
   },
   "contributors": {
     "project_contributors": "与优秀的人同行",

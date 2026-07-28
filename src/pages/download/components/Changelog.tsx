@@ -17,7 +17,7 @@ const Changelog: FC<ChangelogProps> = ({ versionData }) => {
     return parseChangelog(versionData.changelog, i18n.language)
   }, [versionData, i18n.language])
 
-  if (!versionData) return null
+  if (!versionData || !parsedChangelog.trim()) return null
 
   return (
     <div className="border-border bg-card mt-10 rounded-2xl border p-8">

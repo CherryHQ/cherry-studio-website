@@ -1,3 +1,4 @@
+import { FlaskConical } from 'lucide-react'
 import { type FC, useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -11,11 +12,19 @@ import type { Platform } from './components/PlatformTabs'
 import PlatformTabs from './components/PlatformTabs'
 import VersionInfo from './components/VersionInfo'
 
-const DownloadPage: FC = () => {
+interface DownloadPageProps {
+  edition?: 'stable' | 'v2'
+}
+
+const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
   const { t } = useTranslation()
   usePageMeta('download')
 
-  const { loading, versionData } = useVersionData()
+  const isV2 = edition === 'v2'
+  const { loading, error, versionData } = useVersionData({
+    releaseLine: isV2 ? 'v2' : 'stable',
+    minimumMajorVersion: isV2 ? 2 : undefined
+  })
   const [activePlatform, setActivePlatform] = useState<Platform>('windows')
   const [detectedPlatform, setDetectedPlatform] = useState<Platform | null>(null)
   const [detectedArch, setDetectedArch] = useState<DetectedArch | null>(null)
@@ -93,7 +102,13 @@ const DownloadPage: FC = () => {
     <div className="bg-background min-h-screen">
       <section className="min-h-screen pt-32 pb-20">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <VersionInfo versionData={versionData} loading={loading} />
+          <VersionInfo
+            versionData={versionData}
+            loading={loading}
+            unavailableMessage={
+              error ? t(isV2 ? 'download_page.v2_version_error' : 'download_page.version_error') : undefined
+            }
+          />
 
           {/* Mobile hint */}
           {isMobile && (
@@ -114,6 +129,16 @@ const DownloadPage: FC = () => {
             }}
           />
 
+          {isV2 && (
+            <div className="mb-6 flex items-start gap-3 rounded-2xl border border-amber-500/30 bg-amber-500/10 px-5 py-4">
+              <FlaskConical className="mt-0.5 h-5 w-5 shrink-0 text-amber-500" />
+              <div>
+                <p className="text-foreground font-medium">{t('download_page.v2_notice_title')}</p>
+                <p className="text-muted-foreground mt-1 text-sm">{t('download_page.v2_notice_description')}</p>
+              </div>
+            </div>
+          )}
+
           {/* Platform Downloads */}
           <PlatformDownloads
             platform={activePlatform}
@@ -123,19 +148,8 @@ const DownloadPage: FC = () => {
             loading={loading}
             autoDownload={autoDownloadRequested && !isMobile && detectedPlatform === activePlatform}
             autoDownloadReady={systemDetectionReady}
+            showV2Entry={!isV2}
           />
-
-          {/* Cloud download backup link */}
-          <div className="text-muted-foreground mt-6 text-center text-sm">
-            {t('download_page.download_slow')}
-            <a
-              href="https://pan.quark.cn/s/4044324d0ecd"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-primary ml-1 hover:underline">
-              {t('download_page.quark_drive')}
-            </a>
-          </div>
 
           <Changelog versionData={versionData} />
         </div>

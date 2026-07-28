@@ -1,6 +1,7 @@
-import { ChevronDown, Download, Star } from 'lucide-react'
+import { ArrowRight, ChevronDown, Download, Star } from 'lucide-react'
 import { type FC, useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
 
 import { Button } from '@/components/ui/button'
 import type { VersionData } from '@/hooks/useVersionData'
@@ -24,6 +25,7 @@ interface PlatformDownloadsProps {
   loading: boolean
   autoDownload?: boolean
   autoDownloadReady?: boolean
+  showV2Entry?: boolean
 }
 
 const getDownloadItems = (platform: Platform, version: string, t: (key: string) => string): DownloadItemConfig[] => {
@@ -201,7 +203,8 @@ const PlatformDownloads: FC<PlatformDownloadsProps> = ({
   versionData,
   loading,
   autoDownload = false,
-  autoDownloadReady = true
+  autoDownloadReady = true,
+  showV2Entry = false
 }) => {
   const { t } = useTranslation()
   const [showOthers, setShowOthers] = useState(false)
@@ -295,6 +298,18 @@ const PlatformDownloads: FC<PlatformDownloadsProps> = ({
             </div>
           )}
         </div>
+      )}
+
+      {showV2Entry && (
+        <Link
+          to="/download/v2"
+          className="flex w-full items-center justify-between gap-4 rounded-2xl border border-amber-500/30 bg-amber-500/5 px-6 py-4 text-left transition-all duration-200 hover:border-amber-400/50 hover:bg-amber-500/10">
+          <div className="min-w-0 flex-1">
+            <div className="text-foreground font-medium">{t('download_page.v2_entry_title')}</div>
+            <div className="text-muted-foreground text-sm">{t('download_page.v2_entry_description')}</div>
+          </div>
+          <ArrowRight className="h-4 w-4 shrink-0 text-amber-400" />
+        </Link>
       )}
     </div>
   )

@@ -203,8 +203,6 @@
     "subtitle": "Seamlessly integrate 300+ leading AI models. Switch freely, use effortlessly."
   },
   "download_page": {
-    "cloud_download": "Cloud Download (Backup)",
-    "quark_drive": "Quark Cloud Drive",
     "click_download": "Click to Download",
     "loading_version": "Getting version info...",
     "version_error": "Failed to get version info, please download from the cloud drive temporarily",
@@ -248,6 +246,11 @@
     "recommended": "Recommended",
     "recommended_download": "Recommended for your device",
     "other_versions_expand": "Other Versions",
+    "v2_entry_title": "Cherry Studio v2.0.0 RC",
+    "v2_entry_description": "Try Cherry Studio 2.0 and future public preview releases",
+    "v2_notice_title": "Cherry Studio 2.0 Public Preview",
+    "v2_notice_description": "Try new features early. Preview releases may be less stable than the official release.",
+    "v2_version_error": "No Cherry Studio 2.0 public preview is available right now. Please try again later.",
     "best_for_most": "Best for most computers",
     "no_install_needed": "No installation needed, portable",
     "for_arm_devices": "For ARM devices",
@@ -255,8 +258,7 @@
     "intel_mac": "Intel Chip",
     "universal_linux": "Universal Linux version",
     "for_debian_ubuntu": "For Debian/Ubuntu",
-    "for_fedora_rhel": "For Fedora/RHEL",
-    "download_slow": "Slow download? Try"
+    "for_fedora_rhel": "For Fedora/RHEL"
   },
   "contributors": {
     "project_contributors": "Built by Amazing People",
