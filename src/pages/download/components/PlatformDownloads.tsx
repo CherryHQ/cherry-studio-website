@@ -230,7 +230,7 @@ const PlatformDownloads: FC<PlatformDownloadsProps> = ({
   showV2Entry = false
 }) => {
   const { t } = useTranslation()
-  const [showOthers, setShowOthers] = useState(false)
+  const [showOthers, setShowOthers] = useState(true)
   const autoDownloadTriggeredRef = useRef(false)
 
   const items = versionData ? getDownloadItems(platform, versionData, t) : []
