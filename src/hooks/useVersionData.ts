@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 
 import { getDomainDefaultLanguage } from '@/utils/urls'
-import { getSystemInfo, type SystemInfo } from '../utils/systemDetection'
 
 export interface Asset {
   name: string
@@ -48,19 +47,23 @@ interface ReleasePayload {
   assets: Asset[]
 }
 
-interface GitHubReleasePayload {
-  tag_name: string
-  created_at: string
-  published_at: string | null
-  body: string | null
-  draft: boolean
-  assets: Array<Pick<Asset, 'name' | 'browser_download_url'>>
-}
-
 const releasesURL = import.meta.env.VITE_RELEASES_URL?.trim() || 'https://releases.cherry-ai.com'
-// Advance this tag only after the release manager confirms that both mirrors are ready.
-const approvedV2PreviewTag = import.meta.env.VITE_V2_PREVIEW_TAG?.trim() || 'v2.0.0-rc.1'
-const approvedV2PreviewURL = `https://api.github.com/repos/CherryHQ/cherry-studio/releases/tags/${encodeURIComponent(approvedV2PreviewTag)}`
+const clientReleaseEndpoint = '/_release/client/rc'
+
+const clientAssetNames = (version: string) => [
+  `Cherry-Studio-${version}-x64-setup.exe`,
+  `Cherry-Studio-${version}-x64-portable.exe`,
+  `Cherry-Studio-${version}-arm64-setup.exe`,
+  `Cherry-Studio-${version}-arm64-portable.exe`,
+  `Cherry-Studio-${version}-arm64.dmg`,
+  `Cherry-Studio-${version}-x64.dmg`,
+  `Cherry-Studio-${version}-x86_64.AppImage`,
+  `Cherry-Studio-${version}-arm64.AppImage`,
+  `Cherry-Studio-${version}-amd64.deb`,
+  `Cherry-Studio-${version}-arm64.deb`,
+  `Cherry-Studio-${version}-x86_64.rpm`,
+  `Cherry-Studio-${version}-aarch64.rpm`
+]
 
 function getReleaseRegion(): 'cn' | 'global' {
   const domainLanguage = getDomainDefaultLanguage()
@@ -74,26 +77,10 @@ function getMajorVersion(version: string): number | null {
   return match ? Number(match[1]) : null
 }
 
-function compareVersions(left: string, right: string): number {
-  const parse = (version: string) => {
-    const match = version.match(/^v?(\d+)\.(\d+)\.(\d+)(?:-(beta|rc)\.(\d+))?$/i)
-    if (!match) return null
-    const prereleaseRank = match[4]?.toLowerCase() === 'beta' ? 0 : match[4]?.toLowerCase() === 'rc' ? 1 : 2
-    return [Number(match[1]), Number(match[2]), Number(match[3]), prereleaseRank, Number(match[5] ?? 0)]
-  }
-
-  const leftParts = parse(left)
-  const rightParts = parse(right)
-  if (!leftParts || !rightParts) return left.localeCompare(right)
-
-  for (let index = 0; index < leftParts.length; index += 1) {
-    if (leftParts[index] !== rightParts[index]) return leftParts[index] - rightParts[index]
-  }
-  return 0
-}
-
 async function fetchWebsiteRelease(signal: AbortSignal): Promise<ReleasePayload> {
-  const response = await fetch(releasesURL, {
+  const requestURL = new URL(releasesURL, window.location.origin)
+
+  const response = await fetch(requestURL, {
     headers: {
       'X-Release-Channel': 'website',
       'X-Region': getReleaseRegion()
@@ -106,65 +93,61 @@ async function fetchWebsiteRelease(signal: AbortSignal): Promise<ReleasePayload>
   return (await response.json()) as ReleasePayload
 }
 
-async function fetchApprovedV2Preview(signal: AbortSignal): Promise<ReleasePayload> {
-  const response = await fetch(approvedV2PreviewURL, {
-    headers: { Accept: 'application/vnd.github+json' },
-    signal
-  })
+function getReleaseTag(manifestURL: string, version: string): string {
+  try {
+    const parts = new URL(manifestURL).pathname.split('/')
+    const downloadIndex = parts.lastIndexOf('download')
+    if (downloadIndex >= 0 && parts[downloadIndex + 1]) {
+      return decodeURIComponent(parts[downloadIndex + 1])
+    }
+  } catch {
+    // The version header still gives us a safe fallback for conventional release tags.
+  }
+  return `v${version.replace(/^v/, '')}`
+}
+
+async function fetchClientRCRelease(signal: AbortSignal): Promise<ReleasePayload> {
+  const region = getReleaseRegion()
+  const requestURL = new URL(clientReleaseEndpoint, window.location.origin)
+  requestURL.searchParams.set('region', region)
+
+  const response = await fetch(requestURL, { signal })
   if (!response.ok) {
-    throw new Error(`Preview release service returned ${response.status}`)
+    throw new Error(`Release service returned ${response.status}`)
   }
 
-  const data = (await response.json()) as GitHubReleasePayload
-  if (data.draft || data.tag_name !== approvedV2PreviewTag) {
-    throw new Error('Preview release is unavailable')
+  const version = response.headers.get('X-Release-Version')?.trim()
+  if (!version) {
+    throw new Error('Release service returned invalid client metadata')
   }
+
+  const tag = getReleaseTag(response.headers.get('X-Release-Manifest') ?? '', version)
+  const cleanVersion = version.replace(/^v/, '')
+  const assets = clientAssetNames(cleanVersion).map((name) => {
+    const assetURL = new URL(
+      `/_release/download/${encodeURIComponent(tag)}/${encodeURIComponent(name)}`,
+      window.location.origin
+    )
+    assetURL.searchParams.set('region', region)
+    return {
+      name,
+      browser_download_url: assetURL.toString(),
+      type: 'attach'
+    }
+  })
 
   return {
-    tag_name: data.tag_name,
-    created_at: data.published_at ?? data.created_at,
-    body: data.body ?? '',
-    assets: data.assets.map((asset) => ({ ...asset, type: 'attach' }))
-  }
-}
-
-async function withTimeout<T>(promise: Promise<T>, timeoutMs: number): Promise<T> {
-  let timeoutID = 0
-  const timeout = new Promise<never>((_, reject) => {
-    timeoutID = window.setTimeout(() => reject(new Error('Release request timed out')), timeoutMs)
-  })
-  return Promise.race([promise, timeout]).finally(() => window.clearTimeout(timeoutID))
-}
-
-async function getV2Release(signal: AbortSignal): Promise<ReleasePayload> {
-  const fallback: ReleasePayload = {
-    tag_name: approvedV2PreviewTag,
+    tag_name: tag,
     created_at: '',
     body: '',
-    assets: []
+    assets
   }
-  const [websiteResult, previewResult] = await Promise.allSettled([
-    withTimeout(fetchWebsiteRelease(signal), 5000),
-    withTimeout(fetchApprovedV2Preview(signal), 5000)
-  ])
-  if (signal.aborted) throw new DOMException('Aborted', 'AbortError')
-
-  const candidates = [fallback]
-  if (websiteResult.status === 'fulfilled' && (getMajorVersion(websiteResult.value.tag_name) ?? 0) >= 2) {
-    candidates.push(websiteResult.value)
-  }
-  if (previewResult.status === 'fulfilled') {
-    candidates.push(previewResult.value)
-  }
-
-  return candidates.sort((left, right) => compareVersions(left.tag_name, right.tag_name)).at(-1) ?? fallback
 }
 
 export function useVersionData({ releaseLine = 'stable', minimumMajorVersion }: UseVersionDataOptions = {}) {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [versionData, setVersionData] = useState<VersionData | null>(null)
-  const [systemInfo, setSystemInfo] = useState<SystemInfo[] | null>(null)
 
   useEffect(() => {
     const controller = new AbortController()
@@ -173,11 +156,12 @@ export function useVersionData({ releaseLine = 'stable', minimumMajorVersion }: 
       setLoading(true)
       setError(null)
       setVersionData(null)
-      setSystemInfo(null)
 
       try {
         const data =
-          releaseLine === 'v2' ? await getV2Release(controller.signal) : await fetchWebsiteRelease(controller.signal)
+          releaseLine === 'v2'
+            ? await fetchClientRCRelease(controller.signal)
+            : await fetchWebsiteRelease(controller.signal)
         if (!data.tag_name || !Array.isArray(data.assets)) {
           throw new Error('Release service returned invalid data')
         }
@@ -198,7 +182,6 @@ export function useVersionData({ releaseLine = 'stable', minimumMajorVersion }: 
         }
 
         setVersionData(versionData)
-        setSystemInfo(getSystemInfo(version))
       } catch (err) {
         if (controller.signal.aborted) return
         setError(err instanceof Error ? err.message : 'Failed to fetch version data')
@@ -212,5 +195,5 @@ export function useVersionData({ releaseLine = 'stable', minimumMajorVersion }: 
     return () => controller.abort()
   }, [minimumMajorVersion, releaseLine])
 
-  return { loading, error, versionData, systemInfo }
+  return { loading, error, versionData }
 }

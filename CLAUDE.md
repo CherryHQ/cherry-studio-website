@@ -62,10 +62,11 @@ When adding new translatable strings, add them to both language files.
 
 The [useVersionData](src/hooks/useVersionData.ts) hook is central to download functionality:
 
-- Fetches latest release from `https://releases.cherry-ai.com`
+- Fetches the stable website release from `https://releases.cherry-ai.com`
+- Resolves the V2 page through the existing production RC client endpoint (`/rc.yml`) via the same-origin `/_release` proxy
 - Auto-generates download URLs for all platforms and architectures
 - Provides structured download groups for Windows, macOS, and Linux
-- All downloads point to GitCode mirror: `https://gitcode.com/CherryHQ/cherry-studio/releases/download/`
+- Download buttons stay behind the release service's validated asset endpoint; the website region selects GitCode for China and GitHub overseas
 
 Platform detection is handled by [src/utils/systemDetection.ts](src/utils/systemDetection.ts):
 
