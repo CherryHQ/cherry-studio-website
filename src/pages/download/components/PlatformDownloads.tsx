@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
 import { Button } from '@/components/ui/button'
-import type { VersionData } from '@/hooks/useVersionData'
+import { useVersionData, type VersionData } from '@/hooks/useVersionData'
 import { cn } from '@/lib/utils'
 import type { DetectedArch } from '@/utils/systemDetection'
 import type { Platform } from './PlatformTabs'
@@ -197,6 +197,28 @@ const pickRecommendedItem = (
   return candidates[0]
 }
 
+const V2ReleaseEntry: FC = () => {
+  const { t } = useTranslation()
+  const { loading, versionData } = useVersionData({
+    releaseLine: 'v2',
+    minimumMajorVersion: 2
+  })
+
+  if (loading || !versionData) return null
+
+  return (
+    <Link
+      to="/download/v2"
+      className="flex w-full items-center justify-between gap-4 rounded-2xl border border-amber-500/30 bg-amber-500/5 px-6 py-4 text-left transition-all duration-200 hover:border-amber-400/50 hover:bg-amber-500/10">
+      <div className="min-w-0 flex-1">
+        <div className="text-foreground font-medium">Cherry Studio {versionData.version}</div>
+        <div className="text-muted-foreground text-sm">{t('download_page.v2_entry_description')}</div>
+      </div>
+      <ArrowRight className="h-4 w-4 shrink-0 text-amber-400" />
+    </Link>
+  )
+}
+
 const PlatformDownloads: FC<PlatformDownloadsProps> = ({
   platform,
   detectedArch = null,
@@ -301,17 +323,7 @@ const PlatformDownloads: FC<PlatformDownloadsProps> = ({
         </div>
       )}
 
-      {showV2Entry && (
-        <Link
-          to="/download/v2"
-          className="flex w-full items-center justify-between gap-4 rounded-2xl border border-amber-500/30 bg-amber-500/5 px-6 py-4 text-left transition-all duration-200 hover:border-amber-400/50 hover:bg-amber-500/10">
-          <div className="min-w-0 flex-1">
-            <div className="text-foreground font-medium">{t('download_page.v2_entry_title')}</div>
-            <div className="text-muted-foreground text-sm">{t('download_page.v2_entry_description')}</div>
-          </div>
-          <ArrowRight className="h-4 w-4 shrink-0 text-amber-400" />
-        </Link>
-      )}
+      {showV2Entry && <V2ReleaseEntry />}
     </div>
   )
 }
