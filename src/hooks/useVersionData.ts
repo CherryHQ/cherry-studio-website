@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useSyncExternalStore } from 'react'
 
 import { getDomainDefaultLanguage } from '@/utils/urls'
 
@@ -53,8 +53,24 @@ interface ClientRCManifest {
   releaseNotes: string
 }
 
+interface VersionDataState {
+  loading: boolean
+  error: string | null
+  versionData: VersionData | null
+}
+
+interface VersionDataStore {
+  request: Promise<void> | null
+  updatedAt: number
+  getSnapshot: () => VersionDataState
+  setState: (state: VersionDataState) => void
+  subscribe: (listener: () => void) => () => void
+}
+
 const releasesURL = import.meta.env.VITE_RELEASES_URL?.trim() || 'https://releases.cherry-ai.com'
 const clientReleaseEndpoint = '/_release/client/rc'
+const versionDataCachePrefix = 'cherry-version-data:v1'
+const versionDataCacheTTL = 5 * 60 * 1000
 
 const clientAssetNames = (version: string) => [
   `Cherry-Studio-${version}-x64-setup.exe`,
@@ -83,15 +99,14 @@ function getMajorVersion(version: string): number | null {
   return match ? Number(match[1]) : null
 }
 
-async function fetchWebsiteRelease(signal: AbortSignal): Promise<ReleasePayload> {
+async function fetchWebsiteRelease(): Promise<ReleasePayload> {
   const requestURL = new URL(releasesURL, window.location.origin)
 
   const response = await fetch(requestURL, {
     headers: {
       'X-Release-Channel': 'website',
       'X-Region': getReleaseRegion()
-    },
-    signal
+    }
   })
   if (!response.ok) {
     throw new Error(`Release service returned ${response.status}`)
@@ -160,12 +175,12 @@ function parseClientRCManifest(source: string): ClientRCManifest {
   }
 }
 
-async function fetchClientRCRelease(signal: AbortSignal): Promise<ReleasePayload> {
+async function fetchClientRCRelease(): Promise<ReleasePayload> {
   const region = getReleaseRegion()
   const requestURL = new URL(clientReleaseEndpoint, window.location.origin)
   requestURL.searchParams.set('region', region)
 
-  const response = await fetch(requestURL, { signal })
+  const response = await fetch(requestURL)
   if (!response.ok) {
     throw new Error(`Release service returned ${response.status}`)
   }
@@ -199,56 +214,175 @@ async function fetchClientRCRelease(signal: AbortSignal): Promise<ReleasePayload
   }
 }
 
-export function useVersionData({ releaseLine = 'stable', minimumMajorVersion }: UseVersionDataOptions = {}) {
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
-  const [versionData, setVersionData] = useState<VersionData | null>(null)
+function isVersionData(value: unknown): value is VersionData {
+  if (!value || typeof value !== 'object') return false
 
-  useEffect(() => {
-    const controller = new AbortController()
+  const candidate = value as Partial<VersionData>
+  return (
+    typeof candidate.version === 'string' &&
+    typeof candidate.cleanVersion === 'string' &&
+    typeof candidate.publishedAt === 'string' &&
+    typeof candidate.changelog === 'string' &&
+    Array.isArray(candidate.assets) &&
+    candidate.assets.every(
+      (asset) =>
+        asset &&
+        typeof asset.name === 'string' &&
+        typeof asset.browser_download_url === 'string' &&
+        typeof asset.type === 'string'
+    )
+  )
+}
 
-    const fetchVersionData = async () => {
-      setLoading(true)
-      setError(null)
-      setVersionData(null)
+function getVersionDataCacheKey(releaseLine: ReleaseLine): string {
+  return `${versionDataCachePrefix}:${getReleaseRegion()}:${releaseLine}`
+}
 
-      try {
-        const data =
-          releaseLine === 'v2'
-            ? await fetchClientRCRelease(controller.signal)
-            : await fetchWebsiteRelease(controller.signal)
-        if (!data.tag_name || !Array.isArray(data.assets)) {
-          throw new Error('Release service returned invalid data')
-        }
-        const version = data.tag_name
-        const majorVersion = getMajorVersion(version)
-        if (minimumMajorVersion !== undefined && (majorVersion === null || majorVersion < minimumMajorVersion)) {
-          throw new Error(`No release available for major version ${minimumMajorVersion}`)
-        }
-        const cleanVersion = version.replace(/^v/, '')
-        const publishedAt = new Date(data.created_at)
+function readCachedVersionData(releaseLine: ReleaseLine): { versionData: VersionData; updatedAt: number } | null {
+  try {
+    const cached = window.sessionStorage.getItem(getVersionDataCacheKey(releaseLine))
+    if (!cached) return null
 
-        const versionData: VersionData = {
-          version,
-          publishedAt: Number.isNaN(publishedAt.getTime()) ? '' : publishedAt.toLocaleDateString(),
-          changelog: data.body ?? '',
-          assets: data.assets.filter((asset: Asset) => asset.type === 'attach'),
-          cleanVersion
-        }
-
-        setVersionData(versionData)
-      } catch (err) {
-        if (controller.signal.aborted) return
-        setError(err instanceof Error ? err.message : 'Failed to fetch version data')
-      } finally {
-        if (!controller.signal.aborted) setLoading(false)
-      }
+    const parsed = JSON.parse(cached) as { versionData?: unknown; updatedAt?: unknown }
+    if (
+      !isVersionData(parsed.versionData) ||
+      typeof parsed.updatedAt !== 'number' ||
+      !Number.isFinite(parsed.updatedAt) ||
+      parsed.updatedAt <= 0 ||
+      parsed.updatedAt > Date.now()
+    ) {
+      window.sessionStorage.removeItem(getVersionDataCacheKey(releaseLine))
+      return null
     }
 
-    void fetchVersionData()
+    return {
+      versionData: parsed.versionData,
+      updatedAt: parsed.updatedAt
+    }
+  } catch {
+    return null
+  }
+}
 
-    return () => controller.abort()
-  }, [minimumMajorVersion, releaseLine])
+function writeCachedVersionData(releaseLine: ReleaseLine, versionData: VersionData, updatedAt: number): void {
+  try {
+    window.sessionStorage.setItem(
+      getVersionDataCacheKey(releaseLine),
+      JSON.stringify({
+        versionData,
+        updatedAt
+      })
+    )
+  } catch {
+    // The in-memory store remains available when session storage is unavailable or full.
+  }
+}
 
-  return { loading, error, versionData }
+function createVersionDataStore(releaseLine: ReleaseLine): VersionDataStore {
+  const cached = readCachedVersionData(releaseLine)
+  let state: VersionDataState = cached
+    ? {
+        loading: false,
+        error: null,
+        versionData: cached.versionData
+      }
+    : {
+        loading: true,
+        error: null,
+        versionData: null
+      }
+  const listeners = new Set<() => void>()
+
+  return {
+    request: null,
+    updatedAt: cached?.updatedAt ?? 0,
+    getSnapshot: () => state,
+    setState: (nextState) => {
+      state = nextState
+      for (const listener of listeners) listener()
+    },
+    subscribe: (listener) => {
+      listeners.add(listener)
+      return () => listeners.delete(listener)
+    }
+  }
+}
+
+const versionDataStores: Record<ReleaseLine, VersionDataStore> = {
+  stable: createVersionDataStore('stable'),
+  v2: createVersionDataStore('v2')
+}
+
+async function loadVersionData(releaseLine: ReleaseLine, store: VersionDataStore): Promise<void> {
+  const currentState = store.getSnapshot()
+  const cacheIsFresh = Boolean(currentState.versionData && Date.now() - store.updatedAt < versionDataCacheTTL)
+  if (store.request || cacheIsFresh) return store.request ?? Promise.resolve()
+
+  store.setState({
+    loading: !currentState.versionData,
+    error: null,
+    versionData: currentState.versionData
+  })
+
+  store.request = (async () => {
+    try {
+      const data = releaseLine === 'v2' ? await fetchClientRCRelease() : await fetchWebsiteRelease()
+      if (!data.tag_name || !Array.isArray(data.assets)) {
+        throw new Error('Release service returned invalid data')
+      }
+
+      const version = data.tag_name
+      const cleanVersion = version.replace(/^v/, '')
+      const publishedAt = new Date(data.created_at)
+      const versionData: VersionData = {
+        version,
+        publishedAt: Number.isNaN(publishedAt.getTime()) ? '' : publishedAt.toLocaleDateString(),
+        changelog: data.body ?? '',
+        assets: data.assets.filter((asset: Asset) => asset.type === 'attach'),
+        cleanVersion
+      }
+      const updatedAt = Date.now()
+
+      store.updatedAt = updatedAt
+      writeCachedVersionData(releaseLine, versionData, updatedAt)
+      store.setState({
+        loading: false,
+        error: null,
+        versionData
+      })
+    } catch (err) {
+      store.setState({
+        loading: false,
+        error: err instanceof Error ? err.message : 'Failed to fetch version data',
+        versionData: currentState.versionData
+      })
+    } finally {
+      store.request = null
+    }
+  })()
+
+  return store.request
+}
+
+export function useVersionData({ releaseLine = 'stable', minimumMajorVersion }: UseVersionDataOptions = {}) {
+  const store = versionDataStores[releaseLine]
+  const state = useSyncExternalStore(store.subscribe, store.getSnapshot, store.getSnapshot)
+
+  useEffect(() => {
+    void loadVersionData(releaseLine, store)
+  }, [releaseLine, store])
+
+  const majorVersion = state.versionData ? getMajorVersion(state.versionData.version) : null
+  const versionIsSupported =
+    minimumMajorVersion === undefined || (majorVersion !== null && majorVersion >= minimumMajorVersion)
+
+  if (!state.loading && state.versionData && !versionIsSupported) {
+    return {
+      loading: false,
+      error: `No release available for major version ${minimumMajorVersion}`,
+      versionData: null
+    }
+  }
+
+  return state
 }

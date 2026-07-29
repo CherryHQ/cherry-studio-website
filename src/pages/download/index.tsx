@@ -100,7 +100,7 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
 
   return (
     <div className="bg-background min-h-screen overflow-hidden">
-      <section className="pt-24 pb-20 sm:pb-24">
+      <section className="pt-36 pb-40 sm:pt-40 sm:pb-44">
         <div className="mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl">
             <h1 className="text-3xl leading-tight font-semibold tracking-tight text-black sm:text-5xl dark:text-white">
@@ -127,13 +127,15 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
           {isV2 && (
             <div
               role="alert"
-              className="mx-auto mt-8 flex max-w-3xl items-start gap-3 rounded-2xl border border-amber-300/80 bg-amber-50 px-5 py-4 text-left dark:border-amber-500/30 dark:bg-amber-500/10">
-              <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-amber-500/15 text-amber-700 dark:text-amber-400">
+              className="mx-auto mt-8 flex max-w-3xl items-start gap-3 rounded-2xl border border-amber-300/80 bg-amber-50 px-5 py-3.5 text-left sm:items-center dark:border-amber-500/30 dark:bg-amber-500/10">
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-amber-500/15 text-amber-700 dark:text-amber-400">
                 <TriangleAlert className="h-4 w-4" />
               </span>
-              <div>
-                <p className="font-semibold text-amber-950 dark:text-amber-100">{t('download_page.v2_notice_title')}</p>
-                <p className="mt-1 text-sm leading-6 text-amber-900/75 dark:text-amber-100/70">
+              <div className="min-w-0 lg:flex lg:items-center lg:gap-3">
+                <p className="shrink-0 font-semibold text-amber-950 dark:text-amber-100">
+                  {t('download_page.v2_notice_title')}
+                </p>
+                <p className="mt-1 text-sm leading-6 text-amber-900/75 lg:mt-0 lg:whitespace-nowrap dark:text-amber-100/70">
                   {t('download_page.v2_notice_description')}
                 </p>
               </div>

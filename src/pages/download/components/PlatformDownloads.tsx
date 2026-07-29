@@ -117,15 +117,10 @@ const getDownloadItems = (
   })
 }
 
-const PrimarySkeleton: FC<{ multiple?: boolean }> = ({ multiple = false }) => {
+const PrimarySkeleton: FC = () => {
   return (
     <div className="border-border border-b p-4 sm:px-8 sm:py-8">
-      <div className={multiple ? 'mx-auto grid max-w-xl gap-2 sm:grid-cols-2' : undefined}>
-        <div className="mx-auto h-12 w-full max-w-72 animate-pulse rounded-full bg-black/10 dark:bg-white/10" />
-        {multiple && (
-          <div className="mx-auto h-12 w-full max-w-72 animate-pulse rounded-full bg-black/10 dark:bg-white/10" />
-        )}
-      </div>
+      <div className="mx-auto h-12 w-full max-w-72 animate-pulse rounded-full bg-black/10 dark:bg-white/10" />
     </div>
   )
 }
@@ -183,11 +178,9 @@ export const V2ReleaseEntry: FC = () => {
   return (
     <Link
       to="/download/v2"
-      className="group mx-auto flex w-fit max-w-full items-center gap-2.5 rounded-lg px-2 py-2 text-left focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none">
+      className="border-primary/25 bg-primary/[0.03] hover:border-primary/45 hover:bg-primary/[0.06] group mx-auto flex w-fit max-w-full items-center gap-2.5 rounded-full border px-4 py-2.5 text-left transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none sm:px-5">
       <span className="flex min-w-0 items-center gap-2.5">
-        <span className="bg-primary/10 text-primary shrink-0 rounded-md px-2 py-1 text-xs font-semibold dark:bg-primary/15">
-          {t('download_page.preview_release')}
-        </span>
+        <span className="text-primary shrink-0 text-xs font-semibold">{t('download_page.preview_release')}</span>
         <span className="text-muted-foreground group-hover:text-foreground min-w-0 text-sm transition-colors">
           <span className="text-foreground font-medium">Cherry Studio 2.0</span>
           <span className="mx-2 text-black/20 dark:text-white/20" aria-hidden="true">
@@ -227,31 +220,10 @@ export const PlatformDownloadPrimary: FC<PlatformDownloadPrimaryProps> = ({
   }, [autoDownload, autoDownloadReady, loading, recommendedItem?.url])
 
   if (loading) {
-    return <PrimarySkeleton multiple={platform === 'macos'} />
+    return <PrimarySkeleton />
   }
 
   if (!versionData || !recommendedItem) return null
-
-  if (platform === 'macos') {
-    const orderedItems = [recommendedItem, ...items.filter((item) => item.url !== recommendedItem.url)]
-
-    return (
-      <div className="border-border border-b p-4 sm:px-8 sm:py-8">
-        <div className="mx-auto grid max-w-xl gap-2 sm:grid-cols-2">
-          {orderedItems.map((item) => (
-            <Button
-              key={item.url}
-              size="lg"
-              onClick={() => (window.location.href = item.url)}
-              className="bg-foreground text-background hover:bg-foreground/85 h-12 w-full gap-2 rounded-full px-5 text-sm">
-              <Download className="h-4 w-4" />
-              {t('download_page.download_now', { package: item.desc })}
-            </Button>
-          ))}
-        </div>
-      </div>
-    )
-  }
 
   return (
     <div className="border-border border-b p-4 sm:px-8 sm:py-8">
@@ -283,18 +255,18 @@ export const PlatformDownloadOptions: FC<PlatformDownloadOptionsProps> = ({
   const recommendedItem = pickRecommendedItem(items, platform, detectedArch)
   const otherItems = recommendedItem ? items.filter((item) => item.url !== recommendedItem.url) : items
 
-  if (loading || !versionData || platform === 'macos') return null
+  if (loading || !versionData) return null
 
   return (
     <div>
       {otherItems.length > 0 && (
-        <div id="other-download-packages" className="bg-secondary/20 divide-border divide-y px-5">
+        <div id="other-download-packages" className="bg-secondary/20 divide-border divide-y">
           {otherItems.map((item) => (
             <button
               type="button"
               key={item.url}
               onClick={() => (window.location.href = item.url)}
-              className="group hover:bg-secondary/60 -mx-2 flex w-[calc(100%+1rem)] min-w-0 cursor-pointer items-center justify-between gap-4 rounded-xl px-2 py-3.5 text-left transition-colors">
+              className="group hover:bg-secondary/55 flex w-full min-w-0 cursor-pointer items-center justify-between gap-4 px-5 py-3.5 text-left transition-colors">
               <div className="min-w-0 flex-1">
                 <div className="text-foreground text-sm font-medium">{item.desc}</div>
               </div>

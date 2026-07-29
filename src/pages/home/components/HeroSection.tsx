@@ -1,4 +1,4 @@
-import { ArrowRight, Bot, BrushIcon, Download, MessageSquare, ServerIcon } from 'lucide-react'
+import { ArrowRight, Bot, BrushIcon, Download, FlaskConical, MessageSquare, ServerIcon } from 'lucide-react'
 import { type FC, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
@@ -66,6 +66,10 @@ const HeroSection: FC = () => {
   const { t, i18n } = useTranslation()
   const { isDark } = useTheme()
   const { versionData } = useVersionData()
+  const { versionData: previewVersionData } = useVersionData({
+    releaseLine: 'v2',
+    minimumMajorVersion: 2
+  })
   const [notice, setNotice] = useState<NoticeResponse['data'] | null>(null)
   const [activeTab, setActiveTab] = useState('chat')
   const [isPaused, setIsPaused] = useState(false)
@@ -188,7 +192,7 @@ const HeroSection: FC = () => {
           </h1>
 
           {/* Subtitle */}
-          <p className="text-muted-foreground mx-auto mb-6 max-w-2xl whitespace-nowrap text-base sm:mb-10 sm:text-lg">
+          <p className="text-muted-foreground mx-auto mb-6 max-w-2xl text-base leading-7 sm:mb-10 sm:whitespace-nowrap sm:text-lg">
             {isZh ? (
               <>
                 <span ref={ref1}>智能对话</span>
@@ -223,19 +227,38 @@ const HeroSection: FC = () => {
           )}
 
           {/* CTA Buttons */}
-          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <div className="flex flex-col items-center gap-3">
             <Button variant="glow" size="lg" asChild>
               <Link to="/download" className="gap-2">
                 <Download className="h-5 w-5" />
-                {t('download')} {versionData?.version}
+                <span>
+                  {t('download')} {versionData?.version}
+                </span>
+                <span className="text-background/55 text-sm font-normal">
+                  <span aria-hidden="true">· </span>
+                  {t('stable_badge')}
+                </span>
               </Link>
             </Button>
-            <Button variant="outline" size="lg" asChild>
-              <a href="https://docs.cherryai.com.cn" target="_blank" rel="noopener noreferrer" className="gap-2">
+            <div className="text-muted-foreground flex items-center justify-center gap-4 text-sm">
+              {previewVersionData && (
+                <Link
+                  to="/download/v2"
+                  className="hover:text-foreground inline-flex items-center gap-1.5 rounded-md py-1 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+                  <FlaskConical className="h-3.5 w-3.5" />
+                  {t('download_preview', { version: previewVersionData.version })}
+                </Link>
+              )}
+              {previewVersionData && <span aria-hidden="true" className="bg-border h-3.5 w-px" />}
+              <a
+                href="https://docs.cherryai.com.cn"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-foreground inline-flex items-center gap-1.5 rounded-md py-1 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
                 {t('nav.docs')}
-                <ArrowRight className="h-4 w-4" />
+                <ArrowRight className="h-3.5 w-3.5" />
               </a>
-            </Button>
+            </div>
           </div>
         </div>
       </div>
