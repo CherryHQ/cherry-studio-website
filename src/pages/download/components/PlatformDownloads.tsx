@@ -1,11 +1,10 @@
-import { ArrowRight, ChevronDown, Download, Star } from 'lucide-react'
-import { type FC, useEffect, useRef, useState } from 'react'
+import { ArrowRight, Download } from 'lucide-react'
+import { type FC, useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
 import { Button } from '@/components/ui/button'
 import { useVersionData, type VersionData } from '@/hooks/useVersionData'
-import { cn } from '@/lib/utils'
 import type { DetectedArch } from '@/utils/systemDetection'
 import type { Platform } from './PlatformTabs'
 
@@ -22,12 +21,10 @@ type DownloadItemDefinition = Omit<DownloadItemConfig, 'url'>
 interface PlatformDownloadsProps {
   platform: Platform
   detectedArch?: DetectedArch | null
-  isDetectedSystem?: boolean
   versionData: VersionData | null
   loading: boolean
   autoDownload?: boolean
   autoDownloadReady?: boolean
-  showV2Entry?: boolean
 }
 
 const getDownloadItems = (
@@ -120,37 +117,14 @@ const getDownloadItems = (
   })
 }
 
-const SkeletonLoader: FC<{ highlighted?: boolean }> = ({ highlighted = true }) => {
-  const containerClassName = highlighted
-    ? 'rounded-2xl border-2 border-green-500/30 bg-green-500/10 p-6'
-    : 'border-border rounded-2xl border bg-[rgb(250,250,250)] p-6 dark:bg-secondary/30'
-
-  const pillClassName = highlighted ? 'bg-green-500/30' : 'bg-muted'
-
+const PrimarySkeleton: FC<{ multiple?: boolean }> = ({ multiple = false }) => {
   return (
-    <div className="space-y-6">
-      {/* Recommended Download Skeleton */}
-      <div className={containerClassName}>
-        <div className="mb-4 flex items-center gap-2">
-          <div className={cn('h-5 w-5 animate-pulse rounded', pillClassName)} />
-          <div className={cn('h-5 w-32 animate-pulse rounded', pillClassName)} />
-        </div>
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <div className="min-w-0 flex-1 space-y-2">
-            <div className="bg-muted h-6 w-48 animate-pulse rounded" />
-            <div className="bg-muted h-4 w-32 animate-pulse rounded" />
-            <div className="bg-muted h-3 w-64 animate-pulse rounded" />
-          </div>
-          <div className={cn('h-11 w-32 shrink-0 animate-pulse rounded-lg', pillClassName)} />
-        </div>
-      </div>
-
-      {/* Other Downloads Skeleton */}
-      <div className="border-border bg-card rounded-2xl border">
-        <div className="flex w-full items-center justify-between px-6 py-4">
-          <div className="bg-muted h-5 w-40 animate-pulse rounded" />
-          <div className="bg-muted h-5 w-5 animate-pulse rounded" />
-        </div>
+    <div className="border-border border-b p-4 sm:px-8 sm:py-8">
+      <div className={multiple ? 'mx-auto grid max-w-xl gap-2 sm:grid-cols-2' : undefined}>
+        <div className="mx-auto h-12 w-full max-w-72 animate-pulse rounded-full bg-black/10 dark:bg-white/10" />
+        {multiple && (
+          <div className="mx-auto h-12 w-full max-w-72 animate-pulse rounded-full bg-black/10 dark:bg-white/10" />
+        )}
       </div>
     </div>
   )
@@ -197,7 +171,7 @@ const pickRecommendedItem = (
   return candidates[0]
 }
 
-const V2ReleaseEntry: FC = () => {
+export const V2ReleaseEntry: FC = () => {
   const { t } = useTranslation()
   const { loading, versionData } = useVersionData({
     releaseLine: 'v2',
@@ -209,33 +183,39 @@ const V2ReleaseEntry: FC = () => {
   return (
     <Link
       to="/download/v2"
-      className="flex w-full items-center justify-between gap-4 rounded-2xl border border-amber-500/30 bg-amber-500/5 px-6 py-4 text-left transition-all duration-200 hover:border-amber-400/50 hover:bg-amber-500/10">
-      <div className="min-w-0 flex-1">
-        <div className="text-foreground font-medium">Cherry Studio {versionData.version}</div>
-        <div className="text-muted-foreground text-sm">{t('download_page.v2_entry_description')}</div>
-      </div>
-      <ArrowRight className="h-4 w-4 shrink-0 text-amber-400" />
+      className="group mx-auto flex w-fit max-w-full items-center gap-2.5 rounded-lg px-2 py-2 text-left focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none">
+      <span className="flex min-w-0 items-center gap-2.5">
+        <span className="bg-primary/10 text-primary shrink-0 rounded-md px-2 py-1 text-xs font-semibold dark:bg-primary/15">
+          {t('download_page.preview_release')}
+        </span>
+        <span className="text-muted-foreground group-hover:text-foreground min-w-0 text-sm transition-colors">
+          <span className="text-foreground font-medium">Cherry Studio 2.0</span>
+          <span className="mx-2 text-black/20 dark:text-white/20" aria-hidden="true">
+            ·
+          </span>
+          <span>{t('download_page.v2_entry_description')}</span>
+        </span>
+      </span>
+      <ArrowRight className="text-muted-foreground group-hover:text-primary h-4 w-4 shrink-0 transition-all group-hover:translate-x-0.5" />
     </Link>
   )
 }
 
-const PlatformDownloads: FC<PlatformDownloadsProps> = ({
+type PlatformDownloadPrimaryProps = PlatformDownloadsProps
+
+export const PlatformDownloadPrimary: FC<PlatformDownloadPrimaryProps> = ({
   platform,
   detectedArch = null,
-  isDetectedSystem = false,
   versionData,
   loading,
   autoDownload = false,
-  autoDownloadReady = true,
-  showV2Entry = false
+  autoDownloadReady = true
 }) => {
   const { t } = useTranslation()
-  const [showOthers, setShowOthers] = useState(true)
   const autoDownloadTriggeredRef = useRef(false)
 
   const items = versionData ? getDownloadItems(platform, versionData, t) : []
   const recommendedItem = pickRecommendedItem(items, platform, detectedArch)
-  const otherItems = recommendedItem ? items.filter((item) => item.url !== recommendedItem.url) : items
 
   useEffect(() => {
     if (!autoDownload || !autoDownloadReady || loading || !recommendedItem?.url || autoDownloadTriggeredRef.current) {
@@ -247,85 +227,82 @@ const PlatformDownloads: FC<PlatformDownloadsProps> = ({
   }, [autoDownload, autoDownloadReady, loading, recommendedItem?.url])
 
   if (loading) {
-    return <SkeletonLoader highlighted={isDetectedSystem} />
+    return <PrimarySkeleton multiple={platform === 'macos'} />
   }
 
-  if (!versionData) return null
+  if (!versionData || !recommendedItem) return null
 
-  const recommendedContainerClassName = isDetectedSystem
-    ? 'rounded-2xl border-2 border-green-500/30 bg-green-500/10 p-6'
-    : 'border-border rounded-2xl border bg-[rgb(250,250,250)] p-6 dark:bg-secondary/30'
+  if (platform === 'macos') {
+    const orderedItems = [recommendedItem, ...items.filter((item) => item.url !== recommendedItem.url)]
+
+    return (
+      <div className="border-border border-b p-4 sm:px-8 sm:py-8">
+        <div className="mx-auto grid max-w-xl gap-2 sm:grid-cols-2">
+          {orderedItems.map((item) => (
+            <Button
+              key={item.url}
+              size="lg"
+              onClick={() => (window.location.href = item.url)}
+              className="bg-foreground text-background hover:bg-foreground/85 h-12 w-full gap-2 rounded-full px-5 text-sm">
+              <Download className="h-4 w-4" />
+              {t('download_page.download_now', { package: item.desc })}
+            </Button>
+          ))}
+        </div>
+      </div>
+    )
+  }
 
   return (
-    <div className="space-y-6">
-      {/* Recommended Download */}
-      {recommendedItem && (
-        <div className={recommendedContainerClassName}>
-          {isDetectedSystem && (
-            <div className="mb-4 flex items-center gap-2">
-              <Star className="h-5 w-5 fill-current text-green-500" />
-              <span className="font-semibold text-green-600 dark:text-green-400">
-                {t('download_page.recommended_download')}
-              </span>
-            </div>
-          )}
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <div className="min-w-0 flex-1">
-              <h3 className="text-foreground text-lg font-semibold">{recommendedItem.desc}</h3>
-              <p className="text-muted-foreground mt-1 text-sm">{recommendedItem.hint}</p>
-              <p className="text-muted-foreground mt-2 truncate font-mono text-xs">{recommendedItem.name}</p>
-            </div>
-            <Button
-              variant="glow"
-              size="lg"
-              onClick={() => (window.location.href = recommendedItem.url)}
-              className="shrink-0 cursor-pointer gap-2">
-              <Download className="h-5 w-5" />
-              {t('download_page.download_now')}
-            </Button>
-          </div>
-        </div>
-      )}
-
-      {/* Other Downloads Toggle */}
-      {otherItems.length > 0 && (
-        <div className="border-border bg-card rounded-2xl border">
-          <button
-            type="button"
-            onClick={() => setShowOthers(!showOthers)}
-            className="hover:bg-secondary/50 flex w-full cursor-pointer items-center justify-between rounded-2xl px-6 py-4 transition-colors">
-            <span className="text-foreground font-medium">{t('download_page.other_versions_expand')}</span>
-            <ChevronDown
-              className={cn(
-                'text-muted-foreground h-5 w-5 transition-transform duration-200',
-                showOthers && 'rotate-180'
-              )}
-            />
-          </button>
-
-          {showOthers && (
-            <div className="border-border space-y-2 border-t px-6 py-4">
-              {otherItems.map((item) => (
-                <button
-                  type="button"
-                  key={item.url}
-                  onClick={() => (window.location.href = item.url)}
-                  className="border-border bg-secondary/30 hover:border-primary/30 hover:bg-secondary flex w-full cursor-pointer items-center justify-between gap-4 rounded-xl border px-4 py-3 text-left transition-all duration-200">
-                  <div className="min-w-0 flex-1">
-                    <div className="text-foreground font-medium">{item.desc}</div>
-                    <div className="text-muted-foreground text-sm">{item.hint}</div>
-                  </div>
-                  <Download className="text-muted-foreground h-4 w-4 shrink-0" />
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
-      )}
-
-      {showV2Entry && <V2ReleaseEntry />}
+    <div className="border-border border-b p-4 sm:px-8 sm:py-8">
+      <Button
+        size="lg"
+        onClick={() => (window.location.href = recommendedItem.url)}
+        className="bg-foreground text-background hover:bg-foreground/85 mx-auto flex h-12 w-auto min-w-64 gap-2 rounded-full px-8 text-sm sm:min-w-72">
+        <Download className="h-4 w-4" />
+        {t('download_page.download_now', { package: recommendedItem.desc })}
+      </Button>
     </div>
   )
 }
 
-export default PlatformDownloads
+type PlatformDownloadOptionsProps = Pick<
+  PlatformDownloadsProps,
+  'platform' | 'detectedArch' | 'versionData' | 'loading'
+>
+
+export const PlatformDownloadOptions: FC<PlatformDownloadOptionsProps> = ({
+  platform,
+  detectedArch = null,
+  versionData,
+  loading
+}) => {
+  const { t } = useTranslation()
+
+  const items = versionData ? getDownloadItems(platform, versionData, t) : []
+  const recommendedItem = pickRecommendedItem(items, platform, detectedArch)
+  const otherItems = recommendedItem ? items.filter((item) => item.url !== recommendedItem.url) : items
+
+  if (loading || !versionData || platform === 'macos') return null
+
+  return (
+    <div>
+      {otherItems.length > 0 && (
+        <div id="other-download-packages" className="bg-secondary/20 divide-border divide-y px-5">
+          {otherItems.map((item) => (
+            <button
+              type="button"
+              key={item.url}
+              onClick={() => (window.location.href = item.url)}
+              className="group hover:bg-secondary/60 -mx-2 flex w-[calc(100%+1rem)] min-w-0 cursor-pointer items-center justify-between gap-4 rounded-xl px-2 py-3.5 text-left transition-colors">
+              <div className="min-w-0 flex-1">
+                <div className="text-foreground text-sm font-medium">{item.desc}</div>
+              </div>
+              <Download className="text-muted-foreground group-hover:text-primary h-4 w-4 shrink-0 transition-colors dark:text-white/60" />
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}

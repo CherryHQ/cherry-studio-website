@@ -33,12 +33,22 @@ function releaseClientProxy(): Plugin {
 
           response.setHeader('Cache-Control', 'no-store')
           if (isMetadataRequest && upstream.status === 302) {
-            response.statusCode = 204
+            const manifestURL = upstream.headers.get('Location')
+            if (!manifestURL) {
+              response.statusCode = 502
+              response.setHeader('Content-Type', 'application/json')
+              response.end(JSON.stringify({ error: 'Release service returned invalid client metadata' }))
+              return
+            }
+
+            const manifest = await fetch(manifestURL)
+            response.statusCode = manifest.status
+            response.setHeader('Content-Type', 'text/yaml; charset=utf-8')
             response.setHeader('X-Release-Version', upstream.headers.get('X-Release-Version') ?? '')
             response.setHeader('X-Release-Mirror', upstream.headers.get('X-Release-Mirror') ?? '')
             response.setHeader('X-Release-Policy', upstream.headers.get('X-Release-Policy') ?? '')
-            response.setHeader('X-Release-Manifest', upstream.headers.get('Location') ?? '')
-            response.end()
+            response.setHeader('X-Release-Manifest', manifestURL)
+            response.end(Buffer.from(await manifest.arrayBuffer()))
             return
           }
 

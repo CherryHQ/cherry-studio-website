@@ -1,4 +1,4 @@
-import { Monitor } from 'lucide-react'
+import { Apple, type LucideIcon, Monitor, Terminal } from 'lucide-react'
 import type { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -14,10 +14,10 @@ interface PlatformTabsProps {
   onPlatformChange: (platform: Platform) => void
 }
 
-const platforms: { id: Platform; icon: string }[] = [
-  { id: 'windows', icon: 'icon-windows' },
-  { id: 'macos', icon: 'icon-mac' },
-  { id: 'linux', icon: 'icon-linux' }
+const platforms: { id: Platform; icon: LucideIcon }[] = [
+  { id: 'windows', icon: Monitor },
+  { id: 'macos', icon: Apple },
+  { id: 'linux', icon: Terminal }
 ]
 
 const PlatformTabs: FC<PlatformTabsProps> = ({
@@ -38,36 +38,30 @@ const PlatformTabs: FC<PlatformTabsProps> = ({
           : t('download_page.arch_unknown')
 
   return (
-    <div className="mb-8">
-      {detectedPlatform && (
-        <p className="text-muted-foreground mb-4 flex items-center justify-center gap-2 text-sm">
-          <Monitor className="h-4 w-4 shrink-0" />
-          <span className="whitespace-pre-line text-left leading-relaxed">
-            {t('download_page.detected_system_arch', {
-              platform: t(`download_page.platform_${detectedPlatform}`),
-              arch: archLabel
-            })}
-          </span>
-        </p>
-      )}
-      <div className="flex justify-center">
-        <div className="bg-secondary/50 inline-flex rounded-xl p-1.5">
-          {platforms.map(({ id, icon }) => (
+    <div className="border-border border-b p-2 sm:p-3">
+      <div className="grid grid-cols-3 gap-1">
+        {platforms.map(({ id, icon: PlatformIcon }) => {
+          const isActive = activePlatform === id
+          const isDetected = detectedPlatform === id
+
+          return (
             <button
               type="button"
               key={id}
+              aria-pressed={isActive}
               onClick={() => onPlatformChange(id)}
               className={cn(
-                'flex cursor-pointer items-center gap-2 rounded-lg px-6 py-3 text-sm font-medium transition-all duration-200',
-                activePlatform === id
-                  ? 'bg-background text-foreground shadow-sm'
-                  : 'text-muted-foreground hover:text-foreground'
+                'flex min-w-0 cursor-pointer items-center justify-center gap-1.5 rounded-2xl px-2 py-3 text-xs font-semibold transition-colors duration-200 sm:gap-2 sm:px-5 sm:text-sm',
+                isActive
+                  ? 'bg-secondary text-foreground shadow-sm dark:bg-white/15 dark:text-white dark:ring-1 dark:ring-white/10'
+                  : 'text-muted-foreground hover:bg-secondary/50 hover:text-foreground dark:text-white/65 dark:hover:bg-white/10 dark:hover:text-white'
               )}>
-              <i className={cn(icon, 'text-lg')} />
-              {t(`download_page.platform_${id}`)}
+              <PlatformIcon className="h-4 w-4 shrink-0" />
+              <span>{t(`download_page.platform_${id}`)}</span>
+              {isDetected && <span className="hidden opacity-55 sm:inline">· {archLabel}</span>}
             </button>
-          ))}
-        </div>
+          )
+        })}
       </div>
     </div>
   )

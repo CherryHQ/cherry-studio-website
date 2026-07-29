@@ -1,4 +1,4 @@
-import { FlaskConical } from 'lucide-react'
+import { Laptop, TriangleAlert } from 'lucide-react'
 import { type FC, useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -7,7 +7,7 @@ import { usePageMeta } from '@/hooks/usePageMeta'
 import { useVersionData } from '@/hooks/useVersionData'
 import { type DetectedArch, detectPlatform, detectSystem, isMobileDevice } from '@/utils/systemDetection'
 import Changelog from './components/Changelog'
-import PlatformDownloads from './components/PlatformDownloads'
+import { PlatformDownloadOptions, PlatformDownloadPrimary, V2ReleaseEntry } from './components/PlatformDownloads'
 import type { Platform } from './components/PlatformTabs'
 import PlatformTabs from './components/PlatformTabs'
 import VersionInfo from './components/VersionInfo'
@@ -99,59 +99,81 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
   }, [])
 
   return (
-    <div className="bg-background min-h-screen">
-      <section className="min-h-screen pt-32 pb-20">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <VersionInfo
-            versionData={versionData}
-            loading={loading}
-            unavailableMessage={
-              error ? t(isV2 ? 'download_page.v2_version_error' : 'download_page.version_error') : undefined
-            }
-          />
+    <div className="bg-background min-h-screen overflow-hidden">
+      <section className="pt-24 pb-20 sm:pb-24">
+        <div className="mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl">
+            <h1 className="text-3xl leading-tight font-semibold tracking-tight text-black sm:text-5xl dark:text-white">
+              {versionData ? `Cherry Studio ${versionData.version}` : 'Cherry Studio'}
+            </h1>
+            <VersionInfo
+              versionData={versionData}
+              loading={loading}
+              isPreview={isV2}
+              changelog={<Changelog versionData={versionData} />}
+              unavailableMessage={
+                error ? t(isV2 ? 'download_page.v2_version_error' : 'download_page.version_error') : undefined
+              }
+            />
+          </div>
 
-          {/* Mobile hint */}
           {isMobile && (
-            <div className="border-border bg-card mb-8 rounded-2xl border p-6 text-center">
-              <p className="text-muted-foreground mb-2">{t('download_page.mobile_detected')}</p>
-              <p className="text-muted-foreground text-sm">{t('download_page.mobile_hint')}</p>
+            <div className="mx-auto mt-5 flex max-w-md items-start justify-center gap-2 text-xs text-black/55 dark:text-white/60">
+              <Laptop className="mt-0.5 h-4 w-4 shrink-0" />
+              <span>{t('download_page.mobile_hint')}</span>
             </div>
           )}
 
-          {/* Platform Tabs */}
-          <PlatformTabs
-            activePlatform={activePlatform}
-            detectedPlatform={detectedPlatform}
-            detectedArch={detectedArch}
-            onPlatformChange={(platform) => {
-              userSelectedPlatformRef.current = true
-              setActivePlatform(platform)
-            }}
-          />
-
           {isV2 && (
-            <div className="mb-6 flex items-start gap-3 rounded-2xl border border-amber-500/30 bg-amber-500/10 px-5 py-4">
-              <FlaskConical className="mt-0.5 h-5 w-5 shrink-0 text-amber-500" />
+            <div
+              role="alert"
+              className="mx-auto mt-8 flex max-w-3xl items-start gap-3 rounded-2xl border border-amber-300/80 bg-amber-50 px-5 py-4 text-left dark:border-amber-500/30 dark:bg-amber-500/10">
+              <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-amber-500/15 text-amber-700 dark:text-amber-400">
+                <TriangleAlert className="h-4 w-4" />
+              </span>
               <div>
-                <p className="text-foreground font-medium">{t('download_page.v2_notice_title')}</p>
-                <p className="text-muted-foreground mt-1 text-sm">{t('download_page.v2_notice_description')}</p>
+                <p className="font-semibold text-amber-950 dark:text-amber-100">{t('download_page.v2_notice_title')}</p>
+                <p className="mt-1 text-sm leading-6 text-amber-900/75 dark:text-amber-100/70">
+                  {t('download_page.v2_notice_description')}
+                </p>
               </div>
             </div>
           )}
 
-          {/* Platform Downloads */}
-          <PlatformDownloads
-            platform={activePlatform}
-            detectedArch={detectedPlatform === activePlatform ? detectedArch : null}
-            isDetectedSystem={detectedPlatform === activePlatform}
-            versionData={versionData}
-            loading={loading}
-            autoDownload={autoDownloadRequested && !isMobile && detectedPlatform === activePlatform}
-            autoDownloadReady={systemDetectionReady}
-            showV2Entry={!isV2}
-          />
+          <div
+            className={`border-border bg-card mx-auto max-w-3xl overflow-hidden rounded-3xl border text-left shadow-sm dark:border-white/15 ${
+              isV2 ? 'mt-4' : 'mt-9'
+            }`}>
+            <PlatformTabs
+              activePlatform={activePlatform}
+              detectedPlatform={detectedPlatform}
+              detectedArch={detectedArch}
+              onPlatformChange={(platform) => {
+                userSelectedPlatformRef.current = true
+                setActivePlatform(platform)
+              }}
+            />
 
-          <Changelog versionData={versionData} />
+            <PlatformDownloadPrimary
+              platform={activePlatform}
+              detectedArch={detectedPlatform === activePlatform ? detectedArch : null}
+              versionData={versionData}
+              loading={loading}
+              autoDownload={autoDownloadRequested && !isMobile && detectedPlatform === activePlatform}
+              autoDownloadReady={systemDetectionReady}
+            />
+            <PlatformDownloadOptions
+              platform={activePlatform}
+              detectedArch={detectedPlatform === activePlatform ? detectedArch : null}
+              versionData={versionData}
+              loading={loading}
+            />
+          </div>
+          {!isV2 && (
+            <div className="mx-auto mt-5 max-w-3xl">
+              <V2ReleaseEntry />
+            </div>
+          )}
         </div>
       </section>
       <Footer />
