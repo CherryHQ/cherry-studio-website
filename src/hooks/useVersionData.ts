@@ -47,12 +47,6 @@ interface ReleasePayload {
   assets: Asset[]
 }
 
-interface ClientRCManifest {
-  version: string
-  releaseDate: string
-  releaseNotes: string
-}
-
 interface VersionDataState {
   loading: boolean
   error: string | null
@@ -68,24 +62,8 @@ interface VersionDataStore {
 }
 
 const releasesURL = import.meta.env.VITE_RELEASES_URL?.trim() || 'https://releases.cherry-ai.com'
-const clientReleaseEndpoint = '/_release/client/rc'
-const versionDataCachePrefix = 'cherry-version-data:v1'
+const versionDataCachePrefix = 'cherry-version-data:v2'
 const versionDataCacheTTL = 5 * 60 * 1000
-
-const clientAssetNames = (version: string) => [
-  `Cherry-Studio-${version}-x64-setup.exe`,
-  `Cherry-Studio-${version}-x64-portable.exe`,
-  `Cherry-Studio-${version}-arm64-setup.exe`,
-  `Cherry-Studio-${version}-arm64-portable.exe`,
-  `Cherry-Studio-${version}-arm64.dmg`,
-  `Cherry-Studio-${version}-x64.dmg`,
-  `Cherry-Studio-${version}-x86_64.AppImage`,
-  `Cherry-Studio-${version}-arm64.AppImage`,
-  `Cherry-Studio-${version}-amd64.deb`,
-  `Cherry-Studio-${version}-arm64.deb`,
-  `Cherry-Studio-${version}-x86_64.rpm`,
-  `Cherry-Studio-${version}-aarch64.rpm`
-]
 
 function getReleaseRegion(): 'cn' | 'global' {
   const domainLanguage = getDomainDefaultLanguage()
@@ -114,104 +92,19 @@ async function fetchWebsiteRelease(): Promise<ReleasePayload> {
   return (await response.json()) as ReleasePayload
 }
 
-function getReleaseTag(manifestURL: string, version: string): string {
-  try {
-    const parts = new URL(manifestURL).pathname.split('/')
-    const downloadIndex = parts.lastIndexOf('download')
-    if (downloadIndex >= 0 && parts[downloadIndex + 1]) {
-      return decodeURIComponent(parts[downloadIndex + 1])
-    }
-  } catch {
-    // The version header still gives us a safe fallback for conventional release tags.
-  }
-  return `v${version.replace(/^v/, '')}`
-}
-
-function parseYamlScalar(value: string): string {
-  const trimmed = value.trim()
-  if (
-    trimmed.length >= 2 &&
-    ((trimmed.startsWith("'") && trimmed.endsWith("'")) || (trimmed.startsWith('"') && trimmed.endsWith('"')))
-  ) {
-    return trimmed.slice(1, -1)
-  }
-  return trimmed
-}
-
-function getYamlScalar(source: string, key: string): string {
-  const match = source.match(new RegExp(`^${key}:\\s*(.+?)\\s*$`, 'm'))
-  return match ? parseYamlScalar(match[1]) : ''
-}
-
-function getYamlBlock(source: string, key: string): string {
-  const lines = source.split(/\r?\n/)
-  const start = lines.findIndex((line) => new RegExp(`^${key}:\\s*[|>][+-]?\\s*$`).test(line))
-  if (start < 0) return ''
-
-  const block: string[] = []
-  for (const line of lines.slice(start + 1)) {
-    if (line.trim() && !/^\s/.test(line)) break
-    block.push(line)
-  }
-
-  const indentation = block.reduce((smallest, line) => {
-    if (!line.trim()) return smallest
-    const width = line.match(/^\s*/)?.[0].length ?? 0
-    return Math.min(smallest, width)
-  }, Number.POSITIVE_INFINITY)
-  const indent = Number.isFinite(indentation) ? indentation : 0
-
-  return block
-    .map((line) => line.slice(indent))
-    .join('\n')
-    .trim()
-}
-
-function parseClientRCManifest(source: string): ClientRCManifest {
-  return {
-    version: getYamlScalar(source, 'version'),
-    releaseDate: getYamlScalar(source, 'releaseDate'),
-    releaseNotes: getYamlBlock(source, 'releaseNotes')
-  }
-}
-
 async function fetchClientRCRelease(): Promise<ReleasePayload> {
-  const region = getReleaseRegion()
-  const requestURL = new URL(clientReleaseEndpoint, window.location.origin)
-  requestURL.searchParams.set('region', region)
-
-  const response = await fetch(requestURL)
+  const requestURL = new URL(releasesURL, window.location.origin)
+  requestURL.searchParams.set('track', 'rc')
+  const response = await fetch(requestURL, {
+    headers: {
+      'X-Release-Channel': 'production',
+      'X-Region': getReleaseRegion()
+    }
+  })
   if (!response.ok) {
     throw new Error(`Release service returned ${response.status}`)
   }
-
-  const manifest = parseClientRCManifest(await response.text())
-  const version = manifest.version || response.headers.get('X-Release-Version')?.trim()
-  if (!version) {
-    throw new Error('Release service returned invalid client metadata')
-  }
-
-  const tag = getReleaseTag(response.headers.get('X-Release-Manifest') ?? '', version)
-  const cleanVersion = version.replace(/^v/, '')
-  const assets = clientAssetNames(cleanVersion).map((name) => {
-    const assetURL = new URL(
-      `/_release/download/${encodeURIComponent(tag)}/${encodeURIComponent(name)}`,
-      window.location.origin
-    )
-    assetURL.searchParams.set('region', region)
-    return {
-      name,
-      browser_download_url: assetURL.toString(),
-      type: 'attach'
-    }
-  })
-
-  return {
-    tag_name: tag,
-    created_at: manifest.releaseDate,
-    body: manifest.releaseNotes,
-    assets
-  }
+  return (await response.json()) as ReleasePayload
 }
 
 function isVersionData(value: unknown): value is VersionData {
