@@ -19,16 +19,25 @@ const features: Feature[] = [
     icon: MessageSquare,
     titleKey: 'features.conversation.title',
     descriptionKey: 'features.conversation.description',
-    href: 'https://docs.cherryai.com.cn/cherrystudio/preview/chat',
+    href: 'https://docs.cherryai.com.cn/cherry-studio/preview/chat',
     borderColor: 'hover:border-blue-500',
     iconColor: 'text-blue-500',
     iconBg: 'bg-blue-500/10'
   },
   {
+    icon: Users,
+    titleKey: 'features.agents.title',
+    descriptionKey: 'features.agents.description',
+    href: 'https://docs.cherryai.com.cn/cherry-studio/preview/agent',
+    borderColor: 'hover:border-cyan-500',
+    iconColor: 'text-cyan-500',
+    iconBg: 'bg-cyan-500/10'
+  },
+  {
     icon: Image,
     titleKey: 'features.drawing.title',
     descriptionKey: 'features.drawing.description',
-    href: 'https://docs.cherryai.com.cn/cherrystudio/preview/drawing',
+    href: 'https://docs.cherryai.com.cn/cherry-studio/preview/drawing',
     borderColor: 'hover:border-purple-500',
     iconColor: 'text-purple-500',
     iconBg: 'bg-purple-500/10'
@@ -37,25 +46,16 @@ const features: Feature[] = [
     icon: Languages,
     titleKey: 'features.translation.title',
     descriptionKey: 'features.translation.description',
-    href: 'https://docs.cherryai.com.cn/cherrystudio/preview/translation',
+    href: 'https://docs.cherryai.com.cn/cherry-studio/preview/translation',
     borderColor: 'hover:border-green-500',
     iconColor: 'text-green-500',
     iconBg: 'bg-green-500/10'
   },
   {
-    icon: Users,
-    titleKey: 'features.assistants.title',
-    descriptionKey: 'features.assistants.description',
-    href: 'https://docs.cherryai.com.cn/cherrystudio/preview/agents',
-    borderColor: 'hover:border-orange-500',
-    iconColor: 'text-orange-500',
-    iconBg: 'bg-orange-500/10'
-  },
-  {
     icon: Shield,
     titleKey: 'features.knowledge_base.title',
     descriptionKey: 'features.knowledge_base.description',
-    href: 'https://docs.cherryai.com.cn/advanced-basic/knowledge-base',
+    href: 'https://docs.cherryai.com.cn/knowledge-base/knowledge-base',
     borderColor: 'hover:border-red-500',
     iconColor: 'text-red-500',
     iconBg: 'bg-red-500/10'
@@ -64,7 +64,7 @@ const features: Feature[] = [
     icon: Cloud,
     titleKey: 'features.backup.title',
     descriptionKey: 'features.backup.description',
-    href: 'https://docs.cherryai.com.cn/cherrystudio/preview/settings/data',
+    href: 'https://docs.cherryai.com.cn/pre-basic/data-settings',
     borderColor: 'hover:border-indigo-500',
     iconColor: 'text-indigo-500',
     iconBg: 'bg-indigo-500/10'
@@ -85,7 +85,7 @@ const FeaturesSection: FC = () => {
           <h2 className="text-foreground mb-3 text-2xl font-bold sm:mb-4 sm:text-4xl lg:text-5xl">
             {t('features.title')}
           </h2>
-          <p className="text-muted-foreground mx-auto max-w-2xl text-sm sm:text-base">
+          <p className="text-muted-foreground mx-auto max-w-3xl text-sm sm:text-base">
             <Trans i18nKey="features.description">
               以下仅为部分功能介绍，更多功能可以下载客户端体验，或在
               <a

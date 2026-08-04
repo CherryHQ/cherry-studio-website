@@ -183,7 +183,7 @@ const Footer: FC = () => {
 
             {/* Contact - Compact */}
             <div>
-              <h4 className="text-foreground mb-4 text-sm font-semibold">{t('footer.contact_us.title')}</h4>
+              <h4 className="text-foreground mb-4 text-sm font-semibold">{t('footer.contact_us.community_title')}</h4>
               <div className="border-border mb-3 inline-block overflow-hidden rounded-lg border bg-white p-1.5">
                 <img
                   src={isEn ? discordQR : cherryWxQR}

@@ -57,23 +57,23 @@
   },
   "features": {
     "title": "释放 AI 的无限可能",
-    "description": "从对话创作到知识管理，为你打造全方位的 AI 体验。更多功能可在<1>官方文档</1>中了解。",
+    "description": "从与多模型对话，到Agent执行任务，为你打造全方位的 AI 体验。更多功能可在<1>官方文档</1>中了解。",
     "learn_more": "详细了解",
     "conversation": {
-      "title": "大模型对话",
-      "description": "除了基础的 AI 对话，文档或图像对话，甚至是公式和 HTML 预览都能帮你完成。"
+      "title": "与多模型对话",
+      "description": "与 OpenAI、Claude、Gemini 等主流大模型自由对话，支持文档、图像、公式和 HTML 预览，随时切换最合适的模型。"
+    },
+    "agents": {
+      "title": "多智能体",
+      "description": "支持创建多个专属 Agent，按需配置模型、提示词、Skill 与 MCP 工具，让它们自主规划、调用工具并完成不同任务。"
     },
     "drawing": {
-      "title": "AI 绘图",
-      "description": "支持多种绘图模型，你可以尽情发挥你的想象让 Cherry Studio 帮你完成。"
+      "title": "图片生成",
+      "description": "支持 Nano Banana、Seedream 等主流生图模型，一句话描述即可生成与编辑图像，尽情释放你的创意。"
     },
     "translation": {
       "title": "AI 翻译",
-      "description": "无论是翻译页还是对话栏，Cherry Studio 都能快速翻译你输入的内容。"
-    },
-    "assistants": {
-      "title": "千余内置助手",
-      "description": "Cherry Studio 内置了各种分类的千余助手，让你使用大模型更加高效。"
+      "description": "由大模型驱动，比传统机翻更懂上下文与专业术语；专门的翻译界面支持多语言互译，还能指定任意模型翻译。"
     },
     "knowledge_base": {
       "title": "多数据源知识库",
@@ -107,9 +107,7 @@
     "wechat_qr_alt": "微信群二维码",
     "wechat_scan_prompt": "扫码加入微信群",
     "qr_click_to_enlarge": "点击放大二维码",
-    "contact_us": "联系我们",
-    "qq_group": "QQ 群",
-    "zsxq": "知识星球(问题解答)"
+    "contact_us": "联系我们"
   },
   "careers": {
     "badge": "正在招聘",
@@ -185,6 +183,7 @@
     },
     "contact_us": {
       "title": "联系我们",
+      "community_title": "社区",
       "wechat_qr_alt": "微信公众号二维码",
       "wechat_official_account": "官方微信公众号",
       "support_email": "技术支持",
@@ -270,10 +269,14 @@
   },
   "highlights": {
     "title": "为什么选择 Cherry Studio",
-    "subtitle": "一站式 AI 助手平台，让 AI 触手可及",
+    "subtitle": "对话助手与智能体双核心，一站式 AI 工作站",
     "multi_model": {
       "title": "多模型自由切换",
       "description": "支持 <highlight>50+ AI 服务商</highlight>，包括 OpenAI、Claude、Gemini 等云端模型，以及 Ollama、LM Studio 等本地模型，<highlight>一个客户端满足所有需求</highlight>。"
+    },
+    "privacy": {
+      "title": "本地开源，隐私安全",
+      "description": "完全<highlight>开源免费</highlight>（AGPL-3.0），所有数据<highlight>本地存储</highlight>，绝不上传第三方服务器，还支持 Ollama、LM Studio 等本地模型，隐私始终由你掌控。"
     },
     "assistants": {
       "title": "300+ 智能助手",
@@ -281,19 +284,15 @@
     },
     "documents": {
       "title": "智能文档处理",
-      "description": "支持文本、图片、Office 文档、PDF 等多种格式，<highlight>WebDAV 文件管理</highlight>，Mermaid 图表渲染，代码高亮显示。"
-    },
-    "productivity": {
-      "title": "效率工具集成",
-      "description": "<highlight>全局搜索</highlight>、话题管理、AI 翻译、拖拽排序等功能，让工作流程更加顺畅高效。"
+      "description": "支持 PDF、PPT、Word、Excel、Markdown、图片等多种格式，通过 <highlight>OCR、RAG 等文档预处理</highlight>，让复杂文档也能准确解析、快速检索和智能问答。"
     },
     "customizable": {
       "title": "个性化体验",
-      "description": "支持亮色/暗色主题、<highlight>透明窗口</highlight>、完整 Markdown 渲染，界面美观，<highlight>即开即用</highlight>。"
+      "description": "支持亮色/暗色模式、自定义主题，并可在<highlight>多个独立窗口中并行处理任务</highlight>。"
     },
     "extensible": {
       "title": "强大的扩展能力",
-      "description": "支持小程序和 <highlight>MCP 服务器</highlight>，功能可无限扩展，打造属于你的专属 AI 工作台。"
+      "description": "支持小程序、<highlight>Skill 技能</highlight>、<highlight>MCP 服务器</highlight>和 <highlight>CLI</highlight>，功能可无限扩展，打造属于你的专属 AI 工作台。"
     },
     "stats": {
       "providers": "AI 服务商",
@@ -313,7 +312,7 @@
     "items": [
       {
         "question": "Cherry Studio 是什么？",
-        "answer": "Cherry Studio 是一款跨平台的 AI 对话客户端，支持 Windows、macOS 和 Linux。它集成了 300+ 主流 AI 模型，包括 OpenAI、Claude、Gemini 等云端模型，也支持通过 Ollama 和 LM Studio 使用本地模型。除了 AI 助手之外，Cherry Studio 还具备强大的 Agent 智能体能力——自主思考、规划和行动的 AI。给 Agent 一个目标，它会自动推理问题、拆解步骤、调用工具并独立执行，同时您始终保持控制权。"
+        "answer": "Cherry Studio 是一款跨平台的一站式 AI 工作台，支持 Windows、macOS 和 Linux。它集成了主流 AI 模型，包括 OpenAI、Claude、Gemini 等云端模型，也支持通过 Ollama 和 LM Studio 使用本地模型。除了 AI 助手之外，Cherry Studio 还具备强大的 Agent 智能体能力——自主思考、规划和行动的 AI。给 Agent 一个目标，它会自动推理问题、拆解步骤、调用工具并独立执行，同时您始终保持控制权。"
       },
       {
         "question": "Cherry Studio 是免费的吗？",
@@ -325,15 +324,15 @@
       },
       {
         "question": "Cherry Studio 支持哪些 AI 模型？",
-        "answer": "Cherry Studio 支持 50+ AI 服务商，包括 OpenAI (GPT-4, GPT-4o)、Anthropic (Claude 3.5)、Google (Gemini)、DeepSeek、Kimi、通义千问等众多模型。同时支持通过 Ollama 和 LM Studio 使用本地模型，实现完全离线运行。"
+        "answer": "Cherry Studio 支持 50+ AI 服务商，包括 OpenAI (GPT 系列)、Anthropic (Claude 系列)、Google (Gemini)、DeepSeek、Kimi、通义千问等众多模型。同时支持通过 Ollama 和 LM Studio 使用本地模型，实现完全离线运行。"
       },
       {
         "question": "知识库功能是什么？",
-        "answer": "知识库功能允许您导入文档（PDF、Word、Excel、TXT、Markdown）和网页来创建个人 AI 助手。AI 可以基于您导入的内容回答问题，非常适合研究、文档分析和个性化问答场景。"
+        "answer": "知识库功能允许您导入文档（PDF、Word、Excel、TXT、Markdown）和网页，自动建立索引，构建专属知识库。AI 可以基于其中内容回答问题；知识库还能作为工具被 Agent 主动调用与检索，并随新资料的加入持续迭代更新，非常适合研究、文档分析和个性化问答场景。"
       },
       {
-        "question": "Cherry Studio 支持 MCP（模型上下文协议）吗？",
-        "answer": "是的，Cherry Studio 完全支持 MCP 服务器，允许您通过外部工具和服务扩展其功能。您可以连接数据库、文件系统、Web 服务等，将 Cherry Studio 打造成强大的 AI 工作台。"
+        "question": "Cherry Studio 支持 MCP、Skill 和 CLI 吗？",
+        "answer": "支持。MCP、Skill 与 CLI 是 Cherry Studio Agent 三种互补的扩展方式：通过 MCP 服务器接入数据库、文件系统、Web 服务等外部工具，让 Agent 能读写外部数据、调用第三方能力；用 Skill 把特定领域的工作流与操作规范封装成可复用的技能包，Agent 在需要时自动加载并按其执行；再借助 CLI 让 Agent 直接操控各类软件——比如通过飞书 CLI 操作多维表格、云文档与消息，凡是有命令行接口的软件都能变成 Agent 可调度的能力，真正动手完成任务。"
       },
       {
         "question": "我想为项目做贡献，可以做什么？",
@@ -360,7 +359,7 @@
       "feature3": "代码 + 推理"
     },
     "gpt": {
-      "name": "GPT-5.5",
+      "name": "GPT-5.6",
       "description": "OpenAI 最新一代旗舰，比上代更聪明、更主动；1M 上下文配合原生跨工具调用，自主串起代码、研究与文档处理，把复杂任务一气呵成。",
       "feature1": "1M 上下文",
       "feature2": "自主 Agent",
