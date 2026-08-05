@@ -1,4 +1,4 @@
-import { ArrowRight, Bot, BrushIcon, Download, MessageSquare, ServerIcon } from 'lucide-react'
+import { ArrowRight, Bot, BrushIcon, Download, History, MessageSquare, ServerIcon } from 'lucide-react'
 import { type FC, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
@@ -71,6 +71,8 @@ const HeroSection: FC = () => {
   const [isPaused, setIsPaused] = useState(false)
 
   const isZh = i18n.language === 'zh-CN'
+  const stableMajorVersion = Number(versionData?.version.match(/^v?(\d+)\./)?.[1])
+  const showV1Download = Number.isFinite(stableMajorVersion) && stableMajorVersion >= 2
 
   const tabsContainerRef = useRef<HTMLDivElement>(null)
   const tabButtonRefs = useRef<Record<string, HTMLButtonElement | null>>({})
@@ -237,6 +239,17 @@ const HeroSection: FC = () => {
               </Link>
             </Button>
             <div className="text-muted-foreground flex items-center justify-center gap-4 text-sm">
+              {showV1Download && (
+                <>
+                  <Link
+                    to="/download/v1"
+                    className="hover:text-foreground inline-flex items-center gap-1.5 rounded-md py-1 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+                    <History className="h-3.5 w-3.5" />
+                    {t('download_v1')}
+                  </Link>
+                  <span aria-hidden="true" className="bg-border h-3.5 w-px" />
+                </>
+              )}
               <a
                 href="https://docs.cherryai.com.cn"
                 target="_blank"
