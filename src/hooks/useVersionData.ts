@@ -33,10 +33,11 @@ export interface DownloadUrls {
   linux: DownloadGroup
 }
 
-export type ReleaseLine = 'stable' | 'v2'
+export type ReleaseLine = 'stable' | 'v1'
 
 interface UseVersionDataOptions {
   releaseLine?: ReleaseLine
+  exactMajorVersion?: number
   minimumMajorVersion?: number
 }
 
@@ -63,7 +64,6 @@ interface VersionDataStore {
 
 const releasesURL = import.meta.env.VITE_RELEASES_URL?.trim() || 'https://releases.cherry-ai.com'
 const versionDataCachePrefix = 'cherry-version-data:v2'
-const versionDataCacheTTL = 5 * 60 * 1000
 
 function getReleaseRegion(): 'cn' | 'global' {
   const domainLanguage = getDomainDefaultLanguage()
@@ -92,12 +92,13 @@ async function fetchWebsiteRelease(): Promise<ReleasePayload> {
   return (await response.json()) as ReleasePayload
 }
 
-async function fetchClientRCRelease(): Promise<ReleasePayload> {
+async function fetchRetainedV1Release(): Promise<ReleasePayload> {
   const requestURL = new URL(releasesURL, window.location.origin)
-  requestURL.searchParams.set('track', 'rc')
+  requestURL.searchParams.set('major', '1')
+
   const response = await fetch(requestURL, {
     headers: {
-      'X-Release-Channel': 'production',
+      'X-Release-Channel': 'website',
       'X-Region': getReleaseRegion()
     }
   })
@@ -203,13 +204,12 @@ function createVersionDataStore(releaseLine: ReleaseLine): VersionDataStore {
 
 const versionDataStores: Record<ReleaseLine, VersionDataStore> = {
   stable: createVersionDataStore('stable'),
-  v2: createVersionDataStore('v2')
+  v1: createVersionDataStore('v1')
 }
 
 async function loadVersionData(releaseLine: ReleaseLine, store: VersionDataStore): Promise<void> {
   const currentState = store.getSnapshot()
-  const cacheIsFresh = Boolean(currentState.versionData && Date.now() - store.updatedAt < versionDataCacheTTL)
-  if (store.request || cacheIsFresh) return store.request ?? Promise.resolve()
+  if (store.request) return store.request
 
   store.setState({
     loading: !currentState.versionData,
@@ -219,7 +219,7 @@ async function loadVersionData(releaseLine: ReleaseLine, store: VersionDataStore
 
   store.request = (async () => {
     try {
-      const data = releaseLine === 'v2' ? await fetchClientRCRelease() : await fetchWebsiteRelease()
+      const data = releaseLine === 'v1' ? await fetchRetainedV1Release() : await fetchWebsiteRelease()
       if (!data.tag_name || !Array.isArray(data.assets)) {
         throw new Error('Release service returned invalid data')
       }
@@ -257,7 +257,11 @@ async function loadVersionData(releaseLine: ReleaseLine, store: VersionDataStore
   return store.request
 }
 
-export function useVersionData({ releaseLine = 'stable', minimumMajorVersion }: UseVersionDataOptions = {}) {
+export function useVersionData({
+  releaseLine = 'stable',
+  exactMajorVersion,
+  minimumMajorVersion
+}: UseVersionDataOptions = {}) {
   const store = versionDataStores[releaseLine]
   const state = useSyncExternalStore(store.subscribe, store.getSnapshot, store.getSnapshot)
 
@@ -267,12 +271,13 @@ export function useVersionData({ releaseLine = 'stable', minimumMajorVersion }: 
 
   const majorVersion = state.versionData ? getMajorVersion(state.versionData.version) : null
   const versionIsSupported =
-    minimumMajorVersion === undefined || (majorVersion !== null && majorVersion >= minimumMajorVersion)
+    (exactMajorVersion === undefined || majorVersion === exactMajorVersion) &&
+    (minimumMajorVersion === undefined || (majorVersion !== null && majorVersion >= minimumMajorVersion))
 
   if (!state.loading && state.versionData && !versionIsSupported) {
     return {
       loading: false,
-      error: `No release available for major version ${minimumMajorVersion}`,
+      error: `No release available for major version ${exactMajorVersion ?? minimumMajorVersion}`,
       versionData: null
     }
   }

@@ -6,18 +6,11 @@ import type { VersionData } from '@/hooks/useVersionData'
 interface VersionInfoProps {
   versionData: VersionData | null
   loading: boolean
-  isPreview?: boolean
   unavailableMessage?: string
   changelog?: ReactNode
 }
 
-const VersionInfo: FC<VersionInfoProps> = ({
-  versionData,
-  loading,
-  isPreview = false,
-  unavailableMessage,
-  changelog
-}) => {
+const VersionInfo: FC<VersionInfoProps> = ({ versionData, loading, unavailableMessage, changelog }) => {
   const { t } = useTranslation()
 
   if (loading) {
@@ -31,7 +24,7 @@ const VersionInfo: FC<VersionInfoProps> = ({
   if (versionData) {
     return (
       <div className="mt-4 flex flex-wrap items-center justify-center gap-2 text-sm text-black/55 dark:text-white/55">
-        <span>{t(isPreview ? 'download_page.preview_release' : 'download_page.stable_release')}</span>
+        <span>{t('download_page.stable_release')}</span>
         {versionData.publishedAt && (
           <>
             <span aria-hidden="true">·</span>

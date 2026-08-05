@@ -1,4 +1,4 @@
-import { Laptop, TriangleAlert } from 'lucide-react'
+import { Laptop } from 'lucide-react'
 import { type FC, useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -7,13 +7,13 @@ import { usePageMeta } from '@/hooks/usePageMeta'
 import { useVersionData } from '@/hooks/useVersionData'
 import { type DetectedArch, detectPlatform, detectSystem, isMobileDevice } from '@/utils/systemDetection'
 import Changelog from './components/Changelog'
-import { PlatformDownloadOptions, PlatformDownloadPrimary, V2ReleaseEntry } from './components/PlatformDownloads'
+import { PlatformDownloadOptions, PlatformDownloadPrimary } from './components/PlatformDownloads'
 import type { Platform } from './components/PlatformTabs'
 import PlatformTabs from './components/PlatformTabs'
 import VersionInfo from './components/VersionInfo'
 
 interface DownloadPageProps {
-  edition?: 'stable' | 'v2'
+  edition?: 'stable' | 'v1' | 'v2'
 }
 
 const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
@@ -21,8 +21,10 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
   usePageMeta('download')
 
   const isV2 = edition === 'v2'
+  const isV1 = edition === 'v1'
   const { loading, error, versionData } = useVersionData({
-    releaseLine: isV2 ? 'v2' : 'stable',
+    releaseLine: isV1 ? 'v1' : 'stable',
+    exactMajorVersion: isV1 ? 1 : undefined,
     minimumMajorVersion: isV2 ? 2 : undefined
   })
   const [activePlatform, setActivePlatform] = useState<Platform>('windows')
@@ -109,11 +111,8 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
             <VersionInfo
               versionData={versionData}
               loading={loading}
-              isPreview={isV2}
               changelog={<Changelog versionData={versionData} />}
-              unavailableMessage={
-                error ? t(isV2 ? 'download_page.v2_version_error' : 'download_page.version_error') : undefined
-              }
+              unavailableMessage={error ? t('download_page.version_error') : undefined}
             />
           </div>
 
@@ -124,28 +123,7 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
             </div>
           )}
 
-          {isV2 && (
-            <div
-              role="alert"
-              className="mx-auto mt-8 flex max-w-3xl items-start gap-3 rounded-2xl border border-amber-300/80 bg-amber-50 px-5 py-3.5 text-left sm:items-center dark:border-amber-500/30 dark:bg-amber-500/10">
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-amber-500/15 text-amber-700 dark:text-amber-400">
-                <TriangleAlert className="h-4 w-4" />
-              </span>
-              <div className="min-w-0 lg:flex lg:items-center lg:gap-3">
-                <p className="shrink-0 font-semibold text-amber-950 dark:text-amber-100">
-                  {t('download_page.v2_notice_title')}
-                </p>
-                <p className="mt-1 text-sm leading-6 text-amber-900/75 lg:mt-0 lg:whitespace-nowrap dark:text-amber-100/70">
-                  {t('download_page.v2_notice_description')}
-                </p>
-              </div>
-            </div>
-          )}
-
-          <div
-            className={`border-border bg-card mx-auto max-w-3xl overflow-hidden rounded-3xl border text-left shadow-sm dark:border-white/15 ${
-              isV2 ? 'mt-4' : 'mt-9'
-            }`}>
+          <div className="border-border bg-card mx-auto mt-9 max-w-3xl overflow-hidden rounded-3xl border text-left shadow-sm dark:border-white/15">
             <PlatformTabs
               activePlatform={activePlatform}
               detectedPlatform={detectedPlatform}
@@ -171,11 +149,6 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
               loading={loading}
             />
           </div>
-          {!isV2 && (
-            <div className="mx-auto mt-5 max-w-3xl">
-              <V2ReleaseEntry />
-            </div>
-          )}
         </div>
       </section>
       <Footer />
