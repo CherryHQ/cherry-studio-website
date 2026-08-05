@@ -1,10 +1,9 @@
-import { ArrowRight, Download } from 'lucide-react'
+import { Download } from 'lucide-react'
 import { type FC, useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Link } from 'react-router-dom'
 
 import { Button } from '@/components/ui/button'
-import { useVersionData, type VersionData } from '@/hooks/useVersionData'
+import type { VersionData } from '@/hooks/useVersionData'
 import type { DetectedArch } from '@/utils/systemDetection'
 import type { Platform } from './PlatformTabs'
 
@@ -164,34 +163,6 @@ const pickRecommendedItem = (
   }
 
   return candidates[0]
-}
-
-export const V2ReleaseEntry: FC = () => {
-  const { t } = useTranslation()
-  const { loading, versionData } = useVersionData({
-    releaseLine: 'v2',
-    minimumMajorVersion: 2
-  })
-
-  if (loading || !versionData) return null
-
-  return (
-    <Link
-      to="/download/v2"
-      className="border-primary/25 bg-primary/[0.03] hover:border-primary/45 hover:bg-primary/[0.06] group mx-auto flex w-fit max-w-full items-center gap-2.5 rounded-full border px-4 py-2.5 text-left transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none sm:px-5">
-      <span className="flex min-w-0 items-center gap-2.5">
-        <span className="text-primary shrink-0 text-xs font-semibold">{t('download_page.preview_release')}</span>
-        <span className="text-muted-foreground group-hover:text-foreground min-w-0 text-sm transition-colors">
-          <span className="text-foreground font-medium">Cherry Studio 2.0</span>
-          <span className="mx-2 text-black/20 dark:text-white/20" aria-hidden="true">
-            ·
-          </span>
-          <span>{t('download_page.v2_entry_description')}</span>
-        </span>
-      </span>
-      <ArrowRight className="text-muted-foreground group-hover:text-primary h-4 w-4 shrink-0 transition-all group-hover:translate-x-0.5" />
-    </Link>
-  )
 }
 
 type PlatformDownloadPrimaryProps = PlatformDownloadsProps

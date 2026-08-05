@@ -64,7 +64,7 @@ The [useVersionData](src/hooks/useVersionData.ts) hook is central to download fu
 
 - Fetches the stable website release from `https://releases.cherry-ai.com`
 - Keeps `/download/v1` on the latest safe V1 website publication by requesting `https://releases.cherry-ai.com/?major=1`
-- Resolves the V2 page by requesting `https://releases.cherry-ai.com/?track=rc` directly with the production client headers
+- Uses the website stable release for `/`, `/download`, and `/download/v2`; `/download/v2` additionally requires major version 2 or newer
 - Auto-generates download URLs for all platforms and architectures
 - Provides structured download groups for Windows, macOS, and Linux
 - Download buttons use the validated mirror URLs returned by the release service; the website region selects GitCode for China and GitHub overseas

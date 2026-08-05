@@ -1,4 +1,4 @@
-import { ArrowRight, Bot, BrushIcon, Download, FlaskConical, MessageSquare, ServerIcon } from 'lucide-react'
+import { ArrowRight, Bot, BrushIcon, Download, MessageSquare, ServerIcon } from 'lucide-react'
 import { type FC, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
@@ -66,10 +66,6 @@ const HeroSection: FC = () => {
   const { t, i18n } = useTranslation()
   const { isDark } = useTheme()
   const { versionData } = useVersionData()
-  const { versionData: previewVersionData } = useVersionData({
-    releaseLine: 'v2',
-    minimumMajorVersion: 2
-  })
   const [notice, setNotice] = useState<NoticeResponse['data'] | null>(null)
   const [activeTab, setActiveTab] = useState('chat')
   const [isPaused, setIsPaused] = useState(false)
@@ -241,15 +237,6 @@ const HeroSection: FC = () => {
               </Link>
             </Button>
             <div className="text-muted-foreground flex items-center justify-center gap-4 text-sm">
-              {previewVersionData && (
-                <Link
-                  to="/download/v2"
-                  className="hover:text-foreground inline-flex items-center gap-1.5 rounded-md py-1 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
-                  <FlaskConical className="h-3.5 w-3.5" />
-                  {t('download_preview', { version: previewVersionData.version })}
-                </Link>
-              )}
-              {previewVersionData && <span aria-hidden="true" className="bg-border h-3.5 w-px" />}
               <a
                 href="https://docs.cherryai.com.cn"
                 target="_blank"
