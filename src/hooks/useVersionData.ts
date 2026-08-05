@@ -33,10 +33,11 @@ export interface DownloadUrls {
   linux: DownloadGroup
 }
 
-export type ReleaseLine = 'stable' | 'v2'
+export type ReleaseLine = 'stable' | 'v1' | 'v2'
 
 interface UseVersionDataOptions {
   releaseLine?: ReleaseLine
+  exactMajorVersion?: number
   minimumMajorVersion?: number
 }
 
@@ -79,6 +80,22 @@ function getMajorVersion(version: string): number | null {
 
 async function fetchWebsiteRelease(): Promise<ReleasePayload> {
   const requestURL = new URL(releasesURL, window.location.origin)
+
+  const response = await fetch(requestURL, {
+    headers: {
+      'X-Release-Channel': 'website',
+      'X-Region': getReleaseRegion()
+    }
+  })
+  if (!response.ok) {
+    throw new Error(`Release service returned ${response.status}`)
+  }
+  return (await response.json()) as ReleasePayload
+}
+
+async function fetchRetainedV1Release(): Promise<ReleasePayload> {
+  const requestURL = new URL(releasesURL, window.location.origin)
+  requestURL.searchParams.set('major', '1')
 
   const response = await fetch(requestURL, {
     headers: {
@@ -203,6 +220,7 @@ function createVersionDataStore(releaseLine: ReleaseLine): VersionDataStore {
 
 const versionDataStores: Record<ReleaseLine, VersionDataStore> = {
   stable: createVersionDataStore('stable'),
+  v1: createVersionDataStore('v1'),
   v2: createVersionDataStore('v2')
 }
 
@@ -219,7 +237,12 @@ async function loadVersionData(releaseLine: ReleaseLine, store: VersionDataStore
 
   store.request = (async () => {
     try {
-      const data = releaseLine === 'v2' ? await fetchClientRCRelease() : await fetchWebsiteRelease()
+      const data =
+        releaseLine === 'v2'
+          ? await fetchClientRCRelease()
+          : releaseLine === 'v1'
+            ? await fetchRetainedV1Release()
+            : await fetchWebsiteRelease()
       if (!data.tag_name || !Array.isArray(data.assets)) {
         throw new Error('Release service returned invalid data')
       }
@@ -257,7 +280,11 @@ async function loadVersionData(releaseLine: ReleaseLine, store: VersionDataStore
   return store.request
 }
 
-export function useVersionData({ releaseLine = 'stable', minimumMajorVersion }: UseVersionDataOptions = {}) {
+export function useVersionData({
+  releaseLine = 'stable',
+  exactMajorVersion,
+  minimumMajorVersion
+}: UseVersionDataOptions = {}) {
   const store = versionDataStores[releaseLine]
   const state = useSyncExternalStore(store.subscribe, store.getSnapshot, store.getSnapshot)
 
@@ -267,12 +294,13 @@ export function useVersionData({ releaseLine = 'stable', minimumMajorVersion }: 
 
   const majorVersion = state.versionData ? getMajorVersion(state.versionData.version) : null
   const versionIsSupported =
-    minimumMajorVersion === undefined || (majorVersion !== null && majorVersion >= minimumMajorVersion)
+    (exactMajorVersion === undefined || majorVersion === exactMajorVersion) &&
+    (minimumMajorVersion === undefined || (majorVersion !== null && majorVersion >= minimumMajorVersion))
 
   if (!state.loading && state.versionData && !versionIsSupported) {
     return {
       loading: false,
-      error: `No release available for major version ${minimumMajorVersion}`,
+      error: `No release available for major version ${exactMajorVersion ?? minimumMajorVersion}`,
       versionData: null
     }
   }

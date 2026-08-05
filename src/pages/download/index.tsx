@@ -13,7 +13,7 @@ import PlatformTabs from './components/PlatformTabs'
 import VersionInfo from './components/VersionInfo'
 
 interface DownloadPageProps {
-  edition?: 'stable' | 'v2'
+  edition?: 'stable' | 'v1' | 'v2'
 }
 
 const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
@@ -21,8 +21,10 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
   usePageMeta('download')
 
   const isV2 = edition === 'v2'
+  const isV1 = edition === 'v1'
   const { loading, error, versionData } = useVersionData({
-    releaseLine: isV2 ? 'v2' : 'stable',
+    releaseLine: isV2 ? 'v2' : isV1 ? 'v1' : 'stable',
+    exactMajorVersion: isV1 ? 1 : undefined,
     minimumMajorVersion: isV2 ? 2 : undefined
   })
   const [activePlatform, setActivePlatform] = useState<Platform>('windows')

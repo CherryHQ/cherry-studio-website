@@ -63,6 +63,7 @@ When adding new translatable strings, add them to both language files.
 The [useVersionData](src/hooks/useVersionData.ts) hook is central to download functionality:
 
 - Fetches the stable website release from `https://releases.cherry-ai.com`
+- Keeps `/download/v1` on the latest safe V1 website publication by requesting `https://releases.cherry-ai.com/?major=1`
 - Resolves the V2 page by requesting `https://releases.cherry-ai.com/?track=rc` directly with the production client headers
 - Auto-generates download URLs for all platforms and architectures
 - Provides structured download groups for Windows, macOS, and Linux
