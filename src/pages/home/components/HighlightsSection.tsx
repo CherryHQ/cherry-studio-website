@@ -1,12 +1,12 @@
-import { Bot, FileText, Palette, Puzzle, Sparkles, Zap } from 'lucide-react'
+import { Bot, FileText, Palette, Puzzle, ShieldCheck, Sparkles } from 'lucide-react'
 import type { FC } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 
 const highlights = [
   { key: 'highlights.multi_model', color: '#60a5fa', icon: Bot },
+  { key: 'highlights.privacy', color: '#fb923c', icon: ShieldCheck },
   { key: 'highlights.assistants', color: '#c084fc', icon: Sparkles },
   { key: 'highlights.documents', color: '#34d399', icon: FileText },
-  { key: 'highlights.productivity', color: '#fb923c', icon: Zap },
   { key: 'highlights.customizable', color: '#fb7185', icon: Palette },
   { key: 'highlights.extensible', color: '#818cf8', icon: Puzzle }
 ]

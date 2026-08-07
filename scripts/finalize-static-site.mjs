@@ -26,11 +26,11 @@ const configs = {
   en: {
     lang: 'en',
     domain: 'https://cherryai.com',
-    title: 'Cherry Studio - The All-in-One AI Workstation',
-    ogTitle: 'Cherry Studio - The All-in-One AI Workstation | Free and Open Source',
-    shareTitle: 'Cherry Studio - All-in-One Multi-Model AI Assistant',
+    title: 'Cherry Studio — The All-in-One AI Workstation',
+    ogTitle: 'Cherry Studio — The All-in-One AI Workstation | Free and Open Source',
+    shareTitle: 'Cherry Studio — The All-in-One AI Workstation',
     description:
-      'Cherry Studio is an open-source, free, and powerful AI desktop client. It includes AI agents, AI chat, AI image generation, knowledge base, and more, supports all major LLMs, runs on Windows/macOS/Linux, stores data locally, and is built for heavy AI users.',
+      'Cherry Studio is a free, open-source AI desktop app for chat, agents, image generation, knowledge bases, and more. Connect to leading cloud and local models on Windows, macOS, and Linux, with your app data stored locally.',
     keywords:
       'Cherry Studio, AI assistant, AI client, LLM, ChatGPT, Claude, Gemini, DeepSeek, artificial intelligence, AI chat, AI knowledge base, AI image generation, AI translation, AI agent, macOS, Windows, Linux, open-source AI, multi-model AI, Ollama, LM Studio, local LLM',
     ogLocale: 'en_US',

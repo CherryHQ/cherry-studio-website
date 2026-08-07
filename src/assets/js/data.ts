@@ -1,11 +1,10 @@
-interface ChannelResponse {
+export interface ChannelResponse {
   data: {
     id: number
     qq_group_link: string
     wechat_qr_code1: string
     wechat_qr_code2: string
     wechat_qr_code3: string
-    zsxq: string
   }
 }
 

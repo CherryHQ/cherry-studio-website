@@ -1,15 +1,15 @@
 {
   "page_title": {
-    "home": "Cherry Studio - The All-in-One AI Workstation",
-    "download": "Download Cherry Studio - Multi-Platform AI Client",
-    "theme": "Cherry Studio Theme Library - Customize Your AI Assistant",
-    "careers": "Join Cherry Studio - Careers"
+    "home": "Cherry Studio — The All-in-One AI Workstation",
+    "download": "Download Cherry Studio — Cross-Platform AI Client",
+    "theme": "Cherry Studio Theme Library — Customize Your AI Workspace",
+    "careers": "Join Cherry Studio — Careers"
   },
   "page_description": {
-    "home": "Cherry Studio is an open-source, free, and powerful AI desktop client. It includes AI agents, AI chat, AI image generation, knowledge base, and more, supports all major LLMs, runs on Windows/macOS/Linux, stores data locally, and is built for heavy AI users.",
-    "download": "Download Cherry Studio AI client supporting Windows, macOS, and Linux platforms. Integrates 100+ AI models, completely free and open source.",
-    "theme": "Discover and share beautiful Cherry Studio themes to personalize your AI assistant interface. Supports both light and dark mode themes.",
-    "careers": "Join Cherry Studio core team. Looking for AI Native full-stack engineers to build next-gen AI products."
+    "home": "Cherry Studio is a free, open-source AI desktop app for chat, agents, image generation, knowledge bases, and more. Connect to leading cloud and local models on Windows, macOS, and Linux, with your app data stored locally.",
+    "download": "Download Cherry Studio for Windows, macOS, or Linux. Connect to 300+ AI models in one free, open-source desktop app.",
+    "theme": "Discover and share Cherry Studio themes for light and dark mode, and make your AI workspace your own.",
+    "careers": "Join the Cherry Studio core team and help build the next generation of AI products."
   },
   "nav": {
     "home": "Home",
@@ -17,8 +17,8 @@
     "theme": "Theme",
     "careers": "Careers",
     "enterprise": "Enterprise",
-    "docs": "Docs",
-    "contact": "Contact Us"
+    "docs": "Documentation",
+    "contact": "Contact"
   },
   "theme_switcher": {
     "dark": "Dark",
@@ -32,7 +32,7 @@
   "stable_badge": "Stable",
   "theme": "Theme",
   "forum": "Forum",
-  "docs": "Docs",
+  "docs": "Documentation",
   "project_intro": "Introduction",
   "basic_tutorial": "Basic Tutorial",
   "advanced_tutorial": "Advanced Tutorial",
@@ -62,28 +62,28 @@
     "description": "From creative conversations to knowledge management, enjoy a complete AI experience. Learn more in the <1>Official Documentation</1>.",
     "learn_more": "Learn More",
     "conversation": {
-      "title": "AI Chat",
-      "description": "In addition to basic AI conversations, it can also help you with document or image conversations, and even formula and HTML previews."
+      "title": "Chat with Any Model",
+      "description": "Chat with leading models from OpenAI, Anthropic, Google, and others. Preview documents, images, formulas, and HTML, and switch models to match the task."
+    },
+    "agents": {
+      "title": "AI Agents",
+      "description": "Create specialized agents with the model, prompt, Skills, and MCP servers each task requires. They can plan, use tools, and complete work autonomously."
     },
     "drawing": {
-      "title": "AI Drawing",
-      "description": "Supports a variety of drawing models, so you can give full play to your imagination and let Cherry Studio help you complete it."
+      "title": "AI Image Generation",
+      "description": "Generate and edit images with leading models such as Nano Banana and Seedream. Describe what you want and bring your ideas to life."
     },
     "translation": {
       "title": "AI Translation",
-      "description": "Whether it's the translation page or the conversation bar, Cherry Studio can quickly translate the content you enter."
-    },
-    "assistants": {
-      "title": "1000+ Built-in Assistants",
-      "description": "Cherry Studio has built-in thousands of assistants in various categories, making you more efficient when using AI."
+      "description": "Translate with any model in a dedicated workspace built to preserve context and domain terminology."
     },
     "knowledge_base": {
-      "title": "Multi-source Knowledge Base",
-      "description": "Whether it's a local file or a web page, it can be used as a knowledge source to quickly build your exclusive knowledge base."
+      "title": "Multi-Source Knowledge Base",
+      "description": "Turn local files and web pages into your own searchable Knowledge Base."
     },
     "backup": {
       "title": "Multiple Backup Methods",
-      "description": "Including local backup and cloud backup, worry-free switching between multiple devices, more convenient and safer."
+      "description": "Including local and cloud backups for worry-free switching between devices, with greater convenience and security."
     }
   },
   "project": {
@@ -102,16 +102,14 @@
     }
   },
   "community": {
-    "title": "Become Part of the Cherry Family",
-    "subtitle": "Share experiences and grow together with AI enthusiasts worldwide",
+    "title": "Join the Cherry Studio Community",
+    "subtitle": "Share what you're building, get help, and connect with AI enthusiasts around the world.",
     "follow_us": "Follow Us",
     "wechat_group": "Discord Group",
-    "wechat_qr_alt": "Discord Group QR Code",
-    "wechat_scan_prompt": "Scan to join Discord group",
+    "wechat_qr_alt": "Cherry Studio Instagram QR code",
+    "wechat_scan_prompt": "Scan to follow Cherry Studio on Instagram",
     "qr_click_to_enlarge": "Click to enlarge QR code",
-    "contact_us": "Contact Us",
-    "qq_group": "QQ Group",
-    "zsxq": "Knowledge Planet (Q&A)"
+    "contact_us": "Contact Us"
   },
   "careers": {
     "badge": "We're Hiring",
@@ -174,7 +172,7 @@
   },
   "footer": {
     "rss_copied": "RSS copied",
-    "description": "Cherry Studio is a multi-platform AI client, and we are committed to allowing more people to enjoy the convenience brought by AI.",
+    "description": "Cherry Studio is a cross-platform AI workspace that brings leading models, assistants, and agents together in one desktop app.",
     "cherry_studio": {
       "title": "Cherry Studio",
       "github": "GitHub",
@@ -183,12 +181,13 @@
       "feedback": "Feedback"
     },
     "friendly_links": {
-      "title": "Friendly Links"
+      "title": "Explore"
     },
     "contact_us": {
-      "title": "Contact Us",
-      "wechat_qr_alt": "WeChat Official Account QR Code",
-      "wechat_official_account": "Official Instagram",
+      "title": "Contact",
+      "community_title": "Community",
+      "wechat_qr_alt": "Cherry Studio Discord QR code",
+      "wechat_official_account": "Join us on Discord",
       "support_email": "Support",
       "business_email": "Business",
       "feedback": "Feedback"
@@ -202,7 +201,7 @@
   },
   "providers": {
     "title": "One Hub, All AI Models",
-    "subtitle": "Seamlessly integrate 300+ leading AI models. Switch freely, use effortlessly."
+    "subtitle": "Connect to 300+ leading AI models and switch between them effortlessly."
   },
   "download_page": {
     "click_download": "Click to Download",
@@ -267,30 +266,30 @@
   },
   "highlights": {
     "title": "Why Choose Cherry Studio",
-    "subtitle": "Your all-in-one AI assistant platform, making AI accessible to everyone",
+    "subtitle": "Chat assistants and autonomous agents, together in one AI workspace.",
     "multi_model": {
       "title": "Multi-Model Freedom",
-      "description": "Support <highlight>50+ AI providers</highlight> including OpenAI, Claude, Gemini cloud models, plus local models via Ollama and LM Studio. <highlight>One client for all your AI needs</highlight>."
+      "description": "Connect to <highlight>50+ AI providers</highlight>, including OpenAI, Anthropic, and Google, plus local models through Ollama and LM Studio. <highlight>One workspace for all your AI models</highlight>."
+    },
+    "privacy": {
+      "title": "Local, Open-Source & Private",
+      "description": "Fully <highlight>open-source and free</highlight> (AGPL-3.0). All your data is <highlight>stored locally</highlight> and never uploaded to third-party servers, with support for local models via Ollama and LM Studio — your privacy stays yours."
     },
     "assistants": {
       "title": "300+ Smart Assistants",
-      "description": "<highlight>300+ pre-configured assistants</highlight> for writing, coding, learning, translation, marketing and more. <highlight>No prompt engineering needed</highlight>, ready to use instantly."
+      "description": "Choose from <highlight>300+ preconfigured assistants</highlight> for writing, coding, learning, translation, marketing, and more—ready to use without writing prompts from scratch."
     },
     "documents": {
       "title": "Smart Document Handling",
-      "description": "Work with text, images, Office docs, PDFs. <highlight>WebDAV file management</highlight>, Mermaid chart rendering, and syntax highlighting built-in."
-    },
-    "productivity": {
-      "title": "Productivity Tools",
-      "description": "<highlight>Global search</highlight>, topic management, AI translation, drag-and-drop organization. Streamline your workflow effortlessly."
+      "description": "Work with PDF, PowerPoint, Word, Excel, Markdown, images, and more. <highlight>OCR and retrieval-augmented generation (RAG)</highlight> help parse complex documents, retrieve relevant content, and answer questions."
     },
     "customizable": {
       "title": "Customizable Experience",
-      "description": "Light/dark themes, <highlight>transparent windows</highlight>, full Markdown rendering. Beautiful interface, <highlight>ready to use out of the box</highlight>."
+      "description": "Choose light or dark mode, apply custom themes, and <highlight>run tasks in parallel across flexible multi-window layouts</highlight>."
     },
     "extensible": {
-      "title": "Powerful Extensibility",
-      "description": "Support for mini-programs and <highlight>MCP servers</highlight>. Extend functionality infinitely, build your personalized AI workspace."
+      "title": "Built to Extend",
+      "description": "Expand Cherry Studio with Mini Apps, <highlight>Skills</highlight>, <highlight>MCP servers</highlight>, and <highlight>CLI tools</highlight>. Build a workspace around the tools and workflows you already use."
     },
     "stats": {
       "providers": "AI Providers",
@@ -310,7 +309,7 @@
     "items": [
       {
         "question": "What is Cherry Studio?",
-        "answer": "Cherry Studio is a cross-platform desktop client for AI chatbots, supporting Windows, macOS, and Linux. It integrates 300+ AI models from major providers like OpenAI, Claude, Gemini, and supports local models via Ollama and LM Studio. Beyond AI Assistants, Cherry Studio features powerful Agent capabilities - autonomous AI that can think, plan, and act. Give Agent a goal, and it will reason through problems, break them into steps, call the right tools, and execute independently while you stay in control."
+        "answer": "Cherry Studio is an all-in-one AI workspace for Windows, macOS, and Linux. It connects to leading cloud models from OpenAI, Anthropic, Google, and others, and supports local models through Ollama and LM Studio. In addition to chat and preconfigured assistants, Cherry Studio includes autonomous agents that can plan tasks, use tools, and carry out multi-step work while keeping you in control."
       },
       {
         "question": "Is Cherry Studio free?",
@@ -322,15 +321,15 @@
       },
       {
         "question": "Which AI models does Cherry Studio support?",
-        "answer": "Cherry Studio supports 50+ AI providers including OpenAI (GPT-4, GPT-4o), Anthropic (Claude 3.5), Google (Gemini), DeepSeek, Kimi, Qwen, and many more. It also supports local models through Ollama and LM Studio, allowing you to run AI completely offline."
+        "answer": "Cherry Studio supports 50+ AI providers, including OpenAI, Anthropic, Google, DeepSeek, Kimi, Qwen, and many more. It also supports local models through Ollama and LM Studio, so supported models can run without sending requests to a cloud provider."
       },
       {
         "question": "What is the Knowledge Base feature?",
-        "answer": "The Knowledge Base allows you to import documents (PDF, Word, Excel, TXT, Markdown) and web pages to create your personal AI assistant. The AI can then answer questions based on your imported content, making it perfect for research, document analysis, and personalized Q&A."
+        "answer": "Import documents and web pages into a searchable Knowledge Base. Cherry Studio indexes the content so you can ask questions, analyze material, and let an agent use it as a tool."
       },
       {
-        "question": "Does Cherry Studio support MCP (Model Context Protocol)?",
-        "answer": "Yes, Cherry Studio fully supports MCP servers, allowing you to extend its capabilities with external tools and services. You can connect to databases, file systems, web services, and more through MCP, making Cherry Studio a powerful AI workspace."
+        "question": "Does Cherry Studio support MCP, Skills, and CLI tools?",
+        "answer": "Yes. MCP servers connect agents to external tools and services; Skills package reusable instructions and workflows; and CLI tools let agents use command-line software. You choose which capabilities to enable."
       },
       {
         "question": "How can I contribute to the project?",
@@ -338,7 +337,7 @@
       },
       {
         "question": "Where can I get help if I have questions?",
-        "answer": "Join our community through Telegram, Discord, or QQ groups (links on our homepage). You can also submit issues on GitHub, email support@cherry-ai.com, or check our documentation at docs.cherryai.com.cn for detailed guides and tutorials."
+        "answer": "Join our community through Telegram or Discord using the links on our homepage. You can also submit issues on GitHub, email support@cherry-ai.com, or check our documentation at docs.cherryai.com.cn for detailed guides and tutorials."
       }
     ]
   },
@@ -347,23 +346,23 @@
     "current_online": "Currently Online: "
   },
   "flagship_models": {
-    "title": "Day-One Flagship Support",
-    "subtitle": "Latest flagship models through partners like CherryIN, OpenRouter, and SiliconFlow",
+    "title": "Day-One Support for Flagship Models",
+    "subtitle": "Access the latest flagship models through partners including CherryIN, OpenRouter, and SiliconFlow.",
     "deepseek": {
       "name": "DeepSeek V4",
-      "description": "DeepSeek's newest open-source flagship. A 1M-token context handles whole codebases or long documents in one shot, with coding, reasoning and long-context capabilities closing in on top closed models — strong value for heavy daily use.",
+      "description": "DeepSeek's open-source V4 family combines a 1M-token context window with strong coding, reasoning, and agent capabilities. Pro targets top-end performance, while Flash is optimized for speed and cost.",
       "feature1": "1M Context",
       "feature2": "Open Source",
       "feature3": "Code + Reasoning"
     },
     "gpt": {
-      "name": "GPT-5.5",
-      "description": "OpenAI's newest flagship — sharper and more proactive than GPT-5. With 1M context and native cross-tool execution, it autonomously chains coding, research and document work into finished tasks.",
-      "feature1": "1M Context",
-      "feature2": "Autonomous Agent",
+      "name": "GPT-5.6",
+      "description": "OpenAI's flagship model for complex professional work has a 1.05M-token context window and supports programmatic tool calling. It is built for coding, research, document work, and other tool-heavy workflows.",
+      "feature1": "1.05M Context",
+      "feature2": "Tool Calling",
       "feature3": "Code + Research"
     },
-    "cta": "Continuously integrating future flagships…"
+    "cta": "New flagship models added as they launch."
   },
   "theme_page": {
     "title": "Theme Market",

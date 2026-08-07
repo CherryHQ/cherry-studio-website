@@ -1,17 +1,29 @@
-import { ArrowRight, Bot, BrushIcon, Download, History, MessageSquare, ServerIcon } from 'lucide-react'
+import { ArrowRight, BookOpen, Bot, BrushIcon, Download, History, MessageSquare, ServerIcon } from 'lucide-react'
 import { type FC, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import { annotate } from 'rough-notation'
 
-import aiCodingDark from '@/assets/images/screenshots/ai-coding-dark.webp'
-import aiCodingLight from '@/assets/images/screenshots/ai-coding-light.webp'
-import aiPaintingsDark from '@/assets/images/screenshots/ai-paintings-dark.webp'
-import aiPaintingsLight from '@/assets/images/screenshots/ai-paintings-light.webp'
-import aiProvidersDark from '@/assets/images/screenshots/ai-providers-dark.webp'
-import aiProvidersLight from '@/assets/images/screenshots/ai-providers-light.webp'
-import homePageDark from '@/assets/images/screenshots/home-page-dark.webp'
-import homePageLight from '@/assets/images/screenshots/home-page-light.webp'
+import agentDarkEn from '@/assets/images/screenshots/agent-dark-en.webp'
+import agentDarkZh from '@/assets/images/screenshots/agent-dark-zh.webp'
+import agentLightEn from '@/assets/images/screenshots/agent-light-en.webp'
+import agentLightZh from '@/assets/images/screenshots/agent-light-zh.webp'
+import chatDarkEn from '@/assets/images/screenshots/chat-dark-en.webp'
+import chatDarkZh from '@/assets/images/screenshots/chat-dark-zh.webp'
+import chatLightEn from '@/assets/images/screenshots/chat-light-en.webp'
+import chatLightZh from '@/assets/images/screenshots/chat-light-zh.webp'
+import drawingDarkEn from '@/assets/images/screenshots/drawing-dark-en.webp'
+import drawingDarkZh from '@/assets/images/screenshots/drawing-dark-zh.webp'
+import drawingLightEn from '@/assets/images/screenshots/drawing-light-en.webp'
+import drawingLightZh from '@/assets/images/screenshots/drawing-light-zh.webp'
+import knowledgeDarkEn from '@/assets/images/screenshots/knowledge-dark-en.webp'
+import knowledgeDarkZh from '@/assets/images/screenshots/knowledge-dark-zh.webp'
+import knowledgeLightEn from '@/assets/images/screenshots/knowledge-light-en.webp'
+import knowledgeLightZh from '@/assets/images/screenshots/knowledge-light-zh.webp'
+import providerDarkEn from '@/assets/images/screenshots/provider-dark-en.webp'
+import providerDarkZh from '@/assets/images/screenshots/provider-dark-zh.webp'
+import providerLightEn from '@/assets/images/screenshots/provider-light-en.webp'
+import providerLightZh from '@/assets/images/screenshots/provider-light-zh.webp'
 import { fetchNotice, type NoticeResponse } from '@/assets/js/notice'
 import { Button } from '@/components/ui/button'
 import { useTheme } from '@/hooks/useTheme'
@@ -25,6 +37,9 @@ interface FeatureTab {
   icon: React.ReactNode
   screenshotDark: string
   screenshotLight: string
+  // Optional Chinese-localized screenshots; fall back to the default (English) ones when absent
+  screenshotDarkZh?: string
+  screenshotLightZh?: string
 }
 
 const featureTabs: FeatureTab[] = [
@@ -33,32 +48,50 @@ const featureTabs: FeatureTab[] = [
     labelZh: 'AI 对话',
     labelEn: 'AI Chat',
     icon: <MessageSquare className="h-4 w-4" />,
-    screenshotDark: homePageDark,
-    screenshotLight: homePageLight
+    screenshotDark: chatDarkEn,
+    screenshotLight: chatLightEn,
+    screenshotDarkZh: chatDarkZh,
+    screenshotLightZh: chatLightZh
   },
   {
-    id: 'coding',
-    labelZh: 'AI 编程',
-    labelEn: 'AI Coding',
+    id: 'agent',
+    labelZh: '智能体',
+    labelEn: 'Agent',
     icon: <Bot className="h-4 w-4" />,
-    screenshotDark: aiCodingDark,
-    screenshotLight: aiCodingLight
+    screenshotDark: agentDarkEn,
+    screenshotLight: agentLightEn,
+    screenshotDarkZh: agentDarkZh,
+    screenshotLightZh: agentLightZh
   },
   {
-    id: 'paintings',
-    labelZh: 'AI 绘画',
-    labelEn: 'AI Art',
+    id: 'drawing',
+    labelZh: 'AI 生图',
+    labelEn: 'AI Images',
     icon: <BrushIcon className="h-4 w-4" />,
-    screenshotDark: aiPaintingsDark,
-    screenshotLight: aiPaintingsLight
+    screenshotDark: drawingDarkEn,
+    screenshotLight: drawingLightEn,
+    screenshotDarkZh: drawingDarkZh,
+    screenshotLightZh: drawingLightZh
+  },
+  {
+    id: 'knowledge',
+    labelZh: '知识库',
+    labelEn: 'Knowledge Base',
+    icon: <BookOpen className="h-4 w-4" />,
+    screenshotDark: knowledgeDarkEn,
+    screenshotLight: knowledgeLightEn,
+    screenshotDarkZh: knowledgeDarkZh,
+    screenshotLightZh: knowledgeLightZh
   },
   {
     id: 'providers',
-    labelZh: '多服务商',
+    labelZh: '多模型服务商',
     labelEn: 'Providers',
     icon: <ServerIcon className="h-4 w-4" />,
-    screenshotDark: aiProvidersDark,
-    screenshotLight: aiProvidersLight
+    screenshotDark: providerDarkEn,
+    screenshotLight: providerLightEn,
+    screenshotDarkZh: providerDarkZh,
+    screenshotLightZh: providerLightZh
   }
 ]
 
@@ -193,21 +226,21 @@ const HeroSection: FC = () => {
           <p className="text-muted-foreground mx-auto mb-6 max-w-2xl text-base leading-7 sm:mb-10 sm:whitespace-nowrap sm:text-lg">
             {isZh ? (
               <>
-                <span ref={ref1}>智能对话</span>
+                <span ref={ref1}>对话助手</span>
                 {' · '}
-                <span ref={ref2}>自主 Agent</span>
+                <span ref={ref2}>智能体</span>
                 {' · '}
                 <span ref={ref3}>无限创造</span>
                 ，统一接入主流大模型
               </>
             ) : (
               <>
-                <span ref={ref1}>Smart Chat</span>
-                {' · '}
-                <span ref={ref2}>Autonomous Agent</span>
-                {' · '}
-                <span ref={ref3}>Limitless Creation</span>
-                {' — Unified Access to Frontier LLMs'}
+                <span ref={ref1}>Chat assistant</span>
+                {', '}
+                <span ref={ref2}>agents</span>
+                {', and '}
+                <span ref={ref3}>creative tools</span>
+                {' — unified access to frontier LLMs'}
               </>
             )}
           </p>
@@ -298,7 +331,7 @@ const HeroSection: FC = () => {
                   }}
                   onClick={() => setActiveTab(tab.id)}
                   className={cn(
-                    'relative z-10 flex cursor-pointer items-center gap-2 rounded-full px-3 py-2 text-sm font-medium transition-colors duration-200 sm:px-4',
+                    'relative z-10 flex shrink-0 cursor-pointer items-center gap-2 whitespace-nowrap rounded-full px-3 py-2 text-sm font-medium transition-colors duration-200 sm:px-4',
                     activeTab === tab.id
                       ? 'text-black dark:text-white'
                       : 'text-black/70 hover:text-black dark:text-white/70 dark:hover:text-white'
@@ -311,22 +344,26 @@ const HeroSection: FC = () => {
           </div>
 
           {/* Screenshots */}
-          {featureTabs.map((tab) => (
-            <img
-              key={tab.id}
-              src={isDark ? tab.screenshotDark : tab.screenshotLight}
-              alt={isZh ? tab.labelZh : tab.labelEn}
-              className={cn(
-                'w-full transition-opacity duration-300',
-                activeTab === tab.id ? 'block opacity-100' : 'hidden opacity-0'
-              )}
-            />
-          ))}
+          {featureTabs.map((tab) => {
+            const lightSrc = isZh && tab.screenshotLightZh ? tab.screenshotLightZh : tab.screenshotLight
+            const darkSrc = isZh && tab.screenshotDarkZh ? tab.screenshotDarkZh : tab.screenshotDark
+            return (
+              <img
+                key={tab.id}
+                src={isDark ? darkSrc : lightSrc}
+                alt={isZh ? tab.labelZh : tab.labelEn}
+                className={cn(
+                  'w-full transition-opacity duration-300',
+                  activeTab === tab.id ? 'block opacity-100' : 'hidden opacity-0'
+                )}
+              />
+            )
+          })}
         </div>
       </div>
 
       {/* Bottom Gradient Fade */}
-      <div className="from-background absolute right-0 bottom-0 left-0 h-48 bg-gradient-to-t to-transparent" />
+      <div className="from-background absolute right-0 bottom-0 left-0 h-24 bg-gradient-to-t to-transparent" />
     </section>
   )
 }
