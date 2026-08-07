@@ -85,7 +85,8 @@ const Footer: FC = () => {
   const friendlyLinks = [
     { href: 'https://poe.com/', label: 'Poe' },
     { href: 'https://suanleme.cn', label: isZhCN ? '算了么' : 'suanleme.cn' },
-    { href: 'https://gongke.net/', label: isZhCN ? '攻壳智能体' : 'gongke.net' }
+    { href: 'https://gongke.net/', label: isZhCN ? '攻壳智能体' : 'gongke.net' },
+    { href: 'https://lizhi.shop/', label: isZhCN ? '数码荔枝正版软件' : 'DIGITALYCHEE Genuine Software' }
   ]
 
   return (
