@@ -1,8 +1,6 @@
 import { type FC, useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { cn } from '@/lib/utils'
-
 import gitcodeIcon from '@/assets/images/icons/gitcode.svg'
 import gitcodeColorIcon from '@/assets/images/icons/gitcode-color.svg'
 import githubIcon from '@/assets/images/icons/github.svg'
@@ -14,13 +12,24 @@ import tgColorIcon from '@/assets/images/icons/tg-color.svg'
 import xIcon from '@/assets/images/icons/x.svg'
 import xColorIcon from '@/assets/images/icons/x-color.svg'
 import iGQR from '@/assets/images/resource/instagram.png'
-import { fetchChannelData, getRandomWechatQRCode } from '@/assets/js/data'
-import { Button } from '@/components/ui/button'
+import { type ChannelResponse, fetchChannelData, getRandomWechatQRCode } from '@/assets/js/data'
+import { cn } from '@/lib/utils'
+
+interface SocialLink {
+  href: string
+  alt: string
+  icon?: string
+  colorIcon?: string
+  colorDarkInvert?: boolean
+  brandIconClass?: string
+}
+
+const DISCORD_INVITE_URL = 'https://discord.gg/wez8HtpxqQ'
 
 const CommunitySection: FC = () => {
   const { t, i18n } = useTranslation()
   const isEn = i18n.language.startsWith('en')
-  const [channelData, setChannelData] = useState<any>(null)
+  const [channelData, setChannelData] = useState<ChannelResponse | null>(null)
   const [wechatQRCode, setWechatQRCode] = useState<string>('')
   const [showQRModal, setShowQRModal] = useState(false)
   const [qrModalClosing, setQrModalClosing] = useState(false)
@@ -70,9 +79,26 @@ const CommunitySection: FC = () => {
     }
   }, [])
 
-  const socialLinks = [
+  const communityLink: SocialLink | null = isEn
+    ? {
+        href: DISCORD_INVITE_URL,
+        alt: 'Discord',
+        brandIconClass:
+          'fa-brands fa-discord text-foreground h-5 w-5 text-center text-xl leading-5 transition-colors group-hover:text-[#5865f2]'
+      }
+    : channelData?.data?.qq_group_link
+      ? {
+          href: channelData.data.qq_group_link,
+          alt: 'QQ 群',
+          brandIconClass:
+            'fa-brands fa-qq text-foreground h-5 w-5 text-center text-xl leading-5 transition-colors group-hover:text-[#12b7f5]'
+        }
+      : null
+
+  const socialLinks: SocialLink[] = [
     { href: 'https://x.com/CherryStudioHQ', icon: xIcon, colorIcon: xColorIcon, alt: 'X', colorDarkInvert: true },
     { href: 'https://t.me/CherryStudioAI', icon: tgIcon, colorIcon: tgColorIcon, alt: 'Telegram' },
+    ...(communityLink ? [communityLink] : []),
     {
       href: 'https://github.com/CherryHQ/cherry-studio',
       icon: githubIcon,
@@ -119,25 +145,34 @@ const CommunitySection: FC = () => {
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={link.alt}
               className="group border-border bg-card/50 hover:border-primary/30 hover:bg-card relative flex h-12 w-12 items-center justify-center rounded-xl border backdrop-blur-sm transition-all duration-200"
               title={link.alt}>
-              <img
-                src={link.icon}
-                alt={link.alt}
-                className="h-5 w-5 transition-opacity duration-200 group-hover:opacity-0 dark:invert"
-              />
-              <img
-                src={link.colorIcon}
-                alt={link.alt}
-                className={`absolute h-5 w-5 opacity-0 transition-opacity duration-200 group-hover:opacity-100 ${link.colorDarkInvert ? 'dark:invert' : ''}`}
-              />
+              {link.brandIconClass ? (
+                <i aria-hidden="true" className={link.brandIconClass} />
+              ) : (
+                <>
+                  <img
+                    src={link.icon}
+                    alt=""
+                    aria-hidden="true"
+                    className="h-5 w-5 transition-opacity duration-200 group-hover:opacity-0 dark:invert"
+                  />
+                  <img
+                    src={link.colorIcon}
+                    alt=""
+                    aria-hidden="true"
+                    className={`absolute h-5 w-5 opacity-0 transition-opacity duration-200 group-hover:opacity-100 ${link.colorDarkInvert ? 'dark:invert' : ''}`}
+                  />
+                </>
+              )}
             </a>
           ))}
         </div>
 
         {/* WeChat QR Code */}
         {qrCodeSrc && (
-          <div className="mb-10 text-center">
+          <div className="text-center">
             <button
               type="button"
               onClick={openQRModal}
@@ -176,24 +211,6 @@ const CommunitySection: FC = () => {
             </div>
           </div>
         )}
-
-        {/* Action Buttons */}
-        <div className="flex flex-wrap items-center justify-center gap-4">
-          {channelData?.data?.qq_group_link && (
-            <Button variant="outline" size="lg" asChild>
-              <a href={channelData.data.qq_group_link} target="_blank" rel="noopener noreferrer">
-                {t('community.qq_group')}
-              </a>
-            </Button>
-          )}
-          {channelData?.data?.zsxq && (
-            <Button variant="outline" size="lg" asChild>
-              <a href={channelData.data.zsxq} target="_blank" rel="noopener noreferrer">
-                {t('community.zsxq')}
-              </a>
-            </Button>
-          )}
-        </div>
       </div>
     </section>
   )

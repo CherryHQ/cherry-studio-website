@@ -35,7 +35,7 @@ const flagshipModels: FlagshipModel[] = [
   {
     nameKey: 'flagship_models.gpt.name',
     descriptionKey: 'flagship_models.gpt.description',
-    href: 'https://openai.com/index/introducing-gpt-5-5/',
+    href: 'https://openai.com/index/gpt-5-6/',
     features: ['flagship_models.gpt.feature1', 'flagship_models.gpt.feature2', 'flagship_models.gpt.feature3'],
     icon: Sparkles,
     iconColor: 'text-purple-500',
@@ -55,8 +55,8 @@ const FlagshipModelsSection: FC = () => {
       <section className="bg-background relative overflow-hidden py-8 sm:py-16">
         <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
-          <div className="mx-auto mb-8 max-w-3xl text-center sm:mb-16">
-            <h2 className="text-foreground mb-3 text-2xl font-bold sm:mb-4 sm:text-4xl lg:text-5xl">
+          <div className="mx-auto mb-8 max-w-5xl text-center sm:mb-16">
+            <h2 className="text-foreground mb-3 text-2xl font-bold sm:mb-4 sm:text-4xl lg:whitespace-nowrap lg:text-5xl">
               {t('flagship_models.title')}
             </h2>
             <p className="text-muted-foreground text-sm sm:text-base">{t('flagship_models.subtitle')}</p>
