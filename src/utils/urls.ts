@@ -71,6 +71,7 @@ export function redirectToLanguageDomain(language: string, options?: { replace?:
  * 获取企业版网址
  */
 export function getEnterpriseUrl(language: string): string {
-  language
-  return 'https://enterprise.cherryai.com.cn'
+  return language.toLowerCase().startsWith('zh')
+    ? 'https://enterprise.cherryai.com.cn'
+    : 'https://enterprise.cherryai.com'
 }
