@@ -3,25 +3,23 @@ import { useTranslation } from 'react-i18next'
 
 // Import logos
 import ai302Logo from '@/assets/images/provider_logo/302ai.svg'
-import anthropicLogo from '@/assets/images/provider_logo/anthropic.svg'
-import azureLogo from '@/assets/images/provider_logo/azure-color.svg'
+import ai360Logo from '@/assets/images/provider_logo/ai360-color.svg'
 import baichuanLogo from '@/assets/images/provider_logo/baichuan-color.svg'
+import baiducloudLogo from '@/assets/images/provider_logo/baiducloud-color.svg'
 import bytedanceLogo from '@/assets/images/provider_logo/bytedance-color.svg'
 import deepseekLogo from '@/assets/images/provider_logo/deepseek-color.svg'
-import googleLogo from '@/assets/images/provider_logo/google-color.svg'
-import groqLogo from '@/assets/images/provider_logo/groq.svg'
-import huggingfaceLogo from '@/assets/images/provider_logo/huggingface-color.svg'
-import metaLogo from '@/assets/images/provider_logo/meta-color.svg'
+import giteeAiLogo from '@/assets/images/provider_logo/gitee-ai.svg'
+import higressLogo from '@/assets/images/provider_logo/higress-color.svg'
+import hunyuanLogo from '@/assets/images/provider_logo/hunyuan-color.svg'
 import minimaxLogo from '@/assets/images/provider_logo/minimax-color.svg'
-import mistralLogo from '@/assets/images/provider_logo/mistral-color.svg'
+import modelscopeLogo from '@/assets/images/provider_logo/modelscope.webp'
 import moonshotLogo from '@/assets/images/provider_logo/moonshot.svg'
 import ollamaLogo from '@/assets/images/provider_logo/ollama.svg'
-import openaiLogo from '@/assets/images/provider_logo/openai.svg'
-import openrouterLogo from '@/assets/images/provider_logo/openrouter.svg'
 import qwenLogo from '@/assets/images/provider_logo/qwen-color.svg'
 import siliconcloudLogo from '@/assets/images/provider_logo/siliconcloud-color.svg'
+import sparkLogo from '@/assets/images/provider_logo/spark-color.svg'
 import stepfunLogo from '@/assets/images/provider_logo/stepfun-color.svg'
-import xaiLogo from '@/assets/images/provider_logo/xai.svg'
+import zerooneLogo from '@/assets/images/provider_logo/zeroone.svg'
 import zhipuLogo from '@/assets/images/provider_logo/zhipu-color.svg'
 
 interface LogoInfo {
@@ -32,31 +30,29 @@ interface LogoInfo {
 
 // 内环 logos (6个) - 最知名的顶级服务商
 const innerLogos: LogoInfo[] = [
-  { src: openaiLogo, name: 'OpenAI', darkInvert: true },
-  { src: anthropicLogo, name: 'Anthropic', darkInvert: true },
-  { src: googleLogo, name: 'Google' },
-  { src: xaiLogo, name: 'xAI', darkInvert: true },
-  { src: metaLogo, name: 'Meta' },
-  { src: deepseekLogo, name: 'DeepSeek' }
+  { src: deepseekLogo, name: 'DeepSeek' },
+  { src: moonshotLogo, name: 'Kimi', darkInvert: true },
+  { src: zhipuLogo, name: 'Zhipu GLM' },
+  { src: minimaxLogo, name: 'MiniMax' },
+  { src: qwenLogo, name: 'Qwen' },
+  { src: bytedanceLogo, name: 'Doubao' }
 ]
 
 // 外环 logos - 其他知名服务商
 const outerLogos: LogoInfo[] = [
-  { src: mistralLogo, name: 'Mistral' },
-  { src: azureLogo, name: 'Azure' },
-  { src: qwenLogo, name: 'Qwen' },
-  { src: ollamaLogo, name: 'Ollama', darkInvert: true },
-  { src: groqLogo, name: 'Groq', darkInvert: true },
-  { src: huggingfaceLogo, name: 'Hugging Face' },
-  { src: openrouterLogo, name: 'OpenRouter', darkInvert: true },
-  { src: zhipuLogo, name: 'Zhipu AI' },
-  { src: ai302Logo, name: '302.AI' },
-  { src: bytedanceLogo, name: 'ByteDance' },
-  { src: moonshotLogo, name: 'Moonshot', darkInvert: true },
   { src: baichuanLogo, name: 'Baichuan' },
-  { src: minimaxLogo, name: 'MiniMax' },
+  { src: hunyuanLogo, name: 'Tencent Hunyuan' },
+  { src: sparkLogo, name: 'iFlytek Spark' },
+  { src: stepfunLogo, name: 'StepFun' },
   { src: siliconcloudLogo, name: 'SiliconCloud' },
-  { src: stepfunLogo, name: 'StepFun' }
+  { src: baiducloudLogo, name: 'Baidu AI Cloud' },
+  { src: giteeAiLogo, name: 'Gitee AI', darkInvert: true },
+  { src: modelscopeLogo, name: 'ModelScope' },
+  { src: ai360Logo, name: '360 AI' },
+  { src: zerooneLogo, name: '01.AI', darkInvert: true },
+  { src: ai302Logo, name: '302.AI' },
+  { src: higressLogo, name: 'Higress' },
+  { src: ollamaLogo, name: 'Ollama', darkInvert: true }
 ]
 
 const ProvidersSection: FC = () => {

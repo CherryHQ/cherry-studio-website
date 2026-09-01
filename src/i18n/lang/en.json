@@ -270,7 +270,7 @@
     "subtitle": "Your all-in-one AI assistant platform, making AI accessible to everyone",
     "multi_model": {
       "title": "Multi-Model Freedom",
-      "description": "Support <highlight>50+ AI providers</highlight> including OpenAI, Claude, Gemini cloud models, plus local models via Ollama and LM Studio. <highlight>One client for all your AI needs</highlight>."
+      "description": "Support <highlight>50+ AI providers</highlight> including DeepSeek, Kimi, Zhipu GLM, and MiniMax cloud models, plus local models via Ollama and LM Studio. <highlight>One client for all your AI needs</highlight>."
     },
     "assistants": {
       "title": "300+ Smart Assistants",
@@ -310,7 +310,7 @@
     "items": [
       {
         "question": "What is Cherry Studio?",
-        "answer": "Cherry Studio is a cross-platform desktop client for AI chatbots, supporting Windows, macOS, and Linux. It integrates 300+ AI models from major providers like OpenAI, Claude, Gemini, and supports local models via Ollama and LM Studio. Beyond AI Assistants, Cherry Studio features powerful Agent capabilities - autonomous AI that can think, plan, and act. Give Agent a goal, and it will reason through problems, break them into steps, call the right tools, and execute independently while you stay in control."
+        "answer": "Cherry Studio is a cross-platform desktop client for AI chatbots, supporting Windows, macOS, and Linux. It integrates 300+ AI models from major providers like DeepSeek, Kimi, Zhipu GLM, and MiniMax, and supports local models via Ollama and LM Studio. Beyond AI Assistants, Cherry Studio features powerful Agent capabilities - autonomous AI that can think, plan, and act. Give Agent a goal, and it will reason through problems, break them into steps, call the right tools, and execute independently while you stay in control."
       },
       {
         "question": "Is Cherry Studio free?",
@@ -322,7 +322,7 @@
       },
       {
         "question": "Which AI models does Cherry Studio support?",
-        "answer": "Cherry Studio supports 50+ AI providers including OpenAI (GPT-4, GPT-4o), Anthropic (Claude 3.5), Google (Gemini), DeepSeek, Kimi, Qwen, and many more. It also supports local models through Ollama and LM Studio, allowing you to run AI completely offline."
+        "answer": "Cherry Studio supports 50+ AI providers including DeepSeek, Kimi, Zhipu GLM, MiniMax, Qwen, and many more. It also supports local models through Ollama and LM Studio, allowing you to run AI completely offline."
       },
       {
         "question": "What is the Knowledge Base feature?",
@@ -348,10 +348,10 @@
   },
   "flagship_models": {
     "title": "Day-One Flagship Support",
-    "subtitle": "Latest flagship models through partners like CherryIN, OpenRouter, and SiliconFlow",
+    "subtitle": "Latest flagship models through partners like CherryIN and SiliconFlow",
     "deepseek": {
       "name": "DeepSeek V4 Pro",
-      "description": "DeepSeek's latest flagship release brings major Agent and production-workload gains, with a 1M-token context window, up to 384K output, flexible reasoning effort, and native OpenAI Responses API support.",
+      "description": "DeepSeek's latest flagship release brings major Agent and production-workload gains, with a 1M-token context window, up to 384K output, flexible reasoning effort, and native Responses API support.",
       "feature1": "1M Context",
       "feature2": "384K Max Output",
       "feature3": "Agent + Reasoning"

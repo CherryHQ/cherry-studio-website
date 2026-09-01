@@ -268,7 +268,7 @@
     "subtitle": "一站式 AI 助手平台，让 AI 触手可及",
     "multi_model": {
       "title": "多模型自由切换",
-      "description": "支持 <highlight>50+ AI 服务商</highlight>，包括 OpenAI、Claude、Gemini 等云端模型，以及 Ollama、LM Studio 等本地模型，<highlight>一个客户端满足所有需求</highlight>。"
+      "description": "支持 <highlight>50+ AI 服务商</highlight>，包括 DeepSeek、Kimi、智谱 GLM、MiniMax 等云端模型，以及 Ollama、LM Studio 等本地模型，<highlight>一个客户端满足所有需求</highlight>。"
     },
     "assistants": {
       "title": "300+ 智能助手",
@@ -308,7 +308,7 @@
     "items": [
       {
         "question": "Cherry Studio 是什么？",
-        "answer": "Cherry Studio 是一款跨平台的 AI 对话客户端，支持 Windows、macOS 和 Linux。它集成了 300+ 主流 AI 模型，包括 OpenAI、Claude、Gemini 等云端模型，也支持通过 Ollama 和 LM Studio 使用本地模型。除了 AI 助手之外，Cherry Studio 还具备强大的 Agent 智能体能力——自主思考、规划和行动的 AI。给 Agent 一个目标，它会自动推理问题、拆解步骤、调用工具并独立执行，同时您始终保持控制权。"
+        "answer": "Cherry Studio 是一款跨平台的 AI 对话客户端，支持 Windows、macOS 和 Linux。它集成了 300+ 主流 AI 模型，包括 DeepSeek、Kimi、智谱 GLM、MiniMax 等云端模型，也支持通过 Ollama 和 LM Studio 使用本地模型。除了 AI 助手之外，Cherry Studio 还具备强大的 Agent 智能体能力——自主思考、规划和行动的 AI。给 Agent 一个目标，它会自动推理问题、拆解步骤、调用工具并独立执行，同时您始终保持控制权。"
       },
       {
         "question": "Cherry Studio 是免费的吗？",
@@ -320,7 +320,7 @@
       },
       {
         "question": "Cherry Studio 支持哪些 AI 模型？",
-        "answer": "Cherry Studio 支持 50+ AI 服务商，包括 OpenAI (GPT-4, GPT-4o)、Anthropic (Claude 3.5)、Google (Gemini)、DeepSeek、Kimi、通义千问等众多模型。同时支持通过 Ollama 和 LM Studio 使用本地模型，实现完全离线运行。"
+        "answer": "Cherry Studio 支持 50+ AI 服务商，包括 DeepSeek、Kimi、智谱 GLM、MiniMax、通义千问等众多模型。同时支持通过 Ollama 和 LM Studio 使用本地模型，实现完全离线运行。"
       },
       {
         "question": "知识库功能是什么？",
@@ -346,10 +346,10 @@
   },
   "flagship_models": {
     "title": "旗舰模型，首发适配",
-    "subtitle": "通过 CherryIN、OpenRouter、硅基流动 等合作伙伴，使用最新旗舰模型",
+    "subtitle": "通过 CherryIN、硅基流动等合作伙伴，使用最新旗舰模型",
     "deepseek": {
       "name": "DeepSeek V4 Pro",
-      "description": "DeepSeek 最新旗舰正式版，Agent 能力与生产环境表现显著增强；支持 1M 上下文、最高 384K 输出和三档思考强度，并原生支持 OpenAI Responses API。",
+      "description": "DeepSeek 最新旗舰正式版，Agent 能力与生产环境表现显著增强；支持 1M 上下文、最高 384K 输出和三档思考强度，并原生支持 Responses API。",
       "feature1": "1M 上下文",
       "feature2": "384K 最大输出",
       "feature3": "Agent + 推理"
