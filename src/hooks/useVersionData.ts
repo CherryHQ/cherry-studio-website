@@ -65,11 +65,22 @@ interface VersionDataStore {
 const releasesURL = import.meta.env.VITE_RELEASES_URL?.trim() || 'https://releases.cherryai.com.cn'
 const versionDataCachePrefix = 'cherry-version-data:v2'
 
-function getReleaseRegion(): 'cn' | 'global' {
-  const domainLanguage = getDomainDefaultLanguage()
-  if (domainLanguage) return domainLanguage === 'zh-CN' ? 'cn' : 'global'
+type ReleaseEdition = 'cn' | 'global'
 
-  return import.meta.env.VITE_SITE_LOCALE?.toLowerCase().startsWith('en') ? 'global' : 'cn'
+function isChineseSite(): boolean {
+  const domainLanguage = getDomainDefaultLanguage()
+  if (domainLanguage) return domainLanguage === 'zh-CN'
+
+  return !import.meta.env.VITE_SITE_LOCALE?.toLowerCase().startsWith('en')
+}
+
+function getReleaseRegion(): 'cn' | 'global' {
+  return isChineseSite() ? 'cn' : 'global'
+}
+
+function getReleaseEdition(releaseLine: ReleaseLine): ReleaseEdition {
+  if (releaseLine === 'v1') return 'global'
+  return isChineseSite() ? 'cn' : 'global'
 }
 
 function getMajorVersion(version: string): number | null {
@@ -77,28 +88,16 @@ function getMajorVersion(version: string): number | null {
   return match ? Number(match[1]) : null
 }
 
-async function fetchWebsiteRelease(): Promise<ReleasePayload> {
+async function fetchRelease(releaseLine: ReleaseLine): Promise<ReleasePayload> {
   const requestURL = new URL(releasesURL, window.location.origin)
-
-  const response = await fetch(requestURL, {
-    headers: {
-      'X-Release-Channel': 'website',
-      'X-Region': getReleaseRegion()
-    }
-  })
-  if (!response.ok) {
-    throw new Error(`Release service returned ${response.status}`)
+  if (releaseLine === 'v1') {
+    requestURL.searchParams.set('major', '1')
   }
-  return (await response.json()) as ReleasePayload
-}
-
-async function fetchRetainedV1Release(): Promise<ReleasePayload> {
-  const requestURL = new URL(releasesURL, window.location.origin)
-  requestURL.searchParams.set('major', '1')
 
   const response = await fetch(requestURL, {
     headers: {
       'X-Release-Channel': 'website',
+      'X-Edition': getReleaseEdition(releaseLine),
       'X-Region': getReleaseRegion()
     }
   })
@@ -129,7 +128,7 @@ function isVersionData(value: unknown): value is VersionData {
 }
 
 function getVersionDataCacheKey(releaseLine: ReleaseLine): string {
-  return `${versionDataCachePrefix}:${getReleaseRegion()}:${releaseLine}`
+  return `${versionDataCachePrefix}:${getReleaseRegion()}:${getReleaseEdition(releaseLine)}:${releaseLine}`
 }
 
 function readCachedVersionData(releaseLine: ReleaseLine): { versionData: VersionData; updatedAt: number } | null {
@@ -219,7 +218,7 @@ async function loadVersionData(releaseLine: ReleaseLine, store: VersionDataStore
 
   store.request = (async () => {
     try {
-      const data = releaseLine === 'v1' ? await fetchRetainedV1Release() : await fetchWebsiteRelease()
+      const data = await fetchRelease(releaseLine)
       if (!data.tag_name || !Array.isArray(data.assets)) {
         throw new Error('Release service returned invalid data')
       }
