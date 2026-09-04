@@ -15,9 +15,7 @@ interface DownloadItemConfig {
   isRecommended?: boolean
 }
 
-interface DownloadItemDefinition extends Omit<DownloadItemConfig, 'name' | 'url'> {
-  assetNames: string[]
-}
+type DownloadItemDefinition = Omit<DownloadItemConfig, 'url'>
 
 interface PlatformDownloadsProps {
   platform: Platform
@@ -33,79 +31,74 @@ const getDownloadItems = (
   versionData: VersionData,
   t: (key: string) => string
 ): DownloadItemConfig[] => {
-  const cleanVersion = versionData.cleanVersion
-  const packageNames = (currentSuffix: string, legacySuffix: string) => [
-    `Cherry-Studio-CN-${cleanVersion}-${currentSuffix}`,
-    `Cherry-Studio-${cleanVersion}-${currentSuffix}`,
-    `Cherry-Studio-${cleanVersion}-${legacySuffix}`
-  ]
+  const cleanVersion = versionData.version.replace(/^v/, '')
 
   const configs: Record<Platform, DownloadItemDefinition[]> = {
     windows: [
       {
-        assetNames: packageNames('win-x64-setup.exe', 'x64-setup.exe'),
+        name: `Cherry-Studio-${cleanVersion}-x64-setup.exe`,
         desc: t('download_page.windows_standard'),
         hint: t('download_page.best_for_most'),
         isRecommended: true
       },
       {
-        assetNames: packageNames('win-x64-portable.exe', 'x64-portable.exe'),
+        name: `Cherry-Studio-${cleanVersion}-x64-portable.exe`,
         desc: t('download_page.windows_portable'),
         hint: t('download_page.no_install_needed')
       },
       {
-        assetNames: packageNames('win-arm64-setup.exe', 'arm64-setup.exe'),
+        name: `Cherry-Studio-${cleanVersion}-arm64-setup.exe`,
         desc: t('download_page.windows_standard_arm'),
         hint: t('download_page.for_arm_devices')
       },
       {
-        assetNames: packageNames('win-arm64-portable.exe', 'arm64-portable.exe'),
+        name: `Cherry-Studio-${cleanVersion}-arm64-portable.exe`,
         desc: t('download_page.windows_portable_arm'),
         hint: t('download_page.for_arm_devices')
       }
     ],
     macos: [
       {
-        assetNames: packageNames('mac-arm64.dmg', 'arm64.dmg'),
+        name: `Cherry-Studio-${cleanVersion}-arm64.dmg`,
         desc: t('download_page.macos_apple'),
         hint: t('download_page.apple_silicon'),
         isRecommended: true
       },
       {
-        assetNames: packageNames('mac-x64.dmg', 'x64.dmg'),
+        name: `Cherry-Studio-${cleanVersion}-x64.dmg`,
         desc: t('download_page.macos_intel'),
         hint: t('download_page.intel_mac')
       }
     ],
     linux: [
       {
-        assetNames: packageNames('linux-x64.AppImage', 'x86_64.AppImage'),
+        name: `Cherry-Studio-${cleanVersion}-x86_64.AppImage`,
         desc: t('download_page.linux_appimage'),
         hint: t('download_page.universal_linux'),
         isRecommended: true
       },
       {
-        assetNames: packageNames('linux-arm64.AppImage', 'arm64.AppImage'),
+        name: `Cherry-Studio-${cleanVersion}-arm64.AppImage`,
         desc: t('download_page.linux_appimage_arm'),
         hint: t('download_page.for_arm_devices')
       },
       {
-        assetNames: packageNames('linux-x64.deb', 'amd64.deb'),
+        name: `Cherry-Studio-${cleanVersion}-amd64.deb`,
         desc: t('download_page.linux_deb'),
         hint: t('download_page.for_debian_ubuntu')
       },
       {
-        assetNames: packageNames('linux-arm64.deb', 'arm64.deb'),
+        name: `Cherry-Studio-${cleanVersion}-arm64.deb`,
         desc: t('download_page.linux_deb_arm'),
         hint: t('download_page.for_arm_devices')
       },
       {
-        assetNames: packageNames('linux-x64.rpm', 'x86_64.rpm'),
+        name: `Cherry-Studio-${cleanVersion}-x86_64.rpm`,
         desc: t('download_page.linux_rpm'),
         hint: t('download_page.for_fedora_rhel')
       },
       {
-        assetNames: packageNames('linux-arm64.rpm', 'aarch64.rpm'),
+        name: `Cherry-Studio-${cleanVersion}-aarch64.rpm`,
         desc: t('download_page.linux_rpm_arm'),
         hint: t('download_page.for_arm_devices')
       }
@@ -118,9 +111,8 @@ const getDownloadItems = (
       .map((asset) => [asset.name, asset.browser_download_url])
   )
   return configs[platform].flatMap((item) => {
-    const name = item.assetNames.find((assetName) => assetURLs.has(assetName))
-    const url = name ? assetURLs.get(name) : undefined
-    return name && url ? [{ name, url, desc: item.desc, hint: item.hint, isRecommended: item.isRecommended }] : []
+    const url = assetURLs.get(item.name)
+    return url ? [{ ...item, url }] : []
   })
 }
 
