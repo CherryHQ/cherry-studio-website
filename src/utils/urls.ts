@@ -38,6 +38,13 @@ export function getDomainDefaultLanguage(): 'en-US' | 'zh-CN' | null {
   return DOMAIN_LANGUAGE_MAP[getCurrentHostname()] ?? null
 }
 
+export function getSiteRegion(): 'cn' | 'global' {
+  const domainLanguage = getDomainDefaultLanguage()
+  if (domainLanguage) return domainLanguage === 'zh-CN' ? 'cn' : 'global'
+
+  return import.meta.env.VITE_SITE_LOCALE?.toLowerCase().startsWith('en') ? 'global' : 'cn'
+}
+
 export function isLanguageRedirectDomain(): boolean {
   return LANGUAGE_REDIRECT_DOMAINS.includes(getCurrentHostname())
 }

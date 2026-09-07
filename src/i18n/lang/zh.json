@@ -223,6 +223,7 @@
     "download_apple": "下载 (Apple 芯片)",
     "download_intel": "下载 (Intel 芯片)",
     "download_now": "下载 {{package}}",
+    "release_history": "历史版本下载",
     "cloud_drive_download": "夸克网盘下载",
     "windows_package": "Windows 系统安装包",
     "windows_standard": "Windows 标准版",

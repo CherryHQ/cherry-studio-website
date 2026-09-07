@@ -225,6 +225,7 @@
     "download_apple": "Download (Apple Silicon)",
     "download_intel": "Download (Intel)",
     "download_now": "Download {{package}}",
+    "release_history": "Download Previous Releases",
     "cloud_drive_download": "Download from Quark Cloud Drive",
     "windows_package": "Windows Installer Packages",
     "windows_standard": "Windows Standard",

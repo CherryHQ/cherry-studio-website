@@ -6,6 +6,7 @@ import Footer from '@/components/website/Footer'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { useVersionData } from '@/hooks/useVersionData'
 import { type DetectedArch, detectPlatform, detectSystem, isMobileDevice } from '@/utils/systemDetection'
+import { getSiteRegion } from '@/utils/urls'
 import Changelog from './components/Changelog'
 import { PlatformDownloadOptions, PlatformDownloadPrimary } from './components/PlatformDownloads'
 import type { Platform } from './components/PlatformTabs'
@@ -17,6 +18,10 @@ interface DownloadPageProps {
 }
 
 const CLOUD_DRIVE_DOWNLOAD_URL = 'https://pan.quark.cn/s/4044324d0ecd'
+const RELEASE_HISTORY_URLS = {
+  cn: 'https://gitcode.com/CherryHQ/cherry-studio/releases',
+  global: 'https://github.com/CherryHQ/cherry-studio/releases'
+} as const
 
 const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
   const { t } = useTranslation()
@@ -37,6 +42,7 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
   const isMobile = isMobileDevice()
   const autoDownloadRequested =
     new URLSearchParams(window.location.search).get('autodownload')?.toLowerCase() === 'true'
+  const releaseHistoryUrl = RELEASE_HISTORY_URLS[getSiteRegion()]
 
   useEffect(() => {
     let cancelled = false
@@ -152,14 +158,24 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
             />
           </div>
 
-          <a
-            href={CLOUD_DRIVE_DOWNLOAD_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-foreground mt-6 inline-flex items-center gap-1.5 text-sm underline-offset-4 transition-colors hover:underline">
-            {t('download_page.cloud_drive_download')}
-            <ExternalLink className="h-3.5 w-3.5" />
-          </a>
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+            <a
+              href={releaseHistoryUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1.5 text-sm underline-offset-4 transition-colors hover:underline">
+              {t('download_page.release_history')}
+              <ExternalLink className="h-3.5 w-3.5" />
+            </a>
+            <a
+              href={CLOUD_DRIVE_DOWNLOAD_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1.5 text-sm underline-offset-4 transition-colors hover:underline">
+              {t('download_page.cloud_drive_download')}
+              <ExternalLink className="h-3.5 w-3.5" />
+            </a>
+          </div>
         </div>
       </section>
       <Footer />
