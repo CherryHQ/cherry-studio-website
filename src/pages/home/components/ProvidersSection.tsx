@@ -3,25 +3,34 @@ import { useTranslation } from 'react-i18next'
 
 // Import logos
 import ai302Logo from '@/assets/images/provider_logo/302ai.svg'
+import ai360Logo from '@/assets/images/provider_logo/ai360-color.svg'
+import aimassLogo from '@/assets/images/provider_logo/aimass-color.svg'
 import anthropicLogo from '@/assets/images/provider_logo/anthropic.svg'
 import azureLogo from '@/assets/images/provider_logo/azure-color.svg'
 import baichuanLogo from '@/assets/images/provider_logo/baichuan-color.svg'
+import baiduCloudLogo from '@/assets/images/provider_logo/baiducloud-color.svg'
 import bytedanceLogo from '@/assets/images/provider_logo/bytedance-color.svg'
 import deepseekLogo from '@/assets/images/provider_logo/deepseek-color.svg'
+import giteeAiLogo from '@/assets/images/provider_logo/gitee-ai.svg'
 import googleLogo from '@/assets/images/provider_logo/google-color.svg'
 import groqLogo from '@/assets/images/provider_logo/groq.svg'
+import higressLogo from '@/assets/images/provider_logo/higress-color.svg'
 import huggingfaceLogo from '@/assets/images/provider_logo/huggingface-color.svg'
+import hunyuanLogo from '@/assets/images/provider_logo/hunyuan-color.svg'
 import metaLogo from '@/assets/images/provider_logo/meta-color.svg'
 import minimaxLogo from '@/assets/images/provider_logo/minimax-color.svg'
 import mistralLogo from '@/assets/images/provider_logo/mistral-color.svg'
+import modelscopeLogo from '@/assets/images/provider_logo/modelscope.webp'
 import moonshotLogo from '@/assets/images/provider_logo/moonshot.svg'
 import ollamaLogo from '@/assets/images/provider_logo/ollama.svg'
 import openaiLogo from '@/assets/images/provider_logo/openai.svg'
 import openrouterLogo from '@/assets/images/provider_logo/openrouter.svg'
 import qwenLogo from '@/assets/images/provider_logo/qwen-color.svg'
 import siliconcloudLogo from '@/assets/images/provider_logo/siliconcloud-color.svg'
+import sparkLogo from '@/assets/images/provider_logo/spark-color.svg'
 import stepfunLogo from '@/assets/images/provider_logo/stepfun-color.svg'
 import xaiLogo from '@/assets/images/provider_logo/xai.svg'
+import zeroOneLogo from '@/assets/images/provider_logo/zeroone.svg'
 import zhipuLogo from '@/assets/images/provider_logo/zhipu-color.svg'
 
 interface LogoInfo {
@@ -30,8 +39,8 @@ interface LogoInfo {
   darkInvert?: boolean
 }
 
-// 内环 logos (6个) - 最知名的顶级服务商
-const innerLogos: LogoInfo[] = [
+// 海外站内环 logos (6个) - 最知名的顶级服务商
+const globalInnerLogos: LogoInfo[] = [
   { src: openaiLogo, name: 'OpenAI', darkInvert: true },
   { src: anthropicLogo, name: 'Anthropic', darkInvert: true },
   { src: googleLogo, name: 'Google' },
@@ -40,8 +49,8 @@ const innerLogos: LogoInfo[] = [
   { src: deepseekLogo, name: 'DeepSeek' }
 ]
 
-// 外环 logos - 其他知名服务商
-const outerLogos: LogoInfo[] = [
+// 海外站外环 logos - 其他知名服务商
+const globalOuterLogos: LogoInfo[] = [
   { src: mistralLogo, name: 'Mistral' },
   { src: azureLogo, name: 'Azure' },
   { src: qwenLogo, name: 'Qwen' },
@@ -59,10 +68,40 @@ const outerLogos: LogoInfo[] = [
   { src: stepfunLogo, name: 'StepFun' }
 ]
 
+// 中文站突出展示国产模型及服务商，海外站保持原有全球服务商阵容。
+const cnInnerLogos: LogoInfo[] = [
+  { src: deepseekLogo, name: 'DeepSeek' },
+  { src: qwenLogo, name: '通义千问' },
+  { src: zhipuLogo, name: '智谱 AI' },
+  { src: moonshotLogo, name: 'Kimi', darkInvert: true },
+  { src: minimaxLogo, name: 'MiniMax' },
+  { src: bytedanceLogo, name: '豆包' }
+]
+
+const cnOuterLogos: LogoInfo[] = [
+  { src: siliconcloudLogo, name: '硅基流动' },
+  { src: baichuanLogo, name: '百川智能' },
+  { src: stepfunLogo, name: '阶跃星辰' },
+  { src: hunyuanLogo, name: '腾讯混元' },
+  { src: baiduCloudLogo, name: '百度智能云' },
+  { src: sparkLogo, name: '讯飞星火' },
+  { src: modelscopeLogo, name: 'ModelScope 魔搭' },
+  { src: giteeAiLogo, name: 'Gitee AI' },
+  { src: ai360Logo, name: '360 智脑' },
+  { src: zeroOneLogo, name: '零一万物', darkInvert: true },
+  { src: ai302Logo, name: '302.AI' },
+  { src: aimassLogo, name: 'AiMass' },
+  { src: higressLogo, name: 'Higress' }
+]
+
 const ProvidersSection: FC = () => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const [outerAngle, setOuterAngle] = useState(0)
   const [innerAngle, setInnerAngle] = useState(0)
+
+  const isZh = i18n.language === 'zh-CN'
+  const innerLogos = isZh ? cnInnerLogos : globalInnerLogos
+  const outerLogos = isZh ? cnOuterLogos : globalOuterLogos
 
   useEffect(() => {
     let animationId: number
