@@ -34,6 +34,7 @@ export interface DownloadUrls {
 }
 
 export type ReleaseLine = 'stable' | 'v1'
+type ReleaseEdition = 'cn' | 'global'
 
 interface UseVersionDataOptions {
   releaseLine?: ReleaseLine
@@ -70,28 +71,21 @@ function getMajorVersion(version: string): number | null {
   return match ? Number(match[1]) : null
 }
 
-async function fetchWebsiteRelease(): Promise<ReleasePayload> {
-  const requestURL = new URL(releasesURL, window.location.origin)
-
-  const response = await fetch(requestURL, {
-    headers: {
-      'X-Release-Channel': 'website',
-      'X-Region': getSiteRegion()
-    }
-  })
-  if (!response.ok) {
-    throw new Error(`Release service returned ${response.status}`)
-  }
-  return (await response.json()) as ReleasePayload
+function getReleaseEdition(releaseLine: ReleaseLine): ReleaseEdition {
+  // V1 predates the separate CN edition. Current releases follow the website edition.
+  return releaseLine === 'v1' ? 'global' : getSiteRegion()
 }
 
-async function fetchRetainedV1Release(): Promise<ReleasePayload> {
+async function fetchRelease(releaseLine: ReleaseLine): Promise<ReleasePayload> {
   const requestURL = new URL(releasesURL, window.location.origin)
-  requestURL.searchParams.set('major', '1')
+  if (releaseLine === 'v1') {
+    requestURL.searchParams.set('major', '1')
+  }
 
   const response = await fetch(requestURL, {
     headers: {
       'X-Release-Channel': 'website',
+      'X-Edition': getReleaseEdition(releaseLine),
       'X-Region': getSiteRegion()
     }
   })
@@ -122,7 +116,7 @@ function isVersionData(value: unknown): value is VersionData {
 }
 
 function getVersionDataCacheKey(releaseLine: ReleaseLine): string {
-  return `${versionDataCachePrefix}:${getSiteRegion()}:${releaseLine}`
+  return `${versionDataCachePrefix}:${getSiteRegion()}:${getReleaseEdition(releaseLine)}:${releaseLine}`
 }
 
 function readCachedVersionData(releaseLine: ReleaseLine): { versionData: VersionData; updatedAt: number } | null {
@@ -212,7 +206,7 @@ async function loadVersionData(releaseLine: ReleaseLine, store: VersionDataStore
 
   store.request = (async () => {
     try {
-      const data = releaseLine === 'v1' ? await fetchRetainedV1Release() : await fetchWebsiteRelease()
+      const data = await fetchRelease(releaseLine)
       if (!data.tag_name || !Array.isArray(data.assets)) {
         throw new Error('Release service returned invalid data')
       }
