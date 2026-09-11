@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync } from 'node:fs'
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 
 const distDir = join(process.cwd(), 'dist')
@@ -178,9 +178,45 @@ function applyRobotsTarget() {
   writeFileSync(join(distDir, 'robots.txt'), robots)
 }
 
+function applyPlusTarget() {
+  if (target !== 'en') return
+
+  const translations = JSON.parse(readFileSync(join(process.cwd(), 'src/i18n/lang/en.json'), 'utf8'))
+  const title = translations.page_title.plus
+  const description = translations.page_description.plus
+  const url = `${config.domain}/plus`
+  let html = readFileSync(join(distDir, 'index.html'), 'utf8')
+  html = html.replace(/<title>[\s\S]*?<\/title>/, `<title>${title}</title>`)
+  html = html.replace(/<link\s+rel="alternate"\s+hreflang="zh-CN"[^>]*>/g, '')
+  html = replaceLinkHref(html, 'canonical', '', url)
+  for (const language of ['en', 'x-default']) {
+    html = replaceLinkHref(html, 'alternate', `\\s+hreflang="${language}"`, url)
+  }
+  for (const [attribute, name, content] of [
+    ['name', 'description', description],
+    ['property', 'og:url', url],
+    ['property', 'og:title', title],
+    ['property', 'og:description', description],
+    ['name', 'twitter:title', title],
+    ['name', 'twitter:description', description],
+    ['itemprop', 'name', title],
+    ['itemprop', 'description', description],
+    ['name', 'qq:title', title],
+    ['name', 'qq:description', description]
+  ]) {
+    html = replaceMetaContent(html, attribute, name, content)
+  }
+  // The desktop app's free offer does not describe the Plus plan.
+  html = html.replace(/<script type="application\/ld\+json">\s*([\s\S]*?)\s*<\/script>/g, (match, json) =>
+    JSON.parse(json)['@type'] === 'SoftwareApplication' ? '' : match
+  )
+  mkdirSync(join(distDir, 'plus'), { recursive: true })
+  writeFileSync(join(distDir, 'plus/index.html'), html)
+}
+
 function applySitemapTarget() {
-  const siteUrls = ['/', '/download', '/mobile']
-  const priorities = ['1.0', '0.9', '0.9']
+  const siteUrls = ['/', '/download', '/mobile', ...(target === 'en' ? ['/plus'] : [])]
+  const priorities = ['1.0', '0.9', '0.9', '0.8']
   const entries = siteUrls
     .map(
       (path, index) => `  <url>
@@ -208,6 +244,7 @@ ${entries}
 }
 
 applyIndexTarget()
+applyPlusTarget()
 applyRobotsTarget()
 applySitemapTarget()
 

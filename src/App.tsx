@@ -7,6 +7,7 @@ import CareersPage from '@/pages/careers'
 import DownloadPage from '@/pages/download'
 import HomePage from '@/pages/home'
 import MobilePage from '@/pages/mobile'
+import PlusPage from '@/pages/plus'
 import ThemePage from '@/pages/theme'
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path="/download/v1" element={<DownloadPage edition="v1" />} />
           <Route path="/download/v2" element={<DownloadPage edition="v2" />} />
           <Route path="/mobile" element={<MobilePage />} />
+          <Route path="/plus" element={<PlusPage />} />
           <Route path="/theme" element={<ThemePage />} />
           <Route path="/careers" element={<CareersPage />} />
         </Routes>

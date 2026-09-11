@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next'
 import { Link, useLocation } from 'react-router-dom'
 
 import { cn } from '@/lib/utils'
-import { getEnterpriseUrl } from '@/utils/urls'
+import { getEnterpriseUrl, isEnglishSite } from '@/utils/urls'
 import LanguageSelector from './LanguageSelector'
 
 interface MobileMenuProps {
@@ -22,6 +22,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
   const navLinks = [
     { path: '/', label: t('nav.home') },
     { path: '/download', label: t('nav.download') },
+    ...(isEnglishSite(i18n.resolvedLanguage || i18n.language) ? [{ path: '/plus', label: t('nav.plus') }] : []),
     { path: '/theme', label: t('nav.theme') },
     { path: '/careers', label: t('nav.careers') },
     { path: enterpriseUrl, label: t('nav.enterprise'), external: true },

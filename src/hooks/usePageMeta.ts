@@ -3,14 +3,15 @@ import { useTranslation } from 'react-i18next'
 
 import { getLanguageDomain } from '@/utils/urls'
 
-type PageType = 'home' | 'download' | 'mobile' | 'theme' | 'careers'
+type PageType = 'home' | 'download' | 'mobile' | 'theme' | 'careers' | 'plus'
 
 const CANONICAL_PATHS: Record<PageType, string> = {
   home: '/',
   download: '/download',
   mobile: '/mobile',
   theme: '/theme',
-  careers: '/careers'
+  careers: '/careers',
+  plus: '/plus'
 }
 
 export const usePageMeta = (pageType: PageType) => {
@@ -39,20 +40,25 @@ export const usePageMeta = (pageType: PageType) => {
       canonical.href = canonicalUrl
     }
 
-    const zhAlternate = document.querySelector<HTMLLinkElement>('link[rel="alternate"][hreflang="zh-CN"]')
-    if (zhAlternate) {
-      zhAlternate.href = `https://cherryai.com.cn${pagePath}`
+    if (pageType === 'plus') {
+      document.querySelector('link[rel="alternate"][hreflang="zh-CN"]')?.remove()
+    }
+    const alternates = [
+      ...(pageType === 'plus' ? [] : [{ language: 'zh-CN', href: `https://cherryai.com.cn${pagePath}` }]),
+      { language: 'en', href: `https://cherryai.com${pagePath}` },
+      { language: 'x-default', href: canonicalUrl }
+    ]
+    for (const { language, href } of alternates) {
+      const link =
+        document.querySelector<HTMLLinkElement>(`link[rel="alternate"][hreflang="${language}"]`) ??
+        document.createElement('link')
+      link.rel = 'alternate'
+      link.hreflang = language
+      link.href = href
+      if (!link.isConnected) document.head.appendChild(link)
     }
 
-    const enAlternate = document.querySelector<HTMLLinkElement>('link[rel="alternate"][hreflang="en"]')
-    if (enAlternate) {
-      enAlternate.href = `https://cherryai.com${pagePath}`
-    }
-
-    const defaultAlternate = document.querySelector<HTMLLinkElement>('link[rel="alternate"][hreflang="x-default"]')
-    if (defaultAlternate) {
-      defaultAlternate.href = canonicalUrl
-    }
+    document.querySelector('meta[property="og:url"]')?.setAttribute('content', canonicalUrl)
 
     // 更新 Open Graph 标题
     const ogTitle = document.querySelector('meta[property="og:title"]')

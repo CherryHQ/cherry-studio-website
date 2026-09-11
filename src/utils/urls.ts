@@ -45,6 +45,10 @@ export function getSiteRegion(): 'cn' | 'global' {
   return import.meta.env.VITE_SITE_LOCALE?.toLowerCase().startsWith('en') ? 'global' : 'cn'
 }
 
+export function isEnglishSite(language: string): boolean {
+  return getSiteRegion() === 'global' && language.toLowerCase().startsWith('en')
+}
+
 export function isLanguageRedirectDomain(): boolean {
   return LANGUAGE_REDIRECT_DOMAINS.includes(getCurrentHostname())
 }
@@ -64,6 +68,13 @@ export function redirectToLanguageDomain(language: string, options?: { replace?:
   const targetUrl = new URL(window.location.href)
   targetUrl.protocol = 'https:'
   targetUrl.host = targetHostname
+
+  // Plus has no Chinese counterpart. Language switching returns to the Chinese homepage.
+  if (targetHostname === CHINESE_DOMAIN && /^\/plus\/?$/i.test(targetUrl.pathname)) {
+    targetUrl.pathname = '/'
+    targetUrl.search = ''
+    targetUrl.hash = ''
+  }
 
   if (options?.replace) {
     window.location.replace(targetUrl.toString())

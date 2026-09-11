@@ -8,7 +8,7 @@ import cherryLogoSvg from '@/assets/images/cherry-logo.svg'
 import githubIcon from '@/assets/images/icons/github.svg'
 import cherryLogoPng from '@/assets/images/logo.png'
 import { cn } from '@/lib/utils'
-import { getEnterpriseUrl } from '@/utils/urls'
+import { getEnterpriseUrl, isEnglishSite } from '@/utils/urls'
 import MobileMenu from './MobileMenu'
 
 const SimpleHeader: React.FC = () => {
@@ -52,6 +52,7 @@ const SimpleHeader: React.FC = () => {
 
   const navLinks = [
     { path: '/', label: t('nav.home') },
+    ...(isEnglishSite(i18n.resolvedLanguage || i18n.language) ? [{ path: '/plus', label: t('nav.plus') }] : []),
     { path: '/theme', label: t('nav.theme') },
     { path: '/careers', label: t('nav.careers') },
     { path: enterpriseUrl, label: t('nav.enterprise'), external: true },
