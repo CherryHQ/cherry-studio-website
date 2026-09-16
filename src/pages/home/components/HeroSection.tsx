@@ -30,6 +30,7 @@ import MobileDownloadButton from '@/components/website/MobileDownloadButton'
 import { useTheme } from '@/hooks/useTheme'
 import { useVersionData } from '@/hooks/useVersionData'
 import { cn } from '@/lib/utils'
+import { isMobileDevice } from '@/utils/systemDetection'
 
 interface FeatureTab {
   id: string
@@ -104,6 +105,7 @@ const HeroSection: FC = () => {
   const [isPaused, setIsPaused] = useState(false)
 
   const isZh = i18n.language === 'zh-CN'
+  const isMobile = isMobileDevice()
   const stableMajorVersion = Number(versionData?.version.match(/^v?(\d+)\./)?.[1])
   const showV1Download = Number.isFinite(stableMajorVersion) && stableMajorVersion >= 2
 
@@ -259,22 +261,35 @@ const HeroSection: FC = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col items-center gap-3">
-            <Button variant="glow" size="lg" asChild>
-              <Link to="/download" className="gap-2">
-                <Download className="h-5 w-5" />
-                <span>
-                  {t('download')} {versionData?.version}
-                </span>
-                <span className="text-background/55 text-sm font-normal">
-                  <span aria-hidden="true">· </span>
-                  {t('stable_badge')}
-                </span>
-              </Link>
-            </Button>
+            {isMobile ? (
+              <MobileDownloadButton variant="primary" />
+            ) : (
+              <Button variant="glow" size="lg" asChild>
+                <Link to="/download" className="gap-2">
+                  <Download className="h-5 w-5" />
+                  <span>
+                    {t('download')} {versionData?.version}
+                  </span>
+                  <span className="text-background/55 text-sm font-normal">
+                    <span aria-hidden="true">· </span>
+                    {t('stable_badge')}
+                  </span>
+                </Link>
+              </Button>
+            )}
             <div className="text-muted-foreground flex items-center justify-center gap-3 text-xs sm:gap-4 sm:text-sm">
               <MobileDownloadButton />
               <span aria-hidden="true" className="bg-border h-3.5 w-px" />
-              {showV1Download && (
+              {isMobile ? (
+                <>
+                  <Link
+                    to="/download"
+                    className="hover:text-foreground inline-flex items-center gap-1.5 rounded-md py-1 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+                    {t('mobile_download.desktop')}
+                  </Link>
+                  <span aria-hidden="true" className="bg-border h-3.5 w-px" />
+                </>
+              ) : showV1Download ? (
                 <>
                   <Link
                     to="/download/v1"
@@ -284,7 +299,7 @@ const HeroSection: FC = () => {
                   </Link>
                   <span aria-hidden="true" className="bg-border h-3.5 w-px" />
                 </>
-              )}
+              ) : null}
               <a
                 href="https://docs.cherryai.com.cn"
                 target="_blank"
