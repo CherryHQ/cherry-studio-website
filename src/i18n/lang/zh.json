@@ -299,6 +299,7 @@
     "platform_windows": "Windows",
     "platform_macos": "macOS",
     "platform_linux": "Linux",
+    "platform_mobile": "移动端",
     "recommended": "推荐",
     "recommended_download": "为您的设备推荐",
     "best_for_most": "适合大多数电脑",

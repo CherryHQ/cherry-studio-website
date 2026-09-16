@@ -1,4 +1,4 @@
-import { Apple, type LucideIcon, Monitor, Terminal } from 'lucide-react'
+import { Apple, type LucideIcon, Monitor, Smartphone, Terminal } from 'lucide-react'
 import type { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -6,18 +6,20 @@ import { cn } from '@/lib/utils'
 import type { DetectedArch } from '@/utils/systemDetection'
 
 export type Platform = 'windows' | 'macos' | 'linux'
+export type DownloadPlatform = Platform | 'mobile'
 
 interface PlatformTabsProps {
-  activePlatform: Platform
+  activePlatform: DownloadPlatform
   detectedPlatform: Platform | null
   detectedArch?: DetectedArch | null
-  onPlatformChange: (platform: Platform) => void
+  onPlatformChange: (platform: DownloadPlatform) => void
 }
 
-const platforms: { id: Platform; icon: LucideIcon }[] = [
+const platforms: { id: DownloadPlatform; icon: LucideIcon }[] = [
   { id: 'windows', icon: Monitor },
   { id: 'macos', icon: Apple },
-  { id: 'linux', icon: Terminal }
+  { id: 'linux', icon: Terminal },
+  { id: 'mobile', icon: Smartphone }
 ]
 
 const PlatformTabs: FC<PlatformTabsProps> = ({
@@ -39,7 +41,7 @@ const PlatformTabs: FC<PlatformTabsProps> = ({
 
   return (
     <div className="border-border border-b p-2 sm:p-3">
-      <div className="grid grid-cols-3 gap-1">
+      <div className="grid grid-cols-4 gap-1">
         {platforms.map(({ id, icon: PlatformIcon }) => {
           const isActive = activePlatform === id
           const isDetected = detectedPlatform === id

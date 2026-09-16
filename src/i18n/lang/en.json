@@ -301,6 +301,7 @@
     "platform_windows": "Windows",
     "platform_macos": "macOS",
     "platform_linux": "Linux",
+    "platform_mobile": "Mobile",
     "recommended": "Recommended",
     "recommended_download": "Recommended for your device",
     "best_for_most": "Best for most computers",
