@@ -259,22 +259,21 @@ const HeroSection: FC = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col items-center gap-3">
-            <div className="flex flex-wrap items-center justify-center gap-3">
-              <Button variant="glow" size="lg" asChild>
-                <Link to="/download" className="gap-2">
-                  <Download className="h-5 w-5" />
-                  <span>
-                    {t('download')} {versionData?.version}
-                  </span>
-                  <span className="text-background/55 text-sm font-normal">
-                    <span aria-hidden="true">· </span>
-                    {t('stable_badge')}
-                  </span>
-                </Link>
-              </Button>
+            <Button variant="glow" size="lg" asChild>
+              <Link to="/download" className="gap-2">
+                <Download className="h-5 w-5" />
+                <span>
+                  {t('download')} {versionData?.version}
+                </span>
+                <span className="text-background/55 text-sm font-normal">
+                  <span aria-hidden="true">· </span>
+                  {t('stable_badge')}
+                </span>
+              </Link>
+            </Button>
+            <div className="text-muted-foreground flex items-center justify-center gap-3 text-xs sm:gap-4 sm:text-sm">
               <MobileDownloadButton />
-            </div>
-            <div className="text-muted-foreground flex items-center justify-center gap-4 text-sm">
+              <span aria-hidden="true" className="bg-border h-3.5 w-px" />
               {showV1Download && (
                 <>
                   <Link

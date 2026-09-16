@@ -4,7 +4,6 @@ import { QRCodeSVG } from 'qrcode.react'
 import { type PointerEvent, useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { Button } from '@/components/ui/button'
 import { mobileDownloads } from '@/config/mobileDownloads'
 
 export default function MobileDownloadButton() {
@@ -40,10 +39,9 @@ export default function MobileDownloadButton() {
   return (
     <Popover.Root open={open} onOpenChange={handleOpenChange}>
       <Popover.Trigger asChild>
-        <Button
+        <button
           type="button"
-          variant="outline"
-          size="lg"
+          className="hover:text-foreground inline-flex cursor-pointer items-center gap-1.5 whitespace-nowrap rounded-md py-1 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           onPointerEnter={(event) => {
             if (event.pointerType !== 'mouse') return
             cancelClose()
@@ -53,9 +51,9 @@ export default function MobileDownloadButton() {
             }
           }}
           onPointerLeave={handlePointerLeave}>
-          <Smartphone aria-hidden="true" />
+          <Smartphone aria-hidden="true" className="h-3.5 w-3.5" />
           {t('mobile_download.button')}
-        </Button>
+        </button>
       </Popover.Trigger>
       <Popover.Portal>
         <Popover.Content
