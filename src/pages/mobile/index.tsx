@@ -170,8 +170,7 @@ export default function MobilePage() {
                 id={`mobile-feature-${id}`}
                 className={cn(
                   'mx-auto w-full max-w-[280px] motion-safe:animate-in motion-safe:fade-in-0 motion-safe:duration-300 sm:mx-0 sm:max-w-none sm:animate-none',
-                  activeFeature !== index && 'hidden sm:block',
-                  index === 1 && 'sm:pt-10'
+                  activeFeature !== index && 'hidden sm:block'
                 )}>
                 <img
                   src={image}
