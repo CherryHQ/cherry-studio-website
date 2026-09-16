@@ -1,4 +1,5 @@
-import { ArrowUpRight, Download, MessageSquare, Palette, Plug } from 'lucide-react'
+import * as Popover from '@radix-ui/react-popover'
+import { ArrowUpRight, Download, MessageSquare, Palette, Plug, QrCode } from 'lucide-react'
 import { QRCodeSVG } from 'qrcode.react'
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -25,78 +26,59 @@ export default function MobilePage() {
   const mobilePlatform = detectMobilePlatform()
   const isMobile = isMobileDevice()
   const [activeFeature, setActiveFeature] = useState(0)
-  const [isCompact, setIsCompact] = useState(() => window.matchMedia('(max-width: 639px)').matches)
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(
     () => window.matchMedia('(prefers-reduced-motion: reduce)').matches
   )
   const [isHovered, setIsHovered] = useState(false)
 
   useEffect(() => {
-    const compactQuery = window.matchMedia('(max-width: 639px)')
     const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
-    const updateLayout = () => setIsCompact(compactQuery.matches)
     const updateMotion = () => setPrefersReducedMotion(motionQuery.matches)
 
-    compactQuery.addEventListener('change', updateLayout)
     motionQuery.addEventListener('change', updateMotion)
-    return () => {
-      compactQuery.removeEventListener('change', updateLayout)
-      motionQuery.removeEventListener('change', updateMotion)
-    }
+    return () => motionQuery.removeEventListener('change', updateMotion)
   }, [])
 
   useEffect(() => {
-    if (!isCompact || prefersReducedMotion || isHovered) return
+    if (prefersReducedMotion || isHovered) return
 
     const interval = window.setInterval(() => {
       if (!document.hidden) setActiveFeature((activeFeature + 1) % features.length)
     }, 5000)
     return () => window.clearInterval(interval)
-  }, [isCompact, prefersReducedMotion, isHovered, activeFeature])
+  }, [prefersReducedMotion, isHovered, activeFeature])
 
   return (
     <div className="bg-background text-foreground min-h-screen">
-      <main className="mx-auto max-w-[1200px] px-4 pt-28 pb-12 sm:px-6 sm:pt-36 sm:pb-20 lg:px-8">
-        <section className="mx-auto max-w-3xl text-center" aria-labelledby="mobile-title">
-          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
-            <h1
-              id="mobile-title"
-              className="text-3xl leading-tight font-semibold tracking-tight text-balance sm:text-5xl">
-              {t('mobile_download.title')}
-            </h1>
-            <span className="border-border text-muted-foreground rounded-full border px-2.5 py-1 text-xs">
-              {t('mobile_page.beta')}
-            </span>
-          </div>
-          <p className="text-muted-foreground mt-4 text-base leading-7 text-pretty sm:text-lg">
-            {t('mobile_page.description')}
-          </p>
+      <main className="mx-auto grid max-w-6xl items-center gap-12 px-4 pt-28 pb-16 sm:px-6 sm:pt-32 sm:pb-20 lg:grid-cols-2 lg:gap-16 lg:px-8">
+        <section
+          aria-labelledby="mobile-title"
+          className="mx-auto w-full max-w-[360px] text-center lg:order-2 lg:mx-0 lg:text-left">
+          <span className="text-muted-foreground text-sm font-medium">{t('mobile_page.beta')}</span>
+          <h1 id="mobile-title" className="mt-2 text-3xl leading-tight font-semibold tracking-tight text-balance">
+            {t('mobile_download.title')}
+          </h1>
+          <p className="text-muted-foreground mt-3 text-base leading-7 text-pretty">{t('mobile_page.description')}</p>
 
-          <div id="mobile-install" className="mt-8 grid scroll-mt-28 gap-4 text-left sm:grid-cols-2">
+          <div
+            id="mobile-install"
+            className="divide-border border-border mt-6 scroll-mt-28 divide-y border-y text-left">
             {mobileDownloads.map(({ platform, channel, url }) => {
               const name = platform === 'android' ? 'Android' : 'iOS'
               const isCurrentPlatform = platform === mobilePlatform
 
               return (
-                <article
-                  key={platform}
-                  className={cn(
-                    'bg-card flex flex-wrap items-center justify-center gap-4 rounded-2xl border p-5',
-                    isCurrentPlatform ? 'border-foreground/35' : 'border-border'
-                  )}>
-                  <div className="min-w-40 flex-1">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <h2 className="text-xl font-semibold">{name}</h2>
-                      {isCurrentPlatform && (
-                        <span className="text-muted-foreground text-sm">{t('mobile_page.current_device')}</span>
-                      )}
-                    </div>
-                    <p className="text-muted-foreground mt-2 text-sm leading-6 sm:min-h-12">
+                <div key={platform} className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3 py-4">
+                  <div className="min-w-32 flex-1">
+                    <h2 className="text-base font-medium">{name}</h2>
+                    <p className="text-muted-foreground mt-1 text-sm leading-5">
                       {t(`mobile_page.channels.${channel}`)}
                     </p>
+                  </div>
+                  <div className="flex shrink-0 items-center gap-2">
                     <Button
-                      variant={isCurrentPlatform || !isMobile ? 'default' : 'outline'}
-                      className="mt-4 h-auto min-h-10 w-full px-3 py-2 whitespace-normal"
+                      variant={isCurrentPlatform ? 'default' : 'outline'}
+                      className="h-auto min-h-10 px-3 py-1.5 lg:min-h-9"
                       disabled={!url}
                       asChild={Boolean(url)}>
                       {url ? (
@@ -108,27 +90,47 @@ export default function MobilePage() {
                         t('mobile_download.unavailable')
                       )}
                     </Button>
+                    {!isMobile && url && (
+                      <Popover.Root>
+                        <Popover.Trigger asChild>
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            className="lg:h-9 lg:w-9"
+                            aria-label={`${name} · ${t('mobile_page.scan')}`}
+                            title={t('mobile_page.scan')}>
+                            <QrCode aria-hidden="true" />
+                          </Button>
+                        </Popover.Trigger>
+                        <Popover.Portal>
+                          <Popover.Content
+                            side="bottom"
+                            align="end"
+                            sideOffset={10}
+                            collisionPadding={16}
+                            aria-label={t('mobile_download.qr_alt', { platform: name })}
+                            className="border-border bg-popover text-popover-foreground z-50 rounded-2xl border p-4 text-center shadow-lg outline-none">
+                            <p className="mb-3 text-sm font-medium">{name}</p>
+                            <div className="rounded-lg bg-white p-2">
+                              <QRCodeSVG
+                                value={url}
+                                size={160}
+                                level="M"
+                                marginSize={4}
+                                title={t('mobile_download.qr_alt', { platform: name })}
+                              />
+                            </div>
+                            <p className="text-muted-foreground mt-3 text-sm">{t(`mobile_download.${channel}`)}</p>
+                          </Popover.Content>
+                        </Popover.Portal>
+                      </Popover.Root>
+                    )}
                   </div>
-                  {!isMobile && url && (
-                    <div className="w-36 shrink-0 text-center">
-                      <div className="rounded-lg bg-white p-2">
-                        <QRCodeSVG
-                          value={url}
-                          size={128}
-                          level="M"
-                          marginSize={4}
-                          title={t('mobile_download.qr_alt', { platform: name })}
-                          className="h-auto w-full"
-                        />
-                      </div>
-                      <p className="text-muted-foreground mt-2 text-sm leading-5">{t('mobile_page.scan')}</p>
-                    </div>
-                  )}
-                </article>
+                </div>
               )
             })}
           </div>
-          <p className="text-muted-foreground mt-4 text-sm leading-6">{t('mobile_page.setup_note')}</p>
+          <p className="text-muted-foreground mt-4 text-sm leading-5">{t('mobile_page.setup_note')}</p>
         </section>
 
         <section
@@ -137,12 +139,33 @@ export default function MobilePage() {
             if (event.pointerType === 'mouse') setIsHovered(true)
           }}
           onPointerLeave={() => setIsHovered(false)}
-          className="mx-auto mt-12 max-w-5xl sm:mt-16 sm:px-4">
-          <div className="mb-5 flex justify-center sm:hidden">
+          className="mx-auto w-full max-w-sm lg:order-1">
+          {features.map(({ id, image }, index) => (
+            <figure
+              key={id}
+              id={`mobile-feature-${id}`}
+              className={cn(
+                'mx-auto w-full max-w-[248px] motion-safe:animate-in motion-safe:fade-in-0 motion-safe:duration-300 sm:max-w-[260px]',
+                activeFeature !== index && 'hidden'
+              )}>
+              <img
+                src={image}
+                alt={t(`mobile_page.features.${id}.alt`)}
+                width={736}
+                height={1600}
+                loading={index === 0 ? 'eager' : 'lazy'}
+                className="border-border h-auto w-full rounded-[2rem] border shadow-lg shadow-black/5 dark:shadow-black/20"
+              />
+              <figcaption className="text-muted-foreground mt-5 min-h-14 text-center text-sm leading-6">
+                {t(`mobile_page.features.${id}.description`)}
+              </figcaption>
+            </figure>
+          ))}
+          <div className="mt-3 flex justify-center">
             <div
               role="group"
               aria-label={t('mobile_page.preview_label')}
-              className="inline-flex gap-1 rounded-full border border-black/10 bg-white/80 p-1 backdrop-blur-md dark:border-white/20 dark:bg-black/40">
+              className="inline-flex gap-1 rounded-full border border-black/10 p-1 dark:border-white/20">
               {features.map(({ id, icon: Icon }, index) => (
                 <button
                   key={id}
@@ -154,43 +177,14 @@ export default function MobilePage() {
                   className={cn(
                     'focus-visible:ring-ring flex cursor-pointer items-center gap-1.5 rounded-full px-3 py-2.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2',
                     activeFeature === index
-                      ? 'bg-black/10 text-black shadow-sm dark:bg-white/20 dark:text-white'
+                      ? 'bg-black/5 text-black dark:bg-white/10 dark:text-white'
                       : 'text-muted-foreground hover:text-foreground'
                   )}>
                   <Icon aria-hidden="true" className="h-4 w-4" />
-                  <span className="hidden min-[380px]:inline">{t(`mobile_page.tabs.${id}`)}</span>
+                  <span>{t(`mobile_page.tabs.${id}`)}</span>
                 </button>
               ))}
             </div>
-          </div>
-          <div className="sm:grid sm:grid-cols-3 sm:gap-10">
-            {features.map(({ id, image, icon: Icon }, index) => (
-              <figure
-                key={id}
-                id={`mobile-feature-${id}`}
-                className={cn(
-                  'mx-auto w-full max-w-[280px] motion-safe:animate-in motion-safe:fade-in-0 motion-safe:duration-300 sm:mx-0 sm:max-w-none sm:animate-none',
-                  activeFeature !== index && 'hidden sm:block'
-                )}>
-                <img
-                  src={image}
-                  alt={t(`mobile_page.features.${id}.alt`)}
-                  width={736}
-                  height={1600}
-                  loading={index === 0 ? 'eager' : 'lazy'}
-                  className="border-border h-auto w-full rounded-[2rem] border shadow-xl shadow-black/5 dark:shadow-black/30"
-                />
-                <figcaption className="mt-5 min-h-28 px-1 sm:min-h-0">
-                  <h2 className="flex items-center gap-2 text-lg font-semibold">
-                    <Icon aria-hidden="true" className="h-4 w-4" />
-                    {t(`mobile_page.features.${id}.title`)}
-                  </h2>
-                  <p className="text-muted-foreground mt-2 text-base leading-7">
-                    {t(`mobile_page.features.${id}.description`)}
-                  </p>
-                </figcaption>
-              </figure>
-            ))}
           </div>
         </section>
       </main>
