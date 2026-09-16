@@ -29,6 +29,14 @@
   "home": "Home",
   "download": "Download",
   "download_v1": "Download V1",
+  "mobile_download": {
+    "button": "Mobile download",
+    "apk": "Scan to download APK",
+    "testflight": "Scan to join TestFlight",
+    "store": "Scan to open the app store",
+    "qr_alt": "{{platform}} installation QR code",
+    "unavailable": "Coming soon"
+  },
   "stable_badge": "Stable",
   "theme": "Theme",
   "forum": "Forum",

@@ -29,6 +29,14 @@
   "home": "主页",
   "download": "下载",
   "download_v1": "V1 版本下载",
+  "mobile_download": {
+    "button": "移动端下载",
+    "apk": "扫码下载 APK",
+    "testflight": "扫码加入 TestFlight",
+    "store": "扫码前往应用商店",
+    "qr_alt": "{{platform}} 安装二维码",
+    "unavailable": "暂未开放"
+  },
   "stable_badge": "正式版",
   "theme": "主题",
   "agents": "助手",

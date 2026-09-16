@@ -26,6 +26,7 @@ import providerLightEn from '@/assets/images/screenshots/product-features-0819/p
 import providerLightZh from '@/assets/images/screenshots/product-features-0819/provider-light-zh.webp'
 import { fetchNotice, type NoticeResponse } from '@/assets/js/notice'
 import { Button } from '@/components/ui/button'
+import MobileDownloadButton from '@/components/website/MobileDownloadButton'
 import { useTheme } from '@/hooks/useTheme'
 import { useVersionData } from '@/hooks/useVersionData'
 import { cn } from '@/lib/utils'
@@ -258,18 +259,21 @@ const HeroSection: FC = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col items-center gap-3">
-            <Button variant="glow" size="lg" asChild>
-              <Link to="/download" className="gap-2">
-                <Download className="h-5 w-5" />
-                <span>
-                  {t('download')} {versionData?.version}
-                </span>
-                <span className="text-background/55 text-sm font-normal">
-                  <span aria-hidden="true">· </span>
-                  {t('stable_badge')}
-                </span>
-              </Link>
-            </Button>
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              <Button variant="glow" size="lg" asChild>
+                <Link to="/download" className="gap-2">
+                  <Download className="h-5 w-5" />
+                  <span>
+                    {t('download')} {versionData?.version}
+                  </span>
+                  <span className="text-background/55 text-sm font-normal">
+                    <span aria-hidden="true">· </span>
+                    {t('stable_badge')}
+                  </span>
+                </Link>
+              </Button>
+              <MobileDownloadButton />
+            </div>
             <div className="text-muted-foreground flex items-center justify-center gap-4 text-sm">
               {showV1Download && (
                 <>
