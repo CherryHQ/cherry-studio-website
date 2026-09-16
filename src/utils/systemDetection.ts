@@ -1,8 +1,22 @@
 export type DetectedPlatform = 'windows' | 'macos' | 'linux' | null
 export type DetectedArch = 'arm64' | 'x64' | 'ia32' | null
 
+export function detectMobilePlatform(): 'android' | 'ios' | null {
+  if (/Android/i.test(navigator.userAgent)) return 'android'
+
+  // iPadOS can use a desktop Mac user agent.
+  if (
+    /iPhone|iPad|iPod/i.test(navigator.userAgent) ||
+    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)
+  ) {
+    return 'ios'
+  }
+
+  return null
+}
+
 export function isMobileDevice(): boolean {
-  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+  return detectMobilePlatform() !== null || /webOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
 }
 
 export function detectPlatform(): DetectedPlatform {

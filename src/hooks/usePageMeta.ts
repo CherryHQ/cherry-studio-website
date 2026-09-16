@@ -3,11 +3,12 @@ import { useTranslation } from 'react-i18next'
 
 import { getLanguageDomain } from '@/utils/urls'
 
-type PageType = 'home' | 'download' | 'theme' | 'careers'
+type PageType = 'home' | 'download' | 'mobile' | 'theme' | 'careers'
 
 const CANONICAL_PATHS: Record<PageType, string> = {
   home: '/',
   download: '/download',
+  mobile: '/mobile',
   theme: '/theme',
   careers: '/careers'
 }

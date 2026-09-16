@@ -6,6 +6,7 @@ import { ThemeProvider } from '@/contexts/ThemeContext'
 import CareersPage from '@/pages/careers'
 import DownloadPage from '@/pages/download'
 import HomePage from '@/pages/home'
+import MobilePage from '@/pages/mobile'
 import ThemePage from '@/pages/theme'
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/download" element={<DownloadPage />} />
           <Route path="/download/v1" element={<DownloadPage edition="v1" />} />
           <Route path="/download/v2" element={<DownloadPage edition="v2" />} />
+          <Route path="/mobile" element={<MobilePage />} />
           <Route path="/theme" element={<ThemePage />} />
           <Route path="/careers" element={<CareersPage />} />
         </Routes>

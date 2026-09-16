@@ -179,8 +179,8 @@ function applyRobotsTarget() {
 }
 
 function applySitemapTarget() {
-  const siteUrls = ['/', '/download']
-  const priorities = ['1.0', '0.9']
+  const siteUrls = ['/', '/download', '/mobile']
+  const priorities = ['1.0', '0.9', '0.9']
   const entries = siteUrls
     .map(
       (path, index) => `  <url>

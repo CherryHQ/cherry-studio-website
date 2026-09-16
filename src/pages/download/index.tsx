@@ -3,6 +3,7 @@ import { type FC, useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import Footer from '@/components/website/Footer'
+import MobileDownloadButton from '@/components/website/MobileDownloadButton'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { useVersionData } from '@/hooks/useVersionData'
 import { type DetectedArch, detectPlatform, detectSystem, isMobileDevice } from '@/utils/systemDetection'
@@ -112,9 +113,19 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
     <div className="bg-background min-h-screen overflow-hidden">
       <section className="pt-36 pb-40 sm:pt-40 sm:pb-44">
         <div className="mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8">
+          <div className="border-border bg-card mx-auto mb-12 flex max-w-3xl flex-col items-center gap-5 rounded-2xl border p-6 sm:flex-row sm:justify-between sm:text-left">
+            <div>
+              <p className="text-lg font-semibold">{t('mobile_download.title')}</p>
+              <p className="text-muted-foreground mt-2 max-w-md text-sm leading-6">
+                {t('mobile_page.download_banner')}
+              </p>
+            </div>
+            <MobileDownloadButton variant="primary" />
+          </div>
           <div className="mx-auto max-w-3xl">
             <h1 className="text-3xl leading-tight font-semibold tracking-tight text-black sm:text-5xl dark:text-white">
-              {versionData ? `Cherry Studio ${versionData.version}` : 'Cherry Studio'}
+              {isMobile ? t('mobile_download.desktop_title') : 'Cherry Studio'}
+              {versionData && ` ${versionData.version}`}
             </h1>
             <VersionInfo
               versionData={versionData}
