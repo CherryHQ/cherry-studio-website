@@ -113,15 +113,6 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
     <div className="bg-background min-h-screen overflow-hidden">
       <section className="pt-36 pb-40 sm:pt-40 sm:pb-44">
         <div className="mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8">
-          <div className="border-border bg-card mx-auto mb-12 flex max-w-3xl flex-col items-center gap-5 rounded-2xl border p-6 sm:flex-row sm:justify-between sm:text-left">
-            <div>
-              <p className="text-lg font-semibold">{t('mobile_download.title')}</p>
-              <p className="text-muted-foreground mt-2 max-w-md text-sm leading-6">
-                {t('mobile_page.download_banner')}
-              </p>
-            </div>
-            <MobileDownloadButton variant="primary" />
-          </div>
           <div className="mx-auto max-w-3xl">
             <h1 className="text-3xl leading-tight font-semibold tracking-tight text-black sm:text-5xl dark:text-white">
               {isMobile ? t('mobile_download.desktop_title') : 'Cherry Studio'}
@@ -186,6 +177,9 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
               {t('download_page.cloud_drive_download')}
               <ExternalLink className="h-3.5 w-3.5" />
             </a>
+            <div className="text-muted-foreground text-sm underline-offset-4 hover:underline">
+              <MobileDownloadButton />
+            </div>
           </div>
         </div>
       </section>
