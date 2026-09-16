@@ -2,12 +2,14 @@
   "page_title": {
     "home": "Cherry Studio 官方网站 - 全能 AI 工作站",
     "download": "下载 Cherry Studio - 多平台 AI 客户端",
+    "mobile": "Cherry Studio 移动版 - 随身的 AI 工作站",
     "theme": "Cherry Studio 主题库 - 美化你的 AI 助手",
     "careers": "加入 Cherry Studio - 招聘"
   },
   "page_description": {
     "home": "Cherry Studio AI桌面客户端，开源、免费、且功能强大。AI agent、AI 对话、AI绘图、知识库等功能齐全，支持所有主流大模型，支持Windows/macOS/Linux，支持数据本地存储，是AI深度使用者的首选",
     "download": "下载 Cherry Studio AI 客户端，支持 Windows、macOS、Linux 平台。集成 100+ AI 模型，完全免费开源。",
+    "mobile": "了解 Cherry Studio 移动版，在手机上连接 AI 模型、进行对话、创作图像和使用工具。下载 Android APK 或加入 iOS TestFlight 测试。",
     "theme": "发现和分享美丽的 Cherry Studio 主题，个性化你的 AI 助手界面。支持浅色和深色模式主题。",
     "careers": "加入 Cherry Studio 核心团队，寻找 AI Native 全栈工程师，一起打造下一代 AI 产品。"
   },
@@ -43,6 +45,42 @@
     "store": "扫码前往应用商店",
     "qr_alt": "{{platform}} 安装二维码",
     "unavailable": "暂未开放"
+  },
+  "mobile_page": {
+    "beta": "Beta 体验版",
+    "description": "在手机上对话、绘图，连接你常用的 AI 工具。",
+    "preview_label": "移动版功能与界面预览",
+    "tabs": {
+      "chat": "对话",
+      "paintings": "绘图",
+      "plugins": "工具"
+    },
+    "features": {
+      "chat": {
+        "title": "AI 对话",
+        "description": "自由选择模型，用文字或图片提问。",
+        "alt": "Cherry Studio 移动版中的 AI 对话与 Markdown 回复"
+      },
+      "paintings": {
+        "title": "AI 绘图",
+        "description": "从描述或图片出发，把灵感变成画面。",
+        "alt": "Cherry Studio 移动版通过文字描述生成的水彩风景画"
+      },
+      "plugins": {
+        "title": "工具与插件",
+        "description": "连接常用服务，让智能体调用工具。",
+        "alt": "Cherry Studio 移动版中的 GitHub、飞书和 Notion 等插件"
+      }
+    },
+    "current_device": "当前设备",
+    "scan": "手机扫码安装",
+    "channels": {
+      "apk": "适用于 ARM64 设备",
+      "testflight": "需先安装 TestFlight",
+      "store": "通过应用商店安装"
+    },
+    "setup_note": "使用前需配置模型服务，部分模型及工具服务可能收费。",
+    "download_banner": "在手机上对话、绘图、连接工具。"
   },
   "stable_badge": "正式版",
   "theme": "主题",

@@ -6,7 +6,6 @@ import Footer from '@/components/website/Footer'
 import MobileDownloadButton from '@/components/website/MobileDownloadButton'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { useVersionData } from '@/hooks/useVersionData'
-import { cn } from '@/lib/utils'
 import { type DetectedArch, detectPlatform, detectSystem, isMobileDevice } from '@/utils/systemDetection'
 import { getSiteRegion } from '@/utils/urls'
 import Changelog from './components/Changelog'
@@ -42,7 +41,6 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
   const [systemDetectionReady, setSystemDetectionReady] = useState(false)
   const userSelectedPlatformRef = useRef(false)
   const isMobile = isMobileDevice()
-  const DesktopHeading = isMobile ? 'h2' : 'h1'
   const autoDownloadRequested =
     new URLSearchParams(window.location.search).get('autodownload')?.toLowerCase() === 'true'
   const releaseHistoryUrl = RELEASE_HISTORY_URLS[getSiteRegion()]
@@ -115,28 +113,20 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
     <div className="bg-background min-h-screen overflow-hidden">
       <section className="pt-36 pb-40 sm:pt-40 sm:pb-44">
         <div className="mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8">
-          {isMobile && (
-            <div className="border-border mx-auto mb-12 max-w-3xl border-b pb-12">
-              <h1 className="text-3xl leading-tight font-semibold tracking-tight text-black dark:text-white">
-                {t('mobile_download.title')}
-              </h1>
-              <div className="mt-6 flex flex-col items-center gap-3">
-                <MobileDownloadButton variant="primary" />
-                <div className="text-muted-foreground text-sm">
-                  <MobileDownloadButton />
-                </div>
-              </div>
+          <div className="border-border bg-card mx-auto mb-12 flex max-w-3xl flex-col items-center gap-5 rounded-2xl border p-6 sm:flex-row sm:justify-between sm:text-left">
+            <div>
+              <p className="text-lg font-semibold">{t('mobile_download.title')}</p>
+              <p className="text-muted-foreground mt-2 max-w-md text-sm leading-6">
+                {t('mobile_page.download_banner')}
+              </p>
             </div>
-          )}
+            <MobileDownloadButton variant="primary" />
+          </div>
           <div className="mx-auto max-w-3xl">
-            <DesktopHeading
-              className={cn(
-                'leading-tight font-semibold tracking-tight text-black dark:text-white',
-                isMobile ? 'text-2xl' : 'text-3xl sm:text-5xl'
-              )}>
+            <h1 className="text-3xl leading-tight font-semibold tracking-tight text-black sm:text-5xl dark:text-white">
               {isMobile ? t('mobile_download.desktop_title') : 'Cherry Studio'}
               {versionData && ` ${versionData.version}`}
-            </DesktopHeading>
+            </h1>
             <VersionInfo
               versionData={versionData}
               loading={loading}

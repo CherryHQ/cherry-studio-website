@@ -2,12 +2,14 @@
   "page_title": {
     "home": "Cherry Studio - The All-in-One AI Workstation",
     "download": "Download Cherry Studio - Multi-Platform AI Client",
+    "mobile": "Cherry Studio Mobile - Your AI Workstation, Anywhere",
     "theme": "Cherry Studio Theme Library - Customize Your AI Assistant",
     "careers": "Join Cherry Studio - Careers"
   },
   "page_description": {
     "home": "Cherry Studio is an open-source, free, and powerful AI desktop client. It includes AI agents, AI chat, AI image generation, knowledge base, and more, supports all major LLMs, runs on Windows/macOS/Linux, stores data locally, and is built for heavy AI users.",
     "download": "Download Cherry Studio AI client supporting Windows, macOS, and Linux platforms. Integrates 100+ AI models, completely free and open source.",
+    "mobile": "Meet Cherry Studio Mobile: chat with AI models, create images, and connect tools on your phone. Download the Android APK or join the iOS TestFlight beta.",
     "theme": "Discover and share beautiful Cherry Studio themes to personalize your AI assistant interface. Supports both light and dark mode themes.",
     "careers": "Join Cherry Studio core team. Looking for AI Native full-stack engineers to build next-gen AI products."
   },
@@ -43,6 +45,42 @@
     "store": "Scan to open the app store",
     "qr_alt": "{{platform}} installation QR code",
     "unavailable": "Coming soon"
+  },
+  "mobile_page": {
+    "beta": "Beta",
+    "description": "Chat, create images, and connect your AI tools on the go.",
+    "preview_label": "Mobile features and app previews",
+    "tabs": {
+      "chat": "Chat",
+      "paintings": "Images",
+      "plugins": "Tools"
+    },
+    "features": {
+      "chat": {
+        "title": "AI chat",
+        "description": "Choose your model and ask with text or images.",
+        "alt": "An AI conversation with a Markdown response in Cherry Studio Mobile"
+      },
+      "paintings": {
+        "title": "Image creation",
+        "description": "Turn a prompt or a picture into something new.",
+        "alt": "A watercolor landscape generated from a text prompt in Cherry Studio Mobile"
+      },
+      "plugins": {
+        "title": "Tools & plugins",
+        "description": "Connect services and let your agents use their tools.",
+        "alt": "GitHub, Feishu, Notion, and other plugins in Cherry Studio Mobile"
+      }
+    },
+    "current_device": "Your device",
+    "scan": "Scan to install",
+    "channels": {
+      "apk": "For ARM64 devices",
+      "testflight": "Requires TestFlight",
+      "store": "Install from the app store"
+    },
+    "setup_note": "Configure a model provider to get started. Some model and tool services may charge separately.",
+    "download_banner": "Chat, create images, and connect tools on your phone."
   },
   "stable_badge": "Stable",
   "theme": "Theme",

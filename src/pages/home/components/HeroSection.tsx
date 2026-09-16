@@ -278,8 +278,12 @@ const HeroSection: FC = () => {
               </Button>
             )}
             <div className="text-muted-foreground flex items-center justify-center gap-3 text-xs sm:gap-4 sm:text-sm">
-              <MobileDownloadButton />
-              <span aria-hidden="true" className="bg-border h-3.5 w-px" />
+              {!isMobile && (
+                <>
+                  <MobileDownloadButton />
+                  <span aria-hidden="true" className="bg-border h-3.5 w-px" />
+                </>
+              )}
               {isMobile ? (
                 <>
                   <Link
