@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 
 import { Button } from '@/components/ui/button'
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card'
-import { mobileDownloads } from '@/config/mobileDownloads'
+import { useMobileDownloads } from '@/hooks/useMobileDownloads'
 import { isMobileDevice } from '@/utils/systemDetection'
 
 interface MobileDownloadButtonProps {
@@ -15,6 +15,7 @@ interface MobileDownloadButtonProps {
 
 export default function MobileDownloadButton({ variant = 'text' }: MobileDownloadButtonProps) {
   const { t } = useTranslation()
+  const mobileDownloads = useMobileDownloads()
   const trigger =
     variant === 'primary' ? (
       <Button variant="glow" size="lg" asChild>
