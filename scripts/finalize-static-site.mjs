@@ -21,7 +21,12 @@ const configs = {
     rssTitle: 'Cherry Studio 更新日志',
     websiteAlternateName: 'Cherry Studio 官方网站',
     publisherName: '上海千彗科技有限公司',
-    baiduAnalytics: true
+    baiduAnalytics: true,
+    // 中文站 sitemap 额外带的站点
+    extraSitemapEntries: [
+      { url: 'https://docs.cherryai.com.cn/', priority: '0.8' },
+      { url: 'https://enterprise.cherryai.com.cn/', priority: '0.7' }
+    ]
   },
   en: {
     lang: 'en',
@@ -30,7 +35,7 @@ const configs = {
     ogTitle: 'Cherry Studio - The All-in-One AI Workstation | Free and Open Source',
     shareTitle: 'Cherry Studio - All-in-One Multi-Model AI Assistant',
     description:
-      'Cherry Studio is an open-source, free, and powerful AI desktop client. It includes AI agents, AI chat, AI image generation, knowledge base, and more, supports all major LLMs, runs on Windows/macOS/Linux, stores data locally, and is built for heavy AI users.',
+      'Open-source AI desktop client for Mac, Windows and Linux. Run frontier models from DeepSeek, Qwen, GLM and more, with your data stored locally.',
     keywords:
       'Cherry Studio, AI assistant, AI client, LLM, ChatGPT, Claude, Gemini, DeepSeek, artificial intelligence, AI chat, AI knowledge base, AI image generation, AI translation, AI agent, macOS, Windows, Linux, open-source AI, multi-model AI, Ollama, LM Studio, local LLM',
     ogLocale: 'en_US',
@@ -39,7 +44,8 @@ const configs = {
     rssTitle: 'Cherry Studio Updates',
     websiteAlternateName: 'Cherry Studio Official Website',
     publisherName: 'Cherry Studio Team',
-    baiduAnalytics: false
+    baiduAnalytics: false,
+    extraSitemapEntries: []
   }
 }
 
@@ -47,6 +53,43 @@ const config = configs[target]
 
 if (!config) {
   throw new Error(`Unsupported SITE_LOCALE "${target}". Expected "zh" or "en".`)
+}
+
+const translations = JSON.parse(readFileSync(join(process.cwd(), `src/i18n/lang/${target}.json`), 'utf8'))
+
+const DEFAULT_ROBOTS = 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
+const NOINDEX_ROBOTS = 'noindex, follow'
+
+// 与 src/hooks/usePageMeta.ts 的页面表保持一致；canonicalPath 指回正式页面。
+// 英文站额外生成每个路由的静态 HTML，中文站目前仍只输出首页。
+const ROUTES = {
+  en: [
+    { path: '/download', key: 'download' },
+    { path: '/download/v1', key: 'download_v1', canonicalPath: '/download', noindex: true },
+    { path: '/download/v2', key: 'download_v2', canonicalPath: '/download' },
+    { path: '/flash', key: 'flash', chineseCounterpart: false, flashPlan: true },
+    { path: '/flash/usage', key: 'flash_usage', chineseCounterpart: false, dropSoftwareApplication: true },
+    { path: '/theme', key: 'theme', dropSoftwareApplication: true }
+  ],
+  // 中文站保持原有产物：只输出首页，不额外生成路由 HTML
+  zh: []
+}
+
+const NOT_FOUND = { path: '/404', key: 'not_found', noindex: true }
+
+const SITEMAP = {
+  en: [
+    { path: '/', priority: '1.0' },
+    { path: '/download', priority: '0.9' },
+    { path: '/flash', priority: '0.9' },
+    { path: '/flash/usage', priority: '0.6' },
+    { path: '/theme', priority: '0.7' }
+  ],
+  zh: [
+    { path: '/', priority: '1.0' },
+    { path: '/download', priority: '0.9' },
+    { path: '/mobile', priority: '0.9' }
+  ]
 }
 
 function replaceTagAttribute(html, tagPattern, attribute, value) {
@@ -87,6 +130,126 @@ function replaceJsonLd(html, type, updater) {
       return `<script type="application/ld+json">\n${nextJson}\n  </script>`
     }
   )
+}
+
+function dropJsonLd(html, type) {
+  return html.replace(
+    /<script type="application\/ld\+json">\s*([\s\S]*?)\s*<\/script>/g,
+    (fullMatch, jsonText) => (JSON.parse(jsonText)['@type'] === type ? '' : fullMatch)
+  )
+}
+
+function appendJsonLd(html, data) {
+  const block = `<script type="application/ld+json">\n${JSON.stringify(data, null, 2)}\n  </script>`
+  return html.replace('</head>', `  ${block}\n</head>`)
+}
+
+// 英文站的 llms.txt / 404 页与中文站共用同一套 meta 生成逻辑
+function buildRouteHtml(route) {
+  const title = translations.page_title[route.key]
+  const description = translations.page_description[route.key]
+  const canonicalPath = route.canonicalPath ?? route.path
+  const canonicalUrl = `${config.domain}${canonicalPath}`
+  const englishUrl = `https://cherryai.com${canonicalPath}`
+  let html = readFileSync(join(distDir, 'index.html'), 'utf8')
+
+  html = html.replace(/<title>[\s\S]*?<\/title>/, `<title>${title}</title>`)
+  html = replaceMetaContent(html, 'name', 'description', description)
+  html = replaceMetaContent(
+    html,
+    'name',
+    'robots',
+    route.noindex ? NOINDEX_ROBOTS : DEFAULT_ROBOTS
+  )
+  html = replaceLinkHref(html, 'canonical', '', canonicalUrl)
+
+  for (const language of ['en', 'x-default']) {
+    html = replaceLinkHref(html, 'alternate', `\\s+hreflang="${language}"`, englishUrl)
+  }
+  if (route.chineseCounterpart === false) {
+    html = html.replace(/<link\s+rel="alternate"\s+hreflang="zh-CN"[^>]*>/g, '')
+  } else {
+    html = replaceLinkHref(html, 'alternate', '\\s+hreflang="zh-CN"', `https://cherryai.com.cn${canonicalPath}`)
+  }
+
+  for (const [attribute, name, content] of [
+    ['property', 'og:url', canonicalUrl],
+    ['property', 'og:title', title],
+    ['property', 'og:description', description],
+    ['name', 'twitter:title', title],
+    ['name', 'twitter:description', description],
+    ['itemprop', 'name', title],
+    ['itemprop', 'description', description],
+    ['name', 'qq:title', title],
+    ['name', 'qq:description', description]
+  ]) {
+    html = replaceMetaContent(html, attribute, name, content)
+  }
+
+  if (route.dropSoftwareApplication) {
+    // 桌面客户端的免费说明不描述这些页面
+    html = dropJsonLd(html, 'SoftwareApplication')
+  }
+
+  if (route.flashPlan) {
+    html = dropJsonLd(html, 'SoftwareApplication')
+    html = appendJsonLd(html, buildFlashProductJsonLd(canonicalUrl))
+    html = appendJsonLd(html, buildFlashFaqJsonLd())
+  }
+
+  return html
+}
+
+function buildFlashProductJsonLd(url) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: 'Cherry Studio Flash',
+    description:
+      'Monthly subscription bundling DeepSeek V4 Flash, Qwen 3.8 Flash and GLM 5.3 Flash inside Cherry Studio, with no separate provider accounts.',
+    brand: {
+      '@type': 'Brand',
+      name: 'Cherry Studio'
+    },
+    offers: {
+      '@type': 'Offer',
+      price: '8',
+      priceCurrency: 'USD',
+      url,
+      availability: 'https://schema.org/InStock',
+      priceSpecification: {
+        '@type': 'UnitPriceSpecification',
+        price: '8',
+        priceCurrency: 'USD',
+        billingDuration: 1,
+        billingIncrement: 1,
+        unitCode: 'MON'
+      }
+    }
+  }
+}
+
+function buildFlashFaqJsonLd() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: translations.pricing.faq.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer
+      }
+    }))
+  }
+}
+
+function writeRouteHtml(route) {
+  const html = buildRouteHtml(route)
+  const dir = join(distDir, route.path)
+
+  mkdirSync(dir, { recursive: true })
+  writeFileSync(join(dir, 'index.html'), html)
 }
 
 function applyIndexTarget() {
@@ -174,78 +337,174 @@ function applyIndexTarget() {
 }
 
 function applyRobotsTarget() {
-  const robots = `User-agent: *\nAllow: /\n\nSitemap: ${config.domain}/sitemap.xml\n`
+  const robots =
+    target === 'en'
+      ? `User-agent: *
+Allow: /
+Content-Signal: search=yes, ai-input=yes, use=reference
+
+# 显式放行 AI 检索与训练爬虫
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+Sitemap: ${config.domain}/sitemap.xml
+`
+      : `User-agent: *\nAllow: /\n\nSitemap: ${config.domain}/sitemap.xml\n`
+
   writeFileSync(join(distDir, 'robots.txt'), robots)
 }
 
-function applyPlusTarget() {
-  if (target !== 'en') return
-
-  const translations = JSON.parse(readFileSync(join(process.cwd(), 'src/i18n/lang/en.json'), 'utf8'))
-  const title = translations.page_title.plus
-  const description = translations.page_description.plus
-  const url = `${config.domain}/plus`
-  let html = readFileSync(join(distDir, 'index.html'), 'utf8')
-  html = html.replace(/<title>[\s\S]*?<\/title>/, `<title>${title}</title>`)
-  html = html.replace(/<link\s+rel="alternate"\s+hreflang="zh-CN"[^>]*>/g, '')
-  html = replaceLinkHref(html, 'canonical', '', url)
-  for (const language of ['en', 'x-default']) {
-    html = replaceLinkHref(html, 'alternate', `\\s+hreflang="${language}"`, url)
-  }
-  for (const [attribute, name, content] of [
-    ['name', 'description', description],
-    ['property', 'og:url', url],
-    ['property', 'og:title', title],
-    ['property', 'og:description', description],
-    ['name', 'twitter:title', title],
-    ['name', 'twitter:description', description],
-    ['itemprop', 'name', title],
-    ['itemprop', 'description', description],
-    ['name', 'qq:title', title],
-    ['name', 'qq:description', description]
-  ]) {
-    html = replaceMetaContent(html, attribute, name, content)
-  }
-  // The desktop app's free offer does not describe the Plus plan.
-  html = html.replace(/<script type="application\/ld\+json">\s*([\s\S]*?)\s*<\/script>/g, (match, json) =>
-    JSON.parse(json)['@type'] === 'SoftwareApplication' ? '' : match
-  )
-  mkdirSync(join(distDir, 'plus'), { recursive: true })
-  writeFileSync(join(distDir, 'plus/index.html'), html)
-}
-
 function applySitemapTarget() {
-  const siteUrls = ['/', '/download', '/mobile', ...(target === 'en' ? ['/plus'] : [])]
-  const priorities = ['1.0', '0.9', '0.9', '0.8']
-  const entries = siteUrls
+  const entries = SITEMAP[target]
     .map(
-      (path, index) => `  <url>
+      ({ path, priority }) => `  <url>
     <loc>${config.domain}${path === '/' ? '/' : path}</loc>
-    <priority>${priorities[index]}</priority>
+    <priority>${priority}</priority>
+  </url>`
+    )
+    .join('\n')
+
+  const extras = config.extraSitemapEntries
+    .map(
+      ({ url, priority }) => `  <url>
+    <loc>${url}</loc>
+    <priority>${priority}</priority>
   </url>`
     )
     .join('\n')
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${entries}
-  <url>
-    <loc>https://docs.cherryai.com.cn/</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://enterprise.cherryai.com.cn/</loc>
-    <priority>0.7</priority>
-  </url>
+${entries}${extras ? `\n${extras}` : ''}
 </urlset>
 `
 
   writeFileSync(join(distDir, 'sitemap.xml'), sitemap)
 }
 
+const LLMS_INTRO =
+  'Open-source AI desktop client for macOS, Windows and Linux. Run 300+ models from 50+ providers in one app, with conversations stored locally.'
+
+const LLMS_PAGES = ['home', 'download', 'flash', 'flash_usage', 'theme']
+const LLMS_PATH_BY_KEY = {
+  home: '/',
+  download: '/download',
+  flash: '/flash',
+  flash_usage: '/flash/usage',
+  theme: '/theme'
+}
+
+const LLMS_FULL = `# Cherry Studio
+
+Cherry Studio is a free, open-source AI desktop client for macOS, Windows and Linux,
+released under the AGPL-3.0 licence.
+
+## What it does
+
+- AI chat and autonomous agents
+- Image generation across multiple drawing models
+- Inline and full-page translation
+- Knowledge base built from local files and web pages
+- Works with text, images, Office documents and PDFs
+- 300+ built-in assistants, no prompt engineering required
+
+## Models and providers
+
+- 300+ models from 50+ providers, including OpenAI, Anthropic, Google, DeepSeek, Qwen and GLM
+- Local models via Ollama and LM Studio
+- Bring your own API keys, or subscribe to the Flash plan
+
+## Data ownership
+
+- Conversations are stored on the user's own machine
+- Providers are reached with the user's own API keys
+- Local and cloud backup, including WebDAV
+- Free and open source under AGPL-3.0
+
+## Pricing
+
+Cherry Studio itself is free and open source.
+
+Flash is an optional subscription at $8 per month (regular price $10) that bundles
+frontier models with no separate provider accounts:
+
+- DeepSeek V4 Flash: input Off-peak $0.22 / Peak $0.44, output Off-peak $0.66 / Peak $1.32, monthly allowance $18
+- DeepSeek V4.1 Flash: input Off-peak $0.15 / Peak $0.30, output Off-peak $0.60 / Peak $1.20, monthly allowance $16
+- Qwen 3.8 Flash: input $0.15, output $0.47, monthly allowance $12
+- GLM 5.3 Flash: input $0.15, output $0.50, monthly allowance $12
+
+Full pricing: https://cherryai.com/flash
+
+## Frequently asked questions
+
+${translations.pricing.faq.map((item) => `Q: ${item.question}\nA: ${item.answer}`).join('\n\n')}
+
+## Links
+
+- Website: https://cherryai.com
+- Download: https://cherryai.com/download
+- Flash: https://cherryai.com/flash
+- GitHub: https://github.com/CherryHQ/cherry-studio
+- Discord: https://discord.gg/wez8HtpxqQ
+`
+
+function applyLlmsTarget() {
+  if (target !== 'en') return
+
+  const pages = LLMS_PAGES.map(
+    (key) =>
+      `- [${translations.page_title[key]}](${config.domain}${LLMS_PATH_BY_KEY[key]}): ${translations.page_description[key]}`
+  ).join('\n')
+
+  const llms = `# Cherry Studio
+
+> ${LLMS_INTRO}
+
+## Pages
+
+${pages}
+
+## Links
+
+- [Download](${config.domain}/download)
+- [Flash](${config.domain}/flash)
+- [GitHub](https://github.com/CherryHQ/cherry-studio)
+- [Discord](https://discord.gg/wez8HtpxqQ)
+`
+
+  writeFileSync(join(distDir, 'llms.txt'), llms)
+  writeFileSync(join(distDir, 'llms-full.txt'), LLMS_FULL)
+}
+
 applyIndexTarget()
-applyPlusTarget()
+
+for (const route of ROUTES[target]) {
+  writeRouteHtml(route)
+}
+
+// 404 页面：中英文站都输出，供静态托管直接使用
+writeFileSync(join(distDir, '404.html'), buildRouteHtml(NOT_FOUND))
+
 applyRobotsTarget()
 applySitemapTarget()
+applyLlmsTarget()
 
 console.log(`Finalized ${target} static site for ${config.domain}`)

@@ -237,11 +237,11 @@ const HeroSection: FC = () => {
               </>
             ) : (
               <>
-                <span ref={ref1}>Smart Chat</span>
+                <span ref={ref1}>Agent</span>
                 {' · '}
-                <span ref={ref2}>Autonomous Agent</span>
+                <span ref={ref2}>Chat</span>
                 {' · '}
-                <span ref={ref3}>Limitless Creation</span>
+                <span ref={ref3}>Creation</span>
                 {' — Unified Access to Frontier LLMs'}
               </>
             )}

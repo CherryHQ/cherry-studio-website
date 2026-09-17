@@ -2,6 +2,7 @@ import { type FC, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import GitHubUserCard from '@/components/GitHubUserCard'
+import { isEnglishSite } from '@/utils/urls'
 
 interface Contributor {
   id: number
@@ -11,11 +12,21 @@ interface Contributor {
   contributions: number
 }
 
+interface RepoStats {
+  stars: number | null
+  contributors: number | null
+  forks: number | null
+}
+
+const GITHUB_REPO = 'https://api.github.com/repos/CherryHQ/cherry-studio'
+
 const ContributorsSection: FC = () => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const isEn = isEnglishSite(i18n.resolvedLanguage || i18n.language)
   const [contributors, setContributors] = useState<Contributor[]>([])
   const [totalContributions, setTotalContributions] = useState(0)
   const [loading, setLoading] = useState(true)
+  const [repoStats, setRepoStats] = useState<RepoStats>({ stars: null, contributors: null, forks: null })
 
   // 显示 40 个贡献者
   const MAX_CONTRIBUTORS = 40
@@ -23,7 +34,7 @@ const ContributorsSection: FC = () => {
   useEffect(() => {
     const fetchContributors = async () => {
       try {
-        const response = await fetch('https://api.github.com/repos/CherryHQ/cherry-studio/contributors?per_page=100')
+        const response = await fetch(`${GITHUB_REPO}/contributors?per_page=100`)
         if (response.ok) {
           const data: Contributor[] = await response.json()
           // 计算总贡献数
@@ -39,8 +50,33 @@ const ContributorsSection: FC = () => {
       }
     }
 
-    fetchContributors()
-  }, [])
+    // 英文站只展示 Stars / Contributors / Forks 三个数值
+    const fetchRepoStats = async () => {
+      try {
+        const [repoResponse, contributorsResponse] = await Promise.all([
+          fetch(GITHUB_REPO),
+          fetch(`${GITHUB_REPO}/contributors?per_page=1&anon=true`)
+        ])
+
+        const repo = repoResponse.ok ? await repoResponse.json() : null
+        const lastPage = contributorsResponse.headers.get('link')?.match(/[?&]page=(\d+)>; rel="last"/)
+
+        setRepoStats({
+          stars: typeof repo?.stargazers_count === 'number' ? repo.stargazers_count : null,
+          forks: typeof repo?.forks_count === 'number' ? repo.forks_count : null,
+          contributors: lastPage ? Number(lastPage[1]) : null
+        })
+      } catch (error) {
+        console.error('Error fetching repo stats:', error)
+      }
+    }
+
+    if (isEn) {
+      fetchRepoStats()
+    } else {
+      fetchContributors()
+    }
+  }, [isEn])
 
   // 计算贡献百分比
   const getContributionPercent = (contributions: number) => {
@@ -48,7 +84,9 @@ const ContributorsSection: FC = () => {
     return ((contributions / totalContributions) * 100).toFixed(1)
   }
 
-  if (loading) {
+  const formatStat = (value: number | null) => (value === null ? '—' : value.toLocaleString('en-US'))
+
+  if (loading && !isEn) {
     return (
       <section className="bg-background relative overflow-hidden py-12 sm:py-16">
         <div className="dot-pattern absolute inset-0 opacity-20" />
@@ -58,6 +96,59 @@ const ContributorsSection: FC = () => {
           </h2>
           <div className="flex justify-center">
             <div className="border-primary h-8 w-8 animate-spin rounded-full border-2 border-t-transparent" />
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  if (isEn) {
+    const stats = [
+      { label: t('statistics.stars'), value: repoStats.stars },
+      { label: t('statistics.contributors'), value: repoStats.contributors },
+      { label: t('statistics.forks'), value: repoStats.forks }
+    ]
+
+    return (
+      <section className="bg-background relative overflow-hidden py-12 sm:py-16">
+        <div className="dot-pattern absolute inset-0 opacity-20" />
+
+        <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto mb-6 max-w-3xl text-center">
+            <h2 className="text-foreground mb-3 text-2xl font-bold sm:mb-4 sm:text-4xl lg:text-5xl">
+              {t('contributors.project_contributors')}
+            </h2>
+            <p className="text-muted-foreground text-sm sm:text-base">
+              {t('contributors.project_contributors_subtitle')}
+            </p>
+          </div>
+
+          <div className="mb-10 flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+            <a href="https://trendshift.io/repositories/14318" target="_blank" rel="noopener noreferrer">
+              <img
+                src="https://trendshift.io/api/badge/repositories/14318"
+                alt="CherryHQ/cherry-studio | Trendshift"
+                className="block h-[70px] w-auto dark:hidden"
+              />
+              <img
+                src="https://trendshift.io/api/badge/repositories/14318?theme=dark"
+                alt="CherryHQ/cherry-studio | Trendshift"
+                className="hidden h-[70px] w-auto dark:block"
+              />
+            </a>
+          </div>
+
+          <div className="border-border/50 bg-card/50 mx-auto max-w-3xl rounded-2xl border p-6 sm:p-8">
+            <dl className="grid grid-cols-3 gap-4">
+              {stats.map((stat) => (
+                <div key={stat.label} className="text-center">
+                  <dd className="text-foreground text-3xl font-bold tabular-nums sm:text-4xl">
+                    {formatStat(stat.value)}
+                  </dd>
+                  <dt className="text-muted-foreground mt-1 text-xs sm:text-sm">{stat.label}</dt>
+                </div>
+              ))}
+            </dl>
           </div>
         </div>
       </section>

@@ -19,15 +19,22 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
 
   const enterpriseUrl = getEnterpriseUrl(i18n.language)
 
-  const navLinks = [
-    { path: '/', label: t('nav.home') },
-    { path: '/download', label: t('nav.download') },
-    ...(isEnglishSite(i18n.resolvedLanguage || i18n.language) ? [{ path: '/plus', label: t('nav.plus') }] : []),
-    { path: '/theme', label: t('nav.theme') },
-    { path: '/careers', label: t('nav.careers') },
-    { path: enterpriseUrl, label: t('nav.enterprise'), external: true },
-    { path: 'https://docs.cherryai.com.cn/', label: t('nav.docs'), external: true }
-  ]
+  // 线上英文站手机菜单同样是 Flash（带 20% off）、Docs、Enterprise、Download
+  const navLinks = isEnglishSite(i18n.resolvedLanguage || i18n.language)
+    ? [
+        { path: '/flash', label: `${t('nav.pricing')} ${t('nav.pricing_badge')}` },
+        { path: 'https://docs.cherryai.com.cn/', label: t('nav.docs'), external: true },
+        { path: enterpriseUrl, label: t('nav.enterprise'), external: true },
+        { path: '/download', label: t('nav.download') }
+      ]
+    : [
+        { path: '/', label: t('nav.home') },
+        { path: '/download', label: t('nav.download') },
+        { path: '/theme', label: t('nav.theme') },
+        { path: '/careers', label: t('nav.careers') },
+        { path: enterpriseUrl, label: t('nav.enterprise'), external: true },
+        { path: 'https://docs.cherryai.com.cn/', label: t('nav.docs'), external: true }
+      ]
 
   return createPortal(
     <>

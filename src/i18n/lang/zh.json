@@ -5,7 +5,11 @@
     "mobile": "Cherry Studio 移动版 - 随身的 AI 工作站",
     "theme": "Cherry Studio 主题库 - 美化你的 AI 助手",
     "careers": "加入 Cherry Studio - 招聘",
-    "plus": "Cherry Studio Plus - 开启 AI 新篇章"
+    "download_v1": "下载 Cherry Studio - 多平台 AI 客户端",
+    "download_v2": "下载 Cherry Studio - 多平台 AI 客户端",
+    "flash": "Cherry Studio 定价 - Flash 套餐每月 $8 起",
+    "flash_usage": "Cherry Flash 使用须知",
+    "not_found": "页面不存在 - Cherry Studio"
   },
   "page_description": {
     "home": "Cherry Studio AI桌面客户端，开源、免费、且功能强大。AI agent、AI 对话、AI绘图、知识库等功能齐全，支持所有主流大模型，支持Windows/macOS/Linux，支持数据本地存储，是AI深度使用者的首选",
@@ -13,73 +17,22 @@
     "mobile": "了解 Cherry Studio 移动版，在手机上连接 AI 模型、进行对话、创作图像和使用工具。下载 Android APK 或加入 iOS TestFlight 测试。",
     "theme": "发现和分享美丽的 Cherry Studio 主题，个性化你的 AI 助手界面。支持浅色和深色模式主题。",
     "careers": "加入 Cherry Studio 核心团队，寻找 AI Native 全栈工程师，一起打造下一代 AI 产品。",
-    "plus": "了解即将推出的 Cherry Studio Plus 套餐，查看常见问题并咨询开放信息。"
+    "download_v1": "下载 Cherry Studio AI 客户端，支持 Windows、macOS、Linux 平台。集成 100+ AI 模型，完全免费开源。",
+    "download_v2": "下载 Cherry Studio AI 客户端，支持 Windows、macOS、Linux 平台。集成 100+ AI 模型，完全免费开源。",
+    "flash": "Flash 用一份每月 $8 的订阅，把 DeepSeek V4、Qwen 3.8 和 GLM 5.3 放在一起。不用再单独注册各家服务商，随时可以取消。",
+    "flash_usage": "Cherry Flash 订阅包含什么：套餐内的模型、每百万 token 单价、每月额度、峰谷时段与隐私说明。",
+    "not_found": "你访问的页面不存在。"
   },
   "nav": {
     "home": "主页",
     "download": "下载",
-    "plus": "Plus",
     "theme": "主题",
     "careers": "招聘",
     "enterprise": "企业版",
     "docs": "文档",
-    "contact": "联系我们"
-  },
-  "plus_page": {
-    "eyebrow": "Cherry Studio 的全新篇章",
-    "title": "多一点 Plus。",
-    "title_accent": "多一份可能。",
-    "description": "让想法拥有更多成长空间。认识 Plus，开启 Cherry Studio 体验的新篇章，陪伴你用 AI 思考、创作与工作。",
-    "explore": "了解 Plus",
-    "download": "下载 Cherry Studio",
-    "hero_note": "熟悉的应用，值得期待的新可能。",
-    "art_label": "为更多可能留出空间",
-    "art_caption": "想法、对话与可能。",
-    "plan_eyebrow": "认识新套餐",
-    "plan_title": "下一步，从这里开始。",
-    "plan_description": "为 AI 工作带来新选择。了解即将到来的计划，今天就继续用 Cherry Studio 创作。",
-    "status": "即将推出",
-    "plan_name": "Cherry Studio Plus",
-    "price": "价格待公布",
-    "plan_note": "订阅开放前，我们会在这里公布完整的套餐说明。",
-    "detail_price": "月费",
-    "detail_models": "包含模型",
-    "detail_usage": "使用额度",
-    "detail_availability": "开放时间",
-    "announced_soon": "待公布",
-    "contact": "咨询 Plus",
-    "contact_note": "对套餐有疑问？欢迎联系我们。",
-    "why_eyebrow": "融入日常工作",
-    "why_title": "从最初的想法，到下一次创造。",
-    "why_description": "Cherry Studio 汇聚你的 AI 工作体验。Plus 是我们正在为这份体验准备的新篇章。",
-    "chat_title": "理清思路",
-    "chat_description": "与 AI 对话，探索想法、提出好问题、发现新视角。",
-    "create_title": "自由创作",
-    "create_description": "在熟悉的 Cherry Studio 中完成写作、研究与创意工作。",
-    "work_title": "继续前行",
-    "work_description": "探索新可能的同时，继续使用现有服务商完成工作。",
-    "steps_eyebrow": "接下来",
-    "steps_title": "从这里开始，走得更远。",
-    "step_download_title": "获取 Cherry Studio",
-    "step_download_description": "下载适用于 macOS、Windows 或 Linux 的免费开源应用。",
-    "step_explore_title": "熟悉你的工作空间",
-    "step_explore_description": "连接服务商，体验对话、助手和知识库。",
-    "step_plus_title": "关注 Plus 动态",
-    "step_plus_description": "回到这里查看确认后的价格、可用模型与订阅说明。",
-    "faq_title": "你的问题，清晰解答。",
-    "faq_intro": "关于 Plus，你可能想了解这些。",
-    "faq_what_question": "什么是 Cherry Studio Plus？",
-    "faq_what_answer": "Plus 是即将推出的 Cherry Studio 套餐。本页介绍这一计划，完整权益与开放信息会在订阅开放前公布。",
-    "faq_price_question": "Plus 的价格是多少？",
-    "faq_price_answer": "价格尚未公布。套餐准备就绪后，我们会在这里公布月费和计费条款。",
-    "faq_models_question": "包含哪些模型和使用额度？",
-    "faq_models_answer": "模型列表与使用额度尚待公布。我们会在这里发布确认后的详情，方便你做出选择。",
-    "faq_free_question": "还能免费使用 Cherry Studio 吗？",
-    "faq_free_answer": "Cherry Studio 免费且开源。你现在就可以下载应用并连接自己的服务商，模型使用费用取决于所选服务商。",
-    "faq_subscribe_question": "现在可以订阅吗？",
-    "faq_subscribe_answer": "订阅尚未开放。如需咨询 Plus，可以通过下方链接联系 support@cherry-ai.com。",
-    "closing_title": "用一次对话，开启下一篇章。",
-    "closing_description": "想进一步了解 Plus？欢迎与我们联系。"
+    "contact": "联系我们",
+    "pricing": "Flash",
+    "pricing_badge": "20% off"
   },
   "theme_switcher": {
     "dark": "深色",
@@ -564,5 +517,176 @@
       },
       "version_invalid": "版本号格式错误"
     }
+  },
+  "pricing": {
+    "headline_brand": "Cherry",
+    "headline_plan": "Flash",
+    "subtitle": "我们专为办公需求打造。",
+    "per_month": " / 月",
+    "subscribe": "订阅 Flash",
+    "cancel_note": "随时可取消 · 无隐藏费用",
+    "badges": [
+      {
+        "title": "更低的价格",
+        "description": "一份 ${{price}} 的账单，替代三家服务商的订阅；额度足够覆盖一整个月的用量。"
+      },
+      {
+        "title": "无时段与周期限制",
+        "description": "没有时段限制，也没有每日上限，整个账单周期内怎么用都由你。"
+      },
+      {
+        "title": "单价透明，用量实时可见",
+        "description": "每百万 token 的单价都写在下面，用了多少在应用里随时能看。"
+      }
+    ],
+    "models_title": "每月包含什么",
+    "table": {
+      "model": "模型",
+      "input": "输入",
+      "output": "输出",
+      "cache_read": "缓存读取",
+      "cache_write": "缓存写入",
+      "allowance": "月额度",
+      "free": "不收费",
+      "included": "每月包含",
+      "rate_unit": "单价均为每 100 万 token"
+    },
+    "models": [
+      {
+        "id": "deepseek",
+        "name": "DeepSeek V4 Flash",
+        "input": "谷时 $0.22 / 峰时 $0.44",
+        "output": "谷时 $0.66 / 峰时 $1.32",
+        "cache_read": "谷时 $0.007 / 峰时 $0.014",
+        "cache_write": "—",
+        "allowance": "$18",
+        "tokens": "的用量",
+        "free": ["cache_write"]
+      },
+      {
+        "id": "deepseek-v41",
+        "name": "DeepSeek V4.1 Flash",
+        "input": "谷时 $0.15 / 峰时 $0.30",
+        "output": "谷时 $0.60 / 峰时 $1.20",
+        "cache_read": "谷时 $0.003 / 峰时 $0.006",
+        "cache_write": "—",
+        "allowance": "$16",
+        "tokens": "的用量",
+        "free": ["cache_write"]
+      },
+      {
+        "id": "qwen",
+        "name": "Qwen 3.8 Flash",
+        "input": "$0.15",
+        "output": "$0.47",
+        "cache_read": "$0.016",
+        "cache_write": "$0.20",
+        "allowance": "$12",
+        "tokens": "的用量",
+        "free": []
+      },
+      {
+        "id": "glm",
+        "name": "GLM 5.3 Flash",
+        "input": "$0.15",
+        "output": "$0.50",
+        "cache_read": "$0.03",
+        "cache_write": "—",
+        "allowance": "$12",
+        "tokens": "的用量",
+        "free": ["cache_write"]
+      }
+    ],
+    "peak_title": "DeepSeek 的峰谷时段",
+    "peak_body": "DeepSeek V4 Flash 与 DeepSeek V4.1 Flash 都按时段计费：峰时为周一至周五 UTC 01:00–04:00 与 06:00–10:00，其余时间（含周末）均按谷时计费。Qwen 和 GLM 全天单一价。",
+    "faq_title": "关于计费",
+    "faq": [
+      {
+        "question": "额度用完了会怎样？",
+        "answer": "当月就不再扣额度了。你随时可以换回自己的 API Key 接着用——Cherry Studio 从不拦着你用自己的 Key。"
+      },
+      {
+        "question": "可以随时取消吗？",
+        "answer": "可以。取消后不再续费，剩下的额度在当期结束前照常能用。"
+      },
+      {
+        "question": "还需要单独注册各家模型服务商吗？",
+        "answer": "不用。Flash 要解决的正是这件事：一份订阅覆盖池里的模型，不用一家家注册、一家家充值。"
+      }
+    ],
+    "cta_title": "立即开始使用 Flash",
+    "cta_body": "每月 ${{price}}，不用再逐家注册服务商。",
+    "list_price": "${{list}}",
+    "rules_link": "查看详细使用规则"
+  },
+  "usage": {
+    "title": "Cherry Flash 订阅计划使用须知",
+    "subtitle": "低成本的开源办公模型订阅服务。",
+    "intro": {
+      "title": "Cherry Flash 是什么",
+      "body": [
+        "Cherry Flash 是一项低成本订阅服务，让你能够稳定地访问精选的开源 Flash 模型，用于写作、总结、翻译、数据处理、邮件起草、会议纪要等通用办公任务。订阅价格以开通页面展示为准。",
+        "它的工作方式与任何其他模型服务商一样。订阅后即可在 Cherry Studio 的模型选择器中使用，无需手动配置 API 密钥。它是完全可选的，并非使用任何产品的必需条件。",
+        "它主要集成在 Cherry Studio 中使用，为通用办公任务提供稳定的模型访问。"
+      ]
+    },
+    "background": {
+      "title": "我们为什么做这件事",
+      "body": [
+        "开源模型现在已经相当能打。在通用办公任务上，Flash 级模型的表现已经接近专有模型；而且由于许多服务商都能提供有竞争力的服务，它们通常要便宜得多。",
+        "难的是拿到可靠、低延迟的访问 —— 各家服务商在质量和可用性上参差不齐。"
+      ],
+      "steps_title": "为此我们做了三件事：",
+      "steps": [
+        "测试了一组精选的开源 Flash 模型，并与它们背后的团队探讨每个模型怎么跑效果最好。",
+        "与多家服务商合作，确保这些模型被正确地提供出来。",
+        "对模型与服务商的组合做了基准测试，最终得出一份推荐名单。"
+      ]
+    },
+    "how": {
+      "title": "怎么用",
+      "body": [
+        "订阅之后，在 Cherry Studio 的模型选择器里选择由 Cherry AI 服务商提供的模型即可直接使用，不需要额外配置。"
+      ],
+      "callout": "仅限个人使用，不允许商用。"
+    },
+    "models": {
+      "title": "当前包含的模型",
+      "note": "随着我们持续测试和添加新模型，该列表可能会发生变化。"
+    },
+    "limits": {
+      "title": "使用限制",
+      "intro": "下表单价均为每 100 万 token。「月额度」是每月包含的用量价值。",
+      "peak_note": "DeepSeek V4 Flash 与 DeepSeek V4.1 Flash：峰时为周一至周五 UTC 01:00–04:00 与 06:00–10:00；其余所有时段（含周末）均为谷时。",
+      "console": "你可以在控制台中查看当前的使用情况。",
+      "change": "使用限制可能会随着我们从早期使用和反馈中学习而调整。"
+    },
+    "overage": {
+      "title": "超出额度之后",
+      "body": "如果用完了 Cherry Flash 的每月额度，你可以添加自己的 API Key，在 Cherry Studio 里继续不间断地工作。"
+    },
+    "privacy": {
+      "title": "隐私保护",
+      "intro": "方案内的模型都不会用你的数据做训练。",
+      "col_model": "模型",
+      "col_training": "用于模型训练",
+      "value_no": "不使用"
+    },
+    "goals": {
+      "title": "我们想做到的",
+      "items": [
+        "通过低成本订阅，让价格不再是用 AI 办公的门槛。",
+        "为最好的开源 Flash 办公模型提供可靠的访问。",
+        "精选那些经过测试和基准评估、适合通用办公任务的模型。",
+        "不锁定 —— 你可以在使用 Cherry Flash 的同时继续用任何别的服务商。"
+      ]
+    }
+  },
+  "not_found": {
+    "code": "404",
+    "title": "页面不存在",
+    "description": "链接可能已失效或输入有误。请回到首页，或下载最新版本。",
+    "back_home": "返回首页",
+    "download": "下载 Cherry Studio"
   }
 }
