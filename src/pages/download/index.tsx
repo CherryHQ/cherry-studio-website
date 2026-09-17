@@ -1,6 +1,7 @@
 import { ExternalLink, Laptop } from 'lucide-react'
 import { type FC, useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useSearchParams } from 'react-router-dom'
 
 import Footer from '@/components/website/Footer'
 import { usePageMeta } from '@/hooks/usePageMeta'
@@ -26,6 +27,9 @@ const RELEASE_HISTORY_URLS = {
 
 const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
   const { t } = useTranslation()
+  const [searchParams] = useSearchParams()
+  const platformParam = searchParams.get('platform')
+  const archParam = searchParams.get('arch')
   usePageMeta('download')
 
   const isV2 = edition === 'v2'
@@ -35,29 +39,36 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
     exactMajorVersion: isV1 ? 1 : undefined,
     minimumMajorVersion: isV2 ? 2 : undefined
   })
-  const [activePlatform, setActivePlatform] = useState<DownloadPlatform>(() =>
-    isMobileDevice() ? 'mobile' : 'windows'
-  )
+  const [activePlatform, setActivePlatform] = useState<DownloadPlatform>(() => {
+    if (
+      platformParam === 'mobile' ||
+      platformParam === 'windows' ||
+      platformParam === 'macos' ||
+      platformParam === 'linux'
+    ) {
+      return platformParam
+    }
+    return isMobileDevice() ? 'mobile' : 'windows'
+  })
   const [detectedPlatform, setDetectedPlatform] = useState<Platform | null>(null)
   const [detectedArch, setDetectedArch] = useState<DetectedArch | null>(null)
   const [systemDetectionReady, setSystemDetectionReady] = useState(false)
   const userSelectedPlatformRef = useRef(false)
   const isMobile = isMobileDevice()
   const showMobile = activePlatform === 'mobile'
-  const autoDownloadRequested =
-    new URLSearchParams(window.location.search).get('autodownload')?.toLowerCase() === 'true'
+  const autoDownloadRequested = searchParams.get('autodownload')?.toLowerCase() === 'true'
   const releaseHistoryUrl = RELEASE_HISTORY_URLS[getSiteRegion()]
 
   useEffect(() => {
     let cancelled = false
+    userSelectedPlatformRef.current = false
+    setSystemDetectionReady(false)
+    setDetectedPlatform(null)
+    setDetectedArch(null)
 
     // Optional debug overrides: /download?platform=windows&arch=arm64
     // platform: windows|macos|linux|mobile
     // arch: arm64|x64|ia32|unknown|null
-    const params = new URLSearchParams(window.location.search)
-    const platformParam = params.get('platform')
-    const archParam = params.get('arch')
-
     if (platformParam === 'mobile') {
       setActivePlatform('mobile')
       setSystemDetectionReady(true)
@@ -87,6 +98,7 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
     }
 
     // Fast path: sync OS detection for immediate UX.
+    setActivePlatform(isMobileDevice() ? 'mobile' : 'windows')
     const detected = detectPlatform()
     if (detected) {
       setDetectedPlatform(detected)
@@ -116,7 +128,7 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
     return () => {
       cancelled = true
     }
-  }, [])
+  }, [platformParam, archParam])
 
   return (
     <div className="bg-background min-h-screen overflow-hidden">
