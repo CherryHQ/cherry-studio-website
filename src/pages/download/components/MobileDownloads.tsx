@@ -3,11 +3,12 @@ import { QRCodeSVG } from 'qrcode.react'
 import { useTranslation } from 'react-i18next'
 
 import { Button } from '@/components/ui/button'
-import { mobileDownloads } from '@/config/mobileDownloads'
+import { useMobileDownloads } from '@/hooks/useMobileDownloads'
 import { detectMobilePlatform, isMobileDevice } from '@/utils/systemDetection'
 
 export default function MobileDownloads() {
   const { t } = useTranslation()
+  const mobileDownloads = useMobileDownloads()
   const isMobile = isMobileDevice()
   const currentPlatform = detectMobilePlatform()
 

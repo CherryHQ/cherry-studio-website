@@ -9,7 +9,7 @@ import paintingsScreenshot from '@/assets/images/screenshots/mobile/paintings.pn
 import pluginsScreenshot from '@/assets/images/screenshots/mobile/plugins.png'
 import { Button } from '@/components/ui/button'
 import Footer from '@/components/website/Footer'
-import { mobileDownloads } from '@/config/mobileDownloads'
+import { useMobileDownloads } from '@/hooks/useMobileDownloads'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { cn } from '@/lib/utils'
 import { detectMobilePlatform, isMobileDevice } from '@/utils/systemDetection'
@@ -22,6 +22,7 @@ const features = [
 
 export default function MobilePage() {
   const { t } = useTranslation()
+  const mobileDownloads = useMobileDownloads()
   usePageMeta('mobile')
   const mobilePlatform = detectMobilePlatform()
   const isMobile = isMobileDevice()
