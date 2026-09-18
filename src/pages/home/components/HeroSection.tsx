@@ -31,6 +31,7 @@ import { useTheme } from '@/hooks/useTheme'
 import { useVersionData } from '@/hooks/useVersionData'
 import { cn } from '@/lib/utils'
 import { isMobileDevice } from '@/utils/systemDetection'
+import { isEnglishSite } from '@/utils/urls'
 
 interface FeatureTab {
   id: string
@@ -105,6 +106,7 @@ const HeroSection: FC = () => {
   const [isPaused, setIsPaused] = useState(false)
 
   const isZh = i18n.language === 'zh-CN'
+  const isEn = isEnglishSite(i18n.resolvedLanguage || i18n.language)
   const isMobile = isMobileDevice()
   const stableMajorVersion = Number(versionData?.version.match(/^v?(\d+)\./)?.[1])
   const showV1Download = Number.isFinite(stableMajorVersion) && stableMajorVersion >= 2
@@ -281,10 +283,11 @@ const HeroSection: FC = () => {
               {!isMobile && (
                 <>
                   <MobileDownloadButton />
-                  <span aria-hidden="true" className="bg-border h-3.5 w-px" />
+                  {!isEn && <span aria-hidden="true" className="bg-border h-3.5 w-px" />}
                 </>
               )}
-              {isMobile ? (
+              {/* 英文站按 demo 只保留 Mobile download，去掉 V1 与 Docs 次级入口 */}
+              {!isEn && isMobile && (
                 <>
                   <Link
                     to="/download"
@@ -293,7 +296,8 @@ const HeroSection: FC = () => {
                   </Link>
                   <span aria-hidden="true" className="bg-border h-3.5 w-px" />
                 </>
-              ) : showV1Download ? (
+              )}
+              {!isEn && !isMobile && showV1Download && (
                 <>
                   <Link
                     to="/download/v1"
@@ -303,15 +307,17 @@ const HeroSection: FC = () => {
                   </Link>
                   <span aria-hidden="true" className="bg-border h-3.5 w-px" />
                 </>
-              ) : null}
-              <a
-                href="https://docs.cherryai.com.cn"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-foreground inline-flex items-center gap-1.5 rounded-md py-1 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
-                {t('nav.docs')}
-                <ArrowRight className="h-3.5 w-3.5" />
-              </a>
+              )}
+              {!isEn && (
+                <a
+                  href="https://docs.cherryai.com.cn"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-foreground inline-flex items-center gap-1.5 rounded-md py-1 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+                  {t('nav.docs')}
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </a>
+              )}
             </div>
           </div>
         </div>
