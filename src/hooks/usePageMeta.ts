@@ -3,20 +3,46 @@ import { useTranslation } from 'react-i18next'
 
 import { getLanguageDomain } from '@/utils/urls'
 
-type PageType = 'home' | 'download' | 'mobile' | 'theme' | 'careers'
+type PageType =
+  | 'home'
+  | 'download'
+  | 'downloadV1'
+  | 'downloadV2'
+  | 'mobile'
+  | 'theme'
+  | 'careers'
+  | 'flash'
+  | 'flashUsage'
+  | 'notFound'
 
-const CANONICAL_PATHS: Record<PageType, string> = {
-  home: '/',
-  download: '/download',
-  mobile: '/mobile',
-  theme: '/theme',
-  careers: '/careers'
+interface PageMetaConfig {
+  path: string
+  // 归档页把 canonical 指回正式页面（与线上英文站一致）
+  canonicalPath?: string
+  noindex?: boolean
+  // Flash 相关页面只在英文站存在，中文站没有对应页面
+  chineseCounterpart?: boolean
+}
+
+const PAGE_META: Record<PageType, PageMetaConfig> = {
+  home: { path: '/' },
+  download: { path: '/download' },
+  downloadV1: { path: '/download/v1', canonicalPath: '/download', noindex: true },
+  downloadV2: { path: '/download/v2', canonicalPath: '/download' },
+  mobile: { path: '/mobile' },
+  theme: { path: '/theme' },
+  careers: { path: '/careers' },
+  flash: { path: '/flash', chineseCounterpart: false },
+  flashUsage: { path: '/flash/usage', chineseCounterpart: false },
+  notFound: { path: '/404', noindex: true }
 }
 
 export const usePageMeta = (pageType: PageType) => {
   const { t, i18n } = useTranslation()
 
   useEffect(() => {
+    const config = PAGE_META[pageType]
+
     // 更新页面标题
     const title = t(`page_title.${pageType}`)
     document.title = title
@@ -28,10 +54,21 @@ export const usePageMeta = (pageType: PageType) => {
       metaDescription.setAttribute('content', description)
     }
 
+    // 更新 robots
+    const robots = document.querySelector('meta[name="robots"]')
+    if (robots) {
+      robots.setAttribute(
+        'content',
+        config.noindex
+          ? 'noindex, follow'
+          : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
+      )
+    }
+
     // 更新 canonical 链接和多语言链接
     const currentLanguage = i18n.resolvedLanguage || i18n.language
     const canonicalOrigin = `https://${getLanguageDomain(currentLanguage)}`
-    const pagePath = CANONICAL_PATHS[pageType]
+    const pagePath = config.canonicalPath ?? config.path
     const canonicalUrl = `${canonicalOrigin}${pagePath}`
 
     const canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]')
@@ -39,20 +76,27 @@ export const usePageMeta = (pageType: PageType) => {
       canonical.href = canonicalUrl
     }
 
-    const zhAlternate = document.querySelector<HTMLLinkElement>('link[rel="alternate"][hreflang="zh-CN"]')
-    if (zhAlternate) {
-      zhAlternate.href = `https://cherryai.com.cn${pagePath}`
+    if (config.chineseCounterpart === false) {
+      document.querySelector('link[rel="alternate"][hreflang="zh-CN"]')?.remove()
+    }
+    const alternates = [
+      ...(config.chineseCounterpart === false
+        ? []
+        : [{ language: 'zh-CN', href: `https://cherryai.com.cn${pagePath}` }]),
+      { language: 'en', href: `https://cherryai.com${pagePath}` },
+      { language: 'x-default', href: canonicalUrl }
+    ]
+    for (const { language, href } of alternates) {
+      const link =
+        document.querySelector<HTMLLinkElement>(`link[rel="alternate"][hreflang="${language}"]`) ??
+        document.createElement('link')
+      link.rel = 'alternate'
+      link.hreflang = language
+      link.href = href
+      if (!link.isConnected) document.head.appendChild(link)
     }
 
-    const enAlternate = document.querySelector<HTMLLinkElement>('link[rel="alternate"][hreflang="en"]')
-    if (enAlternate) {
-      enAlternate.href = `https://cherryai.com${pagePath}`
-    }
-
-    const defaultAlternate = document.querySelector<HTMLLinkElement>('link[rel="alternate"][hreflang="x-default"]')
-    if (defaultAlternate) {
-      defaultAlternate.href = canonicalUrl
-    }
+    document.querySelector('meta[property="og:url"]')?.setAttribute('content', canonicalUrl)
 
     // 更新 Open Graph 标题
     const ogTitle = document.querySelector('meta[property="og:title"]')

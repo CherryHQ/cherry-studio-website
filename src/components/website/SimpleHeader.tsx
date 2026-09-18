@@ -8,8 +8,16 @@ import cherryLogoSvg from '@/assets/images/cherry-logo.svg'
 import githubIcon from '@/assets/images/icons/github.svg'
 import cherryLogoPng from '@/assets/images/logo.png'
 import { cn } from '@/lib/utils'
-import { getEnterpriseUrl } from '@/utils/urls'
+import { getEnterpriseUrl, isEnglishSite } from '@/utils/urls'
+import LanguageSelector from './LanguageSelector'
 import MobileMenu from './MobileMenu'
+
+interface NavLink {
+  path: string
+  label: string
+  external?: boolean
+  badge?: string
+}
 
 const SimpleHeader: React.FC = () => {
   const { t, i18n } = useTranslation()
@@ -50,13 +58,20 @@ const SimpleHeader: React.FC = () => {
     return count.toString()
   }
 
-  const navLinks = [
-    { path: '/', label: t('nav.home') },
-    { path: '/theme', label: t('nav.theme') },
-    { path: '/careers', label: t('nav.careers') },
-    { path: enterpriseUrl, label: t('nav.enterprise'), external: true },
-    { path: 'https://docs.cherryai.com.cn/', label: t('nav.docs'), external: true }
-  ]
+  // 线上英文站导航只有 Flash（带 20% off 徽标）、Docs、Enterprise 三项
+  const navLinks: NavLink[] = isEnglishSite(i18n.resolvedLanguage || i18n.language)
+    ? [
+        { path: '/flash', label: t('nav.pricing'), badge: t('nav.pricing_badge') },
+        { path: 'https://docs.cherryai.com.cn/', label: t('nav.docs'), external: true },
+        { path: enterpriseUrl, label: t('nav.enterprise'), external: true }
+      ]
+    : [
+        { path: '/', label: t('nav.home') },
+        { path: '/theme', label: t('nav.theme') },
+        { path: '/careers', label: t('nav.careers') },
+        { path: enterpriseUrl, label: t('nav.enterprise'), external: true },
+        { path: 'https://docs.cherryai.com.cn/', label: t('nav.docs'), external: true }
+      ]
 
   return (
     <header
@@ -140,10 +155,22 @@ const SimpleHeader: React.FC = () => {
                       </span>
                     )}
                     {link.label}
+                    {link.badge && (
+                      <sup className="bg-primary/10 text-primary rounded-full px-1.5 py-0.5 text-[10px] font-semibold leading-none">
+                        {link.badge}
+                      </sup>
+                    )}
                   </Link>
                 )
               )}
             </nav>
+
+            {/* Language Selector（线上英文站） */}
+            {isEnglishSite(i18n.resolvedLanguage || i18n.language) && (
+              <div className="ml-2 hidden lg:block">
+                <LanguageSelector />
+              </div>
+            )}
 
             {/* Download Button */}
             <Link

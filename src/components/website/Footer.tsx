@@ -15,7 +15,6 @@ import tgColorIcon from '@/assets/images/icons/tg-color.svg'
 import xIcon from '@/assets/images/icons/x.svg'
 import xColorIcon from '@/assets/images/icons/x-color.svg'
 import cherryWxQR from '@/assets/images/resource/cherrywx.png'
-import discordQR from '@/assets/images/resource/discord.png'
 import { copyRSSLink } from '@/utils'
 import LanguageSelector from './LanguageSelector'
 import ThemeSelector from './ThemeSelector'
@@ -75,11 +74,25 @@ const Footer: FC = () => {
     }
   ]
 
-  const cherryLinks = [
-    { href: 'https://github.com/CherryHQ/cherry-studio', label: t('footer.cherry_studio.github') },
-    { href: 'https://gitcode.com/CherryHQ/cherry-studio', label: t('footer.cherry_studio.gitcode') },
-    { href: 'https://docs.cherryai.com.cn', label: t('footer.cherry_studio.docs') },
-    { href: 'https://github.com/CherryHQ/cherry-studio/issues', label: t('footer.cherry_studio.feedback') }
+  // 线上英文站页脚只保留 GitHub / Documentation / Feedback，不展示 GitCode
+  const cherryLinks = isEn
+    ? [
+        { href: 'https://github.com/CherryHQ/cherry-studio', label: t('footer.cherry_studio.github') },
+        { href: 'https://docs.cherryai.com.cn', label: t('footer.cherry_studio.docs') },
+        { href: 'https://github.com/CherryHQ/cherry-studio/issues', label: t('footer.cherry_studio.feedback') }
+      ]
+    : [
+        { href: 'https://github.com/CherryHQ/cherry-studio', label: t('footer.cherry_studio.github') },
+        { href: 'https://gitcode.com/CherryHQ/cherry-studio', label: t('footer.cherry_studio.gitcode') },
+        { href: 'https://docs.cherryai.com.cn', label: t('footer.cherry_studio.docs') },
+        { href: 'https://github.com/CherryHQ/cherry-studio/issues', label: t('footer.cherry_studio.feedback') }
+      ]
+
+  const communityLinks = [
+    { href: 'https://discord.gg/wez8HtpxqQ', label: 'Discord' },
+    { href: 'https://x.com/CherryStudioHQ', label: 'X' },
+    { href: 'https://www.linkedin.com/company/cherryhq/', label: 'LinkedIn' },
+    { href: 'https://www.instagram.com/cherrystudio_official/', label: 'Instagram' }
   ]
 
   const friendlyLinks = [
@@ -98,54 +111,56 @@ const Footer: FC = () => {
           <div className="space-y-5 lg:col-span-4">
             <img src={cherryLogo} alt="Cherry Studio" className="h-8 w-auto" />
             <p className="text-muted-foreground text-sm leading-relaxed">{t('footer.description')}</p>
-            <div className="flex flex-wrap gap-2">
-              {socialLinks.map((link) => (
-                <a
-                  key={link.alt}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group border-border bg-secondary/50 hover:bg-secondary relative flex h-9 w-9 items-center justify-center rounded-lg border transition-all duration-200">
-                  <img
-                    src={link.icon}
-                    alt={link.alt}
-                    className="h-4 w-4 transition-opacity duration-200 group-hover:opacity-0 dark:invert"
-                  />
-                  <img
-                    src={link.colorIcon}
-                    alt={link.alt}
-                    className={`absolute h-4 w-4 opacity-0 transition-opacity duration-200 group-hover:opacity-100 ${link.colorDarkInvert ? 'dark:invert' : ''}`}
-                  />
-                </a>
-              ))}
-              <div className="flex cursor-pointer items-center gap-2">
-                <button
-                  type="button"
-                  onClick={handleCopyRSS}
-                  className="group border-border bg-secondary/50 hover:bg-secondary relative flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg border transition-all duration-200">
-                  <img
-                    src={rssIcon}
-                    alt="RSS"
-                    className="h-4 w-4 cursor-pointer transition-opacity duration-200 group-hover:opacity-0 dark:invert"
-                  />
-                  <img
-                    src={rssColorIcon}
-                    alt="RSS"
-                    className="absolute h-4 w-4 cursor-pointer opacity-0 transition-opacity duration-200 group-hover:opacity-100"
-                  />
-                </button>
+            {!isEn && (
+              <div className="flex flex-wrap gap-2">
+                {socialLinks.map((link) => (
+                  <a
+                    key={link.alt}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group border-border bg-secondary/50 hover:bg-secondary relative flex h-9 w-9 items-center justify-center rounded-lg border transition-all duration-200">
+                    <img
+                      src={link.icon}
+                      alt={link.alt}
+                      className="h-4 w-4 transition-opacity duration-200 group-hover:opacity-0 dark:invert"
+                    />
+                    <img
+                      src={link.colorIcon}
+                      alt={link.alt}
+                      className={`absolute h-4 w-4 opacity-0 transition-opacity duration-200 group-hover:opacity-100 ${link.colorDarkInvert ? 'dark:invert' : ''}`}
+                    />
+                  </a>
+                ))}
+                <div className="flex cursor-pointer items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={handleCopyRSS}
+                    className="group border-border bg-secondary/50 hover:bg-secondary relative flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg border transition-all duration-200">
+                    <img
+                      src={rssIcon}
+                      alt="RSS"
+                      className="h-4 w-4 cursor-pointer transition-opacity duration-200 group-hover:opacity-0 dark:invert"
+                    />
+                    <img
+                      src={rssColorIcon}
+                      alt="RSS"
+                      className="absolute h-4 w-4 cursor-pointer opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+                    />
+                  </button>
 
-                <span
-                  aria-live="polite"
-                  className={`text-muted-foreground select-none whitespace-nowrap text-xs transition-opacity duration-300 ease-out ${rssCopied ? 'opacity-100' : 'pointer-events-none opacity-0'}`}>
-                  {t('footer.rss_copied')}
-                </span>
+                  <span
+                    aria-live="polite"
+                    className={`text-muted-foreground select-none whitespace-nowrap text-xs transition-opacity duration-300 ease-out ${rssCopied ? 'opacity-100' : 'pointer-events-none opacity-0'}`}>
+                    {t('footer.rss_copied')}
+                  </span>
+                </div>
               </div>
-            </div>
+            )}
           </div>
 
           {/* Links Columns */}
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:col-span-5">
+          <div className={`grid grid-cols-2 gap-8 lg:col-span-5 ${isEn ? '' : 'sm:grid-cols-3'}`}>
             {/* Cherry Studio Links */}
             <div>
               <h4 className="text-foreground mb-4 text-sm font-semibold">{t('footer.cherry_studio.title')}</h4>
@@ -164,36 +179,56 @@ const Footer: FC = () => {
               </ul>
             </div>
 
-            {/* Friendly Links */}
-            <div>
-              <h4 className="text-foreground mb-4 text-sm font-semibold">{t('footer.friendly_links.title')}</h4>
-              <ul className="space-y-2.5">
-                {friendlyLinks.map((link) => (
-                  <li key={link.href}>
-                    <a
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-muted-foreground hover:text-primary text-sm transition-colors duration-200">
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Contact - Compact */}
-            <div>
-              <h4 className="text-foreground mb-4 text-sm font-semibold">{t('footer.contact_us.title')}</h4>
-              <div className="border-border mb-3 inline-block overflow-hidden rounded-lg border bg-white p-1.5">
-                <img
-                  src={isEn ? discordQR : cherryWxQR}
-                  alt={t('footer.contact_us.wechat_qr_alt')}
-                  className="h-24 w-24"
-                />
+            {/* Community Links - 线上英文站 */}
+            {isEn && (
+              <div>
+                <h4 className="text-foreground mb-4 text-sm font-semibold">{t('footer.community.title')}</h4>
+                <ul className="space-y-2.5">
+                  {communityLinks.map((link) => (
+                    <li key={link.href}>
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-muted-foreground hover:text-primary text-sm transition-colors duration-200">
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <p className="text-muted-foreground text-xs">{t('footer.contact_us.wechat_official_account')}</p>
-            </div>
+            )}
+
+            {/* Friendly Links */}
+            {!isEn && (
+              <div>
+                <h4 className="text-foreground mb-4 text-sm font-semibold">{t('footer.friendly_links.title')}</h4>
+                <ul className="space-y-2.5">
+                  {friendlyLinks.map((link) => (
+                    <li key={link.href}>
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-muted-foreground hover:text-primary text-sm transition-colors duration-200">
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* Contact QR - Compact */}
+            {!isEn && (
+              <div>
+                <h4 className="text-foreground mb-4 text-sm font-semibold">{t('footer.contact_us.title')}</h4>
+                <div className="border-border mb-3 inline-block overflow-hidden rounded-lg border bg-white p-1.5">
+                  <img src={cherryWxQR} alt={t('footer.contact_us.wechat_qr_alt')} className="h-24 w-24" />
+                </div>
+                <p className="text-muted-foreground text-xs">{t('footer.contact_us.wechat_official_account')}</p>
+              </div>
+            )}
           </div>
 
           {/* Contact Info Column */}
@@ -212,15 +247,17 @@ const Footer: FC = () => {
                   bd@cherry-ai.com
                 </a>
               </li>
-              <li>
-                <a
-                  href="https://docs.cherryai.com.cn/question-contact/suggestions"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-primary text-sm transition-colors duration-200">
-                  {t('footer.contact_us.feedback')}
-                </a>
-              </li>
+              {!isEn && (
+                <li>
+                  <a
+                    href="https://docs.cherryai.com.cn/question-contact/suggestions"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:text-primary text-sm transition-colors duration-200">
+                    {t('footer.contact_us.feedback')}
+                  </a>
+                </li>
+              )}
             </ul>
           </div>
         </div>

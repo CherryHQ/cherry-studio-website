@@ -4,9 +4,10 @@ import { useTranslation } from 'react-i18next'
 interface Testimonial {
   id: number
   name: string
-  handle: string
+  handle?: string
   avatar: string
-  platform: 'producthunt' | 'github' | 'medium' | 'twitter' | 'csdn'
+  platform: 'producthunt' | 'github' | 'medium' | 'twitter' | 'csdn' | 'alternativeto' | 'hackernews'
+  url?: string
   content: {
     en: string
     zh: string
@@ -126,6 +127,80 @@ const testimonials: Testimonial[] = [
   }
 ]
 
+// 英文站使用线上英文官网的真实评价（cherryai.com「Loved by the community」）
+const communityTestimonials: Testimonial[] = [
+  {
+    id: 1,
+    name: '🐱',
+    handle: '@siin_xu',
+    avatar:
+      'https://ph-avatars.imgix.net/8957887/c71dde6b-660e-429b-afc7-c82ce9c5fc46.png?auto=format&w=120&h=120&fit=crop',
+    platform: 'producthunt',
+    url: 'https://www.producthunt.com/products/cherry-studio/reviews',
+    content: {
+      en: "This has become one of those can't-live-without-it, first-thing-I-open kind of tools. The side-by-side model debugging is the core magic here. No more copy-pasting prompts between ten different windows. It's all right there.",
+      zh: '这已经成为我离不开的工具，每天第一个打开的就是它。并排模型调试是核心功能，再也不用在十几个窗口之间复制粘贴提示词了，一切都在这里。'
+    }
+  },
+  {
+    id: 2,
+    name: 'Nadet',
+    handle: '@nadetdev',
+    avatar: 'https://ph-avatars.imgix.net/7095637/original.jpeg?auto=format&w=120&h=120&fit=crop',
+    platform: 'producthunt',
+    url: 'https://www.producthunt.com/products/cherry-studio/reviews',
+    content: {
+      en: "An excellent AI studio offering numerous possibilities for AI applications: chat and agents. As an application developer, Cherry Studio is more than just a tool; it's a foundation and a crucial asset.",
+      zh: '一个出色的 AI 工作台，为对话和智能体提供了丰富的可能性。作为应用开发者，Cherry Studio 不只是一个工具，更是一项基础设施和关键资产。'
+    }
+  },
+  {
+    id: 3,
+    name: 'Abdullah Ahmed',
+    handle: '@abdullah_ahmed22',
+    avatar: 'https://ph-avatars.imgix.net/7817744/original.png?auto=format&w=120&h=120&fit=crop',
+    platform: 'producthunt',
+    url: 'https://www.producthunt.com/products/cherry-studio/reviews',
+    content: {
+      en: 'This is such a great piece of software. The simplicity and the inclusion of every feature possible is too good. I have even used OpenWebUI / LibreChat etc but this is much easier to setup with so much better outputs.',
+      zh: '这是一款非常棒的软件，简洁却又几乎包含了所有你想要的功能。我用过 OpenWebUI、LibreChat 等等，但它的配置要简单得多，输出效果也好得多。'
+    }
+  },
+  {
+    id: 4,
+    name: 'Tintin Yuan',
+    avatar: 'https://api.dicebear.com/7.x/initials/svg?seed=Tintin%20Yuan&backgroundColor=e11d48',
+    platform: 'alternativeto',
+    url: 'https://alternativeto.net/software/cherry-studio/about/',
+    content: {
+      en: "It's an all-in-one AI agent. I uninstalled all my other llm applications just keep this one to replace them all. Really convenient.",
+      zh: '这是一个全能的 AI 智能体。我把其他所有 LLM 应用都卸载了，只留下它一个来替代它们，真的很方便。'
+    }
+  },
+  {
+    id: 5,
+    name: 'Bernard Monsun',
+    avatar: 'https://api.dicebear.com/7.x/initials/svg?seed=Bernard%20Monsun&backgroundColor=0ea5e9',
+    platform: 'alternativeto',
+    url: 'https://alternativeto.net/software/cherry-studio/about/',
+    content: {
+      en: 'All-in-one app for everyday tasks — and more than just that. Huge library of prompts… Lot of API providers with local Ollama, agent & topic instructions, custom CSS, knowledge base, MCP… really a lot.',
+      zh: '日常任务的全能应用，而且远不止于此。庞大的提示词库……大量 API 服务商、本地 Ollama、助手与话题设定、自定义 CSS、知识库、MCP……真的非常丰富。'
+    }
+  },
+  {
+    id: 6,
+    name: 'novoreorx',
+    avatar: 'https://api.dicebear.com/7.x/initials/svg?seed=novoreorx&backgroundColor=f97316',
+    platform: 'hackernews',
+    url: 'https://news.ycombinator.com/item?id=46053347',
+    content: {
+      en: 'Cherry Studio is my daily go-to… a dedicated app to access any LLMs with full power of MCP and various tools.',
+      zh: 'Cherry Studio 是我每天都在用的工具……一个能接入任意大模型、并完整发挥 MCP 和各种工具能力的专用应用。'
+    }
+  }
+]
+
 const platformIcons: Record<string, JSX.Element> = {
   producthunt: (
     <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
@@ -151,6 +226,16 @@ const platformIcons: Record<string, JSX.Element> = {
     <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
       <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-.5 4.5h1a.5.5 0 01.5.5v3a.5.5 0 01-.5.5h-1a.5.5 0 01-.5-.5V5a.5.5 0 01.5-.5zm-5 4h11a.5.5 0 01.5.5v1a.5.5 0 01-.5.5h-11a.5.5 0 01-.5-.5V9a.5.5 0 01.5-.5zm0 4h11a.5.5 0 01.5.5v1a.5.5 0 01-.5.5h-11a.5.5 0 01-.5-.5v-1a.5.5 0 01.5-.5zm3 4h5a.5.5 0 01.5.5v1a.5.5 0 01-.5.5h-5a.5.5 0 01-.5-.5v-1a.5.5 0 01.5-.5z" />
     </svg>
+  ),
+  hackernews: (
+    <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M0 0v24h24V0H0zm5.2 4h2.3l4.5 8.2L16.5 4h2.3l-5.7 10.4V20h-2.2v-5.6L5.2 4z" />
+    </svg>
+  ),
+  alternativeto: (
+    <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2a10 10 0 110 20 10 10 0 010-20zm-1.9 4.6L6 17.4h2.2l.9-2.5h4.1l.9 2.5H16L11.9 6.6h-1.8zm.9 2.9l1.4 3.9H9.6l1.4-3.9z" />
+    </svg>
   )
 }
 
@@ -159,8 +244,22 @@ const platformNames: Record<string, string> = {
   github: 'GitHub',
   medium: 'Medium',
   twitter: 'X (Twitter)',
-  csdn: 'CSDN'
+  csdn: 'CSDN',
+  hackernews: 'Hacker News',
+  alternativeto: 'AlternativeTo'
 }
+
+const communitySources = [
+  { platform: 'producthunt', label: 'Product Hunt', url: 'https://www.producthunt.com/products/cherry-studio/reviews' },
+  { platform: 'alternativeto', label: 'AlternativeTo', url: 'https://alternativeto.net/software/cherry-studio/about/' },
+  { platform: 'hackernews', label: 'Hacker News', url: 'https://hn.algolia.com/?query=Cherry%20Studio' },
+  { platform: 'github', label: 'GitHub', url: 'https://github.com/CherryHQ/cherry-studio' },
+  {
+    platform: 'medium',
+    label: 'Medium',
+    url: 'https://medium.com/@PowerUpSkills/the-one-ai-client-to-rule-them-all-cherry-studio-in-2025-ac71837eb892'
+  }
+]
 
 const StarRating: FC<{ rating: number }> = ({ rating }) => {
   return (
@@ -181,6 +280,7 @@ const StarRating: FC<{ rating: number }> = ({ rating }) => {
 const TestimonialsSection: FC = () => {
   const { t, i18n } = useTranslation()
   const isZh = i18n.language.startsWith('zh')
+  const items = isZh ? testimonials : communityTestimonials
 
   return (
     <section className="bg-background relative overflow-hidden py-12 sm:py-16">
@@ -191,14 +291,14 @@ const TestimonialsSection: FC = () => {
           <h2 className="text-foreground mb-3 text-2xl font-bold sm:mb-4 sm:text-4xl lg:text-5xl">
             {t('testimonials.title')}
           </h2>
-          <p className="text-muted-foreground text-sm sm:text-base">{t('testimonials.subtitle')}</p>
+          {isZh && <p className="text-muted-foreground text-sm sm:text-base">{t('testimonials.subtitle')}</p>}
         </div>
 
         <div className="grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {testimonials.map((testimonial) => (
+          {items.map((testimonial) => (
             <div
               key={testimonial.id}
-              className="border-border/50 bg-card/50 hover:border-primary/30 hover:bg-card group rounded-xl border p-6 transition-all duration-300">
+              className="border-border/50 bg-card/50 hover:border-primary/30 hover:bg-card group flex flex-col rounded-xl border p-6 transition-all duration-300">
               {/* Header with avatar and info */}
               <div className="mb-4 flex items-start gap-4">
                 <img
@@ -210,7 +310,7 @@ const TestimonialsSection: FC = () => {
                   <div className="flex items-center justify-between">
                     <div>
                       <h3 className="text-foreground font-semibold">{testimonial.name}</h3>
-                      <p className="text-muted-foreground text-sm">{testimonial.handle}</p>
+                      {testimonial.handle && <p className="text-muted-foreground text-sm">{testimonial.handle}</p>}
                     </div>
                     <div
                       className="text-muted-foreground hover:text-foreground flex items-center gap-1.5 transition-colors"
@@ -222,7 +322,7 @@ const TestimonialsSection: FC = () => {
               </div>
 
               {/* Rating */}
-              {testimonial.rating && (
+              {isZh && testimonial.rating && (
                 <div className="mb-3">
                   <StarRating rating={testimonial.rating} />
                 </div>
@@ -232,38 +332,51 @@ const TestimonialsSection: FC = () => {
               <p className="text-muted-foreground leading-relaxed">
                 "{isZh ? testimonial.content.zh : testimonial.content.en}"
               </p>
+
+              {/* Source link */}
+              {!isZh && testimonial.url && (
+                <a
+                  href={testimonial.url}
+                  target="_blank"
+                  rel="noopener noreferrer nofollow"
+                  className="text-muted-foreground/70 hover:text-primary mt-4 inline-block text-xs transition-colors">
+                  {t('testimonials.view_on', { platform: platformNames[testimonial.platform] })} →
+                </a>
+              )}
             </div>
           ))}
         </div>
 
         {/* Source links */}
         <div className="mt-10 text-center">
-          <p className="text-muted-foreground mb-4 text-sm">{t('testimonials.source_hint')}</p>
+          {isZh && <p className="text-muted-foreground mb-4 text-sm">{t('testimonials.source_hint')}</p>}
           <div className="flex flex-wrap items-center justify-center gap-4">
-            <a
-              href="https://www.producthunt.com/products/cherry-studio/reviews"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary inline-flex items-center gap-2 text-sm transition-colors">
-              {platformIcons.producthunt}
-              <span>Product Hunt</span>
-            </a>
-            <a
-              href="https://github.com/CherryHQ/cherry-studio"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary inline-flex items-center gap-2 text-sm transition-colors">
-              {platformIcons.github}
-              <span>GitHub</span>
-            </a>
-            <a
-              href="https://medium.com/@PowerUpSkills/the-one-ai-client-to-rule-them-all-cherry-studio-in-2025-ac71837eb892"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary inline-flex items-center gap-2 text-sm transition-colors">
-              {platformIcons.medium}
-              <span>Medium</span>
-            </a>
+            {(isZh
+              ? [
+                  {
+                    platform: 'producthunt',
+                    label: 'Product Hunt',
+                    url: 'https://www.producthunt.com/products/cherry-studio/reviews'
+                  },
+                  { platform: 'github', label: 'GitHub', url: 'https://github.com/CherryHQ/cherry-studio' },
+                  {
+                    platform: 'medium',
+                    label: 'Medium',
+                    url: 'https://medium.com/@PowerUpSkills/the-one-ai-client-to-rule-them-all-cherry-studio-in-2025-ac71837eb892'
+                  }
+                ]
+              : communitySources
+            ).map((source) => (
+              <a
+                key={source.label}
+                href={source.url}
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                className="text-muted-foreground hover:text-primary inline-flex items-center gap-2 text-sm transition-colors">
+                {platformIcons[source.platform]}
+                <span>{source.label}</span>
+              </a>
+            ))}
           </div>
         </div>
       </div>

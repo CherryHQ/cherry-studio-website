@@ -7,7 +7,7 @@ import Footer from '@/components/website/Footer'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { useVersionData } from '@/hooks/useVersionData'
 import { type DetectedArch, detectPlatform, detectSystem, isMobileDevice } from '@/utils/systemDetection'
-import { getSiteRegion } from '@/utils/urls'
+import { getSiteRegion, isEnglishSite } from '@/utils/urls'
 import Changelog from './components/Changelog'
 import MobileDownloads from './components/MobileDownloads'
 import { PlatformDownloadOptions, PlatformDownloadPrimary } from './components/PlatformDownloads'
@@ -26,11 +26,11 @@ const RELEASE_HISTORY_URLS = {
 } as const
 
 const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const [searchParams] = useSearchParams()
   const platformParam = searchParams.get('platform')
   const archParam = searchParams.get('arch')
-  usePageMeta('download')
+  usePageMeta(edition === 'v1' ? 'downloadV1' : edition === 'v2' ? 'downloadV2' : 'download')
 
   const isV2 = edition === 'v2'
   const isV1 = edition === 'v1'
@@ -205,6 +205,16 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
                 {t('download_page.release_history')}
                 <ExternalLink className="h-3.5 w-3.5" />
               </a>
+              {isEnglishSite(i18n.resolvedLanguage || i18n.language) && (
+                <a
+                  href="https://discord.gg/wez8HtpxqQ"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1.5 text-sm underline-offset-4 transition-colors hover:underline">
+                  {t('download_page.join_discord')}
+                  <ExternalLink className="h-3.5 w-3.5" />
+                </a>
+              )}
               <a
                 href={CLOUD_DRIVE_DOWNLOAD_URL}
                 target="_blank"
