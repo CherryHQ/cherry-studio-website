@@ -14,6 +14,7 @@ import { cn } from '@/lib/utils'
 import { isEnglishSite } from '@/utils/urls'
 
 const PRICE = { price: 8, list: 10 }
+const FLASH_PLANS_URL = 'https://cloud.cherryai.com/account/plans'
 const RATE_KEYS = ['input', 'output', 'cache_read', 'cache_write'] as const
 const BADGE_ICONS = [Wallet, Clock, Gauge]
 const MODEL_LOGOS: Record<string, string> = {
@@ -149,7 +150,7 @@ function FlashContent() {
               <span className="text-muted-foreground text-xl">{t('pricing.per_month')}</span>
             </div>
             <Button size="lg" className="mt-8 w-full" asChild>
-              <Link to="/download">{t('pricing.subscribe')}</Link>
+              <a href={FLASH_PLANS_URL}>{t('pricing.subscribe')}</a>
             </Button>
             <p className="text-muted-foreground mt-4 text-xs">{t('pricing.cancel_note')}</p>
           </div>
@@ -224,7 +225,7 @@ function FlashContent() {
           <h2 className="text-foreground text-2xl font-bold sm:text-3xl">{t('pricing.cta_title')}</h2>
           <p className="text-muted-foreground mt-3 text-base">{t('pricing.cta_body', PRICE)}</p>
           <Button size="lg" className="mt-6" asChild>
-            <Link to="/download">{t('pricing.subscribe')}</Link>
+            <a href={FLASH_PLANS_URL}>{t('pricing.subscribe')}</a>
           </Button>
           <p className="text-muted-foreground mt-4 text-xs">{t('pricing.cancel_note')}</p>
         </div>
