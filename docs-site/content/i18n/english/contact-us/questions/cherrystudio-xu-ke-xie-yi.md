@@ -1,14 +1,6 @@
 # Cherry Studio Open Source License Agreement
 
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
-                    GNU AFFERO GENERAL PUBLIC LICENSE
+GNU AFFERO GENERAL PUBLIC LICENSE
                        Version 3, 19 November 2007
 
  Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>

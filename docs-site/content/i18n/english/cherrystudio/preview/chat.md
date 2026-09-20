@@ -3,14 +3,6 @@ icon: message
 ---
 # Chat Interface
 
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
 ## Assistants and Topics
 
 ### Assistant
@@ -60,6 +52,8 @@ This feature is only for estimating token count. The actual token count varies f
 {% endhint %}
 
 ![](../../../../assets/aa570a6b1df6367e1f9ba250.webp) `Translate` translates the content in the current input box into English.
+
+<a id="dui-hua-she-zhi"></a>
 
 ## Chat Settings
 
@@ -175,6 +169,8 @@ Sets the target language for the input box translation button and the "Translate
 ## Assistant Settings
 
 In the assistant interface, select the <mark style="background-color:yellow;">assistant name</mark> to be set → choose the corresponding setting from the <mark style="background-color:yellow;">right-click menu</mark>.
+
+<a id="bian-ji-zhu-shou"></a>
 
 ### Edit Assistant
 

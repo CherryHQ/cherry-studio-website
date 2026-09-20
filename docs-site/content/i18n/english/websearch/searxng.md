@@ -3,14 +3,6 @@ icon: searchengin
 ---
 # SearXNG Local Deployment and Configuration
 
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
 CherryStudio supports network search through SearXNG. SearXNG is an open-source project that can be deployed locally or on a server, so its configuration method is slightly different from others that require API providers.
 
 **SearXNG Project Link**: [SearXNG](https://github.com/searxng/searxng)

@@ -1,20 +1,12 @@
 # OpenAI
 
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
 ## Obtain API Key
 
 *   On the official [API Key page](https://platform.openai.com/api-keys), click <mark style="background-color:green;">`+ Create new secret key`</mark>
 
 <img src="../../../../assets/57d7da75000d518de0d6c2b4.svg" alt="" class="gitbook-drawing">
 
-*   Copy the generated key and open CherryStudio's [Provider Settings](broken-reference)
+*   Copy the generated key and open CherryStudio's [Provider Settings](../../pre-basic/settings/providers.md)
 *   Find the provider OpenAI and enter the key you just obtained.
 
 <figure><img src="../../../../assets/22efbe80f32fa31970b37881.webp" alt=""><figcaption></figcaption></figure>

@@ -100,7 +100,7 @@
 
 * [Frequently Asked Questions](question-contact/questions.md)
 * [How to Ask Questions Efficiently](question-contact/ask.md)
-* [Knowledge科普 (Science Popularization)](question-contact/knowledge.md)
+* [Knowledge Popularization (Science Popularization)](question-contact/knowledge.md)
 * [Feedback & Suggestions](question-contact/suggestions.md)
 
 ## Contact Us <a href="#contact-us" id="contact-us"></a>

@@ -3,14 +3,6 @@ icon: address-card
 ---
 # Business Cooperation
 
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
 Contact Person: Mr. Wang
 
 📮: bd@cherry-ai.com

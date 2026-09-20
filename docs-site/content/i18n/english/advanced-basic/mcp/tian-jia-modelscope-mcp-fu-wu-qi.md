@@ -1,13 +1,5 @@
 # Add ModelScope MCP Server
 
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
 > ModelScope MCP Server requires Cherry Studio to be upgraded to v1.2.9 or higher.
 
 In version v1.2.9, Cherry Studio officially partnered with ModelScope Magic Tower, greatly simplifying the steps for adding an MCP server and avoiding configuration errors. Moreover, a vast number of MCP servers can be discovered in the ModelScope community. Follow the operating steps below to see how to synchronize ModelScope's MCP servers in Cherry Studio.

@@ -1,16 +1,8 @@
 ---
-description: 如何在 Cherry Studio 使用联网模式
+description: How to use online mode in Cherry Studio
 icon: globe
 ---
 # Network Access
-
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
 
 {% hint style="info" %}
 Examples of scenarios requiring network access:

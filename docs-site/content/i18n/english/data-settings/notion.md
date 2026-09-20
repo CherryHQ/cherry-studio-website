@@ -3,14 +3,6 @@ icon: square-n
 ---
 # Notion Configuration Tutorial
 
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
 Cherry Studio supports importing topics into Notion databases.
 
 ## Step One
@@ -66,7 +58,7 @@ Then the Notion database ID is the `<long_hash_1>` part.
 Enter `Page Title Field Name`:
 
 If your web page is in English, enter `Name`
-If your web page is in Chinese, enter `名称`
+If your web page is in Chinese, enter `Name`
 
 <figure><img src="../../../assets/d715981ccedecd3bf1e2fee7.webp" alt=""><figcaption><p>Enter Page Title Field Name</p></figcaption></figure>
 

@@ -1,13 +1,5 @@
 # Configure and Use MCP
 
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
 <figure><img src="../../../../assets/7529abac38faff7ba6c35df7.webp" alt=""><figcaption></figcaption></figure>
 
 1. Open Cherry Studio settings.

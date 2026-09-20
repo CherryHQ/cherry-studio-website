@@ -3,14 +3,6 @@ icon: table-columns
 ---
 # Display Settings
 
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
 On this page, you can set the software's color theme, page layout, or [customize CSS](../../../personalization-settings/css.md) for personalized settings.
 
 ### Theme Selection

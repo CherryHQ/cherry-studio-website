@@ -3,14 +3,6 @@ icon: file-code
 ---
 # Custom CSS
 
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
 By customizing CSS, you can modify the software's appearance to better suit your preferences, for example:
 
 <figure><img src="../../../assets/fa4c8c0a210819595ec02c3e.jpg" alt=""><figcaption><p>Custom CSS</p></figcaption></figure>
@@ -35,7 +27,7 @@ By customizing CSS, you can modify the software's appearance to better suit your
 
 ```css
 :root {
-  font-family: "汉仪唐美人" !important; /* Font */
+  font-family: "Hanyi Tang Meiren" !important; /* Font */
 }
 
 /* Deep thought expansion font color */

@@ -1,16 +1,8 @@
 ---
-description: 数据设置→Obsidian配置
+description: Data Settings → Obsidian Configuration
 icon: gem
 ---
 # Obsidian Configuration Tutorial
-
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
 
 Cherry Studio supports integration with Obsidian, allowing you to export full conversations or single conversation entries to your Obsidian vault.
 
@@ -31,6 +23,8 @@ Open Cherry Studio's _Settings_ → _Data Settings_ → _Obsidian Settings_ menu
 <figure><img src="../../../assets/449d1a8ce3c2bcc5f7e7158f.webp" alt=""><figcaption></figcaption></figure>
 
 ### Step Two: Export Conversation
+
+<a id="dao-chu-wan-zheng-dui-hua"></a>
 
 #### Export Full Conversation
 
@@ -84,6 +78,8 @@ A window similar to the one for exporting a full conversation will then appear, 
 
 ## Old Tutorial (for Cherry Studio < v1.1.13)
 
+<a id="di-yi-bu"></a>
+
 ### Step One: Prepare Obsidian
 
 Open your Obsidian vault and create a `folder` to save exported conversations (using 'Cherry Studio' folder as an example in the image):
@@ -91,6 +87,8 @@ Open your Obsidian vault and create a `folder` to save exported conversations (u
 <figure><img src="../../../assets/a492ac55a35d0e0afc9e33a9.webp" alt=""><figcaption></figcaption></figure>
 
 Pay attention to the text highlighted in the bottom left corner; this is your `vault` name.
+
+<a id="di-er-bu"></a>
 
 ### Step Two: Configure Cherry Studio
 
@@ -101,6 +99,8 @@ In Cherry Studio's _Settings_ → _Data Settings_ → _Obsidian Settings_ menu, 
 `Global tags` is optional and can be set for all exported conversations in Obsidian. Fill it in as needed.
 
 ### Step Three: Export Conversation
+
+<a id="dao-chu-wan-zheng-dui-hua-old"></a>
 
 #### Export Full Conversation
 
@@ -126,12 +126,12 @@ For exporting a single conversation entry, click the _three-bar menu_ below the 
 
 <figure><img src="../../../assets/53a5477e29c3e58af139fe15.webp" alt=""><figcaption><p>Export single conversation entry</p></figcaption></figure>
 
-A window similar to the one for exporting a full conversation will then appear, asking you to configure the **note properties** and **note processing method**. Follow the [tutorial above](obsidian.md#dao-chu-wan-zheng-dui-hua) to complete it.
+A window similar to the one for exporting a full conversation will then appear, asking you to configure the **note properties** and **note processing method**. Follow the [tutorial above](obsidian.md#dao-chu-wan-zheng-dui-hua-old) to complete it.
 
 ### Export Successful
 
 🎉 Congratulations! You have now completed all configurations for Cherry Studio to integrate with Obsidian and have successfully gone through the export process. Enjoy yourselves!
 
-<figure><img src="../.gitbook/assets/image (140.png" alt=""><figcaption><p>Export to Obsidian</p></figcaption></figure>
+<figure><img src="../../../assets/f8e9cc3ee98ab984dcf8b397.webp" alt=""><figcaption><p>Export to Obsidian</p></figcaption></figure>
 
 <figure><img src="../../../assets/0ea57dab41aa40f6e0298917.webp" alt=""><figcaption><p>View export results</p></figcaption></figure>

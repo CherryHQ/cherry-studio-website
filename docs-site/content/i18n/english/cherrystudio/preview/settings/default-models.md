@@ -3,13 +3,7 @@ icon: robot
 ---
 # Default Model Settings
 
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
+<a id="mo-ren-zhu-shou-mo-xing"></a>
 
 ## Default Assistant Model
 

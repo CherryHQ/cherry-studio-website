@@ -1,13 +1,5 @@
 # Common Model Reference Information
 
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
 {% hint style="info" %}
 The following information is for reference only. If there are any errors, please contact us for correction. Some models may have different context sizes and model information depending on the service provider;
 When entering data on the client side, "k" needs to be converted into an actual numerical value (theoretically 1k=1024 tokens; 1m=1024k tokens). For example, 8k is 8×1024=8192 tokens. It is recommended to use ×1000 in actual use to prevent errors, e.g., 8k as 8×1000=8000, 1m=1×1000000=1000000;

@@ -4,14 +4,6 @@ icon: code
 ---
 # Code Tools Usage Guide
 
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
 Cherry Studio v1.5.7 introduces an easy-to-use and powerful Code Agent feature, allowing you to directly launch and manage various AI programming agents. This tutorial will guide you through the complete setup and launch process.
 
 ***

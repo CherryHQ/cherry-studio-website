@@ -3,14 +3,6 @@ icon: database
 ---
 # Data Settings
 
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
 This interface allows for local and cloud data backup and recovery, local data directory query and cache clearing, export settings, and third-party connections, among other operations.
 
 ### Data Backup

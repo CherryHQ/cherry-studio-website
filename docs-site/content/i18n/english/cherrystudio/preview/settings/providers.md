@@ -3,14 +3,6 @@ icon: cloud-check
 ---
 # Model Service Settings
 
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
 This page only introduces the interface functions. For configuration tutorials, please refer to the [Provider Configuration](../../../pre-basic/providers/) tutorial in the basic tutorials.
 
 {% hint style="info" %}
@@ -30,6 +22,8 @@ In Cherry Studio, a single provider supports multi-key round-robin usage, where 
 {% hint style="warning" %}
 You must use **English** commas.
 {% endhint %}
+
+<a id="api-di-zhi"></a>
 
 ### API Address
 

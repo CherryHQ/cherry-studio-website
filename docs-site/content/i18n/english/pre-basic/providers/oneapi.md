@@ -1,13 +1,5 @@
 # OneAPI
 
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
 *   Log in and go to the token page
 
 <figure><img src="../../../../assets/68288a2c3a095035189e8d25.webp" alt=""><figcaption></figcaption></figure>

@@ -3,14 +3,6 @@ icon: book-bookmark
 ---
 # Knowledge Popularization
 
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
 ## What are tokens?
 
 Tokens are the basic units that AI models use to process text, which can be understood as the smallest units of a model's "thought." They are not entirely equivalent to characters or words as we understand them, but rather a special text segmentation method used by the model itself.
@@ -18,7 +10,7 @@ Tokens are the basic units that AI models use to process text, which can be unde
 #### 1. Chinese Word Segmentation
 
 * A Chinese character is usually encoded as 1-2 tokens.
-* For example: `"你好"` ≈ 2-4 tokens
+* For example: `"Hello"` ≈ 2-4 tokens
 
 #### 2. English Word Segmentation
 
@@ -120,6 +112,8 @@ Claude: 3 tokens
     *   Provide the retrieved relevant content as context to the LLM.
 
 ***
+
+<a id="shen-me-shi-mcpmodel-context-protocol"></a>
 
 ## **What is MCP (Model Context Protocol)?**
 

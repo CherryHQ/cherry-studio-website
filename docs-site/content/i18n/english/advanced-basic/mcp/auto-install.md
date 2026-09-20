@@ -1,13 +1,5 @@
 # Automatic MCP Installation
 
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
 {% hint style="warning" %}
 Automatic MCP installation requires Cherry Studio to be upgraded to v1.1.18 or higher.
 {% endhint %}

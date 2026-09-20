@@ -1,13 +1,5 @@
 # GitHub Copilot
 
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
 To use GitHub Copilot, you need to have a GitHub account and subscribe to the GitHub Copilot service. A free subscription is also acceptable, but the free version does not support the latest Claude 3.7 model. For details, please refer to the [official GitHub Copilot website](https://github.com/features/copilot).
 
 ## Obtain Device Code

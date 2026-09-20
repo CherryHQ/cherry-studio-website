@@ -3,14 +3,6 @@ icon: route
 ---
 # Call Chain Usage Instructions
 
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
 ## Feature Introduction
 
 The call chain (also known as "trace") provides users with insight into conversations, helping them understand the specific performance of models, knowledge bases, MCP, web search, etc., during a conversation. It is an observability tool implemented based on [OpenTelemetry](https://opentelemetry.io/docs/languages/js/), which visualizes data by collecting, storing, and processing it on the client side, providing a quantitative evaluation basis for problem localization and performance optimization.

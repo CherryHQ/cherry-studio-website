@@ -1,13 +1,5 @@
 # Alibaba Cloud Bailian
 
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
 1.  Log in to [Alibaba Cloud Bailian](https://bailian.console.aliyun.com/?tab=model#/api-key). If you don't have an Alibaba Cloud account, you need to register.
 
 2.  Click the `Create My API-KEY` button in the top right corner.

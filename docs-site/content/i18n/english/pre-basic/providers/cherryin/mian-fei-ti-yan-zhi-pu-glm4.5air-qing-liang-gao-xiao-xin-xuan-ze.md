@@ -1,17 +1,6 @@
 # Free Experience | Zhipu GLM-4.5-Air, A Lightweight and Efficient New Choice!
 
 
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
-{% hint style="warning" %}
-This document is translated from Chinese by AI and has not yet been reviewed. I will try to check the document one by one to ensure the translation is reasonable.
-{% endhint %}
-
 <figure><img src="../../../../../assets/9f2bec956e3709e3aebf9957.webp" alt=""><figcaption></figcaption></figure>
 
 To enable every developer and user to easily experience the capabilities of cutting-edge large models, **Zhipu has opened up the GLM-4.5-Air model to Cherry Studio users for free**. As an efficient foundational model specifically designed for Agent applications, GLM-4.5-Air achieves an excellent balance between performance and cost, making it an ideal choice for building intelligent applications.

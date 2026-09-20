@@ -1,16 +1,8 @@
 ---
 icon: apple
-description: macOS 版本安装教程
+description: macOS version installation tutorial
 ---
 # macOS
-
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
 
 1. First, go to the official website download page and click to download the Mac version, or click directly below.
 

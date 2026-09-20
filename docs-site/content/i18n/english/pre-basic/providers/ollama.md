@@ -1,24 +1,13 @@
 # Project Introduction
 
 
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
-{% hint style="warning" %}
-This document is translated from Chinese by AI and has not yet been reviewed. I will try to check the document one by one to ensure the translation is reasonable.
-{% endhint %}
-
-<figure><img src=".gitbook/assets/docs-readme-banner1.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../assets/9f2bec956e3709e3aebf9957.webp" alt=""><figcaption></figcaption></figure>
 
 Cherry Studio is an all-in-one AI assistant platform integrating multi-model conversations, knowledge base management, AI painting, translation, and more.
 
 ### Star History
 
-![Star History](https://urlscan.io/liveshot/?width=1300&height=620&url=https://cherrystarhistory.ocool.online/)
+[Star History](https://cherrystarhistory.ocool.online/)
 
 ## Follow Our Social Accounts
 

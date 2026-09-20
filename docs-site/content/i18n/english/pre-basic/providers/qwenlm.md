@@ -2,10 +2,6 @@
 hidden: True
 ---
 
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
 # QwenLM
 
 ![](<../../../../assets/53865a804da569359406d23c.webp>)Open the QwenLM official website: [https://chat.qwenlm.ai/](https://chat.qwenlm.ai/) and log in to your account

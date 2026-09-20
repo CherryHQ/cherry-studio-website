@@ -4,22 +4,11 @@ icon: cloud-arrow-up
 # WebDAV Backup
 
 
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
-{% hint style="warning" %}
-This document is translated from Chinese by AI and has not yet been reviewed. I will try to check the document one by one to ensure the translation is reasonable.
-{% endhint %}
-
 <figure><img src="../../../assets/3ab21a0d07bad38773442570.png" alt=""><figcaption></figcaption></figure>
 
 Cherry Studio supports data backup via WebDAV. You can choose a suitable WebDAV service for cloud backup.
 
-Based on WebDAV, multi-device data synchronization can be achieved by `Computer A` $$\xrightarrow{\text{Backup}}$$ `WebDAV` $$\xrightarrow{\text{Restore}}$$ `Computer B`.
+Based on WebDAV, multi-device data synchronization can be achieved by `Computer A`  → (Backup) →  `WebDAV`  → (Restore) →  `Computer B`.
 
 #### Taking Jianguoyun (Nutstore) as an example
 

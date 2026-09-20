@@ -3,14 +3,6 @@ icon: download
 ---
 # Client Download
 
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
 {% hint style="info" %}
 Current latest official version: v1.6.7
 {% endhint %}

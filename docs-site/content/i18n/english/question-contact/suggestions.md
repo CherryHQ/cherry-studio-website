@@ -3,14 +3,6 @@ icon: file-signature
 ---
 # Feedback & Suggestions
 
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
 ## Telegram Discussion Group
 
 {% hint style="info" %}

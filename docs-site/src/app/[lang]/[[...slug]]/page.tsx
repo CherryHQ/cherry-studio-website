@@ -45,20 +45,10 @@ export default async function Page({ params }: Props) {
         path: `docs-site/content/${page.file}`
       }}>
       <DocsTitle>{page.title}</DocsTitle>
-      {lang !== 'zh-cn' && (
-        <aside className="my-4 rounded-xl border border-amber-500/25 bg-amber-500/5 px-4 py-3 text-sm text-fd-muted-foreground">
-          {page.fallback
-            ? 'This page has not been translated yet. The Simplified Chinese source is shown below. 此页面暂无译文，以下为简体中文原文。'
-            : 'Community translation. It may differ from the latest Simplified Chinese documentation.'}
-          <a href={`/docs/zh-cn/${getPage('zh-cn', page.slug) ? `${page.slug}/` : ''}`} className="ml-2 underline">
-            简体中文
-          </a>
-        </aside>
-      )}
       <DocsBody>
         <div
           lang={page.fallback ? 'zh-cn' : lang}
-          className="[&_[data-cards]]:grid [&_[data-cards]]:gap-3 [&_[data-cards]]:sm:grid-cols-2 [&_[data-card]]:rounded-xl [&_[data-card]]:border [&_[data-card]]:border-fd-border [&_[data-card]]:p-4 [&_aside]:my-5 [&_aside]:rounded-xl [&_aside]:border [&_aside]:border-fd-border [&_aside]:bg-fd-muted/50 [&_aside]:px-5 [&_aside]:py-1 [&_figure]:my-6 [&_figcaption]:text-center [&_figcaption]:text-sm [&_figcaption]:text-fd-muted-foreground [&_img]:rounded-xl [&_pre]:overflow-x-auto [&_pre]:rounded-xl [&_pre]:bg-fd-muted [&_pre]:p-4 [&_table]:block [&_table]:overflow-x-auto"
+          className="[&_[id]]:scroll-mt-40 lg:[&_[id]]:scroll-mt-28 [&_[data-cards]]:grid [&_[data-cards]]:gap-3 [&_[data-cards]]:sm:grid-cols-2 [&_[data-card]]:rounded-xl [&_[data-card]]:border [&_[data-card]]:border-fd-border [&_[data-card]]:p-4 [&_aside]:my-5 [&_aside]:rounded-xl [&_aside]:border [&_aside]:border-fd-border [&_aside]:bg-fd-muted/50 [&_aside]:px-5 [&_aside]:py-1 [&_figure]:my-6 [&_figcaption]:text-center [&_figcaption]:text-sm [&_figcaption]:text-fd-muted-foreground [&_img]:rounded-xl [&_pre]:overflow-x-auto [&_pre]:rounded-xl [&_pre]:bg-fd-muted [&_pre]:p-4 [&_table]:block [&_table]:overflow-x-auto"
           dangerouslySetInnerHTML={{ __html: page.html }}
         />
       </DocsBody>

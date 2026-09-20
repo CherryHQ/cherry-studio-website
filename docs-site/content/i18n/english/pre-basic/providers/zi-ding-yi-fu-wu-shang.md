@@ -1,13 +1,5 @@
 # Custom AI Service Provider
 
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
 Cherry Studio not only integrates mainstream AI model services but also empowers you with powerful customization capabilities. Through the **Custom AI Service Provider** feature, you can easily connect to any AI model you need.
 
 ## Why Do You Need Custom AI Service Providers?

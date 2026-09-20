@@ -3,14 +3,6 @@ icon: map
 ---
 # Siyuan Notes Configuration Tutorial
 
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
 Supports exporting topics and messages to Siyuan Notes.
 
 ## Step One

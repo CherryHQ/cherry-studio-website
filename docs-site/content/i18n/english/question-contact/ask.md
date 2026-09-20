@@ -4,17 +4,6 @@ icon: messages-question
 # Effective Questioning Methods
 
 
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
-{% hint style="warning" %}
-This document is translated from Chinese by AI and has not yet been reviewed. I will try to check the document one by one to ensure the translation is reasonable.
-{% endhint %}
-
 Cherry Studio is a free and open-source project. As the project grows, the workload of the project team also increases. To reduce communication costs and effectively and efficiently solve your problems, we hope everyone can address issues encountered by following the steps and methods below as much as possible before asking questions, allowing the project team more time to focus on project maintenance and development. Thank you for your cooperation!
 
 ## I. Document Review and Search

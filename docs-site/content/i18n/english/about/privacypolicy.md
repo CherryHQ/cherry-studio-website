@@ -3,14 +3,6 @@ icon: user-shield
 ---
 # Privacy Policy
 
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
 Welcome to Cherry Studio (hereinafter referred to as "this software" or "we"). We highly value your privacy protection. This privacy policy will explain how we handle and protect your personal information and data. Please read and understand this agreement carefully before using this software:
 
 ## I. Scope of Information We Collect

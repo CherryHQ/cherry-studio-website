@@ -3,14 +3,6 @@ icon: square-info
 ---
 # Embedding Model Reference Information
 
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
 {% hint style="info" %}
 To prevent errors, in this document, the `max input` values for some models are not written as their absolute maximums. For example, when the official maximum input value is 8k (without a clear specific number given), the reference values provided in this document are 8191 or 8000, etc. (If unclear, ignore and just use the reference values in the document.)
 {% endhint %}

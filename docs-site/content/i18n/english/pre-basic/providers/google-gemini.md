@@ -1,13 +1,5 @@
 # Google Gemini
 
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
 ## Get API Key
 
 *   Before getting a Gemini API key, you need a Google Cloud project (if you already have one, you can skip this step)
@@ -19,7 +11,7 @@ This document was translated from Chinese by AI and has not yet been reviewed.
 
 <figure><img src="../../../../assets/b49760732ce7ac30d5ef7c30.webp" alt=""><figcaption></figcaption></figure>
 
-*   Copy the generated key and open CherryStudio's [Service Provider Settings](broken-reference)
+*   Copy the generated key and open CherryStudio's [Service Provider Settings](../../pre-basic/settings/providers.md)
 *   Find the service provider Gemini and paste the key you just obtained
 
 <figure><img src="../../../../assets/84d594944e11255268fac0c1.webp" alt=""><figcaption></figcaption></figure>

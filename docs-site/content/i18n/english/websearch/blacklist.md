@@ -3,14 +3,6 @@ icon: ban
 ---
 # Web Search Blacklist Configuration
 
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
 Cherry Studio supports configuring blacklists in two ways: manually and by adding subscriptions. Configuration rules refer to [ublacklist](https://github.com/iorate/ublacklist).
 
 ## Manual Configuration

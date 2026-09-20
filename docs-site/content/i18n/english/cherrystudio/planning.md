@@ -3,14 +3,6 @@ icon: list-check
 ---
 # Project Planning
 
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
 * [x] Quick Pop-up (read clipboard, quick ask, explain, translate, summarize)
 * [x] Multi-model answer comparison
 * [x] Support login with SSO provided by service providers

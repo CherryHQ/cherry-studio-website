@@ -1,17 +1,6 @@
 # Infini-AI
 
 
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
-{% hint style="warning" %}
-This document was translated by AI from Chinese and has not yet been reviewed. I will try to check the document one by one to ensure the translation is reasonable.
-{% endhint %}
-
 <figure><img src="../../../../assets/535905a58b7f693bff0b18c6.webp" alt=""><figcaption></figcaption></figure>
 
 Are you experiencing this: You've saved 26 insightful articles on WeChat but never opened them again, you have 10+ scattered files in your "study materials" folder on your computer, and you want to find a theory you read half a year ago but only remember a few keywords? When the daily information load exceeds the brain's processing limit, 90% of valuable knowledge will be forgotten within 72 hours.

@@ -1,13 +1,5 @@
 # CherryIN
 
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
 1.  Click "Click here to get key" from the CherryIN service provider.
 
     <figure><img src="../../../../assets/a224e8a38aa9bdffdf1a5263.webp" alt=""><figcaption></figcaption></figure>

@@ -3,14 +3,6 @@ icon: square-code
 ---
 # Contribute Code
 
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
 We welcome contributions to Cherry Studio! You can contribute in the following ways:
 
 1.  **Contribute Code:** Develop new features or optimize existing code.
@@ -29,7 +21,7 @@ We welcome contributions to Cherry Studio! You can contribute in the following w
 
 ## How to Participate
 
-Send an email to [dev@cherry-ai.com](mailto:dev@cherry-ai.com?subject=申请成为开发者\&body=申请理由)
+Send an email to [dev@cherry-ai.com](mailto:dev@cherry-ai.com?subject=Application to Become a Developer\&body=Reason for Application)
 
 Email Subject: Application to become a developer
 

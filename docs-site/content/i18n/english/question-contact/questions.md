@@ -3,14 +3,6 @@ icon: seal-question
 ---
 # Common Issues
 
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
 ## Common Error Codes
 
 *   **4xx (Client Error Status Codes)**: Generally, these indicate issues like incorrect request syntax, authentication failure, or authorization failure, preventing the request from being completed.
@@ -31,6 +23,8 @@ This document was translated from Chinese by AI and has not yet been reviewed.
 | **504**    | The server, acting as a gateway or proxy, did not receive a timely response from the upstream server. |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 
 ***
+
+<a id="kong-zhi-tai-bao-cuo-cha-kan-fang-fa"></a>
 
 ## How to View Console Errors
 

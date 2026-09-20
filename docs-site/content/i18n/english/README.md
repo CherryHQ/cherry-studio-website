@@ -3,14 +3,6 @@ icon: cherries
 ---
 # Project Introduction
 
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
 <figure><img src="../../assets/9f2bec956e3709e3aebf9957.webp" alt=""><figcaption></figcaption></figure>
 
 Follow our social accounts: [Twitter (X)](https://x.com/CherryStudioHQ), [Xiaohongshu](https://www.xiaohongshu.com/user/profile/662b6853000000000b031d9a), [Weibo](https://weibo.com/u/7975656228), [Bilibili](https://space.bilibili.com/3546657515898892), [Douyin](https://www.douyin.com/user/MS4wLjABAAAAmw9A54m5J0hHVMQY5eGrVJ-EHDoOS0hgJ6M1F9MN2Tn2V163A0xrC4_KVzfmQSxC)
@@ -101,7 +93,7 @@ Cherry Studio's highly customizable design, powerful extensibility, and user-fri
 
 ### Star History
 
-![Star History](https://urlscan.io/liveshot/?width=1300\&height=620\&url=https://cherrystarhistory.ocool.online/)
+[Star History](https://cherrystarhistory.ocool.online/)
 
 ## Follow Our Social Accounts
 

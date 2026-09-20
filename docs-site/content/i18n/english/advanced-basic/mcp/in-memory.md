@@ -1,13 +1,5 @@
 # Built-in MCP Configuration
 
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
 ### @cherry/mcp-auto-install
 
 Automatically installs MCP services (beta)

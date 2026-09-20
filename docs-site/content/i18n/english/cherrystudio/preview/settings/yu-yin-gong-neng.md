@@ -4,14 +4,6 @@ icon: phone-arrow-up-right
 ---
 # Voice Features
 
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
 {% hint style="warning" %}
 This feature has been shelved due to the relevant developer no longer maintaining the PR.
 {% endhint %}

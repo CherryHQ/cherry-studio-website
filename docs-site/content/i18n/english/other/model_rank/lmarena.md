@@ -1,13 +1,5 @@
 # LLM Arena Leaderboard (Live Update)
 
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
 This is a leaderboard based on Chatbot Arena (lmarena.ai) data, generated through an automated process.
 
 > **Data Update Time**: 2025-11-25 08:08:40 UTC / 2025-11-25 16:08:40 CST (Beijing Time)

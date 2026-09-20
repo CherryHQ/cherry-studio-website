@@ -1,13 +1,5 @@
 # Qwen3-8B
 
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
 **The well-known MaaS service platform "SiliconFlow" provides free access to the Qwen3-8B model call service.** As a cost-effective member of the Tongyi Qianwen Qwen3 series, Qwen3-8B achieves powerful capabilities in a compact size, making it an ideal choice for intelligent applications and efficient development.
 
 ***

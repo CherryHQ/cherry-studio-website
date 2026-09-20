@@ -1,13 +1,5 @@
 # NewAPI
 
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
 * Log in and open the token page
 * Click "Add Token"
 
@@ -25,7 +17,7 @@ This document was translated from Chinese by AI and has not yet been reviewed.
 * Fill in the key you just copied
 * Go back to the API Key acquisition page, copy the root address from the browser's address bar, e.g.:
 
-<figure><img src="../../../.gitbook/assets/image (30.png" alt=""><figcaption><p><strong>Only copy https://xxx.xxx.com; content after "/" is not needed</strong></p></figcaption></figure>
+<figure><img src="../../../../assets/4ce2f68c18ea7574a2f7db4b.webp" alt=""><figcaption><p><strong>Only copy https://xxx.xxx.com; content after "/" is not needed</strong></p></figcaption></figure>
 
 {% hint style="info" %}
 * When the address is IP+Port, simply fill in http://IP:Port, e.g., http://127.0.0.1:3000

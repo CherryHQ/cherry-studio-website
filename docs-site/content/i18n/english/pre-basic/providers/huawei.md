@@ -1,13 +1,5 @@
 # Huawei Cloud
 
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
 I. Go to [Huawei Cloud](https://auth.huaweicloud.com/authui/login) to create an account and log in.
 
 II. Click [this link](https://console.huaweicloud.com/modelarts/?region=cn-southwest-2#/model-studio/homepage) to enter the Maa S console.

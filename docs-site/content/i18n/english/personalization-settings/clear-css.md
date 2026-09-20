@@ -3,14 +3,6 @@ icon: trash-xmark
 ---
 # Clear CSS Settings
 
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
 {% hint style="warning" %}
 Use this method to clear CSS settings when incorrect CSS is set, or when you cannot access the settings interface after setting CSS.
 {% endhint %}

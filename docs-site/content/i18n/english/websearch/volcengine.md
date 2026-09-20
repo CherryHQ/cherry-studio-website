@@ -1,17 +1,9 @@
 ---
-description: cherry studio使用「火山引擎」接入deepseekR1联网功能，喂饭教程。
+description: A step-by-step tutorial on using Volcano Engine to enable DeepSeek R1's online features in Cherry Studio.
 hidden: True
 icon: globe-pointer
 ---
 # Volcengine Internet Access Integration
-
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
 
 ### 1. Log in/Register for a "Volcengine" account <a href="#rclz7" id="rclz7"></a>
 

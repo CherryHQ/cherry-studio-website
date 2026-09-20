@@ -3,14 +3,6 @@ icon: floppy-disk
 ---
 # Change Storage Location
 
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
 ## Default Storage Location
 
 Cherry Studio data storage adheres to system specifications, and data is automatically placed in the user directory. The specific directory locations are as follows:

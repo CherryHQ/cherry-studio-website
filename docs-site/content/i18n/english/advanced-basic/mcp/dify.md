@@ -1,13 +1,5 @@
 # Configure Dify Knowledge Base
 
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
 > Dify Knowledge Base MCP requires upgrading Cherry Studio to v1.2.9 or higher.
 
 ### Add Dify Knowledge Base MCP Server

@@ -3,14 +3,6 @@ icon: face-viewfinder
 ---
 # Knowledge Base Document Preprocessing
 
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
 Knowledge Base Document Preprocessing requires upgrading Cherry Studio to v1.4.8 or higher.
 
 ### Configure OCR Provider

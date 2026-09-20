@@ -4,17 +4,6 @@ icon: rss
 # Assistant Subscription Configuration
 
 
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
-{% hint style="warning" %}
-This document is translated from Chinese by AI and has not yet been reviewed. I will try to check the document one by one to ensure the translation is reasonable.
-{% endhint %}
-
 <figure><img src="../../../assets/7fa3a642f5827cf403232103.webp" alt=""><figcaption></figcaption></figure>
 
 <figure><img src="../../../assets/8b6a94cb6ebefe4824a7d26c.webp" alt=""><figcaption></figcaption></figure>

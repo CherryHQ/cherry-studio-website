@@ -3,17 +3,9 @@ icon: cloud-binary
 ---
 # S3 Compatible Storage Backup
 
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
 Cherry Studio data backup supports backing up data via S3 compatible storage (object storage). Common S3 compatible storage services include: AWS S3, Cloudflare R2, Alibaba Cloud OSS, Tencent Cloud COS, and MinIO, among others.
 
-Multi-terminal data synchronization can be achieved based on S3 compatible storage in the following way: `A PC` $$\xrightarrow{\text{Backup}}$$ `S3 Storage` $$\xrightarrow{\text{Restore}}$$ `B PC`.
+Multi-terminal data synchronization can be achieved based on S3 compatible storage in the following way: `A PC`  → (Backup) →  `S3 Storage`  → (Restore) →  `B PC`.
 
 ### Configure S3 Compatible Storage
 

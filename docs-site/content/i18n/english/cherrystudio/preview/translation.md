@@ -3,14 +3,6 @@ icon: language
 ---
 # Translation
 
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
 Cherry Studio's translation feature provides you with fast and accurate text translation services, supporting mutual translation between multiple languages.
 
 ### Interface Overview

@@ -3,14 +3,6 @@ icon: browsers
 ---
 # Quick Assistant
 
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
 The Quick Assistant is a convenient tool provided by Cherry Studio that allows you to quickly access AI features in any application, enabling instant questioning, translation, summarization, and explanation.
 
 ### Enable Quick Assistant

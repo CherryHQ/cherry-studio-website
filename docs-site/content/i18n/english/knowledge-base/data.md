@@ -3,14 +3,6 @@ icon: database
 ---
 # Data Storage Instructions
 
-
-{% hint style="warning" %}
-This document was translated from Chinese by AI and has not yet been reviewed.
-{% endhint %}
-
-
-
-
 All data added to the Cherry Studio knowledge base is stored locally. During the adding process, a copy of the document will be placed in the Cherry Studio data storage directory.
 
 <figure><img src="../../../assets/d8df21aaa423054104d3cbf2.webp" alt=""><figcaption><p>Knowledge Base Processing Flowchart</p></figcaption></figure>
