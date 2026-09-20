@@ -1,0 +1,51 @@
+---
+description: Windows 版本安装教程
+icon: windows
+---
+# Windows
+
+
+{% hint style="warning" %}
+此文件由 AI 從中文翻譯而來，尚未經過審閱。
+{% endhint %}
+
+
+
+
+## 開啟官方網站
+
+{% hint style="warning" %}
+注意：Windows 7 系統不支援安裝 Cherry Studio。
+{% endhint %}
+
+點擊下載選擇合適的版本
+
+{% embed url="https://cherry-ai.com/download" %}
+
+<figure><img src="../../../../assets/378dc7f7981305276902ad01.webp" alt=""><figcaption><p>開啟官方網站</p></figcaption></figure>
+
+## 等待下載完成
+
+<figure><img src="../../../../assets/36748928189c76af3d75ffc8.webp" alt="" width="563"><figcaption><p>Edge 瀏覽器正在下載</p></figcaption></figure>
+
+> 如果出現瀏覽器提示檔案不被信任等情況，選擇保留即可
+>
+> `選擇保留` → `信任 Cherry-Studio`
+
+<figure><img src="../../../../assets/8e5be791becf55eeaaea8735.webp" alt=""><figcaption></figcaption></figure>
+
+## 開啟檔案
+
+<figure><img src="../../../../assets/3cf2ea65c386f98f3a7932b3.webp" alt="" width="563"><figcaption><p>Edge 下載清單</p></figcaption></figure>
+
+## 安裝
+
+<figure><img src="../../../../assets/d529d545533aab2ae1b18a3b.webp" alt=""><figcaption><p>軟體安裝介面</p></figcaption></figure>
+
+### 軟體依賴庫
+
+本軟體依賴 Visual C++ Redistributable 執行庫，如果遇到安裝提示請點擊「是」來安裝軟體依賴
+
+或者手動下載安裝：[https://aka.ms/vs/17/release/vc\_redist.x64.exe](https://aka.ms/vs/17/release/vc_redist.x64.exe)
+
+<figure><img src="../../../../assets/298801c9d169cf7f2e2d7c3a.webp" alt=""><figcaption></figcaption></figure>

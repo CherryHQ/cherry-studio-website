@@ -20,7 +20,9 @@
     "careers": "招聘",
     "enterprise": "企业版",
     "docs": "文档",
-    "contact": "联系我们"
+    "contact": "联系我们",
+    "menu": "网站导航",
+    "close_menu": "关闭导航"
   },
   "theme_switcher": {
     "dark": "深色",

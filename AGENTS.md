@@ -164,3 +164,13 @@ The `pnpm release` command builds and deploys to production via rsync:
 - Flags: `-rvztl --delete` (recursive, verbose, compressed, preserve timestamps/symlinks, delete extraneous files)
 
 Only run this command if you have proper SSH access to the production server.
+
+## Documentation site (`/docs`)
+
+- `docs-site/` is an isolated Fumadocs + Next.js static-export workspace (React 19); the marketing app remains React 18 + Vite.
+- `pnpm dev` compiles local documentation, watches content changes and starts both apps; `pnpm dev:website` starts only Vite. Vite forwards `/docs` to the docs dev server on port 3001.
+- `docs-site/content/` is the only documentation source. Edit Markdown and images here, including each language's `SUMMARY.md`. `pnpm docs:generate` compiles local content; never edit generated output. There is no external documentation repository synchronization.
+- Both `pnpm build:cn` and `pnpm build:en` produce the complete website plus `dist/docs`. Always deploy the complete artifact, since release uses `rsync --delete`.
+- Documentation languages use `/docs/<locale>/` independently of the marketing site's fixed domain language. `locales.json` defines languages and `page-aliases.json` maps renamed source paths.
+- Run `pnpm docs:test` for content-conversion regressions. Inspect `docs-site/generated/report.json` for local source defects. Unknown GitBook tags fail generation.
+- Details and hosting requirements: `docs-site/README.md`.

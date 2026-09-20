@@ -82,3 +82,7 @@ export function getEnterpriseUrl(language: string): string {
     ? 'https://enterprise.cherryai.com.cn'
     : 'https://enterprise.cherryai.com'
 }
+
+export function getDocsUrl(language: string): string {
+  return `/docs/${language.toLowerCase().startsWith('zh') ? 'zh-cn' : 'en'}/`
+}

@@ -1,0 +1,13 @@
+@import "tailwindcss";
+@import "fumadocs-ui/css/neutral.css";
+@import "fumadocs-ui/css/preset.css";
+@source "../../node_modules/fumadocs-ui/dist/**/*.js";
+@source "../../../shared/**/*.tsx";
+@theme inline {
+  --color-background: var(--color-fd-background);
+  --color-foreground: var(--color-fd-foreground);
+  --color-border: var(--color-fd-border);
+  --color-secondary: var(--color-fd-secondary);
+  --color-muted-foreground: var(--color-fd-muted-foreground);
+  --color-accent: var(--color-fd-accent);
+}

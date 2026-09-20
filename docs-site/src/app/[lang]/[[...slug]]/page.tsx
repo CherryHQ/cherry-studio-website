@@ -1,0 +1,67 @@
+import { DocsBody, DocsPage, DocsTitle } from 'fumadocs-ui/page'
+import type { Metadata } from 'next'
+import { notFound } from 'next/navigation'
+
+import { canonicalUrl, getPage, locales, pages } from '@/lib/content'
+
+type Props = { params: Promise<{ lang: string; slug?: string[] }> }
+export const dynamicParams = false
+export function generateStaticParams({ params }: { params: { lang: string } }) {
+  return pages
+    .filter((page) => page.locale === params.lang)
+    .map((page) => ({ slug: page.slug ? page.slug.split('/') : [] }))
+}
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang, slug = [] } = await params
+  const page = getPage(lang, slug.join('/'))
+  if (!page) return {}
+  const originalLocale = page.fallback ? 'zh-cn' : lang
+  return {
+    title: `${page.title} | Cherry Studio Docs`,
+    description: page.description,
+    alternates: {
+      canonical: canonicalUrl(originalLocale, page.slug),
+      languages: Object.fromEntries(
+        locales.flatMap((locale) => {
+          const translated = getPage(locale.code, page.slug)
+          return translated && !translated.fallback ? [[locale.code, canonicalUrl(locale.code, page.slug)]] : []
+        })
+      )
+    },
+    robots: page.fallback ? { index: false, follow: true } : undefined
+  }
+}
+export default async function Page({ params }: Props) {
+  const { lang, slug = [] } = await params
+  const page = getPage(lang, slug.join('/'))
+  if (!page) notFound()
+  return (
+    <DocsPage
+      toc={page.toc}
+      editOnGithub={{
+        owner: 'CherryHQ',
+        repo: 'cherry-studio-website',
+        sha: 'main',
+        path: `docs-site/content/${page.file}`
+      }}>
+      <DocsTitle>{page.title}</DocsTitle>
+      {lang !== 'zh-cn' && (
+        <aside className="my-4 rounded-xl border border-amber-500/25 bg-amber-500/5 px-4 py-3 text-sm text-fd-muted-foreground">
+          {page.fallback
+            ? 'This page has not been translated yet. The Simplified Chinese source is shown below. 此页面暂无译文，以下为简体中文原文。'
+            : 'Community translation. It may differ from the latest Simplified Chinese documentation.'}
+          <a href={`/docs/zh-cn/${getPage('zh-cn', page.slug) ? `${page.slug}/` : ''}`} className="ml-2 underline">
+            简体中文
+          </a>
+        </aside>
+      )}
+      <DocsBody>
+        <div
+          lang={page.fallback ? 'zh-cn' : lang}
+          className="[&_[data-cards]]:grid [&_[data-cards]]:gap-3 [&_[data-cards]]:sm:grid-cols-2 [&_[data-card]]:rounded-xl [&_[data-card]]:border [&_[data-card]]:border-fd-border [&_[data-card]]:p-4 [&_aside]:my-5 [&_aside]:rounded-xl [&_aside]:border [&_aside]:border-fd-border [&_aside]:bg-fd-muted/50 [&_aside]:px-5 [&_aside]:py-1 [&_figure]:my-6 [&_figcaption]:text-center [&_figcaption]:text-sm [&_figcaption]:text-fd-muted-foreground [&_img]:rounded-xl [&_pre]:overflow-x-auto [&_pre]:rounded-xl [&_pre]:bg-fd-muted [&_pre]:p-4 [&_table]:block [&_table]:overflow-x-auto"
+          dangerouslySetInnerHTML={{ __html: page.html }}
+        />
+      </DocsBody>
+    </DocsPage>
+  )
+}

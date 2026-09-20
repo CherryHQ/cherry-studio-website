@@ -20,7 +20,9 @@
     "careers": "Careers",
     "enterprise": "Enterprise",
     "docs": "Docs",
-    "contact": "Contact Us"
+    "contact": "Contact Us",
+    "menu": "Site navigation",
+    "close_menu": "Close navigation"
   },
   "theme_switcher": {
     "dark": "Dark",

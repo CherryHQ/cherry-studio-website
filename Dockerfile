@@ -7,10 +7,11 @@ FROM ${MIRROR:+${MIRROR}/}node:24-alpine AS builder
 WORKDIR /app
 
 # Install pnpm
-RUN corepack enable && corepack prepare pnpm@latest --activate
+RUN corepack enable && corepack prepare pnpm@10.13.1 --activate
 
 # Copy package files
-COPY package.json pnpm-lock.yaml ./
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+COPY docs-site/package.json ./docs-site/package.json
 
 # Install dependencies
 RUN pnpm install --frozen-lockfile

@@ -1,0 +1,105 @@
+---
+description: cherry studio使用「火山引擎」接入deepseekR1联网功能，喂饭教程。
+hidden: True
+icon: globe-pointer
+---
+# Conexión a Volc Engine
+
+
+{% hint style="warning" %}
+Este documento ha sido traducido del chino por IA y aún no ha sido revisado.
+{% endhint %}
+
+
+
+
+### 1. Iniciar sesión/Registrar cuenta en «Volc Engine» <a href="#rclz7" id="rclz7"></a>
+
+Acceda al sitio web oficial: [https://www.volcengine.com/](https://www.volcengine.com/)
+
+<figure><img src="../../../assets/98bfb5c300d7cd815aedf4c7.webp" alt=""><figcaption><p>Sitio web oficial de Volc Engine</p></figcaption></figure>
+
+### 2. Crear «Mi aplicación» con capacidad de conexión a Internet <a href="#gvzaa" id="gvzaa"></a>
+
+2.1. Inicie sesión en Volc Engine y acceda a la página «Volc Ark»: [https://console.volcengine.com/ark](https://console.volcengine.com/ark)
+
+2.2. **Haga clic en secuencia:** <mark style="color:red;">**«Mi aplicación» → «Crear aplicación» → «Cero código» → «Chat individual»**</mark> &#x20;
+
+<figure><img src="../../../assets/ee60f999a4dccbbdce8881e5.webp" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../../../assets/fec0d788d8d23f729247d79d.webp" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../../../assets/9e4bb430ed758a3ffe559a59.webp" alt=""><figcaption></figcaption></figure>
+
+### 3. Rellenar información y publicar la aplicación <a href="#zzdfe" id="zzdfe"></a>
+
+**Nombre de la aplicación**: Asigne cualquier nombre según los requisitos (<mark style="color:red;">**\*obligatorio**</mark>, otros campos opcionales).
+
+<mark style="color:red;">**Clave: Active el complemento de conexión a Internet (requiere activación previa)**</mark>
+
+<figure><img src="../../../assets/5235ef3b0757059a7fd00447.webp" alt=""><figcaption></figcaption></figure>
+
+#### 3.1. Activar función de complemento de Internet (note costos y usos gratuitos) <a href="#mwn38" id="mwn38"></a>
+
+<figure><img src="../../../assets/c4170cccee5de8c993b0b586.webp" alt=""><figcaption><p>Haga clic en "Comprar ahora" y complete los pasos hasta ver esta interfaz, indicando activación exitosa</p></figcaption></figure>
+
+<figure><img src="../../../assets/2d729a056d0bd71aa627b48a.webp" alt=""><figcaption><p>Verifique el estado: activación completada</p></figcaption></figure>
+
+Regrese a la interfaz de información de aplicación para continuar.
+
+<figure><img src="../../../assets/47360c539ee128f39b86020c.webp" alt=""><figcaption></figcaption></figure>
+
+#### 3.2. Configuración avanzada de búsqueda en línea <a href="#sp6uz" id="sp6uz"></a>
+
+Recomendaciones según necesidades:
+* Para control preciso de entrada/salida: usar **«Llamada personalizada»**
+* Para simplicidad: **«Llamada automática»** (valor predeterminado)
+* Para máxima actualización de información (con costo): **«Forzar activación»**
+
+<figure><img src="../../../assets/e886e47fc99c10deaf5e80e3.webp" alt=""><figcaption></figcaption></figure>
+
+#### 3.3. Publicar aplicación <a href="#fe1gf" id="fe1gf"></a>
+
+Haga clic en «Publicar» (esquina superior derecha) para crear la aplicación.
+
+<figure><img src="../../../assets/09b6fa788839c08e605d9128.webp" alt=""><figcaption></figcaption></figure>
+
+### 4. Obtener clave API <a href="#jtqlu" id="jtqlu"></a>
+
+Siga: **«Guía de llamadas API» → «Seleccionar y copiar clave API» → «Ver y seleccionar»**
+
+Copie la clave API y péguela en Cherry Studio (detalles abajo):
+
+<figure><img src="../../../assets/8322870a4161de7ff5d860f5.webp" alt=""><figcaption></figcaption></figure>
+
+Nota: Si no existe clave API, haga clic en **«Crear clave API»** (esquina superior derecha del cuadro emergente).
+
+<figure><img src="../../../assets/9100d8ab913d8976f53cd0c7.webp" alt=""><figcaption></figcaption></figure>
+
+### 5. Usar clave API en Cherry Studio para acceso en línea a deepseek-R1 <a href="#lrefj" id="lrefj"></a>
+
+#### 5.1. Abrir Cherry Studio → «Configuración» → «Nombre arbitrario» → «Tipo: OpenAI» <a href="#dvrbv" id="dvrbv"></a>
+
+<figure><img src="../../../assets/6b84bd9cf3e91737c3b3a7a3.webp" alt="" width="375"><figcaption></figcaption></figure>
+
+<figure><img src="../../../assets/dacbd055825146aa4031a7e7.webp" alt="" width="375"><figcaption></figcaption></figure>
+
+#### 5.2. Configurar URL y clave <a href="#mt8y0" id="mt8y0"></a>
+
+<figure><img src="../../../assets/d85bb2796ec18d77b27164e3.webp" alt=""><figcaption></figcaption></figure>
+
+<mark style="color:purple;">Nota: Si no encuentra la dirección o no es nodo de Beijing, localice la dirección exacta aquí (no olvide "/"):</mark>
+
+<figure><img src="../../../assets/ef3bcae1b0f5e786077b2373.webp" alt=""><figcaption></figcaption></figure>
+
+#### 5.3. Añadir nombre del modelo <a href="#qmh3i" id="qmh3i"></a>
+
+Importante: Copie el texto pequeño inferior como nombre del modelo, de lo contrario generará error.
+
+<figure><img src="../../../assets/53b0e97b6a0b9680e673974e.webp" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../../../assets/7a43cd735df850805b24394c.webp" alt=""><figcaption></figcaption></figure>
+
+### 6. Vista previa del resultado <a href="#peb2p" id="peb2p"></a>
+
+<figure><img src="../../../assets/769e08e7462e840976de738b.webp" alt=""><figcaption></figcaption></figure>

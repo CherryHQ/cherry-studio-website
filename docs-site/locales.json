@@ -1,0 +1,11 @@
+[
+  { "code": "zh-cn", "label": "简体中文", "directory": "" },
+  { "code": "en", "label": "English", "directory": "i18n/english" },
+  { "code": "zh-tw", "label": "繁體中文", "directory": "i18n/traditional-chinese" },
+  { "code": "ja", "label": "日本語", "directory": "i18n/japanese" },
+  { "code": "fr", "label": "Français", "directory": "i18n/french" },
+  { "code": "es", "label": "Español", "directory": "i18n/spanish" },
+  { "code": "pt", "label": "Português", "directory": "i18n/portuguese" },
+  { "code": "ru", "label": "Русский", "directory": "i18n/russian" },
+  { "code": "el", "label": "Ελληνικά", "directory": "i18n/greek" }
+]

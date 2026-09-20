@@ -48,3 +48,7 @@ export default tseslint.config({
   },
 })
 ```
+
+## Documentation site
+
+The Fumadocs documentation is published under `/docs` and built with the website. See [docs-site/README.md](docs-site/README.md) for local development, editing local content in `docs-site/content/`, languages, and deployment.
