@@ -61,6 +61,8 @@ icon: message
 
 ![](../../../../assets/aa570a6b1df6367e1f9ba250.webp) `翻訳` 現在の入力欄内の内容を英語に翻訳します。
 
+<a id="dui-hua-she-zhi"></a>
+
 ## ダイアログ設定
 
 <figure><img src="../../../../assets/0cca9215941b637287b69a09.webp" alt=""><figcaption></figcaption></figure>
@@ -175,6 +177,8 @@ icon: message
 ## アシスタント設定
 
 アシスタント画面で設定したい<mark style="background-color:yellow;">アシスタント名</mark>を選択→<mark style="background-color:yellow;">右クリックメニュー</mark>から対応する設定を選択
+
+<a id="bian-ji-zhu-shou"></a>
 
 ### アシスタントの編集
 

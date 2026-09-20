@@ -118,6 +118,8 @@ Claude: 3 tokens
 
 ***
 
+<a id="shen-me-shi-mcpmodel-context-protocol"></a>
+
 ## **什麼是 MCP（Model Context Protocol）？**
 
 MCP 是一種開源協議，旨在以標準化的方式向大型語言模型（LLM）提供上下文信息。

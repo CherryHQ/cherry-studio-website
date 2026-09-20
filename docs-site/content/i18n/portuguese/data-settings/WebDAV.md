@@ -13,7 +13,7 @@ Este documento foi traduzido do chinês por IA e ainda não foi revisado.
 
 O backup de dados do Cherry Studio suporta o método WebDAV. Você pode escolher um serviço WebDAV adequado para fazer backup na nuvem.
 
-Com base no WebDAV, você pode sincronizar dados em vários dispositivos através do método: `Computador A` $$\xrightarrow{\text{backup}}$$ `WebDAV` $$\xrightarrow{\text{restauração}}$$ `Computador B`.
+Com base no WebDAV, você pode sincronizar dados em vários dispositivos através do método: `Computador A`  → (backup) →  `WebDAV`  → (restauração) →  `Computador B`.
 
 #### Exemplo com Nutstore
 

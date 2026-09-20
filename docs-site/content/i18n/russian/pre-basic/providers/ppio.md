@@ -21,23 +21,23 @@ Cherry Studio теперь глубоко интегрирован с **высо
 
 (1) Нажмите настройки в левом нижнем углу, укажите имя провайдера: `PPIO`, нажмите «ОК»
 
-<figure><img src="https://static.ppinfra.com/docs/image/llm/cherry-studio-setting.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../assets/cf5455b154b244f5d3aa5482.webp" alt=""><figcaption></figcaption></figure>
 
 (2) Перейдите в [Управление API-ключами Pai Ou Cloud](https://ppinfra.com/user/register?invited_by=JYT9GD\&utm_source=github_cherry-studio), щёлкните на [аватар пользователя] → [Управление API-ключами]
 
-<figure><img src="https://static.ppinfra.com/docs/image/llm/ppinfra-create-api-key-01.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../assets/37c899340c10efb7eaebaa8c.webp" alt=""><figcaption></figcaption></figure>
 
 Нажмите [+ Создать] для генерации нового ключа API. Укажите имя ключа. **Ключ отображается только при создании — обязательно скопируйте и сохраните его, чтобы не прерывать дальнейшее использование**
 
-<figure><img src="https://static.ppinfra.com/docs/image/llm/ppinfra-create-api-key-02.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../assets/95f4e62d8026e301ff42021c.webp" alt=""><figcaption></figcaption></figure>
 
 (3) Вставьте ключ в CherryStudio: выберите [PPIO Pai Ou Cloud], введите API-ключ с сайта, нажмите [Проверить]
 
-<figure><img src="https://static.ppinfra.com/docs/image/llm/cherry-studio-3601.PNG" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../assets/cb4f98d1154ea8119e650bd2.webp" alt=""><figcaption></figcaption></figure>
 
 (4) Выберите модель: например, deepseek/deepseek-r1/community. Для смены модели просто выберите другую.
 
-<figure><img src="https://static.ppinfra.com/docs/image/llm/cherry-studio-3602.PNG" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../assets/439ce95be23ff30aa88d05c3.webp" alt=""><figcaption></figcaption></figure>
 
 DeepSeek R1 и V3 community — пробные версии. Это полнофункциональные модели со всеми параметрами, без разницы в стабильности и эффективности. Для массового использования **пополните счёт и переключитесь на не-community версию**.
 
@@ -45,11 +45,11 @@ DeepSeek R1 и V3 community — пробные версии. Это полноф
 
 (1) После успешной [Проверки] можно использовать сервис
 
-<figure><img src="https://static.ppinfra.com/docs/image/llm/cherry-studio-3603.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../assets/02e78a0c750d27c014e751fd.webp" alt=""><figcaption></figcaption></figure>
 
 (2) Нажмите [@], выберите модель DeepSeek R1 от PPIO и начинайте общение\~
 
-<figure><img src="https://static.ppinfra.com/docs/image/llm/cherry-studio-ppio-config-02.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../assets/ab28a064a17133ac455ad444.webp" alt=""><figcaption></figcaption></figure>
 
 [Источник материалов: [Чэнь Энь](https://www.kdocs.cn/l/ctGiF5K6PQoO)]
 

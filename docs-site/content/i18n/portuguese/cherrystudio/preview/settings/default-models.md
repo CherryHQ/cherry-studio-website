@@ -6,11 +6,9 @@ icon: robot
 Este documento foi traduzido do chinês por IA e ainda não foi revisado.
 {% endhint %}
 
----
-icon: cherries
----
-
 # Configurações Padrão do Modelo
+
+<a id="mo-ren-zhu-shou-mo-xing"></a>
 
 ## Modelo Padrão do Assistente
 

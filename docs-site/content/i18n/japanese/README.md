@@ -101,7 +101,7 @@ Cherry Studioは、マルチモデル対話、ナレッジベース管理、AI�
 
 ### Star History
 
-![Star History](https://urlscan.io/liveshot/?width=1300\&height=620\&url=https://cherrystarhistory.ocool.online/)
+[Star History](https://cherrystarhistory.ocool.online/)
 
 ## ソーシャルアカウントをフォロー
 

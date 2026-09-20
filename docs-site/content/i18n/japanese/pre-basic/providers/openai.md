@@ -14,7 +14,7 @@
 
 <img src="../../../../assets/57d7da75000d518de0d6c2b4.svg" alt="" class="gitbook-drawing">
 
-*   生成されたキーをコピーし、CherryStudioの[サービスプロバイダー設定](broken-reference)を開く
+*   生成されたキーをコピーし、CherryStudioの[サービスプロバイダー設定](../../pre-basic/settings/providers.md)を開く
 *   サービスプロバイダー「OpenAI」を選択し、取得したキーを入力
 
 <figure><img src="../../../../assets/22efbe80f32fa31970b37881.webp" alt=""><figcaption></figcaption></figure>

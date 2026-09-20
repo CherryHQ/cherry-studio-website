@@ -14,7 +14,7 @@
 
 <img src="../../../../assets/57d7da75000d518de0d6c2b4.svg" alt="" class="gitbook-drawing">
 
-*   將生成的key複製，並打開CherryStudio的[服務商設定](broken-reference)
+*   將生成的key複製，並打開CherryStudio的[服務商設定](../../pre-basic/settings/providers.md)
 *   找到服務商OpenAI，填入剛剛獲取到的key
 
 <figure><img src="../../../../assets/22efbe80f32fa31970b37881.webp" alt=""><figcaption></figcaption></figure>

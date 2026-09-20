@@ -8,6 +8,8 @@ Ce document a été traducido del chino por IA y aún no ha sido revisado.
 
 # Paramètres des modèles par défaut
 
+<a id="mo-ren-zhu-shou-mo-xing"></a>
+
 ## Modèle d'assistant par défaut
 
 Lorsqu'aucun modèle d'assistant par défaut n'est défini pour un assistant, le modèle configuré ici sera sélectionné par défaut dans ses nouvelles conversations.

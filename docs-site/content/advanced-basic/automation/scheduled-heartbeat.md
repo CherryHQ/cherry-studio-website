@@ -16,4 +16,4 @@ icon: clock
 
 <figure><img src="../../assets/c348e2cb27a028b3789ac09b.webp" alt="从触发条件到 Agent 执行、发送通知和查看运行记录的自动化流程图"><figcaption></figcaption></figure>
 
-<figure><img src="https://raw.githubusercontent.com/SiinXu/cherry-studio-docs/2446b25878f69e98f33d50623a3c4cf5e836680a/.gitbook/assets/cherry-guide-scheduled-reuse-session.png" alt="新建定时任务时设置 Agent、执行频率和复用会话"><figcaption></figcaption></figure>
+<figure><img src="../../assets/0c3c019bec3b0447d8e10be0.webp" alt="新建定时任务时设置 Agent、执行频率和复用会话"><figcaption></figcaption></figure>

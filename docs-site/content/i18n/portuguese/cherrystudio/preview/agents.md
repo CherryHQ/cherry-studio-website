@@ -15,5 +15,5 @@ Você também pode editar e criar seus próprios assistentes nesta página.
 * Clique em `Meus`, depois em `Criar Agente Inteligente` para começar a criar seu assistente.
 
 {% hint style="info" %}
-O botão no canto superior direito da caixa de entrada de prompts é para otimização de prompts por IA. Ao clicar, ele substituirá o texto original. O modelo usado é o [modelo padrão global do assistente](broken-reference).
+O botão no canto superior direito da caixa de entrada de prompts é para otimização de prompts por IA. Ao clicar, ele substituirá o texto original. O modelo usado é o [modelo padrão global do assistente](../../pre-basic/settings/default-models.md).
 {% endhint %}

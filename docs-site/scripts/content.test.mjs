@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
 
-import { parseSummary, renderMarkdown, safeResolve, slugFor, urlFor } from './content.mjs'
+import { findMissingAnchors, parseSummary, renderMarkdown, safeResolve, slugFor, urlFor } from './content.mjs'
 
 test('URLs preserve directory indexes and encode filenames', () => {
   assert.equal(slugFor('guide/README.md'), 'guide')
@@ -76,4 +76,97 @@ test('GitBook card metadata is converted into navigable cards', async () => {
   assert.match(page.html, /href="\/docs\/en\/guide\/"/)
   assert.match(page.text, /Description/)
   assert.doesNotMatch(page.text, /guide.md/)
+})
+
+test('navigation cards with an empty target report a source defect', async () => {
+  const issues = []
+  await renderMarkdown(
+    '<table data-view="cards"><thead><tr><th>Title</th><th data-hidden data-card-target></th></tr></thead><tbody><tr><td>Setup</td><td></td></tr></tbody></table>',
+    (url) => url,
+    (issue) => issues.push(issue)
+  )
+  assert.deepEqual(issues, [{ type: 'missing-card-target', title: 'Setup' }])
+})
+
+test('translated headings retain both semantic legacy aliases and translated anchors', async () => {
+  const page = await renderMarkdown(
+    '# Guide\n\n<a id="api-di-zhi"></a>\n\n### API Address\n\n[API](#api-di-zhi)',
+    (url) => url,
+    () => {}
+  )
+  assert.ok(page.anchors.includes('api-di-zhi'))
+  assert.ok(page.anchors.includes('api-address'))
+  assert.ok(page.toc.some((item) => item.url === '#api-address'))
+})
+
+test('unfinished translation reasoning is reported but literal code examples are allowed', async () => {
+  const issues = []
+  await renderMarkdown(
+    '<think>Unfinished translation',
+    (url) => url,
+    (issue) => issues.push(issue)
+  )
+  assert.deepEqual(issues, [{ type: 'translation-artifact' }])
+  issues.length = 0
+  await renderMarkdown(
+    '```html\n<think>Example</think>\n```',
+    (url) => url,
+    (issue) => issues.push(issue)
+  )
+  assert.deepEqual(issues, [])
+})
+
+test('duplicate explicit anchors are reported', async () => {
+  const issues = []
+  await renderMarkdown(
+    '<a id="same"></a>\n\n## Heading <a id="same"></a>',
+    (url) => url,
+    (issue) => issues.push(issue)
+  )
+  assert.deepEqual(issues, [{ type: 'duplicate-anchor', target: 'same' }])
+})
+
+test('anchor validation checks encoded, cross-page and malformed double-hash links', () => {
+  const pages = [
+    {
+      locale: 'en',
+      slug: 'guide',
+      file: 'guide.md',
+      anchors: ['介绍'],
+      links: ['#%E4%BB%8B%E7%BB%8D', '##介绍', '/docs/en/setup/#missing', 'https://example.com/#external']
+    },
+    { locale: 'en', slug: 'setup', file: 'setup.md', anchors: ['install'], links: ['/docs/en/guide/#介绍'] }
+  ]
+  assert.deepEqual(
+    findMissingAnchors(pages).map((issue) => issue.target),
+    ['##介绍', '/docs/en/setup/#missing']
+  )
+})
+
+test('math renders as static MathML while code examples and currency stay literal', async () => {
+  const issues = []
+  const page = await renderMarkdown(
+    '# Math\n\n$$\\sum_{i=1}^n x_i$$\n\n$$\n\\frac{a}{b}\n$$\n\n`$$\\sum x$$` and $5 or $10\n\n```text\n$$literal$$\n```',
+    (url) => url,
+    (issue) => issues.push(issue)
+  )
+  assert.match(page.html, /<math xmlns=/)
+  assert.match(page.html, /<mfrac>/)
+  assert.match(page.html, /display="block"/)
+  assert.match(page.html, /<code>\$\$\\sum x\$\$<\/code>/)
+  assert.match(page.text, /\$5 or \$10/)
+  assert.match(page.html, /\$\$literal\$\$/)
+  assert.doesNotMatch(page.html, /<script|<link|katex-html/)
+  assert.deepEqual(issues, [])
+})
+
+test('invalid math is reported and unsafe math commands cannot create executable links', async () => {
+  const issues = []
+  const page = await renderMarkdown(
+    '$$\\unknowncommand{x}$$\n\n$$\\href{javascript:alert(1)}{click}$$',
+    (url) => url,
+    (issue) => issues.push(issue)
+  )
+  assert.ok(issues.some((issue) => issue.type === 'invalid-math'))
+  assert.doesNotMatch(page.html, /href="javascript:/)
 })

@@ -1,84 +1,33 @@
 ---
-icon: book-open-cover
+icon: compass
 ---
 
-{% hint style="warning" %}
-Este documento foi traduzido do chinês por IA e ainda não foi revisado.
-{% endhint %}
+# Introdução às bases de conhecimento
 
-# Tutorial de Base de Conhecimento
-
-Na versão 0.9.1, o CherryStudio introduziu a tão esperada funcionalidade de Base de Conhecimento.
-
-A seguir, apresentaremos o guia detalhado de utilização do CherryStudio passo a passo.
-
-## Adicionar Modelos de Embedding
-
-1. Busque modelos no serviço de gerenciamento de modelos - é possível filtrar rapidamente clicando em "Modelos de Embedding";
-2. Encontre o modelo desejado e adicione-o aos meus modelos.
-
-<figure><img src="../../../assets/de62e1c82b0491e7875c6a3d.webp" alt=""><figcaption></figcaption></figure>
-
-## Criar Base de Conhecimento
-
-1. Acesso à Base de Conhecimento: Na barra de ferramentas à esquerda do CherryStudio, clique no ícone da Base de Conhecimento para acessar a página de gerenciamento;
-2. Adicionar Base de Conhecimento: Clique em "Adicionar" para começar a criar sua base de conhecimento;
-3. Nomeação: Insira o nome da base de conhecimento e adicione um modelo de embedding, usando bge-m3 como exemplo, para finalizar a criação.
-
-<figure><img src="../../../assets/815b2b38dc12b63b41347762.webp" alt=""><figcaption></figcaption></figure>
-
-<figure><img src="../../../assets/61eb240e8b46c9d69a85341c.webp" alt=""><figcaption></figcaption></figure>
-
-## Adicionar Arquivos e Vetorizar
-
-1. Adicionar arquivos: Clique no botão de adicionar arquivos para abrir a seleção;
-2. Selecionar arquivos: Escolha entre formatos suportados como pdf, docx, pptx, xlsx, txt, md, mdx etc.;
-3. Vetorização: O sistema realizará automaticamente o processo de vetorização. Quando mostrar "Concluído" (verde ✓), significa que a vetorização está completa.
-
-<figure><img src="../../../assets/50d180e7cb72ab42fe8770a5.webp" alt=""><figcaption></figcaption></figure>
-
-<figure><img src="../../../assets/50c5b3c6567fd5bd6836af5b.webp" alt=""><figcaption></figcaption></figure>
-
-<figure><img src="../../../assets/91f0d97898017ff2d9b71581.webp" alt=""><figcaption></figcaption></figure>
-
-## Adicionar Dados de Múltiplas Fontes
-
-O CherryStudio suporta diversos métodos de adição de dados:
-
-1. Diretório de pastas: Adicione uma pasta inteira - os arquivos suportados serão vetorizados automaticamente;
-2. URL: Suporta links como [https://docs.siliconflow.cn/introduction](https://docs.siliconflow.cn/introduction);
-3. Mapa do site: Suporta sitemaps em formato XML como [https://docs.siliconflow.cn/sitemap.xml](https://docs.siliconflow.cn/sitemap.xml);
-4. Notas de texto: Permite inserir conteúdo personalizado em texto puro.
+Uma base de conhecimento organiza arquivos, notas, pastas e páginas web para consultas recorrentes. Confira se a busca encontra os trechos corretos antes de usar a base no chat ou com um Agent.
 
 {% hint style="info" %}
-Dicas:
-1. Ilustrações em documentos importados não são convertidas em vetores automaticamente – é necessário convertê-las manualmente em texto;
-2. URLs como fonte podem falhar devido a políticas antifraude rigorosas, login obrigatório ou autorização. Recomenda-se testar após a criação;
-3. Sites geralmente possuem sitemaps (ex: [sitemap do CherryStudio](https://docs.cherry-ai.com/sitemap-pages.xml)). Normalmente localizados em `domínio.com/sitemap.xml`;
-4. Se o site não tiver sitemap, crie um arquivo XML manualmente usando URLs públicas:
-   > 1) Use IA para gerar sitemaps ou ferramentas geradoras;
-   > 2) Utilize links diretos de OSS (Object Storage Service) ou armazenamento em nuvem. Ferramenta gratuita disponível em: [ocoolAI](https://one.ocoolai.com/login).
+O modelo de embedding é opcional. Selecione **Nenhum (None)** para começar com busca por palavras-chave BM25. Adicione um modelo quando precisar de busca semântica. O modelo de reranking também é opcional.
 {% endhint %}
 
-## Pesquisar na Base de Conhecimento
+## Crie sua primeira base
 
-Após a vetorização, é possível realizar consultas:
+1. <a id="criar-base-de-conhecimento"></a>Abra **Base de conhecimento** na navegação à esquerda e use o botão de adicionar acima da lista. Escolha um nome específico, como “Política de viagens da equipe”.
 
-1. Clique no botão "Pesquisar Base de Conhecimento" no rodapé da página;
-2. Insira o conteúdo da consulta;
-3. Visualize os resultados da pesquisa;
-4. Verifique a pontuação de correspondência para cada resultado.
+2. <a id="adicionar-modelos-de-embedding"></a>No primeiro teste, configure **Modelo de embedding** como **Nenhum (None)**. Adicione um modelo depois se precisar reconhecer sinônimos ou perguntas com outras palavras.
 
-<figure><img src="../../../assets/d1c81d4e1f45b29f6aa76bfa.webp" alt=""><figcaption></figcaption></figure>
+3. <a id="adicionar-dados-de-múltiplas-fontes"></a><a id="adicionar-arquivos-e-vetorizar"></a>Abra a base e adicione um **Arquivo**, uma **Nota**, uma **Pasta** ou um **Link**. Comece com poucos materiais relevantes.
 
-<figure><img src="../../../assets/bcbb9d209e9e48af9dd5de51.webp" alt=""><figcaption></figcaption></figure>
+4. Aguarde o processamento e examine o texto extraído e os **Chunks**. Verifique caracteres ilegíveis, páginas ausentes e ordem incorreta.
 
-## Gerar Respostas com Base de Conhecimento em Diálogos
+5. <a id="pesquisar-na-base-de-conhecimento"></a>Abra **Teste de recuperação (Retrieval Test)** e faça uma pergunta real cuja resposta você conhece. Confira se a fonte correta aparece entre os primeiros resultados.
 
-1. Crie um novo tópico. Na barra de ferramentas, clique em "Base de Conhecimento" para ver a lista e selecione uma base;
-2. Envie sua pergunta – o modelo retornará respostas geradas a partir dos resultados da pesquisa;
-3. As fontes de dados utilizadas aparecerão abaixo da resposta para acesso rápido.
+6. <a id="gerar-respostas-com-base-de-conhecimento-em-diálogos"></a>Quando a recuperação estiver confiável, selecione a base na área de entrada do chat ou associe-a na página de edição do Agent.
 
-<figure><img src="../../../assets/5d040588b4591c1397fc9c91.webp" alt=""><figcaption></figcaption></figure>
+![Fontes: arquivos, notas, pastas e links](../../../assets/4622da2093d43942d7ee443e.webp)
 
-<figure><img src="../../../assets/597ea9733656fae31173e5f8.webp" alt=""><figcaption></figcaption></figure>
+## Confira antes de confiar nas respostas
+
+Mantenha de 3 a 5 perguntas reais e repita os testes após alterar dados ou configurações. Se a busca falhar, examine primeiro o texto e os Chunks. O modelo de chat não pode recuperar fatos essenciais que não foram encontrados.
+
+Os preços e o tratamento de dados dos modelos de embedding ou reranking na nuvem dependem do provedor. Separe materiais com diferentes requisitos de acesso.

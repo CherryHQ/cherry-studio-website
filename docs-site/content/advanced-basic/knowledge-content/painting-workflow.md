@@ -22,15 +22,10 @@ icon: palette
 
 > 晨光下的创意工作台，樱桃红台灯、速写本、相机与一枝樱花，窗外是宁静群山；柔和 3D 插画风，暖色晨光，宽幅构图，无文字。
 
-```mermaid
-flowchart LR
-    A[写清用途和构图] --> B[选择绘画模型]
-    B --> C[生成第一版]
-    C --> D{主体、边缘和尺寸可用吗}
-    D -- 否 --> E[只修改一个方向]
-    E --> C
-    D -- 是 --> F[放大检查并导出]
-```
+1. 写清用途和构图，选择绘画模型。
+2. 生成第一版，检查主体、边缘和尺寸。
+3. 如果还不能使用，只修改一个方向，再次生成并检查。
+4. 确认可用后，放大检查并导出。
 
 {% hint style="info" %}
 示例使用【GPT-Image-2 | express】生成宽幅工作台插画。模型、尺寸和可用操作以你当前页面显示为准；看不到的参数不要照搬。
@@ -38,7 +33,7 @@ flowchart LR
 
 生成后不要立刻离开：先放大检查主体、边缘和多余元素，再从左侧历史切换版本。需要调整时，保留有效描述，只修改一个方向。
 
-<figure><img src="https://3562065924-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0Ut5BptC3t8CtSU1UWpM%2Fuploads%2Fgit-blob-418a088986e17a73a4808871fc4c1f5c1684fa05%2Fcherry-v2-guide-painting-result.jpg?alt=media" alt="使用 GPT-Image-2 express 生成的晨光工作台插画与历史记录"><figcaption><p>① 左侧保留本次生成的历史缩略图；② 中间显示完整成品；③ 放大检查后再下载、复制或继续编辑。</p></figcaption></figure>
+<figure><img src="../../assets/2ba55ffd828250f31afa2b16.jpg" alt="使用 GPT-Image-2 express 生成的晨光工作台插画与历史记录"><figcaption><p>① 左侧保留本次生成的历史缩略图；② 中间显示完整成品；③ 放大检查后再下载、复制或继续编辑。</p></figcaption></figure>
 
 ## 完成一张可用图片
 

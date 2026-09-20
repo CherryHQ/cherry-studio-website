@@ -30,7 +30,7 @@ Windows: `C:\Users\ユーザー名\.cherrystudio\bin`
 
 macOS、Linux: `~/.cherrystudio/bin`
 
-<figure><img src="../../.gitbook/assets/MCP-cherrystudio_bin_フォルダ.png" alt=""><figcaption><p>binディレクトリ</p></figcaption></figure>
+<figure><img src="../../../../assets/4530467354bd83755e92e34f.webp" alt=""><figcaption><p>binディレクトリ</p></figcaption></figure>
 
 **正常にインストールできない場合:**
 

@@ -61,6 +61,8 @@ Cette fonctionnalité est uniquement une estimation. Le nombre réel de tokens v
 
 ![](../../../../assets/aa570a6b1df6367e1f9ba250.webp) `Traduire` Traduit le contenu actuel du champ de saisie en anglais.
 
+<a id="dui-hua-she-zhi"></a>
+
 ## Paramètres de conversation
 
 <figure><img src="../../../../assets/0cca9215941b637287b69a09.webp" alt=""><figcaption></figcaption></figure>
@@ -175,6 +177,8 @@ Définit la langue cible pour le bouton de traduction et pour l'option "appuyer 
 ## Paramètres de l'assistant
 
 Sélectionnez le nom de l'<mark style="background-color:yellow;">assistant</mark> à configurer dans l'interface de l'assistant → Sélectionnez les paramètres correspondants dans le <mark style="background-color:yellow;">menu contextuel</mark>.
+
+<a id="bian-ji-zhu-shou"></a>
 
 ### Modifier l'assistant
 

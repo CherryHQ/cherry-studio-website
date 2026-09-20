@@ -36,9 +36,9 @@ icon: book-open
 
 <figure><img src="../../assets/203ae7d1fc3c8b76bd8af0a8.webp" alt="新建知识库时的名称、嵌入模型和保存入口"><figcaption><p>新建知识库时先填写名称并选择可用的嵌入模型。</p></figcaption></figure>
 
-<figure><img src="https://3562065924-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0Ut5BptC3t8CtSU1UWpM%2Fuploads%2Fgit-blob-9b55e8bfc279019611a137d7667c91533e6684eb%2Fcherry-v2-guide-knowledge-sources.png?alt=media" alt="员工差旅制度知识库中已就绪的笔记来源与召回测试入口"><figcaption><p>① 三篇差旅资料均已就绪；② 点击顶部【召回测试】验证实际问题。</p></figcaption></figure>
+<figure><img src="../../assets/7e64d06ef22f90944b1896ee.webp" alt="员工差旅制度知识库中已就绪的笔记来源与召回测试入口"><figcaption><p>① 三篇差旅资料均已就绪；② 点击顶部【召回测试】验证实际问题。</p></figcaption></figure>
 
-<figure><img src="https://3562065924-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0Ut5BptC3t8CtSU1UWpM%2Fuploads%2Fgit-blob-413972fdce3631aee8d1619db3a9936b2dfc3774%2Fcherry-v2-guide-knowledge-recall.png?alt=media" alt="知识库对海外租车能否报销的召回测试结果"><figcaption><p>① 输入工作中真的会问到的问题；② 检查命中资料、片段内容和相关度。</p></figcaption></figure>
+<figure><img src="../../assets/c00520c08c9364fe13caad57.webp" alt="知识库对海外租车能否报销的召回测试结果"><figcaption><p>① 输入工作中真的会问到的问题；② 检查命中资料、片段内容和相关度。</p></figcaption></figure>
 
 ### 用真实问题验收召回结果
 

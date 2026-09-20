@@ -13,7 +13,7 @@ Este documento foi traduzido do chinês por IA e ainda não foi revisado.
 
 O backup de dados do Cherry Studio suporta armazenamento compatível com S3 (armazenamento de objetos). Serviços comuns de armazenamento compatível com S3 incluem: AWS S3, Cloudflare R2, Alibaba Cloud OSS, Tencent Cloud COS e MinIO.
 
-A sincronização de dados entre múltiplos dispositivos pode ser realizada através do fluxo: `Computador A` $$\xrightarrow{\text{backup}}$$ `Armazenamento S3` $$\xrightarrow{\text{restauração}}$$ `Computador B`.
+A sincronização de dados entre múltiplos dispositivos pode ser realizada através do fluxo: `Computador A`  → (backup) →  `Armazenamento S3`  → (restauração) →  `Computador B`.
 
 ### Configurar Armazenamento Compatível com S3
 

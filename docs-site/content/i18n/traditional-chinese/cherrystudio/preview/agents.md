@@ -15,5 +15,5 @@ icon: head-side-gear
 * 點擊 `我的`，再點擊 `創建智能代理` 即可開始建立自己的助手。
 
 {% hint style="info" %}
-提示詞輸入框右上角按鈕為 AI 最佳化提示詞按鈕，點擊後會覆蓋原文。所使用的模型為 [全域預設助手模型](broken-reference)。
+提示詞輸入框右上角按鈕為 AI 最佳化提示詞按鈕，點擊後會覆蓋原文。所使用的模型為 [全域預設助手模型](../../pre-basic/settings/default-models.md)。
 {% endhint %}

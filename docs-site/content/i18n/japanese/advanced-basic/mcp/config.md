@@ -27,11 +27,11 @@
 
 ### チャットボックスでMCPサービスを有効化
 
-<figure><img src="../../.gitbook/assets/MCP-入力框按钮示例.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../assets/42ef06ac095d111eb764046e.webp" alt=""><figcaption></figcaption></figure>
 
 * `MCP サーサーバー`設定でMCPサーサーバーが正常に追加された状態
 
-<figure><img src="../../.gitbook/assets/MCPサーバー示例.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../assets/0f6c6755dd8f927b51689b82.webp" alt=""><figcaption></figcaption></figure>
 
 ### **使用効果のデモ**
 

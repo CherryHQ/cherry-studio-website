@@ -6,7 +6,7 @@ icon: cloud-binary
 
 Cherry Studio 数据备份支持通过 S3 兼容存储(对象存储)的方式进行备份。常见的 S3 兼容存储服务有：AWS S3、Cloudflare R2、阿里云 OSS、腾讯云 COS 以及 MinIO 等。
 
-基于 S3 兼容存储可以通过 `A电脑` $$\xrightarrow{\text{备份}}$$ `S3存储` $$\xrightarrow{\text{恢复}}$$ `B电脑` 的方式来实现多端数据同步。
+基于 S3 兼容存储可以通过 `A电脑`  →（备份）→  `S3存储`  →（恢复）→  `B电脑` 的方式来实现多端数据同步。
 
 ### 配置 S3 兼容存储
 

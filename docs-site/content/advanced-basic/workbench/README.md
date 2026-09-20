@@ -27,7 +27,7 @@ Cherry Studio 的主窗口由侧边栏、标签页和内容区组成。对话话
 | 回到主窗口 | 独立窗口顶部【回到主窗口】 | 把标签页重新接回主窗口 |
 | 自定义工具栏 | 输入区【+】→【自定义工具栏】 | 调整常用输入工具的位置 |
 
-<figure><img src="https://images.gitbook.com/__img/dpr=2,width=760,onerror=redirect,format=auto,signature=-699042616/https%3A%2F%2Ffiles.gitbook.com%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%2F0Ut5BptC3t8CtSU1UWpM%2Fuploads%2F8VMddiCgANblcfevpdmG%2Fclipboard.png%3Falt%3Dmedia%26token%3Dee731be7-6796-48e3-984d-f1db407c0707" alt="标签页菜单中的从新窗口打开操作"><figcaption><p>在标签页菜单中选择【从新窗口打开】，即可把当前内容拆到独立窗口。</p></figcaption></figure>
+在上图的标签页菜单中选择【从新窗口打开】，即可把当前内容拆到独立窗口。
 
 ### 推荐布局
 
@@ -38,7 +38,5 @@ Cherry Studio 的主窗口由侧边栏、标签页和内容区组成。对话话
 {% endhint %}
 
 ### 相关教程
-
-<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>多窗口与标签页</strong></td><td>拆分、置顶和重新接回窗口</td><td></td></tr><tr><td><strong>输入工具栏与效率工具</strong></td><td>提示词管理、快捷键、快捷助手和划词助手</td><td></td></tr><tr><td><strong>截图、标注与 OCR</strong></td><td>跨应用截图、脱敏和复制文字</td><td></td></tr></tbody></table>
 
 <table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>多窗口与标签页</strong></td><td>拆分、置顶和重新接回窗口</td><td><a href="multi-window-tabs.md">multi-window-tabs.md</a></td></tr><tr><td><strong>输入工具栏与效率工具</strong></td><td>提示词管理、快捷键、快捷助手和划词助手</td><td><a href="composer-efficiency.md">composer-efficiency.md</a></td></tr></tbody></table>

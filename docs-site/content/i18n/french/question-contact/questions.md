@@ -32,6 +32,8 @@ Ce document a été traducido del chino por IA y aún no ha sido revisado.
 
 ***
 
+<a id="kong-zhi-tai-bao-cuo-cha-kan-fang-fa"></a>
+
 ## Méthode d'inspection des erreurs dans la console
 
 * Dans la fenêtre client de Cherry Studio, appuyez sur <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>I</kbd> (Mac : <kbd>Command</kbd> + <kbd>Option</kbd> + <kbd>I</kbd>)

@@ -101,7 +101,7 @@ Grâce à sa conception hautement personnalisable, ses puissantes capacités d'e
 
 ### Star History
 
-![Star History](https://urlscan.io/liveshot/?width=1300\&height=620\&url=https://cherrystarhistory.ocool.online/)
+[Star History](https://cherrystarhistory.ocool.online/)
 
 ## Suivez nos comptes sociaux
 

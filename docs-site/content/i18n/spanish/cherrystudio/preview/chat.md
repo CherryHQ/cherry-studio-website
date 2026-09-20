@@ -61,6 +61,8 @@ Esta función solo sirve para estimar el número de tokens. El número real var�
 
 ![](../../../../assets/aa570a6b1df6367e1f9ba250.webp) `Traducir` Traduce el contenido actual del campo de entrada a inglés.
 
+<a id="dui-hua-she-zhi"></a>
+
 ## Configuración de Conversación
 
 <figure><img src="../../../../assets/0cca9215941b637287b69a09.webp" alt=""><figcaption></figcaption></figure>
@@ -175,6 +177,8 @@ Establece el idioma de destino para el botón de traducción y la función de 3 
 ## Configuración del Asistente
 
 En la interfaz de asistentes, selecciona el <mark style="background-color:yellow;">nombre del asistente</mark> → elige la configuración correspondiente en el <mark style="background-color:yellow;">menú contextual</mark>
+
+<a id="bian-ji-zhu-shou"></a>
 
 ### Editar Asistente
 

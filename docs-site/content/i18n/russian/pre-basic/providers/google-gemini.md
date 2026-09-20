@@ -16,7 +16,7 @@
 
 <figure><img src="../../../../assets/b49760732ce7ac30d5ef7c30.webp" alt=""><figcaption></figcaption></figure>
 
-* Скопируйте сгенерированный ключ и откройте [настройки провайдеров](broken-reference) в CherryStudio
+* Скопируйте сгенерированный ключ и откройте [настройки провайдеров](../../pre-basic/settings/providers.md) в CherryStudio
 * Найдите провайдера Gemini и введите полученный ключ
 
 <figure><img src="../../../../assets/84d594944e11255268fac0c1.webp" alt=""><figcaption></figcaption></figure>

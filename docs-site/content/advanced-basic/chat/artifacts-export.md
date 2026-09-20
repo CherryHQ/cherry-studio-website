@@ -12,16 +12,12 @@ icon: box-archive
 
 点击消息或 Agent 文件面板里的产物，可在右侧打开对应预览。HTML 可检查页面布局和交互；PDF、Word、PowerPoint、图片和文本按格式显示；`.xlsx` 电子表格可直接查看工作表、单元格样式、合并单元格、公式结果、图片和图表。
 
-<figure><img src="https://3562065924-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0Ut5BptC3t8CtSU1UWpM%2Fuploads%2Fgit-blob-f5bee1202b5aed4675a5537b57f3a1fd9147cf23%2Fcherry-v2-guide-artifact-preview.png?alt=media" alt="对话中已生成的发布前检查页与右侧 HTML 预览"><figcaption><p>① 预览区用于核对完整内容；② 工具栏可缩放、下载、最大化或切换视图。</p></figcaption></figure>
+<figure><img src="../../assets/4e1d6cc47405edfe8d6fe315.webp" alt="对话中已生成的发布前检查页与右侧 HTML 预览"><figcaption><p>① 预览区用于核对完整内容；② 工具栏可缩放、下载、最大化或切换视图。</p></figcaption></figure>
 
-```mermaid
-flowchart LR
-    A[在对话中说明产物格式] --> B[打开右侧预览]
-    B --> C{内容和布局是否完整}
-    C -- 否 --> D[回到对话补充修改要求]
-    D --> B
-    C -- 是 --> E[下载、复制或交给 Agent 保存]
-```
+1. 在对话中说明产物格式，打开右侧预览。
+2. 检查内容和布局是否完整。
+3. 如果有缺项，回到对话补充修改要求，再打开预览检查。
+4. 确认完整后，下载、复制或交给 Agent 保存。
 
 预览的作用是提前发现缺项，而不是只确认“已经生成”。如果页面要交给同事使用，至少点开链接、按钮和下载文件各检查一次。
 

@@ -6,7 +6,7 @@ icon: cloud-arrow-up
 
 Cherry Studio 数据备份支持通过 WebDAV 的方式进行备份。你可以选择合适的 WebDAV 服务来进行云端备份。
 
-基于 WebDAV 可以通过 `A电脑` $$\xrightarrow{\text{备份}}$$ `WebDAV` $$\xrightarrow{\text{恢复}}$$ `B电脑` 的方式来实现多端数据同步。
+基于 WebDAV 可以通过 `A电脑`  →（备份）→  `WebDAV`  →（恢复）→  `B电脑` 的方式来实现多端数据同步。
 
 #### 以坚果云为例
 

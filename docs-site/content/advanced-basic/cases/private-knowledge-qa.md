@@ -10,7 +10,7 @@ icon: lock
 
 <figure><img src="../../assets/24f5e32e3c72df907aaed3a6.webp" alt="知识库 RAG 的分段、返回和过滤设置"><figcaption><p>只有召回结果不稳定时，再根据资料结构调整 RAG 设置。</p></figcaption></figure>
 
-<figure><img src="https://3562065924-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0Ut5BptC3t8CtSU1UWpM%2Fuploads%2Fgit-blob-413972fdce3631aee8d1619db3a9936b2dfc3774%2Fcherry-v2-guide-knowledge-recall.png?alt=media" alt="员工差旅制度知识库对海外租车能否报销问题给出的实际召回结果"><figcaption><p>① 用真实问题测试；② 核对返回资料、原文片段和相关度。只有这里稳定，才把知识库交给 Agent 使用。</p></figcaption></figure>
+<figure><img src="../../assets/c00520c08c9364fe13caad57.webp" alt="员工差旅制度知识库对海外租车能否报销问题给出的实际召回结果"><figcaption><p>① 用真实问题测试；② 核对返回资料、原文片段和相关度。只有这里稳定，才把知识库交给 Agent 使用。</p></figcaption></figure>
 
 ## 操作流程
 

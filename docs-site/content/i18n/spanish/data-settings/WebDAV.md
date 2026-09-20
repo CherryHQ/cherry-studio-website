@@ -13,7 +13,7 @@ Este documento ha sido traducido del chino por IA y aún no ha sido revisado.
 
 Cherry Studio admite copias de seguridad de datos mediante WebDAV. Puedes elegir un servicio WebDAV adecuado para realizar copias de seguridad en la nube.
 
-Basado en WebDAV, puedes lograr sincronización de datos entre múltiples dispositivos mediante el método: `Computadora A` $$\xrightarrow{\text{respaldo}}$$ `WebDAV` $$\xrightarrow{\text{restauración}}$$ `Computadora B`.
+Basado en WebDAV, puedes lograr sincronización de datos entre múltiples dispositivos mediante el método: `Computadora A`  → (respaldo) →  `WebDAV`  → (restauración) →  `Computadora B`.
 
 #### Tomando Nutstore como ejemplo
 

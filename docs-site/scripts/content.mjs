@@ -2,10 +2,12 @@ import path from 'node:path'
 import GithubSlugger from 'github-slugger'
 import { toText } from 'hast-util-to-text'
 import { pinyin } from 'pinyin-pro'
+import rehypeKatex from 'rehype-katex'
 import rehypeRaw from 'rehype-raw'
 import rehypeSanitize, { defaultSchema } from 'rehype-sanitize'
 import rehypeStringify from 'rehype-stringify'
 import remarkGfm from 'remark-gfm'
+import remarkMath from 'remark-math'
 import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
 import { unified } from 'unified'
@@ -91,6 +93,7 @@ export async function renderMarkdown(markdown, rewrite, report) {
     attributes: {
       ...defaultSchema.attributes,
       '*': [...(defaultSchema.attributes['*'] || []), 'id'],
+      code: [['className', /^language-./, 'math-inline', 'math-display']],
       aside: ['dataHint'],
       div: ['dataCards', 'dataCard'],
       img: ['src', 'alt', 'title', 'width', 'height'],
@@ -101,10 +104,12 @@ export async function renderMarkdown(markdown, rewrite, report) {
   const result = await unified()
     .use(remarkParse)
     .use(remarkGfm)
+    .use(remarkMath, { singleDollarTextMath: false })
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeRaw)
     .use(() => (tree) => {
       visit(tree, 'element', (node) => {
+        if (node.tagName === 'think') report({ type: 'translation-artifact' })
         if (node.tagName !== 'table' || node.properties.dataView !== 'cards') return
         const head = node.children.find((child) => child.tagName === 'thead')
         const headers =
@@ -119,6 +124,8 @@ export async function renderMarkdown(markdown, rewrite, report) {
           const cells = row.children.filter((child) => child.tagName === 'td')
           const targetIndex = headers.findIndex((header) => 'dataCardTarget' in header.properties)
           const target = cells[targetIndex]?.children.find((child) => child.tagName === 'a')
+          if (targetIndex >= 0 && !target?.properties.href)
+            report({ type: 'missing-card-target', title: toText(cells[0] || row) })
           const visible = cells.filter((_, index) => !('dataHidden' in (headers[index]?.properties || {})))
           return {
             type: 'element',
@@ -170,7 +177,10 @@ export async function renderMarkdown(markdown, rewrite, report) {
             node.children = []
           } else toc.push({ title: label, url: `#${id}`, depth: Number(node.tagName[1]) })
         }
-        if (props.id) anchors.push(String(props.id))
+        if (props.id) {
+          if (anchors.includes(String(props.id))) report({ type: 'duplicate-anchor', target: String(props.id) })
+          anchors.push(String(props.id))
+        }
         for (const key of ['href', 'src', 'poster']) {
           if (typeof props[key] === 'string') {
             props[key] = rewrite(props[key], key)
@@ -193,8 +203,13 @@ export async function renderMarkdown(markdown, rewrite, report) {
       })
       text = toText(tree)
     })
+    // Generate MathML only at build time: no client-side renderer, CDN or font downloads.
+    .use(rehypeKatex, { output: 'mathml', trust: false })
     .use(rehypeStringify)
     .process(convertGitBook(markdown.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n/, ''), report))
+  for (const message of result.messages) {
+    if (message.source === 'rehype-katex') report({ type: 'invalid-math', reason: message.reason })
+  }
   return { html: String(result), title, toc, text, anchors, links }
 }
 
@@ -207,4 +222,24 @@ export function parseSummary(markdown) {
     if (match) entries.push({ type: 'page', name: match[2], file: match[3], depth: Math.floor(match[1].length / 2) })
   }
   return entries
+}
+
+export function findMissingAnchors(pages) {
+  const byUrl = new Map(pages.map((page) => [urlFor(page.locale, page.slug), page]))
+  const issues = []
+  for (const page of pages) {
+    for (const link of page.links) {
+      const separator = link.indexOf('#')
+      if (separator < 0) continue
+      const url = link.slice(0, separator)
+      let hash = link.slice(separator + 1)
+      const target = url ? byUrl.get(url) : page
+      try {
+        hash = decodeURIComponent(hash)
+      } catch {}
+      if (hash && target && !target.anchors.includes(hash))
+        issues.push({ type: 'missing-anchor', file: page.file, locale: page.locale, target: link })
+    }
+  }
+  return issues
 }

@@ -14,7 +14,7 @@
 
 <img src="../../../../assets/57d7da75000d518de0d6c2b4.svg" alt="" class="gitbook-drawing">
 
-* Скопируйте сгенерированный ключ и откройте [настройки провайдеров](broken-reference) в CherryStudio
+* Скопируйте сгенерированный ключ и откройте [настройки провайдеров](../../pre-basic/settings/providers.md) в CherryStudio
 * Найдите провайдера OpenAI и вставьте полученный ключ
 
 <figure><img src="../../../../assets/22efbe80f32fa31970b37881.webp" alt=""><figcaption></figcaption></figure>

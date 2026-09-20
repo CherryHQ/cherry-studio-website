@@ -14,7 +14,7 @@ Este documento ha sido traducido del chino por IA y aún no ha sido revisado.
 
 <img src="../../../../assets/57d7da75000d518de0d6c2b4.svg" alt="" class="gitbook-drawing">
 
-* Copia la clave generada y abre la [Configuración de Proveedores](broken-reference) de CherryStudio
+* Copia la clave generada y abre la [Configuración de Proveedores](../../pre-basic/settings/providers.md) de CherryStudio
 * Localiza el proveedor OpenAI y pega la clave obtenida
 
 <figure><img src="../../../../assets/22efbe80f32fa31970b37881.webp" alt=""><figcaption></figcaption></figure>

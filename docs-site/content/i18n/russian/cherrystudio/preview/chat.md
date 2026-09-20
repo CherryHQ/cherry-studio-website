@@ -61,6 +61,8 @@ icon: message
 
 ![](../../../../assets/aa570a6b1df6367e1f9ba250.webp) `Перевод` — переводит содержимое текущего поля ввода на английский язык.
 
+<a id="dui-hua-she-zhi"></a>
+
 ## Настройки диалога
 
 <figure><img src="../../../../assets/0cca9215941b637287b69a09.webp" alt=""><figcaption></figcaption></figure>
@@ -175,6 +177,8 @@ icon: message
 ## Настройка ассистента
 
 В интерфейсе ассистента выберите <mark style="background-color:yellow;">имя ассистента</mark> → в <mark style="background-color:yellow;">контекстном меню</mark> выберите соответствующую настройку
+
+<a id="bian-ji-zhu-shou"></a>
 
 ### Редактирование ассистента
 

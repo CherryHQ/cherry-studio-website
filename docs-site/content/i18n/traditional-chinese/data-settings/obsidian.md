@@ -29,6 +29,8 @@ Cherry Studio 支援與 Obsidian 聯動，將完整對話或單條對話匯出�
 
 ### 第二步：匯出對話
 
+<a id="dao-chu-wan-zheng-dui-hua"></a>
+
 #### 匯出完整對話
 
 回到 Cherry Studio 的對話介面，右鍵點擊對話，選擇_匯出_，點擊_匯出到 Obsidian_：
@@ -80,6 +82,8 @@ Cherry Studio 支援與 Obsidian 聯動，將完整對話或單條對話匯出�
 
 ## 舊教學（適用於Cherry Studio\<v1.1.13）
 
+<a id="di-yi-bu"></a>
+
 ### 第一步：準備 Obsidian
 
 開啟 Obsidian 庫，建立一個用於儲存匯出對話的`資料夾`（圖中以 Cherry Studio 資料夾為例）：
@@ -87,6 +91,8 @@ Cherry Studio 支援與 Obsidian 聯動，將完整對話或單條對話匯出�
 <figure><img src="../../../assets/a492ac55a35d0e0afc9e33a9.webp" alt=""><figcaption></figcaption></figure>
 
 注意記住左下角框出來的文字，這裡是你的`保管庫`名。
+
+<a id="di-er-bu"></a>
 
 ### 第二步：配置 Cherry Studio
 
@@ -97,6 +103,8 @@ Cherry Studio 支援與 Obsidian 聯動，將完整對話或單條對話匯出�
 `全域標籤`處是可選的，可設定所有對話匯出後在 Obsidian 中的標籤，按需填寫。
 
 ### 第三步：匯出對話
+
+<a id="dao-chu-wan-zheng-dui-hua-old"></a>
 
 #### 匯出完整對話
 
@@ -122,7 +130,7 @@ Cherry Studio 支援與 Obsidian 聯動，將完整對話或單條對話匯出�
 
 <figure><img src="../../../assets/53a5477e29c3e58af139fe15.webp" alt=""><figcaption><p>匯出單條對話</p></figcaption></figure>
 
-之後也會彈出與匯出完整對話時一樣的視窗，要求你配置**筆記屬性**與**筆記的處理方式**，一樣按照[上方的教學](obsidian.md#dao-chu-wan-zheng-dui-hua)完成即可。
+之後也會彈出與匯出完整對話時一樣的視窗，要求你配置**筆記屬性**與**筆記的處理方式**，一樣按照[上方的教學](obsidian.md#dao-chu-wan-zheng-dui-hua-old)完成即可。
 
 ### 匯出成功
 

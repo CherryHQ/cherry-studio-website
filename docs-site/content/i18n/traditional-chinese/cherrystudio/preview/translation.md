@@ -15,7 +15,7 @@ Cherry Studio 的翻譯功能為您提供快速、準確的文字翻譯服務，
 
 ### 介面概覽
 
-<figure><img src="../../.gitbook/assets/翻譯.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../assets/b3ff29c787b71ee82a0e83fd.webp" alt=""><figcaption></figcaption></figure>
 
 翻譯介面主要由以下幾個部分組成：
 

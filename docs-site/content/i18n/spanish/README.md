@@ -124,7 +124,7 @@ El diseño altamente personalizable, las potentes capacidades de expansión y la
 
 ### Star History
 
-![Star History](https://urlscan.io/liveshot/?width=1300\&height=620\&url=https://cherrystarhistory.ocool.online/)
+[Star History](https://cherrystarhistory.ocool.online/)
 
 ## Síguenos en nuestras redes sociales
 

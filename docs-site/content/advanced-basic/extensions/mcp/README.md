@@ -55,7 +55,7 @@ MCP 是让 Agent 使用外部工具和资源的连接方式。Cherry Studio 可�
 
 【内置 MCP】提供可以直接安装或启用的常用能力；【服务市场】用于管理第三方市场来源。安装前仍要查看说明、命令、环境变量和权限，内置入口不代表外部服务的所有操作都没有风险。
 
-<figure><img src="https://raw.githubusercontent.com/SiinXu/cherry-studio-docs/2446b25878f69e98f33d50623a3c4cf5e836680a/.gitbook/assets/cherry-guide-mcp-qveris.png" alt="内置 MCP 列表中的 QVeris、Browser、Python 和其他服务器"><figcaption><p>① 内置列表会标明是否需要账号、API Key 或目录配置；安装后仍要完成配置并验证连接。</p></figcaption></figure>
+<figure><img src="../../../assets/3892f8eaa6ef4645921a382d.webp" alt="内置 MCP 列表中的 QVeris、Browser、Python 和其他服务器"><figcaption><p>① 内置列表会标明是否需要账号、API Key 或目录配置；安装后仍要完成配置并验证连接。</p></figcaption></figure>
 
 QVeris 位于【内置服务器】中，用于让 Agent 发现、检查和调用外部能力。安装后需要配置 `QVERIS_API_KEY`；不要把密钥写进 Agent 提示词、技能或公开截图。
 
@@ -108,4 +108,4 @@ MCP 是把外部工具接入 Cherry Studio；API 网关是把 Cherry Studio 的�
 
 </details>
 
-<figure><img src="https://raw.githubusercontent.com/SiinXu/cherry-studio-docs/2446b25878f69e98f33d50623a3c4cf5e836680a/.gitbook/assets/cherry-guide-mcp-qveris.png" alt="内置 MCP 列表中的 QVeris、Browser、Python 和其他服务器"><figcaption></figcaption></figure>
+<figure><img src="../../../assets/3892f8eaa6ef4645921a382d.webp" alt="内置 MCP 列表中的 QVeris、Browser、Python 和其他服务器"><figcaption></figcaption></figure>

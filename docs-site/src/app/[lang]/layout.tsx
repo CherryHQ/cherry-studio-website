@@ -18,7 +18,7 @@ export default async function Layout({ children, params }: { children: ReactNode
   const chinese = lang.startsWith('zh')
   return (
     <html lang={lang} suppressHydrationWarning>
-      <body className="flex min-h-screen flex-col font-sans [--fd-layout-width:97rem] [--color-fd-primary:#e64b6a] dark:[--color-fd-primary:#fb8ca4]">
+      <body className="flex min-h-screen flex-col font-sans [--fd-layout-width:97rem] [--color-fd-primary:#e64b6a] dark:[--color-fd-primary:#fb8ca4] [&_#nd-sidebar-mobile]:top-[72px]">
         <Providers locale={lang}>
           <DocsSiteHeader locale={lang} />
           <DocsLayout

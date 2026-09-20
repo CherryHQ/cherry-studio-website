@@ -32,6 +32,8 @@ Este documento ha sido traducido del chino por IA y aún no ha sido revisado.
 
 ***
 
+<a id="kong-zhi-tai-bao-cuo-cha-kan-fang-fa"></a>
+
 ## Método para Ver Errores en la Consola
 
 * Presione <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>I</kbd> (Mac: <kbd>Command</kbd> + <kbd>Option</kbd> + <kbd>I</kbd>) con la ventana de Cherry Studio activa.

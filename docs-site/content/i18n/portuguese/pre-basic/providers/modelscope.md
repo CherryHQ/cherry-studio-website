@@ -13,7 +13,7 @@ Este documento foi traduzido do chinês por IA e ainda não foi revisado.
 > Através da **capacidade de serviço API-Inference**, a plataforma padroniza modelos de código aberto em interfaces API chamáveis, permitindo que desenvolvedores integrem capacidades de modelos em diversas aplicações de IA de forma leve e rápida, suportando cenários inovadores como chamadas de ferramentas e prototipagem.
 
 ### Vantagens Principais
-- ✅ **Franquia gratuita**: Oferece **2000 chamadas de API gratuitas por dia** ([Regras de cobrança](##regras-de-cobrança-e-quotas))
+- ✅ **Franquia gratuita**: Oferece **2000 chamadas de API gratuitas por dia** ([Regras de cobrança](#regras-de-cobrança-e-quotas))
 - ✅ **Biblioteca rica**: Abrange mais de 1000 modelos de código aberto em NLP, CV, voz e multimodalidade
 - ✅ **Pronto para uso**: Não requer implantação, acessível via RESTful API
 

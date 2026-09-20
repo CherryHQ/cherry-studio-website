@@ -18,7 +18,7 @@ icon: newspaper
 
 <figure><img src="../../assets/401d6b23759ab97ded47c2b5.webp" alt="Agent 状态面板中的子任务、后台命令和上下文用量"><figcaption><p>首次自动运行后，从 Agent 状态和运行记录检查任务是否真正完成。</p></figcaption></figure>
 
-<figure><img src="https://3562065924-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0Ut5BptC3t8CtSU1UWpM%2Fuploads%2Fgit-blob-b7bdae7ef46b33fe53006da754217349fced92e6%2Fcherry-v2-guide-case-daily-report-schedule.png?alt=media" alt="设置中已经保存并启用的每日项目进展简报定时任务和完整提示词"><figcaption><p>① 任务已经启用并显示下次运行时间；② 提示词明确四段结构、缺失数据处理和频道发送条件。</p></figcaption></figure>
+<figure><img src="../../assets/005c0418156c52d0a531192b.webp" alt="设置中已经保存并启用的每日项目进展简报定时任务和完整提示词"><figcaption><p>① 任务已经启用并显示下次运行时间；② 提示词明确四段结构、缺失数据处理和频道发送条件。</p></figcaption></figure>
 
 ## 配置步骤
 

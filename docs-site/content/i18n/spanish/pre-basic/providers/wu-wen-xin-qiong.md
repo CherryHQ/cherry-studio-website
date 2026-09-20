@@ -23,7 +23,6 @@ Como núcleo cognitivo, la plataforma de modelos de Infini-AI ofrece versiones c
 
 Herramienta intuitiva que elimina ciclos de desarrollo RAG de 1-2 meses. Importa en 1 clic formatos como **Markdown/PDF/páginas web** (40MB procesados en 1 minuto). Compatible con carpetas locales, artículos guardados en WeChat y apuntes de cursos.
 
-<figure><img src="../../.gitbook/assets/zero-code.gif" alt="Interfaz intuitiva de Cherry Studio"><figcaption></figcaption></figure>
 
 ***
 

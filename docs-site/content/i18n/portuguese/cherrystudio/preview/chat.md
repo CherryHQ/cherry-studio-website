@@ -61,6 +61,8 @@ Esta função serve apenas para estimar tokens; o número real varia conforme o 
 
 ![](../../../../assets/aa570a6b1df6367e1f9ba250.webp) `Traduzir` Traduz o conteúdo atual da caixa de entrada para inglês.
 
+<a id="dui-hua-she-zhi"></a>
+
 ## Configurações de Conversa
 
 <figure><img src="../../../../assets/0cca9215941b637287b69a09.webp" alt=""><figcaption></figcaption></figure>
@@ -175,6 +177,8 @@ Define o idioma de destino para o botão de tradução e para a função de trê
 ## Configurações do Assistente
 
 Na interface do assistente, selecione o nome do <mark style="background-color:yellow;">assistente</mark> desejado → selecione a configuração correspondente no <mark style="background-color:yellow;">menu de contexto</mark>
+
+<a id="bian-ji-zhu-shou"></a>
 
 ### Editar Assistente
 

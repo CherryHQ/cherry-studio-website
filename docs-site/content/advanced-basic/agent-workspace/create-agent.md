@@ -8,7 +8,7 @@ icon: wand-magic-sparkles
 
 新建向导分为【基础信息】、【系统提示词】、【技能】和【知识库】四步。第一步还要选择运行模式；运行模式会决定 Agent 可用的模型分工、权限模式和部分工具，创建后不能切换。
 
-<figure><img src="https://raw.githubusercontent.com/SiinXu/cherry-studio-docs/2446b25878f69e98f33d50623a3c4cf5e836680a/.gitbook/assets/cherry-guide-agent-runtime-picker.png" alt="创建 Agent 时选择 Claude Agent、Pi 或 DeepSeek Harness 运行模式"><figcaption></figcaption></figure>
+<figure><img src="../../assets/0797ee2c9878cf471b44fe2e.webp" alt="创建 Agent 时选择 Claude Agent、Pi 或 DeepSeek Harness 运行模式"><figcaption></figcaption></figure>
 
 ### 运行模式怎么选
 
@@ -50,7 +50,7 @@ icon: wand-magic-sparkles
 {% endstep %}
 {% endstepper %}
 
-<figure><img src="https://3562065924-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0Ut5BptC3t8CtSU1UWpM%2Fuploads%2Fgit-blob-90e09b4900c4d4ac6751921289d6b83d2945072b%2Fclipboard.png?alt=media" alt="Agent 编辑窗口中的主模型、Plan 模型和 Small 模型设置"><figcaption><p>先选好主模型；只有任务确实需要规划分工或轻量处理时，再配置 Plan 模型和 Small 模型。</p></figcaption></figure>
+<figure><img src="../../assets/0d33fc961386a770a40db97d.webp" alt="Agent 编辑窗口中的主模型、Plan 模型和 Small 模型设置"><figcaption><p>先选好主模型；只有任务确实需要规划分工或轻量处理时，再配置 Plan 模型和 Small 模型。</p></figcaption></figure>
 
 ### 创建后继续配置
 

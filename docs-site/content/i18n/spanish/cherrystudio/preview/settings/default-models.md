@@ -11,6 +11,8 @@ Este documento ha sido traducido del chino por IA y aún no ha sido revisado.
 
 
 
+<a id="mo-ren-zhu-shou-mo-xing"></a>
+
 ## Modelo de asistente predeterminado
 
 Cuando el asistente no tenga configurado un modelo predeterminado, el modelo seleccionado por defecto en nuevas conversaciones será el establecido aquí.

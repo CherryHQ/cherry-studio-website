@@ -13,7 +13,7 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { createSearchAPI } from 'fumadocs-core/search/server'
 
-import { parseSummary, renderMarkdown, safeResolve, slugFor, urlFor } from './content.mjs'
+import { findMissingAnchors, parseSummary, renderMarkdown, safeResolve, slugFor, urlFor } from './content.mjs'
 
 const app = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const locales = JSON.parse(readFileSync(path.join(app, 'locales.json'), 'utf8'))
@@ -134,7 +134,11 @@ for (const locale of locales) {
       const targetFile = targetLocale.directory ? target.slice(targetLocale.directory.length + 1) : target
       let contentFile = targetFile
       if (!contentFile.endsWith('.md')) contentFile = `${contentFile.replace(/\/$/, '')}/README.md`
-      if (inventories.get(targetLocale.code).has(contentFile)) {
+      if (
+        inventories.get(targetLocale.code).has(contentFile) ||
+        translatedFiles.get(targetLocale.code).has(canonicalFile(contentFile)) ||
+        translatedFiles.get('zh-cn').has(canonicalFile(contentFile))
+      ) {
         const code = targetLocale.code === sourceLocale.code ? locale.code : targetLocale.code
         return urlFor(code, getSlug(contentFile)) + suffix
       }
@@ -214,18 +218,7 @@ for (const locale of locales) {
 }
 // Check anchors after every page has been rendered.
 const byUrl = new Map(pages.map((p) => [urlFor(p.locale, p.slug), p]))
-for (const page of pages) {
-  for (const link of page.links) {
-    const [url, hash] = link.split('#')
-    const target = url ? byUrl.get(url) : page
-    let decodedHash = hash
-    try {
-      decodedHash = decodeURIComponent(hash)
-    } catch {}
-    if (hash && target && !target.anchors.includes(decodedHash))
-      issues.push({ type: 'missing-anchor', file: page.file, locale: page.locale, target: link })
-  }
-}
+issues.push(...findMissingAnchors(pages))
 const legacyRedirects = {}
 for (const page of pages) {
   if (page.fallback) continue
@@ -235,6 +228,15 @@ for (const page of pages) {
     page.locale,
     page.slug
   )
+}
+// Include renamed paths even when their source file has been replaced or falls back to Chinese.
+for (const locale of locales) {
+  for (const original of Object.keys(aliases)) {
+    const target = urlFor(locale.code, getSlug(original))
+    if (byUrl.has(target)) {
+      legacyRedirects[`/${[locale.directory, slugFor(original)].filter(Boolean).join('/')}`] = target
+    }
+  }
 }
 writeAtomic(path.join(generated, 'legacy-redirects.json'), JSON.stringify(legacyRedirects, null, 2))
 writeAtomic(
@@ -262,7 +264,22 @@ writeAtomic(
 console.log(
   `Generated ${pages.length} pages, ${copied.size} asset references. ${issues.length} source issues recorded in generated/report.json`
 )
-if (issues.some((issue) => ['unsupported-tag', 'missing-include'].includes(issue.type))) process.exitCode = 1
+if (
+  issues.some((issue) =>
+    [
+      'unsupported-tag',
+      'missing-include',
+      'missing-link',
+      'missing-asset',
+      'missing-card-target',
+      'missing-anchor',
+      'translation-artifact',
+      'invalid-math',
+      'duplicate-anchor'
+    ].includes(issue.type)
+  )
+)
+  process.exitCode = 1
 
 const assetNames = new Set([...copied.values()].map((url) => path.basename(url)))
 for (const name of readdirSync(path.join(app, 'public/content-assets'))) {

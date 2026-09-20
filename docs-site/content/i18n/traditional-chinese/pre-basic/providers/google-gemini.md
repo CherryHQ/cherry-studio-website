@@ -16,7 +16,7 @@
 
 <figure><img src="../../../../assets/b49760732ce7ac30d5ef7c30.webp" alt=""><figcaption></figcaption></figure>
 
-* 將生成的 key 複製，並打開 CherryStudio 的 [服務商設定](broken-reference)
+* 將生成的 key 複製，並打開 CherryStudio 的 [服務商設定](../../pre-basic/settings/providers.md)
 * 找到服務商 Gemini，填入剛剛取得的 key
 
 <figure><img src="../../../../assets/84d594944e11255268fac0c1.webp" alt=""><figcaption></figcaption></figure>

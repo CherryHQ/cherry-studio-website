@@ -29,6 +29,8 @@ Cherry Studioの_設定_ → _データ設定_ → _Obsidian設定_メニュー�
 
 ### ステップ2: 会話のエクスポート
 
+<a id="dao-chu-wan-zheng-dui-hua"></a>
+
 #### 完全な会話をエクスポート
 
 Cherry Studioの会話インターフェースに戻り、会話を右クリックして_エクスポート_を選択し、_Obsidianにエクスポート_をクリックします：
@@ -82,6 +84,8 @@ Cherry Studioの会話インターフェースに戻り、会話を右クリッ�
 
 ## 旧チュートリアル（Cherry Studio<v1.1.13 用）
 
+<a id="di-yi-bu"></a>
+
 ### ステップ1: Obsidianの準備
 
 Obsidianライブラリを開き、エクスポートされた会話を保存するための`フォルダ`を作成します（図ではCherry Studioフォルダを例としています）：
@@ -89,6 +93,8 @@ Obsidianライブラリを開き、エクスポートされた会話を保存す
 <figure><img src="../../../assets/a492ac55a35d0e0afc9e33a9.webp" alt=""><figcaption></figcaption></figure>
 
 左下角に枠で囲まれたテキストに注意してください。これがあなたの`保管庫`名です。
+
+<a id="di-er-bu"></a>
 
 ### ステップ2: Cherry Studioの設定
 
@@ -99,6 +105,8 @@ Cherry Studioの_設定_ → _データ設定_ → _Obsidian設定_メニュー�
 `グローバルタグ`はオプションで、すべての会話をエクスポートした後、Obsidian内でのタグを設定できます。必要に応じて記入してください。
 
 ### ステップ3: 会話のエクスポート
+
+<a id="dao-chu-wan-zheng-dui-hua-old"></a>
 
 #### 完全な会話をエクスポート
 
@@ -124,7 +132,7 @@ Cherry Studioの会話インターフェースに戻り、会話を右クリッ�
 
 <figure><img src="../../../assets/53a5477e29c3e58af139fe15.webp" alt=""><figcaption><p>単一会話をエクスポート</p></figcaption></figure>
 
-その後、完全な会話をエクスポートする場合と同じウィンドウがポップアップし、**ノートプロパティ**と**ノートの処理方法**を設定するよう求められます。同じく[上記のチュートリアル](obsidian.md#dao-chu-wan-zheng-dui-hua)に従って完了してください。
+その後、完全な会話をエクスポートする場合と同じウィンドウがポップアップし、**ノートプロパティ**と**ノートの処理方法**を設定するよう求められます。同じく[上記のチュートリアル](obsidian.md#dao-chu-wan-zheng-dui-hua-old)に従って完了してください。
 
 ### エクスポート成功
 

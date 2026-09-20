@@ -15,7 +15,7 @@ icon: file-lines
 
 <figure><img src="../../assets/861fd559d589c892d6c82334.webp" alt="知识库中的文件、文件夹、笔记和网址来源入口"><figcaption><p>制度、术语和历史资料可以作为知识库来源，原稿仍放在独立工作目录。</p></figcaption></figure>
 
-<figure><img src="https://3562065924-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0Ut5BptC3t8CtSU1UWpM%2Fuploads%2Fgit-blob-ca3effb63c66ecbc7c7351c0156a74f4a4c13f97%2Fcherry-v2-guide-case-long-document-review.png?alt=media" alt="Cherry Assistant 根据项目建议书内容给出范围、时间、预算、风险和验收五项审阅清单"><figcaption><p>① 输入原文和审阅标准；② 实际结果逐项指出缺口，并把不能确认的信息保留为待核对项。</p></figcaption></figure>
+<figure><img src="../../assets/d3679aebd8f1fdf0aa6058bf.webp" alt="Cherry Assistant 根据项目建议书内容给出范围、时间、预算、风险和验收五项审阅清单"><figcaption><p>① 输入原文和审阅标准；② 实际结果逐项指出缺口，并把不能确认的信息保留为待核对项。</p></figcaption></figure>
 
 ## 操作流程
 

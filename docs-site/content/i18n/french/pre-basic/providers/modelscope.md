@@ -13,7 +13,7 @@ Ce document a été traducido del chino por IA y aún no ha sido revisado.
 > Grâce à la **capacité de service d'inférence par API**, la plateforme standardise les modèles open source en interfaces API pouvant être appelées, permettant aux développeurs d'intégrer légèrement et rapidement les capacités des modèles dans diverses applications IA, prenant en charge des scénarios innovants comme l'appel d'outils et le prototypage.
 
 ### Principaux avantages
-- ✅ **Quota gratuit** : Offre **2000 appels API gratuits par jour** ([règles de facturation](##Règles-de-facturation-et-de-quotas))
+- ✅ **Quota gratuit** : Offre **2000 appels API gratuits par jour** ([règles de facturation](#règles-de-facturation-et-de-quotas))
 - ✅ **Bibliothèque de modèles riche** : Couvre plus de 1000 modèles open source dans les domaines NLP, CV, audio, multimodal, etc.
 - ✅ **Prêt à l'emploi** : Aucun déploiement requis, appel rapide via API RESTful   
 

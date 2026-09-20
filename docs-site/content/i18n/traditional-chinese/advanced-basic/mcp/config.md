@@ -27,11 +27,11 @@
 
 ### 在聊天框中啟用 MCP 服務
 
-<figure><img src="../../.gitbook/assets/MCP-輸入框按鈕範例.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../assets/42ef06ac095d111eb764046e.webp" alt=""><figcaption></figcaption></figure>
 
 *   在 `MCP 伺服器` 設定成功新增了 MCP 伺服器
 
-<figure><img src="../../.gitbook/assets/MCP伺服器範例.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../assets/0f6c6755dd8f927b51689b82.webp" alt=""><figcaption></figcaption></figure>
 
 ### **使用效果展示**
 

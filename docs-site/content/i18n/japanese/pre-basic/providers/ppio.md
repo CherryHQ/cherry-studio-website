@@ -24,23 +24,23 @@ Cherry Studio は **PPIO 高性能 API ゲートウェイ** と完全互換と�
 
 （1）左下の設定をクリックし、プロバイダー名を「`PPIO`」に変更し、「確定」をクリック
 
-<figure><img src="https://static.ppinfra.com/docs/image/llm/cherry-studio-setting.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../assets/cf5455b154b244f5d3aa5482.webp" alt=""><figcaption></figcaption></figure>
 
 （2）[パイオウコンピューーティングクラウド API キー管理](https://ppinfra.com/user/register?invited_by=JYT9GD\&utm_source=github_cherry-studio) にアクセスし、【ユーザーアイコン】→【APIキー管理】でコンソールに入る
 
-<figure><img src="https://static.ppinfra.com/docs/image/llm/ppinfra-create-api-key-01.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../assets/37c899340c10efb7eaebaa8c.webp" alt=""><figcaption></figcaption></figure>
 
 【+ 作成】ボタンをクリックして新しいAPIキーを作成。キー名をカスタマイズし、**生成されたキーは生成時のみ表示されるため、必ずコピーして保存し、今後の使用に影響しないようにしてください**
 
-<figure><img src="https://static.ppinfra.com/docs/image/llm/ppinfra-create-api-key-02.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../assets/95f4e62d8026e301ff42021c.webp" alt=""><figcaption></figcaption></figure>
 
 （3）CherryStudio でキーを入力：設定を選択し、【PPIO パイオウクラウド】を選び、公式サイトで生成したAPIキーを入力し、【チェック】をクリック
 
-<figure><img src="https://static.ppinfra.com/docs/image/llm/cherry-studio-3601.PNG" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../assets/cb4f98d1154ea8119e650bd2.webp" alt=""><figcaption></figcaption></figure>
 
 （4）モデル選択：例として deepseek/deepseek-r1/community を選択。他のモデルに変更する場合は直接切り替え可能
 
-<figure><img src="https://static.ppinfra.com/docs/image/llm/cherry-studio-3602.PNG" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../assets/439ce95be23ff30aa88d05c3.webp" alt=""><figcaption></figcaption></figure>
 
 DeepSeek R1 と V3 community 版は体験用で、全パラメータ完全版モデルです。安定性と効果に違いはありませんが、大量に呼び出す場合は **チャージして非community版に切り替える** 必要があります。
 
@@ -48,11 +48,11 @@ DeepSeek R1 と V3 community 版は体験用で、全パラメータ完全版モ
 
 （1）【チェック】をクリックして接続成功が表示されれば正常に使用可能
 
-<figure><img src="https://static.ppinfra.com/docs/image/llm/cherry-studio-3603.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../assets/02e78a0c750d27c014e751fd.webp" alt=""><figcaption></figcaption></figure>
 
 （2）最後に【@】をクリックし、PPIOプロバイダー下で追加したDeepSeek R1モデルを選択すればチャット開始～
 
-<figure><img src="https://static.ppinfra.com/docs/image/llm/cherry-studio-ppio-config-02.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../assets/ab28a064a17133ac455ad444.webp" alt=""><figcaption></figcaption></figure>
 
 【一部素材出典：[陈恩](https://www.kdocs.cn/l/ctGiF5K6PQoO)】
 

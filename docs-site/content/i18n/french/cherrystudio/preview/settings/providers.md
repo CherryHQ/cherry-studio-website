@@ -31,6 +31,8 @@ Dans Cherry Studio, un seul fournisseur prend en charge l'utilisation de plusieu
 Vous devez utiliser des virgules **anglaises**.
 {% endhint %}
 
+<a id="api-di-zhi"></a>
+
 ### Adresse API
 
 Lors de l'utilisation de fournisseurs intégrés, il n'est généralement pas nécessaire de remplir l'adresse API. Si une modification est requise, suivez scrupuleusement l'adresse fournie dans la documentation officielle.

@@ -21,6 +21,4 @@ icon: code
 API 网关的密钥和调用链中的请求内容都可能涉及敏感信息。截图、Issue 和群聊中只分享已遮挡的必要片段。
 {% endhint %}
 
-<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>编码搭档</strong></td><td>安装、配置和启动编程 CLI</td><td></td></tr><tr><td><strong>API 网关</strong></td><td>理解 Agent 依赖与本机 API 调用</td><td></td></tr><tr><td><strong>调用链与开发者模式</strong></td><td>复现并定位一次具体请求</td><td></td></tr></tbody></table>
-
 <table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>API 网关</strong></td><td>理解 Agent 依赖与本机 API 调用</td><td><a href="api-gateway.md">api-gateway.md</a></td></tr><tr><td><strong>调用链与开发者模式</strong></td><td>复现并定位一次具体请求</td><td><a href="trace.md">trace.md</a></td></tr></tbody></table>

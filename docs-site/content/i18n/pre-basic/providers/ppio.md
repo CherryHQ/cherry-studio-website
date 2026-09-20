@@ -21,23 +21,23 @@ Commencez par télécharger Cherry Studio sur le site officiel : [https://cherry
 
 (1) Cliquez d'abord sur l'icône des paramètres en bas à gauche, définissez le nom du fournisseur sur : `PPIO`, puis cliquez sur "Confirmer"
 
-<figure><img src="https://static.ppinfra.com/docs/image/llm/cherry-studio-setting.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../assets/cf5455b154b244f5d3aa5482.webp" alt=""><figcaption></figcaption></figure>
 
 (2) Rendez-vous sur la [gestion des clés API de PPIO](https://ppinfra.com/user/register?invited_by=JYT9GD\&utm_source=github_cherry-studio), cliquez sur 【Avatar】→【Gestion des clés API】 pour accéder au panneau de contrôle
 
-<figure><img src="https://static.ppinfra.com/docs/image/llm/ppinfra-create-api-key-01.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../assets/37c899340c10efb7eaebaa8c.webp" alt=""><figcaption></figcaption></figure>
 
 Cliquez sur le bouton 【+ Créer】 pour générer une nouvelle clé API. Attribuez-lui un nom personnalisé. **La clé n'est visible qu'au moment de sa création : copiez-la impérativement et sauvegardez-la, sous peine de compromettre son utilisation ultérieure.**
 
-<figure><img src="https://static.ppinfra.com/docs/image/llm/ppinfra-create-api-key-02.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../assets/95f4e62d8026e301ff42021c.webp" alt=""><figcaption></figcaption></figure>
 
 (3) Dans CherryStudio, collez la clé Cliquez sur les paramètres, sélectionnez 【PPIO 派欧云】, saisissez la clé API générée sur le site, puis cliquez sur 【Vérifier】
 
-<figure><img src="https://static.ppinfra.com/docs/image/llm/cherry-studio-3601.PNG" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../assets/cb4f98d1154ea8119e650bd2.webp" alt=""><figcaption></figcaption></figure>
 
 (4) Sélectionnez un modèle : prenons l'exemple de deepseek/deepseek-r1/community. Pour en changer, remplacez simplement le nom.
 
-<figure><img src="https://static.ppinfra.com/docs/image/llm/cherry-studio-3602.PNG" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../assets/439ce95be23ff30aa88d05c3.webp" alt=""><figcaption></figcaption></figure>
 
 Les versions DeepSeek R1 et V3 community sont fournies à titre exploratoire. Ce sont des modèles complets et non limités, avec une stabilité et des performances identiques. Pour des appels intensifs, **rechargez votre compte et basculez vers une version non-community**.
 
@@ -45,11 +45,11 @@ Les versions DeepSeek R1 et V3 community sont fournies à titre exploratoire. Ce
 
 (1) Une fois la 【vérification】 réussie, l'utilisation normale est possible
 
-<figure><img src="https://static.ppinfra.com/docs/image/llm/cherry-studio-3603.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../assets/02e78a0c750d27c014e751fd.webp" alt=""><figcaption></figcaption></figure>
 
 (2) Enfin, cliquez sur 【@】 et sélectionnez le modèle DeepSeek R1 nouvellement ajouté sous le fournisseur PPIO pour démarrer une conversation !
 
-<figure><img src="https://static.ppinfra.com/docs/image/llm/cherry-studio-ppio-config-02.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../assets/ab28a064a17133ac455ad444.webp" alt=""><figcaption></figcaption></figure>
 
 【Source partielle du matériel : [Chen En](https://www.kdocs.cn/l/ctGiF5K6PQoO)】
 

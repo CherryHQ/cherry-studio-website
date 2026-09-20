@@ -24,23 +24,23 @@ Cherry Studio 現已與 **PPIO 高效能 API 通道** 深度適配——透過�
 
 （1）點選左下角設定，自訂供應商名稱為：`PPIO`，點擊「確定」
 
-<figure><img src="https://static.ppinfra.com/docs/image/llm/cherry-studio-setting.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../assets/cf5455b154b244f5d3aa5482.webp" alt=""><figcaption></figcaption></figure>
 
 （2）前往 [派歐算力雲 API 金鑰管理 ](https://ppinfra.com/user/register?invited_by=JYT9GD\&utm_source=github_cherry-studio)，點擊【使用者頭像】—【API 金鑰管理】進入控制台
 
-<figure><img src="https://static.ppinfra.com/docs/image/llm/ppinfra-create-api-key-01.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../assets/37c899340c10efb7eaebaa8c.webp" alt=""><figcaption></figcaption></figure>
 
 點擊 【+ 建立】按鈕建立新 API 金鑰。自訂金鑰名稱後，**生成的金鑰僅在建立時顯示，務必複製並儲存至文件，以免影響後續使用**
 
-<figure><img src="https://static.ppinfra.com/docs/image/llm/ppinfra-create-api-key-02.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../assets/95f4e62d8026e301ff42021c.webp" alt=""><figcaption></figcaption></figure>
 
 （3）在 CherryStudio 填入金鑰：點擊設定，選擇【PPIO 派歐雲】，輸入官網生成的 API 金鑰，最後點擊【檢查】
 
-<figure><img src="https://static.ppinfra.com/docs/image/llm/cherry-studio-3601.PNG" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../assets/cb4f98d1154ea8119e650bd2.webp" alt=""><figcaption></figcaption></figure>
 
 （4）選擇模型：以 deepseek/deepseek-r1/community 為例，如需更換其他模型可直接切換
 
-<figure><img src="https://static.ppinfra.com/docs/image/llm/cherry-studio-3602.PNG" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../assets/439ce95be23ff30aa88d05c3.webp" alt=""><figcaption></figcaption></figure>
 
 DeepSeek R1 和 V3 community 版本僅供體驗，屬全參數完整版模型，穩定性與效果無差異。如需大量呼叫須 **儲值並切換至非 community 版本**。
 
@@ -48,11 +48,11 @@ DeepSeek R1 和 V3 community 版本僅供體驗，屬全參數完整版模型，
 
 （1）點擊【檢查】顯示連接成功後即可正常使用
 
-<figure><img src="https://static.ppinfra.com/docs/image/llm/cherry-studio-3603.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../assets/02e78a0c750d27c014e751fd.webp" alt=""><figcaption></figcaption></figure>
 
 （2）最後點擊【@】選擇 PPIO 供應商下新增的 DeepSeek R1 模型，即可開始對話
 
-<figure><img src="https://static.ppinfra.com/docs/image/llm/cherry-studio-ppio-config-02.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../assets/ab28a064a17133ac455ad444.webp" alt=""><figcaption></figcaption></figure>
 
 【部分素材來源：[ 陳恩 ](https://www.kdocs.cn/l/ctGiF5K6PQoO)】
 

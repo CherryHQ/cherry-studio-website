@@ -105,6 +105,8 @@ Claude: 3トークン
 
 ***
 
+<a id="shen-me-shi-mcpmodel-context-protocol"></a>
+
 ## **MCP（Model Context Protocol）とは何か？**
 
 MCPは標準化された方法で大規模言語モデル（LLM）にコンテキスト情報を提供することを目的としたオープンソースプロトコルです。

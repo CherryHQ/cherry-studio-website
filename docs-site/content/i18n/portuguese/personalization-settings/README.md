@@ -15,13 +15,13 @@ Este documento foi traduzido do chinês por IA e ainda não foi revisado.
 Este documento foi traduzido do chinês por IA e ainda não foi revisado. Tentarei verificar o documento item por item para garantir que a tradução seja adequada.
 {% endhint %}
 
-<figure><img src=".gitbook/assets/docs-readme-banner1.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../assets/9f2bec956e3709e3aebf9957.webp" alt=""><figcaption></figcaption></figure>
 
 O Cherry Studio é uma plataforma versátil de assistente de IA que integra conversas multimodelo, gerenciamento de base de conhecimento, pintura por IA, tradução e outras funcionalidades.
 
 ### Histórico de Estrelas
 
-![Star History](https://urlscan.io/liveshot/?width=1300&height=620&url=https://cherrystarhistory.ocool.online/)
+[Star History](https://cherrystarhistory.ocool.online/)
 
 ## Siga nossas redes sociais
 

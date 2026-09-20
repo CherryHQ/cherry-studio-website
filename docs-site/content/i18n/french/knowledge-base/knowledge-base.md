@@ -1,89 +1,35 @@
 ---
-icon: book-open-cover
+icon: compass
 ---
-# Tutoriel sur la base de connaissances
 
+<a id="tutoriel-sur-la-base-de-connaissances"></a>
 
-{% hint style="warning" %}
-Ce document a été traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
+# Premiers pas avec les bases de connaissances
 
-
-
-
-Dans la version 0.9.1, CherryStudio a introduit la fonctionnalité tant attendue de base de connaissances.
-
-Ci-dessous, nous présentons étape par étape les instructions détaillées d'utilisation de CherryStudio.
-
-## Ajouter un modèle d'incorporation
-
-1. Dans le service de gestion des modèles, recherchez un modèle - vous pouvez cliquer sur "Modèle d'incorporation" pour filtrer rapidement ;
-2. Trouvez le modèle souhaité et ajoutez-le à Mes modèles.
-
-<figure><img src="../../../assets/de62e1c82b0491e7875c6a3d.webp" alt=""><figcaption></figcaption></figure>
-
-## Créer une base de connaissances
-
-1. Accès à la base de connaissances : dans la barre d'outils de gauche de CherryStudio, cliquez sur l'icône de la base de connaissances pour accéder à la page de gestion ;
-2. Ajouter une base de connaissances : cliquez sur Ajouter pour commencer à créer une base de connaissances ;
-3. Nommer : entrez le nom de la base de connaissances et ajoutez un modèle d'incorporation, par exemple bge-m3, pour terminer la création.
-
-<figure><img src="../../../assets/815b2b38dc12b63b41347762.webp" alt=""><figcaption></figcaption></figure>
-
-<figure><img src="../../../assets/61eb240e8b46c9d69a85341c.webp" alt=""><figcaption></figcaption></figure>
-
-## Ajouter des fichiers et vectoriser
-
-1. Ajouter des fichiers : cliquez sur le bouton Ajouter des fichiers pour ouvrir la sélection de fichiers ;
-2. Sélectionnez des fichiers : choisissez les formats de fichiers pris en charge (pdf, docx, pptx, xlsx, txt, md, mdx, etc.) et ouvrez ;
-3. Vectorisation : le système effectue automatiquement le traitement de vectorisation. Lorsque l'affichage montre Terminé (✓ vert), cela indique que la vectorisation est terminée.
-
-<figure><img src="../../../assets/50d180e7cb72ab42fe8770a5.webp" alt=""><figcaption></figcaption></figure>
-
-<figure><img src="../../../assets/50c5b3c6567fd5bd6836af5b.webp" alt=""><figcaption></figcaption></figure>
-
-<figure><img src="../../../assets/91f0d97898017ff2d9b71581.webp" alt=""><figcaption></figcaption></figure>
-
-## Ajouter des données de diverses sources
-
-CherryStudio prend en charge plusieurs méthodes d'ajout de données :
-
-1. Dossiers : vous pouvez ajouter un dossier entier - les fichiers pris en charge dans ce dossier seront automatiquement vectorisés ;
-2. Liens URL : prend en charge les URL comme [https://docs.siliconflow.cn/introduction](https://docs.siliconflow.cn/introduction) ;
-3. Plans de site : prend en charge les plans de site au format XML comme [https://docs.siliconflow.cn/sitemap.xml](https://docs.siliconflow.cn/sitemap.xml) ;
-4. Notes en texte brut : prend en charge la saisie de contenu personnalisé en texte brut.
+Une base de connaissances organise des fichiers, notes, dossiers et pages web pour des recherches répétées. Vérifiez les passages retrouvés avant de l’utiliser dans une conversation ou avec un Agent.
 
 {% hint style="info" %}
-Remarque :
-
-1. Les illustrations dans les documents importés dans la base de connaissances ne sont pas encore prises en charge pour la conversion en vecteurs - elles doivent être converties manuellement en texte ;
-2. L'utilisation d'URL comme source pour la base de connaissances ne réussit pas toujours - certains sites ont des mécanismes anti-scraping stricts (ou nécessitent une connexion/autorisation), donc le contenu exact peut ne pas être obtenu. Après création, testez via une recherche ;
-3. Généralement, les sites fournissent un sitemap, comme celui de CherryStudio : [sitemap](https://docs.cherry-ai.com/sitemap-pages.xml). Habituellement, ajoutez /sitemap.xml à l'URL racine du site, par exemple `aaa.com/sitemap.xml` ;
-4. Si un site ne fournit pas de sitemap ou a des URL complexes, créez vous-même un fichier XML de sitemap. Le fichier doit être accessible via un lien direct public - les liens locaux ne sont pas reconnus.
-
-> 1) Demandez à une IA de générer un fichier sitemap ou un outil de génération de sitemap HTML ;
-> 2) Utilisez des liens directs OSS ou de stockage cloud pour générer des liens. Sans outil existant, visitez le site officiel d'[ocoolAI](https://one.ocoolai.com/login), connectez-vous et utilisez l'outil gratuit d'envoi de fichiers dans la barre supérieure pour générer des liens directs.
+Le modèle d’embedding est facultatif. Choisissez **Aucun (None)** pour commencer avec la recherche par mots-clés BM25. Ajoutez un modèle pour la recherche sémantique si nécessaire. Le modèle de reclassement est également facultatif.
 {% endhint %}
 
-## Rechercher dans la base de connaissances
+## Créer votre première base
 
-Une fois les fichiers vectorisés, vous pouvez effectuer des requêtes :
+1. <a id="créer-une-base-de-connaissances"></a>Ouvrez **Base de connaissances** dans la navigation de gauche, puis utilisez le bouton d’ajout au-dessus de la liste. Choisissez un sujet précis, par exemple « Politique de déplacement du personnel ».
 
-1. Cliquez sur le bouton Rechercher dans la base de connaissances en bas de page ;
-2. Entrez votre requête ;
-3. Les résultats de recherche s'affichent ;
-4. Le score de correspondance de chaque résultat est indiqué.
+2. <a id="ajouter-un-modèle-dincorporation"></a>Pour commencer, réglez **Modèle d’embedding** sur **Aucun (None)**. Configurez un modèle plus tard si les reformulations ou synonymes rendent la recherche par mots-clés insuffisante.
 
-<figure><img src="../../../assets/d1c81d4e1f45b29f6aa76bfa.webp" alt=""><figcaption></figcaption></figure>
+3. <a id="ajouter-des-données-de-diverses-sources"></a><a id="ajouter-des-fichiers-et-vectoriser"></a>Ajoutez un **Fichier**, une **Note**, un **Dossier** ou un **Lien**. Commencez avec quelques documents pertinents.
 
-<figure><img src="../../../assets/bcbb9d209e9e48af9dd5de51.webp" alt=""><figcaption></figcaption></figure>
+4. Attendez la fin du traitement, puis examinez le texte extrait et les **Chunks** : caractères illisibles, pages manquantes ou ordre incorrect.
 
-## Utiliser la base de connaissances dans les conversations pour générer des réponses
+5. <a id="rechercher-dans-la-base-de-connaissances"></a>Ouvrez **Test de recherche (Retrieval Test)** et posez une question réelle dont vous connaissez la réponse. Vérifiez que la bonne source figure parmi les premiers résultats.
 
-1. Créez un nouveau sujet. Dans la barre d'outils de conversation, cliquez sur Base de connaissances pour afficher la liste des bases existantes et sélectionnez celle à référencer ;
-2. Posez votre question - le modèle renvoie une réponse générée à partir des résultats de recherche ;
-3. Les sources de données référencées sont jointes sous la réponse pour un accès rapide aux fichiers originaux.
+6. <a id="utiliser-la-base-de-connaissances-dans-les-conversations-pour-générer-des-réponses"></a>Lorsque la recherche est fiable, sélectionnez la base dans la zone de saisie du chat, ou associez-la à un Agent depuis sa page d’édition.
 
-<figure><img src="../../../assets/5d040588b4591c1397fc9c91.webp" alt=""><figcaption></figcaption></figure>
+![Sources : fichiers, notes, dossiers et liens](../../../assets/4622da2093d43942d7ee443e.webp)
 
-<figure><img src="../../../assets/597ea9733656fae31173e5f8.webp" alt=""><figcaption></figcaption></figure>
+## Vérifier avant utilisation
+
+Conservez 3 à 5 questions réalistes et relancez-les après toute modification des données ou réglages. Si la recherche échoue, vérifiez d’abord le texte et les Chunks. Le modèle de chat ne peut pas restituer une information essentielle qui n’a pas été retrouvée.
+
+Les tarifs et le traitement des données d’un modèle cloud d’embedding ou de reclassement dépendent du fournisseur. Séparez les documents dont les exigences d’accès diffèrent.

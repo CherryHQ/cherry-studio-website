@@ -16,7 +16,7 @@ Este documento ha sido traducido del chino por IA y aún no ha sido revisado.
 
 <figure><img src="../../../../assets/b49760732ce7ac30d5ef7c30.webp" alt=""><figcaption></figcaption></figure>
 
-* Copia la clave generada y abre la página de [Configuración de proveedores](broken-reference) en CherryStudio.
+* Copia la clave generada y abre la página de [Configuración de proveedores](../../pre-basic/settings/providers.md) en CherryStudio.
 * Busca el proveedor Gemini e ingresa la clave que acabas de obtener.
 
 <figure><img src="../../../../assets/84d594944e11255268fac0c1.webp" alt=""><figcaption></figcaption></figure>

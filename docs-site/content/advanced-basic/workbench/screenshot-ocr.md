@@ -59,7 +59,7 @@ OCR 模型就绪时，页面会自动识别文字；也可以点击【识别文�
 
 ### 关键截图
 
-<figure><img src="https://raw.githubusercontent.com/SiinXu/cherry-studio-docs/2446b25878f69e98f33d50623a3c4cf5e836680a/.gitbook/assets/cherry-guide-screenshot-shortcut.png" alt="快捷键设置中的屏幕截图快捷键"><figcaption><p>① 【屏幕截图】是可修改的全局快捷键；修改后先在非 Cherry Studio 窗口测试一次。</p></figcaption></figure>
+<figure><img src="../../assets/461349e8fcf48c13693a40e9.webp" alt="快捷键设置中的屏幕截图快捷键"><figcaption><p>① 【屏幕截图】是可修改的全局快捷键；修改后先在非 Cherry Studio 窗口测试一次。</p></figcaption></figure>
 
 ### 配置说明
 
@@ -69,7 +69,7 @@ OCR 模型就绪时，页面会自动识别文字；也可以点击【识别文�
 | 截图快捷键 | `Command/Ctrl+Shift+A` | 保持默认，冲突时再改 | 从任意应用触发截图 | 高频跨应用使用 | 与其他应用冲突时不会触发 |
 | 自动识别文字 | 开启 | 经常复制截图文字时保持开启 | 截图后自动运行 OCR | 报错截图、表格、界面文字 | 需要下载本地 OCR 模型 |
 
-<figure><img src="https://raw.githubusercontent.com/SiinXu/cherry-studio-docs/2446b25878f69e98f33d50623a3c4cf5e836680a/.gitbook/assets/cherry-guide-screenshot-settings.png" alt="截图设置中的启用开关、快捷键和本地 OCR 状态"><figcaption></figcaption></figure>
+<figure><img src="../../assets/d417de7a25de7a4aceba3624.webp" alt="截图设置中的启用开关、快捷键和本地 OCR 状态"><figcaption></figcaption></figure>
 
 ### 用户案例
 

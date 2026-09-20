@@ -16,7 +16,7 @@ Ce document a été traducido del chino por IA y aún no ha sido revisado.
 
 <figure><img src="../../../../assets/b49760732ce7ac30d5ef7c30.webp" alt=""><figcaption></figcaption></figure>
 
-*   Copiez la clé générée et ouvrez les [Paramètres du fournisseur](broken-reference) de CherryStudio
+*   Copiez la clé générée et ouvrez les [Paramètres du fournisseur](../../pre-basic/settings/providers.md) de CherryStudio
 *   Localisez le fournisseur Gemini, entrez la clé que vous venez d'obtenir
 
 <figure><img src="../../../../assets/84d594944e11255268fac0c1.webp" alt=""><figcaption></figcaption></figure>

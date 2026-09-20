@@ -14,7 +14,7 @@ Este documento foi traduzido do chinês por IA e ainda não foi revisado.
 
 <img src="../../../../assets/57d7da75000d518de0d6c2b4.svg" alt="" class="gitbook-drawing">
 
-* Copie a chave gerada e acesse as [configurações do provedor](broken-reference) do CherryStudio
+* Copie a chave gerada e acesse as [configurações do provedor](../../pre-basic/settings/providers.md) do CherryStudio
 * Localize o provedor OpenAI e insira a chave obtida
 
 <figure><img src="../../../../assets/22efbe80f32fa31970b37881.webp" alt=""><figcaption></figcaption></figure>

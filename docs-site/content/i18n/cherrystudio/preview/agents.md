@@ -15,5 +15,5 @@ Vous pouvez également modifier et créer vos propres assistants sur cette page.
 * Cliquez sur `Mon espace`, puis sur `Créer un agent` pour commencer à créer votre propre assistant.
 
 {% hint style="info" %}
-Le bouton en haut à droite de la zone de saisie des prompts est un bouton d'optimisation de prompt par IA. Le cliquer remplacera le texte original. Le modèle utilisé est le [modèle d'assistant par défaut global](broken-reference).
+Le bouton en haut à droite de la zone de saisie des prompts est un bouton d'optimisation de prompt par IA. Le cliquer remplacera le texte original. Le modèle utilisé est le [modèle d'assistant par défaut global](../../pre-basic/settings/default-models.md).
 {% endhint %}

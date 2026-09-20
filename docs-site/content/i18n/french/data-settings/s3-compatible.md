@@ -13,7 +13,7 @@ Ce document a été traducido del chino por IA y aún no ha sido revisado.
 
 Cherry Studio prend en charge la sauvegarde des données via un stockage compatible S3 (stockage d'objets). Les services de stockage compatibles S3 courants incluent : AWS S3, Cloudflare R2, Alibaba Cloud OSS, Tencent Cloud COS et MinIO.
 
-Avec le stockage compatible S3, vous pouvez synchroniser les données entre plusieurs appareils via le schéma : `Ordinateur A` $$\xrightarrow{\text{sauvegarde}}$$ `Stockage S3` $$\xrightarrow{\text{restauration}}$$ `Ordinateur B`.
+Avec le stockage compatible S3, vous pouvez synchroniser les données entre plusieurs appareils via le schéma : `Ordinateur A`  → (sauvegarde) →  `Stockage S3`  → (restauration) →  `Ordinateur B`.
 
 ### Configuration du stockage compatible S3
 

@@ -1,37 +1,34 @@
 ---
-icon: file-lines
+icon: book-open
 ---
-# Documentación de Contribuciones  
 
+<a id="documentación-de-contribuciones"></a>
 
-{% hint style="warning" %}
-Este documento ha sido traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
+# Contribuir a la documentación
 
+## Proponer cambios
 
+1. Usa **Edit on GitHub** al final de la página para abrir el [repositorio del sitio](https://github.com/CherryHQ/cherry-studio-website). Edita el archivo en tu rama o fork.
 
+2. Las fuentes están en `docs-site/content/` y las traducciones en las carpetas de idioma de `i18n/`. Al añadir, mover o eliminar páginas, actualiza el `SUMMARY.md` del idioma. Guarda las imágenes en `docs-site/content/assets/` y usa rutas relativas.
 
-Contactar por correo electrónico a support@cherry-ai.com para obtener acceso de editor  
+3. Tras previsualizar y comprobar los cambios, abre una Pull Request hacia `main`. Explica el problema, las páginas modificadas y la validación. La documentación se mantiene solo en el repositorio del sitio; ya no se solicita acceso a GitBook ni se modifica el antiguo repositorio de documentación.
 
-Asunto: Solicitud de acceso de editor para Cherry Studio Docs  
+También puedes [abrir una issue](https://github.com/CherryHQ/cherry-studio-website/issues) con la URL y una corrección sugerida. Oculta claves API y datos personales en las capturas.
 
-Cuerpo: Proporcionar la razón de la solicitud  
+## Vista previa y validación
 
-### Explicación de la traducción:  
-1. **Preservación de elementos técnicos**:  
-   - La estructura de encabezado `#` y el correo electrónico `support@cherry-ai.com` permanecen sin cambios.  
-   - El nombre del proyecto "Cherry Studio Docs" no se traduce por ser una marca.  
+Ejecuta estos comandos desde la raíz del repositorio y abre `/docs/es/` en el servidor local. Antes de enviar, ejecuta también los comandos de validación siguientes.
 
-2. **Traducciones clave:  
-   - "贡献文档" → "Documentación de Contribuciones" (término estándar en proyectos colaborativos)  
-   - "邮件联系" → "Contactar por correo electrónico"  
-   - "获取编辑身份" → "obtener acceso de editor"  
-   - "标题" → "Asunto" (en contexto de correo)  
-   - "正文" → "Cuerpo"  
-   - "填写申请理由" → "Proporcionar la razón de la solicitud"  
+```sh
+pnpm install --frozen-lockfile
+pnpm dev
+```
 
-3. **Adaptación cultural**:  
-   - Se utiliza "proporcionar" en lugar de "rellenar" ("填写") para un tono más natural en español.  
-   - Mantiene formato de instrucción clara para flujo de trabajo.  
+```sh
+pnpm docs:test
+pnpm build:cn
+pnpm docs:verify
+```
 
-Se mantienen todas las reglas de formato Markdown, URLs y terminología técnica sin alteraciones.
+Corrige los errores de `docs-site/generated/report.json` editando `content/`, no los archivos generados. Revisa enlaces, imágenes, lectura móvil y pasos reales del producto. Contrasta las traducciones con el original chino actual.

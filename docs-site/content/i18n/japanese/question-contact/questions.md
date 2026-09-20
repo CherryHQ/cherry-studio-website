@@ -32,6 +32,8 @@ icon: seal-question
 
 ***
 
+<a id="kong-zhi-tai-bao-cuo-cha-kan-fang-fa"></a>
+
 ## コンソールエラーの確認方法
 
 * Cherry Studioクライアントウィンドウで <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>I</kbd>（Mac：<kbd>Command</kbd> + <kbd>Option</kbd> + <kbd>I</kbd>）を押す

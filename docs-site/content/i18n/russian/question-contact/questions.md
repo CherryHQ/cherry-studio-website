@@ -32,6 +32,8 @@ icon: seal-question
 
 ***
 
+<a id="kong-zhi-tai-bao-cuo-cha-kan-fang-fa"></a>
+
 ## Как проверить ошибки в консоли
 
 * Нажмите <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>I</kbd> в клиенте Cherry Studio (на Mac: <kbd>Command</kbd> + <kbd>Option</kbd> + <kbd>I</kbd>)

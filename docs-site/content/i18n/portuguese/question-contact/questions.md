@@ -32,6 +32,8 @@ Este documento foi traduzido do chinês por IA e ainda não foi revisado.
 
 ***
 
+<a id="kong-zhi-tai-bao-cuo-cha-kan-fang-fa"></a>
+
 ## Como Verificar Erros no Console
 
 * Com a janela do cliente Cherry Studio ativa, pressione <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>I</kbd> (Mac: <kbd>Command</kbd> + <kbd>Option</kbd> + <kbd>I</kbd>)

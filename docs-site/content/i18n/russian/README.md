@@ -124,7 +124,7 @@ Cherry Studio — универсальная платформа-ассистен
 
 ### Star History
 
-![Star History](https://urlscan.io/liveshot/?width=1300\&height=620\&url=https://cherrystarhistory.ocool.online/)
+[Star History](https://cherrystarhistory.ocool.online/)
 
 ## Следите за нашими социальными аккаунтами
 

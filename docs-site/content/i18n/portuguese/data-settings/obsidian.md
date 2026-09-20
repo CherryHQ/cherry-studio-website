@@ -29,6 +29,8 @@ Abra _Configurações_ → _Configurações de Dados_ → Menu _Configuração d
 
 ### Passo 2: Exportar Conversas
 
+<a id="dao-chu-wan-zheng-dui-hua"></a>
+
 #### Exportar Conversa Completa
 
 Retorne à interface de conversa do Cherry Studio. Clique com o botão direito na conversa, selecione _Exportar_ e clique em _Exportar para Obsidian_:
@@ -80,6 +82,8 @@ A mesma janela de configuração de propriedades e métodos de processamento ser
 
 ## Tutorial Antigo (para Cherry Studio <v1.1.13)
 
+<a id="di-yi-bu"></a>
+
 ### Passo 1: Preparar o Obsidian
 
 Abra sua biblioteca do Obsidian e crie uma `pasta` para salvar as conversas exportadas (exemplo: pasta "Cherry Studio"):
@@ -97,6 +101,8 @@ Em _Configurações_ → _Configurações de Dados_ → Menu _Configuração do 
 O campo `Tags globais` é opcional para definir tags padrão em todas as notas exportadas.
 
 ### Passo 3: Exportar Conversas
+
+<a id="dao-chu-wan-zheng-dui-hua-old"></a>
 
 #### Exportar Conversa Completa
 
@@ -121,7 +127,7 @@ Clique no _menu de três linhas_ abaixo da mensagem e selecione _Exportar para O
 
 <figure><img src="../../../assets/53a5477e29c3e58af139fe15.webp" alt=""><figcaption><p>Exportar mensagem individual</p></figcaption></figure>
 
-Siga os mesmos passos do [tutorial acima](obsidian.md#dao-chu-wan-zheng-dui-hua).
+Siga os mesmos passos do [tutorial acima](obsidian.md#dao-chu-wan-zheng-dui-hua-old).
 
 ### Exportação Concluída
 

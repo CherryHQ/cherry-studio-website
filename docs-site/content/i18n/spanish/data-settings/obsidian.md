@@ -29,6 +29,8 @@ En Cherry Studio, ve a _Configuración_ → _Configuración de Datos_ → Menú 
 
 ### Paso 2: Exportar Conversaciones
 
+<a id="dao-chu-wan-zheng-dui-hua"></a>
+
 #### Exportar conversación completa
 
 En la interfaz de conversación de Cherry Studio, haz clic derecho en una conversación, selecciona _Exportar_ y luego _Exportar a Obsidian_:
@@ -98,6 +100,8 @@ Las etiquetas globales (Global tags) son opcionales para notas exportadas.
 
 ### Paso 3: Exportar Conversaciones
 
+<a id="dao-chu-wan-zheng-dui-hua-old"></a>
+
 #### Exportar conversación completa
 
 Haz clic derecho en una conversación → _Exportar_ → _Exportar a Obsidian_:
@@ -121,7 +125,7 @@ Usa el _menú de tres líneas_ bajo el mensaje → _Exportar_ → _Exportar a Ob
 
 <figure><img src="../../../assets/53a5477e29c3e58af139fe15.webp" alt=""><figcaption><p>Exportar mensaje individual</p></figcaption></figure>
 
-Configura siguiendo el [tutorial anterior](obsidian.md#dao-chu-wan-zheng-dui-hua).
+Configura siguiendo el [tutorial anterior](obsidian.md#dao-chu-wan-zheng-dui-hua-old).
 
 ### Exportación exitosa
 

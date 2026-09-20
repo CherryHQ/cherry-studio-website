@@ -108,6 +108,8 @@ Claude: 3 tokens
 
 ***
 
+<a id="shen-me-shi-mcpmodel-context-protocol"></a>
+
 ## What is MCP (Model Context Protocol)?
 
 MCP is an open-source protocol designed to provide context information to large language models (LLMs) in a standardized manner.

@@ -14,7 +14,7 @@ Ce document a été traducido del chino por IA y aún no ha sido revisado.
 Cherry Studio prend en charge la sauvegarde des données via le protocole WebDAV. Vous pouvez choisir un service WebDAV adapté pour effectuer des sauvegardes dans le cloud.
 
 Grâce à WebDAV, la synchronisation multi-appareils s'effectue via le schéma :  
-`Ordinateur A` $$\xrightarrow{\text{sauvegarde}}$$ `WebDAV` $$\xrightarrow{\text{restauration}}$$ `Ordinateur B`.
+`Ordinateur A`  → (sauvegarde) →  `WebDAV`  → (restauration) →  `Ordinateur B`.
 
 #### Exemple avec Nutstore
 

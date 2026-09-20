@@ -19,7 +19,7 @@ Este documento foi traduzido do chinês por IA e ainda não foi revisado.
 
 <figure><img src="../../../../assets/b49760732ce7ac30d5ef7c30.webp" alt=""><figcaption></figcaption></figure>
 
-* Copie a chave gerada e abra as [configurações de provedor](broken-reference) do CherryStudio
+* Copie a chave gerada e abra as [configurações de provedor](../../pre-basic/settings/providers.md) do CherryStudio
 * Encontre o provedor Gemini e insira a chave obtida
 
 <figure><img src="../../../../assets/84d594944e11255268fac0c1.webp" alt=""><figcaption></figcaption></figure>

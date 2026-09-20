@@ -13,7 +13,7 @@ icon: cloud-binary
 
 Cherry Studio 資料備份支援透過 S3 相容儲存（物件儲存）的方式進行備份。常見的 S3 相容儲存服務有：AWS S3、Cloudflare R2、阿里雲 OSS、騰訊雲 COS 以及 MinIO 等。
 
-基於 S3 相容儲存可以透過 `A電腦` $$\xrightarrow{\text{備份}}$$ `S3儲存` $$\xrightarrow{\text{恢復}}$$ `B電腦` 的方式來實現多端資料同步。
+基於 S3 相容儲存可以透過 `A電腦`  → (備份) →  `S3儲存`  → (恢復) →  `B電腦` 的方式來實現多端資料同步。
 
 ### 配置 S3 相容儲存
 

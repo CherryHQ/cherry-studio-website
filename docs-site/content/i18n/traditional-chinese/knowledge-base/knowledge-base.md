@@ -1,86 +1,33 @@
 ---
-icon: book-open-cover
+icon: compass
 ---
 
-{% hint style="warning" %}
-此文件由 AI 從中文翻譯而來，尚未經過審閱。
-{% endhint %}
+# 知識庫入門
 
-# 知識庫教程
-
-在 0.9.1 版本中，CherryStudio 帶來了期待已久的知識庫功能。
-
-下面我們將按步驟呈現 CherryStudio 的詳細使用說明。
-
-## 添加嵌入模型
-
-1. 在模型管理服務中查找模型，可以點擊「嵌入模型」快速篩選；
-2. 找到需要的模型，添加到我的模型。
-
-<figure><img src="../../../assets/de62e1c82b0491e7875c6a3d.webp" alt=""><figcaption></figcaption></figure>
-
-## 創建知識庫
-
-1. 知識庫入口：在 CherryStudio 左側工具欄，點擊知識庫圖標，即可進入管理頁面；
-2. 添加知識庫：點擊添加，開始創建知識庫；
-3. 命名：輸入知識庫的名稱並添加嵌入模型，以 bge-m3 為例，即可完成創建。
-
-<figure><img src="../../../assets/815b2b38dc12b63b41347762.webp" alt=""><figcaption></figcaption></figure>
-
-<figure><img src="../../../assets/61eb240e8b46c9d69a85341c.webp" alt=""><figcaption></figcaption></figure>
-
-## 添加文件並向量化
-
-1. 添加文件：點擊添加文件的按鈕，打開文件選擇；
-2. 選擇文件：選擇支援的文件格式，如 pdf，docx，pptx，xlsx，txt，md，mdx 等，並打開；
-3. 向量化：系統會自動進行向量化處理，當顯示完成時（綠色 ✓），代表向量化已完成。
-
-<figure><img src="../../../assets/50d180e7cb72ab42fe8770a5.webp" alt=""><figcaption></figcaption></figure>
-
-<figure><img src="../../../assets/50c5b3c6567fd5bd6836af5b.webp" alt=""><figcaption></figcaption></figure>
-
-<figure><img src="../../../assets/91f0d97898017ff2d9b71581.webp" alt=""><figcaption></figcaption></figure>
-
-## 添加多種來源的數據
-
-CherryStudio 支援多種添加數據的方式：
-
-1. 文件夾目錄：可以添加整個文件夾目錄，該目錄下支援格式的文件會被自動向量化；
-2. 網址連結：支援網址 url，如[https://docs.siliconflow.cn/introduction](https://docs.siliconflow.cn/introduction)；
-3. 站點地圖：支援 xml 格式的站點地圖，如[https://docs.siliconflow.cn/sitemap.xml](https://docs.siliconflow.cn/sitemap.xml)；
-4. 純文本筆記：支援輸入純文本的自定義內容。
+知識庫把檔案、筆記、目錄或網頁整理成可反覆檢索的資料集合。先確認召回能找到正確片段，再交給對話或 Agent 使用。
 
 {% hint style="info" %}
-提示：
-
-1. 導入知識庫的文檔中的插圖暫不支援轉換為向量，需要手動轉換為文本；
-2. 使用網址作為知識庫來源時不一定會成功，有些網站有比較嚴格的反扒機制（或需要登入、授權等），因此該方式不一定能獲取到準確內容。創建完成後建議先搜索測試一下。
-3. 一般網站都會提供sitemap，如CherryStudio的[sitemap](https://docs.cherry-ai.com/sitemap-pages.xml)，一般在網站的根地址（即網址）後加/sitemap.xml可以獲取到相關資訊。如`aaa.com/sitemap.xml` 。
-4. 如果網站沒提供sitemap或者網址比較雜可自行組合一個sitemap的xml文件使用，文件暫時需要使用公網可直接訪問的直鏈的方式填入，本地文件連結不會被識別。
-
-> 1) 可以讓AI生成sitemap文件或讓AI寫一個sitemap的HTML生成器工具；
-> 2) 直鏈可以使用oss直鏈或者網盤直鏈等方式來生成。如果沒有現成工具也可到[ocoolAI](https://one.ocoolai.com/login)官網，登入後使用網站頂欄的免費文件上傳工具來生成直鏈。
+嵌入模型不是必選項。可先選擇 **不使用**，以 BM25 關鍵字檢索完成第一次體驗；需要語意匹配時再設定嵌入模型。重排模型也是可選項。
 {% endhint %}
 
-## 搜索知識庫
+## 建立第一個知識庫
 
-當文件等資料向量化完成後，即可進行查詢：
+1. <a id="chuang-jian-zhi-shi-ku"></a><a id="創建知識庫"></a>開啟左側導覽的 **知識庫**，點擊列表上方的新增按鈕。用明確的主題命名，例如「員工差旅制度」。
 
-1. 點擊頁面下方的搜索知識庫按鈕；
-2. 輸入查詢的內容；
-3. 呈現搜索的結果；
-4. 並顯示該條結果的匹配分數。
+2. <a id="tian-jia-qian-ru-mo-xing"></a><a id="添加嵌入模型"></a>第一次體驗將 **嵌入模型** 設為 **不使用**。口語問法或同義詞難以匹配時，再設定嵌入模型。
 
-<figure><img src="../../../assets/d1c81d4e1f45b29f6aa76bfa.webp" alt=""><figcaption></figcaption></figure>
+3. <a id="tian-jia-duo-zhong-lai-yuan-de-shu-ju"></a><a id="添加多種來源的數據"></a><a id="tian-jia-wen-jian-bing-xiang-liang-hua"></a><a id="添加文件並向量化"></a>進入知識庫並新增 **檔案**、**筆記**、**目錄** 或 **連結**，先使用少量且相關的資料。
 
-<figure><img src="../../../assets/bcbb9d209e9e48af9dd5de51.webp" alt=""><figcaption></figcaption></figure>
+4. 等待處理完成，抽查正文與 **Chunks**，確認沒有亂碼、缺頁或明顯錯序。
 
-## 對話中引用知識庫生成回覆
+5. <a id="sou-suo-zhi-shi-ku"></a><a id="搜索知識庫"></a>開啟 **召回測試**，輸入已知答案的真實問題，檢查正確來源是否出現在前幾筆結果。
 
-1. 創建一個新的話題，在對話工具欄中，點擊知識庫，會展開已經創建的知識庫列表，選擇需要引用的知識庫；
-2. 輸入並發送問題，模型即返回通過檢索結果生成的答案；
-3. 同時，引用的數據來源會附在答案下方，可快捷查看源文件。
+6. <a id="dui-hua-zhong-yin-yong-zhi-shi-ku-sheng-cheng-hui-fu"></a><a id="對話中引用知識庫生成回覆"></a>召回穩定後，在對話輸入區選擇知識庫；需要長期工作流程時，在 Agent 編輯頁綁定知識庫。
 
-<figure><img src="../../../assets/5d040588b4591c1397fc9c91.webp" alt=""><figcaption></figcaption></figure>
+![檔案、筆記、目錄和連結四種資料入口](../../../assets/4622da2093d43942d7ee443e.webp)
 
-<figure><img src="../../../assets/597ea9733656fae31173e5f8.webp" alt=""><figcaption></figcaption></figure>
+## 使用前檢查
+
+保留 3～5 個真實測試問題，在資料或設定更新後重測。找不到答案時，先檢查原文與 Chunks；聊天模型無法補回沒有召回的關鍵資訊。
+
+啟用雲端嵌入或重排模型時，費用與資料處理方式取決於服務商。不同存取需求的資料應分開建庫。

@@ -31,6 +31,8 @@ No Cherry Studio, um único provedor suporta múltiplas chaves em uso rotativo, 
 É obrigatório usar vírgulas em **inglês**.
 {% endhint %}
 
+<a id="api-di-zhi"></a>
+
 ### Endereço da API
 
 Geralmente não é necessário preencher o endereço da API ao usar provedores integrados. Caso precise modificar, insira exatamente o endereço fornecido na documentação oficial.

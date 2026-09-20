@@ -10,7 +10,7 @@ icon: images
 
 <figure><img src="../../assets/d565697cb53f20f4f266e1dd.webp" alt="Agent 中的生成图片工具与绘画模型"><figcaption><p>先让 Agent 生成一张样图确认方向，再进入批量制作。</p></figcaption></figure>
 
-<figure><img src="https://3562065924-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0Ut5BptC3t8CtSU1UWpM%2Fuploads%2Fgit-blob-418a088986e17a73a4808871fc4c1f5c1684fa05%2Fcherry-v2-guide-painting-result.jpg?alt=media" alt="绘画页面使用 GPT-Image-2 express 根据创意工作台提示词生成的实际图片"><figcaption><p>先把这张实际成图作为主视觉样稿，确认主体、光线和色调后，再扩展方形与竖版尺寸。</p></figcaption></figure>
+<figure><img src="../../assets/2ba55ffd828250f31afa2b16.jpg" alt="绘画页面使用 GPT-Image-2 express 根据创意工作台提示词生成的实际图片"><figcaption><p>先把这张实际成图作为主视觉样稿，确认主体、光线和色调后，再扩展方形与竖版尺寸。</p></figcaption></figure>
 
 ## 准备材料
 

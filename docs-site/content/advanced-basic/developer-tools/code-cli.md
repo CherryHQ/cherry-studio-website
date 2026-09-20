@@ -6,7 +6,7 @@ icon: terminal
 
 【编码搭档】用于安装、配置和启动常见编程命令行工具。Cherry Studio 会区分应用托管版本、系统 PATH 中已有版本和工具自己的账号登录，不会自动覆盖系统安装。
 
-<figure><img src="https://raw.githubusercontent.com/SiinXu/cherry-studio-docs/2446b25878f69e98f33d50623a3c4cf5e836680a/.gitbook/assets/cherry-guide-code-cli-list.png" alt="编码搭档页面中的 CLI 列表、安装状态和模型服务配置"><figcaption><p>① 左侧选择工具并确认安装状态；② 右侧选择统一网关、工具官方账号或兼容的模型服务。</p></figcaption></figure>
+<figure><img src="../../assets/2e66cc9312c27cf740b2eb62.webp" alt="编码搭档页面中的 CLI 列表、安装状态和模型服务配置"><figcaption><p>① 左侧选择工具并确认安装状态；② 右侧选择统一网关、工具官方账号或兼容的模型服务。</p></figcaption></figure>
 
 ### 页面能做什么
 
@@ -55,7 +55,7 @@ icon: terminal
 
 ### DeepSeek Harness
 
-<figure><img src="https://raw.githubusercontent.com/SiinXu/cherry-studio-docs/2446b25878f69e98f33d50623a3c4cf5e836680a/.gitbook/assets/cherry-guide-code-cli-dsh.png" alt="编码搭档中的 DeepSeek Harness 安装和统一网关配置"><figcaption><p>① 未安装时先完成托管安装；安装后配置兼容服务商、默认权限和 Agent 模式，再启动 Web UI。</p></figcaption></figure>
+<figure><img src="../../assets/ceedc835426c7413a36609ba.webp" alt="编码搭档中的 DeepSeek Harness 安装和统一网关配置"><figcaption><p>① 未安装时先完成托管安装；安装后配置兼容服务商、默认权限和 Agent 模式，再启动 Web UI。</p></figcaption></figure>
 
 DeepSeek Harness 与普通终端 CLI 的流程不同：安装并选择服务商后，由 Cherry Studio 托管运行，并可打开独立 Web UI。参数中可以选择默认 Agent 模式和默认权限：
 
@@ -76,7 +76,7 @@ DeepSeek Harness 与普通终端 CLI 的流程不同：安装并选择服务商�
 | 系统 PATH | 检测并直接使用，不覆盖 | 用原包管理器更新或卸载 |
 | 工具官方账号 | 保留工具自己的登录流程 | 在工具界面管理账号和授权 |
 
-<figure><img src="https://raw.githubusercontent.com/SiinXu/cherry-studio-docs/2446b25878f69e98f33d50623a3c4cf5e836680a/.gitbook/assets/cherry-guide-code-cli-list.png" alt="编码搭档页面中的 CLI 列表、安装状态和模型服务配置"><figcaption></figcaption></figure>
+<figure><img src="../../assets/2e66cc9312c27cf740b2eb62.webp" alt="编码搭档页面中的 CLI 列表、安装状态和模型服务配置"><figcaption></figcaption></figure>
 
 {% hint style="warning" %}
 卸载 Cherry Studio 托管副本后，如果系统中还有同名可执行文件，页面会自动回退到系统版本。行为变化时，先确认当前使用的是哪一种来源。

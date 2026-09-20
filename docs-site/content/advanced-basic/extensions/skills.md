@@ -23,7 +23,7 @@ icon: graduation-cap
 * 从本地 ZIP 文件安装；
 * 从包含 `SKILL.md` 的文件夹安装。
 
-<figure><img src="https://raw.githubusercontent.com/SiinXu/cherry-studio-docs/2446b25878f69e98f33d50623a3c4cf5e836680a/.gitbook/assets/cherry-guide-skill-github-source.png" alt="技能在线搜索中选择 GitHub 并粘贴 SKILL.md 链接"><figcaption><p>① 选择【GitHub】后粘贴目标技能的 `SKILL.md` 文件链接；页面会先解析具体技能，再提供安装。</p></figcaption></figure>
+<figure><img src="../../assets/f0dcb151fa939ce15cda1e00.webp" alt="技能在线搜索中选择 GitHub 并粘贴 SKILL.md 链接"><figcaption><p>① 选择【GitHub】后粘贴目标技能的 `SKILL.md` 文件链接；页面会先解析具体技能，再提供安装。</p></figcaption></figure>
 
 {% stepper %}
 {% step %}
@@ -53,7 +53,7 @@ icon: graduation-cap
 
 ### 全局启用与 Agent 启用
 
-<figure><img src="https://raw.githubusercontent.com/SiinXu/cherry-studio-docs/2446b25878f69e98f33d50623a3c4cf5e836680a/.gitbook/assets/cherry-guide-skills-global-toggle.png" alt="技能设置页中的全局启用开关和已安装技能列表"><figcaption><p>① 卡片右侧开关控制技能是否对所有 Agent 可选；关闭后，Agent 编辑窗口不会再显示该技能。</p></figcaption></figure>
+<figure><img src="../../assets/a05d3125f16b5cb41dd2e05b.webp" alt="技能设置页中的全局启用开关和已安装技能列表"><figcaption><p>① 卡片右侧开关控制技能是否对所有 Agent 可选；关闭后，Agent 编辑窗口不会再显示该技能。</p></figcaption></figure>
 
 | 状态 | 作用 | 什么时候使用 |
 | -------- | ------------------------ | ------------------------- |
@@ -61,7 +61,7 @@ icon: graduation-cap
 | 全局关闭 | 暂停所有 Agent 使用该技能，但保留安装内容 | 临时停用、排错或等待安全检查 |
 | Agent 启用 | 只让当前 Agent 加载该技能 | 流程与当前 Agent 的长期职责相符 |
 
-<figure><img src="https://raw.githubusercontent.com/SiinXu/cherry-studio-docs/2446b25878f69e98f33d50623a3c4cf5e836680a/.gitbook/assets/cherry-guide-skill-github-source.png" alt="技能在线搜索中选择 GitHub 并粘贴 SKILL.md 链接"><figcaption></figcaption></figure>
+<figure><img src="../../assets/f0dcb151fa939ce15cda1e00.webp" alt="技能在线搜索中选择 GitHub 并粘贴 SKILL.md 链接"><figcaption></figcaption></figure>
 
 关闭全局开关不会卸载技能；重新打开后，仍要检查各 Agent 的启用状态。卸载则会删除技能内容并清理关联。
 
