@@ -1,4 +1,5 @@
-import { readFileSync, writeFileSync } from 'node:fs'
+import { createHash } from 'node:crypto'
+import { readFileSync, renameSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 
 const distDir = join(process.cwd(), 'dist')
@@ -92,6 +93,13 @@ function replaceJsonLd(html, type, updater) {
 function applyIndexTarget() {
   const indexPath = join(distDir, 'index.html')
   let html = readFileSync(indexPath, 'utf8')
+  // Keep the blocking theme initializer, but give each version a new URL.
+  // This also bypasses browsers that cached the old fixed URL as immutable.
+  const themeScript = join(distDir, 'theme-init.js')
+  const themeHash = createHash('sha256').update(readFileSync(themeScript)).digest('hex').slice(0, 8)
+  const themeName = `theme-init-${themeHash}.js`
+  renameSync(themeScript, join(distDir, 'assets', themeName))
+  html = html.replace('src="/theme-init.js"', `src="/assets/${themeName}"`)
   const currentUrl = `${config.domain}/`
   const socialImage = `${config.domain}/assets/images/social-card.jpg`
 

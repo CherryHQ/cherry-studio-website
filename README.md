@@ -52,3 +52,9 @@ export default tseslint.config({
 ## Documentation site
 
 The Fumadocs documentation is published under `/docs` and built with the website. See [docs-site/README.md](docs-site/README.md) for local development, editing local content in `docs-site/content/`, languages, and deployment.
+
+## Browser caching
+
+Cloudflare Pages uses `public/_headers` (copied into `dist/_headers`); the container uses `nginx.conf`. HTML, documentation RSC payloads, search indexes, and fixed-name files must revalidate on every request. Only fingerprinted files in `/assets/`, `/docs/_next/static/`, and `/docs/content-assets/` receive a one-year immutable cache. Keep fixed-name public resources outside those directories. The build fingerprints the blocking theme initializer as well.
+
+Pages already defaults to `public, max-age=0, must-revalidate` for other files. Do not override this with a site-wide browser TTL or a Cache Everything rule in the CDN dashboard. Deploy the complete artifact, including `_headers`. A new visit fetches or validates the entry page, which references the current asset URLs; existing open tabs are not automatically reloaded. These rules do not force a network request when merely switching to an existing tab or restoring a page from browser history.
