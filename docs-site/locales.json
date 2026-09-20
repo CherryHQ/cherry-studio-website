@@ -6,6 +6,5 @@
   { "code": "fr", "label": "Français", "directory": "i18n/french" },
   { "code": "es", "label": "Español", "directory": "i18n/spanish" },
   { "code": "pt", "label": "Português", "directory": "i18n/portuguese" },
-  { "code": "ru", "label": "Русский", "directory": "i18n/russian" },
-  { "code": "el", "label": "Ελληνικά", "directory": "i18n/greek" }
+  { "code": "ru", "label": "Русский", "directory": "i18n/russian" }
 ]
