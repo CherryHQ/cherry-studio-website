@@ -4,13 +4,6 @@ icon: table-columns
 # Configuración de visualización
 
 
-{% hint style="warning" %}
-Este documento ha sido traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 En esta página puedes configurar el tema de color del software, el diseño de la página o [CSS personalizado](../../../personalization-settings/css.md) para realizar configuraciones personalizadas.
 
 ### Selección de tema

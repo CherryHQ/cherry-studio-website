@@ -4,13 +4,6 @@ icon: cloud-check
 # Configuration du service de modèles
 
 
-{% hint style="warning" %}
-Ce document a été traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 Cette page présente uniquement les fonctionnalités de l'interface. Pour le tutoriel de configuration, référez-vous au guide [Configuration des fournisseurs](../../../pre-basic/providers/) dans les tutoriels de base.
 
 {% hint style="info" %}

@@ -4,13 +4,6 @@ icon: address-card
 # Cooperação Comercial
 
 
-{% hint style="warning" %}
-Este documento foi traduzido do chinês por IA e ainda não foi revisado.
-{% endhint %}
-
-
-
-
 Contato: Sr. Wang  
 📮: bd@cherry-ai.com  
 📱: 18954281942 (não é telefone de suporte ao cliente)

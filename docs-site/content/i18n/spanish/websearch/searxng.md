@@ -4,13 +4,6 @@ icon: searchengin
 # Despliegue y configuración local de SearXNG
 
 
-{% hint style="warning" %}
-Este documento ha sido traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 CherryStudio admite búsquedas web a través de SearXNG, un proyecto de código abierto que se puede implementar localmente o en servidores, lo que difiere ligeramente de otras configuraciones que requieren proveedores de API.
 
 **Enlace al proyecto SearXNG**: [SearXNG](https://github.com/searxng/searxng)

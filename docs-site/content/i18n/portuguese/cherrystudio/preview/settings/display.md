@@ -4,13 +4,6 @@ icon: table-columns
 # Configurações de Exibição
 
 
-{% hint style="warning" %}
-Este documento foi traduzido do chinês por IA e ainda não foi revisado.
-{% endhint %}
-
-
-
-
 Nesta página, você pode definir o tema de cores do software, o layout da página ou [CSS personalizado](../../../personalization-settings/css.md) para realizar personalizações.
 
 ### Seleção de Tema

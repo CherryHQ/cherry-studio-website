@@ -1,13 +1,6 @@
 # Google Gemini
 
 
-{% hint style="warning" %}
-このドキュメントはAIによって中国語から翻訳されており、まだレビューされていません。
-{% endhint %}
-
-
-
-
 ## APIキーの取得
 
 * GeminiのAPIキーを取得する前に、Google Cloudプロジェクトが必要です（既にお持ちの場合はこの手順をスキップできます）

@@ -1,13 +1,6 @@
 # Provedores Personalizados
 
 
-{% hint style="warning" %}
-Este documento foi traduzido do chinês por IA e ainda não foi revisado.
-{% endhint %}
-
-
-
-
 Cherry Studio não apenas integra os principais serviços de modelos de IA, mas também oferece recursos poderosos de personalização. Com o recurso **Provedores de IA Personalizados**, você pode integrar facilmente qualquer modelo de IA que desejar.
 
 ## Por que usar provedores de IA personalizados?

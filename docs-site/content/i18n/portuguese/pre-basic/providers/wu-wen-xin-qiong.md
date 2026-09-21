@@ -1,13 +1,6 @@
 # Infini-AI
 
 
-{% hint style="warning" %}
-Este documento foi traduzido do chinês por IA e ainda não foi revisado.
-{% endhint %}
-
-
-
-
 Você já passou por isso: salvou 26 artigos úteis no WeChat mas nunca mais abriu, tem mais de 10 arquivos espalhados na pasta "Materiais de estudo" do computador, tenta encontrar uma teoria que leu há seis meses mas só lembra palavras-chave soltas. E quando o volume diário de informações excede o limite de processamento do cérebro, 90% do conhecimento precioso é esquecido em 72 horas.\
 Agora, usando a API da plataforma de serviços de modelos de linguagem Infini-AI + Cherry Studio, você pode criar um banco de conhecimento pessoal para transformar artigos esquecidos do WeChat e conteúdos fragmentados de cursos em conhecimento estruturado, permitindo acesso preciso.\
 

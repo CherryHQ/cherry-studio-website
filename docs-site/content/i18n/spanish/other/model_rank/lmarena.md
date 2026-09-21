@@ -1,13 +1,6 @@
 # Tabla de clasificación de LLM Arena (actualización en tiempo real)
 
 
-{% hint style="warning" %}
-Este documento ha sido traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 Esta es una tabla de clasificación basada en datos de Chatbot Arena (lmarena.ai), generada mediante un flujo de trabajo automatizado.
 
 > **Hora de actualización de datos**: 2025-11-25 08:08:40 UTC / 2025-11-25 16:08:40 CST (hora de Pekín)

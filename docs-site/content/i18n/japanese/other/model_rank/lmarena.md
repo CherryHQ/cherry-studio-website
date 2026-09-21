@@ -2,13 +2,6 @@
 
 
 {% hint style="warning" %}
-このドキュメントはAIによって中国語から翻訳されており、まだレビューされていません。
-{% endhint %}
-
-
-
-
-{% hint style="warning" %}
 これはChatbot Arena (lmarena.ai)のデータに基づくランキングで、自動化されたプロセスで生成されています。
 {% endhint %}
 

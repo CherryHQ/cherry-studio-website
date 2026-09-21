@@ -1,5 +1,4 @@
 ---
-description: 数据设置→Obsidian配置
 icon: gem
 ---
 
@@ -18,12 +17,12 @@ Cherry Studio 支援與 Obsidian 聯動，將完整對話或單條對話匯出�
 ## 最新教學
 
 {% hint style="info" %}
-相較舊版匯出到 Obsidian，新版匯出到 Obsidian 功能可以自動選擇庫路徑，不再需要手動輸入庫名、資料夾名。
+相較舊版匯出到 Obsidian，新版匯出到 Obsidian 功能可以自動選擇庫路徑，不再需要手動輸入庫名、資資夾名。
 {% endhint %}
 
 ### 第一步：配置 Cherry Studio
 
-開啟 Cherry Studio 的_設定_ →  _資料設定_ → _Obsidian 設定_選單，下拉選單中會自動出現在本機開啟過的 Obsidian 庫名，選擇你的目標 Obsidian 庫：
+開啟 Cherry Studio 的_設定_ →  _資資設定_ → _Obsidian 設定_選單，下拉選單中會自動出現在本機開啟過的 Obsidian 庫名，選擇你的目標 Obsidian 庫：
 
 <figure><img src="../../../assets/449d1a8ce3c2bcc5f7e7158f.webp" alt=""><figcaption></figcaption></figure>
 
@@ -37,16 +36,16 @@ Cherry Studio 支援與 Obsidian 聯動，將完整對話或單條對話匯出�
 
 <figure><img src="../../../assets/ceedc9e8d1dabc9d39035c30.webp" alt=""><figcaption></figcaption></figure>
 
-此時會彈出一個視窗，用於調整這條匯出到 Obsidian 中的對話筆記的 **Properties（屬性）、**所放置在Obsidian的**資料夾位置**以及匯出到 Obsidian 中的**處理方式：**
+此時會彈出一個視窗，用於調整這條匯出到 Obsidian 中的對話筆記的 **Properties（屬性）、**所放置在Obsidian的**資資夾位置**以及匯出到 Obsidian 中的**處理方式：**
 
 * **保管庫**：點擊下拉選單可以選擇其他 Obsidian 庫
-* **路徑**：點擊下拉選單可以選擇存放匯出對話筆記的資料夾
+* **路徑**：點擊下拉選單可以選擇存放匯出對話筆記的資資夾
 * 作為 Obsidian 筆記屬性（Properties）：
   * 標籤（tags）
   * 建立時間（created）
   * 來源（source）
 * 匯出到 Obsidian 中的**處理方式**有以下三種可選：
-  * **新建（如果存在就覆蓋）**：在**路徑**處填寫的`資料夾` 裡新建一篇對話筆記，如果存在同名筆記則會覆蓋舊筆記
+  * **新建（如果存在就覆蓋）**：在**路徑**處填寫的`資資夾` 裡新建一篇對話筆記，如果存在同名筆記則會覆蓋舊筆記
   * **前置**：在已存在同名筆記的情況下，將選中的對話內容匯出新增到該筆記的開頭
   * **追加**：在已存在同名筆記的情況下，將選中的對話內容匯出新增到該筆記的末尾
 
@@ -60,7 +59,7 @@ Cherry Studio 支援與 Obsidian 聯動，將完整對話或單條對話匯出�
 
 <figure><img src="../../../assets/15f4032a3a159c08df6cf1b3.webp" alt=""><figcaption><p>選擇處理方式</p></figcaption></figure>
 
-選擇完所有選項後，點選確定即可匯出完整對話到對應的 Obsidian 庫的對應資料夾。
+選擇完所有選項後，點選確定即可匯出完整對話到對應的 Obsidian 庫的對應資資夾。
 
 #### 匯出單條對話
 
@@ -86,7 +85,7 @@ Cherry Studio 支援與 Obsidian 聯動，將完整對話或單條對話匯出�
 
 ### 第一步：準備 Obsidian
 
-開啟 Obsidian 庫，建立一個用於儲存匯出對話的`資料夾`（圖中以 Cherry Studio 資料夾為例）：
+開啟 Obsidian 庫，建立一個用於儲存匯出對話的`資資夾`（圖中以 Cherry Studio 資資夾為例）：
 
 <figure><img src="../../../assets/a492ac55a35d0e0afc9e33a9.webp" alt=""><figcaption></figcaption></figure>
 
@@ -96,7 +95,7 @@ Cherry Studio 支援與 Obsidian 聯動，將完整對話或單條對話匯出�
 
 ### 第二步：配置 Cherry Studio
 
-在 Cherry Studio 的_設定_ →  _資料設定_ → _Obsidian 設定_選單中，輸入在[第一步](obsidian.md#di-yi-bu)中獲取到的`保管庫`名與`資料夾`名：
+在 Cherry Studio 的_設定_ →  _資資設定_ → _Obsidian 設定_選單中，輸入在[第一步](obsidian.md#di-yi-bu)中獲取到的`保管庫`名與`資資夾`名：
 
 <figure><img src="../../../assets/e7da08d7e70d410c2ae09fee.webp" alt=""><figcaption></figcaption></figure>
 
@@ -114,7 +113,7 @@ Cherry Studio 支援與 Obsidian 聯動，將完整對話或單條對話匯出�
 
 此時會彈出一個視窗，用於調整這條匯出到 Obsidian 中的對話筆記的 **Properties（屬性）**，以及匯出到 Obsidian 中的**處理方式**。匯出到 Obsidian 中的**處理方式**有以下三種可選：
 
-* **新建（如果存在就覆蓋）**：在[第二步](obsidian.md#di-er-bu)中填寫的`資料夾` 裡新建一篇對話筆記，如果存在同名筆記則會覆蓋舊筆記
+* **新建（如果存在就覆蓋）**：在[第二步](obsidian.md#di-er-bu)中填寫的`資資夾` 裡新建一篇對話筆記，如果存在同名筆記則會覆蓋舊筆記
 * **前置**：在已存在同名筆記的情況下，將選中的對話內容匯出新增到該筆記的開頭
 * **追加**：在已存在同名筆記的情況下，將選中的對話內容匯出新增到該筆記的末尾
 

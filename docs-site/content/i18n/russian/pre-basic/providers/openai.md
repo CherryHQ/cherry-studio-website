@@ -1,13 +1,6 @@
 # OpenAI
 
 
-{% hint style="warning" %}
-Этот документ переведен с китайского языка с помощью ИИ и еще не был проверен.
-{% endhint %}
-
-
-
-
 ## Получение API Key
 
 * На официальной странице [API Key](https://platform.openai.com/api-keys) нажмите <mark style="background-color:green;">`+ Create new secret key`</mark>

@@ -4,13 +4,6 @@ icon: robot
 # Configuración de modelos predeterminados
 
 
-{% hint style="warning" %}
-Este documento ha sido traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 <a id="mo-ren-zhu-shou-mo-xing"></a>
 
 ## Modelo de asistente predeterminado

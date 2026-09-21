@@ -2,9 +2,6 @@
 icon: trash-xmark
 ---
 
-{% hint style="warning" %}
-このドキュメントはAIによって中国語から翻訳されており、まだレビューされていません。
-{% endhint %}
 
 # CSS設定のクリア
 

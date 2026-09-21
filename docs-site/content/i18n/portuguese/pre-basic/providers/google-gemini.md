@@ -1,13 +1,6 @@
 # Google Gemini
 
 
-{% hint style="warning" %}
-Este documento foi traduzido do chinês por IA e ainda não foi revisado.
-{% endhint %}
-
-
-
-
 ## Obter chave de API
 
 * Antes de obter a chave de API do Gemini, você precisa ter um projeto no Google Cloud (se já tiver, pule esta etapa)
@@ -15,7 +8,7 @@ Este documento foi traduzido do chinês por IA e ainda não foi revisado.
 
 <figure><img src="../../../../assets/27210003acacf618df874e98.webp" alt=""><figcaption></figcaption></figure>
 
-* Na [página oficial de chave de API](https://aistudio.google.com/app/apikey?hl=zh-cn), clique em `密钥 创建API密钥` (Chave > Criar chave de API)
+* Na [página oficial de chave de API](https://aistudio.google.com/app/apikey), clique em `Chaves → Criar chave de API`
 
 <figure><img src="../../../../assets/b49760732ce7ac30d5ef7c30.webp" alt=""><figcaption></figcaption></figure>
 

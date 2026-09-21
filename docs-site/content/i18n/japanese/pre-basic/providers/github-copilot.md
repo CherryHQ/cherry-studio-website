@@ -1,7 +1,4 @@
 
-{% hint style="warning" %}
-このドキュメントはAIによって中国語から翻訳されており、まだレビューされていません。
-{% endhint %}
 
 # GitHub Copilot
 
@@ -11,28 +8,28 @@ GitHub Copilotを使用するには、まずGitHubアカウントを持ち、Git
 
 「GitHubにログイン」をクリックし、Device Codeを取得してコピーします。
 
-<figure><img src="../../../../assets/c55a91f9cdc6b88106e1d281.webp" alt="Device Code取得の例"><figcaption><p>Device Codeの取得</p></figcaption></figure>
+<figure><img src="../../../../assets/c55a91f9cdc6b88106e1d281.webp" alt="GitHub Copilot — 説明画像"><figcaption><p>Device Codeの取得</p></figcaption></figure>
 
 ## ブラウザでDevice Codeを入力して認証
 
 Device Codeを取得したら、リンクをクリックしてブラウザを開きます。GitHubアカウントでログインし、Device Codeを入力して認証します。
 
-<figure><img src="../../../../assets/1bf59331d4a2754ff20e7379.webp" alt="GitHub認証の例"><figcaption><p>GitHub認証</p></figcaption></figure>
+<figure><img src="../../../../assets/1bf59331d4a2754ff20e7379.webp" alt="GitHub Copilot — 説明画像"><figcaption><p>GitHub認証</p></figcaption></figure>
 
 認証が成功したら、Cherry Studioに戻り「GitHubに接続」をクリックします。成功するとGitHubユーザー名とアバターが表示されます。
 
-<figure><img src="../../../../assets/dd64cd1857b5e69446d98398.webp" alt="GitHub接続成功の例"><figcaption><p>GitHub接続成功</p></figcaption></figure>
+<figure><img src="../../../../assets/dd64cd1857b5e69446d98398.webp" alt="GitHub Copilot — 説明画像"><figcaption><p>GitHub接続成功</p></figcaption></figure>
 
 ## 「管理」をクリックしてモデルリストを取得
 
 下部の「管理」ボタンをクリックすると、現在サポートされているモデルリストが自動的に取得されます。
 
-<figure><img src="../../../../assets/c0545b25325df32cd70fbad9.webp" alt="モデルリスト取得の例"><figcaption><p>モデルリストの取得</p></figcaption></figure>
+<figure><img src="../../../../assets/c0545b25325df32cd70fbad9.webp" alt="GitHub Copilot — 説明画像"><figcaption><p>モデルリストの取得</p></figcaption></figure>
 
 ## よくある質問
 
 ### Device Codeの取得に失敗しました。再試行してください
 
-<figure><img src="../../../../assets/1fc3819d4c2caff7331c82bb.webp" alt="Device Code取得失敗の例"><figcaption><p>Device Code取得失敗</p></figcaption></figure>
+<figure><img src="../../../../assets/1fc3819d4c2caff7331c82bb.webp" alt="GitHub Copilot — 説明画像"><figcaption><p>Device Code取得失敗</p></figcaption></figure>
 
 現在のリクエストはAxiosで構築されていますが、Axiosはsocksプロキシをサポートしていません。システムプロキシまたはHTTPプロキシを使用するか、CherryStudioでプロキシを設定せずにグローバルプロキシを使用してください。まずネットワーク接続が正常であることを確認し、Device Codeの取得失敗を防いでください。

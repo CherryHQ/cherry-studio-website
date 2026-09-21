@@ -9,8 +9,6 @@ icon: download
 {% endhint %}
 
 
-
-
 {% hint style="info" %}
 當前最新正式版：v1.6.7
 {% endhint %}

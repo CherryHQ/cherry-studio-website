@@ -4,13 +4,6 @@ icon: map
 # Tutorial de Configuración de SiYuan Note
 
 
-{% hint style="warning" %}
-Este documento ha sido traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 Permite exportar temas y mensajes a SiYuan Note.
 
 ## Primer paso

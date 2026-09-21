@@ -1,13 +1,6 @@
 # CherryIN
 
 
-{% hint style="warning" %}
-Este documento ha sido traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 1. Haga clic en 'Haga clic aquí para obtener la clave' del proveedor de servicios CherryIN
 
 <figure><img src="../../../../assets/a224e8a38aa9bdffdf1a5263.webp" alt=""><figcaption></figcaption></figure>

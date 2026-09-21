@@ -1,13 +1,6 @@
 # Установка среды MCP
 
 
-{% hint style="warning" %}
-Этот документ переведен с китайского языка с помощью ИИ и еще не был проверен.
-{% endhint %}
-
-
-
-
 **MCP (Model Context Protocol)** — это открытый протокол, предназначенный для стандартизированной передачи контекстной информации большим языковым моделям (LLM). Подробнее о MCP см. в разделе [#shen-me-shi-mcpmodel-context-protocol](../../question-contact/knowledge.md#shen-me-shi-mcpmodel-context-protocol "mention")
 
 ## Использование MCP в Cherry Studio
@@ -26,7 +19,7 @@ Cherry Studio использует только встроенные [uv](https:
 
 **Каталоги установки исполняемых файлов:**
 
-Windows: `C:\Users\用户名\.cherrystudio\bin`
+Windows: `C:\Users\имя-пользователя\.cherrystudio\bin`
 
 macOS/Linux: `~/.cherrystudio/bin`
 

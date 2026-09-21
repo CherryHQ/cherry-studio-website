@@ -5,13 +5,6 @@ icon: code
 # Tutoriel d'utilisation de Code Tools
 
 
-{% hint style="warning" %}
-Ce document a été traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 La version Cherry Studio v1.5.7 introduit une fonctionnalité puissante et simple d'utilisation : Code Agent, permettant de démarrer et gérer directement divers agents de programmation IA. Ce tutoriel vous guidera à travers le processus complet de configuration et de démarrage.
 
 ***

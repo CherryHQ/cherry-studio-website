@@ -4,13 +4,6 @@ icon: square-n
 # Notion 設定チュートリアル
 
 
-{% hint style="warning" %}
-このドキュメントはAIによって中国語から翻訳されており、まだレビューされていません。
-{% endhint %}
-
-
-
-
 Cherry Studio はトピックを Notion のデータベースにインインポートする機能をサポートしています。
 
 ## ステップ 1

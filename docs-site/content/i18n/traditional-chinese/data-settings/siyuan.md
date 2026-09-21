@@ -28,7 +28,7 @@ icon: map
 
 將複製的筆記本ID填寫到 Cherry Studio 設定中
 
-<figure><img src="../../../assets/716b071bfad08d4a1da43518.webp" alt=""><figcaption><p>將筆記本ID填寫到資料設定中</p></figcaption></figure>
+<figure><img src="../../../assets/716b071bfad08d4a1da43518.webp" alt=""><figcaption><p>將筆記本ID填寫到資資設定中</p></figcaption></figure>
 
 ## 第四步
 
@@ -49,7 +49,7 @@ icon: map
 
 填入 Cherry Studio 設定中並進行檢查
 
-<figure><img src="../../../assets/f2404dad4a63a2ef4c33556f.webp" alt=""><figcaption><p>填寫資料庫 ID 並點擊檢查</p></figcaption></figure>
+<figure><img src="../../../assets/f2404dad4a63a2ef4c33556f.webp" alt=""><figcaption><p>填寫資資庫 ID 並點擊檢查</p></figcaption></figure>
 
 ## 第六步
 

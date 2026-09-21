@@ -1,13 +1,6 @@
 # CherryIN
 
 
-{% hint style="warning" %}
-Этот документ переведен с китайского языка с помощью ИИ и еще не был проверен.
-{% endhint %}
-
-
-
-
 1. Нажмите на «Нажмите здесь, чтобы получить ключ» у поставщика CherryIN
 
 <figure><img src="../../../../assets/a224e8a38aa9bdffdf1a5263.webp" alt=""><figcaption></figcaption></figure>

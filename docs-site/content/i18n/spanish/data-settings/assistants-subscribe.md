@@ -4,13 +4,6 @@ icon: rss
 # Configuración de suscripción de asistentes
 
 
-{% hint style="warning" %}
-Este documento ha sido traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 Al modificar el enlace de suscripción de los asistentes, puedes cambiar rápidamente entre las plantillas de asistentes en la biblioteca de asistentes.
 
 <figure><img src="../../../assets/7fa3a642f5827cf403232103.webp" alt=""><figcaption></figcaption></figure>

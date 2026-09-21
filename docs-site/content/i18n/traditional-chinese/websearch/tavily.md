@@ -1,5 +1,4 @@
 ---
-description: 如何注册tavily？
 icon: binary-lock
 ---
 # tavily 連網登錄註冊教學
@@ -8,8 +7,6 @@ icon: binary-lock
 {% hint style="warning" %}
 此文件由 AI 從中文翻譯而來，尚未經過審閱。
 {% endhint %}
-
-
 
 
 ### 一、tavily 官網

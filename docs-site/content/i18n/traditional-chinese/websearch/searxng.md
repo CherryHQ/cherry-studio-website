@@ -9,8 +9,6 @@ icon: searchengin
 {% endhint %}
 
 
-
-
 CherryStudio 支援透過 SearXNG 進行網絡搜索，SearXNG 是一個可本地部署也可在伺服器上部署的開源項目，所以與其他需要 API 提供商的配置方式略有不同。
 
 **SearXNG 項目連結**：[SearXNG](https://github.com/searxng/searxng)
@@ -278,11 +276,11 @@ SearXNG 本地或在伺服器部署成功後，接下來是 CherryStudio 的相�
 
 因為直接部署後默認並沒有配置 json 返回類型，所以無法獲取數據，需要修改配置文件。
 
-回到 Docker，來到 Files 標籤頁找到鏡像中找到帶標籤的資料夾：
+回到 Docker，來到 Files 標籤頁找到鏡像中找到帶標籤的資資夾：
 
 <figure><img src="../../../assets/c60179784ede7bfc8e494149.png" alt=""><figcaption></figcaption></figure>
 
-展開後繼續往下翻，會發現另一個帶標籤的資料夾：
+展開後繼續往下翻，會發現另一個帶標籤的資資夾：
 
 <figure><img src="../../../assets/1f1f1979eff7079b81e44712.webp" alt=""><figcaption></figcaption></figure>
 

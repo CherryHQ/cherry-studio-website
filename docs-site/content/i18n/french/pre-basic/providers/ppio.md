@@ -1,7 +1,4 @@
 
-{% hint style="warning" %}
-Ce document a été traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
 
 # PPIO 派欧云
 
@@ -31,7 +28,7 @@ Cliquez sur le bouton 【+ Créer】 pour générer une nouvelle clé API. Attri
 
 <figure><img src="../../../../assets/95f4e62d8026e301ff42021c.webp" alt=""><figcaption></figcaption></figure>
 
-(3) Dans CherryStudio, collez la clé Cliquez sur les paramètres, sélectionnez 【PPIO 派欧云】, saisissez la clé API générée sur le site, puis cliquez sur 【Vérifier】
+(3) Dans Cherry Studio, ouvrez les paramètres, sélectionnez 【PPIO】, saisissez la clé API générée sur le site, puis cliquez sur 【Vérifier】.
 
 <figure><img src="../../../../assets/cb4f98d1154ea8119e650bd2.webp" alt=""><figcaption></figcaption></figure>
 

@@ -4,13 +4,6 @@ icon: ban
 # Configuration de la liste noire pour la recherche web
 
 
-{% hint style="warning" %}
-Ce document a été traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 Cherry Studio prend en charge deux méthodes de configuration de la liste noire : manuelle et via des flux d'abonnement. Les règles de configuration font référence à [ublacklist](https://github.com/iorate/ublacklist).
 
 ## Configuration manuelle

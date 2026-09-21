@@ -6,8 +6,6 @@
 {% endhint %}
 
 
-
-
 > 使用 ModelScope MCP 伺服器需將 Cherry Studio 升級至 v1.2.9 或更高版本。
 
 在 v1.2.9 版本中，Cherry Studio 與 ModelScope 魔搭達成官方合作，大幅簡化了 MCP 伺服器添加步驟，避免配置錯誤，並可探索 ModelScope 社群的海量 MCP 伺服器。以下將逐步說明如何在 Cherry Studio 同步 ModelScope 的 MCP 伺服器。

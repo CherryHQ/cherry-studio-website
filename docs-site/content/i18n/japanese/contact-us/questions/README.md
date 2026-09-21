@@ -4,13 +4,6 @@ icon: address-card
 # ビジネス提携
 
 
-{% hint style="warning" %}
-このドキュメントはAIによって中国語から翻訳されており、まだレビューされていません。
-{% endhint %}
-
-
-
-
 連絡先：ホー様  
 📮：yinsenho@cherry-ai.com  
 📱：18954281942 (カスタマーサービス電話ではない)

@@ -9,8 +9,6 @@ icon: language
 {% endhint %}
 
 
-
-
 Cherry Studio 的翻譯功能為您提供快速、準確的文字翻譯服務，支援多種語言之間的互譯。
 
 ### 介面概覽

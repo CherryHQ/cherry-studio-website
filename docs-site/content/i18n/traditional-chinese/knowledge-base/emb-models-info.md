@@ -22,7 +22,7 @@ icon: square-info
 | Doubao-embedding-vision | 8191      |
 | Doubao-embedding-large  | 4095      |
 
-### 阿里
+### 阿裡
 
 [官方模型資訊參考地址](https://help.aliyun.com/zh/model-studio/user-guide/embedding?spm=a2c4g.11186623.0.i1)
 

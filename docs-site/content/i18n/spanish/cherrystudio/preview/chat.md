@@ -4,13 +4,6 @@ icon: message
 # Interfaz de Conversación
 
 
-{% hint style="warning" %}
-Este documento ha sido traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 ## Asistentes y Temas
 
 ### Asistente

@@ -33,7 +33,7 @@
 
 * 在 [模型列表文件](https://www.volcengine.com/docs/82379/1330310#%E6%96%87%E6%9C%AC%E7%94%9F%E6%88%90) 中，找到所需模型對應的 模型ID
 
-<figure><img src="../../../../assets/cba9e28d82aef11147fc01c6.webp" alt="火山引擎模型ID列表示例"><figcaption></figcaption></figure>
+<figure><img src="../../../../assets/cba9e28d82aef11147fc01c6.webp" alt="字節跳動(豆包) — 說明圖片"><figcaption></figcaption></figure>
 
 * 開啟 Cherry Studio 的 [模型服務](../../cherrystudio/preview/settings/providers.md) 設定找到火山引擎
 * 點擊新增，將取得的 模型ID 複製至 模型ID 文字輸入框

@@ -4,13 +4,6 @@ icon: database
 # Paramètres des données
 
 
-{% hint style="warning" %}
-Ce document a été traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 Cette interface permet d'effectuer des opérations de sauvegarde et de récupération locales et cloud des données, de consulter le répertoire de données local, d'effacer le cache, de configurer l'exportation, et de gérer les connexions tierces.
 
 ### Sauvegarde des données

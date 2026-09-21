@@ -9,8 +9,6 @@ icon: cloud-arrow-up
 {% endhint %}
 
 
-
-
 Cherry Studio 數據備份支援透過 WebDAV 的方式進行備份。您可以選擇合適的 WebDAV 服務來進行雲端備份。
 
 基於 WebDAV 可以通過 `A電腦`  → (備份) →  `WebDAV`  → (恢復) →  `B電腦` 的方式來實現多端數據同步。
@@ -50,10 +48,10 @@ WebDAV 服務門檻較低的一般就是網盤：
 
 - [堅果雲](https://www.jianguoyun.com/)
 - [123 盤](https://www.123pan.com/)（需要會員）
-- [阿里雲盤](https://www.alipan.com/)（需要購買）
+- [阿裡雲盤](https://www.alipan.com/)（需要購買）
 - [Box](https://www.box.com/) (免費空間容量為 10GB，單個檔案大小限制為 250MB。)
 - [Dropbox](https://www.dropbox.com/) （Dropbox 免費 2GB，可以邀請好友擴容 16GB。）
-- [TeraCloud](https://teracloud.jp/en/) （免費空間為 10GB，另外一個透過邀請可以獲得 5GB 额外空間。）
+- [TeraCloud](https://teracloud.jp/en/) （免費空間為 10GB，另外一個透過邀請可以獲得 5GB 額外空間。）
 - [Yandex Disk](https://disk.yandex.com/) (免費使用者提供 10GB 容量。)
 
 其次是一些需要自己部署服務：

@@ -2,9 +2,6 @@
 icon: book-bookmark
 ---
 
-{% hint style="warning" %}
-Este documento foi traduzido do chinês por IA e ainda não foi revisado.
-{% endhint %}
 
 # Conhecimento Científico Popular
 
@@ -14,7 +11,7 @@ Tokens são as unidades básicas de processamento de texto em modelos de IA, pod
 
 #### 1. Segmentação de Texto em Chinês
 * Um caractere chinês geralmente é codificado como 1-2 tokens
-* Exemplo: `"你好"` ≈ 2-4 tokens
+* Exemplo: `"Olá"` ≈ 2-4 tokens
 
 #### 2. Segmentação de Texto em Inglês
 * Palavras comuns geralmente são 1 token

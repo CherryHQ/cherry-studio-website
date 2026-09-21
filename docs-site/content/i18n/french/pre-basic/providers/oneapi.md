@@ -1,13 +1,6 @@
 # OneAPI
 
 
-{% hint style="warning" %}
-Ce document a été traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 * Connectez-vous et accédez à la page des jetons
 
 <figure><img src="../../../../assets/68288a2c3a095035189e8d25.webp" alt=""><figcaption></figcaption></figure>

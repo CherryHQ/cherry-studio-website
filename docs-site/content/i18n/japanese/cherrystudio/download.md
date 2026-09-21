@@ -4,13 +4,6 @@ icon: download
 # クライアントのダウンロード
 
 
-{% hint style="warning" %}
-このドキュメントはAIによって中国語から翻訳されており、まだレビューされていません。
-{% endhint %}
-
-
-
-
 {% hint style="info" %}
 現在の最新安定版：v1.6.7
 {% endhint %}

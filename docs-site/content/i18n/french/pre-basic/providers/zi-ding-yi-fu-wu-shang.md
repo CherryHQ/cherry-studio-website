@@ -1,13 +1,6 @@
 # Fournisseurs Personnalisés
 
 
-{% hint style="warning" %}
-Ce document a été traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 Cherry Studio intègre non seulement les principaux services de modèles IA, mais vous offre également une puissante capacité de personnalisation. Grâce à la fonctionnalité **Fournisseurs IA personnalisés**, vous pouvez facilement connecter n'importe quel modèle IA dont vous avez besoin.
 
 ## Pourquoi utiliser des fournisseurs IA personnalisés ?

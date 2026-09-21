@@ -4,13 +4,6 @@ icon: face-viewfinder
 # Pré-processamento de Documentos da Base de Conhecimento
 
 
-{% hint style="warning" %}
-Este documento foi traduzido do chinês por IA e ainda não foi revisado.
-{% endhint %}
-
-
-
-
 O pré-processamento de documentos da base de conhecimento requer a atualização do Cherry Studio para a versão v1.4.8 ou superior.
 
 ### Configurar o Provedor de OCR

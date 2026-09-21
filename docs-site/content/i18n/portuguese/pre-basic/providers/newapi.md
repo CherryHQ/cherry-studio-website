@@ -1,13 +1,6 @@
 # NovaAPI
 
 
-{% hint style="warning" %}
-Este documento foi traduzido do chinês por IA e ainda não foi revisado.
-{% endhint %}
-
-
-
-
 *   Faça login e abra a página de tokens
 *   Clique em Adicionar token
 

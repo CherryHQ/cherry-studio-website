@@ -1,15 +1,7 @@
 ---
-description: 如何在 Cherry Studio 使用联网模式
 icon: globe
 ---
 # Режим работы в сети
-
-
-{% hint style="warning" %}
-Этот документ переведен с китайского языка с помощью ИИ и еще не был проверен.
-{% endhint %}
-
-
 
 
 {% hint style="info" %}

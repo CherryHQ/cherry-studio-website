@@ -1,7 +1,4 @@
 
-{% hint style="warning" %}
-Este documento foi traduzido do chinês por IA e ainda não foi revisado.
-{% endhint %}
 
 # Instalação Automática do MCP
 
@@ -24,7 +21,7 @@ Além da instalação manual, o Cherry Studio possui integrado a ferramenta `@mc
 Por exemplo, você pode inserir:
 
 ```
-帮我安装一个 filesystem mcp server
+Instale um servidor MCP filesystem
 ```
 
 <figure><img src="../../../../assets/5685b4df634ce358e1061fd4.webp" alt=""><figcaption><p>Inserir comando para instalar o servidor MCP</p></figcaption></figure>

@@ -4,13 +4,6 @@ icon: database
 # Instrucciones de almacenamiento de datos
 
 
-{% hint style="warning" %}
-Este documento ha sido traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 Los datos añadidos a la base de conocimientos de Cherry Studio se almacenan completamente en local. Durante el proceso de adición, se copia un documento en el directorio de almacenamiento de datos de Cherry Studio.
 
 <figure><img src="../../../assets/d8df21aaa423054104d3cbf2.webp" alt=""><figcaption><p>Diagrama de flujo de procesamiento de la base de conocimientos</p></figcaption></figure>

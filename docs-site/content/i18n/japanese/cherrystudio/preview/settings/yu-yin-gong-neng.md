@@ -6,13 +6,6 @@ icon: phone-arrow-up-right
 
 
 {% hint style="warning" %}
-このドキュメントはAIによって中国語から翻訳されており、まだレビューされていません。
-{% endhint %}
-
-
-
-
-{% hint style="warning" %}
 この機能は、関連する開発者がPRのメンテナンスを継続しなかったため一時停止されています。
 {% endhint %}
 

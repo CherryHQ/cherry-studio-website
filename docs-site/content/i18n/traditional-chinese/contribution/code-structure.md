@@ -26,7 +26,7 @@ icon: code
             ├─components/ #組件
             ├─config/ #設定檔案
             ├─context/ #上下文
-            ├─databases/ #資料庫相關檔案
+            ├─databases/ #資資庫相關檔案
             ├─hooks/ #自訂Hooks
             ├─i18n/ #國際化檔案
             ├─pages/ #頁面檔案

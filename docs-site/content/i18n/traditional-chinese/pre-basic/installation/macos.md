@@ -1,6 +1,5 @@
 ---
 icon: apple
-description: macOS 版本安装教程
 ---
 
 {% hint style="warning" %}

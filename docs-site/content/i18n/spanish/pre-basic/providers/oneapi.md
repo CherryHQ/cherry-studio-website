@@ -1,13 +1,6 @@
 # OneAPI
 
 
-{% hint style="warning" %}
-Este documento ha sido traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 * Inicie sesión y vaya a la página de tokens
 
 <figure><img src="../../../../assets/68288a2c3a095035189e8d25.webp" alt=""><figcaption></figcaption></figure>

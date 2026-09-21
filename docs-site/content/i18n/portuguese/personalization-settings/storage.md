@@ -2,9 +2,6 @@
 icon: floppy-disk
 ---
 
-{% hint style="warning" %}
-Este documento foi traduzido do chinês por IA e ainda não foi revisado.
-{% endhint %}
 
 # Local de Armazenamento Padrão
 
@@ -16,7 +13,6 @@ O armazenamento de dados do Cherry Studio segue as normas do sistema, onde os da
 
 Esta localização também pode ser verificada em:  
 <figure><img src="../../../assets/de67a03f792a05e306f1b382.webp" alt=""><figcaption></figcaption></figure>
-
 
 
 # Modificar o Local de Armazenamento (Referência)

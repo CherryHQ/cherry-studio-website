@@ -1,13 +1,6 @@
 # MCPの設定と使用
 
 
-{% hint style="warning" %}
-このドキュメントはAIによって中国語から翻訳されており、まだレビューされていません。
-{% endhint %}
-
-
-
-
 <figure><img src="../../../../assets/7529abac38faff7ba6c35df7.webp" alt=""><figcaption></figcaption></figure>
 
 1. Cherry Studioの設定を開きます。

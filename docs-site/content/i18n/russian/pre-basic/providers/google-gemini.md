@@ -1,7 +1,4 @@
 
-{% hint style="warning" %}
-Этот документ переведен с китайского языка с помощью ИИ и еще не был проверен.
-{% endhint %}
 
 # Google Gemini
 
@@ -12,7 +9,7 @@
 
 <figure><img src="../../../../assets/27210003acacf618df874e98.webp" alt=""><figcaption></figcaption></figure>
 
-* На официальной [странице API-ключа](https://aistudio.google.com/app/apikey?hl=zh-cn) нажмите `密钥 创建API密钥` (Создать API-ключ)
+* На официальной [странице API-ключа](https://aistudio.google.com/app/apikey?hl=zh-cn) нажмите `Ключи → Создать API-ключ` (Создать API-ключ)
 
 <figure><img src="../../../../assets/b49760732ce7ac30d5ef7c30.webp" alt=""><figcaption></figcaption></figure>
 

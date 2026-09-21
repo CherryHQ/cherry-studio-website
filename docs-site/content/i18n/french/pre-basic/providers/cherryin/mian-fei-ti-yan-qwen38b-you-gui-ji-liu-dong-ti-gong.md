@@ -1,13 +1,6 @@
 # Essai gratuit | Qwen3-8B, proposé par Silicom Flow !
 
 
-{% hint style="warning" %}
-Ce document a été traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 **La plateforme de service MaaS renommée "Silicom Flow" offre gratuitement un service d'appel du modèle Qwen3-8B à tous**. Membre à haut rendement de la série Qwen3 de Tongyi Qianwen, Qwen3-8B allie performances puissantes et format compact, idéal pour les applications intelligentes et le développement efficace.
 
 ***

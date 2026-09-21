@@ -10,8 +10,6 @@ icon: phone-arrow-up-right
 {% endhint %}
 
 
-
-
 {% hint style="warning" %}
 此功能因相關開發者未繼續維護 PR 而暫停開發。  
 {% endhint %}  

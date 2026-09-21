@@ -10,7 +10,7 @@ icon: floppy-disk
 
 ## 預設儲存位置
 
-Cherry Studio 資料儲存遵循系統規範，資料會自動放置在使用者目錄下，具體目錄位置如下：
+Cherry Studio 資資儲存遵循系統規範，資資會自動放置在使用者目錄下，具體目錄位置如下：
 
 > macOS: /Users/username/Library/Application Support/CherryStudioDev
 
@@ -26,7 +26,7 @@ Cherry Studio 資料儲存遵循系統規範，資料會自動放置在使用者
 
 方法一：
 
-可以透過建立軟連結的方式實現。先退出軟體，將資料移動到您希望儲存的位置，然後在原位置建立一個指向新位置的連結即可。
+可以透過建立軟連結的方式實現。先退出軟體，將資資移動到您希望儲存的位置，然後在原位置建立一個指向新位置的連結即可。
 
 具體操作步驟請參考：[https://github.com/CherryHQ/cherry-studio/issues/621#issuecomment-2588652880](https://github.com/CherryHQ/cherry-studio/issues/621#issuecomment-2588652880)
 
@@ -61,7 +61,7 @@ d-----         2025/4/18     14:05                user-data-dir
 set current_path_dir=%~dp0
 @echo 目前路徑:%current_path_dir%
 set user_data_dir=%current_path_dir%user-data-dir
-@echo CherryStudio 資料路徑:%user_data_dir%
+@echo CherryStudio 資資路徑:%user_data_dir%
 
 @echo 搜尋目前路徑下的 Cherry-Studio-*-portable.exe
 setlocal enabledelayedexpansion

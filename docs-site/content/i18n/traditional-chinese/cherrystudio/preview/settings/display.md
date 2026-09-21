@@ -9,8 +9,6 @@ icon: table-columns
 {% endhint %}
 
 
-
-
 在此頁面你可以設定軟體的顏色主題、頁面佈局或者 [自訂 CSS](../../../personalization-settings/css.md) 來進行一些個人化的設定。
 
 ### 主題選擇

@@ -4,13 +4,6 @@ icon: seal-question
 # Foire Aux Questions (FAQ)
 
 
-{% hint style="warning" %}
-Ce document a été traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 ## Codes d'erreur courants
 
 * **4xx (codes d'état d'erreur client)** : Généralement des erreurs de syntaxe de requête, d'échec d'authentification ou d'autorisation empêchant la complétion de la requête.

@@ -1,12 +1,6 @@
 # Guia de Integração da Plataforma ModelScope
 
 
-{% hint style="warning" %}
-Este documento foi traduzido do chinês por IA e ainda não foi revisado.
-{% endhint %}
-
-
-
 ## O que é o ModelScope?
 > O ModelScope é uma nova geração de plataforma de compartilhamento de modelo como serviço (MaaS) de código aberto, dedicada a fornecer soluções **flexíveis, fáceis de usar e de baixo custo** para desenvolvedores de IA, tornando a aplicação de modelos mais simples!
 >

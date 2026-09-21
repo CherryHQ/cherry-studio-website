@@ -1,13 +1,6 @@
 # Experimente Gratuitamente | Qwen3-8B, oferecido pela Silicon Flow!
 
 
-{% hint style="warning" %}
-Este documento foi traduzido do chinês por IA e ainda não foi revisado.
-{% endhint %}
-
-
-
-
 **A conhecida plataforma de serviço MaaS "Silicon Flow" fornece gratuitamente acesso ao modelo Qwen3-8B**. Como um membro altamente rentável da série Qwen3 do Tongyi Qianwen, o Qwen3-8B combina potência com tamanho compacto, sendo a escolha ideal para aplicações inteligentes e desenvolvimento eficiente.
 
 ***

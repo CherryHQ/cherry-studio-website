@@ -4,13 +4,6 @@ icon: robot
 # Tutorial de uso de Cherry Agent
 
 
-{% hint style="warning" %}
-Este documento ha sido traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 Cherry Studio versión v1.7.0.alpha introduce Agent, permitiendo el uso de Claude Code en Cherry Studio. Este tutorial le guiará a través del proceso completo de configuración e inicio.
 
 ### 1. Crear un proveedor de tipo Anthropic

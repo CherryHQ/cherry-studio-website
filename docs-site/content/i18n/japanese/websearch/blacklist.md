@@ -4,18 +4,6 @@ icon: ban
 # ウェブ検索ブラックリスト設定
 
 
-{% hint style="warning" %}
-このドキュメントはAIによって中国語から翻訳されており、まだレビューされていません。
-{% endhint %}
-
-
-
-
-{% hint style="warning" %}
-**注意:** このドキュメントはAIによる中国語からの翻訳であり、現在レビュー待ち状態です。  
-ドキュメントをひとつずつ確認し、翻訳の適切性を検証するよう努めます。
-{% endhint %}
-
 Cherry Studioでは、手動登録とソース購読の2通りの方法でブラックリストを設定できます。設定ルールは[ublacklist](https://github.com/iorate/ublacklist)を参照してください。
 
 ## 手動設定

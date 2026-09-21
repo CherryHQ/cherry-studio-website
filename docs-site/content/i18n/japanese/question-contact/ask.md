@@ -4,9 +4,6 @@ icon: messages-question
 
 # 効果的な質問方法
 
-{% hint style="warning" %}
-このドキュメントはAIによって中国語から翻訳されており、まだレビューされていません。
-{% endhint %}
 
 ## 効率的な質問方法
 

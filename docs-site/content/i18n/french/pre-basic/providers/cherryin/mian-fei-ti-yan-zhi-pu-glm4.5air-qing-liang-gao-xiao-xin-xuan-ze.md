@@ -1,13 +1,6 @@
 # Free Trial | ZHIPU GLM-4.5-Air, Nouveau Choix Léger et Efficace !
 
 
-{% hint style="warning" %}
-Ce document a été traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 Pour permettre à chaque développeur et utilisateur d'expérimenter facilement les capacités des modèles de pointe, **ZHIPU ouvre gratuitement le modèle GLM-4.5-Air aux utilisateurs de Cherry Studio**. Conçu spécifiquement pour les applications d'agents intelligents, ce modèle fondamental efficace réalise un équilibre remarquable entre performance et coût, ce qui en fait le choix idéal pour construire des applications intelligentes.
 
 ***

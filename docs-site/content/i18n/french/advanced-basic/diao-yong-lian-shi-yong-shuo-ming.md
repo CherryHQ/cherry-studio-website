@@ -4,13 +4,6 @@ icon: route
 # Guide d'utilisation de la chaîne d'appel
 
 
-{% hint style="warning" %}
-Ce document a été traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 ## Fonctionnalités
 
 La chaîne d'appel (également appelée "trace") offre aux utilisateurs une capacité d'analyse des conversations, leur permettant d'observer les performances spécifiques des modèles, des bases de connaissances, du MCP, des recherches Internet et d'autres composants pendant le dialogue. Il s'agit d'un outil d'observabilité basé sur [OpenTelemetry](https://opentelemetry.io/docs/languages/js/) qui collecte, stocke et traite les données côté client pour une visualisation, fournissant une base d'évaluation quantitative pour localiser les problèmes et optimiser les performances.

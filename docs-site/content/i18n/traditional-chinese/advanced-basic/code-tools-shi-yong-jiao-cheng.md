@@ -10,8 +10,6 @@ icon: code
 {% endhint %}
 
 
-
-
 Cherry Studio v1.5.7 版本引入了操作簡單、強大的 Code Agent 功能，可以直接啟動和管理多種 AI 編程 agent。本教學將引導您完成設定和啟動的完整流程。
 
 ***

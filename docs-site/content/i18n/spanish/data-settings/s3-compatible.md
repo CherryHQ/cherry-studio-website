@@ -4,13 +4,6 @@ icon: cloud-binary
 # Almacenamiento compatible con S3 para copias de seguridad
 
 
-{% hint style="warning" %}
-Este documento ha sido traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 Cherry Studio admite copias de seguridad mediante almacenamiento compatible con S3 (almacenamiento de objetos). Los servicios comunes de almacenamiento compatible con S3 incluyen: AWS S3, Cloudflare R2, Alibaba Cloud OSS, Tencent Cloud COS y MinIO.
 
 Basado en almacenamiento compatible con S3, se puede implementar sincronización de datos entre múltiples dispositivos mediante el flujo: `Computadora A`  → (copia de seguridad) →  `Almacenamiento S3`  → (recuperación) →  `Computadora B`.

@@ -1,13 +1,6 @@
 # CherryIN
 
 
-{% hint style="warning" %}
-Ce document a été traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 1. Cliquez sur « Cliquez ici pour obtenir la clé » du fournisseur CherryIN
 
 <figure><img src="../../../../assets/a224e8a38aa9bdffdf1a5263.webp" alt=""><figcaption></figcaption></figure>

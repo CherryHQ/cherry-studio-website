@@ -1,13 +1,6 @@
 # OpenAI
 
 
-{% hint style="warning" %}
-このドキュメントはAIによって中国語から翻訳されており、まだレビューされていません。
-{% endhint %}
-
-
-
-
 ## APIキーの取得
 
 *   公式の[API Keyページ](https://platform.openai.com/api-keys)で<mark style="background-color:green;">`+ Create new secret key`</mark>をクリック

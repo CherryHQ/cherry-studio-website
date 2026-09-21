@@ -9,8 +9,6 @@ icon: robot
 {% endhint %}
 
 
-
-
 <a id="mo-ren-zhu-shou-mo-xing"></a>
 
 ## 預設助手模型

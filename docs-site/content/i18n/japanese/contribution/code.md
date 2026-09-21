@@ -2,9 +2,6 @@
 icon: square-code
 ---
 
-{% hint style="warning" %}
-このドキュメントはAIによって中国語から翻訳されており、まだレビューされていません。
-{% endhint %}
 
 # コード貢献
 

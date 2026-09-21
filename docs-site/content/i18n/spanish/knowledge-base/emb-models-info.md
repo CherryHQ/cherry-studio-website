@@ -4,13 +4,6 @@ icon: square-info
 # Referencia de Modelos de Embedding
 
 
-{% hint style="warning" %}
-Este documento ha sido traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 {% hint style="info" %}
 Para prevenir errores, en este documento algunos valores de max input no están escritos como valores límite. Por ejemplo: cuando el valor máximo de entrada oficial es 8k (sin especificar un valor exacto), este documento proporciona valores de referencia como 8191 u 8000. (Si no lo entiende, ignore y utilice los valores de referencia del documento)
 {% endhint %}

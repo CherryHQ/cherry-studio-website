@@ -9,8 +9,6 @@ icon: cloud-check
 {% endhint %}
 
 
-
-
 當前頁面僅做介面功能的介紹，配置教學可以參考基礎教學中的 [服務商配置](../../../pre-basic/providers/) 教學。
 
 {% hint style="info" %}

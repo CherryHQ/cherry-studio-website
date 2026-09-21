@@ -1,5 +1,4 @@
 ---
-description: Windows 版本安装教程
 icon: windows
 ---
 # Windows
@@ -8,8 +7,6 @@ icon: windows
 {% hint style="warning" %}
 此文件由 AI 從中文翻譯而來，尚未經過審閱。
 {% endhint %}
-
-
 
 
 ## 開啟官方網站

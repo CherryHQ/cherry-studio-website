@@ -9,8 +9,6 @@ icon: file-code
 {% endhint %}
 
 
-
-
 透過自訂 CSS 可以修改軟體的外觀使其更符合個人喜好，例如：
 
 <figure><img src="../../../assets/fa4c8c0a210819595ec02c3e.jpg" alt=""><figcaption><p>自訂 CSS</p></figcaption></figure>

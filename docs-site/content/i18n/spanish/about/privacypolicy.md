@@ -4,13 +4,6 @@ icon: user-shield
 # Política de Privacidad
 
 
-{% hint style="warning" %}
-Este documento ha sido traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 Bienvenido/a a Cherry Studio (en adelante, "este software" o "nosotros"). Valoramos profundamente la protección de su privacidad. Esta política de privacidad explica cómo manejamos y protegemos su información personal y datos. Por favor, lea y comprenda este acuerdo detenidamente antes de utilizar este software:
 
 ## I. Alcance de la información que recopilamos

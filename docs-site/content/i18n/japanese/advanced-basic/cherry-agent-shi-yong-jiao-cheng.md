@@ -4,13 +4,6 @@ icon: robot
 # Cherry Agent 操作ガイド
 
 
-{% hint style="warning" %}
-このドキュメントはAIによって中国語から翻訳されており、まだレビューされていません。
-{% endhint %}
-
-
-
-
 Cherry Studio v1.7.0.alpha バージョンでは Agent 機能が導入され、Cherry Studio 内で Claude Code を使用できるようになりました。本チュートリアルでは設定と起動の完全な手順を説明します。
 
 ### 1. Anthropic タイプのプロバイダーを作成する

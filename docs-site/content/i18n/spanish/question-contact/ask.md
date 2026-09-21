@@ -4,13 +4,6 @@ icon: messages-question
 # Métodos Eficientes para Hacer Preguntas
 
 
-{% hint style="warning" %}
-Este documento ha sido traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 Cherry Studio es un proyecto gratuito y de código abierto. A medida que el proyecto crece, la carga de trabajo del equipo también aumenta. Para reducir los costos de comunicación y resolver sus preguntas de manera rápida y eficiente, esperamos que antes de hacer una pregunta siga estos pasos y métodos para manejar los problemas encontrados. Esto permitirá al equipo dedicar más tiempo al mantenimiento y desarrollo del proyecto. ¡Gracias por su cooperación!
 
 ## I. Consulta y búsqueda de documentación

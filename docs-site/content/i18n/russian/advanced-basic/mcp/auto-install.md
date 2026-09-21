@@ -1,7 +1,4 @@
 
-{% hint style="warning" %}
-Этот документ переведен с китайского языка с помощью ИИ и еще не был проверен.
-{% endhint %}
 
 # Автоматическая установка MCP
 
@@ -24,7 +21,7 @@
 Например, введите команду:
 
 ```
-帮我安装一个 filesystem mcp server
+Установите для меня MCP-сервер filesystem
 ```
 
 <figure><img src="../../../../assets/5685b4df634ce358e1061fd4.webp" alt=""><figcaption><p>Ввод команды для установки сервера MCP</p></figcaption></figure>
@@ -60,7 +57,7 @@
     "--json"
   ],
   "env": {
-    "MCP_REGISTRY_PATH": "详情见https://www.npmjs.com/package/@mcpmarket/mcp-auto-install"
+    "MCP_REGISTRY_PATH": "https://www.npmjs.com/package/@mcpmarket/mcp-auto-install"
   },
   "disabledTools": []
 }

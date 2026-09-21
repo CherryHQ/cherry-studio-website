@@ -1,11 +1,7 @@
 ---
-description: 如何注册tavily？
 icon: binary-lock
 ---
 
-{% hint style="warning" %}
-Este documento foi traduzido do chinês por IA e ainda não foi revisado.
-{% endhint %}
 
 # Tutorial de Login, Registro e Conexão à Internet do Tavily
 

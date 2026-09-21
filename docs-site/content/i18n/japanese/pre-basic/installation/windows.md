@@ -1,15 +1,7 @@
 ---
-description: Windows 版本安装教程
 icon: windows
 ---
 # Windows
-
-
-{% hint style="warning" %}
-このドキュメントはAIによって中国語から翻訳されており、まだレビューされていません。
-{% endhint %}
-
-
 
 
 ## 公式サイトを開く

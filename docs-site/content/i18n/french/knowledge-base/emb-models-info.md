@@ -2,9 +2,6 @@
 icon: square-info
 ---
 
-{% hint style="warning" %}
-Ce document a été traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
 
 # Informations de référence sur les modèles d'incorporation
 

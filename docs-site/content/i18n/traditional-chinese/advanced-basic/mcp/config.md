@@ -6,8 +6,6 @@
 {% endhint %}
 
 
-
-
 <figure><img src="../../../../assets/7529abac38faff7ba6c35df7.webp" alt=""><figcaption></figcaption></figure>
 
 1.  開啟 Cherry Studio 設定。

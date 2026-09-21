@@ -1,15 +1,7 @@
 ---
 icon: apple
-description: macOS 版本安装教程
 ---
 # macOS
-
-
-{% hint style="warning" %}
-Ce document a été traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
 
 
 1. Tout d'abord, rendez-vous sur la page de téléchargement officielle et cliquez pour télécharger la version Mac, ou utilisez le lien direct ci-dessous  

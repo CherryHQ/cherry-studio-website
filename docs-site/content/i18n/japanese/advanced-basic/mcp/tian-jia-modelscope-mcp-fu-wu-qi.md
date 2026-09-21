@@ -1,13 +1,6 @@
 # ModelScope MCP サーバーの追加
 
 
-{% hint style="warning" %}
-このドキュメントはAIによって中国語から翻訳されており、まだレビューされていません。
-{% endhint %}
-
-
-
-
 > ModelScope MCP サーサーバーを利用するには、Cherry Studioをv1.2.9以上にアップグレードする必要があります。
 
 v1.2.9バージョンで、Cherry StudioはModelScope魔搭と正式に提携し、MCPサーバーの追加手順を大幅に簡素化しました。設定過程でのエラーを回避できるだけでなく、ModelScopeコミュニティで膨大なMCPサーサーバーを発見できます。次の操作手順に従って、Cherry StudioでModelScopeのMCPサーサーバーを同期する方法をご覧ください。

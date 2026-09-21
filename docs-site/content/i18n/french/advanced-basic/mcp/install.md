@@ -1,13 +1,6 @@
 # Installation de l'environnement MCP
 
 
-{% hint style="warning" %}
-Ce document a été traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 **MCP (Model Context Protocol)** est un protocole open-source conçu pour fournir des informations contextuelles aux grands modèles de langage (LLM) de manière standardisée. Pour plus d'informations sur MCP, consultez [#shen-me-shi-mcpmodel-context-protocol](../../question-contact/knowledge.md#shen-me-shi-mcpmodel-context-protocol "mention")
 
 ## Utilisation de MCP dans Cherry Studio

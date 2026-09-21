@@ -4,13 +4,6 @@ icon: square-n
 # Tutorial de Configuração do Notion
 
 
-{% hint style="warning" %}
-Este documento foi traduzido do chinês por IA e ainda não foi revisado.
-{% endhint %}
-
-
-
-
 O Cherry Studio suporta a importação de tópicos para o banco de dados do Notion.
 
 ## Passo 1

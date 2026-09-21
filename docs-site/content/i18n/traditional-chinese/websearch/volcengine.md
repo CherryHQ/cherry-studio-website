@@ -1,5 +1,4 @@
 ---
-description: cherry studio使用「火山引擎」接入deepseekR1联网功能，喂饭教程。
 hidden: True
 icon: globe-pointer
 ---

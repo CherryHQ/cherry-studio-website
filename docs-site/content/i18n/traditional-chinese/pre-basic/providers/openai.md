@@ -6,8 +6,6 @@
 {% endhint %}
 
 
-
-
 ## 取得APIKey
 
 *   在官方[API Key頁面](https://platform.openai.com/api-keys)點擊<mark style="background-color:green;">`+ Create new secret key`</mark>

@@ -1,13 +1,6 @@
 # GitHub Copilot
 
 
-{% hint style="warning" %}
-Этот документ переведен с китайского языка с помощью ИИ и еще не был проверен.
-{% endhint %}
-
-
-
-
 Для использования GitHub Copilot сначала необходимо иметь учетную запись GitHub и подписаться на сервис GitHub Copilot. Доступна бесплатная версия подписки (free), но она не поддерживает новейшую модель Claude 3.7. Подробности смотрите на [официальном сайте GitHub Copilot](https://github.com/features/copilot).
 
 ## Получение Device Code

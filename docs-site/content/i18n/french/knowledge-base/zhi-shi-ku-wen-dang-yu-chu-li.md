@@ -4,13 +4,6 @@ icon: face-viewfinder
 # Prétraitement des documents de la base de connaissances
 
 
-{% hint style="warning" %}
-Ce document a été traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 Le prétraitement des documents de la base de connaissances nécessite la mise à niveau de Cherry Studio vers la version v1.4.8 ou ultérieure.
 
 ### Configuration du fournisseur de services OCR

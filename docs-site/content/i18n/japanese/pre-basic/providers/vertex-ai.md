@@ -1,14 +1,6 @@
 ---
-description: 暂时不支持Claude模型
 ---
 # Vertex AI
-
-
-{% hint style="warning" %}
-このドキュメントはAIによって中国語から翻訳されており、まだレビューされていません。
-{% endhint %}
-
-
 
 
 ## チュートリアルの概要

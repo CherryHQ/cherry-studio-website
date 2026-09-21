@@ -2,9 +2,6 @@
 icon: hexagon-exclamation
 ---
 
-{% hint style="warning" %}
-このドキュメントはAIによって中国語から翻訳されており、まだレビューされていません。
-{% endhint %}
 
 # よくある質問
 

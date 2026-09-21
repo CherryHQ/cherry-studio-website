@@ -4,13 +4,6 @@ icon: table-columns
 # Paramètres d'affichage
 
 
-{% hint style="warning" %}
-Ce document a été traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 Sur cette page, vous pouvez configurer le thème de couleur du logiciel, la disposition des pages ou personnaliser l'apparence avec du [CSS personnalisé](../../../personalization-settings/css.md).
 
 ### Sélection du thème

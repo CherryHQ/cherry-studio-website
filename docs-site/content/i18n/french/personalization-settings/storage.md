@@ -4,9 +4,6 @@ icon: floppy-disk
 
 # Changer l'emplacement de stockage
 
-{% hint style="warning" %}
-Ce document a été traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
 
 ## Emplacement de stockage par défaut
 
@@ -42,7 +39,7 @@ Modifiez l'emplacement via les paramètres de lancement, en exploitant les carac
 PS D:\CherryStudio> dir
 
 
-    目录: D:\CherryStudio
+    Répertoire : D:\CherryStudio
 
 
 Mode                 LastWriteTime         Length Name
@@ -96,7 +93,7 @@ exit
 PS D:\CherryStudio> dir .\user-data-dir\
 
 
-    目录: D:\CherryStudio\user-data-dir
+    Répertoire : D:\CherryStudio\user-data-dir
 
 
 Mode                 LastWriteTime         Length Name

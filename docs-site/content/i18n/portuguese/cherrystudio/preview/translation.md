@@ -5,14 +5,6 @@ icon: language
 
 
 {% hint style="warning" %}
-Este documento foi traduzido do chinês por IA e ainda não foi revisado.
-{% endhint %}
-
-
-
-
-{% hint style="warning" %}
-Este documento foi traduzido do chinês por IA e ainda não foi revisado.
 Tentarei verificar documento por documento para garantir a precisão da tradução.
 {% endhint %}
 

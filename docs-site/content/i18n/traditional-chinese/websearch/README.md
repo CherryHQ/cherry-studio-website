@@ -1,5 +1,4 @@
 ---
-description: 如何在 Cherry Studio 使用联网模式
 icon: globe
 ---
 
@@ -47,7 +46,7 @@ icon: globe
 > * <mark style="color:green;">OpenRouter（全部模型支援連網）</mark>
 > * <mark style="color:green;">騰訊混元</mark>
 > * <mark style="color:green;">智譜AI</mark>
-> * <mark style="color:green;">阿里雲百煉等</mark>
+> * <mark style="color:green;">阿裡雲百煉等</mark>
 
 {% hint style="danger" %}
 特別注意：

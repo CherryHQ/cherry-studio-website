@@ -1,12 +1,8 @@
 ---
-description: cherry studio使用「火山引擎」接入deepseekR1联网功能，喂饭教程。
 hidden: True
 icon: globe-pointer
 ---
 
-{% hint style="warning" %}
-Este documento foi traduzido do chinês por IA e ainda não foi revisado.
-{% endhint %}
 
 # Integração do Volcano Engine com Acesso à Internet
 

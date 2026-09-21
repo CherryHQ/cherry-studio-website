@@ -4,13 +4,6 @@ icon: square-n
 # Tutoriel de configuration Notion
 
 
-{% hint style="warning" %}
-Ce document a été traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 Cherry Studio prend en charge l'importation de conversations dans les bases de données Notion.
 
 ## Étape 1

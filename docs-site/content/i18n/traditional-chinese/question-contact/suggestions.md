@@ -9,8 +9,6 @@ icon: file-signature
 {% endhint %}
 
 
-
-
 ## Telegram 討論組
 
 {% hint style="info" %}

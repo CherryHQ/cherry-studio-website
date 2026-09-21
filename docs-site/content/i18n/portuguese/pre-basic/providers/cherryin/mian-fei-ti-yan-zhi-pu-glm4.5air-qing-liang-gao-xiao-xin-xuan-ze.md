@@ -1,13 +1,6 @@
 # Experiência Gratuita | Zhipu GLM-4.5-Air, Nova Opção Leve e Eficiente!
 
 
-{% hint style="warning" %}
-Este documento foi traduzido do chinês por IA e ainda não foi revisado.
-{% endhint %}
-
-
-
-
 Para permitir que cada desenvolvedor e usuário experimente facilmente capacidades de modelos de linguagem de ponta, **a Zhipu disponibilizou gratuitamente o modelo GLM-4.5-Air para usuários do Cherry Studio**. Como um modelo básico eficiente projetado para aplicações de agentes inteligentes, o GLM-4.5-Air alcança um equilíbrio excepcional entre desempenho e custo, sendo a escolha ideal para construir aplicações inteligentes.
 
 ***

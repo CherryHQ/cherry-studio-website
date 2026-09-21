@@ -4,13 +4,6 @@ icon: download
 # Descarga del cliente
 
 
-{% hint style="warning" %}
-Este documento ha sido traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 {% hint style="info" %}
 Versión estable más reciente: v1.6.7
 {% endhint %}

@@ -4,13 +4,6 @@ icon: seal-question
 # Preguntas Frecuentes
 
 
-{% hint style="warning" %}
-Este documento ha sido traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 ## Códigos de Error Comunes
 
 * **4xx (Códigos de estado de error del cliente)**: Generalmente indican errores de sintaxis en la solicitud, fallos de autenticación o autorización que impiden completar la petición.

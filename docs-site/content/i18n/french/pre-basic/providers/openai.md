@@ -1,13 +1,6 @@
 # OpenAI
 
 
-{% hint style="warning" %}
-Ce document a été traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 ## Obtenir une clé API
 
 * Sur la page officielle des [Clés API](https://platform.openai.com/api-keys), cliquez sur <mark style="background-color:green;">`+ Create new secret key`</mark>

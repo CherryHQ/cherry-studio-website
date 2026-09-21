@@ -1,13 +1,6 @@
 # SiliconFlow
 
 
-{% hint style="warning" %}
-Ce document a été traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 ## 1. Configurer le service de modèles SiliconCloud <a href="#id-2-siliconcloud" id="id-2-siliconcloud"></a>
 
 #### [​](https://docs.siliconflow.cn/usercases/use-siliconcloud-in-cherry-studio#2-1)1.2 Cliquez sur les paramètres en bas à gauche et sélectionnez 【SiliconFlow】 dans le service de modèles <a href="#id-2-1" id="id-2-1"></a>

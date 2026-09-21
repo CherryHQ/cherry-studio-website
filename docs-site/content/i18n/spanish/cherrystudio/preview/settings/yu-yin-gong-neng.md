@@ -6,13 +6,6 @@ icon: phone-arrow-up-right
 
 
 {% hint style="warning" %}
-Este documento ha sido traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
-{% hint style="warning" %}
 Esta función está en pausa porque el desarrollador relevante no continuó manteniendo el PR.
 {% endhint %}
 

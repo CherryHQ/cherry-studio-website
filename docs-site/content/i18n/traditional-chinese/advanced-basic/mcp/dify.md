@@ -11,7 +11,7 @@
 
 <figure><img src="../../../../assets/fcb238d4dd2fdcb37412dc84.jpg" alt=""><figcaption></figcaption></figure>
 
-1. 開啟 `搜索MCP`。
+1. 開啟 `搜尋 MCP`。
 2. 新增 `dify-knowledge` 伺服器。
 
 ### 設定 Dify 知識庫

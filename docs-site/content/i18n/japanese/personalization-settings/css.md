@@ -4,13 +4,6 @@ icon: file-code
 # カスタムCSS
 
 
-{% hint style="warning" %}
-このドキュメントはAIによって中国語から翻訳されており、まだレビューされていません。
-{% endhint %}
-
-
-
-
 カスタム CSS を使用してソフトウェアの外観を変更し、自分の好みに合わせることができます。例：
 
 <figure><img src="../../../assets/fa4c8c0a210819595ec02c3e.jpg" alt=""><figcaption><p>カスタム CSS</p></figcaption></figure>

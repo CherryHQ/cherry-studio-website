@@ -1,12 +1,6 @@
 # Guía de acceso a la plataforma ModelScope (Módulo Mágico)
 
 
-{% hint style="warning" %}
-Este documento ha sido traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
 ## ¿Qué es ModelScope?
 > ModelScope es una nueva generación de plataforma compartida de modelos como servicio (MaaS) de código abierto, dedicada a proporcionar a los desarrolladores de IA una solución integral para servicios de modelos **flexible, fácil de usar y de bajo costo**, ¡haciendo que la aplicación de modelos sea más sencilla!
 >

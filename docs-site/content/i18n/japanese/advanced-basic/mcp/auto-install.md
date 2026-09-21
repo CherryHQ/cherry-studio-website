@@ -1,7 +1,4 @@
 
-{% hint style="warning" %}
-このドキュメントはAIによって中国語から翻訳されており、まだレビューされていません。
-{% endhint %}
 
 # MCPの自動インストール
 
@@ -24,7 +21,7 @@
 例えば、以下のように入力できます：
 
 ```
-帮我安装一个 filesystem mcp server
+filesystem MCP サーバーをインストールしてください
 ```
 
 <figure><img src="../../../../assets/5685b4df634ce358e1061fd4.webp" alt=""><figcaption><p>MCPサーバーインストールのためのコマンド入力</p></figcaption></figure>

@@ -2,9 +2,6 @@
 icon: book-bookmark
 ---
 
-{% hint style="warning" %}
-Ce document a été traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
 
 # Vulgarisation des connaissances
 
@@ -14,7 +11,7 @@ Les tokens sont l'unité fondamentale de traitement du texte par les modèles d'
 
 #### 1. Segmentation du chinois
 * Un caractère chinois est généralement encodé en 1-2 tokens
-* Par exemple : `"你好"` ≈ 2-4 tokens
+* Par exemple : `"Bonjour"` ≈ 2-4 tokens
 
 #### 2. Segmentation de l'anglais
 * Les mots courants représentent généralement 1 token

@@ -1,11 +1,7 @@
 ---
-description: 数据设置→Obsidian配置
 icon: gem
 ---
 
-{% hint style="warning" %}
-このドキュメントはAIによって中国語から翻訳されており、まだレビューされていません。
-{% endhint %}
 
 # Obsidian 設定チュートリアル
 
@@ -77,7 +73,6 @@ Cherry Studioの会話インターフェースに戻り、会話を右クリッ�
 <figure><img src="../../../assets/6fce517b2e745598598db14c.webp" alt=""><figcaption><p>Obsidianにエクスポート</p></figcaption></figure>
 
 <figure><img src="../../../assets/0ea57dab41aa40f6e0298917.webp" alt=""><figcaption><p>エクスポート結果を表示</p></figcaption></figure>
-
 
 
 ***

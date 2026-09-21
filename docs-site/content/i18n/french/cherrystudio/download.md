@@ -4,13 +4,6 @@ icon: download
 # Téléchargement du client
 
 
-{% hint style="warning" %}
-Ce document a été traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 {% hint style="info" %}
 Version officielle la plus récente : v1.6.7
 {% endhint %}

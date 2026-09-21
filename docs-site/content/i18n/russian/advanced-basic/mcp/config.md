@@ -1,13 +1,6 @@
 # Настройка и использование MCP
 
 
-{% hint style="warning" %}
-Этот документ переведен с китайского языка с помощью ИИ и еще не был проверен.
-{% endhint %}
-
-
-
-
 <figure><img src="../../../../assets/7529abac38faff7ba6c35df7.webp" alt=""><figcaption></figcaption></figure>
 
 1. Откройте настройки Cherry Studio.

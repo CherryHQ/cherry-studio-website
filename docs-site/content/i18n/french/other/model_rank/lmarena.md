@@ -1,13 +1,6 @@
 # LLM Arena Classement (Mise à jour en temps réel)
 
 
-{% hint style="warning" %}
-Ce document a été traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 Ceci est un classement basé sur les données de Chatbot Arena (lmarena.ai), généré via un processus automatisé.
 
 > **Heure de mise à jour des données** : 2025-11-25 08:08:40 UTC / 2025-11-25 16:08:40 CST (heure de Pékin)

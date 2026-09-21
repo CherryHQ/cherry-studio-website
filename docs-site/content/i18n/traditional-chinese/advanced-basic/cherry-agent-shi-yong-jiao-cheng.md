@@ -9,8 +9,6 @@ icon: robot
 {% endhint %}
 
 
-
-
 Cherry Studio v1.7.0.alpha版本引入了Agent，可以在Cherry Studio中使用Claude Code。本教程將引導您完成設置和啟動的完整流程。
 
 ### 1. 創建Anthropic類型的供應商

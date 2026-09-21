@@ -4,13 +4,6 @@ icon: database
 # Configurações de Dados
 
 
-{% hint style="warning" %}
-Este documento foi traduzido do chinês por IA e ainda não foi revisado.
-{% endhint %}
-
-
-
-
 Esta interface permite realizar operações como backup e restauração local/nuvem de dados, consulta do diretório de dados local e limpeza de cache, configurações de exportação e conexões de terceiros.
 
 ### Backup de Dados

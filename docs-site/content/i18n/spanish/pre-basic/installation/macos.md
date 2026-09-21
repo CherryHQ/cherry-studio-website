@@ -1,11 +1,7 @@
 ---
 icon: apple
-description: macOS 版本安装教程
 ---
 
-{% hint style="warning" %}
-Este documento ha sido traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
 
 # macOS
 

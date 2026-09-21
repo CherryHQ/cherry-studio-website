@@ -1,13 +1,6 @@
 # CherryIN
 
 
-{% hint style="warning" %}
-このドキュメントはAIによって中国語から翻訳されており、まだレビューされていません。
-{% endhint %}
-
-
-
-
 1. CherryIN サービスプロバイダーの「ここをクリックしてキーを取得」というボタンをクリックします。
 
 <figure><img src="../../../../assets/a224e8a38aa9bdffdf1a5263.webp" alt=""><figcaption></figcaption></figure>

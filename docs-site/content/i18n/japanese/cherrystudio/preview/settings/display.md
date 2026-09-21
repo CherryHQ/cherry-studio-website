@@ -4,13 +4,6 @@ icon: table-columns
 # 表示設定
 
 
-{% hint style="warning" %}
-このドキュメントはAIによって中国語から翻訳されており、まだレビューされていません。
-{% endhint %}
-
-
-
-
 このページでは、ソフトウェアのカラーテーマやページレイアウトを設定したり、[カスタム CSS](../../../personalization-settings/css.md) を使って個人的な設定を行うことができます。
 
 ### テーマ選択

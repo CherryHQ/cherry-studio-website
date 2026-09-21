@@ -1,7 +1,4 @@
 
-{% hint style="warning" %}
-Ce document a été traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
 
 # Installation automatique du MCP
 
@@ -24,7 +21,7 @@ En complément de l'installation manuelle, Cherry Studio intègre l'outil `@mcpm
 Par exemple, saisissez :
 
 ```
-帮我安装一个 filesystem mcp server
+Installez un serveur MCP filesystem pour moi
 ```
 
 <figure><img src="../../../../assets/5685b4df634ce358e1061fd4.webp" alt=""><figcaption><p>Saisir la commande pour installer le serveur MCP</p></figcaption></figure>

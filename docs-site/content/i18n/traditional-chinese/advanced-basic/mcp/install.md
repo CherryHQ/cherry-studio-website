@@ -6,8 +6,6 @@
 {% endhint %}
 
 
-
-
 **MCP(Model Context Protocol)** 是一種開源協定，旨在以標準化的方式向大型語言模型（LLM）提供上下文資訊。更多關於 MCP 的介紹請見 [#shen-me-shi-mcpmodel-context-protocol](../../question-contact/knowledge.md#shen-me-shi-mcpmodel-context-protocol "mention")
 
 ## 在 Cherry Studio 中使用 MCP
@@ -20,7 +18,7 @@
 Cherry Studio 目前僅使用內建的 [uv](https://github.com/astral-sh/uv) 和 [bun](https://github.com/oven-sh/bun)，**不會複用**系統中已安裝的 uv 和 bun。
 {% endhint %}
 
-在 `設定 - MCP 伺服器` 中，點擊 `安裝` 按鈕，即可自動下載並安裝。由於是直接從 GitHub 下載，速度可能較慢，且失敗機率較高。安裝成功與否，以下文提到的資料夾內是否有檔案為準。
+在 `設定 - MCP 伺服器` 中，點擊 `安裝` 按鈕，即可自動下載並安裝。由於是直接從 GitHub 下載，速度可能較慢，且失敗機率較高。安裝成功與否，以下文提到的資資夾內是否有檔案為準。
 
 <figure><img src="../../../../assets/bba7a0774dab8b72e8414203.webp" alt=""><figcaption></figcaption></figure>
 

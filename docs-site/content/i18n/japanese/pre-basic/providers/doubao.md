@@ -1,13 +1,6 @@
 # バイトダンス（豆包）
 
 
-{% hint style="warning" %}
-このドキュメントはAIによって中国語から翻訳されており、まだレビューされていません。
-{% endhint %}
-
-
-
-
 * [火山引擎](https://console.volcengine.com/)にログイン
 * 直接 [ここからアクセス](https://console.volcengine.com/ark/region:ark+cn-beijing/openManagement?LLM=%7B%7D)
 
@@ -36,7 +29,7 @@
 
 * [モデルリストドキュメント](https://www.volcengine.com/docs/82379/1330310#%E6%96%87%E6%9C%AC%E7%94%9F%E6%88%90) から対象モデルのモデルIDを確認
 
-<figure><img src="../../../../assets/cba9e28d82aef11147fc01c6.webp" alt="火山エンジンンモデルID一覧"><figcaption></figcaption></figure>
+<figure><img src="../../../../assets/cba9e28d82aef11147fc01c6.webp" alt="バイトダンス（豆包） — 説明画像"><figcaption></figcaption></figure>
 
 * Cherry Studioの [モデルサービス設定](../../cherrystudio/preview/settings/providers.md) で火山エンジンを選択
 * 「追加」をクリックし、取得したモデルIDを入力
@@ -55,7 +48,7 @@ APIエンドポイントは2種類の形式が利用可能:
 {% hint style="info" %}
 両形式に機能差はありません。デフォルト設定のままで変更不要です。
 
-末尾の`/`と`#`の違いについては、プロバイダー設定の[APIエンドポイントセクション](../../cherrystudio/preview/settings/providers.md#api-di-zhi)を参照
+末尾の`/`と`#`の違いについては、プロバイダー設定の[APIエンドポイントセクション](../../cherrystudio/preview/settings/providers.md#api-アドレス)を参照
 {% endhint %}
 
 <figure><img src="../../../../assets/91ce519c471ef98b7840a33e.webp" alt=""><figcaption><p>公式ドキュメントのcURL例</p></figcaption></figure>

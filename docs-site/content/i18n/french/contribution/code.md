@@ -2,9 +2,6 @@
 icon: square-code
 ---
 
-{% hint style="warning" %}
-Ce document a été traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
 
 # Contribuer au code
 

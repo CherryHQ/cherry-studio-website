@@ -4,13 +4,6 @@ icon: square-code
 # Contribuir com Código
 
 
-{% hint style="warning" %}
-Este documento foi traduzido do chinês por IA e ainda não foi revisado.
-{% endhint %}
-
-
-
-
 Nós damos as boas-vindas a contribuições para o Cherry Studio! Você pode contribuir das seguintes maneiras:
 
 1\. **Contribuir com código:** Desenvolver novos recursos ou otimizar códigos existentes.  

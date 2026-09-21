@@ -1,7 +1,4 @@
 
-{% hint style="warning" %}
-このドキュメントはAIによって中国語から翻訳されており、まだレビューされていません。
-{% endhint %}
 
 # Difyナレッジベースの設定
 
@@ -11,7 +8,7 @@
 
 <figure><img src="../../../../assets/fcb238d4dd2fdcb37412dc84.jpg" alt=""><figcaption></figcaption></figure>
 
-1. `搜索MCP`を開きます。
+1. `MCP を検索`を開きます。
 2. `dify-knowledge`サーバーを追加します。
 
 ### Difyナレッジベースの設定

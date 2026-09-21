@@ -4,13 +4,6 @@ icon: floppy-disk
 # Cambiar Ubicación de Almacenamiento
 
 
-{% hint style="warning" %}
-Este documento ha sido traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 ## Ubicación de Almacenamiento Predeterminada
 
 El almacenamiento de datos de Cherry Studio sigue las especificaciones del sistema. Los datos se colocan automáticamente en el directorio del usuario, en las siguientes ubicaciones específicas:

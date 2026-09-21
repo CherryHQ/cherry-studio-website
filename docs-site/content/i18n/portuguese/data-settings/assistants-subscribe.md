@@ -4,13 +4,6 @@ icon: rss
 # Configuração da Assinatura do Assistente
 
 
-{% hint style="warning" %}
-Este documento foi traduzido do chinês por IA e ainda não foi revisado.
-{% endhint %}
-
-
-
-
 Ao modificar o link da assinatura do assistente, é possível alternar rapidamente entre os modelos de assistente na biblioteca de assistentes.
 
 <figure><img src="../../../assets/7fa3a642f5827cf403232103.webp" alt=""><figcaption></figcaption></figure>

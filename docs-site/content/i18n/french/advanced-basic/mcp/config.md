@@ -1,13 +1,6 @@
 # Configuration et utilisation du MCP
 
 
-{% hint style="warning" %}
-Ce document a été traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 <figure><img src="../../../../assets/7529abac38faff7ba6c35df7.webp" alt=""><figcaption></figcaption></figure>
 
 1. Ouvrez les paramètres de Cherry Studio.

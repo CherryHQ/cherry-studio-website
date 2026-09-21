@@ -1,13 +1,6 @@
 # 内蔵MCP設定
 
 
-{% hint style="warning" %}
-このドキュメントはAIによって中国語から翻訳されており、まだレビューされていません。
-{% endhint %}
-
-
-
-
 ### @cherry/mcp-auto-install
 
 MCPサービスの自動インストール（ベータ版）

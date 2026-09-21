@@ -5,14 +5,6 @@ icon: pen-swirl
 
 
 {% hint style="warning" %}
-Este documento foi traduzido do chinês por IA e ainda não foi revisado.
-{% endhint %}
-
-
-
-
-{% hint style="warning" %}
-Este documento foi traduzido do chinês por IA e ainda não foi revisado. Tentarei verificar o documento item por item para garantir que a tradução seja adequada.
 {% endhint %}
 
 <figure><img src="../../../assets/9f2bec956e3709e3aebf9957.webp" alt=""><figcaption></figcaption></figure>

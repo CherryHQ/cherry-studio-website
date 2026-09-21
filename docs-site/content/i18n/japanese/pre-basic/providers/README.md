@@ -4,13 +4,6 @@ icon: cloud-plus
 # モデルサービス設定
 
 
-{% hint style="warning" %}
-このドキュメントはAIによって中国語から翻訳されており、まだレビューされていません。
-{% endhint %}
-
-
-
-
 ```markdown
 # モデルサービス設定
 ```

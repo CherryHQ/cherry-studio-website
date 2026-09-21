@@ -4,13 +4,6 @@ icon: rss
 # Configuration de l'abonnement des assistants
 
 
-{% hint style="warning" %}
-Ce document a été traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 En modifiant le lien d'abonnement des assistants, vous pouvez rapidement basculer entre les modèles d'assistants dans la bibliothèque d'assistants.
 
 <figure><img src="../../../assets/7fa3a642f5827cf403232103.webp" alt=""><figcaption></figcaption></figure>

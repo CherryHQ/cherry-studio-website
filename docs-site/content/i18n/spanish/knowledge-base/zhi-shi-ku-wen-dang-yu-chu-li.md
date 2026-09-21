@@ -4,13 +4,6 @@ icon: face-viewfinder
 # Preprocesamiento de documentos para base de conocimientos
 
 
-{% hint style="warning" %}
-Este documento ha sido traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 Se requiere actualizar Cherry Studio a la versión v1.4.8 o superior.
 
 ### Configuración del proveedor de servicios OCR

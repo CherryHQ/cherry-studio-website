@@ -9,8 +9,6 @@ icon: face-viewfinder
 {% endhint %}
 
 
-
-
 知識庫文件預處理需要將 Cherry Studio 升級至 v1.4.8 或更高版本。
 
 ### 配置OCR服務商

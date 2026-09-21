@@ -1,12 +1,8 @@
 ---
-description: cherry studio使用「火山引擎」接入deepseekR1联网功能，喂饭教程。
 hidden: True
 icon: globe-pointer
 ---
 
-{% hint style="warning" %}
-このドキュメントはAIによって中国語から翻訳されており、まだレビューされていません。
-{% endhint %}
 
 # 火山エンジンでのネットワーク接続方法
 

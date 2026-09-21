@@ -4,13 +4,6 @@ icon: square-n
 # Tutorial de configuración de Notion
 
 
-{% hint style="warning" %}
-Este documento ha sido traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 Cherry Studio admite la importación de temas a bases de datos de Notion.
 
 ## Paso 1

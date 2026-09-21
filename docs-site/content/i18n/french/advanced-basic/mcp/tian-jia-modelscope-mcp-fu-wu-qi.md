@@ -1,13 +1,6 @@
 # Ajouter un serveur ModelScope MCP
 
 
-{% hint style="warning" %}
-Ce document a été traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 > Le serveur ModelScope MCP nécessite de mettre à jour Cherry Studio en version v1.2.9 ou supérieure.
 
 Dans la version v1.2.9, Cherry Studio a établi un partenariat officiel avec ModelScope MoDa, simplifiant considérablement les étapes d'ajout des serveurs MCP, évitant les erreurs de configuration et permettant de découvrir une multitude de serveurs MCP dans la communauté ModelScope. Suivez les étapes ci-dessous pour apprendre à synchroniser les serveurs MCP de ModelScope dans Cherry Studio.

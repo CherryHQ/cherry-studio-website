@@ -6,8 +6,6 @@
 {% endhint %}
 
 
-
-
 1. 點擊 CherryIN 服務商的「點擊這裡獲取密鑰」
 
 <figure><img src="../../../../assets/a224e8a38aa9bdffdf1a5263.webp" alt=""><figcaption></figcaption></figure>

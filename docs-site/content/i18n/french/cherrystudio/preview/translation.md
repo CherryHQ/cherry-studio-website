@@ -4,13 +4,6 @@ icon: language
 # Traduction
 
 
-{% hint style="warning" %}
-Ce document a été traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 La fonction de traduction de Cherry Studio vous offre un service de traduction de texte rapide et précis, prenant en charge la traduction entre plusieurs langues.
 
 ### Aperçu de l'interface

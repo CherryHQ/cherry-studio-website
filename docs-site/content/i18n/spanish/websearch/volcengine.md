@@ -1,16 +1,8 @@
 ---
-description: cherry studio使用「火山引擎」接入deepseekR1联网功能，喂饭教程。
 hidden: True
 icon: globe-pointer
 ---
 # Conexión a Volc Engine
-
-
-{% hint style="warning" %}
-Este documento ha sido traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
 
 
 ### 1. Iniciar sesión/Registrar cuenta en «Volc Engine» <a href="#rclz7" id="rclz7"></a>

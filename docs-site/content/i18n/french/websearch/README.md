@@ -1,11 +1,7 @@
 ---
-description: 如何在 Cherry Studio 使用联网模式
 icon: globe
 ---
 
-{% hint style="warning" %}
-Ce document a été traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
 
 # Mode en ligne
 

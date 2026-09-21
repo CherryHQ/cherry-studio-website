@@ -1,13 +1,6 @@
 # Instalación Automática de MCP
 
 
-{% hint style="warning" %}
-Este documento ha sido traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 > La instalación automática de MCP requiere actualizar Cherry Studio a la versión v1.1.18 o superior.
 
 ## Introducción a la Función
@@ -27,7 +20,7 @@ Además de la instalación manual, Cherry Studio incluye la herramienta `@mcpmar
 Por ejemplo, puedes ingresar:
 
 ```
-帮我安装一个 filesystem mcp server
+Instala un servidor MCP filesystem
 ```
 
 <figure><img src="../../../../assets/5685b4df634ce358e1061fd4.webp" alt=""><figcaption><p>Ingresar comando para instalar servidor MCP</p></figcaption></figure>

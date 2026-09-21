@@ -2,13 +2,10 @@
 icon: image
 ---
 
-{% hint style="warning" %}
-Этот документ переведен с китайского языка с помощью ИИ и еще не был проверен.
-{% endhint %}
 
 # Рисование
 
-Функция рисования в настоящее время поддерживает рисовальные модели DMXAPI, TokenFlux, AiHubMix и [硅基流动](../../pre-basic/providers/siliconcloud.md). Вы можете зарегистрировать аккаунт на [硅基流动](https://www.siliconflow.cn/) и [добавить его как поставщика](settings/providers.md) для использования.
+Функция рисования поддерживает модели DMXAPI, TokenFlux, AiHubMix и [SiliconFlow](../../pre-basic/providers/siliconcloud.md). Зарегистрируйте учётную запись [SiliconFlow](https://www.siliconflow.cn/) и [добавьте сервис как провайдера](settings/providers.md).
 
 При возникновении вопросов о параметрах наведите курсор на значок `?` в соответствующей области, чтобы просмотреть описание.
 

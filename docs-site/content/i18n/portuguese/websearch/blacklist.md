@@ -4,13 +4,6 @@ icon: ban
 # Configuração da Lista Negra de Pesquisa na Web
 
 
-{% hint style="warning" %}
-Este documento foi traduzido do chinês por IA e ainda não foi revisado.
-{% endhint %}
-
-
-
-
 Cherry Studio suporta a configuração de lista negra de duas maneiras: manual e por adição de fontes de subscrição. As regras de configuração referem-se ao [ublacklist](https://github.com/iorate/ublacklist)
 
 ## Configuração Manual

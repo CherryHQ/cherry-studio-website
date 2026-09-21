@@ -9,6 +9,4 @@ icon: sliders
 {% endhint %}
 
 
-
-
 在此頁面可設定軟體的介面語言、設定代理等。

@@ -4,13 +4,6 @@ icon: robot
 # Guía de uso de Cherry Agent
 
 
-{% hint style="warning" %}
-Este documento ha sido traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 La versión v1.7.0.alpha de Cherry Studio introduce Agent, lo que permite utilizar Cherry Agent en Cherry Studio. Este tutorial lo guiará a través del proceso completo de configuración e inicio.
 
 ### 1. Crear un proveedor de tipo Anthropic

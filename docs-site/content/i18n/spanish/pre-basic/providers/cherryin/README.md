@@ -1,13 +1,6 @@
 # CherryIN
 
 
-{% hint style="warning" %}
-Este documento ha sido traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 *Observaciones:*  
 El contenido proporcionado `# CherryIN` es una línea única que parece ser un título de encabezado. Como indica el formato:  
 1. Se preserva la estructura de Markdown (`#`) sin cambios.  

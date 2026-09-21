@@ -9,8 +9,6 @@ icon: ban
 {% endhint %}
 
 
-
-
 Cherry Studio支援手動和添加訂閱源兩種方式配置黑名單。配置規則參考[ublacklist](https://github.com/iorate/ublacklist)
 
 ## 手動配置

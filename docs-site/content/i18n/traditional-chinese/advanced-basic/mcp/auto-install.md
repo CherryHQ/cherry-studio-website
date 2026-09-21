@@ -6,8 +6,6 @@
 {% endhint %}
 
 
-
-
 > 自動安裝 MCP 需要將 Cherry Studio 升級至 v1.1.18 或更高版本。
 
 ## 功能簡介
@@ -38,7 +36,7 @@
 
 * filesystem（檔案系統）
 * fetch（網路請求）
-* sqlite（資料庫）
+* sqlite（資資庫）
 * 等等...
 
 > MCP_PACKAGE_SCOPES 變數可以自訂 MCP 服務搜尋源，預設值為：`@modelcontextprotocol`，可以自訂配置。

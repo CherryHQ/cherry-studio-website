@@ -4,13 +4,6 @@ icon: file-code
 # CSS Personnalisé
 
 
-{% hint style="warning" %}
-Ce document a été traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 Vous pouvez modifier l'apparence du logiciel selon vos préférences grâce au CSS personnalisé, par exemple comme ceci :
 
 <figure><img src="../../../assets/fa4c8c0a210819595ec02c3e.jpg" alt=""><figcaption><p>CSS personnalisé</p></figcaption></figure>

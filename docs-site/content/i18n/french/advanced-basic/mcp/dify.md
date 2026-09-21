@@ -1,7 +1,4 @@
 
-{% hint style="warning" %}
-Ce document a été traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
 
 # Configuration de la base de connaissances Dify
 
@@ -11,7 +8,7 @@ Ce document a été traducido del chino por IA y aún no ha sido revisado.
 
 <figure><img src="../../../../assets/fcb238d4dd2fdcb37412dc84.jpg" alt=""><figcaption></figcaption></figure>
 
-1. Ouvrez `搜索MCP`.
+1. Ouvrez `Rechercher un MCP`.
 2. Ajoutez le serveur `dify-knowledge`.
 
 ### Configurer la base de connaissances Dify

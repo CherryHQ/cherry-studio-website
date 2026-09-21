@@ -1,13 +1,6 @@
 # Classificação da LLM Arena (Atualização em Tempo Real)
 
 
-{% hint style="warning" %}
-Este documento foi traduzido do chinês por IA e ainda não foi revisado.
-{% endhint %}
-
-
-
-
 Esta é uma classificação baseada nos dados do Chatbot Arena (lmarena.ai), gerada por meio de um processo automatizado.
 
 > **Horário da atualização dos dados**: 2025-11-25 08:08:40 UTC / 2025-11-25 16:08:40 CST (Horário de Pequim)

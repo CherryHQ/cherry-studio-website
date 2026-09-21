@@ -4,13 +4,6 @@ icon: database
 # Configuración de datos
 
 
-{% hint style="warning" %}
-Este documento ha sido traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 Esta interfaz permite realizar operaciones como copia de seguridad y restauración de datos locales/en la nube, consulta de directorios de datos locales, limpieza de caché, configuración de exportación y conexiones de terceros.
 
 ### Copia de seguridad de datos

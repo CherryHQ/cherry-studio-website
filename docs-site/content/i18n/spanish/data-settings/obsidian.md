@@ -1,11 +1,7 @@
 ---
-description: 数据设置→Obsidian配置
 icon: gem
 ---
 
-{% hint style="warning" %}
-Este documento ha sido traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
 
 # Tutorial de Configuración de Obsidian
 

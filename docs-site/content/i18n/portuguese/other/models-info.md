@@ -1,13 +1,6 @@
 # Informações de Referência Comuns de Modelos
 
 
-{% hint style="warning" %}
-Este documento foi traduzido do chinês por IA e ainda não foi revisado.
-{% endhint %}
-
-
-
-
 {% hint style="info" %}
 * As informações a seguir são apenas para referência; se houver erros, entre em contato para correção. Alguns modelos podem ter tamanho de contexto e informações diferentes dependendo do fornecedor.
 * Ao inserir dados no cliente, é necessário converter "k" para valor real (teoricamente 1k = 1024 tokens; 1m = 1024k tokens). Exemplo: 8k = 8×1024 = 8192 tokens. Recomenda-se multiplicar por 1000 no uso prático para evitar erros, por exemplo: 8k = 8×1000 = 8000, 1m = 1×1000000 = 1000000.

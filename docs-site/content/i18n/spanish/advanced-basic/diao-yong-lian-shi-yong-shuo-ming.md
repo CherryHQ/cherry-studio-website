@@ -4,13 +4,6 @@ icon: route
 # Instrucciones de uso de la cadena de llamadas (Trace)
 
 
-{% hint style="warning" %}
-Este documento ha sido traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 ## Funcionalidad
 
 La cadena de llamadas (también conocida como "trace") proporciona a los usuarios capacidades de observación en las conversaciones, ayudándoles a identificar el rendimiento específico de modelos, bases de conocimiento, MCP, búsquedas web, etc., durante el diálogo. Es una herramienta de observabilidad implementada mediante [OpenTelemetry](https://opentelemetry.io/docs/languages/js/), que visualiza datos mediante recopilación, almacenamiento y procesamiento en el lado del cliente, proporcionando bases cuantitativas para localizar problemas y optimizar resultados.

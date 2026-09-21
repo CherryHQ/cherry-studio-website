@@ -4,13 +4,6 @@ icon: route
 # Instruções de Uso do Rastreamento (Trace)
 
 
-{% hint style="warning" %}
-Este documento foi traduzido do chinês por IA e ainda não foi revisado.
-{% endhint %}
-
-
-
-
 ## Funcionalidade
 
 O rastreamento (também chamado de "trace") oferece aos usuários capacidade de insight sobre diálogos, ajudando a identificar o desempenho específico de modelos, bases de conhecimento, MCP, pesquisas na web e outros componentes durante as conversas. É uma ferramenta de observabilidade implementada com base no [OpenTelemetry](https://opentelemetry.io/docs/languages/js/). Através da coleta, armazenamento e processamento de dados no lado do cliente, ele permite visualização e fornece base quantitativa para solução de problemas e otimização de resultados.

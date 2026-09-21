@@ -4,20 +4,13 @@ icon: book-bookmark
 # Knowledge Science
 
 
-{% hint style="warning" %}
-Este documento ha sido traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 ## What are tokens?
 
 Tokens are the fundamental units of text processing in AI models, which can be understood as the smallest units of "thought" for the model. They don't exactly correspond to characters or words as we understand them, but rather represent the model's unique way of segmenting text.
 
 #### 1. Chinese segmentation
 * One Chinese character is typically encoded as 1-2 tokens
-* Example: `"你好"` ≈ 2-4 tokens
+* Example: `"Hola"` ≈ 2-4 tokens
 
 #### 2. English segmentation
 * Common words are usually 1 token

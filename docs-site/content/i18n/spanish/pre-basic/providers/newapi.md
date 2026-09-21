@@ -1,13 +1,6 @@
 # NewAPI
 
 
-{% hint style="warning" %}
-Este documento ha sido traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 * Inicia sesión y abre la página de tokens
 * Haz clic en "Agregar token"
 

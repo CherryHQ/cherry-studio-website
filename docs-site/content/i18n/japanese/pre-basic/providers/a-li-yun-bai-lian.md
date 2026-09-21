@@ -1,7 +1,4 @@
 
-{% hint style="warning" %}
-このドキュメントはAIによって中国語から翻訳されており、まだレビューされていません。
-{% endhint %}
 
 # 阿里云百炼
 
@@ -22,7 +19,7 @@
 6. `复制` ボタンをクリックします。
    <figure><img src="../../../../assets/e6c807e270fe736e6731c677.webp" alt=""><figcaption>阿里云百炼：APIキーのコピー</figcaption></figure>
 
-7. Cherry Studioで `设置` → `模型服务` → `阿里云百炼` を選択し、`API 密钥` 欄にコピーしたAPIキーを貼り付けます。
+7. Cherry Studioで `设置` → `模型服务` → `阿里云百炼` を選択し、`API キー` 欄にコピーしたAPIキーを貼り付けます。
    <figure><img src="../../../../assets/9f14346e4b15514c0730d7a6.webp" alt=""><figcaption>阿里云百炼：APIキーの入力</figcaption></figure>
    
 8. [モデルサービス](../../cherrystudio/preview/settings/providers.md)の説明に従って設定を調整し、使用を開始してください。

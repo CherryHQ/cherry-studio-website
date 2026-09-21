@@ -2,9 +2,6 @@
 icon: browsers
 ---
 
-{% hint style="warning" %}
-Este documento ha sido traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
 
 # Asistente Rápido
 
@@ -12,8 +9,8 @@ El Asistente Rápido es una herramienta conveniente que ofrece Cherry Studio, pe
 
 ### Habilitar el Asistente Rápido
 
-1. **Abrir Configuración:** Navegue hasta `设置` -> `快捷方式` -> `快捷助手`.
-2. **Activar interruptor:** Encuentre y active el botón correspondiente a `快捷助手`.
+1. **Abrir Configuración:** Navegue hasta `Configuración` → `Atajos` → `Asistente rápido`.
+2. **Activar interruptor:** Encuentre y active el botón correspondiente a `Asistente rápido`.
 
 <figure><img src="../../../../assets/8745e5b521ea5cfa5cf181f2.webp" alt=""><figcaption><p>Diagrama de activación del Asistente Rápido</p></figcaption></figure>
 

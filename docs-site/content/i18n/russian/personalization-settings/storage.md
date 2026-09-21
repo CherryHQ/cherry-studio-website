@@ -4,13 +4,6 @@ icon: floppy-disk
 # Изменение места хранения
 
 
-{% hint style="warning" %}
-Этот документ переведен с китайского языка с помощью ИИ и еще не был проверен.
-{% endhint %}
-
-
-
-
 ## Место хранения по умолчанию
 
 Хранение данных Cherry Studio соответствует системным спецификациям. Данные автоматически размещаются в домашнем каталоге пользователя по следующим путям:
@@ -45,7 +38,7 @@ icon: floppy-disk
 PS D:\CherryStudio> dir
 
 
-    目录: D:\CherryStudio
+    Каталог: D:\CherryStudio
 
 
 Mode                 LastWriteTime         Length Name
@@ -99,7 +92,7 @@ exit
 PS D:\CherryStudio> dir .\user-data-dir\
 
 
-    目录: D:\CherryStudio\user-data-dir
+    Каталог: D:\CherryStudio\user-data-dir
 
 
 Mode                 LastWriteTime         Length Name

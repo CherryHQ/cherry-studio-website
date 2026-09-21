@@ -1,13 +1,6 @@
 # Configuración de la Base de Conocimiento Dify
 
 
-{% hint style="warning" %}
-Este documento ha sido traducido del chino por IA y aún no ha sido revisado.
-{% endhint %}
-
-
-
-
 > La base de conocimiento Dify MCP requiere actualizar Cherry Studio a la versión v1.2.9 o superior.
 
 ### Añadir servidor MCP de base de conocimiento Dify
