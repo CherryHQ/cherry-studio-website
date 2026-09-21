@@ -2,7 +2,7 @@
 
 import { RootProvider } from 'fumadocs-ui/provider/next'
 import Link from 'next/link'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import type { ComponentProps, ReactNode } from 'react'
 
 import { uiTranslations } from '@/lib/ui-translations'
@@ -17,7 +17,6 @@ function DocumentationLink({ href, ...props }: ComponentProps<'a'> & { prefetch?
 
 export function Providers({ locale, children }: { locale: string; children: ReactNode }) {
   const pathname = usePathname()
-  const router = useRouter()
   return (
     <RootProvider
       components={{ Link: DocumentationLink }}
@@ -30,7 +29,10 @@ export function Providers({ locale, children }: { locale: string; children: Reac
           parts[1] = next
           const slug = decodeURIComponent(parts.slice(2).join('/').replace(/\/$/, ''))
           const available = routes[next as keyof typeof routes].includes(slug)
-          router.push(available ? parts.join('/') : `/${next}/`)
+          const target = available ? parts.join('/') : `/${next}/`
+          // The locale owns the root layout. A full navigation ensures the new
+          // document language, navigation tree and theme bootstrap are loaded together.
+          window.location.assign(`/docs${target}`)
         },
         translations: uiTranslations(locale)
       }}
