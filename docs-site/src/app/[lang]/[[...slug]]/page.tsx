@@ -48,7 +48,7 @@ export default async function Page({ params }: Props) {
       <DocsBody>
         <div
           lang={page.fallback ? 'zh-cn' : lang}
-          className="[&_[id]]:scroll-mt-40 lg:[&_[id]]:scroll-mt-28 [&_[data-cards]]:grid [&_[data-cards]]:gap-3 [&_[data-cards]]:sm:grid-cols-2 [&_[data-card]]:rounded-xl [&_[data-card]]:border [&_[data-card]]:border-fd-border [&_[data-card]]:p-4 [&_aside]:my-5 [&_aside]:rounded-xl [&_aside]:border [&_aside]:border-fd-border [&_aside]:bg-fd-muted/50 [&_aside]:px-5 [&_aside]:py-1 [&_figure]:my-6 [&_figcaption]:text-center [&_figcaption]:text-sm [&_figcaption]:text-fd-muted-foreground [&_img]:rounded-xl [&_pre]:overflow-x-auto [&_pre]:rounded-xl [&_pre]:bg-fd-muted [&_pre]:p-4 [&_table]:block [&_table]:overflow-x-auto"
+          className="[&_[id]]:scroll-mt-40 lg:[&_[id]]:scroll-mt-28 [&_[data-cards]]:grid [&_[data-cards]]:gap-3 [&_[data-cards]]:sm:grid-cols-2 [&_[data-card]]:rounded-xl [&_[data-card]]:border [&_[data-card]]:border-fd-border [&_[data-card]]:p-4 [&_[data-table-container]]:my-6 [&_[data-table-container]]:overflow-x-auto [&_[data-table-container]]:rounded-lg [&_[data-table-container]_table]:my-0 [&_aside]:my-5 [&_aside]:rounded-xl [&_aside]:border [&_aside]:border-fd-border [&_aside]:bg-fd-muted/50 [&_aside]:px-5 [&_aside]:py-1 [&_figure]:my-6 [&_figcaption]:text-center [&_figcaption]:text-sm [&_figcaption]:text-fd-muted-foreground [&_img]:rounded-xl [&_pre]:overflow-x-auto [&_pre]:rounded-xl [&_pre]:bg-fd-muted [&_pre]:p-4"
           dangerouslySetInnerHTML={{ __html: page.html }}
         />
       </DocsBody>

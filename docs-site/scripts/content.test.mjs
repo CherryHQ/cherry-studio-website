@@ -78,6 +78,16 @@ test('GitBook card metadata is converted into navigable cards', async () => {
   assert.doesNotMatch(page.text, /guide.md/)
 })
 
+test('regular tables retain table layout inside a horizontal scroll container', async () => {
+  const page = await renderMarkdown(
+    '| Type | Start | Check |\n| --- | --- | --- |\n| PDF | OCR | Tables |',
+    (url) => url,
+    () => {}
+  )
+  assert.match(page.html, /<div data-table-container><table>/)
+  assert.match(page.html, /<th>Type<\/th>/)
+})
+
 test('navigation cards with an empty target report a source defect', async () => {
   const issues = []
   await renderMarkdown(

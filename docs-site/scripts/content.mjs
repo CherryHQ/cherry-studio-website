@@ -143,6 +143,18 @@ export async function renderMarkdown(markdown, rewrite, report) {
     })
     .use(rehypeSanitize, schema)
     .use(() => (tree) => {
+      const tables = []
+      visit(tree, 'element', (node) => {
+        if (node.tagName === 'table') tables.push(node)
+      })
+      for (const node of tables) {
+        const table = { ...node }
+        node.tagName = 'div'
+        node.properties = { dataTableContainer: true }
+        node.children = [table]
+      }
+    })
+    .use(() => (tree) => {
       visit(tree, 'element', (node) => {
         const props = node.properties
         if (/^h[1-6]$/.test(node.tagName)) {
