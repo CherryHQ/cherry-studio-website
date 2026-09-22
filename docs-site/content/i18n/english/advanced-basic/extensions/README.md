@@ -6,7 +6,7 @@ icon: plug
 
 Agents come with built-in tools for files, search, images, memory, workflows, and scheduled tasks. Add skills when you need fixed working methods, and add MCP when you need to connect to external systems. They solve different problems, so you don't need to install everything just to have "more features."
 
-<figure><img src="../../../../assets/cc38d8a6378ca8270ceda746.webp" alt="Relationship diagram for selecting built-in tools, knowledge base, skills, or MCP based on materials, fixed methods, and external system requirements"><figcaption><p>Prefer the shortest path; only add MCP when the Agent genuinely needs to access external systems. </p></figcaption></figure>
+<figure><img src="../../../../assets/9a40f1cd26f6618a31c73d42.webp" alt="Relationship diagram for selecting built-in tools, knowledge base, skills, or MCP based on materials, fixed methods, and external system requirements"><figcaption><p>Prefer the shortest path; only add MCP when the Agent genuinely needs to access external systems. </p></figcaption></figure>
 
 ## Determine What You Need First
 

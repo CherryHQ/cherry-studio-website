@@ -10,7 +10,7 @@ icon: comments
 If a task requires continuous local file read/write, multiple tool calls, or long-running execution, use the Agent in 【Work】 instead. Chat is better suited for discussion, comparison, and finalizing drafts, while Agent is better suited for execution.
 {% endhint %}
 
-<figure><img src="../../../../assets/5c0f5f563432facacf7942d6.webp" alt="The selection flowchart in Advanced Conversation from complete questions to comparison, branching, and deliverables"><figcaption><p>Write your question and output requirements completely first; add model comparison or message branches only when cross-validation is needed. </p></figcaption></figure>
+<figure><img src="../../../../assets/31566aca8e5cc1c70f3e7377.webp" alt="The selection flowchart in Advanced Conversation from complete questions to comparison, branching, and deliverables"><figcaption><p>Write your question and output requirements completely first; add model comparison or message branches only when cross-validation is needed. </p></figcaption></figure>
 
 ## Choose Capabilities by Goal
 

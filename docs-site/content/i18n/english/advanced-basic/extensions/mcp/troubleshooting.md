@@ -11,4 +11,4 @@ First, check the logs and fix issues one by one. Only delete and recreate the se
 
 </details>
 
-<figure><img src="../../../../../assets/7cb797e89c5a180b57971c67.webp" alt="MCP troubleshooting flowchart from server startup, runtime environment, authentication network, to Agent binding and call chain"><figcaption></figcaption></figure>
+<figure><img src="../../../../../assets/1c9c5db7c330fdc7de184c2c.webp" alt="MCP troubleshooting flowchart from server startup, runtime environment, authentication network, to Agent binding and call chain"><figcaption></figcaption></figure>

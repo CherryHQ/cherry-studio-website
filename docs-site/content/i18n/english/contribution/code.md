@@ -6,7 +6,7 @@ icon: code
 
 A code contribution starts with a clearly defined problem. Before fixing a bug, confirm you can reproduce it; before adding a feature, describe the user scenario and expected behavior. For larger changes, we recommend agreeing on the direction in a GitHub Issue or Discussion first.
 
-<figure><img src="../../../assets/1164345d768ece8f74263a79.webp" alt="Contribution flow from describing the problem, making a minimal change and verifying locally to submitting for review and merging"><figcaption><p>Each contribution should solve one clear problem; verify locally first, then submit for review.</p></figcaption></figure>
+<figure><img src="../../../assets/e6b701d9bd84e32b2c94b682.webp" alt="Contribution flow from describing the problem, making a minimal change and verifying locally to submitting for review and merging"><figcaption><p>Each contribution should solve one clear problem; verify locally first, then submit for review.</p></figcaption></figure>
 
 ## Before You Start
 

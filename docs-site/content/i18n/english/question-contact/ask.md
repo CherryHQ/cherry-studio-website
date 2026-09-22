@@ -6,7 +6,7 @@ icon: compass
 
 A question that's easy to answer doesn't have to be long, but it should let others know what you're trying to do, what actually happened, and how to see the same problem themselves.
 
-<figure><img src="../../../assets/66f4111676793ffe87e7a979.webp" alt="Flowchart for choosing where to ask or report, based on whether it's a usage question, a reproducible problem or a feature suggestion"><figcaption><p>First decide whether it's a usage question, a reproducible problem or a feature suggestion, then prepare the matching material.</p></figcaption></figure>
+<figure><img src="../../../assets/210c272465232d9a3d9484ae.webp" alt="Flowchart for choosing where to ask or report, based on whether it's a usage question, a reproducible problem or a feature suggestion"><figcaption><p>First decide whether it's a usage question, a reproducible problem or a feature suggestion, then prepare the matching material.</p></figcaption></figure>
 
 ### Choose the Right Place First
 

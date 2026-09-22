@@ -5,7 +5,7 @@ icon: globe
 
 The marketing team receives a set of materials including documents, screenshots, and product terminology that need to be translated into another language while maintaining consistency in names, numbers, and formatting. A glossary and a small-scale trial translation can reduce rework for the entire material set.
 
-<figure><img src="../../../../assets/31b376b5d5a233eeb71ddf12.webp" alt="The workflow diagram showing how materials are retrieved via Knowledge Base search, organized by the Agent, and turned into translated or content deliverables"><figcaption><p>First, ensure accurate material retrieval, then have the Agent unify terminology and output format, and finally manually verify key content. </p></figcaption></figure>
+<figure><img src="../../../../assets/58e56b2ba6cf637b831f0efb.webp" alt="The workflow diagram showing how materials are retrieved via Knowledge Base search, organized by the Agent, and turned into translated or content deliverables"><figcaption><p>First, ensure accurate material retrieval, then have the Agent unify terminology and output format, and finally manually verify key content. </p></figcaption></figure>
 
 <figure><img src="../../../../assets/5428125ff9f2c41e29e8c2ed.webp" alt="The actual result of completely translating the Chinese release plan into English on the translation page"><figcaption><p>Keep the original text on the left and display the actual translation on the right. Before delivery, you can verify key terms such as grayscale, monitoring metrics, and rollback processes sentence by sentence. </p></figcaption></figure>
 

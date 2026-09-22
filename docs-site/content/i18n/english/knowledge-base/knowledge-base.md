@@ -21,7 +21,7 @@ If you only need to handle a short piece of text once, pasting it straight into 
 
 ## What Happens in a Single Answer
 
-<figure><img src="../../../assets/192b7298d3bc060e6d5897c9.webp" alt="Knowledge base retrieval architecture: parsing, chunking, BM25 and vector search, merging, reranking and Top K"><figcaption><p>Material is parsed and split first, then candidate passages are found by keyword or meaning; the chat model only composes the answer from what was recalled.</p></figcaption></figure>
+<figure><img src="../../../assets/1b37b3cc3a8a611ccd30b8de.webp" alt="Knowledge base retrieval architecture: parsing, chunking, BM25 and vector search, merging, reranking and Top K"><figcaption><p>Material is parsed and split first, then candidate passages are found by keyword or meaning; the chat model only composes the answer from what was recalled.</p></figcaption></figure>
 
 ### Key Terms
 

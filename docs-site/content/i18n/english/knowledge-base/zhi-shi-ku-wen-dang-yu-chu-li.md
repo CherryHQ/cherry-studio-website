@@ -21,7 +21,7 @@ Judge parsing quality not by the words "import succeeded" but by whether the tex
 
 ## Where Parsing Sits in the Retrieval Chain
 
-<figure><img src="../../../assets/192b7298d3bc060e6d5897c9.webp" alt="Knowledge base retrieval architecture: material goes through parsing and OCR, chunking, keyword and vector search before reaching the answer"><figcaption><p>Parsing errors carry through to chunking and recall; downstream models can't restore content already lost from the text.</p></figcaption></figure>
+<figure><img src="../../../assets/1b37b3cc3a8a611ccd30b8de.webp" alt="Knowledge base retrieval architecture: material goes through parsing and OCR, chunking, keyword and vector search before reaching the answer"><figcaption><p>Parsing errors carry through to chunking and recall; downstream models can't restore content already lost from the text.</p></figcaption></figure>
 
 ## Configure and Verify With a Sample Document
 
