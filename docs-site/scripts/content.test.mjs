@@ -28,6 +28,16 @@ test('GitBook conversion preserves headings, hints, tabs, figures and code liter
   assert.deepEqual(issues, [])
 })
 
+test('mobile screenshot galleries retain their safe layout metadata', async () => {
+  const page = await renderMarkdown(
+    '<div data-mobile-gallery="pair"><figure data-mobile-shot="phone"><img src="phone.jpg"></figure></div>',
+    (url) => `/rewritten/${url}`,
+    () => {}
+  )
+  assert.match(page.html, /data-mobile-gallery="pair"/)
+  assert.match(page.html, /data-mobile-shot="phone"/)
+})
+
 test('code blocks use syntax highlighting and map nginx conf fences', async () => {
   const page = await renderMarkdown(
     '```conf\nserver { listen 443 ssl; }\n```',
