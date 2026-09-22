@@ -16,7 +16,7 @@
 
     <figure><img src="../../../../assets/1f557cb583abf303bf1e664d.webp" alt=""><figcaption></figcaption></figure>
 
-5.  Click the "Manage" button and add models.
+5.  Click "Sync models" and add models.
 
     <figure><img src="../../../../assets/6ce35222d00b2d9a6b8898b4.webp" alt=""><figcaption></figcaption></figure>
 

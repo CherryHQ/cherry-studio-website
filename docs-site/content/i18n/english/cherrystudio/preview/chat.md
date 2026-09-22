@@ -9,15 +9,15 @@ The Chat interface is your main workspace for conversing with AI assistants. It 
 
 ## Interface Layout
 
-### Top Navigation Bar
+### Layout
 
-The top bar displays:
+The Chat page has three areas:
 
-* **Assistant Selector** - Click to switch between different assistants (each with their own system prompts and settings)
-* **Topic Tabs** - Shows current active topic and related files/data sources connected to this conversation
-* **Quick Actions** - Search, menu, and additional controls
+* **Assistant and topic list (left column)** - Click **+ Add Assistant** at the top to create an assistant. Each assistant's topics are listed under it (a new one is called "New Chat"); click a topic to open it
+* **Top bar of the conversation** - From left to right: the sidebar toggle, the current assistant, and the **model selector** (for example "DeepSeek V4 Flash | DeepSeek"). Click the model name to switch models
+* **Window tabs (very top)** - Each open page (an assistant, the Launchpad, Translation, etc.) gets its own tab. Click **+** to open a new tab with the Launchpad; the magnifier icon on the right opens search
 
-<figure><img src="../../../../assets/dc4cf60c9df32d2768d58f01.webp" alt="Chat interface header with assistant selector and topic tabs"><figcaption>Select assistants and manage topics from the top navigation</figcaption></figure>
+<figure><img src="../../../../assets/dc4cf60c9df32d2768d58f01.webp" alt="Chat page with the assistant list on the left, the model selector in the top bar and the message input at the bottom"><figcaption>The Chat page: assistants and topics on the left, the model selector in the top bar, the input box at the bottom</figcaption></figure>
 
 ### Welcome Screen
 
@@ -33,13 +33,9 @@ This guides users to begin their conversation naturally.
 
 The bottom section contains:
 
-* **Message Input Box** - Type your message here with `Press Enter to send, Type 'for text and actions, or reference topics'`
-* **Tool Bar (left side)** - Quick access buttons for:
-  * Upload files/images
-  * Attach files
-  * Add custom tools
-* **Model Selector (right side)** - Switch between models mid-conversation while retaining context
-* **Keyboard Shortcuts** - Visible hints showing `⌥↑` (previous) and `⌥↓` (next)
+* **Message input box** - The placeholder reads "Type a message. Press Return to send. Type / for tools and actions, @ to reference topics." Type `/` to pick tools and actions, or `@` to reference another topic
+* **Toolbar (left side)** - Quick buttons, including the 🌐 globe for [web search](../../pre-basic/websearch/README.md) and **+** for more options, including MCP prompts and resources
+* **Right side** - The **Default** dropdown and the send button
 
 ## Concepts
 
@@ -61,7 +57,7 @@ A `topic` is an individual conversation within an assistant. Key points:
 * **Multiple topics under one assistant** - Each topic is a separate conversation thread
 * **Shared settings** - All topics under an assistant inherit the same prompt and model settings
 * **Independent history** - Each topic has its own message history
-* **Quick switching** - Use the topic tabs to jump between conversations
+* **Quick switching** - Click topics in the left column to jump between conversations
 
 For example, you might have an "Email Writer" assistant with separate topics for "Marketing Email", "Customer Reply", and "Newsletter Draft".
 
@@ -69,20 +65,19 @@ For example, you might have an "Email Writer" assistant with separate topics for
 
 ### Creating a New Topic
 
-1. Click the **"+"** icon in the top navigation, or
+1. Press `⌘ + N` (macOS) or `Ctrl + N` (Windows / Linux), or
 2. Right-click the assistant name and select "New Topic"
 
 The new topic inherits all settings from its parent assistant.
 
 ### Switching Topics
 
-* Click topic tabs at the top to switch between conversations
-* Use keyboard shortcut `⌥↑` (up) or `⌥↓` (down) to navigate between topics
+* Click a topic under its assistant in the left column
 * Context is preserved when switching
 
 ### Topic Menu
 
-Right-click a topic tab to:
+Right-click a topic in the left column to:
 
 * Rename the topic
 * Delete the topic
@@ -93,29 +88,22 @@ Right-click a topic tab to:
 
 The toolbar at the bottom of the input box provides quick access to common features:
 
-### File Management
-
-| Icon | Function | Details |
+| Button | Function | Details |
 |------|----------|---------|
-| 📎 | **Attach File** | Upload documents (PDF, Word, Markdown, etc.) for the model to reference. Documents are automatically parsed into text. |
-| 🖼️ | **Attach Image** | Upload images for vision-capable models to analyze and describe. |
-| ➕ | **Add Tool** | Enable additional capabilities like web search, knowledge base, or MCP servers for this topic. |
+| 🌐 | **Web search** | Turns on web search for the current conversation. See [Web Search Mode](../../pre-basic/websearch/README.md) |
+| ➕ | **More** | Opens a panel with more options, including inserting MCP prompts and resources. See [MCP and External Tools](../../advanced-basic/extensions/mcp/README.md) |
+
+You can also type `/` in the input box to pick tools and actions, and `@` to reference another topic.
 
 ### Model Selection
 
-The **right side** of the input box displays:
-
-* **Current Model** - Shows which model is active (e.g., "Default")
-* **Quick Switch** - Click to change models mid-conversation without losing context
+The **model selector sits in the top bar** of the conversation, next to the assistant name. Click it to switch models mid-conversation without losing context. You can also press `⌘ + ⇧ + M` (macOS) or `Ctrl + Shift + M` (Windows / Linux) to open it.
 
 ### Keyboard Shortcuts
 
-Visible hints show:
-
-* **⌥↑** - Jump to previous topic
-* **⌥↓** - Jump to next topic
 * **Enter** - Send message
-* **Shift+Enter** - Newline in input box
+* **Shift+Enter** - New line in the input box
+* See [Shortcut Settings](../../pre-basic/settings/key-shortcut.md) for the full list
 
 ## Message Input Tips
 

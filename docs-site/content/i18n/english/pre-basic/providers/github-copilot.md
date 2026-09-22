@@ -18,11 +18,11 @@ After successful authorization, return to Cherry Studio, click "Connect GitHub",
 
 <figure><img src="../../../../assets/dd64cd1857b5e69446d98398.webp" alt="Example image for successful GitHub connection"><figcaption><p>GitHub Connection Successful</p></figcaption></figure>
 
-## Click "Manage" to Get Model List
+## Click "Sync models" to Get the Model List
 
-Click the "Manage" button below to automatically retrieve the list of currently supported models online.
+Click "Sync models" to automatically retrieve the list of currently supported models online.
 
-<figure><img src="../../../../assets/c0545b25325df32cd70fbad9.webp" alt="Example image for getting model list with Manage button"><figcaption><p>Get Model List</p></figcaption></figure>
+<figure><img src="../../../../assets/c0545b25325df32cd70fbad9.webp" alt="Example image for getting the model list"><figcaption><p>Sync models</p></figcaption></figure>
 
 ## Frequently Asked Questions
 

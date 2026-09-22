@@ -10,7 +10,7 @@ This set of features is for users who need to manage coding CLIs, allow other lo
 
 | Entry Point | Purpose | Verify Before Use |
 | ----------------- | ---------------------------- | -------------- |
-| Launchpad [Coding Partner] | Install, configure, and launch common coding CLIs | Installation source, model connection, and working directory |
+| Launchpad [Code Mate] | Install, configure, and launch common coding CLIs | Installation source, model connection, and working directory |
 | [Settings] → [API Gateway] | Provide a compatible API to local programs; also a runtime dependency for Agent | Status, port, and key security |
 | [Settings] → [General] → [Developer Mode] | Inspect the call chain to locate model and tool errors | Logs may contain sensitive content |
 

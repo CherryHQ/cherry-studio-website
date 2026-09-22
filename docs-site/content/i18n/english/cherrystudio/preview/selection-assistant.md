@@ -33,20 +33,20 @@ Open [Settings] → [Selection Assistant]:
 3. (Optional) In [Toolbar] → [Trigger Mode], select the trigger method (options vary by platform):
    * **Selection**: Toolbar appears immediately after selecting text (default)
    * **Ctrl Key** (Windows only): Toolbar appears only after selecting text and **holding the Ctrl key** (prevents accidental triggers)
-   * **Hotkey**: Toolbar appears after selecting text and pressing the hotkey; configure the hotkey in [Settings] → [Hotkeys]
+   * **Shortcut**: Toolbar appears after selecting text and pressing the shortcut; configure the shortcut in [Settings] → [Keyboard Shortcuts]
 
 ### Built-in Actions
 
-The Selection Assistant provides 7 built-in actions, with **5 enabled by default**: Translate / Explain / Summarize / Search / Copy. The **Cherry icon on the left side of the toolbar is not an action button**—it is merely the drag handle for the toolbar; hold it to move the entire toolbar.
+The Selection Assistant provides 8 built-in actions, with **5 enabled by default**: Translate / Explain / Summarize / Search / Copy. The other 3, including **Refine** and **Quote**, wait in the staging area until you enable them (the settings page shows the count, e.g. "5/8"). The **Cherry icon on the left side of the toolbar is not an action button**—it is merely the drag handle for the toolbar; hold it to move the entire toolbar.
 
 | Action | Default Enabled | Purpose |
 |---|---|---|
 | **Translate** | ✅ | Smart translation: Prioritizes translation to the target language; if already in the target language, translates to the fallback language |
 | **Explain** | ✅ | Lets AI explain the selected content |
 | **Summarize** | ✅ | Lets AI summarize the selected content in one paragraph |
-| **Search** | ✅ | Uses the selected text to query a search engine (default Google, changeable via the ⋯ icon on the right of each item) |
+| **Search** | ✅ | Uses the selected text to query a search engine (default Google, changeable via the settings icon on the right of the Search row) |
 | **Copy** | ✅ | Copies the selected text |
-| **Optimize** | To be enabled | Lets AI rewrite for better flow / professionalism; drag into the enabled area in settings to activate |
+| **Refine** | To be enabled | Lets AI rewrite for better flow / professionalism; drag into the enabled area in settings to activate |
 | **Quote** | To be enabled | Sends the selected text as a quote to the current conversation; drag into the enabled area in settings to activate |
 
 <figure><img src="../../../../assets/5aca871f2c1c1bb116da335c.webp" alt=""><figcaption><p>[Actions] section in the settings panel: top area is enabled, bottom area is staging; drag from bottom to top to enable</p></figcaption></figure>
@@ -69,12 +69,12 @@ Result Window ([Action Window] section):
 * **Follow Toolbar**: Window pops up attached to the toolbar (default on); if off, it always centers
 * **Remember Size**: Retains the manually adjusted window size for the next session
 * **Auto Close**: Closes when clicking outside the window
-* **Always on Top**: Always floats above other applications
+* **Auto Pin**: Pins the window by default, so it stays open
 * **Opacity**: Adjustable from 20%–100%
 
 ### Search Engine
 
-The built-in [Search] action in the Selection Assistant allows selecting preset engines (Google, Bing, DuckDuckGo, etc.). Configuration is found in [Settings] → [Selection Assistant] → [Actions]: Locate the **Search** entry, click the gear icon on the far right of the row to open the [Configure Search Engine] dialog. You can choose from presets or add custom engines, using `{{queryString}}` in the URL to represent the search term position.
+The built-in [Search] action in the Selection Assistant allows selecting preset engines (Google, Bing, DuckDuckGo, etc.). Configuration is found in [Settings] → [Selection Assistant] → [Actions]: Locate the **Search** entry, click the settings icon on the far right of the row to open the [Configure Search Engine] dialog. You can choose from presets or add custom engines, using `{{queryString}}` in the URL to represent the search term position.
 
 ### Application Filtering (Advanced)
 
@@ -83,9 +83,14 @@ You can set a **Blacklist / Whitelist** in [Settings] → [Selection Assistant] 
 * **macOS**: Enter the application's Bundle ID (e.g., `com.google.Chrome`, `com.apple.mail`)
 * **Windows**: Enter the application's executable filename (e.g., `chrome.exe`, `Cherry Studio.exe`)
 
-### Model Used
+### Models Used
 
-The Selection Assistant uses the [Global Default Chat Model](../../pre-basic/settings/default-models.md) by default, but you can specify a separate model for each action.
+The **Actions** section of [Settings] → [Selection Assistant] shows two models, each with a **Go to model settings** button:
+
+* **Default Assistant Model**: used by Explain, Summarize, Refine, and custom actions that use the default model
+* **Translate Model**: used to generate translations; automatic language detection may also use the fast model
+
+Both are set in [Default Model Settings](../../pre-basic/settings/default-models.md).
 
 ### Tips and Tricks
 

@@ -25,7 +25,7 @@ Before starting, ensure you have purchased the plan and obtained your key:
 
 #### Step 1: Locate the Provider
 
-Open Cherry Studio, click **Settings** > **Model Services** in the sidebar, and find **MiniMax** in the list.
+Open Cherry Studio, click **Settings** > **Model Provider** in the sidebar, and find **MiniMax** in the list.
 
 {% hint style="info" %}
 If the list is long, you can type `mini` in the search box at the top to locate it quickly.
@@ -43,7 +43,7 @@ You do **not** need to modify complex API addresses; use the default configurati
 
 The Coding Plan supports only specific models. Selecting the wrong model will result in inability to use the service or incur extra costs.
 
-1. Click the **Manage** button at the bottom of the configuration page.
+1. Click **Sync models** next to the Models heading on the configuration page.
 
 <figure><img src="../../../../assets/a47dc9b50635537d2cca507d.png" alt=""><figcaption></figcaption></figure>
 
@@ -57,7 +57,7 @@ The Coding Plan supports only specific models. Selecting the wrong model will re
 
 #### Step 4: Save and Verify <a href="#headingcab61b6e3e264a4b8e56bc83923488d2-di-si-bu-bao-cun-bing-yan-zheng-0" id="headingcab61b6e3e264a4b8e56bc83923488d2-di-si-bu-bao-cun-bing-yan-zheng-0"></a>
 
-1. Click the **Check** button next to the API key input field.
+1. Click the **Model Check** button next to the API key input field.
 2. If **Success** is displayed in green, your Coding Plan subscription is successfully connected!
 
 ### 3. Usage and Limitations

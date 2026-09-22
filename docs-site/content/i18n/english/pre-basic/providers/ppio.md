@@ -26,7 +26,7 @@ Click the [+ Create] button to create a new API key. Customize a key name. **The
 
 <figure><img src="../../../../assets/95f4e62d8026e301ff42021c.webp" alt=""><figcaption></figcaption></figure>
 
-(3) In CherryStudio, enter the key. Click "Settings", select [PPIO PiO Cloud], enter the API key generated on the official website, and finally click [Check].
+(3) In CherryStudio, enter the key. Click "Settings", select [PPIO PiO Cloud], enter the API key generated on the official website, and finally click [Model Check].
 
 <figure><img src="../../../../assets/cb4f98d1154ea8119e650bd2.webp" alt=""><figcaption></figcaption></figure>
 
@@ -38,7 +38,7 @@ The DeepSeek R1 and V3 community versions are for trial purposes only and are fu
 
 ### [​](https://ppinfra.com/docs/third-party/cherry-studio-use#2-%E6%A8%A1%E5%9E%8B%E4%BD%BF%E7%94%A8%E9%85%8D%E7%BD%AE)2. Model Usage Configuration <a id="model-configuration"></a>
 
-(1) After clicking [Check] and seeing "connection successful", you can use it normally.
+(1) After clicking [Model Check] and seeing "connection successful", you can use it normally.
 
 <figure><img src="../../../../assets/02e78a0c750d27c014e751fd.webp" alt=""><figcaption></figcaption></figure>
 

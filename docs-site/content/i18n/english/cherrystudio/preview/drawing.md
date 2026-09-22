@@ -85,8 +85,8 @@ If you want to go deeper:
 The Paintings feature expands with each release. The dropdown in the app always shows the currently supported providers.
 {% endhint %}
 
-{% hint style="danger" %}
-Note: Gemini image generation must be used in the chat interface, because Gemini generates images through multimodal conversation and does not support parameter adjustment.
+{% hint style="info" %}
+Gemini image models (such as `gemini-2.5-flash-image`) can be selected directly in the Paintings model dropdown once a Gemini-compatible provider is configured. You can also generate images with them in a regular chat.
 {% endhint %}
 
 ***

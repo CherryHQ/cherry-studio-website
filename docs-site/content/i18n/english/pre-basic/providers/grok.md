@@ -9,7 +9,7 @@ Grok is a large model developed by xAI, known for its "casual tone + access to r
 
 ## Configure in Cherry Studio
 
-* Open `Settings → Model Service`, find the **Grok** Provider and enter the details page
+* Open `Settings → Model Provider`, find the **Grok** Provider and enter the details page
 * Enter `xai-...` in **API Key**
 * **API Base URL** defaults to `https://api.x.ai`, no modification needed
 * Click **Fetch Model List**, add models such as `grok-4`, `grok-4-fast`

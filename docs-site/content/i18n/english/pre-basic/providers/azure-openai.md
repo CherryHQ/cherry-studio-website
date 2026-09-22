@@ -15,7 +15,7 @@ Azure OpenAI is the OpenAI model service hosted by Microsoft on Azure, suitable 
 
 ## Configure in Cherry Studio
 
-* Open `Settings → Model Service`, locate the **Azure OpenAI** Provider, and enter the details page
+* Open `Settings → Model Provider`, locate the **Azure OpenAI** Provider, and enter the details page
 * **API Key**: Enter the copied KEY
 * **API Endpoint**: Enter the resource Endpoint (without the trailing path)
 * **API Version**: Enter the API version of your deployment in the dedicated field (e.g., `2024-08-01-preview`)

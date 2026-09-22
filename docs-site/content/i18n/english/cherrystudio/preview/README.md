@@ -17,7 +17,7 @@ The table below lists the main features covered in this section and where to fin
 | [Mini Apps](../../../../cherry-studio/preview/app) | Run frequently used websites, or install local mini apps that can call Cherry AI | **Launchpad → MiniApp** |
 | [Knowledge Base](../../../../cherrystudio/preview/knowledge-base.md) | Vector search over documents, URLs and notes | **Launchpad → Knowledge Base** |
 | [Files](../../../../cherrystudio/preview/files.md) | View attachments from chats, paintings, knowledge bases and more in one place | **Launchpad → Files** |
-| [Coding Companion](../../../../cherrystudio/preview/code-cli.md) | Install, configure and launch AI coding CLI tools | **Launchpad → Code Mate** |
+| [Code Mate](../../../../cherrystudio/preview/code-cli.md) | Install, configure and launch AI coding CLI tools | **Launchpad → Code Mate** |
 | [Notes](../../../../cherrystudio/preview/notes.md) | Built-in Markdown notebook for jotting and organizing; can be exported to a knowledge base | **Launchpad → Notes** |
 | [Quick Assistant](../../../../cherrystudio/preview/quick-assistant.md) | A mini question window opened with a global hotkey | Global hotkey |
 | [Selection Assistant](../../../../cherrystudio/preview/selection-assistant.md) | Call AI from a floating toolbar after selecting text in any app | Floating toolbar after selecting text |

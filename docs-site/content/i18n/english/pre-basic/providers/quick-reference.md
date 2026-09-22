@@ -9,7 +9,7 @@ Cherry Studio includes **60+ Providers**. This page provides an overview table. 
 
 1. **Find your target Provider** (use Ctrl/⌘+F to search quickly)
 2. Click **Official Website** to register an account and obtain an API Key
-3. Find the corresponding Provider in Cherry Studio `Settings → Model Service`, enter the key, and click "Get Model List"
+3. Find the corresponding Provider in Cherry Studio `Settings → Model Provider`, enter the key, and click "Sync models"
 4. Complete the configuration
 
 ## One-Sentence Decision Guide

@@ -31,7 +31,7 @@
 <figure><img src="../../../../assets/cba9e28d82aef11147fc01c6.webp" alt="Example of Volcano Engine Model ID column"><figcaption></figcaption></figure>
 
 *   Open Cherry Studio's [Model Service](../../cherrystudio/preview/settings/providers.md) settings and find Volcano Engine.
-*   Click "Add", then copy the previously obtained Model ID into the Model ID text box.
+*   Click "+" next to Sync models, then copy the previously obtained Model ID into the Model ID text box.
 
 <figure><img src="../../../../assets/70c3827ffb29455676fb2fb0.webp" alt=""><figcaption></figcaption></figure>
 

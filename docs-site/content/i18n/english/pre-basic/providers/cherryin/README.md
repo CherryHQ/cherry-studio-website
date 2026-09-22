@@ -14,7 +14,7 @@
 
 4. Paste the key into Cherry Studio (the API Key field on the provider page from step 1)
 
-5. Click the Manage button and add models
+5. Click Sync models and add models
 
 <figure><img src="../../../../../assets/9ea4004d39e958a5b10fae51.webp" alt=""><figcaption></figcaption></figure>
 

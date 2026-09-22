@@ -33,7 +33,7 @@ Chart description: First select the main entry point based on your goal, then ad
 | Use Agent from external platforms | Let Agent guide configuration in [Work] first | Channels, allowed scope, permission mode |
 | Generate daily reports or reminders on schedule | Run Agent first, then create [Scheduled Task] | Agent, working directory, channels, run logs |
 | View materials and tasks simultaneously | Right-click tab → [Open in New Window] | Multi-window, pinned tabs, global search |
-| Manage coding command line | Launcher [Coding Partner] | Code CLI, model connection, directory, and terminal |
+| Manage coding command line | Launcher [Code Mate] | Code CLI, model connection, directory, and terminal |
 | Let local programs call models or troubleshoot | [Settings] → [API Gateway] / [General] | Compatible API, call chain, developer mode |
 
 ### Recommended Learning Order

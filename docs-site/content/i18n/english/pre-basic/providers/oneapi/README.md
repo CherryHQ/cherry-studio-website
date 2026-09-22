@@ -25,7 +25,7 @@
 * `http` and `https` are not interchangeable — if SSL isn't enabled, don't use https
 {% endhint %}
 
-* Add models (click Manage to fetch them automatically, or enter them manually), then turn on the switch in the top right to start using it.
+* Add models (click Sync models to fetch them automatically, or + to enter one manually), then turn on the switch in the top right to start using it.
 
 {% hint style="success" %}
 Other OneAPI themes may look different, but the steps to add it are the same.

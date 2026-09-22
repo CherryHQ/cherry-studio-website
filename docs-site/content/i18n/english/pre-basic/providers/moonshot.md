@@ -10,10 +10,10 @@ Moonshot AI is a prominent domestic large model team. Its flagship product, **Ki
 
 ## Configure in Cherry Studio
 
-* Open `Settings → Model Service`, find the **Moonshot AI** Provider, and enter the details page
+* Open `Settings → Model Provider`, find the **Moonshot AI** Provider, and enter the details page
 * Enter your `sk-...` key
 * The API address defaults to `https://api.moonshot.cn`
-* Click **Get Model List**
+* Click **Sync models**
 
 ## Recommended Usage
 

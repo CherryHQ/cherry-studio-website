@@ -10,7 +10,7 @@ Cherry Studio's settings panel covers everything from **model configuration and 
 
 | Setting | Doc | What it covers |
 | --- | --- | --- |
-| Model Provider | [Model Services](../../../../../pre-basic/providers) | Adding providers, API keys, API host, rotating multiple keys |
+| Model Provider | [Model Service Configuration](../../../../../pre-basic/providers) | Adding providers, API keys, API host, rotating multiple keys |
 | Default Model | [Default Model Settings](../../../../../pre-basic/settings/default-models.md) | Global default models for chat, naming, translation and more |
 | Local Models | [Local Models](../../../../../pre-basic/settings/local-models.md) | Built-in embedding and OCR models that run offline |
 | API Gateway | [API Gateway](../../../../../advanced-basic/developer-tools/api-gateway.md) | Exposes a local OpenAI-compatible API |
@@ -21,6 +21,8 @@ Cherry Studio's settings panel covers everything from **model configuration and 
 | --- | --- | --- |
 | MCP | [MCP and External Tools](../../../../../advanced-basic/extensions/mcp) | Connecting Model Context Protocol tools |
 | Skills | [Skills](../../../../../advanced-basic/extensions/skills.md) | Adding specialized abilities to assistants or Agents |
+| Prompts | — | Not documented yet |
+| Browser | — | Not documented yet |
 | Web Search | [Web Search Mode](../../../../../pre-basic/websearch) | Free web search, Tavily, Volcengine, SearXNG and more |
 | Document Processing | [Document Processing](../../../../../pre-basic/settings/doc-process.md) | Structured parsing of PDFs and complex layouts (MinerU, etc.) |
 | OCR | [OCR](../../../../../pre-basic/settings/ocr.md) | Text recognition engines for images and scans |
@@ -40,10 +42,12 @@ Cherry Studio's settings panel covers everything from **model configuration and 
 | Setting | Doc | What it covers |
 | --- | --- | --- |
 | Channels | [Channels](../../../../../advanced-basic/automation/channels.md) | Connecting Agents to Feishu (Lark), Telegram and more |
+| Device Connections | — | Not documented yet |
 | Scheduled Tasks | [Scheduled Tasks](../../../../../advanced-basic/automation/scheduled-heartbeat.md) | Running Agents on a cron schedule |
 | Keyboard Shortcuts | [Shortcut Settings](../../../../../pre-basic/settings/key-shortcut.md) | Changing, enabling and disabling every shortcut |
 | Quick Assistant | [Quick Assistant](../../../../../cherrystudio/preview/quick-assistant.md) | A global floating mini chat window |
 | Selection Assistant | [Selection Assistant](../../../../../cherrystudio/preview/selection-assistant.md) | Instant translate / explain / rewrite for selected text |
+| Screenshot | — | Not documented yet |
 
 ### System
 

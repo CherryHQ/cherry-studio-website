@@ -16,8 +16,8 @@ Adding your custom AI service provider to Cherry Studio takes just a few simple 
 <figure><img src="../../../../assets/33c7d9e73c5dca11aa494c09.webp" alt=""><figcaption></figcaption></figure>
 
 1.  **Open Settings:** In the left navigation bar of the Cherry Studio interface, click "Settings" (gear icon).
-2.  **Go to Model Services:** On the settings page, select the "Model Services" tab.
-3.  **Add Provider:** On the "Model Services" page, you will see a list of existing providers. Click the "+ Add" button below the list to open the "Add Provider" pop-up window.
+2.  **Go to Model Provider:** On the settings page, select "Model Provider" in the left menu.
+3.  **Add Provider:** On the "Model Provider" page, you will see a list of existing providers. Click the "+ Add" button below the list to open the "Add Provider" pop-up window.
 4.  **Fill in Information:** In the pop-up window, you need to fill in the following information:
     *   **Provider Name:** Give your custom provider an easy-to-identify name (e.g., MyCustomOpenAI).
     *   **Provider Type:** Select your provider type from the dropdown list. Currently supported:
@@ -36,7 +36,7 @@ After adding, you need to find the provider you just added in the list and confi
 1.  **Enable Status:** On the far right of the custom service provider list, there is an enable switch. Turning it on means enabling this custom service.
 2.  **API Key:**
     *   Enter the API Key provided by your AI service provider.
-    *   Click the "Check" button on the right to verify the validity of the key.
+    *   Click the "Model Check" button on the right to verify the validity of the key.
 3.  **API Address:**
     *   Enter the API access address (Base URL) for the AI service.
     *   Please be sure to refer to the official documentation provided by your AI service provider to get the correct API address.
@@ -46,7 +46,7 @@ After adding, you need to find the provider you just added in the list and confi
     <figure><img src="../../../../assets/75259c1dca05012a42e24e40.webp" alt=""><figcaption></figcaption></figure>
 
     *   If you are unsure of the specific model name, please refer to the official documentation provided by your AI service provider.
-    *   Click the "Manage" button to edit or delete models that have already been added.
+    *   Use the settings icon or "−" next to each model to edit or remove models that have already been added.
 
 ## Get Started
 
@@ -91,6 +91,6 @@ vLLM is a fast and easy-to-use LLM inference library similar to Ollama. Here are
 ## Tips and Tricks
 
 *   **Read the Documentation Carefully:** Before adding a custom service provider, be sure to carefully read the official documentation of the AI service provider you are using to understand key information such as API keys, access addresses, and model names.
-*   **Check API Key:** Use the "Check" button to quickly verify the validity of the API key, avoiding usability issues due to incorrect keys.
+*   **Check API Key:** Use the "Model Check" button to quickly verify the validity of the API key, avoiding usability issues due to incorrect keys.
 *   **Pay Attention to API Address:** Different AI service providers and models may have different API addresses, so be sure to fill in the correct address.
 *   **Add Models as Needed:** Please only add models that you will actually use, avoid adding too many unnecessary models.

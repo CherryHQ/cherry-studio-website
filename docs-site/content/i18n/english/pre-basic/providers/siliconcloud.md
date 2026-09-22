@@ -13,7 +13,7 @@
 
 <figure><img src="../../../../assets/43d95ad964cb0232107ed021.webp" alt=""><figcaption></figcaption></figure>
 
-#### [​](https://docs.siliconflow.cn/usercases/use-siliconcloud-in-cherry-studio#2-3)1.3 Click Manage to add models <a href="#id-2-3" id="id-2-3"></a>
+#### [​](https://docs.siliconflow.cn/usercases/use-siliconcloud-in-cherry-studio#2-3)1.3 Click Sync models to add models <a href="#id-2-3" id="id-2-3"></a>
 
 <figure><img src="../../../../assets/065e81241fd19d9779f091a2.webp" alt=""><figcaption></figcaption></figure>
 

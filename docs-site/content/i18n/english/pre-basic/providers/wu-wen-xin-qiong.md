@@ -31,7 +31,7 @@ Cherry Studio is an easy-to-use AI tool. Compared to the 1-2 month deployment cy
 
 <figure><img src="../../../../assets/24d492b9253e97518de9b0d6.webp" alt=""><figcaption></figcaption></figure>
 
-#### Step 2: Open CherryStudio Settings, select Infini-AI in Model Services, fill in the API Key, and enable the Infini-AI model service.
+#### Step 2: Open CherryStudio Settings, select Infini-AI in Model Provider, fill in the API Key, and enable the Infini-AI model service.
 
 <figure><img src="../../../../assets/2e40ada6e16ebdb183fbe125.webp" alt=""><figcaption></figcaption></figure>
 

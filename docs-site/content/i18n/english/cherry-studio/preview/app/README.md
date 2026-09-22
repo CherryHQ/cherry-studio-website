@@ -20,15 +20,15 @@ If you want to create a "custom mini app that can call Cherry AI," use 【Local 
 
 {% stepper %}
 {% step %}
-### Open the Launcher
+### Open the Launchpad
 
-Click `+` in the top Tab bar, or open 【Launcher】 directly.
+Click `+` in the top tab bar to open the 【Launchpad】.
 {% endstep %}
 
 {% step %}
 ### Enter Mini Apps
 
-Click the 【Mini Apps】 app icon.
+Click the 【MiniApp】 icon. The page opens in a tab named 【Apps】.
 {% endstep %}
 
 {% step %}
@@ -38,13 +38,13 @@ Select the service you want to open from the mini app grid.
 {% endstep %}
 {% endstepper %}
 
-<figure><img src="../../../../../assets/5c8457fa5b971eef205757ef.webp" alt=""><figcaption><p>Mini app grid, built-in with dozens of services; click <code>+</code> in the top right to add any webpage</p></figcaption></figure>
+<figure><img src="../../../../../assets/5c8457fa5b971eef205757ef.webp" alt=""><figcaption><p>Mini app grid with dozens of built-in services; click <code>+</code> in the top right, or the <strong>Add mini app</strong> tile at the end of the grid, to add any webpage</p></figcaption></figure>
 
-There is a **search box** in the middle of the page; `+` in the top right is used to add custom webpages, and `☰` opens 【Mini App Display Settings】.
+There is a **search box** at the top of the page. `+` in the top right (or the **Add mini app** tile at the end of the grid) adds a custom webpage, and `☰` opens 【Mini App Display Settings】.
 
 ### Settings
 
-In 【Settings】→【Mini Apps】, you can make the following adjustments:
+Click `☰` in the top right of the 【Apps】 page to open 【Mini App Display Settings】, where you can make the following adjustments:
 
 * **Show / Hide Mini Apps**: Drag mini apps left or right into two areas to control visibility
 * **Sort Mini Apps**: Drag up or down to sort mini apps
@@ -55,7 +55,7 @@ In 【Settings】→【Mini Apps】, you can make the following adjustments:
 
 Cherry Studio mini apps support the following operations:
 
-* **Add to Launcher**: Add frequently used mini apps to the Launcher for quick access from the `+` entry. Manage in 【Settings】→【Mini Apps】, or right-click a mini app icon and select **Add to Launcher**
+* **Add to Launchpad**: Add frequently used mini apps to the Launchpad for quick access from the `+` entry. Manage it in 【Mini App Display Settings】, or right-click a mini app icon and select **Add to Launchpad**
 * **Add to Sidebar**: Pin frequently used mini apps to the left sidebar for one-click access; right-click a mini app icon to select **Add to Sidebar** or **Remove from Sidebar**
 * **Keep Alive**: Prevent the mini app window from being destroyed immediately when switching away, so you don't need to log in or reload again when returning
 * **Add Website**: Click `+` in the top right of the page, enter the name, URL, and Logo in 【Website】, and it will be added to the grid
@@ -65,7 +65,7 @@ Cherry Studio mini apps support the following operations:
 
 After opening a mini app, its window includes a toolbar: **Back**, **Forward**, **Refresh**, **Open in Browser**. You can also switch whether in-page links open in the default window or in the system browser.
 
-<figure><img src="../../../../../assets/ecae29a8ae999f7eb89cb915.webp" alt=""><figcaption><p>Mini app window toolbar: Back / Forward / Refresh on the left, Open in Browser, Add to Launcher, and in-page link opening method on the right</p></figcaption></figure>
+<figure><img src="../../../../../assets/ecae29a8ae999f7eb89cb915.webp" alt=""><figcaption><p>Mini app window toolbar: Back / Forward / Refresh on the left, Open in Browser, Add to Launchpad, and in-page link opening method on the right</p></figcaption></figure>
 
 ### Tips and Tricks
 

@@ -15,12 +15,12 @@ The Launchpad currently includes 9 built-in apps:
 | --------------------------------------- | ----------------------- |
 | [Chat](chat.md) | Chat with models, manage assistants and conversation lists |
 | [Work](../../advanced-basic/agent.md) | Enable agents to call tools and complete multi-step tasks |
-| [Drawing](drawing.md) | Generate and manage images using image models |
+| [Paintings](drawing.md) | Generate and manage images using image models |
 | [Translation](translation.md) | Translate text and view source and target side-by-side |
-| [Mini Apps](../../../../cherry-studio/preview/app) | Use web applications within Cherry Studio |
+| [MiniApp](../../../../cherry-studio/preview/app) | Use web applications within Cherry Studio |
 | [Knowledge Base](knowledge-base.md) | Import documents for retrieval and Q&A |
 | [Files](files.md) | View and manage files used within the app |
-| [Coding Partner](code-cli.md) | Install, configure, and launch AI coding CLI tools |
+| [Code Mate](code-cli.md) | Install, configure, and launch AI coding CLI tools |
 | [Notes](notes.md) | Create and organize Markdown notes |
 
 ## Reorder Apps

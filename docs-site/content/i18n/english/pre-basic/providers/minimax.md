@@ -9,10 +9,10 @@ MiniMax is one of China's leading large model providers, known for its strong **
 
 ## Configure in Cherry Studio
 
-* Open `Settings → Model Service`, find the **MiniMax** Provider, and enter its details page
+* Open `Settings → Model Provider`, find the **MiniMax** Provider, and enter its details page
 * Enter your API key
 * Keep the API address as the default
-* Click **Get Model List**
+* Click **Sync models**
 
 ## Recommended Usage
 

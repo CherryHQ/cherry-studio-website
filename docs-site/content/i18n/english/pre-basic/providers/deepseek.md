@@ -10,7 +10,7 @@ DeepSeek is one of the leading domestic large model providers, well-regarded for
 
 ## Configure in Cherry Studio
 
-* Open `Settings → Model Service`, find the **deepseek** Provider and enter the details page
+* Open `Settings → Model Provider`, find the **deepseek** Provider and enter the details page
 * Enter your `sk-...` in **API Key**
 * **API Base URL** defaults to `https://api.deepseek.com`, no modification needed
 * Click **Fetch Model List**

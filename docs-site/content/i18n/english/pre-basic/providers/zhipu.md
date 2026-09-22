@@ -11,7 +11,7 @@ The **GLM** series from ZhiPu AI (including the multimodal GLM-4V) offers direct
 
 1. Open [Model Service Settings](../settings/providers.md) in Cherry Studio and find **ZhiPu** in the built-in list
 2. Enter the API Key you just obtained
-3. Click **Get Model List**, add the required GLM models, and enable the provider switch in the top-right corner to start using it
+3. Click **Sync models**, add the required GLM models, and enable the provider switch in the top-right corner to start using it
 
 {% hint style="info" %}
 ZhiPu models include built-in **web search** capabilities, subject to model support. For more platform documentation, see the [ZhiPu Official Documentation](https://docs.bigmodel.cn/).
