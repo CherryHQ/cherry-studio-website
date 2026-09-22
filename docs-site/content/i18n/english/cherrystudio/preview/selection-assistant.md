@@ -37,7 +37,7 @@ Open [Settings] → [Selection Assistant]:
 
 ### Built-in Actions
 
-The Selection Assistant provides 8 built-in actions, with **5 enabled by default**: Translate / Explain / Summarize / Search / Copy. The other 3, including **Refine** and **Quote**, wait in the staging area until you enable them (the settings page shows the count, e.g. "5/8"). The **Cherry icon on the left side of the toolbar is not an action button**—it is merely the drag handle for the toolbar; hold it to move the entire toolbar.
+The Selection Assistant provides 7 built-in actions, with **5 enabled by default**: Translate / Explain / Summarize / Search / Copy. The other 2, **Refine** and **Quote**, wait in the staging area until you enable them. The divider between the two areas shows how many actions are enabled out of the maximum (e.g. "5/8"). The **Cherry icon on the left side of the toolbar is not an action button**—it is merely the drag handle for the toolbar; hold it to move the entire toolbar.
 
 | Action | Default Enabled | Purpose |
 |---|---|---|

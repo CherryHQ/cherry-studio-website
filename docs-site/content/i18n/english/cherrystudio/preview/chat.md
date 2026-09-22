@@ -34,8 +34,8 @@ This guides users to begin their conversation naturally.
 The bottom section contains:
 
 * **Message input box** - The placeholder reads "Type a message. Press Return to send. Type / for tools and actions, @ to reference topics." Type `/` to pick tools and actions, or `@` to reference another topic
-* **Toolbar (left side)** - Quick buttons, including the 🌐 globe for [web search](../../pre-basic/websearch/README.md) and **+** for more options, including MCP prompts and resources
-* **Right side** - The **Default** dropdown and the send button
+* **Toolbar (left side)** - Quick buttons, including the 🌐 globe for [web search](../../pre-basic/websearch/README.md) and **+** to open the Input Quick Panel (attachments, knowledge bases, prompts, MCP and more)
+* **Right side** - The **Effort** dropdown (shows "Default") and the send button
 
 ## Concepts
 
@@ -91,9 +91,31 @@ The toolbar at the bottom of the input box provides quick access to common featu
 | Button | Function | Details |
 |------|----------|---------|
 | 🌐 | **Web search** | Turns on web search for the current conversation. See [Web Search Mode](../../pre-basic/websearch/README.md) |
-| ➕ | **More** | Opens a panel with more options, including inserting MCP prompts and resources. See [MCP and External Tools](../../advanced-basic/extensions/mcp/README.md) |
+| ➕ | **Input Quick Panel** | Opens a panel of tools and actions (see below) |
 
-You can also type `/` in the input box to pick tools and actions, and `@` to reference another topic.
+#### Input Quick Panel
+
+Click **+** (or type `/` in the input box) to open the Input Quick Panel:
+
+| Item | What it does |
+|------|--------------|
+| **Upload attachment** | Attach files or images to your message |
+| **Generate image** | Generate an image in the chat. Available once a painting model is set in **Settings › Default Model** |
+| **Knowledge Base** | Choose a knowledge base for this conversation |
+| **Prompts** | Insert a saved prompt |
+| **MCP** | View the current MCP server status |
+| **MCP Prompts** | Insert a prompt published by an MCP server |
+| **MCP Resources** | Reference a resource published by an MCP server |
+| **Reference Note** | Attach a note from [Notes](notes.md) |
+| **Clear Context** | Clears the context, like `⌘ + K` / `Ctrl + K` |
+
+Use `▲` `▼` to select an item, `⌘ + ▲▼` to page, `Tab` or `Enter` to confirm and `Esc` to close. Click **Customize toolbar** at the bottom of the panel to choose which buttons appear on the toolbar.
+
+Type `@` in the input box to reference another topic.
+
+#### Effort
+
+The **Effort** dropdown to the left of the send button (it shows **Default** until you change it) opens a slider from **Faster** to **Smarter**. Slide toward Smarter to let the model think more before answering, or toward Faster for quicker replies.
 
 ### Model Selection
 

@@ -44,18 +44,24 @@ There is a **search box** at the top of the page. `+` in the top right (or the *
 
 ### Settings
 
-Click `☰` in the top right of the 【Apps】 page to open 【Mini App Display Settings】, where you can make the following adjustments:
+Click `☰` in the top right of the 【Apps】 page to open 【Mini App Display Settings】:
 
-* **Show / Hide Mini Apps**: Drag mini apps left or right into two areas to control visibility
-* **Sort Mini Apps**: Drag up or down to sort mini apps
-* **Mini App Area Filtering**: Automatically hide mini apps you cannot access based on your selection
-* **Mini App Cache Count**: If the number of simultaneously open mini apps exceeds this count, some mini apps will enter an inactive state
+**Display management**
+
+* **Visible / Hidden Mini Apps**: the two columns list the visible and hidden mini apps with their counts. Click the hide icon next to an app in the left column to move it to the hidden column
+* **Swap** and **Reset** buttons sit above the lists; **Reset** restores the default display
+
+**Preferences**
+
+* **Mini Program filter**: hides mini apps that aren't supported in your region (default: **Auto detect**)
+* **Open new-window links in browser**: opens links that would open a new window in your default browser instead (off by default)
+* **Check for updates when opening**: checks an installed mini app for updates each time you open it; nothing is applied without your confirmation (on by default)
 
 ### Add and Manage
 
 Cherry Studio mini apps support the following operations:
 
-* **Add to Launchpad**: Add frequently used mini apps to the Launchpad for quick access from the `+` entry. Manage it in 【Mini App Display Settings】, or right-click a mini app icon and select **Add to Launchpad**
+* **Add to Launchpad**: Right-click a mini app icon and select **Add to Launchpad** to open it quickly from the `+` entry
 * **Add to Sidebar**: Pin frequently used mini apps to the left sidebar for one-click access; right-click a mini app icon to select **Add to Sidebar** or **Remove from Sidebar**
 * **Keep Alive**: Prevent the mini app window from being destroyed immediately when switching away, so you don't need to log in or reload again when returning
 * **Add Website**: Click `+` in the top right of the page, enter the name, URL, and Logo in 【Website】, and it will be added to the grid
