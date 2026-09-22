@@ -53,32 +53,7 @@
   },
   "mobile_page": {
     "beta": "Beta",
-    "description": "Chat, create images, and connect your AI tools on the go.",
-    "preview_label": "Mobile features and app previews",
-    "tabs": {
-      "chat": "Chat",
-      "paintings": "Images",
-      "plugins": "Tools"
-    },
-    "features": {
-      "chat": {
-        "title": "AI chat",
-        "description": "Choose your model and ask with text or images.",
-        "alt": "An AI conversation with a Markdown response in Cherry Studio Mobile"
-      },
-      "paintings": {
-        "title": "Image creation",
-        "description": "Turn a prompt or a picture into something new.",
-        "alt": "A watercolor landscape generated from a text prompt in Cherry Studio Mobile"
-      },
-      "plugins": {
-        "title": "Tools & plugins",
-        "description": "Connect services and let your agents use their tools.",
-        "alt": "GitHub, Feishu, Notion, and other plugins in Cherry Studio Mobile"
-      }
-    },
     "current_device": "Your device",
-    "scan": "Scan to install",
     "channels": {
       "apk": "For ARM64 devices",
       "testflight": "Requires TestFlight",

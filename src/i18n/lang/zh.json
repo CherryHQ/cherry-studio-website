@@ -53,32 +53,7 @@
   },
   "mobile_page": {
     "beta": "Beta 体验版",
-    "description": "在手机上对话、绘图，连接你常用的 AI 工具。",
-    "preview_label": "移动版功能与界面预览",
-    "tabs": {
-      "chat": "对话",
-      "paintings": "绘图",
-      "plugins": "工具"
-    },
-    "features": {
-      "chat": {
-        "title": "AI 对话",
-        "description": "自由选择模型，用文字或图片提问。",
-        "alt": "Cherry Studio 移动版中的 AI 对话与 Markdown 回复"
-      },
-      "paintings": {
-        "title": "AI 绘图",
-        "description": "从描述或图片出发，把灵感变成画面。",
-        "alt": "Cherry Studio 移动版通过文字描述生成的水彩风景画"
-      },
-      "plugins": {
-        "title": "工具与插件",
-        "description": "连接常用服务，让智能体调用工具。",
-        "alt": "Cherry Studio 移动版中的 GitHub、飞书和 Notion 等插件"
-      }
-    },
     "current_device": "当前设备",
-    "scan": "手机扫码安装",
     "channels": {
       "apk": "适用于 ARM64 设备",
       "testflight": "需先安装 TestFlight",
