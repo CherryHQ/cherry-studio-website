@@ -5,6 +5,45 @@ import { type ReactNode, useEffect, useRef, useState } from 'react'
 
 import { cn } from '../src/lib/utils'
 
+const GITHUB_STARS_CACHE_KEY = 'cherry-studio:github-stars'
+const GITHUB_STARS_CACHE_TTL = 24 * 60 * 60 * 1000
+// Keeps the static docs header complete before hydration or when the GitHub API is unavailable.
+const GITHUB_STARS_FALLBACK = 52_059
+
+interface GitHubStarsCache {
+  count: number
+  updatedAt: number
+}
+
+function isGitHubStarsCache(value: unknown): value is GitHubStarsCache {
+  const cache = value as Partial<GitHubStarsCache> | null
+  return typeof cache?.count === 'number' && Number.isFinite(cache.count) && typeof cache?.updatedAt === 'number'
+}
+
+function readGitHubStarsCache(): GitHubStarsCache | null {
+  if (typeof window === 'undefined') return null
+  for (const name of ['localStorage', 'sessionStorage'] as const) {
+    try {
+      const cached = JSON.parse(window[name].getItem(GITHUB_STARS_CACHE_KEY) ?? 'null')
+      if (isGitHubStarsCache(cached)) return cached
+    } catch {}
+  }
+  return null
+}
+
+function writeGitHubStarsCache(cache: GitHubStarsCache) {
+  const serialized = JSON.stringify(cache)
+  for (const name of ['localStorage', 'sessionStorage'] as const) {
+    try {
+      window[name].setItem(GITHUB_STARS_CACHE_KEY, serialized)
+    } catch {}
+  }
+}
+
+function formatStarCount(count: number) {
+  return count >= 1000 ? `${(count / 1000).toFixed(1)}k` : String(count)
+}
+
 export interface HeaderLink {
   href: string
   label: string
@@ -42,7 +81,7 @@ export function SiteHeader({
   renderLink = (props) => <a {...props} />
 }: SiteHeaderProps) {
   const [scrolled, setScrolled] = useState(false)
-  const [starCount, setStarCount] = useState<number | null>(null)
+  const [starCount, setStarCount] = useState(() => readGitHubStarsCache()?.count ?? GITHUB_STARS_FALLBACK)
   const dialog = useRef<HTMLDialogElement>(null)
   const link = (item: HeaderLink, className: string) =>
     item.external ? (
@@ -63,11 +102,18 @@ export function SiteHeader({
     const onScroll = () => setScrolled(window.scrollY > 10)
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
+    const cached = readGitHubStarsCache()
+    if (cached) setStarCount(cached.count)
+    if (cached && Date.now() - cached.updatedAt < GITHUB_STARS_CACHE_TTL) {
+      return () => window.removeEventListener('scroll', onScroll)
+    }
     const controller = new AbortController()
     fetch('https://api.github.com/repos/CherryHQ/cherry-studio', { signal: controller.signal })
       .then((response) => (response.ok ? response.json() : null))
       .then((data) => {
-        if (typeof data?.stargazers_count === 'number') setStarCount(data.stargazers_count)
+        if (typeof data?.stargazers_count !== 'number') return
+        setStarCount(data.stargazers_count)
+        writeGitHubStarsCache({ count: data.stargazers_count, updatedAt: Date.now() })
       })
       .catch(() => {})
     return () => {
@@ -80,7 +126,7 @@ export function SiteHeader({
     <>
       <header
         className={cn(
-          'site-header fixed inset-x-0 top-0 z-50 flex h-[72px] items-center border-b border-border/50 bg-background/80 backdrop-blur-sm transition-all duration-300',
+          'site-header fixed inset-x-0 top-0 z-50 flex h-[72px] items-center border-b border-border/50 bg-background/80 backdrop-blur-sm transition-shadow duration-200',
           scrolled && 'shadow-sm'
         )}>
         <div className="mx-auto flex w-full max-w-[97rem] items-center justify-between px-4">
@@ -101,14 +147,14 @@ export function SiteHeader({
               target="_blank"
               rel="noopener noreferrer"
               title="GitHub"
-              className="hidden h-[34px] w-[102px] items-center justify-center gap-2 rounded-lg border border-border/50 bg-secondary/50 px-3 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground sm:flex">
+              className="hidden h-[34px] w-[102px] items-center justify-center gap-2 rounded-[8px] border border-border/50 bg-secondary/50 px-3 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground sm:flex">
               <img src={githubIcon} alt="GitHub" className="h-4 w-4 dark:invert" />
-              {starCount !== null && (
-                <span className="flex items-center gap-1">
-                  <Star className="h-3.5 w-3.5 fill-yellow-500 text-yellow-500" />
-                  {starCount >= 1000 ? `${(starCount / 1000).toFixed(1)}k` : starCount}
+              <span className="flex w-[3.25rem] shrink-0 items-center gap-1" aria-hidden="true">
+                <Star className="h-3.5 w-3.5 shrink-0 fill-yellow-500 text-yellow-500" />
+                <span className="min-w-[2rem] tabular-nums" suppressHydrationWarning>
+                  {formatStarCount(starCount)}
                 </span>
-              )}
+              </span>
             </a>
           </div>
           <div className="flex items-center gap-1">
@@ -128,7 +174,7 @@ export function SiteHeader({
             {renderLink({
               href: '/download',
               className:
-                'ml-2 hidden items-center gap-2 rounded-lg bg-black px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-black/80 sm:flex dark:bg-white dark:text-black dark:hover:bg-white/80',
+                'ml-2 hidden items-center gap-2 rounded-[8px] bg-black px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-black/80 sm:flex dark:bg-white dark:text-black dark:hover:bg-white/80',
               children: (
                 <>
                   <Download className="h-4 w-4" />
@@ -140,7 +186,7 @@ export function SiteHeader({
               type="button"
               aria-label={menuLabel}
               aria-haspopup="dialog"
-              className="ml-2 flex h-9 w-9 items-center justify-center rounded-lg text-foreground hover:bg-accent lg:hidden"
+              className="ml-2 flex h-9 w-9 items-center justify-center rounded-[8px] text-foreground hover:bg-accent lg:hidden"
               onClick={() => dialog.current?.showModal()}>
               <Menu className="h-5 w-5" />
             </button>
@@ -160,7 +206,7 @@ export function SiteHeader({
             <button
               type="button"
               aria-label={closeLabel}
-              className="flex h-9 w-9 items-center justify-center rounded-lg hover:bg-accent"
+              className="flex h-9 w-9 items-center justify-center rounded-[8px] hover:bg-accent"
               onClick={() => dialog.current?.close()}>
               <X className="h-5 w-5" />
             </button>

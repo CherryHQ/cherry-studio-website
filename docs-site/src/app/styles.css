@@ -4,6 +4,21 @@
 @import "fumadocs-ui/css/preset.css";
 @source "../../node_modules/fumadocs-ui/dist/**/*.js";
 @source "../../../shared/**/*.tsx";
+
+@view-transition {
+  navigation: auto;
+}
+
+.site-header {
+  view-transition-name: site-header;
+}
+
+::view-transition-group(site-header),
+::view-transition-old(site-header),
+::view-transition-new(site-header) {
+  animation: none;
+}
+
 @theme inline {
   --color-background: var(--color-fd-background);
   --color-foreground: var(--color-fd-foreground);
