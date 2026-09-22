@@ -62,6 +62,7 @@ interface SiteHeaderProps {
   githubIcon: string
   links: HeaderLink[]
   downloadLabel: string
+  downloadHref?: string
   menuLabel: string
   closeLabel: string
   mobileControls?: ReactNode
@@ -75,6 +76,7 @@ export function SiteHeader({
   githubIcon,
   links,
   downloadLabel,
+  downloadHref = '/download',
   menuLabel,
   closeLabel,
   mobileControls,
@@ -172,7 +174,7 @@ export function SiteHeader({
               ))}
             </nav>
             {renderLink({
-              href: '/download',
+              href: downloadHref,
               className:
                 'ml-2 hidden items-center gap-2 rounded-[8px] bg-black px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-black/80 sm:flex dark:bg-white dark:text-black dark:hover:bg-white/80',
               children: (
@@ -217,7 +219,7 @@ export function SiteHeader({
             onClick={(event) => {
               if ((event.target as HTMLElement).closest('a')) dialog.current?.close()
             }}>
-            {[{ href: '/download', label: downloadLabel }, ...links].map((item) => (
+            {[{ href: downloadHref, label: downloadLabel }, ...links].map((item) => (
               <div key={item.href}>
                 {link(
                   item,

@@ -1,194 +1,194 @@
-import * as Popover from '@radix-ui/react-popover'
-import { ArrowUpRight, Download, MessageSquare, Palette, Plug, QrCode } from 'lucide-react'
-import { QRCodeSVG } from 'qrcode.react'
-import { useEffect, useState } from 'react'
+import { ArrowRight, Download } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
 
-import chatScreenshot from '@/assets/images/screenshots/mobile/chat.webp'
-import paintingsScreenshot from '@/assets/images/screenshots/mobile/paintings.webp'
-import pluginsScreenshot from '@/assets/images/screenshots/mobile/plugins.webp'
+import ipadConversation from '@/assets/images/screenshots/mobile/app-store/ipad-conversation.webp'
+import ipadImagePreview from '@/assets/images/screenshots/mobile/app-store/ipad-image-preview.webp'
+import iphoneAgent from '@/assets/images/screenshots/mobile/app-store/iphone-agent.webp'
+import iphoneConversation from '@/assets/images/screenshots/mobile/app-store/iphone-conversation.webp'
+import iphoneDrawing from '@/assets/images/screenshots/mobile/app-store/iphone-drawing.webp'
 import { Button } from '@/components/ui/button'
 import Footer from '@/components/website/Footer'
-import { useMobileDownloads } from '@/hooks/useMobileDownloads'
 import { usePageMeta } from '@/hooks/usePageMeta'
-import { cn } from '@/lib/utils'
-import { detectMobilePlatform, isMobileDevice } from '@/utils/systemDetection'
-
-const features = [
-  { id: 'chat', image: chatScreenshot, icon: MessageSquare },
-  { id: 'paintings', image: paintingsScreenshot, icon: Palette },
-  { id: 'plugins', image: pluginsScreenshot, icon: Plug }
-] as const
+import { getMobileDocsUrl } from '@/utils/urls'
 
 export default function MobilePage() {
-  const { t } = useTranslation()
-  const mobileDownloads = useMobileDownloads()
+  const { t, i18n } = useTranslation()
+  const mobileDocsUrl = getMobileDocsUrl(i18n.language)
   usePageMeta('mobile')
-  const mobilePlatform = detectMobilePlatform()
-  const isMobile = isMobileDevice()
-  const [activeFeature, setActiveFeature] = useState(0)
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(
-    () => window.matchMedia('(prefers-reduced-motion: reduce)').matches
-  )
-  const [isHovered, setIsHovered] = useState(false)
-
-  useEffect(() => {
-    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
-    const updateMotion = () => setPrefersReducedMotion(motionQuery.matches)
-
-    motionQuery.addEventListener('change', updateMotion)
-    return () => motionQuery.removeEventListener('change', updateMotion)
-  }, [])
-
-  useEffect(() => {
-    if (prefersReducedMotion || isHovered) return
-
-    const interval = window.setInterval(() => {
-      if (!document.hidden) setActiveFeature((activeFeature + 1) % features.length)
-    }, 5000)
-    return () => window.clearInterval(interval)
-  }, [prefersReducedMotion, isHovered, activeFeature])
 
   return (
-    <div className="bg-background text-foreground min-h-screen">
-      <main className="mx-auto grid max-w-6xl items-center gap-12 px-4 pt-28 pb-16 sm:px-6 sm:pt-32 sm:pb-20 lg:grid-cols-2 lg:gap-16 lg:px-8">
-        <section
-          aria-labelledby="mobile-title"
-          className="mx-auto w-full max-w-[360px] text-center lg:order-2 lg:mx-0 lg:text-left">
-          <span className="text-muted-foreground text-sm font-medium">{t('mobile_page.beta')}</span>
-          <h1 id="mobile-title" className="mt-2 text-3xl leading-tight font-semibold tracking-tight text-balance">
-            {t('mobile_download.title')}
-          </h1>
-          <p className="text-muted-foreground mt-3 text-base leading-7 text-pretty">{t('mobile_page.description')}</p>
+    <div className="min-h-screen bg-white pt-[72px] text-zinc-950 dark:bg-zinc-950 dark:text-white">
+      <main>
+        <section className="overflow-hidden px-4 pt-14 pb-10 sm:px-6 sm:pt-20 sm:pb-16 lg:px-8 lg:pt-24">
+          <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:gap-6">
+            <div className="mx-auto max-w-xl text-center lg:mx-0 lg:text-left">
+              <p className="text-primary mb-5 text-sm font-semibold tracking-[0.14em] uppercase">
+                {t('mobile_site.hero.eyebrow')}
+              </p>
+              <h1 className="text-4xl leading-[1.04] font-semibold tracking-[-0.045em] text-balance sm:text-6xl lg:text-7xl">
+                {t('mobile_site.hero.title')}
+              </h1>
+              <p className="mx-auto mt-6 max-w-lg text-lg leading-8 text-zinc-600 lg:mx-0 dark:text-zinc-300">
+                {t('mobile_site.hero.description')}
+              </p>
+              <div className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center lg:justify-start">
+                <Button asChild size="lg" className="rounded-full px-7 active:scale-95">
+                  <Link to="/download?platform=mobile">
+                    <Download aria-hidden="true" />
+                    {t('mobile_site.hero.download')}
+                  </Link>
+                </Button>
+                <Button asChild variant="outline" size="lg" className="rounded-full px-7 active:scale-95">
+                  <a href={mobileDocsUrl}>
+                    {t('mobile_site.hero.docs')}
+                    <ArrowRight aria-hidden="true" />
+                  </a>
+                </Button>
+              </div>
+              <p className="mt-5 text-sm leading-6 text-zinc-500 dark:text-zinc-400">
+                {t('mobile_site.hero.platforms')}
+              </p>
+            </div>
 
-          <div
-            id="mobile-install"
-            className="divide-border border-border mt-6 scroll-mt-28 divide-y border-y text-left">
-            {mobileDownloads.map(({ platform, channel, url }) => {
-              const name = platform === 'android' ? 'Android' : 'iOS'
-              const isCurrentPlatform = platform === mobilePlatform
-
-              return (
-                <div key={platform} className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3 py-4">
-                  <div className="min-w-32 flex-1">
-                    <h2 className="text-base font-medium">{name}</h2>
-                    <p className="text-muted-foreground mt-1 text-sm leading-5">
-                      {t(`mobile_page.channels.${channel}`)}
-                    </p>
-                  </div>
-                  <div className="flex shrink-0 items-center gap-2">
-                    <Button
-                      variant={isCurrentPlatform ? 'default' : 'outline'}
-                      className="h-auto min-h-10 px-3 py-1.5 lg:min-h-9"
-                      disabled={!url}
-                      asChild={Boolean(url)}>
-                      {url ? (
-                        <a href={url}>
-                          {channel === 'apk' ? <Download aria-hidden="true" /> : <ArrowUpRight aria-hidden="true" />}
-                          {t(`mobile_download.direct_${channel}`)}
-                        </a>
-                      ) : (
-                        t('mobile_download.unavailable')
-                      )}
-                    </Button>
-                    {!isMobile && url && (
-                      <Popover.Root>
-                        <Popover.Trigger asChild>
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            className="lg:h-9 lg:w-9"
-                            aria-label={`${name} · ${t('mobile_page.scan')}`}
-                            title={t('mobile_page.scan')}>
-                            <QrCode aria-hidden="true" />
-                          </Button>
-                        </Popover.Trigger>
-                        <Popover.Portal>
-                          <Popover.Content
-                            side="bottom"
-                            align="end"
-                            sideOffset={10}
-                            collisionPadding={16}
-                            aria-label={t('mobile_download.qr_alt', { platform: name })}
-                            className="border-border bg-popover text-popover-foreground z-50 rounded-2xl border p-4 text-center shadow-lg outline-none">
-                            <p className="mb-3 text-sm font-medium">{name}</p>
-                            <div className="rounded-lg bg-white p-2">
-                              <QRCodeSVG
-                                value={url}
-                                size={160}
-                                level="M"
-                                marginSize={4}
-                                title={t('mobile_download.qr_alt', { platform: name })}
-                              />
-                            </div>
-                            <p className="text-muted-foreground mt-3 text-sm">{t(`mobile_download.${channel}`)}</p>
-                          </Popover.Content>
-                        </Popover.Portal>
-                      </Popover.Root>
-                    )}
-                  </div>
-                </div>
-              )
-            })}
-          </div>
-          <p className="text-muted-foreground mt-4 text-sm leading-5">{t('mobile_page.setup_note')}</p>
-        </section>
-
-        <section
-          aria-label={t('mobile_page.preview_label')}
-          onPointerEnter={(event) => {
-            if (event.pointerType === 'mouse') setIsHovered(true)
-          }}
-          onPointerLeave={() => setIsHovered(false)}
-          className="mx-auto w-full max-w-sm lg:order-1">
-          {features.map(({ id, image }, index) => (
-            <figure
-              key={id}
-              id={`mobile-feature-${id}`}
-              className={cn(
-                'mx-auto w-full max-w-[248px] motion-safe:animate-in motion-safe:fade-in-0 motion-safe:duration-300 sm:max-w-[260px]',
-                activeFeature !== index && 'hidden'
-              )}>
-              <img
-                src={image}
-                alt={t(`mobile_page.features.${id}.alt`)}
-                width={736}
-                height={1600}
-                loading={index === 0 ? 'eager' : 'lazy'}
-                className="border-border h-auto w-full rounded-[2rem] border shadow-lg shadow-black/5 dark:shadow-black/20"
-              />
-              <figcaption className="text-muted-foreground mt-5 min-h-14 text-center text-sm leading-6">
-                {t(`mobile_page.features.${id}.description`)}
-              </figcaption>
-            </figure>
-          ))}
-          <div className="mt-3 flex justify-center">
             <div
               role="group"
-              aria-label={t('mobile_page.preview_label')}
-              className="inline-flex gap-1 rounded-full border border-black/10 p-1 dark:border-white/20">
-              {features.map(({ id, icon: Icon }, index) => (
-                <button
-                  key={id}
-                  type="button"
-                  aria-label={t(`mobile_page.features.${id}.title`)}
-                  aria-pressed={activeFeature === index}
-                  aria-controls={`mobile-feature-${id}`}
-                  onClick={() => setActiveFeature(index)}
-                  className={cn(
-                    'focus-visible:ring-ring flex cursor-pointer items-center gap-1.5 rounded-full px-3 py-2.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2',
-                    activeFeature === index
-                      ? 'bg-black/5 text-black dark:bg-white/10 dark:text-white'
-                      : 'text-muted-foreground hover:text-foreground'
-                  )}>
-                  <Icon aria-hidden="true" className="h-4 w-4" />
-                  <span>{t(`mobile_page.tabs.${id}`)}</span>
-                </button>
-              ))}
+              aria-label={t('mobile_site.screenshots.group_alt')}
+              className="relative mx-auto h-[450px] w-full max-w-[690px] sm:h-[620px]">
+              <div className="bg-primary/10 absolute top-1/2 left-1/2 h-[330px] w-[330px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl sm:h-[480px] sm:w-[480px]" />
+              <img
+                src={iphoneAgent}
+                alt={t('mobile_site.screenshots.agent')}
+                width={1320}
+                height={2868}
+                loading="eager"
+                className="absolute top-14 left-[1%] w-[145px] -rotate-6 rounded-[1.65rem] shadow-[3px_5px_30px_rgba(0,0,0,0.22)] sm:left-[4%] sm:w-[205px] sm:rounded-[2.25rem]"
+              />
+              <img
+                src={iphoneDrawing}
+                alt={t('mobile_site.screenshots.drawing')}
+                width={1320}
+                height={2868}
+                loading="eager"
+                className="absolute top-14 right-[1%] w-[145px] rotate-6 rounded-[1.65rem] shadow-[3px_5px_30px_rgba(0,0,0,0.22)] sm:right-[4%] sm:w-[205px] sm:rounded-[2.25rem]"
+              />
+              <img
+                src={iphoneConversation}
+                alt={t('mobile_site.screenshots.conversation')}
+                width={1320}
+                height={2868}
+                loading="eager"
+                className="absolute top-0 left-1/2 z-10 w-[176px] -translate-x-1/2 rounded-[1.9rem] shadow-[3px_5px_30px_rgba(0,0,0,0.22)] sm:w-[250px] sm:rounded-[2.75rem]"
+              />
+            </div>
+          </div>
+        </section>
+
+        <section className="overflow-hidden bg-zinc-950 px-4 py-20 text-white sm:px-6 sm:py-28 lg:px-8">
+          <div className="mx-auto grid max-w-6xl items-center gap-16 lg:grid-cols-[0.9fr_1.1fr] lg:gap-24">
+            <div>
+              <p className="text-primary mb-4 text-sm font-semibold tracking-[0.16em] uppercase">
+                {t('mobile_site.mobile_first.eyebrow')}
+              </p>
+              <h2 className="text-3xl leading-tight font-semibold tracking-[-0.035em] text-balance sm:text-5xl">
+                {t('mobile_site.mobile_first.title')}
+              </h2>
+              <p className="mt-6 max-w-xl text-lg leading-8 text-zinc-300">
+                {t('mobile_site.mobile_first.description')}
+              </p>
+              <div className="mt-10 divide-y divide-white/10 border-y border-white/10">
+                {(['touch', 'tools', 'continuity'] as const).map((item) => (
+                  <div key={item} className="py-6">
+                    <h3 className="font-semibold">{t(`mobile_site.mobile_first.items.${item}.title`)}</h3>
+                    <p className="mt-2 leading-7 text-zinc-400">
+                      {t(`mobile_site.mobile_first.items.${item}.description`)}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="relative mx-auto h-[520px] w-full max-w-[540px] sm:h-[650px]">
+              <img
+                src={iphoneAgent}
+                alt={t('mobile_site.screenshots.agent')}
+                width={1320}
+                height={2868}
+                loading="lazy"
+                className="absolute top-14 right-2 w-[205px] rotate-6 rounded-[2.25rem] opacity-80 shadow-[3px_5px_30px_rgba(0,0,0,0.4)] sm:w-[270px]"
+              />
+              <img
+                src={iphoneConversation}
+                alt={t('mobile_site.screenshots.conversation')}
+                width={1320}
+                height={2868}
+                loading="lazy"
+                className="absolute top-0 left-2 z-10 w-[230px] -rotate-3 rounded-[2.5rem] shadow-[3px_5px_30px_rgba(0,0,0,0.48)] sm:w-[310px]"
+              />
+            </div>
+          </div>
+        </section>
+
+        <section className="overflow-hidden px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+          <div className="mx-auto max-w-6xl">
+            <div className="mx-auto max-w-3xl text-center">
+              <p className="text-primary mb-4 text-sm font-semibold tracking-[0.16em] uppercase">
+                {t('mobile_site.tablet.eyebrow')}
+              </p>
+              <h2 className="text-3xl leading-tight font-semibold tracking-[-0.035em] text-balance sm:text-5xl">
+                {t('mobile_site.tablet.title')}
+              </h2>
+              <p className="mt-5 text-lg leading-8 text-zinc-600 dark:text-zinc-300">
+                {t('mobile_site.tablet.description')}
+              </p>
+            </div>
+            <div className="relative mx-auto mt-14 h-[350px] max-w-5xl sm:h-[560px] lg:h-[680px]">
+              <img
+                src={ipadImagePreview}
+                alt={t('mobile_site.screenshots.tablet_drawing')}
+                width={2064}
+                height={2752}
+                loading="lazy"
+                className="absolute top-10 left-0 w-[52%] -rotate-3 rounded-[1.6rem] shadow-[3px_5px_30px_rgba(0,0,0,0.22)] sm:rounded-[2.2rem]"
+              />
+              <img
+                src={ipadConversation}
+                alt={t('mobile_site.screenshots.tablet_conversation')}
+                width={2064}
+                height={2752}
+                loading="lazy"
+                className="absolute top-0 right-0 w-[52%] rotate-3 rounded-[1.6rem] shadow-[3px_5px_30px_rgba(0,0,0,0.22)] sm:rounded-[2.2rem]"
+              />
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-zinc-100 px-4 py-20 text-zinc-950 sm:px-6 sm:py-24 lg:px-8 dark:bg-zinc-900 dark:text-white">
+          <div className="mx-auto max-w-6xl text-center">
+            <p className="text-primary text-sm font-semibold tracking-[0.16em] uppercase">
+              {t('mobile_site.cta.eyebrow')}
+            </p>
+            <h2 className="mx-auto mt-4 max-w-3xl text-3xl font-semibold tracking-[-0.035em] text-balance sm:text-5xl">
+              {t('mobile_site.cta.title')}
+            </h2>
+            <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-zinc-600 dark:text-zinc-300">
+              {t('mobile_site.cta.description')}
+            </p>
+            <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+              <Button asChild size="lg" className="rounded-full px-7 active:scale-95">
+                <Link to="/download?platform=mobile">
+                  <Download aria-hidden="true" />
+                  {t('mobile_site.cta.download')}
+                </Link>
+              </Button>
+              <Button asChild variant="outline" size="lg" className="rounded-full px-7 active:scale-95">
+                <a href={mobileDocsUrl}>{t('mobile_site.cta.docs')}</a>
+              </Button>
             </div>
           </div>
         </section>
       </main>
+
       <Footer />
     </div>
   )
