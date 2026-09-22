@@ -9,8 +9,8 @@ icon: message-circle
 Choose an assistant and model on the Chat screen, then send your request. The model picker lets you switch between configured models without leaving the conversation.
 
 <div data-mobile-gallery="pair">
-<figure data-mobile-shot="phone"><a href="../../../assets/mobile/iphone-conversation.jpg"><img src="../../../assets/mobile/iphone-conversation.jpg" alt="Cherry Studio Mobile conversation on iPhone"></a><figcaption><p><strong>iPhone</strong> · Messages, model details, and response actions in one column</p></figcaption></figure>
-<figure data-mobile-shot="tablet"><a href="../../../assets/mobile/ipad-conversation.jpg"><img src="../../../assets/mobile/ipad-conversation.jpg" alt="Cherry Studio Mobile conversation on iPad"></a><figcaption><p><strong>iPad</strong> · A wider reading area for long answers and file content</p></figcaption></figure>
+<figure data-mobile-shot="phone"><a href="../../../assets/mobile/iphone-conversation.webp"><img src="../../../assets/mobile/iphone-conversation.webp" alt="Cherry Studio Mobile conversation on iPhone"></a><figcaption><p><strong>iPhone</strong> · Messages, model details, and response actions in one column</p></figcaption></figure>
+<figure data-mobile-shot="tablet"><a href="../../../assets/mobile/ipad-conversation.webp"><img src="../../../assets/mobile/ipad-conversation.webp" alt="Cherry Studio Mobile conversation on iPad"></a><figcaption><p><strong>iPad</strong> · A wider reading area for long answers and file content</p></figcaption></figure>
 </div>
 
 ## Add images or files

@@ -7,8 +7,8 @@ icon: image
 The mobile app can call a configured image model, turn a written prompt into an image, and preview the result.
 
 <div data-mobile-gallery="pair">
-<figure data-mobile-shot="phone"><a href="../../../assets/mobile/iphone-drawing.jpg"><img src="../../../assets/mobile/iphone-drawing.jpg" alt="Image generation in Cherry Studio Mobile on iPhone"></a><figcaption><p><strong>Generate</strong> · Write a prompt and call a configured image model</p></figcaption></figure>
-<figure data-mobile-shot="tablet"><a href="../../../assets/mobile/ipad-image-preview.jpg"><img src="../../../assets/mobile/ipad-image-preview.jpg" alt="Generated image preview in Cherry Studio Mobile on iPad"></a><figcaption><p><strong>Preview</strong> · Inspect, download, or continue editing a real result</p></figcaption></figure>
+<figure data-mobile-shot="phone"><a href="../../../assets/mobile/iphone-drawing.webp"><img src="../../../assets/mobile/iphone-drawing.webp" alt="Image generation in Cherry Studio Mobile on iPhone"></a><figcaption><p><strong>Generate</strong> · Write a prompt and call a configured image model</p></figcaption></figure>
+<figure data-mobile-shot="tablet"><a href="../../../assets/mobile/ipad-image-preview.webp"><img src="../../../assets/mobile/ipad-image-preview.webp" alt="Generated image preview in Cherry Studio Mobile on iPad"></a><figcaption><p><strong>Preview</strong> · Inspect, download, or continue editing a real result</p></figcaption></figure>
 </div>
 
 ## Generate an image

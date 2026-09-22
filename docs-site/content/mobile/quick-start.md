@@ -19,8 +19,8 @@ icon: rocket
 从服务商获取或手动添加模型，将至少一个可用模型启用。不同模型支持的对话、视觉、工具或图片生成能力可能不同。
 
 <div data-mobile-gallery="pair">
-<figure data-mobile-shot="phone"><a href="../assets/mobile/iphone-add-provider.jpg"><img src="../assets/mobile/iphone-add-provider.jpg" alt="Cherry Studio 移动版添加服务商页面"></a><figcaption><p><strong>步骤 1</strong> · 选择内置或自定义服务商，点击查看原图</p></figcaption></figure>
-<figure data-mobile-shot="phone"><a href="../assets/mobile/iphone-models.jpg"><img src="../assets/mobile/iphone-models.jpg" alt="Cherry Studio 移动版模型选择器"></a><figcaption><p><strong>步骤 3</strong> · 在对话中选择已启用模型，点击查看原图</p></figcaption></figure>
+<figure data-mobile-shot="phone"><a href="../assets/mobile/iphone-add-provider.webp"><img src="../assets/mobile/iphone-add-provider.webp" alt="Cherry Studio 移动版添加服务商页面"></a><figcaption><p><strong>步骤 1</strong> · 选择内置或自定义服务商，点击查看原图</p></figcaption></figure>
+<figure data-mobile-shot="phone"><a href="../assets/mobile/iphone-models.webp"><img src="../assets/mobile/iphone-models.webp" alt="Cherry Studio 移动版模型选择器"></a><figcaption><p><strong>步骤 3</strong> · 在对话中选择已启用模型，点击查看原图</p></figcaption></figure>
 </div>
 
 ## 4. 发送消息

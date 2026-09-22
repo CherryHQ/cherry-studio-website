@@ -7,8 +7,8 @@ icon: bot
 An Agent is a reusable work configuration that keeps role instructions, a model, and available tools together. It is useful for recurring work such as writing support, information organization, or calendar tasks.
 
 <div data-mobile-gallery="pair">
-<figure data-mobile-shot="phone"><a href="../../../assets/mobile/iphone-agent.jpg"><img src="../../../assets/mobile/iphone-agent.jpg" alt="Agent editor in Cherry Studio Mobile on iPhone"></a><figcaption><p><strong>iPhone</strong> · Configure an avatar, instructions, model, and tools</p></figcaption></figure>
-<figure data-mobile-shot="tablet"><a href="../../../assets/mobile/ipad-agent.jpg"><img src="../../../assets/mobile/ipad-agent.jpg" alt="Agent editor in Cherry Studio Mobile on iPad"></a><figcaption><p><strong>iPad</strong> · Review tools and system permissions in a larger workspace</p></figcaption></figure>
+<figure data-mobile-shot="phone"><a href="../../../assets/mobile/iphone-agent.webp"><img src="../../../assets/mobile/iphone-agent.webp" alt="Agent editor in Cherry Studio Mobile on iPhone"></a><figcaption><p><strong>iPhone</strong> · Configure an avatar, instructions, model, and tools</p></figcaption></figure>
+<figure data-mobile-shot="tablet"><a href="../../../assets/mobile/ipad-agent.webp"><img src="../../../assets/mobile/ipad-agent.webp" alt="Agent editor in Cherry Studio Mobile on iPad"></a><figcaption><p><strong>iPad</strong> · Review tools and system permissions in a larger workspace</p></figcaption></figure>
 </div>
 
 ## Create an agent

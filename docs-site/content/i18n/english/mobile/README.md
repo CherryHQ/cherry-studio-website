@@ -7,8 +7,8 @@ icon: smartphone
 Cherry Studio Mobile is an AI client designed for Android, iPhone, and iPad. Connect your own model services to chat, configure agents, and generate images from a mobile device.
 
 <div data-mobile-gallery="pair">
-<figure data-mobile-shot="phone"><a href="../../../assets/mobile/iphone-conversation.jpg"><img src="../../../assets/mobile/iphone-conversation.jpg" alt="Conversation in Cherry Studio Mobile on iPhone"></a><figcaption><p><strong>iPhone</strong> · Full conversation and message actions; select to view full size</p></figcaption></figure>
-<figure data-mobile-shot="tablet"><a href="../../../assets/mobile/ipad-conversation.jpg"><img src="../../../assets/mobile/ipad-conversation.jpg" alt="Conversation in Cherry Studio Mobile on iPad"></a><figcaption><p><strong>iPad</strong> · The conversation expands for the available tablet space</p></figcaption></figure>
+<figure data-mobile-shot="phone"><a href="../../../assets/mobile/iphone-conversation.webp"><img src="../../../assets/mobile/iphone-conversation.webp" alt="Conversation in Cherry Studio Mobile on iPhone"></a><figcaption><p><strong>iPhone</strong> · Full conversation and message actions; select to view full size</p></figcaption></figure>
+<figure data-mobile-shot="tablet"><a href="../../../assets/mobile/ipad-conversation.webp"><img src="../../../assets/mobile/ipad-conversation.webp" alt="Conversation in Cherry Studio Mobile on iPad"></a><figcaption><p><strong>iPad</strong> · The conversation expands for the available tablet space</p></figcaption></figure>
 </div>
 
 ## Current status

@@ -7,8 +7,8 @@ icon: key-round
 移动版通过你配置的服务商调用模型。Cherry Studio 负责客户端体验，不代理模型额度，也不会改变服务商自己的计费与数据规则。
 
 <div data-mobile-gallery="pair">
-<figure data-mobile-shot="phone"><a href="../assets/mobile/iphone-add-provider.jpg"><img src="../assets/mobile/iphone-add-provider.jpg" alt="Cherry Studio 移动版 iPhone 添加服务商页面"></a><figcaption><p><strong>iPhone</strong> · 搜索内置服务商或创建自定义服务商</p></figcaption></figure>
-<figure data-mobile-shot="tablet"><a href="../assets/mobile/ipad-add-provider.jpg"><img src="../assets/mobile/ipad-add-provider.jpg" alt="Cherry Studio 移动版 iPad 添加服务商页面"></a><figcaption><p><strong>iPad</strong> · 同一服务商目录的平板布局</p></figcaption></figure>
+<figure data-mobile-shot="phone"><a href="../assets/mobile/iphone-add-provider.webp"><img src="../assets/mobile/iphone-add-provider.webp" alt="Cherry Studio 移动版 iPhone 添加服务商页面"></a><figcaption><p><strong>iPhone</strong> · 搜索内置服务商或创建自定义服务商</p></figcaption></figure>
+<figure data-mobile-shot="tablet"><a href="../assets/mobile/ipad-add-provider.webp"><img src="../assets/mobile/ipad-add-provider.webp" alt="Cherry Studio 移动版 iPad 添加服务商页面"></a><figcaption><p><strong>iPad</strong> · 同一服务商目录的平板布局</p></figcaption></figure>
 </div>
 
 ## 添加内置服务商
@@ -27,8 +27,8 @@ icon: key-round
 在对话或智能体页面打开模型选择器，即可从已启用的模型中切换。模型是否支持图片理解、工具调用或图片生成，取决于服务商和具体模型。
 
 <div data-mobile-gallery="pair">
-<figure data-mobile-shot="phone"><a href="../assets/mobile/iphone-models.jpg"><img src="../assets/mobile/iphone-models.jpg" alt="Cherry Studio 移动版 iPhone 模型选择页面"></a><figcaption><p><strong>iPhone</strong> · 按服务商浏览已经启用的模型</p></figcaption></figure>
-<figure data-mobile-shot="tablet"><a href="../assets/mobile/ipad-models.jpg"><img src="../assets/mobile/ipad-models.jpg" alt="Cherry Studio 移动版 iPad 模型选择页面"></a><figcaption><p><strong>iPad</strong> · 在平板端查看模型能力与上下文信息</p></figcaption></figure>
+<figure data-mobile-shot="phone"><a href="../assets/mobile/iphone-models.webp"><img src="../assets/mobile/iphone-models.webp" alt="Cherry Studio 移动版 iPhone 模型选择页面"></a><figcaption><p><strong>iPhone</strong> · 按服务商浏览已经启用的模型</p></figcaption></figure>
+<figure data-mobile-shot="tablet"><a href="../assets/mobile/ipad-models.webp"><img src="../assets/mobile/ipad-models.webp" alt="Cherry Studio 移动版 iPad 模型选择页面"></a><figcaption><p><strong>iPad</strong> · 在平板端查看模型能力与上下文信息</p></figcaption></figure>
 </div>
 
 ## 常见连接错误

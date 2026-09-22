@@ -7,8 +7,8 @@ icon: image
 移动版可以调用已经配置的图片模型，将文字描述转换为图片并预览结果。
 
 <div data-mobile-gallery="pair">
-<figure data-mobile-shot="phone"><a href="../assets/mobile/iphone-drawing.jpg"><img src="../assets/mobile/iphone-drawing.jpg" alt="Cherry Studio 移动版 iPhone 图片生成页面"></a><figcaption><p><strong>生成</strong> · 填写提示词并调用已配置的图片模型</p></figcaption></figure>
-<figure data-mobile-shot="tablet"><a href="../assets/mobile/ipad-image-preview.jpg"><img src="../assets/mobile/ipad-image-preview.jpg" alt="Cherry Studio 移动版 iPad 图片预览页面"></a><figcaption><p><strong>预览</strong> · 查看、下载或继续编辑真实生成结果</p></figcaption></figure>
+<figure data-mobile-shot="phone"><a href="../assets/mobile/iphone-drawing.webp"><img src="../assets/mobile/iphone-drawing.webp" alt="Cherry Studio 移动版 iPhone 图片生成页面"></a><figcaption><p><strong>生成</strong> · 填写提示词并调用已配置的图片模型</p></figcaption></figure>
+<figure data-mobile-shot="tablet"><a href="../assets/mobile/ipad-image-preview.webp"><img src="../assets/mobile/ipad-image-preview.webp" alt="Cherry Studio 移动版 iPad 图片预览页面"></a><figcaption><p><strong>预览</strong> · 查看、下载或继续编辑真实生成结果</p></figcaption></figure>
 </div>
 
 ## 开始生成

@@ -7,8 +7,8 @@ icon: bot
 智能体（Agent，即保存了角色说明、模型和可用工具的工作配置）适合重复使用的任务，例如写作辅助、信息整理或日程相关操作。
 
 <div data-mobile-gallery="pair">
-<figure data-mobile-shot="phone"><a href="../assets/mobile/iphone-agent.jpg"><img src="../assets/mobile/iphone-agent.jpg" alt="Cherry Studio 移动版 iPhone 智能体编辑页面"></a><figcaption><p><strong>iPhone</strong> · 设置头像、指令、模型和工具</p></figcaption></figure>
-<figure data-mobile-shot="tablet"><a href="../assets/mobile/ipad-agent.jpg"><img src="../assets/mobile/ipad-agent.jpg" alt="Cherry Studio 移动版 iPad 智能体编辑页面"></a><figcaption><p><strong>iPad</strong> · 在更大空间中检查工具与系统权限</p></figcaption></figure>
+<figure data-mobile-shot="phone"><a href="../assets/mobile/iphone-agent.webp"><img src="../assets/mobile/iphone-agent.webp" alt="Cherry Studio 移动版 iPhone 智能体编辑页面"></a><figcaption><p><strong>iPhone</strong> · 设置头像、指令、模型和工具</p></figcaption></figure>
+<figure data-mobile-shot="tablet"><a href="../assets/mobile/ipad-agent.webp"><img src="../assets/mobile/ipad-agent.webp" alt="Cherry Studio 移动版 iPad 智能体编辑页面"></a><figcaption><p><strong>iPad</strong> · 在更大空间中检查工具与系统权限</p></figcaption></figure>
 </div>
 
 ## 创建智能体

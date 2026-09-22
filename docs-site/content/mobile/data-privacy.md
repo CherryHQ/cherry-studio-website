@@ -7,7 +7,7 @@ icon: shield-check
 理解数据流向，比单纯看到“本地存储”更重要。
 
 <div data-mobile-gallery="single">
-<figure data-mobile-shot="phone"><a href="../assets/mobile/iphone-privacy.jpg"><img src="../assets/mobile/iphone-privacy.jpg" alt="Cherry Studio 移动版隐私与数据提示"></a><figcaption><p><strong>首次启动</strong> · 当前版本会先说明匿名数据用途，再由你决定是否继续</p></figcaption></figure>
+<figure data-mobile-shot="phone"><a href="../assets/mobile/iphone-privacy.webp"><img src="../assets/mobile/iphone-privacy.webp" alt="Cherry Studio 移动版隐私与数据提示"></a><figcaption><p><strong>首次启动</strong> · 当前版本会先说明匿名数据用途，再由你决定是否继续</p></figcaption></figure>
 </div>
 
 ## 设备上的数据

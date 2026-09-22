@@ -19,8 +19,8 @@ Enter the API key issued by the provider, then save or test the connection as pr
 Fetch or add models for the provider and enable at least one model. Support for chat, vision, tools, and image generation varies by model.
 
 <div data-mobile-gallery="pair">
-<figure data-mobile-shot="phone"><a href="../../../assets/mobile/iphone-add-provider.jpg"><img src="../../../assets/mobile/iphone-add-provider.jpg" alt="Add provider screen in Cherry Studio Mobile"></a><figcaption><p><strong>Step 1</strong> · Choose a built-in provider or create a custom one</p></figcaption></figure>
-<figure data-mobile-shot="phone"><a href="../../../assets/mobile/iphone-models.jpg"><img src="../../../assets/mobile/iphone-models.jpg" alt="Model picker in Cherry Studio Mobile"></a><figcaption><p><strong>Step 3</strong> · Select an enabled model inside the conversation</p></figcaption></figure>
+<figure data-mobile-shot="phone"><a href="../../../assets/mobile/iphone-add-provider.webp"><img src="../../../assets/mobile/iphone-add-provider.webp" alt="Add provider screen in Cherry Studio Mobile"></a><figcaption><p><strong>Step 1</strong> · Choose a built-in provider or create a custom one</p></figcaption></figure>
+<figure data-mobile-shot="phone"><a href="../../../assets/mobile/iphone-models.webp"><img src="../../../assets/mobile/iphone-models.webp" alt="Model picker in Cherry Studio Mobile"></a><figcaption><p><strong>Step 3</strong> · Select an enabled model inside the conversation</p></figcaption></figure>
 </div>
 
 ## 4. Send a message
