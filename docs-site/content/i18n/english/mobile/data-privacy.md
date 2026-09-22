@@ -7,7 +7,7 @@ icon: shield-check
 Understanding where data goes is more useful than a blanket “stored locally” claim.
 
 <div data-mobile-gallery="single">
-<figure data-mobile-shot="tablet"><a href="../../../assets/mobile/ipad-agent.webp"><img src="../../../assets/mobile/ipad-agent.webp" alt="System permission controls in Cherry Studio Mobile"></a><figcaption><p><strong>System tools</strong> · Each capability exposes its permission controls before use</p></figcaption></figure>
+<figure data-mobile-shot="phone"><a href="../../../assets/mobile/iphone-privacy.webp"><img src="../../../assets/mobile/iphone-privacy.webp" alt="Privacy and data notice in Cherry Studio Mobile"></a><figcaption><p><strong>First launch</strong> · The current version explains how anonymous data is used before you choose to continue</p></figcaption></figure>
 </div>
 
 ## Data on the device
