@@ -13,4 +13,4 @@ icon: image
 В будущем мы добавим больше поставщиков услуг. Оставайтесь с нами!
 {% endhint %}
 
-{% include "../../.gitbook/includes/gemini-image-generation-notes.md" %}
+{% include "../../.gitbook/includes/Gemini图片生成注意事项.md" %}

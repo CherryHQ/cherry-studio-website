@@ -54,14 +54,14 @@
       * [MiniMax](pre-basic/providers/minimax.md)
       * [ModelScope (MaDap) Platform Access Guide](pre-basic/providers/modelscope.md)
       * [PPIO PiO Cloud](pre-basic/providers/ppio.md)
-      * [Alibaba Cloud Bailian](pre-basic/providers/aliyun-bailian.md)
+      * [Alibaba Cloud Bailian](pre-basic/providers/a-li-yun-bai-lian.md)
       * [SiliconFlow](pre-basic/providers/siliconcloud.md)
       * [ByteDance (Doubao)](pre-basic/providers/doubao.md)
     * **Gateways & Custom Providers**
       * [OpenRouter](pre-basic/providers/openrouter.md)
       * [NewAPI](pre-basic/providers/newapi.md)
       * [OneAPI](pre-basic/providers/oneapi.md)
-      * [Custom AI Service Provider](pre-basic/providers/custom-provider.md)
+      * [Custom AI Service Provider](pre-basic/providers/zi-ding-yi-fu-wu-shang.md)
     * **Local & Developer Services**
       * [Ollama](pre-basic/providers/ollama.md)
       * [LM Studio](pre-basic/providers/lm-studio.md)

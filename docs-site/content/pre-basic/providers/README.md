@@ -45,7 +45,7 @@ Cherry Studio 把 Provider 按协议分为以下几类，行为略有差异：
 * [MiniMax Coding Plan](minimax-coding-plan.md)
 
 #### 国内厂商
-* [阿里云百炼](aliyun-bailian.md)
+* [阿里云百炼](a-li-yun-bai-lian.md)
 * [智谱 ZhiPu](zhipu.md)
 * [硅基流动](siliconcloud.md)
 * [火山引擎（豆包）](doubao.md)
@@ -56,7 +56,7 @@ Cherry Studio 把 Provider 按协议分为以下几类，行为略有差异：
 * [Ollama](ollama.md)
 
 #### 自定义服务商
-* [自定义服务商](custom-provider.md) — 任意 OpenAI / Anthropic / Gemini 兼容端点
+* [自定义服务商](zi-ding-yi-fu-wu-shang.md) — 任意 OpenAI / Anthropic / Gemini 兼容端点
 
 {% hint style="info" %}
 **没找到你用的 Provider 怎么办？**

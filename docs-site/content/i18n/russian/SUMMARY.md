@@ -55,14 +55,14 @@
       * [MiniMax](pre-basic/providers/minimax.md)
       * [Руководство по подключению к платформе ModelScope (MоDa)](pre-basic/providers/modelscope.md)
       * [PPIO Pai Ou Cloud](pre-basic/providers/ppio.md)
-      * [Alibaba Cloud Bailian](pre-basic/providers/aliyun-bailian.md)
+      * [Alibaba Cloud Bailian](pre-basic/providers/a-li-yun-bai-lian.md)
       * [Silicon Flow](pre-basic/providers/siliconcloud.md)
       * [ByteDance (Doubao)](pre-basic/providers/doubao.md)
     * **Шлюзы и пользовательские сервисы**
       * [OpenRouter](pre-basic/providers/openrouter.md)
       * [NewAPI](pre-basic/providers/newapi.md)
       * [OneAPI](pre-basic/providers/oneapi.md)
-      * [Пользовательские провайдеры](pre-basic/providers/custom-provider.md)
+      * [Пользовательские провайдеры](pre-basic/providers/zi-ding-yi-fu-wu-shang.md)
     * **Локальные и инструменты разработчика**
       * [Ollama](pre-basic/providers/ollama.md)
       * [LM Studio](pre-basic/providers/lm-studio.md)

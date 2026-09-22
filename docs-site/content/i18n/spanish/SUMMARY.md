@@ -55,14 +55,14 @@
       * [MiniMax](pre-basic/providers/minimax.md)
       * [Guía de acceso a la plataforma ModelScope (Módulo Mágico)](pre-basic/providers/modelscope.md)
       * [PPIO Pi Ouyun](pre-basic/providers/ppio.md)
-      * [Alibaba Cloud Bailian](pre-basic/providers/aliyun-bailian.md)
+      * [Alibaba Cloud Bailian](pre-basic/providers/a-li-yun-bai-lian.md)
       * [SiliconFlow](pre-basic/providers/siliconcloud.md)
       * [pre-basic/providers/doubao](pre-basic/providers/doubao.md)
     * **Pasarelas y proveedores personalizados**
       * [OpenRouter](pre-basic/providers/openrouter.md)
       * [NewAPI](pre-basic/providers/newapi.md)
       * [OneAPI](pre-basic/providers/oneapi.md)
-      * [Proveedores Personalizados](pre-basic/providers/custom-provider.md)
+      * [Proveedores Personalizados](pre-basic/providers/zi-ding-yi-fu-wu-shang.md)
     * **Servicios locales y para desarrolladores**
       * [Ollama](pre-basic/providers/ollama.md)
       * [LM Studio](pre-basic/providers/lm-studio.md)

@@ -36,7 +36,7 @@ Cherry Studio 内置 **60+ 家 Provider**，本页提供总览表，找到目标
 | **ZhiPu (智谱)** | GLM 系列，多模态，兼容 Anthropic 可跑智能体 | [bigmodel.cn](https://open.bigmodel.cn/) | [→](zhipu.md) |
 | **doubao (豆包/火山引擎)** | 字节出品，价格亲民 | [volcengine.com](https://www.volcengine.com/product/doubao) | [→](doubao.md) |
 | **Baidu Cloud (文心一言)** | 百度 ERNIE 系列 | [cloud.baidu.com](https://cloud.baidu.com/) | — |
-| **Bailian (阿里百炼)** | Qwen 系列、有海量模型 | [bailian.console.aliyun.com](https://bailian.console.aliyun.com/) | [→](aliyun-bailian.md) |
+| **Bailian (阿里百炼)** | Qwen 系列、有海量模型 | [bailian.console.aliyun.com](https://bailian.console.aliyun.com/) | [→](a-li-yun-bai-lian.md) |
 | **BAICHUAN AI** | 百川大模型 | [baichuan-ai.com](https://platform.baichuan-ai.com/) | — |
 | **MiniMax** | 国内多模态（语音、视频） | [minimaxi.com](https://platform.minimaxi.com/) | [→](minimax.md) |
 | **StepFun** | 阶跃星辰 | [stepfun.com](https://platform.stepfun.com/) | — |
@@ -137,7 +137,7 @@ Cherry Studio 内置 **60+ 家 Provider**，本页提供总览表，找到目标
 
 ## 自定义服务商
 
-如果你用的服务不在上面列表里，但提供 **OpenAI 兼容 / Anthropic 兼容 / Gemini 兼容** 任一协议，都可以通过 [自定义服务商](custom-provider.md) 添加。
+如果你用的服务不在上面列表里，但提供 **OpenAI 兼容 / Anthropic 兼容 / Gemini 兼容** 任一协议，都可以通过 [自定义服务商](zi-ding-yi-fu-wu-shang.md) 添加。
 
 ## 还是不知道选哪个？
 

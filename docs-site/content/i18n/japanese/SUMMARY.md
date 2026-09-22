@@ -55,14 +55,14 @@
       * [MiniMax](pre-basic/providers/minimax.md)
       * [ModelScope（魔搭）プラットフォーム接続ガイド](pre-basic/providers/modelscope.md)
       * [PPIO パイオウクラウド](pre-basic/providers/ppio.md)
-      * [阿里云百炼](pre-basic/providers/aliyun-bailian.md)
+      * [阿里云百炼](pre-basic/providers/a-li-yun-bai-lian.md)
       * [SiliconFlow](pre-basic/providers/siliconcloud.md)
       * [バイトダンス（豆包）](pre-basic/providers/doubao.md)
     * **ゲートウェイとカスタムサービス**
       * [OpenRouter](pre-basic/providers/openrouter.md)
       * [NewAPI](pre-basic/providers/newapi.md)
       * [OneAPI](pre-basic/providers/oneapi.md)
-      * [カスタムプロバイダー](pre-basic/providers/custom-provider.md)
+      * [カスタムプロバイダー](pre-basic/providers/zi-ding-yi-fu-wu-shang.md)
     * **ローカル・開発者向けサービス**
       * [Ollama](pre-basic/providers/ollama.md)
       * [LM Studio](pre-basic/providers/lm-studio.md)

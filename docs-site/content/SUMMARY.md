@@ -55,14 +55,14 @@
       * [MiniMax](pre-basic/providers/minimax.md)
       * [ModelScope（魔搭）](pre-basic/providers/modelscope.md)
       * [PPIO 派欧云](pre-basic/providers/ppio.md)
-      * [阿里云百炼](pre-basic/providers/aliyun-bailian.md)
+      * [阿里云百炼](pre-basic/providers/a-li-yun-bai-lian.md)
       * [硅基流动](pre-basic/providers/siliconcloud.md)
       * [火山引擎](pre-basic/providers/doubao.md)
     * **网关与自定义服务**
       * [OpenRouter](pre-basic/providers/openrouter.md)
       * [NewAPI](pre-basic/providers/newapi.md)
       * [OneAPI](pre-basic/providers/oneapi.md)
-      * [自定义服务商](pre-basic/providers/custom-provider.md)
+      * [自定义服务商](pre-basic/providers/zi-ding-yi-fu-wu-shang.md)
     * **本地与开发服务**
       * [Ollama](pre-basic/providers/ollama.md)
       * [LM Studio](pre-basic/providers/lm-studio.md)

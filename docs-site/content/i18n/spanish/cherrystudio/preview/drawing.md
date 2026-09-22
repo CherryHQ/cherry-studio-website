@@ -13,4 +13,4 @@ Si tienes dudas sobre los parámetros, pasa el cursor del ratón sobre el símbo
 Se agregarán más proveedores en el futuro. ¡Manténganse atentos!
 {% endhint %}
 
-{% include "../../.gitbook/includes/gemini-image-generation-notes.md" %}
+{% include "../../.gitbook/includes/Gemini图片生成注意事项.md" %}
