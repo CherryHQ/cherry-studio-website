@@ -17,7 +17,7 @@ For documentation only: `pnpm docs:dev` (http://localhost:3001/docs/zh-cn/).
 
 `content/` is the authoritative documentation source, tracked in this repository. Edit Markdown and images here; there is no external Git checkout, version lock or synchronization step. Simplified Chinese lives at `content/`, English at `content/i18n/english/`, and other language directories are defined in `locales.json`. Update each language's `SUMMARY.md` when adding or moving pages.
 
-Run `pnpm docs:generate` to compile local Markdown, navigation and search indexes. `pnpm dev` and `pnpm docs:dev` watch content changes and regenerate automatically. Production builds generate content before exporting pages. Edit source files, never `generated/`, `public/content-assets/` or `out/`.
+Run `pnpm docs:generate` to compile local Markdown, navigation and search indexes. `pnpm dev` and `pnpm docs:dev` watch content changes and regenerate automatically. Production builds generate content before exporting pages. Edit source files, never `generated/`, `public/content-assets/` or `out/`. In `SUMMARY.md`, use linked list items for pages and bold list items without links for collapsible navigation groups. Every source page must be present in the navigation or mapped through `page-aliases.json`; unlisted pages fail generation so stale content cannot enter search.
 
 The initial import includes lossless WebP image conversions with updated source references. Shared images and attachments live in `content/assets/`; identical imported assets are stored once across languages. Add compressed images there and use relative references; GIF animations and oversized screenshots can retain their original formats. Build output deduplicates identical attachments by content hash.
 

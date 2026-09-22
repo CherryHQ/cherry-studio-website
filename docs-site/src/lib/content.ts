@@ -1,6 +1,7 @@
 import type { Root } from 'fumadocs-core/page-tree'
 
 import data from '../../generated/content.json'
+import redirects from '../../generated/legacy-redirects.json'
 import languages from '../../locales.json'
 
 export const locales = languages
@@ -17,6 +18,15 @@ export function getPage(locale: string, slug: string) {
     return undefined
   }
   return pages.find((page) => page.locale === locale && page.slug === decoded)
+}
+export function getRedirect(locale: string, slug: string) {
+  return redirects[`/docs/${locale}/${slug}` as keyof typeof redirects]
+}
+export function getRedirectSlugs(locale: string) {
+  const prefix = `/docs/${locale}/`
+  return Object.keys(redirects)
+    .filter((path) => path.startsWith(prefix))
+    .map((path) => path.slice(prefix.length))
 }
 export function getTree(locale: string): Root {
   // Next.js adds basePath to framework links; raw article links already include /docs.

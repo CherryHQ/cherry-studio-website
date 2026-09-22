@@ -182,6 +182,23 @@ for (const locale of locales) {
       stack.length = 1
       continue
     }
+    if (entry.type === 'folder') {
+      while (stack.length > entry.depth + 1) stack.pop()
+      const parent = stack.at(-1)
+      if (parent?.type === 'page') {
+        const index = { ...parent }
+        Object.assign(parent, { type: 'folder', index, children: [] })
+        delete parent.url
+      }
+      if (!parent?.children) {
+        issues.push({ type: 'invalid-navigation-folder', locale: locale.code, name: entry.name })
+        continue
+      }
+      const folder = { type: 'folder', name: entry.name, children: [] }
+      parent.children.push(folder)
+      stack.push(folder)
+      continue
+    }
     const slug = getSlug(entry.file)
     const page = sourceFiles.get(`${locale.code}/${slug}`)
     if (!page) {
@@ -208,10 +225,12 @@ for (const locale of locales) {
       name: '简体中文 · Untranslated',
       children: fallbacks.map((p) => ({ type: 'page', name: p.title, url: urlFor(locale.code, p.slug).slice(5) }))
     })
+  for (const page of pages.filter((p) => p.locale === locale.code && !p.fallback && !listed.has(p.slug)))
+    issues.push({ type: 'unlisted-page', locale: locale.code, file: page.file })
   trees[locale.code] = { name: 'Cherry Studio', children }
   const api = createSearchAPI('simple', {
     indexes: pages
-      .filter((p) => p.locale === locale.code)
+      .filter((p) => p.locale === locale.code && (listed.has(p.slug) || p.fallback))
       .map((p) => ({ title: p.title, content: p.text, url: urlFor(locale.code, p.slug).slice(5) }))
   })
   writeAtomic(path.join(app, `public/search/${locale.code}.json`), JSON.stringify(await api.export()))
@@ -235,6 +254,7 @@ for (const locale of locales) {
     const target = urlFor(locale.code, getSlug(original))
     if (byUrl.has(target)) {
       legacyRedirects[`/${[locale.directory, slugFor(original)].filter(Boolean).join('/')}`] = target
+      legacyRedirects[`/docs/${locale.code}/${slugFor(original)}`] = target
     }
   }
 }
@@ -275,7 +295,9 @@ if (
       'missing-anchor',
       'translation-artifact',
       'invalid-math',
-      'duplicate-anchor'
+      'duplicate-anchor',
+      'invalid-navigation-folder',
+      'unlisted-page'
     ].includes(issue.type)
   )
 )

@@ -1,4 +1,5 @@
 import path from 'node:path'
+import { rehypeCode } from 'fumadocs-core/mdx-plugins/rehype-code'
 import GithubSlugger from 'github-slugger'
 import { toText } from 'hast-util-to-text'
 import { pinyin } from 'pinyin-pro'
@@ -217,6 +218,17 @@ export async function renderMarkdown(markdown, rewrite, report) {
     })
     // Generate MathML only at build time: no client-side renderer, CDN or font downloads.
     .use(rehypeKatex, { output: 'mathml', trust: false })
+    .use(() => (tree) => {
+      visit(tree, 'element', (node) => {
+        if (node.tagName !== 'code' || !Array.isArray(node.properties.className)) return
+        node.properties.className = node.properties.className.map((name) =>
+          name === 'language-conf' ? 'language-nginx' : name
+        )
+      })
+    })
+    // Highlight only after sanitizing repository HTML so Shiki's generated
+    // classes and color variables are trusted without allowing source styles.
+    .use(rehypeCode, { icon: false, tab: false })
     .use(rehypeStringify)
     .process(convertGitBook(markdown.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n/, ''), report))
   for (const message of result.messages) {
@@ -231,7 +243,12 @@ export function parseSummary(markdown) {
     const heading = line.match(/^##\s+(.+)/)
     if (heading) entries.push({ type: 'separator', name: heading[1].replace(/<[^>]*>/g, '').trim() })
     const match = line.match(/^(\s*)[-*]\s+\[([^\]]+)\]\(([^)]+)\)/)
-    if (match) entries.push({ type: 'page', name: match[2], file: match[3], depth: Math.floor(match[1].length / 2) })
+    if (match) {
+      entries.push({ type: 'page', name: match[2], file: match[3], depth: Math.floor(match[1].length / 2) })
+      continue
+    }
+    const folder = line.match(/^(\s*)[-*]\s+\*\*(.+)\*\*\s*$/)
+    if (folder) entries.push({ type: 'folder', name: folder[2].trim(), depth: Math.floor(folder[1].length / 2) })
   }
   return entries
 }

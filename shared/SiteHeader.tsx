@@ -80,7 +80,7 @@ export function SiteHeader({
     <>
       <header
         className={cn(
-          'fixed inset-x-0 top-0 z-50 flex h-[72px] items-center border-b border-border/50 bg-background/80 backdrop-blur-sm transition-all duration-300',
+          'site-header fixed inset-x-0 top-0 z-50 flex h-[72px] items-center border-b border-border/50 bg-background/80 backdrop-blur-sm transition-all duration-300',
           scrolled && 'shadow-sm'
         )}>
         <div className="mx-auto flex w-full max-w-[97rem] items-center justify-between px-4">
@@ -101,7 +101,7 @@ export function SiteHeader({
               target="_blank"
               rel="noopener noreferrer"
               title="GitHub"
-              className="hidden items-center gap-2 rounded-lg border border-border/50 bg-secondary/50 px-3 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground sm:flex">
+              className="hidden h-[34px] w-[102px] items-center justify-center gap-2 rounded-lg border border-border/50 bg-secondary/50 px-3 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground sm:flex">
               <img src={githubIcon} alt="GitHub" className="h-4 w-4 dark:invert" />
               {starCount !== null && (
                 <span className="flex items-center gap-1">
@@ -150,7 +150,7 @@ export function SiteHeader({
       <dialog
         ref={dialog}
         aria-label={menuLabel}
-        className="fixed inset-0 m-0 h-dvh max-h-none w-full max-w-none border-0 bg-transparent p-0 text-foreground backdrop:bg-black/60"
+        className="site-header-menu fixed inset-0 m-0 h-dvh max-h-none w-full max-w-none border-0 bg-transparent p-0 text-foreground backdrop:bg-black/60"
         onClick={(event) => {
           if (event.target === event.currentTarget) dialog.current?.close()
         }}>

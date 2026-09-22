@@ -24,7 +24,19 @@ test('GitBook conversion preserves headings, hints, tabs, figures and code liter
   assert.match(page.html, /src="\/rewritten\/\.\.\/image.png"/)
   assert.ok(page.toc.some((item) => item.url === '#old-anchor'))
   assert.match(page.html, /{% example %}/)
+  assert.match(page.html, /class="shiki shiki-themes github-light github-dark"/)
   assert.deepEqual(issues, [])
+})
+
+test('code blocks use syntax highlighting and map nginx conf fences', async () => {
+  const page = await renderMarkdown(
+    '```conf\nserver { listen 443 ssl; }\n```',
+    (url) => url,
+    () => {}
+  )
+  assert.match(page.html, /class="shiki shiki-themes github-light github-dark"/)
+  assert.match(page.html, /--shiki-light:/)
+  assert.match(page.html, /class="line"/)
 })
 
 test('repository HTML cannot execute scripts or event handlers', async () => {
@@ -37,11 +49,15 @@ test('repository HTML cannot execute scripts or event handlers', async () => {
 })
 
 test('navigation retains section titles and nested page order', () => {
-  assert.deepEqual(parseSummary('## Guide <a id="guide"></a>\n* [Start](README.md)\n  * [Install](install.md)'), [
-    { type: 'separator', name: 'Guide' },
-    { type: 'page', name: 'Start', file: 'README.md', depth: 0 },
-    { type: 'page', name: 'Install', file: 'install.md', depth: 1 }
-  ])
+  assert.deepEqual(
+    parseSummary('## Guide <a id="guide"></a>\n* [Start](README.md)\n  * **Platforms**\n    * [Install](install.md)'),
+    [
+      { type: 'separator', name: 'Guide' },
+      { type: 'page', name: 'Start', file: 'README.md', depth: 0 },
+      { type: 'folder', name: 'Platforms', depth: 1 },
+      { type: 'page', name: 'Install', file: 'install.md', depth: 2 }
+    ]
+  )
 })
 
 test('unknown GitBook tags are reported and remain visible', async () => {

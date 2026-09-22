@@ -1,15 +1,17 @@
 import { DocsBody, DocsPage, DocsTitle } from 'fumadocs-ui/page'
 import type { Metadata } from 'next'
-import { notFound } from 'next/navigation'
+import { notFound, redirect } from 'next/navigation'
 
-import { canonicalUrl, getPage, locales, pages } from '@/lib/content'
+import { canonicalUrl, getPage, getRedirect, getRedirectSlugs, locales, pages } from '@/lib/content'
 
 type Props = { params: Promise<{ lang: string; slug?: string[] }> }
 export const dynamicParams = false
 export function generateStaticParams({ params }: { params: { lang: string } }) {
-  return pages
-    .filter((page) => page.locale === params.lang)
-    .map((page) => ({ slug: page.slug ? page.slug.split('/') : [] }))
+  const slugs = [
+    ...pages.filter((page) => page.locale === params.lang).map((page) => page.slug),
+    ...getRedirectSlugs(params.lang)
+  ]
+  return [...new Set(slugs)].map((slug) => ({ slug: slug ? slug.split('/') : [] }))
 }
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang, slug = [] } = await params
@@ -33,7 +35,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 export default async function Page({ params }: Props) {
   const { lang, slug = [] } = await params
-  const page = getPage(lang, slug.join('/'))
+  const joined = slug.join('/')
+  const target = getRedirect(lang, joined)
+  if (target) redirect(target.replace(/^\/docs/, ''))
+  const page = getPage(lang, joined)
   if (!page) notFound()
   return (
     <DocsPage
