@@ -3,316 +3,373 @@ icon: message
 ---
 # Chat Interface
 
-## Assistants and Topics
+## Overview
+
+The Chat interface is your main workspace for conversing with AI assistants. It combines powerful organization with an intuitive layout, allowing you to manage multiple conversations under different assistants.
+
+## Interface Layout
+
+### Top Navigation Bar
+
+The top bar displays:
+
+* **Assistant Selector** - Click to switch between different assistants (each with their own system prompts and settings)
+* **Topic Tabs** - Shows current active topic and related files/data sources connected to this conversation
+* **Quick Actions** - Search, menu, and additional controls
+
+<figure><img src="../../../../assets/chat-header.webp" alt="Chat interface header with assistant selector and topic tabs"><figcaption>Select assistants and manage topics from the top navigation</figcaption></figure>
+
+### Welcome Screen
+
+When starting a new topic, you'll see:
+
+* A friendly emoji 😊
+* Prompt text: "What should we talk about today?"
+* An empty message area ready for your first input
+
+This guides users to begin their conversation naturally.
+
+### Input Area
+
+The bottom section contains:
+
+* **Message Input Box** - Type your message here with `Press Enter to send, Type 'for text and actions, or reference topics'`
+* **Tool Bar (left side)** - Quick access buttons for:
+  * Upload files/images
+  * Attach files
+  * Add custom tools
+* **Model Selector (right side)** - Switch between models mid-conversation while retaining context
+* **Keyboard Shortcuts** - Visible hints showing `⌥↑` (previous) and `⌥↓` (next)
+
+## Concepts
 
 ### Assistant
 
-An `assistant` allows for personalized settings for a chosen model, such as preset prompts and parameter presets. These settings help the selected model work more in line with your expectations.
+An `assistant` is a personalized conversation template that includes:
 
-The `System Default Assistant` comes with a relatively general set of parameters (no prompt). You can use it directly or find the presets you need on the [Agents page](agents.md).
+* **System Prompt** - Custom instructions that guide the model's behavior
+* **Model Settings** - Temperature, top-p, context window, and other parameters
+* **Default Model** - Which AI model to use by default
+* **Capabilities** - Enabled features like web search, knowledge base, image generation, etc.
+
+The `System Default Assistant` comes with general parameters and no custom prompt. For specialized assistants, check the [Agents page](agents.md).
 
 ### Topic
 
-An `assistant` is a superset of a `topic`. Multiple topics (i.e., conversations) can be created under a single assistant. All `topics` share the assistant's parameter settings and model settings, such as preset words (prompts).
+A `topic` is an individual conversation within an assistant. Key points:
 
-<figure><img src="../../../../assets/e863b9cdc2435c9d7b1e91dc.webp" alt=""><figcaption></figcaption></figure>
+* **Multiple topics under one assistant** - Each topic is a separate conversation thread
+* **Shared settings** - All topics under an assistant inherit the same prompt and model settings
+* **Independent history** - Each topic has its own message history
+* **Quick switching** - Use the topic tabs to jump between conversations
 
-<figure><img src="../../../../assets/30a39ba0a96eb6d826217c4f.webp" alt=""><figcaption></figcaption></figure>
+For example, you might have an "Email Writer" assistant with separate topics for "Marketing Email", "Customer Reply", and "Newsletter Draft".
 
-## Buttons in the Chatbox
+## Working with Topics
 
-<figure><img src="../../../../assets/fdcf8e3b0e55a63504fc7238.webp" alt=""><figcaption></figcaption></figure>
+### Creating a New Topic
 
-![](../../../../assets/9e536331083a5a27f68997fb.webp) `New Topic` creates a new topic within the current assistant.
+1. Click the **"+"** icon in the top navigation, or
+2. Right-click the assistant name and select "New Topic"
 
-![](../../../../assets/4eda1305312bb9263e1ec6f8.webp) `Upload Image or Document`. Uploading images requires model support. Uploading documents will automatically parse them into text to be provided to the model as context.
+The new topic inherits all settings from its parent assistant.
 
-![](../../../../assets/40fe4b3b13727e200a014ce3.webp) `Web Search` requires configuring web search-related information in the settings. Search results are returned to the large model as context. See [Web Search Mode](../../websearch/) for details.
+### Switching Topics
 
-![](../../../../assets/4bb46bc5c948c8853b078a89.webp) `Knowledge Base` enables the knowledge base feature. See [Knowledge Base Tutorial](../../knowledge-base/knowledge-base.md) for details.
+* Click topic tabs at the top to switch between conversations
+* Use keyboard shortcut `⌥↑` (up) or `⌥↓` (down) to navigate between topics
+* Context is preserved when switching
 
-![](<../../../../assets/51c01fe5fc3adb9ea1476e03.webp>) `MCP Server` enables the MCP server feature. See [MCP Usage Tutorial](../../advanced-basic/mcp/) for details.
+### Topic Menu
 
-![](../../../../assets/15bdbd61f9536315d90638e4.webp) `Generate Image` is displayed only when the selected **chat model** supports image generation. (For non-chat image generation models, please go to [Drawing](./drawing.md)).
+Right-click a topic tab to:
 
-![](../../../../assets/b1d22b708b5dbb0b805c338e.webp) `Select Model` switches to the specified model for the subsequent conversation, while retaining the context.
+* Rename the topic
+* Delete the topic
+* Duplicate the topic
+* Export conversation history
 
-![](../../../../assets/aafbbb367102e03f884b3f2a.webp) `Quick Phrases` requires presetting common phrases in the settings. They can be invoked here, directly input, and support variables.
+## Input Box Tools
 
-![](../../../../assets/774377d648904a9721ad6ea9.webp) `Clear Messages` deletes all content in this topic.
+The toolbar at the bottom of the input box provides quick access to common features:
 
-![](../../../../assets/b9c97923dbc2b65e7524cb9f.webp) `Expand` enlarges the chatbox for entering long texts.
+### File Management
 
-![](../../../../assets/17ba49e1932f3db8841a4e84.webp) `Clear Context` truncates the context available to the model without deleting content, meaning the model will "forget" previous conversation content.
+| Icon | Function | Details |
+|------|----------|---------|
+| 📎 | **Attach File** | Upload documents (PDF, Word, Markdown, etc.) for the model to reference. Documents are automatically parsed into text. |
+| 🖼️ | **Attach Image** | Upload images for vision-capable models to analyze and describe. |
+| ➕ | **Add Tool** | Enable additional capabilities like web search, knowledge base, or MCP servers for this topic. |
 
-![](<../../../../assets/29727668499dc7278b547488.webp>) `Estimated Token Count` displays the estimated token count. The four values are `Current Context Count`, `Maximum Context Count` (∞ means infinite context), `Current Input Box Message Character Count`, and `Estimated Token Count`.
+### Model Selection
 
-{% hint style="info" %}
-This feature is only for estimating token count. The actual token count varies for each model, please refer to the data provided by the model provider.
-{% endhint %}
+The **right side** of the input box displays:
 
-![](../../../../assets/aa570a6b1df6367e1f9ba250.webp) `Translate` translates the content in the current input box into English.
+* **Current Model** - Shows which model is active (e.g., "Default")
+* **Quick Switch** - Click to change models mid-conversation without losing context
+
+### Keyboard Shortcuts
+
+Visible hints show:
+
+* **⌥↑** - Jump to previous topic
+* **⌥↓** - Jump to next topic
+* **Enter** - Send message
+* **Shift+Enter** - Newline in input box
+
+## Message Input Tips
+
+* **Long texts** - Use the expand button (🔧) to open a larger editor for composing longer messages
+* **Code blocks** - Paste code with syntax highlighting support
+* **Markdown** - Format your messages using Markdown (when enabled in settings)
+* **Paste as file** - Long text pastes can auto-convert to file attachments to reduce clutter
 
 <a id="dui-hua-she-zhi"></a>
 
 ## Chat Settings
 
-<figure><img src="../../../../assets/0cca9215941b637287b69a09.webp" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../assets/chat-settings.webp" alt="Chat settings panel"><figcaption></figcaption></figure>
 
-### Model Settings
+Settings apply either to this topic only or globally to all topics. Changes take effect immediately.
 
-Model settings are synchronized with the `Model Settings` in the Assistant settings. See [Assistant Settings](chat.md#bian-ji-zhu-shou).
+### Message Display Settings
 
-{% hint style="info" %}
-In chat settings, only the model settings apply to the current assistant. Other settings apply globally. For example, if you set the message style to speech bubble, it will be a speech bubble style in any topic of any assistant.
-{% endhint %}
+#### <mark style="color:blue;">**`Message Separator`**</mark>
 
-### Message Settings
-
-#### <mark style="color:blue;">**`Message Separator`**</mark>:
-
-Use a separator to distinguish the message body from the action bar.
+Use a visual separator between message content and action buttons.
 
 {% tabs %}
-{% tab title="When On" %}
-<figure><img src="../../../../assets/43e2016cdf7003d8e73c0cc2.webp" alt=""><figcaption></figcaption></figure>
+{% tab title="Enabled" %}
+Clean separation between message and actions.
 {% endtab %}
 
-{% tab title="When Off" %}
-<figure><img src="../../../../assets/8e5be791becf55eeaaea8735.webp" alt=""><figcaption></figcaption></figure>
+{% tab title="Disabled" %}
+Compact view without separator line.
 {% endtab %}
 {% endtabs %}
 
-#### <mark style="color:blue;">**`Use Serif Font`**</mark>:
+#### <mark style="color:blue;">**`Message Style`**</mark>
 
-Font style switching. You can also change the font via [Custom CSS](../../personalization-settings/).
+Choose how messages appear:
 
-#### <mark style="color:blue;">**`Display Line Numbers for Code`**</mark>:
+* **Bubble** - Chat bubble style (like messaging apps)
+* **List** - Compact list style
 
-Displays line numbers for code blocks when the model outputs code snippets.
+#### <mark style="color:blue;">**`Use Serif Font`**</mark>
+
+Toggle between serif and sans-serif fonts for message text. Can also be customized via [Custom CSS](../../personalization-settings/).
+
+#### <mark style="color:blue;">**`Message Font Size`**</mark>
+
+Adjust the font size of displayed messages.
+
+### Code Display Settings
+
+#### <mark style="color:blue;">**`Display Line Numbers for Code`**</mark>
+
+Show/hide line numbers in code blocks when the model outputs code.
 
 {% tabs %}
-{% tab title="When Off" %}
-<figure><img src="../../../../assets/fb828451066f311e8daaa4dd.webp" alt=""><figcaption></figcaption></figure>
+{% tab title="Enabled" %}
+<figure><img src="../../../../assets/code-with-numbers.webp" alt="Code with line numbers"><figcaption></figcaption></figure>
 {% endtab %}
 
-{% tab title="When On" %}
-<figure><img src="../../../../assets/cae91ce08edf117d619235bc.webp" alt=""><figcaption></figcaption></figure>
+{% tab title="Disabled" %}
+<figure><img src="../../../../assets/code-without-numbers.webp" alt="Code without line numbers"><figcaption></figcaption></figure>
 {% endtab %}
 {% endtabs %}
 
-#### <mark style="color:blue;">**`Collapsible Code Blocks`**</mark>:
+#### <mark style="color:blue;">**`Collapsible Code Blocks`**</mark>
 
-When enabled, code blocks will automatically collapse if the code snippet is too long.
+Long code blocks automatically collapse if they exceed a certain length, with an expand button to view full content.
 
-#### <mark style="color:blue;">**`Code Block Word Wrap`**</mark>:
+#### <mark style="color:blue;">**`Code Block Word Wrap`**</mark>
 
-When enabled, single lines of code within code snippets will automatically wrap if they exceed the window width.
+Long lines of code automatically wrap instead of creating horizontal scrollbars.
 
-#### <mark style="color:blue;">**`Auto-collapse Thinking Content`**</mark>:
+#### <mark style="color:blue;">**`Code Style`**</mark>
 
-When enabled, models that support "thinking" will automatically collapse the thinking process after completion.
+Choose the syntax highlighting theme for code blocks (Dracula, GitHub, etc.).
 
-#### <mark style="color:blue;">**`Message Style`**</mark>:
+### Advanced Settings
 
-Can switch the chat interface to a bubble style or list style.
+#### <mark style="color:blue;">**`Auto-collapse Thinking Content`**</mark>
 
-#### <mark style="color:blue;">**`Code Style`**</mark>:
+For models that support reasoning (like o1, Claude with extended thinking), automatically collapse the thinking process after completion to focus on the final answer.
 
-Can switch the display style of code snippets.
+#### <mark style="color:blue;">**`Math Formula Engine`**</mark>
 
-#### <mark style="color:blue;">**`Math Formula Engine`**</mark>:
+Choose how mathematical formulas are rendered:
 
-*   KaTeX renders faster because it is specifically designed for performance optimization;
-*   MathJax renders slower but is more comprehensive, supporting more mathematical symbols and commands.
+* **KaTeX** - Faster, optimized for performance
+* **MathJax** - More comprehensive, supports more math symbols and commands
 
-#### <mark style="color:blue;">**`Message Font Size`**</mark>:
+### Input Box Settings
 
-Adjusts the font size of the chat interface.
+#### <mark style="color:blue;">**`Show Estimated Token Count`**</mark>
 
-### Input Settings
+Display the approximate number of tokens consumed by your input text (for reference only; actual consumption may vary).
 
-#### <mark style="color:blue;">**`Show Estimated Token Count`**</mark>:
+#### <mark style="color:blue;">**`Paste Long Text as File`**</mark>
 
-Displays the estimated number of tokens consumed by the input text in the input box (not the actual context consumption, for reference only).
+When pasting large amounts of text, automatically convert to file attachment to keep the input box clean.
 
-#### <mark style="color:blue;">**`Paste Long Text as File`**</mark>:
+#### <mark style="color:blue;">**`Markdown Render Input Messages`**</mark>
 
-When copying and pasting a long passage of text from elsewhere into the input box, it will automatically appear as a file, reducing interference when entering subsequent content.
-
-#### <mark style="color:blue;">**`Markdown Render Input Messages`**</mark>:
-
-When off, only model replies are rendered, not sent messages.
+Render Markdown formatting in your sent messages, not just in model replies.
 
 {% tabs %}
-{% tab title="When Off" %}
-<figure><img src="../../../../assets/08d2b8f358084fe92f0f0165.webp" alt="" width="563"><figcaption></figcaption></figure>
+{% tab title="Disabled" %}
+Plain text display of sent messages
 {% endtab %}
 
-{% tab title="When On" %}
-<figure><img src="../../../../assets/9747cd023d22638d9045a4f8.webp" alt="" width="563"><figcaption></figcaption></figure>
+{% tab title="Enabled" %}
+Markdown formatting visible in sent messages
 {% endtab %}
 {% endtabs %}
 
-#### <mark style="color:blue;">**`Translate by Tapping Space 3 Times`**</mark>:
+#### <mark style="color:blue;">**`Translate by Tapping Space 3 Times`**</mark>
 
-After entering a message in the chat interface input box, tapping the space bar three times consecutively will translate the input content into English.
+Press space three times rapidly to translate input text to English. ⚠️ **Note**: This overwrites your original text.
 
-{% hint style="warning" %}
-Note: This operation will overwrite the original text.
-{% endhint %}
+#### <mark style="color:blue;">**`Target Language`**</mark>
 
-#### <mark style="color:blue;">**`Target Language`**</mark>:
+Set the target language for translation features.
 
-Sets the target language for the input box translation button and the "Translate by tapping space 3 times" feature.
 
 ## Assistant Settings
 
-In the assistant interface, select the <mark style="background-color:yellow;">assistant name</mark> to be set → choose the corresponding setting from the <mark style="background-color:yellow;">right-click menu</mark>.
+To customize an assistant, right-click its name in the left sidebar and select **"Edit Assistant"**.
 
-<a id="bian-ji-zhu-shou"></a>
-
-### Edit Assistant
+<figure><img src="../../../../assets/assistant-settings.webp" alt="Assistant settings menu"><figcaption>Right-click assistant to access settings</figcaption></figure>
 
 {% hint style="info" %}
-Assistant settings apply to all topics under that assistant.
+Assistant settings apply to **all topics** under that assistant. Topic-specific settings override these defaults.
 {% endhint %}
 
-<figure><img src="../../../../assets/295727eb84c25da6e654d5a0.webp" alt=""><figcaption></figcaption></figure>
+### Basic Information
 
-#### Prompt Settings
+#### <mark style="color:blue;">**`Name`**</mark>
 
-#### <mark style="color:blue;">**`Name`**</mark>:
+The display name for this assistant. Choose something descriptive for easy identification (e.g., "Email Writer", "Code Helper", "Research Assistant").
 
-Customizable assistant name for easy identification.
+#### <mark style="color:blue;">**`Prompt`**</mark>
 
-#### <mark style="color:blue;">**`Prompt`**</mark>:
+The system prompt that guides the model's behavior. This is the core instruction that makes the assistant specialized.
 
-This is the prompt. You can refer to the prompt writing style on the Agents page to edit the content.
+**Examples:**
+- Email writer: "You are an expert business email writer..."
+- Code helper: "You are an expert programmer..."
+- Research assistant: "You are a thorough research assistant..."
 
-#### Model Settings
+### Model Configuration
 
-#### <mark style="color:blue;">**`Default Model`**</mark>:
+#### <mark style="color:blue;">**`Default Model`**</mark>
 
-You can fix a default model for this assistant. When adding from the Agents page or copying an assistant, the initial model will be this model. If this item is not set, the initial model will be the global initial model (i.e., [Default Assistant Model](settings/default-models.md#mo-ren-zhu-shou-mo-xing)).
+Which AI model this assistant uses by default. When you:
+
+* Create a new topic under this assistant, it uses this model
+* Copy this assistant, the copied version has this model
+* Don't set this, the global default model is used instead
+
+**Note**: Each assistant can have its own preferred model, independent from the global setting.
+
+#### <mark style="color:blue;">**`Auto-reset Model`**</mark>
+
+**When enabled:** New topics under this assistant always use the default model, even if you switched models in the previous topic.
+
+**When disabled:** New topics inherit the model used in the last topic of that assistant.
+
+**Example:**
+- Default model: GPT-3.5
+- You create Topic 1 and switch to GPT-4 mid-conversation
+- **If enabled:** Topic 2 starts with GPT-3.5
+- **If disabled:** Topic 2 starts with GPT-4
+
+### Model Parameters
+
+These parameters control how the model generates responses:
+
+#### <mark style="color:blue;">**`Temperature`**</mark> (0.0 - 2.0)
+
+Controls randomness and creativity:
+
+| Value | Behavior | Best For |
+|-------|----------|----------|
+| 0.0 - 0.3 | Deterministic, focused output | Code, data analysis, technical writing |
+| 0.4 - 0.7 | Balanced creativity & coherence | General conversation, writing |
+| 0.8 - 1.0+ | Creative, diverse output | Brainstorming, creative writing |
+
+**Default**: 0.7
+
+#### <mark style="color:blue;">**`Top P (Nucleus Sampling)`**</mark> (0.0 - 1.0)
+
+Controls vocabulary diversity:
+
+| Value | Behavior | Best For |
+|-------|----------|----------|
+| 0.1 - 0.3 | Conservative, limited vocabulary | Documentation, technical comments |
+| 0.4 - 0.6 | Balanced diversity | General conversation, normal writing |
+| 0.7 - 1.0 | Diverse, rich vocabulary | Creative writing, varied expression |
+
+**Default**: 1.0
 
 {% hint style="info" %}
-There are two types of default models for assistants: one is the [Global Default Chat Model](settings/default-models.md#mo-ren-zhu-shou-mo-xing), and the other is the assistant's default model. The assistant's default model takes precedence over the global default chat model. If the assistant's default model is not set, then the assistant's default model = the global default chat model.
-{% endhint %}
-
-#### <mark style="color:blue;">**`Auto-reset Model`**</mark>:
-
-When enabled - if another model is switched to during usage within this topic, creating a new topic will reset the new topic's model to the assistant's default model. When this item is disabled, the model for a new topic will follow the model used in the previous topic.
-
-> For example, if the assistant's default model is gpt-3.5-turbo, and I create Topic 1 under this assistant, then switch to gpt-4o during the conversation in Topic 1:
->
-> If auto-reset is enabled: when creating Topic 2, Topic 2 will default to gpt-3.5-turbo.
->
-> If auto-reset is not enabled: when creating Topic 2, Topic 2 will default to gpt-4o.
-
-#### <mark style="color:blue;">**`Temperature`**</mark>:
-
-The temperature parameter controls the degree of randomness and creativity in the text generated by the model (default value is 0.7). Specifically:
-
-*   Low temperature values (0-0.3):
-    *   Output is more deterministic and focused.
-    *   Suitable for tasks requiring accuracy, such as code generation and data analysis.
-    *   Tends to select the most probable words for output.
-*   Medium temperature values (0.4-0.7):
-    *   Balances creativity and coherence.
-    *   Suitable for daily conversations and general writing.
-    *   Recommended for chatbot conversations (around 0.5).
-*   High temperature values (0.8-1.0):
-    *   Produces more creative and diverse outputs.
-    *   Suitable for creative writing, brainstorming, and similar scenarios.
-    *   May reduce the coherence of the text.
-
-#### <mark style="color:blue;">**`Top P (Nucleus Sampling)`**</mark>:
-
-The default value is 1. The smaller the value, the more monotonous and easier to understand the AI-generated content; the larger the value, the wider the range of vocabulary the AI uses, making it more diverse.
-
-Nucleus sampling influences the output by controlling the probability threshold for word selection:
-
-*   Smaller values (0.1-0.3):
-    *   Considers only the highest probability words.
-    *   Output is more conservative and controlled.
-    *   Suitable for code comments, technical documentation, etc.
-*   Medium values (0.4-0.6):
-    *   Balances vocabulary diversity and accuracy.
-    *   Suitable for general conversations and writing tasks.
-*   Larger values (0.7-1.0):
-    *   Considers a wider range of vocabulary choices.
-    *   Produces richer and more diverse content.
-    *   Suitable for creative writing and other scenarios requiring diverse expression.
-
-{% hint style="info" %}
-- These two parameters can be used independently or in combination.
-- Choose appropriate parameter values based on the specific task type.
-- It is recommended to experiment to find the optimal parameter combination for a particular application scenario.
-- The above content is for reference and conceptual understanding only; the given parameter ranges may not be suitable for all models. Please refer to the model's documentation for specific parameter recommendations.
+**Combining parameters**: Use Temperature for creativity control and Top P for vocabulary diversity. Experiment to find the best combination for your use case.
 {% endhint %}
 
 #### <mark style="color:blue;">**`Context Window`**</mark>
 
-The number of messages to retain in context. A larger value means longer context and consumes more tokens:
+How many previous messages the model can "remember":
 
-*   5-10: Suitable for general conversations.
-*   >10: For complex tasks requiring longer memory (e.g., generating long texts step-by-step according to an outline, where logical coherence of generated context is needed).
-*   Note: More messages mean higher token consumption.
+| Setting | Memory | Use Case |
+|---------|--------|----------|
+| 5-10 | Recent messages only | Casual conversation |
+| 11-20 | Extended memory | Complex multi-step tasks |
+| 20+ | Long conversation history | Tasks requiring detailed context |
 
-#### <mark style="color:blue;">**`Enable Message Length Limit (MaxToken)`**</mark>
+**Trade-off**: More context = better coherence but higher token usage (costs more).
 
-The maximum [Token](https://docs.cherry-ai.com/question-contact/knowledge#shen-me-shi-tokens) count for a single response. In large language models, `max_tokens` is a key parameter that directly affects the quality and length of the model's generated response.
+#### <mark style="color:blue;">**`Max Tokens (MaxToken)`**</mark>
 
-> For example: When testing if a model is connected in CherryStudio after entering the key, you only need to know if the model returns a message correctly, not specific content. In this case, setting `MaxToken` to 1 is sufficient.
+Maximum length of each model response:
 
-Most models have a MaxToken limit of 32k Tokens, but some have 64k or even more. You need to check the corresponding introductory page for details.
+| Value | Output Length | Use Case |
+|-------|---------------|----------|
+| 500-800 | Short | Quick answers, chat |
+| 800-2000 | Medium | Article writing |
+| 2000-4000 | Long | Code generation, essays |
+| 4000+ | Very long | Research papers, long-form content |
 
-The specific setting depends on your needs, but you can also refer to the suggestions below.
+**Note**: Some models have caps (e.g., 32k max). Check the model's documentation for limits.
 
-{% hint style="success" %}
-Suggestions:
+#### <mark style="color:blue;">**`Stream Output`**</mark>
 
-*   General chat: 500-800
-*   Short text generation: 800-2000
-*   Code generation: 2000-3600
-*   Long text generation: 4000 and above (requires model support)
-{% endhint %}
+**When enabled**: Model output appears character-by-character ("typewriter effect") for real-time feedback.
 
-{% hint style="warning" %}
-Generally, the model's response will be limited to the `MaxToken` range. However, truncation (e.g., when writing long code) or incomplete expressions may occur. In special cases, flexible adjustments need to be made based on actual circumstances.
-{% endhint %}
+**When disabled**: Model generates the complete response, then shows it all at once.
 
-#### <mark style="color:blue;">**`Stream Output (Stream)`**</mark>
+**Note**: Some models (like `o1-mini` initially) don't support streaming; disable for those.
 
-Stream output is a data processing method that allows data to be transmitted and processed in a continuous stream, rather than sending all data at once. This method allows data to be processed and output immediately after it is generated, greatly improving real-time performance and efficiency.
-
-In environments like the CherryStudio client, it simply means a "typewriter effect".
-
-When off (non-streaming): The model generates the entire piece of information and outputs it all at once (imagine receiving a message on WeChat);
-
-When on: Output character by character. This can be understood as the large model sending you each generated character immediately until all characters are sent.
-
-{% hint style="info" %}
-If certain specific models do not support stream output, this switch needs to be turned off, such as `o1-mini` which **initially** only supported non-streaming.
-{% endhint %}
+### Advanced Options
 
 #### <mark style="color:blue;">**`Custom Parameters`**</mark>
 
-Adds additional request parameters to the request body, such as `presence_penalty`, etc. Most people generally do not need to use this.
+Add provider-specific parameters not covered by the built-in settings. Format:
 
-> The `top-p`, `maxtokens`, `stream` parameters mentioned above are among these parameters.
+```
+Parameter Name — Type (text/number) — Value
+```
 
-Filling method: Parameter Name — Parameter Type (text, number, etc.) — Value. Reference documentation: [Click to go](https://openai.apifox.cn/doc-3222739)
+**Examples:**
+- `presence_penalty — number — 0.5`
+- `frequency_penalty — number — 0.2`
 
-{% hint style="info" %}
-Each model provider has its own unique parameters, more or less. You need to find the usage method in the provider's documentation.
-{% endhint %}
+**Priority**: Custom parameters override built-in settings if they conflict.
 
-{% hint style="info" %}
-*   Custom parameters take precedence over built-in parameters. That is, if a custom parameter duplicates a built-in parameter, the custom parameter will override the built-in parameter.
+**Reference**: Consult your model provider's API documentation for available parameters.
 
-> For example: if `model` is set to `gpt-4o` in custom parameters, then `gpt-4o` will be used in the conversation regardless of which model is selected.
+### Backup & Export
 
-*   Setting <kbd>Parameter Name:undefined</kbd> can exclude a parameter.
-{% endhint %}
+* **Duplicate** - Clone this assistant with all settings
+* **Export** - Save assistant configuration as a file for backup or sharing
