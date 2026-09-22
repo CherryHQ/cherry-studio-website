@@ -11,3 +11,11 @@
   --color-muted-foreground: var(--color-fd-muted-foreground);
   --color-accent: var(--color-fd-accent);
 }
+
+:root {
+  --color-fd-background: #ffffff;
+}
+
+.dark {
+  --color-fd-background: #0a0a0b;
+}
