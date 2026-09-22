@@ -19,15 +19,15 @@ The page consists of these parts:
 * **Input area (bottom)**: the prompt box, with a **provider and model selector** on one side. Below it, a hint tells you whether the current provider has any image models available; if not, a green `Go to Settings` button takes you straight to that provider's configuration page
 * **Generate / Edit**: there is no separate toggle — **the selected model decides**. Choose a text-to-image model (such as `qwen-image`) to generate; choose an image-editing model (such as `qwen-image-edit`) to edit, which means uploading an image first and then describing the changes
 
-After you select an **image-editing model** (such as `qwen-image-edit`), the input area switches to an "upload an image + describe the edit" mode:
+<figure><img src="../../../../assets/9c6f5b9bb6965c1a8bc3154c.webp" alt="Paintings page with a generated image on the canvas and the prompt, model and size in the input area"><figcaption><p>A generated image on the canvas; the input area shows the prompt, the model (here GPT-Image-2 | CherryIN) and the image count and size</p></figcaption></figure>
 
-<figure><img src="../../../../assets/231910e4132930247c0bcc6e.webp" alt=""><figcaption><p>With an image-editing model selected, upload an image first, then describe how to change it</p></figcaption></figure>
+After you select an **image-editing model** (such as `qwen-image-edit`), the input area switches to an "upload an image + describe the edit" mode.
 
 ## Supported Providers
 
 Painting in Cherry Studio relies on the **image models** offered by each provider. The model dropdown lists every option currently available to you, grouped by provider:
 
-<figure><img src="../../../../assets/2148f1530d798e778140eb4b.webp" alt=""><figcaption><p>The model dropdown lists available image models by provider; "Configure custom model" is at the bottom</p></figcaption></figure>
+<figure><img src="../../../../assets/8d2371cb01853bb1368c6cc0.webp" alt="Paintings model dropdown with a search box and image models grouped by provider"><figcaption><p>The model dropdown lists available image models by provider, with a search box at the top and "Configure custom models" at the bottom</p></figcaption></figure>
 
 They fall roughly into three groups:
 

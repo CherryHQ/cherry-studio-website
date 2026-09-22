@@ -49,7 +49,7 @@ Manage installed mini apps: `[Mini Apps] → Right-click the target mini app →
 {% step %}
 ### Open the Installation Entry
 
-Click [Generative Mini App] in the [Launcher], or go to [Mini Apps] and click [Add Mini App] in the top-right corner. In the popup panel, switch to [Local Mini App].
+Open [MiniApp] from the [Launchpad], then click the [Add mini app] tile at the end of the grid (or `+` in the top-right corner). In the popup panel, switch to [Local Mini App].
 {% endstep %}
 
 {% step %}
@@ -192,9 +192,9 @@ If installation succeeds but AI is unavailable, first check the model in [View D
 
 ## Key Screenshots
 
-<figure><img src="../../../../../assets/e5eba0b497cc060dda3fe81c.webp" alt="Generative mini-program entry in the Launcher"><figcaption><p> The [Generative Mini App] entry in the Launcher. </p></figcaption></figure>
+<figure><img src="../../../../../assets/1a4afdca1be190befe7a9061.webp" alt="The Add mini app tile at the end of the Apps grid"><figcaption><p>The [Add mini app] tile at the end of the [Apps] grid.</p></figcaption></figure>
 
-1. Click [Generative Mini App] to open the [Add Mini App] panel.
+1. Click [Add mini app] (or `+` in the top right) to open the [Add Mini App] panel.
 
 <figure><img src="../../../../../assets/68bb09ec12fa8bbc76f5056c.webp" alt="File and URL installation entries in the local mini-program installation panel"><figcaption><p> Local mini apps support installation from files or URLs. </p></figcaption></figure>
 
