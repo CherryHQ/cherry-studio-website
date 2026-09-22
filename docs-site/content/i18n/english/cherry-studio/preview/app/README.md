@@ -38,7 +38,7 @@ Select the service you want to open from the mini app grid.
 {% endstep %}
 {% endstepper %}
 
-<figure><img src="../../../../../assets/014d34ba53fb03d6d894116c.webp" alt=""><figcaption><p>Mini app grid, built-in with dozens of services; click <code>+</code> in the top right to add any webpage</p></figcaption></figure>
+<figure><img src="../../../../../assets/5c8457fa5b971eef205757ef.webp" alt=""><figcaption><p>Mini app grid, built-in with dozens of services; click <code>+</code> in the top right to add any webpage</p></figcaption></figure>
 
 There is a **search box** in the middle of the page; `+` in the top right is used to add custom webpages, and `☰` opens 【Mini App Display Settings】.
 
@@ -65,7 +65,7 @@ Cherry Studio mini apps support the following operations:
 
 After opening a mini app, its window includes a toolbar: **Back**, **Forward**, **Refresh**, **Open in Browser**. You can also switch whether in-page links open in the default window or in the system browser.
 
-<figure><img src="../../../../../assets/efa6c8dd5b1bb7b7cd417561.webp" alt=""><figcaption><p>Mini app window toolbar: Back / Forward / Refresh on the left, Open in Browser, Add to Launcher, and in-page link opening method on the right</p></figcaption></figure>
+<figure><img src="../../../../../assets/ecae29a8ae999f7eb89cb915.webp" alt=""><figcaption><p>Mini app window toolbar: Back / Forward / Refresh on the left, Open in Browser, Add to Launcher, and in-page link opening method on the right</p></figcaption></figure>
 
 ### Tips and Tricks
 

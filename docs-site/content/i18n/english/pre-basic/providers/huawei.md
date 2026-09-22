@@ -52,7 +52,7 @@ And add a "#" at the end.
 
 And add a "#" at the end.
 
-Why add "#"? [See here](https://docs.cherry-ai.com/cherrystudio/preview/settings/providers#api-di-zhi)
+Why add "#"? [See here](../settings/providers.md#api-di-zhi)
 
 > Of course, you can also skip reading that and just follow the tutorial;
 >

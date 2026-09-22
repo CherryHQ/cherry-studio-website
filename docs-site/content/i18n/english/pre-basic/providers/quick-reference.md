@@ -35,7 +35,7 @@ No proxy required, strong Chinese language support, relatively affordable pricin
 | **ZhiPu (Zhipu)** | GLM series, multimodal, Anthropic-compatible for Agents | [bigmodel.cn](https://open.bigmodel.cn/) | [→](zhipu.md) |
 | **doubao (Doubao/Volcano Engine)** | By ByteDance, affordable pricing | [volcengine.com](https://www.volcengine.com/product/doubao) | [→](doubao.md) |
 | **Baidu Cloud (ERNIE Bot)** | Baidu ERNIE series | [cloud.baidu.com](https://cloud.baidu.com/) | — |
-| **Bailian (Alibaba Bailian)** | Qwen series, massive model library | [bailian.console.aliyun.com](https://bailian.console.aliyun.com/) | [→](a-li-yun-bai-lian.md) |
+| **Bailian (Alibaba Bailian)** | Qwen series, massive model library | [bailian.console.aliyun.com](https://bailian.console.aliyun.com/) | [→](aliyun-bailian.md) |
 | **BAICHUAN AI** | Baichuan large models | [baichuan-ai.com](https://platform.baichuan-ai.com/) | — |
 | **MiniMax** | Domestic multimodal (voice, video) | [minimaxi.com](https://platform.minimaxi.com/) | [→](minimax.md) |
 | **StepFun** | StepFun (Jieyue Xingchen) | [stepfun.com](https://platform.stepfun.com/) | — |
@@ -52,7 +52,7 @@ Top-tier performance; access from China usually requires a proxy.
 | **Anthropic** | Claude series, top choice for Agents | [anthropic.com](https://console.anthropic.com/) | [→](anthropic.md) |
 | **Gemini (Google)** | Google large models | [aistudio.google.com](https://aistudio.google.com/) | [→](google-gemini.md) |
 | **Azure OpenAI** | Microsoft-hosted OpenAI, enterprise compliance | [portal.azure.com](https://portal.azure.com/) | [→](azure-openai.md) |
-| **VertexAI** | Google Cloud hosted | [cloud.google.com](https://cloud.google.com/vertex-ai) | [→](vertex-ai.md) |
+| **VertexAI** | Google Cloud hosted | [cloud.google.com](https://cloud.google.com/vertex-ai) | — |
 | **AWS Bedrock** | Amazon-hosted multi-provider models | [aws.amazon.com/bedrock](https://aws.amazon.com/bedrock/) | — |
 | **Mistral** | Representative of European open-source models | [mistral.ai](https://console.mistral.ai/) | [→](mistral.md) |
 | **Grok (xAI)** | Elon Musk's xAI, built-in web access | [x.ai](https://console.x.ai/) | [→](grok.md) |
@@ -136,7 +136,7 @@ Fully offline, protects privacy.
 
 ## Custom Providers
 
-If the service you use is not in the list above but supports any of the **OpenAI-compatible / Anthropic-compatible / Gemini-compatible** protocols, you can add it via [Custom Provider](zi-ding-yi-fu-wu-shang.md).
+If the service you use is not in the list above but supports any of the **OpenAI-compatible / Anthropic-compatible / Gemini-compatible** protocols, you can add it via [Custom Provider](custom-provider.md).
 
 ## Still Not Sure Which to Choose?
 

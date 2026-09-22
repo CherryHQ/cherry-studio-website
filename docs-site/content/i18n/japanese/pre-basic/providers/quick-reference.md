@@ -35,7 +35,7 @@ Cherry Studio には **60 以上の Provider** が組み込まれています。
 | **ZhiPu (智谱)** | GLM シリーズ、マルチモーダル、Anthropic 互換でエージェント実行可能 | [bigmodel.cn](https://open.bigmodel.cn/) | [→](zhipu.md) |
 | **doubao (豆包/火山引擎)** | ByteDance 製、手頃な価格 | [volcengine.com](https://www.volcengine.com/product/doubao) | [→](doubao.md) |
 | **Baidu Cloud (文心一言)** | Baidu ERNIE シリーズ | [cloud.baidu.com](https://cloud.baidu.com/) | — |
-| **Bailian (阿里百炼)** | Qwen シリーズ、大量のモデル | [bailian.console.aliyun.com](https://bailian.console.aliyun.com/) | [→](a-li-yun-bai-lian.md) |
+| **Bailian (阿里百炼)** | Qwen シリーズ、大量のモデル | [bailian.console.aliyun.com](https://bailian.console.aliyun.com/) | [→](aliyun-bailian.md) |
 | **BAICHUAN AI** | 百川大規模モデル | [baichuan-ai.com](https://platform.baichuan-ai.com/) | — |
 | **MiniMax** | 国内マルチモーダル（音声、動画） | [minimaxi.com](https://platform.minimaxi.com/) | [→](minimax.md) |
 | **StepFun** | 階躍星辰 | [stepfun.com](https://platform.stepfun.com/) | — |
@@ -136,7 +136,7 @@ Cherry Studio には **60 以上の Provider** が組み込まれています。
 
 ## カスタムプロバイダー
 
-上記のリストにないサービスを使用している場合でも、**OpenAI 互換 / Anthropic 互換 / Gemini 互換** のいずれかのプロトコルを提供している場合は、[カスタムプロバイダー](zi-ding-yi-fu-wu-shang.md) として追加できます。
+上記のリストにないサービスを使用している場合でも、**OpenAI 互換 / Anthropic 互換 / Gemini 互換** のいずれかのプロトコルを提供している場合は、[カスタムプロバイダー](custom-provider.md) として追加できます。
 
 ## まだどれを選べばいいか分からない？
 

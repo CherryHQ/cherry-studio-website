@@ -56,14 +56,14 @@
     * [MiniMax](pre-basic/providers/minimax.md)
     * [Guide d'intégration de la plateforme ModelScope (ModelScope)](pre-basic/providers/modelscope.md)
     * [PPIO 派欧云](pre-basic/providers/ppio.md)
-    * [Alibaba Cloud Bailian](pre-basic/providers/a-li-yun-bai-lian.md)
+    * [Alibaba Cloud Bailian](pre-basic/providers/aliyun-bailian.md)
     * [SiliconFlow](pre-basic/providers/siliconcloud.md)
     * [ByteDance (Doubao)](pre-basic/providers/doubao.md)
   * **Passerelles et fournisseurs personnalisés**
     * [OpenRouter](pre-basic/providers/openrouter.md)
     * [NouvelleAPI](pre-basic/providers/newapi.md)
     * [OneAPI](pre-basic/providers/oneapi.md)
-    * [Fournisseurs Personnalisés](pre-basic/providers/zi-ding-yi-fu-wu-shang.md)
+    * [Fournisseurs Personnalisés](pre-basic/providers/custom-provider.md)
   * **Services locaux et développeur**
     * [Ollama](pre-basic/providers/ollama.md)
     * [LM Studio](pre-basic/providers/lm-studio.md)

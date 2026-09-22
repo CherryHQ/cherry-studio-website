@@ -12,9 +12,9 @@ Note: Windows 7 operating system does not support installing Cherry Studio.
 
 ## Download
 
-{% embed url="https://cherry-ai.com/download" %}
+{% embed url="https://cherryai.com/download" %}
 
-<figure><img src="../../../../assets/774139e6a5e0ebcc95907b0c.webp" alt=""><figcaption><p>Open Official Website</p></figcaption></figure>
+<figure><img src="../../../../assets/906a35e2d311aeff11e6ef17.webp" alt="Cherry Studio official website homepage with the Download button"><figcaption><p>Open Official Website</p></figcaption></figure>
 
 ## Installation
 

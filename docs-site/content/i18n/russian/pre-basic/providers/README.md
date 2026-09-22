@@ -47,7 +47,7 @@ Cherry Studio группирует провайдеров по протокол�
 
 #### Китайские провайдеры
 
-* [Alibaba Cloud Bailian](a-li-yun-bai-lian.md)
+* [Alibaba Cloud Bailian](aliyun-bailian.md)
 * [ZhiPu](zhipu.md)
 * [SiliconFlow](siliconcloud.md)
 * [Volcengine (Doubao)](doubao.md)
@@ -60,7 +60,7 @@ Cherry Studio группирует провайдеров по протокол�
 
 #### Пользовательские провайдеры
 
-* [Пользовательский провайдер](zi-ding-yi-fu-wu-shang.md) — любая конечная точка, совместимая с OpenAI, Anthropic или Gemini
+* [Пользовательский провайдер](custom-provider.md) — любая конечная точка, совместимая с OpenAI, Anthropic или Gemini
 
 {% hint style="info" %}
 **Что делать, если нужного провайдера нет в документации?**

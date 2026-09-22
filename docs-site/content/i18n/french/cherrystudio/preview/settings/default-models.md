@@ -23,4 +23,4 @@ Les fonctions de traduction dans les champs de saisie de conversation, de peintu
 
 ## Modèle d'assistant rapide
 
-Modèle utilisé pour les fonctions d'assistant rapide. Voir détails dans [Assistant rapide](../kuai-jie-zhu-shou.md)
+Modèle utilisé pour les fonctions d'assistant rapide. Voir détails dans [Assistant rapide](../quick-assistant.md)

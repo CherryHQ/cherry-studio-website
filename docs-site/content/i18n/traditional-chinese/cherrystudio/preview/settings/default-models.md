@@ -27,4 +27,4 @@ icon: robot
 
 ## 快捷助手模型
 
-快捷助手功能使用的模型，詳見 [快捷助手](../kuai-jie-zhu-shou.md)
+快捷助手功能使用的模型，詳見 [快捷助手](../quick-assistant.md)

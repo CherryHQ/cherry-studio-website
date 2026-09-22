@@ -5,7 +5,7 @@ icon: grid
 
 The Launchpad provides centralized access to Cherry Studio's core features. Click the **+** button on the right side of the top tab bar to open a new Launchpad tab. Closing the last tab automatically returns you to the Launchpad.
 
-![Nine built-in app entries in the Launchpad](../../../../assets/7521831e54a609b69a5fceeb.png)
+![Built-in app entries in the Launchpad](../../../../assets/c89b9077eb11875d79b2b235.webp)
 
 ## Default Apps
 

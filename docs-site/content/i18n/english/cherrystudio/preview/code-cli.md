@@ -5,7 +5,7 @@ icon: terminal
 
 【Coding Companion】is used to install, configure, and launch common programming command-line tools. Cherry Studio recognizes its own managed installations and also detects CLIs already available in the system login environment. System tools remain managed by their original package managers.
 
-<figure><img src="../../../../assets/565c03d38bfd4fabef8d3013.webp" alt="Installation status, version check, and Code CLI provider on the Coding Partner page"><figcaption><p>First, confirm that the tool is installed and the version is available, then configure the model connection and project directory. </p></figcaption></figure>
+<figure><img src="../../../../assets/6e83da0b2e71960433baf182.webp" alt="Installation status, version check, and Code CLI provider on the Coding Partner page"><figcaption><p>First, confirm that the tool is installed and the version is available, then configure the model connection and project directory. </p></figcaption></figure>
 
 ## What the Page Does
 

@@ -22,7 +22,7 @@ The Selection Assistant allows you to **select text in any application** and inv
 
 Open [Settings] → [Selection Assistant]:
 
-<figure><img src="../../../../assets/9c1fa1dc2820ccee7bd169f3.webp" alt=""><figcaption><p>Selection Assistant settings panel</p></figcaption></figure>
+<figure><img src="../../../../assets/4a33948c9d73e37d71d5f5cb.webp" alt=""><figcaption><p>Selection Assistant settings: Enable / Toolbar / Action Window</p></figcaption></figure>
 
 1. Toggle the **Enable** switch
 2. **macOS** users will see a prompt requesting **Accessibility permissions** upon first enablement:
@@ -30,12 +30,10 @@ Open [Settings] → [Selection Assistant]:
    <figure><img src="../../../../assets/ed99fa5f9b3118d263e09cd2.webp" alt=""><figcaption><p>Accessibility permission prompt on first enablement</p></figcaption></figure>
 
    Click **Go to Settings** → In the opened [System Settings] → [Privacy & Security] → [Accessibility], find Cherry Studio and toggle the switch on → Return to Cherry Studio and enable it again.
-3. (Optional) In [Toolbar] → [Trigger Method], select the trigger method (options vary by platform):
+3. (Optional) In [Toolbar] → [Trigger Mode], select the trigger method (options vary by platform):
    * **Selection**: Toolbar appears immediately after selecting text (default)
    * **Ctrl Key** (Windows only): Toolbar appears only after selecting text and **holding the Ctrl key** (prevents accidental triggers)
    * **Hotkey**: Toolbar appears after selecting text and pressing the hotkey; configure the hotkey in [Settings] → [Hotkeys]
-
-<figure><img src="../../../../assets/f45f2fd96c9bb25af9825da7.webp" alt=""><figcaption><p>Settings panel after enabling: Trigger Method / Compact Mode / Follow Toolbar…</p></figcaption></figure>
 
 ### Built-in Actions
 
@@ -51,14 +49,14 @@ The Selection Assistant provides 7 built-in actions, with **5 enabled by default
 | **Optimize** | To be enabled | Lets AI rewrite for better flow / professionalism; drag into the enabled area in settings to activate |
 | **Quote** | To be enabled | Sends the selected text as a quote to the current conversation; drag into the enabled area in settings to activate |
 
-<figure><img src="../../../../assets/29cffab07ecb8317865312ee.webp" alt=""><figcaption><p>[Features] section in the settings panel: Top area is enabled, bottom area is staging; drag from bottom to top to enable</p></figcaption></figure>
+<figure><img src="../../../../assets/5aca871f2c1c1bb116da335c.webp" alt=""><figcaption><p>[Actions] section in the settings panel: top area is enabled, bottom area is staging; drag from bottom to top to enable</p></figcaption></figure>
 
 ### Custom Actions
 
-In [Settings] → [Selection Assistant] → [Features], you can:
+In [Settings] → [Selection Assistant] → [Actions], you can:
 
 * **Edit** the prompts for built-in actions
-* **Add** custom actions (name + prompt + default model)
+* **Add** custom actions via **+ Custom Action** (name + prompt + default model)
 * **Drag** to adjust the order of actions in the toolbar
 * Drag infrequently used actions to the bottom staging area to "disable" them
 
@@ -67,7 +65,7 @@ In [Settings] → [Selection Assistant] → [Features], you can:
 Toolbar:
 * **Compact Mode**: Displays icons only, no text, saving screen space
 
-Result Window ([Feature Window] section):
+Result Window ([Action Window] section):
 * **Follow Toolbar**: Window pops up attached to the toolbar (default on); if off, it always centers
 * **Remember Size**: Retains the manually adjusted window size for the next session
 * **Auto Close**: Closes when clicking outside the window
@@ -76,7 +74,7 @@ Result Window ([Feature Window] section):
 
 ### Search Engine
 
-The built-in [Search] action in the Selection Assistant allows selecting preset engines (Google, Bing, DuckDuckGo, etc.). Configuration is found in [Settings] → [Selection Assistant] → [Features]: Locate the **Search** entry, click the gear icon on the far right of the row to open the [Configure Search Engine] dialog. You can choose from presets or add custom engines, using `{{queryString}}` in the URL to represent the search term position.
+The built-in [Search] action in the Selection Assistant allows selecting preset engines (Google, Bing, DuckDuckGo, etc.). Configuration is found in [Settings] → [Selection Assistant] → [Actions]: Locate the **Search** entry, click the gear icon on the far right of the row to open the [Configure Search Engine] dialog. You can choose from presets or add custom engines, using `{{queryString}}` in the URL to represent the search term position.
 
 ### Application Filtering (Advanced)
 

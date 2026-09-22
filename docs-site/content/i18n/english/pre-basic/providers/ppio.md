@@ -12,7 +12,7 @@ The tutorial below includes a complete integration solution (with key configurat
 
 ### [​](https://ppinfra.com/docs/third-party/cherry-studio-use#1-%E8%BF%9B%E5%85%A5-cherrystudio%EF%BC%8C%E6%B7%BB%E5%8A%A0-%E2%80%9Cppio%E2%80%9D-%E4%BD%9C%E4%B8%BA%E6%A8%A1%E5%9E%8B%E6%8F%90%E4%BE%9B%E5%95%86)1. Enter CherryStudio and add "PPIO" as a model provider <a id="add-ppio-provider"></a>
 
-First, go to the official website to download Cherry Studio: [ ](https://cherry-ai.com/download)[https://cherry-ai.com/download](https://cherry-ai.com/download) (If you cannot access it, you can open the Quark Drive link below to download the version you need: [https://pan.quark.cn/s/c8533a1ec63e#/list/share](https://pan.quark.cn/s/c8533a1ec63e#/list/share)
+First, go to the official website to download Cherry Studio: [ ](https://cherryai.com/download)[https://cherryai.com/download](https://cherryai.com/download) (If you cannot access it, you can open the Quark Drive link below to download the version you need: [https://pan.quark.cn/s/c8533a1ec63e#/list/share](https://pan.quark.cn/s/c8533a1ec63e#/list/share)
 
 (1) First, click "Settings" in the bottom left, customize the provider name to: `PPIO`, and click "Confirm".
 

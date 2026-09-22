@@ -3,8 +3,8 @@
 
 <figure><img src="../../../../assets/535905a58b7f693bff0b18c6.webp" alt=""><figcaption></figcaption></figure>
 
-Are you experiencing this: You've saved 26 insightful articles on WeChat but never opened them again, you have 10+ scattered files in your "study materials" folder on your computer, and you want to find a theory you read half a year ago but only remember a few keywords? When the daily information load exceeds the brain's processing limit, 90% of valuable knowledge will be forgotten within 72 hours.
-Now, by building a personal knowledge base with the Infini-AI large model service platform API + Cherry Studio, you can transform WeChat articles collecting dust and fragmented course content into structured knowledge for precise retrieval.
+Are you experiencing this: You've bookmarked dozens of insightful articles but never got around to reading them, you have 10+ scattered files in your "study materials" folder on your computer, and you want to find a theory you read half a year ago but only remember a few keywords? When the daily information load exceeds the brain's processing limit, 90% of valuable knowledge will be forgotten within 72 hours.
+Now, by building a personal knowledge base with the Infini-AI large model service platform API + Cherry Studio, you can transform those saved articles and fragmented course content into structured knowledge for precise retrieval.
 
 ### 1. Building a Personal Knowledge Base
 
@@ -16,13 +16,13 @@ As the "thinking core" of the knowledge base, the Infini-AI large model service 
 
 #### 2. Cherry Studio: Building a Knowledge Base with Zero Code
 
-Cherry Studio is an easy-to-use AI tool. Compared to the 1-2 month deployment cycle required for RAG knowledge base development, the advantage of this tool is that it supports **zero-code operations**. It allows one-click import of multiple formats such as Markdown/PDF/web pages, parses a 40MB file in 1 minute, and can also add local computer folders, WeChat favorites article URLs, and course notes.
+Cherry Studio is an easy-to-use AI tool. Compared to the 1-2 month deployment cycle required for RAG knowledge base development, the advantage of this tool is that it supports **zero-code operations**. It allows one-click import of multiple formats such as Markdown/PDF/web pages, parses a 40MB file in 1 minute, and can also add local computer folders, saved article URLs, and course notes.
 
 ### 2. 3 Steps to Build Your Exclusive Knowledge Butler
 
 #### Step 1: Basic Preparation
 
-1. Visit the Cherry Studio official website to download the compatible version (https://cherry-ai.com/)
+1. Visit the Cherry Studio official website to download the compatible version (https://cherryai.com/)
 2. Register an account: Log in to the Infini-AI large model service platform (https://cloud.infini-ai.com/genstudio/model?cherrystudio)
 
 <figure><img src="../../../../assets/64edba6eabd8e4d2ce673267.webp" alt=""><figcaption></figcaption></figure>

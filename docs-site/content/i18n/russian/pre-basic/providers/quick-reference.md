@@ -35,7 +35,7 @@ Cherry Studio поддерживает **более 60 провайдеров**.
 | **ZhiPu (智谱)** | Серия GLM, мультимодальность, совместимость с Anthropic для работы агентов | [bigmodel.cn](https://open.bigmodel.cn/) | [→](zhipu.md) |
 | **doubao (豆包/火山引擎)** | От ByteDance, доступные цены | [volcengine.com](https://www.volcengine.com/product/doubao) | [→](doubao.md) |
 | **Baidu Cloud (文心一言)** | Серия ERNIE от Baidu | [cloud.baidu.com](https://cloud.baidu.com/) | — |
-| **Bailian (阿里百炼)** | Серия Qwen, огромное количество моделей | [bailian.console.aliyun.com](https://bailian.console.aliyun.com/) | [→](a-li-yun-bai-lian.md) |
+| **Bailian (阿里百炼)** | Серия Qwen, огромное количество моделей | [bailian.console.aliyun.com](https://bailian.console.aliyun.com/) | [→](aliyun-bailian.md) |
 | **BAICHUAN AI** | Крупная модель Baichuan | [baichuan-ai.com](https://platform.baichuan-ai.com/) | — |
 | **MiniMax** | Мультимодальность в Китае (голос, видео) | [minimaxi.com](https://platform.minimaxi.com/) | [→](minimax.md) |
 | **StepFun** | StepFun (阶跃星辰) | [stepfun.com](https://platform.stepfun.com/) | — |
@@ -136,7 +136,7 @@ Cherry Studio поддерживает **более 60 провайдеров**.
 
 ## Пользовательский провайдер
 
-Если ваш сервис отсутствует в списке выше, но поддерживает любой из протоколов **OpenAI-совместимый / Anthropic-совместимый / Gemini-совместимый**, вы можете добавить его через [Пользовательский провайдер](zi-ding-yi-fu-wu-shang.md).
+Если ваш сервис отсутствует в списке выше, но поддерживает любой из протоколов **OpenAI-совместимый / Anthropic-совместимый / Gemini-совместимый**, вы можете добавить его через [Пользовательский провайдер](custom-provider.md).
 
 ## Всё ещё не знаете, что выбрать?
 

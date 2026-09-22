@@ -21,4 +21,4 @@ The translation function in input boxes for conversations, drawing, etc., and th
 
 ## Quick Assistant Model
 
-The model used by the quick assistant function. See [Quick Assistant](../kuai-jie-zhu-shou.md) for details.
+The model used by the quick assistant function. See [Quick Assistant](../quick-assistant.md) for details.

@@ -35,7 +35,7 @@ Aucun proxy nécessaire, avantage en chinois, prix relativement abordables.
 | **ZhiPu (智谱)** | Série GLM, multimodal, compatible Anthropic pour les Agents | [bigmodel.cn](https://open.bigmodel.cn/) | [→](zhipu.md) |
 | **doubao (豆包/火山引擎)** | Développé par ByteDance, prix accessibles | [volcengine.com](https://www.volcengine.com/product/doubao) | [→](doubao.md) |
 | **Baidu Cloud (文心一言)** | Série ERNIE de Baidu | [cloud.baidu.com](https://cloud.baidu.com/) | — |
-| **Bailian (阿里百炼)** | Série Qwen, vaste catalogue de modèles | [bailian.console.aliyun.com](https://bailian.console.aliyun.com/) | [→](a-li-yun-bai-lian.md) |
+| **Bailian (阿里百炼)** | Série Qwen, vaste catalogue de modèles | [bailian.console.aliyun.com](https://bailian.console.aliyun.com/) | [→](aliyun-bailian.md) |
 | **BAICHUAN AI** | Grand modèle de Baichuan | [baichuan-ai.com](https://platform.baichuan-ai.com/) | — |
 | **MiniMax** | Multimodal en Chine (voix, vidéo) | [minimaxi.com](https://platform.minimaxi.com/) | [→](minimax.md) |
 | **StepFun** | 阶跃星辰 | [stepfun.com](https://platform.stepfun.com/) | — |
@@ -136,7 +136,7 @@ Entièrement hors ligne, protection de la vie privée.
 
 ## Fournisseur personnalisé
 
-Si le service que vous utilisez n’est pas répertorié ci-dessus, mais qu’il prend en charge l’un des protocoles **compatible OpenAI / compatible Anthropic / compatible Gemini**, vous pouvez l’ajouter via [Fournisseur personnalisé](zi-ding-yi-fu-wu-shang.md).
+Si le service que vous utilisez n’est pas répertorié ci-dessus, mais qu’il prend en charge l’un des protocoles **compatible OpenAI / compatible Anthropic / compatible Gemini**, vous pouvez l’ajouter via [Fournisseur personnalisé](custom-provider.md).
 
 ## Vous ne savez toujours pas lequel choisir ?
 

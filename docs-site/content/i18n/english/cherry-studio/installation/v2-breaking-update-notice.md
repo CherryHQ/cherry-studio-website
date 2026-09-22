@@ -76,6 +76,6 @@ Do not manually delete or replace the database. If you make a mistake, cannot co
 
 ## Download Links
 
-* [V1 Official Download](https://cherryai.com.cn/download/v1)
+* [V1 Official Download](https://cherryai.com/download/v1)
 * V2 Release Page: [GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases)
-* [V2 Official Download](https://cherryai.com.cn/download)
+* [V2 Official Download](https://cherryai.com/download)

@@ -7,7 +7,7 @@ Cherry Studio's translation feature provides you with fast and accurate text tra
 
 ### Interface Overview
 
-<figure><img src="../../../../assets/b3ff29c787b71ee82a0e83fd.webp" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../assets/3413d1e6827f6f8992ed5ba1.webp" alt=""><figcaption></figcaption></figure>
 
 The translation interface mainly consists of the following parts:
 

@@ -17,7 +17,7 @@ The top bar displays:
 * **Topic Tabs** - Shows current active topic and related files/data sources connected to this conversation
 * **Quick Actions** - Search, menu, and additional controls
 
-<figure><img src="../../../../assets/chat-header.webp" alt="Chat interface header with assistant selector and topic tabs"><figcaption>Select assistants and manage topics from the top navigation</figcaption></figure>
+<figure><img src="../../../../assets/dc4cf60c9df32d2768d58f01.webp" alt="Chat interface header with assistant selector and topic tabs"><figcaption>Select assistants and manage topics from the top navigation</figcaption></figure>
 
 ### Welcome Screen
 
@@ -128,8 +128,6 @@ Visible hints show:
 
 ## Chat Settings
 
-<figure><img src="../../../../assets/chat-settings.webp" alt="Chat settings panel"><figcaption></figcaption></figure>
-
 Settings apply either to this topic only or globally to all topics. Changes take effect immediately.
 
 ### Message Display Settings
@@ -138,15 +136,8 @@ Settings apply either to this topic only or globally to all topics. Changes take
 
 Use a visual separator between message content and action buttons.
 
-{% tabs %}
-{% tab title="Enabled" %}
-Clean separation between message and actions.
-{% endtab %}
-
-{% tab title="Disabled" %}
-Compact view without separator line.
-{% endtab %}
-{% endtabs %}
+* **Enabled**: Clean separation between message and actions.
+* **Disabled**: Compact view without separator line.
 
 #### <mark style="color:blue;">**`Message Style`**</mark>
 
@@ -168,16 +159,6 @@ Adjust the font size of displayed messages.
 #### <mark style="color:blue;">**`Display Line Numbers for Code`**</mark>
 
 Show/hide line numbers in code blocks when the model outputs code.
-
-{% tabs %}
-{% tab title="Enabled" %}
-<figure><img src="../../../../assets/code-with-numbers.webp" alt="Code with line numbers"><figcaption></figcaption></figure>
-{% endtab %}
-
-{% tab title="Disabled" %}
-<figure><img src="../../../../assets/code-without-numbers.webp" alt="Code without line numbers"><figcaption></figcaption></figure>
-{% endtab %}
-{% endtabs %}
 
 #### <mark style="color:blue;">**`Collapsible Code Blocks`**</mark>
 
@@ -218,15 +199,8 @@ When pasting large amounts of text, automatically convert to file attachment to 
 
 Render Markdown formatting in your sent messages, not just in model replies.
 
-{% tabs %}
-{% tab title="Disabled" %}
-Plain text display of sent messages
-{% endtab %}
-
-{% tab title="Enabled" %}
-Markdown formatting visible in sent messages
-{% endtab %}
-{% endtabs %}
+* **Enabled**: Markdown formatting is visible in sent messages.
+* **Disabled**: Sent messages are displayed as plain text.
 
 #### <mark style="color:blue;">**`Translate by Tapping Space 3 Times`**</mark>
 
@@ -240,8 +214,6 @@ Set the target language for translation features.
 ## Assistant Settings
 
 To customize an assistant, right-click its name in the left sidebar and select **"Edit Assistant"**.
-
-<figure><img src="../../../../assets/assistant-settings.webp" alt="Assistant settings menu"><figcaption>Right-click assistant to access settings</figcaption></figure>
 
 {% hint style="info" %}
 Assistant settings apply to **all topics** under that assistant. Topic-specific settings override these defaults.
