@@ -49,7 +49,7 @@ Standard downgrading does not require deleting the database. Retaining V2 data a
 {% endhint %}
 
 {% hint style="danger" %}
-**Settings** → **Data** → **Re-migrate** in V2.0.2 is not a downgrade entry point. It permanently deletes current V2 data and re-imports from the original V1 data. Do not click this unless a previous V1 migration failed or missed data.
+**Settings** → **Data** → **Re-migrate** in V2 is not a downgrade entry point. It permanently deletes current V2 data and re-imports from the original V1 data. Do not click this unless a previous V1 migration failed or missed data.
 {% endhint %}
 
 ## When to Handle the V2 Database
@@ -106,7 +106,7 @@ Not recommended. Move and retain the files first, then decide whether to delete 
 
 <summary>If I downgrade and then return to V2, which version should I install?</summary>
 
-If you continue using the previous V2 data, you can directly install V2.0.2 and must not click **Re-migrate**. If a previous V1 migration failed or missed data, you can use **Settings** → **Data** → **Re-migrate** after creating a full backup of the current V2 data; this operation permanently deletes current V2 data and re-imports from V1.
+If you continue using the previous V2 data, you can directly install V2 and must not click **Re-migrate**. If a previous V1 migration failed or missed data, you can use **Settings** → **Data** → **Re-migrate** after creating a full backup of the current V2 data; this operation permanently deletes current V2 data and re-imports from V1.
 
 </details>
 
@@ -114,5 +114,5 @@ If you continue using the previous V2 data, you can directly install V2.0.2 and 
 
 * [Cherry Studio V1 Official Download](https://cherryai.com.cn/download/v1)
 * [Cherry Studio V2 Official Download](https://cherryai.com.cn/download)
-* V2.0.2 Release Page: [GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases/v2.0.2) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases/tag/v2.0.2)
+* V2 Release Page: [GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases)
 * [Issue Feedback and Feature Suggestions](../../question-contact/suggestions.md)

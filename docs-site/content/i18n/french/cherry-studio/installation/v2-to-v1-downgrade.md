@@ -48,7 +48,7 @@ La rétrogradation standard ne nécessite pas la suppression de la base de donn�
 {% endhint %}
 
 {% hint style="danger" %}
-L'option [Paramètres] → [Données] → [Remigrer] dans V2.0.2 n'est pas une entrée de rétrogradation. Elle supprime définitivement les données V2 actuelles puis réimporte depuis les données V1 d'origine ; ne cliquez dessus que si la migration V1 précédente a échoué ou si des données ont été omises.
+L'option [Paramètres] → [Données] → [Remigrer] dans V2 n'est pas une entrée de rétrogradation. Elle supprime définitivement les données V2 actuelles puis réimporte depuis les données V1 d'origine ; ne cliquez dessus que si la migration V1 précédente a échoué ou si des données ont été omises.
 {% endhint %}
 
 ## Quand traiter la base de données V2
@@ -105,7 +105,7 @@ Déconseillé. Déplacez d'abord les fichiers et conservez-les, puis décidez de
 
 <summary>Après rétrogradation, quelle version installer pour revenir à V2 ?</summary>
 
-Si vous continuez d'utiliser les données V2 précédentes, installez directement V2.0.2 et ne cliquez pas sur [Remigrer]. Si la migration V1 précédente a échoué ou si des données ont été omises, utilisez [Paramètres] → [Données] → [Remigrer] après avoir effectué une sauvegarde complète des données V2 actuelles ; cette opération supprime définitivement les données V2 actuelles puis réimporte depuis V1.
+Si vous continuez d'utiliser les données V2 précédentes, installez directement V2 et ne cliquez pas sur [Remigrer]. Si la migration V1 précédente a échoué ou si des données ont été omises, utilisez [Paramètres] → [Données] → [Remigrer] après avoir effectué une sauvegarde complète des données V2 actuelles ; cette opération supprime définitivement les données V2 actuelles puis réimporte depuis V1.
 
 </details>
 
@@ -113,5 +113,5 @@ Si vous continuez d'utiliser les données V2 précédentes, installez directemen
 
 * [Téléchargement officiel Cherry Studio V1](https://cherryai.com.cn/download/v1)
 * [Téléchargement officiel Cherry Studio V2](https://cherryai.com.cn/download)
-* Page de publication V2.0.2 : [GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases/v2.0.2) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases/tag/v2.0.2)
+* Page de publication V2 : [GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases)
 * [Signalement de problèmes et suggestions de fonctionnalités](../../question-contact/suggestions.md)

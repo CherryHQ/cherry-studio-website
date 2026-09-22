@@ -48,7 +48,7 @@ La descarga normal no requiere eliminar la base de datos. Conservar los datos de
 {% endhint %}
 
 {% hint style="danger" %}
-[Configuración] → [Datos] → [Volver a migrar] en V2.0.2 no es la entrada para la descarga. Elimina permanentemente los datos actuales de V2 y vuelve a importar desde los datos originales de V1; no haga clic en ello a menos que la migración de V1 anterior haya fallado o haya omitido datos.
+[Configuración] → [Datos] → [Volver a migrar] en V2 no es la entrada para la descarga. Elimina permanentemente los datos actuales de V2 y vuelve a importar desde los datos originales de V1; no haga clic en ello a menos que la migración de V1 anterior haya fallado o haya omitido datos.
 {% endhint %}
 
 ## Cuándo procesar la base de datos de V2
@@ -105,7 +105,7 @@ No se recomienda. Primero muévala y consérvela; decida si eliminarla después 
 
 <summary>¿Qué versión se debe instalar al volver a V2 después de la descarga?</summary>
 
-Si continúa utilizando los datos de V2 anteriores, puede instalar directamente V2.0.2 y no hacer clic en [Volver a migrar]. Si la migración de V1 anterior falló o omitió datos, puede usar [Configuración] → [Datos] → [Volver a migrar] después de hacer una copia de seguridad completa de V2 actual; esta operación eliminará permanentemente los datos actuales de V2 y volverá a importar desde V1.
+Si continúa utilizando los datos de V2 anteriores, puede instalar directamente V2 y no hacer clic en [Volver a migrar]. Si la migración de V1 anterior falló o omitió datos, puede usar [Configuración] → [Datos] → [Volver a migrar] después de hacer una copia de seguridad completa de V2 actual; esta operación eliminará permanentemente los datos actuales de V2 y volverá a importar desde V1.
 
 </details>
 
@@ -113,5 +113,5 @@ Si continúa utilizando los datos de V2 anteriores, puede instalar directamente 
 
 * [Descarga oficial de Cherry Studio V1](https://cherryai.com.cn/download/v1)
 * [Descarga oficial de Cherry Studio V2](https://cherryai.com.cn/download)
-* Página de lanzamiento de V2.0.2: [GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases/v2.0.2) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases/tag/v2.0.2)
+* Página de lanzamiento de V2: [GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases)
 * [Reporte de problemas y sugerencias de funciones](../../question-contact/suggestions.md)

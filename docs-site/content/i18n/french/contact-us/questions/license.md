@@ -1,27 +1,27 @@
-# Licence open source de Cherry Studio
+# Licence open source
 
-                    LICENCE GÉNÉRALE DU PUBLIC AFFERO GNU
-                       Version 3, 19 novembre 2007
+## LICENCE GÉNÉRALE DU PUBLIC AFFERO GNU
+**Version 3, 19 novembre 2007**
 
- Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>
- Tout le monde est autorisé à copier et distribuer des copies
- exactes de ce document de licence, mais il n'est pas permis de le modifier.
+Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>
+Tout le monde est autorisé à copier et distribuer des copies
+exactes de ce document de licence, mais il n'est pas permis de le modifier.
 
-                            Préambule
+## Préambule
 
-  La Licence Générale du Public Affero GNU est une licence libre et copyleft
+La Licence Générale du Public Affero GNU est une licence libre et copyleft
 pour les logiciels et autres types d'œuvres, conçue spécifiquement pour
 garantir la coopération avec la communauté dans le cas des logiciels
 de serveur réseau.
 
-  Les licences pour la plupart des logiciels et autres œuvres pratiques sont
+Les licences pour la plupart des logiciels et autres œuvres pratiques sont
 conçues pour vous priver de la liberté de partager et de modifier les
 œuvres. En revanche, nos Licences Générales du Public ont pour but de
 garantir votre liberté de partager et de modifier toutes les versions d'un
 programme--pour s'assurer qu'il reste un logiciel libre pour tous ses
 utilisateurs.
 
-  Lorsque nous parlons de logiciel libre, nous faisons référence à la
+Lorsque nous parlons de logiciel libre, nous faisons référence à la
 liberté, et non au prix. Nos Licences Générales du Public sont conçues
 pour s'assurer que vous avez la liberté de distribuer des copies de
 logiciels libres (et de facturer si vous le souhaitez), que vous recevez
@@ -29,12 +29,12 @@ le code source ou pouvez l'obtenir si vous le souhaitez, que vous pouvez
 modifier le logiciel ou utiliser des parties de celui-ci dans de nouveaux
 programmes libres, et que vous savez que vous pouvez faire ces choses.
 
-  Les développeurs qui utilisent nos Licences Générales du Public protègent
+Les développeurs qui utilisent nos Licences Générales du Public protègent
 vos droits en deux étapes : (1) affirmer le droit d'auteur sur le logiciel,
 et (2) vous offrir cette Licence qui vous donne la permission légale de
 copier, distribuer et/ou modifier le logiciel.
 
-  Un avantage secondaire de la défense de la liberté de tous les
+Un avantage secondaire de la défense de la liberté de tous les
 utilisateurs est que les améliorations apportées dans des versions
 alternatives du programme, si elles reçoivent un usage répandu,
 deviennent disponibles pour d'autres développeurs à intégrer. De nombreux
@@ -45,7 +45,7 @@ Générale du Public GNU permet de créer une version modifiée et de laisser
 au public y accéder sur un serveur sans jamais en publier le code source
 au public.
 
-  La Licence Générale du Public Affero GNU est conçue spécifiquement pour
+La Licence Générale du Public Affero GNU est conçue spécifiquement pour
 s'assurer que, dans de tels cas, le code source modifié devient disponible
 pour la communauté. Elle oblige l'opérateur d'un serveur réseau à fournir
 le code source de la version modifiée qui y est exécutée aux utilisateurs
@@ -53,41 +53,41 @@ de ce serveur. Par conséquent, l'utilisation publique d'une version
 modifiée, sur un serveur accessible au public, donne au public accès au
 code source de la version modifiée.
 
-  Une licence antérieure, appelée Licence Générale du Public Affero et
+Une licence antérieure, appelée Licence Générale du Public Affero et
 publiée par Affero, était conçue pour atteindre des objectifs similaires.
 Il s'agit d'une licence différente, et non d'une version de la GPL Affero,
 mais Affero a publié une nouvelle version de la GPL Affero qui permet la
 relicenciation sous cette licence.
 
-  Les termes et conditions précis pour la copie, la distribution et la
+Les termes et conditions précis pour la copie, la distribution et la
 modification suivent.
 
-                       TERMES ET CONDITIONS
+## TERMES ET CONDITIONS
 
-  0. Définitions.
+## 0. Définitions.
 
-  « Cette Licence » désigne la version 3 de la Licence Générale du Public
+« Cette Licence » désigne la version 3 de la Licence Générale du Public
 Affero GNU.
 
-  « Droit d'auteur » désigne également les lois similaires au droit
+« Droit d'auteur » désigne également les lois similaires au droit
 d'auteur qui s'appliquent à d'autres types d'œuvres, telles que les
 masques de semi-conducteurs.
 
-  « Le Programme » désigne toute œuvre protégée par le droit d'auteur
+« Le Programme » désigne toute œuvre protégée par le droit d'auteur
 licenciée sous cette Licence. Chaque licencié est désigné par « vous ».
 Les « licenciés » et les « bénéficiaires » peuvent être des personnes
 physiques ou des organisations.
 
-  « Modifier » une œuvre signifie copier ou adapter tout ou partie de
+« Modifier » une œuvre signifie copier ou adapter tout ou partie de
 l'œuvre d'une manière nécessitant l'autorisation du droit d'auteur,
 à l'exception de la création d'une copie exacte. L'œuvre résultante est
 appelée une « version modifiée » de l'œuvre antérieure ou une œuvre
 « basée sur » l'œuvre antérieure.
 
-  Une « œuvre couverte » désigne soit le Programme non modifié, soit une
+Une « œuvre couverte » désigne soit le Programme non modifié, soit une
 œuvre basée sur le Programme.
 
-  « Propager » une œuvre signifie faire quoi que ce soit avec elle qui,
+« Propager » une œuvre signifie faire quoi que ce soit avec elle qui,
 sans autorisation, vous rendrait directement ou indirectement responsable
 d'une violation du droit d'auteur applicable, à l'exception de son
 exécution sur un ordinateur ou de la modification d'une copie privée.
@@ -95,12 +95,12 @@ La propagation inclut la copie, la distribution (avec ou sans
 modification), la mise à disposition du public, et dans certains pays
 d'autres activités également.
 
-  « Transmettre » une œuvre signifie tout type de propagation qui permet
+« Transmettre » une œuvre signifie tout type de propagation qui permet
 à d'autres parties de créer ou de recevoir des copies. La simple
 interaction avec un utilisateur à travers un réseau informatique, sans
 transfert de copie, ne constitue pas une transmission.
 
-  Une interface utilisateur interactive affiche des « Mentions Légales
+Une interface utilisateur interactive affiche des « Mentions Légales
 Appropriées » dans la mesure où elle inclut une fonctionnalité pratique
 et clairement visible qui (1) affiche une mention de droit d'auteur
 appropriée, et (2) informe l'utilisateur qu'il n'y a pas de garantie pour
@@ -110,7 +110,7 @@ consulter une copie de cette Licence. Si l'interface présente une liste
 de commandes ou d'options utilisateur, telles qu'un menu, un élément
 proéminent de la liste remplit ce critère.
 
-  1. Code Source.
+## 1. Code Source.
 
 Le « code source » d'une œuvre désigne la forme préférée de l'œuvre pour effectuer des modifications. Le « code objet » désigne toute forme non source d'une œuvre.
 
@@ -124,7 +124,7 @@ Le code source correspondant n'a pas besoin d'inclure tout ce que les utilisateu
 
 Le code source correspondant d'une œuvre sous forme de code source est cette même œuvre.
 
-2. Permissions de base.
+## 2. Permissions de base.
 
 Tous les droits accordés par la présente licence sont accordés pour la durée du droit d'auteur sur le Programme, et sont irrévocables à condition que les conditions énoncées soient remplies. La présente licence affirme explicitement votre permission illimitée d'exécuter le Programme non modifié. La sortie résultant de l'exécution d'une œuvre couverte est couverte par la présente licence uniquement si la sortie, compte tenu de son contenu, constitue une œuvre couverte. La présente licence reconnaît vos droits d'utilisation équitable ou autres équivalents, tels que prévus par la loi sur le droit d'auteur.
 
@@ -132,47 +132,47 @@ Vous pouvez créer, exécuter et propager des œuvres couvertes que vous ne tran
 
 La transmission dans d'autres circonstances est autorisée uniquement dans les conditions énoncées ci-dessous. La sous-licence n'est pas autorisée ; la section 10 la rend inutile.
 
-3. Protection des droits légaux des utilisateurs contre la loi anti-contournement.
+## 3. Protection des droits légaux des utilisateurs contre la loi anti-contournement.
 
 Aucune œuvre couverte ne doit être considérée comme faisant partie d'une mesure technologique efficace au sens de toute loi applicable remplissant les obligations de l'article 11 du traité de l'OMPI sur le droit d'auteur adopté le 20 décembre 1996, ou de lois similaires interdisant ou restreignant le contournement de telles mesures.
 
 Lorsque vous transmettez une œuvre couverte, vous renoncez à tout pouvoir légal d'interdire le contournement des mesures technologiques dans la mesure où ce contournement est effectué par l'exercice de droits au titre de la présente licence concernant l'œuvre couverte, et vous renoncez à toute intention de limiter l'exploitation ou la modification de l'œuvre comme moyen d'appliquer, à l'encontre des utilisateurs de l'œuvre, vos droits légaux ou ceux de tiers d'interdire le contournement des mesures technologiques.
 
-4. Transmission de copies conformes.
+## 4. Transmission de copies conformes.
 
 Vous pouvez transmettre des copies conformes du code source du Programme tel que vous le recevez, sur tout support, à condition que vous publiez de manière visible et appropriée sur chaque copie un avis de droit d'auteur approprié ; que vous conserviez intacts tous les avis indiquant que la présente licence et toute clause non permissive ajoutée conformément à la section 7 s'appliquent au code ; que vous conserviez intacts tous les avis d'absence de garantie ; et que vous remettiez à tous les destinataires une copie de la présente licence avec le Programme.
 
 Vous pouvez facturer un prix quelconque ou aucun prix pour chaque copie que vous transmettez, et vous pouvez offrir un support ou une protection par garantie moyennant rémunération.
 
-5. Transmission de versions modifiées du code source.
+## 5. Transmission de versions modifiées du code source.
 
 Vous pouvez transmettre une œuvre basée sur le Programme, ou les modifications pour la produire à partir du Programme, sous forme de code source selon les termes de la section 4, à condition de également respecter toutes ces conditions :
 
-    a) L'œuvre doit comporter des avis saillants indiquant que vous l'avez modifiée, et donnant une date pertinente.
+a) L'œuvre doit comporter des avis saillants indiquant que vous l'avez modifiée, et donnant une date pertinente.
 
-    b) L'œuvre doit comporter des avis saillants indiquant qu'elle est publiée sous cette Licence et toute condition ajoutée selon la section 7. Cette exigence modifie l'exigence de la section 4 « conserver intacts tous les avis ».
+b) L'œuvre doit comporter des avis saillants indiquant qu'elle est publiée sous cette Licence et toute condition ajoutée selon la section 7. Cette exigence modifie l'exigence de la section 4 « conserver intacts tous les avis ».
 
-    c) Vous devez licencier l'œuvre entière, en tant que telle, sous cette Licence à quiconque entre en possession d'une copie. Cette Licence s'appliquera donc, ainsi que toute clause supplémentaire applicable de la section 7, à l'ensemble de l'œuvre et à toutes ses parties, quelle que soit leur manière d'être conditionnée. Cette Licence n'accorde aucune permission de licencier l'œuvre d'une autre manière, mais elle n'invalide pas une telle permission si vous l'avez reçue séparément.
+c) Vous devez licencier l'œuvre entière, en tant que telle, sous cette Licence à quiconque entre en possession d'une copie. Cette Licence s'appliquera donc, ainsi que toute clause supplémentaire applicable de la section 7, à l'ensemble de l'œuvre et à toutes ses parties, quelle que soit leur manière d'être conditionnée. Cette Licence n'accorde aucune permission de licencier l'œuvre d'une autre manière, mais elle n'invalide pas une telle permission si vous l'avez reçue séparément.
 
-    d) Si l'œuvre comporte des interfaces utilisateur interactives, chacune doit afficher des Avis Juridiques Appropriés ; toutefois, si le Programme comporte des interfaces interactives qui n'affichent pas d'Avis Juridiques Appropriés, votre œuvre n'a pas besoin de les faire afficher.
+d) Si l'œuvre comporte des interfaces utilisateur interactives, chacune doit afficher des Avis Juridiques Appropriés ; toutefois, si le Programme comporte des interfaces interactives qui n'affichent pas d'Avis Juridiques Appropriés, votre œuvre n'a pas besoin de les faire afficher.
 
-    Une compilation d'une œuvre couverte avec d'autres œuvres séparées et indépendantes, qui ne sont pas par nature des extensions de l'œuvre couverte, et qui ne sont pas combinées avec elle de manière à former un programme plus grand, dans ou sur un volume d'un support de stockage ou de distribution, est appelée un « agrégat » si la compilation et ses droits d'auteur résultants ne sont pas utilisés pour limiter l'accès ou les droits légaux des utilisateurs de la compilation au-delà de ce que les œuvres individuelles permettent. L'inclusion d'une œuvre couverte dans un agrégat ne fait pas appliquer cette Licence aux autres parties de l'agrégat.
+Une compilation d'une œuvre couverte avec d'autres œuvres séparées et indépendantes, qui ne sont pas par nature des extensions de l'œuvre couverte, et qui ne sont pas combinées avec elle de manière à former un programme plus grand, dans ou sur un volume d'un support de stockage ou de distribution, est appelée un « agrégat » si la compilation et ses droits d'auteur résultants ne sont pas utilisés pour limiter l'accès ou les droits légaux des utilisateurs de la compilation au-delà de ce que les œuvres individuelles permettent. L'inclusion d'une œuvre couverte dans un agrégat ne fait pas appliquer cette Licence aux autres parties de l'agrégat.
 
-  6. Transmission de formes non source.
+## 6. Transmission de formes non source.
 
-  Vous pouvez transmettre une œuvre couverte sous forme de code objet selon les termes des sections 4 et 5, à condition de également transmettre le Code Source Correspondant lisible par machine selon les termes de cette Licence, de l'une de ces manières :
+Vous pouvez transmettre une œuvre couverte sous forme de code objet selon les termes des sections 4 et 5, à condition de également transmettre le Code Source Correspondant lisible par machine selon les termes de cette Licence, de l'une de ces manières :
 
-    a) Transmettre le code objet dans, ou incorporé dans, un produit physique (y compris un support de distribution physique), accompagné du Code Source Correspondant fixé sur un support physique durable couramment utilisé pour l'échange de logiciels.
+a) Transmettre le code objet dans, ou incorporé dans, un produit physique (y compris un support de distribution physique), accompagné du Code Source Correspondant fixé sur un support physique durable couramment utilisé pour l'échange de logiciels.
 
-    b) Transmettre le code objet dans, ou incorporé dans, un produit physique (y compris un support de distribution physique), accompagné d'une offre écrite, valable pendant au moins trois ans et valable aussi longtemps que vous offrez des pièces de rechange ou un support client pour ce modèle de produit, de donner à quiconque possède le code objet soit (1) une copie du Code Source Correspondant pour tout le logiciel du produit couvert par cette Licence, sur un support physique durable couramment utilisé pour l'échange de logiciels, pour un prix n'excédant pas votre coût raisonnable de réalisation physique de cette transmission de source, soit (2) un accès pour copier le Code Source Correspondant depuis un serveur réseau sans frais.
+b) Transmettre le code objet dans, ou incorporé dans, un produit physique (y compris un support de distribution physique), accompagné d'une offre écrite, valable pendant au moins trois ans et valable aussi longtemps que vous offrez des pièces de rechange ou un support client pour ce modèle de produit, de donner à quiconque possède le code objet soit (1) une copie du Code Source Correspondant pour tout le logiciel du produit couvert par cette Licence, sur un support physique durable couramment utilisé pour l'échange de logiciels, pour un prix n'excédant pas votre coût raisonnable de réalisation physique de cette transmission de source, soit (2) un accès pour copier le Code Source Correspondant depuis un serveur réseau sans frais.
 
-    c) Transmettre des copies individuelles du code objet avec une copie de l'offre écrite de fournir le Code Source Correspondant. Cette alternative n'est autorisée qu'occasionnellement et de manière non commerciale, et seulement si vous avez reçu le code objet avec une telle offre, conformément au sous-alinéa 6b.
+c) Transmettre des copies individuelles du code objet avec une copie de l'offre écrite de fournir le Code Source Correspondant. Cette alternative n'est autorisée qu'occasionnellement et de manière non commerciale, et seulement si vous avez reçu le code objet avec une telle offre, conformément au sous-alinéa 6b.
 
-    d) Transmettre le code objet en offrant un accès depuis un endroit désigné (gratuitement ou moyennant paiement), et offrir un accès équivalent au Code Source Correspondant de la même manière à travers le même endroit sans frais supplémentaires. Vous n'avez pas à exiger des destinataires de copier le Code Source Correspondant avec le code objet. Si l'endroit pour copier le code objet est un serveur réseau, le Code Source Correspondant peut être sur un serveur différent (exploité par vous ou un tiers) qui prend en charge des installations de copie équivalentes, à condition que vous mainteniez des instructions claires à côté du code objet indiquant où trouver le Code Source Correspondant. Quel que soit le serveur hébergeant le Code Source Correspondant, vous restez obligé de vous assurer qu'il est disponible aussi longtemps que nécessaire pour satisfaire à ces exigences.
+d) Transmettre le code objet en offrant un accès depuis un endroit désigné (gratuitement ou moyennant paiement), et offrir un accès équivalent au Code Source Correspondant de la même manière à travers le même endroit sans frais supplémentaires. Vous n'avez pas à exiger des destinataires de copier le Code Source Correspondant avec le code objet. Si l'endroit pour copier le code objet est un serveur réseau, le Code Source Correspondant peut être sur un serveur différent (exploité par vous ou un tiers) qui prend en charge des installations de copie équivalentes, à condition que vous mainteniez des instructions claires à côté du code objet indiquant où trouver le Code Source Correspondant. Quel que soit le serveur hébergeant le Code Source Correspondant, vous restez obligé de vous assurer qu'il est disponible aussi longtemps que nécessaire pour satisfaire à ces exigences.
 
-    e) Transmettre le code objet en utilisant une transmission pair-à-pair, à condition que vous informiez les autres pairs de l'endroit où le code objet et le Code Source Correspondant de l'œuvre sont offerts au public gratuitement selon le sous-alinéa 6d.
+e) Transmettre le code objet en utilisant une transmission pair-à-pair, à condition que vous informiez les autres pairs de l'endroit où le code objet et le Code Source Correspondant de l'œuvre sont offerts au public gratuitement selon le sous-alinéa 6d.
 
-  Une portion séparable du code objet, dont le code source est exclu du Code Source Correspondant en tant que Bibliothèque Système, n'a pas besoin d'être incluse dans la transmission de l'œuvre en code objet.
+Une portion séparable du code objet, dont le code source est exclu du Code Source Correspondant en tant que Bibliothèque Système, n'a pas besoin d'être incluse dans la transmission de l'œuvre en code objet.
 
 Un « produit utilisateur » est soit (1) un « produit de consommation », c'est-à-dire tout bien personnel tangible normalement utilisé à des fins personnelles, familiales ou domestiques, soit (2) tout objet conçu ou vendu pour être incorporé dans une habitation. Pour déterminer si un produit est un produit de consommation, les cas douteux doivent être résolus en faveur de la couverture. Pour un produit particulier reçu par un utilisateur particulier, « normalement utilisé » fait référence à un usage typique ou courant de cette classe de produits, indépendamment du statut de l'utilisateur particulier ou de la manière dont cet utilisateur utilise réellement, ou est censé utiliser, le produit. Un produit est un produit de consommation, qu'il ait ou non des usages commerciaux, industriels ou non de consommation substantiels, à moins que ces usages ne représentent le seul mode d'utilisation significatif du produit.
 
@@ -184,7 +184,7 @@ L'obligation de fournir des informations d'installation n'inclut pas l'obligatio
 
 La source correspondante transmise et les informations d'installation fournies conformément à la présente section doivent être dans un format documenté publiquement (et avec une implémentation disponible au public sous forme de code source), et ne doivent exiger aucun mot de passe ou clé spéciale pour le dépaquetage, la lecture ou la copie.
 
-7. Conditions supplémentaires.
+## 7. Conditions supplémentaires.
 
 Les « permissions supplémentaires » sont des termes qui complètent les termes de la présente Licence en faisant exception à une ou plusieurs de ses conditions. Les permissions supplémentaires applicables à l'ensemble du Programme doivent être traitées comme si elles étaient incluses dans la présente Licence, dans la mesure où elles sont valides au regard du droit applicable. Si des permissions supplémentaires ne s'appliquent qu'à une partie du Programme, cette partie peut être utilisée séparément sous le régime de ces permissions, mais l'ensemble du Programme reste régi par la présente Licence, sans égard aux permissions supplémentaires.
 
@@ -192,17 +192,17 @@ Lorsque vous transmettez une copie d'une œuvre couverte, vous pouvez, à votre 
 
 Nonobstant toute autre disposition de la présente Licence, pour le matériel que vous ajoutez à une œuvre couverte, vous pouvez (si vous y êtes autorisé par les titulaires du droit d'auteur de ce matériel) compléter les termes de la présente Licence par des termes :
 
-    a) Renonçant à la garantie ou limitant la responsabilité différemment des termes des sections 15 et 16 de la présente Licence ; ou
+a) Renonçant à la garantie ou limitant la responsabilité différemment des termes des sections 15 et 16 de la présente Licence ; ou
 
-    b) Exigeant la préservation de notices légales raisonnables spécifiées ou d'attributions d'auteur dans ce matériel ou dans les Notices Légales Appropriées affichées par les œuvres qui le contiennent ; ou
+b) Exigeant la préservation de notices légales raisonnables spécifiées ou d'attributions d'auteur dans ce matériel ou dans les Notices Légales Appropriées affichées par les œuvres qui le contiennent ; ou
 
-    c) Interdisant la fausse représentation de l'origine de ce matériel, ou exigeant que les versions modifiées de ce matériel soient marquées de manière raisonnable comme différentes de la version originale ; ou
+c) Interdisant la fausse représentation de l'origine de ce matériel, ou exigeant que les versions modifiées de ce matériel soient marquées de manière raisonnable comme différentes de la version originale ; ou
 
-    d) Limitant l'utilisation à des fins de publicité des noms des concédants de licence ou des auteurs du matériel ; ou
+d) Limitant l'utilisation à des fins de publicité des noms des concédants de licence ou des auteurs du matériel ; ou
 
-    e) Refusant d'accorder des droits au titre du droit des marques pour l'utilisation de certaines raisons sociales, marques de fabrique ou marques de service ; ou
+e) Refusant d'accorder des droits au titre du droit des marques pour l'utilisation de certaines raisons sociales, marques de fabrique ou marques de service ; ou
 
-    f) Exigeant l'indemnisation des concédants de licence et des auteurs de ce matériel par toute personne qui transmet le matériel (ou des versions modifiées de celui-ci) avec des suppositions contractuelles de responsabilité envers le bénéficiaire, pour toute responsabilité que ces suppositions contractuelles imposent directement à ces concédants de licence et auteurs.
+f) Exigeant l'indemnisation des concédants de licence et des auteurs de ce matériel par toute personne qui transmet le matériel (ou des versions modifiées de celui-ci) avec des suppositions contractuelles de responsabilité envers le bénéficiaire, pour toute responsabilité que ces suppositions contractuelles imposent directement à ces concédants de licence et auteurs.
 
 Tous les autres termes supplémentaires non permissifs sont considérés comme des « restrictions supplémentaires » au sens de la section 10. Si le Programme tel que vous l’avez reçu, ou toute partie de celui-ci, contient un avis indiquant qu’il est régi par la présente Licence accompagnée d’un terme constituant une restriction supplémentaire, vous pouvez supprimer ce terme. Si un document de licence contient une restriction supplémentaire mais autorise la relicenciation ou la transmission sous le régime de la présente Licence, vous pouvez ajouter à une œuvre couverte du matériel régi par les termes de ce document de licence, à condition que la restriction supplémentaire ne survive pas à une telle relicenciation ou transmission.
 
@@ -210,7 +210,7 @@ Si vous ajoutez des termes à une œuvre couverte conformément à la présente 
 
 Les termes supplémentaires, qu’ils soient permissifs ou non, peuvent être formulés sous la forme d’une licence écrite séparément, ou énoncés sous forme d’exceptions ; les exigences ci-dessus s’appliquent dans les deux cas.
 
-8. Résiliation.
+## 8. Résiliation.
 
 Vous ne pouvez ni propager ni modifier une œuvre couverte, sauf disposition expresse de la présente Licence. Toute tentative de propagation ou de modification en violation de cette règle est nulle et entraîne la résiliation automatique de vos droits au titre de la présente Licence (y compris les licences de brevet accordées en vertu du troisième alinéa de la section 11).
 
@@ -220,11 +220,11 @@ De plus, votre licence accordée par un titulaire de droits d’auteur particuli
 
 La résiliation de vos droits en vertu de la présente section ne met pas fin aux licences des parties qui ont reçu des copies ou des droits de votre part au titre de la présente Licence. Si vos droits ont été résiliés et non rétablis définitivement, vous n’êtes plus en mesure de recevoir de nouvelles licences pour le même matériel en vertu de la section 10.
 
-9. L’acceptation n’est pas requise pour détenir des copies.
+## 9. L’acceptation n’est pas requise pour détenir des copies.
 
 Vous n’êtes pas tenu d’accepter la présente Licence pour recevoir ou exécuter une copie du Programme. La propagation accessoire d’une œuvre couverte résultant uniquement de l’utilisation de la transmission pair-à-pair pour recevoir une copie ne requiert pas non plus d’acceptation. Toutefois, rien d’autre que la présente Licence ne vous accorde la permission de propager ou de modifier une œuvre couverte. Ces actes constituent une atteinte aux droits d’auteur si vous n’acceptez pas la présente Licence. Par conséquent, en modifiant ou en propageant une œuvre couverte, vous indiquez votre acceptation de la présente Licence pour le faire.
 
-10. Licence automatique des destinataires en aval.
+## 10. Licence automatique des destinataires en aval.
 
 Chaque fois que vous transmettez une œuvre couverte, le destinataire reçoit automatiquement une licence des licenciants d’origine, pour exécuter, modifier et propager cette œuvre, sous réserve de la présente Licence. Vous n’êtes pas responsable de l’exécution de la conformité des tiers à la présente Licence.
 
@@ -232,7 +232,7 @@ Une « transaction d’entité » est une transaction transférant le contrôle 
 
 Vous ne pouvez imposer aucune restriction supplémentaire à l’exercice des droits accordés ou confirmés par la présente Licence. Par exemple, vous ne pouvez pas imposer de frais de licence, de redevances ou d’autres charges pour l’exercice des droits accordés par la présente Licence, et vous ne pouvez pas initier de litige (y compris une demande reconventionnelle ou une contre-demande dans une procédure judiciaire) alléguant que toute revendication de brevet est violée par la fabrication, l’utilisation, la vente, l’offre de vente ou l’importation du Programme ou de toute partie de celui-ci.
 
-11. Brevets.
+## 11. Brevets.
 
 Un « contributeur » est un titulaire de droits d’auteur qui autorise l’utilisation du Programme ou d’une œuvre sur laquelle le Programme est basé, au titre de la présente Licence. L’œuvre ainsi licenciée est appelée la « version du contributeur » du contributeur.
 
@@ -250,11 +250,11 @@ Une licence de brevet est « discriminatoire » si elle n’inclut pas dans le c
 
 Rien dans la présente Licence ne doit être interprété comme excluant ou limitant toute licence implicite ou toute autre défense à la contrefaçon qui pourrait autrement être disponible pour vous en vertu du droit des brevets applicable.
 
-12. Non-renonciation à la liberté des autres.
+## 12. Non-renonciation à la liberté des autres.
 
 Si des conditions vous sont imposées (que ce soit par ordre de justice, par accord ou autrement) qui contredisent les conditions de la présente Licence, elles ne vous exonèrent pas des conditions de la présente Licence. Si vous ne pouvez pas transmettre une œuvre couverte de manière à satisfaire simultanément à vos obligations au titre de la présente Licence et à toute autre obligation pertinente, alors, en conséquence, vous ne pouvez pas la transmettre du tout. Par exemple, si vous acceptez des termes qui vous obligent à percevoir une redevance pour une transmission ultérieure de la part de ceux à qui vous transmettez le Programme, la seule façon de satisfaire à la fois à ces termes et à la présente Licence serait de vous abstenir entièrement de transmettre le Programme.
 
-13. Interaction à distance par réseau ; Utilisation avec la Licence Publique Générale GNU.
+## 13. Interaction à distance par réseau ; Utilisation avec la Licence Publique Générale GNU.
 
 Nonobstant toute autre disposition de la présente Licence, si vous modifiez le
 Programme, votre version modifiée doit offrir de manière proéminente à tous les
@@ -275,7 +275,7 @@ Licence continueront de s'appliquer à la partie qui est le travail couvert,
 mais le travail avec lequel il est combiné restera régi par la version 3
 de la Licence Publique Générale GNU.
 
-14. Versions révisées de la présente Licence.
+## 14. Versions révisées de la présente Licence.
 
 La Free Software Foundation peut publier des versions révisées et/ou nouvelles de
 la Licence Publique Générale GNU Affero de temps à autre. Ces nouvelles versions
@@ -301,7 +301,7 @@ Cependant, aucune obligation supplémentaire n'est imposée à aucun
 auteur ou titulaire de droits d'auteur en raison de votre choix de suivre une
 version ultérieure.
 
-15. Exclusion de garantie.
+## 15. Exclusion de garantie.
 
 IL N'Y A AUCUNE GARANTIE POUR LE PROGRAMME, DANS LA MESURE PERMISE PAR
 LA LOI APPLICABLE. SAUF DISPOSITION CONTRAIRE PAR ÉCRIT, LES TITULAIRES
@@ -312,7 +312,7 @@ PARTICULIER. L'ENTIER RISQUE CONCERNANT LA QUALITÉ ET LES PERFORMANCES DU PROGR
 RESTE À VOTRE CHARGE. SI LE PROGRAMME S'AVÈRE DÉFAILLANT, VOUS ASSUMEZ LES FRAIS
 DE TOUTE MAINTENANCE, RÉPARATION OU CORRECTION NÉCESSAIRE.
 
-16. Limitation de responsabilité.
+## 16. Limitation de responsabilité.
 
 EN AUCUN CAS, SAUF EXIGENCE DE LA LOI APPLICABLE OU ACCORD PAR ÉCRIT,
 AUCUN TITULAIRE DE DROITS D'AUTEUR, NI AUCUNE AUTRE PARTIE QUI MODIFIE ET/OU TRANSMET
@@ -324,7 +324,7 @@ OU L'ÉCHEC DU PROGRAMME À FONCTIONNER AVEC D'AUTRES PROGRAMMES),
 MÊME SI CE TITULAIRE OU CETTE AUTRE PARTIE A ÉTÉ AVISÉE DE LA POSSIBILITÉ DE
 TELS DOMMAGES.
 
-17. Interprétation des sections 15 et 16.
+## 17. Interprétation des sections 15 et 16.
 
 Si l'exclusion de garantie et la limitation de responsabilité fournies
 ci-dessus ne peuvent pas produire d'effet juridique local selon leurs termes,
@@ -333,9 +333,9 @@ d'une renonciation absolue de toute responsabilité civile en lien avec le
 Programme, sauf si une garantie ou une prise en charge de la responsabilité accompagne une
 copie du Programme en échange d'un paiement.
 
-FIN DES TERMES ET CONDITIONS
+## FIN DES TERMES ET CONDITIONS
 
-Comment appliquer ces termes à vos nouveaux programmes
+## Comment appliquer ces termes à vos nouveaux programmes
 
 Si vous développez un nouveau programme et que vous souhaitez qu'il soit le plus utile
 possible au public, la meilleure façon d'y parvenir est de le rendre
@@ -346,21 +346,18 @@ de les joindre au début de chaque fichier source pour exprimer le plus efficace
 l'exclusion de garantie ; et chaque fichier doit contenir au moins
 la ligne « copyright » et un pointeur indiquant où trouver l'avis complet.
 
-<one line to give the program's name and a brief idea of what it does.>
-Copyright (C) <year> <name of author>
+{% hint style="info" %}
 
-Ce programme est un logiciel libre : vous pouvez le redistribuer et/ou le modifier
-selon les termes de la Licence Publique Générale GNU Affero publiée par
-la Free Software Foundation, soit la version 3 de la Licence, soit
-(à votre choix) toute version ultérieure.
+&lt;one line to give the program's name and a brief idea of what it does.&gt;<br />
+Copyright (C) &lt;year&gt; &lt;name of author&gt;
 
-Ce programme est distribué dans l'espoir qu'il sera utile,
-mais SANS AUCUNE GARANTIE ; sans même la garantie implicite de
-COMMERCIABILITÉ ou d'ADÉQUATION À UN USAGE PARTICULIER. Voir la
-Licence Publique Générale Affero GNU pour plus de détails.
+Ce programme est un logiciel libre : vous pouvez le redistribuer et/ou le modifier selon les termes de la Licence Publique Générale GNU Affero publiée par la Free Software Foundation, soit la version 3 de la Licence, soit (à votre choix) toute version ultérieure.
 
-Vous devriez avoir reçu une copie de la Licence Publique Générale Affero GNU
-avec ce programme. Sinon, voir <https://www.gnu.org/licenses/>.
+Ce programme est distribué dans l'espoir qu'il sera utile, mais SANS AUCUNE GARANTIE ; sans même la garantie implicite de COMMERCIABILITÉ ou d'ADÉQUATION À UN USAGE PARTICULIER. Voir la Licence Publique Générale Affero GNU pour plus de détails.
+
+Vous devriez avoir reçu une copie de la Licence Publique Générale Affero GNU avec ce programme. Sinon, voir <https://www.gnu.org/licenses/>.
+
+{% endhint %}
 
 Ajoutez également des informations sur la manière de vous contacter par courrier électronique et postal.
 

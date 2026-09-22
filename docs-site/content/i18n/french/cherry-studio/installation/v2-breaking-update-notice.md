@@ -9,19 +9,19 @@ V2 ne constitue pas une simple mise à jour d'écrasement. Elle modifie la struc
 Les données V1 ne peuvent être migrées que dans un sens vers V2. Les nouvelles conversations, Agents, paramètres et fichiers créés dans V2 ne seront pas synchronisés vers V1, et les sauvegardes de V1 et V2 ne peuvent pas être restaurées mutuellement.
 {% endhint %}
 
-## V2.0.2 permet la migration directe depuis V1
+## V2 permet la migration directe depuis V1
 
-Si vous devez conserver les données V1, suivez la procédure **V1.9.13 → V2.0.2 (migration des données directe)** ; l'étape intermédiaire V2.0.0 n'est plus nécessaire.
+Si vous devez conserver les données V1, suivez la procédure **V1.9.13 → V2 (migration des données directe)** ; aucune version intermédiaire particulière de V2 n'est nécessaire.
 
 | Situation actuelle | Action à entreprendre |
 | --------------- | --------------------------------- |
-| Toujours sur V1, besoin de conserver les données | Mettez à jour V1 vers 1.9.13, effectuez une sauvegarde complète, puis installez directement V2.0.2. |
-| Déjà sur V2 | Effectuez la mise à niveau normale vers V2.0.2 et continuez d'utiliser les données V2 actuelles. |
+| Toujours sur V1, besoin de conserver les données | Mettez à jour V1 vers 1.9.13, effectuez une sauvegarde complète, puis installez directement V2. |
+| Déjà sur V2 | Effectuez la mise à niveau normale vers V2 et continuez d'utiliser les données V2 actuelles. |
 | Échec de la migration V1 précédente ou données manquantes | Effectuez d'abord une sauvegarde complète de V2 actuel, puis envisagez d'utiliser [Réinitialiser la migration]. |
 | Pas besoin des données V1 | Vous pouvez choisir [Ignorer et utiliser les valeurs par défaut], mais les données V1 ne seront pas migrées. |
 
 {% hint style="danger" %}
-La mise à niveau normale vers V2.0.2 ne nécessite pas de cliquer sur [Réinitialiser la migration]. Cette opération supprime définitivement les données V2 actuelles, puis réimporte depuis les données V1 d'origine ; ne cliquez dessus que si la migration V1 précédente a échoué ou si des données ont été omises.
+La mise à niveau normale vers V2 ne nécessite pas de cliquer sur [Réinitialiser la migration]. Cette opération supprime définitivement les données V2 actuelles, puis réimporte depuis les données V1 d'origine ; ne cliquez dessus que si la migration V1 précédente a échoué ou si des données ont été omises.
 {% endhint %}
 
 ## À effectuer avant la mise à niveau
@@ -35,7 +35,7 @@ L'assistant de migration lit le répertoire de données V1 actuel, et non l'arch
 
 ## [Réinitialiser la migration] n'est pas une fusion de données
 
-V2.0.2 ajoute [Réinitialiser la migration] dans [Paramètres] → [Données]. Elle sert uniquement à corriger les échecs de migration V1 précédents ou les données omises.
+V2 ajoute [Réinitialiser la migration] dans [Paramètres] → [Données]. Elle sert uniquement à corriger les échecs de migration V1 précédents ou les données omises.
 
 Avant l'opération, vous devrez confirmer les points suivants :
 
@@ -76,5 +76,5 @@ Ne supprimez ni ne remplacez la base de données vous-même. En cas d'erreur, d'
 ## Liens de téléchargement
 
 * [Téléchargement officiel V1](https://cherryai.com.cn/download/v1)
-* Page de publication V2.0.2 : [GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases/v2.0.2) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases/tag/v2.0.2)
+* Page de publication V2 : [GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases)
 * [Téléchargement officiel V2](https://cherryai.com.cn/download)

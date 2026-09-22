@@ -5,11 +5,11 @@ icon: table-columns
 
 V2 調整了資資結構與多項功能入口。升級前請先查看需要重新設定的項目；具體步驟請見 [【V1 升級到 V2】](v1-to-v2-migration.md)。
 
-## V2.0.2 遷移變化
+## V2 遷移變化
 
-| 情況 | V2.0.2 的處理方式 | 注意事項 |
+| 情況 | V2 的處理方式 | 注意事項 |
 | --------- | ----------------------- | ------------------------------ |
-| 首次從 V1 遷移 | 可以直接從 V1.9.13 安裝 V2.0.2 | 不再需要先安裝 V2.0.0。 |
+| 首次從 V1 遷移 | 可以直接從 V1.9.13 安裝 V2 | 無需先安裝特定的 V2 中轉版本。 |
 | 正常升級 V2 | 直接升級並繼續使用目前 V2 資資 | 不要點擊【重新遷移】。 |
 | 重新遷移 V1 | 在【設定】→【資資】選擇【重新遷移】 | 目前 V2 資資會被永久刪除，僅用於此前遷移失敗或遺漏資資的情況。 |
 
@@ -63,4 +63,4 @@ V2 調整了資資結構與多項功能入口。升級前請先查看需要重�
 
 * [V1 升級到 V2](v1-to-v2-migration.md)
 * [Cherry Studio V2 官方下載](https://cherryai.com.cn/download)
-* V2.0.2 發布頁：[GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases/v2.0.2) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases/tag/v2.0.2)
+* V2 發布頁：[GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases)

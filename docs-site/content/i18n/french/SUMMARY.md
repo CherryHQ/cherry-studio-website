@@ -1,17 +1,21 @@
-# Table des matières
+# Table of contents
 
-## Cherry Studio
+## Bien démarrer
 
 * [Présentation du projet](README.md)
+* [Démarrage rapide](getting-started/quick-start.md)
 * [Guide d'installation](cherry-studio/installation/README.md)
   * [Windows](cherry-studio/installation/windows.md)
   * [macOS](cherry-studio/installation/macos.md)
   * [Linux](cherry-studio/installation/linux.md)
   * [Mise à niveau et rétrogradation](cherry-studio/installation/upgrade-downgrade.md)
-  * [Avertissement de mise à jour majeure](cherry-studio/installation/v2-breaking-update-notice.md)
-  * [Différences fonctionnelles](cherry-studio/installation/v1-v2-feature-differences.md)
-  * [Migration de V1 à V2](cherry-studio/installation/v1-to-v2-migration.md)
-  * [Rétrogradation de V2 à V1](cherry-studio/installation/v2-to-v1-downgrade.md)
+    * [Avertissement de mise à jour majeure](cherry-studio/installation/v2-breaking-update-notice.md)
+    * [Différences fonctionnelles](cherry-studio/installation/v1-v2-feature-differences.md)
+    * [Migration de V1 à V2](cherry-studio/installation/v1-to-v2-migration.md)
+    * [Rétrogradation de V2 à V1](cherry-studio/installation/v2-to-v1-downgrade.md)
+
+## Guide des fonctionnalités
+
 * [Aperçu des fonctionnalités](cherrystudio/preview/README.md)
   * [Launchpad](cherrystudio/preview/launchpad.md)
   * [Interface de conversation](cherrystudio/preview/chat.md)
@@ -27,86 +31,95 @@
   * [Assistant Rapide](cherrystudio/preview/quick-assistant.md)
   * [Assistant de sélection](cherrystudio/preview/selection-assistant.md)
 
-## Guide de base <a href="#pre-basic" id="pre-basic"></a>
+## Modèles et paramètres
 
 * [Configuration du service de modèle](pre-basic/providers/README.md)
   * [Référence rapide de tous les Providers](pre-basic/providers/quick-reference.md)
   * [Configuration du service de modèles](pre-basic/settings/providers.md)
-  * [CherryAI (gratuit)](pre-basic/providers/cherryai/README.md)
-    * [DeepSeek V3.2](pre-basic/providers/cherryai/free-deepseek.md)
-    * [Zhipu GLM-4.6V](pre-basic/providers/cherryai/free-glm46v.md)
-    * [Zhipu GLM-4.5-Air](pre-basic/providers/cherryai/free-glm45air.md)
-    * [Qwen3-8B](pre-basic/providers/cherryai/free-qwen.md)
-  * [CherryIN](pre-basic/providers/cherryin-1.md)
-  * [OpenAI](pre-basic/providers/openai.md)
-  * [Anthropic](pre-basic/providers/anthropic.md)
-  * [Azure OpenAI](pre-basic/providers/azure-openai.md)
-  * [Google Gemini](pre-basic/providers/google-gemini.md)
-  * [Vertex AI](pre-basic/providers/vertex-ai.md)
-  * [DeepSeek](pre-basic/providers/deepseek.md)
-  * [ZhiPu](pre-basic/providers/zhipu.md)
-  * [Grok](pre-basic/providers/grok.md)
-  * [Mistral](pre-basic/providers/mistral.md)
-  * [Perplexity](pre-basic/providers/perplexity.md)
-  * [Groq](pre-basic/providers/groq.md)
-  * [OpenRouter](pre-basic/providers/openrouter.md)
-  * [Moonshot AI (Kimi)](pre-basic/providers/moonshot.md)
-  * [MiniMax](pre-basic/providers/minimax.md)
-  * [NouvelleAPI](pre-basic/providers/newapi.md)
-  * [OneAPI](pre-basic/providers/oneapi.md)
-  * [Ollama](pre-basic/providers/ollama.md)
-  * [LM Studio](pre-basic/providers/lm-studio.md)
-  * [GitHub Copilot](pre-basic/providers/github-copilot.md)
-  * [Plan de codage MiniMax](pre-basic/providers/minimax-coding-plan.md)
-  * [Guide d'intégration de la plateforme ModelScope (ModelScope)](pre-basic/providers/modelscope.md)
-  * [PPIO 派欧云](pre-basic/providers/ppio.md)
-  * [Alibaba Cloud Bailian](pre-basic/providers/a-li-yun-bai-lian.md)
-  * [SiliconFlow](pre-basic/providers/siliconcloud.md)
-  * [ByteDance (Doubao)](pre-basic/providers/doubao.md)
-  * [Fournisseurs Personnalisés](pre-basic/providers/zi-ding-yi-fu-wu-shang.md)
+  * **Services recommandés et gratuits**
+    * [CherryAI (gratuit)](pre-basic/providers/cherryai/README.md)
+    * [CherryIN](pre-basic/providers/cherryin-1.md)
+  * **Fournisseurs internationaux**
+    * [OpenAI](pre-basic/providers/openai.md)
+    * [Anthropic](pre-basic/providers/anthropic.md)
+    * [Azure OpenAI](pre-basic/providers/azure-openai.md)
+    * [Google Gemini](pre-basic/providers/google-gemini.md)
+    * [Vertex AI](pre-basic/providers/vertex-ai.md)
+    * [Grok](pre-basic/providers/grok.md)
+    * [Mistral](pre-basic/providers/mistral.md)
+    * [Perplexity](pre-basic/providers/perplexity.md)
+    * [Groq](pre-basic/providers/groq.md)
+  * **Fournisseurs disponibles en Chine**
+    * [DeepSeek](pre-basic/providers/deepseek.md)
+    * [ZhiPu](pre-basic/providers/zhipu.md)
+    * [Moonshot AI (Kimi)](pre-basic/providers/moonshot.md)
+    * [MiniMax](pre-basic/providers/minimax.md)
+    * [Guide d'intégration de la plateforme ModelScope (ModelScope)](pre-basic/providers/modelscope.md)
+    * [PPIO 派欧云](pre-basic/providers/ppio.md)
+    * [Alibaba Cloud Bailian](pre-basic/providers/a-li-yun-bai-lian.md)
+    * [SiliconFlow](pre-basic/providers/siliconcloud.md)
+    * [ByteDance (Doubao)](pre-basic/providers/doubao.md)
+  * **Passerelles et fournisseurs personnalisés**
+    * [OpenRouter](pre-basic/providers/openrouter.md)
+    * [NouvelleAPI](pre-basic/providers/newapi.md)
+    * [OneAPI](pre-basic/providers/oneapi.md)
+    * [Fournisseurs Personnalisés](pre-basic/providers/zi-ding-yi-fu-wu-shang.md)
+  * **Services locaux et développeur**
+    * [Ollama](pre-basic/providers/ollama.md)
+    * [LM Studio](pre-basic/providers/lm-studio.md)
+    * [GitHub Copilot](pre-basic/providers/github-copilot.md)
+    * [Plan de codage MiniMax](pre-basic/providers/minimax-coding-plan.md)
 * [Configuration](pre-basic/settings/README.md)
-  * [Paramètres des modèles par défaut](pre-basic/settings/default-models.md)
-  * [Modèles locaux](pre-basic/settings/local-models.md)
-  * [Mode en ligne](pre-basic/websearch/README.md)
-    * [Mode en ligne gratuit](pre-basic/websearch/free-search.md)
-    * [Configuration de la liste noire pour la recherche web](pre-basic/websearch/blacklist.md)
-    * [Connexion à Volcano Engine pour l'accès à Internet](pre-basic/websearch/volcengine.md)
-    * [Tutoriel d'inscription et de connexion en ligne à Tavily](pre-basic/websearch/tavily.md)
-    * [Déploiement et configuration de SearXNG](pre-basic/websearch/searxng.md)
-  * [Traitement des documents](pre-basic/settings/doc-process.md)
-  * [OCR](pre-basic/settings/ocr.md)
-  * [Paramètres d'affichage](pre-basic/settings/display.md)
-    * [CSS Personnalisé](pre-basic/personalization-settings/custom-css.md)
-    * [Recommandations de polices](pre-basic/personalization-settings/font.md)
-    * [Effacer les paramètres CSS](pre-basic/personalization-settings/clear-css.md)
-  * [Notifications](pre-basic/settings/notification.md)
-  * [Configuration des données](pre-basic/data-settings/README.md)
-    * [Sauvegarde WebDAV](pre-basic/data-settings/webdav.md)
-    * [Stockage de sauvegarde compatible S3](pre-basic/data-settings/s3-compatible.md)
-    * [Tutoriel de configuration Notion](pre-basic/data-settings/notion.md)
-    * [pre-basic/data-settings/obsidian](pre-basic/data-settings/obsidian.md)
-    * [Tutoriel de configuration de SiYuan Note](pre-basic/data-settings/siyuan.md)
-    * [Changer l'emplacement de stockage](pre-basic/personalization-settings/storage.md)
-  * [Statistiques d'utilisation](pre-basic/settings/usage.md)
-  * [Configuration des raccourcis clavier](pre-basic/settings/key-shortcut.md)
-  * [Paramètres généraux](pre-basic/settings/general.md)
-  * [Dépendances d'environnement](pre-basic/settings/env-dependencies.md)
+  * **Modèles**
+    * [Paramètres des modèles par défaut](pre-basic/settings/default-models.md)
+    * [Modèles locaux](pre-basic/settings/local-models.md)
+  * **Outils et recherche web**
+    * [Mode en ligne](pre-basic/websearch/README.md)
+      * [Mode en ligne gratuit](pre-basic/websearch/free-search.md)
+      * [Configuration de la liste noire pour la recherche web](pre-basic/websearch/blacklist.md)
+      * [Connexion à Volcano Engine pour l'accès à Internet](pre-basic/websearch/volcengine.md)
+      * [Tutoriel d'inscription et de connexion en ligne à Tavily](pre-basic/websearch/tavily.md)
+      * [Déploiement et configuration de SearXNG](pre-basic/websearch/searxng.md)
+    * [Traitement des documents](pre-basic/settings/doc-process.md)
+    * [OCR](pre-basic/settings/ocr.md)
+  * **Apparence et productivité**
+    * [Paramètres d'affichage](pre-basic/settings/display.md)
+      * [CSS Personnalisé](pre-basic/personalization-settings/custom-css.md)
+      * [Recommandations de polices](pre-basic/personalization-settings/font.md)
+      * [Effacer les paramètres CSS](pre-basic/personalization-settings/clear-css.md)
+    * [Notifications](pre-basic/settings/notification.md)
+    * [Statistiques d'utilisation](pre-basic/settings/usage.md)
+    * [Configuration des raccourcis clavier](pre-basic/settings/key-shortcut.md)
+  * **Données et intégrations**
+    * [Configuration des données](pre-basic/data-settings/README.md)
+      * [Sauvegarde WebDAV](pre-basic/data-settings/webdav.md)
+      * [Stockage de sauvegarde compatible S3](pre-basic/data-settings/s3-compatible.md)
+      * [Tutoriel de configuration Notion](pre-basic/data-settings/notion.md)
+      * [pre-basic/data-settings/obsidian](pre-basic/data-settings/obsidian.md)
+      * [Tutoriel de configuration de SiYuan Note](pre-basic/data-settings/siyuan.md)
+      * [Changer l'emplacement de stockage](pre-basic/personalization-settings/storage.md)
+  * **Système**
+    * [Paramètres généraux](pre-basic/settings/general.md)
+    * [Dépendances d'environnement](pre-basic/settings/env-dependencies.md)
 
-## Guide de la base de connaissances <a href="#knowledge-base" id="knowledge-base"></a>
+## Base de connaissances
 
-* [Premiers pas avec les bases de connaissances](knowledge-base/knowledge-base.md)
-* [Notes sur le stockage des données](knowledge-base/data.md)
-* [Informations de référence sur les modèles d'incorporation](knowledge-base/emb-models-info.md)
-* [Prétraitement des documents de la base de connaissances](knowledge-base/document-preprocessing.md)
-* [Créer une base de connaissances](knowledge-base/create.md)
-* [Ajouter et organiser les ressources](knowledge-base/sources.md)
-* [Vérification des ressources et rappel](knowledge-base/recall-test.md)
-* [Utilisation dans la conversation](knowledge-base/chat.md)
-* [Utilisation avec un Agent](knowledge-base/agent.md)
-* [Cas d'application de la base de connaissances](knowledge-base/cases.md)
-* [Questions fréquentes](knowledge-base/troubleshooting.md)
+* **Premiers pas**
+  * [Premiers pas avec les bases de connaissances](knowledge-base/knowledge-base.md)
+  * [Créer une base de connaissances](knowledge-base/create.md)
+  * [Ajouter et organiser les ressources](knowledge-base/sources.md)
+  * [Vérification des ressources et rappel](knowledge-base/recall-test.md)
+* **Utiliser les bases de connaissances**
+  * [Utilisation dans la conversation](knowledge-base/chat.md)
+  * [Utilisation avec un Agent](knowledge-base/agent.md)
+  * [Cas d'application de la base de connaissances](knowledge-base/cases.md)
+* **Configuration et dépannage**
+  * [Informations de référence sur les modèles d'incorporation](knowledge-base/emb-models-info.md)
+  * [Prétraitement des documents de la base de connaissances](knowledge-base/document-preprocessing.md)
+  * [Notes sur le stockage des données](knowledge-base/data.md)
+  * [Questions fréquentes](knowledge-base/troubleshooting.md)
 
-## Guide avancé <a href="#advanced-basic" id="advanced-basic"></a>
+## Flux de travail avancés
 
 * [Carte des fonctionnalités avancées](advanced-basic/capability-map.md)
 * [Conversation avancée](advanced-basic/chat/README.md)
@@ -151,32 +164,30 @@
   * [Canaux et rapport quotidien planifié](advanced-basic/cases/automated-daily-report.md)
   * [Espace de travail de recherche multi-fenêtres](advanced-basic/cases/multi-window-research.md)
 
-## Contribuer au projet <a href="#contribution" id="contribution"></a>
-
-* [Contribuer au code](contribution/code.md)
-* [Contribuer à la documentation](contribution/docs.md)
-
-## Questions et retours <a href="#question-contact" id="question-contact"></a>
+## Aide et dépannage
 
 * [Foire Aux Questions (FAQ)](question-contact/questions.md)
-* [Mise à niveau et rétrogradation de version](question-contact/version-switching.md)
 * [Méthodes pour poser des questions efficacement](question-contact/ask.md)
-* [Vulgarisation des connaissances](question-contact/knowledge.md)
 * [Feedback & Suggestions](question-contact/suggestions.md)
 
-## À propos <a href="#about" id="about"></a>
+## Ressources et projet
+
+* **Référence**
+  * [Vulgarisation des connaissances](question-contact/knowledge.md)
+  * [Références courantes des modèles](other/models-info.md)
+  * [Classement des modèles](other/model_rank/README.md)
+    * [Classement des agents](other/model_rank/agent.md)
+    * [Classement des modèles de texte](other/model_rank/text.md)
+    * [Classement de recherche](other/model_rank/search.md)
+    * [Classement Vision](other/model_rank/vision.md)
+    * [Classement Code / Développement Web](other/model_rank/code-webdev.md)
+    * [Classement de génération d'images à partir de texte](other/model_rank/text-to-image.md)
+* **Projet et à propos**
+  * [Contribuer au code](contribution/code.md)
+  * [Contribuer à la documentation](contribution/docs.md)
+
+## Partenariats et politiques
 
 * [Collaboration Commerciale](contact-us/questions.md)
 * [Politique de Confidentialité](about/privacypolicy.md)
-* [Licence open source de Cherry Studio](contact-us/questions/license.md)
-
-## Autres contenus <a href="#other" id="other"></a>
-
-* [Références courantes des modèles](other/models-info.md)
-* [Classement des modèles](other/model_rank/README.md)
-  * [Classement des agents](other/model_rank/agent.md)
-  * [Classement des modèles de texte](other/model_rank/text.md)
-  * [Classement de recherche](other/model_rank/search.md)
-  * [Classement Vision](other/model_rank/vision.md)
-  * [Classement Code / Développement Web](other/model_rank/code-webdev.md)
-  * [Classement de génération d'images à partir de texte](other/model_rank/text-to-image.md)
+* [Licence open source](contact-us/questions/license.md)

@@ -8,22 +8,22 @@ icon: arrow-right-arrow-left
 {% endhint %}
 
 {% hint style="warning" %}
-データを保持するための正しいパスは：**V1.9.13 → V2.0.2（データ移行を直接完了）** です。先に V2.0.0 をインストールする必要はありません。
+データを保持するための正しいパスは：**V1.9.13 → V2（データ移行を直接完了）** です。特定の V2 リリースを先にインストールする必要はありません。
 {% endhint %}
 
 ## 現在の状況に応じた選択
 
 | 現在の状況 | 操作 |
 | --------------- | ------------------------------------ |
-| まだ V1 を使用しており、データを保持したい | V1 を 1.9.13 に更新し、このページの手順に従って V2.0.2 を直接インストールします。 |
-| すでに V2 を使用している | V2.0.2 に通常通りアップグレードし、現在の V2 データを継続使用してください。「再移行」をクリックしないでください。 |
+| まだ V1 を使用しており、データを保持したい | V1 を 1.9.13 に更新し、このページの手順に従って V2 を直接インストールします。 |
+| すでに V2 を使用している | V2 に通常通りアップグレードし、現在の V2 データを継続使用してください。「再移行」をクリックしないでください。 |
 | 以前に V1 の移行が失敗した、またはデータが欠落している | 現在の V2 を完全にバックアップしてから、「再移行」を使用して V1 からやり直すことができます。 |
 | V1 のデータは不要 | 「無視してデフォルト値を使用」を選択し、デフォルト設定から開始できます。V1 のデータは移行されません。 |
 
 ## アップグレード前の確認事項
 
 * V1 が 1.9.12 以上であることを確認し、最終版の 1.9.13 への更新と少なくとも一度の起動を推奨します。
-* 初回移行には V2.0.2 を直接使用できます。
+* 初回移行には V2 を直接使用できます。
 * カスタムデータディレクトリや外付けディスクが正常に読み書き可能であることを確認します。
 * 会話、Agent、ナレッジベースのインポート、ファイル処理タスクがすべて終了していることを確認します。
 
@@ -53,9 +53,9 @@ V1 のデータ設定でディレクトリの場所を確認し、Cherry Studio 
 {% endstep %}
 
 {% step %}
-### V2.0.2 の初回起動
+### V2 の初回起動
 
-[V2 公式ダウンロード](https://cherryai.com.cn/download) から、システムとチップに適合する V2.0.2 のインストーラーを取得するか、[GitCode リリースページ](https://gitcode.com/CherryHQ/cherry-studio/releases/v2.0.2) または [GitHub リリースページ](https://github.com/CherryHQ/cherry-studio/releases/tag/v2.0.2) を使用します。V1 を完全に終了してからインストールし、起動します。
+[V2 公式ダウンロード](https://cherryai.com.cn/download) から、システムとチップに適合する V2 のインストーラーを取得するか、[GitCode リリースページ](https://gitcode.com/CherryHQ/cherry-studio/releases) または [GitHub リリースページ](https://github.com/CherryHQ/cherry-studio/releases) を使用します。V1 を完全に終了してからインストールし、起動します。
 {% endstep %}
 
 {% step %}
@@ -84,7 +84,7 @@ V1 のデータ設定でディレクトリの場所を確認し、Cherry Studio 
 
 ## 移行が失敗した場合のみ【再移行】を使用する
 
-以前に V1 の移行が失敗した、またはデータが欠落している場合、V2.0.2 では【設定】→【データ】で「再移行」を選択できます。この操作はアプリを再起動し、保持されている V1 データから移行を再実行します。
+以前に V1 の移行が失敗した、またはデータが欠落している場合、V2 では【設定】→【データ】で「再移行」を選択できます。この操作はアプリを再起動し、保持されている V1 データから移行を再実行します。
 
 {% hint style="danger" %}
 「再移行」は現在の V2 データを永久に削除し、V1 と V2 のデータをマージしません。以前に V1 の移行が失敗した、またはデータが欠落していない限り、絶対にクリックしないでください。操作前に、現在の V2 の完全なバックアップを作成する必要があります。保持したい V2 の新規コンテンツは、別途エクスポートしてください。
@@ -125,6 +125,6 @@ V1 のデータ設定でディレクトリの場所を確認し、Cherry Studio 
 
 * [Cherry Studio V2 公式ダウンロード](https://cherryai.com.cn/download)
 * [Cherry Studio V1 公式ダウンロード](https://cherryai.com.cn/download/v1)
-* V2.0.2 リリースページ：[GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases/v2.0.2) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases/tag/v2.0.2)
+* V2 リリースページ：[GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases)
 * [公式移行設計説明](https://github.com/CherryHQ/cherry-studio/blob/main/src/main/data/migration/v2/README.md#version-compatibility-gate)
 * [問題フィードバックと機能提案](../../question-contact/suggestions.md)

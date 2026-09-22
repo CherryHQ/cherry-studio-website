@@ -10,19 +10,19 @@ V2 is not a standard overwrite update. It replaces the data structure and adjust
 V1 data can only be migrated to V2 in one direction. New sessions, Agents, settings, and files created in V2 will not sync back to V1, and backups from V1 and V2 cannot be restored to each other.
 {% endhint %}
 
-## V2.0.2 Can Migrate V1 Directly
+## V2 Can Migrate V1 Directly
 
-If you need to retain V1 data, follow the **V1.9.13 → V2.0.2 (direct data migration)** process. The V2.0.0 intermediate step is no longer required.
+If you need to retain V1 data, follow the **V1.9.13 → V2 (direct data migration)** process; no intermediate V2 release is required.
 
 | Current Status | Recommended Action |
 | --------------- | --------------------------------- |
-| Still on V1, need to retain data | Update V1 to 1.9.13, create a full backup, then install V2.0.2 directly. |
-| Already using V2 | Upgrade to V2.0.2 normally and continue using your current V2 data. |
+| Still on V1, need to retain data | Update V1 to 1.9.13, create a full backup, then install V2 directly. |
+| Already using V2 | Upgrade to V2 normally and continue using your current V2 data. |
 | Previous V1 migration failed or data was missed | First create a full backup of your current V2 data, then consider using [Re-migrate]. |
 | Do not need V1 data | You can select [Ignore and Use Defaults], but V1 data will not be migrated. |
 
 {% hint style="danger" %}
-Upgrading to V2.0.2 normally does not require clicking [Re-migrate]. This action permanently deletes your current V2 data and re-imports from the original V1 data. Do not click this unless a previous V1 migration failed or data was missed.
+Upgrading to V2 normally does not require clicking [Re-migrate]. This action permanently deletes your current V2 data and re-imports from the original V1 data. Do not click this unless a previous V1 migration failed or data was missed.
 {% endhint %}
 
 ## Required Before Upgrading
@@ -36,7 +36,7 @@ The migration wizard reads the current V1 data directory, not the backup ZIP. Ba
 
 ## [Re-migrate] Is Not Data Merging
 
-V2.0.2 adds [Re-migrate] under [Settings] → [Data]. It is only for fixing cases where a previous V1 migration failed or data was missed.
+V2 adds [Re-migrate] under [Settings] → [Data]. It is only for fixing cases where a previous V1 migration failed or data was missed.
 
 Before proceeding, you must confirm the following:
 
@@ -77,5 +77,5 @@ Do not manually delete or replace the database. If you make a mistake, cannot co
 ## Download Links
 
 * [V1 Official Download](https://cherryai.com.cn/download/v1)
-* V2.0.2 Release Page: [GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases/v2.0.2) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases/tag/v2.0.2)
+* V2 Release Page: [GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases)
 * [V2 Official Download](https://cherryai.com.cn/download)

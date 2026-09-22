@@ -8,22 +8,22 @@ La migration est unidirectionnelle : les données de V1 peuvent être importées
 {% endhint %}
 
 {% hint style="warning" %}
-Le chemin correct pour conserver les données est : **V1.9.13 → V2.0.2 (migration des données directe)**. Il n'est plus nécessaire d'installer d'abord V2.0.0.
+Le chemin correct pour conserver les données est : **V1.9.13 → V2 (migration des données directe)**. Il n'est pas nécessaire d'installer d'abord une version intermédiaire particulière de V2.
 {% endhint %}
 
 ## Choisir selon votre situation actuelle
 
 | Situation actuelle | Action |
 | --------------- | ------------------------------------ |
-| Toujours sur V1, besoin de conserver les données | Mettez à jour V1 vers 1.9.13, puis installez directement V2.0.2 en suivant les étapes de cette page. |
-| Déjà sur V2 | Mettez à jour normalement vers V2.0.2 et continuez à utiliser les données V2 actuelles ; ne cliquez pas sur [Réinitialiser la migration]. |
+| Toujours sur V1, besoin de conserver les données | Mettez à jour V1 vers 1.9.13, puis installez directement V2 en suivant les étapes de cette page. |
+| Déjà sur V2 | Mettez à jour normalement vers V2 et continuez à utiliser les données V2 actuelles ; ne cliquez pas sur [Réinitialiser la migration]. |
 | Échec de la migration V1 précédente ou données manquantes | Après une sauvegarde complète de V2 actuelle, vous pouvez utiliser [Réinitialiser la migration] pour recommencer depuis V1. |
 | Pas besoin des données V1 | Vous pouvez choisir [Ignorer et utiliser les valeurs par défaut] pour démarrer avec la configuration par défaut ; les données V1 ne seront pas importées. |
 
 ## Vérifications avant la mise à niveau
 
 * V1 doit être au moins en version 1.9.12, il est recommandé de mettre à jour vers la version finale 1.9.13 et de la lancer au moins une fois.
-* Pour la première migration, vous pouvez utiliser directement V2.0.2.
+* Pour la première migration, vous pouvez utiliser directement V2.
 * Le répertoire de données personnalisé ou le disque externe doit être accessible en lecture et en écriture.
 * Les conversations, les tâches d'importation de base de connaissances et de traitement de fichiers, ainsi que les agents, doivent être terminés.
 
@@ -53,9 +53,9 @@ Lors de l'utilisation d'un disque dur portable, d'un volume réseau ou d'un autr
 {% endstep %}
 
 {% step %}
-### Première ouverture de V2.0.2
+### Première ouverture de V2
 
-Téléchargez le package d'installation V2.0.2 correspondant à votre système et à votre processeur depuis [Téléchargement officiel V2](https://cherryai.com.cn/download), ou utilisez la [page de publication GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases/v2.0.2) ou la [page de publication GitHub](https://github.com/CherryHQ/cherry-studio/releases/tag/v2.0.2). Installez et lancez l'application après avoir complètement fermé V1.
+Téléchargez le package d'installation V2 correspondant à votre système et à votre processeur depuis [Téléchargement officiel V2](https://cherryai.com.cn/download), ou utilisez la [page de publication GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases) ou la [page de publication GitHub](https://github.com/CherryHQ/cherry-studio/releases). Installez et lancez l'application après avoir complètement fermé V1.
 {% endstep %}
 
 {% step %}
@@ -84,7 +84,7 @@ Pour plus de changements d'interface, voir [Différences fonctionnelles](v1-v2-f
 
 ## Utiliser [Réinitialiser la migration] uniquement en cas d'échec
 
-Si la migration V1 précédente a échoué ou si des données ont été omises, V2.0.2 permet de sélectionner [Réinitialiser la migration] dans [Paramètres] → [Données]. Cette opération redémarre l'application et relance la migration à partir des données V1 conservées.
+Si la migration V1 précédente a échoué ou si des données ont été omises, V2 permet de sélectionner [Réinitialiser la migration] dans [Paramètres] → [Données]. Cette opération redémarre l'application et relance la migration à partir des données V1 conservées.
 
 {% hint style="danger" %}
 [Réinitialiser la migration] supprime définitivement les données V2 actuelles et ne fusionne pas les données V1 et V2. Ne cliquez dessus que si la migration V1 précédente a échoué ou si des données ont été omises. Une sauvegarde complète de V2 actuelle est obligatoire avant l'opération ; les nouvelles données V2 à conserver doivent également être exportées séparément.
@@ -125,6 +125,6 @@ Non. Les index valides seront migrés ; seules les sources affichées comme ayan
 
 * [Téléchargement officiel Cherry Studio V2](https://cherryai.com.cn/download)
 * [Téléchargement officiel Cherry Studio V1](https://cherryai.com.cn/download/v1)
-* Page de publication V2.0.2 : [GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases/v2.0.2) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases/tag/v2.0.2)
+* Page de publication V2 : [GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases)
 * [Spécifications de conception de la migration officielle](https://github.com/CherryHQ/cherry-studio/blob/main/src/main/data/migration/v2/README.md#version-compatibility-gate)
 * [Signalement de problèmes et suggestions de fonctionnalités](../../question-contact/suggestions.md)

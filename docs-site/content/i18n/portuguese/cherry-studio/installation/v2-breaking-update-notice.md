@@ -9,19 +9,19 @@ O V2 não é uma atualização de substituição comum. Ele alterou a estrutura 
 Os dados do V1 podem ser migrados apenas em direção única para o V2. Novas conversas, Agents, configurações e arquivos criados no V2 não serão sincronizados de volta para o V1, e os backups do V1 e do V2 não podem ser restaurados entre si.
 {% endhint %}
 
-## O V2.0.2 pode migrar diretamente do V1
+## O V2 pode migrar diretamente do V1
 
-Se precisar reter os dados do V1, siga a operação **V1.9.13 → V2.0.2 (migração de dados concluída diretamente)**, sem a necessidade de usar o V2.0.0 como intermediário.
+Se precisar reter os dados do V1, siga a operação **V1.9.13 → V2 (migração de dados concluída diretamente)**, sem precisar de uma versão intermediária específica da V2.
 
 | Situação atual | O que deve ser feito |
 | --------------- | --------------------------------- |
-| Ainda no V1, precisa reter dados | Atualize o V1 para a versão 1.9.13, faça um backup completo e instale diretamente o V2.0.2. |
-| Já está usando o V2 | Atualize normalmente para o V2.0.2 e continue usando os dados atuais do V2. |
+| Ainda no V1, precisa reter dados | Atualize o V1 para a versão 1.9.13, faça um backup completo e instale diretamente o V2. |
+| Já está usando o V2 | Atualize normalmente para o V2 e continue usando os dados atuais do V2. |
 | Migração do V1 falhou anteriormente ou houve dados omitidos | Primeiro, faça um backup completo do V2 atual e, em seguida, considere usar [Migrar novamente]. |
 | Não precisa dos dados do V1 | Pode escolher [Ignorar e usar valores padrão], mas os dados do V1 não serão migrados. |
 
 {% hint style="danger" %}
-A atualização normal para o V2.0.2 não requer clicar em [Migrar novamente]. Essa operação excluirá permanentemente os dados atuais do V2 e reimportará a partir dos dados originais do V1; não clique nela, a menos que a migração do V1 tenha falhado anteriormente ou tenha havido dados omitidos.
+A atualização normal para o V2 não requer clicar em [Migrar novamente]. Essa operação excluirá permanentemente os dados atuais do V2 e reimportará a partir dos dados originais do V1; não clique nela, a menos que a migração do V1 tenha falhado anteriormente ou tenha havido dados omitidos.
 {% endhint %}
 
 ## O que deve ser concluído antes da atualização
@@ -35,7 +35,7 @@ O assistente de migração lê o diretório de dados atual do V1, não o arquivo
 
 ## [Migrar novamente] não é fusão de dados
 
-O V2.0.2 adicionou [Migrar novamente] em [Configurações] → [Dados]. Ele é usado apenas para corrigir casos em que a migração do V1 falhou anteriormente ou houve dados omitidos.
+O V2 adicionou [Migrar novamente] em [Configurações] → [Dados]. Ele é usado apenas para corrigir casos em que a migração do V1 falhou anteriormente ou houve dados omitidos.
 
 Antes da operação, será solicitado confirmar os seguintes itens:
 
@@ -76,5 +76,5 @@ Não exclua ou substitua o banco de dados por conta própria. Em caso de operaç
 ## Entradas de download
 
 * [Download oficial do V1](https://cherryai.com.cn/download/v1)
-* Página de lançamento do V2.0.2: [GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases/v2.0.2) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases/tag/v2.0.2)
+* Página de lançamento do V2: [GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases)
 * [Download oficial do V2](https://cherryai.com.cn/download)

@@ -16,12 +16,12 @@ Before switching versions, create a complete backup within the app, then fully e
 
 ## Migrating V1 Data to V2
 
-V2.0.2 supports direct migration from V1.9.13, eliminating the need for a V2.0.0 intermediate step.
+V2 supports direct migration from V1.9.13; no intermediate V2 release is required.
 
 | Current Situation | Recommended Action |
 | --------------- | ---------------------------------- |
-| Still on V1, need to retain data | Update V1 to 1.9.13, then directly install V2.0.2 to complete the migration. |
-| Already using V2 | Upgrade to V2.0.2 normally and continue using current V2 data. |
+| Still on V1, need to retain data | Update V1 to 1.9.13, then directly install V2 to complete the migration. |
+| Already using V2 | Upgrade to V2 normally and continue using current V2 data. |
 | Previous V1 migration failed or data was missed | Only use [Re-migrate] after fully backing up current V2 data. |
 | Do not need V1 data | You can select [Ignore and Use Defaults], but V1 data will not be migrated. |
 
@@ -32,7 +32,7 @@ V2.0.2 supports direct migration from V1.9.13, eliminating the need for a V2.0.0
 ## Download Links
 
 * [V1 Official Download](https://cherryai.com.cn/download/v1)
-* V2.0.2 Release Page: [GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases/v2.0.2) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases/tag/v2.0.2)
+* V2 Release Page: [GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases)
 * [V2 Official Download](https://cherryai.com.cn/download)
 
 For more information on backups, migration failures, and database considerations, see [Upgrade and Downgrade](../cherry-studio/installation/upgrade-downgrade.md).

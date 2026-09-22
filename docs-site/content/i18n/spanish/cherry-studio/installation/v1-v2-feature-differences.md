@@ -5,11 +5,11 @@ icon: table-columns
 
 V2 ajustó la estructura de datos y varios puntos de entrada de funciones. Antes de actualizar, revise los elementos que requieren reconfiguración; consulte los pasos específicos en [【De V1 a V2】](v1-to-v2-migration.md).
 
-## Cambios de migración en V2.0.2
+## Cambios de migración en V2
 
-| Situación | Método de manejo en V2.0.2 | Notas |
+| Situación | Método de manejo en V2 | Notas |
 | --------- | ----------------------- | ------------------------------ |
-| Migración inicial desde V1 | Se puede instalar V2.0.2 directamente desde V1.9.13 | Ya no es necesario instalar V2.0.0 primero. |
+| Migración inicial desde V1 | Se puede instalar V2 directamente desde V1.9.13 | No es necesario instalar primero una versión intermedia específica de V2. |
 | Actualización normal de V2 | Actualice directamente y continúe usando los datos actuales de V2 | No haga clic en [Re-migrar]. |
 | Re-migración de V1 | En [Configuración] → [Datos], seleccione [Re-migrar] | Los datos actuales de V2 se eliminarán permanentemente; solo se utiliza si la migración anterior falló o si faltan datos. |
 
@@ -63,4 +63,4 @@ La migración no elimina los datos originales de V1. Los nuevos datos de V2 no s
 
 * [De V1 a V2](v1-to-v2-migration.md)
 * [Descarga oficial de Cherry Studio V2](https://cherryai.com.cn/download)
-* Página de lanzamiento de V2.0.2: [GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases/v2.0.2) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases/tag/v2.0.2)
+* Página de lanzamiento de V2: [GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases)

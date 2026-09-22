@@ -1,17 +1,21 @@
 # Table of contents
 
-## Cherry Studio
+## 开始使用
 
 * [项目简介](README.md)
+* [快速开始](getting-started/quick-start.md)
 * [下载与安装教程](cherry-studio/installation/README.md)
   * [Windows 安装](cherry-studio/installation/windows.md)
   * [macOS 安装](cherry-studio/installation/macos.md)
   * [Linux](cherry-studio/installation/linux.md)
   * [升级与降级](cherry-studio/installation/upgrade-downgrade.md)
-  * [破坏性更新提醒](cherry-studio/installation/v2-breaking-update-notice.md)
-  * [功能差异](cherry-studio/installation/v1-v2-feature-differences.md)
-  * [V1 升级到 V2](cherry-studio/installation/v1-to-v2-migration.md)
-  * [V2 降级到 V1](cherry-studio/installation/v2-to-v1-downgrade.md)
+    * [破坏性更新提醒](cherry-studio/installation/v2-breaking-update-notice.md)
+    * [功能差异](cherry-studio/installation/v1-v2-feature-differences.md)
+    * [V1 升级到 V2](cherry-studio/installation/v1-to-v2-migration.md)
+    * [V2 降级到 V1](cherry-studio/installation/v2-to-v1-downgrade.md)
+
+## 功能指南
+
 * [功能介绍](cherrystudio/preview/README.md)
   * [启动台](cherrystudio/preview/launchpad.md)
   * [对话-助手](cherrystudio/preview/chat.md)
@@ -27,86 +31,95 @@
   * [快捷助手](cherrystudio/preview/quick-assistant.md)
   * [划词助手](cherrystudio/preview/selection-assistant.md)
 
-## 基础教程 <a href="#pre-basic" id="pre-basic"></a>
+## 模型与设置
 
 * [模型服务](pre-basic/providers/README.md)
   * [全部 Provider 快速参考](pre-basic/providers/quick-reference.md)
   * [模型服务设置](pre-basic/settings/providers.md)
-  * [CherryAI (免费)](pre-basic/providers/cherryai/README.md)
-    * [DeepSeek V3.2](pre-basic/providers/cherryai/free-deepseek.md)
-    * [智谱 GLM-4.6V](pre-basic/providers/cherryai/free-glm46v.md)
-    * [智谱 GLM-4.5-Air](pre-basic/providers/cherryai/free-glm45air.md)
-    * [Qwen3-8B](pre-basic/providers/cherryai/free-qwen.md)
-  * [CherryIN](pre-basic/providers/cherryin-1.md)
-  * [OpenAI](pre-basic/providers/openai.md)
-  * [Anthropic](pre-basic/providers/anthropic.md)
-  * [Azure OpenAI](pre-basic/providers/azure-openai.md)
-  * [Google Gemini](pre-basic/providers/google-gemini.md)
-  * [Vertex AI](pre-basic/providers/vertex-ai.md)
-  * [DeepSeek](pre-basic/providers/deepseek.md)
-  * [智谱 ZhiPu](pre-basic/providers/zhipu.md)
-  * [Grok](pre-basic/providers/grok.md)
-  * [Mistral](pre-basic/providers/mistral.md)
-  * [Perplexity](pre-basic/providers/perplexity.md)
-  * [Groq](pre-basic/providers/groq.md)
-  * [OpenRouter](pre-basic/providers/openrouter.md)
-  * [Moonshot AI (Kimi)](pre-basic/providers/moonshot.md)
-  * [MiniMax](pre-basic/providers/minimax.md)
-  * [NewAPI](pre-basic/providers/newapi.md)
-  * [OneAPI](pre-basic/providers/oneapi.md)
-  * [Ollama](pre-basic/providers/ollama.md)
-  * [LM Studio](pre-basic/providers/lm-studio.md)
-  * [GitHub Copilot](pre-basic/providers/github-copilot.md)
-  * [MiniMax Coding Plan](pre-basic/providers/minimax-coding-plan.md)
-  * [ModelScope（魔搭）](pre-basic/providers/modelscope.md)
-  * [PPIO 派欧云](pre-basic/providers/ppio.md)
-  * [阿里云百炼](pre-basic/providers/a-li-yun-bai-lian.md)
-  * [硅基流动](pre-basic/providers/siliconcloud.md)
-  * [火山引擎](pre-basic/providers/doubao.md)
-  * [自定义服务商](pre-basic/providers/zi-ding-yi-fu-wu-shang.md)
+  * **推荐与免费服务**
+    * [CherryAI (免费)](pre-basic/providers/cherryai/README.md)
+    * [CherryIN](pre-basic/providers/cherryin-1.md)
+  * **海外服务商**
+    * [OpenAI](pre-basic/providers/openai.md)
+    * [Anthropic](pre-basic/providers/anthropic.md)
+    * [Azure OpenAI](pre-basic/providers/azure-openai.md)
+    * [Google Gemini](pre-basic/providers/google-gemini.md)
+    * [Vertex AI](pre-basic/providers/vertex-ai.md)
+    * [Grok](pre-basic/providers/grok.md)
+    * [Mistral](pre-basic/providers/mistral.md)
+    * [Perplexity](pre-basic/providers/perplexity.md)
+    * [Groq](pre-basic/providers/groq.md)
+  * **国内服务商**
+    * [DeepSeek](pre-basic/providers/deepseek.md)
+    * [智谱 ZhiPu](pre-basic/providers/zhipu.md)
+    * [Moonshot AI (Kimi)](pre-basic/providers/moonshot.md)
+    * [MiniMax](pre-basic/providers/minimax.md)
+    * [ModelScope（魔搭）](pre-basic/providers/modelscope.md)
+    * [PPIO 派欧云](pre-basic/providers/ppio.md)
+    * [阿里云百炼](pre-basic/providers/a-li-yun-bai-lian.md)
+    * [硅基流动](pre-basic/providers/siliconcloud.md)
+    * [火山引擎](pre-basic/providers/doubao.md)
+  * **网关与自定义服务**
+    * [OpenRouter](pre-basic/providers/openrouter.md)
+    * [NewAPI](pre-basic/providers/newapi.md)
+    * [OneAPI](pre-basic/providers/oneapi.md)
+    * [自定义服务商](pre-basic/providers/zi-ding-yi-fu-wu-shang.md)
+  * **本地与开发服务**
+    * [Ollama](pre-basic/providers/ollama.md)
+    * [LM Studio](pre-basic/providers/lm-studio.md)
+    * [GitHub Copilot](pre-basic/providers/github-copilot.md)
+    * [MiniMax Coding Plan](pre-basic/providers/minimax-coding-plan.md)
 * [软件设置](pre-basic/settings/README.md)
-  * [默认模型设置](pre-basic/settings/default-models.md)
-  * [本地模型](pre-basic/settings/local-models.md)
-  * [联网模式](pre-basic/websearch/README.md)
-    * [免费联网模式](pre-basic/websearch/free-search.md)
-    * [网络搜索黑名单配置](pre-basic/websearch/blacklist.md)
-    * [火山引擎接入联网](pre-basic/websearch/volcengine.md)
-    * [Tavily 联网登录注册教程](pre-basic/websearch/tavily.md)
-    * [SearXNG 本地部署与配置](pre-basic/websearch/searxng.md)
-  * [文档处理](pre-basic/settings/doc-process.md)
-  * [OCR](pre-basic/settings/ocr.md)
-  * [外观](pre-basic/settings/display.md)
-    * [自定义 CSS](pre-basic/personalization-settings/custom-css.md)
-    * [字体推荐](pre-basic/personalization-settings/font.md)
-    * [清除 CSS 设置](pre-basic/personalization-settings/clear-css.md)
-  * [通知](pre-basic/settings/notification.md)
-  * [数据设置](pre-basic/data-settings/README.md)
-    * [WebDAV 备份](pre-basic/data-settings/webdav.md)
-    * [S3 兼容存储备份](pre-basic/data-settings/s3-compatible.md)
-    * [Notion 配置教程](pre-basic/data-settings/notion.md)
-    * [Obsidian 配置教程](pre-basic/data-settings/obsidian.md)
-    * [思源笔记配置教程](pre-basic/data-settings/siyuan.md)
-    * [修改存储位置](pre-basic/personalization-settings/storage.md)
-  * [用量统计](pre-basic/settings/usage.md)
-  * [快捷键设置](pre-basic/settings/key-shortcut.md)
-  * [系统](pre-basic/settings/general.md)
-  * [环境依赖](pre-basic/settings/env-dependencies.md)
+  * **模型**
+    * [默认模型设置](pre-basic/settings/default-models.md)
+    * [本地模型](pre-basic/settings/local-models.md)
+  * **工具与联网**
+    * [联网模式](pre-basic/websearch/README.md)
+      * [免费联网模式](pre-basic/websearch/free-search.md)
+      * [网络搜索黑名单配置](pre-basic/websearch/blacklist.md)
+      * [火山引擎接入联网](pre-basic/websearch/volcengine.md)
+      * [Tavily 联网登录注册教程](pre-basic/websearch/tavily.md)
+      * [SearXNG 本地部署与配置](pre-basic/websearch/searxng.md)
+    * [文档处理](pre-basic/settings/doc-process.md)
+    * [OCR](pre-basic/settings/ocr.md)
+  * **外观与效率**
+    * [外观](pre-basic/settings/display.md)
+      * [自定义 CSS](pre-basic/personalization-settings/custom-css.md)
+      * [字体推荐](pre-basic/personalization-settings/font.md)
+      * [清除 CSS 设置](pre-basic/personalization-settings/clear-css.md)
+    * [通知](pre-basic/settings/notification.md)
+    * [用量统计](pre-basic/settings/usage.md)
+    * [快捷键设置](pre-basic/settings/key-shortcut.md)
+  * **数据与集成**
+    * [数据设置](pre-basic/data-settings/README.md)
+      * [WebDAV 备份](pre-basic/data-settings/webdav.md)
+      * [S3 兼容存储备份](pre-basic/data-settings/s3-compatible.md)
+      * [Notion 配置教程](pre-basic/data-settings/notion.md)
+      * [Obsidian 配置教程](pre-basic/data-settings/obsidian.md)
+      * [思源笔记配置教程](pre-basic/data-settings/siyuan.md)
+      * [修改存储位置](pre-basic/personalization-settings/storage.md)
+  * **系统**
+    * [系统](pre-basic/settings/general.md)
+    * [环境依赖](pre-basic/settings/env-dependencies.md)
 
-## 知识库教程 <a href="#knowledge-base" id="knowledge-base"></a>
+## 知识库
 
-* [知识库入门](knowledge-base/knowledge-base.md)
-* [数据、隐私与维护](knowledge-base/data.md)
-* [模型与检索设置](knowledge-base/emb-models-info.md)
-* [文档解析与 OCR](knowledge-base/document-preprocessing.md)
-* [创建知识库](knowledge-base/create.md)
-* [添加与整理资料](knowledge-base/sources.md)
-* [检查资料与召回](knowledge-base/recall-test.md)
-* [在对话中使用](knowledge-base/chat.md)
-* [与 Agent 一起使用](knowledge-base/agent.md)
-* [知识库应用案例](knowledge-base/cases.md)
-* [常见问题](knowledge-base/troubleshooting.md)
+* **入门流程**
+  * [知识库入门](knowledge-base/knowledge-base.md)
+  * [创建知识库](knowledge-base/create.md)
+  * [添加与整理资料](knowledge-base/sources.md)
+  * [检查资料与召回](knowledge-base/recall-test.md)
+* **使用知识库**
+  * [在对话中使用](knowledge-base/chat.md)
+  * [与 Agent 一起使用](knowledge-base/agent.md)
+  * [知识库应用案例](knowledge-base/cases.md)
+* **配置、维护与排错**
+  * [模型与检索设置](knowledge-base/emb-models-info.md)
+  * [文档解析与 OCR](knowledge-base/document-preprocessing.md)
+  * [数据、隐私与维护](knowledge-base/data.md)
+  * [常见问题](knowledge-base/troubleshooting.md)
 
-## 进阶教程 <a href="#advanced-basic" id="advanced-basic"></a>
+## 进阶工作流
 
 * [进阶能力地图](advanced-basic/capability-map.md)
 * [对话进阶](advanced-basic/chat/README.md)
@@ -151,32 +164,30 @@
   * [频道与定时日报](advanced-basic/cases/automated-daily-report.md)
   * [多窗口研究工作台](advanced-basic/cases/multi-window-research.md)
 
-## 项目贡献 <a href="#contribution" id="contribution"></a>
-
-* [贡献代码](contribution/code.md)
-* [贡献文档](contribution/docs.md)
-
-## 问题 & 反馈 <a href="#question-contact" id="question-contact"></a>
+## 帮助与排错
 
 * [常见问题](question-contact/questions.md)
-* [版本升级与降级](question-contact/version-switching.md)
 * [如何高效提问](question-contact/ask.md)
-* [AI 基础知识](question-contact/knowledge.md)
 * [问题反馈与功能建议](question-contact/suggestions.md)
 
-## 关于 <a href="#about" id="about"></a>
+## 资源与项目
+
+* **参考资料**
+  * [AI 基础知识](question-contact/knowledge.md)
+  * [模型数据](other/models-info.md)
+  * [模型榜单](other/model_rank/README.md)
+    * [Agent 智能体榜单](other/model_rank/agent.md)
+    * [文本榜单](other/model_rank/text.md)
+    * [搜索榜单](other/model_rank/search.md)
+    * [视觉榜单](other/model_rank/vision.md)
+    * [代码 / Web 开发榜单](other/model_rank/code-webdev.md)
+    * [文生图榜单](other/model_rank/text-to-image.md)
+* **项目与关于**
+  * [贡献代码](contribution/code.md)
+  * [贡献文档](contribution/docs.md)
+
+## 合作与协议
 
 * [商务合作](contact-us/questions.md)
 * [隐私协议](about/privacypolicy.md)
-* [Cherry Studio 开源许可协议](contact-us/questions/license.md)
-
-## 其他内容 <a href="#other" id="other"></a>
-
-* [模型数据](other/models-info.md)
-* [模型榜单](other/model_rank/README.md)
-  * [Agent 智能体榜单](other/model_rank/agent.md)
-  * [文本榜单](other/model_rank/text.md)
-  * [搜索榜单](other/model_rank/search.md)
-  * [视觉榜单](other/model_rank/vision.md)
-  * [代码 / Web 开发榜单](other/model_rank/code-webdev.md)
-  * [文生图榜单](other/model_rank/text-to-image.md)
+* [开源协议](contact-us/questions/license.md)

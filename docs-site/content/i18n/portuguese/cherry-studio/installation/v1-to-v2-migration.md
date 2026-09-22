@@ -8,22 +8,22 @@ A migração é unidirecional: os dados da V1 podem ser importados para a V2, ma
 {% endhint %}
 
 {% hint style="warning" %}
-O caminho correto para preservar os dados é: **V1.9.13 → V2.0.2 (concluir a migração de dados diretamente)**. Não é mais necessário instalar a V2.0.0 primeiro.
+O caminho correto para preservar os dados é: **V1.9.13 → V2 (concluir a migração de dados diretamente)**. Não é necessário instalar primeiro uma versão intermediária específica da V2.
 {% endhint %}
 
 ## Selecione conforme a situação atual
 
 | Situação atual | Ação |
 | --------------- | ------------------------------------ |
-| Ainda na V1, precisa preservar os dados | Atualize a V1 para a 1.9.13 e instale a V2.0.2 diretamente seguindo as etapas desta página. |
-| Já está usando a V2 | Atualize normalmente para a V2.0.2 e continue usando os dados atuais da V2; não clique em [Migrar novamente]. |
+| Ainda na V1, precisa preservar os dados | Atualize a V1 para a 1.9.13 e instale a V2 diretamente seguindo as etapas desta página. |
+| Já está usando a V2 | Atualize normalmente para a V2 e continue usando os dados atuais da V2; não clique em [Migrar novamente]. |
 | Migração da V1 falhou anteriormente ou houve perda de dados | Faça uma cópia de segurança completa da V2 atual antes de usar [Migrar novamente] para recomeçar a partir da V1. |
 | Não precisa dos dados da V1 | Pode selecionar [Ignorar e usar padrões], começando com a configuração padrão; os dados da V1 não serão importados. |
 
 ## Confirmações antes da atualização
 
 * A V1 deve ser no mínimo a 1.9.12; recomenda-se atualizar para a versão final 1.9.13 e iniciar o aplicativo pelo menos uma vez.
-* Para a primeira migração, pode usar diretamente a V2.0.2.
+* Para a primeira migração, pode usar diretamente a V2.
 * Diretórios de dados personalizados ou discos externos devem permitir leitura e escrita normalmente.
 * Todas as tarefas de conversas, Agent, importação de base de conhecimento e processamento de arquivos devem estar concluídas.
 
@@ -53,9 +53,9 @@ Ao usar um disco externo, volume de rede ou outra localização personalizada, c
 {% endstep %}
 
 {% step %}
-### Inicie a V2.0.2 pela primeira vez
+### Inicie a V2 pela primeira vez
 
-Obtenha o pacote de instalação da V2.0.2 compatível com o sistema e o chip em [Download oficial da V2](https://cherryai.com.cn/download), ou use a [página de lançamentos do GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases/v2.0.2) ou a [página de lançamentos do GitHub](https://github.com/CherryHQ/cherry-studio/releases/tag/v2.0.2). Encerre completamente a V1 antes de instalar e iniciar.
+Obtenha o pacote de instalação da V2 compatível com o sistema e o chip em [Download oficial da V2](https://cherryai.com.cn/download), ou use a [página de lançamentos do GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases) ou a [página de lançamentos do GitHub](https://github.com/CherryHQ/cherry-studio/releases). Encerre completamente a V1 antes de instalar e iniciar.
 {% endstep %}
 
 {% step %}
@@ -84,7 +84,7 @@ Para mais mudanças de interface, consulte [Diferenças de funcionalidades](v1-v
 
 ## Use [Migrar novamente] apenas em caso de falha na migração
 
-Se a migração da V1 tiver falhado anteriormente ou houver perda de dados, a V2.0.2 permite selecionar [Migrar novamente] em [Configurações] → [Dados]. Essa operação reiniciará o aplicativo e executará a migração novamente a partir dos dados preservados da V1.
+Se a migração da V1 tiver falhado anteriormente ou houver perda de dados, a V2 permite selecionar [Migrar novamente] em [Configurações] → [Dados]. Essa operação reiniciará o aplicativo e executará a migração novamente a partir dos dados preservados da V1.
 
 {% hint style="danger" %}
 [Migrar novamente] excluirá permanentemente os dados atuais da V2 e não mesclará os dados da V1 com os da V2. A menos que a migração da V1 tenha falhado anteriormente ou haja perda de dados, não clique neste botão. É obrigatório criar um backup completo da V2 atual antes da operação; novos conteúdos da V2 que devam ser preservados também devem ser exportados separadamente.
@@ -125,6 +125,6 @@ Não. Índices válidos serão migrados; apenas as fontes que exibirem falha, es
 
 * [Download oficial do Cherry Studio V2](https://cherryai.com.cn/download)
 * [Download oficial do Cherry Studio V1](https://cherryai.com.cn/download/v1)
-* Página de lançamento da V2.0.2: [GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases/v2.0.2) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases/tag/v2.0.2)
+* Página de lançamento da V2: [GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases)
 * [Documentação oficial de design da migração](https://github.com/CherryHQ/cherry-studio/blob/main/src/main/data/migration/v2/README.md#version-compatibility-gate)
 * [Relato de problemas e sugestões de funcionalidades](../../question-contact/suggestions.md)

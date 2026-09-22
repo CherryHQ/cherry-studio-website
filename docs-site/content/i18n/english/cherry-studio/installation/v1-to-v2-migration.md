@@ -1,5 +1,5 @@
 ---
-description: Back up V1 data, directly use V2.0.2 to complete migration, and check items requiring reconfiguration.
+description: Back up V1 data, directly use V2 to complete migration, and check items requiring reconfiguration.
 icon: arrow-right-arrow-left
 ---
 # Upgrading from V1 to V2
@@ -9,22 +9,22 @@ Migration is one-way: V1 data can be imported into V2, but new V2 data will not 
 {% endhint %}
 
 {% hint style="warning" %}
-The correct path for data retention is: **V1.9.13 → V2.0.2 (direct data migration)**. You no longer need to install V2.0.0 first.
+The correct path for data retention is: **V1.9.13 → V2 (direct data migration)**; no intermediate V2 release is required.
 {% endhint %}
 
 ## Choose Based on Your Current Situation
 
 | Current Situation | Action |
 | --------------- | ------------------------------------ |
-| Still on V1, need to retain data | Update V1 to 1.9.13, then install V2.0.2 directly following the steps on this page. |
-| Already using V2 | Upgrade to V2.0.2 normally and continue using your current V2 data; do not click [Re-migrate]. |
+| Still on V1, need to retain data | Update V1 to 1.9.13, then install V2 directly following the steps on this page. |
+| Already using V2 | Upgrade to V2 normally and continue using your current V2 data; do not click [Re-migrate]. |
 | Previous V1 migration failed or missed data | Only after fully backing up current V2, you can use [Re-migrate] to start over from V1. |
 | Do not need V1 data | You can choose [Ignore and Use Defaults] to start with default settings; V1 data will not be migrated. |
 
 ## Pre-Upgrade Checklist
 
 * V1 version is at least 1.9.12; it is recommended to update to the final version 1.9.13 and launch it at least once.
-* For the first migration, you can use V2.0.2 directly.
+* For the first migration, you can use V2 directly.
 * Custom data directories or external disks are readable and writable.
 * All conversations, Agent tasks, knowledge base imports, and file processing tasks have finished.
 
@@ -54,9 +54,9 @@ When using a portable hard drive, network volume, or other custom location, ensu
 {% endstep %}
 
 {% step %}
-### First Launch of V2.0.2
+### First Launch of V2
 
-Download the V2.0.2 installer matching your system and chip from [V2 Official Download](https://cherryai.com.cn/download), or use the [GitCode Release Page](https://gitcode.com/CherryHQ/cherry-studio/releases/v2.0.2) or [GitHub Release Page](https://github.com/CherryHQ/cherry-studio/releases/tag/v2.0.2). Fully exit V1 before installing and launching.
+Download the V2 installer matching your system and chip from [V2 Official Download](https://cherryai.com.cn/download), or use the [GitCode Release Page](https://gitcode.com/CherryHQ/cherry-studio/releases) or [GitHub Release Page](https://github.com/CherryHQ/cherry-studio/releases). Fully exit V1 before installing and launching.
 {% endstep %}
 
 {% step %}
@@ -85,7 +85,7 @@ See [Feature Differences](v1-v2-feature-differences.md) for more entry point cha
 
 ## Use [Re-migrate] Only If Migration Failed
 
-If a previous V1 migration failed or missed data, you can select [Re-migrate] in V2.0.2 under [Settings] → [Data]. This action restarts the application and re-executes migration from the retained V1 data.
+If a previous V1 migration failed or missed data, you can select [Re-migrate] in V2 under [Settings] → [Data]. This action restarts the application and re-executes migration from the retained V1 data.
 
 {% hint style="danger" %}
 [Re-migrate] permanently deletes current V2 data and does not merge V1 and V2 data. Do not click this unless a previous V1 migration failed or missed data. You must create a full backup of the current V2 before proceeding; any new V2 content you wish to retain should also be exported separately.
@@ -126,6 +126,6 @@ No. Valid indexes will be migrated; only process sources that show as failed, la
 
 * [Cherry Studio V2 Official Download](https://cherryai.com.cn/download)
 * [Cherry Studio V1 Official Download](https://cherryai.com.cn/download/v1)
-* V2.0.2 Release Page: [GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases/v2.0.2) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases/tag/v2.0.2)
+* V2 Release Page: [GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases)
 * [Official Migration Design Notes](https://github.com/CherryHQ/cherry-studio/blob/main/src/main/data/migration/v2/README.md#version-compatibility-gate)
 * [Issue Feedback and Feature Suggestions](../../question-contact/suggestions.md)

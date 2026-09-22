@@ -6,11 +6,11 @@ icon: table-columns
 
 V2 adjusted the data structure and multiple feature entry points. Before upgrading, review the items that require reconfiguration; for specific steps, see [【Upgrade from V1 to V2】](v1-to-v2-migration.md).
 
-## V2.0.2 Migration Changes
+## V2 Migration Changes
 
-| Scenario | V2.0.2 Handling | Notes |
+| Scenario | V2 Handling | Notes |
 | --------- | ----------------------- | ------------------------------ |
-| First-time migration from V1 | You can install V2.0.2 directly from V1.9.13 | There is no longer a need to install V2.0.0 first. |
+| First-time migration from V1 | You can install V2 directly from V1.9.13 | No intermediate V2 release is required. |
 | Standard V2 upgrade | Upgrade directly and continue using current V2 data | Do not click 【Re-migrate】. |
 | Re-migrate from V1 | Select 【Re-migrate】 in 【Settings】 → 【Data】 | Current V2 data will be permanently deleted. This is only for cases where previous migration failed or data was missed. |
 
@@ -64,4 +64,4 @@ Migration does not delete original V1 data. New V2 data is not synced back to V1
 
 * [Upgrade from V1 to V2](v1-to-v2-migration.md)
 * [Cherry Studio V2 Official Download](https://cherryai.com.cn/download)
-* V2.0.2 Release Page: [GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases/v2.0.2) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases/tag/v2.0.2)
+* V2 Release Page: [GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases)

@@ -9,16 +9,16 @@ Seleccione las instrucciones correspondientes según la versión actual y la ver
 Los datos y los formatos de copia de seguridad de V1 y V2 no son compatibles. Las sesiones, Agentes, configuraciones y archivos nuevos en V2 no se reescribirán automáticamente en V1.
 {% endhint %}
 
-## Actualización y migración a V2.0.2
+## Actualización y migración a V2
 
 {% hint style="warning" %}
-Si necesita conservar los datos de V1, la ruta correcta es: **V1.9.13 → V2.0.2 (completar la migración de datos directamente)**. Ya no es necesario instalar V2.0.0 primero.
+Si necesita conservar los datos de V1, la ruta correcta es: **V1.9.13 → V2 (completar la migración de datos directamente)**. No es necesario instalar primero una versión intermedia específica de V2.
 {% endhint %}
 
 | Situación actual | Qué debe hacer |
 | --------------- | ------------------------------------ |
-| Sigue en V1 y necesita conservar los datos | Actualice V1 a 1.9.13 y luego instale directamente V2.0.2 para completar la migración. |
-| Ya está usando V2 | Actualice a V2.0.2 normalmente y continúe usando los datos actuales de V2; no haga clic en [Reintentar migración]. |
+| Sigue en V1 y necesita conservar los datos | Actualice V1 a 1.9.13 y luego instale directamente V2 para completar la migración. |
+| Ya está usando V2 | Actualice a V2 normalmente y continúe usando los datos actuales de V2; no haga clic en [Reintentar migración]. |
 | La migración de V1 falló anteriormente o faltan datos | Solo después de realizar una copia de seguridad completa de V2 actual, puede usar [Reintentar migración] en [Configuración] → [Datos]. |
 | No necesita los datos de V1 | Puede seleccionar [Ignorar y usar valores predeterminados], pero los datos de V1 no se migrarán. |
 
@@ -28,7 +28,7 @@ Si necesita conservar los datos de V1, la ruta correcta es: **V1.9.13 → V2.0.2
 
 ## Selección de ruta
 
-<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>Recordatorio de actualización destructiva</strong></td><td>Confirme primero la incompatibilidad de datos, la reintegración de migración y las limitaciones de reversión.</td><td><a href="v2-breaking-update-notice.md">v2-breaking-update-notice.md</a></td></tr><tr><td><strong>Diferencias de funciones</strong></td><td>Comprenda los cambios en la interfaz, Agentes, base de conocimientos, etc., y los elementos que deben verificarse después de la actualización.</td><td><a href="v1-v2-feature-differences.md">v1-v2-feature-differences.md</a></td></tr><tr><td><strong>Actualización de V1 a V2</strong></td><td>Realice una copia de seguridad de los datos de V1 y use directamente V2.0.2 para completar la migración.</td><td><a href="v1-to-v2-migration.md">v1-to-v2-migration.md</a></td></tr><tr><td><strong>Degradación de V2 a V1</strong></td><td>Vuelva a los datos originales de V1 y comprenda cuándo es necesario procesar la base de datos de V2.</td><td><a href="v2-to-v1-downgrade.md">v2-to-v1-downgrade.md</a></td></tr></tbody></table>
+<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>Recordatorio de actualización destructiva</strong></td><td>Confirme primero la incompatibilidad de datos, la reintegración de migración y las limitaciones de reversión.</td><td><a href="v2-breaking-update-notice.md">v2-breaking-update-notice.md</a></td></tr><tr><td><strong>Diferencias de funciones</strong></td><td>Comprenda los cambios en la interfaz, Agentes, base de conocimientos, etc., y los elementos que deben verificarse después de la actualización.</td><td><a href="v1-v2-feature-differences.md">v1-v2-feature-differences.md</a></td></tr><tr><td><strong>Actualización de V1 a V2</strong></td><td>Realice una copia de seguridad de los datos de V1 y use directamente V2 para completar la migración.</td><td><a href="v1-to-v2-migration.md">v1-to-v2-migration.md</a></td></tr><tr><td><strong>Degradación de V2 a V1</strong></td><td>Vuelva a los datos originales de V1 y comprenda cuándo es necesario procesar la base de datos de V2.</td><td><a href="v2-to-v1-downgrade.md">v2-to-v1-downgrade.md</a></td></tr></tbody></table>
 
 ## Preparación antes del cambio
 
@@ -44,4 +44,4 @@ No elimine manualmente los datos de la aplicación para un "desinstalado complet
 
 * [Descarga oficial de Cherry Studio V2](https://cherryai.com.cn/download)
 * [Descarga oficial de Cherry Studio V1](https://cherryai.com.cn/download/v1)
-* Página de lanzamiento de V2.0.2: [GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases/v2.0.2) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases/tag/v2.0.2)
+* Página de lanzamiento de V2: [GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases)

@@ -8,22 +8,22 @@ icon: arrow-right-arrow-left
 {% endhint %}
 
 {% hint style="warning" %}
-保留資資的正確路徑是：**V1.9.13 → V2.0.2（直接完成資資遷移）**。不再需要先安裝 V2.0.0。
+保留資資的正確路徑是：**V1.9.13 → V2（直接完成資資遷移）**，無需先安裝特定的 V2 中轉版本。
 {% endhint %}
 
 ## 根據目前情況選擇
 
 | 目前情況 | 操作 |
 | --------------- | ------------------------------------ |
-| 仍在 V1，需要保留資資 | 將 V1 更新到 1.9.13，按本頁步驟直接安裝 V2.0.2。 |
-| 已經在使用 V2 | 正常升級 V2.0.2，繼續使用目前 V2 資資；不要點擊【重新遷移】。 |
+| 仍在 V1，需要保留資資 | 將 V1 更新到 1.9.13，按本頁步驟直接安裝 V2。 |
+| 已經在使用 V2 | 正常升級 V2，繼續使用目前 V2 資資；不要點擊【重新遷移】。 |
 | 之前遷移 V1 失敗或遺漏資資 | 完整備份目前 V2 後，才可使用【重新遷移】從 V1 重新開始。 |
 | 不需要 V1 資資 | 可以選擇【忽略並使用預設值】，從預設設定開始；V1 資資不會遷入。 |
 
 ## 升級前確認
 
 * V1 不低於 1.9.12，建議先更新到最終版 1.9.13 並至少啟動一次。
-* 首次遷移可以直接使用 V2.0.2。
+* 首次遷移可以直接使用 V2。
 * 自訂資資目錄或外接磁碟可以正常讀寫。
 * 對話、Agent、知識庫匯入和檔案處理任務均已結束。
 
@@ -53,9 +53,9 @@ icon: arrow-right-arrow-left
 {% endstep %}
 
 {% step %}
-### 首次啟動 V2.0.2
+### 首次啟動 V2
 
-從 [V2 官方下載](https://cherryai.com.cn/download) 取得匹配系統和晶片的 V2.0.2 安裝包，也可以使用 [GitCode 發布頁](https://gitcode.com/CherryHQ/cherry-studio/releases/v2.0.2) 或 [GitHub 發布頁](https://github.com/CherryHQ/cherry-studio/releases/tag/v2.0.2)。完全退出 V1 後安裝並啟動。
+從 [V2 官方下載](https://cherryai.com.cn/download) 取得匹配系統和晶片的 V2 安裝包，也可以使用 [GitCode 發布頁](https://gitcode.com/CherryHQ/cherry-studio/releases) 或 [GitHub 發布頁](https://github.com/CherryHQ/cherry-studio/releases)。完全退出 V1 後安裝並啟動。
 {% endstep %}
 
 {% step %}
@@ -84,7 +84,7 @@ icon: arrow-right-arrow-left
 
 ## 只有遷移失敗才使用【重新遷移】
 
-如果此前 V1 遷移失敗或遺漏資資，V2.0.2 可在【設定】→【資資】選擇【重新遷移】。該操作會重新啟動應用，並從保留的 V1 資資重新執行遷移。
+如果此前 V1 遷移失敗或遺漏資資，V2 可在【設定】→【資資】選擇【重新遷移】。該操作會重新啟動應用，並從保留的 V1 資資重新執行遷移。
 
 {% hint style="danger" %}
 【重新遷移】會永久刪除目前 V2 資資，不會把 V1 與 V2 資資合併。除非此前 V1 遷移失敗或遺漏資資，否則一定不要點擊。操作前必須建立目前 V2 的完整備份；需要保留的 V2 新內容還應單獨匯出。
@@ -125,6 +125,6 @@ icon: arrow-right-arrow-left
 
 * [Cherry Studio V2 官方下載](https://cherryai.com.cn/download)
 * [Cherry Studio V1 官方下載](https://cherryai.com.cn/download/v1)
-* V2.0.2 發布頁：[GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases/v2.0.2) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases/tag/v2.0.2)
+* V2 發布頁：[GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases)
 * [官方遷移設計說明](https://github.com/CherryHQ/cherry-studio/blob/main/src/main/data/migration/v2/README.md#version-compatibility-gate)
 * [問題回饋與功能建議](../../question-contact/suggestions.md)

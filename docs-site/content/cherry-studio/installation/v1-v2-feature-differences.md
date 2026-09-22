@@ -7,11 +7,11 @@ icon: table-columns
 
 V2 调整了数据结构和多项功能入口。升级前先看需要重新配置的项目；具体步骤见 [【V1 升级到 V2】](v1-to-v2-migration.md)。
 
-## V2.0.2 迁移变化
+## V2 迁移变化
 
-| 情况 | V2.0.2 的处理方式 | 注意事项 |
+| 情况 | V2 的处理方式 | 注意事项 |
 | --------- | ----------------------- | ------------------------------ |
-| 首次从 V1 迁移 | 可以从 V1.9.13 直接安装 V2.0.2 | 不再需要先安装 V2.0.0。 |
+| 首次从 V1 迁移 | 可以从 V1.9.13 直接安装 V2 | 无需先安装特定的 V2 中转版本。 |
 | 正常升级 V2 | 直接升级并继续使用当前 V2 数据 | 不要点击【重新迁移】。 |
 | 重新迁移 V1 | 在【设置】→【数据】选择【重新迁移】 | 当前 V2 数据会被永久删除，只用于此前迁移失败或遗漏数据。 |
 
@@ -65,4 +65,4 @@ V2 调整了数据结构和多项功能入口。升级前先看需要重新配�
 
 * [V1 升级到 V2](v1-to-v2-migration.md)
 * [Cherry Studio V2 官方下载](https://cherryai.com.cn/download)
-* V2.0.2 发布页：[GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases/v2.0.2) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases/tag/v2.0.2)
+* V2 发布页：[GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases)

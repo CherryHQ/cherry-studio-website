@@ -15,12 +15,12 @@ Avant de changer de version, créez d'abord une sauvegarde complète dans l'appl
 
 ## Migration des données de V1 vers V2
 
-La version 2.0.2 prend en charge la migration directe depuis la version 1.9.13, sans nécessiter d'étape intermédiaire via la version 2.0.0.
+V2 prend en charge la migration directe depuis V1.9.13, sans nécessiter de version intermédiaire particulière de V2.
 
 | Situation actuelle | Action à entreprendre |
 | --------------- | ---------------------------------- |
-| Toujours sur V1, avec nécessité de conserver les données | Mettez à jour V1 vers la version 1.9.13, puis installez directement la version 2.0.2 pour finaliser la migration. |
-| Déjà sur V2 | Effectuez la mise à niveau vers la version 2.0.2 et continuez d'utiliser les données V2 actuelles. |
+| Toujours sur V1, avec nécessité de conserver les données | Mettez à jour V1 vers la version 1.9.13, puis installez directement V2 pour finaliser la migration. |
+| Déjà sur V2 | Effectuez la mise à niveau vers V2 et continuez d'utiliser les données V2 actuelles. |
 | Échec de la migration de V1 ou données manquantes | Après une sauvegarde complète des données V2 actuelles, vous pouvez utiliser l'option [Migration à nouveau]. |
 | Pas besoin des données V1 | Vous pouvez choisir l'option [Ignorer et utiliser les valeurs par défaut], mais les données V1 ne seront pas migrées. |
 
@@ -31,7 +31,7 @@ L'option [Migration à nouveau] dans [Paramètres] → [Données] supprime défi
 ## Liens de téléchargement
 
 * [Téléchargement officiel V1](https://cherryai.com.cn/download/v1)
-* Page de publication de la version 2.0.2 : [GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases/v2.0.2) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases/tag/v2.0.2)
+* Page de publication de V2 : [GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases)
 * [Téléchargement officiel V2](https://cherryai.com.cn/download)
 
 Pour plus d'informations sur les sauvegardes, les échecs de migration et les précautions relatives à la base de données, consultez [【Mise à niveau et rétrogradation】](../cherry-studio/installation/upgrade-downgrade.md).

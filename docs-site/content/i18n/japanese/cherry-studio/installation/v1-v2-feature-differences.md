@@ -5,11 +5,11 @@ icon: table-columns
 
 V2 ではデータ構造と複数の機能の入口が変更されました。アップグレード前に再設定が必要な項目を確認してください。具体的な手順は [【V1 から V2 へのアップグレード】](v1-to-v2-migration.md) を参照してください。
 
-## V2.0.2 の移行変更点
+## V2 の移行変更点
 
-| 状況 | V2.0.2 の処理方法 | 注意事項 |
+| 状況 | V2 の処理方法 | 注意事項 |
 | --------- | ----------------------- | ------------------------------ |
-| V1 からの初回移行 | V1.9.13 から V2.0.2 を直接インストール可能 | V2.0.0 を先にインストールする必要はありません。 |
+| V1 からの初回移行 | V1.9.13 から V2 を直接インストール可能 | 特定の V2 リリースを先にインストールする必要はありません。 |
 | V2 の通常アップグレード | 直接アップグレードし、現在の V2 データを継続使用 | 【再移行】をクリックしないでください。 |
 | V1 の再移行 | 【設定】→【データ】で【再移行】を選択 | 現在の V2 データは完全に削除されます。以前の移行失敗やデータ漏れの場合にのみ使用してください。 |
 
@@ -63,4 +63,4 @@ V2 ではデータ構造と複数の機能の入口が変更されました。�
 
 * [V1 から V2 へのアップグレード](v1-to-v2-migration.md)
 * [Cherry Studio V2 公式ダウンロード](https://cherryai.com.cn/download)
-* V2.0.2 リリースページ：[GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases/v2.0.2) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases/tag/v2.0.2)
+* V2 リリースページ：[GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases)

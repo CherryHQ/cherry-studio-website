@@ -48,7 +48,7 @@ V2 中新增的對話、Agent、設定和檔案不會回到 V1。V2 備份也不
 {% endhint %}
 
 {% hint style="danger" %}
-V2.0.2 中的【設定】→【資資】→【重新遷移】不是降級入口。它會永久刪除目前 V2 資資，再從原始 V1 資資重新匯入；除非此前 V1 遷移失敗或遺漏資資，否則一定不要點擊。
+V2 中的【設定】→【資資】→【重新遷移】不是降級入口。它會永久刪除目前 V2 資資，再從原始 V1 資資重新匯入；除非此前 V1 遷移失敗或遺漏資資，否則一定不要點擊。
 {% endhint %}
 
 ## 什麼時候才處理 V2 資資庫
@@ -105,7 +105,7 @@ V2.0.2 中的【設定】→【資資】→【重新遷移】不是降級入口�
 
 <summary>降級後再次回到 V2，應該安裝哪個版本？</summary>
 
-如果繼續使用此前的 V2 資資，可以直接安裝 V2.0.2，且不要點擊【重新遷移】。如果此前 V1 遷移失敗或遺漏資資，可在完整備份目前 V2 後使用【設定】→【資資】→【重新遷移】；該操作會永久刪除目前 V2 資資，再從 V1 重新匯入。
+如果繼續使用此前的 V2 資資，可以直接安裝 V2，且不要點擊【重新遷移】。如果此前 V1 遷移失敗或遺漏資資，可在完整備份目前 V2 後使用【設定】→【資資】→【重新遷移】；該操作會永久刪除目前 V2 資資，再從 V1 重新匯入。
 
 </details>
 
@@ -113,5 +113,5 @@ V2.0.2 中的【設定】→【資資】→【重新遷移】不是降級入口�
 
 * [Cherry Studio V1 官方下載](https://cherryai.com.cn/download/v1)
 * [Cherry Studio V2 官方下載](https://cherryai.com.cn/download)
-* V2.0.2 發布頁：[GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases/v2.0.2) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases/tag/v2.0.2)
+* V2 發布頁：[GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases)
 * [問題回饋與功能建議](../../question-contact/suggestions.md)

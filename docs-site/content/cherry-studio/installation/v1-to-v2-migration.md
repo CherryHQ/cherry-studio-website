@@ -1,5 +1,5 @@
 ---
-description: 备份 V1 数据，直接使用 V2.0.2 完成迁移，并检查需要重新配置的项目。
+description: 备份 V1 数据，直接使用 V2 完成迁移，并检查需要重新配置的项目。
 icon: arrow-right-arrow-left
 ---
 
@@ -10,22 +10,22 @@ icon: arrow-right-arrow-left
 {% endhint %}
 
 {% hint style="warning" %}
-保留数据的正确路径是：**V1.9.13 → V2.0.2（直接完成数据迁移）**。不再需要先安装 V2.0.0。
+保留数据的正确路径是：**V1.9.13 → V2（直接完成数据迁移）**，无需先安装特定的 V2 中转版本。
 {% endhint %}
 
 ## 根据当前情况选择
 
 | 当前情况 | 操作 |
 | --------------- | ------------------------------------ |
-| 仍在 V1，需要保留数据 | 将 V1 更新到 1.9.13，按本页步骤直接安装 V2.0.2。 |
-| 已经在使用 V2 | 正常升级 V2.0.2，继续使用当前 V2 数据；不要点击【重新迁移】。 |
+| 仍在 V1，需要保留数据 | 将 V1 更新到 1.9.13，按本页步骤直接安装 V2。 |
+| 已经在使用 V2 | 正常升级 V2，继续使用当前 V2 数据；不要点击【重新迁移】。 |
 | 之前迁移 V1 失败或遗漏数据 | 完整备份当前 V2 后，才可使用【重新迁移】从 V1 重新开始。 |
 | 不需要 V1 数据 | 可以选择【忽略并使用默认值】，从默认配置开始；V1 数据不会迁入。 |
 
 ## 升级前确认
 
 * V1 不低于 1.9.12，建议先更新到最终版 1.9.13 并至少启动一次。
-* 首次迁移可以直接使用 V2.0.2。
+* 首次迁移可以直接使用 V2。
 * 自定义数据目录或外置磁盘可以正常读写。
 * 对话、Agent、知识库导入和文件处理任务均已结束。
 
@@ -55,9 +55,9 @@ icon: arrow-right-arrow-left
 {% endstep %}
 
 {% step %}
-### 首次启动 V2.0.2
+### 首次启动 V2
 
-从 [V2 官方下载](https://cherryai.com.cn/download) 获取匹配系统和芯片的 V2.0.2 安装包，也可以使用 [GitCode 发布页](https://gitcode.com/CherryHQ/cherry-studio/releases/v2.0.2) 或 [GitHub 发布页](https://github.com/CherryHQ/cherry-studio/releases/tag/v2.0.2)。完全退出 V1 后安装并启动。
+从 [V2 官方下载](https://cherryai.com.cn/download) 获取匹配系统和芯片的 V2 安装包，也可以使用 [GitCode 发布页](https://gitcode.com/CherryHQ/cherry-studio/releases) 或 [GitHub 发布页](https://github.com/CherryHQ/cherry-studio/releases)。完全退出 V1 后安装并启动。
 {% endstep %}
 
 {% step %}
@@ -86,7 +86,7 @@ icon: arrow-right-arrow-left
 
 ## 只有迁移失败才使用【重新迁移】
 
-如果此前 V1 迁移失败或遗漏数据，V2.0.2 可在【设置】→【数据】选择【重新迁移】。该操作会重启应用，并从保留的 V1 数据重新执行迁移。
+如果此前 V1 迁移失败或遗漏数据，V2 可在【设置】→【数据】选择【重新迁移】。该操作会重启应用，并从保留的 V1 数据重新执行迁移。
 
 {% hint style="danger" %}
 【重新迁移】会永久删除当前 V2 数据，不会把 V1 与 V2 数据合并。除非此前 V1 迁移失败或遗漏数据，否则一定不要点击。操作前必须创建当前 V2 的完整备份；需要保留的 V2 新内容还应单独导出。
@@ -127,6 +127,6 @@ icon: arrow-right-arrow-left
 
 * [Cherry Studio V2 官方下载](https://cherryai.com.cn/download)
 * [Cherry Studio V1 官方下载](https://cherryai.com.cn/download/v1)
-* V2.0.2 发布页：[GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases/v2.0.2) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases/tag/v2.0.2)
+* V2 发布页：[GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases)
 * [官方迁移设计说明](https://github.com/CherryHQ/cherry-studio/blob/main/src/main/data/migration/v2/README.md#version-compatibility-gate)
 * [问题反馈与功能建议](../../question-contact/suggestions.md)

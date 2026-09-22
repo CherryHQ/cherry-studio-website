@@ -15,12 +15,12 @@ Antes de alternar a versão, crie um backup completo dentro do aplicativo, saia 
 
 ## Migração de Dados da V1 para V2
 
-A V2.0.2 já suporta migração direta da V1.9.13, sem necessidade de passagem pela V2.0.0.
+A V2 já suporta migração direta da V1.9.13, sem precisar de uma versão intermediária específica da V2.
 
 | Situação Atual | O Que Fazer |
 | --------------- | ---------------------------------- |
-| Ainda na V1, precisa reter dados | Atualize a V1 para 1.9.13 e instale diretamente a V2.0.2 para concluir a migração. |
-| Já está usando a V2 | Atualize normalmente para a V2.0.2 e continue usando os dados atuais da V2. |
+| Ainda na V1, precisa reter dados | Atualize a V1 para 1.9.13 e instale diretamente a V2 para concluir a migração. |
+| Já está usando a V2 | Atualize normalmente para a V2 e continue usando os dados atuais da V2. |
 | Migração da V1 falhou ou houve perda de dados anteriormente | Faça um backup completo da V2 atual antes de usar [Migrar Novamente]. |
 | Não precisa dos dados da V1 | Pode selecionar [Ignorar e Usar Padrões], mas os dados da V1 não serão migrados. |
 
@@ -31,7 +31,7 @@ O [Migrar Novamente] em [Configurações] → [Dados] exclui permanentemente os 
 ## Pontos de Download
 
 * [Download Oficial da V1](https://cherryai.com.cn/download/v1)
-* Página de lançamento da V2.0.2: [GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases/v2.0.2) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases/tag/v2.0.2)
+* Página de lançamento da V2: [GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases)
 * [Download Oficial da V2](https://cherryai.com.cn/download)
 
 Para mais informações sobre backups, falhas de migração e observações sobre o banco de dados, consulte [【Atualização e Reversão】](../cherry-studio/installation/upgrade-downgrade.md).
