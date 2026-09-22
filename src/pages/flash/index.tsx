@@ -18,7 +18,6 @@ const FLASH_PLANS_URL = 'https://cloud.cherryai.com/account/plans'
 const RATE_KEYS = ['input', 'output', 'cache_read', 'cache_write'] as const
 const BADGE_ICONS = [Wallet, Clock, Gauge]
 const MODEL_LOGOS: Record<string, string> = {
-  deepseek: deepseekLogo,
   'deepseek-v41': deepseekLogo,
   qwen: qwenLogo,
   glm: zhipuLogo

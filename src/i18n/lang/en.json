@@ -19,7 +19,7 @@
     "careers": "Join Cherry Studio core team. Looking for AI Native full-stack engineers to build next-gen AI products.",
     "download_v1": "Archived Cherry Studio V1 builds for macOS, Windows and Linux. V2 is the recommended release.",
     "download_v2": "Download the latest Cherry Studio V2 release for macOS, Windows and Linux. Free and open source under AGPL.",
-    "flash": "Flash gives you DeepSeek V4, Qwen 3.8 and GLM 5.3 in one $8/month subscription. No separate provider accounts, cancel anytime.",
+    "flash": "Flash gives you DeepSeek V4.1, Qwen 3.8 and GLM 5.3 in one $8/month subscription. No separate provider accounts, cancel anytime.",
     "flash_usage": "What the Cherry Flash subscription includes: the models in the plan, per-token rates, monthly allowances, peak hours and privacy.",
     "not_found": "The page you are looking for does not exist."
   },
@@ -534,17 +534,6 @@
     },
     "models": [
       {
-        "id": "deepseek",
-        "name": "DeepSeek V4 Flash",
-        "input": "Off-peak $0.22 / Peak $0.44",
-        "output": "Off-peak $0.66 / Peak $1.32",
-        "cache_read": "Off-peak $0.007 / Peak $0.014",
-        "cache_write": "—",
-        "allowance": "$18",
-        "tokens": "of usage",
-        "free": ["cache_write"]
-      },
-      {
         "id": "deepseek-v41",
         "name": "DeepSeek V4.1 Flash",
         "input": "Off-peak $0.15 / Peak $0.30",
@@ -579,7 +568,7 @@
       }
     ],
     "peak_title": "DeepSeek peak and off-peak hours",
-    "peak_body": "DeepSeek V4 Flash and DeepSeek V4.1 Flash are both billed by time of day. Peak hours are Monday to Friday, 01:00–04:00 and 06:00–10:00 UTC; all other times, including weekends, are billed at the off-peak rate. Qwen and GLM use a single rate around the clock.",
+    "peak_body": "DeepSeek V4.1 Flash is billed by time of day. Peak hours are Monday to Friday, 01:00–04:00 and 06:00–10:00 UTC; all other times, including weekends, are billed at the off-peak rate. Qwen and GLM use a single rate around the clock.",
     "faq_title": "Questions about billing",
     "faq": [
       {
@@ -638,7 +627,7 @@
     "limits": {
       "title": "Usage limits",
       "intro": "Rates are per 1M tokens. The allowance column is the value of usage included each month.",
-      "peak_note": "DeepSeek V4 Flash and DeepSeek V4.1 Flash: peak hours are Monday to Friday, 01:00–04:00 and 06:00–10:00 UTC; all other times, including weekends, are off-peak.",
+      "peak_note": "DeepSeek V4.1 Flash: peak hours are Monday to Friday, 01:00–04:00 and 06:00–10:00 UTC; all other times, including weekends, are off-peak.",
       "console": "You can track your current usage in the console.",
       "change": "Limits may change as we learn from early usage and feedback."
     },
