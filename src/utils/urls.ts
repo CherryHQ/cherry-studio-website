@@ -86,3 +86,7 @@ export function getEnterpriseUrl(language: string): string {
 export function getDocsUrl(language: string): string {
   return `/docs/${language.toLowerCase().startsWith('zh') ? 'zh-cn' : 'en'}/`
 }
+
+export function getMobileDocsUrl(language: string): string {
+  return `${getDocsUrl(language)}mobile/`
+}

@@ -96,7 +96,8 @@ export async function renderMarkdown(markdown, rewrite, report) {
       '*': [...(defaultSchema.attributes['*'] || []), 'id'],
       code: [['className', /^language-./, 'math-inline', 'math-display']],
       aside: ['dataHint'],
-      div: ['dataCards', 'dataCard'],
+      div: ['dataCards', 'dataCard', 'dataMobileGallery'],
+      figure: ['dataMobileShot'],
       img: ['src', 'alt', 'title', 'width', 'height'],
       video: ['src', 'controls', 'poster'],
       source: ['src', 'type']

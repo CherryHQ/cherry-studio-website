@@ -19,12 +19,14 @@ export default function SimpleHeader() {
       githubIcon={githubIcon}
       links={[
         { href: '/', label: t('nav.home'), active: pathname === '/' },
+        { href: '/mobile', label: t('nav.mobile'), active: pathname.startsWith('/mobile') },
         { href: getDocsUrl(i18n.language), label: t('nav.docs') },
         { href: '/theme', label: t('nav.theme'), active: pathname === '/theme' },
         { href: '/careers', label: t('nav.careers'), active: pathname === '/careers' },
         { href: getEnterpriseUrl(i18n.language), label: t('nav.enterprise'), external: true }
       ]}
       downloadLabel={t('nav.download')}
+      downloadHref={pathname.startsWith('/mobile') ? '/download?platform=mobile' : '/download'}
       menuLabel={t('nav.menu')}
       closeLabel={t('nav.close_menu')}
       mobileControls={
