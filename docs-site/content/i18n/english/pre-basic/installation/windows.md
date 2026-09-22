@@ -1,29 +1,42 @@
 ---
-description: Windows version installation tutorial
+description: Windows installation guide
 icon: windows
 ---
-# Windows
 
-## Open Official Website
+# Windows Installation
 
-{% hint style="warning" %}
-Note: Windows 7 operating system does not support installing Cherry Studio.
-{% endhint %}
+## 1. Download the Installer
 
-## Download
+Open the [official download page](https://cherryai.com/download/v2) and select **Windows**.
 
-{% embed url="https://cherryai.com/download" %}
+<figure><img src="../../../../assets/0aa42c8c95c2c7acadb2db77.webp" alt="Cherry Studio official download page with Windows, macOS, Linux and Mobile tabs"><figcaption><p>The official download page: select the Windows tab</p></figcaption></figure>
 
-<figure><img src="../../../../assets/906a35e2d311aeff11e6ef17.webp" alt="Cherry Studio official website homepage with the Download button"><figcaption><p>Open Official Website</p></figcaption></figure>
+Most Intel / AMD PCs should choose the **standard Windows** build; Windows on ARM devices should choose the build marked **ARM**. If you want a portable version that doesn't install into the system, choose the portable build for the same architecture.
 
-## Installation
+Not sure about your device's architecture? Open **Settings → System → About** in Windows and check **System type**.
 
-<figure><img src="../../../../assets/375eca868b4baada5b582357.webp" alt=""><figcaption><p>Software Installation Interface</p></figcaption></figure>
+## 2. Install and Launch
 
-### Software Dependencies
+1. Double-click the downloaded installer;
+2. When Windows shows a User Account Control prompt, confirm the file comes from an official source and choose to continue;
+3. Follow the setup wizard to finish installing;
+4. Launch Cherry Studio from the Start menu.
 
-This software relies on the Visual C++ Redistributable runtime. If prompted during installation, please click Yes to install the software dependencies.
+## FAQ
 
-Or download and install manually: [https://aka.ms/vs/17/release/vc\_redist.x64.exe](https://aka.ms/vs/17/release/vc_redist.x64.exe)
+### Missing runtime library
 
-<div data-full-width="true"><figure><img src="../../../../assets/298801c9d169cf7f2e2d7c3a.webp" alt=""><figcaption></figcaption></figure></div>
+The installer checks for the Microsoft Visual C++ runtime matching your device's architecture and downloads and installs it automatically if it's missing.
+
+If the automatic download or installation fails, open the official Microsoft download link from the error message, install the runtime, then run the Cherry Studio installer again:
+
+* [x64 runtime](https://aka.ms/vs/17/release/vc_redist.x64.exe)
+* [ARM64 runtime](https://aka.ms/vs/17/release/vc_redist.arm64.exe)
+
+### Cherry Studio won't start
+
+First make sure the installer's architecture matches your device, and check whether security software is blocking it. If it still won't start, include your Windows version, device architecture, installer file name and the full error message in your feedback.
+
+## Next Step
+
+Once you see the Cherry Studio main window, continue with Quick Start.

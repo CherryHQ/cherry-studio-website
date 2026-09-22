@@ -1,24 +1,52 @@
 ---
 icon: robot
 ---
+
 # Default Model Settings
 
-<a id="mo-ren-zhu-shou-mo-xing"></a>
+In many situations Cherry Studio needs to "just pick a model" — for example, to name a conversation, refine a prompt, translate, or generate an image — and it can't ask you which model to use every time. **Default Model settings** tell Cherry Studio **which model to use when you haven't said otherwise**.
 
-## Default Assistant Model
+> Note: these are models for "behind-the-scenes helpers" and **can differ from the model you chat with**. The main chat model is set separately in each assistant.
 
-When an assistant has no default model set, the model configured here will be selected by default for new conversations.
+<figure><img src="../../../../../assets/1bc7abd17852374dd170f877.webp" alt=""><figcaption><p>Default Model (① is the section title): below it, choose one model each for Default Assistant, Fast, Translate and Painting</p></figcaption></figure>
 
-The model used for optimizing prompts and word selection assistant also uses the model set here.
+## What Each of the 4 Default Models Does
 
-## Topic Naming Model
+### Default Assistant Model
 
-After each conversation, a model is called to generate a topic name for the conversation. The model configured here is used for naming.
+* **Used by**: any assistant that doesn't specify its own model automatically uses this one
+* **How to choose**: pick a chat model you use often that is stable and reasonably priced
 
-## Translation Model
+### Fast Model
 
-The translation function in input boxes for conversations, drawing, etc., and the translation model in the translation interface all use the model set here.
+* **Used by**: lightweight internal tasks that don't need top-tier intelligence, such as **naming conversations** and **extracting search keywords**
+* **How to choose**: a **cheap and fast** model is enough. Choose a lightweight model; thinking models are not recommended
 
-## Quick Assistant Model
+### Translate Model
 
-The model used by the quick assistant function. See [Quick Assistant](../quick-assistant.md) for details.
+* **Used by**: message translation in chats, the Translation page, and the translate action in the [Selection Assistant](../../../../../cherrystudio/preview/selection-assistant.md)
+* **How to choose**: any ordinary chat model works. If you translate a lot between Chinese and English, the DeepSeek or Claude series do well
+
+### Painting Model
+
+* **Used by**: the default model for image generation (Paintings)
+* **How to choose**: pick an image generation model you have already configured (such as the qwen-image series)
+
+## Quick Recommendations
+
+If you don't want to dig into it, fill them in like this:
+
+| Field | Recommendation |
+|---|---|
+| Default Assistant Model | The chat model you use most |
+| Fast Model | A cheap, fast lightweight model |
+| Translate Model | Any chat model that follows instructions (or a dedicated translation model such as the qwen-mt series) |
+| Painting Model | An image generation model you have configured |
+
+If you're unsure, keep everything at the defaults and come back to adjust whichever one falls short after using it for a while.
+
+***
+
+### Get Help and Submit Feedback
+
+If you have any questions, bugs, or feature suggestions during configuration or use, please use the official channels listed in [Feedback and Suggestions](../../../../../question-contact/suggestions.md).
