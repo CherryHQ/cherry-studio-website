@@ -3,6 +3,7 @@ import type { Item, Node, Root } from 'fumadocs-core/page-tree'
 import data from '../../generated/content.json'
 import redirects from '../../generated/legacy-redirects.json'
 import languages from '../../locales.json'
+import { getSectionLabels } from './section-labels'
 
 export const locales = languages
 export type Locale = (typeof locales)[number]['code']
@@ -80,7 +81,7 @@ export function getSectionTree(locale: string, section: DocumentationSection): R
 
   return {
     ...tree,
-    name: section === 'mobile' ? 'Cherry Studio Mobile' : tree.name,
+    name: section === 'mobile' ? `${tree.name} ${getSectionLabels(locale).mobile}` : tree.name,
     children: sectionChildren,
     fallback: tree.fallback
       ? {

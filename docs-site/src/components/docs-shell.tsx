@@ -5,6 +5,8 @@ import { DocsLayout } from 'fumadocs-ui/layouts/docs'
 import { usePathname } from 'next/navigation'
 import type { ReactNode } from 'react'
 
+import { getSectionLabels } from '@/lib/section-labels'
+
 export function DocsShell({
   children,
   locale,
@@ -20,7 +22,7 @@ export function DocsShell({
   const segments = pathname.split('/').filter(Boolean)
   const localeIndex = segments.indexOf(locale)
   const mobile = localeIndex >= 0 && segments[localeIndex + 1] === 'mobile'
-  const chinese = locale.startsWith('zh')
+  const labels = getSectionLabels(locale)
 
   return (
     <DocsLayout
@@ -28,17 +30,17 @@ export function DocsShell({
       containerProps={{ className: 'mt-[72px] min-h-[calc(100dvh-72px)] [--fd-banner-height:72px]' }}
       tree={mobile ? mobileTree : desktopTree}
       nav={{
-        title: chinese ? '文档' : 'Docs',
+        title: labels.docs,
         url: mobile ? `/${locale}/mobile/` : `/${locale}/`
       }}
       links={[
         {
-          text: chinese ? '桌面版' : 'Desktop',
+          text: labels.desktop,
           url: `/${locale}/`,
           active: mobile ? 'none' : 'nested-url'
         },
         {
-          text: chinese ? '移动版' : 'Mobile',
+          text: labels.mobile,
           url: `/${locale}/mobile/`,
           active: mobile ? 'nested-url' : 'none'
         }
