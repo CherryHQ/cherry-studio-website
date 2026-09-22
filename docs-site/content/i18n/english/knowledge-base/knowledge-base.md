@@ -44,7 +44,7 @@ You can use a knowledge base without an embedding model; it then relies mainly o
 {% step %}
 ### 1. Create a knowledge base with a clear scope
 
-Open **Knowledge Base** in the left navigation → click the add button above the knowledge base list. Name it "subject + purpose", for example **Employee Travel Policy**.
+Open **Knowledge Base** in the left navigation → click **+ New Knowledge Base** at the top of the knowledge base list. Name it "subject + purpose", for example **Employee Travel Policy**.
 {% endstep %}
 
 {% step %}
@@ -56,7 +56,7 @@ For your first try, set **Embedding model** to **None**. Configure an embedding 
 {% step %}
 ### 3. Add material
 
-Open the knowledge base, click the add material button, and choose **File**, **Note**, **Folder** or **Link**.
+Open the knowledge base, click **Add Data Source**, and choose **File**, **Note**, **Folder** or **Link**.
 
 <figure><img src="../../../assets/4622da2093d43942d7ee443e.webp" alt="The four material entries in a knowledge base: file, note, folder and link"><figcaption><p>Choose the entry that matches the source; don't import unrelated folders just to save steps.</p></figcaption></figure>
 {% endstep %}

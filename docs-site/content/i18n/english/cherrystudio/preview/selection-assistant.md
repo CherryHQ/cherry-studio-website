@@ -25,11 +25,7 @@ Open [Settings] → [Selection Assistant]:
 <figure><img src="../../../../assets/4a33948c9d73e37d71d5f5cb.webp" alt=""><figcaption><p>Selection Assistant settings: Enable / Toolbar / Action Window</p></figcaption></figure>
 
 1. Toggle the **Enable** switch
-2. **macOS** users will see a prompt requesting **Accessibility permissions** upon first enablement:
-
-   <figure><img src="../../../../assets/ed99fa5f9b3118d263e09cd2.webp" alt=""><figcaption><p>Accessibility permission prompt on first enablement</p></figcaption></figure>
-
-   Click **Go to Settings** → In the opened [System Settings] → [Privacy & Security] → [Accessibility], find Cherry Studio and toggle the switch on → Return to Cherry Studio and enable it again.
+2. **macOS** users will see a prompt requesting **Accessibility permissions** upon first enablement. Click **Go to Settings** → In the opened [System Settings] → [Privacy & Security] → [Accessibility], find Cherry Studio and toggle the switch on → Return to Cherry Studio and enable it again.
 3. (Optional) In [Toolbar] → [Trigger Mode], select the trigger method (options vary by platform):
    * **Selection**: Toolbar appears immediately after selecting text (default)
    * **Ctrl Key** (Windows only): Toolbar appears only after selecting text and **holding the Ctrl key** (prevents accidental triggers)

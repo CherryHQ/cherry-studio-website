@@ -12,14 +12,14 @@ Think of it as the "My Computer" inside Cherry Studio.
 
 Click `+` in the top tab bar → **Launchpad** → **Files**.
 
-<figure><img src="../../../../assets/98f1e10b498ad95367ccf4b5.webp" alt=""><figcaption><p>The Files page: categories by type on the left, sorting and select all / multi-select at the top</p></figcaption></figure>
+<figure><img src="../../../../assets/4de14e1474655585e5c65056.webp" alt="Files page with file types on the left and a sortable file list on the right"><figcaption><p>The Files page: file types on the left; a sortable list with checkboxes and <strong>Upload files</strong> on the right</p></figcaption></figure>
 
 ## What You Can Do Here
 
-* **Filter by type**: the left side groups files by type — `Documents`, `Images`, `Text`, `Audio`, `Video`, `Other` and `All Files`
-* **Sort**: the top bar sorts by `File Name`, `Size`, `Type` or `Modified Time`
-* **Batch actions**: use the `Select All` checkbox in the top right together with the `⋯` menu to delete in bulk
-* **Upload**: drag files straight onto the page, or click `Upload File`
+* **Filter by type**: the left side groups files by type — `Image`, `Video`, `Audio`, `Text`, `Document`, `Other` and `All Files`
+* **Sort**: click a column header to sort by `Name`, `Size`, `Type` or `Modified At`
+* **Batch actions**: tick the checkboxes next to files (or the one in the header to select all) to act on several files at once
+* **Upload**: drag files straight onto the page, or click `Upload files` in the top right
 * **Preview**: click a file to preview it (images, PDFs and other supported formats)
 * **Rename**: right-click → Rename
 * **Delete**: right-click → Delete. Deleted files go to the **Trash** first (see below)

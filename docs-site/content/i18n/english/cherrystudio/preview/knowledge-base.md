@@ -6,7 +6,7 @@ icon: books
 
 A knowledge base is like giving the AI its own **reference book**: you put your documents, notes and web pages into it, and later, during chats, the AI looks things up in that book to answer your questions.
 
-<figure><img src="../../../../assets/a80c39b565c9a6f26e9fdaf6.webp" alt=""><figcaption><p>Knowledge Base: the left column lists your knowledge bases (with <code>+ New Knowledge Base</code> at the top); on the right, add files, notes, folders or links as data sources to the selected knowledge base</p></figcaption></figure>
+<figure><img src="../../../../assets/9778629cafd8e3079fbb1ee8.webp" alt="Knowledge Base page with the knowledge base list on the left and the selected knowledge base's items and their status on the right"><figcaption><p>Knowledge Base: the left column lists your knowledge bases (with <code>+ New Knowledge Base</code> at the top); the right side shows the selected knowledge base's items and their processing status, with <strong>Add Data Source</strong> and <strong>Recall Test</strong> at the top</p></figcaption></figure>
 
 ## What Can You Do With a Knowledge Base?
 

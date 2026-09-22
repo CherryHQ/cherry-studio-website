@@ -44,8 +44,6 @@ That is:
 
 *   When the API address ends with `/`, only "chat/completions" will be appended.
 *   When the API address ends with `#`, no appending operation will be performed, and only the entered address will be used.
-
-<img src="../../../../../assets/27c00f0e8b8976ff9e7f76fe.webp" alt="" data-size="original"><img src="../../../../../assets/d6c6bcca839c04b6bd0879be.webp" alt="" data-size="original">
 {% endhint %}
 
 ### Adding Models
