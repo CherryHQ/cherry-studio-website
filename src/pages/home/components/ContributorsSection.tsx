@@ -1,3 +1,4 @@
+import { ArrowUpRight } from 'lucide-react'
 import { type FC, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -19,11 +20,13 @@ interface RepoStats {
 }
 
 const GITHUB_REPO = 'https://api.github.com/repos/CherryHQ/cherry-studio'
+const FEATURED_CONTRIBUTORS = 10
 
 const ContributorsSection: FC = () => {
   const { t, i18n } = useTranslation()
   const isEn = isEnglishSite(i18n.resolvedLanguage || i18n.language)
   const [contributors, setContributors] = useState<Contributor[]>([])
+  const [featuredContributors, setFeaturedContributors] = useState<Contributor[]>([])
   const [totalContributions, setTotalContributions] = useState(0)
   const [loading, setLoading] = useState(true)
   const [repoStats, setRepoStats] = useState<RepoStats>({ stars: null, contributors: null, forks: null })
@@ -50,12 +53,13 @@ const ContributorsSection: FC = () => {
       }
     }
 
-    // 英文站只展示 Stars / Contributors / Forks 三个数值
+    // 英文站展示仓库统计和贡献者头像
     const fetchRepoStats = async () => {
       try {
-        const [repoResponse, contributorsResponse] = await Promise.all([
+        const [repoResponse, contributorsResponse, featuredResponse] = await Promise.all([
           fetch(GITHUB_REPO),
-          fetch(`${GITHUB_REPO}/contributors?per_page=1&anon=true`)
+          fetch(`${GITHUB_REPO}/contributors?per_page=1&anon=true`),
+          fetch(`${GITHUB_REPO}/contributors?per_page=${FEATURED_CONTRIBUTORS}`)
         ])
 
         const repo = repoResponse.ok ? await repoResponse.json() : null
@@ -66,6 +70,11 @@ const ContributorsSection: FC = () => {
           forks: typeof repo?.forks_count === 'number' ? repo.forks_count : null,
           contributors: lastPage ? Number(lastPage[1]) : null
         })
+
+        if (featuredResponse.ok) {
+          const featured: Contributor[] = await featuredResponse.json()
+          setFeaturedContributors(featured.slice(0, FEATURED_CONTRIBUTORS))
+        }
       } catch (error) {
         console.error('Error fetching repo stats:', error)
       }
@@ -84,7 +93,10 @@ const ContributorsSection: FC = () => {
     return ((contributions / totalContributions) * 100).toFixed(1)
   }
 
-  const formatStat = (value: number | null) => (value === null ? '—' : value.toLocaleString('en-US'))
+  const formatStat = (value: number | null) => {
+    if (value === null) return '—'
+    return value >= 1000 ? `${(value / 1000).toFixed(1)}k` : value.toLocaleString('en-US')
+  }
 
   if (loading && !isEn) {
     return (
@@ -138,17 +150,52 @@ const ContributorsSection: FC = () => {
             </a>
           </div>
 
-          <div className="border-border/50 bg-card/50 mx-auto max-w-3xl rounded-2xl border p-6 sm:p-8">
+          <div className="border-border/50 bg-card/50 mx-auto max-w-[520px] rounded-2xl border p-6">
             <dl className="grid grid-cols-3 gap-4">
               {stats.map((stat) => (
                 <div key={stat.label} className="text-center">
-                  <dd className="text-foreground text-3xl font-bold tabular-nums sm:text-4xl">
+                  <dd className="text-foreground text-2xl font-bold tabular-nums sm:text-3xl">
                     {formatStat(stat.value)}
                   </dd>
                   <dt className="text-muted-foreground mt-1 text-xs sm:text-sm">{stat.label}</dt>
                 </div>
               ))}
             </dl>
+
+            <div className="border-border/50 mt-6 flex flex-col items-center justify-center gap-4 border-t pt-5 sm:flex-row sm:gap-3">
+              {featuredContributors.length > 0 && (
+                <div className="flex items-center -space-x-3 sm:-space-x-2">
+                  {featuredContributors.map((contributor) => (
+                    <a
+                      key={contributor.id}
+                      href={contributor.html_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title={contributor.login}
+                      className="border-background focus-visible:ring-primary relative rounded-full border-2 transition-transform hover:z-10 hover:-translate-y-1 focus-visible:z-10 focus-visible:outline-none focus-visible:ring-2">
+                      <img
+                        src={contributor.avatar_url}
+                        alt={contributor.login}
+                        className="h-7 w-7 rounded-full sm:h-8 sm:w-8"
+                      />
+                    </a>
+                  ))}
+                  {repoStats.contributors !== null && repoStats.contributors > featuredContributors.length && (
+                    <span className="border-background bg-secondary text-muted-foreground relative flex h-8 min-w-8 items-center justify-center rounded-full border-2 px-1 text-[10px] font-medium sm:h-9 sm:min-w-9">
+                      +{repoStats.contributors - featuredContributors.length}
+                    </span>
+                  )}
+                </div>
+              )}
+              <a
+                href="https://github.com/CherryHQ/cherry-studio/graphs/contributors"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-primary focus-visible:ring-primary inline-flex items-center gap-1 text-xs whitespace-nowrap transition-colors focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-2">
+                {t('contributors.view_all_on_github')}
+                <ArrowUpRight className="h-3.5 w-3.5" />
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -247,7 +294,7 @@ const ContributorsSection: FC = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="text-muted-foreground hover:text-primary inline-flex items-center gap-2 text-sm transition-colors">
-            <span>View all contributors on GitHub</span>
+            <span>{t('contributors.view_all_on_github')}</span>
             <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path
                 strokeLinecap="round"
