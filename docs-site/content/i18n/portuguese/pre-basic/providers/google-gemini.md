@@ -1,0 +1,24 @@
+# Google Gemini
+
+
+## Obter chave de API
+
+* Antes de obter a chave de API do Gemini, você precisa ter um projeto no Google Cloud (se já tiver, pule esta etapa)
+* Acesse o [Google Cloud](https://console.cloud.google.com/projectcreate) para criar um projeto, preencha o nome do projeto e clique em "Criar projeto"
+
+<figure><img src="../../../../assets/27210003acacf618df874e98.webp" alt=""><figcaption></figcaption></figure>
+
+* Na [página oficial de chave de API](https://aistudio.google.com/app/apikey), clique em `Chaves → Criar chave de API`
+
+<figure><img src="../../../../assets/b49760732ce7ac30d5ef7c30.webp" alt=""><figcaption></figcaption></figure>
+
+* Copie a chave gerada e abra as [configurações de provedor](../../pre-basic/settings/providers.md) do CherryStudio
+* Encontre o provedor Gemini e insira a chave obtida
+
+<figure><img src="../../../../assets/84d594944e11255268fac0c1.webp" alt=""><figcaption></figcaption></figure>
+
+* Clique em "Gerenciar" ou "Adicionar" na parte inferior, adicione os modelos suportados e ative o interruptor do provedor no canto superior direito para começar a usar.
+
+{% hint style="info" %}
+- Em todas as regiões da China exceto Taiwan, o serviço Google Gemini não pode ser usado diretamente; é necessário resolver o problema de proxy por conta própria.
+{% endhint %}

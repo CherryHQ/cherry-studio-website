@@ -1,4 +1,5 @@
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { createHash } from 'node:crypto'
+import { mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 
 const distDir = join(process.cwd(), 'dist')
@@ -24,7 +25,7 @@ const configs = {
     baiduAnalytics: true,
     // 中文站 sitemap 额外带的站点
     extraSitemapEntries: [
-      { url: 'https://docs.cherryai.com.cn/', priority: '0.8' },
+      { url: 'https://cherryai.com.cn/docs/zh-cn/', priority: '0.8' },
       { url: 'https://enterprise.cherryai.com.cn/', priority: '0.7' }
     ]
   },
@@ -45,7 +46,10 @@ const configs = {
     websiteAlternateName: 'Cherry Studio Official Website',
     publisherName: 'Cherry Studio Team',
     baiduAnalytics: false,
-    extraSitemapEntries: []
+    extraSitemapEntries: [
+      { url: 'https://cherryai.com/docs/en/', priority: '0.8' },
+      { url: 'https://enterprise.cherryai.com/', priority: '0.7' }
+    ]
   }
 }
 
@@ -81,6 +85,7 @@ const SITEMAP = {
   en: [
     { path: '/', priority: '1.0' },
     { path: '/download', priority: '0.9' },
+    { path: '/mobile', priority: '0.9' },
     { path: '/flash', priority: '0.9' },
     { path: '/flash/usage', priority: '0.6' },
     { path: '/theme', priority: '0.7' }
@@ -255,6 +260,13 @@ function writeRouteHtml(route) {
 function applyIndexTarget() {
   const indexPath = join(distDir, 'index.html')
   let html = readFileSync(indexPath, 'utf8')
+  // Keep the blocking theme initializer, but give each version a new URL.
+  // This also bypasses browsers that cached the old fixed URL as immutable.
+  const themeScript = join(distDir, 'theme-init.js')
+  const themeHash = createHash('sha256').update(readFileSync(themeScript)).digest('hex').slice(0, 8)
+  const themeName = `theme-init-${themeHash}.js`
+  renameSync(themeScript, join(distDir, 'assets', themeName))
+  html = html.replace('src="/theme-init.js"', `src="/assets/${themeName}"`)
   const currentUrl = `${config.domain}/`
   const socialImage = `${config.domain}/assets/images/social-card.jpg`
 

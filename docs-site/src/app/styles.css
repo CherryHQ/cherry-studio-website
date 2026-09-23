@@ -1,0 +1,142 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+@import "tailwindcss";
+@import "fumadocs-ui/css/neutral.css";
+@import "fumadocs-ui/css/preset.css";
+@source "../../node_modules/fumadocs-ui/dist/**/*.js";
+@source "../../../shared/**/*.tsx";
+
+@view-transition {
+  navigation: auto;
+}
+
+.site-header {
+  view-transition-name: site-header;
+}
+
+::view-transition-group(site-header),
+::view-transition-old(site-header),
+::view-transition-new(site-header) {
+  animation: none;
+}
+
+@theme inline {
+  --color-background: var(--color-fd-background);
+  --color-foreground: var(--color-fd-foreground);
+  --color-border: var(--color-fd-border);
+  --color-secondary: var(--color-fd-secondary);
+  --color-muted-foreground: var(--color-fd-muted-foreground);
+  --color-accent: var(--color-fd-accent);
+}
+
+:root {
+  --color-fd-background: #ffffff;
+}
+
+.dark {
+  --color-fd-background: #0a0a0b;
+}
+
+.site-header,
+.site-header-menu {
+  --color-fd-background: #ffffff;
+  --color-fd-foreground: #0a0a0b;
+  --color-fd-secondary: #f4f4f5;
+  --color-fd-muted-foreground: #71717a;
+  --color-fd-accent: #f4f4f5;
+  --color-fd-border: #e4e4e7;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.dark .site-header,
+.dark .site-header-menu {
+  --color-fd-background: #0a0a0b;
+  --color-fd-foreground: #fafafa;
+  --color-fd-secondary: #1c1c1f;
+  --color-fd-muted-foreground: #a1a1aa;
+  --color-fd-accent: #27272a;
+  --color-fd-border: rgba(255, 255, 255, 0.08);
+}
+
+.prose pre > code {
+  display: grid;
+  width: max-content;
+  min-width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.prose pre.shiki .line {
+  padding-inline: 0;
+}
+
+/* Match Fumadocs' accordion treatment for raw HTML disclosure blocks emitted by the Markdown converter. */
+.prose details {
+  margin-block: 0.75rem;
+  overflow: hidden;
+  border: 1px solid var(--color-fd-border);
+  border-radius: 0.75rem;
+  background: var(--color-fd-card);
+}
+
+.prose details > summary {
+  display: flex;
+  min-height: 3rem;
+  cursor: pointer;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  list-style: none;
+  color: var(--color-fd-card-foreground);
+  font-weight: 500;
+  transition: background-color 150ms ease;
+}
+
+.prose details > summary::-webkit-details-marker {
+  display: none;
+}
+
+.prose details > summary::before {
+  width: 0.5rem;
+  height: 0.5rem;
+  flex: 0 0 auto;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  color: var(--color-fd-muted-foreground);
+  content: "";
+  transform: rotate(-45deg);
+  transition: transform 200ms ease;
+}
+
+.prose details > summary:hover {
+  background: var(--color-fd-accent);
+}
+
+.prose details > summary:focus-visible {
+  outline: 2px solid var(--color-fd-ring);
+  outline-offset: -2px;
+}
+
+.prose details[open] > summary {
+  border-bottom: 1px solid var(--color-fd-border);
+}
+
+.prose details[open] > summary::before {
+  transform: rotate(45deg);
+}
+
+.prose details > :not(summary) {
+  margin-inline: 1rem;
+}
+
+.prose details > summary + * {
+  margin-top: 1rem;
+}
+
+.prose details > :last-child {
+  margin-bottom: 1rem;
+}

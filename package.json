@@ -4,15 +4,21 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "node scripts/dev.mjs",
     "build": "pnpm build:en",
-    "build:cn": "tsc -b && VITE_SITE_LOCALE=zh vite build && SITE_LOCALE=zh node scripts/finalize-static-site.mjs",
-    "build:en": "tsc -b && VITE_SITE_LOCALE=en vite build && SITE_LOCALE=en node scripts/finalize-static-site.mjs",
+    "build:cn": "tsc -b && VITE_SITE_LOCALE=zh vite build && SITE_LOCALE=zh node scripts/finalize-static-site.mjs && pnpm docs:build && SITE_LOCALE=zh node docs-site/scripts/merge-output.mjs",
+    "build:en": "tsc -b && VITE_SITE_LOCALE=en vite build && SITE_LOCALE=en node scripts/finalize-static-site.mjs && pnpm docs:build && SITE_LOCALE=en node docs-site/scripts/merge-output.mjs",
     "format": "biome format --write .",
     "lint": "biome lint --write .",
     "check": "biome check --write .",
     "preview": "vite preview",
-    "release": "pnpm build:cn && rsync -rvztl --delete ./dist/* tencent.vm:/opt/1panel/apps/openresty/openresty/www/sites/cherry-ai.com/index"
+    "release": "pnpm build:cn && rsync -rvztl --delete ./dist/* tencent.vm:/opt/1panel/apps/openresty/openresty/www/sites/cherry-ai.com/index",
+    "docs:dev": "pnpm --dir docs-site dev",
+    "docs:build": "pnpm --dir docs-site build",
+    "docs:test": "pnpm --dir docs-site test",
+    "dev:website": "vite",
+    "docs:verify": "node docs-site/scripts/verify-output.mjs",
+    "docs:generate": "pnpm --dir docs-site generate"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.15",

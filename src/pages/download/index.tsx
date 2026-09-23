@@ -30,7 +30,6 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
   const [searchParams] = useSearchParams()
   const platformParam = searchParams.get('platform')
   const archParam = searchParams.get('arch')
-  usePageMeta(edition === 'v1' ? 'downloadV1' : edition === 'v2' ? 'downloadV2' : 'download')
 
   const isV2 = edition === 'v2'
   const isV1 = edition === 'v1'
@@ -56,6 +55,9 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
   const userSelectedPlatformRef = useRef(false)
   const isMobile = isMobileDevice()
   const showMobile = activePlatform === 'mobile'
+  usePageMeta(
+    showMobile ? 'mobile_download' : edition === 'v1' ? 'downloadV1' : edition === 'v2' ? 'downloadV2' : 'download'
+  )
   const autoDownloadRequested = searchParams.get('autodownload')?.toLowerCase() === 'true'
   const releaseHistoryUrl = RELEASE_HISTORY_URLS[getSiteRegion()]
 

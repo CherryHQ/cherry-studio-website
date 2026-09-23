@@ -16,6 +16,7 @@ import xIcon from '@/assets/images/icons/x.svg'
 import xColorIcon from '@/assets/images/icons/x-color.svg'
 import cherryWxQR from '@/assets/images/resource/cherrywx.png'
 import { copyRSSLink } from '@/utils'
+import { getDocsUrl } from '@/utils/urls'
 import LanguageSelector from './LanguageSelector'
 import ThemeSelector from './ThemeSelector'
 
@@ -74,17 +75,21 @@ const Footer: FC = () => {
     }
   ]
 
-  // 线上英文站页脚只保留 GitHub / Documentation / Feedback，不展示 GitCode
+  // 英文站不展示 GitCode；两站均保留移动版和站内文档入口。
   const cherryLinks = isEn
     ? [
+        { href: '/mobile', label: t('footer.cherry_studio.mobile') },
+        { href: '/download?platform=mobile', label: t('footer.cherry_studio.mobile_download') },
         { href: 'https://github.com/CherryHQ/cherry-studio', label: t('footer.cherry_studio.github') },
-        { href: 'https://docs.cherryai.com.cn', label: t('footer.cherry_studio.docs') },
+        { href: getDocsUrl(i18n.language), label: t('footer.cherry_studio.docs') },
         { href: 'https://github.com/CherryHQ/cherry-studio/issues', label: t('footer.cherry_studio.feedback') }
       ]
     : [
+        { href: '/mobile', label: t('footer.cherry_studio.mobile') },
+        { href: '/download?platform=mobile', label: t('footer.cherry_studio.mobile_download') },
         { href: 'https://github.com/CherryHQ/cherry-studio', label: t('footer.cherry_studio.github') },
         { href: 'https://gitcode.com/CherryHQ/cherry-studio', label: t('footer.cherry_studio.gitcode') },
-        { href: 'https://docs.cherryai.com.cn', label: t('footer.cherry_studio.docs') },
+        { href: getDocsUrl(i18n.language), label: t('footer.cherry_studio.docs') },
         { href: 'https://github.com/CherryHQ/cherry-studio/issues', label: t('footer.cherry_studio.feedback') }
       ]
 
@@ -169,7 +174,7 @@ const Footer: FC = () => {
                   <li key={link.href}>
                     <a
                       href={link.href}
-                      target="_blank"
+                      target={link.href.startsWith('/') ? undefined : '_blank'}
                       rel="noopener noreferrer"
                       className="text-muted-foreground hover:text-primary text-sm transition-colors duration-200">
                       {link.label}
@@ -250,7 +255,7 @@ const Footer: FC = () => {
               {!isEn && (
                 <li>
                   <a
-                    href="https://docs.cherryai.com.cn/question-contact/suggestions"
+                    href={`${getDocsUrl(i18n.language)}question-contact/suggestions/`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-muted-foreground hover:text-primary text-sm transition-colors duration-200">

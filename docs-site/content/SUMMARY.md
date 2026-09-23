@@ -1,0 +1,205 @@
+# Table of contents
+
+## 桌面版
+
+* **开始使用**
+  * [项目简介](README.md)
+  * [快速开始](getting-started/quick-start.md)
+  * [下载与安装教程](cherry-studio/installation/README.md)
+    * [Windows 安装](cherry-studio/installation/windows.md)
+    * [macOS 安装](cherry-studio/installation/macos.md)
+    * [Linux](cherry-studio/installation/linux.md)
+    * [升级与降级](cherry-studio/installation/upgrade-downgrade.md)
+      * [破坏性更新提醒](cherry-studio/installation/v2-breaking-update-notice.md)
+      * [功能差异](cherry-studio/installation/v1-v2-feature-differences.md)
+      * [V1 升级到 V2](cherry-studio/installation/v1-to-v2-migration.md)
+      * [V2 降级到 V1](cherry-studio/installation/v2-to-v1-downgrade.md)
+
+* **功能指南**
+  * [功能介绍](cherrystudio/preview/README.md)
+    * [启动台](cherrystudio/preview/launchpad.md)
+    * [对话-助手](cherrystudio/preview/chat.md)
+    * [工作-智能体](advanced-basic/agent.md)
+    * [绘画](cherrystudio/preview/drawing.md)
+    * [翻译](cherrystudio/preview/translation.md)
+    * [小程序](cherry-studio/preview/app/README.md)
+      * [生成式小程序](cherry-studio/preview/app/generative-mini-apps.md)
+    * [知识库](cherrystudio/preview/knowledge-base.md)
+    * [文件](cherrystudio/preview/files.md)
+    * [编码搭档](cherrystudio/preview/code-cli.md)
+    * [笔记](cherrystudio/preview/notes.md)
+    * [快捷助手](cherrystudio/preview/quick-assistant.md)
+    * [划词助手](cherrystudio/preview/selection-assistant.md)
+
+* **模型与设置**
+  * [模型服务](pre-basic/providers/README.md)
+    * [全部 Provider 快速参考](pre-basic/providers/quick-reference.md)
+    * [模型服务设置](pre-basic/settings/providers.md)
+    * **推荐与免费服务**
+      * [CherryAI (免费)](pre-basic/providers/cherryai/README.md)
+      * [CherryIN](pre-basic/providers/cherryin-1.md)
+    * **海外服务商**
+      * [OpenAI](pre-basic/providers/openai.md)
+      * [Anthropic](pre-basic/providers/anthropic.md)
+      * [Azure OpenAI](pre-basic/providers/azure-openai.md)
+      * [Google Gemini](pre-basic/providers/google-gemini.md)
+      * [Vertex AI](pre-basic/providers/vertex-ai.md)
+      * [Grok](pre-basic/providers/grok.md)
+      * [Mistral](pre-basic/providers/mistral.md)
+      * [Perplexity](pre-basic/providers/perplexity.md)
+      * [Groq](pre-basic/providers/groq.md)
+    * **国内服务商**
+      * [DeepSeek](pre-basic/providers/deepseek.md)
+      * [智谱 ZhiPu](pre-basic/providers/zhipu.md)
+      * [Moonshot AI (Kimi)](pre-basic/providers/moonshot.md)
+      * [MiniMax](pre-basic/providers/minimax.md)
+      * [ModelScope（魔搭）](pre-basic/providers/modelscope.md)
+      * [PPIO 派欧云](pre-basic/providers/ppio.md)
+      * [阿里云百炼](pre-basic/providers/a-li-yun-bai-lian.md)
+      * [硅基流动](pre-basic/providers/siliconcloud.md)
+      * [火山引擎](pre-basic/providers/doubao.md)
+    * **网关与自定义服务**
+      * [OpenRouter](pre-basic/providers/openrouter.md)
+      * [NewAPI](pre-basic/providers/newapi.md)
+      * [OneAPI](pre-basic/providers/oneapi.md)
+      * [自定义服务商](pre-basic/providers/zi-ding-yi-fu-wu-shang.md)
+    * **本地与开发服务**
+      * [Ollama](pre-basic/providers/ollama.md)
+      * [LM Studio](pre-basic/providers/lm-studio.md)
+      * [GitHub Copilot](pre-basic/providers/github-copilot.md)
+      * [MiniMax Coding Plan](pre-basic/providers/minimax-coding-plan.md)
+  * [软件设置](pre-basic/settings/README.md)
+    * **模型**
+      * [默认模型设置](pre-basic/settings/default-models.md)
+      * [本地模型](pre-basic/settings/local-models.md)
+    * **工具与联网**
+      * [联网模式](pre-basic/websearch/README.md)
+        * [免费联网模式](pre-basic/websearch/free-search.md)
+        * [网络搜索黑名单配置](pre-basic/websearch/blacklist.md)
+        * [火山引擎接入联网](pre-basic/websearch/volcengine.md)
+        * [Tavily 联网登录注册教程](pre-basic/websearch/tavily.md)
+        * [SearXNG 本地部署与配置](pre-basic/websearch/searxng.md)
+      * [文档处理](pre-basic/settings/doc-process.md)
+      * [OCR](pre-basic/settings/ocr.md)
+    * **外观与效率**
+      * [外观](pre-basic/settings/display.md)
+        * [自定义 CSS](pre-basic/personalization-settings/custom-css.md)
+        * [字体推荐](pre-basic/personalization-settings/font.md)
+        * [清除 CSS 设置](pre-basic/personalization-settings/clear-css.md)
+      * [通知](pre-basic/settings/notification.md)
+      * [用量统计](pre-basic/settings/usage.md)
+      * [快捷键设置](pre-basic/settings/key-shortcut.md)
+    * **数据与集成**
+      * [数据设置](pre-basic/data-settings/README.md)
+        * [WebDAV 备份](pre-basic/data-settings/webdav.md)
+        * [S3 兼容存储备份](pre-basic/data-settings/s3-compatible.md)
+        * [Notion 配置教程](pre-basic/data-settings/notion.md)
+        * [Obsidian 配置教程](pre-basic/data-settings/obsidian.md)
+        * [思源笔记配置教程](pre-basic/data-settings/siyuan.md)
+        * [修改存储位置](pre-basic/personalization-settings/storage.md)
+    * **系统**
+      * [系统](pre-basic/settings/general.md)
+      * [环境依赖](pre-basic/settings/env-dependencies.md)
+
+* **知识库**
+  * **入门流程**
+    * [知识库入门](knowledge-base/knowledge-base.md)
+    * [创建知识库](knowledge-base/create.md)
+    * [添加与整理资料](knowledge-base/sources.md)
+    * [检查资料与召回](knowledge-base/recall-test.md)
+  * **使用知识库**
+    * [在对话中使用](knowledge-base/chat.md)
+    * [与 Agent 一起使用](knowledge-base/agent.md)
+    * [知识库应用案例](knowledge-base/cases.md)
+  * **配置、维护与排错**
+    * [模型与检索设置](knowledge-base/emb-models-info.md)
+    * [文档解析与 OCR](knowledge-base/document-preprocessing.md)
+    * [数据、隐私与维护](knowledge-base/data.md)
+    * [常见问题](knowledge-base/troubleshooting.md)
+
+* **进阶工作流**
+  * [进阶能力地图](advanced-basic/capability-map.md)
+  * [对话进阶](advanced-basic/chat/README.md)
+    * [多模型对比与消息分支](advanced-basic/chat/model-compare-branches.md)
+    * [长对话、上下文与排队消息](advanced-basic/chat/context-queue.md)
+    * [产物、引用与导出](advanced-basic/chat/artifacts-export.md)
+  * [Agent 工作区](advanced-basic/agent-workspace/README.md)
+    * [创建 Agent 与模型分工](advanced-basic/agent-workspace/create-agent.md)
+    * [工作目录、任务与文件](advanced-basic/agent-workspace/workspaces-tasks-files.md)
+    * [模型分工与 Agent 绘画](advanced-basic/agent-workspace/models-image.md)
+    * [内置工具、知识库、技能与 MCP](advanced-basic/agent-workspace/tools-knowledge-skills-mcp.md)
+    * [权限、记忆与后台任务](advanced-basic/agent-workspace/permissions-memory-background.md)
+  * [知识与内容工作流](advanced-basic/knowledge-content/README.md)
+    * [构建知识库与召回测试](advanced-basic/knowledge-content/knowledge-base.md)
+    * [笔记、知识库与 Agent](advanced-basic/knowledge-content/notes-knowledge-agent.md)
+    * [图片生成、编辑与增强](advanced-basic/knowledge-content/painting-workflow.md)
+    * [文件、图片与长文翻译](advanced-basic/knowledge-content/translation-workflow.md)
+  * [扩展 Agent 的能力](advanced-basic/extensions/README.md)
+    * [技能与能力库](advanced-basic/extensions/skills.md)
+    * [MCP 与外部工具](advanced-basic/extensions/mcp/README.md)
+      * [MCP 排错](advanced-basic/extensions/mcp/troubleshooting.md)
+  * [自动化与外部触达](advanced-basic/automation/README.md)
+    * [频道](advanced-basic/automation/channels.md)
+    * [定时任务、心跳与运行记录](advanced-basic/automation/scheduled-heartbeat.md)
+  * [高效工作台](advanced-basic/workbench/README.md)
+    * [多窗口与标签页](advanced-basic/workbench/multi-window-tabs.md)
+    * [输入工具栏与效率工具](advanced-basic/workbench/composer-efficiency.md)
+    * [全局搜索](advanced-basic/workbench/global-search.md)
+    * [截图、标注与 OCR](advanced-basic/workbench/screenshot-ocr.md)
+  * [开发与诊断](advanced-basic/developer-tools/README.md)
+    * [API 网关](advanced-basic/developer-tools/api-gateway.md)
+    * [调用链与开发者模式](advanced-basic/developer-tools/trace.md)
+    * [编码搭档（Code CLI）](advanced-basic/developer-tools/code-cli.md)
+  * [应用案例](advanced-basic/cases/README.md)
+    * [多模型研究复盘](advanced-basic/cases/research-review.md)
+    * [长文档审阅](advanced-basic/cases/long-document-review.md)
+    * [Agent 项目文件交付](advanced-basic/cases/project-delivery.md)
+    * [品牌配图套件](advanced-basic/cases/brand-image-kit.md)
+    * [私有知识库问答](advanced-basic/cases/private-knowledge-qa.md)
+    * [笔记生成周报](advanced-basic/cases/notes-weekly-report.md)
+    * [多语言资料整理](advanced-basic/cases/multilingual-materials.md)
+    * [频道与定时日报](advanced-basic/cases/automated-daily-report.md)
+    * [多窗口研究工作台](advanced-basic/cases/multi-window-research.md)
+
+## 移动版
+
+* **开始使用**
+  * [移动版概览](mobile/README.md)
+  * [下载与安装](mobile/installation.md)
+  * [快速开始](mobile/quick-start.md)
+* **功能指南**
+  * [服务商与模型](mobile/providers-and-models.md)
+  * [对话与文件](mobile/chat-and-files.md)
+  * [智能体与工具](mobile/agents-and-tools.md)
+  * [图片生成](mobile/image-generation.md)
+* **设置与支持**
+  * [数据、隐私与权限](mobile/data-privacy.md)
+  * [常见问题](mobile/troubleshooting.md)
+
+## 帮助与排错
+
+* [常见问题](question-contact/questions.md)
+* [如何高效提问](question-contact/ask.md)
+* [问题反馈与功能建议](question-contact/suggestions.md)
+
+## 资源与项目
+
+* **参考资料**
+  * [AI 基础知识](question-contact/knowledge.md)
+  * [模型数据](other/models-info.md)
+  * [模型榜单](other/model_rank/README.md)
+    * [Agent 智能体榜单](other/model_rank/agent.md)
+    * [文本榜单](other/model_rank/text.md)
+    * [搜索榜单](other/model_rank/search.md)
+    * [视觉榜单](other/model_rank/vision.md)
+    * [代码 / Web 开发榜单](other/model_rank/code-webdev.md)
+    * [文生图榜单](other/model_rank/text-to-image.md)
+* **项目与关于**
+  * [贡献代码](contribution/code.md)
+  * [贡献文档](contribution/docs.md)
+
+## 合作与协议
+
+* [商务合作](contact-us/questions.md)
+* [隐私协议](about/privacypolicy.md)
+* [开源协议](contact-us/questions/license.md)

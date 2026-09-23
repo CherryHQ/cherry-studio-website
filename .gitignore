@@ -21,3 +21,12 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Generated documentation (compiled from docs-site/content)
+docs-site/.next/
+docs-site/out/
+docs-site/generated/
+docs-site/public/content-assets/
+docs-site/public/search/
+docs-site/next-env.d.ts
+*.tsbuildinfo

@@ -3,6 +3,7 @@
     "home": "Cherry Studio - The All-in-One AI Workstation",
     "download": "Download Cherry Studio for Mac, Windows & Linux",
     "mobile": "Cherry Studio Mobile - Your AI Workstation, Anywhere",
+    "mobile_download": "Download Cherry Studio Mobile - Android and iOS",
     "theme": "Cherry Studio Theme Library - Customize Your AI Client",
     "careers": "Join Cherry Studio - Careers",
     "download_v1": "Cherry Studio V1 Downloads (Archive)",
@@ -15,6 +16,7 @@
     "home": "Open-source AI desktop client for Mac, Windows and Linux. Run frontier models from DeepSeek, Qwen, GLM and more, with your data stored locally.",
     "download": "Download Cherry Studio free. Native builds for macOS (Apple silicon and Intel), Windows and Linux, with checksums and system requirements.",
     "mobile": "Meet Cherry Studio Mobile: chat with AI models, create images, and connect tools on your phone. Download the Android APK or join the iOS TestFlight beta.",
+    "mobile_download": "Download Cherry Studio Mobile. Get the Android APK or join the TestFlight beta on iPhone and iPad.",
     "theme": "Browse and install community themes for Cherry Studio. Light and dark variants to personalise your AI workspace.",
     "careers": "Join Cherry Studio core team. Looking for AI Native full-stack engineers to build next-gen AI products.",
     "download_v1": "Archived Cherry Studio V1 builds for macOS, Windows and Linux. V2 is the recommended release.",
@@ -26,13 +28,16 @@
   "nav": {
     "home": "Home",
     "download": "Download",
+    "mobile": "Mobile",
     "theme": "Theme",
     "careers": "Careers",
     "enterprise": "Enterprise",
     "docs": "Docs",
     "contact": "Contact Us",
     "pricing": "Flash",
-    "pricing_badge": "20% off"
+    "pricing_badge": "20% off",
+    "menu": "Site navigation",
+    "close_menu": "Close navigation"
   },
   "theme_switcher": {
     "dark": "Dark",
@@ -60,32 +65,7 @@
   },
   "mobile_page": {
     "beta": "Beta",
-    "description": "Chat, create images, and connect your AI tools on the go.",
-    "preview_label": "Mobile features and app previews",
-    "tabs": {
-      "chat": "Chat",
-      "paintings": "Images",
-      "plugins": "Tools"
-    },
-    "features": {
-      "chat": {
-        "title": "AI chat",
-        "description": "Choose your model and ask with text or images.",
-        "alt": "An AI conversation with a Markdown response in Cherry Studio Mobile"
-      },
-      "paintings": {
-        "title": "Image creation",
-        "description": "Turn a prompt or a picture into something new.",
-        "alt": "A watercolor landscape generated from a text prompt in Cherry Studio Mobile"
-      },
-      "plugins": {
-        "title": "Tools & plugins",
-        "description": "Connect services and let your agents use their tools.",
-        "alt": "GitHub, Feishu, Notion, and other plugins in Cherry Studio Mobile"
-      }
-    },
     "current_device": "Your device",
-    "scan": "Scan to install",
     "channels": {
       "apk": "For ARM64 devices",
       "testflight": "Requires TestFlight",
@@ -93,6 +73,55 @@
     },
     "setup_note": "Configure a model provider to get started. Some model and tool services may charge separately.",
     "download_banner": "Chat, create images, and connect tools on your phone."
+  },
+  "mobile_site": {
+    "hero": {
+      "eyebrow": "Cherry Studio Mobile · Beta",
+      "title": "Your AI workspace, now in your pocket",
+      "description": "Connect your preferred models on phone and tablet, continue conversations, work with agents, and create on the go. The familiar Cherry Studio experience, redesigned for mobile.",
+      "download": "Download mobile",
+      "docs": "Read mobile docs",
+      "platforms": "Available for Android, iPhone, and iPad. Currently in beta."
+    },
+    "screenshots": {
+      "group_alt": "Cherry Studio Mobile chat, agent, and image creation interfaces",
+      "conversation": "AI conversation in Cherry Studio Mobile",
+      "drawing": "AI image creation in Cherry Studio Mobile",
+      "agent": "Agent interface in Cherry Studio Mobile",
+      "tablet_conversation": "Conversation interface on Cherry Studio Mobile for iPad",
+      "tablet_drawing": "Image preview on Cherry Studio Mobile for iPad"
+    },
+    "mobile_first": {
+      "eyebrow": "Designed for mobile",
+      "title": "Not a shrunken desktop app",
+      "description": "The controls that matter on the go stay close at hand, so conversations, agents, and system capabilities feel natural on a touchscreen.",
+      "items": {
+        "touch": {
+          "title": "Touch first",
+          "description": "Lighter navigation and input make it quick to begin, even with one hand."
+        },
+        "tools": {
+          "title": "Use device capabilities",
+          "description": "Connect calendars, reminders, and other system tools only when needed, with permissions under your control."
+        },
+        "continuity": {
+          "title": "Consistent across phone and tablet",
+          "description": "The same core experience adapts to each screen without a new learning curve."
+        }
+      }
+    },
+    "tablet": {
+      "eyebrow": "iPhone and iPad",
+      "title": "Quick on a phone. Expansive on a tablet.",
+      "description": "The same core experience adapts to the space at hand, keeping quick tasks close on a phone and giving reading and creation more room on a tablet."
+    },
+    "cta": {
+      "eyebrow": "Get started",
+      "title": "Your next idea does not have to wait for your desk",
+      "description": "Download Cherry Studio Mobile, or read the installation and model setup guide first.",
+      "download": "Get the mobile app",
+      "docs": "Read mobile docs"
+    }
   },
   "stable_badge": "Stable",
   "theme": "Theme",
@@ -243,6 +272,8 @@
     "description": "Cherry Studio is a multi-platform AI client, and we are committed to allowing more people to enjoy the convenience brought by AI.",
     "cherry_studio": {
       "title": "Cherry Studio",
+      "mobile": "Mobile",
+      "mobile_download": "Mobile download",
       "github": "GitHub",
       "gitcode": "GitCode",
       "docs": "Documentation",

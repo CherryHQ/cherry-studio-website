@@ -1,0 +1,57 @@
+---
+icon: cloud-arrow-up
+---
+# Backup via WebDAV
+
+
+O backup de dados do Cherry Studio suporta o método WebDAV. Você pode escolher um serviço WebDAV adequado para fazer backup na nuvem.
+
+Com base no WebDAV, você pode sincronizar dados em vários dispositivos através do método: `Computador A`  → (backup) →  `WebDAV`  → (restauração) →  `Computador B`.
+
+#### Exemplo com Nutstore
+
+1. Faça login no Nutstore, clique no nome de usuário no canto superior direito e selecione "Informações da conta":
+
+<figure><img src="../../../assets/3ab21a0d07bad38773442570.png" alt=""><figcaption></figcaption></figure>
+
+2. Selecione "Opções de segurança" e clique em "Adicionar aplicativo"
+
+<figure><img src="../../../assets/f1f0f0b55aa3ae0222a18938.webp" alt=""><figcaption></figcaption></figure>
+
+3. Digite o nome do aplicativo e gere uma senha aleatória;
+
+<figure><img src="../../../assets/e7f0f093ff245e418805919b.webp" alt=""><figcaption></figcaption></figure>
+
+4. Copie e registre a senha;
+
+<figure><img src="../../../assets/65d55f04a7052358519c733e.webp" alt=""><figcaption></figcaption></figure>
+
+5. Obtenha o endereço do servidor, conta e senha;
+
+<figure><img src="../../../assets/53bf30c1765a635f1be348ca.webp" alt=""><figcaption></figcaption></figure>
+
+6. Nas configurações do Cherry Studio → Configurações de dados, preencha as informações do WebDAV;
+
+<figure><img src="../../../assets/fda9297035335d99a695c2c7.webp" alt=""><figcaption></figcaption></figure>
+
+7. Escolha fazer backup ou restaurar dados e pode definir o período de tempo para backup automático.
+
+<figure><img src="../../../assets/56b6db4166a2346f0489ca96.webp" alt=""><figcaption></figcaption></figure>
+
+{% hint style="success" %}
+Serviços WebDAV com baixa barreira de entrada geralmente são serviços de armazenamento em nuvem:
+
+- [Nutstore](https://www.jianguoyun.com/)
+- [123 Pan](https://www.123pan.com/) (requer assinatura)
+- [Aliyun Drive](https://www.alipan.com/) (requer compra)
+- [Box](https://www.box.com/) (Espaço gratuito: 10GB, limite de arquivo único: 250MB)
+- [Dropbox](https://www.dropbox.com/) (2GB gratuitos, expansão até 16GB via convites)
+- [TeraCloud](https://teracloud.jp/en/) (10GB gratuitos, +5GB via convites)
+- [Yandex Disk](https://disk.yandex.com/) (10GB para usuários gratuitos)
+
+Além disso, existem serviços que exigem implantação própria:
+
+- [Alist](https://alist.nn.ci/zh/)
+- [Cloudreve](https://cloudreve.org/)
+- [Sharelist](https://github.com/reruin/sharelist)
+{% endhint %}

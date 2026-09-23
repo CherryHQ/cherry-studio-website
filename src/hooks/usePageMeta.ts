@@ -9,6 +9,7 @@ type PageType =
   | 'downloadV1'
   | 'downloadV2'
   | 'mobile'
+  | 'mobile_download'
   | 'theme'
   | 'careers'
   | 'flash'
@@ -17,6 +18,7 @@ type PageType =
 
 interface PageMetaConfig {
   path: string
+  translationKey?: string
   // 归档页把 canonical 指回正式页面（与线上英文站一致）
   canonicalPath?: string
   noindex?: boolean
@@ -27,14 +29,15 @@ interface PageMetaConfig {
 const PAGE_META: Record<PageType, PageMetaConfig> = {
   home: { path: '/' },
   download: { path: '/download' },
-  downloadV1: { path: '/download/v1', canonicalPath: '/download', noindex: true },
-  downloadV2: { path: '/download/v2', canonicalPath: '/download' },
+  downloadV1: { path: '/download/v1', translationKey: 'download_v1', canonicalPath: '/download', noindex: true },
+  downloadV2: { path: '/download/v2', translationKey: 'download_v2', canonicalPath: '/download' },
   mobile: { path: '/mobile' },
+  mobile_download: { path: '/download' },
   theme: { path: '/theme' },
   careers: { path: '/careers' },
   flash: { path: '/flash', chineseCounterpart: false },
-  flashUsage: { path: '/flash/usage', chineseCounterpart: false },
-  notFound: { path: '/404', noindex: true }
+  flashUsage: { path: '/flash/usage', translationKey: 'flash_usage', chineseCounterpart: false },
+  notFound: { path: '/404', translationKey: 'not_found', noindex: true }
 }
 
 export const usePageMeta = (pageType: PageType) => {
@@ -44,11 +47,11 @@ export const usePageMeta = (pageType: PageType) => {
     const config = PAGE_META[pageType]
 
     // 更新页面标题
-    const title = t(`page_title.${pageType}`)
+    const title = t(`page_title.${config.translationKey ?? pageType}`)
     document.title = title
 
     // 更新页面描述
-    const description = t(`page_description.${pageType}`)
+    const description = t(`page_description.${config.translationKey ?? pageType}`)
     const metaDescription = document.querySelector('meta[name="description"]')
     if (metaDescription) {
       metaDescription.setAttribute('content', description)

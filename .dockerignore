@@ -10,3 +10,13 @@ dist
 *.log
 coverage
 .idea
+
+.context
+**/node_modules
+docs-site/.next
+docs-site/out
+docs-site/generated
+docs-site/public/content-assets
+docs-site/public/search
+
+!docs-site/content/**/*.md
