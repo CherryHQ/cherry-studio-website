@@ -35,6 +35,7 @@ Cherry Studio's settings panel covers everything from **model configuration and 
 | Appearance | [Appearance](../../../../../pre-basic/settings/display.md) | Theme, accent color, zoom, language, topic layout |
 | Notifications | [Notifications](../../../../../pre-basic/settings/notification.md) | Alerts for assistant messages, backups and finished knowledge bases |
 | Data | [Data Settings](../../../../../pre-basic/data-settings) | WebDAV / S3 backup and third-party integrations |
+| Archive | [Files → Archive](../files.md#archive) | Restore or permanently delete archived assistants, agents, topics, tasks, paintings and files; auto-cleanup interval |
 | Usage Analytics | [Usage Analytics](../../../../../pre-basic/settings/usage.md) | Cost, tokens, requests and daily activity |
 
 ### Efficiency

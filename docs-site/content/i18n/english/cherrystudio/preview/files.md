@@ -22,22 +22,25 @@ Click `+` in the top tab bar → **Launchpad** → **Files**.
 * **Upload**: drag files straight onto the page, or click `Upload files` in the top right
 * **Preview**: click a file to preview it (images, PDFs and other supported formats)
 * **Rename**: right-click → Rename
-* **Delete**: right-click → Delete. Deleted files go to the **Trash** first (see below)
+* **Delete**: right-click → Delete. Deleted files are moved to the **Archive** first, and a notice with **Undo** appears (see below)
 * **Show in folder**: right-click → **Open Containing Folder** (Finder on macOS, File Explorer on Windows)
 
 {% hint style="info" %}
 If a file is marked as **Missing**, its original local file has been moved or deleted. For such files you can only locate them or remove the record from the library.
 {% endhint %}
 
-## Trash
+## Archive
 
-A deleted file doesn't disappear right away — it goes to the **Trash** first. In the Trash you can:
+A deleted file doesn't disappear right away — it is moved to the **Archive** in **Settings → Archive**. Right after deleting, you can also click **Undo** in the "Moved to Archive" notice.
 
-* **Restore**: put an accidentally deleted file back where it was
-* **Delete permanently**: remove a single file for good
-* **Empty Trash**: permanently remove everything in the Trash at once
+The Archive keeps deleted assistants, agents, topics, tasks and paintings as well as files; use the tabs at the top (**All**, **Assistants**, **Agents**, **Topics**, **Tasks**, **Paintings**, **Files**) to filter. Each item shows where it came from, when it was archived and how many days are left. For each item you can:
 
-<figure><img src="../../../../assets/bcd8421ad044612b926d50e3.webp" alt=""><figcaption><p>Trash: restore, delete permanently, or empty everything</p></figcaption></figure>
+* **Restore**: click the restore icon to put it back where it was
+* **Delete permanently**: click the trash icon to remove it for good
+
+Click **Batch manage** to act on several items at once. Archived items are removed automatically after the **Auto-cleanup interval** at the bottom of the page (30 days by default).
+
+<figure><img src="../../../../assets/c9849792d21c810273ae21eb.webp" alt="Settings Archive page with category tabs, archived files and paintings with restore and delete icons, and the auto-cleanup interval"><figcaption><p>Settings → Archive: restore or permanently delete archived items; they are cleaned up automatically after the set interval</p></figcaption></figure>
 
 {% hint style="warning" %}
 **Permanent deletion cannot be undone.** Deleting a file also removes its references from every related message, so double-check before you do it.
