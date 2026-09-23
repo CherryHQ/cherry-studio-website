@@ -47,7 +47,7 @@
       * [Mistral](pre-basic/providers/mistral.md)
       * [Perplexity](pre-basic/providers/perplexity.md)
       * [Groq](pre-basic/providers/groq.md)
-    * **Asian Providers**
+    * **Chinese Providers**
       * [DeepSeek](pre-basic/providers/deepseek.md)
       * [ZhiPu](pre-basic/providers/zhipu.md)
       * [Moonshot AI (Kimi)](pre-basic/providers/moonshot.md)

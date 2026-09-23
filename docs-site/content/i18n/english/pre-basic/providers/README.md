@@ -43,7 +43,7 @@ Cherry Studio groups providers by protocol into the following types, which behav
 * [GitHub Copilot](../../../../pre-basic/providers/github-copilot.md)
 * [MiniMax Coding Plan](../../../../pre-basic/providers/minimax-coding-plan.md)
 
-#### Asian Providers
+#### Chinese Providers
 * [DeepSeek](../../../../pre-basic/providers/deepseek.md)
 * [ZhiPu (Z.ai)](../../../../pre-basic/providers/zhipu.md)
 * [Moonshot AI (Kimi)](../../../../pre-basic/providers/moonshot.md)
