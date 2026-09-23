@@ -28,8 +28,8 @@ To the right of the title are a search icon, a category filter (**All**) and a *
 
 #### 2.2 Search Box and Filter
 
-* **Search box:** the placeholder reads "Search shortcuts...". Filter by action name or key combination.
-* **Filter button:** opens a category menu so you can view shortcuts by group. The groups are **All**, **Global & Window**, **Message Interaction**, **Topics & Conversations** and **AI Assistant Tools**; each shows the number of shortcuts it contains.
+* **Search:** click the search icon to filter by action name or key combination.
+* **Filter (All):** opens a category menu so you can view shortcuts by group. The groups are **All**, **Global & Window**, **Message Interaction**, **Topics & Conversations** and **AI Assistant Tools**; each shows the number of shortcuts it contains.
 
 #### 2.3 Shortcut List
 
@@ -64,6 +64,7 @@ The default keys for each action are listed below by the **groups** shown on the
 | Zoom in | `⌘ + =` | `Ctrl + =` | Enabled | Numpad `+` also works; can't be changed |
 | Zoom out | `⌘ + -` | `Ctrl + -` | Enabled | Numpad `-` also works; can't be changed |
 | Reset zoom | `⌘ + 0` | `Ctrl + 0` | Enabled | Can't be changed |
+| Focus input | `⌘ + I` | `Ctrl + I` | Enabled | Moves the cursor to the message input box |
 
 > **Boss key:** "Show / hide app" is a **global** shortcut (unbound by default) that works even when Cherry Studio is in the background. Bind a convenient combination to it and you can bring up or hide the window with one keystroke.
 
