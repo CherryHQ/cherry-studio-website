@@ -20,7 +20,13 @@ Adding your custom AI service provider to Cherry Studio takes just a few simple 
     *   **Avatar (optional):** upload an image, pick a built-in avatar, or keep the default letter avatar.
     *   **Provider Name** (required): an easy-to-identify name, e.g. MyCustomOpenAI.
     *   **API Key:** the key provided by your AI service.
-    *   **Endpoint settings:** enter the API root URL (Base URL) for each protocol your service supports, such as **OpenAI** and **Anthropic**. You only need to fill in the ones your service offers; a preview of the final request path appears below each field.
+    *   **Endpoint settings:** enter the API root URL (Base URL) for each protocol your service supports. **OpenAI** and **Anthropic** are shown by default; expand **More options** for the rest:
+        *   **OpenAI Responses**
+        *   **Gemini**
+        *   **Image Generation Base URL:** used for `/images/generations`; leave blank to use the default chat endpoint Base URL
+        *   **Image Edit Base URL:** used for image editing requests
+
+        You only need to fill in the ones your service offers; a preview of the final request path appears below each field.
 5.  **Save Configuration:** Click **Add**.
 
 <figure><img src="../../../../assets/ab9b6b96091cbf6ff3ab4b92.webp" alt="The Add Custom Provider dialog with avatar, Provider Name, API Key and OpenAI / Anthropic endpoint fields"><figcaption><p>The Add Custom Provider dialog</p></figcaption></figure>
