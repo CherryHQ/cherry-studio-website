@@ -1,7 +1,15 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
 
-import { findMissingAnchors, parseSummary, renderMarkdown, safeResolve, slugFor, urlFor } from './content.mjs'
+import {
+  findMissingAnchors,
+  pageDescription,
+  parseSummary,
+  renderMarkdown,
+  safeResolve,
+  slugFor,
+  urlFor
+} from './content.mjs'
 
 test('URLs preserve directory indexes and encode filenames', () => {
   assert.equal(slugFor('guide/README.md'), 'guide')
@@ -205,4 +213,37 @@ test('invalid math is reported and unsafe math commands cannot create executable
   )
   assert.ok(issues.some((issue) => issue.type === 'invalid-math'))
   assert.doesNotMatch(page.html, /href="javascript:/)
+})
+
+test('page descriptions use lead prose, not headings, link lines, captions or the help footer', async () => {
+  const noop = (value) => value
+  const page = await renderMarkdown(
+    [
+      '# Guide',
+      'Follow us: [X](https://x.com) [Discord](https://discord.gg)',
+      '## 1. Install',
+      '_The download page_',
+      'Open the download page and pick your system. Then run the installer.',
+      '### Get Help and Submit Feedback',
+      'If you have any questions, use the official channels.'
+    ].join('\n\n'),
+    noop,
+    () => {}
+  )
+  assert.equal(page.description, 'Open the download page and pick your system. Then run the installer.')
+
+  const declared = await renderMarkdown(
+    '---\ndescription: A declared summary that is clearly long enough to stand on its own in search results.\n---\n# T\n\nBody text.',
+    noop,
+    () => {}
+  )
+  assert.equal(
+    declared.description,
+    'A declared summary that is clearly long enough to stand on its own in search results.'
+  )
+
+  const long = 'Word '.repeat(60)
+  const clipped = pageDescription('', long)
+  assert.ok(clipped.length <= 156 && clipped.endsWith('…') && !clipped.includes(' …'))
+  assert.ok(pageDescription('', '句子。'.repeat(40)).endsWith('。'))
 })

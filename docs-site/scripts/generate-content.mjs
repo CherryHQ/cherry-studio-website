@@ -157,7 +157,6 @@ for (const locale of locales) {
     if (sourceFiles.has(`${locale.code}/${slug}`)) throw new Error(`Duplicate page slug: ${locale.code}/${slug}`)
     const page = { locale: locale.code, slug, file: relative, fallback, ...rendered }
     page.title ||= slug || 'Cherry Studio'
-    page.description = page.text.replace(/\s+/g, ' ').trim().slice(0, 160)
     pages.push(page)
     sourceFiles.set(`${locale.code}/${slug}`, page)
   }
