@@ -38,7 +38,7 @@ Rely on the 🌐 icon next to the model name to tell whether native search is su
 Model capabilities change as providers update them. Look for the 🌐 icon when choosing a model; if there isn't one, using a configured search service is the safer choice.
 
 {% hint style="info" %}
-A few models can search the web even without the globe icon, depending on the provider's configuration — for example, the case described in [Web Search with Volcengine](../../../pre-basic/websearch/volcengine.md).
+A few models can search the web even without the globe icon, depending on the provider's configuration.
 {% endhint %}
 
 ## Configure Services in Settings
@@ -84,7 +84,6 @@ The following services are built in, in two types — **API** and **MCP**:
 The default Exa MCP works without a key. To switch to another service or configure things in more depth, see:
 
 * [Free Web Search Mode](../../../pre-basic/websearch/free-search.md) — use search without paying
-* [Tavily Registration Guide](../../../pre-basic/websearch/tavily.md) — how to sign up and get a key when switching to Tavily
 * [SearXNG Local Deployment and Configuration](../../../pre-basic/websearch/searxng.md) — self-hosted and fully local
 * [Web Search Blacklist Configuration](../../../pre-basic/websearch/blacklist.md) — block websites you don't want
 

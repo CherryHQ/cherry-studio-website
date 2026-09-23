@@ -34,7 +34,7 @@ They fall roughly into three groups:
 | Type | Provider | Notes |
 |---|---|---|
 | Cloud services in China | **[SiliconFlow](../../../../pre-basic/providers/siliconcloud.md)** | Easiest to access from mainland China, low prices, wide model choice |
-| | **[PPIO](../../../../pre-basic/providers/ppio.md)** | Cloud compute service in China |
+| | **PPIO** | Cloud compute service in China |
 | | **Zhipu Open Platform** | Chinese model CogView |
 | Aggregation gateways | **AiHubMix** | Gateway aggregating multiple vendors |
 | | **DMXAPI** | Gateway aggregating multiple vendors |

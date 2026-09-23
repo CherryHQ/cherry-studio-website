@@ -27,7 +27,6 @@ Grok is a large model developed by xAI, known for its "casual tone + access to r
 Some Grok models have built-in web capabilities, indicated by a small globe icon after the model name. You can enable "Web Search" directly in the chat box. See [Web Search Mode](../../../../pre-basic/websearch) for details.
 
 {% hint style="info" %}
-* Grok requires overseas network access; domestic users please configure a proxy
 * xAI offers a free quota (refreshed monthly), sufficient for daily use
 {% endhint %}
 

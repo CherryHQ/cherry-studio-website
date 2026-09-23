@@ -1,6 +1,6 @@
 # MiniMax Coding Plan
 
-**Coding Plan** is a cost-effective coding subscription service launched by MiniMax (e.g., Starter/Plus plans). By configuring this plan in Cherry Studio, you can use the `MiniMax-M2.7` model at a very low fixed cost (starting from ¥29/month).
+**Coding Plan** is a cost-effective coding subscription service launched by MiniMax (e.g., Starter/Plus plans). By configuring this plan in Cherry Studio, you can use the `MiniMax-M2.7` model at a low fixed monthly price (see MiniMax for current plans).
 
 {% hint style="success" %}
 **Core Advantages**
@@ -13,8 +13,8 @@
 
 Before starting, ensure you have purchased the plan and obtained your key:
 
-1. Log in to the [**MiniMax Open Platform**](https://platform.minimaxi.com/).
-2. Go to the [**Coding Plan** page](https://platform.minimaxi.com/subscribe/coding-plan?code=FYWiC6CtHy\&source=link) and ensure the plan is active.
+1. Log in to the [**MiniMax Open Platform**](https://platform.minimax.io/).
+2. Go to the [**Coding Plan** page](https://platform.minimax.io/subscribe/coding-plan?code=FYWiC6CtHy\&source=link) and ensure the plan is active.
 
     <figure><img src="../../../../assets/e7c5f78ce7b02d24f47e524a.png" alt=""><figcaption></figcaption></figure>
 3. Copy your dedicated `API Key` in **Coding Plan** (starts with `sk-`).
@@ -25,7 +25,7 @@ Before starting, ensure you have purchased the plan and obtained your key:
 
 #### Step 1: Locate the Provider
 
-Open Cherry Studio, click **Settings** > **Model Provider** in the sidebar, and find **MiniMax** in the list.
+Open Cherry Studio, click **Settings** > **Model Provider** in the sidebar, and find **MiniMax Global** in the list (use **MiniMax CN** if you bought the plan on the mainland China platform).
 
 {% hint style="info" %}
 If the list is long, you can type `mini` in the search box at the top to locate it quickly.
@@ -35,7 +35,7 @@ If the list is long, you can type `mini` in the search box at the top to locate 
 
 You do **not** need to modify complex API addresses; use the default configuration. Please fill in the details as described below:
 
-<table><thead><tr><th width="128.20703125">Parameter</th><th>Description</th></tr></thead><tbody><tr><td><strong>API Key</strong></td><td>Paste your Coding Plan dedicated key<br><em>(Note: It must be the Key generated after purchasing the plan; do not include extra spaces)</em></td></tr><tr><td><strong>API Address</strong></td><td>Keep the default <code>https://api.minimaxi.com/v1</code></td></tr><tr><td><strong>Toggle</strong></td><td>Click the toggle in the top-right corner to ensure it is <strong>Green (ON)</strong></td></tr></tbody></table>
+<table><thead><tr><th width="128.20703125">Parameter</th><th>Description</th></tr></thead><tbody><tr><td><strong>API Key</strong></td><td>Paste your Coding Plan dedicated key<br><em>(Note: It must be the Key generated after purchasing the plan; do not include extra spaces)</em></td></tr><tr><td><strong>API Address</strong></td><td>Keep the default <code>https://api.minimax.io/v1</code> (MiniMax Global)</td></tr><tr><td><strong>Toggle</strong></td><td>Click the toggle in the top-right corner to ensure it is <strong>Green (ON)</strong></td></tr></tbody></table>
 
 <figure><img src="../../../../assets/368c7e08595f9ac70e2a212f.webp" alt=""><figcaption></figcaption></figure>
 

@@ -1,33 +1,25 @@
 # MiniMax
 
-MiniMax is one of China's leading large model providers, known for its strong **multimodal capabilities** (text, audio, image, and video generation).
+MiniMax builds large models with strong **multimodal capabilities** (text, audio, image and video). Cherry Studio lists two separate providers: **MiniMax Global** for international users and **MiniMax CN** for mainland China.
 
 ## Get an API Key
 
-* Register an account on the [MiniMax Open Platform](https://platform.minimaxi.com/)
-* After completing real-name verification, go to `Account Management → Interface Keys` to create an API Key
+* **International:** sign up on the [MiniMax Platform](https://platform.minimax.io/) and create an API key
+* **Mainland China:** use [platform.minimaxi.com](https://platform.minimaxi.com/)
 
 ## Configure in Cherry Studio
 
-* Open `Settings → Model Provider`, find the **MiniMax** Provider, and enter its details page
-* Enter your API key
-* Keep the API address as the default
-* Click **Sync models**
-
-## Recommended Usage
-
-| Model | Suitable Scenarios |
-|---|---|
-| `abab6.5s-chat` / `MiniMax-Text-01` | Daily conversation |
-| `abab6.5-chat` | High-quality long-form writing |
+* Open `Settings → Model Provider` and choose **MiniMax Global** (or **MiniMax CN** if your key comes from the China platform)
+* Click **Add API key**, paste your key, then click **Save and close**
+* Keep the default **API Host** (`https://api.minimax.io/v1` for MiniMax Global)
+* Click **Sync models** and add the models you want, such as **MiniMax-M3** or **MiniMax-M2.7**
 
 {% hint style="info" %}
-* MiniMax is easily accessible within China, and new users receive a certain amount of free credits
-* Overseas users should use **MiniMax Global** (listed as a separate entry in the Cherry Studio Provider list)
+If you subscribe to MiniMax's Coding Plan, see [MiniMax Coding Plan](minimax-coding-plan.md) for the dedicated setup.
 {% endhint %}
 
 ***
 
 ### Get Help and Submit Feedback
 
-If you have any questions, encounter bugs, or have suggestions for feature improvements while configuring or using the service, please refer to the official channels provided in [Feedback and Suggestions](../../question-contact/suggestions.md).
+If you have any questions, bugs, or feature suggestions during configuration or use, please use the official channels listed in [Feedback and Suggestions](../../question-contact/suggestions.md).

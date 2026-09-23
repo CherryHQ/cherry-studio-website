@@ -30,8 +30,6 @@ Appearance settings gather all your preferences for **how the interface looks, h
 * **Global font**: the font used across the interface. It defaults to the system font; you can switch to any font you like.
 * **Code font**: the monospaced font used in code blocks.
 
-For font suggestions, see [Font Recommendations](../../../pre-basic/personalization-settings/font.md).
-
 ### Input Settings
 
 <figure><img src="../../../assets/92dd92cada7d4e0ffb1288f7.webp" alt=""><figcaption><p>Font, input and message display settings</p></figcaption></figure>

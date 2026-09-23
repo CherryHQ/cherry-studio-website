@@ -1,26 +1,40 @@
 # SiliconFlow
 
-## 1. Configure SiliconCloud Model Service <a href="#id-2-siliconcloud" id="id-2-siliconcloud"></a>
+SiliconFlow is an inference platform that hosts many open-source models (Qwen, DeepSeek, GLM, BGE and more) behind one API. International users sign up on siliconflow.com; the mainland China platform is siliconflow.cn.
 
-#### [​](https://docs.siliconflow.cn/usercases/use-siliconcloud-in-cherry-studio#2-1)1.2 Click the settings in the lower left corner and select [SiliconFlow] in the model service. <a href="#id-2-1" id="id-2-1"></a>
+## 1. Get an API Key
 
-<figure><img src="../../../../assets/8a1c8f0dfe90a7240831905b.webp" alt=""><figcaption></figcaption></figure>
+1. Sign up or log in on [SiliconFlow](https://cloud.siliconflow.com/) (mainland China users: [cloud.siliconflow.cn](https://cloud.siliconflow.cn/))
+2. Open the **API Keys** page, then create a new key or copy an existing one
 
-#### [​](https://docs.siliconflow.cn/usercases/use-siliconcloud-in-cherry-studio#2-2-siliconcloud-api)1.2 Click the link to get SiliconCloud API Key <a href="#id-2-2-siliconcloud-api" id="id-2-2-siliconcloud-api"></a>
+<figure><img src="../../../../assets/43d95ad964cb0232107ed021.webp" alt="The API key page on the SiliconFlow console"><figcaption></figcaption></figure>
 
-1. Log in to [SiliconCloud](https://cloud.siliconflow.cn/) (if not registered, logging in for the first time will automatically create an account)
-2. Visit [API Key](https://cloud.siliconflow.cn/account/ak) to create a new key or copy an existing one
+## 2. Configure in Cherry Studio
 
-<figure><img src="../../../../assets/43d95ad964cb0232107ed021.webp" alt=""><figcaption></figcaption></figure>
+1. Open `Settings → Model Provider` and select **SiliconFlow**
+2. Click **Add API key**, paste your key, then click **Save and close**
+3. Make sure the **API Host** matches the platform your key comes from: `https://api.siliconflow.com/v1` for siliconflow.com, `https://api.siliconflow.cn/v1` for mainland China
 
-#### [​](https://docs.siliconflow.cn/usercases/use-siliconcloud-in-cherry-studio#2-3)1.3 Click Sync models to add models <a href="#id-2-3" id="id-2-3"></a>
+<figure><img src="../../../../assets/8a1c8f0dfe90a7240831905b.webp" alt="SiliconFlow provider page in Cherry Studio with API Key, API Host and the model list"><figcaption></figcaption></figure>
 
-<figure><img src="../../../../assets/ace6b16d559631cb460403b7.webp" alt=""><figcaption></figcaption></figure>
+4. Click **Sync models** and add the models you want
 
-## [​](https://docs.siliconflow.cn/usercases/use-siliconcloud-in-cherry-studio#3)2. Model Service Usage <a href="#id-3" id="id-3"></a>
+<figure><img src="../../../../assets/ace6b16d559631cb460403b7.webp" alt="The SiliconFlow model list dialog opened from Sync models"><figcaption></figcaption></figure>
 
-1. Click the "Chat" button in the left sidebar
-2. Enter text in the input box to start chatting
-3. You can switch models by selecting the model name from the top menu
+## 3. Start Chatting
 
-<figure><img src="../../../../assets/5d2d3e97f9d5ccae7d5bdade.webp" alt=""><figcaption></figcaption></figure>
+1. Click **Chat** in the left sidebar
+2. Select a SiliconFlow model from the model selector in the top bar
+3. Type in the input box to start chatting
+
+<figure><img src="../../../../assets/5d2d3e97f9d5ccae7d5bdade.webp" alt="Selecting a SiliconFlow model in the chat model selector"><figcaption></figcaption></figure>
+
+{% hint style="info" %}
+SiliconFlow also offers embedding models such as `BAAI/bge-m3`, which you can use for [knowledge bases](../../knowledge-base/knowledge-base.md).
+{% endhint %}
+
+***
+
+### Get Help and Submit Feedback
+
+If you have any questions, bugs, or feature suggestions during configuration or use, please use the official channels listed in [Feedback and Suggestions](../../question-contact/suggestions.md).

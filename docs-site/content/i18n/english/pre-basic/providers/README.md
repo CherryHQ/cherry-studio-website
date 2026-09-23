@@ -33,7 +33,7 @@ Cherry Studio groups providers by protocol into the following types, which behav
 #### General / Gateways
 * [CherryAI (Free)](../../../../pre-basic/providers/cherryai)
 * [CherryIN](../../../../pre-basic/providers/cherryin-1.md) — dual endpoints (OpenAI + Anthropic), recommended for Cherry Agent
-* [NewAPI](../../../../pre-basic/providers/newapi.md) / [OneAPI](../../../../pre-basic/providers/oneapi.md) — self-hosted / third-party gateways
+* [NewAPI](../../../../pre-basic/providers/newapi.md) — self-hosted / third-party gateway
 
 #### International Providers
 * [OpenAI](../../../../pre-basic/providers/openai.md)
@@ -43,13 +43,12 @@ Cherry Studio groups providers by protocol into the following types, which behav
 * [GitHub Copilot](../../../../pre-basic/providers/github-copilot.md)
 * [MiniMax Coding Plan](../../../../pre-basic/providers/minimax-coding-plan.md)
 
-#### Providers in China
-* [Alibaba Cloud Bailian](../../../../pre-basic/providers/a-li-yun-bai-lian.md)
-* [Zhipu (ZhiPu)](../../../../pre-basic/providers/zhipu.md)
+#### Asian Providers
+* [DeepSeek](../../../../pre-basic/providers/deepseek.md)
+* [ZhiPu (Z.ai)](../../../../pre-basic/providers/zhipu.md)
+* [Moonshot AI (Kimi)](../../../../pre-basic/providers/moonshot.md)
+* [MiniMax](../../../../pre-basic/providers/minimax.md)
 * [SiliconFlow](../../../../pre-basic/providers/siliconcloud.md)
-* [Volcengine (Doubao)](../../../../pre-basic/providers/doubao.md)
-* [PPIO](../../../../pre-basic/providers/ppio.md)
-* [ModelScope](../../../../pre-basic/providers/modelscope.md)
 
 #### Local Inference
 * [Ollama](../../../../pre-basic/providers/ollama.md)
