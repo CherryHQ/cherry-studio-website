@@ -2,28 +2,66 @@
 icon: image
 ---
 
-# Génération d'images
+# Génération d’images
 
-L'application mobile peut appeler un modèle d'image configuré, transformer une description écrite en image et en afficher un aperçu.
+Créez des images à partir d'une description, d'une image de référence ou d'un modèle. Configurez d'abord un modèle de génération d'images : un modèle de texte qui comprend les images ne les génère pas nécessairement.
 
 <div data-mobile-gallery="pair">
-<figure data-mobile-shot="phone"><a href="../../../assets/mobile/iphone-drawing.webp"><img src="../../../assets/mobile/iphone-drawing.webp" alt="Génération d'images dans Cherry Studio Mobile sur iPhone"></a><figcaption><p><strong>Générer</strong> · Rédigez une invite et appelez un modèle d'image configuré</p></figcaption></figure>
-<figure data-mobile-shot="tablet"><a href="../../../assets/mobile/ipad-image-preview.webp"><img src="../../../assets/mobile/ipad-image-preview.webp" alt="Aperçu d'une image générée dans Cherry Studio Mobile sur iPad"></a><figcaption><p><strong>Aperçu</strong> · Examinez, téléchargez ou continuez à modifier un résultat réel</p></figcaption></figure>
+<figure data-mobile-shot="phone"><a href="../../../assets/mobile/en/iphone-drawing.webp"><img src="../../../assets/mobile/en/iphone-drawing.webp" alt="Accueil de la création d’images dans Cherry Studio Mobile sur iPhone"></a><figcaption><p><strong>Création d’images · Interface en anglais</strong> · Commencez à partir d’une photo ou d’un modèle prédéfini</p></figcaption></figure>
+<figure data-mobile-shot="tablet"><a href="../../../assets/mobile/en/ipad-image-preview.webp"><img src="../../../assets/mobile/en/ipad-image-preview.webp" alt="Aperçu d’un modèle de création d’image dans Cherry Studio Mobile sur iPad"></a><figcaption><p><strong>Aperçu du modèle · Interface en anglais</strong> · Consultez l’exemple et le texte de la consigne avant de l’utiliser</p></figcaption></figure>
 </div>
 
-## Générer une image
+## Trois façons de créer
 
-1. Ajoutez un modèle qui prend en charge la génération d'images dans les paramètres du fournisseur.
-2. Ouvrez la génération d'images et sélectionnez le modèle.
-3. Décrivez le sujet, le cadre, le style et la composition.
-4. Lancez la tâche et attendez le résultat renvoyé par le fournisseur.
+| Flux de travail | Commencez ici | Où les résultats apparaissent |
+| --- | --- | --- |
+| Dessin autonome | Ouvrez **Dessins** dans la barre latérale, appuyez sur Ajouter en haut à droite et choisissez un modèle | Histoire du dessin |
+| Modèle d'image dans le chat | Sélectionnez un modèle de génération d'image pour l'agent | Pièces jointes d’images dans cette conversation |
+| Outil de dessin utilisé par un agent de texte | Définissez un modèle de dessin dans **Paramètres → Modèle par défaut**, activez le **Génération d'images** de l'agent, puis demandez à un modèle de texte compatible avec un outil de dessiner | Activité de l'outil et images dans cette conversation |
 
-Les modèles d'image sont généralement facturés séparément des modèles de conversation. La vitesse de génération, les tailles disponibles, les restrictions de contenu et les règles de nouvelle tentative sont définies par le fournisseur.
+Le troisième flux de travail demande une confirmation avant l'exécution de son outil d'image, même sous approbation automatique. Pour un dessin autonome ou un modèle d'image directement sélectionné, appuyer sur Envoyer/Générer soumet la demande.
 
-## Conseils de rédaction
+## Partir d'une description
 
-Décrivez d'abord le sujet et l'usage prévu. Ajoutez ensuite l'environnement, la lumière, le point de vue, les matières, la palette et le format. Pour des résultats reproductibles, conservez une invite qui a fonctionné et ne changez qu'une variable à la fois.
+1. Choisissez un modèle de génération d'images.
+2. Décrivez le sujet, le but, le style et la composition.
+3. Ouvrez les paramètres et ajustez la taille, le rapport hauteur/largeur, le nombre ou d'autres commandes disponibles.
+4. Soumettez, attendez et appuyez sur le résultat pour l'agrandir.
 
-## Échec de la génération
+Exemple :
 
-Vérifiez que le modèle sélectionné prend en charge la génération d'images, puis contrôlez le solde, l'accès réseau et la politique de contenu du fournisseur. Après un délai dépassé, attendez que l'état de la tâche se stabilise avant de renvoyer plusieurs fois la même demande.
+> Une couverture paysagère pour les notes de lecture : un livre ouvert et une tasse de thé sur une table en bois, une douce lumière matinale, des tons blancs chauds et bois pâles, un espace vide à gauche, pas de texte.
+
+Les commandes dépendent du modèle. Des images plus grandes ou davantage de sorties peuvent augmenter le temps et les coûts.
+
+## Commencez avec un modèle
+
+Choisissez un modèle de présentation pour le dessin, examinez son aperçu et personnalisez le sujet ainsi que les autres champs disponibles. Ces modèles de présentation servent de point de départ ; le modèle d’IA et vos indications déterminent le résultat final.
+
+Revisitez l'historique des dessins et les **Détails de la génération** pour réutiliser les invites réussies.
+
+## Continuez avec une image de référence
+
+Les règles de référence automatique et de préservation des entrées ci-dessous s'appliquent aux **dessins autonomes** et aux **conversations directes avec modèle d'image**. Un agent de texte appelant l'outil de dessin sélectionne le matériau via sa demande de conversation/outil.
+
+Pour les modèles prenant en charge les références ou l'édition, joignez une image et décrivez le changement : "Conservez la composition, changez l'arrière-plan en soirée et préservez tout le reste."
+
+* Un suivi compatible peut utiliser automatiquement la sortie précédente réussie. Avec plusieurs sorties, sélectionnez celle à partir de laquelle continuer.
+* L'entrée modifiée pendant l'exécution de la génération est conservée plutôt que remplacée par le résultat.
+* Les références manuelles remplacent les références automatiques. Vérifiez les images jointes avant de soumettre.
+* Le passage à un modèle texte-image uniquement met en pause les références automatiques. Les images incompatibles explicitement jointes doivent être supprimées ou un modèle différent.
+* Les modèles qui exigent une image nécessitent une référence avant l’envoi. Certains modes permettent d’envoyer la demande sans texte ; suivez les indications de la page.
+
+Les actions de modification et de redimensionnement dans la visionneuse d'images permettent de créer l'image sélectionnée. Le support dépend toujours du modèle cible ; tous les modèles d'image ne peuvent pas effectuer des modifications arbitraires.
+
+## Pannes, annulations et demandes répétées
+
+Les suivis ayant échoué ou annulés préservent l’intention de saisie/référence dans la mesure du possible. Le dessin autonome conserve le résultat réussi précédent. L'annulation ne prouve pas que le fournisseur a arrêté le traitement et ne garantit pas un remboursement.
+
+Inspectez l'erreur : un modèle non pris en charge, des références incompatibles, des crédits, des limites de débit et des délais d'attente nécessitent des solutions différentes. Vérifiez la tâche précédente avant d'appuyer à plusieurs reprises sur Générer.
+
+## Enregistrer et partager
+
+La visionneuse d'images propose l'enregistrement dans Photos, le partage du système et l'ouverture dans une autre application. L’enregistrement dans Photos nécessite un accès au système.
+
+Utilisez **Paramètres → Général → Filigrane de partage** pour contrôler les futures exportations. Les images créées dans le chat peuvent être exportées avec les messages sélectionnés ; les résultats autonomes sont dans l’histoire du dessin. Voir [partage et exportation](sharing-and-export.md).

@@ -4,27 +4,47 @@ icon: rocket
 
 # 快速開始
 
-完成下面四個步驟，即可傳送第一則訊息。
+先讓一個模型成功回答一條訊息，再按需要新增更多功能。
 
-## 1. 新增服務商
+## 1. 選擇配置方式
 
-開啟應用程式設定中的模型服務入口，選擇一個內建服務商。使用相容介面時，也可以建立自訂服務商並填寫 Base URL。
+* **電腦已經配置好 Cherry Studio**：使用[從電腦匯入配置](desktop-sync.md)，選擇要帶到手機的服務商和模型。匯入成功後可直接跳到第 4 步。
+* **直接在手機配置**：在首次使用嚮導中選擇服務商，或開啟 **設定 → 模型服務 → 新增服務商**，然後按第 2、3 步操作。
 
-## 2. 填寫憑證
+內建服務商提供常用的連線設定。列表裡沒有你的平台時，可以建立自訂服務商。
 
-填寫該服務商提供的 API Key，並依頁面提示儲存或測試連線。不要把 API Key 傳送給他人，也不要貼到公開對話、螢幕截圖或問題回報中。
+## 2. 填寫並儲存金鑰
 
-## 3. 新增模型
+填寫平台提供的 **API Key（呼叫模型服務的金鑰）**。使用自訂服務商時，還需要按平台說明填寫基礎地址和選擇連線方式。
 
-從服務商取得或手動新增模型，並啟用至少一個可用模型。不同模型支援的對話、視覺、工具或圖片生成能力可能不同。
+點選儲存或按嚮導繼續。不要把平台登入密碼當作 API Key；平台的普通聊天會員也不一定包含開放介面額度，請在對應平台確認。
+
+## 3. 新增模型並啟用服務商
+
+同步模型列表，選一個常用文字模型並確認。列表獲取失敗時，可以複製平台提供的準確模型 ID 手動新增。
+
+首次下載模型資料可能需要等待。完成後確認服務商已經啟用，從對話頂部開啟智能體編輯頁，再選擇已啟用的模型。完整步驟見[服務商與模型](providers-and-models.md)。
 
 <div data-mobile-gallery="pair">
-<figure data-mobile-shot="phone"><a href="../../../assets/mobile/iphone-add-provider.webp"><img src="../../../assets/mobile/iphone-add-provider.webp" alt="Cherry Studio 行動版新增服務商頁面"></a><figcaption><p><strong>步驟 1</strong> · 選擇內建或自訂服務商，點擊檢視原圖</p></figcaption></figure>
-<figure data-mobile-shot="phone"><a href="../../../assets/mobile/iphone-models.webp"><img src="../../../assets/mobile/iphone-models.webp" alt="Cherry Studio 行動版模型選擇器"></a><figcaption><p><strong>步驟 3</strong> · 在對話中選擇已啟用的模型，點擊檢視原圖</p></figcaption></figure>
+<figure data-mobile-shot="phone"><a href="../../../assets/mobile/zh/iphone-add-provider.webp"><img src="../../../assets/mobile/zh/iphone-add-provider.webp" alt="Cherry Studio 行動版新增服務商頁面"></a><figcaption><p><strong>步驟 1 · 簡體中文介面</strong> · 選擇內建或自訂服務商，點選檢視原圖</p></figcaption></figure>
+<figure data-mobile-shot="phone"><a href="../../../assets/mobile/zh/iphone-models.webp"><img src="../../../assets/mobile/zh/iphone-models.webp" alt="Cherry Studio 行動版模型選擇器"></a><figcaption><p><strong>步驟 3 · 簡體中文介面</strong> · 在智能體編輯頁選擇已啟用模型，點選檢視原圖</p></figcaption></figure>
 </div>
 
-## 4. 傳送訊息
+## 4. 傳送第一條訊息
 
-回到對話頁，開啟預設助理或新建助理，選擇模型並傳送一則簡短訊息。能夠正常收到回覆，表示基本設定已經完成。
+使用初始的 Cherry 智能體，選擇剛配置的模型，傳送“用三句話介紹你能幫我做什麼”。收到回覆就說明基礎配置已完成。
 
-下一步可以閱讀[服務商與模型](providers-and-models.md)，或瞭解[對話與檔案](chat-and-files.md)。
+智能體可以理解為一套可重複使用的“名稱、任務說明和模型”設定；同一個智能體可以開啟多段不同話題的對話。
+
+若沒有回覆，先用不帶附件的短訊息重試，再按[常見問題](troubleshooting.md)檢查金鑰、模型和網路。
+
+## 接下來可以試什麼？
+
+| 需求 | 從這裡開始 |
+| --- | --- |
+| 讓 AI 看照片、總結檔案 | [對話與檔案](chat-and-files.md) |
+| 為寫作、翻譯等任務儲存不同要求 | [智能體與工具](agents-and-tools.md) |
+| 搜尋網頁並核對來源 | [聯網搜尋與網頁閱讀](web-search.md) |
+| 使用飛書、Notion 等已有帳號 | [外掛與外部工具](plugins.md) |
+| 生成圖片、用參考圖繼續修改 | [圖片生成](image-generation.md) |
+| 把幾條回答整理成圖片或檔案 | [分享與匯出](sharing-and-export.md) |

@@ -164,17 +164,29 @@
 ## Мобильная версия
 
 * **Начало работы**
-  * [Обзор мобильной версии](mobile/README.md)
+  * [Cherry Studio для мобильных устройств](mobile/README.md)
   * [Загрузка и установка](mobile/installation.md)
   * [Быстрый старт](mobile/quick-start.md)
 * **Руководство по функциям**
   * [Провайдеры и модели](mobile/providers-and-models.md)
-  * [Диалоги и файлы](mobile/chat-and-files.md)
+  * [Добавление, редактирование и управление моделями](mobile/model-management.md)
+  * [Обновление сведений о моделях и их списков](mobile/model-updates.md)
+  * [Импорт настроек с компьютера](mobile/desktop-sync.md)
+  * [Чаты и файлы](mobile/chat-and-files.md)
   * [Агенты и инструменты](mobile/agents-and-tools.md)
+  * [Как использовать инструменты с ИИ](mobile/using-tools.md)
+  * [Календарь и напоминания](mobile/calendar-and-reminders.md)
+  * [Местоположение и данные о здоровье](mobile/location-and-health.md)
+  * [Создание и редактирование файлов](mobile/file-generation.md)
+  * [Преобразование HTML в изображение или PPT](mobile/html-export.md)
+  * [Поиск в интернете и чтение веб-страниц](mobile/web-search.md)
+  * [Плагины и внешние инструменты](mobile/plugins.md)
   * [Генерация изображений](mobile/image-generation.md)
+  * [Отправка и экспорт](mobile/sharing-and-export.md)
 * **Настройки и поддержка**
   * [Данные, конфиденциальность и разрешения](mobile/data-privacy.md)
-  * [Устранение неполадок](mobile/troubleshooting.md)
+  * [Настройки, использование и ответы в фоновом режиме](mobile/settings-and-usage.md)
+  * [Решение проблем](mobile/troubleshooting.md)
 
 ## Помощь и устранение неполадок
 
