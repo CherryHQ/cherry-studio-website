@@ -31,7 +31,7 @@ import { useTheme } from '@/hooks/useTheme'
 import { useVersionData } from '@/hooks/useVersionData'
 import { cn } from '@/lib/utils'
 import { isMobileDevice } from '@/utils/systemDetection'
-import { isEnglishSite } from '@/utils/urls'
+import { getDocsUrl, isEnglishSite } from '@/utils/urls'
 
 interface FeatureTab {
   id: string
@@ -310,9 +310,7 @@ const HeroSection: FC = () => {
               )}
               {!isEn && (
                 <a
-                  href="https://docs.cherryai.com.cn"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href={getDocsUrl(i18n.language)}
                   className="hover:text-foreground inline-flex items-center gap-1.5 rounded-md py-1 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
                   {t('nav.docs')}
                   <ArrowRight className="h-3.5 w-3.5" />
