@@ -160,11 +160,23 @@
   * [Quick Start](mobile/quick-start.md)
 * **Feature Guides**
   * [Providers and Models](mobile/providers-and-models.md)
+  * [Add, Edit, and Manage Models](mobile/model-management.md)
+  * [Model Information and List Updates](mobile/model-updates.md)
+  * [Import Configuration from Desktop](mobile/desktop-sync.md)
   * [Chat and Files](mobile/chat-and-files.md)
   * [Agents and Tools](mobile/agents-and-tools.md)
+  * [Let AI Use Tools](mobile/using-tools.md)
+  * [Calendar and Reminders](mobile/calendar-and-reminders.md)
+  * [Location and Health Records](mobile/location-and-health.md)
+  * [Create and Edit Files](mobile/file-generation.md)
+  * [HTML to Image and PPT](mobile/html-export.md)
+  * [Web Search and Page Reading](mobile/web-search.md)
+  * [Plugins and External Tools](mobile/plugins.md)
   * [Image Generation](mobile/image-generation.md)
+  * [Sharing and Export](mobile/sharing-and-export.md)
 * **Settings & Support**
   * [Data, Privacy, and Permissions](mobile/data-privacy.md)
+  * [Settings, Usage, and Background Replies](mobile/settings-and-usage.md)
   * [Troubleshooting](mobile/troubleshooting.md)
 
 ## Help & Troubleshooting

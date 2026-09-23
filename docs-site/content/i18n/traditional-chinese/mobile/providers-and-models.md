@@ -4,36 +4,76 @@ icon: key-round
 
 # 服務商與模型
 
-行動版透過你設定的服務商呼叫模型。Cherry Studio 負責用戶端體驗，不代理模型額度，也不會改變服務商本身的計費與資料規則。
+服務商是提供 AI 服務的公司或平台，模型是你在這個平台上使用的具體 AI。同一個模型可能由不同平台提供，需要分別填寫對應平台的帳號憑據。
+
+初次使用只需準備 **API Key（服務商發給你的呼叫金鑰）**，新增一個模型並啟用服務商。Cherry Studio 是客戶端，不附帶模型額度；能否呼叫及實際費用以服務商帳戶為準。
 
 <div data-mobile-gallery="pair">
-<figure data-mobile-shot="phone"><a href="../../../assets/mobile/iphone-add-provider.webp"><img src="../../../assets/mobile/iphone-add-provider.webp" alt="Cherry Studio 行動版 iPhone 新增服務商頁面"></a><figcaption><p><strong>iPhone</strong> · 搜尋內建服務商或建立自訂服務商</p></figcaption></figure>
-<figure data-mobile-shot="tablet"><a href="../../../assets/mobile/ipad-add-provider.webp"><img src="../../../assets/mobile/ipad-add-provider.webp" alt="Cherry Studio 行動版 iPad 新增服務商頁面"></a><figcaption><p><strong>iPad</strong> · 同一服務商目錄的平板版面</p></figcaption></figure>
+<figure data-mobile-shot="phone"><a href="../../../assets/mobile/zh/iphone-add-provider.webp"><img src="../../../assets/mobile/zh/iphone-add-provider.webp" alt="Cherry Studio 行動版 iPhone 新增服務商頁面"></a><figcaption><p><strong>iPhone · 簡體中文介面</strong> · 搜尋內建服務商或建立自訂服務商</p></figcaption></figure>
+<figure data-mobile-shot="tablet"><a href="../../../assets/mobile/zh/ipad-add-provider.webp"><img src="../../../assets/mobile/zh/ipad-add-provider.webp" alt="Cherry Studio 行動版 iPad 新增服務商頁面"></a><figcaption><p><strong>iPad · 簡體中文介面</strong> · 同一服務商目錄的平板佈局</p></figcaption></figure>
 </div>
 
 ## 新增內建服務商
 
-1. 開啟模型服務設定並選擇 **新增服務商**。
-2. 搜尋並選擇目標服務商。
-3. 填寫 API Key；如果頁面提供額外欄位，再依服務商要求填寫。
-4. 取得或新增模型，並啟用需要使用的模型。
+1. 開啟 **設定 → 模型服務**，點選新增按鈕。
+2. 搜尋目標服務商，點選 **新增**。內建服務商已提供常用的連線配置。
+3. 填寫該平台的 API Key。除非平台另有說明，先保留預填地址和介面選項。
+4. 儲存配置，進入模型選擇步驟。同步模型列表後，勾選需要新增的模型並確認；列表不可用時可以手動新增。
+5. 完成配置後，回到模型服務列表檢視該服務商的開關；若仍停用，開啟開關，按提示補齊配置。出現在已啟用分組後，再回到對話中選擇模型。
 
-## 使用自訂服務商
+已新增的服務商不必重複建立。點選原來的條目即可修改配置；暫時不使用時可以停用，之後再啟用。
 
-如果服務相容應用程式支援的介面規範，可以選擇 **自訂服務商**，填寫名稱、Base URL、API Key 和模型 ID。Base URL 應使用服務商文件提供的 API 位址，而不是主控台首頁位址。
+## 新增自訂服務商
 
-## 選擇模型
+適合使用列表中沒有的平台，或平台給了你一個專用服務地址的情況。
 
-在對話或智能體頁面開啟模型選擇器，即可在已啟用的模型之間切換。模型是否支援圖片理解、工具呼叫或圖片生成，取決於服務商與特定模型。
+1. 在新增服務商頁面選擇 **自訂服務商**，填寫便於辨認的名稱。
+2. 按平台說明選擇介面。OpenAI、Anthropic、Gemini 等選項表示連線方式，請選擇平台宣告支援的那一種。
+3. 填寫 **Base URL（應用連線該平台的基礎地址）**和 API Key。
+4. 檢視頁面顯示的 **請求地址**，確認實際發往的平台正確，然後儲存。
+5. 同步模型，或填寫平台提供的模型 ID 手動新增。回到模型服務列表，確認該服務商的開關已開啟。
+
+### Base URL 應該填什麼？
+
+填寫服務商提供的基礎地址，例如 `https://api.example.com/v1`，不要填寫登入頁或控制檯首頁，也不要直接貼上以 `/chat/completions` 結尾的完整請求地址。應用會補上請求路徑；重複填寫會導致地址錯誤。頁面識別出完整請求地址時，會提示改用基礎地址。
+
+少數平台要求地址後面**不再自動補版本號**。這種情況下可按平台的連線要求在基礎地址末尾加 `#`，例如 `https://api.example.com#`，並核對頁面的請求地址預覽。不需要時不要新增。
+
+如果平台支援多種介面，可以在配置中分別管理並選擇預設介面。更改預設介面可能影響跟隨它的已有模型，請留意頁面提示；不清楚用途時保留原選項即可。
+
+## 編輯服務商與管理多個金鑰
+
+開啟服務商的 **配置** 頁，可修改名稱、地址和金鑰。金鑰可以新增備註，例如“個人帳戶”或“備用”；備註僅方便辨認，不影響服務商權限。
+
+* 每個金鑰單獨新增，可分別啟用、停用、修改或刪除，不要把多個金鑰貼上進同一個輸入框。
+* 關閉某個金鑰的編輯小窗後，改動仍在當前頁面的草稿裡。請點選頁面的 **儲存**，地址和金鑰才會一起儲存。
+* 至少保留一個已啟用且有效的金鑰。全部停用時，服務商仍無法正常呼叫。
+* 新增、替換或刪除金鑰後，如果離開頁面時出現放棄修改提示，說明改動尚未儲存。
+
+支援金鑰切換的對話請求，在尚未開始輸出時遇到未授權或限流錯誤，可以嘗試其他已啟用金鑰。這不代表所有錯誤、圖片生成或模型列表請求都會自動重試，也不會增加帳戶本身的額度。
 
 <div data-mobile-gallery="pair">
-<figure data-mobile-shot="phone"><a href="../../../assets/mobile/iphone-models.webp"><img src="../../../assets/mobile/iphone-models.webp" alt="Cherry Studio 行動版 iPhone 模型選擇頁面"></a><figcaption><p><strong>iPhone</strong> · 依服務商瀏覽已啟用的模型</p></figcaption></figure>
-<figure data-mobile-shot="tablet"><a href="../../../assets/mobile/ipad-models.webp"><img src="../../../assets/mobile/ipad-models.webp" alt="Cherry Studio 行動版 iPad 模型選擇頁面"></a><figcaption><p><strong>iPad</strong> · 在平板端檢視模型能力與上下文資訊</p></figcaption></figure>
+<figure data-mobile-shot="phone"><a href="../../../assets/mobile/zh/provider-config.webp"><img src="../../../assets/mobile/zh/provider-config.webp" alt="修改金鑰狀態後，點選頁面右上角儲存；圖中為不可呼叫的演示金鑰"></a><figcaption><p><strong>iPhone · 簡體中文介面</strong> · 修改金鑰狀態後，點選頁面右上角儲存；圖中為不可呼叫的演示金鑰</p></figcaption></figure>
+<figure data-mobile-shot="phone"><a href="../../../assets/mobile/zh/provider-key.webp"><img src="../../../assets/mobile/zh/provider-key.webp" alt="金鑰備註只用來區分用途，關閉小窗後仍需儲存服務商配置"></a><figcaption><p><strong>iPhone · 簡體中文介面</strong> · 金鑰備註只用來區分用途，關閉小窗後仍需儲存服務商配置</p></figcaption></figure>
 </div>
 
-## 常見連線錯誤
+## 檢查連線
 
-* **401 / 未授權**：檢查 API Key 是否完整、是否過期，以及帳戶是否有權限。
-* **404 / 模型不存在**：核對 Base URL 與模型 ID，避免把顯示名稱當成模型 ID。
-* **429 / 請求過多**：等待流量限制恢復，或檢查服務商餘額與速率限制。
-* **逾時或網路失敗**：確認目前網路可以連線到服務商，並檢查 Proxy 設定。
+先儲存當前配置，再開啟 **模型檢查**，選擇要檢查的模型並執行檢測。檢查頁面會顯示請求地址和結果。
+
+檢查成功表示這次配置與所選模型可以連通，並不代表所有模型都能使用。檢測也不會替你啟用服務商；回到模型服務列表確認啟用狀態。
+
+## 從哪裡選擇模型？
+
+對話中的模型選擇器用於切換當前智能體使用的模型。服務商需要啟用，模型也需要處於可用狀態。可搜尋模型，並使用 **全部、免費、視覺** 篩選縮小範圍。
+
+“視覺”表示已記錄支援圖片輸入，“免費”來自模型價格資訊。實際能力、免費範圍和額度仍以平台為準。列表突然變少時，先把篩選改回“全部”。
+
+在 **設定 → 預設模型** 中可以設定預設模型和繪圖模型，選擇或清除後立即儲存。已有智能體保留自己的模型選擇；預設模型並不會一次改掉所有智能體。
+
+## 接下來閱讀
+
+* [新增、編輯與管理模型](model-management.md)：名稱、能力、上下文、價格和刪除規則。
+* [模型資訊與列表更新](model-updates.md)：遠端更新會改變什麼，什麼時候需要手動同步。
+* [從電腦匯入配置](desktop-sync.md)：已有桌面版配置時，免去重複填寫。
+* [常見問題](troubleshooting.md)：按錯誤提示排查連線。

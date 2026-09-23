@@ -161,19 +161,31 @@
     * [Canais e relatório diário agendado](advanced-basic/cases/automated-daily-report.md)
     * [Bancada de Pesquisa Multi-Janela](advanced-basic/cases/multi-window-research.md)
 
-## Mobile
+## Versão móvel
 
 * **Primeiros passos**
-  * [Visão geral da versão móvel](mobile/README.md)
+  * [Cherry Studio Mobile](mobile/README.md)
   * [Download e instalação](mobile/installation.md)
   * [Início rápido](mobile/quick-start.md)
-* **Guias de recursos**
+* **Guia de recursos**
   * [Provedores e modelos](mobile/providers-and-models.md)
+  * [Adicionar, editar e gerenciar modelos](mobile/model-management.md)
+  * [Atualização de informações e listas de modelos](mobile/model-updates.md)
+  * [Importar configurações do computador](mobile/desktop-sync.md)
   * [Conversas e arquivos](mobile/chat-and-files.md)
   * [Agentes e ferramentas](mobile/agents-and-tools.md)
+  * [Usar ferramentas com a IA](mobile/using-tools.md)
+  * [Calendário e lembretes](mobile/calendar-and-reminders.md)
+  * [Localização e registros de saúde](mobile/location-and-health.md)
+  * [Criar e editar arquivos](mobile/file-generation.md)
+  * [Converter HTML em imagem ou PPT](mobile/html-export.md)
+  * [Pesquisa na web e leitura de páginas](mobile/web-search.md)
+  * [Plugins e ferramentas externas](mobile/plugins.md)
   * [Geração de imagens](mobile/image-generation.md)
+  * [Compartilhamento e exportação](mobile/sharing-and-export.md)
 * **Configurações e suporte**
   * [Dados, privacidade e permissões](mobile/data-privacy.md)
+  * [Configurações, uso e respostas em segundo plano](mobile/settings-and-usage.md)
   * [Solução de problemas](mobile/troubleshooting.md)
 
 ## Ajuda e solução de problemas

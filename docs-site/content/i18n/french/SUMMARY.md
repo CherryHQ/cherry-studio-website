@@ -164,16 +164,28 @@
 ## Mobile
 
 * **Bien démarrer**
-  * [Présentation de la version mobile](mobile/README.md)
+  * [Cherry Studio Mobile](mobile/README.md)
   * [Téléchargement et installation](mobile/installation.md)
   * [Démarrage rapide](mobile/quick-start.md)
 * **Guide des fonctionnalités**
   * [Fournisseurs et modèles](mobile/providers-and-models.md)
+  * [Ajouter, modifier et gérer les modèles](mobile/model-management.md)
+  * [Mise à jour des informations et des listes de modèles](mobile/model-updates.md)
+  * [Importer la configuration depuis un ordinateur](mobile/desktop-sync.md)
   * [Conversations et fichiers](mobile/chat-and-files.md)
   * [Agents et outils](mobile/agents-and-tools.md)
-  * [Génération d'images](mobile/image-generation.md)
+  * [Faire utiliser des outils à l’IA](mobile/using-tools.md)
+  * [Calendrier et rappels](mobile/calendar-and-reminders.md)
+  * [Localisation et données de santé](mobile/location-and-health.md)
+  * [Créer et modifier des fichiers](mobile/file-generation.md)
+  * [Convertir un fichier HTML en image ou en PPT](mobile/html-export.md)
+  * [Recherche Web et lecture de pages](mobile/web-search.md)
+  * [Plugins et outils externes](mobile/plugins.md)
+  * [Génération d’images](mobile/image-generation.md)
+  * [Partage et exportation](mobile/sharing-and-export.md)
 * **Paramètres et assistance**
   * [Données, confidentialité et autorisations](mobile/data-privacy.md)
+  * [Paramètres, utilisation et réponses en arrière-plan](mobile/settings-and-usage.md)
   * [Dépannage](mobile/troubleshooting.md)
 
 ## Aide et dépannage

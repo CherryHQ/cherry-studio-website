@@ -164,17 +164,29 @@
 ## モバイル版
 
 * **はじめに**
-  * [モバイル版の概要](mobile/README.md)
+  * [Cherry Studio モバイル版](mobile/README.md)
   * [ダウンロードとインストール](mobile/installation.md)
   * [クイックスタート](mobile/quick-start.md)
 * **機能ガイド**
   * [プロバイダーとモデル](mobile/providers-and-models.md)
+  * [モデルの追加・編集・管理](mobile/model-management.md)
+  * [モデル情報と一覧の更新](mobile/model-updates.md)
+  * [パソコンから設定を取り込む](mobile/desktop-sync.md)
   * [チャットとファイル](mobile/chat-and-files.md)
   * [エージェントとツール](mobile/agents-and-tools.md)
+  * [AI にツールを使ってもらう](mobile/using-tools.md)
+  * [カレンダーとリマインダー](mobile/calendar-and-reminders.md)
+  * [位置情報とヘルスケア記録](mobile/location-and-health.md)
+  * [ファイルの作成と編集](mobile/file-generation.md)
+  * [HTML を画像や PPT に変換する](mobile/html-export.md)
+  * [Web 検索とページの読み取り](mobile/web-search.md)
+  * [プラグインと外部ツール](mobile/plugins.md)
   * [画像生成](mobile/image-generation.md)
+  * [共有とエクスポート](mobile/sharing-and-export.md)
 * **設定とサポート**
   * [データ・プライバシー・権限](mobile/data-privacy.md)
-  * [よくある質問](mobile/troubleshooting.md)
+  * [設定・使用量・バックグラウンドの応答](mobile/settings-and-usage.md)
+  * [よくある質問とトラブル対処](mobile/troubleshooting.md)
 
 ## ヘルプとトラブルシューティング
 
