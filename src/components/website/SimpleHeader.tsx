@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom'
 import cherryLogoSvg from '@/assets/images/cherry-logo.svg'
 import githubIcon from '@/assets/images/icons/github.svg'
 import cherryLogoPng from '@/assets/images/logo.png'
-import { getDocsUrl, getEnterpriseUrl, isEnglishSite } from '@/utils/urls'
+import { EXTERNAL_DOCS_URL, getEnterpriseUrl, isEnglishSite } from '@/utils/urls'
 import { SiteHeader } from '../../../shared/SiteHeader'
 import LanguageSelector from './LanguageSelector'
 import ThemeSelector from './ThemeSelector'
@@ -22,13 +22,13 @@ export default function SimpleHeader() {
           active: pathname.startsWith('/flash')
         },
         { href: '/mobile', label: t('nav.mobile'), active: pathname.startsWith('/mobile') },
-        { href: getDocsUrl(i18n.language), label: t('nav.docs') },
+        { href: EXTERNAL_DOCS_URL, label: t('nav.docs'), external: true },
         { href: getEnterpriseUrl(i18n.language), label: t('nav.enterprise'), external: true }
       ]
     : [
         { href: '/', label: t('nav.home'), active: pathname === '/' },
         { href: '/mobile', label: t('nav.mobile'), active: pathname.startsWith('/mobile') },
-        { href: getDocsUrl(i18n.language), label: t('nav.docs') },
+        { href: EXTERNAL_DOCS_URL, label: t('nav.docs'), external: true },
         { href: '/theme', label: t('nav.theme'), active: pathname === '/theme' },
         { href: '/careers', label: t('nav.careers'), active: pathname === '/careers' },
         { href: getEnterpriseUrl(i18n.language), label: t('nav.enterprise'), external: true }
@@ -50,9 +50,7 @@ export default function SimpleHeader() {
           <ThemeSelector />
         </>
       }
-      renderLink={({ href, ...props }) =>
-        href.startsWith('/docs/') ? <a href={href} {...props} /> : <Link to={href} {...props} />
-      }
+      renderLink={({ href, ...props }) => <Link to={href} {...props} />}
     />
   )
 }

@@ -16,7 +16,7 @@ import xIcon from '@/assets/images/icons/x.svg'
 import xColorIcon from '@/assets/images/icons/x-color.svg'
 import cherryWxQR from '@/assets/images/resource/cherrywx.png'
 import { copyRSSLink } from '@/utils'
-import { getDocsUrl } from '@/utils/urls'
+import { EXTERNAL_DOCS_URL } from '@/utils/urls'
 import LanguageSelector from './LanguageSelector'
 import ThemeSelector from './ThemeSelector'
 
@@ -81,7 +81,7 @@ const Footer: FC = () => {
         { href: '/mobile', label: t('footer.cherry_studio.mobile') },
         { href: '/download?platform=mobile', label: t('footer.cherry_studio.mobile_download') },
         { href: 'https://github.com/CherryHQ/cherry-studio', label: t('footer.cherry_studio.github') },
-        { href: getDocsUrl(i18n.language), label: t('footer.cherry_studio.docs') },
+        { href: EXTERNAL_DOCS_URL, label: t('footer.cherry_studio.docs') },
         { href: 'https://github.com/CherryHQ/cherry-studio/issues', label: t('footer.cherry_studio.feedback') }
       ]
     : [
@@ -89,7 +89,7 @@ const Footer: FC = () => {
         { href: '/download?platform=mobile', label: t('footer.cherry_studio.mobile_download') },
         { href: 'https://github.com/CherryHQ/cherry-studio', label: t('footer.cherry_studio.github') },
         { href: 'https://gitcode.com/CherryHQ/cherry-studio', label: t('footer.cherry_studio.gitcode') },
-        { href: getDocsUrl(i18n.language), label: t('footer.cherry_studio.docs') },
+        { href: EXTERNAL_DOCS_URL, label: t('footer.cherry_studio.docs') },
         { href: 'https://github.com/CherryHQ/cherry-studio/issues', label: t('footer.cherry_studio.feedback') }
       ]
 
@@ -255,7 +255,7 @@ const Footer: FC = () => {
               {!isEn && (
                 <li>
                   <a
-                    href={`${getDocsUrl(i18n.language)}question-contact/suggestions/`}
+                    href={`${EXTERNAL_DOCS_URL}question-contact/suggestions`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-muted-foreground hover:text-primary text-sm transition-colors duration-200">

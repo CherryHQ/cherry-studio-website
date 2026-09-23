@@ -1,5 +1,6 @@
 const ENGLISH_DOMAIN = 'cherryai.com'
 const CHINESE_DOMAIN = 'cherryai.com.cn'
+export const EXTERNAL_DOCS_URL = 'https://docs.cherryai.com.cn/'
 
 const DOMAIN_LANGUAGE_MAP: Record<string, 'en-US' | 'zh-CN'> = {
   [ENGLISH_DOMAIN]: 'en-US',
