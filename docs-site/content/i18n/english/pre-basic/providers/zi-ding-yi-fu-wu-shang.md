@@ -13,38 +13,31 @@ Cherry Studio not only integrates mainstream AI model services but also empowers
 
 Adding your custom AI service provider to Cherry Studio takes just a few simple steps:
 
-<figure><img src="../../../../assets/33c7d9e73c5dca11aa494c09.webp" alt=""><figcaption></figcaption></figure>
-
 1.  **Open Settings:** In the left navigation bar of the Cherry Studio interface, click "Settings" (gear icon).
 2.  **Go to Model Provider:** On the settings page, select "Model Provider" in the left menu.
-3.  **Add Provider:** On the "Model Provider" page, you will see a list of existing providers. Click the "+ Add" button below the list to open the "Add Provider" pop-up window.
-4.  **Fill in Information:** In the pop-up window, you need to fill in the following information:
-    *   **Provider Name:** Give your custom provider an easy-to-identify name (e.g., MyCustomOpenAI).
-    *   **Provider Type:** Select your provider type from the dropdown list. Currently supported:
-        *   OpenAI
-        *   Gemini
-        *   Anthropic
-        *   Azure OpenAI
-5.  **Save Configuration:** After filling in the information, click the "Add" button to save your configuration.
+3.  **Add Provider:** Click **+ Add Provider** at the bottom of the provider list to open the **Add Custom Provider** dialog.
+4.  **Fill in Information:**
+    *   **Avatar (optional):** upload an image, pick a built-in avatar, or keep the default letter avatar.
+    *   **Provider Name** (required): an easy-to-identify name, e.g. MyCustomOpenAI.
+    *   **API Key:** the key provided by your AI service.
+    *   **Endpoint settings:** enter the API root URL (Base URL) for each protocol your service supports, such as **OpenAI** and **Anthropic**. You only need to fill in the ones your service offers; a preview of the final request path appears below each field.
+5.  **Save Configuration:** Click **Add**.
+
+<figure><img src="../../../../assets/ab9b6b96091cbf6ff3ab4b92.webp" alt="The Add Custom Provider dialog with avatar, Provider Name, API Key and OpenAI / Anthropic endpoint fields"><figcaption><p>The Add Custom Provider dialog</p></figcaption></figure>
 
 ## Configure Custom AI Service Provider
 
-<figure><img src="../../../../assets/15ab8c6ac190f35256410cea.webp" alt=""><figcaption></figcaption></figure>
-
 After adding, you need to find the provider you just added in the list and configure it in detail:
 
-1.  **Enable Status:** On the far right of the custom service provider list, there is an enable switch. Turning it on means enabling this custom service.
+1.  **Enable Status:** In the top-right corner of the provider's page, there is an enable switch. Turning it on means enabling this custom service.
 2.  **API Key:**
     *   Enter the API Key provided by your AI service provider.
     *   Click the "Model Check" button on the right to verify the validity of the key.
-3.  **API Address:**
-    *   Enter the API access address (Base URL) for the AI service.
+3.  **API Host:**
+    *   Check or change the API access address (Base URL) for the AI service.
     *   Please be sure to refer to the official documentation provided by your AI service provider to get the correct API address.
 4.  **Model Management:**
-    *   Click the "+ Add" button to manually add the model ID you want to use under this provider. For example, `gpt-3.5-turbo`, `gemini-pro`, etc.
-
-    <figure><img src="../../../../assets/75259c1dca05012a42e24e40.webp" alt=""><figcaption></figcaption></figure>
-
+    *   Click **Sync models** to fetch models automatically, or the **+** next to it to manually add the model ID you want to use under this provider. For example, `gpt-3.5-turbo`, `gemini-pro`, etc.
     *   If you are unsure of the specific model name, please refer to the official documentation provided by your AI service provider.
     *   Use the settings icon or "−" next to each model to edit or remove models that have already been added.
 
