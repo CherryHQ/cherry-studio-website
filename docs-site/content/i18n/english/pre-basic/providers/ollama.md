@@ -64,7 +64,7 @@ Next, add Ollama as a custom AI provider in Cherry Studio:
 *   **Go to Model Provider:** On the settings page, select "Model Provider" in the left menu.
 *   **Add Provider:** Click Ollama in the list.
 
-<figure><img src="../../../../assets/4645d257a81eb080a84c05fc.webp" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../assets/01f33d66d14a3c39d1cb0820.webp" alt=""><figcaption></figcaption></figure>
 
 ### **3. Configure the Ollama Provider**
 

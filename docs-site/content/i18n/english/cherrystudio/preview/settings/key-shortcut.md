@@ -10,7 +10,7 @@ icon: keyboard
 * **Path:** `Settings` > `Keyboard Shortcuts` in the left navigation bar.
 * **Purpose:** here you can filter shortcuts by category, search them, view the default keys, change key combinations, and enable or disable specific shortcuts.
 
-<figure><img src="../../../../../assets/fc1bb2f3511126cc226794c1.webp" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../../assets/4c0ff3de1f5e3e6474efcb0e.webp" alt=""><figcaption></figcaption></figure>
 
 ### 2. How the Page Works
 
@@ -18,7 +18,7 @@ From top to bottom, the page has four parts:
 
 #### 2.1 Top Toolbar
 
-There are three buttons to the right of the title:
+To the right of the title are a search icon, a category filter (**All**) and a **⋯** menu. **Enable All**, **Disable All** and **Reset** are in the **⋯** menu:
 
 * **Enable All:** enables every shortcut in the current list (as filtered / searched) that has a key bound.
 * **Disable All:** disables every shortcut in the current list.

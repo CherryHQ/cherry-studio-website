@@ -17,7 +17,7 @@
     <figure><img src="../../../../assets/e6c807e270fe736e6731c677.webp" alt=""><figcaption>Copying the API Key for Alibaba Cloud Bailian</figcaption></figure>
 
 7.  Go to Cherry Studio, find `API Key` in `Settings` → `Model Provider` → `Alibaba Cloud Bailian`, and paste the copied API key here.
-    <figure><img src="../../../../assets/9f14346e4b15514c0730d7a6.webp" alt=""><figcaption>Entering the API Key for Alibaba Cloud Bailian</figcaption></figure>
+    <figure><img src="../../../../assets/eabb0801afb49332b49a71e7.webp" alt=""><figcaption>Entering the API Key for Alibaba Cloud Bailian</figcaption></figure>
 
 8.  You can adjust relevant settings as described in [Model Services](../../cherrystudio/preview/settings/providers.md), and then you can start using it.
 {% hint style="info" %}

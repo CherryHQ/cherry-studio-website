@@ -10,7 +10,7 @@ With custom CSS you can change how the app looks without touching the source cod
 
 Open **Settings → Appearance** and find the **Custom CSS** code box at the bottom of the page. Styles you write there take effect immediately. Leave it empty to load no custom styles.
 
-<figure><img src="../../../assets/ea5d4668d83989aa756ee9ab.webp" alt=""><figcaption><p>The Custom CSS code box at the bottom of Settings → Appearance</p></figcaption></figure>
+<figure><img src="../../../assets/07d46277c5472d117ec5cc19.webp" alt=""><figcaption><p>The Custom CSS code box at the bottom of Settings → Appearance</p></figcaption></figure>
 
 The CSS you write is injected as-is into the `<head>` of every window, as a `<style id="user-defined-custom-css">` element. Because it isn't part of the app's internal cascade layers, your styles take precedence over the built-in ones for the same selector, so most ordinary declarations work without `!important`.
 

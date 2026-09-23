@@ -8,7 +8,7 @@ In many situations Cherry Studio needs to "just pick a model" — for example, t
 
 > Note: these are models for "behind-the-scenes helpers" and **can differ from the model you chat with**. The main chat model is set separately in each assistant.
 
-<figure><img src="../../../../../assets/1bc7abd17852374dd170f877.webp" alt=""><figcaption><p>Default Model (① is the section title): below it, choose one model each for Default Assistant, Fast, Translate and Painting</p></figcaption></figure>
+<figure><img src="../../../../../assets/7df58a3d21d7aa3cdbc5d405.webp" alt=""><figcaption><p>Default Model (① is the section title): below it, choose one model each for Default Assistant, Fast, Translate and Painting</p></figcaption></figure>
 
 ## What Each of the 4 Default Models Does
 

@@ -40,8 +40,6 @@ The DeepSeek R1 and V3 community versions are for trial purposes only and are fu
 
 (1) After clicking [Model Check] and seeing "connection successful", you can use it normally.
 
-<figure><img src="../../../../assets/02e78a0c750d27c014e751fd.webp" alt=""><figcaption></figcaption></figure>
-
 (2) Finally, click [@], select the DeepSeek R1 model just added under the PPIO provider, and you can successfully start chatting~
 
 <figure><img src="../../../../assets/ab28a064a17133ac455ad444.webp" alt=""><figcaption></figcaption></figure>

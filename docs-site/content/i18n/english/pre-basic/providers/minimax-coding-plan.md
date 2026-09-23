@@ -37,7 +37,7 @@ You do **not** need to modify complex API addresses; use the default configurati
 
 <table><thead><tr><th width="128.20703125">Parameter</th><th>Description</th></tr></thead><tbody><tr><td><strong>API Key</strong></td><td>Paste your Coding Plan dedicated key<br><em>(Note: It must be the Key generated after purchasing the plan; do not include extra spaces)</em></td></tr><tr><td><strong>API Address</strong></td><td>Keep the default <code>https://api.minimaxi.com/v1</code></td></tr><tr><td><strong>Toggle</strong></td><td>Click the toggle in the top-right corner to ensure it is <strong>Green (ON)</strong></td></tr></tbody></table>
 
-<figure><img src="../../../../assets/d85a4215a6223242d859fc63.webp" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../assets/368c7e08595f9ac70e2a212f.webp" alt=""><figcaption></figcaption></figure>
 
 #### Step 3: Add the Specified Model (Critical)
 
@@ -45,7 +45,7 @@ The Coding Plan supports only specific models. Selecting the wrong model will re
 
 1. Click **Sync models** next to the Models heading on the configuration page.
 
-<figure><img src="../../../../assets/a47dc9b50635537d2cca507d.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../assets/1bc2b31e60d7aa392acf75d6.webp" alt=""><figcaption></figcaption></figure>
 
 2. Find and add **`MiniMax M2.1`** in the list.
 

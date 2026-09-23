@@ -4,7 +4,7 @@
 
 #### [​](https://docs.siliconflow.cn/usercases/use-siliconcloud-in-cherry-studio#2-1)1.2 Click the settings in the lower left corner and select [SiliconFlow] in the model service. <a href="#id-2-1" id="id-2-1"></a>
 
-<figure><img src="../../../../assets/417d850015c3ac0132c903a9.webp" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../assets/8a1c8f0dfe90a7240831905b.webp" alt=""><figcaption></figcaption></figure>
 
 #### [​](https://docs.siliconflow.cn/usercases/use-siliconcloud-in-cherry-studio#2-2-siliconcloud-api)1.2 Click the link to get SiliconCloud API Key <a href="#id-2-2-siliconcloud-api" id="id-2-2-siliconcloud-api"></a>
 
@@ -15,7 +15,7 @@
 
 #### [​](https://docs.siliconflow.cn/usercases/use-siliconcloud-in-cherry-studio#2-3)1.3 Click Sync models to add models <a href="#id-2-3" id="id-2-3"></a>
 
-<figure><img src="../../../../assets/065e81241fd19d9779f091a2.webp" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../assets/ace6b16d559631cb460403b7.webp" alt=""><figcaption></figcaption></figure>
 
 ## [​](https://docs.siliconflow.cn/usercases/use-siliconcloud-in-cherry-studio#3)2. Model Service Usage <a href="#id-3" id="id-3"></a>
 
@@ -23,4 +23,4 @@
 2. Enter text in the input box to start chatting
 3. You can switch models by selecting the model name from the top menu
 
-<figure><img src="../../../../assets/091624a0190059d60bd59d26.webp" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../assets/5d2d3e97f9d5ccae7d5bdade.webp" alt=""><figcaption></figcaption></figure>

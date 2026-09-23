@@ -10,7 +10,7 @@ Appearance settings gather all your preferences for **how the interface looks, h
 
 ### Theme and Theme Color
 
-<figure><img src="../../../assets/875f1f64290dce66f468a28c.webp" alt=""><figcaption><p>Theme, theme color and display language</p></figcaption></figure>
+<figure><img src="../../../assets/a4f8b452c6bc654deab1f7f9.webp" alt=""><figcaption><p>Theme, theme color and display language</p></figcaption></figure>
 
 * **Theme**: switch between **Light / Dark / System** ("System" follows your operating system's light or dark mode).
 * **Theme color**: choose the interface's primary color from several presets, or enter a hex value on the right (such as `#00B96B`) for a custom color.
@@ -20,9 +20,10 @@ Appearance settings gather all your preferences for **how the interface looks, h
 | Setting | Description |
 | --- | --- |
 | **Language** | Interface language; supports Simplified Chinese, Traditional Chinese, English, Japanese, German, French and more |
-| **Zoom** | Overall interface scale; adjust it for large or small screens, or if the text feels too small |
+| **Page Zoom** | Overall interface scale; adjust it for large or small screens, or if the text feels too small |
 | **Context menu style** | Switch between Cherry's own menu and the system's **native** right-click menu |
 | **Transparent window** | Enables a translucent frosted-glass window effect (**macOS only**; may affect performance on some graphics cards) |
+| **Conversation list position** | Show the conversation list on the **Left** or **Right** |
 
 ### Font Settings
 
@@ -33,14 +34,18 @@ For font suggestions, see [Font Recommendations](../../../pre-basic/personalizat
 
 ### Input Settings
 
-<figure><img src="../../../assets/1adf46a4e842b7f9514515bb.webp" alt=""><figcaption><p>Font, input and message display settings</p></figcaption></figure>
+<figure><img src="../../../assets/92dd92cada7d4e0ffb1288f7.webp" alt=""><figcaption><p>Font, input and message display settings</p></figcaption></figure>
 
 | Setting | Description |
 | --- | --- |
-| **Send shortcut** | The key used to send a message (such as `Enter` or `Shift+Enter`) |
+| **Send shortcut** | The key used to send a message (default `Return`) |
+| **Line break shortcut** | The key that inserts a new line (default `⇧Return`) |
+| **Steer shortcut** | The key for steering a reply while it is being generated (default `⌘Return`) |
 | **Spell check** | Shows a red wavy line under misspelled English words; turn it off if you mainly type Chinese to avoid false alarms |
 | **Show estimated token count** | Shows the estimated tokens your input will use in the input box (for reference only, not actual billing) |
 | **Markdown render input messages** | When off, the messages you send aren't rendered as Markdown; only model replies are |
+| **Paste long text as file** | Long pasted text is turned into a file attachment (on by default) |
+| **Paste long text length** | How many characters count as "long text" (default 1500) |
 | **Confirm before deleting messages** | Asks for confirmation before a message is deleted, to prevent accidents |
 
 ### Message Settings
@@ -64,7 +69,7 @@ Controls how AI replies appear in the chat area:
 
 ### Code Block Settings
 
-<figure><img src="../../../assets/d4aca090ff4eb349ef2a75bd.webp" alt=""><figcaption><p>Math formula and code block settings</p></figcaption></figure>
+<figure><img src="../../../assets/fb372d101ee370c7d6d0c69c.webp" alt=""><figcaption><p>Math formula and code block settings</p></figcaption></figure>
 
 | Setting | Description |
 | --- | --- |

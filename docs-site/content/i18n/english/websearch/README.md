@@ -17,16 +17,16 @@ Web search mode lets the AI search for the latest information before answering. 
 
 Click the 🌐 **globe** icon in the toolbar of the chat input box to turn on web search for the current conversation.
 
-<figure><img src="../../../assets/c0a11b347216ee5d538c5348.webp" alt=""><figcaption><p>The globe icon in the chat input bar: click it to turn on web search for the current conversation (the tooltip shows the current search provider)</p></figcaption></figure>
+<figure><img src="../../../assets/20d05fb299d917a6936f6b84.webp" alt=""><figcaption><p>The globe icon in the chat input bar: click it to turn on web search for the current conversation (the tooltip shows the current search provider)</p></figcaption></figure>
 
 **Works out of the box**: Cherry Studio comes with **Exa MCP** built in as the default search provider, which **needs no API key** (it uses the public MCP endpoint `mcp.exa.ai`), and the default URL fetch provider is **Jina**. So once installed, you can click 🌐 and search the web right away.
 
 ## Configured Service or the Model's Own Search
 
-Which route web search takes is decided by the **"Prefer configured search service"** switch, which is **on by default**:
+Which route web search takes is decided by the **"Prefer model-native web tools"** switch at the bottom of `Settings → Web Search`, which is **off by default**:
 
-* **On (default)**: clicking 🌐 uses the service configured in `Settings → Web Search` — initially the key-free Exa MCP.
-* **Off**: if the model itself has **native search** (a small globe icon 🌐 next to the model name), the model handles web search on its own.
+* **Off (default)**: clicking 🌐 uses the service configured in `Settings → Web Search` — initially the key-free Exa MCP.
+* **On**: if the model itself has **native search** (a small globe icon 🌐 next to the model name), the model handles web search on its own.
 
 Rely on the 🌐 icon next to the model name to tell whether native search is supported, rather than a fixed list of models. Common cases today include:
 
@@ -50,7 +50,7 @@ Open `Settings → Web Search`. The configuration has two parts, each with a dro
 | **Search provider** | Searches the web based on your question and returns result summaries |
 | **URL fetch provider** | Fetches the main text of a given URL to fill in the content of search results |
 
-<figure><img src="../../../assets/b0b650f218b86a6246142ca0.webp" alt=""><figcaption><p>Web Search settings: the Search provider and URL fetch provider sections, and the "Prefer configured search service" switch at the bottom</p></figcaption></figure>
+<figure><img src="../../../assets/28a956b12b6cba70c2524f66.webp" alt=""><figcaption><p>Web Search settings: the Search provider and URL fetch provider sections, and the "Prefer model-native web tools" switch at the bottom</p></figcaption></figure>
 
 ### Built-in Providers
 
@@ -74,10 +74,10 @@ The following services are built in, in two types — **API** and **MCP**:
 ### Advanced Settings
 
 * **Number of search results**: how many results are returned per search (default 5, up to 100). Without compression, a large number consumes more tokens.
-* **Search result compression**: compresses the returned content before passing it to the model, saving tokens. The default is **Truncate**, with a truncation length of 2000 characters; you can switch to **No compression** or change the truncation length.
+* **Search result compression**: compresses the returned content before passing it to the model, saving tokens. Choose **None** to pass results as-is, or **Cutoff** to truncate each result to a set length.
 * **Search result blacklist**: blocks websites you don't want to see; see [Web Search Blacklist Configuration](../../../pre-basic/websearch/blacklist.md).
 
-<figure><img src="../../../assets/14c85ca07098fe220ca858cb.webp" alt=""><figcaption><p>Advanced settings: number of results, compression method (No compression / Truncate), and blacklist</p></figcaption></figure>
+<figure><img src="../../../assets/e1c92c18302a979103a16696.webp" alt=""><figcaption><p>Advanced settings: number of results, compression method (None / Cutoff), and blacklist</p></figcaption></figure>
 
 ## Related Guides
 
