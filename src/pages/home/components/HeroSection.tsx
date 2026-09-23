@@ -46,16 +46,6 @@ interface FeatureTab {
 
 const featureTabs: FeatureTab[] = [
   {
-    id: 'chat',
-    labelZh: 'AI 对话',
-    labelEn: 'AI Chat',
-    icon: <MessageSquare className="h-4 w-4" />,
-    screenshotDark: chatDarkEn,
-    screenshotLight: chatLightEn,
-    screenshotDarkZh: chatDarkZh,
-    screenshotLightZh: chatLightZh
-  },
-  {
     id: 'agent',
     labelZh: '智能体',
     labelEn: 'Agent',
@@ -64,6 +54,16 @@ const featureTabs: FeatureTab[] = [
     screenshotLight: agentLightEn,
     screenshotDarkZh: agentDarkZh,
     screenshotLightZh: agentLightZh
+  },
+  {
+    id: 'chat',
+    labelZh: 'AI 对话',
+    labelEn: 'AI Chat',
+    icon: <MessageSquare className="h-4 w-4" />,
+    screenshotDark: chatDarkEn,
+    screenshotLight: chatLightEn,
+    screenshotDarkZh: chatDarkZh,
+    screenshotLightZh: chatLightZh
   },
   {
     id: 'drawing',
@@ -102,7 +102,7 @@ const HeroSection: FC = () => {
   const { isDark } = useTheme()
   const { versionData } = useVersionData()
   const [notice, setNotice] = useState<NoticeResponse['data'] | null>(null)
-  const [activeTab, setActiveTab] = useState('chat')
+  const [activeTab, setActiveTab] = useState(featureTabs[0].id)
   const [isPaused, setIsPaused] = useState(false)
 
   const isZh = i18n.language === 'zh-CN'
