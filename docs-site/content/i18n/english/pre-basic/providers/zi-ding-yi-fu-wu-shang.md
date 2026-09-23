@@ -74,10 +74,9 @@ vLLM is a fast and easy-to-use LLM inference library similar to Ollama. Here are
 3.  **Add vLLM Provider in Cherry Studio:**
     *   Follow the steps described above to add a new custom AI service provider in Cherry Studio.
     *   **Provider Name:** `vLLM`
-    *   **Provider Type:** Select `OpenAI`.
-4.  **Configure vLLM Provider:**
     *   **API Key:** Since vLLM does not require an API key, this field can be left blank or filled with any content.
-    *   **API Address:** Enter the API address of the vLLM service. By default, the address is: `http://localhost:8000/` (if a different port is used, please modify accordingly).
+    *   **Endpoint settings → OpenAI:** Enter the address of the vLLM service. By default, the address is: `http://localhost:8000/` (if a different port is used, please modify accordingly).
+4.  **Configure vLLM Provider:**
     *   **Model Management:** Add the name of the model you loaded in vLLM. In the example of running `python -m vllm.entrypoints.openai.api_server --model gpt2` above, you should enter `gpt2` here.
 5.  **Start Conversation:** Now, you can select the vLLM provider and the `gpt2` model in Cherry Studio to start a conversation with your vLLM-powered LLM!
 
