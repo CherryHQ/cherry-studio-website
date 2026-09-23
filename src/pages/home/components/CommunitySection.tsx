@@ -26,7 +26,7 @@ const enSocialLinks = [
   { href: DISCORD_URL, icon: discordColorIcon, alt: 'Discord' },
   { href: 'https://www.instagram.com/cherrystudio_official/', icon: instagramColorIcon, alt: 'Instagram' },
   { href: 'https://www.linkedin.com/company/cherryhq/', icon: linkedinColorIcon, alt: 'LinkedIn' },
-  { href: 'https://x.com/CherryStudioHQ', icon: xColorIcon, alt: 'X' }
+  { href: 'https://x.com/CherryStudioHQ', icon: xColorIcon, alt: 'X', colorDarkInvert: true }
 ]
 
 const DiscordMark: FC<{ className?: string }> = ({ className }) => (
@@ -150,9 +150,22 @@ const CommunitySection: FC = () => {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="border-border bg-card/50 hover:border-primary/30 hover:bg-card relative flex h-12 w-12 items-center justify-center rounded-xl border backdrop-blur-sm transition-all duration-200"
+                  className="group border-border bg-card/50 hover:border-primary/30 hover:bg-card focus-visible:ring-primary relative flex h-12 w-12 items-center justify-center rounded-xl border backdrop-blur-sm transition-all duration-200 focus-visible:outline-none focus-visible:ring-2"
                   title={link.alt}>
-                  <img src={link.icon} alt={link.alt} className="h-5 w-5" />
+                  <img
+                    src={link.icon}
+                    alt={link.alt}
+                    className="h-5 w-5 brightness-0 transition-opacity duration-200 group-hover:opacity-0 group-focus-visible:opacity-0 dark:invert"
+                  />
+                  <img
+                    src={link.icon}
+                    alt=""
+                    aria-hidden="true"
+                    className={cn(
+                      'absolute h-5 w-5 opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100',
+                      link.colorDarkInvert && 'dark:invert'
+                    )}
+                  />
                 </a>
               ))}
             </div>
