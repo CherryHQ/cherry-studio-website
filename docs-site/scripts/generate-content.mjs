@@ -90,7 +90,11 @@ const sourceFiles = new Map()
 for (const locale of locales) {
   const own = translatedFiles.get(locale.code)
   // Missing pages are explicit source-language fallbacks. Existing translations retain their own paths.
+  // Pages a locale deliberately drops (listed with a redirect target in locales.json)
+  // get no Chinese fallback; their URLs redirect instead.
+  const removed = locale.removed || {}
   for (const file of new Set([...translatedFiles.get('zh-cn').keys(), ...own.keys()])) {
+    if (removed[file]) continue
     const fallback = !own.has(file)
     const sourceLocale = fallback ? locales[0] : locale
     const relative = path.posix.join(sourceLocale.directory, translatedFiles.get(sourceLocale.code).get(file))
@@ -134,6 +138,8 @@ for (const locale of locales) {
       const targetFile = targetLocale.directory ? target.slice(targetLocale.directory.length + 1) : target
       let contentFile = targetFile
       if (!contentFile.endsWith('.md')) contentFile = `${contentFile.replace(/\/$/, '')}/README.md`
+      const replacement = removed[canonicalFile(contentFile)]
+      if (replacement && targetLocale.code === locale.code) return urlFor(locale.code, getSlug(replacement)) + suffix
       if (
         inventories.get(targetLocale.code).has(contentFile) ||
         translatedFiles.get(targetLocale.code).has(canonicalFile(contentFile)) ||
@@ -255,6 +261,19 @@ for (const locale of locales) {
       legacyRedirects[`/${[locale.directory, slugFor(original)].filter(Boolean).join('/')}`] = target
       legacyRedirects[`/docs/${locale.code}/${slugFor(original)}`] = target
     }
+  }
+}
+// Pages a locale removed point at their replacement.
+for (const locale of locales) {
+  for (const [original, replacement] of Object.entries(locale.removed || {})) {
+    const target = urlFor(locale.code, getSlug(replacement))
+    if (!byUrl.has(target)) throw new Error(`Removed page ${locale.code}/${original} redirects to a missing page`)
+    const olds = [original, ...Object.keys(aliases).filter((alias) => aliases[alias] === original)]
+    for (const old of olds) {
+      legacyRedirects[`/docs/${locale.code}/${slugFor(old)}`] = target
+      if (locale.directory) legacyRedirects[`/${locale.directory}/${slugFor(old)}`] = target
+    }
+    legacyRedirects[`/docs/${locale.code}/${getSlug(original)}`] = target
   }
 }
 writeAtomic(path.join(generated, 'legacy-redirects.json'), JSON.stringify(legacyRedirects, null, 2))
