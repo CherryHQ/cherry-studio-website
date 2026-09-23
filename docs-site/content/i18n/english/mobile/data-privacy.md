@@ -4,29 +4,63 @@ icon: shield-check
 
 # Data, privacy, and permissions
 
-Understanding where data goes is more useful than a blanket “stored locally” claim.
+Conversations and configuration are stored on the current device. Cloud models and connected tools still receive the information needed for your requests.
+
+## Where does data go?
+
+| Feature | Data involved |
+| --- | --- |
+| Cloud chat/image generation | The selected provider receives messages, participating history, images, parsed document content, or drawing prompts |
+| Search/page reading | The selected service receives keywords or URLs; returned material participates in model answers |
+| Plugins/custom tools | Connected services process authorized requests; retrieved content may be provided to the model |
+| Calendar, reminders, location | Authorized device information is read or changed; relevant results can participate in answers |
+| Desktop import | Selected provider addresses, keys, and supported model configuration transfer over the local network |
+
+Retention depends on each service's policy and account settings. Local storage does not make a cloud conversation entirely offline.
+
+## Anonymous usage and error reports
+
+First use or a privacy-policy update asks you to **Agree and continue** or **Disagree** after explaining anonymous data use. Change your choice later in **Settings → Privacy**.
+
+* **Share anonymous usage data:** includes installation identity, app/system versions, models used, and token quantities; not conversation text, files, or API keys.
+* **Send anonymous error reports:** helps investigate crashes and failures, with a separate setting.
+
+Disabling usage reporting does not block messages you send to model providers or revoke plugin access. Manage those connections separately.
 
 <div data-mobile-gallery="single">
-<figure data-mobile-shot="phone"><a href="../../../assets/mobile/iphone-privacy.webp"><img src="../../../assets/mobile/iphone-privacy.webp" alt="Privacy and data notice in Cherry Studio Mobile"></a><figcaption><p><strong>First launch</strong> · The current version explains how anonymous data is used before you choose to continue</p></figcaption></figure>
+<figure data-mobile-shot="phone"><a href="../../../assets/mobile/en/privacy-settings.webp"><img src="../../../assets/mobile/en/privacy-settings.webp" alt="Anonymous error reports and usage data are independent options"></a><figcaption><p><strong>iPhone</strong> · Anonymous error reports and usage data are independent options</p></figcaption></figure>
 </div>
 
-## Data on the device
+## Keys and plugin authorization
 
-App settings, provider configuration, and chat history are primarily stored on the current device. Before deleting the app, clearing system data, or changing devices, save anything important separately. Do not assume that the mobile app automatically syncs with desktop.
+API keys grant model-service access. Keep them out of agent instructions, public screenshots, and issue reports. If exposed, revoke the key at the provider and replace it in the app.
 
-## Data sent to providers
+Built-in plugin credentials use device secure storage and are not transferred by desktop import. Static authentication headers for custom MCP servers are stored locally with server configuration and also need careful handling.
 
-When you send a message or file, or generate an image, the request goes to the model provider selected in your configuration. Retention and processing depend on that provider’s privacy policy, account settings, and API terms.
+## Manage system permissions
 
-## API keys
+Open **Settings → System permissions**. Tool approval and operating-system authorization can appear separately and both may be required.
 
-* Enter API keys only in the official app.
-* Never expose a complete key in screenshots, logs, chats, or support requests.
-* If a key may have leaked, revoke it in the provider dashboard and create a new one.
-* Consider a separately revocable, quota-limited key for mobile use.
+| Symptom | What to check |
+| --- | --- |
+| Only some photos are visible | Selected-photo access may be enabled; adjust the system selection/permission |
+| No prompt after denying access | Change Cherry Studio permissions in system settings |
+| Calendar reads work but edits do not | Check read and write permissions separately |
+| No health records | Confirm records exist and that data type is authorized |
+| Pairing works but configuration cannot load | Check local-network access and [desktop import](desktop-sync.md) |
 
-## System permissions
+Agent capability switches control whether that agent can use the related built-in tools; system permissions control the app’s access to device data. Manage plugins and custom MCP tools separately. Disabling an agent’s capability does not revoke system permission; use system settings to revoke access. Automatic tool approval does not bypass system permissions. Android currently does not offer the iOS reminder and health-record tools.
 
-Photos, files, camera, calendar, and reminders may require system permissions. The app requests access when a related capability is used. You can change these permissions at any time in Android or iOS settings.
+## Before changing devices or removing app data
 
-Follow least privilege: do not grant access to unused capabilities, and keep manual confirmation for tools that write data or act outside the app.
+Device pairing is not a full backup or automatic chat sync. It mainly imports provider configuration and models, not conversation history.
+
+[Export important messages and files](sharing-and-export.md) before uninstalling, clearing app data, or changing devices. Save them outside Cherry Studio or on another device and confirm they open. A copy only in the app file library can be deleted with the app data. Images, HTML, and Markdown preserve work but are not restorable backups of all app settings.
+
+## Does deleting history undo actions?
+
+No. Deletion or answering again does not undo calendar changes, edited external documents, or sent messages, and does not refund model costs. Inspect the actual result in the relevant service if reversal is needed.
+
+## What should a bug report include?
+
+Include the app/device/system versions, steps, expected result, actual result, and error text. Redact real keys, credential-bearing URLs, private conversations, and file contents before publishing screenshots or details.

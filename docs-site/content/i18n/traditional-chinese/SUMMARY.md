@@ -164,16 +164,28 @@
 ## 行動版
 
 * **開始使用**
-  * [行動版概覽](mobile/README.md)
+  * [Cherry Studio 行動版](mobile/README.md)
   * [下載與安裝](mobile/installation.md)
   * [快速開始](mobile/quick-start.md)
 * **功能指南**
   * [服務商與模型](mobile/providers-and-models.md)
+  * [新增、編輯與管理模型](mobile/model-management.md)
+  * [模型資訊與清單更新](mobile/model-updates.md)
+  * [從電腦匯入設定](mobile/desktop-sync.md)
   * [對話與檔案](mobile/chat-and-files.md)
   * [智能體與工具](mobile/agents-and-tools.md)
+  * [讓 AI 使用工具](mobile/using-tools.md)
+  * [行事曆與提醒事項](mobile/calendar-and-reminders.md)
+  * [位置與健康記錄](mobile/location-and-health.md)
+  * [產生與修改檔案](mobile/file-generation.md)
+  * [HTML 轉圖片與 PPT](mobile/html-export.md)
+  * [網路搜尋與網頁閱讀](mobile/web-search.md)
+  * [外掛與外部工具](mobile/plugins.md)
   * [圖片生成](mobile/image-generation.md)
+  * [分享與匯出](mobile/sharing-and-export.md)
 * **設定與支援**
   * [資料、隱私與權限](mobile/data-privacy.md)
+  * [設定、用量與背景回覆](mobile/settings-and-usage.md)
   * [常見問題](mobile/troubleshooting.md)
 
 ## 協助與疑難排解
