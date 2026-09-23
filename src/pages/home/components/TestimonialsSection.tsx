@@ -1,6 +1,8 @@
 import type { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import { cn } from '@/lib/utils'
+
 interface Testimonial {
   id: number
   name: string
@@ -295,56 +297,64 @@ const TestimonialsSection: FC = () => {
         </div>
 
         <div className="grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {items.map((testimonial) => (
-            <div
-              key={testimonial.id}
-              className="border-border/50 bg-card/50 hover:border-primary/30 hover:bg-card group flex flex-col rounded-xl border p-6 transition-all duration-300">
-              {/* Header with avatar and info */}
-              <div className="mb-4 flex items-start gap-4">
-                <img
-                  src={testimonial.avatar}
-                  alt={testimonial.name}
-                  className="ring-border group-hover:ring-primary/50 h-12 w-12 rounded-full ring-2 transition-all duration-300"
-                />
-                <div className="flex-1">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <h3 className="text-foreground font-semibold">{testimonial.name}</h3>
-                      {testimonial.handle && <p className="text-muted-foreground text-sm">{testimonial.handle}</p>}
-                    </div>
-                    <div
-                      className="text-muted-foreground hover:text-foreground flex items-center gap-1.5 transition-colors"
-                      title={platformNames[testimonial.platform]}>
-                      {platformIcons[testimonial.platform]}
+          {items.map((testimonial) => {
+            const Card = testimonial.url ? 'a' : 'div'
+            const linkProps = testimonial.url
+              ? { href: testimonial.url, target: '_blank', rel: 'noopener noreferrer nofollow' }
+              : {}
+
+            return (
+              <Card
+                key={testimonial.id}
+                {...linkProps}
+                className={cn(
+                  'border-border/50 bg-card/50 hover:border-primary/30 hover:bg-card group flex flex-col rounded-xl border p-6 transition-all duration-300',
+                  testimonial.url &&
+                    'cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary'
+                )}>
+                {/* Header with avatar and info */}
+                <div className="mb-4 flex items-start gap-4">
+                  <img
+                    src={testimonial.avatar}
+                    alt={testimonial.name}
+                    className="ring-border group-hover:ring-primary/50 h-12 w-12 rounded-full ring-2 transition-all duration-300"
+                  />
+                  <div className="flex-1">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <h3 className="text-foreground font-semibold">{testimonial.name}</h3>
+                        {testimonial.handle && <p className="text-muted-foreground text-sm">{testimonial.handle}</p>}
+                      </div>
+                      <div
+                        className="text-muted-foreground hover:text-foreground flex items-center gap-1.5 transition-colors"
+                        title={platformNames[testimonial.platform]}>
+                        {platformIcons[testimonial.platform]}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Rating */}
-              {isZh && testimonial.rating && (
-                <div className="mb-3">
-                  <StarRating rating={testimonial.rating} />
-                </div>
-              )}
+                {/* Rating */}
+                {isZh && testimonial.rating && (
+                  <div className="mb-3">
+                    <StarRating rating={testimonial.rating} />
+                  </div>
+                )}
 
-              {/* Content */}
-              <p className="text-muted-foreground leading-relaxed">
-                "{isZh ? testimonial.content.zh : testimonial.content.en}"
-              </p>
+                {/* Content */}
+                <p className="text-muted-foreground leading-relaxed">
+                  "{isZh ? testimonial.content.zh : testimonial.content.en}"
+                </p>
 
-              {/* Source link */}
-              {!isZh && testimonial.url && (
-                <a
-                  href={testimonial.url}
-                  target="_blank"
-                  rel="noopener noreferrer nofollow"
-                  className="text-muted-foreground/70 hover:text-primary mt-4 inline-block text-xs transition-colors">
-                  {t('testimonials.view_on', { platform: platformNames[testimonial.platform] })} →
-                </a>
-              )}
-            </div>
-          ))}
+                {/* Source label; the entire card is the link when a source URL exists. */}
+                {!isZh && testimonial.url && (
+                  <span className="text-muted-foreground/70 group-hover:text-primary mt-4 inline-block text-xs transition-colors">
+                    {t('testimonials.view_on', { platform: platformNames[testimonial.platform] })} →
+                  </span>
+                )}
+              </Card>
+            )
+          })}
         </div>
 
         {/* Source links */}
