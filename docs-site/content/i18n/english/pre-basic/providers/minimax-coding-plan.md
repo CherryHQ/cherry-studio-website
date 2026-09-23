@@ -1,6 +1,6 @@
 # MiniMax Coding Plan
 
-**Coding Plan** is a cost-effective coding subscription service launched by MiniMax (e.g., Starter/Plus plans). By configuring this plan in Cherry Studio, you can use the `MiniMax-M2.1` model at a very low fixed cost (starting from ¥29/month).
+**Coding Plan** is a cost-effective coding subscription service launched by MiniMax (e.g., Starter/Plus plans). By configuring this plan in Cherry Studio, you can use the `MiniMax-M2.7` model at a very low fixed cost (starting from ¥29/month).
 
 {% hint style="success" %}
 **Core Advantages**
@@ -47,12 +47,12 @@ The Coding Plan supports only specific models. Selecting the wrong model will re
 
 <figure><img src="../../../../assets/1bc2b31e60d7aa392acf75d6.webp" alt=""><figcaption></figcaption></figure>
 
-2. Find and add **`MiniMax M2.1`** in the list.
+2. Find and add **`MiniMax M2.7`** in the list.
 
 {% hint style="warning" %}
 **Please make sure to select the correct model!**
 
-* ✅ **Recommended**: `MiniMax M2.1` (The primary model designated for Coding Plan).
+* ✅ **Recommended**: `MiniMax M2.7` (The primary model designated for Coding Plan).
 {% endhint %}
 
 #### Step 4: Save and Verify <a href="#headingcab61b6e3e264a4b8e56bc83923488d2-di-si-bu-bao-cun-bing-yan-zheng-0" id="headingcab61b6e3e264a4b8e56bc83923488d2-di-si-bu-bao-cun-bing-yan-zheng-0"></a>
