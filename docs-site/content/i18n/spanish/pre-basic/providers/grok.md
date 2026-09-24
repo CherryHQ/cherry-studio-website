@@ -24,7 +24,7 @@ Grok es un modelo de lenguaje grande desarrollado por xAI, conocido por su "tono
 
 ## Búsqueda en línea
 
-Algunos modelos de Grok incluyen capacidad de búsqueda en línea; se mostrará un pequeño icono de globo terráqueo después del nombre del modelo. Puede activar directamente la opción "Búsqueda en línea" en el cuadro de diálogo para usarla. Para más información, consulte [Modo de búsqueda en línea](../../../../pre-basic/websearch).
+Algunos modelos de Grok incluyen capacidad de búsqueda en línea; se mostrará un pequeño icono de globo terráqueo después del nombre del modelo. Puede activar directamente la opción "Búsqueda en línea" en el cuadro de diálogo para usarla. Para más información, consulte [Modo de búsqueda en línea](../websearch).
 
 {% hint style="info" %}
 * Grok requiere acceso a redes internacionales; los usuarios de China deben configurar un proxy

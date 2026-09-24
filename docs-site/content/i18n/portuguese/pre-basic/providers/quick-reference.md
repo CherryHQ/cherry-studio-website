@@ -16,7 +16,7 @@ O Cherry Studio possui **mais de 60 Providers** integrados. Esta página oferece
 
 | Sua Necessidade | Direção Recomendada |
 |---|---|
-| **Iniciante buscando rapidez**, evitando fluxos complexos | [CherryIN](cherryin-1.md) ou [CherryAI](../../../../pre-basic/providers/cherryai) |
+| **Iniciante buscando rapidez**, evitando fluxos complexos | [CherryIN](cherryin-1.md) ou [CherryAI](cherryai) |
 | **Acesso mais conveniente na China** | DeepSeek / Moonshot / SiliconFlow / Zhipu |
 | **Melhores modelos internacionais** | OpenAI / Anthropic / Gemini |
 | **Uma chave para 200 provedores** | [OpenRouter](openrouter.md) |
@@ -64,7 +64,7 @@ Uma chave para acessar múltiplos modelos, com gerenciamento centralizado de con
 
 | Provider | Característica em Uma Frase | Site Oficial | Documentação Específica |
 |---|---|---|---|
-| **CherryAI** | Experiência gratuita oficial da Cherry | — | [→](../../../../pre-basic/providers/cherryai) |
+| **CherryAI** | Experiência gratuita oficial da Cherry | — | [→](cherryai) |
 | **CherryIN** | Gateway pago oficial da Cherry, duplo endpoint (OpenAI + Anthropic) | [open.cherryin.cc](https://open.cherryin.cc/) | [→](cherryin-1.md) |
 | **OpenRouter** | Maior agregador internacional, 200+ modelos | [openrouter.ai](https://openrouter.ai/) | [→](openrouter.md) |
 | **AiHubMix** | Agregador internacional | [aihubmix.com](https://aihubmix.com/) | — |
@@ -140,7 +140,7 @@ Se o serviço que você utiliza não estiver na lista acima, mas oferecer qualqu
 
 ## Ainda não sabe qual escolher?
 
-Use diretamente [**CherryIN**](cherryin-1.md) ou [**CherryAI**](../../../../pre-basic/providers/cherryai) — a opção mais adequada para iniciantes começarem rapidamente. Troque quando precisar de recursos avançados.
+Use diretamente [**CherryIN**](cherryin-1.md) ou [**CherryAI**](cherryai) — a opção mais adequada para iniciantes começarem rapidamente. Troque quando precisar de recursos avançados.
 
 ***
 
