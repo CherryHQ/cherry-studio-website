@@ -1,6 +1,6 @@
 # MiniMax Coding Plan
 
-**Coding Plan** 是 MiniMax 推出的高性价比编程订阅服务（如 Starter/Plus 套餐）。通过在 Cherry Studio 中配置该套餐，你可以以极低的固定成本（最低 ¥29/月）使用 `MiniMax-M2.1` 模型。
+**Coding Plan** 是 MiniMax 推出的高性价比编程订阅服务（如 Starter/Plus 套餐）。通过在 Cherry Studio 中配置该套餐，你可以以极低的固定成本（最低 ¥29/月）使用 `MiniMax-M2.7` 模型。
 
 {% hint style="success" %}
 **核心优势**
@@ -47,12 +47,12 @@ Coding Plan 套餐仅支持特定的模型，选错模型将无法使用或产�
 
 <figure><img src="../../assets/a47dc9b50635537d2cca507d.png" alt=""><figcaption></figcaption></figure>
 
-2. 在列表中找到并添加 **`MiniMax M2.1`**。
+2. 在列表中找到并添加 **`MiniMax M2.7`**。
 
 {% hint style="warning" %}
 **请务必选择正确模型！**
 
-* ✅ **推荐**：`MiniMax M2.1` (Coding Plan 指定主力模型)。
+* ✅ **推荐**：`MiniMax M2.7` (Coding Plan 指定主力模型)。
 {% endhint %}
 
 #### 第四步：保存并验证 <a href="#headingcab61b6e3e264a4b8e56bc83923488d2-di-si-bu-bao-cun-bing-yan-zheng-0" id="headingcab61b6e3e264a4b8e56bc83923488d2-di-si-bu-bao-cun-bing-yan-zheng-0"></a>
