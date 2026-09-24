@@ -15,6 +15,7 @@ import { isEnglishSite } from '@/utils/urls'
 
 const PRICE = { price: 8, list: 10 }
 const FLASH_PLANS_URL = 'https://cloud.cherryai.com/account/plans'
+const SUPPORT_EMAIL = 'support@cherry-ai.com'
 const RATE_KEYS = ['input', 'output', 'cache_read', 'cache_write'] as const
 const BADGE_ICONS = [Wallet, Clock, Gauge]
 const MODEL_LOGOS: Record<string, string> = {
@@ -69,6 +70,7 @@ function BillingFaq({ items }: { items: PricingFaqItem[] }) {
     <div className="mt-10 space-y-4">
       {items.map((item, index) => {
         const isOpen = openIndex === index
+        const emailIndex = item.answer.indexOf(SUPPORT_EMAIL)
 
         return (
           <div
@@ -92,7 +94,19 @@ function BillingFaq({ items }: { items: PricingFaqItem[] }) {
             <div className={cn('grid transition-all duration-200', isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]')}>
               <div className="overflow-hidden">
                 <div className="text-muted-foreground border-border border-t px-6 pt-4 pb-6 text-sm leading-relaxed">
-                  {item.answer}
+                  {emailIndex < 0 ? (
+                    item.answer
+                  ) : (
+                    <>
+                      {item.answer.slice(0, emailIndex)}
+                      <a
+                        href={`mailto:${SUPPORT_EMAIL}`}
+                        className="text-foreground underline underline-offset-2 hover:text-primary">
+                        {SUPPORT_EMAIL}
+                      </a>
+                      {item.answer.slice(emailIndex + SUPPORT_EMAIL.length)}
+                    </>
+                  )}
                 </div>
               </div>
             </div>

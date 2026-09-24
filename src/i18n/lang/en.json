@@ -612,6 +612,10 @@
         "answer": "Yes. Cancelling stops the next renewal and you keep the remaining allowance until the period ends."
       },
       {
+        "question": "Can I get a refund?",
+        "answer": "If you were charged within the past 14 days and have not used any Flash allowance during that billing period, you may be eligible for a refund. Please contact support@cherry-ai.com to request one."
+      },
+      {
         "question": "Do I still need accounts with each model provider?",
         "answer": "No. That is the point of Flash — one subscription covers the models in the pool, with no separate sign-ups or top-ups per provider."
       }
