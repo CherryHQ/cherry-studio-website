@@ -6,7 +6,7 @@ icon: palette
 
 Appearance settings gather all your preferences for **how the interface looks, how messages are displayed, and how code and formulas are rendered**. Open `Settings → Appearance`; from top to bottom you'll find the Theme, Display and Language, Font, Input, Message, Math Formula and Code Block sections.
 
-> Need more than these options? You can go further with [Custom CSS](../../../pre-basic/personalization-settings/custom-css.md).
+> Need more than these options? You can go further with [Custom CSS](../pre-basic/personalization-settings/custom-css.md).
 
 ### Theme and Theme Color
 
@@ -91,10 +91,10 @@ Code execution runs model-generated code on your computer. Only turn it on if yo
 
 ### Custom CSS
 
-The editor at the bottom of the panel lets you write custom CSS directly for finer personalization of the interface. For syntax and examples, see [Custom CSS](../../../pre-basic/personalization-settings/custom-css.md); to restore the defaults, see [Clear CSS Settings](../../../pre-basic/personalization-settings/clear-css.md).
+The editor at the bottom of the panel lets you write custom CSS directly for finer personalization of the interface. For syntax and examples, see [Custom CSS](../pre-basic/personalization-settings/custom-css.md); to restore the defaults, see [Clear CSS Settings](../pre-basic/personalization-settings/clear-css.md).
 
 ***
 
 ### Get Help and Submit Feedback
 
-If you have any questions, bugs, or feature suggestions during configuration or use, please use the official channels listed in [Feedback and Suggestions](../../../question-contact/suggestions.md).
+If you have any questions, bugs, or feature suggestions during configuration or use, please use the official channels listed in [Feedback and Suggestions](../question-contact/suggestions.md).

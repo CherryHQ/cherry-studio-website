@@ -29,24 +29,24 @@ Limitations of sending files directly:
 
 ## How to Use It
 
-* First time: read the [complete knowledge base tutorial](../../../../knowledge-base/knowledge-base.md)
-* Adding images or scanned PDFs: read [Document Preprocessing](../../../../knowledge-base/document-preprocessing.md) first so the AI can "read" the text in images
-* Choosing an embedding model: see the [embedding model reference](../../../../knowledge-base/emb-models-info.md)
-* Want to work offline without a cloud embedding service? Use the built-in [local embedding models](../../../../pre-basic/settings/local-models.md) — the knowledge base can then be indexed and searched without an internet connection
-* Where is the data stored? See [Knowledge Base Data](../../../../knowledge-base/data.md)
+* First time: read the [complete knowledge base tutorial](../../knowledge-base/knowledge-base.md)
+* Adding images or scanned PDFs: read [Document Preprocessing](../../knowledge-base/document-preprocessing.md) first so the AI can "read" the text in images
+* Choosing an embedding model: see the [embedding model reference](../../knowledge-base/emb-models-info.md)
+* Want to work offline without a cloud embedding service? Use the built-in [local embedding models](../../pre-basic/settings/local-models.md) — the knowledge base can then be indexed and searched without an internet connection
+* Where is the data stored? See [Knowledge Base Data](../../knowledge-base/data.md)
 
 ## Combining With Other Features
 
 * **Knowledge base + assistant**: "attach" a knowledge base to an assistant to make it a specialist in that domain
-* **Knowledge base +** [**Agent**](../../../../advanced-basic/agent.md): let an agent look things up in the knowledge base while it works on a task
-* **Knowledge base +** [**Channels**](../../../../advanced-basic/automation/channels.md): station an agent that "knows the company docs" in a Feishu (Lark) group
+* **Knowledge base +** [**Agent**](../../advanced-basic/agent.md): let an agent look things up in the knowledge base while it works on a task
+* **Knowledge base +** [**Channels**](../../advanced-basic/automation/channels.md): station an agent that "knows the company docs" in a Feishu (Lark) group
 
 {% hint style="info" %}
-We recommend reading the [Advanced Capability Map](../../../../advanced-basic/capability-map.md) first to see how knowledge bases work together with agents, MCP, channels and other features.
+We recommend reading the [Advanced Capability Map](../../advanced-basic/capability-map.md) first to see how knowledge bases work together with agents, MCP, channels and other features.
 {% endhint %}
 
 ***
 
 ### Get Help and Submit Feedback
 
-If you have any questions, bugs, or feature suggestions during configuration or use, please use the official channels listed in [Feedback and Suggestions](../../../../question-contact/suggestions.md).
+If you have any questions, bugs, or feature suggestions during configuration or use, please use the official channels listed in [Feedback and Suggestions](../../question-contact/suggestions.md).

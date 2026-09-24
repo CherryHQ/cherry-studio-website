@@ -10,51 +10,51 @@ Cherry Studio's settings panel covers everything from **model configuration and 
 
 | Setting | Doc | What it covers |
 | --- | --- | --- |
-| Model Provider | [Model Service Configuration](../../../../../pre-basic/providers) | Adding providers, API keys, API host, rotating multiple keys |
-| Default Model | [Default Model Settings](../../../../../pre-basic/settings/default-models.md) | Global default models for chat, naming, translation and more |
-| Local Models | [Local Models](../../../../../pre-basic/settings/local-models.md) | Built-in embedding and OCR models that run offline |
-| API Gateway | [API Gateway](../../../../../advanced-basic/developer-tools/api-gateway.md) | Exposes a local OpenAI-compatible API |
+| Model Provider | [Model Service Configuration](../../../pre-basic/providers) | Adding providers, API keys, API host, rotating multiple keys |
+| Default Model | [Default Model Settings](../../../pre-basic/settings/default-models.md) | Global default models for chat, naming, translation and more |
+| Local Models | [Local Models](../../../pre-basic/settings/local-models.md) | Built-in embedding and OCR models that run offline |
+| API Gateway | [API Gateway](../../../advanced-basic/developer-tools/api-gateway.md) | Exposes a local OpenAI-compatible API |
 
 ### Tools
 
 | Setting | Doc | What it covers |
 | --- | --- | --- |
-| MCP | [MCP and External Tools](../../../../../advanced-basic/extensions/mcp) | Connecting Model Context Protocol tools |
-| Skills | [Skills](../../../../../advanced-basic/extensions/skills.md) | Adding specialized abilities to assistants or Agents |
+| MCP | [MCP and External Tools](../../../advanced-basic/extensions/mcp) | Connecting Model Context Protocol tools |
+| Skills | [Skills](../../../advanced-basic/extensions/skills.md) | Adding specialized abilities to assistants or Agents |
 | Prompts | — | Not documented yet |
 | Browser | — | Not documented yet |
-| Web Search | [Web Search Mode](../../../../../pre-basic/websearch) | Free web search, Tavily, Volcengine, SearXNG and more |
-| Document Processing | [Document Processing](../../../../../pre-basic/settings/doc-process.md) | Structured parsing of PDFs and complex layouts (MinerU, etc.) |
-| OCR | [OCR](../../../../../pre-basic/settings/ocr.md) | Text recognition engines for images and scans |
+| Web Search | [Web Search Mode](../../../pre-basic/websearch) | Free web search, Tavily, Volcengine, SearXNG and more |
+| Document Processing | [Document Processing](../../../pre-basic/settings/doc-process.md) | Structured parsing of PDFs and complex layouts (MinerU, etc.) |
+| OCR | [OCR](../../../pre-basic/settings/ocr.md) | Text recognition engines for images and scans |
 
 ### Preferences
 
 | Setting | Doc | What it covers |
 | --- | --- | --- |
-| General | [General](../../../../../pre-basic/settings/general.md) | Startup, tray, proxy, hardware acceleration, developer mode |
-| Appearance | [Appearance](../../../../../pre-basic/settings/display.md) | Theme, accent color, zoom, language, topic layout |
-| Notifications | [Notifications](../../../../../pre-basic/settings/notification.md) | Alerts for assistant messages, backups and finished knowledge bases |
-| Data | [Data Settings](../../../../../pre-basic/data-settings) | WebDAV / S3 backup and third-party integrations |
+| General | [General](../../../pre-basic/settings/general.md) | Startup, tray, proxy, hardware acceleration, developer mode |
+| Appearance | [Appearance](../../../pre-basic/settings/display.md) | Theme, accent color, zoom, language, topic layout |
+| Notifications | [Notifications](../../../pre-basic/settings/notification.md) | Alerts for assistant messages, backups and finished knowledge bases |
+| Data | [Data Settings](../../../pre-basic/data-settings) | WebDAV / S3 backup and third-party integrations |
 | Archive | [Files → Archive](../files.md#archive) | Restore or permanently delete archived assistants, agents, topics, tasks, paintings and files; auto-cleanup interval |
-| Usage Analytics | [Usage Analytics](../../../../../pre-basic/settings/usage.md) | Cost, tokens, requests and daily activity |
+| Usage Analytics | [Usage Analytics](../../../pre-basic/settings/usage.md) | Cost, tokens, requests and daily activity |
 
 ### Efficiency
 
 | Setting | Doc | What it covers |
 | --- | --- | --- |
-| Channels | [Channels](../../../../../advanced-basic/automation/channels.md) | Connecting Agents to Feishu (Lark), Telegram and more |
+| Channels | [Channels](../../../advanced-basic/automation/channels.md) | Connecting Agents to Feishu (Lark), Telegram and more |
 | Device Connections | — | Not documented yet |
-| Scheduled Tasks | [Scheduled Tasks](../../../../../advanced-basic/automation/scheduled-heartbeat.md) | Running Agents on a cron schedule |
-| Keyboard Shortcuts | [Shortcut Settings](../../../../../pre-basic/settings/key-shortcut.md) | Changing, enabling and disabling every shortcut |
-| Quick Assistant | [Quick Assistant](../../../../../cherrystudio/preview/quick-assistant.md) | A global floating mini chat window |
-| Selection Assistant | [Selection Assistant](../../../../../cherrystudio/preview/selection-assistant.md) | Instant translate / explain / rewrite for selected text |
+| Scheduled Tasks | [Scheduled Tasks](../../../advanced-basic/automation/scheduled-heartbeat.md) | Running Agents on a cron schedule |
+| Keyboard Shortcuts | [Shortcut Settings](../../../pre-basic/settings/key-shortcut.md) | Changing, enabling and disabling every shortcut |
+| Quick Assistant | [Quick Assistant](../quick-assistant.md) | A global floating mini chat window |
+| Selection Assistant | [Selection Assistant](../selection-assistant.md) | Instant translate / explain / rewrite for selected text |
 | Screenshot | — | Not documented yet |
 
 ### System
 
 | Setting | Doc | What it covers |
 | --- | --- | --- |
-| Dependencies | [Environment Dependencies](../../../../../pre-basic/settings/env-dependencies.md) | Installing and managing runtimes and binaries such as uv and bun |
+| Dependencies | [Environment Dependencies](../../../pre-basic/settings/env-dependencies.md) | Installing and managing runtimes and binaries such as uv and bun |
 | About & Feedback | — | Version info, update checks, license and community links |
 
 {% hint style="info" %}
@@ -65,4 +65,4 @@ Setting changes **take effect immediately** — no restart needed. Before changi
 
 ### Get Help and Submit Feedback
 
-If you have any questions, bugs, or feature suggestions during configuration or use, please use the official channels listed in [Feedback and Suggestions](../../../../../question-contact/suggestions.md).
+If you have any questions, bugs, or feature suggestions during configuration or use, please use the official channels listed in [Feedback and Suggestions](../../../question-contact/suggestions.md).

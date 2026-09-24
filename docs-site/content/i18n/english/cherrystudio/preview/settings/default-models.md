@@ -24,7 +24,7 @@ In many situations Cherry Studio needs to "just pick a model" — for example, t
 
 ### Translate Model
 
-* **Used by**: message translation in chats, the Translation page, and the translate action in the [Selection Assistant](../../../../../cherrystudio/preview/selection-assistant.md)
+* **Used by**: message translation in chats, the Translation page, and the translate action in the [Selection Assistant](../selection-assistant.md)
 * **How to choose**: any ordinary chat model works. If you translate a lot between Chinese and English, the DeepSeek or Claude series do well
 
 ### Painting Model
@@ -49,4 +49,4 @@ If you're unsure, keep everything at the defaults and come back to adjust whiche
 
 ### Get Help and Submit Feedback
 
-If you have any questions, bugs, or feature suggestions during configuration or use, please use the official channels listed in [Feedback and Suggestions](../../../../../question-contact/suggestions.md).
+If you have any questions, bugs, or feature suggestions during configuration or use, please use the official channels listed in [Feedback and Suggestions](../../../question-contact/suggestions.md).

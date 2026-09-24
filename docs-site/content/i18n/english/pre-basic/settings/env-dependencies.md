@@ -3,7 +3,7 @@ icon: terminal
 ---
 # Environment Dependencies
 
-Environment Dependencies is used to **manage the binary tools and runtimes required for Cherry Studio to execute certain advanced features**. Some capabilities of [MCP services](../../../../advanced-basic/extensions/mcp), [Skills](../../advanced-basic/extensions/skills.md), and [Agents](../../advanced-basic/agent.md) rely on underlying command-line tools such as `uv` and `bun`. Cherry Studio centralizes these here, so you do not need to manually install and configure them via the command line.
+Environment Dependencies is used to **manage the binary tools and runtimes required for Cherry Studio to execute certain advanced features**. Some capabilities of [MCP services](../../advanced-basic/extensions/mcp), [Skills](../../advanced-basic/extensions/skills.md), and [Agents](../../advanced-basic/agent.md) rely on underlying command-line tools such as `uv` and `bun`. Cherry Studio centralizes these here, so you do not need to manually install and configure them via the command line.
 
 Open `Settings → Dependencies` (under **System**):
 

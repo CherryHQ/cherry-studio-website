@@ -16,7 +16,7 @@ Cherry Studio includes **60+ Providers**. This page provides an overview table. 
 
 | Your Need | Recommended Direction |
 |---|---|
-| **Quick start for beginners**, avoiding complex processes | [CherryIN](cherryin-1.md) or [CherryAI](../../../../pre-basic/providers/cherryai) |
+| **Quick start for beginners**, avoiding complex processes | [CherryIN](cherryin-1.md) or [CherryAI](cherryai) |
 | **Strong value for coding and long context** | DeepSeek / Moonshot (Kimi) / Z.ai (Zhipu) / MiniMax |
 | **Strongest overseas models** | OpenAI / Anthropic / Gemini |
 | **One key for 200+ providers** | [OpenRouter](openrouter.md) |
@@ -64,7 +64,7 @@ Access multiple models with one key, centralized account management.
 
 | Provider | Key Feature | Official Website | Dedicated Doc |
 |---|---|---|---|
-| **CherryAI** | Cherry official free trial | — | [→](../../../../pre-basic/providers/cherryai) |
+| **CherryAI** | Cherry official free trial | — | [→](cherryai) |
 | **CherryIN** | Cherry official paid gateway, dual endpoints (OpenAI + Anthropic) | [open.cherryin.cc](https://open.cherryin.cc/) | [→](cherryin-1.md) |
 | **OpenRouter** | Largest overseas aggregator, 200+ models | [openrouter.ai](https://openrouter.ai/) | [→](openrouter.md) |
 | **AiHubMix** | Overseas aggregator | [aihubmix.com](https://aihubmix.com/) | — |
@@ -140,7 +140,7 @@ If the service you use is not in the list above but supports any of the **OpenAI
 
 ## Still Not Sure Which to Choose?
 
-Go directly with [**CherryIN**](cherryin-1.md) or [**CherryAI**](../../../../pre-basic/providers/cherryai) — best for beginners to get started quickly. Switch later if you need advanced features.
+Go directly with [**CherryIN**](cherryin-1.md) or [**CherryAI**](cherryai) — best for beginners to get started quickly. Switch later if you need advanced features.
 
 ***
 

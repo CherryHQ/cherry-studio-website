@@ -45,11 +45,11 @@ When you see red errors such as "Connection timed out" or "API request failed", 
 * **Enable developer mode**: turns on the **trace** feature so you can view the data flow of model calls for troubleshooting. Changes take effect **after restarting the app**. Most users don't need to turn it on.
 
 {% hint style="info" %}
-Interface language and spell check are set in [Appearance](../../../../../pre-basic/settings/display.md); message and backup alerts are set in [Notifications](../../../../../pre-basic/settings/notification.md).
+Interface language and spell check are set in [Appearance](../../../pre-basic/settings/display.md); message and backup alerts are set in [Notifications](../../../pre-basic/settings/notification.md).
 {% endhint %}
 
 ***
 
 ### Get Help and Submit Feedback
 
-If you have any questions, bugs, or feature suggestions during configuration or use, please use the official channels listed in [Feedback and Suggestions](../../../../../question-contact/suggestions.md).
+If you have any questions, bugs, or feature suggestions during configuration or use, please use the official channels listed in [Feedback and Suggestions](../../../question-contact/suggestions.md).

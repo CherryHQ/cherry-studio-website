@@ -75,7 +75,7 @@ The following services are built in, in two types — **API** and **MCP**:
 
 * **Number of search results**: how many results are returned per search (default 5, up to 100). Without compression, a large number consumes more tokens.
 * **Search result compression**: compresses the returned content before passing it to the model, saving tokens. Choose **None** to pass results as-is, or **Cutoff** to truncate each result to a set length.
-* **Search result blacklist**: blocks websites you don't want to see; see [Web Search Blacklist Configuration](../../../pre-basic/websearch/blacklist.md).
+* **Search result blacklist**: blocks websites you don't want to see; see [Web Search Blacklist Configuration](../pre-basic/websearch/blacklist.md).
 
 <figure><img src="../../../assets/e1c92c18302a979103a16696.webp" alt=""><figcaption><p>Advanced settings: number of results, compression method (None / Cutoff), and blacklist</p></figcaption></figure>
 
@@ -83,9 +83,9 @@ The following services are built in, in two types — **API** and **MCP**:
 
 The default Exa MCP works without a key. To switch to another service or configure things in more depth, see:
 
-* [Free Web Search Mode](../../../pre-basic/websearch/free-search.md) — use search without paying
-* [SearXNG Local Deployment and Configuration](../../../pre-basic/websearch/searxng.md) — self-hosted and fully local
-* [Web Search Blacklist Configuration](../../../pre-basic/websearch/blacklist.md) — block websites you don't want
+* [Free Web Search Mode](../pre-basic/websearch/free-search.md) — use search without paying
+* [SearXNG Local Deployment and Configuration](../pre-basic/websearch/searxng.md) — self-hosted and fully local
+* [Web Search Blacklist Configuration](../pre-basic/websearch/blacklist.md) — block websites you don't want
 
 ## How It Works
 
@@ -101,4 +101,4 @@ Whichever route is used, the conversation flow is:
 
 ### Get Help and Submit Feedback
 
-If you have any questions, bugs, or feature suggestions during configuration or use, please use the official channels listed in [Feedback and Suggestions](../../../question-contact/suggestions.md).
+If you have any questions, bugs, or feature suggestions during configuration or use, please use the official channels listed in [Feedback and Suggestions](../question-contact/suggestions.md).

@@ -12,10 +12,10 @@ Data Settings is Cherry Studio's **data hub**: everything to do with **backup, r
 
 | Your situation | Recommended option |
 | --------------------------- | ----------------------------------------------------------------- |
-| Single computer, worried about disk failure | [WebDAV backup](../../../pre-basic/data-settings/webdav.md) (with Jianguoyun (Nutstore), 123Pan, etc.) |
-| Want to sync conversations / assistants across several computers | [WebDAV backup](../../../pre-basic/data-settings/webdav.md) — back up on computer A, restore on computer B |
-| Already have S3-compatible storage such as AWS or Alibaba Cloud OSS | [S3-compatible storage backup](../../../pre-basic/data-settings/s3-compatible.md) |
-| Want to archive conversations to a note app automatically | [Notion](../../../pre-basic/data-settings/notion.md) / [Obsidian](../../../pre-basic/data-settings/obsidian.md) / [SiYuan Note](../../../pre-basic/data-settings/siyuan.md) |
+| Single computer, worried about disk failure | [WebDAV backup](../pre-basic/data-settings/webdav.md) (with Jianguoyun (Nutstore), 123Pan, etc.) |
+| Want to sync conversations / assistants across several computers | [WebDAV backup](../pre-basic/data-settings/webdav.md) — back up on computer A, restore on computer B |
+| Already have S3-compatible storage such as AWS or Alibaba Cloud OSS | [S3-compatible storage backup](../pre-basic/data-settings/s3-compatible.md) |
+| Want to archive conversations to a note app automatically | [Notion](../pre-basic/data-settings/notion.md) / [Obsidian](../pre-basic/data-settings/obsidian.md) / [SiYuan Note](../pre-basic/data-settings/siyuan.md) |
 | Just want to back up to another local folder or an external drive | **Local backup** (choose a backup folder; supports automatic backups and backup file management) |
 
 ## What Gets Backed Up?
@@ -42,7 +42,7 @@ Backup files contain sensitive information such as provider API keys. **Don't sh
 
 ## Where Is the Data Stored?
 
-To move it to another drive, see [Change Storage Location](../../../pre-basic/personalization-settings/storage.md).
+To move it to another drive, see [Change Storage Location](../pre-basic/personalization-settings/storage.md).
 
 ## Import ChatGPT or Claude Conversations
 
@@ -68,7 +68,7 @@ Path: **Settings → Data → Clear Cache**. The dialog calculates the size of e
 | **V1 legacy data** | Old V1 conversations and settings kept on this computer | Permanently deleted, cannot be recovered |
 
 {% hint style="danger" %}
-**V1 legacy data** only appears when retained V1 data is detected. Selecting it deletes the V1 data source needed for **Re-migrate**. **Don't select this item** until you've confirmed the V1 data was fully migrated and you've kept a full backup plus the V1 data folder. Unless you're fixing a failed V1 migration, regular users shouldn't use **Re-migrate** either. See [V2 Breaking Update Notice](../../../cherry-studio/installation/v2-breaking-update-notice.md).
+**V1 legacy data** only appears when retained V1 data is detected. Selecting it deletes the V1 data source needed for **Re-migrate**. **Don't select this item** until you've confirmed the V1 data was fully migrated and you've kept a full backup plus the V1 data folder. Unless you're fixing a failed V1 migration, regular users shouldn't use **Re-migrate** either. See [V2 Breaking Update Notice](../cherry-studio/installation/v2-breaking-update-notice.md).
 {% endhint %}
 
 ## Reset App Data
@@ -81,4 +81,4 @@ The Data Settings page also offers **Export Menu Settings**, which controls wher
 
 ### Get Help and Submit Feedback
 
-If you have any questions, bugs, or feature suggestions during configuration or use, please use the official channels listed in [Feedback and Suggestions](../../../question-contact/suggestions.md).
+If you have any questions, bugs, or feature suggestions during configuration or use, please use the official channels listed in [Feedback and Suggestions](../question-contact/suggestions.md).

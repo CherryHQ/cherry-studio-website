@@ -16,9 +16,9 @@ The easiest way to use it: tell the Agent what you want to accomplish and let it
 ## What It Can Do
 
 * **Read and write files**: give it a **working directory** and it can read, edit and create files there.
-* **Call tools**: built-in tools, plus the [Skills](../../../advanced-basic/extensions/skills.md) and external [MCP](../../../advanced-basic/extensions/mcp) tools you attach.
+* **Call tools**: built-in tools, plus the [Skills](extensions/skills.md) and external [MCP](extensions/mcp) tools you attach.
 * **Multi-step reasoning / subtasks**: break down a goal, dispatch sub-agents, and run background commands.
-* **Plug into automation**: deploy it to IM platforms with [Channels](../../../advanced-basic/automation/channels.md), or run it on a schedule with [Scheduled Tasks](../../../advanced-basic/automation/scheduled-heartbeat.md).
+* **Plug into automation**: deploy it to IM platforms with [Channels](automation/channels.md), or run it on a schedule with [Scheduled Tasks](automation/scheduled-heartbeat.md).
 
 ## Quick Start
 
@@ -41,14 +41,14 @@ When an Agent works with files or commands, you can choose one of five permissio
 
 See the Advanced Tutorials for the full workflow:
 
-* [Agent Workspace](../../../advanced-basic/agent-workspace/README.md) — the complete way of working, from creation to delivery
-* [Creating Agents and Dividing Work Across Models](../../../advanced-basic/agent-workspace/create-agent.md)
-* [Working Directories, Tasks and Files](../../../advanced-basic/agent-workspace/workspaces-tasks-files.md)
-* [Built-in Tools, Knowledge Bases, Skills and MCP](../../../advanced-basic/agent-workspace/tools-knowledge-skills-mcp.md)
-* [Permissions, Memory and Background Tasks](../../../advanced-basic/agent-workspace/permissions-memory-background.md)
+* [Agent Workspace](agent-workspace/README.md) — the complete way of working, from creation to delivery
+* [Creating Agents and Dividing Work Across Models](agent-workspace/create-agent.md)
+* [Working Directories, Tasks and Files](agent-workspace/workspaces-tasks-files.md)
+* [Built-in Tools, Knowledge Bases, Skills and MCP](agent-workspace/tools-knowledge-skills-mcp.md)
+* [Permissions, Memory and Background Tasks](agent-workspace/permissions-memory-background.md)
 
 ***
 
 ### Get Help and Submit Feedback
 
-If you have any questions, bugs, or feature suggestions during configuration or use, please use the official channels listed in [Feedback and Suggestions](../../../question-contact/suggestions.md).
+If you have any questions, bugs, or feature suggestions during configuration or use, please use the official channels listed in [Feedback and Suggestions](../question-contact/suggestions.md).

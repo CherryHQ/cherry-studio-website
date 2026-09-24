@@ -33,7 +33,7 @@ They fall roughly into three groups:
 
 | Type | Provider | Notes |
 |---|---|---|
-| Cloud services in China | **[SiliconFlow](../../../../pre-basic/providers/siliconcloud.md)** | Easiest to access from mainland China, low prices, wide model choice |
+| Cloud services in China | **[SiliconFlow](../../pre-basic/providers/siliconcloud.md)** | Easiest to access from mainland China, low prices, wide model choice |
 | | **PPIO** | Cloud compute service in China |
 | | **Zhipu Open Platform** | Chinese model CogView |
 | Aggregation gateways | **AiHubMix** | Gateway aggregating multiple vendors |
@@ -93,4 +93,4 @@ Gemini image models (such as `gemini-2.5-flash-image`) can be selected directly 
 
 ### Get Help and Submit Feedback
 
-If you have any questions, bugs, or feature suggestions during configuration or use, please use the official channels listed in [Feedback and Suggestions](../../../../question-contact/suggestions.md).
+If you have any questions, bugs, or feature suggestions during configuration or use, please use the official channels listed in [Feedback and Suggestions](../../question-contact/suggestions.md).

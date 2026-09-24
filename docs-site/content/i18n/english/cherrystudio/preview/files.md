@@ -54,16 +54,16 @@ Cherry Studio stores all attachments in the local app data directory:
 * **Windows**: `%APPDATA%\CherryStudio`
 * **Linux**: `~/.config/CherryStudio`
 
-Want to move it to another drive? See [Change Storage Location](../../../../pre-basic/personalization-settings/storage.md).
+Want to move it to another drive? See [Change Storage Location](../../pre-basic/personalization-settings/storage.md).
 
 ## Tips and Tricks
 
 * Old conversations and knowledge bases accumulate files over time; clearing them out here now and then can free up a lot of disk space
-* For important files, also back them up to cloud storage (WebDAV, S3, etc.) — see [Data Settings](../../../../pre-basic/data-settings)
+* For important files, also back them up to cloud storage (WebDAV, S3, etc.) — see [Data Settings](../../pre-basic/data-settings)
 * Garbled file names? This is usually an encoding issue when dragging files in from elsewhere; rename the file before using it
 
 ***
 
 ### Get Help and Submit Feedback
 
-If you have any questions, bugs, or feature suggestions during configuration or use, please use the official channels listed in [Feedback and Suggestions](../../../../question-contact/suggestions.md).
+If you have any questions, bugs, or feature suggestions during configuration or use, please use the official channels listed in [Feedback and Suggestions](../../question-contact/suggestions.md).
