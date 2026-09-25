@@ -86,7 +86,7 @@ The Paintings feature expands with each release. The dropdown in the app always 
 {% endhint %}
 
 {% hint style="info" %}
-Gemini image models (such as `gemini-2.5-flash-image`) can be selected directly in the Paintings model dropdown once a Gemini-compatible provider is configured. You can also generate images with them in a regular chat.
+Gemini image models (such as `gemini-2.5-flash-image`) can be selected directly in the Paintings model dropdown once a Gemini-compatible provider is configured.
 {% endhint %}
 
 ***
