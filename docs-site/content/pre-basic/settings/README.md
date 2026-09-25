@@ -46,7 +46,7 @@ Cherry Studio 的设置面板覆盖 **模型配置、工具能力、界面偏好
 | 快捷键 | [快捷键设置](key-shortcut.md) | 全部快捷键的修改与启停 |
 | 快捷助手 | [快捷助手](../../cherrystudio/preview/quick-assistant.md) | 全局悬浮的迷你对话窗 |
 | 划词助手 | [划词助手](../../cherrystudio/preview/selection-assistant.md) | 选中文字即时翻译 / 解释 / 改写 |
-| 设备连接 | — | 与移动端等设备配对（文档待补充）|
+| 设备互联 | — | 与移动端等设备配对（文档待补充）|
 | 截图 | — | 截图相关设置（文档待补充）|
 
 ### 系统
