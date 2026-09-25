@@ -1,0 +1,73 @@
+name: Docs
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: docs-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # Content and lint checks: locale-independent, so they run once and fail fast.
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # No version input: action-setup reads packageManager from package.json.
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Content conversion tests
+        run: pnpm docs:test
+
+      - name: Generate documentation content
+        run: pnpm docs:generate
+
+      # generate-content.mjs only exits non-zero for its fatal issue types, so assert zero issues here.
+      - name: Require zero reported source issues
+        run: |
+          node -e "const r=require('./docs-site/generated/report.json'); if (r.issues.length) { console.error(JSON.stringify(r.issues, null, 2)); process.exit(1); } console.log('report.json: 0 source issues');"
+
+      - name: Content link and file checks
+        run: pnpm docs:lint
+
+      - name: Lint and format check
+        run: pnpm exec biome ci .
+
+  # Build both deployable locales in parallel: build:cn is what `pnpm release` and the Docker
+  # image ship, build:en is the default. Each build also re-runs the docs generation internally.
+  build:
+    needs: checks
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        locale: [en, cn]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build (${{ matrix.locale }})
+        run: pnpm build:${{ matrix.locale }}
+
+      - name: Verify the exported site
+        run: pnpm docs:verify

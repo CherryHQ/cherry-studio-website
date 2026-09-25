@@ -12,5 +12,3 @@ icon: image
 {% hint style="info" %}
 今後、さらなるサービスプロバイダーの追加を予定しています。ご期待ください。
 {% endhint %}
-
-{% include "../../.gitbook/includes/Gemini图片生成注意事项.md" %}

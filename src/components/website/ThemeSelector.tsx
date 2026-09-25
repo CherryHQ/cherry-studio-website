@@ -1,8 +1,8 @@
 import type { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { cn } from '@/lib/utils'
 import { useTheme } from '@/hooks/useTheme'
+import { cn } from '@/lib/utils'
 
 type ThemeOption = 'dark' | 'light' | 'system'
 

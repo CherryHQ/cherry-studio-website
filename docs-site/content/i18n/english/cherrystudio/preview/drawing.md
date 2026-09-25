@@ -11,4 +11,3 @@ For questions about parameters, you can hover your mouse over the `?` in the cor
 More providers will be added in the future, so please stay tuned.
 {% endhint %}
 
-{% include "../../.gitbook/includes/Gemini图片生成注意事项.md" %}

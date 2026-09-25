@@ -37,4 +37,4 @@ The model used by Quick Assistant is the [Global Default Conversation Model](set
 
 *   **Hotkey Conflicts:** If the default hotkey conflicts with other applications, please modify it.
 *   **Explore More Features:** In addition to the features mentioned in the document, Quick Assistant may also support other operations, such as code generation, style conversion, etc. It is recommended that you keep exploring during use.
-*   **Feedback and Improvements:** If you encounter any problems or have any suggestions for improvement during use, please promptly provide [feedback](../../../question-contact/suggestions.md) to the Cherry Studio team.
+*   **Feedback and Improvements:** If you encounter any problems or have any suggestions for improvement during use, please promptly provide [feedback](../../question-contact/suggestions.md) to the Cherry Studio team.

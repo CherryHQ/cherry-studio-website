@@ -39,4 +39,4 @@ El Asistente Rápido utiliza el [Modelo de conversación predeterminado global](
 
 * **Conflictos de atajos:** Si el atajo predeterminado entra en conflicto con otra aplicación, modifíquelo.
 * **Explorar más funciones:** Además de las mencionadas, el asistente podría soportar otras operaciones como generación de código, transformación de estilos, etc. Explore continuamente mientras lo usa.
-* **Comentarios y mejoras:** Si encuentra problemas o tiene sugerencias, repórtelos al equipo de Cherry Studio [aquí](../../../question-contact/suggestions.md).
+* **Comentarios y mejoras:** Si encuentra problemas o tiene sugerencias, repórtelos al equipo de Cherry Studio [aquí](../../question-contact/suggestions.md).

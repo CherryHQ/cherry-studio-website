@@ -43,4 +43,4 @@ icon: browsers
 
 * **快速鍵衝突：** 若預設組合鍵與其他應用衝突，請修改設定
 * **探索延伸功能：** 除文件提及功能外，亦支援程式碼生成、風格轉換等操作，建議持續探索
-* **回饋與改進：** 使用中遇到問題或有建議，請即時向 Cherry Studio 團隊 [提交回饋](../../../question-contact/suggestions.md)
+* **回饋與改進：** 使用中遇到問題或有建議，請即時向 Cherry Studio 團隊 [提交回饋](../../question-contact/suggestions.md)
