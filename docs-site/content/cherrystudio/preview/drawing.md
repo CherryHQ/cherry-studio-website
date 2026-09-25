@@ -85,8 +85,8 @@ Cherry Studio 的绘画功能依赖各家服务商提供的 **图像模型**。�
 绘画功能会随版本扩展。最新支持的服务商以应用内下拉为准。
 {% endhint %}
 
-{% hint style="danger" %}
-注意：Gemini 图片生成需要在对话界面使用，因为 Gemini 是多模态交互式的图片生成，也不支持参数调节。
+{% hint style="info" %}
+Gemini 图像模型（如 `gemini-2.5-flash-image`）在配置了 Gemini 兼容的服务商后，可直接在绘画页的模型下拉中选择；新版已统一在绘画页使用，不再支持在对话中生成图片。
 {% endhint %}
 
 ***
