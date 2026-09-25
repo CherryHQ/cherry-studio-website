@@ -38,6 +38,9 @@ jobs:
         run: |
           node -e "const r=require('./docs-site/generated/report.json'); if (r.issues.length) { console.error(JSON.stringify(r.issues, null, 2)); process.exit(1); } console.log('report.json: 0 source issues');"
 
+      - name: Content link and file checks
+        run: pnpm docs:lint
+
       - name: Lint and format check
         run: pnpm exec biome ci .
 
