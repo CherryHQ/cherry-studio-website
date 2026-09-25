@@ -10,14 +10,14 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  docs:
+  # Content and lint checks: locale-independent, so they run once and fail fast.
+  checks:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
+      # No version input: action-setup reads packageManager from package.json.
       - uses: pnpm/action-setup@v4
-        with:
-          version: 10.13.1
 
       - uses: actions/setup-node@v4
         with:
@@ -41,8 +41,30 @@ jobs:
       - name: Lint and format check
         run: pnpm exec biome ci .
 
-      - name: Build website and documentation
-        run: pnpm build:en
+  # Build both deployable locales in parallel: build:cn is what `pnpm release` and the Docker
+  # image ship, build:en is the default. Each build also re-runs the docs generation internally.
+  build:
+    needs: checks
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        locale: [en, cn]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build (${{ matrix.locale }})
+        run: pnpm build:${{ matrix.locale }}
 
       - name: Verify the exported site
         run: pnpm docs:verify
