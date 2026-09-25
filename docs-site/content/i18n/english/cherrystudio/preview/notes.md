@@ -9,7 +9,7 @@ Notes is the built-in Markdown editor in Cherry Studio, designed to help you org
 
 Click **Notes** in the top tab bar, or click the **Notes** app icon in the **Launcher**.
 
-<figure><img src="../../../../assets/14e04a73fa23719ebd35dde4.webp" alt=""><figcaption><p>Notes interface: The left side contains the directory tree and note list, while the right side is the Markdown editor</p></figcaption></figure>
+<figure><img src="../../../../assets/d6f7037adac8dbb53bc478e3.webp" alt=""><figcaption><p>Notes interface: The left side contains the directory tree and note list, while the right side is the Markdown editor</p></figcaption></figure>
 
 ### Create Your First Note
 
@@ -30,8 +30,6 @@ The toolbar at the top of the notes editor provides common rich text capabilitie
 * **Structure**: Inline code / H1–H3 headings / Unordered list / Ordered list / Code block / Quote / Task list / Formula
 * **Embedding**: Tables, Hyperlinks
 
-<figure><img src="../../../../assets/d391f5ca5d92cb8fdf22ca63.webp" alt=""><figcaption><p>Editor view after creating a new note and entering content</p></figcaption></figure>
-
 The status bar at the bottom displays the current **character count**. The **A✓** icon in the bottom-left corner toggles spell check. The dropdown in the bottom-right corner switches between **Live Preview**, **Source Mode**, or **Reading Mode**.
 
 ### Directory Management
@@ -46,30 +44,31 @@ The top of the left sidebar contains: **New Note** / **New Folder** / **Sort** /
 
 **Right-click** any note in the left directory tree to open the action menu—this is the entry point for AI integration and multi-format export:
 
-<figure><img src="../../../../assets/fd4004b475c63d7c924304e8.webp" alt=""><figcaption><p>Menu displayed when right-clicking a single note</p></figcaption></figure>
+<figure><img src="../../../../assets/04138079f771916dd9892ab7.webp" alt=""><figcaption><p>Menu displayed when right-clicking a single note</p></figcaption></figure>
 
 * **Generate Note Name** ✨: Let AI automatically generate a title based on the content (available for files only)
-* **Rename** / **Open in External App** (Show in Finder / Explorer)
-* **Favorite Note** / **Unfavorite**
-* **Export Note to Knowledge Base**: Send to a specified [Knowledge Base](../../knowledge-base/knowledge-base.md)
+* **Rename** / **Open from external** (Show in Finder / Explorer)
+* **Favorite note** / **Unfavorite**
+* **Export notes to knowledge base**: Send to a specified [Knowledge Base](../../knowledge-base/knowledge-base.md)
 * **Export ›** submenu: Markdown / Word (.docx) / Notion / Yuque / Obsidian / Joplin / Siyuan, as well as "Copy as Image / Export as Image"—the visibility of each item can be toggled individually in **Settings** → **Data Settings** → **Export Menu Settings**
 * **Delete**
 
-> The right-click menu for folders is more concise, containing only: New Note / New Folder / Rename / Open in External App / Delete.
+> The right-click menu for folders is more concise, containing only: New Note / New Folder / Rename / Open from external / Delete.
 
 ### Top-Right [⋯] Menu (View and Export Shortcuts)
 
 The [⋯] button in the top-right corner of the note title is the **current note's** view/export shortcut entry. Do not confuse it with the right-click menu:
 
-<figure><img src="../../../../assets/b9b3ab0b2050382f16409b48.webp" alt=""><figcaption><p>Top-right [⋯] menu</p></figcaption></figure>
+<figure><img src="../../../../assets/d3f34c20b533b7559ece483c.webp" alt=""><figcaption><p>Top-right [⋯] menu</p></figcaption></figure>
 
 * **Copy Content**: Copy as plain text
-* **Export as Word**: Quickly generate `.docx` (use the "Export ›" option in the right-click menu for more formats)
-* **Export as PDF**: Export the current note as a PDF file
+* **Export to Word**: Quickly generate `.docx` (use the "Export ›" option in the right-click menu for more formats)
+* **Export to PDF**: Export the current note as a PDF file
 * **Print**: Invoke the system print dialog for the current note
-* **Narrow Column Width**: Limit the maximum characters per line
-* **Show Table of Contents Outline**: Display the heading tree of the current note on the right
-* **Font Settings ›**: Default / Serif font, three font sizes (Small / Medium / Large)
+* **Content Compression**: Limit the maximum characters per line
+* **Show Table of Contents**: Display the heading tree of the current note on the right
+* **Line Break Mode**: Toggle the editor's line break mode
+* **Font settings**: Default font / Serif font, and three font sizes (Small / Medium / Large)
 * **More Settings**: Open the notes settings panel (Data / Editor / Display settings groups)
 
 ### Working Directory and Backup
@@ -93,10 +92,10 @@ Open the notes settings panel via top-right [⋯] → **More Settings**. In addi
 
 * **Font**: Default / Serif font
 * **Font Size**: Between 10–30px
-* **Narrow Column Width**: Limit characters per line to prevent long lines from spanning the entire screen
+* **Content Compression**: Limit characters per line to prevent long lines from spanning the entire screen
 * **Show Table of Contents Outline**: Display the heading tree of the current note on the right for in-document navigation
 
-> Font and size can be adjusted in this Display Settings panel or quickly switched via top-right [⋯] → **Font Settings**.
+> Font and size can be adjusted in this Display Settings panel or quickly switched via top-right [⋯] → **Font settings**.
 
 ### Tips and Tricks
 

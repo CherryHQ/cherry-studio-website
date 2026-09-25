@@ -72,7 +72,7 @@ The chat model cannot recover key materials that were not found during the recal
 
 ## Tuning Loop
 
-<figure><img src="../../../assets/8cd27fa50051cc96320b280a.webp" alt="Quality tuning loop: check recall with fixed questions, locate issues, adjust individually, re-index, and retest"><figcaption><p>Fixed questions → Check results → Identify layer → Adjust one item → Reindex if necessary → Retest. </p></figcaption></figure>
+<figure><img src="../../../assets/61dbda9b15a8ecba70f214fe.webp" alt="Quality tuning loop: check recall with fixed questions, locate issues, adjust individually, re-index, and retest"><figcaption><p>Fixed questions → Check results → Identify layer → Adjust one item → Reindex if necessary → Retest. </p></figcaption></figure>
 
 Recommended order:
 

@@ -3,7 +3,7 @@ icon: terminal
 ---
 # 環境依存
 
-環境依存は、**Cherry Studio が一部の高度な機能を実行するために必要なバイナリツールとランタイムを管理**するために使用されます。[MCP サービス](../../../../advanced-basic/extensions/mcp)、[スキル](../../advanced-basic/extensions/skills.md)、[Agent](../../advanced-basic/agent.md) の一部の機能は、`uv` や `bun` などのコマンドラインツールを呼び出す必要があります。Cherry Studio はこれらをここに集約しており、コマンドラインで手動インストールや設定を行う必要はありません。
+環境依存は、**Cherry Studio が一部の高度な機能を実行するために必要なバイナリツールとランタイムを管理**するために使用されます。[MCP サービス](../../advanced-basic/extensions/mcp)、[スキル](../../advanced-basic/extensions/skills.md)、[Agent](../../advanced-basic/agent.md) の一部の機能は、`uv` や `bun` などのコマンドラインツールを呼び出す必要があります。Cherry Studio はこれらをここに集約しており、コマンドラインで手動インストールや設定を行う必要はありません。
 
 `設定 → 環境依存関係` を開きます：
 

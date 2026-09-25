@@ -17,7 +17,7 @@ icon: grid
 | [工作](../../advanced-basic/agent.md) | 讓智能體呼叫工具並完成多步驟任務 |
 | [繪圖](drawing.md) | 使用圖像模型生成和管理圖片 |
 | [翻譯](translation.md) | 翻譯文字並對照查看原文和譯文 |
-| [小程式](../../../../cherry-studio/preview/app) | 在 Cherry Studio 中使用網頁應用程式 |
+| [小程式](../../cherry-studio/preview/app) | 在 Cherry Studio 中使用網頁應用程式 |
 | [知識庫](knowledge-base.md) | 匯入資資並進行檢索和問答 |
 | [檔案](files.md) | 查看和管理應用程式內使用的檔案 |
 | [編碼夥伴](code-cli.md) | 安裝、設定和啟動 AI 編程 CLI 工具 |
@@ -41,7 +41,7 @@ icon: grid
 
 ## 管理小程式
 
-在 [小程式](../../../../cherry-studio/preview/app) 頁面將網頁應用程式新增到啟動台後，它會顯示在內建應用程式下方的「小程式」區域。
+在 [小程式](../../cherry-studio/preview/app) 頁面將網頁應用程式新增到啟動台後，它會顯示在內建應用程式下方的「小程式」區域。
 
 * 拖曳小程式圖示可以調整顯示順序。
 * 右鍵點擊小程式，可以將其新增到側邊欄或從啟動台移除。

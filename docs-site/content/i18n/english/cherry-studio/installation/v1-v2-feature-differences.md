@@ -63,5 +63,5 @@ Migration does not delete original V1 data. New V2 data is not synced back to V1
 ## References
 
 * [Upgrade from V1 to V2](v1-to-v2-migration.md)
-* [Cherry Studio V2 Official Download](https://cherryai.com.cn/download)
+* [Cherry Studio V2 Official Download](https://cherryai.com/download)
 * V2 Release Page: [GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases)

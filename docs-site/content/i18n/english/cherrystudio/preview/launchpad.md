@@ -5,7 +5,7 @@ icon: grid
 
 The Launchpad provides centralized access to Cherry Studio's core features. Click the **+** button on the right side of the top tab bar to open a new Launchpad tab. Closing the last tab automatically returns you to the Launchpad.
 
-![Nine built-in app entries in the Launchpad](../../../../assets/7521831e54a609b69a5fceeb.png)
+![Built-in app entries in the Launchpad](../../../../assets/c89b9077eb11875d79b2b235.webp)
 
 ## Default Apps
 
@@ -15,12 +15,12 @@ The Launchpad currently includes 9 built-in apps:
 | --------------------------------------- | ----------------------- |
 | [Chat](chat.md) | Chat with models, manage assistants and conversation lists |
 | [Work](../../advanced-basic/agent.md) | Enable agents to call tools and complete multi-step tasks |
-| [Drawing](drawing.md) | Generate and manage images using image models |
+| [Paintings](drawing.md) | Generate and manage images using image models |
 | [Translation](translation.md) | Translate text and view source and target side-by-side |
-| [Mini Apps](../../../../cherry-studio/preview/app) | Use web applications within Cherry Studio |
+| [MiniApp](../../cherry-studio/preview/app) | Use web applications within Cherry Studio |
 | [Knowledge Base](knowledge-base.md) | Import documents for retrieval and Q&A |
 | [Files](files.md) | View and manage files used within the app |
-| [Coding Partner](code-cli.md) | Install, configure, and launch AI coding CLI tools |
+| [Code Mate](code-cli.md) | Install, configure, and launch AI coding CLI tools |
 | [Notes](notes.md) | Create and organize Markdown notes |
 
 ## Reorder Apps
@@ -41,7 +41,7 @@ Frequently used apps can be pinned to the sidebar:
 
 ## Manage Mini Apps
 
-After adding a web app to the Launchpad via the [Mini Apps](../../../../cherry-studio/preview/app) page, it appears in the "Mini Apps" section below the built-in apps.
+After adding a web app to the Launchpad via the [Mini Apps](../../cherry-studio/preview/app) page, it appears in the "Mini Apps" section below the built-in apps.
 
 * Drag Mini App icons to adjust their display order.
 * Right-click a Mini App to add it to the sidebar or remove it from the Launchpad.

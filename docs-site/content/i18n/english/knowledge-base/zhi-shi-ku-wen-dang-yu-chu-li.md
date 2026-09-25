@@ -1,36 +1,140 @@
 ---
-icon: face-viewfinder
+icon: file-lines
 ---
-# Knowledge Base Document Preprocessing
 
-Knowledge Base Document Preprocessing requires upgrading Cherry Studio to v1.4.8 or higher.
+# Document Parsing and OCR
 
-### Configure OCR Provider
+A knowledge base can only search text that has already been extracted. For scanned PDFs, two-column papers, complex tables and image-based pages, get the text parsed correctly first, then tune models and recall parameters.
 
-<figure><img src="../../../assets/bcde486f81a63aa4c84d7bd8.jpg" alt=""><figcaption></figcaption></figure>
+{% hint style="info" %}
+Judge parsing quality not by the words "import succeeded" but by whether the text order, key tables, amounts and dates, and scanned text are read correctly.
+{% endhint %}
 
-Click "Get API KEY" to open the application page in your browser. Fill out the form to obtain the API KEY, then enter it into the API KEY field.
+## Start by Identifying the Material Type
 
-<figure><img src="../../../assets/720e8c1b35215d65427d39bb.jpg" alt=""><figcaption></figcaption></figure>
+| Material type | Recommended start | Must check |
+| -------------------- | --------- | ------------- |
+| Markdown, TXT, HTML | Default reading | Heading levels, encoding, line breaks |
+| PDF with selectable text, DOCX, PPTX | Default processing first | Paragraph order, headers and footers, tables |
+| Scanned PDFs, screenshots, image-based pages | Local or system OCR | Recognition language, amounts, dates, reference numbers |
+| Multi-column, formula-heavy or complex-table PDFs | A dedicated document processor | Reading order, table structure, footnotes |
 
-### Configure Knowledge Base Document Preprocessing
+## Where Parsing Sits in the Retrieval Chain
 
-<figure><img src="../../../assets/26fc3e77df3d0ea044c072de.jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../assets/1b37b3cc3a8a611ccd30b8de.webp" alt="Knowledge base retrieval architecture: material goes through parsing and OCR, chunking, keyword and vector search before reaching the answer"><figcaption><p>Parsing errors carry through to chunking and recall; downstream models can't restore content already lost from the text.</p></figcaption></figure>
 
-Configure the created knowledge base as shown above to complete the knowledge base document preprocessing setup.
+## Configure and Verify With a Sample Document
 
-### Upload Document
+{% stepper %}
+{% step %}
+### 1. Pick a representative sample
 
-<figure><img src="../../../assets/e8ee667885f391bf5b2bc91e.jpg" alt=""><figcaption></figcaption></figure>
+Don't import the whole batch first. Pick the document most likely to expose problems, such as a scanned PDF with tables or a two-column manual.
+{% endstep %}
 
-> You can detect knowledge base results by searching in the upper right corner.
+{% step %}
+### 2. Configure processing
 
-### Use in Conversations
+Open **Settings → Document Processing** and configure the document parsing service and OCR as needed. Cloud services usually need an API key or service URL; local options may need a model download first.
 
-<figure><img src="../../../assets/f73e194a4afcdba0cb17eebd.jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../assets/10358b4ef25b2f7a69345187.webp" alt="File parsing and OCR service configuration in Document Processing settings"><figcaption><p>Get the service you'll use working first, then choose the processor back in the knowledge base.</p></figcaption></figure>
+{% endstep %}
 
-> Knowledge Base Usage Tips: When using **more powerful** models, you can change the knowledge base search mode to intent recognition. Intent recognition can describe your questions more accurately and broadly.
+{% step %}
+### 3. Import and wait until ready
 
-### Enable Knowledge Base Intent Recognition
+Add the sample document to the knowledge base. Once processing finishes, open the text and check the headings, paragraphs, page numbers, tables and OCR text.
+{% endstep %}
 
-<figure><img src="../../../assets/d7ffe76f4b8e04c74324e5cc.webp" alt=""><figcaption></figcaption></figure>
+{% step %}
+### 4. Check the Chunks
+
+Make sure key conditions and conclusions haven't been split apart, and that headers, footers and tables of contents aren't repeatedly filling up chunks.
+
+<figure><img src="../../../assets/5bd8c12bd8d08e785c6a4c42.webp" alt="Smart chunking, separator, chunk size and overlap in knowledge base advanced settings"><figcaption><p>Check chunking only after the text is correct — parsing errors can't be fixed by making chunks bigger.</p></figcaption></figure>
+{% endstep %}
+
+{% step %}
+### 5. Retest with a real question
+
+In **Recall Test**, enter a question whose answer is in this document. The results should include the correct source, the complete conditions and the key numbers.
+{% endstep %}
+
+{% step %}
+### 6. Lock in the setup, then import in bulk
+
+Once the sample passes, import material of the same type in batches. If you change the processor, OCR or chunking settings, run **Re-index** on existing material and test again.
+{% endstep %}
+{% endstepper %}
+
+{% hint style="warning" %}
+Switching processors or OCR doesn't automatically fix material that's already indexed. You must re-index the relevant items to compare old and new results.
+{% endhint %}
+
+## Choosing a Processor and OCR
+
+| Option | When to use | Strengths | Caveats |
+| ------------ | ------------ | ---------------- | ------------------ |
+| Default reading | Common text-based formats | Little setup, fast | Complex layouts and scanned pages may lose content |
+| System OCR | Supported by your OS and the images are clear | No extra API key, fast | Accuracy depends on the OS, language and image quality |
+| Local PaddleOCR | You need offline recognition | Documents never leave your computer | A local model must be downloaded before first use |
+| Cloud or self-hosted processors | Two-column layouts, complex tables, lots of formulas | Usually stronger layout analysis | Cloud options receive the document content for processing |
+
+{% hint style="danger" %}
+Before using a cloud document processor on sensitive material, check the terms of service, data retention policy and account permissions. Being fully offline requires local options for every step: parsing, OCR, embedding, reranking and chat.
+{% endhint %}
+
+## Diagnosing Common Problems
+
+| Symptom | Check first | What to do |
+| -------- | ------------- | --------------------------- |
+| Text is empty or very short | Whether the file is a scan | Enable OCR or switch processors |
+| Two columns interleaved | The reading order of the text | Use a processor that's good at layout analysis |
+| Tables turned into scattered text | Headers and row/column relationships | Switch processors, or turn the key rules into a Markdown note |
+| Headers and footers keep appearing | Repeated noise in Chunks | Clean up the source file or switch parsers — don't just raise Top K |
+| OCR gets numbers wrong | Amounts, dates, reference numbers | Improve image clarity and manually check high-risk fields |
+
+## Settings Reference
+
+| Setting | Recommended start | When to change it | What to do after |
+| ----------- | -------------- | --------------- | ----------- |
+| File processor | Default processing first | Misordered text, missing tables, empty scanned pages | Re-index the sample document |
+| OCR | Prefer local or system options for clear scans | Image-based pages have no text or many errors | Re-index and check key fields |
+| Chunk size and overlap | Keep the knowledge base defaults at first | Conditions and conclusions are split apart | Change one thing per round and re-index |
+| Test questions | 3–5 real questions | After changing the processor, OCR or chunking | Compare using the same question set |
+
+## Example
+
+Lin imports a two-column travel policy PDF. Its status shows ready, but the text interleaves the left and right columns, and the approval conditions in the recall results are incomplete. Instead of raising Top K first, he switches to a processor better suited to layout analysis, re-indexes the same file, and checks the text and Chunks again.
+
+His bar for done: the approval conditions read in their original order, amounts and dates are correct, and the fixed questions recall passages containing the complete conditions.
+
+## FAQ
+
+<details>
+
+<summary>If the text is correct, do I still need to look at the Chunks?</summary>
+
+Yes. Correct text only means parsing passed; conditions and conclusions can still be split apart during chunking.
+
+</details>
+
+<details>
+
+<summary>Can raising Top K fix parsing problems?</summary>
+
+No. Top K only controls how many passages are returned; it can't restore content that was lost or misordered in the text.
+
+</details>
+
+<details>
+
+<summary>Why didn't the results change after I switched processors?</summary>
+
+Existing material is still using the old index. Run **Re-index** on the relevant items, then retest with the same questions.
+
+</details>
+
+## Read Next
+
+<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>Add and organize material</strong></td><td>Choose sources and check processing status.</td><td><a href="sources.md">sources.md</a></td></tr><tr><td><strong>Check material and recall</strong></td><td>Verify parsing and chunking with fixed questions.</td><td><a href="recall-test.md">recall-test.md</a></td></tr><tr><td><strong>Data, privacy and maintenance</strong></td><td>Understand the boundary between local and cloud data.</td><td><a href="data.md">data.md</a></td></tr></tbody></table>

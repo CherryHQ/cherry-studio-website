@@ -77,6 +77,7 @@ export async function renderMarkdown(markdown, rewrite, report) {
   const unicodeSlugger = new GithubSlugger()
   let title = ''
   let text = ''
+  const paragraphs = []
   const schema = {
     ...defaultSchema,
     clobberPrefix: '',
@@ -216,6 +217,58 @@ export async function renderMarkdown(markdown, rewrite, report) {
         if (node.tagName === 'a' && /^https?:/.test(String(props.href))) props.rel = 'noopener noreferrer'
       })
       text = toText(tree)
+      // Lead prose for the page description, in document order. Uses paragraphs and
+      // list items; skips headings, tables, code, hints, figures, italic captions,
+      // link-dominated lines (social accounts, link lists) and short lead-ins ending
+      // in a colon, and stops at the shared "Get help and submit feedback" footer.
+      const FOOTER =
+        /获取帮助|獲取幫助|取得協助|Get Help|ヘルプ|Obtenir de l|Obtener ayuda|Obter ajuda|Получить помощь/i
+      const lead = (node) => {
+        const all = toText(node).replace(/\s+/g, ' ').trim()
+        if (all.length < 2) return ''
+        let linked = 0
+        visit(node, 'element', (child) => {
+          if (child.tagName === 'a') linked += toText(child).replace(/\s+/g, ' ').trim().length
+        })
+        if (linked > all.length * 0.6) return ''
+        // "Label: link, link" lines (social accounts, community lists).
+        const bare = toText({ ...node, children: node.children.filter((child) => child.tagName !== 'a') })
+          .replace(/[\s,，、|/·]+/g, ' ')
+          .trim()
+        if (linked && /[:：]$/.test(bare) && bare.length < 40) return ''
+        const kids = node.children.filter((child) => child.type !== 'text' || child.value.trim())
+        if (kids.length === 1 && kids[0].type === 'element' && ['em', 'i', 'img', 'a'].includes(kids[0].tagName))
+          return ''
+        if (/[:：]$/.test(all) && all.length < 90) return ''
+        return all
+      }
+      const walk = (nodes) => {
+        for (const node of nodes) {
+          if (paragraphs.join(' ').length > 320) return true
+          if (node.type !== 'element') continue
+          if (/^h[1-6]$/.test(node.tagName) && FOOTER.test(toText(node))) return true
+          if (node.tagName === 'p') {
+            const value = lead(node)
+            if (value) paragraphs.push(value)
+          } else if (node.tagName === 'li') {
+            const value = lead({
+              ...node,
+              children: node.children.filter((child) => child.tagName !== 'ul' && child.tagName !== 'ol')
+            })
+            if (value)
+              paragraphs.push(
+                /[.。!?！？]$/.test(value) ? value : `${value}${/[\u3400-\u9fff]/.test(value) ? '。' : '.'}`
+              )
+          } else if (
+            ['ul', 'ol', 'div', 'section'].includes(node.tagName) &&
+            !('dataTableContainer' in (node.properties || {}))
+          ) {
+            if (walk(node.children)) return true
+          }
+        }
+        return false
+      }
+      walk(tree.children)
     })
     // Generate MathML only at build time: no client-side renderer, CDN or font downloads.
     .use(rehypeKatex, { output: 'mathml', trust: false })
@@ -235,7 +288,45 @@ export async function renderMarkdown(markdown, rewrite, report) {
   for (const message of result.messages) {
     if (message.source === 'rehype-katex') report({ type: 'invalid-math', reason: message.reason })
   }
-  return { html: String(result), title, toc, text, anchors, links }
+  const frontmatter = markdown.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n/)?.[1] || ''
+  const declared =
+    frontmatter
+      .match(/^description:\s*(.+)$/m)?.[1]
+      .trim()
+      .replace(/^(['"])(.*)\1$/, '$2') || ''
+  return {
+    html: String(result),
+    title,
+    toc,
+    text,
+    anchors,
+    links,
+    description: pageDescription(declared, paragraphs.join(' ') || text)
+  }
+}
+
+const CJK = /[\u3040-\u30ff\u3400-\u9fff\uac00-\ud7af]/
+
+/** A search-snippet description: the declared one when it says enough, else the lead prose, clipped at a sentence or word. */
+export function pageDescription(declared, prose) {
+  const clean = (value) =>
+    value
+      .replace(/\s+/g, ' ')
+      .replace(/\u200b/g, '')
+      .trim()
+  const wide = (value) => (value.match(new RegExp(CJK.source, 'g')) || []).length > value.length / 3
+  declared = clean(declared)
+  prose = clean(prose)
+  const enough = (value) => value.length >= (wide(value) ? 24 : 70)
+  const source = declared && (enough(declared) || !prose) ? declared : prose
+  const max = wide(source) ? 80 : 155
+  if (source.length <= max) return source
+  const head = source.slice(0, max)
+  const sentence = Math.max(...['。', '！', '？', '. ', '! ', '? '].map((mark) => head.lastIndexOf(mark)))
+  if (sentence >= max * 0.5) return head.slice(0, sentence + 1).trim()
+  const space = head.lastIndexOf(' ')
+  const cut = wide(source) || space < max * 0.6 ? head : head.slice(0, space)
+  return `${cut.replace(/[\s,，、;；:：(（\-–—/]+$/, '')}…`
 }
 
 export function parseSummary(markdown) {

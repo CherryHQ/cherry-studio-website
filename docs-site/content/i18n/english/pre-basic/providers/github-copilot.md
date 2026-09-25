@@ -4,9 +4,9 @@ To use GitHub Copilot, you need to have a GitHub account and subscribe to the Gi
 
 ## Obtain Device Code
 
-Click "Log in to GitHub" to obtain and copy the Device Code.
+On the GitHub Copilot provider page, follow the three steps: **Get Authorization Code**, **Copy Authorization Code** (it is copied automatically; you can also click **Copy**), then **Open Authorization Page**.
 
-<figure><img src="../../../../assets/c55a91f9cdc6b88106e1d281.webp" alt="Example image for obtaining Device Code"><figcaption><p>Obtain Device Code</p></figcaption></figure>
+<figure><img src="../../../../assets/49532cb75971bca02aed52c1.webp" alt="GitHub Copilot provider page showing the Get, Copy and Open Authorization Page steps"><figcaption><p>Get and copy the authorization code, then open the authorization page</p></figcaption></figure>
 
 ## Enter Device Code in Browser and Authorize
 
@@ -18,16 +18,14 @@ After successful authorization, return to Cherry Studio, click "Connect GitHub",
 
 <figure><img src="../../../../assets/dd64cd1857b5e69446d98398.webp" alt="Example image for successful GitHub connection"><figcaption><p>GitHub Connection Successful</p></figcaption></figure>
 
-## Click "Manage" to Get Model List
+## Click "Sync models" to Get the Model List
 
-Click the "Manage" button below to automatically retrieve the list of currently supported models online.
+Click "Sync models" to automatically retrieve the list of currently supported models online.
 
-<figure><img src="../../../../assets/c0545b25325df32cd70fbad9.webp" alt="Example image for getting model list with Manage button"><figcaption><p>Get Model List</p></figcaption></figure>
+<figure><img src="../../../../assets/c0545b25325df32cd70fbad9.webp" alt="Example image for getting the model list"><figcaption><p>Sync models</p></figcaption></figure>
 
 ## Frequently Asked Questions
 
 ### Failed to Obtain Device Code, Please Retry
-
-<figure><img src="../../../../assets/1fc3819d4c2caff7331c82bb.webp" alt="Example image for failed Device Code acquisition"><figcaption><p>Failed to Obtain Device Code</p></figcaption></figure>
 
 Currently, requests are built using Axios, which does not support SOCKS proxies. Please use a system proxy or HTTP proxy, or do not set a proxy directly in CherryStudio and use a global proxy instead. First, please ensure your network connection is normal to avoid failures in obtaining the Device Code.

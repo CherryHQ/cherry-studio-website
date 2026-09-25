@@ -45,7 +45,7 @@ First, request the model list or send a short text according to the API document
 
 ## Use Case: Calling Models from Local Scripts
 
-First, confirm that the model can converse normally in [Settings] → [Model Services], then start the API Gateway. The script should only store the local gateway address and key. Start by requesting the model list, then send a short text. Before integrating the full program, ensure the client supports OpenAI or Anthropic-compatible interfaces.
+First, confirm that the model can converse normally in [Settings] → [Model Provider], then start the API Gateway. The script should only store the local gateway address and key. Start by requesting the model list, then send a short text. Before integrating the full program, ensure the client supports OpenAI or Anthropic-compatible interfaces.
 
 | Configuration | Recommended Start | Purpose | Notes |
 | ------ | ---------- | --------- | ----------------- |

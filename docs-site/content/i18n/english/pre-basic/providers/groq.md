@@ -9,7 +9,7 @@ Groq (Note: not Grok by xAI) is an inference service known for **LPU hardware ac
 
 ## Configure in Cherry Studio
 
-* Open `Settings → Model Service`, find the **Groq** Provider and enter the details page
+* Open `Settings → Model Provider`, find the **Groq** Provider and enter the details page
 * Enter your `gsk_...` in the **API Key** field
 * The **API Endpoint** defaults to `https://api.groq.com/openai/v1`; no modification is needed
 * Click **Fetch Model List**

@@ -6,7 +6,7 @@ icon: gears
 
 Cherry Studio's automation is not a standalone set of "bot settings." The Agent handles the work, channels manage sending and receiving messages from external platforms, scheduled tasks start the Agent at specified times, and heartbeats allow the Agent to periodically check its ongoing work.
 
-<figure><img src="../../../../assets/c348e2cb27a028b3789ac09b.webp" alt="Automation relationship diagram: scheduled tasks, heartbeats, or channels trigger Agent execution and send results"><figcaption><p>Triggering, execution, notification, and run history are distinct stages; first run the Agent manually, then integrate components step by step. </p></figcaption></figure>
+<figure><img src="../../../../assets/9192f8151da563f9e9df7ba3.webp" alt="Automation relationship diagram: scheduled tasks, heartbeats, or channels trigger Agent execution and send results"><figcaption><p>Triggering, execution, notification, and run history are distinct stages; first run the Agent manually, then integrate components step by step. </p></figcaption></figure>
 
 ## How the Four Components Work Together
 

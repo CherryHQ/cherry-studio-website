@@ -23,4 +23,4 @@ As funções de tradução nas caixas de entrada de conversas, pintura e outros 
 
 ## Modelo do Assistente Rápido
 
-O modelo utilizado pela funcionalidade do Assistente Rápido, detalhado em [Assistente Rápido](../kuai-jie-zhu-shou.md).
+O modelo utilizado pela funcionalidade do Assistente Rápido, detalhado em [Assistente Rápido](../quick-assistant.md).

@@ -17,7 +17,7 @@ Actualmente, Launchpad incluye 9 aplicaciones integradas:
 | [Trabajo](../../advanced-basic/agent.md) | Permitir que el agente invoque herramientas y complete tareas de múltiples pasos |
 | [Dibujo](drawing.md) | Generar y gestionar imágenes utilizando modelos de imagen |
 | [Traducción](translation.md) | Traducir texto y comparar el original con la traducción |
-| [Miniaplicaciones](../../../../cherry-studio/preview/app) | Utilizar aplicaciones web dentro de Cherry Studio |
+| [Miniaplicaciones](../../cherry-studio/preview/app) | Utilizar aplicaciones web dentro de Cherry Studio |
 | [Base de conocimientos](knowledge-base.md) | Importar materiales y realizar búsquedas y preguntas |
 | [Archivos](files.md) | Ver y gestionar los archivos utilizados en la aplicación |
 | [Compañero de código](code-cli.md) | Instalar, configurar e iniciar herramientas CLI de programación con IA |
@@ -41,7 +41,7 @@ Las aplicaciones que se utilizan con frecuencia pueden fijarse en la barra later
 
 ## Gestionar miniaplicaciones
 
-Después de añadir una aplicación web a Launchpad desde la página [Miniaplicaciones](../../../../cherry-studio/preview/app), esta se mostrará en la sección "Miniaplicaciones" debajo de las aplicaciones integradas.
+Después de añadir una aplicación web a Launchpad desde la página [Miniaplicaciones](../../cherry-studio/preview/app), esta se mostrará en la sección "Miniaplicaciones" debajo de las aplicaciones integradas.
 
 * Arrastra el icono de la miniaplicación para ajustar el orden de visualización.
 * Haz clic derecho sobre la miniaplicación para añadirla a la barra lateral o eliminarla de Launchpad.

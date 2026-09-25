@@ -24,4 +24,4 @@
 * Strictly distinguish between `http` and `https`; if SSL is not enabled, do not fill in https
 {% endhint %}
 
-* Add models (click "Manage" to auto-fetch or enter manually). Turn on the switch in the upper right corner to use.
+* Add models (click "Sync models" to fetch them automatically, or "+" to enter one manually). Turn on the switch in the upper right corner to use.

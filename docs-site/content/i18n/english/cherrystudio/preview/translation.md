@@ -7,39 +7,41 @@ Cherry Studio's translation feature provides you with fast and accurate text tra
 
 ### Interface Overview
 
-<figure><img src="../../../../assets/b3ff29c787b71ee82a0e83fd.webp" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../assets/3413d1e6827f6f8992ed5ba1.webp" alt="Translation page with the Translate to language dropdown and Translate button at the top, source text on the left and the translation on the right"><figcaption><p>The Translation page: choose the target language at the top, type on the left, and read the result on the right</p></figcaption></figure>
 
-The translation interface mainly consists of the following parts:
+The translation page consists of the following parts:
 
-1.  **Source Language Selection Area**:
-    *   Any Language: Cherry Studio will automatically detect the source language and translate it.
-2.  **Target Language Selection Area**:
-    *   Dropdown Menu: Select the language you wish to translate the text into.
-3.  **Settings Button**:
-    *   Clicking it will navigate to [Default Model Settings](settings/default-models.md).
-4.  **Scroll Sync**:
-    *   Click to toggle scroll sync (scrolling on one side will cause the other side to scroll as well).
-5.  **Text Input Box (Left)**:
-    *   Enter or paste the text you need to translate.
-6.  **Translation Result Box (Right)**:
-    *   Displays the translated text.
-    *   Copy Button: Click the button to copy the translation result to the clipboard.
-7.  **Translate Button**:
-    *   Click this button to start the translation.
-8.  **Translation History (Top Left)**:
-    *   Click to view translation history.
+1.  **Translate to (top left)**:
+    *   Choose the language you want to translate into from the dropdown.
+    *   There is no source-language selector — the source language is detected automatically.
+2.  **Translate button**:
+    *   Next to the language dropdown. Click it to start translating.
+3.  **Top-right icons**:
+    *   The model icon shows the translation model in use.
+    *   The clock icon opens your translation history.
+    *   The settings icon opens the translation settings.
+4.  **Source text (left)**:
+    *   Type or paste the text you want to translate.
+    *   Click **Clear** at the bottom left to empty the box.
+5.  **Translation result (right)**:
+    *   Shows the translated text, with the character count at the bottom.
+    *   Click the copy button in the top right of either box to copy its text.
+
+{% hint style="info" %}
+The translation model is the **Translate Model** set in [Default Model Settings](../../pre-basic/settings/default-models.md).
+{% endhint %}
 
 ### Usage Steps
 
-1.  **Select Target Language**:
-    *   In the target language selection area, choose the language you wish to translate into.
-2.  **Enter or Paste Text**:
-    *   In the left text input box, enter or paste the text you want to translate.
-3.  **Start Translation**:
-    *   Click the `Translate` button.
-4.  **View and Copy Results**:
-    *   The translation result will be displayed in the translation result box on the right.
-    *   Click the copy button to copy the translation result to the clipboard.
+1.  **Choose the target language**:
+    *   Select the language to translate into from the **Translate to** dropdown.
+2.  **Enter or paste text**:
+    *   Type or paste the text into the left box.
+3.  **Start translating**:
+    *   Click the **Translate** button.
+4.  **View and copy the result**:
+    *   The translation appears in the right box.
+    *   Click its copy button to copy the translation to the clipboard.
 
 ### Frequently Asked Questions (FAQ)
 
