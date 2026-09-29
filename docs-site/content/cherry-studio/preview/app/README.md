@@ -47,7 +47,7 @@ icon: grid-2
 
 点右上角 `☰` 打开【小程序显示设置】：
 
-<figure><img src="../../assets/0e610c383d3c55d1465b0acb.png" alt=""><figcaption><p>小程序显示设置：显示管理（显示 / 隐藏两栏，可交换与重置）与使用偏好</p></figcaption></figure>
+<figure><img src="../../../assets/0e610c383d3c55d1465b0acb.png" alt=""><figcaption><p>小程序显示设置：显示管理（显示 / 隐藏两栏，可交换与重置）与使用偏好</p></figcaption></figure>
 
 **显示管理**
 
