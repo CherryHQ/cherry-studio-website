@@ -6,7 +6,7 @@ icon: route
 
 Advanced tutorials do not list settings menu items one by one; instead, they start from "what work you want to accomplish." First, select the goal closest to your needs, then proceed to the corresponding tutorial.
 
-<figure><img src="../../../assets/f99c1bfff81d92511c921169.webp" alt="Flowchart for selecting Cherry Studio work entry points based on goals"><figcaption><p>Start with the main entry point to complete the minimal task; once results are stable, add knowledge bases, skills, MCP, channels, or scheduled tasks. </p></figcaption></figure>
+<figure><img src="../../../assets/3662cb6d32753bcb081fc9a4.webp" alt="Flowchart for selecting Cherry Studio work entry points based on goals"><figcaption><p>Start with the main entry point to complete the minimal task; once results are stable, add knowledge bases, skills, MCP, channels, or scheduled tasks. </p></figcaption></figure>
 
 {% hint style="success" %}
 When you need to configure a tutorial, channel, scheduled task, or extended capability, prioritize telling the Agent your goal in [Work]. The Agent can help identify what is missing and guide you through common configurations; when you need to verify accounts, keys, or precise parameters, manually adjust them in [Settings].
@@ -33,7 +33,7 @@ Chart description: First select the main entry point based on your goal, then ad
 | Use Agent from external platforms | Let Agent guide configuration in [Work] first | Channels, allowed scope, permission mode |
 | Generate daily reports or reminders on schedule | Run Agent first, then create [Scheduled Task] | Agent, working directory, channels, run logs |
 | View materials and tasks simultaneously | Right-click tab → [Open in New Window] | Multi-window, pinned tabs, global search |
-| Manage coding command line | Launcher [Coding Partner] | Code CLI, model connection, directory, and terminal |
+| Manage coding command line | Launcher [Code Mate] | Code CLI, model connection, directory, and terminal |
 | Let local programs call models or troubleshoot | [Settings] → [API Gateway] / [General] | Compatible API, call chain, developer mode |
 
 ### Recommended Learning Order

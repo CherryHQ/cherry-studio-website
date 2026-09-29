@@ -16,7 +16,7 @@ Cherry Studio intègre **plus de 60 Providers**. Cette page fournit un tableau r
 
 | Votre besoin | Direction recommandée |
 |---|---|
-| **Démarrage rapide pour débutants**, éviter les processus complexes | [CherryIN](cherryin-1.md) ou [CherryAI](../../../../pre-basic/providers/cherryai) |
+| **Démarrage rapide pour débutants**, éviter les processus complexes | [CherryIN](cherryin-1.md) ou [CherryAI](cherryai) |
 | **Accès le plus pratique en Chine** | DeepSeek / Moonshot / 硅基流动 / 智谱 |
 | **Meilleurs modèles internationaux** | OpenAI / Anthropic / Gemini |
 | **Une clé unique pour 200 Providers** | [OpenRouter](openrouter.md) |
@@ -64,7 +64,7 @@ Une clé unique pour accéder à plusieurs modèles, gestion centralisée des co
 
 | Provider | Caractéristique clé | Site officiel | Documentation dédiée |
 |---|---|---|---|
-| **CherryAI** | Expérience gratuite officielle Cherry | — | [→](../../../../pre-basic/providers/cherryai) |
+| **CherryAI** | Expérience gratuite officielle Cherry | — | [→](cherryai) |
 | **CherryIN** | Passerelle payante officielle Cherry, double point d'accès (OpenAI + Anthropic) | [open.cherryin.cc](https://open.cherryin.cc/) | [→](cherryin-1.md) |
 | **OpenRouter** | Plus grand agrégateur international, 200+ modèles | [openrouter.ai](https://openrouter.ai/) | [→](openrouter.md) |
 | **AiHubMix** | Agrégateur international | [aihubmix.com](https://aihubmix.com/) | — |
@@ -140,7 +140,7 @@ Si le service que vous utilisez n’est pas répertorié ci-dessus, mais qu’il
 
 ## Vous ne savez toujours pas lequel choisir ?
 
-Utilisez directement [**CherryIN**](cherryin-1.md) ou [**CherryAI**](../../../../pre-basic/providers/cherryai) — idéal pour une prise en main rapide par les débutants. Changez de fournisseur plus tard si vous avez besoin de fonctionnalités avancées.
+Utilisez directement [**CherryIN**](cherryin-1.md) ou [**CherryAI**](cherryai) — idéal pour une prise en main rapide par les débutants. Changez de fournisseur plus tard si vous avez besoin de fonctionnalités avancées.
 
 ***
 

@@ -12,7 +12,7 @@ The most efficient setup is to first tell the Agent what you want to achieve, th
 
 <figure><img src="../../../../assets/2573aee0510e0d6abdabab7f.webp" alt="Agents, models, working directories, and the right-side panel in the Agent workspace"><figcaption></figcaption></figure>
 
-<figure><img src="../../../../assets/e7c3b90701b9b2b38da25043.webp" alt="Task loop diagram for Agents: from specifying deliverables and selecting the working directory to checking files and results"><figcaption></figcaption></figure>
+<figure><img src="../../../../assets/21c116be038dbd81718d1a7b.webp" alt="Task loop diagram for Agents: from specifying deliverables and selecting the working directory to checking files and results"><figcaption></figcaption></figure>
 
 ### What Makes Up the Workspace
 

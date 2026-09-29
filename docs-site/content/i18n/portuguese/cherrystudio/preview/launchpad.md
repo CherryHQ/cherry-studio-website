@@ -17,7 +17,7 @@ Atualmente, o Launchpad inclui 9 aplicativos integrados:
 | [Trabalho](../../advanced-basic/agent.md) | Permitir que agentes chamem ferramentas e executem tarefas em várias etapas |
 | [Desenho](drawing.md) | Gerar e gerenciar imagens usando modelos de imagem |
 | [Tradução](translation.md) | Traduzir texto e comparar o original com a tradução |
-| [Mini Apps](../../../../cherry-studio/preview/app) | Usar aplicativos web no Cherry Studio |
+| [Mini Apps](../../cherry-studio/preview/app) | Usar aplicativos web no Cherry Studio |
 | [Base de Conhecimento](knowledge-base.md) | Importar materiais e realizar buscas e perguntas e respostas |
 | [Arquivos](files.md) | Visualizar e gerenciar arquivos usados no aplicativo |
 | [Parceiro de Código](code-cli.md) | Instalar, configurar e iniciar ferramentas de CLI de programação com IA |
@@ -41,7 +41,7 @@ Aplicativos usados com frequência podem ser fixados na barra lateral:
 
 ## Gerenciar Mini Apps
 
-Após adicionar um aplicativo web ao Launchpad na página [Mini Apps](../../../../cherry-studio/preview/app), ele aparecerá na área "Mini Apps", abaixo dos aplicativos integrados.
+Após adicionar um aplicativo web ao Launchpad na página [Mini Apps](../../cherry-studio/preview/app), ele aparecerá na área "Mini Apps", abaixo dos aplicativos integrados.
 
 * Arraste o ícone do Mini App para ajustar a ordem de exibição.
 * Clique com o botão direito do mouse no Mini App para adicioná-lo à barra lateral ou removê-lo do Launchpad.

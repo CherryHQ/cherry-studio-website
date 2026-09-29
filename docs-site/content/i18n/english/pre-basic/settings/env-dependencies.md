@@ -3,9 +3,9 @@ icon: terminal
 ---
 # Environment Dependencies
 
-Environment Dependencies is used to **manage the binary tools and runtimes required for Cherry Studio to execute certain advanced features**. Some capabilities of [MCP services](../../../../advanced-basic/extensions/mcp), [Skills](../../advanced-basic/extensions/skills.md), and [Agents](../../advanced-basic/agent.md) rely on underlying command-line tools such as `uv` and `bun`. Cherry Studio centralizes these here, so you do not need to manually install and configure them via the command line.
+Environment Dependencies is used to **manage the binary tools and runtimes required for Cherry Studio to execute certain advanced features**. Some capabilities of [MCP services](../../advanced-basic/extensions/mcp), [Skills](../../advanced-basic/extensions/skills.md), and [Agents](../../advanced-basic/agent.md) rely on underlying command-line tools such as `uv` and `bun`. Cherry Studio centralizes these here, so you do not need to manually install and configure them via the command line.
 
-Open `Settings → Environment Dependencies`:
+Open `Settings → Dependencies` (under **System**):
 
 <figure><img src="../../../../assets/edd81af2d8627638562b77e3.webp" alt=""><figcaption><p>Environment Dependencies: Built-in and Installable Tools</p></figcaption></figure>
 
@@ -28,7 +28,7 @@ Overview of common tools:
 | **RTK** | CLI proxy tool that compresses terminal output to reduce LLM token consumption |
 | **Lark CLI** | Official Lark CLI covering 200+ commands for messages, documents, multi-dimensional tables, calendars, etc. |
 
-The page also lists tools such as `gh` (GitHub CLI), `ntn` (Notion CLI), and `pi` in cards, which can be installed with one click as needed. (Coding CLIs like Claude Code / Codex are managed on the [Coding Partner](../../cherrystudio/preview/code-cli.md) page, not here.)
+The page also lists tools such as `gh` (GitHub CLI), `ntn` (Notion CLI), and `pi` in cards, which can be installed with one click as needed. (Coding CLIs like Claude Code / Codex are managed on the [Code Mate](../../cherrystudio/preview/code-cli.md) page, not here.)
 
 ### Add Tool
 

@@ -49,7 +49,7 @@ If retrieval is correct but the response is wrong, ensure the knowledge base is 
 
 ## Where to Report Issues
 
-<figure><img src="../../../assets/66f4111676793ffe87e7a979.webp" alt="Relationship diagram of feedback paths based on not knowing how to operate, stable reproduction, desire to add capabilities, and unwillingness to organize materials"><figcaption><p>Complete minimal troubleshooting first; if the issue is reproducible, include sanitized steps, errors, and expected results. </p></figcaption></figure>
+<figure><img src="../../../assets/210c272465232d9a3d9484ae.webp" alt="Relationship diagram of feedback paths based on not knowing how to operate, stable reproduction, desire to add capabilities, and unwillingness to organize materials"><figcaption><p>Complete minimal troubleshooting first; if the issue is reproducible, include sanitized steps, errors, and expected results. </p></figcaption></figure>
 
 {% hint style="danger" %}
 Do not expose API Keys, internal file contents, email addresses, or local sensitive paths in screenshots, logs, or sample documents.

@@ -5,7 +5,7 @@ icon: language
 
 【Translation】 can process directly entered text, as well as uploaded images or documents. Images are first processed for text recognition, while documents are handled based on their format and content. History records can be bookmarked, reopened, and reused.
 
-<figure><img src="../../../../assets/31b376b5d5a233eeb71ddf12.webp" alt="Content workflow diagram where materials are processed by retrieval and Agent into text, images, or translations"><figcaption><p>Translation is part of the content workflow: first confirm the input materials, then standardize terminology and review the final deliverables. </p></figcaption></figure>
+<figure><img src="../../../../assets/58e56b2ba6cf637b831f0efb.webp" alt="Content workflow diagram where materials are processed by retrieval and Agent into text, images, or translations"><figcaption><p>Translation is part of the content workflow: first confirm the input materials, then standardize terminology and review the final deliverables. </p></figcaption></figure>
 
 ### Selecting Input Methods
 
@@ -48,7 +48,7 @@ Click 【Drag or click to upload image/document】 to select a PDF. If the page 
 {% step %}
 #### 2. Select Translation Model and Target Language
 
-PDF translation requires the current model to be callable via the local API gateway. If the model is unavailable, first return to 【Settings】 → 【Model Services】 to check the connection; do not repeatedly install BabelDOC.
+PDF translation requires the current model to be callable via the local API gateway. If the model is unavailable, first return to 【Settings】 → 【Model Provider】 to check the connection; do not repeatedly install BabelDOC.
 {% endstep %}
 
 {% step %}

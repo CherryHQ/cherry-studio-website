@@ -62,7 +62,7 @@ Verify which knowledge base each conclusion comes from, ensure facts and recomme
 
 ## How to Choose Between Built-in Tools, Knowledge Bases, Skills, and MCP
 
-<figure><img src="../../../assets/cc38d8a6378ca8270ceda746.webp" alt="A selection relationship diagram illustrating the respective purposes of Agent built-in tools, knowledge bases, skills, and MCP"><figcaption><p>Use knowledge bases for looking up materials, skills for repetitive methods, and MCP for accessing external systems. Do not use expanded permissions as a substitute for clear tasks. </p></figcaption></figure>
+<figure><img src="../../../assets/9a40f1cd26f6618a31c73d42.webp" alt="A selection relationship diagram illustrating the respective purposes of Agent built-in tools, knowledge bases, skills, and MCP"><figcaption><p>Use knowledge bases for looking up materials, skills for repetitive methods, and MCP for accessing external systems. Do not use expanded permissions as a substitute for clear tasks. </p></figcaption></figure>
 
 ## Knowledge Base Search and Management
 
@@ -81,7 +81,7 @@ After enabling **Knowledge Base Management**, adding, deleting, or refreshing wi
 
 ## How Agent Configuration Works Together
 
-<figure><img src="../../../assets/4c243884204ecf445fc42f9d.webp" alt="An architecture diagram showing how model division of labor, available capabilities, and security boundaries collectively affect Agent tasks and deliverables"><figcaption><p>The model determines understanding and generation, the knowledge base provides evidence, and permissions determine how far the Agent can execute. </p></figcaption></figure>
+<figure><img src="../../../assets/c14f75b2fe7b485cee989258.webp" alt="An architecture diagram showing how model division of labor, available capabilities, and security boundaries collectively affect Agent tasks and deliverables"><figcaption><p>The model determines understanding and generation, the knowledge base provides evidence, and permissions determine how far the Agent can execute. </p></figcaption></figure>
 
 ## Recommended Task Templates
 

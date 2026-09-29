@@ -3,14 +3,12 @@ icon: address-card
 ---
 # Business Collaboration
 
-Contact Person: Mr. He
+For business cooperation, email **bd@cherry-ai.com**.
 
-📮: yinsenho@cherry-ai.com
+{% hint style="info" %}
+This address is for business inquiries only. For help using Cherry Studio:
 
-📱: 18954281942 (Not for customer service)
-
-{% hint style="warning" %}
-For questions regarding usage, please email support@cherry-ai.com
-
-or submit issues: [https://github.com/CherryHQ/cherry-studio/issues](https://github.com/CherryHQ/cherry-studio/issues)
+* Email **support@cherry-ai.com**
+* Report bugs or request features on [GitHub Issues](https://github.com/CherryHQ/cherry-studio/issues)
+* Join the community on [Discord](https://discord.gg/wez8HtpxqQ)
 {% endhint %}

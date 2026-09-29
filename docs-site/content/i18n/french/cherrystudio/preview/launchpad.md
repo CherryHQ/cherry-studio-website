@@ -17,7 +17,7 @@ Le Launchpad actuel contient 9 applications intégrées :
 | [Travail](../../advanced-basic/agent.md) | Permettre aux agents d'appeler des outils et d'accomplir des tâches multi-étapes |
 | [Dessin](drawing.md) | Générer et gérer des images à l'aide de modèles d'images |
 | [Traduction](translation.md) | Traduire du texte et comparer l'original avec la traduction |
-| [Mini-programmes](../../../../cherry-studio/preview/app) | Utiliser des applications web dans Cherry Studio |
+| [Mini-programmes](../../cherry-studio/preview/app) | Utiliser des applications web dans Cherry Studio |
 | [Base de connaissances](knowledge-base.md) | Importer des documents et effectuer des recherches et des questions-réponses |
 | [Fichiers](files.md) | Consulter et gérer les fichiers utilisés dans l'application |
 | [Partenaire de codage](code-cli.md) | Installer, configurer et lancer des outils CLI de programmation IA |
@@ -41,7 +41,7 @@ Les applications utilisées fréquemment peuvent être épinglées à la barre l
 
 ## Gérer les mini-programmes
 
-Après avoir ajouté une application web au Launchpad depuis la page [Mini-programmes](../../../../cherry-studio/preview/app), elle s'affiche dans la section « Mini-programmes » située sous les applications intégrées.
+Après avoir ajouté une application web au Launchpad depuis la page [Mini-programmes](../../cherry-studio/preview/app), elle s'affiche dans la section « Mini-programmes » située sous les applications intégrées.
 
 * Glissez l'icône d'un mini-programme pour ajuster l'ordre d'affichage.
 * Faites un clic droit sur un mini-programme pour l'ajouter à la barre latérale ou le retirer du Launchpad.

@@ -4,7 +4,7 @@
 
 ### Where to use it
 
-Open `Settings → Model Services` and find **CherryAI** in the built-in list. The service is preconfigured with the app and usually requires no additional setup.
+Open `Settings → Model Provider` and find **CherryAI** in the built-in list. The service is preconfigured with the app and usually requires no additional setup.
 
 ### Currently available model
 

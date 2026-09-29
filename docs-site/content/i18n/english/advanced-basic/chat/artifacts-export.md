@@ -5,7 +5,7 @@ icon: box-archive
 
 A single reply may contain body text, code, files, images, citations, and editable content. Inspect the artifacts first, then decide whether to copy, download, export, or hand them to an Agent for further processing.
 
-<figure><img src="../../../../assets/5c0f5f563432facacf7942d6.webp" alt="Conversation selection flowchart from clarifying the problem, comparing or branching exploration, to forming the final deliverable"><figcaption><p>Upon reaching the final artifact, verify the content, source, and file before deciding to copy, export, or pass it to an Agent for refinement. </p></figcaption></figure>
+<figure><img src="../../../../assets/31566aca8e5cc1c70f3e7377.webp" alt="Conversation selection flowchart from clarifying the problem, comparing or branching exploration, to forming the final deliverable"><figcaption><p>Upon reaching the final artifact, verify the content, source, and file before deciding to copy, export, or pass it to an Agent for refinement. </p></figcaption></figure>
 
 ### Preview First, Then Deliver
 

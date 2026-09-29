@@ -3,7 +3,7 @@ icon: terminal
 ---
 # Dépendances d'environnement
 
-Les dépendances d'environnement servent à **gérer les outils binaires et les environnements d'exécution nécessaires au fonctionnement de certaines fonctionnalités avancées de Cherry Studio**. Certaines capacités des [services MCP](../../../../advanced-basic/extensions/mcp), des [compétences](../../advanced-basic/extensions/skills.md) et des [Agents](../../advanced-basic/agent.md) nécessitent l'appel d'outils en ligne de commande tels que `uv` et `bun`. Cherry Studio les centralise ici pour vous éviter d'avoir à les installer et les configurer manuellement via le terminal.
+Les dépendances d'environnement servent à **gérer les outils binaires et les environnements d'exécution nécessaires au fonctionnement de certaines fonctionnalités avancées de Cherry Studio**. Certaines capacités des [services MCP](../../advanced-basic/extensions/mcp), des [compétences](../../advanced-basic/extensions/skills.md) et des [Agents](../../advanced-basic/agent.md) nécessitent l'appel d'outils en ligne de commande tels que `uv` et `bun`. Cherry Studio les centralise ici pour vous éviter d'avoir à les installer et les configurer manuellement via le terminal.
 
 Ouvrez `Paramètres → Dépendances de l’environnement` :
 

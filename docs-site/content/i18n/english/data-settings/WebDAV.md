@@ -32,9 +32,9 @@ Based on WebDAV, multi-device data synchronization can be achieved by `Computer 
 
 <figure><img src="../../../assets/53bf30c1765a635f1be348ca.webp" alt=""><figcaption></figcaption></figure>
 
-6.  In Cherry Studio's Settings - Data Settings, fill in the WebDAV information;
+6.  In Cherry Studio, open **Settings → Data → WebDAV** and fill in the WebDAV information;
 
-<figure><img src="../../../assets/fda9297035335d99a695c2c7.webp" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../assets/f85d631d5f1adeb98d482c0c.webp" alt=""><figcaption></figcaption></figure>
 
 7.  Choose to back up or restore data, and set the automatic backup period.
 
