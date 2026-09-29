@@ -1,0 +1,52 @@
+name: Update LLM Leaderboard
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 8 * * *'
+
+# The job commits the refreshed snapshot back to the branch it runs on.
+permissions:
+  contents: write
+
+jobs:
+  update-leaderboard:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install --upgrade beautifulsoup4 pandas pytz lxml requests tabulate
+
+      # A leaderboard that cannot be parsed must keep its previous snapshot, so the script exits
+      # non-zero; whatever did refresh is still committed, and the run is failed afterwards.
+      - name: Run script to fetch and update leaderboards
+        id: fetch
+        continue-on-error: true
+        env:
+          SCRAPER_API_KEY: ${{ secrets.SCRAPER_API_KEY }}
+        run: python .github/scripts/fetch_leaderboard.py
+
+      - name: Commit and push if there are changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add -A docs-site/content/other/model_rank/
+          if [ -n "$(git status --porcelain)" ]; then
+            git commit -m "Update Arena AI leaderboards"
+            git push
+          else
+            echo "No changes to commit"
+          fi
+
+      - name: Fail when a leaderboard could not be refreshed
+        if: steps.fetch.outcome != 'success'
+        run: exit 1
