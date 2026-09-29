@@ -39,4 +39,4 @@ L'Assistant Rapide utilise le [modèle de conversation global par défaut](setti
 
 * **Conflits de raccourcis :** Si le raccourci par défaut entre en conflit avec une autre application, modifiez-le.
 * **Découvrir plus de fonctionnalités :** Au-delà des fonctions documentées, l'Assistant Rapide peut supporter d'autres opérations comme la génération de code ou la conversion de style. Explorez pendant l'utilisation.
-* **Retours et améliorations :** Si vous rencontrez des problèmes ou avez des suggestions, contactez l'équipe Cherry Studio via les [retours](../../../question-contact/suggestions.md).
+* **Retours et améliorations :** Si vous rencontrez des problèmes ou avez des suggestions, contactez l'équipe Cherry Studio via les [retours](../../question-contact/suggestions.md).

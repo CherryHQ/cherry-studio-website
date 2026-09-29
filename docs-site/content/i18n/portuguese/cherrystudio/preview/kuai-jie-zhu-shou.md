@@ -39,4 +39,4 @@ O Assistente Rápido utiliza o [modelo de diálogo padrão global](settings/defa
 
 * **Conflito de atalhos:** Se o atalho padrão entrar em conflito com outro aplicativo, modifique-o.
 * **Explore mais funções:** Além das funcionalidades mencionadas, o Assistente Rápido pode suportar outras operações como geração de código, conversão de estilo, etc. Recomendamos explorar durante o uso.
-* **Feedback e melhorias:** Caso encontre problemas ou tenha sugestões, [forneça feedback](../../../question-contact/suggestions.md) à equipe do Cherry Studio.
+* **Feedback e melhorias:** Caso encontre problemas ou tenha sugestões, [forneça feedback](../../question-contact/suggestions.md) à equipe do Cherry Studio.

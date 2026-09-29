@@ -12,5 +12,3 @@ Si tienes dudas sobre los parámetros, pasa el cursor del ratón sobre el símbo
 {% hint style="info" %}
 Se agregarán más proveedores en el futuro. ¡Manténganse atentos!
 {% endhint %}
-
-{% include "../../.gitbook/includes/Gemini图片生成注意事项.md" %}
