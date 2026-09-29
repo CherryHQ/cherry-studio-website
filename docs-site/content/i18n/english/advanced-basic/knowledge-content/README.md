@@ -6,7 +6,7 @@ icon: brain
 
 Knowledge bases, notes, painting, and translation are not isolated tools. They handle organizing materials, refining content, creating visual assets, and processing multilingual files, respectively, and all can be passed to an Agent for further use.
 
-<figure><img src="../../../../assets/31b376b5d5a233eeb71ddf12.webp" alt="Flowchart of materials entering the knowledge base, passing recall tests, being handed to the Agent, and forming text, images, or translations"><figcaption><p>Start by running recall tests with real questions, then have the Agent create reports, translations, or images based on the materials. </p></figcaption></figure>
+<figure><img src="../../../../assets/58e56b2ba6cf637b831f0efb.webp" alt="Flowchart of materials entering the knowledge base, passing recall tests, being handed to the Agent, and forming text, images, or translations"><figcaption><p>Start by running recall tests with real questions, then have the Agent create reports, translations, or images based on the materials. </p></figcaption></figure>
 
 ## How the Four Entry Points Divide the Work
 

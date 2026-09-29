@@ -11,6 +11,6 @@ First, check the [Run History] to confirm whether the Agent succeeded. If the ta
 
 </details>
 
-<figure><img src="../../../../assets/c348e2cb27a028b3789ac09b.webp" alt="Automation flowchart: from trigger conditions to Agent execution, sending notifications, and viewing execution logs"><figcaption></figcaption></figure>
+<figure><img src="../../../../assets/9192f8151da563f9e9df7ba3.webp" alt="Automation flowchart: from trigger conditions to Agent execution, sending notifications, and viewing execution logs"><figcaption></figcaption></figure>
 
 <figure><img src="../../../../assets/0c3c019bec3b0447d8e10be0.webp" alt="Setting Agent, execution frequency, and session reuse when creating a new scheduled task"><figcaption></figcaption></figure>

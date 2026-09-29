@@ -16,7 +16,7 @@ Cherry Studio поддерживает **более 60 провайдеров**.
 
 | Ваша потребность | Рекомендуемое направление |
 |---|---|
-| **Быстрый старт для новичков**, без сложных процедур | [CherryIN](cherryin-1.md) или [CherryAI](../../../../pre-basic/providers/cherryai) |
+| **Быстрый старт для новичков**, без сложных процедур | [CherryIN](cherryin-1.md) или [CherryAI](cherryai) |
 | **Самый удобный доступ из Китая** | DeepSeek / Moonshot / SiliconFlow / ZhiPu |
 | **Самые мощные модели за рубежом** | OpenAI / Anthropic / Gemini |
 | **Один ключ для 200+ провайдеров** | [OpenRouter](openrouter.md) |
@@ -64,7 +64,7 @@ Cherry Studio поддерживает **более 60 провайдеров**.
 
 | Провайдер | Краткая характеристика | Официальный сайт | Документация |
 |---|---|---|---|
-| **CherryAI** | Официальная бесплатная пробная версия Cherry | — | [→](../../../../pre-basic/providers/cherryai) |
+| **CherryAI** | Официальная бесплатная пробная версия Cherry | — | [→](cherryai) |
 | **CherryIN** | Официальный платный шлюз Cherry, двойные эндпоинты (OpenAI + Anthropic) | [open.cherryin.cc](https://open.cherryin.cc/) | [→](cherryin-1.md) |
 | **OpenRouter** | Крупнейший зарубежный агрегатор, 200+ моделей | [openrouter.ai](https://openrouter.ai/) | [→](openrouter.md) |
 | **AiHubMix** | Зарубежный агрегатор | [aihubmix.com](https://aihubmix.com/) | — |
@@ -140,7 +140,7 @@ Cherry Studio поддерживает **более 60 провайдеров**.
 
 ## Всё ещё не знаете, что выбрать?
 
-Используйте [**CherryIN**](cherryin-1.md) или [**CherryAI**](../../../../pre-basic/providers/cherryai) — лучший вариант для быстрого старта новичков. При необходимости можно перейти на более продвинутые решения.
+Используйте [**CherryIN**](cherryin-1.md) или [**CherryAI**](cherryai) — лучший вариант для быстрого старта новичков. При необходимости можно перейти на более продвинутые решения.
 
 ***
 

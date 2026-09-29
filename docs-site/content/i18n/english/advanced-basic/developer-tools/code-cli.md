@@ -1,11 +1,11 @@
 ---
 icon: terminal
 ---
-# Coding Partner (Code CLI)
+# Code Mate (Code CLI)
 
-【Coding Partner】is used to install, configure, and launch common programming command-line tools. Cherry Studio distinguishes between app-managed versions, versions already present in the system PATH, and the tool's own account login. It does not automatically overwrite system installations.
+【Code Mate】is used to install, configure, and launch common programming command-line tools. Cherry Studio distinguishes between app-managed versions, versions already present in the system PATH, and the tool's own account login. It does not automatically overwrite system installations.
 
-<figure><img src="../../../../assets/2e66cc9312c27cf740b2eb62.webp" alt="CLI list, installation status, and model service configuration on the Coding Partner page"><figcaption><p>① Select the tool on the left and confirm its installation status; ② Select the Unified Gateway, the tool's official account, or a compatible model service on the right. </p></figcaption></figure>
+<figure><img src="../../../../assets/2e66cc9312c27cf740b2eb62.webp" alt="CLI list, installation status, and model service configuration on the Code Mate page"><figcaption><p>① Select the tool on the left and confirm its installation status; ② Select the Unified Gateway, the tool's official account, or a compatible model service on the right. </p></figcaption></figure>
 
 ### What the Page Can Do
 
@@ -16,13 +16,13 @@ icon: terminal
 * Preserve native login methods for CLIs that use their own account login;
 * Select a working directory and a system-detected terminal to launch.
 
-The page includes tools such as Claude Code, OpenAI Codex, Gemini CLI, OpenCode, Qwen Code, Kimi Code, Qoder CLI, GitHub Copilot CLI, Pi, and DeepSeek Harness. The actual visible items may change with product updates; refer to the page list for the current status.
+The page includes tools such as Claude Code, OpenAI Codex, Antigravity CLI, OpenCode, Qwen Code, Kimi Code, Qoder CLI, GitHub Copilot CLI, Pi, Hermes Agent, OpenClaw and DeepSeek Harness. The actual visible items may change with product updates; refer to the page list for the current status.
 
 ### General Launch Process
 
 {% stepper %}
 {% step %}
-#### 1. Open 【Coding Partner】 from 【Launchpad】
+#### 1. Open 【Code Mate】 from 【Launchpad】
 
 Select the required tool and check whether its status is Not Installed, Managed by Cherry Studio, or from the System.
 {% endstep %}
@@ -54,7 +54,7 @@ Click 【Launch】, confirm that the account or model is correct, then execute f
 
 ### DeepSeek Harness
 
-<figure><img src="../../../../assets/ceedc835426c7413a36609ba.webp" alt="DeepSeek Harness installation and unified gateway configuration in Coding Partner"><figcaption><p>① If not installed, complete the managed installation first; after installation, configure the compatible provider, default permissions, and Agent mode, then launch the Web UI. </p></figcaption></figure>
+<figure><img src="../../../../assets/ceedc835426c7413a36609ba.webp" alt="DeepSeek Harness installation and unified gateway configuration in Code Mate"><figcaption><p>① If not installed, complete the managed installation first; after installation, configure the compatible provider, default permissions, and Agent mode, then launch the Web UI. </p></figcaption></figure>
 
 The process for DeepSeek Harness differs from standard terminal CLIs: after installation and provider selection, it is run under Cherry Studio management, and a standalone Web UI can be opened. In the parameters, you can select the default Agent mode and default permissions:
 
@@ -71,11 +71,11 @@ The process for DeepSeek Harness differs from standard terminal CLIs: after inst
 
 | Source | What Cherry Studio Does | How You Should Maintain It |
 | ---------------- | ------------------ | ----------------- |
-| Cherry Studio Managed | Installs, updates, and uninstalls the corresponding managed copy | Manage in 【Coding Partner】 or 【Environment Dependencies】 |
+| Cherry Studio Managed | Installs, updates, and uninstalls the corresponding managed copy | Manage in 【Code Mate】 or 【Dependencies】 |
 | System PATH | Detects and uses directly, without overwriting | Update or uninstall using the original package manager |
 | Tool Official Account | Preserves the tool's own login flow | Manage account and authorization in the tool's interface |
 
-<figure><img src="../../../../assets/2e66cc9312c27cf740b2eb62.webp" alt="CLI list, installation status, and model service configuration on the Coding Partner page"><figcaption></figcaption></figure>
+<figure><img src="../../../../assets/2e66cc9312c27cf740b2eb62.webp" alt="CLI list, installation status, and model service configuration on the Code Mate page"><figcaption></figcaption></figure>
 
 {% hint style="warning" %}
 After uninstalling the Cherry Studio managed copy, if a same-named executable file still exists in the system, the page will automatically fall back to the system version. When behavior changes, first confirm which source is currently being used.

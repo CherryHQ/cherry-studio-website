@@ -1,39 +1,98 @@
 ---
-icon: messages-question
+icon: compass
 ---
+
 # Effective Questioning Methods
 
+A question that's easy to answer doesn't have to be long, but it should let others know what you're trying to do, what actually happened, and how to see the same problem themselves.
 
-Cherry Studio is a free and open-source project. As the project grows, the workload of the project team also increases. To reduce communication costs and effectively and efficiently solve your problems, we hope everyone can address issues encountered by following the steps and methods below as much as possible before asking questions, allowing the project team more time to focus on project maintenance and development. Thank you for your cooperation!
+<figure><img src="../../../assets/210c272465232d9a3d9484ae.webp" alt="Flowchart for choosing where to ask or report, based on whether it's a usage question, a reproducible problem or a feature suggestion"><figcaption><p>First decide whether it's a usage question, a reproducible problem or a feature suggestion, then prepare the matching material.</p></figcaption></figure>
 
-## I. Document Review and Search
+### Choose the Right Place First
 
-Most basic problems can usually be solved by carefully reviewing the documentation.
+| Your situation | Where to go |
+| ------------ | ----------------------------- |
+| Not sure whether it's a configuration or a product problem | Sidebar **Help → Feedback → Ask the Feedback Assistant** |
+| Confirmed, reproducible bug | GitHub Bug Report |
+| You want a new capability | GitHub Feature Request |
+| Discussing usage or approaches | GitHub Discussions / Questions |
+| You only need the steps for something | These docs and Cherry Assistant |
 
-*   Functionality and usage issues of the software can be found in the [Features Introduction](../cherrystudio/preview/) documentation;
-*   Frequently asked questions are collected on the [FAQ](questions.md) page. You can check the FAQ page first to see if there's a solution;
-*   More complex problems can be solved directly by searching or asking in the search bar;
-*   Be sure to carefully read the hint box content in each document; it can help you avoid many problems;
-*   Check or search the GitHub [Issue](https://github.com/CherryHQ/cherry-studio/issues) page for similar issues and solutions.
+Cherry Assistant can read information about your installed version and, with your consent, collect the diagnostics it needs. It shows you a redacted preview before submitting feedback or generating a diagnostic package — you don't need to learn how to read logs first.
 
-## II. Web Search, Asking AI
+### What Your Question Should Include
 
-For issues unrelated to client functionality, such as model usage (e.g., model errors, unexpected responses, parameter settings), it is recommended to first search online for relevant solutions, or describe the error content and problem to AI to find solutions.
+{% stepper %}
+{% step %}
+#### 1. State your goal in one sentence
 
-## III. Ask in Official Communities or Submit an Issue on GitHub
+For example: "I want an Agent to post the daily report to a Feishu (Lark) group every weekday morning."
+{% endstep %}
 
-If the above two steps (I and II) did not provide an answer or solve your problem, you can go to the official [TG channel](https://t.me/CherryStudioAI), [Discord channel](https://discord.com/invite/wez8HtpxqQ), [QQ group ](#user-content-fn-1)[^1] ([One-click to join](https://qm.qq.com/cgi-bin/qm/qr?authKey=xe5nfGVZLMYnlJq%2F%2B4kN03YWcDBB2lnD7tc9rWus2mxS0JHUbOzk79cO7MYuqyGR\&k=UKVgl3YPHmwPaU8qeO1VG03NcUkACKsc\&noverify=0)) to describe the problem in detail and seek help.
+{% step %}
+#### 2. Describe the actual and expected results
 
-1.  If it's a model error, please provide a complete screenshot of the interface and console error messages. Sensitive information can be censored, but the model name, parameter settings, and error content must be kept in the screenshot. To view console error messages, [click here](questions.md#kong-zhi-tai-bao-cuo-cha-kan-fang-fa).
-2.  If it's a software bug, please provide a <mark style="background-color:green;">specific error description</mark> and <mark style="background-color:green;">detailed</mark> [<mark style="background-color:green;">reproduction</mark>](#user-content-fn-2)[^2] <mark style="background-color:green;">steps</mark> to facilitate debugging and fixing by developers. If it's an occasional problem that cannot be reproduced, please describe the relevant scenarios, background, and configuration parameters when the problem occurred as detailed as possible.\
-    In addition, you also need to include <mark style="background-color:green;">platform information</mark> (Windows, Mac, or Linux) and <mark style="background-color:green;">software version number</mark> in the problem description.
+Actual result: "The task ran successfully, but nothing arrived in Feishu." Expected result: "When the run finishes, the specified group receives the daily report."
+{% endstep %}
 
-{% hint style="success" %}
-**Request for documentation or documentation suggestions**
+{% step %}
+#### 3. Give the shortest steps to reproduce
 
-You can contact TG channel `@Wangmouuu` or QQ (`1355873789`), or send an email to: `sunrise@cherry-ai.com`.
+Start from the entry point where the problem reliably occurs, and describe in 3–6 steps what you click, what you select and where the error appears.
+{% endstep %}
+
+{% step %}
+#### 4. Add your environment
+
+Include your operating system, the version shown in **Settings → About & Feedback**, and the relevant provider or channel type. Never make API keys or account credentials public.
+{% endstep %}
+
+{% step %}
+#### 5. Attach screenshots, recordings or logs
+
+Screenshots should show both the error and the page it's on; for logs, include only the relevant time window and redact them first. For problems with model output, include the input, the model and the expected format.
+{% endstep %}
+{% endstepper %}
+
+### A Ready-to-Use Template
+
+```
+Title: Agent scheduled task runs successfully, but the Feishu channel receives no result
+
+Goal: Send the operations daily report to a specific Feishu group at 09:00 on weekdays.
+Actual result: Run history shows success; no message in Feishu.
+Expected result: The group receives one daily report message.
+
+Steps to reproduce:
+1. Open Settings → Scheduled Tasks.
+2. Select the daily report task and click Run.
+3. Wait for the task to finish.
+4. Check the Feishu group: no new message.
+
+Environment: macOS / version shown in Cherry Studio's About & Feedback / Feishu channel.
+Already tried: Re-enabled the channel; sent the bot a test message in Feishu.
+Attachments: Channel status screenshot with credentials masked; the matching run record.
+```
+
+### What to Remove From Screenshots and Logs
+
+{% hint style="danger" %}
+Before submitting, remove API keys, Authorization headers, cookies, bot tokens, app secrets, email addresses, full local paths, chat content and business data. If a key is ever exposed, revoke it immediately with the provider or platform.
 {% endhint %}
 
-[^1]: Group number: 611659451
+### Small Habits That Speed Up Troubleshooting
 
-[^2]: i.e., the (error) reappears
+* Reproduce only one problem at a time;
+* Use the smallest configuration that still shows the problem;
+* Say whether the problem happens every time;
+* Don't just write "it doesn't work" — include the exact error text;
+* Don't upload entire logs unrelated to the problem;
+* If you find an identical issue, add your environment and new clues to it instead of opening a duplicate.
+
+<details>
+
+<summary>Can I just have Cherry Assistant submit it for me?</summary>
+
+Yes. Open Cherry Assistant through **Feedback**, describe the problem, and explicitly ask it to submit. It will ask for permission to collect diagnostic data, show you a redacted preview, and then handle it the way you choose. It only files a GitHub Issue if you explicitly ask for GitHub.
+
+</details>

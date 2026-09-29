@@ -22,4 +22,4 @@ Las funciones de traducción en los cuadros de entrada de conversación, dibujo 
 
 ## Modelo de asistente rápido
 
-Modelo utilizado por la función de asistente rápido. Para más detalles, consulte [Asistente rápido](../kuai-jie-zhu-shou.md)
+Modelo utilizado por la función de asistente rápido. Para más detalles, consulte [Asistente rápido](../quick-assistant.md)

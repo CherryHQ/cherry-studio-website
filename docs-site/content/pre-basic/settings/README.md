@@ -21,6 +21,8 @@ Cherry Studio 的设置面板覆盖 **模型配置、工具能力、界面偏好
 | --- | --- | --- |
 | MCP | [MCP 与外部工具](../../advanced-basic/extensions/mcp/) | Model Context Protocol 工具接入 |
 | 技能 | [技能与能力库](../../advanced-basic/extensions/skills.md) | 为助手或 Agent 加装专项能力 |
+| 提示词 | — | 提示词模板的管理与调用（文档待补充）|
+| 浏览器 | — | 内置浏览器与网页内容获取（文档待补充）|
 | 网络搜索 | [联网模式](../websearch/) | 免费联网、Tavily、火山引擎、SearXNG 等 |
 | 文档处理 | [文档处理](doc-process.md) | PDF / 复杂版式文档的结构化解析（MinerU 等） |
 | OCR | [OCR](ocr.md) | 图片 / 扫描件的文字识别引擎 |
@@ -32,6 +34,7 @@ Cherry Studio 的设置面板覆盖 **模型配置、工具能力、界面偏好
 | 外观 | [外观](display.md) | 主题、主题色、缩放、语言、话题布局 |
 | 通知 | [通知](notification.md) | 助手消息、备份、知识库完成提醒 |
 | 数据 | [数据设置](../data-settings/) | WebDAV / S3 备份与第三方集成 |
+| 归档 | [文件 → 归档](../../cherrystudio/preview/files.md) | 已删除文件、助手、话题等的恢复与自动清理 |
 | 用量统计 | [用量统计](usage.md) | 成本、Token、请求与每日活动统计 |
 
 ### 效率
@@ -43,6 +46,8 @@ Cherry Studio 的设置面板覆盖 **模型配置、工具能力、界面偏好
 | 快捷键 | [快捷键设置](key-shortcut.md) | 全部快捷键的修改与启停 |
 | 快捷助手 | [快捷助手](../../cherrystudio/preview/quick-assistant.md) | 全局悬浮的迷你对话窗 |
 | 划词助手 | [划词助手](../../cherrystudio/preview/selection-assistant.md) | 选中文字即时翻译 / 解释 / 改写 |
+| 设备互联 | — | 与移动端等设备配对（文档待补充）|
+| 截图 | — | 截图相关设置（文档待补充）|
 
 ### 系统
 

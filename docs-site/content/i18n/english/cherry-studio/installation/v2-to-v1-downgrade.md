@@ -28,7 +28,7 @@ Locate the V1 data directory copy or V1 backup retained before the upgrade. If y
 {% step %}
 ### Download and Install V1
 
-Completely exit V2, obtain the installer matching your current system from the [Official V1 Download](https://cherryai.com.cn/download/v1), and complete the installation.
+Completely exit V2, obtain the installer matching your current system from the [Official V1 Download](https://cherryai.com/download/v1), and complete the installation.
 {% endstep %}
 
 {% step %}
@@ -112,7 +112,7 @@ If you continue using the previous V2 data, you can directly install V2 and must
 
 ## References
 
-* [Cherry Studio V1 Official Download](https://cherryai.com.cn/download/v1)
-* [Cherry Studio V2 Official Download](https://cherryai.com.cn/download)
+* [Cherry Studio V1 Official Download](https://cherryai.com/download/v1)
+* [Cherry Studio V2 Official Download](https://cherryai.com/download)
 * V2 Release Page: [GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases)
 * [Issue Feedback and Feature Suggestions](../../question-contact/suggestions.md)

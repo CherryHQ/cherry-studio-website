@@ -1,97 +1,104 @@
 ---
-description: How to use online mode in Cherry Studio
+description: How to use web search mode in Cherry Studio
 icon: globe
 ---
-# Network Access
+
+# Web Search Mode
 
 {% hint style="info" %}
-Examples of scenarios requiring network access:
+Web search mode lets the AI search for the latest information before answering. It's useful for:
 
-*   Time-sensitive information: such as today's/this week's/just now's gold futures prices.
-*   Real-time data: such as dynamic values for weather, exchange rates.
-*   Emerging knowledge: such as new things, new concepts, new technologies, etc.
+* **Time-sensitive information**: news, prices and exchange rates from today, this week, or just now
+* **Real-time data**: dynamic values such as weather, stock prices and product inventory
+* **Emerging knowledge**: newly released tools, concepts and technologies
 {% endhint %}
 
-### I. How to enable network access
+## Turn On Web Search
 
-In Cherry Studio's prompt window, click the "globe" icon to enable network access.
+Click the 🌐 **globe** icon in the toolbar of the chat input box to turn on web search for the current conversation.
 
-<figure><img src="../../../assets/4d79d767b5fccfcde524f25e.webp" alt=""><figcaption><p>Click the globe icon - Enable network access</p></figcaption></figure>
+<figure><img src="../../../assets/20d05fb299d917a6936f6b84.webp" alt=""><figcaption><p>The globe icon in the chat input bar: click it to turn on web search for the current conversation (the tooltip shows the current search provider)</p></figcaption></figure>
 
-<figure><img src="../../../assets/b64a0ae89be7c23149f8a4b8.webp" alt=""><figcaption><p>Indicates - Network access function is enabled</p></figcaption></figure>
+**Works out of the box**: Cherry Studio comes with **Exa MCP** built in as the default search provider, which **needs no API key** (it uses the public MCP endpoint `mcp.exa.ai`), and the default URL fetch provider is **Jina**. So once installed, you can click 🌐 and search the web right away.
 
-### II. Special attention: There are two modes for network access
+## Configured Service or the Model's Own Search
 
-#### Mode 1: Large models from model service providers come with network access
+Which route web search takes is decided by the **"Prefer model-native web tools"** switch at the bottom of `Settings → Web Search`, which is **off by default**:
 
-In this case, once network access is enabled, you can directly use the network service, which is very simple.
+* **Off (default)**: clicking 🌐 uses the service configured in `Settings → Web Search` — initially the key-free Exa MCP.
+* **On**: if the model itself has **native search** (a small globe icon 🌐 next to the model name), the model handles web search on its own.
 
-{% hint style="warning" %}
-You can quickly determine if a model supports network access by checking if there's a small map icon next to the model name above the chat interface.
+Rely on the 🌐 icon next to the model name to tell whether native search is supported, rather than a fixed list of models. Common cases today include:
+
+* **DeepSeek**: models that support it can use native web search;
+* **OpenRouter**: chat models can use native web search and URL content reading;
+* **Alibaba Cloud Bailian**: models that support it can use native web search, and some Qwen models also support URL content reading;
+* Some models from Google Gemini, Zhipu AI, xAI Grok and other providers also support native web search.
+
+Model capabilities change as providers update them. Look for the 🌐 icon when choosing a model; if there isn't one, using a configured search service is the safer choice.
+
+{% hint style="info" %}
+A few models can search the web even without the globe icon, depending on the provider's configuration.
 {% endhint %}
 
-<figure><img src="../../../assets/eb60943cb4662c13bfecafec.webp" alt=""><figcaption></figcaption></figure>
+## Configure Services in Settings
 
-On the model management page, this method also allows you to quickly distinguish which models support network access and which do not.
+Open `Settings → Web Search`. The configuration has two parts, each with a dropdown for choosing a provider; **the selected one becomes the default for that capability**:
 
-<figure><img src="../../../assets/4c3ee46f56cfa1dae47db9bb.webp" alt=""><figcaption></figcaption></figure>
+| Section | Purpose |
+| ------------- | --------------------- |
+| **Search provider** | Searches the web based on your question and returns result summaries |
+| **URL fetch provider** | Fetches the main text of a given URL to fill in the content of search results |
 
-> <mark style="color:green;">**Currently supported network-enabled model service providers in Cherry Studio include**</mark>
->
-> *   <mark style="color:green;">Google Gemini</mark>
-> *   <mark style="color:green;">OpenRouter (All models support network access)</mark>
-> *   <mark style="color:green;">Tencent Hunyuan</mark>
-> *   <mark style="color:green;">Zhipu AI</mark>
-> *   <mark style="color:green;">Alibaba Cloud BaiLian, etc.</mark>
+<figure><img src="../../../assets/28a956b12b6cba70c2524f66.webp" alt=""><figcaption><p>Web Search settings: the Search provider and URL fetch provider sections, and the "Prefer model-native web tools" switch at the bottom</p></figcaption></figure>
 
-{% hint style="danger" %}
-Special note:
+### Built-in Providers
 
-There is a special case where a model can still achieve network access even if it doesn't have a small globe icon, as explained in the tutorial below.
-{% endhint %}
+The following services are built in, in two types — **API** and **MCP**:
 
-{% content-ref url="volcengine.md" %}
-[volcengine.md](volcengine.md)
-{% endcontent-ref %}
+| Service | Type | Capability | Notes |
+| ------------- | --- | ----------- | ------------------------------- |
+| **Exa MCP** | MCP | Search | **Default**, works without a key |
+| **Tavily** | API | Search | Search engine optimized for LLMs |
+| **Bocha** | API | Search | Chinese search API for AI use cases, with real-time web and structured results |
+| **Exa** | API | Search | Neural search designed for AI apps, good at semantic retrieval |
+| **Zhipu** | API | Search | Zhipu GLM Web Search, for web search and real-time information |
+| **Querit** | API | Search | Web retrieval service for AI applications |
+| **SearXNG** | API | Search | Free, self-hostable metasearch engine |
+| **Firecrawl** | API | Search | Web scraping and search; can convert results to Markdown |
+| **Jina** | API | Search · URL fetch | Jina Reader; also the **default URL fetch provider** |
+| **Fetch** | API | URL fetch | Built-in URL fetching that extracts the main text from a given URL |
+
+> Apart from the default **Exa MCP** (no key needed), most API providers require their own API key; **SearXNG** needs the address of your own deployment, and **Fetch** is built in and needs no configuration.
+
+### Advanced Settings
+
+* **Number of search results**: how many results are returned per search (default 5, up to 100). Without compression, a large number consumes more tokens.
+* **Search result compression**: compresses the returned content before passing it to the model, saving tokens. Choose **None** to pass results as-is, or **Cutoff** to truncate each result to a set length.
+* **Search result blacklist**: blocks websites you don't want to see; see [Web Search Blacklist Configuration](../pre-basic/websearch/blacklist.md).
+
+<figure><img src="../../../assets/e1c92c18302a979103a16696.webp" alt=""><figcaption><p>Advanced settings: number of results, compression method (None / Cutoff), and blacklist</p></figcaption></figure>
+
+## Related Guides
+
+The default Exa MCP works without a key. To switch to another service or configure things in more depth, see:
+
+* [Free Web Search Mode](../pre-basic/websearch/free-search.md) — use search without paying
+* [SearXNG Local Deployment and Configuration](../pre-basic/websearch/searxng.md) — self-hosted and fully local
+* [Web Search Blacklist Configuration](../pre-basic/websearch/blacklist.md) — block websites you don't want
+
+## How It Works
+
+Whichever route is used, the conversation flow is:
+
+1. You ask, "What's the weather in Shanghai today?"
+2. Cherry Studio first sends the question to the search service
+3. The search service returns summaries of relevant web pages
+4. Cherry Studio adds these summaries to the prompt and sends it to the AI model
+5. The AI answers you based on real-time data
 
 ***
 
-#### Mode 2: Models without network access use Tavily service to achieve network access
+### Get Help and Submit Feedback
 
-When we use a large model that does not have network access (no small globe icon next to its name), but we need it to retrieve and process some real-time information, then the Tavily web search service is needed.
-
-**When using Tavily service for the first time**, a pop-up will prompt you to set up some information. Please follow the instructions - it's very simple!
-
-<figure><img src="../../../assets/b5d51c1c354249bb738d1960.webp" alt=""><figcaption><p>Pop-up, click: Go to Settings</p></figcaption></figure>
-
-<figure><img src="../../../assets/927e47e5a21109bfaa141de7.webp" alt=""><figcaption><p>Click to get API key</p></figcaption></figure>
-
-After clicking to get the API key, it will automatically jump to **Tavily's official website** login and registration page. After registering and logging in, create an API key, then copy the key to Cherry Studio.
-
-{% hint style="danger" %}
-If you don't know how to register, refer to the Tavily network access login and registration tutorial in the same directory as this document.
-{% endhint %}
-
-**Tavily registration reference document:**
-
-{% content-ref url="tavily.md" %}
-[tavily.md](tavily.md)
-{% endcontent-ref %}
-
-The following interface indicates successful registration.
-
-<figure><img src="../../../assets/299733a54b223b710fcf69ab.webp" alt=""><figcaption><p>Copy key</p></figcaption></figure>
-
-<figure><img src="../../../assets/19ed88b40a667f9980b07016.webp" alt=""><figcaption><p>Paste key, job done!</p></figcaption></figure>
-
-Let's try it again to see the effect. The results show that network search is normal, and the number of search results is our default value: 5.
-
-<figure><img src="../../../assets/d94183d765526cafc91913e7.webp" alt=""><figcaption></figcaption></figure>
-
-{% hint style="danger" %}
-Note: Tavily has a free tier limit per month, exceeding it requires payment~~
-{% endhint %}
-
-<figure><img src="../../../assets/fb0388b3f67840064a4101c0.webp" alt=""><figcaption></figcaption></figure>
-
-> PS: If you find any errors, please feel free to contact us.
+If you have any questions, bugs, or feature suggestions during configuration or use, please use the official channels listed in [Feedback and Suggestions](../question-contact/suggestions.md).

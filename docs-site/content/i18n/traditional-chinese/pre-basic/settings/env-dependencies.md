@@ -3,7 +3,7 @@ icon: terminal
 ---
 # 環境相依性
 
-環境相依性用來 **管理 Cherry Studio 執行部分進階功能所需的二進位工具與執行環境**。例如 [MCP 服務](../../../../advanced-basic/extensions/mcp)、[技能](../../advanced-basic/extensions/skills.md)、[Agent](../../advanced-basic/agent.md) 的某些能力，底層需要呼叫 `uv`、`bun` 等命令列工具。Cherry Studio 將這些工具集中在此處，讓您不必手動透過命令列進行安裝與設定。
+環境相依性用來 **管理 Cherry Studio 執行部分進階功能所需的二進位工具與執行環境**。例如 [MCP 服務](../../advanced-basic/extensions/mcp)、[技能](../../advanced-basic/extensions/skills.md)、[Agent](../../advanced-basic/agent.md) 的某些能力，底層需要呼叫 `uv`、`bun` 等命令列工具。Cherry Studio 將這些工具集中在此處，讓您不必手動透過命令列進行安裝與設定。
 
 開啟 `設定 → 環境相依性`：
 

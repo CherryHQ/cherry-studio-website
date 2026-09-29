@@ -23,7 +23,7 @@ Note: Windows 7 systems do not support installing Cherry Studio.
 
 Main Line:
 
-【[Cherry Studio Official Website](https://cherry-ai.com/download)】 【[GitHub](https://github.com/CherryHQ/cherry-studio/releases/download/v1.6.7/Cherry-Studio-1.6.7-x64-setup.exe)】
+【[Cherry Studio Official Website](https://cherryai.com/download)】 【[GitHub](https://github.com/CherryHQ/cherry-studio/releases/download/v1.6.7/Cherry-Studio-1.6.7-x64-setup.exe)】
 
 Alternative Lines:
 
@@ -37,7 +37,7 @@ Alternative Lines:
 
 Main Line:
 
-【[Cherry Studio Official Website](https://cherry-ai.com/download)】 【[GitHub](https://github.com/CherryHQ/cherry-studio/releases/download/v1.6.7/Cherry-Studio-1.6.7-arm64-setup.exe)】
+【[Cherry Studio Official Website](https://cherryai.com/download)】 【[GitHub](https://github.com/CherryHQ/cherry-studio/releases/download/v1.6.7/Cherry-Studio-1.6.7-arm64-setup.exe)】
 
 Alternative Lines:
 
@@ -53,7 +53,7 @@ Alternative Lines:
 
 Main Line:
 
-【[Cherry Studio Official Website](https://cherry-ai.com/download)】 【[GitHub](https://github.com/CherryHQ/cherry-studio/releases/download/v1.6.7/Cherry-Studio-1.6.7-x64-portable.exe)】
+【[Cherry Studio Official Website](https://cherryai.com/download)】 【[GitHub](https://github.com/CherryHQ/cherry-studio/releases/download/v1.6.7/Cherry-Studio-1.6.7-x64-portable.exe)】
 
 Alternative Lines:
 
@@ -67,7 +67,7 @@ Alternative Lines:
 
 Main Line:
 
-【[Cherry Studio Official Website](https://cherry-ai.com/download)】 【[GitHub](https://github.com/CherryHQ/cherry-studio/releases/download/v1.6.7/Cherry-Studio-1.6.7-arm64-portable.exe)】
+【[Cherry Studio Official Website](https://cherryai.com/download)】 【[GitHub](https://github.com/CherryHQ/cherry-studio/releases/download/v1.6.7/Cherry-Studio-1.6.7-arm64-portable.exe)】
 
 Alternative Lines:
 
@@ -85,7 +85,7 @@ Alternative Lines:
 
 Main Line:
 
-【[Cherry Studio Official Website](https://cherry-ai.com/download)】 【[GitHub](https://github.com/CherryHQ/cherry-studio/releases/download/v1.6.7/Cherry-Studio-1.6.7-x64.dmg)】
+【[Cherry Studio Official Website](https://cherryai.com/download)】 【[GitHub](https://github.com/CherryHQ/cherry-studio/releases/download/v1.6.7/Cherry-Studio-1.6.7-x64.dmg)】
 
 Alternative Lines:
 
@@ -99,7 +99,7 @@ Alternative Lines:
 
 Main Line:
 
-【[Cherry Studio Official Website](https://cherry-ai.com/download)】 【[GitHub](https://github.com/CherryHQ/cherry-studio/releases/download/v1.6.7/Cherry-Studio-1.6.7-arm64.dmg)】
+【[Cherry Studio Official Website](https://cherryai.com/download)】 【[GitHub](https://github.com/CherryHQ/cherry-studio/releases/download/v1.6.7/Cherry-Studio-1.6.7-arm64.dmg)】
 
 Alternative Lines:
 
@@ -117,7 +117,7 @@ Alternative Lines:
 
 Main Line:
 
-【[Cherry Studio Official Website](https://cherry-ai.com/download)】 【[GitHub](https://github.com/CherryHQ/cherry-studio/releases/download/v1.6.7/Cherry-Studio-1.6.7-x86_64.AppImage)】
+【[Cherry Studio Official Website](https://cherryai.com/download)】 【[GitHub](https://github.com/CherryHQ/cherry-studio/releases/download/v1.6.7/Cherry-Studio-1.6.7-x86_64.AppImage)】
 
 Alternative Lines:
 
@@ -131,16 +131,10 @@ Alternative Lines:
 
 Main Line:
 
-【[Cherry Studio Official Website](https://cherry-ai.com/download)】 【[GitHub](https://github.com/CherryHQ/cherry-studio/releases/download/v1.6.7/Cherry-Studio-1.6.7-arm64.AppImage)】
+【[Cherry Studio Official Website](https://cherryai.com/download)】 【[GitHub](https://github.com/CherryHQ/cherry-studio/releases/download/v1.6.7/Cherry-Studio-1.6.7-arm64.AppImage)】
 
 Alternative Lines:
 
 【[Line 1](https://download-cf.ocoolai.com/https://github.com/CherryHQ/cherry-studio/releases/download/v1.6.7/Cherry-Studio-1.6.7-arm64.AppImage)】 【[Line 2](https://download.ocoolai.com/https://github.com/CherryHQ/cherry-studio/releases/download/v1.6.7/Cherry-Studio-1.6.7-arm64.AppImage)】 【[Line 3](https://download.ocoolai.online/https://github.com/CherryHQ/cherry-studio/releases/download/v1.6.7/Cherry-Studio-1.6.7-arm64.AppImage)】
 
 </details>
-
-***
-
-## Cloud Drive Download
-
-[Quark](https://pan.quark.cn/s/4044324d0ecd#/list/share)

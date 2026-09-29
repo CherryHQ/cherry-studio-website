@@ -4,7 +4,9 @@ description: macOS version installation tutorial
 ---
 # macOS
 
-1. First, go to the official website download page and click to download the Mac version, or click directly below.
+1. First, go to the [official website](https://cherryai.com), click **Download**, and download the Mac version, or click directly below.
+
+<figure><img src="../../../../assets/906a35e2d311aeff11e6ef17.webp" alt="Cherry Studio official website homepage with the Download button"><figcaption><p>Cherry Studio official website</p></figcaption></figure>
 
 Please make sure to download the **chip version corresponding to your Mac**
 {% hint style="info" %}
@@ -19,16 +21,16 @@ If it's an Intel chip, download the Intel version installer.
 If it's an Apple M\* chip, download the Apple Silicon installer.
 {% endhint %}
 
-{% embed url="https://cherry-ai.com/download" %}
+{% embed url="https://cherryai.com/download" %}
 
-2. After the download is complete, click here
+2. After the download is complete, open the downloaded file (for example, from your browser's download list)
 
-<figure><img src="../../../../assets/f2d205faa935e6f4f218c32b.webp" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../assets/0aa42c8c95c2c7acadb2db77.webp" alt="Download page with macOS Apple Chip / Intel Chip options and the finished download in the browser download list"><figcaption><p>On the download page, macOS offers Apple Chip and Intel Chip installers</p></figcaption></figure>
 
-3. Drag and drop the icon to install
+3. Drag the Cherry Studio icon into the Applications folder to install
 
-<figure><img src="../../../../assets/fe1c55b32201c9fe43b306c6.webp" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../assets/2761406967258cc14764af0e.webp" alt=""><figcaption></figcaption></figure>
 
 Find the Cherry Studio icon in Launchpad and click on it. If the Cherry Studio main interface opens, the installation is successful.
 
-<figure><img src="../../../../assets/98429bfa371ae5790125def2.webp" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../assets/dc4cf60c9df32d2768d58f01.webp" alt=""><figcaption></figcaption></figure>

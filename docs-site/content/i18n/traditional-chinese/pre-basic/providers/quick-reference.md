@@ -16,7 +16,7 @@ Cherry Studio 內建 **60+ 家 Provider**，本頁提供總覽表，找到目標
 
 | 你的需求 | 推薦方向 |
 |---|---|
-| **新手快速上手**，避免複雜流程 | [CherryIN](cherryin-1.md) 或 [CherryAI](../../../../pre-basic/providers/cherryai) |
+| **新手快速上手**，避免複雜流程 | [CherryIN](cherryin-1.md) 或 [CherryAI](cherryai) |
 | **國內存取最方便** | DeepSeek / Moonshot / 矽基流動 / 智譜 |
 | **海外最強模型** | OpenAI / Anthropic / Gemini |
 | **一個 key 通用 200 家** | [OpenRouter](openrouter.md) |
@@ -64,7 +64,7 @@ Cherry Studio 內建 **60+ 家 Provider**，本頁提供總覽表，找到目標
 
 | Provider | 一句話特點 | 官網 | 專題文件 |
 |---|---|---|---|
-| **CherryAI** | Cherry 官方免費體驗 | — | [→](../../../../pre-basic/providers/cherryai) |
+| **CherryAI** | Cherry 官方免費體驗 | — | [→](cherryai) |
 | **CherryIN** | Cherry 官方付費閘道，雙端點（OpenAI + Anthropic）| [open.cherryin.cc](https://open.cherryin.cc/) | [→](cherryin-1.md) |
 | **OpenRouter** | 海外最大聚合，200+ 模型 | [openrouter.ai](https://openrouter.ai/) | [→](openrouter.md) |
 | **AiHubMix** | 海外聚合 | [aihubmix.com](https://aihubmix.com/) | — |
@@ -140,7 +140,7 @@ Cherry Studio 內建 **60+ 家 Provider**，本頁提供總覽表，找到目標
 
 ## 還是不知道選哪個？
 
-直接使用 [**CherryIN**](cherryin-1.md) 或 [**CherryAI**](../../../../pre-basic/providers/cherryai) —— 最適合新手快速上手。需要進階時再更換。
+直接使用 [**CherryIN**](cherryin-1.md) 或 [**CherryAI**](cherryai) —— 最適合新手快速上手。需要進階時再更換。
 
 ***
 

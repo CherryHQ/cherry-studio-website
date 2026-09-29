@@ -10,7 +10,7 @@ LM Studio is a popular **local LLM GUI** that supports downloading, quantizing, 
 
 ## Configure in Cherry Studio
 
-* Open `Settings → Model Service`, find the **LM Studio** Provider, and enter the details page
+* Open `Settings → Model Provider`, find the **LM Studio** Provider, and enter the details page
 * The **API Address** defaults to `http://localhost:1234`. If you have changed the LM Studio port, update this accordingly
 * The **API Key** can be left empty (local inference requires no authentication), or filled in if you enable authentication in LM Studio
 * Click **Fetch Model List**, and Cherry Studio will automatically retrieve the models loaded in LM Studio

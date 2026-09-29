@@ -68,7 +68,7 @@ Use the same question to check the snippets returned by the knowledge base. If r
 
 ## How Answers Are Formed
 
-<figure><img src="../../../assets/192b7298d3bc060e6d5897c9.webp" alt="A knowledge base architecture diagram showing the flow from document parsing, keyword and vector retrieval, to merging and reranking before handing off to the conversation response"><figcaption><p>The chat model sees the final recalled snippets, not all documents in the knowledge base automatically. </p></figcaption></figure>
+<figure><img src="../../../assets/1b37b3cc3a8a611ccd30b8de.webp" alt="A knowledge base architecture diagram showing the flow from document parsing, keyword and vector retrieval, to merging and reranking before handing off to the conversation response"><figcaption><p>The chat model sees the final recalled snippets, not all documents in the knowledge base automatically. </p></figcaption></figure>
 
 ## Recommended Question Templates
 

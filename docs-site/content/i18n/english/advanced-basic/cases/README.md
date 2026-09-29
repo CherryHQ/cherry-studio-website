@@ -6,7 +6,7 @@ icon: lightbulb
 
 These cases demonstrate how to combine conversations, Agents, knowledge bases, notes, image generation, translation, channels, scheduled tasks, and multi-window workflows into processes that deliver real results. The configurations in these cases are starting points; adjust them based on data sensitivity, usage volume, and team policies.
 
-<figure><img src="../../../../assets/fcd8d884c9294cbc845fdf9c.webp" alt="Workflow maturity path diagram: from manual execution to method consolidation, connecting external capabilities, and automated operation"><figcaption><p>First, run the process manually with real materials, then gradually add knowledge bases, skills, MCP, channels, and scheduled tasks. </p></figcaption></figure>
+<figure><img src="../../../../assets/8140b762512a0a4025235f94.webp" alt="Workflow maturity path diagram: from manual execution to method consolidation, connecting external capabilities, and automated operation"><figcaption><p>First, run the process manually with real materials, then gradually add knowledge bases, skills, MCP, channels, and scheduled tasks. </p></figcaption></figure>
 
 ## Selecting a Case
 

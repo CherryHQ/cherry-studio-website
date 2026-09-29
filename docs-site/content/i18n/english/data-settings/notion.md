@@ -31,7 +31,7 @@ Copy the secret and paste it into Cherry Studio settings.
 
 <figure><img src="../../../assets/653fc5d7fce70b768684035d.webp" alt=""><figcaption><p>Click to copy secret</p></figcaption></figure>
 
-<figure><img src="../../../assets/ce6bb8fdff8cf9d18bdf7157.webp" alt=""><figcaption><p>Paste the secret into the data settings</p></figcaption></figure>
+<figure><img src="../../../assets/403d206affac8f8d8be7a4a1.webp" alt=""><figcaption><p>Paste the secret into the data settings</p></figcaption></figure>
 
 ## Step Four
 
@@ -51,7 +51,7 @@ https://www.notion.so/\<long\_hash\_1>?v=\<long\_hash\_2>
 
 Then the Notion database ID is the `<long_hash_1>` part.
 
-<figure><img src="../../../assets/2295a471635c8c8febf6c373.webp" alt=""><figcaption><p>Enter the database ID and click check</p></figcaption></figure>
+<figure><img src="../../../assets/0d1c1cd6f57ee46e461f1af1.webp" alt=""><figcaption><p>Enter the database ID and click check</p></figcaption></figure>
 
 ## Step Six
 
@@ -60,7 +60,7 @@ Enter `Page Title Field Name`:
 If your web page is in English, enter `Name`
 If your web page is in Chinese, enter `Name`
 
-<figure><img src="../../../assets/d715981ccedecd3bf1e2fee7.webp" alt=""><figcaption><p>Enter Page Title Field Name</p></figcaption></figure>
+<figure><img src="../../../assets/8ec3dea231ec68efc714e8c9.webp" alt=""><figcaption><p>Enter Page Title Field Name</p></figcaption></figure>
 
 ## Step Seven
 

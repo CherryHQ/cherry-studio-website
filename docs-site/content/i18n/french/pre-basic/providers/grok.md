@@ -24,7 +24,7 @@ Grok est un grand modèle développé par xAI, réputé pour son ton plus décon
 
 ## Recherche en ligne
 
-Certains modèles Grok disposent d'une capacité de recherche en ligne intégrée, indiquée par une petite icône de globe terrestre après le nom du modèle. Vous pouvez activer directement l'option « En ligne » dans la zone de dialogue. Pour plus de détails, consultez [Mode en ligne](../../../../pre-basic/websearch).
+Certains modèles Grok disposent d'une capacité de recherche en ligne intégrée, indiquée par une petite icône de globe terrestre après le nom du modèle. Vous pouvez activer directement l'option « En ligne » dans la zone de dialogue. Pour plus de détails, consultez [Mode en ligne](../websearch).
 
 {% hint style="info" %}
 * Grok nécessite un accès réseau international ; les utilisateurs en Chine doivent configurer un proxy

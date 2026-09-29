@@ -9,7 +9,7 @@ A skill is a set of reusable work instructions and supporting resources. It does
 When you need a specific working method, first state your goal to the Agent in [Work] and ask it to find or install an appropriate skill. Open [Settings] → [Skills] only when you need to verify sources, manage skills in bulk, or import from local files.
 {% endhint %}
 
-<figure><img src="../../../../assets/cc38d8a6378ca8270ceda746.webp" alt="Relationship diagram for selecting knowledge base, skills, built-in tools, or MCP based on task requirements"><figcaption><p>Methods used repeatedly are suitable for defining as skills; use the corresponding entry points for resources, built-in operations, and external systems. </p></figcaption></figure>
+<figure><img src="../../../../assets/9a40f1cd26f6618a31c73d42.webp" alt="Relationship diagram for selecting knowledge base, skills, built-in tools, or MCP based on task requirements"><figcaption><p>Methods used repeatedly are suitable for defining as skills; use the corresponding entry points for resources, built-in operations, and external systems. </p></figcaption></figure>
 
 ### Install Skills
 

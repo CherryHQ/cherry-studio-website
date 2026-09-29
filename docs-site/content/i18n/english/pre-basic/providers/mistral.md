@@ -11,7 +11,7 @@ Mistral AI is a representative of European open-source large models, offering se
 
 1. Open [Model Service Settings](../settings/providers.md) in Cherry Studio and find **Mistral** in the built-in list
 2. Enter the API Key you just obtained
-3. Click **Get Model List**, add the models you need, and enable the provider switch in the top-right corner to start using it
+3. Click **Sync models**, add the models you need, and enable the provider switch in the top-right corner to start using it
 
 {% hint style="info" %}
 Accessing Mistral from mainland China typically requires setting up a network proxy. For more information, see the [Mistral official documentation](https://docs.mistral.ai).

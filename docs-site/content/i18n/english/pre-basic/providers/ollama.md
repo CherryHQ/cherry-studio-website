@@ -61,10 +61,10 @@ First, you need to install and run Ollama on your computer. Please follow these 
 Next, add Ollama as a custom AI provider in Cherry Studio:
 
 *   **Open Settings:** In the Cherry Studio interface, click "Settings" (gear icon) in the left navigation bar.
-*   **Go to Model Services:** On the settings page, select the "Model Services" tab.
+*   **Go to Model Provider:** On the settings page, select "Model Provider" in the left menu.
 *   **Add Provider:** Click Ollama in the list.
 
-<figure><img src="../../../../assets/4645d257a81eb080a84c05fc.webp" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../assets/01f33d66d14a3c39d1cb0820.webp" alt=""><figcaption></figcaption></figure>
 
 ### **3. Configure the Ollama Provider**
 
@@ -86,7 +86,7 @@ Locate the newly added Ollama in the provider list and configure it in detail:
 5.  **Model Management:**
     *   Click the "+ Add" button to manually add the name of the model you have already downloaded in Ollama.
     *   For example, if you have downloaded the `llama3.2` model via `ollama run llama3.2`, then you can enter `llama3.2` here.
-    *   Click the "Manage" button to edit or delete added models.
+    *   Use the settings icon or "−" next to each model to edit or remove added models.
 
 ## Get Started
 

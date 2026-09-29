@@ -3,7 +3,7 @@ icon: terminal
 ---
 # Dependencias del entorno
 
-Las dependencias del entorno se utilizan para **gestionar las herramientas binarias y los entornos de ejecución necesarios para que Cherry Studio ejecute ciertas funciones avanzadas**. Algunas capacidades de [servicios MCP](../../../../advanced-basic/extensions/mcp), [habilidades](../../advanced-basic/extensions/skills.md) y [Agent](../../advanced-basic/agent.md) requieren, a nivel de bajo nivel, la invocación de herramientas de línea de comandos como `uv` y `bun`. Cherry Studio las centraliza aquí para que no tengas que instalarlas y configurarlas manualmente desde la línea de comandos.
+Las dependencias del entorno se utilizan para **gestionar las herramientas binarias y los entornos de ejecución necesarios para que Cherry Studio ejecute ciertas funciones avanzadas**. Algunas capacidades de [servicios MCP](../../advanced-basic/extensions/mcp), [habilidades](../../advanced-basic/extensions/skills.md) y [Agent](../../advanced-basic/agent.md) requieren, a nivel de bajo nivel, la invocación de herramientas de línea de comandos como `uv` y `bun`. Cherry Studio las centraliza aquí para que no tengas que instalarlas y configurarlas manualmente desde la línea de comandos.
 
 Abre `Configuración → Dependencias del entorno`:
 

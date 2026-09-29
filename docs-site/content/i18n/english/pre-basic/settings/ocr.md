@@ -11,7 +11,7 @@ OCR (Optical Character Recognition) converts **text in images into copyable text
 
 OCR has a dedicated settings page. Configure the recognition engine once in **Settings** → **OCR**, and all image text recognition features will use the same configuration.
 
-<figure><img src="../../../../assets/31140d519a5957ff8945fd3a.webp" alt=""><figcaption><p>OCR Settings: ① Select the recognition engine from the dropdown in the top-right corner (Mistral shown in the example), then enter the API key and API address for the selected engine</p></figcaption></figure>
+<figure><img src="../../../../assets/5385665dfe925c93d73c53f9.webp" alt=""><figcaption><p>OCR Settings: ① Select the recognition engine from the dropdown in the top-right corner (Mistral shown in the example), then enter the API key and API address for the selected engine</p></figcaption></figure>
 
 ### Selecting the Recognition Engine
 

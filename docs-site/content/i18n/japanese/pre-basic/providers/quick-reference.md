@@ -16,7 +16,7 @@ Cherry Studio には **60 以上の Provider** が組み込まれています。
 
 | 要件 | 推奨方向 |
 |---|---|
-| **初心者向けクイックスタート**、複雑なフローを回避 | [CherryIN](cherryin-1.md) または [CherryAI](../../../../pre-basic/providers/cherryai) |
+| **初心者向けクイックスタート**、複雑なフローを回避 | [CherryIN](cherryin-1.md) または [CherryAI](cherryai) |
 | **国内アクセスが最も便利** | DeepSeek / Moonshot / 硅基流动 / 智谱 |
 | **海外最強モデル** | OpenAI / Anthropic / Gemini |
 | **1 つのキーで 200 社対応** | [OpenRouter](openrouter.md) |
@@ -64,7 +64,7 @@ Cherry Studio には **60 以上の Provider** が組み込まれています。
 
 | Provider | 一言特徴 | 公式サイト | 専用ドキュメント |
 |---|---|---|---|
-| **CherryAI** | Cherry 公式無料体験 | — | [→](../../../../pre-basic/providers/cherryai) |
+| **CherryAI** | Cherry 公式無料体験 | — | [→](cherryai) |
 | **CherryIN** | Cherry 公式有料ゲートウェイ、デュアルエンドポイント（OpenAI + Anthropic）| [open.cherryin.cc](https://open.cherryin.cc/) | [→](cherryin-1.md) |
 | **OpenRouter** | 海外最大のアグリゲーション、200+ モデル | [openrouter.ai](https://openrouter.ai/) | [→](openrouter.md) |
 | **AiHubMix** | 海外アグリゲーション | [aihubmix.com](https://aihubmix.com/) | — |
@@ -140,7 +140,7 @@ Cherry Studio には **60 以上の Provider** が組み込まれています。
 
 ## まだどれを選べばいいか分からない？
 
-[**CherryIN**](cherryin-1.md) または [**CherryAI**](../../../../pre-basic/providers/cherryai) を直接使用してください —— 初心者にとって最もクイックスタートに適しています。高度な機能が必要になったら、その時点で切り替えてください。
+[**CherryIN**](cherryin-1.md) または [**CherryAI**](cherryai) を直接使用してください —— 初心者にとって最もクイックスタートに適しています。高度な機能が必要になったら、その時点で切り替えてください。
 
 ***
 

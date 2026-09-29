@@ -56,7 +56,7 @@ When using a portable hard drive, network volume, or other custom location, ensu
 {% step %}
 ### First Launch of V2
 
-Download the V2 installer matching your system and chip from [V2 Official Download](https://cherryai.com.cn/download), or use the [GitCode Release Page](https://gitcode.com/CherryHQ/cherry-studio/releases) or [GitHub Release Page](https://github.com/CherryHQ/cherry-studio/releases). Fully exit V1 before installing and launching.
+Download the V2 installer matching your system and chip from [V2 Official Download](https://cherryai.com/download), or use the [GitCode Release Page](https://gitcode.com/CherryHQ/cherry-studio/releases) or [GitHub Release Page](https://github.com/CherryHQ/cherry-studio/releases). Fully exit V1 before installing and launching.
 {% endstep %}
 
 {% step %}
@@ -124,8 +124,8 @@ No. Valid indexes will be migrated; only process sources that show as failed, la
 
 ## References
 
-* [Cherry Studio V2 Official Download](https://cherryai.com.cn/download)
-* [Cherry Studio V1 Official Download](https://cherryai.com.cn/download/v1)
+* [Cherry Studio V2 Official Download](https://cherryai.com/download)
+* [Cherry Studio V1 Official Download](https://cherryai.com/download/v1)
 * V2 Release Page: [GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases)
 * [Official Migration Design Notes](https://github.com/CherryHQ/cherry-studio/blob/main/src/main/data/migration/v2/README.md#version-compatibility-gate)
 * [Issue Feedback and Feature Suggestions](../../question-contact/suggestions.md)

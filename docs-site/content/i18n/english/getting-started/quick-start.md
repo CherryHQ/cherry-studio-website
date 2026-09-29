@@ -12,11 +12,11 @@ Download the package that matches your operating system and processor from the [
 
 ## 2. Choose a Model Provider
 
-Open **Settings → Model Services**. If you do not have an API key yet, use the [Model Provider Quick Reference](../pre-basic/providers/quick-reference.md) to choose a provider based on region, model capabilities, and privacy needs.
+Open **Settings → Model Provider**. If you do not have an API key yet, use the [Model Provider Quick Reference](../pre-basic/providers/quick-reference.md) to choose a provider based on region, model capabilities, and privacy needs.
 
 ## 3. Add and Enable a Model
 
-Open the provider settings, enter your API key, select **Get Model List**, add a chat model, and enable the provider. See [Model Service Settings](../pre-basic/settings/providers.md) for details.
+Open the provider settings, enter your API key, select **Sync models**, add a chat model, and enable the provider. See [Model Service Settings](../pre-basic/settings/providers.md) for details.
 
 ## 4. Send Your First Message
 
