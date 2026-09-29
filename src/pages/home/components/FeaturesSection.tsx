@@ -1,14 +1,15 @@
-import { ArrowUpRight, Cloud, Image, Languages, MessageSquare, Shield, Users } from 'lucide-react'
+import { ArrowRight, Cloud, Image, Languages, MessageSquare, Shield, Users } from 'lucide-react'
 import type { FC } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 
 import { cn } from '@/lib/utils'
+import { getDocsUrl } from '@/utils/urls'
 
 interface Feature {
   icon: React.ElementType
   titleKey: string
   descriptionKey: string
-  href: string
+  slug: string
   borderColor: string
   iconColor: string
   iconBg: string
@@ -19,7 +20,7 @@ const features: Feature[] = [
     icon: MessageSquare,
     titleKey: 'features.conversation.title',
     descriptionKey: 'features.conversation.description',
-    href: 'https://docs.cherryai.com.cn/cherrystudio/preview/chat',
+    slug: 'cherrystudio/preview/chat/',
     borderColor: 'hover:border-blue-500',
     iconColor: 'text-blue-500',
     iconBg: 'bg-blue-500/10'
@@ -28,7 +29,7 @@ const features: Feature[] = [
     icon: Image,
     titleKey: 'features.drawing.title',
     descriptionKey: 'features.drawing.description',
-    href: 'https://docs.cherryai.com.cn/cherrystudio/preview/drawing',
+    slug: 'cherrystudio/preview/drawing/',
     borderColor: 'hover:border-purple-500',
     iconColor: 'text-purple-500',
     iconBg: 'bg-purple-500/10'
@@ -37,7 +38,7 @@ const features: Feature[] = [
     icon: Languages,
     titleKey: 'features.translation.title',
     descriptionKey: 'features.translation.description',
-    href: 'https://docs.cherryai.com.cn/cherrystudio/preview/translation',
+    slug: 'cherrystudio/preview/translation/',
     borderColor: 'hover:border-green-500',
     iconColor: 'text-green-500',
     iconBg: 'bg-green-500/10'
@@ -46,7 +47,7 @@ const features: Feature[] = [
     icon: Users,
     titleKey: 'features.assistants.title',
     descriptionKey: 'features.assistants.description',
-    href: 'https://docs.cherryai.com.cn/cherrystudio/preview/agents',
+    slug: 'advanced-basic/agent/',
     borderColor: 'hover:border-orange-500',
     iconColor: 'text-orange-500',
     iconBg: 'bg-orange-500/10'
@@ -55,7 +56,7 @@ const features: Feature[] = [
     icon: Shield,
     titleKey: 'features.knowledge_base.title',
     descriptionKey: 'features.knowledge_base.description',
-    href: 'https://docs.cherryai.com.cn/advanced-basic/knowledge-base',
+    slug: 'knowledge-base/knowledge-base/',
     borderColor: 'hover:border-red-500',
     iconColor: 'text-red-500',
     iconBg: 'bg-red-500/10'
@@ -64,7 +65,7 @@ const features: Feature[] = [
     icon: Cloud,
     titleKey: 'features.backup.title',
     descriptionKey: 'features.backup.description',
-    href: 'https://docs.cherryai.com.cn/cherrystudio/preview/settings/data',
+    slug: 'pre-basic/data-settings/',
     borderColor: 'hover:border-indigo-500',
     iconColor: 'text-indigo-500',
     iconBg: 'bg-indigo-500/10'
@@ -72,7 +73,8 @@ const features: Feature[] = [
 ]
 
 const FeaturesSection: FC = () => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const docsUrl = getDocsUrl(i18n.language)
 
   return (
     <section className="bg-background relative overflow-hidden py-8 sm:py-16">
@@ -88,11 +90,7 @@ const FeaturesSection: FC = () => {
           <p className="text-muted-foreground mx-auto max-w-2xl text-sm sm:text-base">
             <Trans i18nKey="features.description">
               以下仅为部分功能介绍，更多功能可以下载客户端体验，或在
-              <a
-                href="https://docs.cherryai.com.cn"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary hover:underline">
+              <a href={docsUrl} className="text-primary hover:underline">
                 官方文档
               </a>
               中了解。
@@ -105,9 +103,7 @@ const FeaturesSection: FC = () => {
           {features.map((feature) => (
             <a
               key={feature.titleKey}
-              href={feature.href}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={`${docsUrl}${feature.slug}`}
               className={cn(
                 'border-border/50 bg-card/50 group relative overflow-hidden rounded-2xl border p-6',
                 'transition-all duration-300',
@@ -128,7 +124,7 @@ const FeaturesSection: FC = () => {
                 {/* Title */}
                 <h3 className="text-foreground mb-2 flex items-center gap-2 text-lg font-semibold">
                   {t(feature.titleKey)}
-                  <ArrowUpRight className="h-4 w-4 opacity-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100" />
+                  <ArrowRight className="h-4 w-4 opacity-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:opacity-100" />
                 </h3>
 
                 {/* Description */}
