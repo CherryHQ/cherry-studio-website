@@ -25,10 +25,11 @@ icon: file-code
 
 ### 内置解析引擎
 
-文档处理内置 5 个引擎，默认 **MinerU**：
+文档处理内置 6 个引擎，默认 **MinerU**：
 
 | 引擎 | 说明 | 接入方式 |
 | --- | --- | --- |
+| **本地文档** | 内置本地解析，无需任何外部服务 | 无需配置 |
 | **MinerU**（默认） | OpenDataLab 开源的高质量 PDF 提取工具 | API 密钥（[mineru.net/apiManage](https://mineru.net/apiManage)）|
 | **PaddleOCR** | 百度飞桨 OCR 识别系统 | 填 API 密钥（[飞桨星河社区](https://aistudio.baidu.com/paddleocr/)）；如自部署则把 API 地址指向你的服务 |
 | **Doc2x** | 高级文件还原引擎 | API 密钥（[open.noedgeai.com](https://open.noedgeai.com/apiKeys)）|
