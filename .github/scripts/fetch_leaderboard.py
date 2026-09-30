@@ -18,6 +18,7 @@ from bs4 import BeautifulSoup
 # 模型榜单现为一个目录，包含以下子榜单。
 BASE_URL = "https://arena.ai"
 OUTPUT_DIR = "docs-site/content/other/model_rank"
+EN_OUTPUT_DIR = "docs-site/content/i18n/english/other/model_rank"
 
 # 每个榜单的配置：
 #   slug          : 输出文件名（不含扩展名）与 README 链接标识
@@ -33,6 +34,20 @@ LEADERBOARDS = [
         "url": f"{BASE_URL}/leaderboard/agent",
         "title": "Agent 智能体榜单",
         "description": "本榜单评测模型在多轮工具调用 / 智能体任务上的综合表现，涵盖净改进率、确认成功率、赞踩比、可控性、Bash 恢复率、工具幻觉率等维度。",
+        "en": {
+            "title": "Agent Leaderboard",
+            "description": "This leaderboard measures how models perform on multi-turn tool-calling and agent tasks, across net improvement, confirmed success, praise-to-complaint ratio, steerability, Bash recovery, tool hallucination and session volume.",
+            "how_to_read": [
+                "**Rank / Rank Spread**: Arena AI's estimate of relative position from agent-task battles. The spread shows how far the rank moves within the confidence interval.",
+                "**Net Improvement**: how much the model improves on the baseline across multi-turn tool-calling and agent tasks.",
+                "**Confirmed Success**: share of completed tasks the user confirmed as successful.",
+                "**Praise vs Complaint**: ratio of upvotes to downvotes on the model's answers.",
+                "**Steerability**: how well the model follows instructions and keeps its output stable.",
+                "**Bash Recovery**: share of Bash / command-line errors the model recovers from.",
+                "**Tool Hallucination**: share of calls to tools that do not exist. Lower is better.",
+                "**Sessions**: sample size. Rankings move more when there are fewer sessions.",
+            ],
+        },
         "model_col": 1,
         "preferred": [
             "Rank",
@@ -63,6 +78,17 @@ LEADERBOARDS = [
         "url": f"{BASE_URL}/leaderboard/text",
         "title": "文本榜单",
         "description": "本榜单是 Arena AI 最核心的文本对战榜单，根据人类盲投对战估算模型相对实力。",
+        "en": {
+            "title": "Text Leaderboard",
+            "description": "This is Arena AI's core text battle leaderboard, which estimates relative model strength from blind human-voted matchups.",
+            "how_to_read": [
+                "**Rank / Rank Spread**: relative position estimated from battle votes. The spread shows how far the rank moves within the confidence interval.",
+                "**Score**: a relative score, useful for comparing the models listed at the same moment.",
+                "**Votes / Sessions**: sample size. Rankings move more when there are fewer votes.",
+                "**Price $/M**: reference price per million tokens for input / output.",
+                "**Context**: maximum context length the model supports.",
+            ],
+        },
         "model_col": 2,
         "preferred": ["Rank", "Rank Spread", "Model", "Score", "Votes", "Price $/M", "Context"],
         "top_n": 30,
@@ -79,6 +105,17 @@ LEADERBOARDS = [
         "url": f"{BASE_URL}/leaderboard/search",
         "title": "搜索榜单",
         "description": "本榜单评测模型在联网搜索 / 信息检索类任务上的表现。",
+        "en": {
+            "title": "Search Leaderboard",
+            "description": "This leaderboard measures how models perform on web search and information-retrieval tasks.",
+            "how_to_read": [
+                "**Rank / Rank Spread**: relative position estimated from battle votes. The spread shows how far the rank moves within the confidence interval.",
+                "**Score**: a relative score, useful for comparing the models listed at the same moment.",
+                "**Votes / Sessions**: sample size. Rankings move more when there are fewer votes.",
+                "**Price $/M**: reference price per million tokens for input / output.",
+                "**Context**: maximum context length the model supports.",
+            ],
+        },
         "model_col": 2,
         "preferred": ["Rank", "Rank Spread", "Model", "Score", "Votes", "Price $/M", "Context"],
         "top_n": 30,
@@ -95,6 +132,17 @@ LEADERBOARDS = [
         "url": f"{BASE_URL}/leaderboard/vision",
         "title": "视觉榜单",
         "description": "本榜单评测多模态模型在图像理解类任务上的表现。",
+        "en": {
+            "title": "Vision Leaderboard",
+            "description": "This leaderboard measures how multimodal models perform on image-understanding tasks.",
+            "how_to_read": [
+                "**Rank / Rank Spread**: relative position estimated from battle votes. The spread shows how far the rank moves within the confidence interval.",
+                "**Score**: a relative score, useful for comparing the models listed at the same moment.",
+                "**Votes / Sessions**: sample size. Rankings move more when there are fewer votes.",
+                "**Price $/M**: reference price per million tokens for input / output.",
+                "**Context**: maximum context length the model supports.",
+            ],
+        },
         "model_col": 2,
         "preferred": ["Rank", "Rank Spread", "Model", "Score", "Votes", "Price $/M", "Context"],
         "top_n": 30,
@@ -111,6 +159,17 @@ LEADERBOARDS = [
         "url": f"{BASE_URL}/leaderboard/code/webdev",
         "title": "代码 / Web 开发榜单",
         "description": "本榜单评测模型在 Web 前端开发（HTML/CSS/JS）任务上的实际表现。",
+        "en": {
+            "title": "Code / Web Dev Leaderboard",
+            "description": "This leaderboard measures how models perform in practice on web front-end development (HTML/CSS/JS) tasks.",
+            "how_to_read": [
+                "**Rank / Rank Spread**: relative position estimated from battle votes. The spread shows how far the rank moves within the confidence interval.",
+                "**Score**: a relative score, useful for comparing the models listed at the same moment.",
+                "**Votes / Sessions**: sample size. Rankings move more when there are fewer votes.",
+                "**Price $/M**: reference price per million tokens for input / output.",
+                "**Context**: maximum context length the model supports.",
+            ],
+        },
         "model_col": 2,
         "preferred": ["Rank", "Rank Spread", "Model", "Score", "Votes", "Price $/M", "Context"],
         "top_n": 30,
@@ -127,6 +186,15 @@ LEADERBOARDS = [
         "url": f"{BASE_URL}/leaderboard/text-to-image",
         "title": "文生图榜单",
         "description": "本榜单评测文生图模型根据文本提示生成图像的能力。",
+        "en": {
+            "title": "Text-to-Image Leaderboard",
+            "description": "This leaderboard measures how well text-to-image models turn a text prompt into an image.",
+            "how_to_read": [
+                "**Rank / Rank Spread**: relative position estimated from text-to-image battles. The spread shows how far the rank moves within the confidence interval.",
+                "**Score**: a relative score, useful for comparing the models listed at the same moment.",
+                "**Votes**: sample size. Rankings move more when there are fewer votes.",
+            ],
+        },
         "model_col": 2,
         "preferred": ["Rank", "Rank Spread", "Model", "Score", "Votes"],
         "top_n": 30,
@@ -425,12 +493,16 @@ def _normalize_score(val):
     return " ".join(parts)
 
 
-def generate_markdown(df, config, utc_now, beijing_now):
+def generate_markdown(df, config, utc_now, beijing_now, lang="zh-cn"):
     """
-    将 DataFrame 转换为带中文表头和说明的 Markdown 内容。
+    将 DataFrame 转换为 Markdown 内容。
+
+    中文页使用 COLUMN_MAPPING 把表头译为中文；英文页直接使用抓取到的原始列名，
+    避免中文表头再翻译回英文造成偏差。
     """
+    english = lang != "zh-cn"
     if df is None or df.empty:
-        return "未能获取或解析排行榜数据。\n"
+        return "Could not fetch or parse the leaderboard data.\n" if english else "未能获取或解析排行榜数据。\n"
 
     df = df.copy()
 
@@ -444,8 +516,8 @@ def generate_markdown(df, config, utc_now, beijing_now):
     if "Score" in df.columns:
         df["Score"] = df["Score"].apply(_normalize_score)
 
-    # 重命名为中文表头
-    df.rename(columns={c: COLUMN_MAPPING.get(c, c) for c in df.columns}, inplace=True)
+    if not english:
+        df.rename(columns={c: COLUMN_MAPPING.get(c, c) for c in df.columns}, inplace=True)
 
     df = df.head(config["top_n"])
 
@@ -455,14 +527,46 @@ def generate_markdown(df, config, utc_now, beijing_now):
     md_table = df.to_markdown(index=False)
 
     url = config["url"]
-    title = config["title"]
-    description = config["description"]
+    copy = config["en"] if english else config
+    title = copy["title"]
+    description = copy["description"]
 
     # 榜单专属的“怎么看这张表”说明
-    how_to_read = config.get("how_to_read", [])
-    how_to_read_lines = "\n".join(f"* {line}" for line in how_to_read)
+    how_to_read_lines = "\n".join(f"* {line}" for line in copy.get("how_to_read", []))
 
-    markdown_content = f"""# {title}
+    if english:
+        return f"""# {title}
+
+This page shows the top {config['top_n']} models on the [Arena AI]({url}) leaderboard, snapshotted every two days so you can see how recent models are doing at a glance. See the Arena AI site for the full leaderboard, filters and latest changes.
+
+{description}
+
+> **Data updated**: {utc_time_str} / {beijing_time_str} (Beijing time)
+
+{{% hint style="info" %}}
+A leaderboard reflects one particular evaluation and the preferences of its voters, so a high rank does not mean a model will do better on your tasks. Weigh price, speed, context, tool calling, privacy and regional availability as well.
+{{% endhint %}}
+
+## Top {config['top_n']}
+
+{md_table}
+
+## How to read this table
+
+{how_to_read_lines}
+
+## Three things to check before choosing a model
+
+1. Whether the provider actually serves the model, and whether it is available in your region and for your account;
+2. Whether the API price, rate limits and context window fit your workload;
+3. Run a small test on three to five real tasks instead of relying on the overall ranking alone.
+
+## Data source
+
+Data comes from the [Arena AI {title}]({url}) and is refreshed every two days by GitHub Actions. For model pricing, licenses and capabilities, check the model provider's own documentation.
+"""
+
+    return f"""# {title}
 
 本页展示 [Arena AI]({url}) 榜单前 {config['top_n']} 名的最新快照，方便快速了解近期模型表现。完整榜单、筛选项和最新变化请到 Arena AI 官网查看。
 
@@ -492,13 +596,33 @@ def generate_markdown(df, config, utc_now, beijing_now):
 
 数据来自 [Arena AI 官方 {title}]({url})，由 GitHub Actions 每两天更新一次。模型价格、许可证和能力请以模型服务商官方信息为准。
 """
-    return markdown_content
 
 
-def generate_readme():
+def generate_readme(lang="zh-cn"):
     """
     生成模型榜单目录页 README.md，列出所有子榜单。
     """
+    if lang != "zh-cn":
+        lines = [
+            "# Model Rankings\n",
+            "These rankings help you compare the relative performance of different models; they should not be the only input to a model choice. "
+            "The data comes from [Arena AI](https://arena.ai/) and is refreshed every two days by GitHub Actions.\n",
+            "When choosing a model, also weigh the task type, context length, multimodal and tool-calling abilities, speed, price, "
+            "regional availability and data policy. Rankings and prices change over time: trust the update time shown on each page and the "
+            "model provider's own documentation.\n",
+            "## Leaderboards\n",
+        ]
+        for cfg in LEADERBOARDS:
+            lines.append(f"* [{cfg['en']['title']}]({cfg['slug']}.md): {cfg['en']['description']}")
+        lines.append("")
+        lines.append("***\n")
+        lines.append("### 💡 Get help and send feedback\n")
+        lines.append(
+            "If you run into questions, bugs or feature suggestions while configuring or using Cherry Studio, "
+            "please use the official channels listed in [Feedback and suggestions](../../question-contact/suggestions.md).\n"
+        )
+        return "\n".join(lines)
+
     lines = []
     lines.append("# 模型榜单\n")
     lines.append(
@@ -526,9 +650,10 @@ def main():
         print("错误：SCRAPER_API_KEY 环境变量未设置。")
         raise ValueError("SCRAPER_API_KEY is not set.")
 
-    if not os.path.exists(OUTPUT_DIR):
-        os.makedirs(OUTPUT_DIR)
-        print(f"Created directory: {OUTPUT_DIR}")
+    for directory in (OUTPUT_DIR, EN_OUTPUT_DIR):
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+            print(f"Created directory: {directory}")
 
     utc_now = datetime.now(pytz.utc)
     beijing_tz = pytz.timezone("Asia/Shanghai")
@@ -548,13 +673,17 @@ def main():
             if df is None or df.empty:
                 print(f"  Skipped {cfg['slug']}: no leaderboard data parsed")
                 return None
-            markdown_output = generate_markdown(df, cfg, utc_now, beijing_now)
+            # 两种语言的正文先生成再落盘，避免写入中途失败留下半新半旧的页面
+            contents = {lang: generate_markdown(df, cfg, utc_now, beijing_now, lang) for lang in ("zh-cn", "en")}
 
-            output_path = os.path.join(OUTPUT_DIR, f"{cfg['slug']}.md")
-            with open(output_path, "w", encoding="utf-8") as f:
-                f.write(markdown_output)
-            print(f"  Updated: {output_path}")
-            return output_path
+            paths = []
+            for lang, directory in (("zh-cn", OUTPUT_DIR), ("en", EN_OUTPUT_DIR)):
+                output_path = os.path.join(directory, f"{cfg['slug']}.md")
+                with open(output_path, "w", encoding="utf-8") as f:
+                    f.write(contents[lang])
+                print(f"  Updated: {output_path}")
+                paths.append(output_path)
+            return paths
         except Exception as e:
             print(f"  Failed to update {cfg['slug']}: {e}")
             return None
@@ -566,25 +695,30 @@ def main():
             for future in futures:
                 result = future.result()
                 if result:
-                    updated_files.append(result)
+                    updated_files.extend(result)
 
     # 2. 生成 / 更新目录页 README.md
-    readme_path = os.path.join(OUTPUT_DIR, "README.md")
-    with open(readme_path, "w", encoding="utf-8") as f:
-        f.write(generate_readme())
-    print(f"\nUpdated index: {readme_path}")
-    updated_files.append(readme_path)
+    for lang, directory in (("zh-cn", OUTPUT_DIR), ("en", EN_OUTPUT_DIR)):
+        readme_path = os.path.join(directory, "README.md")
+        with open(readme_path, "w", encoding="utf-8") as f:
+            f.write(generate_readme(lang))
+        print(f"\nUpdated index: {readme_path}")
+        updated_files.append(readme_path)
 
     # 3. 删除旧的 lmarena.md（已更名为 Arena AI 多榜单）
-    old_file = os.path.join(OUTPUT_DIR, "lmarena.md")
-    if os.path.exists(old_file):
-        os.remove(old_file)
-        print(f"Removed obsolete file: {old_file}")
+    for directory in (OUTPUT_DIR, EN_OUTPUT_DIR):
+        old_file = os.path.join(directory, "lmarena.md")
+        if os.path.exists(old_file):
+            os.remove(old_file)
+            print(f"Removed obsolete file: {old_file}")
 
     skipped = [
         cfg["slug"]
         for cfg in LEADERBOARDS
-        if os.path.join(OUTPUT_DIR, f"{cfg['slug']}.md") not in updated_files
+        if any(
+            os.path.join(directory, f"{cfg['slug']}.md") not in updated_files
+            for directory in (OUTPUT_DIR, EN_OUTPUT_DIR)
+        )
     ]
     if skipped:
         print(f"\n以下榜单未刷新，保留上一次的数据: {', '.join(skipped)}")

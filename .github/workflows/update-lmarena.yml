@@ -39,7 +39,7 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add -A docs-site/content/other/model_rank/
+          git add -A docs-site/content/other/model_rank/ docs-site/content/i18n/english/other/model_rank/
           if [ -n "$(git status --porcelain)" ]; then
             git commit -m "Update Arena AI leaderboards"
             git push
