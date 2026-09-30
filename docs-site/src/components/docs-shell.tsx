@@ -2,10 +2,38 @@
 
 import type { Root } from 'fumadocs-core/page-tree'
 import { DocsLayout } from 'fumadocs-ui/layouts/docs'
+import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import type { ReactNode } from 'react'
 
-import { getSectionLabels } from '@/lib/section-labels'
+import { getSectionLabels, type SectionLabels } from '@/lib/section-labels'
+
+// Passed as `sidebar.banner`, which the sidebar renders outside its scroll viewport.
+function SectionSwitch({ locale, labels, mobile }: { locale: string; labels: SectionLabels; mobile: boolean }) {
+  const sections = [
+    { key: 'desktop', label: labels.desktop, url: `/${locale}/`, active: !mobile },
+    { key: 'mobile', label: labels.mobile, url: `/${locale}/mobile/`, active: mobile }
+  ]
+
+  return (
+    <div className="grid grid-cols-2 gap-0.5 rounded-lg border bg-fd-secondary/50 p-0.5">
+      {sections.map((section) => (
+        <Link
+          key={section.key}
+          href={section.url}
+          prefetch={false}
+          aria-current={section.active ? 'page' : undefined}
+          className={`rounded-md px-2 py-1.5 text-center text-sm transition-colors ${
+            section.active
+              ? 'bg-fd-primary/10 font-medium text-fd-primary'
+              : 'text-fd-muted-foreground hover:text-fd-accent-foreground'
+          }`}>
+          {section.label}
+        </Link>
+      ))}
+    </div>
+  )
+}
 
 export function DocsShell({
   children,
@@ -33,18 +61,7 @@ export function DocsShell({
         title: labels.docs,
         url: mobile ? `/${locale}/mobile/` : `/${locale}/`
       }}
-      links={[
-        {
-          text: labels.desktop,
-          url: `/${locale}/`,
-          active: mobile ? 'none' : 'nested-url'
-        },
-        {
-          text: labels.mobile,
-          url: `/${locale}/mobile/`,
-          active: mobile ? 'nested-url' : 'none'
-        }
-      ]}
+      sidebar={{ banner: <SectionSwitch locale={locale} labels={labels} mobile={mobile} /> }}
       githubUrl="https://github.com/CherryHQ/cherry-studio-website">
       {children}
     </DocsLayout>
