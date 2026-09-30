@@ -14,6 +14,7 @@ import { fileURLToPath } from 'node:url'
 import { createSearchAPI } from 'fumadocs-core/search/server'
 
 import { findMissingAnchors, parseSummary, renderMarkdown, safeResolve, slugFor, urlFor } from './content.mjs'
+import { validateRedirects } from './redirects.mjs'
 
 const app = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const locales = JSON.parse(readFileSync(path.join(app, 'locales.json'), 'utf8'))
@@ -276,7 +277,10 @@ for (const locale of locales) {
     legacyRedirects[`/docs/${locale.code}/${getSlug(original)}`] = target
   }
 }
-writeAtomic(path.join(generated, 'legacy-redirects.json'), JSON.stringify(legacyRedirects, null, 2))
+writeAtomic(
+  path.join(generated, 'legacy-redirects.json'),
+  JSON.stringify(validateRedirects(legacyRedirects, byUrl.keys()), null, 2)
+)
 writeAtomic(
   path.join(generated, 'routes.json'),
   JSON.stringify(
