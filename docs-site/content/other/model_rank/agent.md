@@ -1,6 +1,6 @@
 # Agent 智能体榜单
 
-本页展示 [Arena AI](https://arena.ai/leaderboard/agent) 榜单前 30 名的每日快照，方便快速了解近期模型表现。完整榜单、筛选项和最新变化请到 Arena AI 官网查看。
+本页展示 [Arena AI](https://arena.ai/leaderboard/agent) 榜单前 30 名的最新快照，方便快速了解近期模型表现。完整榜单、筛选项和最新变化请到 Arena AI 官网查看。
 
 本榜单评测模型在多轮工具调用 / 智能体任务上的综合表现，涵盖净改进率、确认成功率、赞踩比、可控性、Bash 恢复率、工具幻觉率等维度。
 
@@ -64,4 +64,4 @@
 
 ## 数据来源
 
-数据来自 [Arena AI 官方 Agent 智能体榜单](https://arena.ai/leaderboard/agent)，由 GitHub Actions 每天更新。模型价格、许可证和能力请以模型服务商官方信息为准。
+数据来自 [Arena AI 官方 Agent 智能体榜单](https://arena.ai/leaderboard/agent)，由 GitHub Actions 每两天更新一次。模型价格、许可证和能力请以模型服务商官方信息为准。

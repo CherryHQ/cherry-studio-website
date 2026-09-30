@@ -464,7 +464,7 @@ def generate_markdown(df, config, utc_now, beijing_now):
 
     markdown_content = f"""# {title}
 
-本页展示 [Arena AI]({url}) 榜单前 {config['top_n']} 名的每日快照，方便快速了解近期模型表现。完整榜单、筛选项和最新变化请到 Arena AI 官网查看。
+本页展示 [Arena AI]({url}) 榜单前 {config['top_n']} 名的最新快照，方便快速了解近期模型表现。完整榜单、筛选项和最新变化请到 Arena AI 官网查看。
 
 {description}
 
@@ -490,7 +490,7 @@ def generate_markdown(df, config, utc_now, beijing_now):
 
 ## 数据来源
 
-数据来自 [Arena AI 官方 {title}]({url})，由 GitHub Actions 每天更新。模型价格、许可证和能力请以模型服务商官方信息为准。
+数据来自 [Arena AI 官方 {title}]({url})，由 GitHub Actions 每两天更新一次。模型价格、许可证和能力请以模型服务商官方信息为准。
 """
     return markdown_content
 
@@ -502,7 +502,7 @@ def generate_readme():
     lines = []
     lines.append("# 模型榜单\n")
     lines.append(
-        "模型榜单用于辅助比较不同模型的相对表现，不应单独作为选型结论。数据来自 [Arena AI](https://arena.ai/)，由 GitHub Actions 每日自动更新。\n"
+        "模型榜单用于辅助比较不同模型的相对表现，不应单独作为选型结论。数据来自 [Arena AI](https://arena.ai/)，由 GitHub Actions 每两天自动更新一次。\n"
     )
     lines.append("选择模型时还应综合考虑任务类型、上下文长度、多模态与工具调用能力、速度、价格、地区可用性和数据政策。排行榜与价格会动态变化，请以页面标注的更新时间和模型服务商官方信息为准。\n")
     lines.append("## 榜单目录\n")

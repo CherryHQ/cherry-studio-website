@@ -3,7 +3,7 @@ name: Update LLM Leaderboard
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 8 * * *'
+    - cron: '0 8 */2 * *'
 
 # The job commits the refreshed snapshot back to the branch it runs on.
 permissions:

@@ -1,6 +1,6 @@
 # 文生图榜单
 
-本页展示 [Arena AI](https://arena.ai/leaderboard/text-to-image) 榜单前 30 名的每日快照，方便快速了解近期模型表现。完整榜单、筛选项和最新变化请到 Arena AI 官网查看。
+本页展示 [Arena AI](https://arena.ai/leaderboard/text-to-image) 榜单前 30 名的最新快照，方便快速了解近期模型表现。完整榜单、筛选项和最新变化请到 Arena AI 官网查看。
 
 本榜单评测文生图模型根据文本提示生成图像的能力。
 
@@ -59,4 +59,4 @@
 
 ## 数据来源
 
-数据来自 [Arena AI 官方 文生图榜单](https://arena.ai/leaderboard/text-to-image)，由 GitHub Actions 每天更新。模型价格、许可证和能力请以模型服务商官方信息为准。
+数据来自 [Arena AI 官方 文生图榜单](https://arena.ai/leaderboard/text-to-image)，由 GitHub Actions 每两天更新一次。模型价格、许可证和能力请以模型服务商官方信息为准。
