@@ -1,20 +1,20 @@
 # Model Rankings
 
-The model rankings help you compare the relative performance of different models, but shouldn't be used on their own to decide which model to choose. The data comes from [Arena AI](https://arena.ai/) and is updated automatically every day by GitHub Actions.
+These rankings help you compare the relative performance of different models; they should not be the only input to a model choice. The data comes from [Arena AI](https://arena.ai/) and is refreshed every two days by GitHub Actions.
 
-When choosing a model, also consider the task type, context length, multimodal and tool-calling capabilities, speed, price, regional availability and data policy. Rankings and prices change over time; rely on the update time shown on each page and the model provider's official information.
+When choosing a model, also weigh the task type, context length, multimodal and tool-calling abilities, speed, price, regional availability and data policy. Rankings and prices change over time: trust the update time shown on each page and the model provider's own documentation.
 
-## Rankings
+## Leaderboards
 
-* [Agent Leaderboard](agent.md): evaluates overall performance on multi-turn tool-calling / agent tasks, across dimensions such as net improvement rate, confirmed success rate, upvote/downvote ratio, controllability, Bash recovery rate and tool hallucination rate.
-* [Text Leaderboard](text.md): Arena AI's core text battle leaderboard, which estimates models' relative strength from blind human-voted matchups.
-* [Search Leaderboard](search.md): evaluates performance on web search / information retrieval tasks.
-* [Vision Leaderboard](vision.md): evaluates multimodal models on image understanding tasks.
-* [Code / WebDev Leaderboard](code-webdev.md): evaluates real-world performance on web front-end development (HTML/CSS/JS) tasks.
-* [Text-to-Image Leaderboard](text-to-image.md): evaluates how well text-to-image models generate images from text prompts.
+* [Agent Leaderboard](agent.md): This leaderboard measures how models perform on multi-turn tool-calling and agent tasks, across net improvement, confirmed success, praise-to-complaint ratio, steerability, Bash recovery, tool hallucination and session volume.
+* [Text Leaderboard](text.md): This is Arena AI's core text battle leaderboard, which estimates relative model strength from blind human-voted matchups.
+* [Search Leaderboard](search.md): This leaderboard measures how models perform on web search and information-retrieval tasks.
+* [Vision Leaderboard](vision.md): This leaderboard measures how multimodal models perform on image-understanding tasks.
+* [Code / Web Dev Leaderboard](code-webdev.md): This leaderboard measures how models perform in practice on web front-end development (HTML/CSS/JS) tasks.
+* [Text-to-Image Leaderboard](text-to-image.md): This leaderboard measures how well text-to-image models turn a text prompt into an image.
 
 ***
 
-### 💡 Get Help and Submit Feedback
+### 💡 Get help and send feedback
 
-If you have any questions, bugs, or feature suggestions during configuration or use, please use the official channels listed in [Feedback and Suggestions](../../question-contact/suggestions.md).
+If you run into questions, bugs or feature suggestions while configuring or using Cherry Studio, please use the official channels listed in [Feedback and suggestions](../../question-contact/suggestions.md).
