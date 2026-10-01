@@ -1,64 +1,64 @@
 # Vision Leaderboard
 
-This page displays a daily snapshot of the top 30 models on the [Arena AI](https://arena.ai/leaderboard/vision) leaderboard, allowing you to quickly assess recent model performance. For the complete leaderboard, filtering options, and the latest changes, please visit the Arena AI official website.
+This page shows the top 30 models on the [Arena AI](https://arena.ai/leaderboard/vision) leaderboard, snapshotted daily so you can see how recent models are doing at a glance. See the Arena AI site for the full leaderboard, filters and latest changes.
 
-This leaderboard evaluates multimodal models on image understanding tasks.
+This leaderboard measures how multimodal models perform on image-understanding tasks.
 
-> **Data Updated**: 2026-09-19 12:14:58 UTC / 2026-09-19 20:14:58 CST (Beijing Time)
+> **Data updated**: 2026-10-01 15:06:40 UTC / 2026-10-01 23:06:40 CST (Beijing time)
 
 {% hint style="info" %}
-Leaderboard rankings reflect specific evaluations and user voting preferences; they do not guarantee that a model will perform better for your specific tasks. When selecting a model, also consider price, speed, context window, tool calling, privacy, and regional availability.
+A leaderboard reflects one particular evaluation and the preferences of its voters, so a high rank does not mean a model will do better on your tasks. Weigh price, speed, context, tool calling, privacy and regional availability as well.
 {% endhint %}
 
 ## Top 30
 
-|   Rank | Rank Range   | Model                                                                                                                                                             | Score         |     Votes | Price $/M Tokens   | Context   |
-|-----:|:-------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------|-------:|:---------------|:------|
-|    1 | 1-8    | claude-fable-5-high [<sup>1</sup>](https://www.anthropic.com/news/claude-fable-5-mythos-5)                                                                     | 1310 (±8)  | 11,304 | $10 / $50      | 1M    |
-|    2 | 1-14   | qwen3.8-max [<sup>1</sup>](https://www.qwencloud.com/models/qwen3.8-max)                                                                                       | 1302 (±8)  |  8,665 | $2 / $6        | 1M    |
-|    3 | 1-14   | claude-opus-4-7-high [<sup>1</sup>](https://www.anthropic.com/news/claude-opus-4-7)                                                                            | 1301 (±7)  | 21,092 | $5 / $25       | 1M    |
-|    4 | 1-15   | claude-opus-4-7 [<sup>1</sup>](https://www.anthropic.com/news/claude-opus-4-7)                                                                                 | 1300 (±7)  | 21,450 | $5 / $25       | 1M    |
-|    5 | 1-16   | claude-opus-4-6-high [<sup>1</sup>](https://www.anthropic.com/news/claude-opus-4-6)                                                                            | 1299 (±7)  | 20,835 | $5 / $25       | 1M    |
-|    6 | 1-30   | muse-spark-1.3-max [<sup>1</sup>](https://developer.meta.com/ai/models/muse-spark/)                                                                            | 1294 (±15) |  1,804 | N/A            | N/A   |
-|    7 | 1-28   | muse-spark [<sup>1</sup>](https://ai.meta.com/blog/introducing-muse-spark-msl/)                                                                                | 1294 (±9)  |  5,572 | N/A            | N/A   |
-|    8 | 2-26   | claude-opus-4-6 [<sup>1</sup>](https://www.anthropic.com/news/claude-opus-4-6)                                                                                 | 1293 (±7)  | 25,140 | $5 / $25       | 1M    |
-|    9 | 1-31   | muse-spark-1.2 (xHigh) [<sup>1</sup>](https://developer.meta.com/ai/models/muse-spark/)                                                                        | 1292 (±15) |  1,841 | $1.25 / $4.25  | N/A   |
-|   10 | 2-30   | claude-opus-5-high [<sup>1</sup>](https://www.anthropic.com/news/claude-opus-5)                                                                                | 1289 (±8)  | 11,599 | $5 / $25       | 1M    |
-|   11 | 2-31   | claude-fable-5.1-max [<sup>1</sup>](https://www.anthropic.com/claude-fable-and-mythos-5-1)                                                                     | 1289 (±12) |  2,701 | $10 / $50      | 1M    |
-|   12 | 2-30   | gemini-3-pro [<sup>1</sup>](http://aistudio.google.com/app/prompts/new_chat?model=gemini-3-pro-preview)                                                        | 1289 (±8)  | 12,995 | $2 / $12       | 1M    |
-|   13 | 4-30   | gpt-5.5 [<sup>1</sup>](https://openai.com/index/introducing-gpt-5-5/)                                                                                          | 1287 (±6)  | 23,423 | $5 / $30       | 1.1M  |
-|   14 | 2-31   | gpt-5.6-sol-xhigh [<sup>1</sup>](https://openai.com/index/gpt-5-6/)                                                                                            | 1286 (±8)  |  7,729 | $4 / $20       | N/A   |
-|   15 | 6-30   | gpt-5.4-high [<sup>1</sup>](https://platform.openai.com/docs/models/gpt-5.4)                                                                                   | 1285 (±6)  | 25,357 | $2.50 / $15    | 1.1M  |
-|   16 | 2-38   | gpt-6-astra-max [<sup>1</sup>](https://openai.com/index/gpt-6-astra/)                                                                                          | 1284 (±17) |  1,367 | N/A            | N/A   |
-|   17 | 6-31   | gemini-3.5-flash-high [<sup>1</sup>](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5/)                                      | 1284 (±8)  |  9,579 | $0.75 / $4.50  | 1M    |
-|   18 | 6-31   | claude-opus-4-8-high [<sup>1</sup>](https://www.anthropic.com/news/claude-opus-4-8)                                                                            | 1283 (±7)  | 15,274 | $5 / $25       | 1M    |
-|   19 | 6-31   | gpt-5.5-high [<sup>1</sup>](https://openai.com/index/introducing-gpt-5-5/)                                                                                     | 1283 (±6)  | 21,960 | $5 / $30       | 1.1M  |
-|   20 | 6-32   | gemini-3.5-flash-medium [<sup>1</sup>](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5/)                                    | 1283 (±8)  |  9,618 | $0.75 / $4.50  | 1M    |
-|   21 | 5-35   | gemini-3.6-flash-high [<sup>1</sup>](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-6-flash-3-5-flash-lite-3-5-flash-cyber/) | 1283 (±10) |  5,159 | $0.75 / $3.75  | 1M    |
-|   22 | 6-35   | muse-spark-1.1 [<sup>1</sup>](https://ai.meta.com/blog/introducing-muse-spark-meta-model-api/)                                                                 | 1281 (±8)  |  8,447 | $1.25 / $4.25  | 1M    |
-|   23 | 6-35   | gpt-5.4 [<sup>1</sup>](https://platform.openai.com/docs/models/gpt-5.4)                                                                                        | 1280 (±7)  | 21,188 | $1.25 / $7.50  | 1.1M  |
-|   24 | 6-35   | grok-4.5 [<sup>1</sup>](https://docs.x.ai/developers/models/grok-4.5)                                                                                          | 1279 (±8)  |  8,355 | $2 / $6        | 500K  |
-|   25 | 7-35   | claude-opus-4-8 [<sup>1</sup>](https://www.anthropic.com/news/claude-opus-4-8)                                                                                 | 1279 (±7)  | 15,801 | $5 / $25       | 1M    |
-|   26 | 8-35   | gemini-3.1-pro-preview [<sup>1</sup>](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-pro/)                                 | 1279 (±5)  | 40,691 | $1 / $6        | 1M    |
-|   27 | 7-35   | gpt-5.2-chat-latest-20260210 [<sup>1</sup>](https://developers.openai.com/api/docs/models/gpt-5.2-chat-latest)                                                 | 1278 (±7)  | 15,432 | $1.75 / $14    | 128K  |
-|   28 | 6-37   | gpt-5.5-instant [<sup>1</sup>](https://openai.com/index/gpt-5-5-instant)                                                                                       | 1278 (±9)  |  7,226 | $5 / $30       | 1.1M  |
-|   29 | 8-37   | claude-sonnet-4-6 [<sup>1</sup>](https://www.anthropic.com/news/claude-sonnet-4-6)                                                                             | 1275 (±6)  | 25,552 | $1.50 / $7.50  | 1M    |
-|   30 | 6-41   | glm-5.3-flash [<sup>1</sup>](https://z.ai/blog/glm-5.3)                                                                                                        | 1275 (±12) |  3,110 | $0.07 / $0.25  | 1M    |
+|   Rank | Rank Spread   | Model                                                                                                                                                          | Score                  |   Votes | Price $/M   | Context   |
+|-------:|:--------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------|--------:|:------------|:----------|
+|      1 | 1-8           | claude-fable-5-high [<sup>1</sup>](https://www.anthropic.com/news/claude-fable-5-mythos-5)                                                                     | 1310 (±7)              |  13,483 | $10/$50     | 1M        |
+|      2 | 1-16          | qwen3.8-max [<sup>1</sup>](https://www.qwencloud.com/models/qwen3.8-max)                                                                                       | 1301 (±7)              |  10,086 | $1.69/$5.07 | 1M        |
+|      3 | 1-17          | claude-opus-4-6-high [<sup>1</sup>](https://www.anthropic.com/news/claude-opus-4-6)                                                                            | 1299 (±6)              |  22,350 | $5/$25      | 1M        |
+|      4 | 1-18          | claude-opus-4-7 [<sup>1</sup>](https://www.anthropic.com/news/claude-opus-4-7)                                                                                 | 1299 (±7)              |  22,948 | $5/$25      | 1M        |
+|      5 | 1-19          | claude-opus-4-7-high [<sup>1</sup>](https://www.anthropic.com/news/claude-opus-4-7)                                                                            | 1298 (±7)              |  22,559 | $5/$25      | 1M        |
+|      6 | 1-31          | gemini-3.7-flash-high [<sup>1</sup>](https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-3-7-flash/)                    | 1295 (±11) Preliminary |   3,425 | $0.75/$3.75 | 1M        |
+|      7 | 2-23          | claude-opus-4-6 [<sup>1</sup>](https://www.anthropic.com/news/claude-opus-4-6)                                                                                 | 1295 (±6)              |  26,904 | $5/$25      | 1M        |
+|      8 | 1-31          | muse-spark [<sup>1</sup>](https://ai.meta.com/blog/introducing-muse-spark-msl/)                                                                                | 1294 (±9)              |   5,880 | N/A         | N/A       |
+|      9 | 1-33          | muse-spark-1.2 (xHigh) [<sup>1</sup>](https://developer.meta.com/ai/models/muse-spark/)                                                                        | 1292 (±14)             |   1,962 | $1.25/$4.25 | N/A       |
+|     10 | 2-32          | muse-spark-1.3-max [<sup>1</sup>](https://developer.meta.com/ai/models/muse-spark/)                                                                            | 1290 (±11)             |   3,472 | N/A         | N/A       |
+|     11 | 2-31          | gemini-3-pro [<sup>1</sup>](https://aistudio.google.com/app/prompts/new_chat?model=gemini-3-pro-preview)                                                       | 1289 (±7)              |  13,624 | $2/$12      | 1M        |
+|     12 | 2-31          | claude-opus-5-high [<sup>1</sup>](https://www.anthropic.com/news/claude-opus-5)                                                                                | 1289 (±7)              |  15,304 | $5/$25      | 1M        |
+|     13 | 2-32          | gpt-5.6-sol-xhigh [<sup>1</sup>](https://openai.com/index/gpt-5-6/)                                                                                            | 1287 (±8)              |  10,063 | $4/$20      | N/A       |
+|     14 | 2-33          | claude-fable-5.1-max [<sup>1</sup>](https://www.anthropic.com/claude-fable-and-mythos-5-1)                                                                     | 1287 (±10)             |   4,050 | $10/$50     | 1M        |
+|     15 | 4-32          | gpt-5.5 [<sup>1</sup>](https://openai.com/index/introducing-gpt-5-5/)                                                                                          | 1287 (±6)              |  26,870 | $5/$30      | 1.1M      |
+|     16 | 3-32          | claude-opus-4-8-high [<sup>1</sup>](https://www.anthropic.com/news/claude-opus-4-8)                                                                            | 1286 (±7)              |  18,020 | $5/$25      | 1M        |
+|     17 | 2-34          | gemini-3.8-flash-high [<sup>1</sup>](https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/)                   | 1286 (±12) Preliminary |   2,711 | $0.75/$3.75 | 1M        |
+|     18 | 2-34          | gpt-6-astra-max [<sup>1</sup>](https://openai.com/index/gpt-6-astra/)                                                                                          | 1285 (±12)             |   2,869 | N/A         | N/A       |
+|     19 | 5-33          | gemini-3.5-flash-high [<sup>1</sup>](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5/)                                      | 1285 (±7)              |  11,983 | $0.75/$4.50 | 1M        |
+|     20 | 6-33          | gpt-5.4-high [<sup>1</sup>](https://platform.openai.com/docs/models/gpt-5.4)                                                                                   | 1284 (±6)              |  28,881 | $2.50/$15   | 1.1M      |
+|     21 | 6-33          | gemini-3.5-flash-medium [<sup>1</sup>](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5/)                                    | 1284 (±7)              |  12,124 | $0.75/$4.50 | 1M        |
+|     22 | 6-39          | glm-5.3-flash [<sup>1</sup>](https://z.ai/blog/glm-5.3)                                                                                                        | 1281 (±10)             |   4,832 | $0.06/$0.20 | 1M        |
+|     23 | 7-34          | gpt-5.5-high [<sup>1</sup>](https://openai.com/index/introducing-gpt-5-5/)                                                                                     | 1281 (±6)              |  25,170 | $5/$30      | 1.1M      |
+|     24 | 6-39          | gemini-3.6-flash-high [<sup>1</sup>](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-6-flash-3-5-flash-lite-3-5-flash-cyber/) | 1280 (±9)              |   7,076 | $0.75/$3.75 | 1M        |
+|     25 | 7-34          | gemini-3.1-pro-preview [<sup>1</sup>](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-pro/)                                 | 1280 (±5)              |  45,204 | $1/$6       | 1M        |
+|     26 | 7-37          | muse-spark-1.1 [<sup>1</sup>](https://ai.meta.com/blog/introducing-muse-spark-meta-model-api/)                                                                 | 1280 (±7)              |  10,906 | $1.25/$4.25 | 1M        |
+|     27 | 7-37          | gpt-5.4 [<sup>1</sup>](https://platform.openai.com/docs/models/gpt-5.4)                                                                                        | 1279 (±7)              |  22,854 | $1.25/$7.50 | 1.1M      |
+|     28 | 7-39          | grok-4.5 [<sup>1</sup>](https://docs.x.ai/developers/models/grok-4.5)                                                                                          | 1279 (±7)              |  10,681 | $2/$6       | 500K      |
+|     29 | 7-37          | claude-opus-4-8 [<sup>1</sup>](https://www.anthropic.com/news/claude-opus-4-8)                                                                                 | 1279 (±7)              |  18,583 | $5/$25      | 1M        |
+|     30 | 7-38          | gpt-5.2-chat-latest-20260210 [<sup>1</sup>](https://developers.openai.com/api/docs/models/gpt-5.2-chat-latest)                                                 | 1278 (±7)              |  16,492 | $1.75/$14   | 128K      |
 
-## How to Read This Table
+## How to read this table
 
-* **Rank / Rank Range**: Relative ranking estimated by Arena AI based on battle votes; the rank range indicates the fluctuation of the rank within the confidence interval.
-* **Score**: Relative score, suitable for comparing models on the leaderboard at the same point in time.
-* **Votes / Sessions**: Sample size reference; with smaller sample sizes, rankings are typically more volatile.
-* **Price $/M Tokens**: Reference price per million Tokens for input / output.
-* **Context**: Maximum context length supported by the model.
+* **Rank / Rank Spread**: relative position estimated from battle votes. The spread shows how far the rank moves within the confidence interval.
+* **Score**: a relative score, useful for comparing the models listed at the same moment.
+* **Votes / Sessions**: sample size. Rankings move more when there are fewer votes.
+* **Price $/M**: reference price per million tokens for input / output.
+* **Context**: maximum context length the model supports.
 
-## Three Things to Verify When Selecting a Model
+## Three things to check before choosing a model
 
-1. Whether the Provider actually offers this model, and if it is available in your region and account;
-2. Whether the API price, rate limits, and context window are suitable for your tasks;
-3. Run small-scale tests with 3–5 real-world tasks; do not rely solely on overall leaderboard rankings.
+1. Whether the provider actually serves the model, and whether it is available in your region and for your account;
+2. Whether the API price, rate limits and context window fit your workload;
+3. Run a small test on three to five real tasks instead of relying on the overall ranking alone.
 
-## Data Source
+## Data source
 
-Data is sourced from the [Arena AI Official Vision Leaderboard](https://arena.ai/leaderboard/vision) and is updated daily via GitHub Actions. Please refer to the model provider's official information for model pricing, licenses, and capabilities.
+Data comes from the [Arena AI Vision Leaderboard](https://arena.ai/leaderboard/vision) and is refreshed daily by GitHub Actions. For model pricing, licenses and capabilities, check the model provider's own documentation.

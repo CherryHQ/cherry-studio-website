@@ -4,7 +4,7 @@
 
 本榜单评测文生图模型根据文本提示生成图像的能力。
 
-> **数据更新时间**: 2026-10-01 03:09:26 UTC / 2026-10-01 11:09:26 CST (北京时间)
+> **数据更新时间**: 2026-10-01 15:06:40 UTC / 2026-10-01 23:06:40 CST (北京时间)
 
 {% hint style="info" %}
 排行榜反映特定评测和用户投票偏好，不等同于模型在你的任务中一定更好。选择模型时还要考虑价格、速度、上下文、工具调用、隐私和地区可用性。
@@ -22,7 +22,7 @@
 |    6 | 5-6    | grok-imagine-image-2.0 (low) [<sup>1</sup>](https://x.ai/news/grok-imagine-image-2)                                                                                            | 1301 (±8)             |   7,257 |
 |    7 | 7-8    | muse-image [<sup>1</sup>](https://ai.meta.com/blog/introducing-muse-image-muse-video-msl/)                                                                                     | 1276 (±5)             |  35,422 |
 |    8 | 7-9    | reve-2.0 [<sup>1</sup>](http://reve.com/)                                                                                                                                      | 1269 (±6)             |  15,802 |
-|    9 | 8-12   | gemini-3.1-flash-image (nano-banana-2) [web-search] [<sup>1</sup>](http://aistudio.google.com/prompts/new_chat?model=gemini-3.1-flash-image)                                   | 1261 (±4)             |  53,228 |
+|    9 | 8-12   | gemini-3.1-flash-image (nano-banana-2) [web-search] [<sup>1</sup>](https://aistudio.google.com/prompts/new_chat?model=gemini-3.1-flash-image)                                  | 1261 (±4)             |  53,228 |
 |   10 | 9-13   | seedream-5.0-pro [<sup>1</sup>](https://seed.bytedance.com/en/seedream5_0_pro)                                                                                                 | 1256 (±4)             |  85,690 |
 |   11 | 9-14   | qwen-image-3.0-pro [<sup>1</sup>](https://www.qwencloud.com/try-ai?scene=image&models=qwen-image-3.0-pro)                                                                      | 1256 (±6)             |  11,520 |
 |   12 | 9-14   | mai-image-2.5 [<sup>1</sup>](https://microsoft.ai/news/introducing-mai-image-2-5/)                                                                                             | 1254 (±4)             |  61,448 |
@@ -59,4 +59,4 @@
 
 ## 数据来源
 
-数据来自 [Arena AI 官方 文生图榜单](https://arena.ai/leaderboard/text-to-image)，由 GitHub Actions 每两天更新一次。模型价格、许可证和能力请以模型服务商官方信息为准。
+数据来自 [Arena AI 官方 文生图榜单](https://arena.ai/leaderboard/text-to-image)，由 GitHub Actions 每天更新一次。模型价格、许可证和能力请以模型服务商官方信息为准。

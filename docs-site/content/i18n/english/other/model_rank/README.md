@@ -1,6 +1,6 @@
 # Model Rankings
 
-These rankings help you compare the relative performance of different models; they should not be the only input to a model choice. The data comes from [Arena AI](https://arena.ai/) and is refreshed every two days by GitHub Actions.
+These rankings help you compare the relative performance of different models; they should not be the only input to a model choice. The data comes from [Arena AI](https://arena.ai/) and is refreshed daily by GitHub Actions.
 
 When choosing a model, also weigh the task type, context length, multimodal and tool-calling abilities, speed, price, regional availability and data policy. Rankings and prices change over time: trust the update time shown on each page and the model provider's own documentation.
 
