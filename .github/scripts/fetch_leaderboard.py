@@ -235,22 +235,32 @@ COLUMN_MAPPING = {
 # ---------------------------------------------------------------------------
 def fetch_page_html(url, api_key):
     """
-    使用 ScraperAPI 抓取指定 URL 的 HTML（启用渲染以获取 JS 渲染后的表格）。
+    使用 ScraperAPI 抓取指定 URL 的 HTML。榜单页是服务端预渲染的，表格已在原始 HTML 中，
+    因此不需要 render=true（每个请求 10 credits → 1 credit）。
     带重试与指数退避。
     """
-    scraperapi_url = (
-        f"http://api.scraperapi.com?api_key={api_key}&url={url}&render=true"
-    )
+    scraperapi_url = f"http://api.scraperapi.com?api_key={api_key}&url={url}"
 
     retries = 3
     delay = 60
     last_exc = None
+    last_html = None
 
     for i in range(retries):
         try:
             print(f"  Attempt {i + 1}/{retries} to fetch {url} via ScraperAPI...")
             response = requests.get(scraperapi_url, timeout=180)
             response.raise_for_status()
+            # 挑战页与软错误页同样返回 200，缺表格时重抓一次比让整个榜单停更划算。
+            if "<table" not in response.text:
+                last_html = response.text
+                if i < retries - 1:
+                    print(f"  No <table> in the response ({len(response.text)} bytes). Retrying in {delay}s...")
+                    time.sleep(delay)
+                    delay *= 2
+                else:
+                    print("  All retries returned a page without a leaderboard table.")
+                continue
             print("  Successfully fetched page.")
             return response.text
         except requests.exceptions.HTTPError as e:
@@ -272,7 +282,8 @@ def fetch_page_html(url, api_key):
 
     if last_exc:
         raise last_exc
-    return None
+    # 始终交回最后一次响应，交由下游按「未解析到表格」处理并保留旧快照。
+    return last_html
 
 
 def parse_rank_spread(cell):
@@ -537,7 +548,7 @@ def generate_markdown(df, config, utc_now, beijing_now, lang="zh-cn"):
     if english:
         return f"""# {title}
 
-This page shows the top {config['top_n']} models on the [Arena AI]({url}) leaderboard, snapshotted every two days so you can see how recent models are doing at a glance. See the Arena AI site for the full leaderboard, filters and latest changes.
+This page shows the top {config['top_n']} models on the [Arena AI]({url}) leaderboard, snapshotted daily so you can see how recent models are doing at a glance. See the Arena AI site for the full leaderboard, filters and latest changes.
 
 {description}
 
@@ -563,7 +574,7 @@ A leaderboard reflects one particular evaluation and the preferences of its vote
 
 ## Data source
 
-Data comes from the [Arena AI {title}]({url}) and is refreshed every two days by GitHub Actions. For model pricing, licenses and capabilities, check the model provider's own documentation.
+Data comes from the [Arena AI {title}]({url}) and is refreshed daily by GitHub Actions. For model pricing, licenses and capabilities, check the model provider's own documentation.
 """
 
     return f"""# {title}
@@ -594,7 +605,7 @@ Data comes from the [Arena AI {title}]({url}) and is refreshed every two days by
 
 ## 数据来源
 
-数据来自 [Arena AI 官方 {title}]({url})，由 GitHub Actions 每两天更新一次。模型价格、许可证和能力请以模型服务商官方信息为准。
+数据来自 [Arena AI 官方 {title}]({url})，由 GitHub Actions 每天更新一次。模型价格、许可证和能力请以模型服务商官方信息为准。
 """
 
 
@@ -606,7 +617,7 @@ def generate_readme(lang="zh-cn"):
         lines = [
             "# Model Rankings\n",
             "These rankings help you compare the relative performance of different models; they should not be the only input to a model choice. "
-            "The data comes from [Arena AI](https://arena.ai/) and is refreshed every two days by GitHub Actions.\n",
+            "The data comes from [Arena AI](https://arena.ai/) and is refreshed daily by GitHub Actions.\n",
             "When choosing a model, also weigh the task type, context length, multimodal and tool-calling abilities, speed, price, "
             "regional availability and data policy. Rankings and prices change over time: trust the update time shown on each page and the "
             "model provider's own documentation.\n",
@@ -626,7 +637,7 @@ def generate_readme(lang="zh-cn"):
     lines = []
     lines.append("# 模型榜单\n")
     lines.append(
-        "模型榜单用于辅助比较不同模型的相对表现，不应单独作为选型结论。数据来自 [Arena AI](https://arena.ai/)，由 GitHub Actions 每两天自动更新一次。\n"
+        "模型榜单用于辅助比较不同模型的相对表现，不应单独作为选型结论。数据来自 [Arena AI](https://arena.ai/)，由 GitHub Actions 每天自动更新一次。\n"
     )
     lines.append("选择模型时还应综合考虑任务类型、上下文长度、多模态与工具调用能力、速度、价格、地区可用性和数据政策。排行榜与价格会动态变化，请以页面标注的更新时间和模型服务商官方信息为准。\n")
     lines.append("## 榜单目录\n")
