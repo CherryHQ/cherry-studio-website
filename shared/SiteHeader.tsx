@@ -47,6 +47,7 @@ function formatStarCount(count: number) {
 export interface HeaderLink {
   href: string
   label: string
+  badge?: string
   external?: boolean
   active?: boolean
 }
@@ -85,10 +86,20 @@ export function SiteHeader({
   const [scrolled, setScrolled] = useState(false)
   const [starCount, setStarCount] = useState(() => readGitHubStarsCache()?.count ?? GITHUB_STARS_FALLBACK)
   const dialog = useRef<HTMLDialogElement>(null)
+  const linkContent = (item: HeaderLink) => (
+    <>
+      {item.label}
+      {item.badge && (
+        <sup className="rounded-full bg-primary/10 px-1.5 py-0.5 text-[10px] font-semibold leading-none text-primary">
+          {item.badge}
+        </sup>
+      )}
+    </>
+  )
   const link = (item: HeaderLink, className: string) =>
     item.external ? (
       <a href={item.href} target="_blank" rel="noopener noreferrer" className={className}>
-        {item.label}
+        {linkContent(item)}
         <ArrowUpRight className="h-3 w-3" />
       </a>
     ) : (
@@ -96,7 +107,7 @@ export function SiteHeader({
         href: item.href,
         className,
         'aria-current': item.active ? 'page' : undefined,
-        children: item.label
+        children: linkContent(item)
       })
     )
 
