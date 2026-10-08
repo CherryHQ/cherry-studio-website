@@ -13,11 +13,11 @@ Install Cherry Studio from [Google Play](https://play.google.com/store/apps/deta
 1. In the Android column of the mobile download page, scan the QR code or select the **Google Play** button.
 2. Select **Install** in Google Play.
 
-### Alternative: GitCode APK
+### Alternative: APK
 
-If you cannot use Google Play, switch the Android column on the download page to **GitCode APK**. The current APK is provided for ARM64 devices.
+If you cannot use Google Play, switch the Android column on the download page to **APK**. The current APK is provided for ARM64 devices.
 
-1. Switch the Android column on the download page to **GitCode APK**, then scan the QR code or select the download button.
+1. Switch the Android column on the download page to **APK**, then scan the QR code or select the download button.
 2. Open the APK from your browser downloads or file manager.
 3. If Android blocks the installer, follow the system prompt to temporarily allow your browser or file manager to install unknown apps.
 4. Return to the installer and finish installation.

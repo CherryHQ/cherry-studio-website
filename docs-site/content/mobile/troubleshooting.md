@@ -98,7 +98,7 @@ Cherry Studio 是客户端，需要连接模型服务。先配置 API Key、添�
 
 ## Android 禁止安装，或 TestFlight 无法加入
 
-使用[官方下载入口](https://cherryai.com.cn/download?platform=mobile)，优先从 Google Play 或 App Store 安装。使用 GitCode APK 时，Android 按系统提示允许当前下载应用安装 APK；体验 iPhone / iPad 测试版时，先安装 TestFlight，再打开邀请。TestFlight 名额、测试版本有效期或平台服务异常也可能影响测试版安装。
+使用[官方下载入口](https://cherryai.com.cn/download?platform=mobile)，优先从 Google Play 或 App Store 安装。使用 APK 时，Android 按系统提示允许当前下载应用安装 APK；体验 iPhone / iPad 测试版时，先安装 TestFlight，再打开邀请。TestFlight 名额、测试版本有效期或平台服务异常也可能影响测试版安装。
 
 完整步骤见[下载与安装](installation.md)。
 

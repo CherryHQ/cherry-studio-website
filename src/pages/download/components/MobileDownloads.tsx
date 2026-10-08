@@ -13,7 +13,7 @@ type Platform = MobileDownload['platform']
 type Channel = MobileDownload['channel']
 
 const storeNames: Record<Platform, string> = { android: 'Google Play', ios: 'App Store' }
-const channelNames: Record<Exclude<Channel, 'store'>, string> = { apk: 'GitCode APK', testflight: 'TestFlight' }
+const channelNames: Record<Exclude<Channel, 'store'>, string> = { apk: 'APK', testflight: 'TestFlight' }
 
 function channelLabel({ platform, channel }: MobileDownload) {
   return channel === 'store' ? storeNames[platform] : channelNames[channel]

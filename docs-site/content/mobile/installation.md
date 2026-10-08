@@ -13,11 +13,11 @@ icon: download
 1. 在移动版下载页的 Android 一栏，扫描二维码或选择 **Google Play** 按钮。
 2. 在 Google Play 中选择 **安装**。
 
-### 其他方式：GitCode APK
+### 其他方式：APK
 
-无法使用 Google Play 时，可在下载页 Android 一栏切换到 **GitCode APK**。当前 APK 适用于 ARM64 设备。
+无法使用 Google Play 时，可在下载页 Android 一栏切换到 **APK**。当前 APK 适用于 ARM64 设备。
 
-1. 在下载页 Android 一栏切换到 **GitCode APK**，扫描二维码或选择下载按钮。
+1. 在下载页 Android 一栏切换到 **APK**，扫描二维码或选择下载按钮。
 2. 下载完成后，从浏览器下载记录或文件管理器打开 APK。
 3. 如果系统阻止安装，按提示临时允许当前浏览器或文件管理器“安装未知应用”。
 4. 返回安装界面并完成安装。

@@ -15,7 +15,7 @@ Cherry Studio Mobile is an AI client designed for Android, iPhone, and iPad. Con
 
 The mobile app is now available on Google Play and the App Store:
 
-* Install on Android from [Google Play](https://play.google.com/store/apps/details?id=com.cherryai.cherrystudio_app). GitCode APK downloads remain available.
+* Install on Android from [Google Play](https://play.google.com/store/apps/details?id=com.cherryai.cherrystudio_app). APK downloads remain available.
 * Install on iPhone and iPad from the [App Store](https://apps.apple.com/us/app/cherry-studio-app/id6809783714). The TestFlight beta remains available.
 * Screens and capabilities may change between versions. Follow the behavior of the version installed on your device.
 
