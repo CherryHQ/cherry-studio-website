@@ -96,9 +96,9 @@ async function refreshDownloads(): Promise<void> {
       if (!latest) throw new Error('GitCode returned no Android release')
 
       refreshAfter = Date.now() + cacheDuration
-      if (downloads.find(({ platform }) => platform === 'android')?.url !== latest.url) {
+      if (downloads.find(({ channel }) => channel === 'apk')?.url !== latest.url) {
         downloads = mobileDownloads.map((download) =>
-          download.platform === 'android' ? { ...download, url: latest.url } : download
+          download.channel === 'apk' ? { ...download, url: latest.url } : download
         )
         for (const listener of listeners) listener()
       }

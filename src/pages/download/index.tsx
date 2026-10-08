@@ -144,7 +144,7 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
               {!showMobile && versionData && ` ${versionData.version}`}
             </h1>
             {showMobile ? (
-              <p className="text-muted-foreground mt-4 text-sm">{t('mobile_page.beta')}</p>
+              <p className="text-muted-foreground mt-4 text-sm">{t('mobile_page.availability')}</p>
             ) : (
               <VersionInfo
                 versionData={versionData}

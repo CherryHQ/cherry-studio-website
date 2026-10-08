@@ -10,8 +10,8 @@
   "page_description": {
     "home": "Cherry Studio AI桌面客户端，开源、免费、且功能强大。AI agent、AI 对话、AI绘图、知识库等功能齐全，支持所有主流大模型，支持Windows/macOS/Linux，支持数据本地存储，是AI深度使用者的首选",
     "download": "下载 Cherry Studio AI 客户端，支持 Windows、macOS、Linux 平台。集成 100+ AI 模型，完全免费开源。",
-    "mobile": "了解 Cherry Studio 移动版，在手机上连接 AI 模型、进行对话、创作图像和使用工具。下载 Android APK 或加入 iOS TestFlight 测试。",
-    "mobile_download": "下载 Cherry Studio 移动版。获取 Android APK，或通过 TestFlight 在 iPhone 与 iPad 上体验测试版。",
+    "mobile": "了解 Cherry Studio 移动版，在手机上连接 AI 模型、进行对话、创作图像和使用工具。现已上架 Google Play 与 App Store。",
+    "mobile_download": "从 Google Play 或 App Store 下载 Cherry Studio 移动版，支持 Android、iPhone 与 iPad，也提供 APK 与 TestFlight 测试版入口。",
     "theme": "发现和分享美丽的 Cherry Studio 主题，个性化你的 AI 助手界面。支持浅色和深色模式主题。",
     "careers": "加入 Cherry Studio 核心团队，寻找 AI Native 全栈工程师，一起打造下一代 AI 产品。"
   },
@@ -43,23 +43,23 @@
     "desktop": "桌面版下载",
     "other_platforms": "其他平台",
     "direct_apk": "下载 APK",
-    "direct_testflight": "加入 TestFlight",
-    "direct_store": "前往应用商店",
+    "direct_testflight": "TestFlight 测试版",
+    "direct_store": "{{store}} 下载",
+    "badge_caption": "立即下载",
     "apk": "扫码下载 APK",
     "testflight": "扫码加入 TestFlight",
-    "store": "扫码前往应用商店",
+    "store": "扫码前往 {{store}}",
     "qr_alt": "{{platform}} 安装二维码",
     "unavailable": "暂未开放"
   },
   "mobile_page": {
-    "beta": "Beta 体验版",
+    "availability": "现已上架 Google Play 与 App Store",
     "current_device": "当前设备",
     "channels": {
       "apk": "适用于 ARM64 设备",
       "testflight": "需先安装 TestFlight",
-      "store": "通过应用商店安装"
+      "store": "通过 {{store}} 安装"
     },
-    "setup_note": "使用前需配置模型服务，部分模型及工具服务可能收费。",
     "download_banner": "在手机上对话、绘图、连接工具。"
   },
   "mobile_site": {
@@ -170,7 +170,7 @@
     "title": "项目相关",
     "intro": {
       "title": "项目简介",
-      "description": "Cherry Studio 是一个支持多平台的 AI 客户端，支持 Windows、macOS、Linux 平台,未来也会支持移动端。项目自 2024 年 7 月至今已迭代数百个版本,我们致力于打造一个更加高效、安全、易用的客户端，让更多人能够享受到 AI 带来的便利。"
+      "description": "Cherry Studio 是一个支持多平台的 AI 客户端，支持 Windows、macOS、Linux、Android、iPhone 与 iPad。项目自 2024 年 7 月至今已迭代数百个版本,我们致力于打造一个更加高效、安全、易用的客户端，让更多人能够享受到 AI 带来的便利。"
     },
     "goal": {
       "title": "Cherry Studio 的目标",

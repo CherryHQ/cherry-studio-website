@@ -98,7 +98,7 @@ No. It imports selected provider configuration and enabled models, excludes chat
 
 ## Android blocks installation or TestFlight cannot join
 
-Use the [official download page](https://cherryai.com/download?platform=mobile). Android may need permission for the downloading app to install APKs. Install TestFlight before opening its invitation on iPhone/iPad. Capacity, build expiry, and service availability can affect installation.
+Use the [official download page](https://cherryai.com/download?platform=mobile) and install from Google Play or the App Store first. For APKs, Android may need permission for the downloading app to install APKs. For beta builds on iPhone/iPad, install TestFlight before opening its invitation. TestFlight capacity, build expiry, and service availability can affect beta installation.
 
 See [download and installation](installation.md).
 
