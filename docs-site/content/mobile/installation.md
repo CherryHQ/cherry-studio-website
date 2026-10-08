@@ -8,9 +8,16 @@ icon: download
 
 ## Android
 
-当前提供适用于 ARM64 设备的 APK。
+推荐从 [Google Play](https://play.google.com/store/apps/details?id=com.cherryai.cherrystudio_app) 安装 Cherry Studio，后续更新由商店管理。
 
-1. 在下载页选择 **下载 APK**。
+1. 在移动版下载页的 Android 一栏，扫描二维码或选择 **Google Play** 按钮。
+2. 在 Google Play 中选择 **安装**。
+
+### 其他方式：GitCode APK
+
+无法使用 Google Play 时，可在下载页 Android 一栏切换到 **GitCode APK**。当前 APK 适用于 ARM64 设备。
+
+1. 在下载页 Android 一栏切换到 **GitCode APK**，扫描二维码或选择下载按钮。
 2. 下载完成后，从浏览器下载记录或文件管理器打开 APK。
 3. 如果系统阻止安装，按提示临时允许当前浏览器或文件管理器“安装未知应用”。
 4. 返回安装界面并完成安装。
@@ -19,10 +26,17 @@ icon: download
 
 ## iPhone 与 iPad
 
-iOS / iPadOS 当前通过 TestFlight 提供测试版。
+推荐从 [App Store](https://apps.apple.com/us/app/cherry-studio-app/id6809783714) 安装 Cherry Studio，支持 iOS / iPadOS 17.0 及以上版本。
+
+1. 在移动版下载页的 iPhone / iPad 一栏，扫描二维码或选择 **App Store** 按钮。
+2. 在 App Store 中选择 **获取** 并完成安装。
+
+### 其他方式：TestFlight 测试版
+
+希望体验测试版时，可在下载页 iPhone / iPad 一栏切换到 **TestFlight**。
 
 1. 从 App Store 安装 Apple 的 **TestFlight**。
-2. 在移动版下载页选择 **加入 TestFlight**。
+2. 在移动版下载页 iPhone / iPad 一栏切换到 **TestFlight**，扫描二维码或选择按钮打开邀请。
 3. 在 TestFlight 中接受邀请并选择 **安装**。
 
 TestFlight 名额和测试版本有效期由 Apple 的测试机制管理。如果邀请暂时不可用，请稍后重试或关注官方发布渠道。

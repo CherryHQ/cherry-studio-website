@@ -5,9 +5,18 @@ interface MobileDownload {
 }
 
 // Keep a known-good APK fallback here; useMobileDownloads resolves the latest GitCode release.
-// The TestFlight invitation URL is managed here directly.
-// When a store listing is available, update its URL and channel to 'store'.
+// Store listings are the primary downloads; APK and TestFlight remain alternative channels.
 export const mobileDownloads: MobileDownload[] = [
+  {
+    platform: 'ios',
+    channel: 'store',
+    url: 'https://apps.apple.com/us/app/cherry-studio-app/id6809783714'
+  },
+  {
+    platform: 'android',
+    channel: 'store',
+    url: 'https://play.google.com/store/apps/details?id=com.cherryai.cherrystudio_app'
+  },
   {
     platform: 'android',
     channel: 'apk',
