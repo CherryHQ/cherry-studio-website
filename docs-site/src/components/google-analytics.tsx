@@ -1,59 +1,33 @@
-'use client'
-
-import { usePathname } from 'next/navigation'
 import Script from 'next/script'
-import { useEffect, useState } from 'react'
 
-const OVERSEAS_HOSTS = new Set(['cherryai.com', 'www.cherryai.com'])
-const OVERSEAS_MEASUREMENT_ID = 'G-FQ9WGZFVB9'
-const CHINA_MEASUREMENT_ID = 'G-JTJVLD1BNN'
-
-declare global {
-  interface Window {
-    dataLayer?: unknown[][]
-    gtag?: (...args: unknown[]) => void
-    __docsGoogleAnalyticsId?: string
-    __docsGoogleAnalyticsPage?: string
-  }
-}
-
-function getMeasurementId() {
-  return OVERSEAS_HOSTS.has(window.location.hostname.toLowerCase()) ? OVERSEAS_MEASUREMENT_ID : CHINA_MEASUREMENT_ID
-}
+import { GoogleAnalyticsPageView } from '@/components/google-analytics-page-view'
 
 export function GoogleAnalytics() {
-  const pathname = usePathname()
-  const [measurementId, setMeasurementId] = useState<string>()
+  return (
+    <>
+      <Script id="docs-google-analytics" strategy="beforeInteractive">
+        {`
+        (() => {
+          const overseasHosts = new Set(['cherryai.com', 'www.cherryai.com']);
+          const measurementId = overseasHosts.has(window.location.hostname.toLowerCase())
+            ? 'G-FQ9WGZFVB9'
+            : 'G-JTJVLD1BNN';
+          if (window.__docsGoogleAnalyticsId === measurementId) return;
 
-  useEffect(() => {
-    setMeasurementId(getMeasurementId())
-  }, [])
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+          window.gtag('js', new Date());
+          window.gtag('config', measurementId, { send_page_view: false });
+          window.__docsGoogleAnalyticsId = measurementId;
 
-  useEffect(() => {
-    if (!measurementId || window.__docsGoogleAnalyticsId === measurementId) return
-
-    window.dataLayer = window.dataLayer ?? []
-    window.gtag = window.gtag ?? ((...args: unknown[]) => window.dataLayer?.push(args))
-    window.gtag('js', new Date())
-    window.gtag('config', measurementId, { send_page_view: false })
-    window.__docsGoogleAnalyticsId = measurementId
-  }, [measurementId])
-
-  useEffect(() => {
-    if (!measurementId || !window.gtag) return
-
-    const pagePath = `${window.location.pathname}${window.location.search}`
-    if (window.__docsGoogleAnalyticsPage === pagePath) return
-
-    window.gtag('event', 'page_view', {
-      page_location: window.location.href,
-      page_path: pagePath,
-      page_title: document.title
-    })
-    window.__docsGoogleAnalyticsPage = pagePath
-  }, [measurementId, pathname])
-
-  if (!measurementId) return null
-
-  return <Script src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`} strategy="afterInteractive" />
+          const googleTagScript = document.createElement('script');
+          googleTagScript.async = true;
+          googleTagScript.src = 'https://www.googletagmanager.com/gtag/js?id=' + measurementId;
+          document.head.appendChild(googleTagScript);
+        })();
+      `}
+      </Script>
+      <GoogleAnalyticsPageView />
+    </>
+  )
 }
