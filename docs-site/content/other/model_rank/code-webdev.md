@@ -4,7 +4,7 @@
 
 本榜单评测模型在 Web 前端开发（HTML/CSS/JS）任务上的实际表现。
 
-> **数据更新时间**: 2026-10-01 15:06:40 UTC / 2026-10-01 23:06:40 CST (北京时间)
+> **数据更新时间**: 2026-10-09 14:59:07 UTC / 2026-10-09 22:59:07 CST (北京时间)
 
 {% hint style="info" %}
 排行榜反映特定评测和用户投票偏好，不等同于模型在你的任务中一定更好。选择模型时还要考虑价格、速度、上下文、工具调用、隐私和地区可用性。
@@ -12,38 +12,38 @@
 
 ## 前 30 名
 
-|   排名 | 排名区间   | 模型                                                                                                                                           | 分数                          |     票数 | 价格 $/百万Token   | 上下文   |
-|-----:|:-------|:---------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------|-------:|:---------------|:------|
-|    1 | 1-1    | claude-opus-5.5-max [<sup>1</sup>](https://www.anthropic.com/claude-opus-5-5)                                                                | 1818 (++17/-17)             |  1,976 | $4/$20         | 1M    |
-|    2 | 2-2    | gpt-6-astra-max [<sup>1</sup>](https://openai.com/index/gpt-6-astra/)                                                                        | 1789 (++10/-10)             |  5,918 | $10/$50        | 1.1M  |
-|    3 | 3-4    | gpt-6.1-sol-max [<sup>1</sup>](https://openai.com/index/introducing-gpt-6-1-sol/)                                                            | 1759 (++19/-19)             |  1,264 | $2/$10         | 1.1M  |
-|    4 | 3-4    | claude-fable-5.1-max [<sup>1</sup>](https://www.anthropic.com/claude-fable-and-mythos-5-1)                                                   | 1751 (++10/-10)             |  6,137 | $10/$50        | 1M    |
-|    5 | 5-7    | claude-sonnet-5.5-high [<sup>1</sup>](https://www.anthropic.com/claude-sonnet-5-5)                                                           | 1709 (++16/-16)             |  1,810 | $2/$10         | 1M    |
-|    6 | 5-8    | claude-opus-5-max [<sup>1</sup>](https://www.anthropic.com/news/claude-opus-5)                                                               | 1694 (++6/-6)               | 16,747 | $5/$25         | 1M    |
-|    7 | 5-10   | gpt-6-sol-max [<sup>1</sup>](https://openai.com/index/introducing-gpt-6-sol-and-luna/)                                                       | 1689 (++12/-12)             |  3,197 | $2/$10         | 1.1M  |
-|    8 | 6-11   | gemini-4-argon-high [<sup>1</sup>](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/)                  | 1679 (++14/-14) Preliminary |  2,184 | $2/$10         | 1M    |
-|    9 | 7-13   | qwen3.8-max [<sup>1</sup>](https://www.qwencloud.com/models/qwen3.8-max)                                                                     | 1671 (++12/-12) Preliminary |  3,453 | $1.69/$5.07    | 1M    |
-|   10 | 7-13   | qwen3.8-max-0902 [<sup>1</sup>](https://www.qianwenai.com/models/qwen3.8-max-0902)                                                           | 1670 (++8/-8) Preliminary   |  8,912 | $2/$6          | N/A   |
-|   11 | 8-13   | claude-opus-5-high [<sup>1</sup>](https://www.anthropic.com/news/claude-opus-5)                                                              | 1660 (++6/-6)               | 21,088 | $5/$25         | 1M    |
-|   12 | 9-13   | kimi-k3-max [<sup>1</sup>](https://platform.kimi.ai/docs/guide/kimi-k3-quickstart)                                                           | 1658 (++6/-6)               | 16,246 | $3/$15         | 1M    |
-|   13 | 9-14   | muse-spark-1.3-max [<sup>1</sup>](https://developer.meta.com/ai/models/muse-spark/)                                                          | 1655 (++9/-9)               |  7,004 | $1.25/$4.25    | 1M    |
-|   14 | 14-21  | qwen3.8-flash-next [<sup>1</sup>](https://qwen.ai/blog?id=qwen3.8-flash-next)                                                                | 1638 (++9/-9) Preliminary   |  5,980 | $0.16/$0.47    | 1M    |
-|   15 | 13-23  | grok-4.7-xhigh [<sup>1</sup>](https://docs.x.ai/developers/models/grok-4.7)                                                                  | 1636 (++12/-12)             |  3,062 | $2/$6          | 500K  |
-|   16 | 14-23  | hy4-preview [<sup>1</sup>](https://hy.tencent.ai/research/hy4-preview)                                                                       | 1633 (++9/-9) Preliminary   |  5,088 | $0.83/$2.50    | 1M    |
-|   17 | 14-24  | claude-fable-5-high [<sup>1</sup>](https://www.anthropic.com/news/claude-fable-5-mythos-5)                                                   | 1626 (++6/-6)               | 13,952 | $10/$50        | 1M    |
-|   18 | 14-24  | muse-spark-1.3 (xHigh) [<sup>1</sup>](https://developer.meta.com/ai/models/muse-spark/)                                                      | 1623 (++9/-9)               |  6,078 | $1.25/$4.25    | 1M    |
-|   19 | 14-24  | glm-5.3-max [<sup>1</sup>](https://z.ai/blog/glm-5.3)                                                                                        | 1622 (++8/-8)               |  7,457 | $1.40/$4.40    | 1M    |
-|   20 | 15-24  | grok-4.6-high [<sup>1</sup>](https://docs.x.ai/developers/models/grok-4.6)                                                                   | 1620 (++8/-8)               |  8,120 | $2/$6          | 500K  |
-|   21 | 14-25  | deepseek-v4.1-flash-max [<sup>1</sup>](https://www.deepseek.com/en/news/deepseek-v4-1-flash/)                                                | 1620 (++10/-10)             |  3,958 | $0.30/$1.20    | 1M    |
-|   22 | 15-24  | gpt-5.6-sol-xhigh (codex-harness) [<sup>1</sup>](https://openai.com/index/gpt-5-6/)                                                          | 1619 (++6/-6)               | 16,911 | $4/$20         | 1.1M  |
-|   23 | 14-25  | mimo-v2.6-pro [<sup>1</sup>](https://mimo.xiaomi.com/mimo-v2-6)                                                                              | 1619 (++12/-12)             |  2,736 | $0.43/$0.87    | 1.1M  |
-|   24 | 17-25  | glm-5.3-flash [<sup>1</sup>](https://z.ai/blog/glm-5.3)                                                                                      | 1615 (++8/-8)               |  9,648 | $0.06/$0.20    | 1M    |
-|   25 | 22-26  | glm-5.2-max [<sup>1</sup>](https://huggingface.co/zai-org/GLM-5.2)                                                                           | 1605 (++6/-6)               | 14,543 | $1.40/$4.40    | 1M    |
-|   26 | 25-31  | gemini-3.7-flash-high [<sup>1</sup>](https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-3-7-flash/)  | 1592 (++7/-7) Preliminary   |  9,386 | $0.75/$3.75    | 1M    |
-|   27 | 26-31  | qwen3.8-27b [<sup>1</sup>](https://huggingface.co/Qwen/Qwen3.8-27B)                                                                          | 1590 (++7/-7)               | 12,030 | $0.40/$3       | N/A   |
-|   28 | 26-32  | gemini-3.8-flash-high [<sup>1</sup>](https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/) | 1583 (++8/-8) Preliminary   |  8,357 | $0.75/$3.75    | 1M    |
-|   29 | 26-32  | deepseek-v4-pro-high-20260813 [<sup>1</sup>](https://api-docs.deepseek.com/updates/#date-2026-08-13)                                         | 1582 (++9/-9)               |  4,884 | $1.32/$3.96    | N/A   |
-|   30 | 26-32  | gpt-6-luna-max [<sup>1</sup>](https://openai.com/index/introducing-gpt-6-sol-and-luna/)                                                      | 1582 (++9/-9)               |  5,577 | $0.10/$0.50    | 1.1M  |
+|   排名 | 排名区间   | 模型                                                                                                                                          | 分数                          |     票数 | 价格 $/百万Token   | 上下文   |
+|-----:|:-------|:--------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------|-------:|:---------------|:------|
+|    1 | 1-1    | claude-opus-5.5-max [<sup>1</sup>](https://www.anthropic.com/claude-opus-5-5)                                                               | 1813 (++15/-15)             |  2,294 | $4/$20         | 1M    |
+|    2 | 2-3    | gpt-6-astra-max [<sup>1</sup>](https://openai.com/index/gpt-6-astra/)                                                                       | 1786 (++11/-11)             |  5,189 | $10/$50        | 1.1M  |
+|    3 | 2-4    | claude-sonnet-5.5-xhigh [<sup>1</sup>](https://www.anthropic.com/claude-sonnet-5-5)                                                         | 1774 (++15/-15)             |  2,323 | $2/$10         | 1M    |
+|    4 | 3-5    | gpt-6.1-sol-max [<sup>1</sup>](https://openai.com/index/introducing-gpt-6-1-sol/)                                                           | 1755 (++15/-15)             |  2,102 | $2/$10         | 1.1M  |
+|    5 | 4-5    | claude-fable-5.1-max [<sup>1</sup>](https://www.anthropic.com/claude-fable-and-mythos-5-1)                                                  | 1744 (++9/-9)               |  6,663 | $10/$50        | 1M    |
+|    6 | 6-6    | claude-sonnet-5.5-high [<sup>1</sup>](https://www.anthropic.com/claude-sonnet-5-5)                                                          | 1715 (++11/-11)             |  3,984 | $2/$10         | 1M    |
+|    7 | 7-9    | claude-opus-5-max [<sup>1</sup>](https://www.anthropic.com/news/claude-opus-5)                                                              | 1691 (++6/-6)               | 17,320 | $5/$25         | 1M    |
+|    8 | 7-11   | gpt-6-sol-max [<sup>1</sup>](https://openai.com/index/introducing-gpt-6-sol-and-luna/)                                                      | 1688 (++12/-12)             |  3,407 | $2/$10         | 1.1M  |
+|    9 | 7-13   | gemini-4-argon-high [<sup>1</sup>](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/)                 | 1678 (++15/-15) Preliminary |  1,771 | $2/$10         | 1M    |
+|   10 | 8-11   | qwen3.8-max-0902 [<sup>1</sup>](https://www.qianwenai.com/models/qwen3.8-max-0902)                                                          | 1674 (++8/-8) Preliminary   | 11,182 | $2/$6          | N/A   |
+|   11 | 8-14   | qwen3.8-max [<sup>1</sup>](https://www.qwencloud.com/models/qwen3.8-max)                                                                    | 1672 (++12/-12) Preliminary |  3,446 | $2/$6          | 1M    |
+|   12 | 10-14  | claude-opus-5-high [<sup>1</sup>](https://www.anthropic.com/news/claude-opus-5)                                                             | 1657 (++6/-6)               | 22,340 | $5/$25         | 1M    |
+|   13 | 10-15  | muse-spark-1.3-max [<sup>1</sup>](https://developer.meta.com/ai/models/muse-spark/)                                                         | 1657 (++8/-8)               |  7,886 | $1.25/$4.25    | 1M    |
+|   14 | 11-15  | kimi-k3-max [<sup>1</sup>](https://platform.kimi.ai/docs/guide/kimi-k3-quickstart)                                                          | 1654 (++6/-6)               | 17,412 | $3/$15         | 1M    |
+|   15 | 13-23  | grok-4.7-xhigh [<sup>1</sup>](https://docs.x.ai/developers/models/grok-4.7)                                                                 | 1639 (++11/-11)             |  3,936 | $2/$6          | 500K  |
+|   16 | 15-23  | mimo-v2.6-flash [<sup>1</sup>](https://mimo.xiaomi.com/mimo-v2-6)                                                                           | 1637 (++10/-10)             |  4,058 | $0.14/$0.28    | 1.1M  |
+|   17 | 15-25  | qwen3.8-flash-next [<sup>1</sup>](https://qwen.ai/blog?id=qwen3.8-flash-next)                                                               | 1633 (++8/-8) Preliminary   |  6,932 | $0.16/$0.47    | 1M    |
+|   18 | 15-25  | hy4-preview [<sup>1</sup>](https://hy.tencent.ai/research/hy4-preview)                                                                      | 1632 (++10/-10) Preliminary |  4,792 | $0.83/$2.50    | 1M    |
+|   19 | 15-25  | mimo-v2.6-pro [<sup>1</sup>](https://mimo.xiaomi.com/mimo-v2-6)                                                                             | 1629 (++11/-11)             |  3,649 | $0.43/$0.87    | 1.1M  |
+|   20 | 15-25  | muse-spark-1.3 (xHigh) [<sup>1</sup>](https://developer.meta.com/ai/models/muse-spark/)                                                     | 1626 (++8/-8)               |  7,123 | $1.25/$4.25    | 1M    |
+|   21 | 15-25  | claude-fable-5-high [<sup>1</sup>](https://www.anthropic.com/news/claude-fable-5-mythos-5)                                                  | 1625 (++6/-6)               | 14,657 | $10/$50        | 1M    |
+|   22 | 15-26  | glm-5.3-max [<sup>1</sup>](https://z.ai/blog/glm-5.3)                                                                                       | 1622 (++8/-8)               |  8,382 | $1.40/$4.40    | 1M    |
+|   23 | 15-27  | deepseek-v4.1-flash-max [<sup>1</sup>](https://www.deepseek.com/en/news/deepseek-v4-1-flash/)                                               | 1619 (++11/-11)             |  3,542 | $0.30/$1.20    | 1M    |
+|   24 | 17-26  | gpt-5.6-sol-xhigh (codex-harness) [<sup>1</sup>](https://openai.com/index/gpt-5-6/)                                                         | 1618 (++6/-6)               | 16,639 | $4/$20         | 1.1M  |
+|   25 | 17-26  | grok-4.6-high [<sup>1</sup>](https://docs.x.ai/developers/models/grok-4.6)                                                                  | 1617 (++8/-8)               |  8,958 | $2/$6          | 500K  |
+|   26 | 22-28  | glm-5.3-flash [<sup>1</sup>](https://z.ai/blog/glm-5.3)                                                                                     | 1609 (++7/-7)               | 13,697 | $0.06/$0.20    | 1M    |
+|   27 | 25-30  | glm-5.2-max [<sup>1</sup>](https://huggingface.co/zai-org/GLM-5.2)                                                                          | 1603 (++6/-6)               | 15,351 | $1.40/$4.40    | 1M    |
+|   28 | 27-34  | qwen3.8-27b [<sup>1</sup>](https://huggingface.co/Qwen/Qwen3.8-27B)                                                                         | 1593 (++7/-7)               | 13,777 | $0.40/$3       | N/A   |
+|   29 | 27-34  | gemini-3.7-flash-high [<sup>1</sup>](https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-3-7-flash/) | 1592 (++7/-7) Preliminary   | 10,637 | $0.75/$3.75    | 1M    |
+|   30 | 26-35  | claude-haiku-5.5-high [<sup>1</sup>](https://www.anthropic.com/claude-haiku-5-5)                                                            | 1587 (++20/-20)             |    978 | $0.10/$0.50    | 1M    |
 
 ## 怎么看这张表
 
