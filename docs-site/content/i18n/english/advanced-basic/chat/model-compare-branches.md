@@ -1,9 +1,9 @@
 ---
 icon: code-branch
 ---
-# Multi-Model Comparison and Message Branching
+# Multi-Model Comparison
 
-Multi-model comparison is ideal for questions without a single correct answer, such as reviewing proposals, exploring copywriting directions, or cross-checking sources. Message branching allows you to try a different path from a specific node without duplicating the entire conversation.
+Multi-model comparison is ideal for questions without a single correct answer, such as reviewing proposals, exploring copywriting directions, or cross-checking sources.
 
 ## Comparing Multiple Models Simultaneously
 
@@ -11,7 +11,7 @@ Multi-model comparison is ideal for questions without a single correct answer, s
 {% step %}
 ### 1. Open [Chat] and click the model name
 
-Select the models you want to compare in the model selector. Before first use, ensure that the services associated with these models are connected properly.
+Click **Multi-select** at the top right of the model list, then tick the models you want to compare. Before first use, ensure that the services associated with these models are connected properly.
 {% endstep %}
 
 {% step %}
@@ -27,38 +27,16 @@ Focus on whether facts are consistent, assumptions are explicit, what is missing
 {% endstep %}
 {% endstepper %}
 
-<figure><img src="../../../../assets/290e0288048d57cd868cb443.webp" alt="The model selector and multiple model entries in the conversation"><figcaption><p>Select multiple models from the model selector, then compare differences using the same question.</p></figcaption></figure>
+<figure><img src="../../../../assets/7eea2d9eab50983603d6641b.webp" alt="The model selector with a search box, a Multi-select button, capability filters and a model list"><figcaption><p>Turn on Multi-select in the model selector, then send the same question to every selected model.</p></figcaption></figure>
 
 {% hint style="warning" %}
 Selecting multiple models triggers separate requests for each. When dealing with costs, speed, or sensitive data, use short questions first to confirm connectivity and performance before processing long materials.
 {% endhint %}
-
-## Creating Branches from Messages
-
-Locate the message you want to re-explore, open the message menu, and select the branch action. The new branch retains the previous context, while subsequent messages are recorded separately from the original path. Use the Branch Manager to switch between, compare, and return to different paths.
-
-You can also create an empty branch in the branch canvas. Empty branches are saved immediately upon creation, persist after restarting the app, and remain in the branch canvas; the next time you send content in the input box, this branch will be populated. To remove an empty branch you no longer need, delete it from the node's right-click menu.
-
-<figure><img src="../../../../assets/0bc4cb0c28265626960cd849.webp" alt="Two conversation branches and six message nodes in the Branch Manager"><figcaption><p>The Branch Manager retains both the "Pre-launch Checklist" and "Quick Pilot" paths.</p></figcaption></figure>
-
-In the image: ① Branch node and current path; ② Legend for user, assistant, current path, and disabled path. The example retains two paths: "Pre-launch Checklist" and "Quick Pilot," totaling 2 branches and 6 message nodes.
-
-### Use Case: Reviewing Two Release Proposals
-
-First, ask the model to identify risks and gaps in the proposals. Then, from the same response, ask follow-up questions such as "Add a pre-launch checklist" and "Evaluate from a quick pilot perspective." Once you open the Branch Manager, both paths are retained side-by-side, allowing you to continue asking questions on either path or switch back to the other to verify conclusions.
 
 <details>
 
 <summary>When is it not suitable to use multiple models?</summary>
 
 Using a single model is more appropriate when looking up a specific fact, organizing short text, or when the material contains content that should not be sent to multiple service providers.
-
-</details>
-
-<details>
-
-<summary>Do branches modify the original message?</summary>
-
-No. Branches continue from the selected node, the original path remains intact, and you can return to it at any time.
 
 </details>

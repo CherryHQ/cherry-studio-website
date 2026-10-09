@@ -114,5 +114,5 @@ If you continue using the previous V2 data, you can directly install V2 and must
 
 * [Cherry Studio V1 Official Download](https://cherryai.com/download/v1)
 * [Cherry Studio V2 Official Download](https://cherryai.com/download)
-* V2 Release Page: [GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases)
+* V2 Release Page: [GitHub](https://github.com/CherryHQ/cherry-studio/releases)
 * [Issue Feedback and Feature Suggestions](../../question-contact/suggestions.md)

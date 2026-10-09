@@ -8,10 +8,10 @@ Generative Mini Apps are local web apps that run inside Cherry Studio's [Mini Ap
 
 ## Install a Generative Mini App
 
-1. Open **MiniApp** from the **Launchpad**, then click the **Add mini app** tile at the end of the grid (or `+` in the top-right corner) and switch to **Local Mini App**.
-2. Drag in a `.miniapp` package or click **Select File...**. If the developer provides an HTTPS installation URL, you can paste it instead.
+1. Open **Apps**, then click the **Add mini app** tile at the end of the grid (or `+` in the top-right corner) and switch to **Local mini app**.
+2. Drag in a `.miniapp` package or click **Choose file…**. If the developer provides an HTTPS installation URL, paste it under **Or install from a web address** instead.
 
-<figure><img src="../../../../../assets/68bb09ec12fa8bbc76f5056c.webp" alt="File and URL installation entries in the local mini app installation panel"><figcaption><p>Local mini apps can be installed from a file or a URL</p></figcaption></figure>
+<figure><img src="../../../../../assets/d511cdca46dd2362b027e104.webp" alt="The Local mini app tab of the Add mini app dialog, with Choose file and a web address field"><figcaption><p>Local mini apps can be installed from a file or a URL</p></figcaption></figure>
 
 3. Review the name, description and requested permissions, then click **Install**. Only install mini apps from sources you trust, and check that the permissions match what the app is for.
 4. The mini app appears in the **Apps** grid; click its icon to run it.

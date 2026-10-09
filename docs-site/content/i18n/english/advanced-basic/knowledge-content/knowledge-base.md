@@ -33,11 +33,11 @@ Test with questions real users would ask, not just file titles. Check whether th
 {% endstep %}
 {% endstepper %}
 
-<figure><img src="../../../../assets/203ae7d1fc3c8b76bd8af0a8.webp" alt="The name, embedding model, and save entry points when creating a new Knowledge Base"><figcaption><p>When creating a new knowledge base, first enter a name and select an available embedding model. </p></figcaption></figure>
+<figure><img src="../../../../assets/27c5374d7b45598dca0744d9.webp" alt="The New Knowledge Base dialog with Name and Embedding Model fields"><figcaption><p>When creating a new knowledge base, first enter a name and select an available embedding model. </p></figcaption></figure>
 
-<figure><img src="../../../../assets/7e64d06ef22f90944b1896ee.webp" alt="Ready-to-use note sources and recall test entry in the Employee Travel Policy Knowledge Base"><figcaption><p>① Three business travel documents are ready; ② Click [Recall Test] at the top to verify with real-world questions. </p></figcaption></figure>
+<figure><img src="../../../../assets/6a4b0b6d0521c235d18af1f4.webp" alt="The Recall Test panel opened from the top right of a knowledge base"><figcaption><p>Click Recall Test at the top right of the knowledge base to verify retrieval with real questions.</p></figcaption></figure>
 
-<figure><img src="../../../../assets/c00520c08c9364fe13caad57.webp" alt="Recall test results for whether overseas car rentals are reimbursable in the Knowledge Base"><figcaption><p>① Enter questions you would actually ask in work; ② Check the matched documents, chunk content, and relevance. </p></figcaption></figure>
+<figure><img src="../../../../assets/f134353a322ca6669467f2c9.webp" alt="Recall Test results listing matched chunks with their source file and rank"><figcaption><p>① Enter questions you would actually ask in work; ② Check the matched documents, chunk content, and relevance. </p></figcaption></figure>
 
 ### Validate Recall Results with Real Questions
 
@@ -65,7 +65,7 @@ RAG stands for "retrieve documents first, then let the model answer." Common set
 | Number of Results | How many candidate chunks are provided at once | Start with a small number of results | Increase if key documents are missed; decrease if there is too much noise |
 | Relevance Threshold | Filters out irrelevant content | Determine via recall testing | Increase if many irrelevant results appear; decrease if correct chunks are filtered out |
 
-<figure><img src="../../../../assets/24f5e32e3c72df907aaed3a6.webp" alt="The segmentation, return, and filtering settings for Knowledge Base RAG"><figcaption><p>Only adjust RAG settings based on document structure when recall results are unstable. </p></figcaption></figure>
+<figure><img src="../../../../assets/8b710267711ee3188fede3fc.webp" alt="Knowledge Base Settings with Embedding Model, Rerank Model, Top K and advanced chunking options"><figcaption><p>Only adjust RAG settings based on document structure when recall results are unstable. </p></figcaption></figure>
 
 ### Use Case: Building an Internal Policy Q&A Library
 

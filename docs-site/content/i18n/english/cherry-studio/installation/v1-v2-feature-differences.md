@@ -4,18 +4,18 @@ icon: table-columns
 ---
 # Feature Differences
 
-V2 adjusted the data structure and multiple feature entry points. Before upgrading, review the items that require reconfiguration; for specific steps, see [【Upgrade from V1 to V2】](v1-to-v2-migration.md).
+V2 adjusted the data structure and multiple feature entry points. Before upgrading, review the items that require reconfiguration; for specific steps, see [**Upgrade from V1 to V2**](v1-to-v2-migration.md).
 
 ## V2 Migration Changes
 
 | Scenario | V2 Handling | Notes |
 | --------- | ----------------------- | ------------------------------ |
 | First-time migration from V1 | You can install V2 directly from V1.9.13 | No intermediate V2 release is required. |
-| Standard V2 upgrade | Upgrade directly and continue using current V2 data | Do not click 【Re-migrate】. |
-| Re-migrate from V1 | Select 【Re-migrate】 in 【Settings】 → 【Data】 | Current V2 data will be permanently deleted. This is only for cases where previous migration failed or data was missed. |
+| Standard V2 upgrade | Upgrade directly and continue using current V2 data | Do not click **Re-migrate**. |
+| Re-migrate from V1 | Select **Re-migrate** in **Settings** → **Data** | Current V2 data will be permanently deleted. This is only for cases where previous migration failed or data was missed. |
 
 {% hint style="danger" %}
-【Re-migrate】 does not merge V1 data into the current V2. It first deletes the current V2 data and then re-imports from the retained V1 data. Do not click this unless the V1 migration failed or data was missed.
+**Re-migrate** does not merge V1 data into the current V2. It first deletes the current V2 data and then re-imports from the retained V1 data. Do not click this unless the V1 migration failed or data was missed.
 {% endhint %}
 
 ## Data Handling
@@ -38,10 +38,10 @@ Migration does not delete original V1 data. New V2 data is not synced back to V1
 | Agent | Some configurations and workspaces follow the session; old authorizations can auto-approve tools | Identity, memory, and main configurations belong to the Agent; workspace is fixed after session creation; tools may request re-authorization | Check models, workspaces, tools, and permissions. |
 | Agent Knowledge Base | Knowledge tools may access the global knowledge base | Only accesses explicitly bound knowledge bases | Re-verify knowledge base bindings for each Agent. |
 | Knowledge Base Retrieval | Can manually select retrieval mode and sitemap source | Uses BM25 when no embedding model is present; uses hybrid retrieval when an embedding model is present; sitemaps are treated as regular URLs | Check embedding and reranking models; rebuild failed sources. |
-| Web Search | Service can be selected in assistant or input area; includes local search, RAG compression, and subscription blacklist | Configure keyword search and URL reading separately in 【Settings】 → 【Web Search】; related legacy options removed | Re-select the two default services and check credentials. |
+| Web Search | Service can be selected in assistant or input area; includes local search, RAG compression, and subscription blacklist | Configure keyword search and URL reading separately in **Settings** → **Web Search**; related legacy options removed | Re-select the two default services and check credentials. |
 | MCP | Added services and third-party discovery market coexist | Added services continue to migrate; legacy third-party discovery market is no longer provided | Check service status; add new services from the current market or via JSON. |
 | Model Services | Anthropic can save OAuth credentials | Anthropic OAuth is not migrated; AWS Bedrock region is retained; new services are disabled by default | Re-enter API Key for Anthropic and enable services as needed. |
-| Files | File copies have weak reference relationships with business objects | Managed files are managed by reference; managed copies are cleaned up with a delay after the last reference is deleted | Place long-term retained files in 【Files】 or export them; user original files will not be deleted. |
+| Files | File copies have weak reference relationships with business objects | Managed files are managed by reference; managed copies are cleaned up with a delay after the last reference is deleted | Place long-term retained files in **Files** or export them; user original files will not be deleted. |
 | Drawing, Mini App, and Sidebar | Parameters and entry points are in legacy areas | Drawing parameters moved to the prompt toolbar; Mini App is in the top tab bar; sidebar favorites reset | Familiarize yourself with new entry points and reset favorites. |
 | Custom CSS | V1 selectors take effect directly | Content is retained, but disabled by default after migration | Adapt to V2 selectors before enabling. |
 | Code CLI | Can select iFlow | iFlow is replaced by Qoder | Switch to Qoder if relevant workflows are needed. |
@@ -64,4 +64,4 @@ Migration does not delete original V1 data. New V2 data is not synced back to V1
 
 * [Upgrade from V1 to V2](v1-to-v2-migration.md)
 * [Cherry Studio V2 Official Download](https://cherryai.com/download)
-* V2 Release Page: [GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases)
+* V2 Release Page: [GitHub](https://github.com/CherryHQ/cherry-studio/releases)

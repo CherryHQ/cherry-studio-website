@@ -6,11 +6,7 @@
 
 2.  Create a key in the CherryIN console. Note that when creating a key, the model rate varies based on the token group, meaning different discounts apply.
 
-    <figure><img src="../../../../assets/507ff0c40b171cb37566f85b.webp" alt=""><figcaption></figcaption></figure>
-
 3.  Click the button next to the key to copy it to the clipboard.
-
-    <figure><img src="../../../../assets/3ce6811927758bfe42ca364d.webp" alt=""><figcaption></figcaption></figure>
 
 4.  Enter the key in Cherry Studio.
 

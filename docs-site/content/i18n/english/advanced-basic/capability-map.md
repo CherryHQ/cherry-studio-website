@@ -12,15 +12,13 @@ Advanced tutorials do not list settings menu items one by one; instead, they sta
 When you need to configure a tutorial, channel, scheduled task, or extended capability, prioritize telling the Agent your goal in [Work]. The Agent can help identify what is missing and guide you through common configurations; when you need to verify accounts, keys, or precise parameters, manually adjust them in [Settings].
 {% endhint %}
 
-<figure><img src="../../../assets/8fe4d938af469d667d4071df.webp" alt="Nine main entry points in the Cherry Studio launcher"><figcaption><p>The left-side launcher provides nine main entry points; select the one closest to your task to begin. </p></figcaption></figure>
-
-Chart description: First select the main entry point based on your goal, then add skills, MCP, channels, or scheduled tasks once the workflow is stable.
+First select the main entry point based on your goal, then add skills, MCP, channels, or scheduled tasks once the workflow is stable.
 
 ### Select Entry Point by Goal
 
 | What you want to accomplish | Recommended entry point | Capabilities involved |
 | ------------- | ----------------------- | --------------------- |
-| Compare multiple answers, organize long discussions | [Chat] | Multi-model, message branching, context, citations, and artifacts |
+| Compare multiple answers, organize long discussions | [Chat] | Multi-model, context, citations, and artifacts |
 | Process files or complete multi-step tasks | [Work] | Agent, working directory, tools, permissions, and status panel |
 | Stable Q&A using your own materials | [Knowledge Base] → Recall test, then bind to Agent | Files/Web pages/Notes, RAG, retrieval scope |
 | Generate images from articles or edit images | [Drawing], or enable [Generate Image] in Agent | Templates, reference images, local editing, enhancement |
@@ -60,7 +58,7 @@ Configure channels, scheduled tasks, Code CLI, or external APIs only after manua
 
 ### Read by Module
 
-<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>Advanced Chat </strong></td><td>Multi-model, branching, context, and artifacts </td><td><a href="chat/README.md">chat/README.md </a></td></tr><tr><td><strong>Agent Workspace </strong></td><td>From configuration and execution to file delivery </td><td><a href="agent-workspace/README.md">agent-workspace/README.md </a></td></tr><tr><td><strong>Knowledge and Content Workflows </strong></td><td>Knowledge base, notes, drawing, and translation </td><td><a href="knowledge-content/README.md">knowledge-content/README.md </a></td></tr><tr><td><strong>Extend Agent Capabilities </strong></td><td>Skills and MCP </td><td><a href="extensions/README.md">extensions/README.md </a></td></tr><tr><td><strong>Automation and External Reach </strong></td><td>Channels, scheduled tasks, and heartbeat </td><td><a href="automation/README.md">automation/README.md </a></td></tr><tr><td><strong>Efficient Workbench </strong></td><td>Multi-window, efficiency tools, and search </td><td><a href="workbench/README.md">workbench/README.md </a></td></tr><tr><td><strong>Development and Diagnostics </strong></td><td>Code CLI, API gateway, and call chain </td><td><a href="developer-tools/README.md">developer-tools/README.md </a></td></tr><tr><td><strong>Application Cases </strong></td><td>Nine complete workflows </td><td><a href="cases/README.md">cases/README.md </a></td></tr></tbody></table>
+<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>Advanced Chat </strong></td><td>Multi-model, context, and artifacts </td><td><a href="chat/README.md">chat/README.md </a></td></tr><tr><td><strong>Agent Workspace </strong></td><td>From configuration and execution to file delivery </td><td><a href="agent-workspace/README.md">agent-workspace/README.md </a></td></tr><tr><td><strong>Knowledge and Content Workflows </strong></td><td>Knowledge base, notes, drawing, and translation </td><td><a href="knowledge-content/README.md">knowledge-content/README.md </a></td></tr><tr><td><strong>Extend Agent Capabilities </strong></td><td>Skills and MCP </td><td><a href="extensions/README.md">extensions/README.md </a></td></tr><tr><td><strong>Automation and External Reach </strong></td><td>Channels, scheduled tasks, and heartbeat </td><td><a href="automation/README.md">automation/README.md </a></td></tr><tr><td><strong>Efficient Workbench </strong></td><td>Multi-window, efficiency tools, and search </td><td><a href="workbench/README.md">workbench/README.md </a></td></tr><tr><td><strong>Development and Diagnostics </strong></td><td>Code CLI, API gateway, and call chain </td><td><a href="developer-tools/README.md">developer-tools/README.md </a></td></tr><tr><td><strong>Application Cases </strong></td><td>Nine complete workflows </td><td><a href="cases/README.md">cases/README.md </a></td></tr></tbody></table>
 
 {% hint style="warning" %}
 Working directories, MCP, channels, and high-permission modes expand the data scope accessible to the Agent. Provide only the directories, tools, and accounts needed for the current task; do not place API Keys, bot secrets, or private materials in public conversations or screenshots.

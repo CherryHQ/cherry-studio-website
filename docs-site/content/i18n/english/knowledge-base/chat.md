@@ -42,7 +42,6 @@ Click the add button in the bottom-left corner of the input area, select [Knowle
 
 The knowledge base name should appear in the input area. If the question involves only one topic, prioritize selecting only one base to reduce competition from irrelevant snippets.
 
-<figure><img src="../../../assets/5baecf3a1e479cb5a9627b45.webp" alt="The conversation input area with the employee travel policy knowledge base selected and a real question entered"><figcaption><p>Before sending, confirm that the selected knowledge base and the current question belong to the same data scope. </p></figcaption></figure>
 {% endstep %}
 
 {% step %}
@@ -62,7 +61,7 @@ Check the source name, snippet content, and applicable conditions. Content not s
 
 Use the same question to check the snippets returned by the knowledge base. If recall is incorrect, fix the data, parsing, or retrieval first. If recall is correct, then adjust the prompt and chat model.
 
-<figure><img src="../../../assets/b44776524449cdefe62eaed3.webp" alt="Recall test results list showing relevance, source name, and matched snippets"><figcaption><p>If the chat answer is unsatisfactory, recall results help determine whether the issue lies in the retrieval layer or the answer layer. </p></figcaption></figure>
+<figure><img src="../../../assets/f134353a322ca6669467f2c9.webp" alt="Recall Test results listing matched chunks with their source file and rank"><figcaption><p>Run the same question in Recall Test to see whether the problem lies in retrieval or in the answer.</p></figcaption></figure>
 {% endstep %}
 {% endstepper %}
 

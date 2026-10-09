@@ -8,9 +8,9 @@ MCP is how Agents connect to external tools and resources. Cherry Studio can man
 
 ### When You Need MCP
 
-<figure><img src="../../../../assets/d2a9cd99b66df87ce02e196e.webp" alt="Ways to add an MCP server: quick create, import from JSON and manual setup"><figcaption></figcaption></figure>
+<figure><img src="../../../../assets/d5bf31fdabf7c41b79498cf4.webp" alt="The Add menu on the MCP Servers page with Quick Create, Import from JSON, Import DXT Package and Import MCPB Bundle"><figcaption></figcaption></figure>
 
-<figure><img src="../../../../assets/79e45524b78de312b0ea7d2b.webp" alt="Server list, search and add entry on the MCP settings page"><figcaption></figcaption></figure>
+<figure><img src="../../../../assets/1e64aa6b22178862ea39324f.webp" alt="The MCP Servers page with a search box and an Add button"><figcaption></figcaption></figure>
 
 * An Agent needs to call services beyond Cherry Studio's built-in tools;
 * Your team already has databases, browsers or business systems that expose an MCP interface;
@@ -55,7 +55,7 @@ Open **Work** → the Agent's menu → **Edit** → **MCP**, and enable the serv
 
 **Built-in MCP** offers common capabilities you can install or enable directly; **Marketplaces** manages third-party marketplace sources. Still review the description, command, environment variables and permissions before installing — a built-in entry doesn't mean every operation of the external service is risk-free.
 
-<figure><img src="../../../../assets/3892f8eaa6ef4645921a382d.webp" alt="QVeris, Browser, Python and other servers in the built-in MCP list"><figcaption><p>① The built-in list shows whether an account, API key or folder configuration is needed; after installing, you still need to finish the configuration and verify the connection.</p></figcaption></figure>
+<figure><img src="../../../../assets/633967fe8c9224f7d27945a8.webp" alt="The Builtin Servers list in MCP settings, with an Install button for each server"><figcaption><p>① The built-in list shows whether an account, API key or folder configuration is needed; after installing, you still need to finish the configuration and verify the connection.</p></figcaption></figure>
 
 QVeris is under **Built-in Servers** and lets Agents discover, inspect and call external capabilities. After installing it, you need to configure `QVERIS_API_KEY`; don't put the key in Agent prompts, Skills or public screenshots.
 

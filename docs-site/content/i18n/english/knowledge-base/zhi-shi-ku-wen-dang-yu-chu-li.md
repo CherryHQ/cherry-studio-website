@@ -35,9 +35,9 @@ Don't import the whole batch first. Pick the document most likely to expose prob
 {% step %}
 ### 2. Configure processing
 
-Open **Settings → Document Processing** and configure the document parsing service and OCR as needed. Cloud services usually need an API key or service URL; local options may need a model download first.
+Open **Settings → Document Processing**, choose a parsing service from the dropdown (such as MinerU), and fill in its **API Key** and **API Base URL**. OCR is configured separately under **Settings → OCR**. Local options may need a model download first.
 
-<figure><img src="../../../assets/10358b4ef25b2f7a69345187.webp" alt="File parsing and OCR service configuration in Document Processing settings"><figcaption><p>Get the service you'll use working first, then choose the processor back in the knowledge base.</p></figcaption></figure>
+<figure><img src="../../../assets/e7fe10ad7dca83a677e85832.webp" alt="Document Processing settings with MinerU selected and API Key and API Base URL fields"><figcaption><p>Get the service you'll use working first, then choose the processor back in the knowledge base.</p></figcaption></figure>
 {% endstep %}
 
 {% step %}
@@ -51,7 +51,6 @@ Add the sample document to the knowledge base. Once processing finishes, open th
 
 Make sure key conditions and conclusions haven't been split apart, and that headers, footers and tables of contents aren't repeatedly filling up chunks.
 
-<figure><img src="../../../assets/5bd8c12bd8d08e785c6a4c42.webp" alt="Smart chunking, separator, chunk size and overlap in knowledge base advanced settings"><figcaption><p>Check chunking only after the text is correct — parsing errors can't be fixed by making chunks bigger.</p></figcaption></figure>
 {% endstep %}
 
 {% step %}

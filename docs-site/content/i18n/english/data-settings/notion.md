@@ -5,67 +5,50 @@ icon: square-n
 
 Cherry Studio supports importing topics into Notion databases.
 
-## Step One
+## Step One: Create a Connection
 
-Open the website [Notion Integrations](https://www.notion.so/profile/integrations) to create an integration.
+Open Notion's [Developer tools → Connections](https://app.notion.com/developers/connections) page and click **New connection**. You need to be an owner of the workspace you connect.
 
-<figure><img src="../../../assets/8462288d7c576f9a84ff1968.webp" alt=""><figcaption><p>Click the plus sign to create an integration</p></figcaption></figure>
+<figure><img src="../../../assets/b24e437220ae8f8f52113a15.webp" alt="The Connections tab of Notion Developer tools with a New connection button"><figcaption><p>Click New connection in Developer tools → Connections</p></figcaption></figure>
 
-## Step Two
+## Step Two: Fill in the Connection Details
 
-Create an integration.
-
-<figure><img src="../../../assets/4e4a4404a36f1007885cd1da.webp" alt=""><figcaption><p>Fill in integration information</p></figcaption></figure>
-
-Name: Cherry Studio
-
-Type: Select the first one
-
-Icon: You can save this image
+* **Name**: Cherry Studio
+* **Workspace**: the workspace that holds the database you want to export to
+* **Icon** (optional): you can use this image
 
 <figure><img src="../../../assets/9fde479e46e4ec0c6e510f34.webp" alt="" width="188"><figcaption></figcaption></figure>
 
-## Step Three
+## Step Three: Copy the API Token
 
-Copy the secret and paste it into Cherry Studio settings.
+Open the connection's **Configuration** tab, copy the **API token**, and paste it into Cherry Studio under **Settings → Data → Notion Settings**.
 
-<figure><img src="../../../assets/653fc5d7fce70b768684035d.webp" alt=""><figcaption><p>Click to copy secret</p></figcaption></figure>
+<figure><img src="../../../assets/403d206affac8f8d8be7a4a1.webp" alt=""><figcaption><p>Paste the token into the data settings</p></figcaption></figure>
 
-<figure><img src="../../../assets/403d206affac8f8d8be7a4a1.webp" alt=""><figcaption><p>Paste the secret into the data settings</p></figcaption></figure>
+## Step Four: Create a Database and Add the Connection
 
-## Step Four
+In [Notion](https://www.notion.so/), create a new page, choose **Database** as the page type, and name it Cherry Studio. Then click the **•••** menu at the top right of the page, choose **Add connections**, and select **Cherry Studio**. Cherry Studio can only write to pages that the connection has been added to.
 
-Open the [Notion](https://www.notion.so/) website, create a new page, select the database type below, name it Cherry Studio, and connect as shown in the diagram.
+## Step Five: Enter the Database ID
 
-<figure><img src="../../../assets/43052eb898dfba5309994ec5.webp" alt=""><figcaption><p>Create a new page and select database type</p></figcaption></figure>
+Open the database and copy its URL. If the URL looks like this:
 
-<figure><img src="../../../assets/1994f16f8f555208735d9cdd.webp" alt=""><figcaption><p>Enter the page name and select to connect to the integration</p></figcaption></figure>
+`https://www.notion.so/<long_hash_1>?v=<long_hash_2>`
 
-## Step Five
+the database ID is the `<long_hash_1>` part. Enter it in Cherry Studio and click **Check**.
 
-<figure><img src="../../../assets/7eba96e9b672918693ae43ce.webp" alt=""><figcaption><p>Copy database ID</p></figcaption></figure>
+<figure><img src="../../../assets/0d1c1cd6f57ee46e461f1af1.webp" alt=""><figcaption><p>Enter the database ID and click Check</p></figcaption></figure>
 
-If your Notion database URL is similar to this:
+## Step Six: Set the Title Field
 
-https://www.notion.so/\<long\_hash\_1>?v=\<long\_hash\_2>
-
-Then the Notion database ID is the `<long_hash_1>` part.
-
-<figure><img src="../../../assets/0d1c1cd6f57ee46e461f1af1.webp" alt=""><figcaption><p>Enter the database ID and click check</p></figcaption></figure>
-
-## Step Six
-
-Enter `Page Title Field Name`:
-
-If your web page is in English, enter `Name`
-If your web page is in Chinese, enter `Name`
+Enter the **Page Title Field Name**: the name of the database's title column. For a new database it is `Name`.
 
 <figure><img src="../../../assets/8ec3dea231ec68efc714e8c9.webp" alt=""><figcaption><p>Enter Page Title Field Name</p></figcaption></figure>
 
-## Step Seven
+## Step Seven: Export
 
 Congratulations, Notion configuration is complete ✅ You can now export Cherry Studio content to your Notion database.
 
-<figure><img src="../../../assets/495bd98420371cac1d287aa6.webp" alt=""><figcaption><p>Export to Notion</p></figcaption></figure>
+<figure><img src="../../../assets/b87c95a415af296c5aee685f.webp" alt="The message menu with Export expanded and Export to Notion highlighted"><figcaption><p>Open the menu under a message, then choose Export → Export to Notion</p></figcaption></figure>
 
 <figure><img src="../../../assets/a2f47f9cb8810a6160dda621.webp" alt=""><figcaption><p>View export result</p></figcaption></figure>

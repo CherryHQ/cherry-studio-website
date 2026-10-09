@@ -14,7 +14,7 @@ This set of features is for users who need to manage coding CLIs, allow other lo
 | [Settings] → [API Gateway] | Provide a compatible API to local programs; also a runtime dependency for Agent | Status, port, and key security |
 | [Settings] → [General] → [Developer Mode] | Inspect the call chain to locate model and tool errors | Logs may contain sensitive content |
 
-<figure><img src="../../../../assets/1fc9d6c1360e640958305d57.webp" alt="Running status, address, port, and key area of the API Gateway"><figcaption><p>The API Gateway page centrally displays runtime status, address, port, and credentials. </p></figcaption></figure>
+<figure><img src="../../../../assets/8389d7e8e55e98ac718eba8e.webp" alt="The API Gateway page showing Running status, address, API Key and Authorization Header"><figcaption><p>The API Gateway page centrally displays runtime status, address, port, and credentials. </p></figcaption></figure>
 
 {% hint style="warning" %}
 API Gateway keys and request content in the call chain may involve sensitive information. In screenshots, Issues, and group chats, share only necessary fragments with sensitive data redacted.

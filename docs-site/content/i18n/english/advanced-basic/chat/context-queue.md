@@ -5,7 +5,7 @@ icon: layer-group
 
 The longer a conversation gets, the more history the model must read. When context usage approaches the limit, earlier content may no longer participate in the response. Instead of repeatedly adding "continue," periodically organize conclusions and unresolved issues.
 
-<figure><img src="../../../../assets/e9e4f4f66770c61bcaf40ea6.webp" alt="Model temperature and context management options in Assistant Advanced Settings"><figcaption><p>Adjust advanced settings only when you need to change the response style or long-conversation handling; if unsure, keep the current values. </p></figcaption></figure>
+<figure><img src="../../../../assets/76ece5067d93fd46a4a0c936.webp" alt="The Model tab of Edit Assistant with Temperature, Top-P, Max tokens, Recent messages kept and Customize context management"><figcaption><p>Each assistant can override these in Edit Assistant → Model. Adjust them only when you need to change the response style or long-conversation handling; if unsure, keep the current values. </p></figcaption></figure>
 
 ### Managing Long Conversations
 
@@ -31,11 +31,11 @@ Place the handoff summary and necessary files in a new topic. In the first messa
 
 ### Adjusting Global Context Management
 
-Path: [Settings] → [General] → [Context Management]. These settings apply to standard assistant conversations; individual assistants can override them in their own settings.
+Path: [Settings] → [General] → [Context Management]. These settings apply to standard assistant conversations; individual assistants can override them under **Edit Assistant → Model** by turning on **Customize context management**.
 
 | Setting | Product Default | Recommended Start | Function | Use Case | Notes |
 | -------- | -------- | ------- | ------------- | ------------- | --------------- |
-| Retain Recent Messages | Unlimited | Keep Unlimited | Sends only the most recent messages to the model | Short tasks with a fixed window | Too small a value may cause the model to forget still-valid requirements |
+| Recent messages kept | Unlimited | Keep Unlimited | Sends only the most recent messages to the model | Short tasks with a fixed window | Too small a value may cause the model to forget still-valid requirements |
 | Enable Context Management | On | Keep On | Manages overly long tool results and history compression | Long conversations, tasks with many tool calls | Disabling this makes large results more likely to fill the context |
 | Tool Output Truncation Threshold | 50,000 characters | Keep Default | Stores large results and lets the model read them in segments | Web pages, logs, long document tool results | Does not delete the original result |
 | Auto-Compression | On | Keep On | Summarizes earlier history when approaching the window limit | Continuous multi-turn work | Compression is a summary and does not guarantee retaining every detail |
@@ -47,9 +47,7 @@ Path: [Settings] → [General] → [Context Management]. These settings apply to
 
 While the model is still responding, you can add the next request to the queue. This is suitable for appending a clear follow-up action, such as "After completion, organize into three conclusions." If you need to immediately correct the current direction while an Agent is running, use the [Steering Shortcut]; if you need to start over completely, stop the current generation and restate the goal.
 
-<figure><img src="../../../../assets/a62a413bccd43d18b59ee293.webp" alt="Two pending messages in the message queue and the resume auto-send button"><figcaption><p>When paused, you can verify the results first; after resuming, queued messages will continue to be sent in top-to-bottom order. </p></figcaption></figure>
-
-In the image: ① Two queued messages in the current topic; ② Resume auto-send. After resuming, messages will continue to be sent in top-to-bottom order.
+If you pause the queue, you can check the results first; after you resume auto-send, queued messages are sent in top-to-bottom order.
 
 {% hint style="info" %}
 The queue is not an automation schedule. It only handles follow-up messages in the current topic; for tasks that need to run at fixed times, use [Scheduled Tasks].

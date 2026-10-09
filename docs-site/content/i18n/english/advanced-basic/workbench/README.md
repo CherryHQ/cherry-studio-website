@@ -6,7 +6,7 @@ icon: toolbox
 
 The main window of Cherry Studio consists of a sidebar, tabs, and a content area. Chat topics and Agent tasks can be opened in multiple tabs simultaneously or split into independent windows; the input area toolbar can also be adjusted according to your usage habits.
 
-<figure><img src="../../../../assets/b695c03a2d68db6c3e947867.webp" alt="Pin tab, Open in New Window, and Close Other Tabs in the tab right-click menu"><figcaption><p>When you need to view resources and tasks simultaneously, open one tab in a new window while keeping the main window to retain the global context. </p></figcaption></figure>
+<figure><img src="../../../../assets/db3a399c58e8ea68a9642555.webp" alt="The tab menu with Move to First, Pin Tab, Open in New Window, Close Tab, Close Other Tabs and Close Tabs to the Right"><figcaption><p>When you need to view resources and tasks simultaneously, open one tab in a new window while keeping the main window to retain the global context. </p></figcaption></figure>
 
 ### Scenarios for Using Independent Windows
 

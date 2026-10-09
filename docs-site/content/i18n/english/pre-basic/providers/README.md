@@ -4,7 +4,7 @@ icon: cloud-plus
 
 # Model Service Configuration
 
-Cherry Studio ships with connection templates for 60+ providers (model service vendors), covering most mainstream models in China and abroad as well as local inference frameworks. This section provides a separate configuration guide for each provider.
+Cherry Studio ships with connection templates for 60+ providers (model service vendors), covering most mainstream models from around the world as well as local inference frameworks. This section provides a separate configuration guide for each provider.
 
 ### Provider Types
 
@@ -31,9 +31,8 @@ Cherry Studio groups providers by protocol into the following types, which behav
 ### Provider Guides
 
 #### General / Gateways
-* [CherryAI (Free)](cherryai)
-* [CherryIN](cherryin-1.md) — dual endpoints (OpenAI + Anthropic), recommended for Cherry Agent
-* [NewAPI](newapi.md) — self-hosted / third-party gateway
+* [CherryAI (Free)](cherryai/README.md)
+* [CherryIN](cherryin/README.md) — dual endpoints (OpenAI + Anthropic), recommended for Cherry Agent
 
 #### International Providers
 * [OpenAI](openai.md)
@@ -41,7 +40,7 @@ Cherry Studio groups providers by protocol into the following types, which behav
 * [Mistral](mistral.md)
 * [Perplexity](perplexity.md)
 * [GitHub Copilot](github-copilot.md)
-* [MiniMax Coding Plan](minimax-coding-plan.md)
+* [MiniMax M Plan](minimax-coding-plan.md)
 
 #### Chinese Providers
 * [DeepSeek](deepseek.md)
@@ -64,7 +63,7 @@ Cherry Studio has templates for 60+ providers — **far more than this section c
 
 ### API Key and API Host
 
-See [Model Service Settings](../settings/providers.md) for details, including advanced usage such as rotating multiple keys and ending the host with `#` to use a fixed path.
+See [Model Service Settings](../../cherrystudio/preview/settings/providers.md) for details, including advanced usage such as rotating multiple keys and ending the host with `#` to use a fixed path.
 
 ***
 

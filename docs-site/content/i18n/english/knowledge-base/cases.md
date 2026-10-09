@@ -62,7 +62,7 @@ Enable employees to query travel approval, accommodation standards, and reimburs
 * Entry: [Accommodation Standards Quick Reference]
 * Entry: [Travel FAQ]
 
-<figure><img src="../../../assets/2414cfc005a860f127a4fd96.webp" alt="An employee travel policy knowledge base composed of multiple policy documents, all ready"><figcaption><p>Maintain policy clauses and FAQs separately so that updating one does not require redoing all materials. </p></figcaption></figure>
+Maintain policy clauses and FAQs as separate entries so that updating one does not require redoing all materials.
 
 ### Recommended Configuration
 
@@ -77,7 +77,7 @@ Enable employees to query travel approval, accommodation standards, and reimburs
 
 1. What is the maximum reimbursable amount for hotel stays on business trips?
 2. Can overseas car rentals be reimbursed?
-3. Who approves the total cost if it exceeds 5,000 CNY?
+3. Who approves the total cost if it exceeds $1,000?
 4. How is it handled if a hotel is booked without prior approval?
 
 ### Chat Prompt
@@ -109,7 +109,7 @@ When rules differ significantly between models, split them into independent know
 * For PDFs, first spot-check the table of contents, tables, and two-column body text.
 * Fault codes rely on precise terminology; retain BM25.
 * Add an embedding model when customer descriptions are colloquial.
-* Bind official manuals and reviewed cases to the after-sales Agent, enabling only [Knowledge Base Search].
+* Bind official manuals and reviewed cases to the after-sales Agent, enabling only [Knowledge Search].
 
 > Troubleshoot in three steps based on device model, fault code, and symptoms. Indicate for each step whether the basis comes from the official manual or a reviewed case. When disassembly, electricity, or data clearing is involved, warn of risks first and wait for confirmation.
 

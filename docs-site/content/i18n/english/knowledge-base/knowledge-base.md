@@ -35,7 +35,7 @@ If you only need to handle a short piece of text once, pasting it straight into 
 | Rerank model | Scores and reorders candidate passages a second time; also optional |
 
 {% hint style="success" %}
-You can use a knowledge base without an embedding model; it then relies mainly on BM25 keyword search. For your first try, you can choose **None** and get the create → import → recall flow working first.
+You can use a knowledge base without an embedding model; it then relies mainly on BM25 keyword search. For your first try, you can leave it **Disabled** and get the create → import → recall flow working first.
 {% endhint %}
 
 ## Your First Knowledge Base in 5 Minutes
@@ -50,15 +50,15 @@ Open **Knowledge Base** in the left navigation → click **+ New Knowledge Base*
 {% step %}
 ### 2. Choose how to search
 
-For your first try, set **Embedding model** to **None**. Configure an embedding model later when you need to match conversational phrasing or synonyms.
+For your first try, leave **Embedding Model** set to **Disabled**. Configure an embedding model later when you need to match conversational phrasing or synonyms.
 {% endstep %}
 
 {% step %}
 ### 3. Add material
 
-Open the knowledge base, click **Add Data Source**, and choose **File**, **Note**, **Folder** or **Link**.
+Open the knowledge base, click **Add Data Source**, and choose **File**, **Note**, **Folder** or **URL**.
 
-<figure><img src="../../../assets/4622da2093d43942d7ee443e.webp" alt="The four material entries in a knowledge base: file, note, folder and link"><figcaption><p>Choose the entry that matches the source; don't import unrelated folders just to save steps.</p></figcaption></figure>
+<figure><img src="../../../assets/a04950b796f4347833202f60.webp" alt="The Add Data Source menu with File, Note, Folder and URL"><figcaption><p>Choose the entry that matches the source; don't import unrelated folders just to save steps.</p></figcaption></figure>
 {% endstep %}
 
 {% step %}
@@ -66,7 +66,7 @@ Open the knowledge base, click **Add Data Source**, and choose **File**, **Note*
 
 Once processing finishes, the material appears in the list. Spot-check the text and Chunks to make sure there's no garbled text, missing pages or obvious misordering.
 
-<figure><img src="../../../assets/2414cfc005a860f127a4fd96.webp" alt="An Employee Travel Policy knowledge base with several processed items"><figcaption><p>Spot-check content even after it's ready — a finished import doesn't mean retrieval quality is good enough.</p></figcaption></figure>
+<figure><img src="../../../assets/e0b7bca1e8f80854d96a85b7.webp" alt="A knowledge base list where every item shows the Ready status"><figcaption><p>Spot-check content even after it's ready — a finished import doesn't mean retrieval quality is good enough.</p></figcaption></figure>
 {% endstep %}
 
 {% step %}

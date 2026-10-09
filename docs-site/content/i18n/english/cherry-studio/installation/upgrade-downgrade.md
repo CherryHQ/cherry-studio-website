@@ -45,4 +45,4 @@ Do not manually delete application data for a "complete uninstall." Database han
 
 * [Cherry Studio V2 Official Download](https://cherryai.com/download)
 * [Cherry Studio V1 Official Download](https://cherryai.com/download/v1)
-* V2 Release Page: [GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases)
+* V2 Release Page: [GitHub](https://github.com/CherryHQ/cherry-studio/releases)

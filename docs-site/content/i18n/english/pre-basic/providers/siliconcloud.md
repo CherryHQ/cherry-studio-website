@@ -1,19 +1,17 @@
 # SiliconFlow
 
-SiliconFlow is an inference platform that hosts many open-source models (Qwen, DeepSeek, GLM, BGE and more) behind one API. International users sign up on siliconflow.com; the mainland China platform is siliconflow.cn.
+SiliconFlow is an inference platform that hosts many open-source models (Qwen, DeepSeek, GLM, BGE and more) behind one API.
 
 ## 1. Get an API Key
 
-1. Sign up or log in on [SiliconFlow](https://cloud.siliconflow.com/) (mainland China users: [cloud.siliconflow.cn](https://cloud.siliconflow.cn/))
+1. Sign up or log in on [SiliconFlow](https://cloud.siliconflow.com/)
 2. Open the **API Keys** page, then create a new key or copy an existing one
-
-<figure><img src="../../../../assets/43d95ad964cb0232107ed021.webp" alt="The API key page on the SiliconFlow console"><figcaption></figcaption></figure>
 
 ## 2. Configure in Cherry Studio
 
 1. Open `Settings → Model Provider` and select **SiliconFlow**
 2. Click **Add API key**, paste your key, then click **Save and close**
-3. Make sure the **API Host** matches the platform your key comes from: `https://api.siliconflow.com/v1` for siliconflow.com, `https://api.siliconflow.cn/v1` for mainland China
+3. Keep the default **API Host** (`https://api.siliconflow.com/v1`)
 
 <figure><img src="../../../../assets/8a1c8f0dfe90a7240831905b.webp" alt="SiliconFlow provider page in Cherry Studio with API Key, API Host and the model list"><figcaption></figcaption></figure>
 

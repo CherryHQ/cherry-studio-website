@@ -3,7 +3,7 @@ icon: terminal
 ---
 # Code Mate
 
-【Code Mate】 is used to install, configure, and launch common programming command-line tools. Cherry Studio recognizes its own managed installations and also detects CLIs already available in the system login environment. System tools remain managed by their original package managers.
+**Code Mate** is used to install, configure, and launch common programming command-line tools. Cherry Studio recognizes its own managed installations and also detects CLIs already available in the system login environment. System tools remain managed by their original package managers.
 
 <figure><img src="../../../../assets/6e83da0b2e71960433baf182.webp" alt="Installation status, version check, and model providers on the Code Mate page"><figcaption><p>First, confirm that the tool is installed and the version is available, then configure the model connection and project directory. </p></figcaption></figure>
 
@@ -16,7 +16,7 @@ icon: terminal
 * Preserves native login methods for CLIs that use their own account login;
 * Launches the tool after selecting a working directory and a system-detected terminal.
 
-The page currently includes tools such as Claude Code, OpenAI Codex, Antigravity CLI, OpenCode, Qwen Code, Kimi Code, Qoder CLI, GitHub Copilot CLI, Pi, Hermes Agent, OpenClaw and DeepSeek Harness. The visible items may change with product updates; refer to the page list for the current availability.
+The page currently includes tools such as Claude Code, OpenAI Codex, Antigravity CLI, OpenCode, Qwen Code, Kimi Code, Qoder CLI, GitHub Copilot CLI, Pi, Hermes Agent, OpenClaw, DeepSeek Harness and MiniMax Code. The visible items may change with product updates; refer to the page list for the current availability.
 
 For CLIs that use Cherry Studio model services, the **Model Providers** list on the right shows the compatible providers. It also includes **Unified Gateway** ("Any CLI, every model"), which routes the CLI through Cherry Studio's gateway so it can use any model you have configured. You can drag providers to reorder them, and search the list with **Search providers…**.
 
@@ -24,7 +24,7 @@ For CLIs that use Cherry Studio model services, the **Model Providers** list on 
 
 {% stepper %}
 {% step %}
-### 1. Open 【Code Mate】 from the Launchpad
+### 1. Open **Code Mate** from the Launchpad
 
 Select the required tool and check its status: not installed, managed by Cherry Studio, or from the system.
 {% endstep %}
@@ -32,7 +32,7 @@ Select the required tool and check its status: not installed, managed by Cherry 
 {% step %}
 ### 2. Complete Installation or Login
 
-If not installed, click 【Install】. For CLIs that provide their own account login, follow the page prompts to complete native login. You do not need to select a provider from Cherry Studio.
+If not installed, click **Install**. For CLIs that provide their own account login, follow the page prompts to complete native login. You do not need to select a provider from Cherry Studio.
 {% endstep %}
 
 {% step %}
@@ -50,18 +50,18 @@ The working directory determines where the CLI launches. The terminal can only b
 {% step %}
 ### 5. Launch and Verify
 
-Click 【Launch】 and run a read-only check in the terminal. Confirm that the account, model, and directory are correct before executing file modifications or commands.
+Click **Launch** and run a read-only check in the terminal. Confirm that the account, model, and directory are correct before executing file modifications or commands.
 {% endstep %}
 {% endstepper %}
 
 ## Claude Code Model Modes
 
-When configuring Claude Code, 【Model】 offers two modes:
+When configuring Claude Code, **Model** offers two modes:
 
-* 【General】: All requests use the same model, offering simple configuration;
-* 【Detailed】: Set Fable, Opus, Sonnet, Haiku, and Subagent separately in 【Model Role Mapping】. The 【Actual Request Model】 in the table is the model ultimately used for each role; you can also enable 【1M】 context for specific roles if needed.
+* **General**: All requests use the same model, offering simple configuration;
+* **Detailed**: Set Fable, Opus, Sonnet, Haiku, and Subagent separately in **Model Role Mapping**. The **Actual Request Model** in the table is the model ultimately used for each role; you can also enable **1M** context for specific roles if needed.
 
-Use 【Detailed】 only when you specifically need to assign different models to roles such as background subtasks, compression, or titles. Roles left blank will follow the main model. After making changes, use a small task to confirm that each role can request normally.
+Use **Detailed** only when you specifically need to assign different models to roles such as background subtasks, compression, or titles. Roles left blank will follow the main model. After making changes, use a small task to confirm that each role can request normally.
 
 ## Use Case: Launching Coding Tools in a Project Directory
 
@@ -80,7 +80,7 @@ The page identifies the installation source; the terminal opens in the correct d
 
 | Source | What Cherry Studio Does | How You Should Maintain It |
 | ---------------- | ------------------ | ------------------ |
-| Cherry Studio Managed | Installs, updates, and uninstalls the corresponding managed copy | Manage in 【Code Mate】 or 【Dependencies】 |
+| Cherry Studio Managed | Installs, updates, and uninstalls the corresponding managed copy | Manage in **Code Mate** or **Dependencies** |
 | System PATH | Detects and uses directly without overriding | Update or uninstall using the original package manager |
 | App Built-in | Uses directly, does not provide system-level uninstallation | Updates with Cherry Studio |
 

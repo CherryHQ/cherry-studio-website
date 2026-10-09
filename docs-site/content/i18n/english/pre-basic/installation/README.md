@@ -8,8 +8,8 @@ First, download the installer that matches your operating system and chip from t
 
 ## Choose Your System
 
-* [Windows installation guide](../../cherry-studio/installation/windows.md)
-* [macOS installation guide](../../cherry-studio/installation/macos.md)
+* [Windows installation guide](windows.md)
+* [macOS installation guide](macos.md)
 * [Linux installation guide](../../cherry-studio/installation/linux.md)
 
 ## Installation Complete

@@ -32,7 +32,7 @@ V2 supports direct migration from V1.9.13; no intermediate V2 release is require
 ## Download Links
 
 * [V1 Official Download](https://cherryai.com/download/v1)
-* V2 Release Page: [GitCode](https://gitcode.com/CherryHQ/cherry-studio/releases) · [GitHub](https://github.com/CherryHQ/cherry-studio/releases)
+* V2 Release Page: [GitHub](https://github.com/CherryHQ/cherry-studio/releases)
 * [V2 Official Download](https://cherryai.com/download)
 
 For more information on backups, migration failures, and database considerations, see [Upgrade and Downgrade](../cherry-studio/installation/upgrade-downgrade.md).

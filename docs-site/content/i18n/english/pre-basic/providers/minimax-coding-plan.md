@@ -1,31 +1,30 @@
-# MiniMax Coding Plan
+# MiniMax M Plan
 
-**Coding Plan** is a cost-effective coding subscription service launched by MiniMax (e.g., Starter/Plus plans). By configuring this plan in Cherry Studio, you can use the `MiniMax-M2.7` model at a low fixed monthly price (see MiniMax for current plans).
+**M Plan** is MiniMax's AI subscription for individuals (formerly Coding Plan). It bundles MiniMax's text, image, audio and video models, and comes in three tiers: **Go**, **Explore** (3× Go's usage) and **Build** (7.5× Go's usage). By configuring your M Plan key in Cherry Studio, you can use the plan's text model for chat and coding at a fixed subscription price instead of paying per token.
 
 {% hint style="success" %}
 **Core Advantages**
 
-* **Target Audience**: Users with a MiniMax Coding Plan subscription (Starter / Plus / Max).
-* **Billing Model**: Quota refreshes by time period (e.g., 40 Prompts every 5 hours) rather than per Token, so you don't need to worry about rapid consumption.
+* **Target Audience**: Users with a MiniMax M Plan subscription (Go / Explore / Build).
+* **Billing Model**: Usage resets on a 5-hour window and a weekly window instead of being billed per token. See MiniMax for current tiers and prices.
 {% endhint %}
+
+<figure><img src="../../../../assets/402dba162d778e72f1aefd84.webp" alt="The M Plan overview page on the MiniMax platform listing the Go, Explore and Build tiers and their models"><figcaption><p>M Plan tiers and the models each one includes</p></figcaption></figure>
 
 ### 1. Preparation
 
-Before starting, ensure you have purchased the plan and obtained your key:
+1. Log in to the [**MiniMax Open Platform**](https://platform.minimax.io/) and subscribe to [**M Plan**](https://platform.minimax.io/docs/m-plan/intro).
+2. Open the [**API Key** page for your plan](https://platform.minimax.io/console/plan) and copy your M Plan key.
 
-1. Log in to the [**MiniMax Open Platform**](https://platform.minimax.io/).
-2. Go to the [**Coding Plan** page](https://platform.minimax.io/subscribe/coding-plan?code=FYWiC6CtHy\&source=link) and ensure the plan is active.
-
-    <figure><img src="../../../../assets/e7c5f78ce7b02d24f47e524a.png" alt=""><figcaption></figcaption></figure>
-3. Copy your dedicated `API Key` in **Coding Plan** (starts with `sk-`).
-
-<figure><img src="../../../../assets/b7ad13e5818755c159e9cc7d.webp" alt=""><figcaption></figcaption></figure>
+{% hint style="warning" %}
+The M Plan key is separate from a pay-as-you-go API key. The two cannot be used interchangeably.
+{% endhint %}
 
 ### 2. Configuration Steps
 
 #### Step 1: Locate the Provider
 
-Open Cherry Studio, click **Settings** > **Model Provider** in the sidebar, and find **MiniMax Global** in the list (use **MiniMax CN** if you bought the plan on the mainland China platform).
+Open Cherry Studio, click **Settings** > **Model Provider** in the sidebar, and find **MiniMax Global** in the list.
 
 {% hint style="info" %}
 If the list is long, you can type `mini` in the search box at the top to locate it quickly.
@@ -33,42 +32,36 @@ If the list is long, you can type `mini` in the search box at the top to locate 
 
 #### Step 2: Fill in Configuration
 
-You do **not** need to modify complex API addresses; use the default configuration. Please fill in the details as described below:
+You do **not** need to change the API address; keep the default. Fill in the details as described below:
 
-<table><thead><tr><th width="128.20703125">Parameter</th><th>Description</th></tr></thead><tbody><tr><td><strong>API Key</strong></td><td>Paste your Coding Plan dedicated key<br><em>(Note: It must be the Key generated after purchasing the plan; do not include extra spaces)</em></td></tr><tr><td><strong>API Address</strong></td><td>Keep the default <code>https://api.minimax.io/v1</code> (MiniMax Global)</td></tr><tr><td><strong>Toggle</strong></td><td>Click the toggle in the top-right corner to ensure it is <strong>Green (ON)</strong></td></tr></tbody></table>
+<table><thead><tr><th width="128.20703125">Parameter</th><th>Description</th></tr></thead><tbody><tr><td><strong>API Key</strong></td><td>Paste your M Plan key<br><em>(Note: it must be the M Plan key, not a pay-as-you-go key; do not include extra spaces)</em></td></tr><tr><td><strong>API Address</strong></td><td>Keep the default <code>https://api.minimax.io/v1</code> (MiniMax Global)</td></tr><tr><td><strong>Toggle</strong></td><td>Click the toggle in the top-right corner to ensure it is <strong>Green (ON)</strong></td></tr></tbody></table>
 
 <figure><img src="../../../../assets/368c7e08595f9ac70e2a212f.webp" alt=""><figcaption></figcaption></figure>
 
-#### Step 3: Add the Specified Model (Critical)
-
-The Coding Plan supports only specific models. Selecting the wrong model will result in inability to use the service or incur extra costs.
+#### Step 3: Add the Model
 
 1. Click **Sync models** next to the Models heading on the configuration page.
 
 <figure><img src="../../../../assets/1bc2b31e60d7aa392acf75d6.webp" alt=""><figcaption></figcaption></figure>
 
-2. Find and add **`MiniMax M2.7`** in the list.
+2. Find and add **M3.1 Flash Preview**, the text model included in every M Plan tier.
 
 {% hint style="warning" %}
-**Please make sure to select the correct model!**
-
-* ✅ **Recommended**: `MiniMax M2.7` (The primary model designated for Coding Plan).
+Use the models included in your plan. Other models may not work with an M Plan key.
 {% endhint %}
 
-#### Step 4: Save and Verify <a href="#headingcab61b6e3e264a4b8e56bc83923488d2-di-si-bu-bao-cun-bing-yan-zheng-0" id="headingcab61b6e3e264a4b8e56bc83923488d2-di-si-bu-bao-cun-bing-yan-zheng-0"></a>
+#### Step 4: Save and Verify
 
 1. Click the **Model Check** button next to the API key input field.
-2. If **Success** is displayed in green, your Coding Plan subscription is successfully connected!
+2. If **Success** is displayed in green, your M Plan subscription is connected.
 
-### 3. Usage and Limitations
-
-The billing model for Coding Plan is completely different from the standard API. Please understand the following mechanisms:
+### 3. Usage and Limits
 
 {% hint style="info" %}
-**Quota Refresh Mechanism** Coding Plan quotas are **refreshed periodically**. For example, the Starter plan provides **40** conversation credits **every 5 hours**.
+**How usage resets**: text, image and audio models have a **5-hour window** and a **weekly window**; both start with your first use. When a window ends, usage returns to your tier's full limit. Longer contexts and more complex tasks use more of the limit.
 
-* **If it stops responding**: This indicates that your current 5-hour quota has been exhausted.
-* **Solution**: Wait a few hours for the quota to automatically recover. No additional payment is required.
+* **If it stops responding**: you have reached the limit for the current window.
+* **Solution**: wait for the window to reset, upgrade your tier, or switch to a pay-as-you-go API key.
 {% endhint %}
 
 ### 4. Troubleshooting Common Issues
@@ -76,17 +69,14 @@ The billing model for Coding Plan is completely different from the standard API.
 {% hint style="danger" %}
 **Encountering a `429 Too Many Requests` error?**
 
-This is not a software failure but rather a trigger of the **Coding Plan rate limit**.
-
-* This means you have used up your "message count" for the current period.
-* Please wait patiently for the next 5-hour cycle to refresh.
+This is not a software failure: you have hit the M Plan usage or rate limit. Short rate limits usually recover within about a minute; if you have used up the current window, wait for it to reset.
 {% endhint %}
 
 {% hint style="warning" %}
 **Encountering a `401 Unauthorized` error?**
 
-* Check if there are any extra spaces in your API Key.
-* Log in to the MiniMax official website to confirm whether your Coding Plan subscription has expired.
+* Check that you pasted the M Plan key (not a pay-as-you-go key) and that it has no extra spaces.
+* Log in to the MiniMax platform to confirm that your M Plan subscription is active.
 {% endhint %}
 
 ***

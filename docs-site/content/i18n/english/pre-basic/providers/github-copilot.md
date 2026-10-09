@@ -14,15 +14,15 @@ After successfully obtaining the Device Code, click the link to open your browse
 
 <figure><img src="../../../../assets/1bf59331d4a2754ff20e7379.webp" alt="Example image for GitHub authorization"><figcaption><p>GitHub Authorization</p></figcaption></figure>
 
-After successful authorization, return to Cherry Studio, click "Connect GitHub", and your GitHub username and avatar will be displayed upon success.
+After authorizing, return to Cherry Studio. Once connected, your GitHub username and avatar are shown on the provider page, with an **Exit GitHub** button to sign out.
 
-<figure><img src="../../../../assets/dd64cd1857b5e69446d98398.webp" alt="Example image for successful GitHub connection"><figcaption><p>GitHub Connection Successful</p></figcaption></figure>
+<figure><img src="../../../../assets/295c359b92931dfa1ea17104.webp" alt="GitHub Copilot provider page showing the connected GitHub account and the Exit GitHub button"><figcaption><p>GitHub Connection Successful</p></figcaption></figure>
 
 ## Click "Sync models" to Get the Model List
 
 Click "Sync models" to automatically retrieve the list of currently supported models online.
 
-<figure><img src="../../../../assets/c0545b25325df32cd70fbad9.webp" alt="Example image for getting the model list"><figcaption><p>Sync models</p></figcaption></figure>
+<figure><img src="../../../../assets/d1fa7890e975751f3e553336.webp" alt="GitHub Copilot model list opened from Sync models"><figcaption><p>Sync models lists the models available with your Copilot subscription; click + to add them</p></figcaption></figure>
 
 ## Frequently Asked Questions
 

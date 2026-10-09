@@ -13,11 +13,9 @@ Cherry Studio's automation is not a standalone set of "bot settings." The Agent 
 | Capability | Responsibility | Typical Use Cases |
 | ----- | --------------- | ------------------ |
 | Agent | Executes tasks and generates results | Summarization, checking, writing, file processing |
-| Channel | Receives external messages and sends notifications | Feishu group bot, Telegram private chat |
+| Channel | Receives external messages and sends notifications | Slack channel bot, Telegram private chat |
 | Scheduled Task | Runs the Agent at specific times | Daily reports, weekly reports, one-time reminders |
 | Heartbeat | Agent checks ongoing work at intervals | Monitoring long processes, checking pending items |
-
-<figure><img src="../../../../assets/e2328ba60a3ff5012831c39e.webp" alt="Platform list and add entry in channel settings"><figcaption><p>Channels connect the Agent to Feishu, Telegram, QQ, WeChat, Discord, or Slack. </p></figcaption></figure>
 
 ## Correct Configuration Order
 
@@ -31,7 +29,7 @@ Ensure the Agent's model, prompts, working directory, and tools can stably produ
 {% step %}
 ### 2. Then, Let the Agent Guide Channel Configuration
 
-In the Agent conversation, specify the platform and purpose, for example, "Connect this Agent to a Feishu group to receive daily report requests." Prepare bot permissions and credentials as prompted.
+In the Agent conversation, specify the platform and purpose, for example, "Connect this Agent to a Slack channel to receive daily report requests." Prepare bot permissions and credentials as prompted.
 {% endstep %}
 
 {% step %}
@@ -57,7 +55,7 @@ You can let the Agent create it directly, or open [Settings] → [Scheduled Task
 
 ## User Case: Weekday Operations Daily Report
 
-The "Operations Daily Report" Agent reads data from the working directory and generates the daily report based on team skills. The Feishu channel delivers the results to the specified group, and the scheduled task runs every weekday morning. Before going live, execute it manually, then send a message to the bot in Feishu to establish the receiving target, and finally enable the schedule.
+The "Operations Daily Report" Agent reads data from the working directory and generates the daily report based on team skills. The Slack channel delivers the results to the specified Slack channel, and the scheduled task runs every weekday morning. Before going live, execute it manually, then send a message to the bot in Slack to establish the receiving target, and finally enable the schedule.
 
 <details>
 

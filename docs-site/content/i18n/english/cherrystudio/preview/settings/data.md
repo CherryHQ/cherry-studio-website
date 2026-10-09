@@ -18,8 +18,7 @@ Export settings allow you to configure the export options displayed in the expor
 
 ### Third-Party Connections
 
-Third-party connections allow you to configure Cherry Studio's connection with third-party applications for quickly exporting conversation content to your familiar knowledge management applications. Currently supported applications include: Notion, Obsidian, SiYuan Note, Yuque, Joplin. For specific configuration tutorials, please refer to the following documents:
+Third-party connections allow you to configure Cherry Studio's connection with third-party applications for quickly exporting conversation content to your familiar knowledge management applications. Currently supported applications include: Notion, Obsidian, Yuque, Joplin. For specific configuration tutorials, please refer to the following documents:
 
 - [Notion Configuration Tutorial](../../../data-settings/notion.md)
 - [Obsidian Configuration Tutorial](../../../data-settings/obsidian.md)
-- [SiYuan Note Configuration Tutorial](../../../data-settings/siyuan.md)
