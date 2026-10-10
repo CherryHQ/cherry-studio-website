@@ -26,13 +26,13 @@ Cherry Assistant can read information about your installed version and, with you
 {% step %}
 #### 1. State your goal in one sentence
 
-For example: "I want an Agent to post the daily report to a Feishu (Lark) group every weekday morning."
+For example: "I want an Agent to post the daily report to a Slack channel every weekday morning."
 {% endstep %}
 
 {% step %}
 #### 2. Describe the actual and expected results
 
-Actual result: "The task ran successfully, but nothing arrived in Feishu." Expected result: "When the run finishes, the specified group receives the daily report."
+Actual result: "The task ran successfully, but nothing arrived in Slack." Expected result: "When the run finishes, the specified channel receives the daily report."
 {% endstep %}
 
 {% step %}
@@ -57,20 +57,20 @@ Screenshots should show both the error and the page it's on; for logs, include o
 ### A Ready-to-Use Template
 
 ```
-Title: Agent scheduled task runs successfully, but the Feishu channel receives no result
+Title: Agent scheduled task runs successfully, but the Slack channel receives no result
 
-Goal: Send the operations daily report to a specific Feishu group at 09:00 on weekdays.
-Actual result: Run history shows success; no message in Feishu.
-Expected result: The group receives one daily report message.
+Goal: Send the operations daily report to a specific Slack channel at 09:00 on weekdays.
+Actual result: Run history shows success; no message in Slack.
+Expected result: The Slack channel receives one daily report message.
 
 Steps to reproduce:
 1. Open Settings → Scheduled Tasks.
 2. Select the daily report task and click Run.
 3. Wait for the task to finish.
-4. Check the Feishu group: no new message.
+4. Check the Slack channel: no new message.
 
-Environment: macOS / version shown in Cherry Studio's About & Feedback / Feishu channel.
-Already tried: Re-enabled the channel; sent the bot a test message in Feishu.
+Environment: macOS / version shown in Cherry Studio's About & Feedback / Slack channel.
+Already tried: Re-enabled the channel; sent the bot a test message in Slack.
 Attachments: Channel status screenshot with credentials masked; the matching run record.
 ```
 

@@ -16,15 +16,15 @@ Cherry Studio includes **60+ Providers**. This page provides an overview table. 
 
 | Your Need | Recommended Direction |
 |---|---|
-| **Quick start for beginners**, avoiding complex processes | [CherryIN](cherryin-1.md) or [CherryAI](cherryai) |
+| **Quick start for beginners**, avoiding complex processes | [CherryIN](cherryin-1.md) or [CherryAI](cherryai/README.md) |
 | **Strong value for coding and long context** | DeepSeek / Moonshot (Kimi) / Z.ai (Zhipu) / MiniMax |
-| **Strongest overseas models** | OpenAI / Anthropic / Gemini |
+| **Leading frontier models** | OpenAI / Anthropic / Gemini |
 | **One key for 200+ providers** | [OpenRouter](openrouter.md) |
 | **Fully local, privacy-sensitive** | [Ollama](ollama.md) / [LM Studio](lm-studio.md) |
 | **Enterprise compliance** | [Azure OpenAI](azure-openai.md) / AWS Bedrock |
 | **Using [Agents](../../advanced-basic/agent.md)** | [Anthropic](anthropic.md) / [CherryIN](cherryin-1.md) (must support Anthropic protocol) |
 
-## Major Chinese Providers
+## Chinese Model Providers
 
 Model makers based in China. Several offer international platforms (linked below); strong Chinese-language support and relatively affordable pricing.
 
@@ -33,18 +33,14 @@ Model makers based in China. Several offer international platforms (linked below
 | **DeepSeek** | Best value for coding and reasoning | [deepseek.com](https://platform.deepseek.com/) | [→](deepseek.md) |
 | **Moonshot AI (Kimi)** | Ultra-long context (up to 2 million words) | [moonshot.ai](https://platform.moonshot.ai/) | [→](moonshot.md) |
 | **ZhiPu (Z.ai)** | GLM series, multimodal, Anthropic-compatible for Agents | [z.ai](https://z.ai/) | [→](zhipu.md) |
-| **doubao (Doubao/Volcano Engine)** | By ByteDance, affordable pricing | [volcengine.com](https://www.volcengine.com/product/doubao) | — |
-| **Baidu Cloud (ERNIE Bot)** | Baidu ERNIE series | [cloud.baidu.com](https://cloud.baidu.com/) | — |
-| **Bailian (Alibaba Bailian)** | Qwen series, massive model library | [bailian.console.aliyun.com](https://bailian.console.aliyun.com/) | — |
-| **BAICHUAN AI** | Baichuan large models | [baichuan-ai.com](https://platform.baichuan-ai.com/) | — |
 | **MiniMax** | Multimodal (voice, video) | [minimax.io](https://platform.minimax.io/) | [→](minimax.md) |
 | **StepFun** | StepFun (Jieyue Xingchen) | [stepfun.com](https://platform.stepfun.com/) | — |
 | **LongCat** | Meituan LongCat series | [longcat.chat](https://longcat.chat/) | — |
 | **Xiaomi MiMo** | Xiaomi large models | [mimo.mi.com](https://mimo.mi.com/) | — |
 
-## Major Overseas Providers
+## Major International Providers
 
-Top-tier performance; access from China usually requires a proxy.
+Frontier models from the leading US and European labs.
 
 | Provider | Key Feature | Official Website | Dedicated Doc |
 |---|---|---|---|
@@ -64,18 +60,10 @@ Access multiple models with one key, centralized account management.
 
 | Provider | Key Feature | Official Website | Dedicated Doc |
 |---|---|---|---|
-| **CherryAI** | Cherry official free trial | — | [→](cherryai) |
+| **CherryAI** | Cherry official free trial | — | [→](cherryai/README.md) |
 | **CherryIN** | Cherry official paid gateway, dual endpoints (OpenAI + Anthropic) | [open.cherryin.cc](https://open.cherryin.cc/) | [→](cherryin-1.md) |
-| **OpenRouter** | Largest overseas aggregator, 200+ models | [openrouter.ai](https://openrouter.ai/) | [→](openrouter.md) |
-| **AiHubMix** | Overseas aggregator | [aihubmix.com](https://aihubmix.com/) | — |
-| **DMXAPI** | China-based aggregator | [dmxapi.cn](https://dmxapi.cn/) | — |
-| **302.AI** | China-based aggregator | [302.ai](https://302.ai/) | — |
-| **NewAPI** | Self-hosted gateway (open source) | [newapi.pro](https://docs.newapi.pro/) | [→](newapi.md) |
-| **OneAPI** | Self-hosted gateway (open source) | — | — |
-| **PPIO** | China-based cloud computing + models | [ppio.com](https://ppio.com/) | — |
-| **BurnCloud** | China-based aggregator | [burncloud.com](https://ai.burncloud.com/) | — |
-| **AIOnly** | China-based aggregator | [aiionly.com](https://www.aiionly.com/) | — |
-| **ocoolAI** | China-based aggregator | [ocoolai.com](https://one.ocoolai.com/) | — |
+| **OpenRouter** | Largest aggregator, 200+ models | [openrouter.ai](https://openrouter.ai/) | [→](openrouter.md) |
+| **AiHubMix** | Multi-vendor aggregator | [aihubmix.com](https://aihubmix.com/) | — |
 | **Poe** | Quora's AI marketplace | [poe.com](https://poe.com/) | — |
 | **Vercel AI Gateway** | Vercel's gateway | [vercel.com/ai](https://vercel.com/ai) | — |
 
@@ -90,16 +78,11 @@ Suitable for scenarios requiring "speed" (IM bots, real-time translation, etc.).
 | **Together** | Centralized hosting for open-source models | [together.ai](https://www.together.ai/) | — |
 | **Fireworks** | Optimized inference for open-source models | [fireworks.ai](https://fireworks.ai/) | — |
 
-## China-Based Cloud + Compute Services
+## Open-Source Model Hosting
 
 | Provider | Key Feature | Official Website | Dedicated Doc |
 |---|---|---|---|
 | **SiliconFlow** | Large-scale open-source model hosting | [siliconflow.com](https://cloud.siliconflow.com/) | [→](siliconcloud.md) |
-| **ModelScope** | Alibaba's open-source model platform | [modelscope.cn](https://modelscope.cn/) | — |
-| **AlayaNew** | China-based inference service | [alayanew.com](https://www.alayanew.com/) | — |
-| **Qiniu** | Qiniu Cloud AI | [qiniu.com](https://www.qiniu.com/) | — |
-| **LANYUN** | China-based inference | [lanyun.net](https://maas.lanyun.net/) | — |
-| **Xirang** | Tianyi Cloud Xirang | [ctyun.cn](https://www.ctyun.cn/) | — |
 
 ## Embedding / Reranking Only
 
@@ -128,10 +111,6 @@ Fully offline, protects privacy.
 | **Hugging Face** | World's largest open-source model community | [huggingface.co](https://huggingface.co/) | — |
 | **GitHub Copilot** | Microsoft GitHub coding assistant | [github.com/features/copilot](https://github.com/features/copilot) | [→](github-copilot.md) |
 | **GitHub Models** | GitHub model marketplace (Beta) | [github.com/marketplace/models](https://github.com/marketplace/models) | — |
-| **MiniMax Global** | MiniMax international version | [minimax.io](https://platform.minimax.io/) | — |
-| **SophNet** | China-based model hosting | [sophnet.com](https://sophnet.com/) | — |
-| **PH8** | China-based inference | [ph8.co](https://ph8.co/) | — |
-| **Z.ai** | Zhipu international version | [z.ai](https://z.ai/) | — |
 | **nvidia** | NVIDIA NIM inference | [nvidia.com](https://www.nvidia.com/ai/) | — |
 
 ## Custom Providers
@@ -140,7 +119,7 @@ If the service you use is not in the list above but supports any of the **OpenAI
 
 ## Still Not Sure Which to Choose?
 
-Go directly with [**CherryIN**](cherryin-1.md) or [**CherryAI**](cherryai) — best for beginners to get started quickly. Switch later if you need advanced features.
+Go directly with [**CherryIN**](cherryin-1.md) or [**CherryAI**](cherryai/README.md) — best for beginners to get started quickly. Switch later if you need advanced features.
 
 ***
 

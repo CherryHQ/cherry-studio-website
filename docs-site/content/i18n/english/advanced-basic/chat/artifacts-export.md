@@ -5,13 +5,11 @@ icon: box-archive
 
 A single reply may contain body text, code, files, images, citations, and editable content. Inspect the artifacts first, then decide whether to copy, download, export, or hand them to an Agent for further processing.
 
-<figure><img src="../../../../assets/31566aca8e5cc1c70f3e7377.webp" alt="Conversation selection flowchart from clarifying the problem, comparing or branching exploration, to forming the final deliverable"><figcaption><p>Upon reaching the final artifact, verify the content, source, and file before deciding to copy, export, or pass it to an Agent for refinement. </p></figcaption></figure>
+<figure><img src="../../../../assets/90f403b5989c5c90a6717d56.webp" alt="Conversation selection flowchart from clarifying the problem, comparing answers, to forming the final deliverable"><figcaption><p>Upon reaching the final artifact, verify the content, source, and file before deciding to copy, export, or pass it to an Agent for refinement. </p></figcaption></figure>
 
 ### Preview First, Then Deliver
 
 Click an artifact in the message or the Agent file panel to open the corresponding preview on the right. For HTML, you can check page layout and interactions; PDF, Word, PowerPoint, images, and text are displayed according to their formats; `.xlsx` spreadsheets allow you to view worksheets, cell styles, merged cells, formula results, images, and charts directly.
-
-<figure><img src="../../../../assets/4e1d6cc47405edfe8d6fe315.webp" alt="Pre-release checklist page generated in the conversation and HTML preview on the right"><figcaption><p>① The preview area is for verifying complete content; ② The toolbar allows zooming, downloading, maximizing, or switching views. </p></figcaption></figure>
 
 1. Specify the artifact format in the conversation and open the preview on the right.
 2. Check if the content and layout are complete.

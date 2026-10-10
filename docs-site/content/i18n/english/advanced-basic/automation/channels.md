@@ -3,13 +3,11 @@ icon: comment-dots
 ---
 # Channels
 
-A channel connects an Agent to an external messaging platform. You can currently configure Feishu, Telegram, QQ, WeChat, Discord, and Slack; each platform requires different bot credentials and session identifiers.
+A channel connects an Agent to an external messaging platform. You can currently configure Telegram, Discord, Slack, and QQ; each platform requires different bot credentials and session identifiers.
 
 {% hint style="success" %}
-It is recommended to first instruct the Agent in [Work]: "Configure a Feishu channel for the current Agent to receive group messages and send task results." The Agent will ask for the necessary information based on the use case, which is faster than manually filling in all platform fields. Use [Settings] → [Channels] when you need to make precise modifications.
+It is recommended to first instruct the Agent in [Work]: "Configure a Slack channel for the current Agent to receive group messages and send task results." The Agent will ask for the necessary information based on the use case, which is faster than manually filling in all platform fields. Use [Settings] → [Channels] when you need to make precise modifications.
 {% endhint %}
-
-<figure><img src="../../../../assets/ba51e18db6977f0202c709b4.webp" alt="Feishu, Telegram, QQ, WeChat, Discord, and Slack platform entries in channel settings"><figcaption><p>Select the platform you want to connect, then click [Add]; different platforms require different accounts and credentials. </p></figcaption></figure>
 
 ## Manual Configuration Path
 
@@ -19,12 +17,10 @@ It is recommended to first instruct the Agent in [Work]: "Configure a Feishu cha
 {% step %}
 ### 1. Prepare Platform Account
 
-Create a bot or application according to the platform's rules. For Feishu and WeChat, if the platform supports QR code-related flows, you can complete them after enabling the channel by following the on-screen prompts. For other platforms, enter the corresponding Token or application credentials.
+Create a bot or application according to the platform's rules, then enter the corresponding Token or application credentials.
 {% endstep %}
 
 {% step %}
-<figure><img src="../../../../assets/c074e4e1278ff6cd86f433ed.webp" alt="Agent, app credentials, allowed chat scope, and permission mode in Feishu channel configuration"><figcaption><p>Bind a tested Agent first and restrict the allowed chat scope; only open the credentials and permissions necessary to complete the task. </p></figcaption></figure>
-
 ### 2. Bind Agent and Workspace
 
 Select an Agent that has been verified to work, and specify a workspace for channel messages. External messages will execute in this context; do not select directories containing unrelated sensitive files.
@@ -64,10 +60,8 @@ Disallowed sources cannot trigger tasks; responses return to the specified group
 
 | Platform | Main Credentials | Session Scope Focus |
 | --------- | ----------------------- | ------------------ |
-| Feishu / Lark | App ID, App Secret, or QR code flow | Chat ID and domestic/international domain |
 | Telegram | Bot Token | Chat ID |
 | QQ | App ID, Client Secret | DM, group, or channel identifier format |
-| WeChat | QR code login or credential path | Allowed User IDs |
 | Discord | Bot Token | Channel or DM ID |
 | Slack | Bot Token, App Token | Socket Mode and Channel ID |
 

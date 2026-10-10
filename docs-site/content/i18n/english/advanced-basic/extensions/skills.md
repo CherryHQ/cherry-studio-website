@@ -15,14 +15,14 @@ When you need a specific working method, first state your goal to the Agent in [
 
 Manual path: [Settings] → [Skills].
 
-The page supports four sources:
+Click [Add Skill] at the top right. It offers four options:
 
-* Search the online skill registry;
-* Select [GitHub] in the online search and paste the link to a skill's `SKILL.md` file;
-* Install from a local ZIP file;
-* Install from a folder containing `SKILL.md`.
+* [Create with Agent]: describe the method and let an Agent write the skill;
+* [Online search]: search the online skill registry, or select [GitHub] and paste the link to a skill's `SKILL.md` file;
+* [System search]: look for skills that are already on this computer;
+* [Local import]: install from a ZIP file or a folder containing `SKILL.md`.
 
-<figure><img src="../../../../assets/f0dcb151fa939ce15cda1e00.webp" alt="Selecting GitHub and pasting a SKILL.md link in the online skill search"><figcaption><p>① After selecting [GitHub], paste the link to the target skill's `SKILL.md` file; the page will first parse the specific skill before offering installation. </p></figcaption></figure>
+<figure><img src="../../../../assets/4d9a160afa688d01fb3cf6f3.webp" alt="The Add Skill menu on the Skills settings page with Create with Agent, Online search, System search and Local import"><figcaption><p>Add Skill offers four ways to install a skill.</p></figcaption></figure>
 
 {% stepper %}
 {% step %}
@@ -52,15 +52,13 @@ Provide the Agent with a small sample to check if the steps, output format, and 
 
 ### Global Enablement vs. Agent Enablement
 
-<figure><img src="../../../../assets/a05d3125f16b5cb41dd2e05b.webp" alt="Global enable switch and installed skills list on the Skills settings page"><figcaption><p>① The switch on the right side of the card controls whether the skill is available to all Agents; if turned off, the skill will no longer appear in the Agent edit window. </p></figcaption></figure>
+<figure><img src="../../../../assets/d9cce4e7eebdf50c09101bd0.webp" alt="The Skills settings page listing installed skills, each with Try now and an enable switch"><figcaption><p>① The switch on the right side of the card controls whether the skill is available to all Agents; if turned off, the skill will no longer appear in the Agent edit window. </p></figcaption></figure>
 
 | Status | Effect | When to Use |
 | -------- | ------------------------ | ------------------------- |
 | Globally Enabled | Makes the skill appear in the Agent's available skill directory | The skill source is trusted and may be used by one or more Agents |
 | Globally Disabled | Pauses all Agents from using the skill but retains the installed content | Temporary suspension, troubleshooting, or awaiting security checks |
 | Agent Enabled | Allows only the current Agent to load the skill | The process aligns with the current Agent's long-term responsibilities |
-
-<figure><img src="../../../../assets/f0dcb151fa939ce15cda1e00.webp" alt="Selecting GitHub and pasting a SKILL.md link in the online skill search"><figcaption></figcaption></figure>
 
 Turning off the global switch does not uninstall the skill; after re-enabling it, you must still check the enablement status for each Agent. Uninstalling removes the skill content and cleans up associations.
 

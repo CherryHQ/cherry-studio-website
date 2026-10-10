@@ -1,11 +1,10 @@
 # ZhiPu (Z.ai)
 
-ZhiPu AI builds the **GLM** series of models. International users sign up on **Z.ai**, its global platform; the ZhiPu Open Platform (bigmodel.cn) serves mainland China. In Cherry Studio, ZhiPu uses an **Anthropic-compatible endpoint**, so it works for **Cherry Agent** as well as regular chats.
+ZhiPu AI builds the **GLM** series of models. Sign up on **Z.ai**, its global platform. In Cherry Studio, ZhiPu uses an **Anthropic-compatible endpoint**, so it works for **Cherry Agent** as well as regular chats.
 
 ## Get an API Key
 
-* **International:** sign up on [Z.ai](https://z.ai/) and create a key on the API Keys page
-* **Mainland China:** use the [ZhiPu Open Platform](https://open.bigmodel.cn/apikey/platform)
+* Sign up on [Z.ai](https://z.ai/) and create a key on the API Keys page
 
 ## Configure in Cherry Studio
 

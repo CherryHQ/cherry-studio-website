@@ -19,6 +19,6 @@ Multi-terminal data synchronization can be achieved based on S3 compatible stora
     *   **Related Documentation**
         *   AWS S3: [Get Access Key ID and Secret Access Key](https://docs.aws.amazon.com/zh_cn/IAM/latest/UserGuide/id_credentials_access-keys.html)
         *   Cloudflare R2: [Get Access Key ID and Secret Access Key](https://developers.cloudflare.com/r2/api/tokens/)
-        *   Alibaba Cloud OSS: [Get Access Key ID and Access Key Secret](https://help.aliyun.com/zh/oss/developer-reference/use-amazon-s3-sdks-to-access-oss#306596478ed3r)
+        *   Alibaba Cloud OSS: [Get Access Key ID and Access Key Secret](https://www.alibabacloud.com/help/en/oss/developer-reference/use-amazon-s3-sdks-to-access-oss)
         *   Tencent Cloud COS: [Get SecretId and SecretKey](https://cloud.tencent.com/document/product/436/37421)
 3.  Fill in the above information in the S3 backup settings, click the backup button to perform a backup, and click the manage button to view and manage the list of backup files.

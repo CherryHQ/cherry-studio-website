@@ -21,7 +21,7 @@ Knowledge bases, notes, painting, and translation are not isolated tools. They h
 If the goal is to "complete a deliverable using these materials," tell the Agent directly in [Work] where the materials are and what output is needed. Enter the specific module only when you need to manually organize the database, adjust images, or verify translations paragraph by paragraph.
 {% endhint %}
 
-<figure><img src="../../../../assets/203ae7d1fc3c8b76bd8af0a8.webp" alt="The name, embedding model, and save entry points when creating a new Knowledge Base"><figcaption><p>When creating a new knowledge base, name it first, then select the embedding model for retrieval. </p></figcaption></figure>
+<figure><img src="../../../../assets/27c5374d7b45598dca0744d9.webp" alt="The New Knowledge Base dialog with Name and Embedding Model fields"><figcaption><p>When creating a new knowledge base, name it first, then select the embedding model for retrieval. </p></figcaption></figure>
 
 ## From Materials to Deliverables
 

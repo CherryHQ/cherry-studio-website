@@ -8,7 +8,7 @@ In many situations Cherry Studio needs to "just pick a model" — for example, t
 
 > Note: these are models for "behind-the-scenes helpers" and **can differ from the model you chat with**. The main chat model is set separately in each assistant.
 
-<figure><img src="../../../../../assets/7df58a3d21d7aa3cdbc5d405.webp" alt=""><figcaption><p>Default Model (① is the section title): below it, choose one model each for Default Assistant, Fast, Translate and Painting</p></figcaption></figure>
+<figure><img src="../../../../../assets/7df58a3d21d7aa3cdbc5d405.webp" alt=""><figcaption><p>Default Model (① is the section title): below it, choose one model each for Default Assistant, Quick, Translate and Painting</p></figcaption></figure>
 
 ## What Each of the 4 Default Models Does
 
@@ -17,7 +17,7 @@ In many situations Cherry Studio needs to "just pick a model" — for example, t
 * **Used by**: any assistant that doesn't specify its own model automatically uses this one
 * **How to choose**: pick a chat model you use often that is stable and reasonably priced
 
-### Fast Model
+### Quick Model
 
 * **Used by**: lightweight internal tasks that don't need top-tier intelligence, such as **naming conversations** and **extracting search keywords**
 * **How to choose**: a **cheap and fast** model is enough. Choose a lightweight model; thinking models are not recommended
@@ -39,7 +39,7 @@ If you don't want to dig into it, fill them in like this:
 | Field | Recommendation |
 |---|---|
 | Default Assistant Model | The chat model you use most |
-| Fast Model | A cheap, fast lightweight model |
+| Quick Model | A cheap, fast lightweight model |
 | Translate Model | Any chat model that follows instructions (or a dedicated translation model such as the qwen-mt series) |
 | Painting Model | An image generation model you have configured |
 

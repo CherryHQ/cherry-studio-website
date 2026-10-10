@@ -7,15 +7,15 @@ icon: floppy-disk
 
 Cherry Studio data storage adheres to system specifications, and data is automatically placed in the user directory. The specific directory locations are as follows:
 
-> macOS: /Users/username/Library/Application Support/CherryStudioDev
+> macOS: /Users/username/Library/Application Support/CherryStudio
 
 > Windows: C:\Users\username\AppData\Roaming\CherryStudio
 
 > Linux: /home/username/.config/CherryStudio
 
-You can also view it in the following location:
+You can also find it in **Settings → Data → Data Directory**: the **App Data** row shows the path, and **Open Directory** opens it.
 
-<figure><img src="../../../assets/de67a03f792a05e306f1b382.webp" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../assets/09a8cbc69a90d397174bcf2a.webp" alt="The App Data row under Data Directory in Data settings, with an Open Directory button"><figcaption><p>Settings → Data → Data Directory shows where your data is stored</p></figcaption></figure>
 
 ## Change Storage Location (for reference)
 

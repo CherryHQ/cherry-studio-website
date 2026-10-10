@@ -54,13 +54,12 @@
       * [SiliconFlow](pre-basic/providers/siliconcloud.md)
     * **Gateways & Custom Providers**
       * [OpenRouter](pre-basic/providers/openrouter.md)
-      * [NewAPI](pre-basic/providers/newapi.md)
       * [Custom AI Service Provider](pre-basic/providers/zi-ding-yi-fu-wu-shang.md)
     * **Local & Developer Services**
       * [Ollama](pre-basic/providers/ollama.md)
       * [LM Studio](pre-basic/providers/lm-studio.md)
       * [GitHub Copilot](pre-basic/providers/github-copilot.md)
-      * [MiniMax Coding Plan](pre-basic/providers/minimax-coding-plan.md)
+      * [MiniMax M Plan](pre-basic/providers/minimax-coding-plan.md)
   * [Settings](pre-basic/settings/README.md)
     * **Models**
       * [Default Model Settings](pre-basic/settings/default-models.md)
@@ -84,7 +83,6 @@
       * [S3 Compatible Storage Backup](pre-basic/data-settings/s3-compatible.md)
       * [Notion Configuration Tutorial](pre-basic/data-settings/notion.md)
       * [Obsidian Configuration Tutorial](pre-basic/data-settings/obsidian.md)
-      * [Siyuan Notes Configuration Tutorial](pre-basic/data-settings/siyuan.md)
       * [Change Storage Location](pre-basic/personalization-settings/storage.md)
     * **System**
       * [General Settings](pre-basic/settings/general.md)
@@ -109,7 +107,7 @@
 * **Advanced Workflows**
   * [Advanced Capability Map](advanced-basic/capability-map.md)
   * [Advanced Chat](advanced-basic/chat/README.md)
-    * [Multi-Model Comparison and Message Branching](advanced-basic/chat/model-compare-branches.md)
+    * [Multi-Model Comparison](advanced-basic/chat/model-compare-branches.md)
     * [Long Conversations, Context, and Message Queues](advanced-basic/chat/context-queue.md)
     * [Artifacts, Citations, and Export](advanced-basic/chat/artifacts-export.md)
   * [Agent Workspace](advanced-basic/agent-workspace/README.md)
@@ -141,13 +139,11 @@
     * [Code Mate (Code CLI)](advanced-basic/developer-tools/code-cli.md)
   * [Application Cases](advanced-basic/cases/README.md)
     * [Multi-Model Research Review](advanced-basic/cases/research-review.md)
-    * [Long Document Review](advanced-basic/cases/long-document-review.md)
     * [Agent Project File Delivery](advanced-basic/cases/project-delivery.md)
     * [Brand Image Kit](advanced-basic/cases/brand-image-kit.md)
     * [Private Knowledge Base Q&A](advanced-basic/cases/private-knowledge-qa.md)
     * [Notes to Weekly Report](advanced-basic/cases/notes-weekly-report.md)
     * [Multilingual Material Preparation](advanced-basic/cases/multilingual-materials.md)
-    * [Channels and Scheduled Daily Reports](advanced-basic/cases/automated-daily-report.md)
     * [Multi-Window Research Workbench](advanced-basic/cases/multi-window-research.md)
 
 ## Mobile
@@ -176,6 +172,10 @@
   * [Data, Privacy, and Permissions](mobile/data-privacy.md)
   * [Settings, Usage, and Background Replies](mobile/settings-and-usage.md)
   * [Troubleshooting](mobile/troubleshooting.md)
+
+## Articles
+
+* [Cherry Studio Articles](articles/README.md)
 
 ## Help & Troubleshooting
 

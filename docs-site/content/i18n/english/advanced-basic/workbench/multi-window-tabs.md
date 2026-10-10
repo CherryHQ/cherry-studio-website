@@ -5,7 +5,7 @@ icon: window-restore
 
 Chat topics, Agent tasks, and regular tabs can all be detached from the current window. This operation does not duplicate content; it only changes the display location.
 
-<figure><img src="../../../../assets/b695c03a2d68db6c3e947867.webp" alt="Pin tab, Open in New Window, and Close Other Tabs in the tab right-click menu"><figcaption><p>Right-click the target tab and select **Open in New Window**; frequently used pages can be pinned first to prevent accidental closure. </p></figcaption></figure>
+<figure><img src="../../../../assets/db3a399c58e8ea68a9642555.webp" alt="The tab menu with Move to First, Pin Tab, Open in New Window, Close Tab, Close Other Tabs and Close Tabs to the Right"><figcaption><p>Right-click the target tab and select <strong>Open in New Window</strong>; frequently used pages can be pinned first to prevent accidental closure. </p></figcaption></figure>
 
 ## Open from Topic or Task
 

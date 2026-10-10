@@ -4,7 +4,7 @@ Moonshot AI builds the **Kimi** models, known for very long context windows — 
 
 ## Get API Key
 
-* Sign up on the [Moonshot AI Platform](https://platform.moonshot.ai/) (mainland China users: [platform.moonshot.cn](https://platform.moonshot.cn/))
+* Sign up on the [Moonshot AI Platform](https://platform.moonshot.ai/)
 * Go to **API Keys** and create a `sk-...` key
 * Top up your balance before first use
 
@@ -12,7 +12,7 @@ Moonshot AI builds the **Kimi** models, known for very long context windows — 
 
 * Open `Settings → Model Provider`, find **Moonshot AI** and open its page
 * Click **Add API key**, paste your `sk-...` key, then click **Save and close**
-* Make sure the **API Host** matches the platform your key comes from: `https://api.moonshot.ai` for the global platform, `https://api.moonshot.cn` for mainland China
+* Keep the default **API Host** (`https://api.moonshot.ai`)
 * Click **Sync models** and add the Kimi models you want (for example **Kimi K2.5**)
 
 ## Suitable Scenarios

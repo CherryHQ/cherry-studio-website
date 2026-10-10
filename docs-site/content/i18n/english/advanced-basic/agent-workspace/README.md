@@ -10,7 +10,7 @@ Agents are best suited for tasks with clear objectives that require tools or fil
 The most efficient setup is to first tell the Agent what you want to achieve, then let it check for missing models, tools, knowledge bases, or channels. For precise control, open the Agent editing window or **Settings** to make manual adjustments.
 {% endhint %}
 
-<figure><img src="../../../../assets/2573aee0510e0d6abdabab7f.webp" alt="Agents, models, working directories, and the right-side panel in the Agent workspace"><figcaption></figcaption></figure>
+<figure><img src="../../../../assets/538ad1007c78fe2d3e4c41b6.webp" alt="An Agent conversation with the agent list on the left and the model and working directory at the top"><figcaption></figcaption></figure>
 
 <figure><img src="../../../../assets/21c116be038dbd81718d1a7b.webp" alt="Task loop diagram for Agents: from specifying deliverables and selecting the working directory to checking files and results"><figcaption></figcaption></figure>
 
@@ -72,7 +72,7 @@ The API Gateway is a runtime dependency for Agents, but this does not mean you s
 
 ### User Case: Organizing Project Materials
 
-A product manager places requirement specifications, interview records, and competitor materials in the same directory. They create a "Requirement Organization" Agent, bind the product knowledge base, and use the **Confirm Each Step** permission. The Agent first reads the materials, then writes the requirement list and pending questions to a new file. The product manager directly revises the text in the **Files** section on the right, while the original materials remain unchanged.
+A product manager places requirement specifications, interview records, and competitor materials in the same directory. They create a "Requirement Organization" Agent, bind the product knowledge base, and use the **Ask Before Acting** permission mode. The Agent first reads the materials, then writes the requirement list and pending questions to a new file. The product manager directly revises the text in the **Files** section on the right, while the original materials remain unchanged.
 
 <details>
 

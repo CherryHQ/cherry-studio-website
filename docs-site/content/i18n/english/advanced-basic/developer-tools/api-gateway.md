@@ -7,8 +7,6 @@ The API Gateway exposes the model capabilities configured in Cherry Studio to lo
 
 Path: [Settings] → [API Gateway].
 
-<figure><img src="../../../../assets/69025f11c87bd83f70af4a07.webp" alt="Running status, connection address, port, and access credentials in API Gateway settings"><figcaption><p>Before connecting external programs, check the status and port. Provide the API key only to trusted local programs or controlled networks. </p></figcaption></figure>
-
 ## Distinguish Between Agent Usage and External Calls
 
 *   Using only the Cherry Studio Agent: Follow the app prompt to [Enable and Start]. You do not need to copy the URL or API key to other programs.

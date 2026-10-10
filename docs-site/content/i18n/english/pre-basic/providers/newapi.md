@@ -1,15 +1,7 @@
 # NewAPI
 
-* Log in and open the token page
-* Click "Add Token"
-
-<figure><img src="../../../../assets/04658efb7feac75c9477b1ff.webp" alt=""><figcaption></figcaption></figure>
-
-* Enter the token name and click "Submit" (other settings can be configured as needed)
-
-<figure><img src="../../../../assets/b39df3ad6f4461663ebb91cf.webp" alt="" width="240"><figcaption></figcaption></figure>
-
-* Open CherryStudio's Provider Settings and click 'Add' at the bottom of the provider list
+* Log in to your NewAPI instance, create a token on its token page, and copy it
+* Open Cherry Studio's Provider Settings and click 'Add' at the bottom of the provider list
 * Enter a remark name, select OpenAI as the provider, and click "OK"
 
 <figure><img src="../../../../assets/50df1585fd248479a6cb76c5.webp" alt="" width="291"><figcaption></figcaption></figure>

@@ -7,7 +7,7 @@ The marketing team receives a set of materials including documents, screenshots,
 
 <figure><img src="../../../../assets/58e56b2ba6cf637b831f0efb.webp" alt="The workflow diagram showing how materials are retrieved via Knowledge Base search, organized by the Agent, and turned into translated or content deliverables"><figcaption><p>First, ensure accurate material retrieval, then have the Agent unify terminology and output format, and finally manually verify key content. </p></figcaption></figure>
 
-<figure><img src="../../../../assets/5428125ff9f2c41e29e8c2ed.webp" alt="The actual result of completely translating the Chinese release plan into English on the translation page"><figcaption><p>Keep the original text on the left and display the actual translation on the right. Before delivery, you can verify key terms such as grayscale, monitoring metrics, and rollback processes sentence by sentence. </p></figcaption></figure>
+<figure><img src="../../../../assets/4e6d327879ccf512db663bc4.webp" alt="The Translate page with the source text on the left and the translation on the right"><figcaption><p>Keep the original text on the left and the translation on the right. Before delivery, check key terms sentence by sentence.</p></figcaption></figure>
 
 ## Workflow
 

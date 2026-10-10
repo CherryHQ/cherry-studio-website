@@ -14,6 +14,5 @@
 *   Click "Sync models" (or "+" to add one manually) next to the Models heading to add supported models and enable the provider switch in the top right corner to start using it.
 
 {% hint style="info" %}
-- OpenAI services cannot be directly used in mainland China (excluding Taiwan); you need to resolve proxy issues yourself;
 - A balance is required.
 {% endhint %}

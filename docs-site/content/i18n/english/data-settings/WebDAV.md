@@ -3,57 +3,39 @@ icon: cloud-arrow-up
 ---
 # WebDAV Backup
 
+Cherry Studio can back up your data to any WebDAV service. Because the backup lives in the cloud, you can also use it to move data between computers: back up on `Computer A` → `WebDAV` → restore on `Computer B`.
 
-<figure><img src="../../../assets/3ab21a0d07bad38773442570.png" alt=""><figcaption></figcaption></figure>
+## Configure WebDAV
 
-Cherry Studio supports data backup via WebDAV. You can choose a suitable WebDAV service for cloud backup.
+Open **Settings → Data → WebDAV** and fill in the details from your WebDAV provider:
 
-Based on WebDAV, multi-device data synchronization can be achieved by `Computer A`  → (Backup) →  `WebDAV`  → (Restore) →  `Computer B`.
+<figure><img src="../../../assets/606a16303b3b226611632114.webp" alt="WebDAV settings in Settings → Data with host, user, password, path, backup and restore buttons and backup options"><figcaption><p>Settings → Data → WebDAV</p></figcaption></figure>
 
-#### Taking Jianguoyun (Nutstore) as an example
+| Setting | Description |
+| --- | --- |
+| **WebDAV Host** | The WebDAV server address from your provider |
+| **WebDAV User** / **WebDAV Password** | Your WebDAV account. Many providers ask you to create a separate app password for WebDAV |
+| **WebDAV Path** | The folder on the server where backups are stored (default `/cherry-studio`) |
+| **Data Backup and Recovery** | **Backup to WebDAV** uploads a backup now; **Restore from WebDAV** restores from a backup on the server |
+| **Auto Backup** | Back up automatically at the interval you choose (off by default) |
+| **Maximum Backups** | How many backups to keep on the server (unlimited by default) |
+| **Slim Backup** | Skips data files such as images and knowledge bases and backs up only chat history and settings — smaller and faster |
+| **Disable Stream Upload** | Loads the file into memory before uploading. Turn it on if your WebDAV server doesn't support chunked uploads; it uses more memory |
+| **Allow Self-Signed Certificates** | Skips TLS certificate verification. Only turn it on for a server you trust, such as your own |
 
-1.  Log in to Jianguoyun, click on your username in the top right corner, and select "Account Info":
-
-<figure><img src="../../../assets/3ab21a0d07bad38773442570.png" alt=""><figcaption></figcaption></figure>
-
-2.  Select "Security Options" and click "Add Application":
-
-<figure><img src="../../../assets/f1f0f0b55aa3ae0222a18938.webp" alt=""><figcaption></figcaption></figure>
-
-3.  Enter the application name and generate a random password;
-
-<figure><img src="../../../assets/e7f0f093ff245e418805919b.webp" alt=""><figcaption></figcaption></figure>
-
-4.  Copy and record the password;
-
-<figure><img src="../../../assets/65d55f04a7052358519c733e.webp" alt=""><figcaption></figcaption></figure>
-
-5.  Obtain the server address, account, and password;
-
-<figure><img src="../../../assets/53bf30c1765a635f1be348ca.webp" alt=""><figcaption></figcaption></figure>
-
-6.  In Cherry Studio, open **Settings → Data → WebDAV** and fill in the WebDAV information;
-
-<figure><img src="../../../assets/f85d631d5f1adeb98d482c0c.webp" alt=""><figcaption></figcaption></figure>
-
-7.  Choose to back up or restore data, and set the automatic backup period.
-
-<figure><img src="../../../assets/56b6db4166a2346f0489ca96.webp" alt=""><figcaption></figcaption></figure>
+{% hint style="warning" %}
+Backups include sensitive data such as provider API keys. Only use a WebDAV service you trust. See [Data Settings](README.md) for what a backup contains.
+{% endhint %}
 
 {% hint style="success" %}
-WebDAV services with relatively low barriers are generally cloud storage drives:
+Services that offer WebDAV include:
 
-- [Jianguoyun (Nutstore)](https://www.jianguoyun.com/)
-- [123pan](https://www.123pan.com/) (requires membership)
-- [Aliyun Drive](https://www.alipan.com/) (requires purchase)
-- [Box](https://www.box.com/) (Free space is 10GB, single file size limit is 250MB.)
-- [Dropbox](https://www.dropbox.com/) (Dropbox offers 2GB for free, can expand to 16GB by inviting friends.)
-- [TeraCloud](https://teracloud.jp/en/) (Free space is 10GB, an additional 5GB can be obtained by invitation.)
-- [Yandex Disk](https://disk.yandex.com/) (Free users get 10GB of storage.)
+- [TeraCloud](https://teracloud.jp/en/) (10 GB free, plus 5 GB more by invitation)
+- [Yandex Disk](https://disk.yandex.com/) (10 GB free)
 
-Next are some services that require self-deployment:
+You can also run your own WebDAV server:
 
-- [Alist](https://alist.nn.ci/zh/)
+- [Alist](https://alist.nn.ci/)
 - [Cloudreve](https://cloudreve.org/)
 - [sharelist](https://github.com/reruin/sharelist)
 {% endhint %}

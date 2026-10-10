@@ -3,7 +3,7 @@ icon: grid-2
 ---
 # Mini Apps
 
-【Mini Apps】enable web services and locally installed utilities to run within Cherry Studio. In addition to opening web interfaces from various AI providers, you can install custom generative mini apps that call AI models configured in Cherry Studio through authorized APIs.
+**Mini Apps** enable web services and locally installed utilities to run within Cherry Studio. In addition to opening web interfaces from various AI providers, you can install custom generative mini apps that call AI models configured in Cherry Studio through authorized APIs.
 
 ### Distinguish Between Two Types of Mini Apps
 
@@ -13,7 +13,7 @@ icon: grid-2
 | Local Mini App | Install `.miniapp` package, or install from a developer-provided URL | Yes, with authorization during installation | Custom AI writing, summarization, translation, information extraction, and vertical workflows |
 
 {% hint style="info" %}
-If you want to create a "custom mini app that can call Cherry AI," use 【Local Mini App】 rather than just entering a URL in 【Website】. See the full tutorial at [Generative Mini Apps](generative-mini-apps.md).
+If you want to create a "custom mini app that can call Cherry AI," use **Local Mini App** rather than just entering a URL in **Website**. See the full tutorial at [Generative Mini Apps](generative-mini-apps.md).
 {% endhint %}
 
 ### Access Mini Apps
@@ -22,13 +22,13 @@ If you want to create a "custom mini app that can call Cherry AI," use 【Local 
 {% step %}
 ### Open the Launchpad
 
-Click `+` in the top tab bar to open the 【Launchpad】.
+Click `+` in the top tab bar to open the **Launchpad**.
 {% endstep %}
 
 {% step %}
 ### Enter Mini Apps
 
-Click the 【MiniApp】 icon. The page opens in a tab named 【Apps】.
+Click the **MiniApp** icon. The page opens in a tab named **Apps**.
 {% endstep %}
 
 {% step %}
@@ -40,11 +40,11 @@ Select the service you want to open from the mini app grid.
 
 <figure><img src="../../../../../assets/5c8457fa5b971eef205757ef.webp" alt=""><figcaption><p>Mini app grid with dozens of built-in services; click <code>+</code> in the top right, or the <strong>Add mini app</strong> tile at the end of the grid, to add any webpage</p></figcaption></figure>
 
-There is a **search box** at the top of the page. `+` in the top right (or the **Add mini app** tile at the end of the grid) adds a custom webpage, and `☰` opens 【Mini App Display Settings】.
+There is a **search box** at the top of the page. `+` in the top right (or the **Add mini app** tile at the end of the grid) adds a custom webpage, and `☰` opens **Mini App Display Settings**.
 
 ### Settings
 
-Click `☰` in the top right of the 【Apps】 page to open 【Mini App Display Settings】:
+Click `☰` in the top right of the **Apps** page to open **Mini App Display Settings**:
 
 **Display management**
 
@@ -64,10 +64,10 @@ Cherry Studio mini apps support the following operations:
 * **Add to Launchpad**: Right-click a mini app icon and select **Add to Launchpad** to open it quickly from the `+` entry
 * **Add to Sidebar**: Pin frequently used mini apps to the left sidebar for one-click access; right-click a mini app icon to select **Add to Sidebar** or **Remove from Sidebar**
 * **Keep Alive**: Prevent the mini app window from being destroyed immediately when switching away, so you don't need to log in or reload again when returning
-* **Add Website**: Click `+` in the top right of the page, enter the name, URL, and Logo in 【Website】, and it will be added to the grid
-* **Install Local Mini App**: Click `+` in the top right of the page, switch to 【Local Mini App】, select the `.miniapp` package, or enter the installation URL provided by the developer. Complete the installation after confirming permissions
-* **View Local Mini App Details**: Right-click a local mini app and select 【View Details】 to manage permissions, AI models, storage space, activity logs, and updates
-* **Delete / Edit**: Website-type mini apps can be edited or deleted via right-click; local mini apps can be uninstalled in 【View Details】
+* **Add Website**: Click `+` in the top right of the page, enter the name, URL, and Logo in **Website**, and it will be added to the grid
+* **Install Local Mini App**: Click `+` in the top right of the page, switch to **Local Mini App**, select the `.miniapp` package, or enter the installation URL provided by the developer. Complete the installation after confirming permissions
+* **View Local Mini App Details**: Right-click a local mini app and select **View Details** to manage permissions, AI models, storage space, activity logs, and updates
+* **Delete / Edit**: Website-type mini apps can be edited or deleted via right-click; local mini apps can be uninstalled in **View Details**
 
 After opening a mini app, its window includes a toolbar: **Back**, **Forward**, **Refresh**, **Open in Browser**. You can also switch whether in-page links open in the default window or in the system browser.
 

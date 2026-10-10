@@ -1,21 +1,20 @@
 # MiniMax
 
-MiniMax builds large models with strong **multimodal capabilities** (text, audio, image and video). Cherry Studio lists two separate providers: **MiniMax Global** for international users and **MiniMax CN** for mainland China.
+MiniMax builds large models with strong **multimodal capabilities** (text, audio, image and video). In Cherry Studio, use the **MiniMax Global** provider.
 
 ## Get an API Key
 
-* **International:** sign up on the [MiniMax Platform](https://platform.minimax.io/) and create an API key
-* **Mainland China:** use [platform.minimaxi.com](https://platform.minimaxi.com/)
+* Sign up on the [MiniMax Platform](https://platform.minimax.io/) and create an API key
 
 ## Configure in Cherry Studio
 
-* Open `Settings → Model Provider` and choose **MiniMax Global** (or **MiniMax CN** if your key comes from the China platform)
+* Open `Settings → Model Provider` and choose **MiniMax Global**
 * Click **Add API key**, paste your key, then click **Save and close**
 * Keep the default **API Host** (`https://api.minimax.io/v1` for MiniMax Global)
-* Click **Sync models** and add the models you want, such as **MiniMax-M3** or **MiniMax-M2.7**
+* Click **Sync models** and add the models you want, such as **MiniMax-M3**
 
 {% hint style="info" %}
-If you subscribe to MiniMax's Coding Plan, see [MiniMax Coding Plan](minimax-coding-plan.md) for the dedicated setup.
+If you subscribe to MiniMax's M Plan, see [MiniMax M Plan](minimax-coding-plan.md) for the dedicated setup.
 {% endhint %}
 
 ***

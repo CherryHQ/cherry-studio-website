@@ -16,7 +16,7 @@ The easiest way to use it: tell the Agent what you want to accomplish and let it
 ## What It Can Do
 
 * **Read and write files**: give it a **working directory** and it can read, edit and create files there.
-* **Call tools**: built-in tools, plus the [Skills](extensions/skills.md) and external [MCP](extensions/mcp) tools you attach.
+* **Call tools**: built-in tools, plus the [Skills](extensions/skills.md) and external [MCP](extensions/mcp/README.md) tools you attach.
 * **Multi-step reasoning / subtasks**: break down a goal, dispatch sub-agents, and run background commands.
 * **Plug into automation**: deploy it to IM platforms with [Channels](automation/channels.md), or run it on a schedule with [Scheduled Tasks](automation/scheduled-heartbeat.md).
 

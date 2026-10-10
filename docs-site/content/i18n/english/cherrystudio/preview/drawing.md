@@ -33,12 +33,11 @@ They fall roughly into three groups:
 
 | Type | Provider | Notes |
 |---|---|---|
-| Cloud services in China | **[SiliconFlow](../../pre-basic/providers/siliconcloud.md)** | Easiest to access from mainland China, low prices, wide model choice |
-| | **PPIO** | Cloud compute service in China |
-| | **Zhipu Open Platform** | Chinese model CogView |
+| Model platforms | **[SiliconFlow](../../pre-basic/providers/siliconcloud.md)** | Low prices, wide choice of open-source image models |
+| | **[Z.ai](../../pre-basic/providers/zhipu.md)** | ZhiPu's CogView image models |
 | Aggregation gateways | **AiHubMix** | Gateway aggregating multiple vendors |
 | | **DMXAPI** | Gateway aggregating multiple vendors |
-| | **TokenFlux** | Overseas gateway |
+| | **TokenFlux** | Gateway aggregating multiple vendors |
 | | **CherryIN** | Cherry's official gateway with unified billing |
 | | **AiOnly** | Third-party gateway |
 | Self-hosted / local | **New API** | Self-hosted gateway; appears in this list once added |

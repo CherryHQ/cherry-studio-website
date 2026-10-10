@@ -6,7 +6,7 @@ icon: user-shield
 
 ## Cherry Studio Privacy Policy
 
-Last updated: August 20, 2026　Effective date: August 20, 2026
+Last updated: August 20, 2026 · Effective date: August 20, 2026
 
 Welcome to Cherry Studio (hereinafter "the Software" or "we"). We take the protection of your privacy very seriously. This Privacy Policy explains how we handle and protect your personal information and data. Please read and understand this policy carefully before using the Software.
 

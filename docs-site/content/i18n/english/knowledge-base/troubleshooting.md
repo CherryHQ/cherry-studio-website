@@ -15,7 +15,7 @@ The fastest way to isolate the issue is to run the same real-world question thro
 {% step %}
 ### 1. Check Document Status
 
-Documents should be in 【Ready】 status. If they remain in processing or show errors, review the error messages and ensure the file, processor, and model service are available.
+Documents should be in **Ready** status. If they remain in processing or show errors, review the error messages and ensure the file, processor, and model service are available.
 {% endstep %}
 
 {% step %}
@@ -29,7 +29,6 @@ Open the text preview to confirm the answer exists, verify that scanned text has
 
 Ensure the conditions and conclusions required by the question are contained within coherent segments. Prevent headers, footers, and tables of contents from dominating the results.
 
-<figure><img src="../../../assets/5bd8c12bd8d08e785c6a4c42.webp" alt="Smart segmentation, delimiters, chunk size, and overlap size in Knowledge Base Advanced Settings"><figcaption><p>If the text is correct but chunks are incomplete, adjust chunking settings and re-index existing documents. </p></figcaption></figure>
 {% endstep %}
 
 {% step %}
@@ -37,7 +36,7 @@ Ensure the conditions and conclusions required by the question are contained wit
 
 Check source names, relevance scores, and chunk content. Missing correct chunks and correct chunks ranking low are two distinct issues.
 
-<figure><img src="../../../assets/b44776524449cdefe62eaed3.webp" alt="Recall test results list showing source name, relevance, and matched snippets"><figcaption><p>First prove that the retrieval layer returns the correct evidence, then adjust the conversation prompt. </p></figcaption></figure>
+<figure><img src="../../../assets/f134353a322ca6669467f2c9.webp" alt="Recall Test results listing matched chunks with their source file and rank"><figcaption><p>Use Recall Test to confirm the retrieval layer returns the correct evidence before adjusting the conversation prompt.</p></figcaption></figure>
 {% endstep %}
 
 {% step %}
@@ -61,7 +60,7 @@ Do not expose API Keys, internal file contents, email addresses, or local sensit
 
 <summary>Can I create a knowledge base without an embedding model? </summary>
 
-Yes. Selecting 【Do Not Use】 still enables BM25 keyword retrieval. Add an embedding model only if you need to match different phrasings.
+Yes. Selecting **Do Not Use** still enables BM25 keyword retrieval. Add an embedding model only if you need to match different phrasings.
 
 </details>
 
@@ -83,9 +82,9 @@ You can select up to 20 items in a single interactive selection. For more docume
 
 <details>
 
-<summary>For documents with the same name, should I choose 【Keep All】 or 【Replace】? </summary>
+<summary>For documents with the same name, should I choose <strong>Keep All</strong> or <strong>Replace</strong>? </summary>
 
-Choose 【Replace】 when updating policies, manuals, or note snapshots. Choose 【Keep All】 only if you genuinely need coexisting versions, and include a date or version number in the name.
+Choose **Replace** when updating policies, manuals, or note snapshots. Choose **Keep All** only if you genuinely need coexisting versions, and include a date or version number in the name.
 
 </details>
 
@@ -103,7 +102,7 @@ Check if the file opens correctly, if the processor and OCR are available, and i
 
 <summary>Why is there no text in scanned PDFs? </summary>
 
-Scanned documents require OCR. Go to 【Settings】 → 【Document Processing】, select an available OCR engine, and re-index the document. For complex layouts, try a dedicated document processor.
+Scanned documents require OCR. Go to **Settings** → **Document Processing**, select an available OCR engine, and re-index the document. For complex layouts, try a dedicated document processor.
 
 </details>
 
@@ -111,7 +110,7 @@ Scanned documents require OCR. Go to 【Settings】 → 【Document Processing�
 
 <summary>Why didn't results change after modifying Chunk settings? </summary>
 
-New settings do not automatically reprocess existing documents. Perform 【Re-index】 on relevant entries, then retest with the same question.
+New settings do not automatically reprocess existing documents. Perform **Re-index** on relevant entries, then retest with the same question.
 
 </details>
 
@@ -177,7 +176,7 @@ Instruct the model to answer only based on citations, break the task into smalle
 
 <summary>Why can't the Agent see the knowledge base? </summary>
 
-Open 【Edit Agent】 → 【Knowledge Base】, bind the target library to the current Agent, and enable 【Knowledge Base Search】 in 【Built-in Tools】.
+Open **Edit Agent** → **Knowledge**, link the target library to the current Agent, and make sure **Knowledge Search** is on in **Built-in tools**.
 
 </details>
 
@@ -185,7 +184,7 @@ Open 【Edit Agent】 → 【Knowledge Base】, bind the target library to the c
 
 <summary>Does knowledge base management modify documents? </summary>
 
-Yes. 【Knowledge Base Management】 supports adding, deleting, or refreshing documents. Do not enable it for read-only tasks; check the target, impact, and rollback method before write operations.
+Yes. **Manage Knowledge** supports adding, deleting, or refreshing documents. Do not enable it for read-only tasks; check the target, impact, and rollback method before write operations.
 
 </details>
 
@@ -219,7 +218,7 @@ Not necessarily. Parsing, OCR, reranking, and chat must all use local capabiliti
 
 <summary>Will modifying original files or web pages update automatically? </summary>
 
-No. Files, notes, and web pages are indexed based on their content at import time. Re-add documents with the same name, select 【Replace】, and complete a retrieval test.
+No. Files, notes, and web pages are indexed based on their content at import time. Re-add documents with the same name, select **Replace**, and complete a retrieval test.
 
 </details>
 

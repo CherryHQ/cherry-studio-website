@@ -6,11 +6,7 @@
 
 2. Create a key in the CherryIN console. Note that when creating a key, different token groups have different model multipliers — that is, different discounts.
 
-<figure><img src="../../../../../assets/507ff0c40b171cb37566f85b.webp" alt=""><figcaption></figcaption></figure>
-
 3. Click the button next to the key to copy it to the clipboard
-
-<figure><img src="../../../../../assets/3ce6811927758bfe42ca364d.webp" alt=""><figcaption></figcaption></figure>
 
 4. Paste the key into Cherry Studio (the API Key field on the provider page from step 1)
 

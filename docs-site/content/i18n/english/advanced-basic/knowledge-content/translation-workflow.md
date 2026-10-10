@@ -3,7 +3,7 @@ icon: language
 ---
 # File, Image, and Long-Text Translation
 
-【Translation】 can process directly entered text, as well as uploaded images or documents. Images are first processed for text recognition, while documents are handled based on their format and content. History records can be bookmarked, reopened, and reused.
+**Translation** can process directly entered text, as well as uploaded images or documents. Images are first processed for text recognition, while documents are handled based on their format and content. History records can be bookmarked, reopened, and reused.
 
 <figure><img src="../../../../assets/58e56b2ba6cf637b831f0efb.webp" alt="Content workflow diagram where materials are processed by retrieval and Agent into text, images, or translations"><figcaption><p>Translation is part of the content workflow: first confirm the input materials, then standardize terminology and review the final deliverables. </p></figcaption></figure>
 
@@ -19,9 +19,9 @@ icon: language
 
 #### Example: Short Text Translation
 
-Select 【Auto Detect】 as the source language and 【English】 as the target language. Enter the Chinese text and click 【Translate】. Once the result appears, first verify key meanings such as "grayscale," "monitoring metrics," and "rollback process," then copy or save it to your notes.
+Select **Auto Detect** as the source language and **English** as the target language. Enter the Chinese text and click **Translate**. Once the result appears, first verify key meanings such as "grayscale," "monitoring metrics," and "rollback process," then copy or save it to your notes.
 
-<figure><img src="../../../../assets/5428125ff9f2c41e29e8c2ed.webp" alt="Complete English translation of the Chinese release plan"><figcaption><p>① The original text is retained on the left; ② The translation is displayed on the right. Before delivery, verify grayscale release, monitoring metrics, and rollback process item by item. </p></figcaption></figure>
+<figure><img src="../../../../assets/4e6d327879ccf512db663bc4.webp" alt="The Translate page with the source text on the left and the translation on the right"><figcaption><p>① The original text is retained on the left; ② The translation is displayed on the right. Before delivery, check key terms item by item.</p></figcaption></figure>
 
 #### What to Check After Results Appear
 
@@ -36,19 +36,19 @@ For short text, you can verify sentence by sentence. For files and long texts, f
 
 ### Layout-Preserving PDF Translation
 
-After uploading a PDF with extractable text, the page will detect BabelDOC. On first use, select 【Install BabelDOC】. Once dependencies are ready, the original text is previewed on the left, and the translated PDF is displayed on the right, with progress shown for resource checking, parsing, translation, typesetting, and rendering.
+After uploading a PDF with extractable text, the page will detect BabelDOC. On first use, select **Install BabelDOC**. Once dependencies are ready, the original text is previewed on the left, and the translated PDF is displayed on the right, with progress shown for resource checking, parsing, translation, typesetting, and rendering.
 
 {% stepper %}
 {% step %}
 #### 1. Upload PDF and Check Dependencies
 
-Click 【Drag or click to upload image/document】 to select a PDF. If the page indicates missing or outdated versions, install or update BabelDOC. Installation is managed uniformly by Cherry Studio's 【Environment Dependencies】.
+Click **Drag or click to upload image/document** to select a PDF. If the page indicates missing or outdated versions, install or update BabelDOC. Installation is managed uniformly by Cherry Studio's **Environment Dependencies**.
 {% endstep %}
 
 {% step %}
 #### 2. Select Translation Model and Target Language
 
-PDF translation requires the current model to be callable via the local API gateway. If the model is unavailable, first return to 【Settings】 → 【Model Provider】 to check the connection; do not repeatedly install BabelDOC.
+PDF translation requires the current model to be callable via the local API gateway. If the model is unavailable, first return to **Settings** → **Model Provider** to check the connection; do not repeatedly install BabelDOC.
 {% endstep %}
 
 {% step %}
@@ -60,7 +60,7 @@ After translation is complete, compare the original and translated text page by 
 {% step %}
 #### 4. Continue from History
 
-PDF translations appear in 【Translation History】 and 【Files】. History records allow you to reopen the two-column preview, locate the translated file, or save the result. When deleting a record, the corresponding translated file is also reclaimed.
+PDF translations appear in **Translation History** and **Files**. History records allow you to reopen the two-column preview, locate the translated file, or save the result. When deleting a record, the corresponding translated file is also reclaimed.
 {% endstep %}
 {% endstepper %}
 
@@ -92,7 +92,7 @@ First check names, numbers, dates, negations, and units. For image translation, 
 {% step %}
 #### 4. Bookmark, Export, or Reuse Results
 
-In 【Translation History】, view, bookmark, and reuse text translations. PDF results can be previewed in two columns, opened as files, or saved separately. Before formal delivery, save the glossary and manual revisions to the project materials.
+In **Translation History**, view, bookmark, and reuse text translations. PDF results can be previewed in two columns, opened as files, or saved separately. Before formal delivery, save the glossary and manual revisions to the project materials.
 {% endstep %}
 {% endstepper %}
 

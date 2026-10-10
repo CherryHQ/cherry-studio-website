@@ -56,19 +56,15 @@ When the OCR model is ready, the page will automatically recognize text. You can
 
 The screenshot contains only the selected area. Annotations are clear, and sensitive information is obscured. After copying, you can paste the image into the target application, or paste the OCR text as editable text.
 
-### Key Screenshots
-
-<figure><img src="../../../../assets/461349e8fcf48c13693a40e9.webp" alt="Screenshot shortcut in Shortcut Settings"><figcaption><p>① [Screenshot] is a modifiable global shortcut. After modifying it, test it once in a non-Cherry Studio window. </p></figcaption></figure>
-
 ### Configuration Details
 
 | Setting | Product Default | Recommended Start | Function | Use Case | Notes |
 | ------ | ---------------------- | ------------- | ----------- | ------------ | -------------- |
 | Enable Screenshot | Disabled | Enable when needed | Registers the global screenshot shortcut | Daily screenshots, tutorials, issue reporting | Requires screen recording permission on macOS |
 | Screenshot Shortcut | `Command/Ctrl+Shift+A` | Keep default, change if conflict | Triggers screenshot from any application | High-frequency cross-app usage | Will not trigger if conflicting with other apps |
-| Auto Recognize Text | Enabled | Keep enabled if frequently copying screenshot text | Automatically runs OCR after screenshot | Error screenshots, tables, UI text | Requires downloading the local OCR model |
+| Recognize Text Automatically | Enabled | Keep enabled if frequently copying screenshot text | Automatically runs OCR after screenshot | Error screenshots, tables, UI text | Uses the OCR engine shown under the switch, such as System OCR |
 
-<figure><img src="../../../../assets/d417de7a25de7a4aceba3624.webp" alt="Enable toggle, shortcut, and local OCR status in Screenshot Settings"><figcaption></figcaption></figure>
+<figure><img src="../../../../assets/e3c3361f888528582909572f.webp" alt="Screenshot settings with Enable Screenshot, Screen Recording Permission, Shortcut and Recognize Text Automatically"><figcaption></figcaption></figure>
 
 ### User Case
 

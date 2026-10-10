@@ -11,14 +11,6 @@ Discussion group members will share their usage experience and help you solve pr
 
 Join the Telegram discussion group for help: [https://t.me/CherryStudioAI](https://t.me/CherryStudioAI)
 
-## QQ Group
-
-{% hint style="info" %}
-QQ group members can help each other and share download links.
-{% endhint %}
-
-[QQ Group (1025067911)](https://qm.qq.com/q/hlHOddwAS)
-
 ## Github Issues
 
 {% hint style="info" %}

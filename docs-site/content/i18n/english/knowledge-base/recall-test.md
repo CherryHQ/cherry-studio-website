@@ -15,7 +15,7 @@ It is recommended to cover three types of questions:
 
 * Precise facts, e.g., "What is the accommodation cap for first-tier cities in China?"
 * Conditional rules, e.g., "Under what circumstances can overseas car rentals be reimbursed?"
-* Easily confused items, e.g., "Who provides additional approval for business trips exceeding 5,000 CNY?"
+* Easily confused items, e.g., "Who provides additional approval for business trips exceeding $1,000?"
 
 Do not test only with document titles or verbatim sentences from the source, as this overestimates real-world performance.
 
@@ -39,7 +39,7 @@ Enter a question with a clear answer and run the test. The question should resem
 
 Confirm the source is correct and that the snippet contains both the conditions and the conclusion required for the answer.
 
-<figure><img src="../../../assets/b44776524449cdefe62eaed3.webp" alt="Hit sources, relevance, snippet content, and ranking in recall tests"><figcaption><p>Do not just check if results exist; also verify the source, snippet completeness, and order. </p></figcaption></figure>
+<figure><img src="../../../assets/f134353a322ca6669467f2c9.webp" alt="Recall Test results listing matched chunks with their source file and rank"><figcaption><p>Click Recall Test at the top right of the knowledge base, enter a question and click Search. Then check the source, snippet completeness and order of the matched chunks.</p></figcaption></figure>
 {% endstep %}
 
 {% step %}
@@ -81,8 +81,6 @@ Recommended order:
 3. If the phrasing differs significantly from the source, consider the embedding model.
 4. If candidates are roughly correct but the order is unstable, consider the reranking model.
 5. Reindex after adjustments and repeat the same set of tests.
-
-<figure><img src="../../../assets/5bd8c12bd8d08e785c6a4c42.webp" alt="Smart segmentation, delimiters, chunk size, and overlap size in Knowledge Base Advanced Settings"><figcaption><p>If snippets are incomplete, check chunking settings; changes only affect new materials, while old materials require reindexing. </p></figcaption></figure>
 
 ## Configuration Notes
 
