@@ -12,13 +12,14 @@ Cherry Studio 数据备份支持通过 S3 兼容存储(对象存储)的方式进
 
 1. 创建对象存储桶（Bucket），并记录下存储桶名称。**强烈建议将存储桶设置为私有读写以避免备份数据泄露！！**
 2. 参考文档，前往云服务控制台获取 S3 兼容存储的 `Access Key ID`、`Secret Access Key`、`Endpoint`、`Bucket`、`Region` 等信息。
-   - **Endpoint**：S3 兼容存储的访问地址，通常形如 `https://<bucket-name>.<region>.amazonaws.com` 或 `https://<ACCOUNT_ID>.r2.cloudflarestorage.com`。
+   - **Endpoint**：填写服务商的 S3 API 地址。例如，AWS S3 使用 `https://s3.<region>.amazonaws.com`（如 `https://s3.us-west-1.amazonaws.com`），Cloudflare R2 使用 `https://<ACCOUNT_ID>.r2.cloudflarestorage.com`。这两种服务的 Endpoint 不包含存储桶名称或对象路径；存储桶名称单独填入 **Bucket**，备份目录填入 **Root Path**。其他服务商请以其 S3 兼容 API 文档提供的地址为准。
    - **Region**：存储桶所在的区域，例如 `us-west-1`、`ap-southeast-1` 等，cloudflare R2 请填写 `auto`。
    - **Bucket**：存储桶名称。
    - **Access Key ID** 和 **Secret Access Key**：用于身份验证的凭据。
    - **Root Path**：可选，指定备份到存储桶时的根路径，默认为空。
    - **相关文档**
      - AWS S3：[获取 Access Key ID 和 Secret Access Key](https://docs.aws.amazon.com/zh_cn/IAM/latest/UserGuide/id_credentials_access-keys.html)
+     - AWS S3：[区域与服务端点](https://docs.aws.amazon.com/general/latest/gr/s3.html)
      - Cloudflare R2：[获取 Access Key ID 和 Secret Access Key](https://developers.cloudflare.com/r2/api/tokens/)
      - 阿里云 OSS：[获取 Access Key ID 和 Access Key Secret](https://help.aliyun.com/zh/oss/developer-reference/use-amazon-s3-sdks-to-access-oss#306596478ed3r)
      - 腾讯云 COS：[获取 SecretId 和 SecretKey](https://cloud.tencent.com/document/product/436/37421)
