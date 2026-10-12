@@ -35,6 +35,8 @@
     "@types/node": "^22.13.1",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
+    "esbuild": "0.25.12",
+    "jsdom": "26.1.0",
     "tailwindcss": "^4.1.14",
     "typescript": "^5.9.3"
   }
