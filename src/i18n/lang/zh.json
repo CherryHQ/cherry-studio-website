@@ -13,7 +13,7 @@
     "mobile": "了解 Cherry Studio 移动版，在手机上连接 AI 模型、进行对话、创作图像和使用工具。现已上架 Google Play 与 App Store。",
     "mobile_download": "从 Google Play 或 App Store 下载 Cherry Studio 移动版，支持 Android、iPhone 与 iPad，也提供 APK 与 TestFlight 测试版入口。",
     "theme": "发现和分享美丽的 Cherry Studio 主题，个性化你的 AI 助手界面。支持浅色和深色模式主题。",
-    "careers": "加入 Cherry Studio 核心团队，寻找 AI Native 全栈工程师，一起打造下一代 AI 产品。"
+    "careers": "加入 Cherry Studio，探索研发、设计、企业 AI 交付、运营及实习岗位，一起打造下一代 AI 产品。"
   },
   "nav": {
     "home": "主页",
@@ -195,61 +195,76 @@
   "careers": {
     "badge": "正在招聘",
     "title": "加入 Cherry Studio",
-    "subtitle": "寻找 AI Native 的全栈工程师，与我们一起定义下一代 AI 产品",
-    "apply_button": "立即申请",
+    "subtitle": "寻找研发、设计、企业 AI 交付与运营人才，与我们一起打造下一代 AI 产品",
+    "apply_button": "发送简历",
     "view_full_jd": "查看完整 JD",
     "why_join": "为什么加入我们",
     "benefits": {
-      "no_clock": {
-        "title": "无打卡制度",
-        "description": "拒绝大厂病，没有形式主义，专注于创造价值"
-      },
-      "equity": {
-        "title": "股权激励",
-        "description": "早期核心成员，丰厚的股权激励计划"
-      },
       "ai_native": {
-        "title": "AI Native",
-        "description": "全面使用 AI 工具提升效率，拥抱最前沿的技术"
+        "title": "AI 原生实践",
+        "description": "在研发、设计、交付与运营中实践 AI 工具和工作流"
       },
-      "growth": {
-        "title": "快速成长",
-        "description": "与优秀的团队一起，在高速发展的 AI 行业中成长"
+      "open_source": {
+        "title": "开源影响力",
+        "description": "参与 Cherry Studio 开源产品建设，与社区和真实用户一起改进产品"
+      },
+      "early_team": {
+        "title": "早期团队",
+        "description": "加入早期团队，参与产品与团队建设"
+      },
+      "product": {
+        "title": "真实产品参与",
+        "description": "围绕真实使用场景，参与 AI 产品的设计、研发、交付与运营"
       }
     },
     "positions_title": "开放职位",
     "positions": {
-      "frontend": {
-        "title": "前端开发工程师",
-        "description": "精通 React、TypeScript、TailwindCSS、shadcn/ui"
-      },
-      "backend": {
-        "title": "后端开发工程师",
-        "description": "精通 Go 或 Node.js，具备高并发架构经验"
-      },
-      "fullstack": {
-        "title": "全栈开发工程师",
-        "description": "熟悉 React、Node.js、Electron 跨平台桌面应用开发"
-      },
-      "mobile": {
-        "title": "移动端开发工程师",
-        "description": "精通 React Native，有 iOS/Android 原生开发经验优先"
-      },
-      "ai": {
-        "title": "AI 应用工程师",
-        "description": "熟练使用 AI 编程工具，了解 RAG、LangChain 等框架"
-      },
       "designer": {
         "title": "AI 产品设计师",
         "description": "负责全平台 UI/UX 与品牌调性，打造 AI-native 设计系统"
+      },
+      "fde": {
+        "title": "FDE（企业 AI 落地交付）",
+        "description": "深入企业诊断业务场景，设计并落地 AI 工作流，持续交付与迭代"
+      },
+      "engineer": {
+        "title": "研发工程师",
+        "description": "负责 Web、后端与跨平台客户端的全栈研发，构建 AI Agent 产品"
+      },
+      "backend": {
+        "title": "后端研发工程师（Go / Node.js）",
+        "description": "建设核心后端、LLM Gateway 与 MaaS 平台，保障云原生服务稳定性"
+      },
+      "engineering_intern": {
+        "title": "研发实习生",
+        "description": "参与多模型网关、Agent 运行时、知识库及 Web 与桌面客户端研发"
+      },
+      "visual_design_intern": {
+        "title": "视效设计实习生",
+        "description": "制作产品视觉、短视频与动态内容，提升产品演示与品牌传播效果"
+      },
+      "commercial_operations_intern": {
+        "title": "AI 产品商业化运营实习生",
+        "description": "通过用户分层、客户访谈、数据分析与实验，推动产品商业化运营"
+      },
+      "content_operations_intern": {
+        "title": "内容运营实习生",
+        "description": "运营小红书、公众号、B站与 X 等账号，围绕真实使用场景创作内容"
+      },
+      "technical_support_intern": {
+        "title": "技术支持实习生",
+        "description": "支持模型网关与企业版接入，排查用户问题并完善技术支持文档"
+      },
+      "talent_operations": {
+        "title": "人才与组织运营专家",
+        "description": "负责核心人才招聘，搭建 AI Native 的招聘、入职与人才协作体系"
       }
     },
     "location_title": "工作地点",
-    "location": "上海市徐汇滨江中心模速空间",
-    "location_detail": "上海市徐汇区徐汇滨江中心模速空间 T2 号楼 613",
-    "click_to_view_map": "点击查看地图",
+    "location": "上海（具体安排请查看岗位详情）",
     "cta_title": "准备好了吗？",
-    "cta_subtitle": "期待与你一起创造下一代 AI 产品"
+    "cta_subtitle": "期待与你一起创造下一代 AI 产品",
+    "view_position": "查看岗位详情"
   },
   "footer": {
     "rss_copied": "已复制RSS",
