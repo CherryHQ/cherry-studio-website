@@ -13,7 +13,7 @@
     "mobile": "Meet Cherry Studio Mobile: chat with AI models, create images, and connect tools on your phone. Get it on Google Play or the App Store.",
     "mobile_download": "Download Cherry Studio Mobile from Google Play or the App Store for Android, iPhone, and iPad. APK and TestFlight beta downloads are also available.",
     "theme": "Discover and share beautiful Cherry Studio themes to personalize your AI assistant interface. Supports both light and dark mode themes.",
-    "careers": "Join Cherry Studio core team. Looking for AI Native full-stack engineers to build next-gen AI products."
+    "careers": "Join Cherry Studio. Explore engineering, design, enterprise AI delivery, operations, and internship opportunities to build the next generation of AI products."
   },
   "nav": {
     "home": "Home",
@@ -197,61 +197,76 @@
   "careers": {
     "badge": "We're Hiring",
     "title": "Join Cherry Studio",
-    "subtitle": "Looking for AI Native full-stack engineers to define the next generation of AI products with us",
-    "apply_button": "Apply Now",
+    "subtitle": "Join us in engineering, design, enterprise AI delivery, and operations to build the next generation of AI products",
+    "apply_button": "Send Your Resume",
     "view_full_jd": "View Full JD",
     "why_join": "Why Join Us",
     "benefits": {
-      "no_clock": {
-        "title": "No Clock-in Policy",
-        "description": "No corporate bureaucracy, no formalism, focus on creating value"
-      },
-      "equity": {
-        "title": "Equity Incentives",
-        "description": "Early-stage core team member with generous equity incentive plan"
-      },
       "ai_native": {
-        "title": "AI Native",
-        "description": "Fully embrace AI tools to boost efficiency, work with cutting-edge technology"
+        "title": "AI-native Practices",
+        "description": "Put AI tools and workflows into practice across engineering, design, delivery, and operations"
       },
-      "growth": {
-        "title": "Rapid Growth",
-        "description": "Grow with an excellent team in the fast-developing AI industry"
+      "open_source": {
+        "title": "Open-source Impact",
+        "description": "Help build Cherry Studio and improve the product with its community and real users"
+      },
+      "early_team": {
+        "title": "Early-stage Team",
+        "description": "Join an early-stage team and contribute to building both the product and the team"
+      },
+      "product": {
+        "title": "Real Product Work",
+        "description": "Contribute to AI product design, engineering, delivery, and operations around real use cases"
       }
     },
     "positions_title": "Open Positions",
     "positions": {
-      "frontend": {
-        "title": "Frontend Engineer",
-        "description": "Proficient in React, TypeScript, TailwindCSS, shadcn/ui"
-      },
-      "backend": {
-        "title": "Backend Engineer",
-        "description": "Proficient in Go or Node.js with high-concurrency architecture experience"
-      },
-      "fullstack": {
-        "title": "Full Stack Engineer",
-        "description": "Experienced in React, Node.js, Electron for cross-platform desktop apps"
-      },
-      "mobile": {
-        "title": "Mobile Engineer",
-        "description": "Skilled in React Native, iOS/Android native development is a plus"
-      },
-      "ai": {
-        "title": "AI Application Engineer",
-        "description": "Proficient with AI coding tools, familiar with RAG, LangChain frameworks"
-      },
       "designer": {
         "title": "AI Product Designer",
-        "description": "Own full-platform UI/UX and brand tone, building AI-native design systems"
+        "description": "Own UI/UX across platforms and brand identity, building an AI-native design system"
+      },
+      "fde": {
+        "title": "Forward Deployed Engineer (Enterprise AI Delivery)",
+        "description": "Diagnose enterprise business needs, design and implement AI workflows, and deliver ongoing improvements"
+      },
+      "engineer": {
+        "title": "Software Engineer",
+        "description": "Build AI Agent products through full-stack development across web, backend, and cross-platform clients"
+      },
+      "backend": {
+        "title": "Backend Engineer (Go / Node.js)",
+        "description": "Build core backend services, the LLM Gateway, and the MaaS platform, ensuring reliable cloud-native services"
+      },
+      "engineering_intern": {
+        "title": "Software Engineering Intern",
+        "description": "Contribute to multi-model gateways, Agent runtimes, knowledge bases, and web and desktop clients"
+      },
+      "visual_design_intern": {
+        "title": "Visual Design Intern",
+        "description": "Create product visuals, short videos, and motion content for product demos and brand communication"
+      },
+      "commercial_operations_intern": {
+        "title": "AI Product Commercial Operations Intern",
+        "description": "Drive product commercialization through user segmentation, customer interviews, data analysis, and experiments"
+      },
+      "content_operations_intern": {
+        "title": "Content Operations Intern",
+        "description": "Run accounts on Xiaohongshu, WeChat, Bilibili, X, and other channels, creating content around real use cases"
+      },
+      "technical_support_intern": {
+        "title": "Technical Support Intern",
+        "description": "Support model gateway and enterprise edition integrations, troubleshoot user issues, and improve support documentation"
+      },
+      "talent_operations": {
+        "title": "Talent and Organizational Operations Specialist",
+        "description": "Recruit core talent and build AI-native processes for hiring, onboarding, and team collaboration"
       }
     },
     "location_title": "Location",
-    "location": "Model Space, Xuhui Riverside Center, Shanghai",
-    "location_detail": "Room 613, Building T2, Model ​​Space, Xuhui Riverside Center, Xuhui District, Shanghai",
-    "click_to_view_map": "Click to view map",
+    "location": "Shanghai (see each role for specific arrangements)",
     "cta_title": "Ready to Join?",
-    "cta_subtitle": "We look forward to building the next generation of AI products with you"
+    "cta_subtitle": "We look forward to building the next generation of AI products with you",
+    "view_position": "View Role Details"
   },
   "footer": {
     "rss_copied": "RSS copied",
