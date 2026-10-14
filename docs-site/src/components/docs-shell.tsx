@@ -2,11 +2,27 @@
 
 import type { Root } from 'fumadocs-core/page-tree'
 import { DocsLayout } from 'fumadocs-ui/layouts/docs'
+import { Sidebar, SidebarProvider, SidebarTrigger, useSidebar } from 'fumadocs-ui/layouts/docs/slots/sidebar'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import type { ReactNode } from 'react'
+import { type ComponentProps, type ReactNode, useEffect } from 'react'
 
 import { getSectionLabels, type SectionLabels } from '@/lib/section-labels'
+
+function DocsSidebar(props: ComponentProps<typeof Sidebar>) {
+  const { open, mode } = useSidebar()
+
+  useEffect(() => {
+    if (mode !== 'drawer' || !open) return
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.body.style.overflow = previousOverflow
+    }
+  }, [mode, open])
+
+  return <Sidebar {...props} />
+}
 
 // Passed as `sidebar.banner`, which the sidebar renders outside its scroll viewport.
 function SectionSwitch({ locale, labels, mobile }: { locale: string; labels: SectionLabels; mobile: boolean }) {
@@ -55,13 +71,18 @@ export function DocsShell({
   return (
     <DocsLayout
       key={mobile ? 'mobile' : 'desktop'}
-      containerProps={{ className: 'mt-[72px] min-h-[calc(100dvh-72px)] [--fd-banner-height:72px]' }}
+      containerProps={{
+        // Let the browser size and position the directory scrollbar within its viewport.
+        className:
+          'mt-[72px] min-h-[calc(100dvh-72px)] [--fd-banner-height:72px] [&_[id^=nd-sidebar]]:min-h-0 [&_[id^=nd-sidebar]]:overflow-hidden [&_[id^=nd-sidebar]_[data-radix-scroll-area-viewport]]:overflow-y-auto! [&_[id^=nd-sidebar]_[data-radix-scroll-area-viewport]]:[scrollbar-width:thin]! [&_[id^=nd-sidebar]_[data-radix-scroll-area-viewport]]:[scrollbar-color:var(--color-fd-border)_transparent] [&_[id^=nd-sidebar]_[data-radix-scroll-area-viewport]::-webkit-scrollbar]:block! [&_[id^=nd-sidebar]_[data-radix-scroll-area-viewport]::-webkit-scrollbar]:w-1.5 [&_[id^=nd-sidebar]_[data-orientation=vertical]]:hidden [&_[id^=nd-sidebar]_[data-radix-scroll-area-viewport]_p]:text-xs [&_[id^=nd-sidebar]_[data-radix-scroll-area-viewport]_p]:font-semibold'
+      }}
       tree={mobile ? mobileTree : desktopTree}
       nav={{
         title: labels.docs,
         url: mobile ? `/${locale}/mobile/` : `/${locale}/`
       }}
-      sidebar={{ defaultOpenLevel: 1, banner: <SectionSwitch locale={locale} labels={labels} mobile={mobile} /> }}
+      slots={{ sidebar: { provider: SidebarProvider, root: DocsSidebar, trigger: SidebarTrigger, useSidebar } }}
+      sidebar={{ banner: <SectionSwitch locale={locale} labels={labels} mobile={mobile} /> }}
       githubUrl="https://github.com/CherryHQ/cherry-studio-website">
       {children}
     </DocsLayout>
