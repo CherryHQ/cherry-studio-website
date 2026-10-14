@@ -2,7 +2,41 @@
 icon: cherries
 ---
 
-# 项目简介
+# Cherry Studio 使用文档
+
+<a id="xiang-mu-jian-jie"></a>
+
+Cherry Studio 使用文档：按你要完成的事找到教程。
+
+- **第一次使用**：[快速开始](getting-started/quick-start.md)，从安装、连接模型到发出第一条消息。
+- **完成一个任务**：[日常使用](#日常使用)，查找对话、知识库、绘画与翻译教程。
+- **遇到问题**：[常见问题](question-contact/questions.md)，先按现象排查。
+
+## 开始使用
+
+[下载与安装](cherry-studio/installation/README.md) · [快速开始](getting-started/quick-start.md) · [升级与降级](cherry-studio/installation/upgrade-downgrade.md)
+
+## 日常使用
+
+[对话与助手](cherrystudio/preview/chat.md) · [用自己的资料问答](knowledge-base/knowledge-base.md) · [生成与编辑图片](advanced-basic/knowledge-content/painting-workflow.md) · [翻译文件与长文](advanced-basic/knowledge-content/translation-workflow.md) · [更多任务案例](advanced-basic/cases/README.md)
+
+## Agent 与自动化
+
+[创建 Agent](advanced-basic/agent-workspace/create-agent.md) · [处理任务与文件](advanced-basic/agent-workspace/workspaces-tasks-files.md) · [技能与 MCP](advanced-basic/extensions/README.md) · [频道与定时任务](advanced-basic/automation/README.md)
+
+## 配置与数据
+
+[连接模型服务](pre-basic/providers/README.md) · [软件设置](pre-basic/settings/README.md) · [备份与数据管理](pre-basic/data-settings/README.md)
+
+## 故障排查
+
+[常见问题](question-contact/questions.md) · [知识库排错](knowledge-base/troubleshooting.md) · [MCP 排错](advanced-basic/extensions/mcp/troubleshooting.md) · [反馈问题](question-contact/suggestions.md)
+
+## 开发者与贡献
+
+[API 网关与诊断工具](advanced-basic/developer-tools/README.md) · [贡献代码](contribution/code.md) · [贡献文档](contribution/docs.md)
+
+***
 
 <figure><img src="assets/fc946e1426d78466ee005eba.webp" alt=""><figcaption></figcaption></figure>
 

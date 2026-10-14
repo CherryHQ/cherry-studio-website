@@ -81,11 +81,3 @@ icon: puzzle-piece
 不需要关闭任务。编辑 Agent 后，从下一条消息开始会加载新的技能配置；正在生成的回复不会被中断。
 
 </details>
-
-<details>
-
-<summary>开启技能后需要重开任务吗？</summary>
-
-不需要关闭任务。编辑 Agent 后，从下一条消息开始会加载新的技能配置；正在生成的回复不会被中断。
-
-</details>

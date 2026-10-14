@@ -1,7 +1,41 @@
 ---
 icon: cherries
 ---
-# Project Introduction
+# Cherry Studio Documentation
+
+<a id="project-introduction"></a>
+
+Find a guide for what you want to do with Cherry Studio.
+
+- **First time here?** Follow [Quick Start](getting-started/quick-start.md) to install, connect a model, and send your first message.
+- **Have a task in mind?** Browse [Everyday tasks](#everyday-tasks) for chat, knowledge bases, images, and translation.
+- **Something went wrong?** Start with [Common Issues](question-contact/questions.md).
+
+## Getting started
+
+[Download and install](cherry-studio/installation/README.md) · [Quick Start](getting-started/quick-start.md) · [Upgrade or downgrade](cherry-studio/installation/upgrade-downgrade.md)
+
+## Everyday tasks
+
+[Chat with an assistant](cherrystudio/preview/chat.md) · [Ask questions about your sources](knowledge-base/knowledge-base.md) · [Create and edit images](advanced-basic/knowledge-content/painting-workflow.md) · [Translate files and long text](advanced-basic/knowledge-content/translation-workflow.md) · [More task examples](advanced-basic/cases/README.md)
+
+## Agents & automation
+
+[Create an agent](advanced-basic/agent-workspace/create-agent.md) · [Work with tasks and files](advanced-basic/agent-workspace/workspaces-tasks-files.md) · [Skills and MCP](advanced-basic/extensions/README.md) · [Channels and scheduled tasks](advanced-basic/automation/README.md)
+
+## Configuration & data
+
+[Connect a model provider](pre-basic/providers/README.md) · [App settings](pre-basic/settings/README.md) · [Back up and manage data](pre-basic/data-settings/README.md)
+
+## Troubleshooting
+
+[Common Issues](question-contact/questions.md) · [Knowledge base troubleshooting](knowledge-base/troubleshooting.md) · [MCP troubleshooting](advanced-basic/extensions/mcp/troubleshooting.md) · [Report a problem](question-contact/suggestions.md)
+
+## Developers & contribution
+
+[API gateway and diagnostics](advanced-basic/developer-tools/README.md) · [Contribute code](contribution/code.md) · [Improve the documentation](contribution/docs.md)
+
+***
 
 Follow our social accounts: [Twitter (X)](https://x.com/CherryStudioHQ)
 

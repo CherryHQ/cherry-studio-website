@@ -10,40 +10,26 @@ A knowledge base is like giving the AI its own **reference book**: you put your 
 
 ## What Can You Do With a Knowledge Base?
 
-A few real-world scenarios:
-
-* **Company knowledge assistant**: load product manuals, API docs and internal guidelines, and let the AI answer employees' questions automatically
-* **Personal archive**: add years of work notes, reading excerpts and email archives, then ask the AI "which slide deck last year mentioned that analysis framework?"
-* **Study partner**: add course slides and papers, and let the AI quiz you by chapter and answer your questions
-* **Contract / regulation lookup**: add legal provisions and contract templates, and ask the AI how specific clauses apply
+Use it for material you need to consult repeatedly, such as product manuals, internal policies, project notes or study materials. See [Getting Started with Knowledge Bases](../../knowledge-base/knowledge-base.md) for the complete workflow and examples.
 
 ## Why Use a Knowledge Base Instead of Just Sending Files to the AI?
 
-Limitations of sending files directly:
-
-* You have to upload them again for every question
-* A single conversation has a length limit, so long documents don't fit
-* Files can't be reused across conversations
-
-**A knowledge base solves all of these**: upload once, use it from any conversation afterwards, and it can "pick out the relevant passages" from large amounts of material to feed to the AI.
+For a one-off attachment, using chat directly may be simpler. A knowledge base is useful when you need a reusable collection of sources. It retrieves relevant passages; check those passages with a recall test before relying on the answers.
 
 ## How to Use It
 
-* First time: read the [complete knowledge base tutorial](../../knowledge-base/knowledge-base.md)
-* Adding images or scanned PDFs: read [Document Preprocessing](../../knowledge-base/zhi-shi-ku-wen-dang-yu-chu-li.md) first so the AI can "read" the text in images
-* Choosing an embedding model: see the [embedding model reference](../../knowledge-base/emb-models-info.md)
-* Want to work offline without a cloud embedding service? Use the built-in [local embedding models](../../pre-basic/settings/local-models.md) — the knowledge base can then be indexed and searched without an internet connection
-* Where is the data stored? See [Knowledge Base Data](../../knowledge-base/data.md)
+* First time: start with [Getting Started with Knowledge Bases](../../knowledge-base/knowledge-base.md).
+* Adding images or scanned PDFs: see [Document Preprocessing](../../knowledge-base/zhi-shi-ku-wen-dang-yu-chu-li.md).
+* Choosing how to search: see [Model and Retrieval Settings](../../knowledge-base/emb-models-info.md). Embedding models are optional; [local models](../../pre-basic/settings/local-models.md) are one option when you need embeddings.
+* Checking storage and data handling: see [Knowledge Base Data](../../knowledge-base/data.md).
 
 ## Combining With Other Features
 
-* **Knowledge base + assistant**: "attach" a knowledge base to an assistant to make it a specialist in that domain
-* **Knowledge base +** [**Agent**](../../advanced-basic/agent.md): let an agent look things up in the knowledge base while it works on a task
-* **Knowledge base +** [**Channels**](../../advanced-basic/automation/channels.md): station an agent that "knows the company docs" in a team Slack channel
+* For a question grounded in your sources, follow [Using in Chat](../../knowledge-base/chat.md).
+* For multi-step work, follow [Using with Agent](../../knowledge-base/agent.md). The [Agent overview](../../advanced-basic/agent.md) explains the wider workflow.
+* Once the Agent works as expected, see [Channels](../../advanced-basic/automation/channels.md) for messaging integrations.
 
-{% hint style="info" %}
-We recommend reading the [Advanced Capability Map](../../advanced-basic/capability-map.md) first to see how knowledge bases work together with agents, MCP, channels and other features.
-{% endhint %}
+The [Advanced Capability Map](../../advanced-basic/capability-map.md) explains how these features fit together.
 
 ***
 

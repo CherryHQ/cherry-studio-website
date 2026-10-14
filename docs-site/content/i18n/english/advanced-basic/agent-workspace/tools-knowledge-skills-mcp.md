@@ -80,11 +80,3 @@ Ensure the knowledge base has completed processing and contains searchable conte
 No need to close the task. After editing the Agent, the new skill configuration is loaded starting from the next message; the currently generating reply is not interrupted.
 
 </details>
-
-<details>
-
-<summary>Do I need to restart the task after enabling a skill?</summary>
-
-No need to close the task. After editing the Agent, the new skill configuration is loaded starting from the next message; the currently generating reply is not interrupted.
-
-</details>

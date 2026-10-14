@@ -89,11 +89,3 @@ Agent edits are saved automatically. Currently generating responses will not be 
 When deleting a working directory from the task list, only the directory record in Cherry Studio and the task records under that directory are removed. The actual directory on the disk is not deleted. File operations performed by the Agent during task execution are still subject to the selected permission mode.
 
 </details>
-
-<details>
-
-<summary>Will deleting the working directory also delete the files on the disk?</summary>
-
-When deleting a working directory from the task list, only the directory record in Cherry Studio and the task records under that directory are removed. The actual directory on the disk is not deleted. File operations performed by the Agent during task execution are still subject to the selected permission mode.
-
-</details>

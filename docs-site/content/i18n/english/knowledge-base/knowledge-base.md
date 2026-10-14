@@ -10,6 +10,8 @@ A knowledge base turns files, notes, folders or web pages into a collection of m
 If you only need to handle a short piece of text once, pasting it straight into the chat is faster. Build a knowledge base when the material will be reused and answers must be grounded in your internal documents.
 {% endhint %}
 
+Start here for the complete workflow. For a specific task, go to [Create a knowledge base](create.md), [Add material](sources.md), [Test recall](recall-test.md), [Use in chat](chat.md), or [Use with an Agent](agent.md).
+
 ## When to Use One
 
 | Need | Recommended approach | Why |
