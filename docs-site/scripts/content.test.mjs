@@ -281,3 +281,29 @@ test('ordinary Markdown retains the static HTML path', async () => {
   assert.equal(page.presentation, null)
   assert.match(page.html, /<p>Text\.<\/p>/)
 })
+
+test('theme pictures retain HTTPS sources and safe external links in ordinary and rich pages', async () => {
+  const light = 'https://star-history.dera.page/svg?repos=CherryHQ/cherry-studio&type=Date'
+  const dark = `${light}&theme=dark`
+  for (const rich of [false, true]) {
+    const page = await renderMarkdown(
+      `${rich ? '---\nrich: true\n---\n' : ''}<a href="https://star-history.dera.page/#CherryHQ/cherry-studio&amp;Date" onclick="alert(1)"><picture><source media="(prefers-color-scheme: dark)" srcset="${dark}" onerror="alert(1)"><source media="(prefers-color-scheme: light)" srcset="${light}"><source srcset="javascript:alert(1)"><source srcset="data:image/svg+xml,bad"><source srcset="https://safe.example/chart.svg, javascript:alert(1) 2x"><img alt="Star History Chart" src="${light}" onerror="alert(1)"></picture></a>`,
+      (url) => url,
+      () => {}
+    )
+    for (const html of [page.html, ...(rich ? page.presentation.map((block) => block.html) : [])]) {
+      assert.match(html, /<picture>/)
+      assert.match(
+        html,
+        /media="\(prefers-color-scheme: dark\)" srcset="https:\/\/star-history\.dera\.page\/svg[^" ]*theme=dark"/
+      )
+      assert.match(
+        html,
+        /media="\(prefers-color-scheme: light\)" srcset="https:\/\/star-history\.dera\.page\/svg[^" ]*type=Date"/
+      )
+      assert.match(html, /<img alt="Star History Chart" src="https:\/\/star-history\.dera\.page\/svg/)
+      assert.match(html, /rel="noopener noreferrer"/)
+      assert.doesNotMatch(html, /onclick|onerror|javascript:|data:image|safe\.example/)
+    }
+  }
+})

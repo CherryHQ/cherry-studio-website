@@ -142,7 +142,13 @@ Cherry Studio's highly customizable design, powerful extensibility, and user-fri
 
 ### Star History
 
-[Star History](https://cherrystarhistory.ocool.online/)
+<a href="https://star-history.dera.page/#CherryHQ/cherry-studio&amp;Date">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://star-history.dera.page/svg?repos=CherryHQ/cherry-studio&amp;type=Date&amp;theme=dark" />
+    <source media="(prefers-color-scheme: light)" srcset="https://star-history.dera.page/svg?repos=CherryHQ/cherry-studio&amp;type=Date" />
+    <img alt="Star History Chart" src="https://star-history.dera.page/svg?repos=CherryHQ/cherry-studio&amp;type=Date" />
+  </picture>
+</a>
 
 ## Follow Our Social Accounts
 

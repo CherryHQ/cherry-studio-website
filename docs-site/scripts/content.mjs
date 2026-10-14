@@ -100,6 +100,7 @@ export async function renderMarkdown(markdown, rewrite, report) {
       'details',
       'summary',
       'video',
+      'picture',
       'source'
     ],
     attributes: {
@@ -111,7 +112,7 @@ export async function renderMarkdown(markdown, rewrite, report) {
       figure: ['dataMobileShot'],
       img: ['src', 'alt', 'title', 'width', 'height'],
       video: ['src', 'controls', 'poster'],
-      source: ['src', 'type']
+      source: ['src', 'type', ['media', /^\(prefers-color-scheme: (dark|light)\)$/], ['srcSet', /^https:\/\/[^\s,]+$/]]
     }
   }
   const result = await unified()
