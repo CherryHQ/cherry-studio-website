@@ -1,10 +1,28 @@
 ---
+rich: true
 icon: cloud-plus
 ---
 
 # Model Service Configuration
 
 Cherry Studio ships with connection templates for 60+ providers (model service vendors), covering most mainstream models from around the world as well as local inference frameworks. Use the guides below for provider-specific configuration, or the [quick reference](quick-reference.md) to find other providers.
+
+<div data-cards>
+<div data-card>
+
+[**Find a Provider**](quick-reference.md)
+
+Open the quick reference to find a provider-specific guide.
+
+</div>
+<div data-card>
+
+[**Understand Connection Settings**](../../cherrystudio/preview/settings/providers.md)
+
+Learn about API keys, API hosts, and advanced configuration.
+
+</div>
+</div>
 
 ### Provider Types
 
@@ -22,11 +40,43 @@ Cherry Studio groups providers by protocol into the following types, which behav
 
 ### General Steps to Add a Provider
 
-1. Open `Settings → Model Provider`
-2. Find the provider in the built-in list and click it to open its details page
-3. Enter the **API Key** (required) and change the **API Host** if needed (it defaults to the provider's official address)
-4. Click **Sync models** and add the chat, embedding or vision models you use
-5. (Optional) Click **Model Check** to verify the connection with any chat model
+{% stepper %}
+{% step %}
+
+#### Open Settings
+
+Open `Settings → Model Provider`
+
+{% endstep %}
+{% step %}
+
+#### Select a Provider
+
+Find the provider in the built-in list and click it to open its details page
+
+{% endstep %}
+{% step %}
+
+#### Enter Connection Details
+
+Enter the **API Key** (required) and change the **API Host** if needed (it defaults to the provider's official address)
+
+{% endstep %}
+{% step %}
+
+#### Add Models
+
+Click **Sync models** and add the chat, embedding or vision models you use
+
+{% endstep %}
+{% step %}
+
+#### Check the Connection (Optional)
+
+(Optional) Click **Model Check** to verify the connection with any chat model
+
+{% endstep %}
+{% endstepper %}
 
 ### Provider Guides
 

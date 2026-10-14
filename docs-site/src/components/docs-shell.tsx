@@ -74,7 +74,7 @@ export function DocsShell({
       containerProps={{
         // Let the browser size and position the directory scrollbar within its viewport.
         className:
-          'mt-[72px] min-h-[calc(100dvh-72px)] [--fd-banner-height:72px] [&_[id^=nd-sidebar]]:min-h-0 [&_[id^=nd-sidebar]]:overflow-hidden [&_[id^=nd-sidebar]_[data-radix-scroll-area-viewport]]:overflow-y-auto! [&_[id^=nd-sidebar]_[data-radix-scroll-area-viewport]]:[scrollbar-width:thin]! [&_[id^=nd-sidebar]_[data-radix-scroll-area-viewport]]:[scrollbar-color:var(--color-fd-border)_transparent] [&_[id^=nd-sidebar]_[data-radix-scroll-area-viewport]::-webkit-scrollbar]:block! [&_[id^=nd-sidebar]_[data-radix-scroll-area-viewport]::-webkit-scrollbar]:w-1.5 [&_[id^=nd-sidebar]_[data-orientation=vertical]]:hidden [&_[id^=nd-sidebar]_[data-radix-scroll-area-viewport]_p]:text-xs [&_[id^=nd-sidebar]_[data-radix-scroll-area-viewport]_p]:font-semibold'
+          'mt-[72px] min-h-[calc(100dvh-72px)] [--fd-banner-height:72px] [&_[id^=nd-sidebar]]:min-h-0 [&_[id^=nd-sidebar]]:overflow-hidden [&_[id^=nd-sidebar]_[data-radix-scroll-area-viewport]]:overflow-y-auto! [&_[id^=nd-sidebar]_[data-radix-scroll-area-viewport]]:[scrollbar-width:thin]! [&_[id^=nd-sidebar]_[data-radix-scroll-area-viewport]]:[scrollbar-color:var(--color-fd-border)_transparent] [&_[id^=nd-sidebar]_[data-radix-scroll-area-viewport]::-webkit-scrollbar]:block! [&_[id^=nd-sidebar]_[data-radix-scroll-area-viewport]::-webkit-scrollbar]:w-1.5 [&_[id^=nd-sidebar]_[data-orientation=vertical]]:hidden [&_[id^=nd-sidebar]_[data-radix-scroll-area-viewport]_p]:font-semibold'
       }}
       tree={mobile ? mobileTree : desktopTree}
       nav={{

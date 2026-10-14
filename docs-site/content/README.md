@@ -1,4 +1,5 @@
 ---
+rich: true
 icon: cherries
 ---
 
@@ -8,9 +9,29 @@ icon: cherries
 
 Cherry Studio 使用文档：按你要完成的事找到教程。
 
-- **第一次使用**：[快速开始](getting-started/quick-start.md)，从安装、连接模型到发出第一条消息。
-- **完成一个任务**：[日常使用](#日常使用)，查找对话、知识库、绘画与翻译教程。
-- **遇到问题**：[常见问题](question-contact/questions.md)，先按现象排查。
+<div data-cards>
+<div data-card>
+
+[**第一次使用**](getting-started/quick-start.md)
+
+从安装、连接模型到发出第一条消息。
+
+</div>
+<div data-card>
+
+[**完成一个任务**](#日常使用)
+
+查找对话、知识库、绘画与翻译教程。
+
+</div>
+<div data-card>
+
+[**遇到问题**](question-contact/questions.md)
+
+先按现象排查。
+
+</div>
+</div>
 
 ## 开始使用
 

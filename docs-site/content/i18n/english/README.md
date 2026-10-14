@@ -1,4 +1,5 @@
 ---
+rich: true
 icon: cherries
 ---
 # Cherry Studio Documentation
@@ -7,9 +8,29 @@ icon: cherries
 
 Find a guide for what you want to do with Cherry Studio.
 
-- **First time here?** Follow [Quick Start](getting-started/quick-start.md) to install, connect a model, and send your first message.
-- **Have a task in mind?** Browse [Everyday tasks](#everyday-tasks) for chat, knowledge bases, images, and translation.
-- **Something went wrong?** Start with [Common Issues](question-contact/questions.md).
+<div data-cards>
+<div data-card>
+
+[**First time here?**](getting-started/quick-start.md)
+
+Install, connect a model, and send your first message.
+
+</div>
+<div data-card>
+
+[**Have a task in mind?**](#everyday-tasks)
+
+Find guides for chat, knowledge bases, images, and translation.
+
+</div>
+<div data-card>
+
+[**Something went wrong?**](question-contact/questions.md)
+
+Start with common issues and troubleshooting.
+
+</div>
+</div>
 
 ## Getting started
 

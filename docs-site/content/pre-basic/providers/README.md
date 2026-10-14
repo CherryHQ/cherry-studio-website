@@ -1,10 +1,28 @@
 ---
+rich: true
 icon: cloud-plus
 ---
 
 # 模型服务配置
 
 Cherry Studio 内置 60+ 家 Provider（模型服务商）的连接模板，覆盖国内外大部分主流模型与本地推理框架。本节汇总已有的服务商配置指南；查找其他服务商可先看[全部 Provider 快速参考](quick-reference.md)。
+
+<div data-cards>
+<div data-card>
+
+[**查找服务商**](quick-reference.md)
+
+从全部 Provider 快速参考进入对应配置指南。
+
+</div>
+<div data-card>
+
+[**了解连接设置**](../settings/providers.md)
+
+查看 API 密钥、API 地址与高级配置的说明。
+
+</div>
+</div>
 
 ### Provider 类型
 
@@ -22,11 +40,43 @@ Cherry Studio 把 Provider 按协议分为以下几类，行为略有差异：
 
 ### 添加一个 Provider 的通用步骤
 
-1. 打开 `设置 → 模型服务`
-2. 在内置 Provider 列表中找到目标 Provider，点击进入详情页
-3. 填写 **API 密钥**（必填），按需修改 **API 地址**（默认是 Provider 官方地址）
-4. 点击 **获取模型列表**，按需添加你常用的对话/嵌入/视觉模型
-5. （可选）点击 **检测**，用任一对话模型验证连接是否成功
+{% stepper %}
+{% step %}
+
+#### 打开设置
+
+打开 `设置 → 模型服务`
+
+{% endstep %}
+{% step %}
+
+#### 选择服务商
+
+在内置 Provider 列表中找到目标 Provider，点击进入详情页
+
+{% endstep %}
+{% step %}
+
+#### 填写连接信息
+
+填写 **API 密钥**（必填），按需修改 **API 地址**（默认是 Provider 官方地址）
+
+{% endstep %}
+{% step %}
+
+#### 添加模型
+
+点击 **获取模型列表**，按需添加你常用的对话/嵌入/视觉模型
+
+{% endstep %}
+{% step %}
+
+#### 验证连接（可选）
+
+（可选）点击 **检测**，用任一对话模型验证连接是否成功
+
+{% endstep %}
+{% endstepper %}
 
 ### Provider 配置详解
 

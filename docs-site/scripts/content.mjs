@@ -14,6 +14,8 @@ import remarkRehype from 'remark-rehype'
 import { unified } from 'unified'
 import { visit } from 'unist-util-visit'
 
+import { presentationBlocks } from './presentation.mjs'
+
 export function slugFor(file) {
   return file
     .replace(/\.md$/i, '')
@@ -46,18 +48,23 @@ export function convertGitBook(markdown, report) {
           case 'endhint':
             return '\n\n</aside>\n\n'
           case 'tabs':
+            return '\n<div data-tabs>\n\n'
           case 'endtabs':
+            return '\n\n</div>\n\n'
           case 'stepper':
-          case 'endstepper':
+            return '\n<div data-steps>\n\n'
           case 'step':
+            return '\n<div data-step>\n\n'
+          case 'endstepper':
           case 'endstep':
+            return '\n\n</div>\n\n'
           case 'content-ref':
           case 'endcontent-ref':
             return '\n\n'
           case 'tab':
-            return `\n\n### ${value('title')}\n\n`
+            return `\n<div data-tab="${value('title').replaceAll('&', '&amp;').replaceAll('"', '&quot;')}">\n\n### ${value('title')}\n\n`
           case 'endtab':
-            return '\n\n'
+            return '\n\n</div>\n\n'
           case 'embed':
             return `\n\n[${value('url')}](${value('url')})\n\n`
           default:
@@ -70,6 +77,9 @@ export function convertGitBook(markdown, report) {
 }
 
 export async function renderMarkdown(markdown, rewrite, report) {
+  const frontmatter = markdown.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n/)?.[1] || ''
+  const rich = /^rich:\s*true\s*$/m.test(frontmatter)
+  let presentation = null
   const toc = []
   const anchors = []
   const links = []
@@ -97,7 +107,7 @@ export async function renderMarkdown(markdown, rewrite, report) {
       '*': [...(defaultSchema.attributes['*'] || []), 'id'],
       code: [['className', /^language-./, 'math-inline', 'math-display']],
       aside: ['dataHint'],
-      div: ['dataCards', 'dataCard', 'dataMobileGallery'],
+      div: ['dataCards', 'dataCard', 'dataMobileGallery', 'dataSteps', 'dataStep', 'dataTabs', 'dataTab'],
       figure: ['dataMobileShot'],
       img: ['src', 'alt', 'title', 'width', 'height'],
       video: ['src', 'controls', 'poster'],
@@ -283,12 +293,14 @@ export async function renderMarkdown(markdown, rewrite, report) {
     // Highlight only after sanitizing repository HTML so Shiki's generated
     // classes and color variables are trusted without allowing source styles.
     .use(rehypeCode, { icon: false, tab: false })
+    .use(() => (tree) => {
+      if (rich) presentation = presentationBlocks(tree.children)
+    })
     .use(rehypeStringify)
     .process(convertGitBook(markdown.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n/, ''), report))
   for (const message of result.messages) {
     if (message.source === 'rehype-katex') report({ type: 'invalid-math', reason: message.reason })
   }
-  const frontmatter = markdown.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n/)?.[1] || ''
   const declared =
     frontmatter
       .match(/^description:\s*(.+)$/m)?.[1]
@@ -296,6 +308,7 @@ export async function renderMarkdown(markdown, rewrite, report) {
       .replace(/^(['"])(.*)\1$/, '$2') || ''
   return {
     html: String(result),
+    presentation,
     title,
     toc,
     text,
