@@ -4,6 +4,7 @@ import path from 'node:path'
 import test from 'node:test'
 import { fileURLToPath } from 'node:url'
 
+import { flattenSectionGroups } from '../src/lib/navigation.ts'
 import { parseSummary } from './content.mjs'
 
 const app = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
@@ -66,3 +67,48 @@ for (const locale of locales) {
     assert.ok(sections[1].some((entry) => entry.file === 'mobile/development.md'))
   })
 }
+
+function collectUrls(nodes) {
+  return nodes.flatMap((node) => {
+    if (node.type === 'page') return [node.url]
+    if (node.type === 'separator') return []
+    return [...(node.index ? [node.index.url] : []), ...collectUrls(node.children)]
+  })
+}
+
+for (const locale of locales) {
+  test(`${locale.code}: section labels preserve links and nested article folders`, () => {
+    const article = { type: 'page', name: 'Quick Start', url: `/${locale.code}/getting-started/quick-start/` }
+    const indexedFolder = { type: 'folder', name: 'Installation', index: article, children: [article] }
+    const referenceFolder = { type: 'folder', name: 'Reference', children: [article] }
+    const nodes = groupNames[locale.code].map((name) => ({
+      type: 'folder',
+      name,
+      children: [article, indexedFolder, referenceFolder]
+    }))
+    const flattened = flattenSectionGroups(nodes)
+    assert.deepEqual(collectUrls(flattened), collectUrls(nodes))
+    for (const group of nodes.filter((node) => node.type === 'folder' && !node.index)) {
+      assert.ok(flattened.some((node) => node.type === 'separator' && node.name === group.name))
+      assert.ok(!flattened.includes(group), 'group headings are static labels, not folder triggers')
+      for (const child of group.children) assert.ok(flattened.includes(child))
+    }
+    const nested = flattened.filter((node) => node.type === 'folder')
+    assert.equal(nested.length, nodes.length * 2)
+    assert.ok(
+      nested.every((node) => nodes.some((group) => group.type === 'folder' && group.children.includes(node))),
+      'nested folders retain their identity, links and collapsible children'
+    )
+  })
+}
+
+test('root folders with an index keep their article links and navigation', () => {
+  const folder = {
+    type: 'folder',
+    name: 'Article folder',
+    index: { type: 'page', name: 'Overview', url: '/en/overview/' },
+    children: [{ type: 'page', name: 'Details', url: '/en/details/' }]
+  }
+  assert.deepEqual(flattenSectionGroups([folder]), [folder])
+  assert.equal(flattenSectionGroups([folder])[0], folder)
+})

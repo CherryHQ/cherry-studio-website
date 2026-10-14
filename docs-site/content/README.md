@@ -1,4 +1,5 @@
 ---
+rich: true
 icon: cherries
 ---
 
@@ -8,9 +9,29 @@ icon: cherries
 
 Cherry Studio 使用文档：按你要完成的事找到教程。
 
-- **第一次使用**：[快速开始](getting-started/quick-start.md)，从安装、连接模型到发出第一条消息。
-- **完成一个任务**：[日常使用](#日常使用)，查找对话、知识库、绘画与翻译教程。
-- **遇到问题**：[常见问题](question-contact/questions.md)，先按现象排查。
+<div data-cards>
+<div data-card>
+
+[**第一次使用**](getting-started/quick-start.md)
+
+从安装、连接模型到发出第一条消息。
+
+</div>
+<div data-card>
+
+[**完成一个任务**](#日常使用)
+
+查找对话、知识库、绘画与翻译教程。
+
+</div>
+<div data-card>
+
+[**遇到问题**](question-contact/questions.md)
+
+先按现象排查。
+
+</div>
+</div>
 
 ## 开始使用
 
@@ -140,7 +161,13 @@ Cherry Studio 是一款集多模型对话、智能体、知识库管理、AI 绘
 
 ### Star History
 
-[Star History](https://cherrystarhistory.ocool.online/)
+<a href="https://star-history.dera.page/#CherryHQ/cherry-studio&amp;Date">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://star-history.dera.page/svg?repos=CherryHQ/cherry-studio&amp;type=Date&amp;theme=dark" />
+    <source media="(prefers-color-scheme: light)" srcset="https://star-history.dera.page/svg?repos=CherryHQ/cherry-studio&amp;type=Date" />
+    <img alt="Star History Chart" src="https://star-history.dera.page/svg?repos=CherryHQ/cherry-studio&amp;type=Date" />
+  </picture>
+</a>
 
 ## 关注我们的社交账号
 

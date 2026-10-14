@@ -247,3 +247,63 @@ test('page descriptions use lead prose, not headings, link lines, captions or th
   assert.ok(clipped.length <= 156 && clipped.endsWith('…') && !clipped.includes(' …'))
   assert.ok(pageDescription('', '句子。'.repeat(40)).endsWith('。'))
 })
+
+test('rich Markdown uses installed Fumadocs blocks after sanitizing and rewriting', async () => {
+  const page = await renderMarkdown(
+    `---\nrich: true\n---\n# Rich page\n\n{% hint style="warning" %}\nKeep your key private.\n{% endhint %}\n\n{% stepper %}\n{% step %}\n## Install <a id="original-install"></a>\n\n[Guide](install.md)\n{% endstep %}\n{% endstepper %}\n\n{% tabs %}\n{% tab title="Windows" %}\nHello.\n{% endtab %}\n{% tab title="macOS" %}\n[Guide](macos.md)\n{% endtab %}\n{% endtabs %}\n\n<div data-cards><div data-card>\n\n[Start](start.md)\n\nStart here.\n\n</div></div>\n\n<script>alert(1)</script>\n\n\`\`\`txt\nexample\n\`\`\``,
+    (url) => `/docs/en/${url}`,
+    () => {}
+  )
+  assert.equal(page.presentation.find((block) => block.kind === 'callout').style, 'warning')
+  assert.equal(page.presentation.find((block) => block.kind === 'steps').steps.length, 1)
+  const tabs = page.presentation.find((block) => block.kind === 'tabs').tabs
+  assert.deepEqual(
+    tabs.map((tab) => tab.title),
+    ['Windows', 'macOS']
+  )
+  assert.ok(tabs[1].anchors.includes('macos'))
+  assert.ok(page.anchors.includes('original-install'))
+  const card = page.presentation.find((block) => block.kind === 'cards').cards[0]
+  assert.equal(card.href, '/en/start.md', 'framework links receive the /docs basePath once')
+  assert.equal(card.title, 'Start')
+  const serialized = JSON.stringify(page.presentation)
+  assert.doesNotMatch(serialized, /<script|alert\(1\)/)
+  assert.match(serialized, /shiki/)
+  assert.match(serialized, /\/docs\/en\/install.md/)
+})
+
+test('ordinary Markdown retains the static HTML path', async () => {
+  const page = await renderMarkdown(
+    '# Ordinary\n\nText.',
+    (url) => url,
+    () => {}
+  )
+  assert.equal(page.presentation, null)
+  assert.match(page.html, /<p>Text\.<\/p>/)
+})
+
+test('theme pictures retain HTTPS sources and safe external links in ordinary and rich pages', async () => {
+  const light = 'https://star-history.dera.page/svg?repos=CherryHQ/cherry-studio&type=Date'
+  const dark = `${light}&theme=dark`
+  for (const rich of [false, true]) {
+    const page = await renderMarkdown(
+      `${rich ? '---\nrich: true\n---\n' : ''}<a href="https://star-history.dera.page/#CherryHQ/cherry-studio&amp;Date" onclick="alert(1)"><picture><source media="(prefers-color-scheme: dark)" srcset="${dark}" onerror="alert(1)"><source media="(prefers-color-scheme: light)" srcset="${light}"><source srcset="javascript:alert(1)"><source srcset="data:image/svg+xml,bad"><source srcset="https://safe.example/chart.svg, javascript:alert(1) 2x"><img alt="Star History Chart" src="${light}" onerror="alert(1)"></picture></a>`,
+      (url) => url,
+      () => {}
+    )
+    for (const html of [page.html, ...(rich ? page.presentation.map((block) => block.html) : [])]) {
+      assert.match(html, /<picture>/)
+      assert.match(
+        html,
+        /media="\(prefers-color-scheme: dark\)" srcset="https:\/\/star-history\.dera\.page\/svg[^" ]*theme=dark"/
+      )
+      assert.match(
+        html,
+        /media="\(prefers-color-scheme: light\)" srcset="https:\/\/star-history\.dera\.page\/svg[^" ]*type=Date"/
+      )
+      assert.match(html, /<img alt="Star History Chart" src="https:\/\/star-history\.dera\.page\/svg/)
+      assert.match(html, /rel="noopener noreferrer"/)
+      assert.doesNotMatch(html, /onclick|onerror|javascript:|data:image|safe\.example/)
+    }
+  }
+})

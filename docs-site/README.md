@@ -51,3 +51,16 @@ Deploy the **complete `dist` directory**. The root release command includes docs
 Chinese pages use `cherryai.com.cn` as canonical; all other languages use `cherryai.com`. Both exports include all languages; their docs sitemaps list only the host's canonical, translated pages. Language alternates omit missing translations.
 
 The old `docs.cherryai.com.cn` domain is **not changed by this repository**. After the new site is deployed and checked, configure that host to redirect to the new language paths. `generated/legacy-redirects.json` records source paths and known filename aliases; use it to create explicit redirects and preserve query strings. Browser fragments cannot be matched by HTTP redirects; heading anchors must remain compatible. Review historical production URLs before enabling a broad fallback redirect. Roll back by redeploying the previous complete website artifact.
+
+
+### Rich Markdown pages
+
+Use `rich: true` in frontmatter to render selected content with the installed Fumadocs UI components. The source remains Markdown; no MDX imports or dependency upgrades are required.
+
+- `{% hint style="info|warning|success" %}` / `{% endhint %}` renders a Callout.
+- `{% stepper %}` with `{% step %}` / `{% endstep %}` renders Steps. Keep existing heading anchors when revising titles.
+- `{% tabs %}` with `{% tab title="Windows" %}` / `{% endtab %}` renders Tabs. Panels remain in the exported HTML, and a heading anchor selects its panel.
+- `<div data-cards>` containing `<div data-card>` renders Cards. Start each card with a Markdown link, followed by its description.
+- Fenced code continues to use the existing Shiki highlighting pipeline.
+
+Only sanitized, rewritten content enters the component renderer. Search and link validation retain the complete Markdown content. Pages without `rich: true` continue to use static HTML.
