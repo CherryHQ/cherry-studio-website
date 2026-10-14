@@ -61,7 +61,7 @@ export function DocsShell({
         title: labels.docs,
         url: mobile ? `/${locale}/mobile/` : `/${locale}/`
       }}
-      sidebar={{ banner: <SectionSwitch locale={locale} labels={labels} mobile={mobile} /> }}
+      sidebar={{ defaultOpenLevel: 1, banner: <SectionSwitch locale={locale} labels={labels} mobile={mobile} /> }}
       githubUrl="https://github.com/CherryHQ/cherry-studio-website">
       {children}
     </DocsLayout>
