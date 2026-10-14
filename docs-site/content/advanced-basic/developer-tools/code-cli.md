@@ -55,9 +55,9 @@ icon: terminal
 
 ### DeepSeek Harness
 
-<figure><img src="../../assets/ceedc835426c7413a36609ba.webp" alt="编码搭档中的 DeepSeek Harness 安装和统一网关配置"><figcaption><p>① 未安装时先完成托管安装；安装后配置兼容服务商、默认权限和 Agent 模式，再启动 Web UI。</p></figcaption></figure>
+<figure><img src="../../assets/ceedc835426c7413a36609ba.webp" alt="编码搭档中的 DeepSeek Harness 安装和统一网关配置"><figcaption><p>① 未安装时先完成托管安装；安装后配置兼容服务商、默认权限和智能体模式，再启动 Web UI。</p></figcaption></figure>
 
-DeepSeek Harness 与普通终端 CLI 的流程不同：安装并选择服务商后，由 Cherry Studio 托管运行，并可打开独立 Web UI。参数中可以选择默认 Agent 模式和默认权限：
+DeepSeek Harness 与普通终端 CLI 的流程不同：安装并选择服务商后，由 Cherry Studio 托管运行，并可打开独立 Web UI。参数中可以选择默认智能体模式和默认权限：
 
 | 配置 | 适合情况 | 注意事项 |
 | -------- | -------------------------- | ------------- |

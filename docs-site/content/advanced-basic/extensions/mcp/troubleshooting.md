@@ -14,4 +14,4 @@ icon: stethoscope
 
 </details>
 
-<figure><img src="../../../assets/7cb797e89c5a180b57971c67.webp" alt="从服务器启动、运行环境、认证网络到 Agent 绑定和调用链的 MCP 排错流程图"><figcaption></figcaption></figure>
+<figure><img src="../../../assets/7cb797e89c5a180b57971c67.webp" alt="从服务器启动、运行环境、认证网络到智能体绑定和调用链的 MCP 排错流程图"><figcaption></figcaption></figure>

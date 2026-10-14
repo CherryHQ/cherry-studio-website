@@ -25,5 +25,5 @@ icon: rocket
 ## 接下来可以做什么
 
 * 浏览[功能总览](../cherrystudio/preview/README.md)，了解对话、绘画、翻译和笔记等功能。
-* 使用[工作 / Agent](../advanced-basic/agent.md)处理文件和多步骤任务。
+* 使用[工作 / 智能体](../advanced-basic/agent.md)处理文件和多步骤任务。
 * 创建[知识库](../knowledge-base/knowledge-base.md)，让助手基于自己的资料回答问题。

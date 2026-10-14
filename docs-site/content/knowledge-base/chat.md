@@ -96,7 +96,7 @@ icon: comments
 | 单一制度或产品问题 | 只选一个库 | 减少无关片段竞争 |
 | 跨部门或跨产品比较 | 选择多个库并说明各自用途 | 帮助模型保持来源边界 |
 | 多库结果混杂 | 拆成多个问题分别验证 | 先确认每个库都能独立召回 |
-| 需要长期多步研究 | 改用绑定知识库的 Agent | 更适合持续搜索、整理和交付文件 |
+| 需要长期多步研究 | 改用绑定知识库的智能体 | 更适合持续搜索、整理和交付文件 |
 
 ## 配置说明
 
@@ -147,4 +147,4 @@ Cherry Studio 可以把消息、话题或笔记保存到知识库。保存前删
 
 ## 继续阅读
 
-<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>检查资料与召回</strong></td><td>先确认正确片段能够稳定命中。</td><td><a href="recall-test.md">recall-test.md</a></td></tr><tr><td><strong>与 Agent 一起使用</strong></td><td>让知识库参与多步任务和文件交付。</td><td><a href="agent.md">agent.md</a></td></tr><tr><td><strong>知识库应用案例</strong></td><td>复用制度、售后和研究案例。</td><td><a href="cases.md">cases.md</a></td></tr></tbody></table>
+<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>检查资料与召回</strong></td><td>先确认正确片段能够稳定命中。</td><td><a href="recall-test.md">recall-test.md</a></td></tr><tr><td><strong>与智能体一起使用</strong></td><td>让知识库参与多步任务和文件交付。</td><td><a href="agent.md">agent.md</a></td></tr><tr><td><strong>知识库应用案例</strong></td><td>复用制度、售后和研究案例。</td><td><a href="cases.md">cases.md</a></td></tr></tbody></table>

@@ -4,7 +4,7 @@ icon: cloud-plus
 
 # Model Service Configuration
 
-Cherry Studio ships with connection templates for 60+ providers (model service vendors), covering most mainstream models from around the world as well as local inference frameworks. This section provides a separate configuration guide for each provider.
+Cherry Studio ships with connection templates for 60+ providers (model service vendors), covering most mainstream models from around the world as well as local inference frameworks. Use the guides below for provider-specific configuration, or the [quick reference](quick-reference.md) to find other providers.
 
 ### Provider Types
 
@@ -36,6 +36,11 @@ Cherry Studio groups providers by protocol into the following types, which behav
 
 #### International Providers
 * [OpenAI](openai.md)
+* [Anthropic (Claude)](anthropic.md)
+* [Azure OpenAI](azure-openai.md)
+* [Grok](grok.md)
+* [Groq](groq.md)
+* [OpenRouter](openrouter.md)
 * [Google Gemini](google-gemini.md)
 * [Mistral](mistral.md)
 * [Perplexity](perplexity.md)
@@ -51,6 +56,7 @@ Cherry Studio groups providers by protocol into the following types, which behav
 
 #### Local Inference
 * [Ollama](ollama.md)
+* [LM Studio](lm-studio.md)
 
 #### Custom Providers
 * [Custom Provider](zi-ding-yi-fu-wu-shang.md) — any OpenAI / Anthropic / Gemini-compatible endpoint
@@ -58,7 +64,7 @@ Cherry Studio groups providers by protocol into the following types, which behav
 {% hint style="info" %}
 **Can't find the provider you use?**
 
-Cherry Studio has templates for 60+ providers — **far more than this section currently documents**. If you use Anthropic (Claude), Azure OpenAI, DeepSeek, Grok, Groq, LM Studio, OpenRouter, Mistral, Perplexity, Together and others, **they are all in the provider list** — just add your key. Dedicated pages for these providers will be added over time.
+Look in the [All Providers Quick Reference](quick-reference.md) first. Open the dedicated guide where one is available; otherwise use the general steps on this page and [Model Service Settings](../../cherrystudio/preview/settings/providers.md). For a compatible endpoint, see [Custom Provider](zi-ding-yi-fu-wu-shang.md).
 {% endhint %}
 
 ### API Key and API Host

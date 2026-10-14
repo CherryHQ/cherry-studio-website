@@ -8,7 +8,7 @@ icon: arrows-rotate
 根据当前版本和目标选择对应说明。V1 与 V2 使用不同的数据结构，跨大版本切换前必须先备份。
 
 {% hint style="danger" %}
-V1 与 V2 的数据和备份格式不互通。V2 中新增的会话、Agent、设置和文件不会自动回写到 V1。
+V1 与 V2 的数据和备份格式不互通。V2 中新增的会话、智能体、设置和文件不会自动回写到 V1。
 {% endhint %}
 
 ## V2 升级与迁移
@@ -30,11 +30,11 @@ V1 与 V2 的数据和备份格式不互通。V2 中新增的会话、Agent、�
 
 ## 选择路径
 
-<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>破坏性更新提醒</strong></td><td>先确认数据不互通、重新迁移和回退限制。</td><td><a href="v2-breaking-update-notice.md">v2-breaking-update-notice.md</a></td></tr><tr><td><strong>功能差异</strong></td><td>了解界面、Agent、知识库等变化和升级后需要复核的项目。</td><td><a href="v1-v2-feature-differences.md">v1-v2-feature-differences.md</a></td></tr><tr><td><strong>V1 升级到 V2</strong></td><td>备份 V1 数据，直接使用 V2 完成迁移。</td><td><a href="v1-to-v2-migration.md">v1-to-v2-migration.md</a></td></tr><tr><td><strong>V2 降级到 V1</strong></td><td>返回原 V1 数据，并了解什么时候才需要处理 V2 数据库。</td><td><a href="v2-to-v1-downgrade.md">v2-to-v1-downgrade.md</a></td></tr></tbody></table>
+<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>破坏性更新提醒</strong></td><td>先确认数据不互通、重新迁移和回退限制。</td><td><a href="v2-breaking-update-notice.md">v2-breaking-update-notice.md</a></td></tr><tr><td><strong>功能差异</strong></td><td>了解界面、智能体、知识库等变化和升级后需要复核的项目。</td><td><a href="v1-v2-feature-differences.md">v1-v2-feature-differences.md</a></td></tr><tr><td><strong>V1 升级到 V2</strong></td><td>备份 V1 数据，直接使用 V2 完成迁移。</td><td><a href="v1-to-v2-migration.md">v1-to-v2-migration.md</a></td></tr><tr><td><strong>V2 降级到 V1</strong></td><td>返回原 V1 数据，并了解什么时候才需要处理 V2 数据库。</td><td><a href="v2-to-v1-downgrade.md">v2-to-v1-downgrade.md</a></td></tr></tbody></table>
 
 ## 切换前准备
 
-1. 结束正在运行的对话、Agent、知识库导入和文件处理任务。
+1. 结束正在运行的对话、智能体、知识库导入和文件处理任务。
 2. 为当前版本创建一份新的完整备份，并保存在应用数据目录之外。
 3. 记录当前应用数据目录；使用自定义目录或外置磁盘时，确认路径可以正常访问。
 

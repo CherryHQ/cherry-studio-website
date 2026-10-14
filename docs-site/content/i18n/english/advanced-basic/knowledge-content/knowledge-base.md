@@ -3,82 +3,44 @@ icon: book-open
 ---
 # Building Knowledge Bases and Recall Testing
 
-A knowledge base processes files, web pages, and notes into retrievable chunks. It is suitable for answering "what does the documentation say," but it does not mean the model permanently memorizes the entire document.
+Start with [Getting Started with Knowledge Bases](../../knowledge-base/knowledge-base.md) for the complete create → import → test → use workflow. This page points advanced workflows to the relevant steps.
 
 ## Creating and Importing Materials
 
-{% stepper %}
-{% step %}
+Choose the step you need below; begin with creation if this is your first knowledge base.
+
 ### 1. Open [Knowledge Base] → [New Knowledge Base]
 
-Enter an easily recognizable name and select an available embedding model. The embedding model is responsible for converting materials into searchable representations; it is distinct from the main model used for conversation.
-{% endstep %}
+See [Create a Knowledge Base](../../knowledge-base/create.md). An embedding model is optional: you can start with keyword search and add embeddings when needed.
 
-{% step %}
 ### 2. Select Data Sources
 
-You can add files, folders, notes, or URLs. Common document formats include PDF, DOCX, Markdown, Excel, TXT, and CSV; scanned documents may require OCR to extract text.
-{% endstep %}
+See [Add and Organize Material](../../knowledge-base/sources.md) for files, folders, notes and URLs. For scanned documents, see [Document Preprocessing](../../knowledge-base/zhi-shi-ku-wen-dang-yu-chu-li.md).
 
-{% step %}
 ### 3. Wait for Processing to Complete
 
-Open file details to view the preview and chunks. If titles are missing, text is garbled, or table structures are lost, clean up the original file first, then reprocess it.
-{% endstep %}
+Check the text and Chunks for missing or garbled content. See [Check Material and Recall](../../knowledge-base/recall-test.md) for the acceptance steps.
 
-{% step %}
 ### 4. Perform Recall Testing
 
-Test with questions real users would ask, not just file titles. Check whether the returned chunks are relevant and contain complete context before deciding whether to bind them to an Agent.
-{% endstep %}
-{% endstepper %}
-
-<figure><img src="../../../../assets/27c5374d7b45598dca0744d9.webp" alt="The New Knowledge Base dialog with Name and Embedding Model fields"><figcaption><p>When creating a new knowledge base, first enter a name and select an available embedding model. </p></figcaption></figure>
-
-<figure><img src="../../../../assets/6a4b0b6d0521c235d18af1f4.webp" alt="The Recall Test panel opened from the top right of a knowledge base"><figcaption><p>Click Recall Test at the top right of the knowledge base to verify retrieval with real questions.</p></figcaption></figure>
-
-<figure><img src="../../../../assets/f134353a322ca6669467f2c9.webp" alt="Recall Test results listing matched chunks with their source file and rank"><figcaption><p>① Enter questions you would actually ask in work; ② Check the matched documents, chunk content, and relevance. </p></figcaption></figure>
+Use questions you already know the answers to, then inspect the source and complete context. Follow [Recall Testing](../../knowledge-base/recall-test.md) before binding the knowledge base to an Agent.
 
 ### Validate Recall Results with Real Questions
 
-Once documents show [Ready], test them with questions that would actually arise in your work. For example, for a policy library, you might ask, "Can overseas car rentals be reimbursed?" Then check if the returned content comes from the correct document and includes sufficient context.
-
-| Observed Result | Next Step |
-| --------------- | ----------------------- |
-| Correct document matched, chunk sufficient to answer the question | Can be bound to an Agent for use |
-| Correct document matched, but chunk is truncated | Check the original structure first, then adjust chunk length |
-| Outdated policy or irrelevant document matched | Clean up expired materials, add clearer titles and content |
-| No results at all | Check document status and query wording; do not blindly increase the number of returned results first |
-
-{% hint style="info" %}
-After passing the recall test, verify the complete Q&A in the Agent. This helps distinguish between "document not found" and "document found but answer quality is poor."
-{% endhint %}
+A finished import is not enough: the correct source and the conditions needed to answer must appear in the results. The [recall guide](../../knowledge-base/recall-test.md) explains how to diagnose missing, truncated or outdated results.
 
 ## Understanding RAG Settings
 
-RAG stands for "retrieve documents first, then let the model answer." Common settings control chunk length, overlap range, number of results returned, and relevance threshold.
-
-| Configuration | Function | Recommended Starting Point | When to Adjust |
-| ----- | -------------- | -------- | ------------------- |
-| Chunk Length | Determines how much content each retrieved chunk contains | Use the page's initial value | When chunks frequently truncate sentences or mix in too many topics |
-| Chunk Overlap | Maintains continuity between adjacent chunks | Keep a small amount of overlap | When clauses span chunks or context is frequently broken |
-| Number of Results | How many candidate chunks are provided at once | Start with a small number of results | Increase if key documents are missed; decrease if there is too much noise |
-| Relevance Threshold | Filters out irrelevant content | Determine via recall testing | Increase if many irrelevant results appear; decrease if correct chunks are filtered out |
-
-<figure><img src="../../../../assets/8b710267711ee3188fede3fc.webp" alt="Knowledge Base Settings with Embedding Model, Rerank Model, Top K and advanced chunking options"><figcaption><p>Only adjust RAG settings based on document structure when recall results are unstable. </p></figcaption></figure>
+For embedding models, reranking, Top K and chunking, use [Model and Retrieval Settings](../../knowledge-base/emb-models-info.md). Change one setting at a time and repeat the same questions; re-index existing material when changing chunking settings.
 
 ### Use Case: Building an Internal Policy Q&A Library
 
-Organize current policies by department, ensuring filenames include the topic and scope of application. After importing, perform recall testing with real questions such as "How to handle business travel accommodation exceeding standards" or "Who needs to approve leave during the probation period." Once chunk accuracy is confirmed, bind this knowledge base only to the "Policy Q&A" Agent, and require it to cite the document name in its answers; if content is missing, explicitly state that it was not found.
-
-{% hint style="warning" %}
-The knowledge base does not automatically determine if files are outdated. When policies, prices, or processes change, update or remove old materials and re-run recall testing.
-{% endhint %}
+Keep current policies together, test real questions, and check sources before using the library in an Agent. See [Knowledge Base Cases](../../knowledge-base/cases.md) and [Using with Agent](../../knowledge-base/agent.md) for the full workflow. Update or remove outdated policies and repeat recall testing when the source material changes.
 
 <details>
 
 <summary>Why are there no results after importing? </summary>
 
-Check the file processing status, embedding model connection, and document preview. If a scanned PDF has no extractable text, you must configure OCR first or switch to a searchable version.
+Check processing status and extracted text first; if an embedding model is configured, also check its connection. Follow [Knowledge Base Troubleshooting](../../knowledge-base/troubleshooting.md) to locate the failing step.
 
 </details>

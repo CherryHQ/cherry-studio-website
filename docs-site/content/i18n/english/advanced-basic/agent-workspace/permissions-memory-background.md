@@ -70,11 +70,3 @@ No. Memory is suitable for a small amount of stable facts and experience used ac
 First open the **Status** panel on the right to check if it is waiting for permissions, if background commands are still running, if subtasks have failed, or if the service provider is retrying. If you need deeper request details, open Developer Mode to view the call chain.
 
 </details>
-
-<details>
-
-<summary>If a task appears stuck, where should you look first? </summary>
-
-First open the **Status** panel on the right to check if it is waiting for permissions, if background commands are still running, if subtasks have failed, or if the service provider is retrying. If you need deeper request details, open Developer Mode to view the call chain.
-
-</details>

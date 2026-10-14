@@ -4,15 +4,15 @@ icon: window-maximize
 
 # 多窗口研究工作台
 
-研究人员需要一边保留资料和模型比较，一边让 Agent 整理文件并生成报告。把研究任务拆到独立窗口后，主窗口仍能继续查资料，不会打断 Agent 的状态。
+研究人员需要一边保留资料和模型比较，一边让智能体整理文件并生成报告。把研究任务拆到独立窗口后，主窗口仍能继续查资料，不会打断智能体的状态。
 
 ## 推荐布局
 
 * 主窗口：保留资料对话和全局搜索；
-* 独立窗口：打开研究 Agent 任务并置顶；
+* 独立窗口：打开研究智能体任务并置顶；
 * 第二个标签页：打开知识库或笔记，随时核对原资料。
 
-<figure><img src="../../assets/290e0288048d57cd868cb443.webp" alt="对话中的多模型选择入口"><figcaption><p>主窗口保留多模型比较，独立窗口继续运行研究 Agent。</p></figcaption></figure>
+<figure><img src="../../assets/290e0288048d57cd868cb443.webp" alt="对话中的多模型选择入口"><figcaption><p>主窗口保留多模型比较，独立窗口继续运行研究智能体。</p></figcaption></figure>
 
 ## 操作流程
 
@@ -24,7 +24,10 @@ icon: window-maximize
 {% endstep %}
 
 {% step %}
-### 2. 为研究 Agent 准备目录
+<a id="2-wei-yan-jiu-agent-zhun-bei-mu-lu"></a>
+<a id="2-为研究-agent-准备目录"></a>
+
+### 2. 为研究智能体准备目录
 
 把原始资料与输出目录分开，绑定相关知识库，并要求外部信息保留链接。
 {% endstep %}
@@ -32,17 +35,17 @@ icon: window-maximize
 {% step %}
 ### 3. 把任务拆到独立窗口
 
-右键 Agent 标签页选择【从新窗口打开】，需要时使用窗口置顶。主窗口继续查资料，不打断 Agent 状态。
+右键智能体标签页选择【从新窗口打开】，需要时使用窗口置顶。主窗口继续查资料，不打断智能体状态。
 {% endstep %}
 
 {% step %}
 ### 4. 汇总并复核
 
-在 Agent 右侧【文件】检查报告，在主窗口打开原对话核对冲突。最终只保留能回到资料或来源的结论。
+在智能体右侧【文件】检查报告，在主窗口打开原对话核对冲突。最终只保留能回到资料或来源的结论。
 {% endstep %}
 {% endstepper %}
 
-<figure><img src="../../assets/dfd13a051aabfa0e22e0dae5.webp" alt="标签页菜单中的从新窗口打开操作"><figcaption><p>从标签页菜单把 Agent 任务拆到独立窗口。</p></figcaption></figure>
+<figure><img src="../../assets/dfd13a051aabfa0e22e0dae5.webp" alt="标签页菜单中的从新窗口打开操作"><figcaption><p>从标签页菜单把智能体任务拆到独立窗口。</p></figcaption></figure>
 
 <figure><img src="../../assets/7a060c53e732670de6a559fe.webp" alt="从主窗口拆出的独立 Cherry Studio 窗口中仍然显示完整的发布方案评审结果"><figcaption><p>① 独立窗口保留原问题；② 结果和后续操作完整保留，主窗口可以继续查资料或整理笔记。</p></figcaption></figure>
 
@@ -51,7 +54,7 @@ icon: window-maximize
 | 窗口 | 建议内容 |
 | ----- | --------------------------------- |
 | 主窗口 | 资料对话、全局搜索和笔记 |
-| 独立窗口 | 一个正在运行的 Agent 任务 |
+| 独立窗口 | 一个正在运行的智能体任务 |
 | 固定标签页 | 项目最常用的知识库或任务 |
 | 完成标准 | 资料来源、任务状态和最终笔记能互相对应；任务结束后窗口已收回或关闭 |
 

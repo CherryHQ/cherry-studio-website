@@ -229,7 +229,7 @@
       },
       "engineer": {
         "title": "研发工程师",
-        "description": "负责 Web、后端与跨平台客户端的全栈研发，构建 AI Agent 产品"
+        "description": "负责 Web、后端与跨平台客户端的全栈研发，构建 AI 智能体产品"
       },
       "backend": {
         "title": "后端研发工程师（Go / Node.js）",
@@ -237,7 +237,7 @@
       },
       "engineering_intern": {
         "title": "研发实习生",
-        "description": "参与多模型网关、Agent 运行时、知识库及 Web 与桌面客户端研发"
+        "description": "参与多模型网关、智能体运行时、知识库及 Web 与桌面客户端研发"
       },
       "visual_design_intern": {
         "title": "视效设计实习生",
@@ -409,7 +409,7 @@
     "items": [
       {
         "question": "Cherry Studio 是什么？",
-        "answer": "Cherry Studio 是一款跨平台的 AI 对话客户端，支持 Windows、macOS 和 Linux。它集成了 300+ 主流 AI 模型，包括 DeepSeek、Kimi、通义千问、智谱 GLM 等国产模型，也支持本地模型部署。除了 AI 助手之外，Cherry Studio 还具备强大的 Agent 智能体能力——自主思考、规划和行动的 AI。给 Agent 一个目标，它会自动推理问题、拆解步骤、调用工具并独立执行，同时您始终保持控制权。"
+        "answer": "Cherry Studio 是一款跨平台的 AI 对话客户端，支持 Windows、macOS 和 Linux。它集成了 300+ 主流 AI 模型，包括 DeepSeek、Kimi、通义千问、智谱 GLM 等国产模型，也支持本地模型部署。除了 AI 助手之外，Cherry Studio 还具备强大的智能体能力——自主思考、规划和行动的 AI。给智能体一个目标，它会自动推理问题、拆解步骤、调用工具并独立执行，同时您始终保持控制权。"
       },
       {
         "question": "Cherry Studio 是免费的吗？",
@@ -450,17 +450,17 @@
     "subtitle": "通过 CherryIN、硅基流动、阿里云百炼等合作伙伴，使用最新旗舰模型",
     "deepseek": {
       "name": "DeepSeek V4 Pro",
-      "description": "DeepSeek 最新旗舰正式版，Agent 能力与生产环境表现显著增强；支持 1M 上下文、最高 384K 输出和三档思考强度，工具调用与复杂任务执行能力进一步提升。",
+      "description": "DeepSeek 最新旗舰正式版，智能体能力与生产环境表现显著增强；支持 1M 上下文、最高 384K 输出和三档思考强度，工具调用与复杂任务执行能力进一步提升。",
       "feature1": "1M 上下文",
       "feature2": "384K 最大输出",
-      "feature3": "Agent + 推理"
+      "feature3": "智能体 + 推理"
     },
     "featured": {
       "name": "GLM-5.3",
-      "description": "智谱最新旗舰模型，面向复杂软件工程与 Agent 任务；支持 1M 上下文与 128K 最大输出，编程和长程任务能力较 GLM-5.2 全面提升。",
+      "description": "智谱最新旗舰模型，面向复杂软件工程与智能体任务；支持 1M 上下文与 128K 最大输出，编程和长程任务能力较 GLM-5.2 全面提升。",
       "feature1": "1M 上下文",
       "feature2": "128K 最大输出",
-      "feature3": "编程 + Agent"
+      "feature3": "编程 + 智能体"
     },
     "cta": "持续接入未来新模型…"
   },

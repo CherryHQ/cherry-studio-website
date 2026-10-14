@@ -20,7 +20,7 @@ Cherry Studio 的设置面板覆盖 **模型配置、工具能力、界面偏好
 | 设置项 | 文档 | 内容 |
 | --- | --- | --- |
 | MCP | [MCP 与外部工具](../../advanced-basic/extensions/mcp/) | Model Context Protocol 工具接入 |
-| 技能 | [技能与能力库](../../advanced-basic/extensions/skills.md) | 为助手或 Agent 加装专项能力 |
+| 技能 | [技能与能力库](../../advanced-basic/extensions/skills.md) | 为助手或智能体加装专项能力 |
 | 提示词 | — | 提示词模板的管理与调用（文档待补充）|
 | 浏览器 | — | 内置浏览器与网页内容获取（文档待补充）|
 | 网络搜索 | [联网模式](../websearch/) | 免费联网、Tavily、火山引擎、SearXNG 等 |
@@ -41,8 +41,8 @@ Cherry Studio 的设置面板覆盖 **模型配置、工具能力、界面偏好
 
 | 设置项 | 文档 | 内容 |
 | --- | --- | --- |
-| 频道 | [频道](../../advanced-basic/automation/channels.md) | Agent 接入飞书 / Telegram 等 |
-| 定时任务 | [定时任务](../../advanced-basic/automation/scheduled-heartbeat.md) | Agent 按 Cron 定时运行 |
+| 频道 | [频道](../../advanced-basic/automation/channels.md) | 智能体接入飞书 / Telegram 等 |
+| 定时任务 | [定时任务](../../advanced-basic/automation/scheduled-heartbeat.md) | 智能体按 Cron 定时运行 |
 | 快捷键 | [快捷键设置](key-shortcut.md) | 全部快捷键的修改与启停 |
 | 快捷助手 | [快捷助手](../../cherrystudio/preview/quick-assistant.md) | 全局悬浮的迷你对话窗 |
 | 划词助手 | [划词助手](../../cherrystudio/preview/selection-assistant.md) | 选中文字即时翻译 / 解释 / 改写 |

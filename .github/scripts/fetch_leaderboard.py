@@ -32,7 +32,8 @@ LEADERBOARDS = [
     {
         "slug": "agent",
         "url": f"{BASE_URL}/leaderboard/agent",
-        "title": "Agent 智能体榜单",
+        "title": "智能体榜单",
+        "legacy_anchors": ["agent-zhi-neng-ti-bang-dan"],
         "description": "本榜单评测模型在多轮工具调用 / 智能体任务上的综合表现，涵盖净改进率、确认成功率、赞踩比、可控性、Bash 恢复率、工具幻觉率等维度。",
         "en": {
             "title": "Agent Leaderboard",
@@ -577,7 +578,8 @@ A leaderboard reflects one particular evaluation and the preferences of its vote
 Data comes from the [Arena AI {title}]({url}) and is refreshed daily by GitHub Actions. For model pricing, licenses and capabilities, check the model provider's own documentation.
 """
 
-    return f"""# {title}
+    legacy_anchors = "".join(f'<a id="{anchor}"></a>\n\n' for anchor in config.get("legacy_anchors", []))
+    return f"""{legacy_anchors}# {title}
 
 本页展示 [Arena AI]({url}) 榜单前 {config['top_n']} 名的最新快照，方便快速了解近期模型表现。完整榜单、筛选项和最新变化请到 Arena AI 官网查看。
 
