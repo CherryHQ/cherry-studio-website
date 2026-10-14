@@ -2,7 +2,9 @@
 icon: note-sticky
 ---
 
-# 笔记、知识库与 Agent
+<a id="bi-ji--zhi-shi-ku-yu-agent"></a>
+
+# 笔记、知识库与智能体
 
 
 

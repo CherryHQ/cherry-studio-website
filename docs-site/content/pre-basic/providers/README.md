@@ -13,7 +13,7 @@ Cherry Studio 把 Provider 按协议分为以下几类，行为略有差异：
 | 类型 | 兼容协议 | 典型代表 |
 |---|---|---|
 | **OpenAI 兼容** | `/v1/chat/completions` | OpenAI、DeepSeek、硅基流动、OpenRouter、绝大多数三方网关 |
-| **Anthropic 兼容** | `/v1/messages` | Anthropic、CherryIN、部分网关。**Cherry Agent 需要此类型** |
+| **Anthropic 兼容** | `/v1/messages` | Anthropic、CherryIN、部分网关。**Cherry 智能体需要此类型** |
 | **Gemini** | Google AI Studio / Vertex | Google Gemini、Vertex AI |
 | **Bedrock** | AWS Bedrock SDK | AWS Bedrock |
 | **Azure OpenAI** | Azure OpenAI Service | Azure OpenAI |
@@ -32,7 +32,7 @@ Cherry Studio 把 Provider 按协议分为以下几类，行为略有差异：
 
 #### 通用/网关类
 * [CherryAI (免费)](cherryai/)
-* [CherryIN](cherryin-1.md) — 双端点（OpenAI + Anthropic），Cherry Agent 推荐
+* [CherryIN](cherryin-1.md) — 双端点（OpenAI + Anthropic），Cherry 智能体推荐
 * [NewAPI](newapi.md) / [OneAPI](oneapi.md) — 自建/三方网关
 
 #### 海外厂商

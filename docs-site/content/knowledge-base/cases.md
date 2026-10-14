@@ -44,9 +44,12 @@ icon: lightbulb
 {% endstep %}
 
 {% step %}
-### 6. 接入对话或 Agent
+<a id="6-jie-ru-dui-hua-huo-agent"></a>
+<a id="6-接入对话或-agent"></a>
 
-一次问答使用普通对话；需要多步研究、比较和文件交付时绑定 Agent。上线前逐条核对来源。
+### 6. 接入对话或智能体
+
+一次问答使用普通对话；需要多步研究、比较和文件交付时绑定智能体。上线前逐条核对来源。
 {% endstep %}
 {% endstepper %}
 
@@ -105,12 +108,15 @@ icon: lightbulb
 
 不同型号规则差异明显时，按型号拆成独立知识库，避免相同故障码互相竞争。
 
-### 检索与 Agent 配置
+<a id="jian-suo-yu-agent-pei-zhi"></a>
+<a id="检索与-agent-配置"></a>
+
+### 检索与智能体配置
 
 * PDF 先抽查目录、表格和双栏正文。
 * 故障码依赖精确术语，保留 BM25。
 * 客户描述较口语化时增加嵌入模型。
-* 给售后 Agent 绑定官方手册和审核案例，只启用【知识库搜索】。
+* 给售后智能体绑定官方手册和审核案例，只启用【知识库搜索】。
 
 > 根据设备型号、故障码和现象分三步排查。每一步标明依据来自官方手册还是审核案例。涉及拆机、用电或数据清除时，先提示风险并等待确认。
 
@@ -125,7 +131,7 @@ icon: lightbulb
 
 ### 目标
 
-从论文、访谈笔记和网页快照中提取可核对证据，再由 Agent 生成带来源的比较报告。
+从论文、访谈笔记和网页快照中提取可核对证据，再由智能体生成带来源的比较报告。
 
 ### 资料组织
 
@@ -134,15 +140,18 @@ icon: lightbulb
 * 访谈笔记标明受访者角色、日期和是否可引用。
 * 网页资料记录抓取日期，因为知识库保存的是导入快照。
 
-<figure><img src="../assets/8cd27fa50051cc96320b280a.webp" alt="从提出真实问题、检查召回、定位问题到只调整一项并重新索引复测的知识库质量闭环图"><figcaption><p>研究库先用固定问题验证来源覆盖，再交给 Agent 做跨文档归纳。</p></figcaption></figure>
+<figure><img src="../assets/8cd27fa50051cc96320b280a.webp" alt="从提出真实问题、检查召回、定位问题到只调整一项并重新索引复测的知识库质量闭环图"><figcaption><p>研究库先用固定问题验证来源覆盖，再交给智能体做跨文档归纳。</p></figcaption></figure>
 
-### Agent 提示词
+<a id="agent-ti-shi-ci"></a>
+<a id="agent-提示词"></a>
+
+### 智能体提示词
 
 > 在已绑定研究知识库中查找“用户为何放弃首次配置”的证据。先按来源列出原始观点和限制，再归纳共识、分歧和待验证假设。最终生成 Markdown 报告；不得把推断写成受访者原话。
 
 ### 从证据到交付物
 
-<figure><img src="../assets/31b376b5d5a233eeb71ddf12.webp" alt="资料来源经过知识库召回和 Agent 整理后形成文字文件或多语言图片的内容工作流图"><figcaption><p>先保留证据和限制，再让 Agent 整理为报告；不要让成品反过来掩盖原始来源。</p></figcaption></figure>
+<figure><img src="../assets/31b376b5d5a233eeb71ddf12.webp" alt="资料来源经过知识库召回和智能体整理后形成文字文件或多语言图片的内容工作流图"><figcaption><p>先保留证据和限制，再让智能体整理为报告；不要让成品反过来掩盖原始来源。</p></figcaption></figure>
 
 ### 验收标准
 
@@ -196,4 +205,4 @@ icon: lightbulb
 
 ## 继续阅读
 
-<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>知识库入门</strong></td><td>先跑通创建、导入、召回和使用。</td><td><a href="knowledge-base.md">knowledge-base.md</a></td></tr><tr><td><strong>与 Agent 一起使用</strong></td><td>配置多步研究和资料权限。</td><td><a href="agent.md">agent.md</a></td></tr><tr><td><strong>常见问题</strong></td><td>从症状定位资料、召回或回答问题。</td><td><a href="troubleshooting.md">troubleshooting.md</a></td></tr></tbody></table>
+<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>知识库入门</strong></td><td>先跑通创建、导入、召回和使用。</td><td><a href="knowledge-base.md">knowledge-base.md</a></td></tr><tr><td><strong>与智能体一起使用</strong></td><td>配置多步研究和资料权限。</td><td><a href="agent.md">agent.md</a></td></tr><tr><td><strong>常见问题</strong></td><td>从症状定位资料、召回或回答问题。</td><td><a href="troubleshooting.md">troubleshooting.md</a></td></tr></tbody></table>

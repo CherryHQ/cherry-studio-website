@@ -26,8 +26,8 @@ icon: books
 ## 与其他能力的组合
 
 * 基于资料完成一次问答：看[在对话中使用](../../knowledge-base/chat.md)。
-* 让智能体在多步任务中查资料：看[与 Agent 一起使用](../../knowledge-base/agent.md)；完整工作入口见[智能体概览](../../advanced-basic/agent.md)。
-* Agent 验证通过后，需要接入聊天平台时再看[频道](../../advanced-basic/automation/channels.md)。
+* 让智能体在多步任务中查资料：看[与智能体一起使用](../../knowledge-base/agent.md)；完整工作入口见[智能体概览](../../advanced-basic/agent.md)。
+* 智能体验证通过后，需要接入聊天平台时再看[频道](../../advanced-basic/automation/channels.md)。
 
 各项功能如何配合，见[进阶能力地图](../../advanced-basic/capability-map.md)。
 

@@ -4,7 +4,7 @@ icon: terminal
 
 # 环境依赖
 
-环境依赖用来 **管理 Cherry Studio 运行部分高级功能所需的二进制工具和运行时**。像 [MCP 服务](../../advanced-basic/extensions/mcp/)、[技能](../../advanced-basic/extensions/skills.md)、[Agent](../../advanced-basic/agent.md) 的一些能力，底层要调用 `uv`、`bun` 等命令行工具。Cherry Studio 把它们集中在这里，让你不必手动去命令行安装配置。
+环境依赖用来 **管理 Cherry Studio 运行部分高级功能所需的二进制工具和运行时**。像 [MCP 服务](../../advanced-basic/extensions/mcp/)、[技能](../../advanced-basic/extensions/skills.md)、[智能体](../../advanced-basic/agent.md) 的一些能力，底层要调用 `uv`、`bun` 等命令行工具。Cherry Studio 把它们集中在这里，让你不必手动去命令行安装配置。
 
 打开 `设置 → 环境依赖`：
 

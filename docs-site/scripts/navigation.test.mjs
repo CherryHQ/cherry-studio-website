@@ -9,7 +9,7 @@ import { parseSummary } from './content.mjs'
 const app = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const locales = JSON.parse(readFileSync(path.join(app, 'locales.json'), 'utf8'))
 const groupNames = {
-  'zh-cn': ['开始使用', '日常使用', 'Agent 与自动化', '配置与数据', '故障排查', '开发者与贡献'],
+  'zh-cn': ['开始使用', '日常使用', '智能体与自动化', '配置与数据', '故障排查', '开发者与贡献'],
   en: [
     'Getting Started',
     'Everyday Tasks',

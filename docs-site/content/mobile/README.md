@@ -35,7 +35,10 @@ Cherry Studio 移动版是为 Android、iPhone 与 iPad 设计的 AI 客户端�
 
 [对话与文件](chat-and-files.md) · [联网搜索与网页阅读](web-search.md) · [图片生成](image-generation.md) · [生成与修改文件](file-generation.md) · [HTML 转图片与 PPT](html-export.md) · [分享与导出](sharing-and-export.md)
 
-### Agent 与自动化
+<a id="agent-yu-zi-dong-hua"></a>
+<a id="agent-与自动化"></a>
+
+### 智能体与自动化
 
 [智能体与工具](agents-and-tools.md) · [让 AI 使用工具](using-tools.md) · [日历与提醒事项](calendar-and-reminders.md) · [位置与健康记录](location-and-health.md) · [插件与外部工具](plugins.md)
 

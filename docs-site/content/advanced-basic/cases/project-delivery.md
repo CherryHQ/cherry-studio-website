@@ -2,9 +2,11 @@
 icon: folder
 ---
 
-# Agent 项目文件交付
+<a id="agent-xiang-mu-wen-jian-jiao-fu"></a>
 
-运营同事要把一批零散资料整理成索引、摘要和交付文件。为了避免误改原件，需要把 Agent 的工作目录、可修改范围和验收方式提前说清楚。
+# 智能体项目文件交付
+
+运营同事要把一批零散资料整理成索引、摘要和交付文件。为了避免误改原件，需要把智能体的工作目录、可修改范围和验收方式提前说清楚。
 
 ## 适合的任务
 
@@ -13,9 +15,9 @@ icon: folder
 * 修改代码并留下变更说明；
 * 批量改名、转换或检查文件。
 
-<figure><img src="../../assets/2573aee0510e0d6abdabab7f.webp" alt="Agent 工作区中的 Agent、模型、工作目录和右侧面板"><figcaption><p>Agent 工作区把任务、模型、工作目录和交付文件放在同一页面。</p></figcaption></figure>
+<figure><img src="../../assets/2573aee0510e0d6abdabab7f.webp" alt="智能体工作区中的智能体、模型、工作目录和右侧面板"><figcaption><p>智能体工作区把任务、模型、工作目录和交付文件放在同一页面。</p></figcaption></figure>
 
-<figure><img src="../../assets/401d6b23759ab97ded47c2b5.webp" alt="Agent 状态面板中的子任务、后台命令和上下文用量"><figcaption><p>长任务先看【状态】面板是否正在执行、等待批准或已经完成。</p></figcaption></figure>
+<figure><img src="../../assets/401d6b23759ab97ded47c2b5.webp" alt="智能体状态面板中的子任务、后台命令和上下文用量"><figcaption><p>长任务先看【状态】面板是否正在执行、等待批准或已经完成。</p></figcaption></figure>
 
 <figure><img src="../../assets/4e1d6cc47405edfe8d6fe315.webp" alt="Cherry Assistant 生成的发布前检查清单已经在对话中打开为网页预览"><figcaption><p>交付物生成后要真正打开检查。图中网页预览已经显示标题、检查项和建议，不是空白占位。</p></figcaption></figure>
 
@@ -35,7 +37,10 @@ icon: folder
 {% endstep %}
 
 {% step %}
-### 3. 先让 Agent 列计划
+<a id="3-xian-rang-agent-lie-ji-hua"></a>
+<a id="3-先让-agent-列计划"></a>
+
+### 3. 先让智能体列计划
 
 高风险任务可使用【仅规划】。确认文件清单和步骤后，再切换到允许编辑的模式执行。
 {% endstep %}
@@ -59,7 +64,7 @@ icon: folder
 | ---- | ------------ | ----------------- |
 | 工作目录 | 每个项目使用独立目录 | 文件边界和交付位置清楚 |
 | 权限 | 修改文件保持【逐次确认】 | 便于发现误删、覆盖和越界写入 |
-| 状态面板 | 结束前检查产物和失败步骤 | 不只以“Agent 说完成了”为准 |
+| 状态面板 | 结束前检查产物和失败步骤 | 不只以“智能体说完成了”为准 |
 | 新任务 | 新阶段或新客户另开任务 | 避免历史要求影响当前交付 |
 
 {% hint style="danger" %}

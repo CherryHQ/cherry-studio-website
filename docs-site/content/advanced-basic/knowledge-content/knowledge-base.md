@@ -24,7 +24,7 @@ icon: book-open
 
 ### 4. 做召回测试
 
-用已知答案的真实问题检查来源和完整上下文，按[召回测试](../../knowledge-base/recall-test.md)验收后再绑定 Agent。
+用已知答案的真实问题检查来源和完整上下文，按[召回测试](../../knowledge-base/recall-test.md)验收后再绑定智能体。
 
 ### 用真实问题验收召回结果
 
@@ -36,7 +36,7 @@ icon: book-open
 
 ### 应用案例：建立内部制度问答库
 
-把现行制度整理到同一资料范围，用真实问题测试，确认来源后再交给 Agent。完整工作流见[知识库应用案例](../../knowledge-base/cases.md)和[与 Agent 一起使用](../../knowledge-base/agent.md)。制度变化时更新或移除旧资料，再重复召回测试。
+把现行制度整理到同一资料范围，用真实问题测试，确认来源后再交给智能体。完整工作流见[知识库应用案例](../../knowledge-base/cases.md)和[与智能体一起使用](../../knowledge-base/agent.md)。制度变化时更新或移除旧资料，再重复召回测试。
 
 <details>
 
