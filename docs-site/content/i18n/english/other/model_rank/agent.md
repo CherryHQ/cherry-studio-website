@@ -4,7 +4,7 @@ This page shows the top 30 models on the [Arena AI](https://arena.ai/leaderboard
 
 This leaderboard measures how models perform on multi-turn tool-calling and agent tasks, across net improvement, confirmed success, praise-to-complaint ratio, steerability, Bash recovery, tool hallucination and session volume.
 
-> **Data updated**: 2026-10-15 13:06:56 UTC / 2026-10-15 21:06:56 CST (Beijing time)
+> **Data updated**: 2026-10-16 13:02:49 UTC / 2026-10-16 21:02:49 CST (Beijing time)
 
 {% hint style="info" %}
 A leaderboard reflects one particular evaluation and the preferences of its voters, so a high rank does not mean a model will do better on your tasks. Weigh price, speed, context, tool calling, privacy and regional availability as well.

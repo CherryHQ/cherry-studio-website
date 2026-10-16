@@ -4,7 +4,7 @@
 
 本榜单评测模型在联网搜索 / 信息检索类任务上的表现。
 
-> **数据更新时间**: 2026-10-15 13:06:56 UTC / 2026-10-15 21:06:56 CST (北京时间)
+> **数据更新时间**: 2026-10-16 13:02:49 UTC / 2026-10-16 21:02:49 CST (北京时间)
 
 {% hint style="info" %}
 排行榜反映特定评测和用户投票偏好，不等同于模型在你的任务中一定更好。选择模型时还要考虑价格、速度、上下文、工具调用、隐私和地区可用性。
@@ -19,11 +19,11 @@
 |    3 | 1-6    | claude-opus-4-6-search [<sup>1</sup>](https://www.anthropic.com/news/claude-opus-4-6)                               | 1251 (±5)  | 173,191 | $5/$25         | 1M    |
 |    4 | 2-7    | gpt-5.5-search [<sup>1</sup>](https://openai.com/index/introducing-gpt-5-5/)                                        | 1247 (±5)  | 125,957 | $5/$30         | 1.1M  |
 |    5 | 2-8    | claude-fable-5.1-high [<sup>1</sup>](https://www.anthropic.com/claude-fable-and-mythos-5-1)                         | 1246 (±7)  |  12,782 | $5/$25         | 1M    |
-|    6 | 2-11   | claude-opus-5-high [<sup>1</sup>](https://www.anthropic.com/news/claude-opus-5)                                     | 1242 (±7)  |  13,285 | $5/$25         | 1M    |
+|    6 | 2-11   | Claude Opus 5 (High) [<sup>1</sup>](https://www.anthropic.com/news/claude-opus-5)                                   | 1242 (±7)  |  13,285 | $5/$25         | 1M    |
 |    7 | 5-11   | gpt-6-astra-max [<sup>1</sup>](https://openai.com/index/gpt-6-astra/)                                               | 1234 (±8)  |  18,483 | $10/$50        | 1.1M  |
 |    8 | 4-12   | gpt-6.1-sol-max [<sup>1</sup>](https://openai.com/index/introducing-gpt-6-1-sol/)                                   | 1233 (±9)  |   5,555 | $2/$10         | 1.1M  |
-|    9 | 6-11   | claude-opus-4-7 [<sup>1</sup>](https://www.anthropic.com/news/claude-opus-4-7)                                      | 1230 (±5)  | 127,506 | $5/$25         | 1M    |
-|   10 | 6-12   | claude-fable-5-high [<sup>1</sup>](https://www.anthropic.com/news/claude-fable-5-mythos-5)                          | 1229 (±7)  |  73,596 | $10/$50        | 1M    |
+|    9 | 6-11   | Claude Opus 4.7 [<sup>1</sup>](https://www.anthropic.com/news/claude-opus-4-7)                                      | 1230 (±5)  | 127,506 | $5/$25         | 1M    |
+|   10 | 6-12   | Claude Fable 5 (High) [<sup>1</sup>](https://www.anthropic.com/news/claude-fable-5-mythos-5)                        | 1229 (±7)  |  73,596 | $10/$50        | 1M    |
 |   11 | 6-14   | ernie-5.1 [<sup>1</sup>](https://ernie.baidu.com/blog/posts/ernie-5.1-0508-release/)                                | 1227 (±9)  |   4,024 | $0.56/$2.54    | 119K  |
 |   12 | 9-14   | claude-sonnet-4-6-search [<sup>1</sup>](https://www.anthropic.com/news/claude-sonnet-4-6)                           | 1221 (±4)  | 173,986 | $1.50/$7.50    | 1M    |
 |   13 | 11-18  | grok-4.5 [<sup>1</sup>](https://docs.x.ai/developers/models/grok-4.5)                                               | 1216 (±6)  |  76,458 | $2/$6          | 500K  |

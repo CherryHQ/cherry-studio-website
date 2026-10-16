@@ -4,7 +4,7 @@
 
 本榜单是 Arena AI 最核心的文本对战榜单，根据人类盲投对战估算模型相对实力。
 
-> **数据更新时间**: 2026-10-15 13:06:56 UTC / 2026-10-15 21:06:56 CST (北京时间)
+> **数据更新时间**: 2026-10-16 13:02:49 UTC / 2026-10-16 21:02:49 CST (北京时间)
 
 {% hint style="info" %}
 排行榜反映特定评测和用户投票偏好，不等同于模型在你的任务中一定更好。选择模型时还要考虑价格、速度、上下文、工具调用、隐私和地区可用性。
@@ -14,36 +14,36 @@
 
 |   排名 | 排名区间   | 模型                                                                                                                                                             | 分数                    |      票数 | 价格 $/百万Token   | 上下文   |
 |-----:|:-------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------|--------:|:---------------|:------|
-|    1 | 1-2    | gemini-4-argon-high [<sup>1</sup>](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/)                                    | 1525 (±9) Preliminary |   4,903 | $2/$10         | 1M    |
-|    2 | 1-11   | muse-wonder-max [<sup>1</sup>](https://research.meta.ai/blog/muse-wonder)                                                                                      | 1513 (±13)            |   1,944 | $4/$20         | 1M    |
-|    3 | 2-10   | claude-opus-5.5-high [<sup>1</sup>](https://www.anthropic.com/claude-opus-5-5)                                                                                 | 1508 (±8)             |   7,687 | $4/$20         | 1M    |
-|    4 | 2-11   | claude-fable-5-high [<sup>1</sup>](https://www.anthropic.com/news/claude-fable-5-mythos-5)                                                                     | 1503 (±4)             |  41,439 | $10/$50        | 1M    |
-|    5 | 2-11   | claude-opus-4-6-high [<sup>1</sup>](https://www.anthropic.com/news/claude-opus-4-6)                                                                            | 1503 (±3)             |  80,827 | $5/$25         | 1M    |
-|    6 | 2-12   | claude-opus-4-7-high [<sup>1</sup>](https://www.anthropic.com/news/claude-opus-4-7)                                                                            | 1501 (±4)             |  65,125 | $5/$25         | 1M    |
-|    7 | 2-14   | claude-fable-5.1-max [<sup>1</sup>](https://www.anthropic.com/claude-fable-and-mythos-5-1)                                                                     | 1501 (±6)             |  14,121 | $10/$50        | 1M    |
-|    8 | 2-14   | claude-opus-4-6 [<sup>1</sup>](https://www.anthropic.com/news/claude-opus-4-6)                                                                                 | 1498 (±3)             |  85,445 | $5/$25         | 1M    |
-|    9 | 2-19   | gemini-3.8-flash-high [<sup>1</sup>](https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/)                   | 1496 (±5) Preliminary |  35,670 | $0.75/$3.75    | 1M    |
-|   10 | 2-25   | muse-spark-1.2 (xHigh) [<sup>1</sup>](https://developer.meta.com/ai/models/muse-spark/)                                                                        | 1495 (±7)             |   7,611 | $1.25/$4.25    | N/A   |
-|   11 | 3-22   | muse-spark-1.3-max [<sup>1</sup>](https://developer.meta.com/ai/models/muse-spark/)                                                                            | 1494 (±6)             |  16,731 | $1.25/$4.25    | 1M    |
-|   12 | 6-20   | claude-opus-4-7 [<sup>1</sup>](https://www.anthropic.com/news/claude-opus-4-7)                                                                                 | 1494 (±4)             |  66,213 | $5/$25         | 1M    |
-|   13 | 7-25   | muse-spark-1.1 [<sup>1</sup>](https://ai.meta.com/blog/introducing-muse-spark-meta-model-api/)                                                                 | 1490 (±4)             |  41,938 | $1.25/$4.25    | N/A   |
-|   14 | 9-25   | claude-opus-5-high [<sup>1</sup>](https://www.anthropic.com/news/claude-opus-5)                                                                                | 1490 (±4)             |  65,663 | $5/$25         | 1M    |
-|   15 | 9-27   | claude-opus-5-max [<sup>1</sup>](https://www.anthropic.com/news/claude-opus-5)                                                                                 | 1490 (±5)             |  31,907 | $5/$25         | 1M    |
-|   16 | 7-29   | muse-spark [<sup>1</sup>](https://ai.meta.com/blog/introducing-muse-spark-msl/)                                                                                | 1489 (±6)             |  14,163 | N/A            | N/A   |
-|   17 | 9-29   | kimi-k3-max [<sup>1</sup>](https://platform.kimi.ai/docs/guide/kimi-k3-quickstart)                                                                             | 1488 (±5)             |  32,036 | N/A            | N/A   |
-|   18 | 9-31   | gemini-3.7-flash-high [<sup>1</sup>](https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-3-7-flash/)                    | 1487 (±5) Preliminary |  26,328 | $0.75/$3.75    | 1M    |
-|   19 | 10-27  | gemini-3.1-pro-preview [<sup>1</sup>](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-pro/)                                 | 1487 (±3)             | 126,781 | $1/$6          | 1M    |
-|   20 | 11-31  | gemini-3-pro [<sup>1</sup>](https://aistudio.google.com/app/prompts/new_chat?model=gemini-3-pro-preview)                                                       | 1485 (±4)             |  42,088 | $2/$12         | 1M    |
-|   21 | 11-33  | gpt-5.6-sol-xhigh [<sup>1</sup>](https://openai.com/index/gpt-5-6/)                                                                                            | 1485 (±4)             |  39,832 | $4/$20         | N/A   |
-|   22 | 9-44   | gpt-6.1-sol-max [<sup>1</sup>](https://openai.com/index/introducing-gpt-6-1-sol/)                                                                              | 1484 (±8)             |   5,762 | $2/$10         | 1.1M  |
-|   23 | 12-40  | gemini-3.6-flash-high [<sup>1</sup>](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-6-flash-3-5-flash-lite-3-5-flash-cyber/) | 1483 (±4)             |  36,107 | $0.75/$3.75    | 1M    |
-|   24 | 12-44  | qwen3.8-max [<sup>1</sup>](https://www.qwencloud.com/models/qwen3.8-max)                                                                                       | 1482 (±5)             |  26,991 | $2/$6          | 1M    |
-|   25 | 15-42  | claude-opus-4-8-high [<sup>1</sup>](https://www.anthropic.com/news/claude-opus-4-8)                                                                            | 1482 (±4)             |  64,112 | $5/$25         | 1M    |
-|   26 | 15-42  | gpt-5.5-high [<sup>1</sup>](https://openai.com/index/introducing-gpt-5-5/)                                                                                     | 1481 (±4)             |  69,414 | $5/$30         | 1.1M  |
-|   27 | 12-53  | mimo-v2.6-pro [<sup>1</sup>](https://mimo.xiaomi.com/mimo-v2-6)                                                                                                | 1479 (±9)             |   4,071 | $0.43/$0.87    | 1.1M  |
-|   28 | 17-47  | glm-5.3-max [<sup>1</sup>](https://z.ai/blog/glm-5.3)                                                                                                          | 1479 (±5)             |  21,797 | $1.40/$4.40    | 1M    |
+|    1 | 1-3    | Gemini 4 Argon (High) [<sup>1</sup>](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/)                                  | 1524 (±9) Preliminary |   4,904 | $2/$10         | 1M    |
+|    2 | 1-11   | Muse Wonder (Max) [<sup>1</sup>](https://research.meta.ai/blog/muse-wonder)                                                                                    | 1509 (±11)            |   3,247 | $4/$20         | 1M    |
+|    3 | 1-8    | Claude Opus 5.5 (High) [<sup>1</sup>](https://www.anthropic.com/claude-opus-5-5)                                                                               | 1508 (±7)             |   8,300 | $4/$20         | 1M    |
+|    4 | 2-11   | Claude Fable 5 (High) [<sup>1</sup>](https://www.anthropic.com/news/claude-fable-5-mythos-5)                                                                   | 1504 (±4)             |  42,004 | $10/$50        | 1M    |
+|    5 | 2-11   | Claude Opus 4.6 (High) [<sup>1</sup>](https://www.anthropic.com/news/claude-opus-4-6)                                                                          | 1503 (±3)             |  81,394 | $5/$25         | 1M    |
+|    6 | 2-12   | Claude Fable 5.1 (Max) [<sup>1</sup>](https://www.anthropic.com/claude-fable-and-mythos-5-1)                                                                   | 1502 (±6)             |  14,590 | $10/$50        | 1M    |
+|    7 | 2-12   | Claude Opus 4.7 (High) [<sup>1</sup>](https://www.anthropic.com/news/claude-opus-4-7)                                                                          | 1501 (±4)             |  65,116 | $5/$25         | 1M    |
+|    8 | 3-15   | Claude Opus 4.6 [<sup>1</sup>](https://www.anthropic.com/news/claude-opus-4-6)                                                                                 | 1497 (±3)             |  86,071 | $5/$25         | 1M    |
+|    9 | 2-18   | Gemini 3.8 Flash (High) [<sup>1</sup>](https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/)                 | 1496 (±5) Preliminary |  37,454 | $0.75/$3.75    | 1M    |
+|   10 | 3-22   | Muse Spark 1.3 (Max) [<sup>1</sup>](https://developer.meta.com/ai/models/muse-spark/)                                                                          | 1494 (±6)             |  17,561 | $1.25/$4.25    | 1M    |
+|   11 | 6-20   | Claude Opus 4.7 [<sup>1</sup>](https://www.anthropic.com/news/claude-opus-4-7)                                                                                 | 1494 (±4)             |  66,216 | $5/$25         | 1M    |
+|   12 | 3-25   | Muse Spark 1.2 (xHigh) [<sup>1</sup>](https://developer.meta.com/ai/models/muse-spark/)                                                                        | 1493 (±7)             |   8,248 | $1.25/$4.25    | N/A   |
+|   13 | 8-25   | Muse Spark 1.1 [<sup>1</sup>](https://ai.meta.com/blog/introducing-muse-spark-meta-model-api/)                                                                 | 1490 (±4)             |  42,810 | $1.25/$4.25    | N/A   |
+|   14 | 8-27   | Claude Opus 5 (Max) [<sup>1</sup>](https://www.anthropic.com/news/claude-opus-5)                                                                               | 1490 (±5)             |  32,495 | $5/$25         | 1M    |
+|   15 | 9-25   | Claude Opus 5 (High) [<sup>1</sup>](https://www.anthropic.com/news/claude-opus-5)                                                                              | 1490 (±4)             |  66,824 | $5/$25         | 1M    |
+|   16 | 8-30   | Muse Spark [<sup>1</sup>](https://ai.meta.com/blog/introducing-muse-spark-msl/)                                                                                | 1489 (±6)             |  14,150 | N/A            | N/A   |
+|   17 | 9-30   | Gemini 3.7 Flash (High) [<sup>1</sup>](https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-3-7-flash/)                  | 1488 (±5) Preliminary |  27,232 | $0.75/$3.75    | 1M    |
+|   18 | 10-31  | Kimi K3 (Max) [<sup>1</sup>](https://platform.kimi.ai/docs/guide/kimi-k3-quickstart)                                                                           | 1487 (±5)             |  32,795 | N/A            | N/A   |
+|   19 | 10-28  | Gemini 3.1 Pro Preview [<sup>1</sup>](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-pro/)                                 | 1487 (±3)             | 127,649 | $1/$6          | 1M    |
+|   20 | 11-31  | Gemini 3 Pro [<sup>1</sup>](https://aistudio.google.com/app/prompts/new_chat?model=gemini-3-pro-preview)                                                       | 1485 (±4)             |  42,072 | $2/$12         | 1M    |
+|   21 | 11-33  | gpt-5.6-sol-xhigh [<sup>1</sup>](https://openai.com/index/gpt-5-6/)                                                                                            | 1485 (±4)             |  40,442 | $4/$20         | N/A   |
+|   22 | 9-44   | gpt-6.1-sol-max [<sup>1</sup>](https://openai.com/index/introducing-gpt-6-1-sol/)                                                                              | 1484 (±8)             |   6,320 | $2/$10         | 1.1M  |
+|   23 | 12-40  | gemini-3.6-flash-high [<sup>1</sup>](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-6-flash-3-5-flash-lite-3-5-flash-cyber/) | 1483 (±4)             |  36,122 | $0.75/$3.75    | 1M    |
+|   24 | 12-43  | qwen3.8-max [<sup>1</sup>](https://www.qwencloud.com/models/qwen3.8-max)                                                                                       | 1482 (±5)             |  27,766 | $2/$6          | 1M    |
+|   25 | 15-42  | claude-opus-4-8-high [<sup>1</sup>](https://www.anthropic.com/news/claude-opus-4-8)                                                                            | 1481 (±4)             |  64,100 | $5/$25         | 1M    |
+|   26 | 15-42  | gpt-5.5-high [<sup>1</sup>](https://openai.com/index/introducing-gpt-5-5/)                                                                                     | 1481 (±4)             |  69,401 | $5/$30         | 1.1M  |
+|   27 | 12-53  | mimo-v2.6-pro [<sup>1</sup>](https://mimo.xiaomi.com/mimo-v2-6)                                                                                                | 1479 (±9)             |   4,075 | $0.43/$0.87    | 1.1M  |
+|   28 | 17-47  | glm-5.3-max [<sup>1</sup>](https://z.ai/blog/glm-5.3)                                                                                                          | 1479 (±5)             |  22,543 | $1.40/$4.40    | 1M    |
 |   29 | 21-47  | gemini-3.5-flash-high [<sup>1</sup>](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5/)                                      | 1477 (±4)             |  48,486 | $0.75/$4.50    | 1M    |
-|   30 | 19-51  | gpt-6-astra-max [<sup>1</sup>](https://openai.com/index/gpt-6-astra/)                                                                                          | 1477 (±6)             |  11,674 | N/A            | N/A   |
+|   30 | 17-50  | gpt-6-astra-max [<sup>1</sup>](https://openai.com/index/gpt-6-astra/)                                                                                          | 1477 (±6)             |  12,163 | N/A            | N/A   |
 
 ## 怎么看这张表
 
