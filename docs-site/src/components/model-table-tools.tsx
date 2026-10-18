@@ -3,6 +3,8 @@
 import { usePathname } from 'next/navigation'
 import { useEffect } from 'react'
 
+import { buildMatcher } from '@/lib/search-matcher'
+
 // Progressive enhancement for the model reference tables. The generator
 // (.github/scripts/fetch_models.mjs) marks each table with data-models-table and embeds the toolbar
 // spec `num:<columns>;sort:<column>;search:<columns>;cap:<column>:<label>[,…];in:…;out:…`,
@@ -80,16 +82,6 @@ function parseSpec(value: string) {
     }
   }
   return { numeric, chips, sortColumn, searchColumns }
-}
-
-const escapeRegExp = (text: string) => text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-
-// "qwen 3.7" also matches "Qwen3.7" and "qwen-3-7": whitespace in the query stands for any
-// separator or none, everything else stays literal.
-function buildMatcher(query: string) {
-  const chunks = query.trim().split(/\s+/).filter(Boolean).map(escapeRegExp)
-  if (!chunks.length) return null
-  return new RegExp(chunks.join('[\\s\\-_.·/－．／]*'), 'i')
 }
 
 type IndexModel = { name: string; id: string; provider: string; category: string }
@@ -315,14 +307,12 @@ function enhance(wrapper: HTMLElement, language: 'zh-cn' | 'en', pathname: strin
     active.cell.querySelector('button')?.append(indicator)
   }
 
-  function updateNotice(query: string, currentMatches: number) {
+  function updateNotice(matcher: ReturnType<typeof buildMatcher>, query: string, currentMatches: number) {
     notice.replaceChildren()
     notice.hidden = true
-    if (!query || currentMatches > 0 || !searchIndex) return
-    const matcher = buildMatcher(query)
-    if (!matcher) return
+    if (!matcher || !query || currentMatches > 0 || !searchIndex) return
     const matches = searchIndex.models.filter(
-      (model) => model.category !== currentCategory && matcher.test(`${model.name} ${model.id} ${model.provider}`)
+      (model) => model.category !== currentCategory && matcher(`${model.name} ${model.id} ${model.provider}`)
     )
     if (!matches.length) return
     const shown = matches.slice(0, NOTICE_LIMIT)
@@ -349,7 +339,7 @@ function enhance(wrapper: HTMLElement, language: 'zh-cn' | 'en', pathname: strin
     let visible = 0
     let queryMatches = 0
     for (const [index, row] of rows.entries()) {
-      const matchesQuery = !matcher || matcher.test(searchText[index])
+      const matchesQuery = !matcher || matcher(searchText[index])
       let show = matchesQuery
       if (show) {
         for (const { chip } of active) {
@@ -367,7 +357,7 @@ function enhance(wrapper: HTMLElement, language: 'zh-cn' | 'en', pathname: strin
     count.textContent = labels.showing(visible, rows.length)
     clear.hidden = search.value === ''
     if (query) ensureIndex()
-    updateNotice(query, queryMatches)
+    updateNotice(matcher, query, queryMatches)
   }
 
   for (const [column, { cell }] of headers.entries()) {
