@@ -4,8 +4,8 @@ import { usePathname } from 'next/navigation'
 import { useEffect } from 'react'
 
 // Progressive enhancement for the model reference tables. The generator
-// (.github/scripts/fetch_models.mjs) marks each table with data-models-table and embeds the
-// toolbar spec `num:<columns>;cap:<column>:<label>[,…];in:<column>:<label>=<needle>[,…];out:…`,
+// (.github/scripts/fetch_models.mjs) marks each table with data-models-table and embeds the toolbar
+// spec `num:<columns>;sort:<column>;cap:<column>:<label>[,…];in:<column>:<label>=<needle>[,…];out:…`,
 // so the labels and column layout live in the generator and this component stays format-only.
 
 type Labels = {
@@ -35,6 +35,7 @@ type Chip = { label: string; column: number; needle: string }
 function parseSpec(value: string) {
   const numeric = new Set<number>()
   const chips: Chip[] = []
+  let sortColumn: number | null = null
   for (const part of value.split(';')) {
     const first = part.indexOf(':')
     if (first < 0) continue
@@ -42,6 +43,10 @@ function parseSpec(value: string) {
     const rest = part.slice(first + 1)
     if (key === 'num') {
       for (const column of rest.split(',')) numeric.add(Number(column))
+      continue
+    }
+    if (key === 'sort') {
+      sortColumn = Number(rest)
       continue
     }
     const second = rest.indexOf(':')
@@ -52,7 +57,7 @@ function parseSpec(value: string) {
       if (label) chips.push({ label, column, needle })
     }
   }
-  return { numeric, chips }
+  return { numeric, chips, sortColumn }
 }
 
 function enhance(wrapper: HTMLElement, locale: 'zh-cn' | 'en', labels: Labels) {
@@ -62,11 +67,13 @@ function enhance(wrapper: HTMLElement, locale: 'zh-cn' | 'en', labels: Labels) {
   if (!table || !body || !head) return
   const tbody = body
 
-  const { numeric, chips } = parseSpec(wrapper.dataset.modelsTable ?? '')
+  const { numeric, chips, sortColumn } = parseSpec(wrapper.dataset.modelsTable ?? '')
   const rows = [...tbody.rows]
   const originalOrder = rows.slice()
   const headers = [...head.cells].map((cell) => ({ cell, html: cell.innerHTML }))
-  let sort: { column: number; direction: 1 | -1 } | null = null
+  const defaultSort: { column: number; direction: 1 | -1 } | null =
+    sortColumn == null ? null : { column: sortColumn, direction: 1 }
+  let sort: { column: number; direction: 1 | -1 } | null = defaultSort
 
   const toolbar = document.createElement('div')
   toolbar.className = 'my-3 flex flex-wrap items-center gap-x-3 gap-y-2'
@@ -76,7 +83,7 @@ function enhance(wrapper: HTMLElement, locale: 'zh-cn' | 'en', labels: Labels) {
   search.placeholder = labels.search
   search.setAttribute('aria-label', labels.search)
   search.className =
-    'w-60 max-w-full rounded-lg border border-fd-border bg-fd-background px-2.5 py-1.5 text-sm text-fd-foreground outline-none placeholder:text-fd-muted-foreground focus-visible:ring-2 focus-visible:ring-fd-primary'
+    'w-80 max-w-full rounded-lg border border-fd-border bg-fd-background px-2.5 py-1.5 text-sm text-fd-foreground outline-none placeholder:text-fd-muted-foreground focus-visible:ring-2 focus-visible:ring-fd-primary'
 
   const count = document.createElement('span')
   count.className = 'text-xs text-fd-muted-foreground'
@@ -91,7 +98,7 @@ function enhance(wrapper: HTMLElement, locale: 'zh-cn' | 'en', labels: Labels) {
     button.textContent = chip.label
     button.setAttribute('aria-pressed', 'false')
     button.className =
-      'rounded-full border border-fd-border px-2.5 py-0.5 text-xs text-fd-muted-foreground transition-colors hover:text-fd-foreground aria-pressed:border-fd-primary aria-pressed:bg-fd-primary/10 aria-pressed:text-fd-primary'
+      'cursor-pointer rounded-full border border-fd-border px-2.5 py-0.5 text-xs text-fd-muted-foreground transition-colors hover:text-fd-foreground aria-pressed:border-fd-primary aria-pressed:bg-fd-primary/10 aria-pressed:text-fd-primary'
     button.addEventListener('click', () => {
       button.setAttribute('aria-pressed', String(button.getAttribute('aria-pressed') !== 'true'))
       apply()
@@ -103,11 +110,12 @@ function enhance(wrapper: HTMLElement, locale: 'zh-cn' | 'en', labels: Labels) {
   const reset = document.createElement('button')
   reset.type = 'button'
   reset.textContent = labels.reset
-  reset.className = 'text-xs text-fd-muted-foreground underline underline-offset-2 hover:text-fd-foreground'
+  reset.className =
+    'cursor-pointer text-xs text-fd-muted-foreground underline underline-offset-2 hover:text-fd-foreground'
   reset.addEventListener('click', () => {
     search.value = ''
     for (const { button } of chipButtons) button.setAttribute('aria-pressed', 'false')
-    sort = null
+    sort = defaultSort
     updateHeaders()
     apply()
   })
@@ -144,9 +152,11 @@ function enhance(wrapper: HTMLElement, locale: 'zh-cn' | 'en', labels: Labels) {
       cell.querySelector('[data-sort-indicator]')?.remove()
     }
     if (!sort) return
-    headers[sort.column].cell.setAttribute('aria-sort', sort.direction === 1 ? 'ascending' : 'descending')
+    const active = headers[sort.column]
+    if (!active) return
+    active.cell.setAttribute('aria-sort', sort.direction === 1 ? 'ascending' : 'descending')
     indicator.textContent = sort.direction === 1 ? '▲' : '▼'
-    headers[sort.column].cell.querySelector('button')?.append(indicator)
+    active.cell.querySelector('button')?.append(indicator)
   }
 
   function apply() {
@@ -186,6 +196,7 @@ function enhance(wrapper: HTMLElement, locale: 'zh-cn' | 'en', labels: Labels) {
 
   const container = wrapper.querySelector('[data-table-container]') ?? table
   container.before(toolbar)
+  updateHeaders()
   apply()
 
   return () => {

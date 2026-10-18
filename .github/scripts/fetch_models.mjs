@@ -31,13 +31,12 @@ const CAPABILITIES = {
   'computer-use': { 'zh-cn': '计算机操作', en: 'Computer use' },
   'file-search': { 'zh-cn': '文件检索', en: 'File search' }
 }
-// `short` labels the modality checklist, `zh`/`en` label the table filter chips.
 const MODALITIES = {
-  text: { short: '文', 'zh-cn': '文本', en: 'Text' },
-  image: { short: '图', 'zh-cn': '图片', en: 'Image' },
-  audio: { short: '音', 'zh-cn': '音频', en: 'Audio' },
-  video: { short: '视', 'zh-cn': '视频', en: 'Video' },
-  vector: { short: '向', 'zh-cn': '向量', en: 'Vector' }
+  text: { 'zh-cn': '文本', en: 'Text' },
+  image: { 'zh-cn': '图片', en: 'Image' },
+  audio: { 'zh-cn': '音频', en: 'Audio' },
+  video: { 'zh-cn': '视频', en: 'Video' },
+  vector: { 'zh-cn': '向量', en: 'Vector' }
 }
 const MODALITY_ORDER = ['text', 'image', 'audio', 'video', 'vector']
 
@@ -103,6 +102,7 @@ function capabilityList(model, lang) {
 }
 
 // The modality vocabulary of a page: every modality that occurs in any row, in fixed order.
+// Cells and filter chips reuse it, so lists stay consistently ordered and unknown values drop out.
 function vocabularyOf(models) {
   const seen = new Set()
   for (const model of models) {
@@ -115,12 +115,9 @@ function vocabularyOf(models) {
 function modalityCell(values, vocabulary, lang) {
   if (!Array.isArray(values) || !values.length) return '-'
   const present = new Set(values)
-  return vocabulary
-    .map((modality) => {
-      const label = lang === 'en' ? MODALITIES[modality].en : MODALITIES[modality].short
-      return `${label}${present.has(modality) ? '✓' : '—'}`
-    })
-    .join(' ')
+  const listed = vocabulary.filter((modality) => present.has(modality))
+  if (!listed.length) return '-'
+  return listed.map((modality) => MODALITIES[modality][lang]).join(lang === 'en' ? ', ' : '、')
 }
 
 function renderTable(models, lang, vocabulary) {
@@ -144,14 +141,14 @@ function renderTable(models, lang, vocabulary) {
 }
 
 // Spec for the table toolbar, consumed by docs-site/src/components/model-table-tools.tsx — the
-// format is `num:<columns>;cap:<column>:<label>[,…];in:<column>:<label>=<needle>[,…];out:…`.
+// format is `num:<columns>;sort:<column>;cap:<column>:<label>[,…];in:<column>:<label>=<needle>[,…];out:…`.
 // Only filters that split the rows which carry data are emitted.
 function chipsSpec(models, vocabulary, lang) {
   const partial = (predicate, hasData) => {
     const matches = models.filter(predicate).length
     return matches > 0 && matches < models.filter(hasData).length
   }
-  const parts = ['num:3,4']
+  const parts = ['num:3,4', 'sort:2']
   const capabilities = Object.entries(CAPABILITIES)
     .filter(([kind]) =>
       partial(
@@ -170,9 +167,8 @@ function chipsSpec(models, vocabulary, lang) {
     )
     if (!items.length) return
     const list = items.map((modality) => {
-      const label = lang === 'en' ? MODALITIES[modality].en : MODALITIES[modality]['zh-cn']
-      const needle = `${lang === 'en' ? MODALITIES[modality].en : MODALITIES[modality].short}✓`
-      return `${label}${suffix}=${needle}`
+      const name = MODALITIES[modality][lang]
+      return `${name}${suffix}=${name}`
     })
     parts.push(`${key}:${column}:${list.join(',')}`)
   }
@@ -183,8 +179,8 @@ function chipsSpec(models, vocabulary, lang) {
 
 function pageIntro(lang) {
   if (lang === 'en')
-    return `Data comes from the model catalog bundled with Cherry Studio ([provider-registry](${REPOSITORY})), synced automatically with the application repository. A \`-\` means the source data does not provide that field; in the modality columns ✓ means a modality is supported and — means it is not (only modalities that appear on this page are listed). Information is for reference only.`
-  return `数据来自 Cherry Studio 内置模型目录（[provider-registry](${REPOSITORY})），随应用仓库自动同步；表中 \`-\` 表示数据源未提供该字段，模态列的 ✓ / — 表示是否支持该模态（仅列出本页出现的模态），信息仅供参考。`
+    return `Data comes from the model catalog bundled with Cherry Studio ([provider-registry](${REPOSITORY})), synced automatically with the application repository. A \`-\` means the source data does not provide that field. Information is for reference only.`
+  return `数据来自 Cherry Studio 内置模型目录（[provider-registry](${REPOSITORY})），随应用仓库自动同步；表中 \`-\` 表示数据源未提供该字段，信息仅供参考。`
 }
 
 function renderSubpage(category, models, stamp, lang) {
