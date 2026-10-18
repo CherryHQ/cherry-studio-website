@@ -170,6 +170,7 @@ Only run this command if you have proper SSH access to the production server.
 - `docs-site/` is an isolated Fumadocs + Next.js static-export workspace (React 19); the marketing app remains React 18 + Vite.
 - `pnpm dev` compiles local documentation, watches content changes and starts both apps; `pnpm dev:website` starts only Vite. Vite forwards `/docs` to the docs dev server on port 3001.
 - `docs-site/content/` is the only documentation source. Edit Markdown and images here, including each language's `SUMMARY.md`. `pnpm docs:generate` compiles local content; never edit generated output. There is no external documentation repository synchronization.
+- Keep both languages in sync: every content change under `docs-site/content/` must be applied to `docs-site/content/i18n/english/` as well, including both `SUMMARY.md` files, and the two versions must differ where the products differ — the international build does not support signing in with a Cherry Cloud account, so the English docs must not document it.
 - Both `pnpm build:cn` and `pnpm build:en` produce the complete website plus `dist/docs`. Always deploy the complete artifact, since release uses `rsync --delete`.
 - Documentation languages use `/docs/<locale>/` independently of the marketing site's fixed domain language. `locales.json` defines languages and `page-aliases.json` maps renamed source paths.
 - Run `pnpm docs:test` for content-conversion regressions. Inspect `docs-site/generated/report.json` for local source defects. Unknown GitBook tags fail generation.
