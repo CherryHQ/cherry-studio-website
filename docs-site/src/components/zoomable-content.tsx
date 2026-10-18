@@ -36,13 +36,36 @@ export function ZoomableContent({
 }) {
   const labels = LABELS[locale] ?? LABELS.en
   const [zoomed, setZoomed] = useState<ZoomedImage | null>(null)
+  const [closing, setClosing] = useState(false)
   const closeRef = useRef<HTMLButtonElement>(null)
+  const closeTimer = useRef<number | null>(null)
   const returnFocus = useRef<HTMLElement | null>(null)
 
   const show = (image: ZoomedImage) => {
+    if (closeTimer.current !== null) {
+      window.clearTimeout(closeTimer.current)
+      closeTimer.current = null
+    }
+    setClosing(false)
     returnFocus.current = document.activeElement instanceof HTMLElement ? document.activeElement : null
     setZoomed(image)
   }
+
+  const dismiss = () => {
+    if (closeTimer.current !== null) return
+    setClosing(true)
+    closeTimer.current = window.setTimeout(() => {
+      closeTimer.current = null
+      setClosing(false)
+      setZoomed(null)
+    }, 200)
+  }
+
+  useEffect(() => {
+    return () => {
+      if (closeTimer.current !== null) window.clearTimeout(closeTimer.current)
+    }
+  }, [])
 
   const onClick = (event: MouseEvent<HTMLDivElement>) => {
     if (
@@ -80,7 +103,7 @@ export function ZoomableContent({
     const onKeyDown = (event: KeyboardEvent) => {
       // Swallow page shortcuts so ⌘K cannot stack the search dialog under the viewer.
       event.stopPropagation()
-      if (event.key === 'Escape' && !event.defaultPrevented) setZoomed(null)
+      if (event.key === 'Escape' && !event.defaultPrevented) dismiss()
       else if (event.key === 'Tab') event.preventDefault()
     }
     window.addEventListener('keydown', onKeyDown, true)
@@ -100,22 +123,28 @@ export function ZoomableContent({
             role="dialog"
             aria-modal="true"
             aria-label={zoomed.alt || labels.preview}
-            className="fixed inset-0 z-[100] flex cursor-zoom-out items-center justify-center bg-black/80 p-4"
+            className={`fixed inset-0 z-[100] flex cursor-zoom-out items-center justify-center bg-black/80 p-4 motion-reduce:animate-none ${
+              closing ? 'animate-viewer-fade-out' : 'animate-viewer-fade-in'
+            }`}
             onClick={(event) => {
-              if (event.target === event.currentTarget) setZoomed(null)
+              // Keep viewer clicks from reaching the article's image delegation.
+              event.stopPropagation()
+              if (event.target === event.currentTarget) dismiss()
             }}>
             {/* biome-ignore lint/performance/noImgElement: article images are runtime URLs without known dimensions */}
             <img
               src={zoomed.src}
               alt={zoomed.alt}
-              className="max-h-full max-w-full cursor-default rounded-lg object-contain"
+              className={`max-h-full max-w-full cursor-default rounded-lg object-contain motion-reduce:animate-none ${
+                closing ? 'animate-viewer-zoom-out' : 'animate-viewer-zoom-in'
+              }`}
             />
             <button
               ref={closeRef}
               type="button"
               aria-label={labels.close}
               className="absolute top-4 right-4 rounded-full bg-black/50 p-3 text-white transition-colors hover:bg-black/70 focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none"
-              onClick={() => setZoomed(null)}>
+              onClick={dismiss}>
               <X className="size-5" />
             </button>
           </div>,
