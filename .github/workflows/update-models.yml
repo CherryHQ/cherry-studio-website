@@ -1,0 +1,56 @@
+name: Update Model Reference Data
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Two hours after the application repository refreshes its model catalog,
+    # and away from the leaderboard refresh at 08:00 UTC.
+    - cron: '0 2 * * *'
+
+# The job commits the refreshed snapshot back to the branch it runs on.
+permissions:
+  contents: write
+
+jobs:
+  update-models:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      # A failed fetch keeps the previous snapshot, so the script exits non-zero and the run fails.
+      - name: Fetch and generate model reference pages
+        run: node .github/scripts/fetch_models.mjs
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # Commits pushed with the default token do not trigger the docs workflow, so validate here.
+      - name: Generate documentation content
+        run: pnpm docs:generate
+
+      - name: Require zero reported source issues
+        run: |
+          node -e "const r=require('./docs-site/generated/report.json'); if (r.issues.length) { console.error(JSON.stringify(r.issues, null, 2)); process.exit(1); } console.log('report.json: 0 source issues');"
+
+      - name: Commit and push if there are changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add docs-site/content/other/models-info/
+          if [ -n "$(git status --porcelain)" ]; then
+            git commit -m "Update model reference data"
+            git pull --rebase
+            git push
+          else
+            echo "No changes to commit"
+          fi
