@@ -148,6 +148,13 @@
   * [Cherry Studio Articles](articles/README.md)
   * **Reference**
     * [Knowledge Popularization](question-contact/knowledge.md)
+    * [Model Reference](other/models-info/README.md)
+      * [Text Chat](other/models-info/chat-text.md)
+      * [Multimodal Chat](other/models-info/chat-multimodal.md)
+      * [Image Generation](other/models-info/image-generation.md)
+      * [Video Generation](other/models-info/video-generation.md)
+      * [Audio](other/models-info/audio.md)
+      * [Embedding & Rerank](other/models-info/embedding-rerank.md)
     * [Model List](other/model_rank/README.md)
       * [Agent Leaderboard](other/model_rank/agent.md)
       * [Text Leaderboard](other/model_rank/text.md)

@@ -9,13 +9,6 @@
   "label": "English",
   "directory": "i18n/english",
   "removed": {
-   "other/models-info/README.md": "other/model_rank/README.md",
-   "other/models-info/chat-text.md": "other/model_rank/README.md",
-   "other/models-info/chat-multimodal.md": "other/model_rank/README.md",
-   "other/models-info/image-generation.md": "other/model_rank/README.md",
-   "other/models-info/video-generation.md": "other/model_rank/README.md",
-   "other/models-info/audio.md": "other/model_rank/README.md",
-   "other/models-info/embedding-rerank.md": "other/model_rank/README.md",
    "pre-basic/websearch/volcengine.md": "pre-basic/websearch/README.md",
    "pre-basic/websearch/tavily.md": "pre-basic/websearch/README.md",
    "pre-basic/personalization-settings/font.md": "pre-basic/settings/display.md",

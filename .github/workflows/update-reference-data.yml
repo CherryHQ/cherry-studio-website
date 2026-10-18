@@ -1,22 +1,30 @@
-name: Update Model Reference Data
+name: Update reference data
 
 on:
   workflow_dispatch:
   schedule:
-    # Two hours after the application repository refreshes its model catalog,
-    # and away from the leaderboard refresh at 08:00 UTC.
-    - cron: '0 2 * * *'
+    - cron: '0 8 * * *'
 
-# The job commits the refreshed snapshot back to the branch it runs on.
+# The job commits the refreshed snapshots back to the branch it runs on.
 permissions:
   contents: write
 
 jobs:
-  update-models:
+  update-reference-data:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install --upgrade beautifulsoup4 pandas pytz lxml requests tabulate
 
       - name: Set up pnpm
         uses: pnpm/action-setup@v4
@@ -27,8 +35,19 @@ jobs:
           node-version: 24
           cache: pnpm
 
-      # A failed fetch keeps the previous snapshot, so the script exits non-zero and the run fails.
+      # A snapshot that cannot be fetched or parsed must keep its previous version, so both
+      # scripts exit non-zero; whatever did refresh is still committed, and the run is failed
+      # afterwards.
+      - name: Fetch and update leaderboards
+        id: leaderboard
+        continue-on-error: true
+        env:
+          SCRAPER_API_KEY: ${{ secrets.SCRAPER_API_KEY }}
+        run: python .github/scripts/fetch_leaderboard.py
+
       - name: Fetch and generate model reference pages
+        id: models
+        continue-on-error: true
         run: node .github/scripts/fetch_models.mjs
 
       - name: Install dependencies
@@ -46,11 +65,15 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add docs-site/content/other/models-info/
+          git add -A docs-site/content/other/model_rank/ docs-site/content/i18n/english/other/model_rank/ docs-site/content/other/models-info/ docs-site/content/i18n/english/other/models-info/
           if [ -n "$(git status --porcelain)" ]; then
-            git commit -m "Update model reference data"
+            git commit -m "Update reference data"
             git pull --rebase
             git push
           else
             echo "No changes to commit"
           fi
+
+      - name: Fail when a snapshot could not be refreshed
+        if: steps.leaderboard.outcome != 'success' || steps.models.outcome != 'success'
+        run: exit 1

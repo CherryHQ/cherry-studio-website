@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { notFound, redirect } from 'next/navigation'
 
 import { DocumentPage } from '@/components/document-page'
+import { ModelTableTools } from '@/components/model-table-tools'
 import { getPage, getRedirect, getRedirectSlugs, pages } from '@/lib/content'
 import { getDocumentMetadata } from '@/lib/document-metadata'
 
@@ -31,5 +32,10 @@ export default async function DocsRoute({ params }: Props) {
   const page = getPage(lang, joined)
   if (!page) notFound()
 
-  return <DocumentPage lang={lang} page={page} />
+  return (
+    <>
+      <DocumentPage lang={lang} page={page} />
+      <ModelTableTools locale={page.fallback ? 'zh-cn' : lang} />
+    </>
+  )
 }
