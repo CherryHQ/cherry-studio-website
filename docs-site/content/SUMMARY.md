@@ -169,7 +169,7 @@
       * [代码 / Web 开发榜单](other/model_rank/code-webdev.md)
       * [文生图榜单](other/model_rank/text-to-image.md)
   * [商务合作](contact-us/questions.md)
-  * [隐私协议](about/privacypolicy.md)
+  * [隐私政策](about/privacypolicy.md)
   * [开源协议](contact-us/questions/license.md)
 
 ## 移动版
