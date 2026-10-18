@@ -129,6 +129,14 @@ function enhance(wrapper: HTMLElement, language: 'zh-cn' | 'en', pathname: strin
   const segments = pathname.split('/').filter(Boolean)
   const marker = segments.indexOf('models-info')
   const currentCategory = marker >= 0 ? (segments[marker + 1] ?? null) : null
+  // Move the exact values off `title` so the native tooltip stays out of the way; only spans,
+  // never the header buttons that carry the sort hint.
+  const tipSpans = [...wrapper.querySelectorAll<HTMLElement>('span[title]')].map((span) => {
+    const title = span.getAttribute('title') ?? ''
+    span.dataset.tip = title
+    span.removeAttribute('title')
+    return { span, title }
+  })
 
   const defaultSort: { column: number; direction: 1 | -1 } | null =
     sortColumn == null ? null : { column: sortColumn, direction: 1 }
@@ -203,6 +211,42 @@ function enhance(wrapper: HTMLElement, language: 'zh-cn' | 'en', pathname: strin
   notice.setAttribute('role', 'status')
   notice.hidden = true
 
+  const tip = document.createElement('div')
+  tip.className =
+    'pointer-events-none fixed z-[60] hidden rounded-lg border border-fd-border bg-fd-popover px-2.5 py-1.5 text-xs text-fd-popover-foreground shadow-md'
+  tip.setAttribute('role', 'tooltip')
+  document.body.append(tip)
+
+  const tipTarget = (target: EventTarget | null) => (target instanceof Element ? target.closest('[data-tip]') : null)
+
+  function showTip(span: HTMLElement) {
+    const value = span.dataset.tip
+    if (!value) return
+    tip.textContent = `${value} tokens`
+    tip.classList.remove('hidden')
+    const rect = span.getBoundingClientRect()
+    const box = tip.getBoundingClientRect()
+    let top = rect.top - box.height - 6
+    if (top < 8) top = rect.bottom + 6
+    tip.style.top = `${top}px`
+    tip.style.left = `${Math.min(Math.max(rect.left + rect.width / 2 - box.width / 2, 8), window.innerWidth - box.width - 8)}px`
+  }
+
+  const hideTip = () => tip.classList.add('hidden')
+  const onTipOver = (event: MouseEvent) => {
+    const span = tipTarget(event.target)
+    if (span && wrapper.contains(span)) showTip(span as HTMLElement)
+  }
+  const onTipOut = (event: MouseEvent) => {
+    if (!tipTarget(event.target)) return
+    const related = tipTarget(event.relatedTarget)
+    if (related && wrapper.contains(related)) return
+    hideTip()
+  }
+  wrapper.addEventListener('mouseover', onTipOver)
+  wrapper.addEventListener('mouseout', onTipOut)
+  window.addEventListener('scroll', hideTip, true)
+
   toolbar.append(searchWrap, count, chipList, reset)
   search.addEventListener('input', () => apply())
   search.addEventListener('keydown', (event) => {
@@ -227,7 +271,8 @@ function enhance(wrapper: HTMLElement, language: 'zh-cn' | 'en', pathname: strin
   // Hovering an abbreviated value shows the exact number; sorting uses it when present.
   const numericValue = (row: HTMLTableRowElement, column: number) => {
     const cell = row.cells[column]
-    const source = (cell?.querySelector('[title]')?.getAttribute('title') ?? cell?.textContent ?? '').trim()
+    const exact = cell?.querySelector('[data-tip]')?.getAttribute('data-tip')
+    const source = (exact ?? cell?.querySelector('[title]')?.getAttribute('title') ?? cell?.textContent ?? '').trim()
     if (!source || source === '-') return null
     const match = /^([\d.,]+)\s*([KM])?$/.exec(source)
     if (!match) return null
@@ -342,12 +387,22 @@ function enhance(wrapper: HTMLElement, language: 'zh-cn' | 'en', pathname: strin
   const container = wrapper.querySelector('[data-table-container]') ?? table
   container.before(toolbar)
   toolbar.after(notice)
+  container.addEventListener('scroll', hideTip)
   updateHeaders()
   apply()
 
   return () => {
     toolbar.remove()
     notice.remove()
+    tip.remove()
+    wrapper.removeEventListener('mouseover', onTipOver)
+    wrapper.removeEventListener('mouseout', onTipOut)
+    window.removeEventListener('scroll', hideTip, true)
+    container.removeEventListener('scroll', hideTip)
+    for (const { span, title } of tipSpans) {
+      span.setAttribute('title', title)
+      delete span.dataset.tip
+    }
     for (const { cell, html } of headers) {
       cell.innerHTML = html
       cell.removeAttribute('aria-sort')
