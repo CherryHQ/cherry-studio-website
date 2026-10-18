@@ -16,6 +16,7 @@
       "!**/.react-router/**/*",
       "!**/src/assets/worker.js",
       "!**/src/assets/css/icomoon.css",
+      ".github/scripts/**",
       "docs-site/scripts/**",
       "docs-site/*.mjs",
       "scripts/dev.mjs",

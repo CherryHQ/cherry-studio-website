@@ -1,262 +1,264 @@
 # Multimodal Chat
 
-Data comes from the model catalog bundled with Cherry Studio ([provider-registry](https://github.com/CherryHQ/cherry-studio/tree/main/packages/provider-registry)), synced automatically with the application repository. A `-` means the source data does not provide that field. Information is for reference only.
+Data comes from the model catalog bundled with Cherry Studio ([provider-registry](https://github.com/CherryHQ/cherry-studio/tree/main/packages/provider-registry)), synced automatically with the application repository; a `-` means the source data does not provide that field.
 
-> **Data updated**: 2026-10-18 10:11:36 UTC / 2026-10-18 18:11:36 CST (Beijing time)
+Context length and max output are abbreviated with K / M and rounded (1K is roughly 1,000–1,024 tokens, 1M roughly one million), e.g. 131,072 and 128,000 both read 128K. Hover a value to see the exact number; confirm limits with the model provider.
 
-<div data-models-table="num:3,4;sort:2;cap:5:Function calling,Reasoning,Image recognition,Video recognition,Structured output,File input,Computer use,File search;in:6:Text input=Text,Image input=Image,Video input=Video">
+> **Data updated**: 2026-10-18 12:04:58 UTC / 2026-10-18 20:04:58 CST (Beijing time)
 
-| Model | API ID | Provider | Context | Max output | Capabilities | Input modalities | Output modalities |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| QVQ Max | qvq-max | alibaba | 131,072 | 8,192 | Function calling, Reasoning, Image recognition | Text, Image | Text |
-| Qwen 3.8 Flash Next | qwen3-8-flash-next | alibaba | 1,048,576 | 1,048,576 | Function calling, Reasoning, Image recognition, Video recognition, Structured output, File input | Text, Image, Video | Text |
-| Qwen-VL Max | qwen-vl-max | alibaba | 131,072 | 8,192 | Function calling, Image recognition | Text, Image | Text |
-| Qwen-VL OCR | qwen-vl-ocr | alibaba | 34,096 | 4,096 | Image recognition | Text, Image | Text |
-| Qwen-VL Plus | qwen-vl-plus | alibaba | 131,072 | 8,192 | Function calling, Image recognition | Text, Image | Text |
-| Qwen: Qwen3 VL 30B A3B Instruct | qwen3-vl-30b-a3b-instruct | alibaba | 262,144 | - | Function calling, Image recognition, Structured output | Text, Image | Text |
-| Qwen: Qwen3 VL 32B Instruct | qwen3-vl-32b-instruct | alibaba | 131,072 | - | Function calling, Image recognition, Structured output | Text, Image | Text |
-| Qwen: Qwen3 VL 8B Instruct | qwen3-vl-8b-instruct | alibaba | 262,144 | - | Function calling, Image recognition, Structured output | Text, Image | Text |
-| Qwen: Qwen3 VL 8B Thinking | qwen3-vl-8b | alibaba | 131,072 | - | Function calling, Reasoning, Image recognition, Structured output | Text, Image | Text |
-| Qwen: Qwen3.5 Plus 2026-02-15 | qwen3-5-plus-02-15 | alibaba | 1,000,000 | - | Function calling, Reasoning, Image recognition, Video recognition, Structured output | Text, Image, Video | Text |
-| Qwen: Qwen3.5-9B | qwen3-5-9b | alibaba | 262,144 | - | Function calling, Reasoning, Image recognition, Video recognition, Structured output | Text, Image, Video | Text |
-| Qwen: Qwen3.5-Flash | qwen3-5-flash-02-23 | alibaba | 1,000,000 | - | Function calling, Reasoning, Image recognition, Video recognition, Structured output | Text, Image, Video | Text |
-| Qwen2.5-VL 72B Instruct | qwen2-5-vl-72b-instruct | alibaba | 131,072 | 8,192 | Function calling, Image recognition, Structured output | Text, Image | Text |
-| Qwen2.5-VL 7B Instruct | qwen2-5-vl-7b-instruct | alibaba | 131,072 | 8,192 | Function calling, Image recognition | Text, Image | Text |
-| Qwen3 235B-A22B | qwen3-235b-a22b | alibaba | 262,144 | 131,072 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| Qwen3 VL 235B A22B Instruct | qwen3-vl-235b-a22b-instruct | alibaba | 262,144 | 129,024 | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
-| Qwen3 VL Instruct | qwen3-vl-instruct | alibaba | 131,072 | 129,024 | Function calling, Image recognition, File input | Text, Image | Text |
-| Qwen3 VL Thinking | qwen3-vl | alibaba | 131,072 | 32,768 | Function calling, Reasoning, Image recognition, File input | Text, Image | Text |
-| Qwen3-VL 235B-A22B | qwen3-vl-235b-a22b | alibaba | 262,000 | 262,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| Qwen3-VL 30B-A3B | qwen3-vl-30b-a3b | alibaba | 262,144 | 32,768 | Function calling, Reasoning, Image recognition, Structured output | Text, Image | Text |
-| Qwen3-VL Plus | qwen3-vl-plus | alibaba | 262,144 | 32,768 | Function calling, Reasoning, Image recognition | Text, Image | Text |
-| Qwen3.5 4B | qwen3-5-4b | alibaba | 262,144 | - | Function calling, Reasoning, Image recognition, Video recognition, Structured output | Text, Image, Video | Text |
-| Qwen3.5 Flash | qwen3-5-flash | alibaba | 1,000,000 | 65,536 | Function calling, Reasoning, Image recognition, Video recognition, Structured output, File input | Text, Image, Video | Text |
-| Qwen3.5 Plus | qwen3-5-plus | alibaba | 1,000,000 | 65,536 | Function calling, Reasoning, Image recognition, Video recognition, Structured output, File input | Text, Image, Video | Text |
-| Qwen3.6 Flash | qwen3-6-flash | alibaba | 1,000,000 | 65,536 | Function calling, Reasoning, Image recognition, Video recognition, Structured output, File input | Text, Image, Video | Text |
-| Qwen3.6 Plus | qwen3-6-plus | alibaba | 1,000,000 | 65,536 | Function calling, Reasoning, Image recognition, Video recognition, Structured output, File input | Text, Image, Video | Text |
-| Qwen3.7 Flash | qwen3-7-flash | alibaba | 1,000,000 | 65,536 | Function calling, Reasoning, Image recognition, Video recognition, Structured output, File input | Text, Image, Video | Text |
-| Qwen3.7 Plus | qwen3-7-plus | alibaba | 1,000,000 | 65,536 | Function calling, Reasoning, Image recognition, Video recognition, Structured output, File input | Text, Image, Video | Text |
-| Qwen3.8 2.4T A95B | qwen3-8-2-4t-a95b | alibaba | 1,048,576 | 128,000 | Function calling, Reasoning, Image recognition, Structured output | Text, Image | Text |
-| Qwen3.8 27B | qwen3-8-27b | alibaba | 1,000,000 | 131,072 | Function calling, Reasoning, Image recognition, Video recognition, Structured output, File input | Text, Image, Video | Text |
-| Qwen3.8 Flash | qwen3-8-flash | alibaba | 1,000,000 | 131,072 | Reasoning, Function calling, Image recognition, Video recognition, Structured output | Text, Image, Video | Text |
-| Qwen3.8 Max | qwen3-8-max | alibaba | 1,000,000 | 128,000 | Reasoning, Function calling | Text, Image, Video | Text |
-| Qwen3.8 Max Preview | qwen3-8-max-preview | alibaba | 1,000,000 | 128,000 | Reasoning, Function calling | Text, Image, Video | Text |
-| Amazon: Nova 2 Lite | nova-2-lite-v1 | amazon | 1,000,000 | - | Function calling, Reasoning, Image recognition, Video recognition, File input | Text, Image, Video | Text |
-| Amazon: Nova Lite 1.0 | nova-lite-v1 | amazon | 300,000 | - | Function calling, Image recognition | Text, Image | Text |
-| Amazon: Nova Premier 1.0 | nova-premier-v1 | amazon | 1,000,000 | - | Function calling, Image recognition | Text, Image | Text |
-| Amazon: Nova Pro 1.0 | nova-pro-v1 | amazon | 300,000 | - | Function calling, Image recognition | Text, Image | Text |
-| Nova 2 Lite | nova-2-lite | amazon | 1,000,000 | 1,000,000 | Function calling, Reasoning, Image recognition, Video recognition, File input | Text, Image, Video | Text |
-| Nova Lite | nova-lite | amazon | 300,000 | 8,192 | Function calling, Image recognition, Video recognition, File input | Text, Image, Video | Text |
-| Nova Pro | nova-pro | amazon | 300,000 | 8,192 | Function calling, Image recognition, Video recognition, File input | Text, Image, Video | Text |
-| Anthropic Claude Haiku Latest | claude-haiku-latest | anthropic | 200,000 | - | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| Anthropic Claude Sonnet Latest | claude-sonnet-latest | anthropic | 1,000,000 | - | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| Anthropic: Claude Fable Latest | claude-fable-latest | anthropic | 1,000,000 | - | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| Anthropic: Claude Opus Latest | claude-opus-latest | anthropic | 1,000,000 | - | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| Claude Fable 5 | claude-fable-5 | anthropic | 1,000,000 | 128,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| Claude Fable 5.1 | claude-fable-5-1 | anthropic | 1,000,000 | 128,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| Claude Haiku 3 | claude-3-haiku | anthropic | 200,000 | 4,096 | Function calling, Image recognition, File input | Text, Image | Text |
-| Claude Haiku 4.5 | claude-haiku-4-5 | anthropic | 200,000 | 64,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| Claude Haiku 5.5 | claude-haiku-5-5 | anthropic | 1,000,000 | 128,000 | Reasoning, Function calling, Image recognition, Structured output, File input | Text, Image | Text |
-| Claude Opus 4 | claude-opus-4 | anthropic | 200,000 | 32,000 | Function calling, Reasoning, Image recognition, File input | Text, Image | Text |
-| Claude Opus 4.1 | claude-opus-4-1 | anthropic | 200,000 | 32,000 | Function calling, Reasoning, Image recognition, File input | Text, Image | Text |
-| Claude Opus 4.5 | claude-opus-4-5 | anthropic | 200,000 | 64,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| Claude Opus 4.6 | claude-opus-4-6 | anthropic | 1,000,000 | 128,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| Claude Opus 4.6 (US) | claude-opus-4-6-v1 | anthropic | 1,000,000 | 128,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| Claude Opus 4.7 | claude-opus-4-7 | anthropic | 1,000,000 | 128,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| Claude Opus 4.8 | claude-opus-4-8 | anthropic | 1,000,000 | 128,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| Claude Opus 4.8 (Fast) | claude-opus-4-8-fast | anthropic | 1,000,000 | 128,000 | Function calling, Reasoning, Image recognition, File input | Text, Image | Text |
-| Claude Opus 5 | claude-opus-5 | anthropic | 1,000,000 | 128,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| Claude Opus 5 (Fast) | claude-opus-5-fast | anthropic | 1,000,000 | 128,000 | Function calling, Reasoning, Image recognition, File input | Text, Image | Text |
-| Claude Opus 5.5 | claude-opus-5-5 | anthropic | 1,000,000 | 128,000 | Reasoning, Function calling, Image recognition, Structured output, File input | Text, Image | Text |
-| Claude Sonnet 4 | claude-sonnet-4 | anthropic | 1,000,000 | 64,000 | Function calling, Reasoning, Image recognition, File input | Text, Image | Text |
-| Claude Sonnet 4.5 | claude-sonnet-4-5 | anthropic | 1,000,000 | 64,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| Claude Sonnet 4.6 | claude-sonnet-4-6 | anthropic | 1,000,000 | 128,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| Claude Sonnet 5 | claude-sonnet-5 | anthropic | 1,000,000 | 128,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| Claude Sonnet 5.5 | claude-sonnet-5-5 | anthropic | 1,000,000 | 128,000 | Reasoning, Function calling, Image recognition, Structured output, File input | Text, Image | Text |
-| Baidu: ERNIE 4.5 VL 424B A47B  | ernie-4-5-vl-424b-a47b | baidu | 123,000 | - | Reasoning, Image recognition | Text, Image | Text |
-| ERNIE 4.5 Turbo VL | ernie-4-5-turbo-vl | baidu | 32,768 | - | Function calling, Image recognition | Text, Image | - |
-| ERNIE 4.5 VL A3B | ernie-4-5-vl-a3b | baidu | 32,768 | - | Reasoning, Image recognition | Text, Image | - |
-| Doubao 1.5 Thinking Vision Pro | doubao-1-5-thinking-vision-pro | bytedance | 131,072 | 16,384 | Reasoning, Function calling, Image recognition | Text, Image | Text |
-| Doubao 1.5 UI-TARS | doubao-1-5-ui-tars | bytedance | - | - | Computer use, Image recognition, Function calling | Text, Image | Text |
-| Doubao 1.5 Vision Lite | doubao-1-5-vision-lite | bytedance | - | - | Image recognition, Function calling | Text, Image | Text |
-| Doubao 1.5 Vision Pro | doubao-1-5-vision-pro | bytedance | 32,768 | 12,288 | Image recognition, Function calling | Text, Image | Text |
-| Doubao 1.5 Vision Pro 32k | doubao-1-5-vision-pro-32k | bytedance | 32,768 | 12,288 | Image recognition, Function calling | Text, Image | Text |
-| Doubao Seed 1.6 | doubao-seed-1-6 | bytedance | 262,144 | 32,768 | Reasoning, Function calling, Image recognition, Video recognition, File input, Structured output | Text, Image, Video | Text |
-| Doubao Seed 1.6 Flash | doubao-seed-1-6-flash | bytedance | 262,144 | 32,768 | Reasoning, Function calling, Image recognition, Video recognition, File input, Structured output | Text, Image, Video | Text |
-| Doubao Seed 1.6 Lite | doubao-seed-1-6-lite | bytedance | 262,144 | 32,768 | Reasoning, Function calling, Image recognition, Video recognition, File input, Structured output | Text, Image, Video | Text |
-| Doubao Seed 1.6 Vision | doubao-seed-1-6-vision | bytedance | 262,144 | 32,768 | Reasoning, Function calling, Image recognition, Video recognition, File input, Structured output, Computer use | Text, Image, Video | Text |
-| Doubao Seed 2.0 Code | doubao-seed-2-0-code-preview | bytedance | 262,144 | 131,072 | Reasoning, Function calling, Image recognition, Video recognition, File input | Text, Image, Video | Text |
-| Doubao Seed 2.0 Lite | doubao-seed-2-0-lite | bytedance | 262,144 | 131,072 | Reasoning, Function calling, Image recognition, Video recognition, File input | Text, Image, Video | Text |
-| Doubao Seed 2.0 Mini | doubao-seed-2-0-mini | bytedance | 262,144 | 131,072 | Reasoning, Function calling, Image recognition, Video recognition, File input | Text, Image, Video | Text |
-| Doubao Seed 2.0 Pro | doubao-seed-2-0-pro | bytedance | 262,144 | 131,072 | Reasoning, Function calling, Image recognition, Video recognition, File input | Text, Image, Video | Text |
-| Doubao Seed 2.1 Pro | doubao-seed-2-1-pro | bytedance | 262,144 | 262,144 | Reasoning, Function calling, Image recognition, Video recognition, File input | Text, Image, Video | Text |
-| Doubao Seed 2.1 Turbo | doubao-seed-2-1-turbo | bytedance | 262,144 | 262,144 | Reasoning, Function calling, Image recognition, Video recognition, File input | Text, Image, Video | Text |
-| Doubao Seed Character | doubao-seed-character | bytedance | 131,072 | 32,768 | Reasoning, Function calling, Image recognition, Video recognition, File input, Structured output | Text, Image, Video | Text |
-| Doubao Seed Code | doubao-seed-code-preview | bytedance | 262,144 | 32,768 | Reasoning, Function calling, Image recognition, Video recognition, File input | Text, Image, Video | Text |
-| Doubao Seed Evolving | doubao-seed-evolving | bytedance | 1,024,000 | 262,144 | Reasoning, Function calling, Image recognition, Video recognition, File input | Text, Image, Video | Text |
-| Seed 1.6 | seed-1-6 | bytedance | 262,144 | 32,000 | Function calling, Reasoning, Image recognition, Video recognition, Structured output | Text, Image, Video | Text |
-| Seed 1.8 | seed-1-8 | bytedance | 256,000 | 64,000 | Function calling, Reasoning, Image recognition | Text, Image | Text |
-| Aya Vision 32B | c4ai-aya-vision-32b | cohere | 16,384 | 4,096 | Function calling, Image recognition | Text, Image | Text |
-| Aya Vision 8B | c4ai-aya-vision-8b | cohere | 16,384 | 4,096 | Function calling, Image recognition | Text, Image | Text |
-| Command A Vision | command-a-vision-07-2025 | cohere | 131,072 | 8,192 | Function calling, Image recognition | Text, Image | Text |
-| Command A+ | command-a-plus-05-2026 | cohere | 131,072 | 65,536 | Function calling, Reasoning, Image recognition | Text, Image | Text |
-| DeepSeek V4 Flash Vision Exp | deepseek-v4-flash-vision-exp | deepseek | 1,048,576 | 393,216 | Function calling, Image recognition, Reasoning, Structured output | Text, Image | Text |
-| DeepSeek V4.1 Flash | deepseek-flash | deepseek | 1,000,000 | 393,216 | Function calling, Image recognition, Reasoning, Structured output | Text, Image | Text |
-| DeepSeek V4.1 Flash Beta | deepseek-v4-1-flash-beta | deepseek | 1,000,000 | 384,000 | Function calling, Reasoning, Image recognition, File input | Text, Image | Text |
-| DeepSeek: DeepSeek V4.1 Flash | deepseek-v4-1-flash | deepseek | 1,048,576 | - | Function calling, Reasoning, Image recognition, Structured output | Text, Image | Text |
-| Gemini 2.5 Computer Use Preview 10-2025 | gemini-2-5-computer-use-preview-10-2025 | google | 131,072 | 65,536 | Function calling, Reasoning, Image recognition, File input | Text, Image | Text |
-| Gemini 3 Flash | gemini-3-flash | google | 1,000,000 | 65,000 | Function calling, Reasoning, Image recognition, File input | Text, Image | Text |
-| Gemma 3 12B IT | gemma-3-12b-it | google | 131,072 | 16,384 | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
-| Gemma 3 4B IT | gemma-3-4b-it | google | 131,072 | 16,384 | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
-| Gemma 3n E2b It | gemma-3n-e2b-it | google | 128,000 | 4,096 | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
-| Gemma 3n E4b It | gemma-3n-e4b-it | google | 128,000 | 4,096 | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
-| Gemma 4 26B A4B IT | gemma-4-26b-a4b-it | google | 262,144 | 131,072 | Function calling, Reasoning, Image recognition, Video recognition, Structured output, File input | Text, Image, Video | Text |
-| Gemma-4-31B-IT | gemma-4-31b-it | google | 262,144 | 131,072 | Function calling, Reasoning, Image recognition, Video recognition, Structured output, File input | Text, Image, Video | Text |
-| Google Gemma 3 27B Instruct | gemma-3-27b-it | google | 202,752 | 8,192 | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
-| Llama 3.2 11b Vision Instruct | llama-3-2-11b-vision-instruct | meta | 128,000 | 4,096 | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
-| Llama 4 Maverick 17b 128e Instruct | llama-4-maverick-17b-128e-instruct | meta | 128,000 | 4,096 | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
-| Llama 4 Maverick 17B 128E Instruct | llama-4-maverick-17b-128e-instruct-maas | meta | 524,288 | 8,192 | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
-| Llama 4 Maverick 17B Instruct (US) | llama4-maverick-17b-instruct | meta | 1,000,000 | 16,384 | Function calling, Image recognition, File input | Text, Image | Text |
-| Llama 4 Scout 17B Instruct (US) | llama4-scout-17b-instruct | meta | 3,500,000 | 16,384 | Function calling, Image recognition, File input | Text, Image | Text |
-| Llama Guard 4 12B | llama-guard-4-12b | meta | 163,840 | 16,384 | Image recognition, Structured output, File input | Text, Image | Text |
-| Llama-3.2-90B-Vision-Instruct | llama-3-2-90b-vision-instruct | meta | 128,000 | 8,192 | Function calling, Image recognition, File input | Text, Image | Text |
-| Llama-4-Maverick-17B-128E-Instruct-FP8 | llama-4-maverick | meta | 1,048,576 | 4,096 | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
-| Llama-4-Scout-17B-16E-Instruct-FP8 | llama-4-scout | meta | 1,310,720 | 4,096 | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
-| MiniMax-M3 | minimax-m3 | minimax | 1,048,576 | 524,288 | Function calling, Reasoning, Image recognition, Video recognition, Structured output, File input | Text, Image, Video | Text |
-| MiniMax-M3.1-Flash-Preview | minimax-m3-1-flash-preview | minimax | 1,000,000 | - | Reasoning, Function calling, Image recognition, Video recognition | Text, Image, Video | Text |
-| MiniMax: MiniMax-01 | minimax-01 | minimax | 1,000,192 | - | Image recognition | Text, Image | Text |
-| Devstral Small | devstral-small | mistral | 256,000 | 256,000 | Function calling, Image recognition | Text, Image | Text |
-| Devstral Small 2 | devstral-small-2 | mistral | 256,000 | 256,000 | Function calling, Image recognition | Text, Image | Text |
-| Magistral Small 2506 | magistral-small | mistral | 128,000 | 128,000 | Function calling, Reasoning, Image recognition, Structured output | Text, Image | Text |
-| Ministral 14B | ministral-14b | mistral | 262,144 | 256,000 | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
-| Ministral 3 14B Instruct 2512 | ministral-14b-instruct | mistral | 262,144 | 16,384 | Function calling, Image recognition, File input | Text, Image | Text |
-| Ministral 3 3B | ministral-3-3b-instruct | mistral | 256,000 | 8,192 | Function calling, Image recognition, Structured output | Text, Image | Text |
-| Ministral 3B (latest) | ministral-3b | mistral | 131,072 | 128,000 | Function calling, Image recognition, Structured output | Text, Image | Text |
-| Ministral 8B (latest) | ministral-8b | mistral | 262,144 | 128,000 | Function calling, Image recognition, Structured output | Text, Image | Text |
-| Mistral Large (latest) | mistral-large-latest | mistral | 262,144 | 262,144 | Function calling, Image recognition, File input | Text, Image | Text |
-| Mistral Large 3 | mistral-large | mistral | 262,144 | 262,144 | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
-| Mistral Large 3 | mistral-large-3 | mistral | 256,000 | 256,000 | Image recognition, File input | Text, Image | Text |
-| Mistral Large 3 675B Instruct 2512 | mistral-large-3-675b-instruct | mistral | 262,144 | 262,144 | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
-| Mistral Medium (latest) | mistral-medium-latest | mistral | 262,144 | 262,144 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| Mistral Medium 3 | mistral-medium-3-instruct | mistral | 131,072 | 32,768 | Image recognition, File input | Text, Image | Text |
-| Mistral Medium 3.1 | mistral-medium | mistral | 262,144 | 262,144 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| Mistral Medium 3.5 | mistral-medium-3-5-128b | mistral | 262,144 | 32,768 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| Mistral Medium Latest | mistral-medium-3-5 | mistral | 262,144 | 256,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| Mistral Nemo | mistral-nemo | mistral | 131,072 | 128,000 | Function calling, Image recognition, Structured output | Text, Image | Text |
-| Mistral Small (latest) | mistral-small | mistral | 262,144 | 256,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| Mistral Small (latest) | mistral-small-latest | mistral | 256,000 | 256,000 | Function calling, Reasoning, Image recognition, File input | Text, Image | Text |
-| mistral-small-4-119b-2603 | mistral-small-4-119b | mistral | 128,000 | 8,192 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| Mistral: Mistral Medium 3 | mistral-medium-3 | mistral | 131,072 | - | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
-| Mistral: Mistral Medium 3.1 | mistral-medium-3-1 | mistral | 131,072 | - | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
-| Mistral: Mistral Small 3.1 24B | mistral-small-3-1-24b-instruct | mistral | 128,000 | - | Image recognition | Text, Image | Text |
-| Mistral: Mistral Small 3.2 24B | mistral-small-3-2-24b-instruct | mistral | 131,072 | - | Function calling, Image recognition, Structured output | Text, Image | Text |
-| Pixtral 12B | pixtral-12b | mistral | 128,000 | 128,000 | Function calling, Image recognition, File input | Text, Image | Text |
-| Pixtral Large (25.02) (EU) | pixtral-large | mistral | 128,000 | 8,192 | Function calling, Image recognition, File input | Text, Image | Text |
-| Pixtral Large (latest) | pixtral-large-latest | mistral | 128,000 | 128,000 | Function calling, Image recognition, File input | Text, Image | Text |
-| Kimi K2.7 Code | kimi-k2-7-code | moonshot | 262,144 | 262,144 | Function calling, Reasoning, Image recognition, Video recognition, Structured output, File input | Text, Image, Video | Text |
-| Kimi K2.7 Code High Speed | kimi-k2-7-code-highspeed | moonshot | 262,144 | 262,144 | Function calling, Reasoning, Image recognition, Video recognition, Structured output, File input | Text, Image, Video | Text |
-| Kimi K3 | kimi-k3 | moonshot | 1,048,576 | 131,072 | Function calling, Reasoning, Image recognition, Video recognition, Structured output, File input | Text, Image, Video | Text |
-| Kimi K3 Fast | kimi-k3-fast | moonshot | 1,000,000 | 131,072 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| Moonshot Kimi K2.5 | kimi-k2-5 | moonshot | 262,144 | 262,144 | Function calling, Reasoning, Image recognition, Video recognition, Structured output, File input | Text, Image, Video | Text |
-| Moonshot Kimi K2.6 | kimi-k2-6 | moonshot | 262,144 | 262,144 | Function calling, Reasoning, Image recognition, Video recognition, Structured output, File input | Text, Image, Video | Text |
-| MoonshotAI Kimi Latest | kimi-latest | moonshot | 1,048,576 | - | Function calling, Reasoning, Image recognition, Video recognition, Structured output | Text, Image, Video | Text |
-| Active Speaker Detection | active-speaker-detection | nvidia | - | 4,096 | Video recognition, File input | Video | Text |
-| bevformer | bevformer | nvidia | 128,000 | 8,192 | Video recognition, File input | Video | Text |
-| Cosmos Reason2 8B | cosmos-reason2-8b | nvidia | 131,072 | 16,384 | Function calling, Reasoning, Image recognition, Video recognition, File input | Text, Image, Video | Text |
-| Llama 3.1 Nemotron Nano VL 8B v1 | llama-3-1-nemotron-nano-vl-8b-v1 | nvidia | 32,768 | 16,384 | Function calling, Reasoning, Image recognition, File input | Text, Image | Text |
-| Muse Glimmer 30B | muse-glimmer-30b | nvidia | 131,072 | 131,072 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| Nemotron Nano 12B v2 VL | nemotron-nano-12b-v2-vl | nvidia | 131,072 | 131,072 | Function calling, Reasoning, Image recognition, Video recognition, File input | Text, Image, Video | Text |
-| NVIDIA Nemotron Nano 12B v2 VL BF16 | nemotron-nano-12b-v2 | nvidia | 128,000 | 4,096 | Function calling, Image recognition, Structured output | Text, Image | Text |
-| NVIDIA: Nemotron 3.5 Content Safety | nemotron-3-5-content-safety | nvidia | 131,072 | - | Reasoning, Image recognition, Structured output | Text, Image | Text |
-| paligemma | paligemma | nvidia | 128,000 | 8,192 | Image recognition, File input | Text, Image | Text |
-| sparsedrive | sparsedrive | nvidia | 128,000 | 8,192 | Video recognition, File input | Video | Text |
-| streampetr | streampetr | nvidia | 128,000 | 8,192 | Video recognition, File input | Video | Text |
-| synthetic-video-detector | synthetic-video-detector | nvidia | - | 4,096 | Video recognition, File input | Video | Text |
-| GPT 5.1 Codex Max | gpt-5-1-codex-max | openai | 400,000 | 128,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| GPT 5.1 Thinking | gpt-5-1 | openai | 400,000 | 128,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| GPT 5.2  | gpt-5-2-pro | openai | 400,000 | 128,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| GPT 5.3 Codex | gpt-5-3-codex | openai | 400,000 | 128,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| GPT 5.4 | gpt-5-4 | openai | 1,050,000 | 128,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| GPT 5.4 Mini | gpt-5-4-mini | openai | 400,000 | 128,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| GPT 5.4 Nano | gpt-5-4-nano | openai | 400,000 | 128,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| GPT 5.4 Pro | gpt-5-4-pro | openai | 1,050,000 | 128,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| GPT 5.5 | gpt-5-5 | openai | 1,050,000 | 128,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| GPT 5.5 Pro | gpt-5-5-pro | openai | 1,050,000 | 128,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| GPT 5.6 Luna | gpt-5-6-luna | openai | 1,050,000 | 128,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| GPT 5.6 Sol | gpt-5-6-sol | openai | 1,050,000 | 128,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| GPT 5.6 Terra | gpt-5-6-terra | openai | 1,050,000 | 128,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| GPT-4 Turbo | gpt-4-turbo | openai | 128,000 | 4,096 | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
-| GPT-4.1 | gpt-4-1 | openai | 1,047,576 | 32,768 | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
-| GPT-4.1 mini | gpt-4-1-mini | openai | 1,047,576 | 32,768 | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
-| GPT-4.1 nano | gpt-4-1-nano | openai | 1,047,576 | 32,768 | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
-| GPT-4o | gpt-4o | openai | 128,000 | 16,384 | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
-| GPT-4o mini | gpt-4o-mini | openai | 128,000 | 16,384 | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
-| GPT-5 | gpt-5 | openai | 400,000 | 128,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| GPT-5 Mini | gpt-5-mini | openai | 400,000 | 128,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| GPT-5 Nano | gpt-5-nano | openai | 400,000 | 128,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| GPT-5 pro | gpt-5-pro | openai | 400,000 | 272,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| GPT-5-Codex | gpt-5-codex | openai | 400,000 | 128,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| GPT-5.1 Codex mini | gpt-5-1-codex-mini | openai | 400,000 | 128,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| GPT-5.1-Codex | gpt-5-1-codex | openai | 400,000 | 128,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| GPT-5.2 | gpt-5-2 | openai | 400,000 | 128,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| GPT-5.2 Chat | gpt-5-2-chat-latest | openai | 128,000 | 16,384 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| GPT-5.2-Codex | gpt-5-2-codex | openai | 400,000 | 128,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| GPT-5.3 Chat (latest) | gpt-5-3-chat-latest | openai | 128,000 | 16,384 | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
-| GPT-5.3 Codex Spark | gpt-5-3-codex-spark | openai | 128,000 | 32,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| GPT-5.6 | gpt-5-6 | openai | 1,050,000 | 128,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| GPT-6 Astra | gpt-6-astra | openai | 1,050,000 | 128,000 | Reasoning, Function calling, Image recognition, Structured output, File search | Text, Image | Text |
-| GPT-6 Luna | gpt-6-luna | openai | 1,050,000 | 128,000 | Reasoning, Function calling, Image recognition, Structured output, File search | Text, Image | Text |
-| GPT-6 Sol | gpt-6-sol | openai | 1,050,000 | 128,000 | Reasoning, Function calling, Image recognition, Structured output, File search | Text, Image | Text |
-| GPT-6.1 Sol | gpt-6-1-sol | openai | 1,050,000 | 128,000 | Reasoning, Function calling, Image recognition, Structured output, File search | Text, Image | Text |
-| o1 | o1 | openai | 200,000 | 100,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| o1-pro | o1-pro | openai | 200,000 | 100,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| o3 | o3 | openai | 200,000 | 100,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| o3 Pro | o3-pro | openai | 200,000 | 100,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| o4-mini | o4-mini | openai | 200,000 | 100,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| OpenAI GPT Latest | gpt-latest | openai | 1,050,000 | - | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| OpenAI GPT Mini Latest | gpt-mini-latest | openai | 400,000 | - | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| OpenAI: GPT Chat Latest | gpt-chat-latest | openai | 400,000 | - | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
-| OpenAI: GPT-5.2 Chat | gpt-5-2-chat | openai | 128,000 | - | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
-| OpenAI: GPT-5.6 Luna Pro | gpt-5-6-luna-pro | openai | 1,050,000 | - | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| OpenAI: GPT-5.6 Sol Pro | gpt-5-6-sol-pro | openai | 1,050,000 | - | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| OpenAI: GPT-5.6 Terra Pro | gpt-5-6-terra-pro | openai | 1,050,000 | - | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| OpenAI: GPT-6 Astra Pro | gpt-6-astra-pro | openai | 1,050,000 | - | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| Sonar | sonar | perplexity | 128,000 | 8,000 | Function calling, Image recognition, File input | Text, Image | Text |
-| Sonar Pro | sonar-pro | perplexity | 200,000 | 8,192 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| Sonar Reasoning Pro | sonar-reasoning-pro | perplexity | 128,000 | 8,000 | Reasoning, Image recognition, File input | Text, Image | Text |
-| Reka Edge | reka-edge | reka | 16,384 | - | Function calling, Image recognition, Video recognition, Structured output | Text, Image, Video | Text |
-| Step 3.5 Flash 2603 | step-3-5-flash | stepfun | 262,144 | 262,114 | Function calling, Reasoning, Image recognition | Text, Image | Text |
-| Step 3.7 Flash | step-3-7-flash | stepfun | 262,144 | 256,000 | Function calling, Reasoning, Image recognition, Video recognition, Structured output, File input | Text, Image, Video | Text |
-| Kat Coder Air V2.5 | kat-coder-air-v2-5 | streamlake | 256,000 | 80,000 | Function calling, Reasoning, Image recognition | Text, Image | Text |
-| Kat Coder Pro V2.5 | kat-coder-pro-v2-5 | streamlake | 262,144 | 80,000 | Function calling, Reasoning, Image recognition, Structured output | Text, Image | Text |
-| Fugu Ultra | fugu-ultra | vercel | 1,000,000 | 1,000,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| Interfaze Beta | interfaze-beta | vercel | 1,000,000 | 32,000 | Reasoning, Image recognition | Text, Image | Text |
-| Sakana Namazu | namazu | vercel | 262,144 | 256,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| Grok 2 Vision | grok-2-vision | xai | 32,768 | - | Function calling, Image recognition | Text, Image | - |
-| Grok 4.1 Fast Non-Reasoning | grok-4-1-fast-non-reasoning | xai | 1,000,000 | 1,000,000 | Function calling, Image recognition, File input | Text, Image | Text |
-| Grok 4.1 Fast Reasoning | grok-4-1-fast | xai | 1,000,000 | 1,000,000 | Function calling, Reasoning, Image recognition, File input | Text, Image | Text |
-| Grok 4.20 (Non-Reasoning) | grok-4-20-0309-non-reasoning | xai | 1,000,000 | 30,000 | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
-| Grok 4.20 Beta Non-Reasoning | grok-4-20-non-reasoning-beta | xai | 2,000,000 | 2,000,000 | Function calling, Image recognition, File input | Text, Image | Text |
-| Grok 4.20 Beta Reasoning | grok-4-20-reasoning-beta | xai | 2,000,000 | 2,000,000 | Function calling, Reasoning, Image recognition, File input | Text, Image | Text |
-| Grok 4.20 Multi Agent Beta | grok-4-20-multi-agent-beta | xai | 2,000,000 | 2,000,000 | Function calling, Reasoning, Image recognition, File input | Text, Image | Text |
-| Grok 4.20 Multi-Agent | grok-4-20-multi-agent | xai | 2,000,000 | 2,000,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| Grok 4.20 Non-Reasoning | grok-4-20-non-reasoning | xai | 2,000,000 | 2,000,000 | Function calling, Image recognition, File input | Text, Image | Text |
-| Grok 4.20 Reasoning | grok-4-20 | xai | 2,000,000 | 2,000,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| Grok 4.3 | grok-4-3 | xai | 1,000,000 | 1,000,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| Grok 4.5 | grok-4-5 | xai | 500,000 | 500,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| Grok 4.6 | grok-4-6 | xai | 500,000 | 500,000 | Reasoning, Function calling, Image recognition, Structured output | Text, Image | Text |
-| Grok 4.7 | grok-4-7 | xai | 500,000 | 500,000 | Reasoning, Function calling, Image recognition, Structured output | Text, Image | Text |
-| Grok Build 0.1 | grok-build-0-1 | xai | 256,000 | 256,000 | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| Grok Vision Beta | grok-vision-beta | xai | 8,192 | - | Image recognition | Text, Image | - |
-| xAI: Grok Latest | grok-latest | xai | 500,000 | - | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
-| GLM 4.5V | glm-4-5v | zhipu | 66,000 | 16,384 | Function calling, Reasoning, Image recognition, Video recognition, Structured output, File input | Text, Image, Video | Text |
-| GLM 5V Turbo | glm-5v-turbo | zhipu | 202,752 | 131,072 | Function calling, Reasoning, Image recognition, Video recognition, Structured output, File input | Text, Image, Video | Text |
-| GLM-4.1V-Thinking | glm-4-1v | zhipu | 65,536 | - | Reasoning, Image recognition | Text, Image | - |
-| GLM-4.6V | glm-4-6v | zhipu | 131,072 | 32,768 | Function calling, Reasoning, Image recognition, Video recognition, Structured output, File input | Text, Image, Video | Text |
-| GLM-4V | glm-4v | zhipu | 8,192 | - | Image recognition | Text, Image | - |
-| GLM-4V-Flash | glm-4v-flash | zhipu | 8,192 | - | Image recognition | Text, Image | - |
-| GLM-4V-Plus | glm-4v-plus | zhipu | 8,192 | - | Image recognition | Text, Image | - |
-| GLM-5.3-Flash | glm-5-3-flash | zhipu | 1,000,000 | 131,072 | Function calling, Reasoning, Image recognition, Video recognition, Structured output, File input | Text, Image, Video | Text |
-| Z.ai: GLM Flash Latest | glm-flash-latest | zhipu | 1,310,720 | - | Function calling, Reasoning, Image recognition, Video recognition, Structured output | Text, Image, Video | Text |
+<div data-models-table="num:2,3;sort:1;search:0,1;cap:4:Function calling,Reasoning,Image recognition,Video understanding,Structured output,File input,Computer use,File search;in:5:Text input=Text,Image input=Image,Video input=Video">
+
+| Model | Provider | Context | Max output | Capabilities | Input modalities | Output modalities |
+| --- | --- | --- | --- | --- | --- | --- |
+| QVQ Max<br><code>qvq-max</code> | alibaba | <span title="131,072">128K</span> | <span title="8,192">8K</span> | Function calling, Reasoning, Image recognition | Text, Image | Text |
+| Qwen 3.8 Flash Next<br><code>qwen3-8-flash-next</code> | alibaba | <span title="1,048,576">1.05M</span> | <span title="1,048,576">1.05M</span> | Function calling, Reasoning, Image recognition, Video understanding, Structured output, File input | Text, Image, Video | Text |
+| Qwen-VL Max<br><code>qwen-vl-max</code> | alibaba | <span title="131,072">128K</span> | <span title="8,192">8K</span> | Function calling, Image recognition | Text, Image | Text |
+| Qwen-VL OCR<br><code>qwen-vl-ocr</code> | alibaba | <span title="34,096">34.1K</span> | <span title="4,096">4K</span> | Image recognition | Text, Image | Text |
+| Qwen-VL Plus<br><code>qwen-vl-plus</code> | alibaba | <span title="131,072">128K</span> | <span title="8,192">8K</span> | Function calling, Image recognition | Text, Image | Text |
+| Qwen: Qwen3 VL 30B A3B Instruct<br><code>qwen3-vl-30b-a3b-instruct</code> | alibaba | <span title="262,144">256K</span> | - | Function calling, Image recognition, Structured output | Text, Image | Text |
+| Qwen: Qwen3 VL 32B Instruct<br><code>qwen3-vl-32b-instruct</code> | alibaba | <span title="131,072">128K</span> | - | Function calling, Image recognition, Structured output | Text, Image | Text |
+| Qwen: Qwen3 VL 8B Instruct<br><code>qwen3-vl-8b-instruct</code> | alibaba | <span title="262,144">256K</span> | - | Function calling, Image recognition, Structured output | Text, Image | Text |
+| Qwen: Qwen3 VL 8B Thinking<br><code>qwen3-vl-8b</code> | alibaba | <span title="131,072">128K</span> | - | Function calling, Reasoning, Image recognition, Structured output | Text, Image | Text |
+| Qwen: Qwen3.5 Plus 2026-02-15<br><code>qwen3-5-plus-02-15</code> | alibaba | <span title="1,000,000">1M</span> | - | Function calling, Reasoning, Image recognition, Video understanding, Structured output | Text, Image, Video | Text |
+| Qwen: Qwen3.5-9B<br><code>qwen3-5-9b</code> | alibaba | <span title="262,144">256K</span> | - | Function calling, Reasoning, Image recognition, Video understanding, Structured output | Text, Image, Video | Text |
+| Qwen: Qwen3.5-Flash<br><code>qwen3-5-flash-02-23</code> | alibaba | <span title="1,000,000">1M</span> | - | Function calling, Reasoning, Image recognition, Video understanding, Structured output | Text, Image, Video | Text |
+| Qwen2.5-VL 72B Instruct<br><code>qwen2-5-vl-72b-instruct</code> | alibaba | <span title="131,072">128K</span> | <span title="8,192">8K</span> | Function calling, Image recognition, Structured output | Text, Image | Text |
+| Qwen2.5-VL 7B Instruct<br><code>qwen2-5-vl-7b-instruct</code> | alibaba | <span title="131,072">128K</span> | <span title="8,192">8K</span> | Function calling, Image recognition | Text, Image | Text |
+| Qwen3 235B-A22B<br><code>qwen3-235b-a22b</code> | alibaba | <span title="262,144">256K</span> | <span title="131,072">128K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| Qwen3 VL 235B A22B Instruct<br><code>qwen3-vl-235b-a22b-instruct</code> | alibaba | <span title="262,144">256K</span> | <span title="129,024">126K</span> | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
+| Qwen3 VL Instruct<br><code>qwen3-vl-instruct</code> | alibaba | <span title="131,072">128K</span> | <span title="129,024">126K</span> | Function calling, Image recognition, File input | Text, Image | Text |
+| Qwen3 VL Thinking<br><code>qwen3-vl</code> | alibaba | <span title="131,072">128K</span> | <span title="32,768">32K</span> | Function calling, Reasoning, Image recognition, File input | Text, Image | Text |
+| Qwen3-VL 235B-A22B<br><code>qwen3-vl-235b-a22b</code> | alibaba | <span title="262,000">262K</span> | <span title="262,000">262K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| Qwen3-VL 30B-A3B<br><code>qwen3-vl-30b-a3b</code> | alibaba | <span title="262,144">256K</span> | <span title="32,768">32K</span> | Function calling, Reasoning, Image recognition, Structured output | Text, Image | Text |
+| Qwen3-VL Plus<br><code>qwen3-vl-plus</code> | alibaba | <span title="262,144">256K</span> | <span title="32,768">32K</span> | Function calling, Reasoning, Image recognition | Text, Image | Text |
+| Qwen3.5 4B<br><code>qwen3-5-4b</code> | alibaba | <span title="262,144">256K</span> | - | Function calling, Reasoning, Image recognition, Video understanding, Structured output | Text, Image, Video | Text |
+| Qwen3.5 Flash<br><code>qwen3-5-flash</code> | alibaba | <span title="1,000,000">1M</span> | <span title="65,536">64K</span> | Function calling, Reasoning, Image recognition, Video understanding, Structured output, File input | Text, Image, Video | Text |
+| Qwen3.5 Plus<br><code>qwen3-5-plus</code> | alibaba | <span title="1,000,000">1M</span> | <span title="65,536">64K</span> | Function calling, Reasoning, Image recognition, Video understanding, Structured output, File input | Text, Image, Video | Text |
+| Qwen3.6 Flash<br><code>qwen3-6-flash</code> | alibaba | <span title="1,000,000">1M</span> | <span title="65,536">64K</span> | Function calling, Reasoning, Image recognition, Video understanding, Structured output, File input | Text, Image, Video | Text |
+| Qwen3.6 Plus<br><code>qwen3-6-plus</code> | alibaba | <span title="1,000,000">1M</span> | <span title="65,536">64K</span> | Function calling, Reasoning, Image recognition, Video understanding, Structured output, File input | Text, Image, Video | Text |
+| Qwen3.7 Flash<br><code>qwen3-7-flash</code> | alibaba | <span title="1,000,000">1M</span> | <span title="65,536">64K</span> | Function calling, Reasoning, Image recognition, Video understanding, Structured output, File input | Text, Image, Video | Text |
+| Qwen3.7 Plus<br><code>qwen3-7-plus</code> | alibaba | <span title="1,000,000">1M</span> | <span title="65,536">64K</span> | Function calling, Reasoning, Image recognition, Video understanding, Structured output, File input | Text, Image, Video | Text |
+| Qwen3.8 2.4T A95B<br><code>qwen3-8-2-4t-a95b</code> | alibaba | <span title="1,048,576">1.05M</span> | <span title="128,000">128K</span> | Function calling, Reasoning, Image recognition, Structured output | Text, Image | Text |
+| Qwen3.8 27B<br><code>qwen3-8-27b</code> | alibaba | <span title="1,000,000">1M</span> | <span title="131,072">128K</span> | Function calling, Reasoning, Image recognition, Video understanding, Structured output, File input | Text, Image, Video | Text |
+| Qwen3.8 Flash<br><code>qwen3-8-flash</code> | alibaba | <span title="1,000,000">1M</span> | <span title="131,072">128K</span> | Reasoning, Function calling, Image recognition, Video understanding, Structured output | Text, Image, Video | Text |
+| Qwen3.8 Max<br><code>qwen3-8-max</code> | alibaba | <span title="1,000,000">1M</span> | <span title="128,000">128K</span> | Reasoning, Function calling | Text, Image, Video | Text |
+| Qwen3.8 Max Preview<br><code>qwen3-8-max-preview</code> | alibaba | <span title="1,000,000">1M</span> | <span title="128,000">128K</span> | Reasoning, Function calling | Text, Image, Video | Text |
+| Amazon: Nova 2 Lite<br><code>nova-2-lite-v1</code> | amazon | <span title="1,000,000">1M</span> | - | Function calling, Reasoning, Image recognition, Video understanding, File input | Text, Image, Video | Text |
+| Amazon: Nova Lite 1.0<br><code>nova-lite-v1</code> | amazon | <span title="300,000">300K</span> | - | Function calling, Image recognition | Text, Image | Text |
+| Amazon: Nova Premier 1.0<br><code>nova-premier-v1</code> | amazon | <span title="1,000,000">1M</span> | - | Function calling, Image recognition | Text, Image | Text |
+| Amazon: Nova Pro 1.0<br><code>nova-pro-v1</code> | amazon | <span title="300,000">300K</span> | - | Function calling, Image recognition | Text, Image | Text |
+| Nova 2 Lite<br><code>nova-2-lite</code> | amazon | <span title="1,000,000">1M</span> | <span title="1,000,000">1M</span> | Function calling, Reasoning, Image recognition, Video understanding, File input | Text, Image, Video | Text |
+| Nova Lite<br><code>nova-lite</code> | amazon | <span title="300,000">300K</span> | <span title="8,192">8K</span> | Function calling, Image recognition, Video understanding, File input | Text, Image, Video | Text |
+| Nova Pro<br><code>nova-pro</code> | amazon | <span title="300,000">300K</span> | <span title="8,192">8K</span> | Function calling, Image recognition, Video understanding, File input | Text, Image, Video | Text |
+| Anthropic Claude Haiku Latest<br><code>claude-haiku-latest</code> | anthropic | <span title="200,000">200K</span> | - | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| Anthropic Claude Sonnet Latest<br><code>claude-sonnet-latest</code> | anthropic | <span title="1,000,000">1M</span> | - | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| Anthropic: Claude Fable Latest<br><code>claude-fable-latest</code> | anthropic | <span title="1,000,000">1M</span> | - | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| Anthropic: Claude Opus Latest<br><code>claude-opus-latest</code> | anthropic | <span title="1,000,000">1M</span> | - | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| Claude Fable 5<br><code>claude-fable-5</code> | anthropic | <span title="1,000,000">1M</span> | <span title="128,000">128K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| Claude Fable 5.1<br><code>claude-fable-5-1</code> | anthropic | <span title="1,000,000">1M</span> | <span title="128,000">128K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| Claude Haiku 3<br><code>claude-3-haiku</code> | anthropic | <span title="200,000">200K</span> | <span title="4,096">4K</span> | Function calling, Image recognition, File input | Text, Image | Text |
+| Claude Haiku 4.5<br><code>claude-haiku-4-5</code> | anthropic | <span title="200,000">200K</span> | <span title="64,000">64K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| Claude Haiku 5.5<br><code>claude-haiku-5-5</code> | anthropic | <span title="1,000,000">1M</span> | <span title="128,000">128K</span> | Reasoning, Function calling, Image recognition, Structured output, File input | Text, Image | Text |
+| Claude Opus 4<br><code>claude-opus-4</code> | anthropic | <span title="200,000">200K</span> | <span title="32,000">32K</span> | Function calling, Reasoning, Image recognition, File input | Text, Image | Text |
+| Claude Opus 4.1<br><code>claude-opus-4-1</code> | anthropic | <span title="200,000">200K</span> | <span title="32,000">32K</span> | Function calling, Reasoning, Image recognition, File input | Text, Image | Text |
+| Claude Opus 4.5<br><code>claude-opus-4-5</code> | anthropic | <span title="200,000">200K</span> | <span title="64,000">64K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| Claude Opus 4.6<br><code>claude-opus-4-6</code> | anthropic | <span title="1,000,000">1M</span> | <span title="128,000">128K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| Claude Opus 4.6 (US)<br><code>claude-opus-4-6-v1</code> | anthropic | <span title="1,000,000">1M</span> | <span title="128,000">128K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| Claude Opus 4.7<br><code>claude-opus-4-7</code> | anthropic | <span title="1,000,000">1M</span> | <span title="128,000">128K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| Claude Opus 4.8<br><code>claude-opus-4-8</code> | anthropic | <span title="1,000,000">1M</span> | <span title="128,000">128K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| Claude Opus 4.8 (Fast)<br><code>claude-opus-4-8-fast</code> | anthropic | <span title="1,000,000">1M</span> | <span title="128,000">128K</span> | Function calling, Reasoning, Image recognition, File input | Text, Image | Text |
+| Claude Opus 5<br><code>claude-opus-5</code> | anthropic | <span title="1,000,000">1M</span> | <span title="128,000">128K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| Claude Opus 5 (Fast)<br><code>claude-opus-5-fast</code> | anthropic | <span title="1,000,000">1M</span> | <span title="128,000">128K</span> | Function calling, Reasoning, Image recognition, File input | Text, Image | Text |
+| Claude Opus 5.5<br><code>claude-opus-5-5</code> | anthropic | <span title="1,000,000">1M</span> | <span title="128,000">128K</span> | Reasoning, Function calling, Image recognition, Structured output, File input | Text, Image | Text |
+| Claude Sonnet 4<br><code>claude-sonnet-4</code> | anthropic | <span title="1,000,000">1M</span> | <span title="64,000">64K</span> | Function calling, Reasoning, Image recognition, File input | Text, Image | Text |
+| Claude Sonnet 4.5<br><code>claude-sonnet-4-5</code> | anthropic | <span title="1,000,000">1M</span> | <span title="64,000">64K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| Claude Sonnet 4.6<br><code>claude-sonnet-4-6</code> | anthropic | <span title="1,000,000">1M</span> | <span title="128,000">128K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| Claude Sonnet 5<br><code>claude-sonnet-5</code> | anthropic | <span title="1,000,000">1M</span> | <span title="128,000">128K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| Claude Sonnet 5.5<br><code>claude-sonnet-5-5</code> | anthropic | <span title="1,000,000">1M</span> | <span title="128,000">128K</span> | Reasoning, Function calling, Image recognition, Structured output, File input | Text, Image | Text |
+| Baidu: ERNIE 4.5 VL 424B A47B <br><code>ernie-4-5-vl-424b-a47b</code> | baidu | <span title="123,000">123K</span> | - | Reasoning, Image recognition | Text, Image | Text |
+| ERNIE 4.5 Turbo VL<br><code>ernie-4-5-turbo-vl</code> | baidu | <span title="32,768">32K</span> | - | Function calling, Image recognition | Text, Image | - |
+| ERNIE 4.5 VL A3B<br><code>ernie-4-5-vl-a3b</code> | baidu | <span title="32,768">32K</span> | - | Reasoning, Image recognition | Text, Image | - |
+| Doubao 1.5 Thinking Vision Pro<br><code>doubao-1-5-thinking-vision-pro</code> | bytedance | <span title="131,072">128K</span> | <span title="16,384">16K</span> | Reasoning, Function calling, Image recognition | Text, Image | Text |
+| Doubao 1.5 UI-TARS<br><code>doubao-1-5-ui-tars</code> | bytedance | - | - | Computer use, Image recognition, Function calling | Text, Image | Text |
+| Doubao 1.5 Vision Lite<br><code>doubao-1-5-vision-lite</code> | bytedance | - | - | Image recognition, Function calling | Text, Image | Text |
+| Doubao 1.5 Vision Pro<br><code>doubao-1-5-vision-pro</code> | bytedance | <span title="32,768">32K</span> | <span title="12,288">12K</span> | Image recognition, Function calling | Text, Image | Text |
+| Doubao 1.5 Vision Pro 32k<br><code>doubao-1-5-vision-pro-32k</code> | bytedance | <span title="32,768">32K</span> | <span title="12,288">12K</span> | Image recognition, Function calling | Text, Image | Text |
+| Doubao Seed 1.6<br><code>doubao-seed-1-6</code> | bytedance | <span title="262,144">256K</span> | <span title="32,768">32K</span> | Reasoning, Function calling, Image recognition, Video understanding, File input, Structured output | Text, Image, Video | Text |
+| Doubao Seed 1.6 Flash<br><code>doubao-seed-1-6-flash</code> | bytedance | <span title="262,144">256K</span> | <span title="32,768">32K</span> | Reasoning, Function calling, Image recognition, Video understanding, File input, Structured output | Text, Image, Video | Text |
+| Doubao Seed 1.6 Lite<br><code>doubao-seed-1-6-lite</code> | bytedance | <span title="262,144">256K</span> | <span title="32,768">32K</span> | Reasoning, Function calling, Image recognition, Video understanding, File input, Structured output | Text, Image, Video | Text |
+| Doubao Seed 1.6 Vision<br><code>doubao-seed-1-6-vision</code> | bytedance | <span title="262,144">256K</span> | <span title="32,768">32K</span> | Reasoning, Function calling, Image recognition, Video understanding, File input, Structured output, Computer use | Text, Image, Video | Text |
+| Doubao Seed 2.0 Code<br><code>doubao-seed-2-0-code-preview</code> | bytedance | <span title="262,144">256K</span> | <span title="131,072">128K</span> | Reasoning, Function calling, Image recognition, Video understanding, File input | Text, Image, Video | Text |
+| Doubao Seed 2.0 Lite<br><code>doubao-seed-2-0-lite</code> | bytedance | <span title="262,144">256K</span> | <span title="131,072">128K</span> | Reasoning, Function calling, Image recognition, Video understanding, File input | Text, Image, Video | Text |
+| Doubao Seed 2.0 Mini<br><code>doubao-seed-2-0-mini</code> | bytedance | <span title="262,144">256K</span> | <span title="131,072">128K</span> | Reasoning, Function calling, Image recognition, Video understanding, File input | Text, Image, Video | Text |
+| Doubao Seed 2.0 Pro<br><code>doubao-seed-2-0-pro</code> | bytedance | <span title="262,144">256K</span> | <span title="131,072">128K</span> | Reasoning, Function calling, Image recognition, Video understanding, File input | Text, Image, Video | Text |
+| Doubao Seed 2.1 Pro<br><code>doubao-seed-2-1-pro</code> | bytedance | <span title="262,144">256K</span> | <span title="262,144">256K</span> | Reasoning, Function calling, Image recognition, Video understanding, File input | Text, Image, Video | Text |
+| Doubao Seed 2.1 Turbo<br><code>doubao-seed-2-1-turbo</code> | bytedance | <span title="262,144">256K</span> | <span title="262,144">256K</span> | Reasoning, Function calling, Image recognition, Video understanding, File input | Text, Image, Video | Text |
+| Doubao Seed Character<br><code>doubao-seed-character</code> | bytedance | <span title="131,072">128K</span> | <span title="32,768">32K</span> | Reasoning, Function calling, Image recognition, Video understanding, File input, Structured output | Text, Image, Video | Text |
+| Doubao Seed Code<br><code>doubao-seed-code-preview</code> | bytedance | <span title="262,144">256K</span> | <span title="32,768">32K</span> | Reasoning, Function calling, Image recognition, Video understanding, File input | Text, Image, Video | Text |
+| Doubao Seed Evolving<br><code>doubao-seed-evolving</code> | bytedance | <span title="1,024,000">1.02M</span> | <span title="262,144">256K</span> | Reasoning, Function calling, Image recognition, Video understanding, File input | Text, Image, Video | Text |
+| Seed 1.6<br><code>seed-1-6</code> | bytedance | <span title="262,144">256K</span> | <span title="32,000">32K</span> | Function calling, Reasoning, Image recognition, Video understanding, Structured output | Text, Image, Video | Text |
+| Seed 1.8<br><code>seed-1-8</code> | bytedance | <span title="256,000">256K</span> | <span title="64,000">64K</span> | Function calling, Reasoning, Image recognition | Text, Image | Text |
+| Aya Vision 32B<br><code>c4ai-aya-vision-32b</code> | cohere | <span title="16,384">16K</span> | <span title="4,096">4K</span> | Function calling, Image recognition | Text, Image | Text |
+| Aya Vision 8B<br><code>c4ai-aya-vision-8b</code> | cohere | <span title="16,384">16K</span> | <span title="4,096">4K</span> | Function calling, Image recognition | Text, Image | Text |
+| Command A Vision<br><code>command-a-vision-07-2025</code> | cohere | <span title="131,072">128K</span> | <span title="8,192">8K</span> | Function calling, Image recognition | Text, Image | Text |
+| Command A+<br><code>command-a-plus-05-2026</code> | cohere | <span title="131,072">128K</span> | <span title="65,536">64K</span> | Function calling, Reasoning, Image recognition | Text, Image | Text |
+| DeepSeek V4 Flash Vision Exp<br><code>deepseek-v4-flash-vision-exp</code> | deepseek | <span title="1,048,576">1.05M</span> | <span title="393,216">384K</span> | Function calling, Image recognition, Reasoning, Structured output | Text, Image | Text |
+| DeepSeek V4.1 Flash<br><code>deepseek-flash</code> | deepseek | <span title="1,000,000">1M</span> | <span title="393,216">384K</span> | Function calling, Image recognition, Reasoning, Structured output | Text, Image | Text |
+| DeepSeek V4.1 Flash Beta<br><code>deepseek-v4-1-flash-beta</code> | deepseek | <span title="1,000,000">1M</span> | <span title="384,000">384K</span> | Function calling, Reasoning, Image recognition, File input | Text, Image | Text |
+| DeepSeek: DeepSeek V4.1 Flash<br><code>deepseek-v4-1-flash</code> | deepseek | <span title="1,048,576">1.05M</span> | - | Function calling, Reasoning, Image recognition, Structured output | Text, Image | Text |
+| Gemini 2.5 Computer Use Preview 10-2025<br><code>gemini-2-5-computer-use-preview-10-2025</code> | google | <span title="131,072">128K</span> | <span title="65,536">64K</span> | Function calling, Reasoning, Image recognition, File input | Text, Image | Text |
+| Gemini 3 Flash<br><code>gemini-3-flash</code> | google | <span title="1,000,000">1M</span> | <span title="65,000">65K</span> | Function calling, Reasoning, Image recognition, File input | Text, Image | Text |
+| Gemma 3 12B IT<br><code>gemma-3-12b-it</code> | google | <span title="131,072">128K</span> | <span title="16,384">16K</span> | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
+| Gemma 3 4B IT<br><code>gemma-3-4b-it</code> | google | <span title="131,072">128K</span> | <span title="16,384">16K</span> | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
+| Gemma 3n E2b It<br><code>gemma-3n-e2b-it</code> | google | <span title="128,000">128K</span> | <span title="4,096">4K</span> | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
+| Gemma 3n E4b It<br><code>gemma-3n-e4b-it</code> | google | <span title="128,000">128K</span> | <span title="4,096">4K</span> | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
+| Gemma 4 26B A4B IT<br><code>gemma-4-26b-a4b-it</code> | google | <span title="262,144">256K</span> | <span title="131,072">128K</span> | Function calling, Reasoning, Image recognition, Video understanding, Structured output, File input | Text, Image, Video | Text |
+| Gemma-4-31B-IT<br><code>gemma-4-31b-it</code> | google | <span title="262,144">256K</span> | <span title="131,072">128K</span> | Function calling, Reasoning, Image recognition, Video understanding, Structured output, File input | Text, Image, Video | Text |
+| Google Gemma 3 27B Instruct<br><code>gemma-3-27b-it</code> | google | <span title="202,752">198K</span> | <span title="8,192">8K</span> | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
+| Llama 3.2 11b Vision Instruct<br><code>llama-3-2-11b-vision-instruct</code> | meta | <span title="128,000">128K</span> | <span title="4,096">4K</span> | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
+| Llama 4 Maverick 17b 128e Instruct<br><code>llama-4-maverick-17b-128e-instruct</code> | meta | <span title="128,000">128K</span> | <span title="4,096">4K</span> | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
+| Llama 4 Maverick 17B 128E Instruct<br><code>llama-4-maverick-17b-128e-instruct-maas</code> | meta | <span title="524,288">512K</span> | <span title="8,192">8K</span> | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
+| Llama 4 Maverick 17B Instruct (US)<br><code>llama4-maverick-17b-instruct</code> | meta | <span title="1,000,000">1M</span> | <span title="16,384">16K</span> | Function calling, Image recognition, File input | Text, Image | Text |
+| Llama 4 Scout 17B Instruct (US)<br><code>llama4-scout-17b-instruct</code> | meta | <span title="3,500,000">3.5M</span> | <span title="16,384">16K</span> | Function calling, Image recognition, File input | Text, Image | Text |
+| Llama Guard 4 12B<br><code>llama-guard-4-12b</code> | meta | <span title="163,840">160K</span> | <span title="16,384">16K</span> | Image recognition, Structured output, File input | Text, Image | Text |
+| Llama-3.2-90B-Vision-Instruct<br><code>llama-3-2-90b-vision-instruct</code> | meta | <span title="128,000">128K</span> | <span title="8,192">8K</span> | Function calling, Image recognition, File input | Text, Image | Text |
+| Llama-4-Maverick-17B-128E-Instruct-FP8<br><code>llama-4-maverick</code> | meta | <span title="1,048,576">1.05M</span> | <span title="4,096">4K</span> | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
+| Llama-4-Scout-17B-16E-Instruct-FP8<br><code>llama-4-scout</code> | meta | <span title="1,310,720">1.31M</span> | <span title="4,096">4K</span> | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
+| MiniMax-M3<br><code>minimax-m3</code> | minimax | <span title="1,048,576">1.05M</span> | <span title="524,288">512K</span> | Function calling, Reasoning, Image recognition, Video understanding, Structured output, File input | Text, Image, Video | Text |
+| MiniMax-M3.1-Flash-Preview<br><code>minimax-m3-1-flash-preview</code> | minimax | <span title="1,000,000">1M</span> | - | Reasoning, Function calling, Image recognition, Video understanding | Text, Image, Video | Text |
+| MiniMax: MiniMax-01<br><code>minimax-01</code> | minimax | <span title="1,000,192">1M</span> | - | Image recognition | Text, Image | Text |
+| Devstral Small<br><code>devstral-small</code> | mistral | <span title="256,000">256K</span> | <span title="256,000">256K</span> | Function calling, Image recognition | Text, Image | Text |
+| Devstral Small 2<br><code>devstral-small-2</code> | mistral | <span title="256,000">256K</span> | <span title="256,000">256K</span> | Function calling, Image recognition | Text, Image | Text |
+| Magistral Small 2506<br><code>magistral-small</code> | mistral | <span title="128,000">128K</span> | <span title="128,000">128K</span> | Function calling, Reasoning, Image recognition, Structured output | Text, Image | Text |
+| Ministral 14B<br><code>ministral-14b</code> | mistral | <span title="262,144">256K</span> | <span title="256,000">256K</span> | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
+| Ministral 3 14B Instruct 2512<br><code>ministral-14b-instruct</code> | mistral | <span title="262,144">256K</span> | <span title="16,384">16K</span> | Function calling, Image recognition, File input | Text, Image | Text |
+| Ministral 3 3B<br><code>ministral-3-3b-instruct</code> | mistral | <span title="256,000">256K</span> | <span title="8,192">8K</span> | Function calling, Image recognition, Structured output | Text, Image | Text |
+| Ministral 3B (latest)<br><code>ministral-3b</code> | mistral | <span title="131,072">128K</span> | <span title="128,000">128K</span> | Function calling, Image recognition, Structured output | Text, Image | Text |
+| Ministral 8B (latest)<br><code>ministral-8b</code> | mistral | <span title="262,144">256K</span> | <span title="128,000">128K</span> | Function calling, Image recognition, Structured output | Text, Image | Text |
+| Mistral Large (latest)<br><code>mistral-large-latest</code> | mistral | <span title="262,144">256K</span> | <span title="262,144">256K</span> | Function calling, Image recognition, File input | Text, Image | Text |
+| Mistral Large 3<br><code>mistral-large</code> | mistral | <span title="262,144">256K</span> | <span title="262,144">256K</span> | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
+| Mistral Large 3<br><code>mistral-large-3</code> | mistral | <span title="256,000">256K</span> | <span title="256,000">256K</span> | Image recognition, File input | Text, Image | Text |
+| Mistral Large 3 675B Instruct 2512<br><code>mistral-large-3-675b-instruct</code> | mistral | <span title="262,144">256K</span> | <span title="262,144">256K</span> | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
+| Mistral Medium (latest)<br><code>mistral-medium-latest</code> | mistral | <span title="262,144">256K</span> | <span title="262,144">256K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| Mistral Medium 3<br><code>mistral-medium-3-instruct</code> | mistral | <span title="131,072">128K</span> | <span title="32,768">32K</span> | Image recognition, File input | Text, Image | Text |
+| Mistral Medium 3.1<br><code>mistral-medium</code> | mistral | <span title="262,144">256K</span> | <span title="262,144">256K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| Mistral Medium 3.5<br><code>mistral-medium-3-5-128b</code> | mistral | <span title="262,144">256K</span> | <span title="32,768">32K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| Mistral Medium Latest<br><code>mistral-medium-3-5</code> | mistral | <span title="262,144">256K</span> | <span title="256,000">256K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| Mistral Nemo<br><code>mistral-nemo</code> | mistral | <span title="131,072">128K</span> | <span title="128,000">128K</span> | Function calling, Image recognition, Structured output | Text, Image | Text |
+| Mistral Small (latest)<br><code>mistral-small</code> | mistral | <span title="262,144">256K</span> | <span title="256,000">256K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| Mistral Small (latest)<br><code>mistral-small-latest</code> | mistral | <span title="256,000">256K</span> | <span title="256,000">256K</span> | Function calling, Reasoning, Image recognition, File input | Text, Image | Text |
+| mistral-small-4-119b-2603<br><code>mistral-small-4-119b</code> | mistral | <span title="128,000">128K</span> | <span title="8,192">8K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| Mistral: Mistral Medium 3<br><code>mistral-medium-3</code> | mistral | <span title="131,072">128K</span> | - | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
+| Mistral: Mistral Medium 3.1<br><code>mistral-medium-3-1</code> | mistral | <span title="131,072">128K</span> | - | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
+| Mistral: Mistral Small 3.1 24B<br><code>mistral-small-3-1-24b-instruct</code> | mistral | <span title="128,000">128K</span> | - | Image recognition | Text, Image | Text |
+| Mistral: Mistral Small 3.2 24B<br><code>mistral-small-3-2-24b-instruct</code> | mistral | <span title="131,072">128K</span> | - | Function calling, Image recognition, Structured output | Text, Image | Text |
+| Pixtral 12B<br><code>pixtral-12b</code> | mistral | <span title="128,000">128K</span> | <span title="128,000">128K</span> | Function calling, Image recognition, File input | Text, Image | Text |
+| Pixtral Large (25.02) (EU)<br><code>pixtral-large</code> | mistral | <span title="128,000">128K</span> | <span title="8,192">8K</span> | Function calling, Image recognition, File input | Text, Image | Text |
+| Pixtral Large (latest)<br><code>pixtral-large-latest</code> | mistral | <span title="128,000">128K</span> | <span title="128,000">128K</span> | Function calling, Image recognition, File input | Text, Image | Text |
+| Kimi K2.7 Code<br><code>kimi-k2-7-code</code> | moonshot | <span title="262,144">256K</span> | <span title="262,144">256K</span> | Function calling, Reasoning, Image recognition, Video understanding, Structured output, File input | Text, Image, Video | Text |
+| Kimi K2.7 Code High Speed<br><code>kimi-k2-7-code-highspeed</code> | moonshot | <span title="262,144">256K</span> | <span title="262,144">256K</span> | Function calling, Reasoning, Image recognition, Video understanding, Structured output, File input | Text, Image, Video | Text |
+| Kimi K3<br><code>kimi-k3</code> | moonshot | <span title="1,048,576">1.05M</span> | <span title="131,072">128K</span> | Function calling, Reasoning, Image recognition, Video understanding, Structured output, File input | Text, Image, Video | Text |
+| Kimi K3 Fast<br><code>kimi-k3-fast</code> | moonshot | <span title="1,000,000">1M</span> | <span title="131,072">128K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| Moonshot Kimi K2.5<br><code>kimi-k2-5</code> | moonshot | <span title="262,144">256K</span> | <span title="262,144">256K</span> | Function calling, Reasoning, Image recognition, Video understanding, Structured output, File input | Text, Image, Video | Text |
+| Moonshot Kimi K2.6<br><code>kimi-k2-6</code> | moonshot | <span title="262,144">256K</span> | <span title="262,144">256K</span> | Function calling, Reasoning, Image recognition, Video understanding, Structured output, File input | Text, Image, Video | Text |
+| MoonshotAI Kimi Latest<br><code>kimi-latest</code> | moonshot | <span title="1,048,576">1.05M</span> | - | Function calling, Reasoning, Image recognition, Video understanding, Structured output | Text, Image, Video | Text |
+| Active Speaker Detection<br><code>active-speaker-detection</code> | nvidia | - | <span title="4,096">4K</span> | Video understanding, File input | Video | Text |
+| bevformer<br><code>bevformer</code> | nvidia | <span title="128,000">128K</span> | <span title="8,192">8K</span> | Video understanding, File input | Video | Text |
+| Cosmos Reason2 8B<br><code>cosmos-reason2-8b</code> | nvidia | <span title="131,072">128K</span> | <span title="16,384">16K</span> | Function calling, Reasoning, Image recognition, Video understanding, File input | Text, Image, Video | Text |
+| Llama 3.1 Nemotron Nano VL 8B v1<br><code>llama-3-1-nemotron-nano-vl-8b-v1</code> | nvidia | <span title="32,768">32K</span> | <span title="16,384">16K</span> | Function calling, Reasoning, Image recognition, File input | Text, Image | Text |
+| Muse Glimmer 30B<br><code>muse-glimmer-30b</code> | nvidia | <span title="131,072">128K</span> | <span title="131,072">128K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| Nemotron Nano 12B v2 VL<br><code>nemotron-nano-12b-v2-vl</code> | nvidia | <span title="131,072">128K</span> | <span title="131,072">128K</span> | Function calling, Reasoning, Image recognition, Video understanding, File input | Text, Image, Video | Text |
+| NVIDIA Nemotron Nano 12B v2 VL BF16<br><code>nemotron-nano-12b-v2</code> | nvidia | <span title="128,000">128K</span> | <span title="4,096">4K</span> | Function calling, Image recognition, Structured output | Text, Image | Text |
+| NVIDIA: Nemotron 3.5 Content Safety<br><code>nemotron-3-5-content-safety</code> | nvidia | <span title="131,072">128K</span> | - | Reasoning, Image recognition, Structured output | Text, Image | Text |
+| paligemma<br><code>paligemma</code> | nvidia | <span title="128,000">128K</span> | <span title="8,192">8K</span> | Image recognition, File input | Text, Image | Text |
+| sparsedrive<br><code>sparsedrive</code> | nvidia | <span title="128,000">128K</span> | <span title="8,192">8K</span> | Video understanding, File input | Video | Text |
+| streampetr<br><code>streampetr</code> | nvidia | <span title="128,000">128K</span> | <span title="8,192">8K</span> | Video understanding, File input | Video | Text |
+| synthetic-video-detector<br><code>synthetic-video-detector</code> | nvidia | - | <span title="4,096">4K</span> | Video understanding, File input | Video | Text |
+| GPT 5.1 Codex Max<br><code>gpt-5-1-codex-max</code> | openai | <span title="400,000">400K</span> | <span title="128,000">128K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| GPT 5.1 Thinking<br><code>gpt-5-1</code> | openai | <span title="400,000">400K</span> | <span title="128,000">128K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| GPT 5.2 <br><code>gpt-5-2-pro</code> | openai | <span title="400,000">400K</span> | <span title="128,000">128K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| GPT 5.3 Codex<br><code>gpt-5-3-codex</code> | openai | <span title="400,000">400K</span> | <span title="128,000">128K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| GPT 5.4<br><code>gpt-5-4</code> | openai | <span title="1,050,000">1.05M</span> | <span title="128,000">128K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| GPT 5.4 Mini<br><code>gpt-5-4-mini</code> | openai | <span title="400,000">400K</span> | <span title="128,000">128K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| GPT 5.4 Nano<br><code>gpt-5-4-nano</code> | openai | <span title="400,000">400K</span> | <span title="128,000">128K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| GPT 5.4 Pro<br><code>gpt-5-4-pro</code> | openai | <span title="1,050,000">1.05M</span> | <span title="128,000">128K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| GPT 5.5<br><code>gpt-5-5</code> | openai | <span title="1,050,000">1.05M</span> | <span title="128,000">128K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| GPT 5.5 Pro<br><code>gpt-5-5-pro</code> | openai | <span title="1,050,000">1.05M</span> | <span title="128,000">128K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| GPT 5.6 Luna<br><code>gpt-5-6-luna</code> | openai | <span title="1,050,000">1.05M</span> | <span title="128,000">128K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| GPT 5.6 Sol<br><code>gpt-5-6-sol</code> | openai | <span title="1,050,000">1.05M</span> | <span title="128,000">128K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| GPT 5.6 Terra<br><code>gpt-5-6-terra</code> | openai | <span title="1,050,000">1.05M</span> | <span title="128,000">128K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| GPT-4 Turbo<br><code>gpt-4-turbo</code> | openai | <span title="128,000">128K</span> | <span title="4,096">4K</span> | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
+| GPT-4.1<br><code>gpt-4-1</code> | openai | <span title="1,047,576">1.05M</span> | <span title="32,768">32K</span> | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
+| GPT-4.1 mini<br><code>gpt-4-1-mini</code> | openai | <span title="1,047,576">1.05M</span> | <span title="32,768">32K</span> | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
+| GPT-4.1 nano<br><code>gpt-4-1-nano</code> | openai | <span title="1,047,576">1.05M</span> | <span title="32,768">32K</span> | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
+| GPT-4o<br><code>gpt-4o</code> | openai | <span title="128,000">128K</span> | <span title="16,384">16K</span> | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
+| GPT-4o mini<br><code>gpt-4o-mini</code> | openai | <span title="128,000">128K</span> | <span title="16,384">16K</span> | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
+| GPT-5<br><code>gpt-5</code> | openai | <span title="400,000">400K</span> | <span title="128,000">128K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| GPT-5 Mini<br><code>gpt-5-mini</code> | openai | <span title="400,000">400K</span> | <span title="128,000">128K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| GPT-5 Nano<br><code>gpt-5-nano</code> | openai | <span title="400,000">400K</span> | <span title="128,000">128K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| GPT-5 pro<br><code>gpt-5-pro</code> | openai | <span title="400,000">400K</span> | <span title="272,000">272K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| GPT-5-Codex<br><code>gpt-5-codex</code> | openai | <span title="400,000">400K</span> | <span title="128,000">128K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| GPT-5.1 Codex mini<br><code>gpt-5-1-codex-mini</code> | openai | <span title="400,000">400K</span> | <span title="128,000">128K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| GPT-5.1-Codex<br><code>gpt-5-1-codex</code> | openai | <span title="400,000">400K</span> | <span title="128,000">128K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| GPT-5.2<br><code>gpt-5-2</code> | openai | <span title="400,000">400K</span> | <span title="128,000">128K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| GPT-5.2 Chat<br><code>gpt-5-2-chat-latest</code> | openai | <span title="128,000">128K</span> | <span title="16,384">16K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| GPT-5.2-Codex<br><code>gpt-5-2-codex</code> | openai | <span title="400,000">400K</span> | <span title="128,000">128K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| GPT-5.3 Chat (latest)<br><code>gpt-5-3-chat-latest</code> | openai | <span title="128,000">128K</span> | <span title="16,384">16K</span> | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
+| GPT-5.3 Codex Spark<br><code>gpt-5-3-codex-spark</code> | openai | <span title="128,000">128K</span> | <span title="32,000">32K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| GPT-5.6<br><code>gpt-5-6</code> | openai | <span title="1,050,000">1.05M</span> | <span title="128,000">128K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| GPT-6 Astra<br><code>gpt-6-astra</code> | openai | <span title="1,050,000">1.05M</span> | <span title="128,000">128K</span> | Reasoning, Function calling, Image recognition, Structured output, File search | Text, Image | Text |
+| GPT-6 Luna<br><code>gpt-6-luna</code> | openai | <span title="1,050,000">1.05M</span> | <span title="128,000">128K</span> | Reasoning, Function calling, Image recognition, Structured output, File search | Text, Image | Text |
+| GPT-6 Sol<br><code>gpt-6-sol</code> | openai | <span title="1,050,000">1.05M</span> | <span title="128,000">128K</span> | Reasoning, Function calling, Image recognition, Structured output, File search | Text, Image | Text |
+| GPT-6.1 Sol<br><code>gpt-6-1-sol</code> | openai | <span title="1,050,000">1.05M</span> | <span title="128,000">128K</span> | Reasoning, Function calling, Image recognition, Structured output, File search | Text, Image | Text |
+| o1<br><code>o1</code> | openai | <span title="200,000">200K</span> | <span title="100,000">100K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| o1-pro<br><code>o1-pro</code> | openai | <span title="200,000">200K</span> | <span title="100,000">100K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| o3<br><code>o3</code> | openai | <span title="200,000">200K</span> | <span title="100,000">100K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| o3 Pro<br><code>o3-pro</code> | openai | <span title="200,000">200K</span> | <span title="100,000">100K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| o4-mini<br><code>o4-mini</code> | openai | <span title="200,000">200K</span> | <span title="100,000">100K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| OpenAI GPT Latest<br><code>gpt-latest</code> | openai | <span title="1,050,000">1.05M</span> | - | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| OpenAI GPT Mini Latest<br><code>gpt-mini-latest</code> | openai | <span title="400,000">400K</span> | - | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| OpenAI: GPT Chat Latest<br><code>gpt-chat-latest</code> | openai | <span title="400,000">400K</span> | - | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
+| OpenAI: GPT-5.2 Chat<br><code>gpt-5-2-chat</code> | openai | <span title="128,000">128K</span> | - | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
+| OpenAI: GPT-5.6 Luna Pro<br><code>gpt-5-6-luna-pro</code> | openai | <span title="1,050,000">1.05M</span> | - | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| OpenAI: GPT-5.6 Sol Pro<br><code>gpt-5-6-sol-pro</code> | openai | <span title="1,050,000">1.05M</span> | - | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| OpenAI: GPT-5.6 Terra Pro<br><code>gpt-5-6-terra-pro</code> | openai | <span title="1,050,000">1.05M</span> | - | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| OpenAI: GPT-6 Astra Pro<br><code>gpt-6-astra-pro</code> | openai | <span title="1,050,000">1.05M</span> | - | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| Sonar<br><code>sonar</code> | perplexity | <span title="128,000">128K</span> | <span title="8,000">8K</span> | Function calling, Image recognition, File input | Text, Image | Text |
+| Sonar Pro<br><code>sonar-pro</code> | perplexity | <span title="200,000">200K</span> | <span title="8,192">8K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| Sonar Reasoning Pro<br><code>sonar-reasoning-pro</code> | perplexity | <span title="128,000">128K</span> | <span title="8,000">8K</span> | Reasoning, Image recognition, File input | Text, Image | Text |
+| Reka Edge<br><code>reka-edge</code> | reka | <span title="16,384">16K</span> | - | Function calling, Image recognition, Video understanding, Structured output | Text, Image, Video | Text |
+| Step 3.5 Flash 2603<br><code>step-3-5-flash</code> | stepfun | <span title="262,144">256K</span> | <span title="262,114">262.11K</span> | Function calling, Reasoning, Image recognition | Text, Image | Text |
+| Step 3.7 Flash<br><code>step-3-7-flash</code> | stepfun | <span title="262,144">256K</span> | <span title="256,000">256K</span> | Function calling, Reasoning, Image recognition, Video understanding, Structured output, File input | Text, Image, Video | Text |
+| Kat Coder Air V2.5<br><code>kat-coder-air-v2-5</code> | streamlake | <span title="256,000">256K</span> | <span title="80,000">80K</span> | Function calling, Reasoning, Image recognition | Text, Image | Text |
+| Kat Coder Pro V2.5<br><code>kat-coder-pro-v2-5</code> | streamlake | <span title="262,144">256K</span> | <span title="80,000">80K</span> | Function calling, Reasoning, Image recognition, Structured output | Text, Image | Text |
+| Fugu Ultra<br><code>fugu-ultra</code> | vercel | <span title="1,000,000">1M</span> | <span title="1,000,000">1M</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| Interfaze Beta<br><code>interfaze-beta</code> | vercel | <span title="1,000,000">1M</span> | <span title="32,000">32K</span> | Reasoning, Image recognition | Text, Image | Text |
+| Sakana Namazu<br><code>namazu</code> | vercel | <span title="262,144">256K</span> | <span title="256,000">256K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| Grok 2 Vision<br><code>grok-2-vision</code> | xai | <span title="32,768">32K</span> | - | Function calling, Image recognition | Text, Image | - |
+| Grok 4.1 Fast Non-Reasoning<br><code>grok-4-1-fast-non-reasoning</code> | xai | <span title="1,000,000">1M</span> | <span title="1,000,000">1M</span> | Function calling, Image recognition, File input | Text, Image | Text |
+| Grok 4.1 Fast Reasoning<br><code>grok-4-1-fast</code> | xai | <span title="1,000,000">1M</span> | <span title="1,000,000">1M</span> | Function calling, Reasoning, Image recognition, File input | Text, Image | Text |
+| Grok 4.20 (Non-Reasoning)<br><code>grok-4-20-0309-non-reasoning</code> | xai | <span title="1,000,000">1M</span> | <span title="30,000">30K</span> | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
+| Grok 4.20 Beta Non-Reasoning<br><code>grok-4-20-non-reasoning-beta</code> | xai | <span title="2,000,000">2M</span> | <span title="2,000,000">2M</span> | Function calling, Image recognition, File input | Text, Image | Text |
+| Grok 4.20 Beta Reasoning<br><code>grok-4-20-reasoning-beta</code> | xai | <span title="2,000,000">2M</span> | <span title="2,000,000">2M</span> | Function calling, Reasoning, Image recognition, File input | Text, Image | Text |
+| Grok 4.20 Multi Agent Beta<br><code>grok-4-20-multi-agent-beta</code> | xai | <span title="2,000,000">2M</span> | <span title="2,000,000">2M</span> | Function calling, Reasoning, Image recognition, File input | Text, Image | Text |
+| Grok 4.20 Multi-Agent<br><code>grok-4-20-multi-agent</code> | xai | <span title="2,000,000">2M</span> | <span title="2,000,000">2M</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| Grok 4.20 Non-Reasoning<br><code>grok-4-20-non-reasoning</code> | xai | <span title="2,000,000">2M</span> | <span title="2,000,000">2M</span> | Function calling, Image recognition, File input | Text, Image | Text |
+| Grok 4.20 Reasoning<br><code>grok-4-20</code> | xai | <span title="2,000,000">2M</span> | <span title="2,000,000">2M</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| Grok 4.3<br><code>grok-4-3</code> | xai | <span title="1,000,000">1M</span> | <span title="1,000,000">1M</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| Grok 4.5<br><code>grok-4-5</code> | xai | <span title="500,000">500K</span> | <span title="500,000">500K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| Grok 4.6<br><code>grok-4-6</code> | xai | <span title="500,000">500K</span> | <span title="500,000">500K</span> | Reasoning, Function calling, Image recognition, Structured output | Text, Image | Text |
+| Grok 4.7<br><code>grok-4-7</code> | xai | <span title="500,000">500K</span> | <span title="500,000">500K</span> | Reasoning, Function calling, Image recognition, Structured output | Text, Image | Text |
+| Grok Build 0.1<br><code>grok-build-0-1</code> | xai | <span title="256,000">256K</span> | <span title="256,000">256K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| Grok Vision Beta<br><code>grok-vision-beta</code> | xai | <span title="8,192">8K</span> | - | Image recognition | Text, Image | - |
+| xAI: Grok Latest<br><code>grok-latest</code> | xai | <span title="500,000">500K</span> | - | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| GLM 4.5V<br><code>glm-4-5v</code> | zhipu | <span title="66,000">66K</span> | <span title="16,384">16K</span> | Function calling, Reasoning, Image recognition, Video understanding, Structured output, File input | Text, Image, Video | Text |
+| GLM 5V Turbo<br><code>glm-5v-turbo</code> | zhipu | <span title="202,752">198K</span> | <span title="131,072">128K</span> | Function calling, Reasoning, Image recognition, Video understanding, Structured output, File input | Text, Image, Video | Text |
+| GLM-4.1V-Thinking<br><code>glm-4-1v</code> | zhipu | <span title="65,536">64K</span> | - | Reasoning, Image recognition | Text, Image | - |
+| GLM-4.6V<br><code>glm-4-6v</code> | zhipu | <span title="131,072">128K</span> | <span title="32,768">32K</span> | Function calling, Reasoning, Image recognition, Video understanding, Structured output, File input | Text, Image, Video | Text |
+| GLM-4V<br><code>glm-4v</code> | zhipu | <span title="8,192">8K</span> | - | Image recognition | Text, Image | - |
+| GLM-4V-Flash<br><code>glm-4v-flash</code> | zhipu | <span title="8,192">8K</span> | - | Image recognition | Text, Image | - |
+| GLM-4V-Plus<br><code>glm-4v-plus</code> | zhipu | <span title="8,192">8K</span> | - | Image recognition | Text, Image | - |
+| GLM-5.3-Flash<br><code>glm-5-3-flash</code> | zhipu | <span title="1,000,000">1M</span> | <span title="131,072">128K</span> | Function calling, Reasoning, Image recognition, Video understanding, Structured output, File input | Text, Image, Video | Text |
+| Z.ai: GLM Flash Latest<br><code>glm-flash-latest</code> | zhipu | <span title="1,310,720">1.31M</span> | - | Function calling, Reasoning, Image recognition, Video understanding, Structured output | Text, Image, Video | Text |
 
 </div>

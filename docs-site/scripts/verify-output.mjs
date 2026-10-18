@@ -46,9 +46,12 @@ for (const page of data.pages) {
 for (const locale of new Set(data.pages.map((page) => page.locale))) {
   const index = JSON.parse(readFileSync(path.join(root, 'docs/search', `${locale}.json`), 'utf8'))
   assert.equal(index.type, 'simple')
+  // The model table toolbar fetches these at runtime, so nothing else links to them.
+  const models = JSON.parse(readFileSync(path.join(root, 'docs/models-search', `${locale}.json`), 'utf8'))
+  assert.ok(models.models.length > 0, `Missing model search index for ${locale}`)
 }
 assert.ok(existsSync(path.join(root, 'docs/404.html')))
 assert.ok(!failures.size, `Broken exported URLs:\n${[...failures].join('\n')}`)
 console.log(
-  `Verified ${data.pages.length} exported articles with Google Analytics, ${checked} local document/resource references and ${checkedAnchors} exported heading links; all locale search indexes and 404 are present.`
+  `Verified ${data.pages.length} exported articles with Google Analytics, ${checked} local document/resource references and ${checkedAnchors} exported heading links; all locale search indexes, model search indexes and 404 are present.`
 )
