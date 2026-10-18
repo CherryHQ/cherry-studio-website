@@ -89,7 +89,6 @@ An admin provides a read-only MCP connection. The user verifies the server works
 <summary>What's the difference between MCP and the API Gateway?</summary>
 
 MCP brings external tools into Cherry Studio; the API Gateway offers Cherry Studio's model capabilities to other programs through a compatible API. The data flows in opposite directions.
-
 </details>
 
 <details>
@@ -97,5 +96,4 @@ MCP brings external tools into Cherry Studio; the API Gateway offers Cherry Stud
 <summary>The server shows as connected, but the Agent still can't find the tools. What should I do?</summary>
 
 Check whether the Agent is bound to the server, whether the tool is turned off, and whether a permission request is pending. After changing the Agent's configuration, send a new message so the runtime loads the new tools.
-
 </details>
