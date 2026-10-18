@@ -50,8 +50,8 @@ const CATEGORIES = [
   },
   {
     file: 'chat-multimodal.md',
-    'zh-cn': { title: '多模态对话', summary: '个支持图片或视频输入的对话模型。' },
-    en: { title: 'Multimodal Chat', summary: 'chat models that accept image or video input.' }
+    'zh-cn': { title: '多模态对话', summary: '个支持图片、视频或音频输入的对话模型。' },
+    en: { title: 'Multimodal Chat', summary: 'chat models that accept image, video or audio input.' }
   },
   {
     file: 'image-generation.md',
@@ -88,15 +88,20 @@ const INPUT_MODALITY_COLUMN = 5
 const OUTPUT_MODALITY_COLUMN = 6
 const STAMP_LABELS = { 'zh-cn': '数据更新时间', en: 'Data updated' }
 
-function categoryOf(model) {
+// Categories follow what a model generates (image → video → audio) before text chat, which is
+// split by input modality; speech recognisers (audio in, no text) stay on the audio page.
+export function categoryOf(model) {
   const capabilities = new Set(model.capabilities || [])
-  const outputs = new Set(model.outputModalities || [])
-  if (capabilities.has('embedding') || outputs.has('vector') || capabilities.has('rerank')) return 'embedding-rerank.md'
-  if (capabilities.has('video-generation')) return 'video-generation.md'
-  if (capabilities.has('image-generation')) return 'image-generation.md'
-  if (capabilities.has('audio-recognition') || capabilities.has('audio-generation') || outputs.has('audio'))
-    return 'audio.md'
   const inputs = model.inputModalities || []
+  const outputs = model.outputModalities || []
+  if (capabilities.has('embedding') || outputs.includes('vector') || capabilities.has('rerank'))
+    return 'embedding-rerank.md'
+  if (outputs.includes('image') || capabilities.has('image-generation')) return 'image-generation.md'
+  if (outputs.includes('video') || capabilities.has('video-generation')) return 'video-generation.md'
+  if (outputs.includes('audio') || capabilities.has('audio-generation')) return 'audio.md'
+  if (inputs.includes('text'))
+    return inputs.some((modality) => modality !== 'text') ? 'chat-multimodal.md' : 'chat-text.md'
+  if (capabilities.has('audio-recognition') || inputs.includes('audio')) return 'audio.md'
   return inputs.some((modality) => modality !== 'text') ? 'chat-multimodal.md' : 'chat-text.md'
 }
 

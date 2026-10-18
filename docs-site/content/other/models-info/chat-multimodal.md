@@ -4,9 +4,9 @@
 
 上下文长度与最大输出以 K / M 缩写并四舍五入（1K 约为 1,000～1,024 tokens，1M 约为 100 万 tokens），例如 131,072 与 128,000 均写作 128K。悬停可查看完整数值，精确限制请以模型服务商为准。
 
-> **数据更新时间**: 2026-10-18 12:04:58 UTC / 2026-10-18 20:04:58 CST (北京时间)
+> **数据更新时间**: 2026-10-18 13:59:34 UTC / 2026-10-18 21:59:34 CST (北京时间)
 
-<div data-models-table="num:2,3;sort:1;search:0,1;cap:4:函数调用,推理,识图,视频理解,结构化输出,文件输入,电脑操作,文件检索;in:5:文本输入=文本,图片输入=图片,视频输入=视频">
+<div data-models-table="num:2,3;sort:1;search:0,1;cap:4:函数调用,推理,识图,语音识别,视频理解,结构化输出,文件输入,电脑操作,文件检索;in:5:文本输入=文本,图片输入=图片,音频输入=音频,视频输入=视频">
 
 | 模型名称 | 服务商 | 上下文长度 | 最大输出 | 能力 | 输入模态 | 输出模态 |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -31,9 +31,15 @@
 | Qwen3-VL 235B-A22B<br><code>qwen3-vl-235b-a22b</code> | alibaba | <span title="262,000">262K</span> | <span title="262,000">262K</span> | 函数调用、推理、识图、结构化输出、文件输入 | 文本、图片 | 文本 |
 | Qwen3-VL 30B-A3B<br><code>qwen3-vl-30b-a3b</code> | alibaba | <span title="262,144">256K</span> | <span title="32,768">32K</span> | 函数调用、推理、识图、结构化输出 | 文本、图片 | 文本 |
 | Qwen3-VL Plus<br><code>qwen3-vl-plus</code> | alibaba | <span title="262,144">256K</span> | <span title="32,768">32K</span> | 函数调用、推理、识图 | 文本、图片 | 文本 |
+| Qwen3.5 122B-A10B<br><code>qwen3-5-122b-a10b</code> | alibaba | <span title="262,144">256K</span> | <span title="65,536">64K</span> | 函数调用、推理、识图、语音识别、视频理解、结构化输出、文件输入 | 文本、图片、音频、视频 | 文本 |
+| Qwen3.5 27B<br><code>qwen3-5-27b</code> | alibaba | <span title="262,144">256K</span> | <span title="65,536">64K</span> | 函数调用、推理、识图、语音识别、视频理解、结构化输出、文件输入 | 文本、图片、音频、视频 | 文本 |
+| Qwen3.5 35B-A3B<br><code>qwen3-5-35b-a3b</code> | alibaba | <span title="262,144">256K</span> | <span title="65,536">64K</span> | 函数调用、推理、识图、语音识别、视频理解、结构化输出、文件输入 | 文本、图片、音频、视频 | 文本 |
+| Qwen3.5 397B-A17B<br><code>qwen3-5-397b-a17b</code> | alibaba | <span title="262,144">256K</span> | <span title="65,536">64K</span> | 函数调用、推理、识图、语音识别、视频理解、结构化输出、文件输入 | 文本、图片、音频、视频 | 文本 |
 | Qwen3.5 4B<br><code>qwen3-5-4b</code> | alibaba | <span title="262,144">256K</span> | - | 函数调用、推理、识图、视频理解、结构化输出 | 文本、图片、视频 | 文本 |
 | Qwen3.5 Flash<br><code>qwen3-5-flash</code> | alibaba | <span title="1,000,000">1M</span> | <span title="65,536">64K</span> | 函数调用、推理、识图、视频理解、结构化输出、文件输入 | 文本、图片、视频 | 文本 |
 | Qwen3.5 Plus<br><code>qwen3-5-plus</code> | alibaba | <span title="1,000,000">1M</span> | <span title="65,536">64K</span> | 函数调用、推理、识图、视频理解、结构化输出、文件输入 | 文本、图片、视频 | 文本 |
+| Qwen3.6 27B<br><code>qwen3-6-27b</code> | alibaba | <span title="262,144">256K</span> | <span title="256,000">256K</span> | 函数调用、推理、识图、语音识别、视频理解、结构化输出、文件输入 | 文本、图片、音频、视频 | 文本 |
+| Qwen3.6 35B-A3B<br><code>qwen3-6-35b-a3b</code> | alibaba | <span title="262,144">256K</span> | <span title="65,536">64K</span> | 函数调用、推理、识图、语音识别、视频理解、结构化输出、文件输入 | 文本、图片、音频、视频 | 文本 |
 | Qwen3.6 Flash<br><code>qwen3-6-flash</code> | alibaba | <span title="1,000,000">1M</span> | <span title="65,536">64K</span> | 函数调用、推理、识图、视频理解、结构化输出、文件输入 | 文本、图片、视频 | 文本 |
 | Qwen3.6 Plus<br><code>qwen3-6-plus</code> | alibaba | <span title="1,000,000">1M</span> | <span title="65,536">64K</span> | 函数调用、推理、识图、视频理解、结构化输出、文件输入 | 文本、图片、视频 | 文本 |
 | Qwen3.7 Flash<br><code>qwen3-7-flash</code> | alibaba | <span title="1,000,000">1M</span> | <span title="65,536">64K</span> | 函数调用、推理、识图、视频理解、结构化输出、文件输入 | 文本、图片、视频 | 文本 |
@@ -78,6 +84,8 @@
 | Baidu: ERNIE 4.5 VL 424B A47B <br><code>ernie-4-5-vl-424b-a47b</code> | baidu | <span title="123,000">123K</span> | - | 推理、识图 | 文本、图片 | 文本 |
 | ERNIE 4.5 Turbo VL<br><code>ernie-4-5-turbo-vl</code> | baidu | <span title="32,768">32K</span> | - | 函数调用、识图 | 文本、图片 | - |
 | ERNIE 4.5 VL A3B<br><code>ernie-4-5-vl-a3b</code> | baidu | <span title="32,768">32K</span> | - | 推理、识图 | 文本、图片 | - |
+| Inkling<br><code>inkling</code> | bailing | <span title="1,048,576">1.05M</span> | <span title="256,000">256K</span> | 函数调用、推理、识图、语音识别、结构化输出、文件输入 | 文本、图片、音频 | 文本 |
+| Inkling Small<br><code>inkling-small</code> | bailing | <span title="1,048,576">1.05M</span> | <span title="1,000,000">1M</span> | 函数调用、推理、识图、语音识别、文件输入 | 文本、图片、音频 | 文本 |
 | Doubao 1.5 Thinking Vision Pro<br><code>doubao-1-5-thinking-vision-pro</code> | bytedance | <span title="131,072">128K</span> | <span title="16,384">16K</span> | 推理、函数调用、识图 | 文本、图片 | 文本 |
 | Doubao 1.5 UI-TARS<br><code>doubao-1-5-ui-tars</code> | bytedance | - | - | 电脑操作、识图、函数调用 | 文本、图片 | 文本 |
 | Doubao 1.5 Vision Lite<br><code>doubao-1-5-vision-lite</code> | bytedance | - | - | 识图、函数调用 | 文本、图片 | 文本 |
@@ -107,14 +115,33 @@
 | DeepSeek V4.1 Flash Beta<br><code>deepseek-v4-1-flash-beta</code> | deepseek | <span title="1,000,000">1M</span> | <span title="384,000">384K</span> | 函数调用、推理、识图、文件输入 | 文本、图片 | 文本 |
 | DeepSeek: DeepSeek V4.1 Flash<br><code>deepseek-v4-1-flash</code> | deepseek | <span title="1,048,576">1.05M</span> | - | 函数调用、推理、识图、结构化输出 | 文本、图片 | 文本 |
 | Gemini 2.5 Computer Use Preview 10-2025<br><code>gemini-2-5-computer-use-preview-10-2025</code> | google | <span title="131,072">128K</span> | <span title="65,536">64K</span> | 函数调用、推理、识图、文件输入 | 文本、图片 | 文本 |
+| Gemini 2.5 Flash<br><code>gemini-2-5-flash</code> | google | <span title="1,048,576">1.05M</span> | <span title="65,536">64K</span> | 函数调用、推理、识图、语音识别、视频理解、结构化输出、文件输入 | 文本、图片、音频、视频 | 文本 |
+| Gemini 2.5 Flash-Lite<br><code>gemini-2-5-flash-lite</code> | google | <span title="1,048,576">1.05M</span> | <span title="65,536">64K</span> | 函数调用、推理、识图、语音识别、视频理解、结构化输出、文件输入 | 文本、图片、音频、视频 | 文本 |
+| Gemini 2.5 Pro<br><code>gemini-2-5-pro</code> | google | <span title="1,048,576">1.05M</span> | <span title="65,536">64K</span> | 函数调用、推理、识图、语音识别、视频理解、结构化输出、文件输入 | 文本、图片、音频、视频 | 文本 |
 | Gemini 3 Flash<br><code>gemini-3-flash</code> | google | <span title="1,000,000">1M</span> | <span title="65,000">65K</span> | 函数调用、推理、识图、文件输入 | 文本、图片 | 文本 |
+| Gemini 3 Flash Preview<br><code>gemini-3-flash-preview</code> | google | <span title="1,048,576">1.05M</span> | <span title="65,536">64K</span> | 函数调用、推理、识图、语音识别、视频理解、结构化输出、文件输入 | 文本、图片、音频、视频 | 文本 |
+| Gemini 3.1 Flash Lite<br><code>gemini-3-1-flash-lite</code> | google | <span title="1,048,576">1.05M</span> | <span title="65,536">64K</span> | 函数调用、推理、识图、语音识别、视频理解、结构化输出、文件输入 | 文本、图片、音频、视频 | 文本 |
+| Gemini 3.1 Flash Lite Preview<br><code>gemini-3-1-flash-lite-preview</code> | google | <span title="1,048,576">1.05M</span> | <span title="65,536">64K</span> | 函数调用、推理、识图、语音识别、视频理解、结构化输出、文件输入 | 文本、图片、音频、视频 | 文本 |
+| Gemini 3.1 Pro Preview<br><code>gemini-3-1-pro-preview</code> | google | <span title="1,048,576">1.05M</span> | <span title="65,536">64K</span> | 函数调用、推理、识图、语音识别、视频理解、结构化输出、文件输入 | 文本、图片、音频、视频 | 文本 |
+| Gemini 3.1 Pro Preview Custom Tools<br><code>gemini-3-1-pro-preview-customtools</code> | google | <span title="1,048,576">1.05M</span> | <span title="65,536">64K</span> | 函数调用、推理、识图、语音识别、视频理解、结构化输出、文件输入 | 文本、图片、音频、视频 | 文本 |
+| Gemini 3.5 Flash<br><code>gemini-3-5-flash</code> | google | <span title="1,048,576">1.05M</span> | <span title="65,536">64K</span> | 函数调用、推理、识图、语音识别、视频理解、结构化输出、文件输入 | 文本、图片、音频、视频 | 文本 |
+| Gemini 3.5 Flash Lite<br><code>gemini-3-5-flash-lite</code> | google | <span title="1,048,576">1.05M</span> | <span title="65,536">64K</span> | 函数调用、推理、识图、语音识别、视频理解、结构化输出、文件输入 | 文本、图片、音频、视频 | 文本 |
+| Gemini 3.6 Flash<br><code>gemini-3-6-flash</code> | google | <span title="1,048,576">1.05M</span> | <span title="65,536">64K</span> | 函数调用、推理、识图、语音识别、视频理解、结构化输出、文件输入 | 文本、图片、音频、视频 | 文本 |
+| Gemini 3.7 Flash<br><code>gemini-3-7-flash</code> | google | <span title="1,048,576">1.05M</span> | <span title="65,536">64K</span> | 函数调用、推理、识图、语音识别、视频理解、结构化输出、文件输入 | 文本、图片、音频、视频 | 文本 |
+| Gemini 3.8 Flash<br><code>gemini-3-8-flash</code> | google | <span title="1,048,576">1.05M</span> | <span title="65,536">64K</span> | 函数调用、推理、识图、语音识别、视频理解、结构化输出、文件输入 | 文本、图片、音频、视频 | 文本 |
+| Gemini 4 Argon<br><code>gemini-4-argon</code> | google | <span title="1,048,576">1.05M</span> | <span title="1,048,576">1.05M</span> | 推理、函数调用、识图、语音识别、视频理解、结构化输出、文件输入 | 文本、图片、音频、视频 | 文本 |
+| Gemini Flash Latest<br><code>gemini-flash-latest</code> | google | <span title="1,048,576">1.05M</span> | <span title="65,536">64K</span> | 函数调用、推理、识图、语音识别、视频理解、结构化输出、文件输入 | 文本、图片、音频、视频 | 文本 |
+| Gemini Flash-Lite Latest<br><code>gemini-flash-lite-latest</code> | google | <span title="1,048,576">1.05M</span> | <span title="65,536">64K</span> | 函数调用、推理、识图、语音识别、视频理解、结构化输出、文件输入 | 文本、图片、音频、视频 | 文本 |
 | Gemma 3 12B IT<br><code>gemma-3-12b-it</code> | google | <span title="131,072">128K</span> | <span title="16,384">16K</span> | 函数调用、识图、结构化输出、文件输入 | 文本、图片 | 文本 |
 | Gemma 3 4B IT<br><code>gemma-3-4b-it</code> | google | <span title="131,072">128K</span> | <span title="16,384">16K</span> | 函数调用、识图、结构化输出、文件输入 | 文本、图片 | 文本 |
 | Gemma 3n E2b It<br><code>gemma-3n-e2b-it</code> | google | <span title="128,000">128K</span> | <span title="4,096">4K</span> | 函数调用、识图、结构化输出、文件输入 | 文本、图片 | 文本 |
 | Gemma 3n E4b It<br><code>gemma-3n-e4b-it</code> | google | <span title="128,000">128K</span> | <span title="4,096">4K</span> | 函数调用、识图、结构化输出、文件输入 | 文本、图片 | 文本 |
 | Gemma 4 26B A4B IT<br><code>gemma-4-26b-a4b-it</code> | google | <span title="262,144">256K</span> | <span title="131,072">128K</span> | 函数调用、推理、识图、视频理解、结构化输出、文件输入 | 文本、图片、视频 | 文本 |
 | Gemma-4-31B-IT<br><code>gemma-4-31b-it</code> | google | <span title="262,144">256K</span> | <span title="131,072">128K</span> | 函数调用、推理、识图、视频理解、结构化输出、文件输入 | 文本、图片、视频 | 文本 |
+| Google Gemini Pro Latest<br><code>gemini-pro-latest</code> | google | <span title="1,048,576">1.05M</span> | - | 函数调用、推理、识图、语音识别、视频理解、结构化输出、文件输入 | 文本、图片、音频、视频 | 文本 |
 | Google Gemma 3 27B Instruct<br><code>gemma-3-27b-it</code> | google | <span title="202,752">198K</span> | <span title="8,192">8K</span> | 函数调用、识图、结构化输出、文件输入 | 文本、图片 | 文本 |
+| Google: Gemini 2.5 Pro Preview 05-06<br><code>gemini-2-5-pro-preview-05-06</code> | google | <span title="1,048,576">1.05M</span> | - | 函数调用、推理、识图、语音识别、视频理解、结构化输出、文件输入 | 文本、图片、音频、视频 | 文本 |
+| Google: Gemini 2.5 Pro Preview 06-05<br><code>gemini-2-5-pro-preview</code> | google | <span title="1,048,576">1.05M</span> | - | 函数调用、推理、识图、语音识别、结构化输出、文件输入 | 文本、图片、音频 | 文本 |
 | Llama 3.2 11b Vision Instruct<br><code>llama-3-2-11b-vision-instruct</code> | meta | <span title="128,000">128K</span> | <span title="4,096">4K</span> | 函数调用、识图、结构化输出、文件输入 | 文本、图片 | 文本 |
 | Llama 4 Maverick 17b 128e Instruct<br><code>llama-4-maverick-17b-128e-instruct</code> | meta | <span title="128,000">128K</span> | <span title="4,096">4K</span> | 函数调用、识图、结构化输出、文件输入 | 文本、图片 | 文本 |
 | Llama 4 Maverick 17B 128E Instruct<br><code>llama-4-maverick-17b-128e-instruct-maas</code> | meta | <span title="524,288">512K</span> | <span title="8,192">8K</span> | 函数调用、识图、结构化输出、文件输入 | 文本、图片 | 文本 |
@@ -124,6 +151,9 @@
 | Llama-3.2-90B-Vision-Instruct<br><code>llama-3-2-90b-vision-instruct</code> | meta | <span title="128,000">128K</span> | <span title="8,192">8K</span> | 函数调用、识图、文件输入 | 文本、图片 | 文本 |
 | Llama-4-Maverick-17B-128E-Instruct-FP8<br><code>llama-4-maverick</code> | meta | <span title="1,048,576">1.05M</span> | <span title="4,096">4K</span> | 函数调用、识图、结构化输出、文件输入 | 文本、图片 | 文本 |
 | Llama-4-Scout-17B-16E-Instruct-FP8<br><code>llama-4-scout</code> | meta | <span title="1,310,720">1.31M</span> | <span title="4,096">4K</span> | 函数调用、识图、结构化输出、文件输入 | 文本、图片 | 文本 |
+| Muse Spark 1.3<br><code>muse-spark-1-3</code> | meta | <span title="1,048,576">1.05M</span> | <span title="1,048,576">1.05M</span> | 函数调用、推理、识图、语音识别、视频理解、结构化输出、文件输入 | 文本、图片、音频、视频 | 文本 |
+| Muse Spark Open 816B A42B<br><code>muse-spark-open-816b-a42b</code> | meta | <span title="1,048,576">1.05M</span> | - | 函数调用、推理、识图、语音识别、视频理解、文件输入 | 文本、图片、音频、视频 | 文本 |
+| Muse Spark Open 816B A42B NVFP4<br><code>muse-spark-open-816b-a42b-nvfp4</code> | meta | <span title="1,048,576">1.05M</span> | - | 函数调用、推理、识图、语音识别、视频理解、文件输入 | 文本、图片、音频、视频 | 文本 |
 | MiniMax-M3<br><code>minimax-m3</code> | minimax | <span title="1,048,576">1.05M</span> | <span title="524,288">512K</span> | 函数调用、推理、识图、视频理解、结构化输出、文件输入 | 文本、图片、视频 | 文本 |
 | MiniMax-M3.1-Flash-Preview<br><code>minimax-m3-1-flash-preview</code> | minimax | <span title="1,000,000">1M</span> | - | 推理、函数调用、识图、视频理解 | 文本、图片、视频 | 文本 |
 | MiniMax: MiniMax-01<br><code>minimax-01</code> | minimax | <span title="1,000,192">1M</span> | - | 识图 | 文本、图片 | 文本 |
@@ -155,6 +185,9 @@
 | Pixtral 12B<br><code>pixtral-12b</code> | mistral | <span title="128,000">128K</span> | <span title="128,000">128K</span> | 函数调用、识图、文件输入 | 文本、图片 | 文本 |
 | Pixtral Large (25.02) (EU)<br><code>pixtral-large</code> | mistral | <span title="128,000">128K</span> | <span title="8,192">8K</span> | 函数调用、识图、文件输入 | 文本、图片 | 文本 |
 | Pixtral Large (latest)<br><code>pixtral-large-latest</code> | mistral | <span title="128,000">128K</span> | <span title="128,000">128K</span> | 函数调用、识图、文件输入 | 文本、图片 | 文本 |
+| Voxtral Mini 3B 2507<br><code>voxtral-mini-3b</code> | mistral | <span title="128,000">128K</span> | <span title="4,096">4K</span> | 函数调用、语音识别、结构化输出 | 文本、音频 | 文本 |
+| Voxtral Small (latest)<br><code>voxtral-small-latest</code> | mistral | <span title="32,000">32K</span> | <span title="32,000">32K</span> | 函数调用、语音识别、文件输入 | 文本、音频 | 文本 |
+| Voxtral Small 24B 2507<br><code>voxtral-small-24b</code> | mistral | <span title="32,768">32K</span> | <span title="8,192">8K</span> | 函数调用、语音识别、结构化输出、文件输入 | 文本、音频 | 文本 |
 | Kimi K2.7 Code<br><code>kimi-k2-7-code</code> | moonshot | <span title="262,144">256K</span> | <span title="262,144">256K</span> | 函数调用、推理、识图、视频理解、结构化输出、文件输入 | 文本、图片、视频 | 文本 |
 | Kimi K2.7 Code High Speed<br><code>kimi-k2-7-code-highspeed</code> | moonshot | <span title="262,144">256K</span> | <span title="262,144">256K</span> | 函数调用、推理、识图、视频理解、结构化输出、文件输入 | 文本、图片、视频 | 文本 |
 | Kimi K3<br><code>kimi-k3</code> | moonshot | <span title="1,048,576">1.05M</span> | <span title="131,072">128K</span> | 函数调用、推理、识图、视频理解、结构化输出、文件输入 | 文本、图片、视频 | 文本 |
@@ -167,7 +200,9 @@
 | Cosmos Reason2 8B<br><code>cosmos-reason2-8b</code> | nvidia | <span title="131,072">128K</span> | <span title="16,384">16K</span> | 函数调用、推理、识图、视频理解、文件输入 | 文本、图片、视频 | 文本 |
 | Llama 3.1 Nemotron Nano VL 8B v1<br><code>llama-3-1-nemotron-nano-vl-8b-v1</code> | nvidia | <span title="32,768">32K</span> | <span title="16,384">16K</span> | 函数调用、推理、识图、文件输入 | 文本、图片 | 文本 |
 | Muse Glimmer 30B<br><code>muse-glimmer-30b</code> | nvidia | <span title="131,072">128K</span> | <span title="131,072">128K</span> | 函数调用、推理、识图、结构化输出、文件输入 | 文本、图片 | 文本 |
+| Nemotron 3 Nano Omni<br><code>nemotron-3-nano-omni-30b-a3b</code> | nvidia | <span title="256,000">256K</span> | <span title="65,536">64K</span> | 函数调用、推理、识图、语音识别、视频理解、结构化输出、文件输入 | 文本、图片、音频、视频 | 文本 |
 | Nemotron Nano 12B v2 VL<br><code>nemotron-nano-12b-v2-vl</code> | nvidia | <span title="131,072">128K</span> | <span title="131,072">128K</span> | 函数调用、推理、识图、视频理解、文件输入 | 文本、图片、视频 | 文本 |
+| nemotron-voicechat<br><code>nemotron-voicechat</code> | nvidia | <span title="128,000">128K</span> | <span title="8,192">8K</span> | 函数调用、语音识别、文件输入 | 文本、音频 | 文本 |
 | NVIDIA Nemotron Nano 12B v2 VL BF16<br><code>nemotron-nano-12b-v2</code> | nvidia | <span title="128,000">128K</span> | <span title="4,096">4K</span> | 函数调用、识图、结构化输出 | 文本、图片 | 文本 |
 | NVIDIA: Nemotron 3.5 Content Safety<br><code>nemotron-3-5-content-safety</code> | nvidia | <span title="131,072">128K</span> | - | 推理、识图、结构化输出 | 文本、图片 | 文本 |
 | paligemma<br><code>paligemma</code> | nvidia | <span title="128,000">128K</span> | <span title="8,192">8K</span> | 识图、文件输入 | 文本、图片 | 文本 |
@@ -233,6 +268,10 @@
 | Kat Coder Pro V2.5<br><code>kat-coder-pro-v2-5</code> | streamlake | <span title="262,144">256K</span> | <span title="80,000">80K</span> | 函数调用、推理、识图、结构化输出 | 文本、图片 | 文本 |
 | Fugu Ultra<br><code>fugu-ultra</code> | vercel | <span title="1,000,000">1M</span> | <span title="1,000,000">1M</span> | 函数调用、推理、识图、结构化输出、文件输入 | 文本、图片 | 文本 |
 | Interfaze Beta<br><code>interfaze-beta</code> | vercel | <span title="1,000,000">1M</span> | <span title="32,000">32K</span> | 推理、识图 | 文本、图片 | 文本 |
+| Muse Spark 1.1<br><code>muse-spark-1-1</code> | vercel | <span title="1,048,576">1.05M</span> | <span title="1,048,576">1.05M</span> | 函数调用、推理、识图、语音识别、视频理解、结构化输出、文件输入 | 文本、图片、音频、视频 | 文本 |
+| Muse Spark 1.2<br><code>muse-spark-1-2</code> | vercel | <span title="1,048,576">1.05M</span> | <span title="1,048,576">1.05M</span> | 函数调用、推理、识图、语音识别、视频理解、结构化输出、文件输入 | 文本、图片、音频、视频 | 文本 |
+| Muse Spark 1.2 Contributor<br><code>muse-spark-1-2-contributor</code> | vercel | <span title="1,048,576">1.05M</span> | <span title="1,048,576">1.05M</span> | 函数调用、推理、识图、语音识别、视频理解、结构化输出、文件输入 | 文本、图片、音频、视频 | 文本 |
+| Muse Spark 1.3 Contributor<br><code>muse-spark-1-3-contributor</code> | vercel | <span title="1,048,576">1.05M</span> | <span title="1,048,576">1.05M</span> | 函数调用、推理、识图、语音识别、视频理解、结构化输出、文件输入 | 文本、图片、音频、视频 | 文本 |
 | Sakana Namazu<br><code>namazu</code> | vercel | <span title="262,144">256K</span> | <span title="256,000">256K</span> | 函数调用、推理、识图、结构化输出、文件输入 | 文本、图片 | 文本 |
 | Grok 2 Vision<br><code>grok-2-vision</code> | xai | <span title="32,768">32K</span> | - | 函数调用、识图 | 文本、图片 | - |
 | Grok 4.1 Fast Non-Reasoning<br><code>grok-4-1-fast-non-reasoning</code> | xai | <span title="1,000,000">1M</span> | <span title="1,000,000">1M</span> | 函数调用、识图、文件输入 | 文本、图片 | 文本 |
@@ -251,6 +290,11 @@
 | Grok Build 0.1<br><code>grok-build-0-1</code> | xai | <span title="256,000">256K</span> | <span title="256,000">256K</span> | 函数调用、推理、识图、结构化输出、文件输入 | 文本、图片 | 文本 |
 | Grok Vision Beta<br><code>grok-vision-beta</code> | xai | <span title="8,192">8K</span> | - | 识图 | 文本、图片 | - |
 | xAI: Grok Latest<br><code>grok-latest</code> | xai | <span title="500,000">500K</span> | - | 函数调用、推理、识图、结构化输出、文件输入 | 文本、图片 | 文本 |
+| MiMo-V2-Omni<br><code>mimo-v2-omni</code> | xiaomi | <span title="262,144">256K</span> | <span title="131,072">128K</span> | 函数调用、推理、识图、语音识别、视频理解、文件输入 | 文本、图片、音频、视频 | 文本 |
+| MiMo-V2.5<br><code>mimo-v2-5</code> | xiaomi | <span title="1,050,000">1.05M</span> | <span title="131,072">128K</span> | 函数调用、推理、识图、语音识别、视频理解、结构化输出、文件输入 | 文本、图片、音频、视频 | 文本 |
+| MiMo-V2.6-Flash<br><code>mimo-v2-6-flash</code> | xiaomi | <span title="1,048,576">1.05M</span> | <span title="131,072">128K</span> | 函数调用、推理、识图、语音识别、视频理解、结构化输出、文件输入 | 文本、图片、音频、视频 | 文本 |
+| MiMo-V2.6-Pro<br><code>mimo-v2-6-pro</code> | xiaomi | <span title="1,048,576">1.05M</span> | <span title="131,072">128K</span> | 函数调用、推理、识图、语音识别、视频理解、结构化输出、文件输入 | 文本、图片、音频、视频 | 文本 |
+| MiMo-V2.6-Pro-UltraSpeed<br><code>mimo-v2-6-pro-ultraspeed</code> | xiaomi | <span title="1,048,576">1.05M</span> | <span title="131,072">128K</span> | 函数调用、推理、识图、语音识别、视频理解、结构化输出、文件输入 | 文本、图片、音频、视频 | 文本 |
 | GLM 4.5V<br><code>glm-4-5v</code> | zhipu | <span title="66,000">66K</span> | <span title="16,384">16K</span> | 函数调用、推理、识图、视频理解、结构化输出、文件输入 | 文本、图片、视频 | 文本 |
 | GLM 5V Turbo<br><code>glm-5v-turbo</code> | zhipu | <span title="202,752">198K</span> | <span title="131,072">128K</span> | 函数调用、推理、识图、视频理解、结构化输出、文件输入 | 文本、图片、视频 | 文本 |
 | GLM-4.1V-Thinking<br><code>glm-4-1v</code> | zhipu | <span title="65,536">64K</span> | - | 推理、识图 | 文本、图片 | - |

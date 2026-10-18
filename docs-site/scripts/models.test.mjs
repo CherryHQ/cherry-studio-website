@@ -1,7 +1,45 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
 
-import { abbreviate } from '../../.github/scripts/fetch_models.mjs'
+import { abbreviate, categoryOf } from '../../.github/scripts/fetch_models.mjs'
+
+// Model shapes are synthetic; they lock the classification rules, not the live catalog.
+const model = ({ input = [], output = [], capabilities = [] }) => ({
+  inputModalities: input,
+  outputModalities: output,
+  capabilities
+})
+
+test('categoryOf puts generation before conversation', () => {
+  const cases = [
+    // Image generation wins even for conversational models (Nano Banana shape).
+    [
+      model({ input: ['text'], output: ['text', 'image'], capabilities: ['image-generation', 'reasoning'] }),
+      'image-generation.md'
+    ],
+    [model({ output: ['image'] }), 'image-generation.md'],
+    // Generation capabilities also cover rows without modality data (wan2.6-image shape).
+    [model({ input: ['text'], output: [], capabilities: ['image-generation'] }), 'image-generation.md'],
+    [model({ output: ['video'] }), 'video-generation.md'],
+    // Audio generation wins over chat (Qwen-Omni shape), and TTS stays audio.
+    [model({ input: ['text'], output: ['text', 'audio'], capabilities: ['audio-generation'] }), 'audio.md'],
+    [model({ output: ['audio'] }), 'audio.md'],
+    // Speech recognition without text input stays audio instead of falling into chat.
+    [model({ input: ['audio'], output: ['text'], capabilities: ['audio-recognition'] }), 'audio.md'],
+    // Plain text output splits the chat pages by input modality.
+    [model({ input: ['text'], output: ['text'] }), 'chat-text.md'],
+    [model({ input: ['text', 'image'], output: ['text'] }), 'chat-multimodal.md'],
+    // Missing modality data and non-audio, non-chat models keep their fallbacks.
+    [model({}), 'chat-text.md'],
+    [model({ input: ['video'], output: ['text'], capabilities: ['video-recognition'] }), 'chat-multimodal.md'],
+    // Embedding and rerank never fall through to the chat tables.
+    [model({ input: ['text'], output: [], capabilities: ['rerank'] }), 'embedding-rerank.md'],
+    [model({ output: ['vector'] }), 'embedding-rerank.md']
+  ]
+  for (const [input, expected] of cases) {
+    assert.equal(categoryOf(input), expected, `${JSON.stringify(input)} should map to ${expected}`)
+  }
+})
 
 test('abbreviate keeps small values and picks the cleaner K convention', () => {
   const cases = {
