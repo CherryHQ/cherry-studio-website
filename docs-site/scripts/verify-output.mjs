@@ -24,6 +24,10 @@ for (const page of data.pages) {
   assert.ok(existsSync(file), `Missing exported page: ${file}`)
   const html = readFileSync(file, 'utf8')
   assert.ok(html.includes('<html lang='), `Missing document language: ${file}`)
+  assert.ok(html.includes('googletagmanager.com/gtag/js'), `Missing Google Analytics loader: ${file}`)
+  for (const id of ['G-JTJVLD1BNN', 'G-FQ9WGZFVB9']) {
+    assert.ok(html.includes(id), `Missing Google Analytics measurement ID ${id}: ${file}`)
+  }
   if (page.fallback) assert.match(html, /noindex/)
   const pageUrl = `/docs/${page.locale}/${page.slug ? `${page.slug}/` : ''}`
   for (const match of html.matchAll(/href="([^"]*#[^"]+)"/g)) {
@@ -46,5 +50,5 @@ for (const locale of new Set(data.pages.map((page) => page.locale))) {
 assert.ok(existsSync(path.join(root, 'docs/404.html')))
 assert.ok(!failures.size, `Broken exported URLs:\n${[...failures].join('\n')}`)
 console.log(
-  `Verified ${data.pages.length} exported articles and ${checked} local document/resource references and ${checkedAnchors} exported heading links; all locale search indexes and 404 are present.`
+  `Verified ${data.pages.length} exported articles with Google Analytics, ${checked} local document/resource references and ${checkedAnchors} exported heading links; all locale search indexes and 404 are present.`
 )

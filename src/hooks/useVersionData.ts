@@ -65,8 +65,8 @@ interface VersionDataStore {
 
 const releasesURL = import.meta.env.VITE_RELEASES_URL?.trim() || 'https://releases.cherryai.com.cn'
 const versionDataCachePrefix = 'cherry-version-data:v2'
-// Both websites use the CN mirror; the edition header independently selects the package variant.
-const releaseRegion = 'cn'
+// Select the mirror by website region; the edition header independently selects the package variant.
+const releaseRegion = getSiteRegion()
 
 function getMajorVersion(version: string): number | null {
   const match = version.match(/^v?(\d+)\./)

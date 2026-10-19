@@ -5,7 +5,7 @@ icon: timeline
 
 Trace is used to inspect model requests, tool calls, and MCP interactions within a conversation or Agent task. It is suitable for troubleshooting and performance analysis, but is not required for everyday chat.
 
-<figure><img src="../../../../assets/7cb797e89c5a180b57971c67.webp" alt="MCP troubleshooting flowchart from runtime environment, authentication network, to Agent binding and call chain"><figcaption><p>When troubleshooting MCP calls, first verify the server and authentication, then use the trace to determine whether the request reached the Agent and tool execution stages. </p></figcaption></figure>
+<figure><img src="../../../../assets/1c9c5db7c330fdc7de184c2c.webp" alt="MCP troubleshooting flowchart from runtime environment, authentication network, to Agent binding and call chain"><figcaption><p>When troubleshooting MCP calls, first verify the server and authentication, then use the trace to determine whether the request reached the Agent and tool execution stages. </p></figcaption></figure>
 
 ### How to Enable
 

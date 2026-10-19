@@ -62,7 +62,7 @@ Enable employees to query travel approval, accommodation standards, and reimburs
 * Entry: [Accommodation Standards Quick Reference]
 * Entry: [Travel FAQ]
 
-<figure><img src="../../../assets/2414cfc005a860f127a4fd96.webp" alt="An employee travel policy knowledge base composed of multiple policy documents, all ready"><figcaption><p>Maintain policy clauses and FAQs separately so that updating one does not require redoing all materials. </p></figcaption></figure>
+Maintain policy clauses and FAQs as separate entries so that updating one does not require redoing all materials.
 
 ### Recommended Configuration
 
@@ -77,7 +77,7 @@ Enable employees to query travel approval, accommodation standards, and reimburs
 
 1. What is the maximum reimbursable amount for hotel stays on business trips?
 2. Can overseas car rentals be reimbursed?
-3. Who approves the total cost if it exceeds 5,000 CNY?
+3. Who approves the total cost if it exceeds $1,000?
 4. How is it handled if a hotel is booked without prior approval?
 
 ### Chat Prompt
@@ -109,7 +109,7 @@ When rules differ significantly between models, split them into independent know
 * For PDFs, first spot-check the table of contents, tables, and two-column body text.
 * Fault codes rely on precise terminology; retain BM25.
 * Add an embedding model when customer descriptions are colloquial.
-* Bind official manuals and reviewed cases to the after-sales Agent, enabling only [Knowledge Base Search].
+* Bind official manuals and reviewed cases to the after-sales Agent, enabling only [Knowledge Search].
 
 > Troubleshoot in three steps based on device model, fault code, and symptoms. Indicate for each step whether the basis comes from the official manual or a reviewed case. When disassembly, electricity, or data clearing is involved, warn of risks first and wait for confirmation.
 
@@ -133,7 +133,7 @@ Extract verifiable evidence from papers, interview notes, and web snapshots, the
 * Mark interview notes with the respondent's role, date, and whether they are citable.
 * Record the crawl date for web materials, as the knowledge base stores imported snapshots.
 
-<figure><img src="../../../assets/8cd27fa50051cc96320b280a.webp" alt="A knowledge base quality closed-loop diagram covering raising real questions, checking recall, locating issues, adjusting only one item, and re-indexing for retesting"><figcaption><p>First validate source coverage with fixed questions in the research base, then hand it over to the Agent for cross-document synthesis. </p></figcaption></figure>
+<figure><img src="../../../assets/61dbda9b15a8ecba70f214fe.webp" alt="A knowledge base quality closed-loop diagram covering raising real questions, checking recall, locating issues, adjusting only one item, and re-indexing for retesting"><figcaption><p>First validate source coverage with fixed questions in the research base, then hand it over to the Agent for cross-document synthesis. </p></figcaption></figure>
 
 ### Agent Prompt
 
@@ -141,7 +141,7 @@ Extract verifiable evidence from papers, interview notes, and web snapshots, the
 
 ### From Evidence to Deliverable
 
-<figure><img src="../../../assets/31b376b5d5a233eeb71ddf12.webp" alt="A content workflow diagram where sources are retrieved via knowledge base recall and organized by the Agent into text files or multilingual images"><figcaption><p>Retain evidence and limitations first, then let the Agent organize them into a report; do not let the final product obscure the original sources. </p></figcaption></figure>
+<figure><img src="../../../assets/58e56b2ba6cf637b831f0efb.webp" alt="A content workflow diagram where sources are retrieved via knowledge base recall and organized by the Agent into text files or multilingual images"><figcaption><p>Retain evidence and limitations first, then let the Agent organize them into a report; do not let the final product obscure the original sources. </p></figcaption></figure>
 
 ### Acceptance Criteria
 

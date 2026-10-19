@@ -84,7 +84,8 @@ export function SiteHeader({
   renderLink = (props) => <a {...props} />
 }: SiteHeaderProps) {
   const [scrolled, setScrolled] = useState(false)
-  const [starCount, setStarCount] = useState(() => readGitHubStarsCache()?.count ?? GITHUB_STARS_FALLBACK)
+  // Keep the first client render identical to the static HTML; apply cached stars in the effect.
+  const [starCount, setStarCount] = useState(GITHUB_STARS_FALLBACK)
   const dialog = useRef<HTMLDialogElement>(null)
   const linkContent = (item: HeaderLink) => (
     <>
@@ -164,9 +165,7 @@ export function SiteHeader({
               <img src={githubIcon} alt="GitHub" className="h-4 w-4 dark:invert" />
               <span className="flex w-[3.25rem] shrink-0 items-center gap-1" aria-hidden="true">
                 <Star className="h-3.5 w-3.5 shrink-0 fill-yellow-500 text-yellow-500" />
-                <span className="min-w-[2rem] tabular-nums" suppressHydrationWarning>
-                  {formatStarCount(starCount)}
-                </span>
+                <span className="min-w-[2rem] tabular-nums">{formatStarCount(starCount)}</span>
               </span>
             </a>
           </div>

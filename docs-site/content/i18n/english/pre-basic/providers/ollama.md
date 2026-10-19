@@ -1,18 +1,3 @@
-# Project Introduction
-
-
-<figure><img src="../../../../assets/9f2bec956e3709e3aebf9957.webp" alt=""><figcaption></figcaption></figure>
-
-Cherry Studio is an all-in-one AI assistant platform integrating multi-model conversations, knowledge base management, AI painting, translation, and more.
-
-### Star History
-
-[Star History](https://cherrystarhistory.ocool.online/)
-
-## Follow Our Social Accounts
-
-<table data-view="cards"><thead><tr><th></th><th data-hidden data-card-cover data-type="files"></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><a href="https://www.xiaohongshu.com/user/profile/662b6853000000000b031d9a?xsec_token=YB_1nKvlH4r5hPYVVbbsNHF8Y6n6AKlm5-DaggPCtd2DQ%3D&#x26;xsec_source=app_share&#x26;xhsshare=CopyLink&#x26;appuid=662b6853000000000b031d9a&#x26;apptime=1738627324&#x26;share_id=ace5db41b5954fab8d98a2a7865a62bc&#x26;share_channel=copy_link">Xiaohongshu</a></td><td><a href=".gitbook/assets/1.png">1.png</a></td><td><a href="https://www.xiaohongshu.com/user/profile/662b6853000000000b031d9a?xsec_token=YB_1nKvlH4r5hPYVVbbsNHF8Y6n6AKlm5-DaggPCtd2DQ%3D&#x26;xsec_source=app_share&#x26;xhsshare=CopyLink&#x26;appuid=662b6853000000000b031d9a&#x26;apptime=1738627324&#x26;share_id=ace5db41b5954fab8d98a2a7865a62bc&#x26;share_channel=copy_link">https://www.xiaohongshu.com/user/profile/662b6853000000000b031d9a?xsec_token=YB_1nKvlH4r5hPYVVbbsNHF8Y6n6AKlm5-DaggPCtd2DQ%3D&#x26;xsec_source=app_share&#x26;xhsshare=CopyLink&#x26;appuid=662b6853000000000b031d9a&#x26;apptime=1738627324&#x26;share_id=ace5db41b5954fab8d98a2a7865a62bc&#x26;share_channel=copy_link</a></td></tr></tbody></table>
-
 # Ollama
 
 Ollama is an excellent open-source tool that allows you to easily run and manage various large language models (LLMs) locally. Cherry Studio now supports Ollama integration, enabling you to interact directly with locally deployed LLMs within a familiar interface, without relying on cloud services!
@@ -61,10 +46,10 @@ First, you need to install and run Ollama on your computer. Please follow these 
 Next, add Ollama as a custom AI provider in Cherry Studio:
 
 *   **Open Settings:** In the Cherry Studio interface, click "Settings" (gear icon) in the left navigation bar.
-*   **Go to Model Services:** On the settings page, select the "Model Services" tab.
+*   **Go to Model Provider:** On the settings page, select "Model Provider" in the left menu.
 *   **Add Provider:** Click Ollama in the list.
 
-<figure><img src="../../../../assets/4645d257a81eb080a84c05fc.webp" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../assets/01f33d66d14a3c39d1cb0820.webp" alt=""><figcaption></figcaption></figure>
 
 ### **3. Configure the Ollama Provider**
 
@@ -86,7 +71,7 @@ Locate the newly added Ollama in the provider list and configure it in detail:
 5.  **Model Management:**
     *   Click the "+ Add" button to manually add the name of the model you have already downloaded in Ollama.
     *   For example, if you have downloaded the `llama3.2` model via `ollama run llama3.2`, then you can enter `llama3.2` here.
-    *   Click the "Manage" button to edit or delete added models.
+    *   Use the settings icon or "−" next to each model to edit or remove added models.
 
 ## Get Started
 

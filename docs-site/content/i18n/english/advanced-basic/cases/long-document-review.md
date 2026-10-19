@@ -55,7 +55,7 @@ Review proposal.docx in the current directory. First, list factual issues, struc
 | Item | Recommended Preparation |
 | ---- | -------------------------------- |
 | Files | Keep original text, review requirements, and output directory separate |
-| Recommended Setup | Dedicated Agent + Working directory containing only project files + [Step-by-Step Confirmation] |
+| Recommended Setup | Dedicated Agent + Working directory containing only project files + [Ask Before Acting] |
 | Spot Check Method | Spot check one chapter first to confirm citation format and judgment scale |
 | Completion Criteria | Each comment includes original location; unread parts are clearly marked; original file is not overwritten |
 

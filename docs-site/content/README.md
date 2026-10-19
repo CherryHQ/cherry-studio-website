@@ -1,8 +1,66 @@
 ---
+rich: true
 icon: cherries
 ---
 
-# 项目简介
+# Cherry Studio 使用文档
+
+<a id="xiang-mu-jian-jie"></a>
+
+Cherry Studio 使用文档：按你要完成的事找到教程。
+
+<div data-cards>
+<div data-card>
+
+[**第一次使用**](getting-started/quick-start.md)
+
+从安装、连接模型到发出第一条消息。
+
+</div>
+<div data-card>
+
+[**完成一个任务**](#日常使用)
+
+查找对话、知识库、绘画与翻译教程。
+
+</div>
+<div data-card>
+
+[**遇到问题**](question-contact/questions.md)
+
+先按现象排查。
+
+</div>
+</div>
+
+## 开始使用
+
+[下载与安装](cherry-studio/installation/README.md) · [快速开始](getting-started/quick-start.md) · [升级与降级](cherry-studio/installation/upgrade-downgrade.md)
+
+## 日常使用
+
+[对话与助手](cherrystudio/preview/chat.md) · [用自己的资料问答](knowledge-base/knowledge-base.md) · [生成与编辑图片](advanced-basic/knowledge-content/painting-workflow.md) · [翻译文件与长文](advanced-basic/knowledge-content/translation-workflow.md) · [更多任务案例](advanced-basic/cases/README.md)
+
+<a id="agent-yu-zi-dong-hua"></a>
+<a id="agent-与自动化"></a>
+
+## 智能体与自动化
+
+[创建智能体](advanced-basic/agent-workspace/create-agent.md) · [处理任务与文件](advanced-basic/agent-workspace/workspaces-tasks-files.md) · [技能与 MCP](advanced-basic/extensions/README.md) · [频道与定时任务](advanced-basic/automation/README.md)
+
+## 配置与数据
+
+[连接模型服务](pre-basic/providers/README.md) · [软件设置](pre-basic/settings/README.md) · [备份与数据管理](pre-basic/data-settings/README.md)
+
+## 故障排查
+
+[常见问题](question-contact/questions.md) · [知识库排错](knowledge-base/troubleshooting.md) · [MCP 排错](advanced-basic/extensions/mcp/troubleshooting.md) · [反馈问题](question-contact/suggestions.md)
+
+## 开发者与贡献
+
+[API 网关与诊断工具](advanced-basic/developer-tools/README.md) · [贡献代码](contribution/code.md) · [贡献文档](contribution/docs.md)
+
+***
 
 <figure><img src="assets/fc946e1426d78466ee005eba.webp" alt=""><figcaption></figcaption></figure>
 
@@ -12,7 +70,7 @@ icon: cherries
 
 ***
 
-Cherry Studio 是一款集多模型对话、智能体 Agent、知识库管理、AI 绘画、翻译等功能于一体的全能 AI 工作台。Cherry Studio 高度自定义的设计、强大的扩展能力和友好的用户体验，使其成为专业用户和 AI 爱好者的理想选择。无论是零基础用户还是开发者，都能在 Cherry Studio 中找到适合自己的 AI 功能，提升工作效率和创造力。
+Cherry Studio 是一款集多模型对话、智能体、知识库管理、AI 绘画、翻译等功能于一体的全能 AI 工作台。Cherry Studio 高度自定义的设计、强大的扩展能力和友好的用户体验，使其成为专业用户和 AI 爱好者的理想选择。无论是零基础用户还是开发者，都能在 Cherry Studio 中找到适合自己的 AI 功能，提升工作效率和创造力。
 
 <figure><img src="assets/92f4cf63702b053822a1545a.webp" alt=""><figcaption></figcaption></figure>
 
@@ -33,7 +91,7 @@ Cherry Studio 是一款集多模型对话、智能体 Agent、知识库管理、
 
 #### **2. 智能体与自动化**
 
-* **智能体（Agent）**：可在 **工作** 页面中读取文件、运行命令并完成多步任务，详见 工作。
+* **智能体**：可在 **工作** 页面中读取文件、运行命令并完成多步任务，详见 工作。
 * **技能（Skill）**：为助手或智能体加装的"专业能力包"（如做小红书图文、画流程图），开箱即用，详见 技能。
 * **MCP**：通过 Model Context Protocol 接入外部工具与服务（数据库、Notion、GitHub 等），详见 [MCP 使用教程](advanced-basic/extensions/mcp/README.md)。
 * **频道**：将智能体派驻到飞书 / 微信 / Telegram / Discord 等 IM 平台担任群机器人，详见 频道。
@@ -103,7 +161,13 @@ Cherry Studio 是一款集多模型对话、智能体 Agent、知识库管理、
 
 ### Star History
 
-[Star History](https://cherrystarhistory.ocool.online/)
+<a href="https://star-history.dera.page/#CherryHQ/cherry-studio&amp;Date">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://star-history.dera.page/svg?repos=CherryHQ/cherry-studio&amp;type=Date&amp;theme=dark" />
+    <source media="(prefers-color-scheme: light)" srcset="https://star-history.dera.page/svg?repos=CherryHQ/cherry-studio&amp;type=Date" />
+    <img alt="Star History Chart" src="https://star-history.dera.page/svg?repos=CherryHQ/cherry-studio&amp;type=Date" />
+  </picture>
+</a>
 
 ## 关注我们的社交账号
 

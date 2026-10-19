@@ -9,7 +9,7 @@ Anthropic's Claude is one of the best models to serve as the backend for [Cherry
 
 ## Configure in Cherry Studio
 
-* Open `Settings → Model Service`, find the **Anthropic** Provider, and enter the details page
+* Open `Settings → Model Provider`, find the **Anthropic** Provider, and enter the details page
 * Enter your `sk-ant-...` in the **API Key** field
 * The **API Address** defaults to `https://api.anthropic.com`; no changes are needed
 * Click **Fetch Model List** and add models such as `claude-opus-4`, `claude-sonnet-4`, and `claude-haiku-4`
@@ -27,7 +27,6 @@ Anthropic's Claude is one of the best models to serve as the backend for [Cherry
 Select this Provider as the default model source when configuring [Cherry Agent](../../advanced-basic/agent.md) to directly access Anthropic protocol Agent capabilities.
 
 {% hint style="info" %}
-* Anthropic API is not directly accessible from mainland China; a proxy is required (see [General Settings → Proxy Mode](../settings/general.md))
 * Users with a Claude Code subscription can also use the same key + endpoint to connect to Cherry Studio
 * Claude models are billed by token; monitor usage for long contexts
 {% endhint %}

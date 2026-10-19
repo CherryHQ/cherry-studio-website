@@ -21,7 +21,9 @@ Run `pnpm docs:generate` to compile local Markdown, navigation and search indexe
 
 The initial import includes lossless WebP image conversions with updated source references. Shared images and attachments live in `content/assets/`; identical imported assets are stored once across languages. Add compressed images there and use relative references; GIF animations and oversized screenshots can retain their original formats. Build output deduplicates identical attachments by content hash.
 
-`locales.json` lists the eight supported languages. `page-aliases.json` maps older translation filenames to the corresponding current source paths. Missing translations render the Simplified Chinese source with `noindex`; their canonical points to the Chinese original. A language switch keeps the current article when available, otherwise it opens the target language home.
+Mobile documentation screenshots are paired by filename in `content/assets/mobile/zh/` and `content/assets/mobile/en/`. Capture the same feature in the App's Chinese and English interfaces when adding or updating an image. Simplified Chinese pages use `zh/`; English pages use `en/`. Captions identify the interface language when it differs from the article language. Keep both the image and its full-size link on the matching language path, and describe template previews as examples rather than generated results.
+
+`locales.json` lists the two supported languages, Simplified Chinese (`zh-cn`) and English (`en`). `page-aliases.json` maps older translation filenames to the corresponding current source paths. Missing translations render the Simplified Chinese source with `noindex`; their canonical points to the Chinese original. A language switch keeps the current article when available, otherwise it opens the target language home.
 
 GitBook Markdown is parsed as Markdown/HTML, **not executed as MDX**. Sanitization removes executable HTML. Hints, headings, figures, tables, details and code are retained. GitBook tabs are presented as expanded titled sections; embeds become direct links. This preserves access to all content in a static export. `SUMMARY.md` supplies each language's navigation, with untranslated current pages in a separate section. GitBook Chinese pinyin anchors and Markdown Unicode anchors are retained where derivable. Formulas in `$$...$$` (inline or on separate lines) and fenced `math` blocks render to static MathML during generation. Inline code and other code blocks remain literal; single dollar signs are treated as text to avoid changing prices. No browser math runtime or external fonts are required. Invalid formulas fail generation.
 
@@ -49,3 +51,16 @@ Deploy the **complete `dist` directory**. The root release command includes docs
 Chinese pages use `cherryai.com.cn` as canonical; all other languages use `cherryai.com`. Both exports include all languages; their docs sitemaps list only the host's canonical, translated pages. Language alternates omit missing translations.
 
 The old `docs.cherryai.com.cn` domain is **not changed by this repository**. After the new site is deployed and checked, configure that host to redirect to the new language paths. `generated/legacy-redirects.json` records source paths and known filename aliases; use it to create explicit redirects and preserve query strings. Browser fragments cannot be matched by HTTP redirects; heading anchors must remain compatible. Review historical production URLs before enabling a broad fallback redirect. Roll back by redeploying the previous complete website artifact.
+
+
+### Rich Markdown pages
+
+Use `rich: true` in frontmatter to render selected content with the installed Fumadocs UI components. The source remains Markdown; no MDX imports or dependency upgrades are required.
+
+- `{% hint style="info|warning|success" %}` / `{% endhint %}` renders a Callout.
+- `{% stepper %}` with `{% step %}` / `{% endstep %}` renders Steps. Keep existing heading anchors when revising titles.
+- `{% tabs %}` with `{% tab title="Windows" %}` / `{% endtab %}` renders Tabs. Panels remain in the exported HTML, and a heading anchor selects its panel.
+- `<div data-cards>` containing `<div data-card>` renders Cards. Start each card with a Markdown link, followed by its description.
+- Fenced code continues to use the existing Shiki highlighting pipeline.
+
+Only sanitized, rewritten content enters the component renderer. Search and link validation retain the complete Markdown content. Pages without `rich: true` continue to use static HTML.

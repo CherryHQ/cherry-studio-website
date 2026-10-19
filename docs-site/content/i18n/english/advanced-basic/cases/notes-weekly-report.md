@@ -5,10 +5,6 @@ icon: calendar-week
 
 A project lead has accumulated meeting notes, progress updates, and scattered to-dos over the week and wants to organize them into a stable, fact-checkable weekly report by Friday. The key is to standardize the recording method first, then let the Agent summarize, rather than having it guess missing statuses.
 
-<figure><img src="../../../../assets/037b73b62e47ca15c0537f83.webp" alt="The entry points for folders, new creation, edit preview, and export in Notes"><figcaption><p>Consistently recording with the same structure makes it easier to verify status and owners during weekend cleanup. </p></figcaption></figure>
-
-<figure><img src="../../../../assets/cd9eea7189b1b6cf20d2b08d.webp" alt="The Week 32 work retrospective in Notes with completed items, ongoing work, risks and blockers, and next week's plan filled in"><figcaption><p>① The left side retains raw records and weekly reviews; ② The right-side weekly report already contains real content and can be manually edited, previewed, and exported. </p></figcaption></figure>
-
 ## Workflow
 
 {% stepper %}

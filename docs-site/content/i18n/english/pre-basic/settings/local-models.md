@@ -7,7 +7,7 @@ Local models are small, built-in models in Cherry Studio that **run offline afte
 
 Open `Settings → Local Models` to manage them:
 
-<figure><img src="../../../../assets/3ef4a2e692da5a39fccf7406.webp" alt=""><figcaption><p>Local Models: ① Two built-in local models—Local Embedding Model + Local OCR Model (both shown as "Ready" in the image; click the delete icon on the right to remove)</p></figcaption></figure>
+<figure><img src="../../../../assets/de49a621a6d8b65c3725ff3a.webp" alt=""><figcaption><p>Local Models: the Local Embedding model (shown as "Ready"; click the delete icon to remove it) and the Local OCR model (click Download to install it). The Hardware acceleration switch at the top uses DirectML or CoreML to speed up local inference</p></figcaption></figure>
 
 Two types of local models are currently built in:
 

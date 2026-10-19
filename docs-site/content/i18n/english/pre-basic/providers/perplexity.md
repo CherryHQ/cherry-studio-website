@@ -14,7 +14,7 @@ The **Sonar** series from Perplexity focuses on **search-augmented conversation*
 3. Click **Fetch Model List**, add models such as Sonar, and enable the provider switch in the top-right corner to start using it
 
 {% hint style="info" %}
-Perplexity models have built-in web retrieval capabilities, so no additional configuration for online mode is required. Access from mainland China typically requires resolving network proxy issues independently. For more information, see the [Perplexity official documentation](https://docs.perplexity.ai/home).
+Perplexity models have built-in web retrieval capabilities, so no additional configuration for online mode is required. For more information, see the [Perplexity official documentation](https://docs.perplexity.ai/home).
 {% endhint %}
 
 ***

@@ -1,6 +1,6 @@
 # 智谱 ZhiPu
 
-智谱 AI 的 **GLM** 系列（含多模态 GLM-4V），国内直连、中文表现好。智谱在 Cherry Studio 中走 **Anthropic 兼容端点**，因此除普通对话外，也可用于 **Cherry Agent**。
+智谱 AI 的 **GLM** 系列（含多模态 GLM-4V），国内直连、中文表现好。智谱在 Cherry Studio 中走 **Anthropic 兼容端点**，因此除普通对话外，也可用于 **Cherry 智能体**。
 
 ## 获取 API Key
 

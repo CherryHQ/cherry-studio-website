@@ -6,7 +6,7 @@ icon: linux
 
 ## 1. Download the Installer
 
-Open the [official download page](https://cherryai.com.cn/download/v2) and select **Linux**. The website provides installers in different formats based on your system and architecture:
+Open the [official download page](https://cherryai.com/download) and select **Linux**. The website provides installers in different formats based on your system and architecture:
 
 | Use Case | Recommendation |
 | ------------------------ | ----------------------- |

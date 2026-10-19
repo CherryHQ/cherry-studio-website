@@ -6,7 +6,7 @@ icon: brain
 
 Knowledge bases, notes, painting, and translation are not isolated tools. They handle organizing materials, refining content, creating visual assets, and processing multilingual files, respectively, and all can be passed to an Agent for further use.
 
-<figure><img src="../../../../assets/31b376b5d5a233eeb71ddf12.webp" alt="Flowchart of materials entering the knowledge base, passing recall tests, being handed to the Agent, and forming text, images, or translations"><figcaption><p>Start by running recall tests with real questions, then have the Agent create reports, translations, or images based on the materials. </p></figcaption></figure>
+<figure><img src="../../../../assets/58e56b2ba6cf637b831f0efb.webp" alt="Flowchart of materials entering the knowledge base, passing recall tests, being handed to the Agent, and forming text, images, or translations"><figcaption><p>Start by running recall tests with real questions, then have the Agent create reports, translations, or images based on the materials. </p></figcaption></figure>
 
 ## How the Four Entry Points Divide the Work
 
@@ -21,7 +21,7 @@ Knowledge bases, notes, painting, and translation are not isolated tools. They h
 If the goal is to "complete a deliverable using these materials," tell the Agent directly in [Work] where the materials are and what output is needed. Enter the specific module only when you need to manually organize the database, adjust images, or verify translations paragraph by paragraph.
 {% endhint %}
 
-<figure><img src="../../../../assets/203ae7d1fc3c8b76bd8af0a8.webp" alt="The name, embedding model, and save entry points when creating a new Knowledge Base"><figcaption><p>When creating a new knowledge base, name it first, then select the embedding model for retrieval. </p></figcaption></figure>
+<figure><img src="../../../../assets/27c5374d7b45598dca0744d9.webp" alt="The New Knowledge Base dialog with Name and Embedding Model fields"><figcaption><p>When creating a new knowledge base, name it first, then select the embedding model for retrieval. </p></figcaption></figure>
 
 ## From Materials to Deliverables
 

@@ -5,11 +5,7 @@ icon: flask
 
 A product team is preparing for a quarterly review: internal materials are complete, but public information needs to be supplemented, and perspectives from different models must be compared. The final deliverable is a research report that allows verification against sources and clearly distinguishes facts from judgments.
 
-<figure><img src="../../../../assets/290e0288048d57cd868cb443.webp" alt="The model selection and multi-model comparison entry in the conversation input area"><figcaption><p>At the start of the research, define the comparison models and the scope of questions. Do not arbitrarily change criteria midway. </p></figcaption></figure>
-
-<figure><img src="../../../../assets/49842a248b90a5707753efa1.webp" alt="Message branch management is used to retain different follow-up paths"><figcaption><p>Place different hypotheses in independent branches, then return to the main line to aggregate confirmed conclusions. </p></figcaption></figure>
-
-<figure><img src="../../../../assets/20eae1a141993f3367a544b0.webp" alt="After proposing unified inspection requirements for the release plan, Cherry Assistant provided actual review results covering security, stability, monitoring, rollback, notifications, and acceptance"><figcaption><p>① Clearly state the evaluation dimensions and known conditions in the prompt; ② Expand results using the same structure to facilitate comparison, follow-up questions, and manual verification. </p></figcaption></figure>
+<figure><img src="../../../../assets/7eea2d9eab50983603d6641b.webp" alt="The model selector with a Multi-select button for choosing several models"><figcaption><p>At the start of the research, define the comparison models and the scope of questions. Do not arbitrarily change criteria midway. </p></figcaption></figure>
 
 ## Recommended Setup
 
@@ -31,7 +27,7 @@ Select multiple models in [Chat] and ask each to list conclusions, assumptions, 
 {% step %}
 ### 2. Create a Research Agent
 
-Bind relevant knowledge bases and research skills. Keep permissions set to [Confirm Each Time]. In the working directory, separate raw materials from the `report/` output directory.
+Bind relevant knowledge bases and research skills. Keep permissions set to [Ask Before Acting]. In the working directory, separate raw materials from the `report/` output directory.
 {% endstep %}
 
 {% step %}
@@ -59,7 +55,7 @@ Review the project materials in the current directory and supplement with public
 | ---- | ------------------------------- |
 | Research Question | Clearly state the conclusion to be compared in one sentence |
 | Source Requirements | Specify time range, region, and acceptable sources |
-| Recommended Setup | Use multi-model comparison to collect differences, branches for follow-up, and notes to save confirmed conclusions |
+| Recommended Setup | Use multi-model comparison to collect differences and notes to save confirmed conclusions |
 | Completion Criteria | Every key conclusion can be traced back to a source; disagreements are listed separately; unconfirmed content is not presented as fact |
 
 This case is suitable for research requiring perspective comparison and decision process review. It is not suitable for treating multi-model voting directly as factual judgment.

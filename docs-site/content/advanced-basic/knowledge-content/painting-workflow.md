@@ -63,11 +63,14 @@ icon: palette
 {% endstep %}
 {% endstepper %}
 
-### 在 Agent 中画图
+<a id="zai-agent-zhong-hua-tu"></a>
+<a id="在-agent-中画图"></a>
 
-先到【设置】→【默认模型】选择【绘画模型】，再打开 Agent 的【内置工具】确认【生成图片】已启用。之后可以在【工作】里让 Agent 先读文章、提炼视觉方向，再直接生成配图。
+### 在智能体中画图
 
-<figure><img src="../../assets/1c3d17dc2a9692479862d303.webp" alt="默认模型设置中的绘画模型选择"><figcaption><p>【默认模型】中的【绘画模型】决定 Agent 和相关绘画入口优先使用哪个模型。</p></figcaption></figure>
+先到【设置】→【默认模型】选择【绘画模型】，再打开智能体的【内置工具】确认【生成图片】已启用。之后可以在【工作】里让智能体先读文章、提炼视觉方向，再直接生成配图。
+
+<figure><img src="../../assets/1c3d17dc2a9692479862d303.webp" alt="默认模型设置中的绘画模型选择"><figcaption><p>【默认模型】中的【绘画模型】决定智能体和相关绘画入口优先使用哪个模型。</p></figcaption></figure>
 
 ### 应用案例：制作一组品牌活动配图
 

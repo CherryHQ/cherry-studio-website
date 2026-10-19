@@ -6,7 +6,7 @@ icon: folder-open
 The two most important choices when creating a knowledge base are the name and the embedding model. You can add materials later, but the name defines the scope, and the retrieval method affects future maintenance.
 
 {% hint style="info" %}
-For your first experience, set the **Embedding Model** to **None**. The knowledge base will still use BM25 keyword retrieval, which is sufficient to test the import and recall workflow.
+For your first experience, leave the **Embedding Model** set to **Disabled**. The knowledge base will still use BM25 keyword retrieval, which is sufficient to test the import and recall workflow.
 {% endhint %}
 
 ## Make Two Decisions Before Creating
@@ -19,7 +19,7 @@ Use a format of "Object + Purpose," such as **Employee Travel Policy**, **Produc
 
 | Option | Suitable Scenario | Retrieval Method | Prerequisites |
 | ------ | ------------- | ------------- | ------------ |
-| None | First-time use, clear keywords | BM25 keyword retrieval | None |
+| Disabled | First-time use, clear keywords | BM25 keyword retrieval | None |
 | Cloud Embedding Model | User queries differ significantly from source text | BM25 + Vector hybrid retrieval | The corresponding model service must be callable |
 | Local Embedding Model | Vectorization must happen locally | BM25 + Local vector retrieval | Download the model in **Local Models** first |
 
@@ -29,7 +29,7 @@ Use a format of "Object + Purpose," such as **Employee Travel Policy**, **Produc
 {% step %}
 ### 1. Open the Creation Window
 
-Open **Knowledge Base** in the left navigation and click the add button above the knowledge base list.
+Open **Knowledge Base** in the left navigation and click **New Knowledge Base** at the top of the knowledge base list.
 {% endstep %}
 
 {% step %}
@@ -41,9 +41,9 @@ Enter a name that clearly defines the scope, such as **Employee Travel Policy**.
 {% step %}
 ### 3. Select an Embedding Model
 
-Select an available cloud or local embedding model. If you do not need semantic retrieval yet, select **None**.
+Select an available cloud or local embedding model. If you do not need semantic retrieval yet, leave it as **Disabled**.
 
-<figure><img src="../../../assets/7f1505c0527aeddf65937cdc.webp" alt="Knowledge base creation form for entering the employee travel policy name and selecting an embedding model"><figcaption><p>The name defines the material scope; the embedding model determines whether vector retrieval is included.</p></figcaption></figure>
+<figure><img src="../../../assets/f6a39ee257fe1841a28d49b2.webp" alt="The New Knowledge Base dialog with Name and Embedding Model fields and a Create button"><figcaption><p>The name defines the material scope; the embedding model determines whether vector retrieval is included.</p></figcaption></figure>
 {% endstep %}
 
 {% step %}
@@ -55,15 +55,15 @@ Confirm the name and model, then click **Create**. After creation, you will ente
 {% step %}
 ### 5. Add the First Batch of Materials
 
-Click the add materials button, import one or two files or notes with clear answers, and wait for processing to complete.
+Click **Add Data Source**, import one or two files or notes with clear answers, and wait for processing to complete.
 {% endstep %}
 {% endstepper %}
 
 ## Using a Local Embedding Model
 
-Open **Settings** → **Local Models** and download an available model in the **Embedding Models** section. The displayed models and download sizes may vary depending on the installation environment; refer to the current list.
+Open **Settings** → **Local Models** and click **Download** on the **Local Embedding** card. It shows **Ready** once downloaded. The model and download size may vary by installation environment; refer to the current card.
 
-<figure><img src="../../../assets/ba97a6075b29a5304d81dc79.webp" alt="The embedding model download entry in local model settings"><figcaption><p>After downloading, return to the knowledge base creation or settings page to select this model.</p></figcaption></figure>
+<figure><img src="../../../assets/6fd666d693173e510609acd9.webp" alt="The Local Models settings page with the Local Embedding card showing Ready and a Local OCR card"><figcaption><p>After downloading, return to the knowledge base creation or settings page to select this model.</p></figcaption></figure>
 
 {% hint style="warning" %}
 Using a local embedding model only means vectorization happens locally. Whether document parsing, reranking, and chat use cloud services depends on the respective service and model selections.
@@ -93,7 +93,7 @@ Before starting the rebuild, ensure the new model is callable. After rebuilding,
 
 ## User Case
 
-Xiao Lin created the **Employee Travel Policy** knowledge base for the first time. He first selected **None** for the embedding model, imported three policy documents, and completed the recall test. After keyword queries became stable, he configured an embedding model and compared results for colloquial queries using the same questions.
+Xiao Lin created the **Employee Travel Policy** knowledge base for the first time. He first left the embedding model **Disabled**, imported three policy documents, and completed the recall test. After keyword queries became stable, he configured an embedding model and compared results for colloquial queries using the same questions.
 
 The completion standard is: after upgrading the retrieval method, the original fixed questions do not degrade, and colloquial queries can more stably find the same policy.
 
@@ -103,7 +103,7 @@ The completion standard is: after upgrading the retrieval method, the original f
 
 <summary>What if the Create button is unavailable?</summary>
 
-Check if the name is empty and if the selected model is still available. If the model service is not configured, you can switch to **None** to complete the creation.
+Check if the name is empty and if the selected model is still available. If the model service is not configured, you can switch to **Disabled** to complete the creation.
 
 </details>
 

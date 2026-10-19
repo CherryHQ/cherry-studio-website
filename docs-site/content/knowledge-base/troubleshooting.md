@@ -42,7 +42,10 @@ icon: circle-question
 {% endstep %}
 
 {% step %}
-### 5. 检查对话或 Agent
+<a id="5-jian-cha-dui-hua-huo-agent"></a>
+<a id="5-检查对话或-agent"></a>
+
+### 5. 检查对话或智能体
 
 召回正确但回答错误时，确认已选择或绑定知识库，要求只依据来源回答，并把问题拆成更小的事实项。
 {% endstep %}
@@ -148,7 +151,10 @@ icon: circle-question
 
 </details>
 
-## 对话与 Agent
+<a id="dui-hua-yu-agent"></a>
+<a id="对话与-agent"></a>
+
+## 对话与智能体
 
 <details>
 
@@ -176,9 +182,9 @@ icon: circle-question
 
 <details>
 
-<summary>Agent 为什么看不到知识库？</summary>
+<summary>智能体为什么看不到知识库？</summary>
 
-打开【编辑智能体】→【知识库】，把目标库绑定到当前 Agent，并在【内置工具】中启用【知识库搜索】。
+打开【编辑智能体】→【知识库】，把目标库绑定到当前智能体，并在【内置工具】中启用【知识库搜索】。
 
 </details>
 

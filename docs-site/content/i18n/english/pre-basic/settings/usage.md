@@ -7,7 +7,7 @@ Usage Statistics aggregates your **model invocation data in Cherry Studio into a
 
 Open `Settings → Usage Statistics`. The page is divided into **Overview / Explore / Requests** sections. In the top-right corner, you can switch between **Last 30 days / Last 90 days / Last year**, and all data is calculated based on the selected period.
 
-<figure><img src="../../../../assets/9ccf4fd668065e8e789301e5.webp" alt=""><figcaption><p>Usage Statistics [Overview]: Top metric cards + daily activity heatmap below (total cost in the image is redacted)</p></figcaption></figure>
+<figure><img src="../../../../assets/344cc147221e745e6e208767.webp" alt=""><figcaption><p>Usage Statistics [Overview]: Top metric cards + daily activity heatmap below</p></figcaption></figure>
 
 ### Overview
 

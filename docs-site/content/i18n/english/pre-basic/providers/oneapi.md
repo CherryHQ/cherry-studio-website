@@ -27,7 +27,7 @@
 *   Strictly distinguish between `http` and `https`; if SSL is not enabled, do not use `https`.
 {% endhint %}
 
-*   Add a model (click Manage to auto-acquire or enter manually) and turn on the switch in the upper right corner to use it.
+*   Add a model (click Sync models to fetch them automatically, or + to enter one manually) and turn on the switch in the upper right corner to use it.
 
 {% hint style="success" %}
 Other OneAPI themes might have different interfaces, but the adding method is consistent with the process described above.

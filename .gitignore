@@ -22,6 +22,10 @@ dist-ssr
 *.sln
 *.sw?
 
+# Python bytecode from the leaderboard script
+__pycache__/
+*.pyc
+
 # Generated documentation (compiled from docs-site/content)
 docs-site/.next/
 docs-site/out/

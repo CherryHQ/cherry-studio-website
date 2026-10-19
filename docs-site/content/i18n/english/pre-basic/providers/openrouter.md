@@ -10,7 +10,7 @@ OpenRouter is a **unified gateway** that lets you access chat models from 200+ p
 
 ## Configure in Cherry Studio
 
-* Open `Settings → Model Service`, find the **OpenRouter** Provider, and enter its details page
+* Open `Settings → Model Provider`, find the **OpenRouter** Provider, and enter its details page
 * Enter your `sk-or-...` in the **API Key** field
 * The **API Base URL** defaults to `https://openrouter.ai/api`; no changes are needed
 * Click **Fetch Model List**; OpenRouter will return hundreds of available models

@@ -12,6 +12,10 @@ This page only introduces the interface functions. For configuration tutorials, 
 
 ### API Key
 
+To enter a key, click **Add API key** in the API Key field. In the dialog, paste the key, then click **Save and close** (or **Next** to continue setting up). Click **Get API Key** next to the field title to open the provider's key page.
+
+<figure><img src="../../../../../assets/dcacb5e593a9740371d6dc50.webp" alt="The Add API key dialog for OpenAI with an Enter API key field and Save and close / Next buttons"><figcaption><p>The Add API key dialog</p></figcaption></figure>
+
 In Cherry Studio, a single provider supports multi-key round-robin usage, where keys are used in a sequential, looping manner from front to back.
 
 *   Add multiple keys separated by English commas, as shown in the example below:
@@ -25,9 +29,9 @@ You must use **English** commas.
 
 <a id="api-di-zhi"></a>
 
-### API Address
+### API Host
 
-When using a built-in provider, you generally do not need to fill in the API address. If you need to modify it, please strictly follow the address provided in the official documentation.
+When using a built-in provider, you generally do not need to fill in the API Host. If you need to modify it, please strictly follow the address provided in the official documentation.
 
 > If the address provided by the provider is in the format <mark style="background-color:red;">https://xxx.xxx.com</mark><mark style="background-color:green;">/v1/chat/completions</mark>, you only need to fill in the root address part (<mark style="background-color:red;">https://xxx.xxx.com</mark>).
 >
@@ -40,21 +44,21 @@ That is:
 
 *   When the API address ends with `/`, only "chat/completions" will be appended.
 *   When the API address ends with `#`, no appending operation will be performed, and only the entered address will be used.
-
-<img src="../../../../../assets/27c00f0e8b8976ff9e7f76fe.webp" alt="" data-size="original"><img src="../../../../../assets/d6c6bcca839c04b6bd0879be.webp" alt="" data-size="original">
 {% endhint %}
 
 ### Adding Models
 
-Generally, clicking the `Manage` button in the bottom left corner of the provider configuration page will automatically retrieve all models supported by that provider. You can then click the `+` sign next to a model in the retrieved list to add it to the model list.
+Click **Sync models** to the right of the **Models** heading to automatically retrieve the models supported by the provider, then add the ones you want to the model list. To add a model by hand, click the **+** next to **Sync models** and fill in the Model ID, Model Name and Group Name.
+
+Each model in the list has a settings icon for editing it and a **−** for removing it.
 
 {% hint style="info" %}
-Not all models in the pop-up list will be added when you click the management button. You need to click the `+` sign to the right of a model to add it to the model list on the provider configuration page before it can appear in the model selection list.
+Retrieved models only appear in the model selection list after they have been added to the model list on the provider configuration page.
 {% endhint %}
 
 ### Connectivity Check
 
-Click the check button after the API Key input box to test whether the configuration is successful.
+Click **Model Check** to the right of the API Key field to test whether the configuration works.
 
 {% hint style="info" %}
 During model checking, the last conversation model added to the model list is used by default. If the check fails, please verify if there are any incorrect or unsupported models in the model list.

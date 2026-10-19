@@ -10,40 +10,26 @@ icon: books
 
 ## 用知识库能干什么？
 
-举几个真实场景：
-
-* **公司知识助手**：把产品手册、API 文档、内部规范全塞进去，员工问问题时 AI 自动答
-* **个人资料管家**：把你历年的工作笔记、读书摘录、邮件存档放进去，问 AI"我去年在哪个 PPT 里提过那个分析框架"
-* **学习陪练**：把课件、论文塞进去，让 AI 帮你按章节出题、解答疑惑
-* **合同/法规速查**：把法条、合同模板放进去，问 AI 具体条款的应用
+适合反复查阅产品手册、内部制度、项目笔记或学习资料。完整流程和案例统一放在[知识库入门](../../knowledge-base/knowledge-base.md)。
 
 ## 为什么用知识库，不直接把文件丢给 AI？
 
-直接丢文件的限制：
-
-* 每次提问都要重新上传，麻烦
-* 单次对话有长度限制，长文档塞不下
-* 跨对话不能复用
-
-**知识库解决了上面所有问题**：上传一次，之后任何对话都可调用，且能从大量资料里"精准抓取相关段落"喂给 AI。
+临时分析一个附件时，直接在对话中使用通常更简单；需要反复查询同一批资料时，再建立知识库。知识库负责找出相关片段，正式使用前仍应通过召回测试检查这些片段。
 
 ## 怎么用？
 
-* 第一次用：看 [完整知识库教程](../../knowledge-base/knowledge-base.md)
-* 想加图片 / 扫描 PDF：先看 [文档预处理](../../knowledge-base/document-preprocessing.md)，让 AI 能"读懂"图片里的文字
-* 想了解嵌入模型怎么选：看 [嵌入模型参考](../../knowledge-base/emb-models-info.md)
-* 想离线用、不配云端嵌入：可以用内置的 [本地嵌入模型](../../pre-basic/settings/local-models.md)，知识库无需联网即可建索引与检索
-* 想了解数据存哪：看 [知识库数据](../../knowledge-base/data.md)
+* 第一次用：从[知识库入门](../../knowledge-base/knowledge-base.md)开始。
+* 想加图片或扫描 PDF：看[文档预处理](../../knowledge-base/document-preprocessing.md)。
+* 想选择检索方式：看[模型与检索设置](../../knowledge-base/emb-models-info.md)。嵌入模型是可选项，需要嵌入时也可以了解[本地模型](../../pre-basic/settings/local-models.md)。
+* 想了解存储和数据处理：看[知识库数据](../../knowledge-base/data.md)。
 
 ## 与其他能力的组合
 
-* **知识库 + 助手**：给某个助手"挂载"知识库，它就专精这个领域
-* **知识库 +** [**智能体**](../../advanced-basic/agent.md)：让智能体在任务过程中自己查知识库
-* **知识库 +** [**频道**](../../advanced-basic/automation/channels.md)：把"会查公司文档"的智能体派到飞书群里值班
+* 基于资料完成一次问答：看[在对话中使用](../../knowledge-base/chat.md)。
+* 让智能体在多步任务中查资料：看[与智能体一起使用](../../knowledge-base/agent.md)；完整工作入口见[智能体概览](../../advanced-basic/agent.md)。
+* 智能体验证通过后，需要接入聊天平台时再看[频道](../../advanced-basic/automation/channels.md)。
 
-{% hint style="info" %}
-推荐先阅读 [进阶能力地图](../../advanced-basic/capability-map.md)，了解知识库与智能体、MCP、频道等功能如何协同。
-{% endhint %}
+各项功能如何配合，见[进阶能力地图](../../advanced-basic/capability-map.md)。
 
 ***
 

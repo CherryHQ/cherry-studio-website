@@ -1,22 +1,71 @@
 ---
+rich: true
 icon: cherries
 ---
-# Project Introduction
+# Cherry Studio Documentation
 
-<figure><img src="../../assets/9f2bec956e3709e3aebf9957.webp" alt=""><figcaption></figcaption></figure>
+<a id="project-introduction"></a>
 
-Follow our social accounts: [Twitter (X)](https://x.com/CherryStudioHQ), [Xiaohongshu](https://www.xiaohongshu.com/user/profile/662b6853000000000b031d9a), [Weibo](https://weibo.com/u/7975656228), [Bilibili](https://space.bilibili.com/3546657515898892), [Douyin](https://www.douyin.com/user/MS4wLjABAAAAmw9A54m5J0hHVMQY5eGrVJ-EHDoOS0hgJ6M1F9MN2Tn2V163A0xrC4_KVzfmQSxC)
+Find a guide for what you want to do with Cherry Studio.
 
-Join our communities: [QQ Group (575014769)](https://qm.qq.com/q/lo0D4qVZKi), [Telegram](https://t.me/CherryStudioAI), [Discord](https://discord.gg/wez8HtpxqQ), [WeChat Group (Click to view)](https://www.cherry-ai.com/#Community)
+<div data-cards>
+<div data-card>
+
+[**First time here?**](getting-started/quick-start.md)
+
+Install, connect a model, and send your first message.
+
+</div>
+<div data-card>
+
+[**Have a task in mind?**](#everyday-tasks)
+
+Find guides for chat, knowledge bases, images, and translation.
+
+</div>
+<div data-card>
+
+[**Something went wrong?**](question-contact/questions.md)
+
+Start with common issues and troubleshooting.
+
+</div>
+</div>
+
+## Getting started
+
+[Download and install](cherry-studio/installation/README.md) · [Quick Start](getting-started/quick-start.md) · [Upgrade or downgrade](cherry-studio/installation/upgrade-downgrade.md)
+
+## Everyday tasks
+
+[Chat with an assistant](cherrystudio/preview/chat.md) · [Ask questions about your sources](knowledge-base/knowledge-base.md) · [Create and edit images](advanced-basic/knowledge-content/painting-workflow.md) · [Translate files and long text](advanced-basic/knowledge-content/translation-workflow.md) · [More task examples](advanced-basic/cases/README.md)
+
+## Agents & automation
+
+[Create an agent](advanced-basic/agent-workspace/create-agent.md) · [Work with tasks and files](advanced-basic/agent-workspace/workspaces-tasks-files.md) · [Skills and MCP](advanced-basic/extensions/README.md) · [Channels and scheduled tasks](advanced-basic/automation/README.md)
+
+## Configuration & data
+
+[Connect a model provider](pre-basic/providers/README.md) · [App settings](pre-basic/settings/README.md) · [Back up and manage data](pre-basic/data-settings/README.md)
+
+## Troubleshooting
+
+[Common Issues](question-contact/questions.md) · [Knowledge base troubleshooting](knowledge-base/troubleshooting.md) · [MCP troubleshooting](advanced-basic/extensions/mcp/troubleshooting.md) · [Report a problem](question-contact/suggestions.md)
+
+## Developers & contribution
+
+[API gateway and diagnostics](advanced-basic/developer-tools/README.md) · [Contribute code](contribution/code.md) · [Improve the documentation](contribution/docs.md)
+
+***
+
+Follow our social accounts: [Twitter (X)](https://x.com/CherryStudioHQ)
+
+Join our communities: [Discord](https://discord.gg/wez8HtpxqQ)
 
 ***
 
 Cherry Studio is an all-in-one AI assistant platform integrating multi-model conversations, knowledge base management, AI painting, translation, and more.
 Cherry Studio's highly customizable design, powerful extensibility, and user-friendly experience make it an ideal choice for professional users and AI enthusiasts. Whether you are a beginner or a developer, you can find suitable AI functions in Cherry Studio to improve work efficiency and creativity.
-
-<figure><img src="../../assets/11537f0e5a62d02e8b2a5043.png" alt=""><figcaption></figcaption></figure>
-
-<figure><img src="../../assets/ca67eb1e6a51a586c4375444.webp" alt=""><figcaption></figcaption></figure>
 
 ***
 
@@ -63,7 +112,7 @@ Cherry Studio's highly customizable design, powerful extensibility, and user-fri
 
 #### **6. Featured Focus Functions**
 
-*   **Quick Q&A**: Call up the quick assistant in any scenario (e.g., WeChat, browser) to get answers quickly.
+*   **Quick Q&A**: Call up the quick assistant in any scenario (e.g., browser, email) to get answers quickly.
 *   **Quick Translation**: Supports quick translation of words or text in other scenarios.
 *   **Content Summarization**: Quickly summarizes long text content, improving information extraction efficiency.
 *   **Explanation**: Explains confusing questions with one click, no complex prompts required.
@@ -93,8 +142,14 @@ Cherry Studio's highly customizable design, powerful extensibility, and user-fri
 
 ### Star History
 
-[Star History](https://cherrystarhistory.ocool.online/)
+<a href="https://star-history.dera.page/#CherryHQ/cherry-studio&amp;Date">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://star-history.dera.page/svg?repos=CherryHQ/cherry-studio&amp;type=Date&amp;theme=dark" />
+    <source media="(prefers-color-scheme: light)" srcset="https://star-history.dera.page/svg?repos=CherryHQ/cherry-studio&amp;type=Date" />
+    <img alt="Star History Chart" src="https://star-history.dera.page/svg?repos=CherryHQ/cherry-studio&amp;type=Date" />
+  </picture>
+</a>
 
 ## Follow Our Social Accounts
 
-<table data-view="cards"><thead><tr><th></th><th data-hidden data-card-cover data-type="files"></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><a href="https://www.xiaohongshu.com/user/profile/662b6853000000000b031d9a?xsec_token=YB_1nKvlH4r5hPYVVbbsNHF8Y6n6AKlm5-DaggPCtd2DQ%3D&#x26;xsec_source=app_share&#x26;xhsshare=CopyLink&#x26;appuid=662b6853000000000b031d9a&#x26;apptime=1738627324&#x26;share_id=ace5db41b5954fab8d98a2a7865a62bc&#x26;share_channel=copy_link">Xiaohongshu</a></td><td><a href=".gitbook/assets/1.webp">1.png</a></td><td><a href="https://www.xiaohongshu.com/user/profile/662b6853000000000b031d9a?xsec_token=YB_1nKvlH4r5hPYVVbbsNHF8Y6n6AKlm5-DaggPCtd2DQ%3D&#x26;xsec_source=app_share&#x26;xhsshare=CopyLink&#x26;appuid=662b6853000000000b031d9a&#x26;apptime=1738627324&#x26;share_id=ace5db41b5954fab8d98a2a7865a62bc&#x26;share_channel=copy_link">https://www.xiaohongshu.com/user/profile/662b6853000000000b031d9a?xsec_token=YB_1nKvlH4r5hPYVVbbsNHF8Y6n6AKlm5-DaggPCtd2DQ%3D&#x26;xsec_source=app_share&#x26;xhsshare=CopyLink&#x26;appuid=662b6853000000000b031d9a&#x26;apptime=1738627324&#x26;share_id=ace5db41b5954fab8d98a2a7865a62bc&#x26;share_channel=copy_link</a></td></tr><tr><td><a href="https://b23.tv/hIfGgDW">Bilibili</a></td><td><a href=".gitbook/assets/3.webp">3.png</a></td><td><a href="https://b23.tv/hIfGgDW">https://b23.tv/hIfGgDW</a></td></tr><tr><td><a href="https://weibo.com/u/7975656228">Weibo</a></td><td><a href=".gitbook/assets/2.webp">2.png</a></td><td><a href="https://weibo.com/u/7975656228">https://weibo.com/u/7975656228</a></td></tr><tr><td><a href="https://v.douyin.com/ifTpX4X7">Douyin</a></td><td><a href=".gitbook/assets/4.webp">4.png</a></td><td><a href="https://v.douyin.com/ifTpX4X7">https://v.douyin.com/ifTpX4X7</a></td></tr><tr><td><a href="https://x.com/CherryStudioHQ?t=DYR0ulaLur-bO4Us3bG79A&#x26;s=05">Twitter (X)</a></td><td><a href=".gitbook/assets/5.webp">5.png</a></td><td><a href="https://x.com/CherryStudioHQ?t=DYR0ulaLur-bO4Us3bG79A&#x26;s=05">https://x.com/CherryStudioHQ?t=DYR0ulaLur-bO4Us3bG79A&#x26;s=05</a></td></tr></tbody></table>
+<table data-view="cards"><thead><tr><th></th><th data-hidden data-card-cover data-type="files"></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><a href="https://x.com/CherryStudioHQ?t=DYR0ulaLur-bO4Us3bG79A&#x26;s=05">Twitter (X)</a></td><td><a href=".gitbook/assets/5.webp">5.png</a></td><td><a href="https://x.com/CherryStudioHQ?t=DYR0ulaLur-bO4Us3bG79A&#x26;s=05">https://x.com/CherryStudioHQ?t=DYR0ulaLur-bO4Us3bG79A&#x26;s=05</a></td></tr></tbody></table>

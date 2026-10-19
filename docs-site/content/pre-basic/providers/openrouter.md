@@ -38,14 +38,14 @@ OpenRouter 的模型 ID 形如 `<vendor>/<model>`：
 
 OpenRouter 的对话模型可使用原生网络搜索和 URL 内容读取。选择模型时查看名称旁的 🌐 图标，并在对话输入栏打开 🌐。
 
-如果【设置】→【网络搜索】中的【优先使用已配置的搜索服务】保持开启，Cherry Studio 会优先使用外部搜索服务；关闭该选项后，才会优先使用 OpenRouter 的模型原生能力。服务商可能对联网请求单独计费，实际费用以 OpenRouter 账单为准。
+如果【设置】→【网络搜索】中的【优先使用模型内置的联网工具】保持关闭（默认），Cherry Studio 会优先使用已配置的搜索服务；开启该选项后，才会优先使用 OpenRouter 的模型原生能力。服务商可能对联网请求单独计费，实际费用以 OpenRouter 账单为准。
 
 ## 与 Anthropic 协议的关系
 
 OpenRouter 默认走 OpenAI 协议格式封装所有上游模型。这意味着：
 
 * ✅ 普通对话、知识库、快捷助手都可用
-* ⚠️ [Cherry Agent](../../advanced-basic/agent.md) **建议直接用** Anthropic / CherryIN，不要走 OpenRouter（Agent 需要 Anthropic 原生协议）
+* ⚠️ [Cherry 智能体](../../advanced-basic/agent.md) **建议直接用** Anthropic / CherryIN，不要走 OpenRouter（智能体需要 Anthropic 原生协议）
 
 {% hint style="info" %}
 - OpenRouter 在原厂价格基础上有少量加价（通常 5-10%），换来"一个账号通用"

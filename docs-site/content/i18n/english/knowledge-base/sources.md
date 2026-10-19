@@ -11,14 +11,14 @@ The completion standard is not "the file appears in the list," but rather that t
 
 ## Selecting the Correct Entry Point
 
-<figure><img src="../../../assets/4622da2093d43942d7ee443e.webp" alt="Four resource entry points in the Knowledge Base: files, notes, directories, and links"><figcaption><p>Choose the entry point based on the source type: use **Files** for a small number of files, **Directories** for collections of similar files, **Notes** for Cherry Studio content, and **Links** for public web pages. </p></figcaption></figure>
+<figure><img src="../../../assets/a04950b796f4347833202f60.webp" alt="The Add Data Source menu with File, Note, Folder and URL"><figcaption><p>Choose the entry based on the source type: File for a few files, Folder for a set of related files, Note for Cherry Studio notes, and URL for public web pages.</p></figcaption></figure>
 
 | Entry Point | Suitable For | Relationship After Import | Key Considerations |
 | -- | ----------------------- | ----------- | ------------------ |
-| Files | PDF, Office, Markdown, text, etc. | Saves a managed copy | Select up to 20 items per batch |
-| Notes | Content already organized in Cherry Studio | Imports a snapshot of the content at that time | Subsequent edits to the original note do not sync automatically |
-| Directories | A batch of local files under the same topic | Creates source entries based on directory contents | Do not import unrelated directories in bulk |
-| Links | A single publicly accessible web page | Saves a snapshot of the web page at the time of fetching | Login pages, script-rendered content, or restricted pages may be incomplete |
+| File | PDF, Office, Markdown, text, etc. | Saves a managed copy | Select up to 20 items per batch |
+| Note | Content already organized in Cherry Studio | Imports a snapshot of the content at that time | Subsequent edits to the original note do not sync automatically |
+| Folder | A batch of local files under the same topic | Creates source entries based on directory contents | Do not import unrelated directories in bulk |
+| URL | A single publicly accessible web page | Saves a snapshot of the web page at the time of fetching | Login pages, script-rendered content, or restricted pages may be incomplete |
 
 {% hint style="warning" %}
 Supported file types include PDF, DOCX, DOC, PPTX, XLSX, XLS, MD, TXT, CSV, HTML, and EPUB. Scanned PDFs or image-based content also require OCR verification.
@@ -30,7 +30,7 @@ Supported file types include PDF, DOCX, DOC, PPTX, XLSX, XLS, MD, TXT, CSV, HTML
 {% step %}
 ### 1. Select the Source Type
 
-Open the knowledge base, click the Add Source button, and choose **Files**, **Notes**, **Directories**, or **Links**.
+Open the knowledge base, click **Add Data Source**, and choose **File**, **Note**, **Folder**, or **URL**.
 {% endstep %}
 
 {% step %}
@@ -54,7 +54,7 @@ Choosing **Keep All** allows both old and new content to participate in retrieva
 
 Sources go through stages including copying, reading, chunking, and indexing. If no embedding model is configured, vectors will not be created, but a keyword index will still be built.
 
-<figure><img src="../../../assets/2414cfc005a860f127a4fd96.webp" alt="Employee travel policy knowledge base containing multiple processed documents"><figcaption><p>Once the source reaches an available state, spot-check the content and Chunks. </p></figcaption></figure>
+<figure><img src="../../../assets/e0b7bca1e8f80854d96a85b7.webp" alt="A knowledge base list where every source shows the Ready status"><figcaption><p>Once a source shows <strong>Ready</strong>, spot-check the content and Chunks. </p></figcaption></figure>
 {% endstep %}
 
 {% step %}
@@ -68,7 +68,7 @@ Open the source to view the content, or view Chunks from the source row menu. Fo
 
 Use a question with a clear answer to verify the correct source and snippet. After updating sources, re-test using the same set of questions.
 
-<figure><img src="../../../assets/b44776524449cdefe62eaed3.webp" alt="Sources, relevance, snippet content, and ranking in recall tests"><figcaption><p>Final validation should assess source accuracy, snippet completeness, and ranking, not just whether results are returned. </p></figcaption></figure>
+<figure><img src="../../../assets/f134353a322ca6669467f2c9.webp" alt="Recall Test results listing matched chunks with their source file and rank"><figcaption><p>Enter a question in Recall Test and click Search. Matched chunks and scores appear in the panel; check the source, completeness and ranking.</p></figcaption></figure>
 {% endstep %}
 {% endstepper %}
 

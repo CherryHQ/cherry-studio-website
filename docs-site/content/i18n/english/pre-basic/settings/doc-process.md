@@ -20,14 +20,15 @@ Neither is needed for plain text PDFs or text paragraphs in `.md`/`.txt`/`.docx`
 
 Open **Settings** → **Document Processing**. Select the parsing engine from the dropdown in the top-right corner. **The selected engine becomes the default.**
 
-<figure><img src="../../../../assets/dbc7765b46b45fec4b345e04.webp" alt=""><figcaption><p>Document Processing settings: ① Select the parsing engine from the top-right dropdown (default is MinerU); enter the API key and API address for the selected engine below</p></figcaption></figure>
+<figure><img src="../../../../assets/f369124bf489bb38cfaad4ba.webp" alt=""><figcaption><p>Document Processing settings: ① Select the parsing engine from the top-right dropdown (default is MinerU); enter the API key and API address for the selected engine below</p></figcaption></figure>
 
 ### Built-in Parsing Engines
 
-Document Processing includes 5 built-in engines, with **MinerU** as the default:
+Document Processing includes 6 built-in engines, with **MinerU** as the default:
 
 | Engine | Description | Integration Method |
 | --- | --- | --- |
+| **Local Document** | Built-in local parsing, no service needed | None |
 | **MinerU** (default) | High-quality open-source PDF extraction tool by OpenDataLab | API key ([mineru.net/apiManage](https://mineru.net/apiManage)) |
 | **PaddleOCR** | Baidu PaddlePaddle OCR recognition system | Enter API key ([PaddlePaddle Galaxy Community](https://aistudio.baidu.com/paddleocr/)); if self-deployed, point the API address to your service |
 | **Doc2x** | Advanced file restoration engine | API key ([open.noedgeai.com](https://open.noedgeai.com/apiKeys)) |

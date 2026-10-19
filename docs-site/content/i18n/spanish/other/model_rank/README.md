@@ -1,3 +1,0 @@
-
-
-# Ranking de Modelos

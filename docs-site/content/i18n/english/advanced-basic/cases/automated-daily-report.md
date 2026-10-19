@@ -15,8 +15,6 @@ The operations team wants to automatically aggregate specified materials every w
 
 <figure><img src="../../../../assets/e2328ba60a3ff5012831c39e.webp" alt="Platform list and add entry in channel settings"><figcaption><p>Bind the daily report to a tested channel first, then select it as the notification target for the scheduled task. </p></figcaption></figure>
 
-<figure><img src="../../../../assets/401d6b23759ab97ded47c2b5.webp" alt="Subtasks, background commands, and context usage in the Agent status panel"><figcaption><p>After the first automated run, verify task completion by checking the Agent status and execution logs. </p></figcaption></figure>
-
 <figure><img src="../../../../assets/005c0418156c52d0a531192b.webp" alt="The daily project progress briefing scheduled task and complete prompt that have been saved and enabled in Settings"><figcaption><p>① The task is enabled and displays the next run time; ② The prompt clearly defines the four-part structure, missing data handling, and channel sending conditions. </p></figcaption></figure>
 
 ## Configuration Steps

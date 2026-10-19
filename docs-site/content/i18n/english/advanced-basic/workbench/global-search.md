@@ -5,7 +5,7 @@ icon: magnifying-glass
 
 Global Search lets you find messages, conversations, tasks, assistants, Agents, and knowledge bases from a single entry point. It is ideal for when you remember the content but not where it is located.
 
-<figure><img src="../../../../assets/c88f597e18a3b7eac541dbf7.webp" alt="Keyword, search type, and update time filters in Global Search"><figcaption><p>Start with distinctive keywords, then narrow the results by type (such as conversations or knowledge bases) and update time. </p></figcaption></figure>
+<figure><img src="../../../../assets/f926461fa4e093f7de2251a7.webp" alt="Global Search with type tabs (All, Messages, Conversation, Task, Assistant, Agent, Knowledge) and an Any time filter"><figcaption><p>Start with distinctive keywords, then narrow the results by type (such as conversations or knowledge bases) and update time. </p></figcaption></figure>
 
 ## Usage
 
@@ -25,7 +25,7 @@ Prioritize project names, person names, file topics, or phrases from conclusions
 {% step %}
 ### 3. Narrow the search scope
 
-Switch to [Messages] or use filters for [Conversations], [Tasks], [Assistants], [Agents], or [Knowledge Bases], then narrow the scope by update time.
+Switch to [Messages] or use the [Conversation], [Task], [Assistant], [Agent], or [Knowledge] tabs, then narrow the time range with [Any time].
 {% endstep %}
 
 {% step %}

@@ -1,3 +1,0 @@
-# Leaderboard de Modelos
-
-

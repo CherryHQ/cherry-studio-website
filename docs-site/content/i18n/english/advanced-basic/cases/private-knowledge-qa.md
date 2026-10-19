@@ -5,11 +5,11 @@ icon: lock
 
 The HR team wants colleagues to query current policies, but does not want the Agent to fill in answers using general knowledge. This case combines document scope, retrieval testing, and response rules; when content is not found, the Agent should explicitly state so.
 
-<figure><img src="../../../../assets/203ae7d1fc3c8b76bd8af0a8.webp" alt="The name, embedding model, and save entry points when creating a new Knowledge Base"><figcaption><p>Create a separate knowledge base for a single topic to avoid mixing current and outdated materials. </p></figcaption></figure>
+<figure><img src="../../../../assets/27c5374d7b45598dca0744d9.webp" alt="The New Knowledge Base dialog with Name and Embedding Model fields"><figcaption><p>Create a separate knowledge base for a single topic to avoid mixing current and outdated materials. </p></figcaption></figure>
 
-<figure><img src="../../../../assets/24f5e32e3c72df907aaed3a6.webp" alt="The segmentation, return, and filtering settings for Knowledge Base RAG"><figcaption><p>Only adjust RAG settings based on document structure if retrieval results are unstable. </p></figcaption></figure>
+<figure><img src="../../../../assets/8b710267711ee3188fede3fc.webp" alt="Knowledge Base Settings with Embedding Model, Rerank Model, Top K and advanced chunking options"><figcaption><p>Only adjust RAG settings based on document structure if retrieval results are unstable. </p></figcaption></figure>
 
-<figure><img src="../../../../assets/c00520c08c9364fe13caad57.webp" alt="The actual retrieval results provided by the Employee Travel Policy Knowledge Base regarding whether overseas car rentals are reimbursable"><figcaption><p>① Test with real questions; ② Verify returned documents, original text snippets, and relevance. Only when this is stable should the knowledge base be handed over to the Agent. </p></figcaption></figure>
+<figure><img src="../../../../assets/f134353a322ca6669467f2c9.webp" alt="Recall Test results listing matched chunks with their source file and rank"><figcaption><p>① Test with real questions; ② Verify returned documents, original text snippets, and relevance. Only when this is stable should the knowledge base be handed over to the Agent. </p></figcaption></figure>
 
 ## Workflow
 

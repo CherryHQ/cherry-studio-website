@@ -1,130 +1,84 @@
 ---
 icon: file-code
 ---
+
 # Custom CSS
 
-By customizing CSS, you can modify the software's appearance to better suit your preferences, for example:
+With custom CSS you can change how the app looks without touching the source code, and tailor the interface to your taste — for example, changing the font, the theme color, or the background of message bubbles.
 
-<figure><img src="../../../assets/fa4c8c0a210819595ec02c3e.jpg" alt=""><figcaption><p>Custom CSS</p></figcaption></figure>
+### Where to Set It
+
+Open **Settings → Appearance** and find the **Custom CSS** code box at the bottom of the page. Styles you write there take effect immediately. Leave it empty to load no custom styles.
+
+<figure><img src="../../../assets/07d46277c5472d117ec5cc19.webp" alt=""><figcaption><p>The Custom CSS code box at the bottom of Settings → Appearance</p></figcaption></figure>
+
+The CSS you write is injected as-is into the `<head>` of every window, as a `<style id="user-defined-custom-css">` element. Because it isn't part of the app's internal cascade layers, your styles take precedence over the built-in ones for the same selector, so most ordinary declarations work without `!important`.
+
+### A Working Example
+
+The snippet below uses only variables and selectors that actually exist in the current app:
 
 ```css
-:root {
-  --color-background: #1a462788;
-  --color-background-soft: #1a4627aa;
-  --color-background-mute: #1a462766;
-  --navbar-background: #1a4627;
-  --chat-background: #1a4627;
-  --chat-background-user: #28b561;
-  --chat-background-assistant: #1a462722;
+/* 1. Global font */
+body {
+  font-family: "Inter", sans-serif;
 }
 
+/* 2. Theme color and user message bubble background (light theme / default) */
+:root {
+  --primary: #1a8f5a;
+  --chat-user: rgba(26, 143, 90, 0.08);
+}
+
+/* 3. Separate overrides for the dark theme (the root element gets the .dark class in dark mode) */
+.dark {
+  --primary: #28b561;
+  --chat-user: rgba(40, 181, 97, 0.12);
+}
+
+/* 4. Change the background color of the main content area directly */
 #content-container {
-  background-color: #2e5d3a !important;
+  background-color: #f6f4ec;
 }
 ```
 
-### Built-in Variables
+### About Theme Variables
 
-```css
-:root {
-  font-family: "Hanyi Tang Meiren" !important; /* Font */
-}
+The app describes its colors with a set of CSS custom properties (variables). Light theme defaults are defined on `:root`, and dark theme overrides on `.dark` — when you switch to the dark theme, the root element gets the `.dark` class. So to style light and dark separately, write your rules under the `:root` and `.dark` selectors, not the old `theme-mode` attribute selector.
 
-/* Deep thought expansion font color */
-.ant-collapse-content-box .markdown {
-  color: red;
-}
+Commonly used public variables include:
 
-/* Theme variables */
-:root {
-  --color-black-soft: #2a2b2a; /* Dark background color */
-  --color-white-soft: #f8f7f2; /* Light background color */
-}
+| Variable | Meaning |
+| --- | --- |
+| `--background` / `--foreground` | Main background / main foreground (text) color |
+| `--primary` / `--primary-foreground` | Theme color / text color on the theme color |
+| `--card` / `--popover` | Background of cards and popovers |
+| `--muted` / `--muted-foreground` | Muted background / muted text color |
+| `--border` / `--input` / `--ring` | Border, input and focus ring colors |
+| `--sidebar` series | Sidebar colors |
+| `--chat-user` | User message bubble background |
+| `--link` | Link color |
+| `--code-block` / `--inline-code` | Code block / inline code background |
+| `--font-family` / `--code-font-family` | Global font / code font |
+| `--radius` | Base corner radius |
 
-/* Dark theme */
-body[theme-mode="dark"] {
-  /* Colors */
-  --color-background: #2b2b2b; /* Dark background color */
-  --color-background-soft: #303030; /* Light background color */
-  --color-background-mute: #282c34; /* Neutral background color */
-  --navbar-background: var(-–color-black-soft); /* Navbar background color */
-  --chat-background: var(–-color-black-soft); /* Chat background color */
-  --chat-background-user: #323332; /* User chat background color */
-  --chat-background-assistant: #2d2e2d; /* Assistant chat background color */
-}
+For the full list of variables and their defaults, see the source code:
 
-/* Dark theme specific styles */
-body[theme-mode="dark"] {
-  #content-container {
-    background-color: var(-–chat-background-assistant) !important; /* Content container background color */
-  }
+- Interface styles and containers: [https://github.com/CherryHQ/cherry-studio/tree/main/src/renderer/assets/styles](https://github.com/CherryHQ/cherry-studio/tree/main/src/renderer/assets/styles)
+- Theme design tokens: [https://github.com/CherryHQ/cherry-studio/tree/main/packages/ui/src/styles](https://github.com/CherryHQ/cherry-studio/tree/main/packages/ui/src/styles)
 
-  #content-container #messages {
-    background-color: var(-–chat-background-assistant); /* Message background color */
-  }
+### Pasting an Old Stylesheet
 
-  .inputbar-container {
-    background-color: #3d3d3a; /* Input bar background color */
-    border: 1px solid #5e5d5940; /* Input bar border color */
-    border-radius: 8px; /* Input bar border-radius */
-  }
+If you paste a stylesheet written for an older version that isn't compatible with the current interface, the app may disable it automatically and show a notice in the Custom CSS area. Adapt the styles to the current variables and selectors first, then remove the marker on the first line as prompted to re-enable it.
 
-  /* Code style */
-  code {
-    background-color: #e5e5e20d; /* Code background color */
-    color: #ea928a; /* Code text color */
-  }
+### Recommended Resources
 
-  pre code {
-    color: #abb2bf; /* Preformatted code text color */
-  }
-}
+Cherry Studio theme library: [https://github.com/boilcy/cherrycss](https://github.com/boilcy/cherrycss)
 
-/* Light theme */
-body[theme-mode="light"] {
-  /* Colors */
-  --color-white: #ffffff; /* White */
-  --color-background: #ebe8e2; /* Light background color */
-  --color-background-soft: #cbc7be; /* Light background color */
-  --color-background-mute: #e4e1d7; /* Neutral background color */
-  --navbar-background: var(-–color-white-soft); /* Navbar background color */
-  --chat-background: var(-–color-white-soft); /* Chat background color */
-  --chat-background-user: #f8f7f2; /* User chat background color */
-  --chat-background-assistant: #f6f4ec; /* Assistant chat background color */
-}
+A collection of Chinese-style Cherry Studio theme skins: [https://linux.do/t/topic/325119/129](https://linux.do/t/topic/325119/129)
 
-/* Light theme specific styles */
-body[theme-mode="light"] {
-  #content-container {
-    background-color: var(-–chat-background-assistant) !important; /* Content container background color */
-  }
+***
 
-  #content-container #messages {
-    background-color: var(-–chat-background-assistant); /* Message background color */
-  }
+### 💡 Get Help and Submit Feedback
 
-  .inputbar-container {
-    background-color: #ffffff; /* Input bar background color */
-    border: 1px solid #87867f40; /* Input bar border color */
-    border-radius: 8px; /* Input bar border-radius, modify to your preferred size */
-  }
-
-  /* Code style */
-  code {
-    background-color: #3d39290d; /* Code background color */
-    color: #7c1b13; /* Code text color */
-  }
-
-  pre code {
-    color: #000000; /* Preformatted code text color */
-  }
-}
-```
-
-For more theme variables, please refer to the source code: [https://github.com/CherryHQ/cherry-studio/tree/main/src/renderer/src/assets/styles](https://github.com/CherryHQ/cherry-studio/tree/main/src/renderer/src/assets/styles)
-
-### Related Recommendations
-
-Cherry Studio Theme Library: [https://github.com/boilcy/cherrycss](https://github.com/boilcy/cherrycss)
-
-Sharing some Chinese style Cherry Studio theme skins: [https://linux.do/t/topic/325119/129](https://linux.do/t/topic/325119/129)
+If you have any questions, bugs, or feature suggestions during configuration or use, please use the official channels listed in [Feedback and Suggestions](../question-contact/suggestions.md).

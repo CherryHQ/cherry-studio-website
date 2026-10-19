@@ -3,7 +3,7 @@ icon: palette
 ---
 # Image Generation, Editing, and Enhancement
 
-【Painting】can generate images from text, use reference images, edit specific regions, merge multiple images, reuse templates, and enhance resolution. First, determine the intended use of the image, then choose the appropriate generation or editing method.
+**Painting** can generate images from text, use reference images, edit specific regions, merge multiple images, reuse templates, and enhance resolution. First, determine the intended use of the image, then choose the appropriate generation or editing method.
 
 ## Choosing the Right Starting Point
 
@@ -17,7 +17,7 @@ icon: palette
 
 ### Example: From a Description to a Finished Product
 
-Open 【Painting】, select an image model that supports the current task, input the subject, environment, style, lighting, composition, and constraints, then send. An example prompt is:
+Open **Painting**, select an image model that supports the current task, input the subject, environment, style, lighting, composition, and constraints, then send. An example prompt is:
 
 > A creative workspace in morning light, cherry-red desk lamp, sketchbook, camera, and a branch of cherry blossoms, with quiet mountains outside the window; soft 3D illustration style, warm morning light, wide composition, no text.
 
@@ -27,12 +27,12 @@ Open 【Painting】, select an image model that supports the current task, input
 4. Once confirmed usable, zoom in to inspect and export.
 
 {% hint style="info" %}
-The example uses 【GPT-Image-2 | express】 to generate a wide workspace illustration. Models, dimensions, and available actions depend on what is displayed on your current page; do not copy parameters you cannot see.
+The example uses **GPT-Image-2 | express** to generate a wide workspace illustration. Models, dimensions, and available actions depend on what is displayed on your current page; do not copy parameters you cannot see.
 {% endhint %}
 
 Do not leave immediately after generation: first zoom in to check the subject, edges, and extraneous elements, then switch versions from the history on the left. When adjustments are needed, keep the effective descriptions and modify only one aspect.
 
-<figure><img src="../../../../assets/2ba55ffd828250f31afa2b16.jpg" alt="Morning light workspace illustration generated with GPT-Image-2 express and history"><figcaption><p>① History thumbnails for this generation are kept on the left; ② The full finished product is displayed in the center; ③ Zoom in to inspect before downloading, copying, or continuing to edit. </p></figcaption></figure>
+<figure><img src="../../../../assets/b51ef44b212ce6e8aa7962a8.webp" alt="The Paintings page with history thumbnails on the left, the generated image in the center and zoom tools beside it"><figcaption><p>① History thumbnails for this generation are kept on the left; ② The full finished product is displayed in the center; ③ Zoom in to inspect before downloading, copying, or continuing to edit. </p></figcaption></figure>
 
 ## Completing a Usable Image
 
@@ -64,9 +64,9 @@ Zoom in to check human hands, product structures, text, brand logos, and edges. 
 
 ### Drawing in Agent
 
-First go to 【Settings】 → 【Default Models】 to select the 【Painting Model】, then open the Agent's 【Built-in Tools】 to confirm that 【Generate Image】 is enabled. After that, you can instruct the Agent in 【Work】 to read articles, refine the visual direction, and directly generate accompanying images.
+First go to **Settings** → **Default Models** to select the **Painting Model**, then open the Agent's **Built-in Tools** to confirm that **Generate Image** is enabled. After that, you can instruct the Agent in **Work** to read articles, refine the visual direction, and directly generate accompanying images.
 
-<figure><img src="../../../../assets/1c3d17dc2a9692479862d303.webp" alt="Drawing model selection in default model settings"><figcaption><p>The 【Painting Model】 in 【Default Models】 determines which model the Agent and related painting entry points prioritize. </p></figcaption></figure>
+<figure><img src="../../../../assets/daa7cbd0f1b2f4f701a0c0e0.webp" alt="Drawing model selection in default model settings"><figcaption><p>The <strong>Painting Model</strong> in <strong>Default Models</strong> determines which model the Agent and related painting entry points prioritize. </p></figcaption></figure>
 
 ### Application Case: Creating a Set of Brand Campaign Images
 
