@@ -10,8 +10,9 @@ interface FAQItem {
 }
 
 const FAQSection: FC = () => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const [openIndex, setOpenIndex] = useState<number | null>(0)
+  const isZh = i18n.language.startsWith('zh')
 
   const faqItems = t('home_faq.items', { returnObjects: true }) as FAQItem[]
 
@@ -24,7 +25,7 @@ const FAQSection: FC = () => {
       <div className="mx-auto max-w-[900px]">
         <div className="mb-12 text-center">
           <h2 className="text-foreground mb-4 text-3xl font-bold sm:text-4xl">{t('home_faq.title')}</h2>
-          <p className="text-muted-foreground text-lg">{t('home_faq.subtitle')}</p>
+          {isZh && <p className="text-muted-foreground text-lg">{t('home_faq.subtitle')}</p>}
         </div>
 
         <div className="space-y-4">

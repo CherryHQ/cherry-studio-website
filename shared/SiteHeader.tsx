@@ -4,6 +4,9 @@ import { ArrowUpRight, Download, Menu, Star, X } from 'lucide-react'
 import { type ReactNode, useEffect, useRef, useState } from 'react'
 
 import { cn } from '../src/lib/utils'
+import type { HeaderLink } from './header-navigation'
+
+export type { HeaderLink } from './header-navigation'
 
 const GITHUB_STARS_CACHE_KEY = 'cherry-studio:github-stars'
 const GITHUB_STARS_CACHE_TTL = 24 * 60 * 60 * 1000
@@ -44,12 +47,6 @@ function formatStarCount(count: number) {
   return count >= 1000 ? `${(count / 1000).toFixed(1)}k` : String(count)
 }
 
-export interface HeaderLink {
-  href: string
-  label: string
-  external?: boolean
-  active?: boolean
-}
 interface LinkProps {
   href: string
   className: string
@@ -86,10 +83,20 @@ export function SiteHeader({
   // Keep the first client render identical to the static HTML; apply cached stars in the effect.
   const [starCount, setStarCount] = useState(GITHUB_STARS_FALLBACK)
   const dialog = useRef<HTMLDialogElement>(null)
+  const linkContent = (item: HeaderLink) => (
+    <>
+      {item.label}
+      {item.badge && (
+        <sup className="rounded-full bg-[#e54d4d]/10 px-1.5 py-0.5 text-[10px] font-semibold leading-none text-[#e54d4d] dark:bg-[#dc2626]/10 dark:text-[#dc2626]">
+          {item.badge}
+        </sup>
+      )}
+    </>
+  )
   const link = (item: HeaderLink, className: string) =>
     item.external ? (
       <a href={item.href} target="_blank" rel="noopener noreferrer" className={className}>
-        {item.label}
+        {linkContent(item)}
         <ArrowUpRight className="h-3 w-3" />
       </a>
     ) : (
@@ -97,7 +104,7 @@ export function SiteHeader({
         href: item.href,
         className,
         'aria-current': item.active ? 'page' : undefined,
-        children: item.label
+        children: linkContent(item)
       })
     )
 

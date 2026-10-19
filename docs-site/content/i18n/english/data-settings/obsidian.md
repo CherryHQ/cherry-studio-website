@@ -52,4 +52,3 @@ A window similar to the one for exporting a full conversation will then appear, 
 ### Export Successful
 
 🎉 Congratulations! You have now completed all configurations for Cherry Studio to integrate with Obsidian and have successfully gone through the export process. Enjoy yourselves!
-

@@ -90,7 +90,6 @@ The administrator provides a read-only MCP connection. The user verifies the ser
 MCP integrates external tools into Cherry Studio; an API gateway provides Cherry Studio's model capabilities to other programs via a compatible API. The data flow direction is opposite.
 
 </details>
-
 <details>
 
 <summary>The server shows as connected, but the Agent still cannot find the tools. What should I do? </summary>
@@ -98,4 +97,3 @@ MCP integrates external tools into Cherry Studio; an API gateway provides Cherry
 Check if the Agent is bound to the server, if the tools are disabled, or if permission requests are pending. After modifying the Agent configuration, send a new message to allow the runtime to load the new tools.
 
 </details>
-
