@@ -127,7 +127,7 @@ function FlashContent() {
 
   return (
     <div className="bg-background min-h-screen">
-      <section className="px-4 pt-20 pb-6 sm:px-6 sm:pt-24 lg:px-8">
+      <section className="px-4 pt-28 pb-6 sm:px-6 sm:pt-32 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <h1 className="text-foreground text-5xl font-bold tracking-tight sm:text-6xl">
             {t('pricing.headline_brand')} <span className="text-primary">{t('pricing.headline_plan')}</span>
