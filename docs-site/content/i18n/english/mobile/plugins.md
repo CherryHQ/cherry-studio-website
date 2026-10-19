@@ -20,9 +20,8 @@ For example: “Use Feishu to summarize three conclusions from this document: [l
 
 Connected plugins work across agents without separate authorization for each. Composer selection makes the intended service explicit. The **＋ → Plugins** option in the chat composer is hidden when no usable plugin is connected.
 
-<div data-mobile-gallery="pair">
-<figure data-mobile-shot="phone"><a href="../../../assets/mobile/en/plugins.webp"><img src="../../../assets/mobile/en/plugins.webp" alt="Choose a service from the plugin list"></a><figcaption><p><strong>iPhone</strong> · Choose a service from the plugin list</p></figcaption></figure>
-<figure data-mobile-shot="phone"><a href="../../../assets/mobile/en/plugin-feishu.webp"><img src="../../../assets/mobile/en/plugin-feishu.webp" alt="Read capabilities, examples, and authorization details before connecting"></a><figcaption><p><strong>iPhone</strong> · Read capabilities, examples, and authorization details before connecting</p></figcaption></figure>
+<div data-mobile-gallery="single">
+<figure data-mobile-shot="phone"><a href="../../../assets/mobile/en/plugins.webp"><img src="../../../assets/mobile/en/plugins.webp" alt="Plugins: app connections, custom MCP, and built-in tools"></a><figcaption><p><strong>iPhone</strong> · Plugins: app connections, custom MCP, and built-in tools</p></figcaption></figure>
 </div>
 
 ## Common connections
@@ -102,17 +101,28 @@ Plugin credentials stay on this device and are not transferred by desktop config
 
 ## Add a custom MCP service
 
-**MCP** connects an agent to additional tool services. Use this when you already have a remote tool-server address; built-in plugins are simpler when they meet your needs.
+**MCP** is a protocol for connecting external tools and services. In Mobile 0.3.0, add a remote server through **Sidebar → Plugins → MCP group → Custom**.
 
-1. Open **Settings → MCP → Add server**.
-2. Enter the supplied server address, preferably `https://`.
-3. If authentication is required, fill **Headers** with one `Name=Value` entry per line, such as `Authorization=Bearer your-token`, using the service's instructions.
-4. Save, wait for connection, and inspect the **Tools** list. Disable unwanted tools.
-5. Enable the corresponding server in the target agent’s editor, then send a new request. If the agent is new, save it first and reopen its editor to configure tools.
+1. Enter a name and the remote address supplied by the service, preferably `https://`.
+2. Choose header authentication or **OAuth**, which signs in and grants access at the service.
+3. For headers, use one `Name=Value` per line, such as `Authorization=Bearer your-token`. For OAuth, follow the save and browser-authorization flow, then return to the app and check its result.
+4. Inspect the connected tool list and disable unwanted tools.
+5. Enable the server in a Standard-mode agent's tool section and send a new task. Existing servers can also be selected during agent creation.
 
-The server must be connected and enabled, the tool enabled globally, and the corresponding server enabled for the agent. Automatic approval bypasses none of those requirements.
+OAuth services must support mobile callbacks. Some require a public client ID or client-metadata URL from the service. Do not add a conflicting Authorization header when using OAuth. Retry authorization according to the error; closing the browser does not confirm completion.
 
-This field accepts remote addresses, not desktop startup commands such as `npx` or `uvx`. iOS can block plain `http://`; prefer the service's secure address.
+The address field cannot run desktop commands such as `npx` or `uvx`. The 0.3.0 iOS client accepts user-configured HTTP services, with a warning for plaintext connections; OAuth endpoints must still meet their security requirements.
+
+Connection, global tool enablement, agent binding, and Standard mode are separate requirements. Automatic approval bypasses none of them.
+
+## Prompts, resources, and interactive apps
+
+* **Prompts:** choose an available MCP prompt from the composer, fill its parameters, and load it into a draft. Review before sending; selecting a prompt does not execute the task.
+* **Resources:** open supported files, images, or other content through tool-result previews. Formats depend on the service.
+* **MCP Apps:** supporting tools can return an interactive interface. Actions still depend on service permissions and tool rules; inspect the result.
+* **Server forms:** a service may request additional information through an app interaction. Read the requester and fields before submitting or cancelling. This is separate from system permissions and tool approvals.
+
+Not every server supplies these capabilities. An absent prompt or interactive view may reflect the server's scope; ordinary tool calls can still work.
 
 ## A connected plugin still cannot do the task
 

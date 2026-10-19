@@ -17,8 +17,9 @@ icon: settings
 
 这些选项更改后直接保存。如果看到保存失败提示，重试后再离开。
 
-<div data-mobile-gallery="single">
-<figure data-mobile-shot="phone"><a href="../assets/mobile/zh/general-settings.webp"><img src="../assets/mobile/zh/general-settings.webp" alt="调整主题、语言、字号与分享水印"></a><figcaption><p><strong>iPhone</strong> · 调整主题、语言、字号与分享水印</p></figcaption></figure>
+<div data-mobile-gallery="pair">
+<figure data-mobile-shot="phone"><a href="../assets/mobile/zh/settings-home.webp"><img src="../assets/mobile/zh/settings-home.webp" alt="设置首页"></a><figcaption><p><strong>iPhone</strong> · 设置首页</p></figcaption></figure>
+<figure data-mobile-shot="phone"><a href="../assets/mobile/zh/general-settings.webp"><img src="../assets/mobile/zh/general-settings.webp" alt="通用设置：主题、语言、字号、分享水印和文档解析器"></a><figcaption><p><strong>iPhone</strong> · 通用设置：主题、语言、字号、分享水印和文档解析器</p></figcaption></figure>
 </div>
 
 ## 默认模型与绘图模型
@@ -27,16 +28,21 @@ icon: settings
 
 * **默认模型**：为新建智能体提供默认的文字模型选择。
 * **绘图模型**：用于默认绘图及文字智能体的图片生成工具。
+* **翻译模型**：用于回复和技能文档翻译；未设置时使用默认文字模型，详见[翻译教程](translation.md)。
 
 选择或清除会立即保存，不需要另找保存按钮。已有智能体仍保留自己的模型；切换某个智能体时，到它的编辑页或对话模型选择器修改。
 
 模型列表为空时，先到模型服务中添加可用模型并启用服务商。模型的编辑、能力标记和价格设置见[模型管理](model-management.md)。
 
+<div data-mobile-gallery="single">
+<figure data-mobile-shot="phone"><a href="../assets/mobile/zh/default-model.webp"><img src="../assets/mobile/zh/default-model.webp" alt="默认模型、翻译模型和绘图模型分别设置"></a><figcaption><p><strong>iPhone</strong> · 默认模型、翻译模型和绘图模型分别设置</p></figcaption></figure>
+</div>
+
 ## 查看用了多少模型额度
 
 从侧边栏进入首页，查看 **AI 用量**，点击查看详情可阅读按日期、模型或服务商整理的记录。
 
-对话中也可以打开回答的用量详情，查看该次回答的模型、输入和输出量、生成耗时及费用信息。**Token（模型计算内容长度的单位）**不等于字数，历史对话、思考和工具往返也可能计入消耗。
+对话中也可以打开回答的用量详情，查看该次回答的模型、输入和输出量、请求次数、生成耗时及费用信息。**Token（模型计算内容长度的单位）**不等于字数，历史对话、思考和工具往返也可能计入消耗。
 
 理解费用时留意：
 
@@ -62,16 +68,24 @@ icon: settings
 当前页面正显示任务时，完成通常不会额外弹出通知。实时活动也主要在离开应用后出现，前台看不到不一定是设置失效。
 
 <div data-mobile-gallery="single">
-<figure data-mobile-shot="phone"><a href="../assets/mobile/zh/notifications.webp"><img src="../assets/mobile/zh/notifications.webp" alt="任务进度与回复完成通知可以分别控制"></a><figcaption><p><strong>iPhone</strong> · 任务进度与回复完成通知可以分别控制</p></figcaption></figure>
+<figure data-mobile-shot="phone"><a href="../assets/mobile/zh/notifications.webp"><img src="../assets/mobile/zh/notifications.webp" alt="通知页：后台运行状态、实时活动和回复完成通知"></a><figcaption><p><strong>iPhone</strong> · 通知页：后台运行状态、实时活动和回复完成通知</p></figcaption></figure>
 </div>
 
 ## 锁屏后为什么还是中断？
 
 后台回复不是持续运行保证。系统的省电策略、后台限制、网络断开或清理进程，仍可能让任务停止。较长的生成任务尽量保持应用在前台。
 
-应用能处理的任务中断会保留部分回答并提示中断，不会自动重新发送原请求。系统强制结束进程时，以已经保存的内容为准，最后收到但尚未保存的部分可能丢失。回到对应对话检查结果，再决定是否重新回答；绘图则检查任务记录后再生成。
+模型连接中途断开时，应用可能自动重试并显示状态；待发送消息队列也可在重新打开后恢复。系统强制结束进程时仍以已保存的内容为准。先检查当前回复、重试和队列状态，再决定是否重新回答，避免重复提交；绘图检查任务记录后再生成。
+
+iOS 的后台执行时间有限，实时活动只负责展示状态，不保证任务一直运行。远程电脑上的任务不因手机断连而自动停止，见[远程聊天](remote-chat.md)。
 
 等待工具批准时，任务也可能停在审批步骤。回到应用完成确认后才能继续。通知未送达时，仍可在应用内查看任务状态。
+
+## 文档解析、备份与反馈
+
+* **设置 → 通用设置 → 文档解析器**：选择后续文档提取方式，见[对话与文件](chat-and-files.md)。
+* **设置 → 备份与恢复**：创建完整备份或替换恢复，见[备份教程](backup-and-restore.md)。
+* **设置 → 关于**：查看版本、意见反馈与反馈记录；提交后可复制报告 ID、查询处理进度。摇一摇反馈需先开启，截图是否上传按每次提交的选择决定。
 
 ## 隐私与系统权限
 

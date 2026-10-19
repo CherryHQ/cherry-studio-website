@@ -6,19 +6,19 @@ icon: monitor-smartphone
 
 Reuse supported model providers already configured in Cherry Studio on your computer, without entering every address and key again.
 
-**This imports provider configuration and enabled models, not conversation history or remote control of your computer.** Pairing does not enable continuous automatic synchronization; run it again when you want to import changes.
+**This guide covers provider configuration and enabled-model import, not chat-history transfer.** Pairing can also provide [desktop-agent access](remote-chat.md), with a separate permission. Configuration is not continuously synchronized; explicitly import later changes.
 
 ## Connect your computer
 
 1. Connect both devices to the same local network, such as your home Wi-Fi, and keep Cherry Studio Desktop running.
 2. Open **Device connections** on desktop and display its pairing QR code.
 3. On mobile, open **Settings → Device connections → Scan QR code**. Allow camera and local-network permissions when requested.
-4. Scan and continue to provider selection. First-run onboarding offers the same desktop-sync route.
+4. Complete pairing and configuration-sync authorization on both devices. After pairing from Settings, start synchronization from device details; onboarding continues through import and model selection.
 
 If the camera is unavailable, use the manual field to paste the pairing QR content from desktop. It expects pairing data, not an ordinary website link.
 
 <div data-mobile-gallery="single">
-<figure data-mobile-shot="phone"><a href="../../../assets/mobile/en/desktop-pair.webp"><img src="../../../assets/mobile/en/desktop-pair.webp" alt="Open Device connections and scan the pairing code shown on your computer"></a><figcaption><p><strong>iPhone</strong> · Open Device connections and scan the pairing code shown on your computer</p></figcaption></figure>
+<figure data-mobile-shot="phone"><a href="../../../assets/mobile/en/device-connections.webp"><img src="../../../assets/mobile/en/device-connections.webp" alt="Settings → Device Connections: scan the QR code shown on desktop"></a><figcaption><p><strong>iPhone</strong> · Settings → Device Connections: scan the QR code shown on desktop</p></figcaption></figure>
 </div>
 
 ## Select and import providers
@@ -49,10 +49,12 @@ If you use different keys on desktop and mobile, take particular care with the f
 Read the reason shown beside the provider:
 
 * **Unsupported authentication:** a desktop login may not provide an exportable key usable on mobile. Configure a supported method separately on mobile.
-* **No usable API key:** ensure desktop has at least one valid, enabled key.
+* **No usable API key:** key-based providers need a valid enabled key on desktop. Explicitly keyless HTTP gateways follow the import preview's requirements.
 * **Unreadable configuration:** update mobile, or skip that entry and import the others.
 
-Local model services such as Ollama and LM Studio are excluded. Pairing does not turn a model running on your computer into a service running on your phone.
+0.3.0 can import supported HTTP-service configurations, including gateways such as LM Studio and keyless connections. Invocation still depends on the exported API: native Ollama endpoints remain unsupported; compatible endpoints depend on their actual configuration.
+
+The model runs on the computer or service host. Its address must be reachable from the phone. On mobile, `localhost` and `127.0.0.1` refer to the phone itself; replace them with a reachable service address. Import does not automatically forward requests through the computer.
 
 ## Paired successfully, but cannot synchronize
 
@@ -64,4 +66,4 @@ On iPhone/iPad, enable Cherry Studio's local-network permission in system settin
 
 **Remove device** on mobile removes only that phone's saved connection credentials. To revoke desktop authorization too, remove the mobile device in desktop's Device connections.
 
-Configuration import is not a full backup. [Export important conversations and files](sharing-and-export.md) separately.
+Configuration import is not a full backup. Use [Backup and restore](backup-and-restore.md) before changing devices, or [export selected work](sharing-and-export.md).

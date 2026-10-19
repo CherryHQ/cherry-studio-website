@@ -19,9 +19,13 @@ icon: share-2
 一次最多选择 128 条消息，正在生成的消息不能选择。选择页里的文字只是简短摘要，实际导出使用所选消息的完整内容，并按格式处理代码、图片等部分。
 
 <div data-mobile-gallery="pair">
-<figure data-mobile-shot="phone"><a href="../assets/mobile/zh/share-preview.webp"><img src="../assets/mobile/zh/share-preview.webp" alt="所选问题与回答一起预览；这里使用演示对话"></a><figcaption><p><strong>iPhone</strong> · 所选问题与回答一起预览；这里使用演示对话</p></figcaption></figure>
+<figure data-mobile-shot="phone"><a href="../assets/mobile/zh/share.webp"><img src="../assets/mobile/zh/share.webp" alt="分享对话：选择消息 → 预览 → 切换图片、HTML 或 Markdown"></a><figcaption><p><strong>iPhone 操作演示</strong> · 分享对话：选择消息 → 预览 → 切换图片、HTML 或 Markdown</p></figcaption></figure>
 <figure data-mobile-shot="phone"><a href="../assets/mobile/zh/share-formats.webp"><img src="../assets/mobile/zh/share-formats.webp" alt="在预览中选择图片、HTML 或 Markdown"></a><figcaption><p><strong>iPhone</strong> · 在预览中选择图片、HTML 或 Markdown</p></figcaption></figure>
 </div>
+
+## 把译文一起分享
+
+在原对话中展开所需译文并选好语言，再从原消息的分享入口选择消息。图片、HTML 和 Markdown 会包含进入分享时展开的译文，收起的译文不会导出；“包含思考内容”开关不影响译文。详见[回复翻译](translation.md)。
 
 ## 选哪种格式？
 
@@ -67,7 +71,7 @@ HTML 中相关内容可以展开阅读，图片会展开已选择包含的过程
 
 ## 文件库与原文件分享
 
-从侧边栏进入 **文件**，查看导入的附件和已保存的生成、导出文件。支持的图片、文本、Markdown 和 HTML 可以在应用中预览，其他类型可交给系统或其他应用打开。
+从侧边栏进入 **文件**，查看导入的附件和已保存的生成、导出文件。支持的图片、文本、Markdown、HTML、PDF、DOCX、XLSX 和 PPTX 可以在应用中预览；过大或不支持的文件可交给其他应用打开。
 
 * 图片预览支持缩放，以及分享、保存到相册等操作。
 * 大文本的预览可能只显示一部分，复制也以显示的内容为准；**分享原文件会导出完整原文件**。
@@ -82,7 +86,7 @@ PPTX（可用演示软件打开的幻灯片文件）中的页面是图片，适�
 
 卸载或清理应用前，把文件保存到 Cherry Studio 之外的位置或其他设备，并确认能打开；仅留在应用文件库中仍可能随应用数据丢失。
 
-导出方便保存和分享部分成果，不等同于可恢复整个应用的备份。电脑导入配置的范围见[从电脑导入配置](desktop-sync.md)。
+导出保存部分成果；要恢复整个移动版的数据，使用[备份与恢复](backup-and-restore.md)。文件夹与回收站的操作见[文件库](file-library.md)。
 
 ## 分享生成的文件或演示稿
 

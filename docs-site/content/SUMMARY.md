@@ -180,6 +180,8 @@
   * [快速开始](mobile/quick-start.md)
 * **日常使用**
   * [对话与文件](mobile/chat-and-files.md)
+  * [回复与技能文档翻译](mobile/translation.md)
+  * [文件库与共享工作区](mobile/file-library.md)
   * [生成与修改文件](mobile/file-generation.md)
   * [HTML 转图片与 PPT](mobile/html-export.md)
   * [联网搜索与网页阅读](mobile/web-search.md)
@@ -187,6 +189,8 @@
   * [分享与导出](mobile/sharing-and-export.md)
 * **智能体与自动化**
   * [智能体与工具](mobile/agents-and-tools.md)
+  * [技能：安装与复用任务流程](mobile/skills.md)
+  * [在手机使用电脑智能体](mobile/remote-chat.md)
   * [让 AI 使用工具](mobile/using-tools.md)
   * [日历与提醒事项](mobile/calendar-and-reminders.md)
   * [位置与健康记录](mobile/location-and-health.md)
@@ -196,6 +200,7 @@
   * [添加、编辑与管理模型](mobile/model-management.md)
   * [模型信息与列表更新](mobile/model-updates.md)
   * [从电脑导入配置](mobile/desktop-sync.md)
+  * [备份与恢复](mobile/backup-and-restore.md)
   * [数据、隐私与权限](mobile/data-privacy.md)
   * [设置、用量与后台回复](mobile/settings-and-usage.md)
 * **故障排查**

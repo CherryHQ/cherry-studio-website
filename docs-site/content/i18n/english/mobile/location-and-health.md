@@ -10,10 +10,6 @@ The location tool reads your phone's current position. Health tools summarize ex
 
 Enable **Location** or **Health** in the current agent's **System** section, then authorize access when prompted. You can also check supported permissions and their status under **Settings → System Permissions**.
 
-<div data-mobile-gallery="single">
-<figure data-mobile-shot="phone"><a href="../../../assets/mobile/en/system-permissions.webp"><img src="../../../assets/mobile/en/system-permissions.webp" alt="System Permissions lists location, health, calendar, and other access separately"></a><figcaption><p><strong>iPhone</strong> · System permissions are separate from the agent's capability switches</p></figcaption></figure>
-</div>
-
 To stop one agent using a capability, turn off its switch. To revoke the app's system access, follow the permission page's instructions to the relevant system settings.
 
 ## Get your location, then search nearby
@@ -44,6 +40,8 @@ The built-in location tool obtains a current foreground position. It does not pr
 * Resolve the reported cause before explicitly retrying, or provide a city, landmark, or starting address instead.
 
 ## Summarize health records on iOS
+
+Health access returns in **0.3.0** and requires an updated App package containing the native capability. **Every health query asks for confirmation, even under automatic approval**, and identifies the model provider receiving the data. Results remain in conversation history and may be sent to selected AI services with later messages. App approval and system Health authorization are separate; “requested” does not mean every data type was allowed.
 
 Current tools can read these recorded data types:
 

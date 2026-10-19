@@ -19,9 +19,13 @@ Only **selected messages** are exported. Questions are not included automaticall
 Select up to 128 messages at a time. Unfinished messages cannot be selected. Selection rows show short excerpts; export reads the complete selected content and presents code/images according to the chosen format.
 
 <div data-mobile-gallery="pair">
-<figure data-mobile-shot="phone"><a href="../../../assets/mobile/en/share-preview.webp"><img src="../../../assets/mobile/en/share-preview.webp" alt="Preview the selected question and answer together; demonstration conversation shown"></a><figcaption><p><strong>iPhone</strong> · Preview the selected question and answer together; demonstration conversation shown</p></figcaption></figure>
+<figure data-mobile-shot="phone"><a href="../../../assets/mobile/en/share.webp"><img src="../../../assets/mobile/en/share.webp" alt="Share: select messages, preview, and switch between image, HTML, or Markdown"></a><figcaption><p><strong>iPhone walkthrough</strong> · Share: select messages, preview, and switch between image, HTML, or Markdown</p></figcaption></figure>
 <figure data-mobile-shot="phone"><a href="../../../assets/mobile/en/share-formats.webp"><img src="../../../assets/mobile/en/share-formats.webp" alt="Choose Image, HTML, or Markdown in the preview"></a><figcaption><p><strong>iPhone</strong> · Choose Image, HTML, or Markdown in the preview</p></figcaption></figure>
 </div>
+
+## Include a translation
+
+Expand the translation and select its language in the conversation, then use the original message's share action. Image, HTML, and Markdown include translations expanded when sharing began; collapsed ones are omitted. The thinking-content switch does not affect this. See [Reply translation](translation.md).
 
 ## Choose a format
 
@@ -67,7 +71,7 @@ Turn off **Settings → General → Share watermark** before exporting. It is on
 
 ## File library and original files
 
-Open **Files** in the sidebar to find imported attachments and saved generated/exported files. Supported images, text, Markdown, and HTML open in the app; other formats can open through the system or another app.
+Open **Files** in the sidebar to find imported attachments and saved generated/exported files. Supported images, text, Markdown, HTML, PDF, DOCX, XLSX, and PPTX open in the app. Oversized or unsupported files can open elsewhere.
 
 * Image previews support zoom, sharing, and saving to Photos.
 * Large text previews may be partial, and Copy uses displayed content. **Sharing the original file includes the complete original.**
@@ -82,7 +86,7 @@ The PPTX slides contain pictures of the pages. They preserve appearance, **not i
 
 Before uninstalling or clearing app data, save files outside Cherry Studio or on another device and confirm they open. Files only in the app library can be lost with app data.
 
-Exports preserve selected work, not a restorable backup of the entire app. See [desktop import](desktop-sync.md) for configuration transfer limits.
+Exports preserve selected work. Use [Backup and restore](backup-and-restore.md) for the full mobile app, and [File library](file-library.md) for folder and trash operations.
 
 ## Share a generated file or presentation
 

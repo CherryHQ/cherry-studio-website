@@ -17,13 +17,15 @@ Tools let an agent retrieve information or perform an action: read a web page, c
 | Turn an HTML file into an image or presentation | Open the saved HTML file and use its share menu | [HTML to Image and PPT](html-export.md) |
 | Read or update material in Feishu, Notion, and other services | Connect the plugin with an account that can access the material | [Plugins and External Tools](plugins.md) |
 | Ask a text agent to generate an image | Enable image generation and configure a drawing model | [Image Generation](image-generation.md) |
-| Use a remote tool service someone provides | Add an MCP server and enable it in a saved agent | [Custom Tool Setup](plugins.md) |
+| Use a remote tool service someone provides | Add an MCP server from Plugins and enable it for the agent | [Custom Tool Setup](plugins.md) |
+| Organize project files or restore deleted items | Standard mode and clear source/destination items | [File library and workspaces](file-library.md) |
+| Reuse a task method | Install a skill and enable it for the agent | [Skills](skills.md) |
 
-Model-driven actions need a model that actually supports tool calls. Manually converting a saved HTML file does not. Checking a capability flag in the model editor cannot add support the model lacks.
+App tools, plugins, and skills require Standard mode and a tool-capable model. Native model web access has its own requirements, described in the web guide. Manual HTML conversion does not require a tool call. Checking a capability flag in the model editor cannot add support the model lacks.
 
 ## Try one small task first
 
-1. Select a text model that supports tool calls.
+1. Use Standard mode with a text model that supports tool calls.
 2. Edit the current agent and enable the capability you need in its **System** section. File reading and writing have no separate system capability switch.
 3. Connect an account for plugins, or grant permission when using device capabilities. An agent switch and a system permission are separate requirements.
 4. Ask for one specific task, inspect the result, then continue.
@@ -52,13 +54,21 @@ One task can combine files, web pages, calendars, and plugins, but each capabili
 
 | Action | With Ask when needed |
 | --- | --- |
-| Built-in search, file reading, and reading authorized device data | Usually runs directly |
+| Built-in search, file reading, and reading authorized calendar/location data | Usually runs directly |
+| iOS health queries | Always asks, even under automatic approval, and identifies the data recipient |
+| Moving, renaming, trashing, or restoring files/folders | Asks; automatic approval can execute directly |
 | Built-in text file creation and editing | Runs directly; this mode does not prompt for every file change |
 | Creating, updating, or deleting system events and reminders | Requires tool approval |
 | Plugins and custom tools | Follows tool rules and may require approval |
 | Image generation through a text model | Always requires approval, including in Automatically approve mode |
 
 **Automatically approve** approves eligible actions, while account and system permissions still apply. New agents currently default to this mode. See [Agents and Tools](agents-and-tools.md).
+
+## Calculations and multi-tool tasks
+
+Ask the agent to calculate dates, totals, statistics, or transform data, then inspect its code and result. For example: “Calculate totals by category and save a CSV.”
+
+Code Mode can combine authorized tools through code without adding account or system permissions. Mobile code execution is restricted; it is not a desktop terminal and cannot run scripts bundled with skills. You can also request specific agent-name or instruction changes in chat and inspect the result.
 
 ## How do I know the task finished?
 

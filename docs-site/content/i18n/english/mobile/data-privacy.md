@@ -14,6 +14,9 @@ Conversations and configuration are stored on the current device. Cloud models a
 | Search/page reading | The selected service receives keywords or URLs; returned material participates in model answers |
 | Plugins/custom tools | Connected services process authorized requests; retrieved content may be provided to the model |
 | Calendar, reminders, location | Authorized device information is read or changed; relevant results can participate in answers |
+| Translation | Original replies or skill documents go to the translation model; completed results are stored locally |
+| iOS health queries | Each query confirms the recipient; results enter history and may accompany later messages |
+| Remote desktop conversations | Messages and attachments go to the authorized computer for its models and tools to process |
 | Desktop import | Selected provider addresses, keys, and supported model configuration transfer over the local network |
 
 Retention depends on each service's policy and account settings. Local storage does not make a cloud conversation entirely offline.
@@ -51,15 +54,27 @@ Open **Settings → System permissions**. Tool approval and operating-system aut
 
 Agent capability switches control whether that agent can use the related built-in tools; system permissions control the app’s access to device data. Manage plugins and custom MCP tools separately. Disabling an agent’s capability does not revoke system permission; use system settings to revoke access. Automatic tool approval does not bypass system permissions. Android currently does not offer the iOS reminder and health-record tools.
 
+<div data-mobile-gallery="single">
+<figure data-mobile-shot="phone"><a href="../../../assets/mobile/en/system-permissions.webp"><img src="../../../assets/mobile/en/system-permissions.webp" alt="System permissions show location, calendar, reminders, health, camera, and photos"></a><figcaption><p><strong>iPhone</strong> · System permissions show location, calendar, reminders, health, camera, and photos</p></figcaption></figure>
+</div>
+
 ## Before changing devices or removing app data
 
-Device pairing is not a full backup or automatic chat sync. It mainly imports provider configuration and models, not conversation history.
+Create a full archive in **Settings → Backup and restore**, save outside the app, and confirm it exists. Restore replaces current data rather than merging it. Archives are unencrypted and contain database-held model keys and custom tool headers. Plugin grants, secure-storage account credentials, system permissions, and computer pairing need attention again; see [Backup and restore](backup-and-restore.md).
 
-[Export important messages and files](sharing-and-export.md) before uninstalling, clearing app data, or changing devices. Save them outside Cherry Studio or on another device and confirm they open. A copy only in the app file library can be deleted with the app data. Images, HTML, and Markdown preserve work but are not restorable backups of all app settings.
+[Sharing and export](sharing-and-export.md) preserves selected results; images, HTML, and Markdown cannot restore the full app. Desktop configuration import does not transfer local chat history, and remote conversations remain on the computer.
+
+Library deletion moves files to 30-day trash; references remain unavailable until restoration. Deleting a conversation does not enter file trash or automatically delete its attachments. See [File library](file-library.md).
 
 ## Does deleting history undo actions?
 
 No. Deletion or answering again does not undo calendar changes, edited external documents, or sent messages, and does not refund model costs. Inspect the actual result in the relevant service if reversal is needed.
+
+## Submitted feedback and screenshots
+
+Submitting through **Settings → About → Feedback** includes diagnostics from the last 24 hours: error/request summaries and system information. Diagnostic logs exclude conversation text and credentials. Your description and any screenshot can contain private material, so inspect them first.
+
+Shake feedback is off by default. When enabled, shaking in the foreground captures the current page and opens the form. The screenshot stays local unless you enable its inclusion for that submission. Deleting local feedback history does not delete an already submitted report. This flow is separate from anonymous-usage and automatic-error-report controls.
 
 ## What should a bug report include?
 

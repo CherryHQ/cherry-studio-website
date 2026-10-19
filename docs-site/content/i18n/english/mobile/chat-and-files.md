@@ -6,11 +6,6 @@ icon: message-circle
 
 Use a conversation for one topic, and an agent to choose its model and reusable instructions. Separate topics can have separate conversations with the same agent.
 
-<div data-mobile-gallery="pair">
-<figure data-mobile-shot="phone"><a href="../../../assets/mobile/en/iphone-conversation.webp"><img src="../../../assets/mobile/en/iphone-conversation.webp" alt="Cherry Studio Mobile conversation on iPhone"></a><figcaption><p><strong>iPhone</strong> · Messages, model details, and response actions in one column</p></figcaption></figure>
-<figure data-mobile-shot="tablet"><a href="../../../assets/mobile/en/ipad-conversation.webp"><img src="../../../assets/mobile/en/ipad-conversation.webp" alt="Cherry Studio Mobile conversation on iPad"></a><figcaption><p><strong>iPad</strong> · A wider reading area for long answers and file content</p></figcaption></figure>
-</div>
-
 ## Start a conversation or change models
 
 Choose **New chat** in the sidebar, select an agent and model, then send a message. A new conversation starts as a draft; sending the first message creates its history.
@@ -24,9 +19,14 @@ Put lasting preferences, such as “Give the conclusion before the steps,” in 
 * Browse recent conversations in the sidebar, or use its recent-list menu to group them by agent. Tap an agent name to expand/collapse its conversations. The chosen view mode persists across app launches.
 * The search button beside the sidebar title searches **conversation titles and message content**. Before typing, it shows recent conversations.
 * A message result opens the conversation at that message. Browse nearby history or choose **Return to latest messages**.
-* Long-press a sidebar conversation to rename or delete it. [Export](sharing-and-export.md) anything you want to keep first.
+* Long-press a sidebar conversation to enter multi-selection and confirm batch deletion. [Export](sharing-and-export.md) or [back up](backup-and-restore.md) needed content first. Deleted conversations do not enter file trash; their attachments and workspace files remain.
 
 Search locates the whole message without highlighting every keyword inside it. It searches conversations, not every file on your phone.
+
+<div data-mobile-gallery="pair">
+<figure data-mobile-shot="phone"><a href="../../../assets/mobile/en/search.webp"><img src="../../../assets/mobile/en/search.webp" alt="Search matches titles and message text; tap a result to jump to it"></a><figcaption><p><strong>iPhone walkthrough</strong> · Search matches titles and message text; tap a result to jump to it</p></figcaption></figure>
+<figure data-mobile-shot="phone"><a href="../../../assets/mobile/en/batch-delete.webp"><img src="../../../assets/mobile/en/batch-delete.webp" alt="Long-press to multi-select; batch deletion asks for confirmation"></a><figcaption><p><strong>iPhone walkthrough</strong> · Long-press to multi-select; batch deletion asks for confirmation</p></figcaption></figure>
+</div>
 
 ## Add images
 
@@ -34,21 +34,29 @@ Tap **＋** beside the input to choose photos, take a picture, or add an image t
 
 For example, attach a photo and ask “Turn the checklist in this picture into a table.” Specify which part matters.
 
-Supported request formats are JPEG, PNG, GIF, and WebP. The current app limit is 9 images, 10 MB per image, and 20 MB combined; individual models can have lower limits. Convert incompatible formats to JPEG or PNG.
+Supported formats are JPEG, PNG, GIF, and WebP, with a 10 MB per-image limit. Local chat no longer imposes one fixed request-wide image count or byte ceiling, but model capabilities, provider limits, and context capacity still apply. Drawing models have their own reference-image limits. Convert incompatible formats to JPEG or PNG.
 
-The app may compress images and retry an oversized request, but compression does not fix unsupported models, too many images, or every network error.
+Some larger JPEG, PNG, and WebP images are resized on import. GIFs, generated images, and images that cannot be re-encoded may remain unchanged. Do not assume an oversized failed request will be recompressed and retried.
+
+Before sending, open an image attachment to crop, rotate, mirror, straighten, or adjust perspective, with undo, redo, and original comparison. Saving uses the edited result and retains the original; cancellation leaves the current attachment unchanged.
+
+<div data-mobile-gallery="single">
+<figure data-mobile-shot="phone"><a href="../../../assets/mobile/en/attach-photo.webp"><img src="../../../assets/mobile/en/attach-photo.webp" alt="Add a photo, describe the task, switch to a vision model if needed, then send"></a><figcaption><p><strong>iPhone walkthrough</strong> · Add a photo, describe the task, switch to a vision model if needed, then send</p></figcaption></figure>
+</div>
 
 ## Attach documents or existing files
 
 1. Tap **＋ → Files**.
-2. Choose an existing file, or upload one using the system picker.
+2. Browse library folders to choose a file, or upload through the system picker.
 3. Give a specific task, such as “Summarize the second section and list its action items.”
 
-Plain-text files have a 1 MB limit per file; documents have a 20 MB limit. Long content may be shortened to fit reading or model limits, with a notice. Do not assume the whole file was included. PDF text extraction processes at most the first 100 pages.
+Local chat allows **5 MB** per text file, **50 MB** per PDF, and **20 MB** per other supported document. MB here means 1024 × 1024 bytes. Extraction and model context have separate limits; an accepted file is not necessarily read in full. PDF extraction still processes at most the first **100 pages**.
+
+PDF, DOCX, XLSX, and PPTX can now be previewed in the app, with external opening for oversized or unsupported files. Associate a [folder workspace](file-library.md) from the conversation header to share project material across chats. [Remote desktop attachments](remote-chat.md) have different transfer limits.
 
 ### Which document parser should I choose?
 
-Open **Settings → Document parser**. Selection saves immediately and applies to subsequent document processing; it does not rewrite previous answers.
+Open **Settings → General → Document parser**. Selection saves immediately and applies to subsequent document processing; it does not rewrite previous answers.
 
 | Option | Best for | Tradeoff |
 | --- | --- | --- |
@@ -73,6 +81,14 @@ Answer again is available only for the latest answer after generation has stoppe
 Completed tool results may be retained when resuming an interrupted answer. Retrying or deleting **does not undo calendar changes, edited files, or sent content**. Retrying can incur additional charges. Copy, share, or branch first if you need the previous answer.
 
 Turn deletion is permanent and does not refund usage. Wait for generation/operations to finish, or stop them, before deleting.
+
+## Long messages, queued inputs, and translation
+
+Expand the composer for a larger editor, then return or send. Follow-up messages submitted while a reply runs appear in a queue with their order, text, and attachment summaries. Remove an individual input that has not started without stopping the active reply.
+
+Queued inputs are retained with conversation state and can recover after an app restart. After a model request fails, eligible queued messages can continue. Remove an unwanted task explicitly; leaving the screen or backgrounding is not cancellation.
+
+Completed local text replies can be [translated](translation.md) from their toolbar. Keep multiple completed language results and include expanded translations in exports.
 
 ## Thinking depth and long conversations
 
