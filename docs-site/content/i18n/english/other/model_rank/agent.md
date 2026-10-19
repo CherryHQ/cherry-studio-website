@@ -4,7 +4,7 @@ This page shows the top 30 models on the [Arena AI](https://arena.ai/leaderboard
 
 This leaderboard measures how models perform on multi-turn tool-calling and agent tasks, across net improvement, confirmed success, praise-to-complaint ratio, steerability, Bash recovery, tool hallucination and session volume.
 
-> **Data updated**: 2026-10-18 12:27:25 UTC / 2026-10-18 20:27:25 CST (Beijing time)
+> **Data updated**: 2026-10-19 15:17:42 UTC / 2026-10-19 23:17:42 CST (Beijing time)
 
 {% hint style="info" %}
 A leaderboard reflects one particular evaluation and the preferences of its voters, so a high rank does not mean a model will do better on your tasks. Weigh price, speed, context, tool calling, privacy and regional availability as well.
@@ -32,7 +32,7 @@ A leaderboard reflects one particular evaluation and the preferences of its vote
 |     16 | 11-30         | Grok 4.7 (xHigh) [<sup>1</sup>](https://docs.x.ai/developers/models/grok-4.7)                                                                  | 3.21%±1.63%       | 6.84%±3.32%         | 2.95%±5.12%           | 0.52%±2.53%    | 0.59%±0.05%          |     15,127 |
 |     17 | 11-29         | GPT-5.5 (xHigh) [<sup>1</sup>](https://openai.com/index/introducing-gpt-5-5/)                                                                  | 3.14%±1.28%       | 2.51%±2.32%         | 6.43%±3.62%           | 3.09%±2.59%    | 0.52%±0.14%          |     54,331 |
 |     18 | 11-24         | GPT-6 Luna (Max) [<sup>1</sup>](https://openai.com/index/introducing-gpt-6-sol-and-luna/)                                                      | 3.01%±0.46%       | 1.08%±0.97%         | 0.70%±1.48%           | 5.94%±0.59%    | 0.47%±0.06%          |    163,815 |
-|     19 | 12-26         | DeepSeek-V4.1-Flash (Max) [<sup>1</sup>](https://www.deepseek.com/en/news/deepseek-v4-1-flash/)                                                | 2.74%±0.36%       | 7.01%±0.74%         | 3.20%±1.14%           | 1.84%±0.51%    | 0.48%±0.05%          |    241,716 |
+|     19 | 12-26         | DeepSeek-V4.1-Flash-20260910 (Max) [<sup>1</sup>](https://www.deepseek.com/en/news/deepseek-v4-1-flash/)                                       | 2.74%±0.36%       | 7.01%±0.74%         | 3.20%±1.14%           | 1.84%±0.51%    | 0.48%±0.05%          |    241,716 |
 |     20 | 11-27         | Hy4 preview [<sup>1</sup>](https://hy.tencent.ai/research/hy4-preview)                                                                         | 2.68%±0.67%       | 5.97%±1.37%         | 4.76%±2.18%           | 2.20%±0.88%    | 0.17%±0.17%          |     84,828 |
 |     21 | 11-30         | MiMo-V2.6-Flash [<sup>1</sup>](https://mimo.xiaomi.com/mimo-v2-6)                                                                              | 2.60%±1.45%       | 7.73%±2.85%         | 2.92%±4.72%           | 5.01%±1.86%    | 3.24%±0.49%          |     19,620 |
 |     22 | 12-30         | GLM-5.2 (Max) [<sup>1</sup>](https://huggingface.co/zai-org/GLM-5.2)                                                                           | 2.26%±0.83%       | 3.25%±1.72%         | 6.52%±2.54%           | 1.48%±1.37%    | 0.65%±0.05%          |     87,460 |
