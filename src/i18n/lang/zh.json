@@ -606,7 +606,7 @@
         "output": "谷时 $0.60 / 峰时 $1.20",
         "cache_read": "谷时 $0.003 / 峰时 $0.006",
         "cache_write": "—",
-        "allowance": "$16",
+        "allowance": "$20",
         "tokens": "的用量",
         "free": ["cache_write"]
       },
@@ -617,7 +617,7 @@
         "output": "$0.47",
         "cache_read": "$0.016",
         "cache_write": "$0.20",
-        "allowance": "$12",
+        "allowance": "$15",
         "tokens": "的用量",
         "free": []
       },
@@ -628,7 +628,7 @@
         "output": "$0.50",
         "cache_read": "$0.03",
         "cache_write": "—",
-        "allowance": "$12",
+        "allowance": "$15",
         "tokens": "的用量",
         "free": ["cache_write"]
       }
