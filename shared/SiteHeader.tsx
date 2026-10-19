@@ -4,6 +4,9 @@ import { ArrowUpRight, Download, Menu, Star, X } from 'lucide-react'
 import { type ReactNode, useEffect, useRef, useState } from 'react'
 
 import { cn } from '../src/lib/utils'
+import type { HeaderLink } from './header-navigation'
+
+export type { HeaderLink } from './header-navigation'
 
 const GITHUB_STARS_CACHE_KEY = 'cherry-studio:github-stars'
 const GITHUB_STARS_CACHE_TTL = 24 * 60 * 60 * 1000
@@ -44,13 +47,6 @@ function formatStarCount(count: number) {
   return count >= 1000 ? `${(count / 1000).toFixed(1)}k` : String(count)
 }
 
-export interface HeaderLink {
-  href: string
-  label: string
-  badge?: string
-  external?: boolean
-  active?: boolean
-}
 interface LinkProps {
   href: string
   className: string
@@ -91,7 +87,7 @@ export function SiteHeader({
     <>
       {item.label}
       {item.badge && (
-        <sup className="rounded-full bg-primary/10 px-1.5 py-0.5 text-[10px] font-semibold leading-none text-primary">
+        <sup className="rounded-full bg-[#e54d4d]/10 px-1.5 py-0.5 text-[10px] font-semibold leading-none text-[#e54d4d] dark:bg-[#dc2626]/10 dark:text-[#dc2626]">
           {item.badge}
         </sup>
       )}
