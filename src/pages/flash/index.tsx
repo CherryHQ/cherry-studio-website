@@ -177,7 +177,7 @@ function FlashContent() {
           <div className="text-center">
             <h2 className="text-foreground text-2xl font-bold sm:text-3xl">{t('pricing.models_title')}</h2>
           </div>
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {models.map((model) => (
               <div
                 key={model.id}
