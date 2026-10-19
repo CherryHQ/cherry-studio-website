@@ -4,62 +4,82 @@ icon: search
 
 # Web search and page reading
 
-Search finds relevant pages; page reading extracts content from a link. They can use different services.
+Search finds relevant pages; page reading extracts a particular link's content. Mobile **0.3.0** can use a model provider's native web capabilities or separately configured search and reading services.
 
-## Try a search
+<a id="try-a-search"></a>
 
-1. Choose a text model supporting tool calling and enable **Web search** in the current agent’s editor.
-2. Ask “Search for this project's recent releases and include sources,” or “Read this link and summarize the main points: [URL].”
-3. Inspect the tool process and sources; open a source to read the original page.
+## Try a search first
 
-Fresh installations normally select ExaMCP for search and Jina for page reading without requiring a personal key. Existing users retain their selections. Default services still depend on connectivity and service limits.
+1. Enable **Web search** in the current agent's editor in Standard mode. If you prefer Minimal mode, switch to it after enabling the capability.
+2. Choose a model supporting the relevant route and ask “Search for recent project updates and include sources,” or “Read this link and summarize three points: [link].”
+3. Inspect web activity and sources, then open original pages to check them.
 
-The current composer has no separate web-search switch. Enable **Web search** in the agent editor, configure services, then request a search in your message. Look for actual tool activity and sources rather than relying on the model saying it searched.
-
-## Change search or reading services
-
-Open **Settings → Web search**:
-
-* **Search provider:** finds pages using keywords.
-* **URL fetch provider:** reads the content of a specified web link.
-
-Choose a service, enter its requested key/address, and use **Check** before sending a new message. Service selection saves immediately. API-key fields commit when editing finishes; watch for errors. Advanced selections/numeric inputs also save without a separate page Save action.
-
-Model-provider keys and search-service keys are usually separate. Zhipu search links to its model-provider settings for key configuration; other services use their own forms.
+The composer has no separate web-search switch. Enabling access permits it; it does not force every message to search. Look for actual web activity and sources.
 
 <div data-mobile-gallery="single">
-<figure data-mobile-shot="phone"><a href="../../../assets/mobile/en/web-search.webp"><img src="../../../assets/mobile/en/web-search.webp" alt="Search and page reading have separate providers; defaults shown"></a><figcaption><p><strong>iPhone</strong> · Search and page reading have separate providers; defaults shown</p></figcaption></figure>
+<figure data-mobile-shot="phone"><a href="../../../assets/mobile/en/web-search.webp"><img src="../../../assets/mobile/en/web-search.webp" alt="Ask for a sourced web search, then open Sources to see the pages cited"></a><figcaption><p><strong>iPhone walkthrough</strong> · Ask for a sourced web search, then open Sources to see the pages cited</p></figcaption></figure>
 </div>
 
-## Advanced settings
+## Native model tools or external services?
 
-Keep defaults initially, then adjust for a specific need.
-
-| Setting | Purpose | Tradeoff |
+| Route | When to use it | Requirements |
 | --- | --- | --- |
-| Result count | Number of search results | More perspectives also mean more material to process |
-| Result compression | Whether search content is shortened | Cutoff reduces usage; no compression does not mean unlimited model capacity |
-| Total search content | Limits the amount of retained text | Lower limits can omit later details |
+| Native model web access | The model, API, and authentication support provider-executed search or reading | A usable model connection and enabled agent web access |
+| External search and reading | You want a particular service, or the model lacks the capability | A tool-capable text model and configured search/reading services |
 
-Page reading has separate limits too. Long pages may be only partly read. Open the original when checking details; repeating the same fetch does not automatically retrieve the next segment.
+Configure the source preference and external services through **Plugins → Built-in tools → Web search / URL fetch**. Fresh installs prefer supported native capabilities; existing installs may retain an external-first preference.
 
-## Chat works, but search does not
+Standard mode selects a route before the request according to preference and availability. Search and reading can use different routes. Failure does not trigger automatic attempts through other services. **Minimal mode uses supported native model web capabilities only, without external search tools.** If it cannot search, check model support or switch to Standard mode.
 
-The chat model, search service, and reading service connect separately. Check:
+Support depends on the exact model, API, and authentication, not just the provider name. Editing a capability flag cannot create a server capability.
 
-1. Whether the model supports tool calling and the agent’s **Web search** switch is enabled.
-2. Whether the selected service passes its settings check.
-3. Whether your request clearly asks for a search and supplies keywords or a link.
-4. Tool errors for network, key, permission, quota, or page-access problems.
+<a id="change-search-or-reading-services"></a>
 
-After a search or page-read failure, that answer stops starting new web attempts and uses already obtained information where possible. It does not silently switch providers. Fix the issue and send a new message to try again.
+## Change search or page-reading services
 
-## Why cannot it read a logged-in page?
+1. Open **Plugins** in the sidebar and enter **Web search** or **URL fetch** under built-in tools.
+2. Choose a provider and supply its required key, address, or other fields. Search and reading can be configured separately.
+3. Use **Check**, then return to chat and send a new request.
 
-Reading services access links from their own network and do not inherit your phone browser's login. Restricted or login-only pages may be inaccessible.
+Options save through their respective actions. If a service form offers **Save**, submit it before checking. Model credentials and search credentials are usually different; follow the page for services such as Zhipu that share model-provider keys.
 
-Use the [corresponding plugin](plugins.md) for Feishu or Notion resources, or attach an authorized export using [chat and files](chat-and-files.md).
+Initial external choices remain Exa MCP search and Jina reading, usually without a personal key. This does not mean every web request uses them. Other choices include key-based services, self-hosted SearXNG and Crawl4AI, and Querit; follow the actual list and requirements.
 
-## Where does the data go?
+## What is local webpage extraction?
 
-Search keywords and target URLs go to the selected search/reading service. Returned material is used by the model. Avoid including keys or private information that does not belong in a web search. See [data and privacy](data-privacy.md).
+The local reader fetches a page directly from the phone and extracts its text without a separate extraction-service key. Extracted text is still sent to the conversation model. Local extraction does not make the full task offline or keep content from the model provider.
+
+It suits directly accessible public pages. Sites requiring complex scripts, login, or access checks may fail, and the phone must be able to reach the site.
+
+<a id="advanced-settings"></a>
+
+## Should I change advanced settings?
+
+Start with defaults. For external search, adjust result count, content compression, and total content allowance only when needed. More results can increase coverage and usage; a smaller content budget can omit later material.
+
+Page reading has its own content limit. Open original pages for exact checks; repeating a fetch does not necessarily continue where an earlier result was truncated.
+
+<a id="chat-works-but-search-does-not"></a>
+
+## Why does chat work but search fail?
+
+1. Check the agent's Web search capability and whether it is in Minimal mode.
+2. For native access, check the exact model, API, and account support.
+3. For external services, check model tool calling, service configuration, and its connection check.
+4. Read errors and address network, key, permission, credit, or site restrictions separately.
+
+A working chat connection does not prove the search service or target site is reachable. An external web failure stops further external attempts in that turn and uses available material where possible. Fix the cause and send a new message.
+
+<a id="why-cannot-it-read-a-logged-in-page"></a>
+
+## Why cannot I read a signed-in page?
+
+External readers do not inherit your browser login. Local extraction is also different from opening a page in your signed-in browser.
+
+Use the [appropriate plugin](plugins.md) for Feishu, Notion, and other account content, or export material you are authorized to use and add it through [Chat and files](chat-and-files.md).
+
+<a id="where-does-the-data-go"></a>
+
+## Who receives the data?
+
+External search receives queries and reading services receive target links. Native web access is handled by the model provider. Local extraction visits the target directly, then supplies content to the model. Keep keys and unnecessary private material out of search queries. See [Data, privacy, and permissions](data-privacy.md).

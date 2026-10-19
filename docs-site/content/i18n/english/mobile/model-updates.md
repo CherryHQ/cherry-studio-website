@@ -36,7 +36,7 @@ These updates do not change your **API keys, provider addresses, or authenticati
 ## Fetch a provider's model list
 
 1. Open **Settings → Model service → Provider → Models**.
-2. Save any provider configuration changes, then tap **Sync**.
+2. Wait for provider changes to save. If editing a key, save its editing sheet first, then tap **Sync**.
 3. Review available additions and models **not returned by the remote service**.
 4. Select the changes you want and tap **Update**. Nothing is selected automatically.
 5. Read the confirmation before applying any removals.
@@ -44,7 +44,7 @@ These updates do not change your **API keys, provider addresses, or authenticati
 Fetching the list does not enable the provider. Failed or empty results retain existing models; repair configuration, retry, or [add a model manually](model-management.md).
 
 <div data-mobile-gallery="single">
-<figure data-mobile-shot="phone"><a href="../../../assets/mobile/en/model-sync.webp"><img src="../../../assets/mobile/en/model-sync.webp" alt="Review and select models before applying changes; the provider list can change"></a><figcaption><p><strong>iPhone</strong> · Review and select models before applying changes; the provider list can change</p></figcaption></figure>
+<figure data-mobile-shot="phone"><a href="../../../assets/mobile/en/sync-models.webp"><img src="../../../assets/mobile/en/sync-models.webp" alt="Sync models: search, select, and tap Update to add them"></a><figcaption><p><strong>iPhone walkthrough</strong> · Sync models: search, select, and tap Update to add them</p></figcaption></figure>
 </div>
 
 ## Does “not returned” mean a model was discontinued?

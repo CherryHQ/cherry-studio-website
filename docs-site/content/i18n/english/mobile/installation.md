@@ -41,6 +41,14 @@ To try beta builds, switch the iPhone / iPad column on the download page to **Te
 
 Test capacity and build expiration are managed by Apple’s beta system. If the invitation is temporarily unavailable, try again later or follow the official release channels.
 
+## Updates and version differences
+
+These guides describe 0.3.0. Check your installed version in **Settings → About**. Google Play, App Store, APK, and TestFlight availability depends on each channel's publication schedule and may differ.
+
+For APK installations, follow app update notices or the official download page; use the relevant store for store installations. Compatible code and resource updates can download in the background and apply on a later launch. Native capability changes still require a new App package: an older package cannot gain 0.3.0 health support through code updates alone.
+
+Create a [full backup](backup-and-restore.md) before upgrading or changing devices. Restoring a backup differs from updating in place; do not uninstall the app just to update it.
+
 ## After installation
 
 Continue with the [quick start](quick-start.md) to add a model service and send your first message.

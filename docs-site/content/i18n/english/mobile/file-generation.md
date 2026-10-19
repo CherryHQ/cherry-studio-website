@@ -31,6 +31,10 @@ The built-in file writing tool saves text, up to 1 MB per file. **Naming a file 
 
 For PPT, create an HTML presentation and use [HTML to Image and PPT](html-export.md). A connected plugin may offer other document-creation features; its actual capabilities determine what is available.
 
+## Save through workspace paths
+
+Associate a folder from the conversation header, then ask “Save the summary as notes/meeting-notes.md.” New outputs go to that workspace, or to the library root when none is associated. Several conversations can use the same folder; see [File library and shared workspaces](file-library.md).
+
 ## Read and edit an existing file
 
 1. In the conversation, choose **＋ → File** and select or upload a file.
@@ -47,7 +51,7 @@ Text files can be edited directly. Supported PDF and Office documents can provid
 
 ### Does editing overwrite the original?
 
-* Editing an uploaded file or one created by an earlier response saves a new version, such as `meeting-notes v2.md`, and retains the source.
+* Editing an uploaded file or an earlier response's file retains the old content and creates a new version. The library shows the logical file's current version; earlier messages keep their original references. This does not mean each edit appears as a separate file named `v2`.
 * Within one response, the agent may refine its current draft repeatedly and finish with one file, instead of producing a new version for every change.
 
 This is not continuous synchronization. Editing an imported copy in Cherry Studio does not update the original elsewhere on your phone or in cloud storage.
@@ -60,7 +64,7 @@ Editing matches the original text. Changed wording, repeated sentences, and diff
 
 No. Large files may need multiple reads, and document extraction has its own limits. For a full review, ask the agent to continue through unread sections and state any gaps. If extraction already omitted part of the source, further reads cannot recover it; split the document and provide it again.
 
-Reading tools use accessible attachments or generated files in this conversation. They do not scan every file on your phone. To continue in a new conversation, select the file again through the attachment menu.
+Reading tools use accessible attachments, outputs, and associated workspace material, not every file on your phone. In another conversation, attach the file again or associate the same [folder workspace](file-library.md).
 
 ## Find, preview, and share files
 

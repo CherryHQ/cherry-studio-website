@@ -6,13 +6,15 @@ icon: smartphone
 
 Cherry Studio Mobile is an AI client designed for Android, iPhone, and iPad. Connect your own model services to chat, configure agents, and generate images from a mobile device.
 
+These guides describe Mobile **0.3.0**, including skills, folder workspaces, painting boards, and translation. Desktop agents require a compatible desktop version. Store and beta channels can offer different versions; check the one installed on your device.
+
 - **First time here?** Follow [Quick start](quick-start.md) to connect a model and send your first message.
 - **Have a task in mind?** Browse [Everyday tasks](#everyday-tasks) for chats, images, files, and sharing.
 - **Something went wrong?** Start with [Troubleshooting](troubleshooting.md).
 
 <div data-mobile-gallery="pair">
-<figure data-mobile-shot="phone"><a href="../../../assets/mobile/en/iphone-conversation.webp"><img src="../../../assets/mobile/en/iphone-conversation.webp" alt="Conversation in Cherry Studio Mobile on iPhone"></a><figcaption><p><strong>iPhone</strong> · Full conversation and message actions; select to view full size</p></figcaption></figure>
-<figure data-mobile-shot="tablet"><a href="../../../assets/mobile/en/ipad-conversation.webp"><img src="../../../assets/mobile/en/ipad-conversation.webp" alt="Conversation in Cherry Studio Mobile on iPad"></a><figcaption><p><strong>iPad</strong> · The conversation expands for the available tablet space</p></figcaption></figure>
+<figure data-mobile-shot="phone"><a href="../../../assets/mobile/en/sidebar.webp"><img src="../../../assets/mobile/en/sidebar.webp" alt="The sidebar holds agents, drawings, plugins, skills, files, and recent chats"></a><figcaption><p><strong>iPhone</strong> · The sidebar holds agents, drawings, plugins, skills, files, and recent chats</p></figcaption></figure>
+<figure data-mobile-shot="phone"><a href="../../../assets/mobile/en/iphone-conversation.webp"><img src="../../../assets/mobile/en/iphone-conversation.webp" alt="A vision model turns a photo into a table"></a><figcaption><p><strong>iPhone</strong> · A vision model turns a photo into a table</p></figcaption></figure>
 </div>
 
 ## Current status
@@ -33,15 +35,15 @@ Open the [mobile option on the download page](https://cherryai.com/download?plat
 
 ### Everyday tasks
 
-[Chat and files](chat-and-files.md) · [Web search and page reading](web-search.md) · [Image generation](image-generation.md) · [Create and edit files](file-generation.md) · [HTML to image and PPT](html-export.md) · [Sharing and export](sharing-and-export.md)
+[Chat and files](chat-and-files.md) · [Reply and skill-document translation](translation.md) · [File library and shared workspaces](file-library.md) · [Web search and page reading](web-search.md) · [Image generation](image-generation.md) · [Create and edit files](file-generation.md) · [HTML to image and PPT](html-export.md) · [Sharing and export](sharing-and-export.md)
 
 ### Agents & automation
 
-[Agents and tools](agents-and-tools.md) · [Let AI use tools](using-tools.md) · [Calendar and reminders](calendar-and-reminders.md) · [Location and health records](location-and-health.md) · [Plugins and external tools](plugins.md)
+[Agents and tools](agents-and-tools.md) · [Skills](skills.md) · [Use desktop agents from your phone](remote-chat.md) · [Let AI use tools](using-tools.md) · [Calendar and reminders](calendar-and-reminders.md) · [Location and health records](location-and-health.md) · [Plugins and external tools](plugins.md)
 
 ### Configuration & data
 
-[Providers and models](providers-and-models.md) · [Model management](model-management.md) · [Model information and list updates](model-updates.md) · [Settings, usage, and background replies](settings-and-usage.md) · [Data, privacy, and permissions](data-privacy.md)
+[Providers and models](providers-and-models.md) · [Model management](model-management.md) · [Model information and list updates](model-updates.md) · [Settings, usage, and background replies](settings-and-usage.md) · [Backup and restore](backup-and-restore.md) · [Data, privacy, and permissions](data-privacy.md)
 
 ### Troubleshooting
 

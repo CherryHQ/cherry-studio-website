@@ -4,76 +4,79 @@ icon: key-round
 
 # Providers and models
 
-A provider is the platform supplying an AI service; a model is the particular AI you use through that platform. The same model may be available from several providers, each with its own credentials.
+A provider supplies an AI service; a model is the particular AI you use through it. The same model can be offered by several platforms, each with its own credentials. This guide describes Mobile **0.3.0**.
 
-To get started, enter an **API key**, add a model, and enable the provider. An API key is the credential your provider issues for app access. Cherry Studio does not include model credits; availability and charges depend on your provider account.
-
-<div data-mobile-gallery="pair">
-<figure data-mobile-shot="phone"><a href="../../../assets/mobile/en/iphone-add-provider.webp"><img src="../../../assets/mobile/en/iphone-add-provider.webp" alt="Add provider screen in Cherry Studio Mobile on iPhone"></a><figcaption><p><strong>iPhone</strong> · Search the provider catalog or create a custom provider</p></figcaption></figure>
-<figure data-mobile-shot="tablet"><a href="../../../assets/mobile/en/ipad-add-provider.webp"><img src="../../../assets/mobile/en/ipad-add-provider.webp" alt="Add provider screen in Cherry Studio Mobile on iPad"></a><figcaption><p><strong>iPad</strong> · The same provider catalog in the tablet layout</p></figcaption></figure>
-</div>
+Start with an **API key**, or an account sign-in method actually offered on the configuration page. Cherry Studio includes no model credits; supported models and charges depend on the provider.
 
 ## Add a built-in provider
 
-1. Open **Settings → Model service** and tap the add button.
-2. Search for a provider and tap **Add**. Built-in entries supply common connection settings.
-3. Enter that provider's API key. Keep the suggested address and API option unless the provider instructs otherwise.
-4. Save, fetch the model list, select the models you want, and confirm. If the list is unavailable, add a model manually.
-5. Finish setup and check the provider's switch in the model service list. Turn it on if it remains disabled, then select the model in a conversation.
+1. Open **Settings → Model service** and tap add.
+2. Search for a provider and tap **Add**.
+3. Enter its key or sign in through the account section. Built-in addresses and API formats usually need no changes.
+4. Continue to model setup: fetch and select models, or manually enter the platform's exact model ID.
+5. Return to the provider list, confirm it is enabled, and select a model in chat.
 
-Edit an existing provider instead of adding it again. You can disable a provider temporarily and enable it again later.
+Open an already added provider to edit it instead of creating a duplicate. New providers require completing the page's continue/create action; existing providers save as described below.
+
+<div data-mobile-gallery="pair">
+<figure data-mobile-shot="phone"><a href="../../../assets/mobile/en/providers-list.webp"><img src="../../../assets/mobile/en/providers-list.webp" alt="Model services: enabled providers are listed first"></a><figcaption><p><strong>iPhone</strong> · Model services: enabled providers are listed first</p></figcaption></figure>
+<figure data-mobile-shot="phone"><a href="../../../assets/mobile/en/provider-config.webp"><img src="../../../assets/mobile/en/provider-config.webp" alt="Provider settings: sign-in, keys, connection test, and API address (key blurred)"></a><figcaption><p><strong>iPhone</strong> · Provider settings: sign-in, keys, connection test, and API address (key blurred)</p></figcaption></figure>
+</div>
 
 ## Add a custom provider
 
-Use a custom provider when your platform is absent from the catalog or supplies a dedicated address.
-
-1. Choose **Custom provider** and enter a recognizable name.
-2. Select the API format documented by the platform. OpenAI, Anthropic, and Gemini describe connection formats; choose the one your platform supports.
-3. Enter the **Base URL**, the base address used to connect to the service, and its API key.
-4. Review the displayed **Request URL** and save.
-5. Fetch models or manually add the exact model ID from the platform. Return to the provider list and enable its switch if necessary.
+1. Choose **Custom provider** and enter a name.
+2. Select the API format documented by the platform. OpenAI, Anthropic, and Gemini describe connection formats, not interchangeable model names.
+3. Enter its **Base URL** and required credentials.
+4. Check the address and API, continue creation, and fetch or manually add models.
+5. Confirm the provider is enabled and check a model's connection.
 
 ### Which address goes in Base URL?
 
-Use the provider's base address, such as `https://api.example.com/v1`. Do not use its login/dashboard page or paste a complete request URL ending in `/chat/completions`. The app adds the request path; including it twice causes an incorrect address. Recognized complete URLs show a correction hint.
+Use the provider's base address, such as `https://api.example.com/v1`, not a login/dashboard page. Do not duplicate complete request paths such as `/chat/completions` in the base address.
 
-Some gateways require an address without an automatically inserted API version. When the provider requires this, append `#`, for example `https://api.example.com#`, and check the request URL preview. Leave the marker out otherwise.
+Some platforms require no automatically appended API version. If instructed, add `#`, for example `https://api.example.com#`; otherwise omit it. Providers supporting multiple APIs can have separate addresses and a default API. Changing the default may affect models that follow it, so read the confirmation.
 
-A provider supporting multiple APIs can have separate addresses and a default API. Changing the default can affect models that follow it; read the confirmation before proceeding.
+A phone must be able to reach an HTTP service running on your computer. On the phone, `localhost` and `127.0.0.1` refer to the phone itself. Importing configuration does not make those addresses reachable. Keyless gateways work only where configuration explicitly supports them; do not invent a dummy key to bypass setup. See [desktop import](desktop-sync.md).
 
 ## Edit a provider and manage keys
 
-Open the provider's **Configuration** tab to edit its name, address, and keys. Optional key notes, such as “Personal” or “Backup,” are identification labels and do not change permissions.
+**Existing providers save configuration directly; there is no page-wide Save button.** Names, addresses, and key switches save through their respective actions. Resolve reported errors before leaving.
 
-* Add one key per entry. Keys can be edited, enabled, disabled, or removed separately; do not paste several into one field.
-* Closing a key editor keeps changes in the page draft. Tap the page's **Save** action to save the address and keys together.
-* Keep at least one valid key enabled. A provider with every key disabled cannot make normal requests.
-* A discard-changes prompt means there are still unsaved edits.
+* Add one key per entry. Enable, disable, or remove keys separately; do not paste several into one field.
+* A key-editing sheet still has its own **Save** action for the key and label. This differs from the provider page's automatic saving.
+* Labels identify a key's purpose; they do not change permissions or credits.
+* Key-based authentication needs a valid enabled key. Account authentication and explicitly keyless connections follow their own requirements.
 
-Supported chat requests can try another enabled key after an authorization or rate-limit error, provided no response has started. This does not cover every error, image generation, or model-list request, and does not increase account credits.
+Some chat requests can try another enabled key after authentication or rate-limit errors. This does not increase account credits or guarantee recovery for every request.
 
-<div data-mobile-gallery="pair">
-<figure data-mobile-shot="phone"><a href="../../../assets/mobile/en/provider-config.webp"><img src="../../../assets/mobile/en/provider-config.webp" alt="Save provider changes with the top-right button; keys shown are non-working examples"></a><figcaption><p><strong>iPhone</strong> · Save provider changes with the top-right button; keys shown are non-working examples</p></figcaption></figure>
-<figure data-mobile-shot="phone"><a href="../../../assets/mobile/en/provider-key.webp"><img src="../../../assets/mobile/en/provider-key.webp" alt="Key notes help identify accounts; save the provider after closing this sheet"></a><figcaption><p><strong>iPhone</strong> · Key notes help identify accounts; save the provider after closing this sheet</p></figcaption></figure>
-</div>
+## Sign in with an account
+
+If configuration offers sign-in, follow its authorization page and return to Cherry Studio to confirm. Not every catalog provider supports account login, and a consumer chat subscription is not necessarily usable as API credits.
+
+The account section can show the identity, balance, or refresh actions supplied by the platform. Signing out and revoking a model key are not always the same operation; inspect the key list when disabling credentials. Changing devices or restoring a backup may require signing in again.
 
 ## Check the connection
 
-Save first, open **Model check**, select a model, and run the check. The page displays the request address and result.
+Select a text model in provider configuration and run the connection check. Finish any key-editing sheet and resolve saving errors first.
 
-Success applies to that configuration and selected model, not every model on the platform. Checking a connection does not enable the provider; check its switch in the provider list.
+Success applies to this configuration and model, not every model. A check does not enable the provider. Model discovery and chat use different APIs; if discovery fails, manually add a model and check it.
 
 ## Choose models and defaults
 
-The conversation model picker changes the current agent's model. The provider must be enabled and the model available. Search or use **All**, **Free**, and **Vision** filters to narrow the list. If models disappear, return to **All**.
+The conversation model picker changes the current agent's model. Search or use filters such as **All**, **Free**, and **Vision**. If a model is missing, clear filters and check provider/model enablement.
 
-Vision reflects recorded image-input support; Free reflects recorded pricing. Actual capabilities, free allowances, and quotas depend on the provider.
+Vision and Free reflect catalog information. Actual capabilities and credits depend on the platform; editing a capability flag cannot give a model a capability it lacks.
 
-In **Settings → Default model**, select the default and drawing models. Selecting or clearing saves immediately. Existing agents retain their own model choices; changing the global default does not update every agent.
+**Settings → Default model** offers default text, drawing, and translation models. Existing agents keep their own selections. For translation fallback rules, see [Reply and skill-document translation](translation.md).
+
+<div data-mobile-gallery="single">
+<figure data-mobile-shot="phone"><a href="../../../assets/mobile/en/iphone-models.webp"><img src="../../../assets/mobile/en/iphone-models.webp" alt="Provider models: sync or add manually; vision models are labeled"></a><figcaption><p><strong>iPhone</strong> · Provider models: sync or add manually; vision models are labeled</p></figcaption></figure>
+</div>
 
 ## Related guides
 
-* [Add, edit, and manage models](model-management.md): capabilities, limits, pricing, and deletion.
-* [Model information and list updates](model-updates.md): automatic updates versus manual synchronization.
-* [Import configuration from desktop](desktop-sync.md): reuse an existing setup.
+* [Add, edit, and manage models](model-management.md): capabilities, limits, prices, and deletion.
+* [Model information and list updates](model-updates.md): catalog updates versus manual synchronization.
+* [Import configuration from desktop](desktop-sync.md): reuse providers.
 * [Troubleshooting](troubleshooting.md): connection errors and recovery.

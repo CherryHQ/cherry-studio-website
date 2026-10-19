@@ -36,7 +36,7 @@ icon: refresh-cw
 ## 如何同步服务商返回的模型列表？
 
 1. 打开 **设置 → 模型服务 → 目标服务商 → 模型**。
-2. 先保存刚修改的服务商配置，再点击 **同步**。
+2. 等服务商配置保存完成；若正在编辑密钥，先完成密钥弹层的保存，再点击 **同步**。
 3. 等待列表加载，查看 **可添加模型** 和 **远端未返回** 两类变化。
 4. 勾选本次要处理的条目，然后点击 **更新**。初始没有替你选好改动。
 5. 如包含移除操作，阅读确认提示后再决定是否继续。
@@ -44,7 +44,7 @@ icon: refresh-cw
 同步列表不会自动替你启用服务商。同步失败、没有返回模型时，原有模型会保留，可以检查配置后重试，也可以改用[手动添加](model-management.md)。
 
 <div data-mobile-gallery="single">
-<figure data-mobile-shot="phone"><a href="../assets/mobile/zh/model-sync.webp"><img src="../assets/mobile/zh/model-sync.webp" alt="同步先展示可添加模型，勾选后才会应用；列表会随平台变化"></a><figcaption><p><strong>iPhone</strong> · 同步先展示可添加模型，勾选后才会应用；列表会随平台变化</p></figcaption></figure>
+<figure data-mobile-shot="phone"><a href="../assets/mobile/zh/sync-models.webp"><img src="../assets/mobile/zh/sync-models.webp" alt="同步模型：搜索并勾选需要的模型，点击更新后加入列表"></a><figcaption><p><strong>iPhone 操作演示</strong> · 同步模型：搜索并勾选需要的模型，点击更新后加入列表</p></figcaption></figure>
 </div>
 
 ## “远端未返回”是不是模型已经下线了？

@@ -6,11 +6,6 @@ icon: message-circle
 
 一段对话用于持续讨论一个主题；智能体决定使用哪个模型，以及回答时应遵循什么要求。不同主题可以使用同一个智能体分别新建对话，避免把无关材料混在一起。
 
-<div data-mobile-gallery="pair">
-<figure data-mobile-shot="phone"><a href="../assets/mobile/zh/iphone-conversation.webp"><img src="../assets/mobile/zh/iphone-conversation.webp" alt="Cherry Studio 移动版 iPhone 对话页面"></a><figcaption><p><strong>iPhone</strong> · 消息、模型信息与回答操作集中在单列界面</p></figcaption></figure>
-<figure data-mobile-shot="tablet"><a href="../assets/mobile/zh/ipad-conversation.webp"><img src="../assets/mobile/zh/ipad-conversation.webp" alt="Cherry Studio 移动版 iPad 对话页面"></a><figcaption><p><strong>iPad</strong> · 更宽的阅读区域适合长回答与文件内容</p></figcaption></figure>
-</div>
-
 ## 开始对话与切换模型
 
 从侧边栏选择 **新对话**，在对话页选择智能体和模型后发送消息。新对话先作为草稿打开，发送第一条消息后才会形成对话记录。
@@ -24,9 +19,14 @@ icon: message-circle
 * 侧边栏的最近对话可按时间浏览，也可以通过最近列表的菜单切换为按智能体分组。点击智能体名称展开或收起，重开应用会保留已选的浏览方式。
 * 点击侧边栏标题旁的搜索按钮，可同时搜索**对话标题和消息内容**；尚未输入关键词时先显示最近对话。
 * 点击消息搜索结果，会打开该消息所在位置。可以继续向前后阅读，或点击 **返回最新消息** 回到对话末尾。
-* 在侧边栏长按对话，可以重命名或删除。删除前需要的内容可先[导出](sharing-and-export.md)。
+* 在侧边栏长按会话进入多选，可批量删除并在操作前确认。需要的内容先[导出](sharing-and-export.md)或[备份](backup-and-restore.md)。删除会话不进入文件回收站，也不会删除其附件和工作区文件。
 
 搜索定位的是整条消息，不会把正文里的每个关键词都高亮；当前搜索范围是对话，不是手机里的所有文件。
+
+<div data-mobile-gallery="pair">
+<figure data-mobile-shot="phone"><a href="../assets/mobile/zh/search.webp"><img src="../assets/mobile/zh/search.webp" alt="搜索“杭州”，同时命中对话标题和消息内容，点击结果跳到原消息"></a><figcaption><p><strong>iPhone 操作演示</strong> · 搜索“杭州”，同时命中对话标题和消息内容，点击结果跳到原消息</p></figcaption></figure>
+<figure data-mobile-shot="phone"><a href="../assets/mobile/zh/batch-delete.webp"><img src="../assets/mobile/zh/batch-delete.webp" alt="长按进入多选，批量删除前会再次确认"></a><figcaption><p><strong>iPhone 操作演示</strong> · 长按进入多选，批量删除前会再次确认</p></figcaption></figure>
+</div>
 
 ## 添加图片
 
@@ -34,21 +34,29 @@ icon: message-circle
 
 例如发送一张照片并问：“帮我把图里的清单整理成表格。”文字里写清楚要看图片的哪一部分，会比只发图片更容易得到需要的回答。
 
-当前支持发送 JPEG、PNG、GIF、WebP 图片，一次最多 9 张，单张不超过 10 MB，合计不超过 20 MB；具体模型可能有更低限制。不兼容的格式可以先转为 JPEG 或 PNG。
+当前支持 JPEG、PNG、GIF、WebP 图片，单张不超过 10 MB。本机聊天不再统一限制每次请求的图片总张数和总大小，但仍受模型能力、服务商限制和上下文容量约束；绘图模型的参考图数量另有限制。不兼容的格式可先转为 JPEG 或 PNG。
 
-应用可能为过大的图片请求压缩图片后再尝试，但压缩不能解决不支持图片的模型、数量超限或所有网络错误。
+部分较大的 JPEG、PNG、WebP 会在导入时缩小；GIF、生成图片或无法重新编码的图片可能保持原样。发送超限后不要假设应用一定会再次压缩重试。
+
+发送前可打开附件图片进入编辑，裁剪、旋转、翻转、拉直或调整透视，并使用撤销、重做和原图对比。保存后使用编辑结果，原图保留；取消不会替换当前附件。
+
+<div data-mobile-gallery="single">
+<figure data-mobile-shot="phone"><a href="../assets/mobile/zh/attach-photo.webp"><img src="../assets/mobile/zh/attach-photo.webp" alt="添加照片 → 写清要求 → 当前模型不支持图片时切换到视觉模型 → 发送"></a><figcaption><p><strong>iPhone 操作演示</strong> · 添加照片 → 写清要求 → 当前模型不支持图片时切换到视觉模型 → 发送</p></figcaption></figure>
+</div>
 
 ## 添加文档与已有文件
 
 1. 点击 **＋ → 文件**。
-2. 从已有文件中选择，或点击上传，从系统文件选择器导入。
+2. 浏览文件库中的文件夹并选择已有文件，或点击上传，从系统文件选择器导入。
 3. 写出具体任务，例如“总结第二部分的结论，并列出待办事项”。
 
-普通文本文件单个不超过 1 MB，文档单个不超过 20 MB。文本过长或超出模型能处理的范围时，应用可能只提供部分内容并显示提示，不能假设全文都已读入。PDF 文本提取最多处理前 100 页。
+本机聊天的文本文件单个不超过 **5 MB**，PDF 单个不超过 **50 MB**，其他支持的文档单个不超过 **20 MB**。这里的 MB 按 1024 × 1024 字节计算。文本提取和模型上下文另有限制，不能假设文件大小合规就能全文读入；PDF 文本提取仍最多处理前 **100 页**。
+
+PDF、DOCX、XLSX、PPTX 现可在应用内预览，过大或不支持时从菜单用其他应用打开。需要让多段对话共用项目资料时，在对话顶部关联[文件夹工作区](file-library.md)。远程电脑附件使用[不同的传输限制](remote-chat.md)。
 
 ### 文档解析器选哪个？
 
-在 **设置 → 文档解析器** 选择，选择后立即保存，之后处理文档时使用，不会改写之前的回答：
+在 **设置 → 通用设置 → 文档解析器** 选择，选择后立即保存，之后处理文档时使用，不会改写之前的回答：
 
 | 选项 | 适合什么情况 | 注意事项 |
 | --- | --- | --- |
@@ -75,6 +83,14 @@ PDF 仍使用系统文本提取，切换解析器不会自动让纯扫描图片�
 中断前已经完成的工具结果可能被保留并用于继续处理。重新回答或删除记录都**不会撤销已经创建的日程、修改过的文件或发出的内容**；重新回答还可能产生新的模型费用。需要保留旧答案时先复制、分享或创建分支。
 
 删除一轮问答会永久移除这轮记录；不会退回已经发生的费用。正在生成或处理操作时，先等它结束或停止，再执行删除。
+
+## 长消息、排队与翻译
+
+输入框可展开为大编辑器，写完后返回对话或发送。回复进行时提交的后续消息会进入等待队列，显示顺序、文字和附件摘要。可以移除单条尚未开始的消息；这不会停止当前回复。
+
+队列会保留到会话状态中，重开应用后可恢复待处理消息。模型请求失败后也会继续处理可执行的后续消息。需要取消某条任务时，应从队列明确移除；不要把离开页面或切到后台当作取消。
+
+已完成的本机文字回复可从工具栏[翻译为其他语言](translation.md)，保留多个完成的译文，并随分享导出。
 
 ## 思考深度与长对话
 

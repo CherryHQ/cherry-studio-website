@@ -8,7 +8,7 @@ For connection problems, start with a short message without attachments to narro
 
 ## Why cannot I chat immediately after installation?
 
-Configure an API key, add a model, enable its provider, and choose it for your agent. You can [import desktop configuration](desktop-sync.md) or follow [quick start](quick-start.md).
+Configure an API key or supported account sign-in, add a model, enable its provider, and choose it for your agent. You can [import desktop configuration](desktop-sync.md) or follow [quick start](quick-start.md).
 
 A platform's consumer chat subscription may not include API credits for other apps; check with the platform.
 
@@ -45,9 +45,9 @@ Providers can use different codes. Read the error detail and platform instructio
 
 ## Why did a changed setting not take effect?
 
-* Provider addresses/keys and model creation/editing require the page's Save/Add action.
+* Existing provider addresses and key switches save directly; a key-editing sheet has its own Save. New provider creation and model creation/editing use their continue/add/save actions.
 * Existing-agent edits, global model selection, and API selection in model lists save automatically; look for failure notices.
-* Save provider changes before connection checks or model synchronization.
+* Complete key-editing sheets and resolve saving errors before checking or synchronizing.
 * A global default-model change does not update every existing agent.
 
 See [model management](model-management.md) and [agent editing](agents-and-tools.md).
@@ -64,7 +64,7 @@ See [chat and files](chat-and-files.md) for scanned PDFs, empty document text, a
 
 ## Where are the web-search switch and Plugins button?
 
-The Web search switch is in the agent editor; enable it, configure services, and request a search in chat. Plugins appears in the composer only when usable connections exist.
+There is no composer web switch. In Standard mode, enable the agent capability and configure web preferences/services from Plugins. Minimal mode uses supported native model web access only. Plugins and skills need Standard mode and usable connections/bindings.
 
 Connected plugins can be used directly, or named through **＋ → Plugins**. See [web search](web-search.md) and [plugin connections](plugins.md).
 
@@ -94,7 +94,7 @@ Check **Settings → Notifications** and system permission. The OS can still res
 
 ## Does pairing automatically synchronize chat history?
 
-No. It imports selected provider configuration and enabled models, excludes chats, and is not continuous synchronization. Preserve important content separately; see [desktop import](desktop-sync.md) and [data](data-privacy.md).
+Local and desktop histories do not merge automatically. Configuration import copies providers and models; switching to the computer lets you [use remote agent conversations](remote-chat.md), whose history remains on Desktop. Use [Backup and restore](backup-and-restore.md) before changing phones.
 
 ## Android blocks installation or TestFlight cannot join
 
@@ -110,6 +110,23 @@ See [download and installation](installation.md).
 * You get a code block without a saved file, or edits leave the original unchanged: see [Create and Edit Files](file-generation.md).
 * You have HTML but want a PPT, or cannot edit the PPT's text individually: see [HTML to Image and PPT](html-export.md).
 
+## Missing new features or unexpected results
+
+| Problem | Where to start |
+| --- | --- |
+| Installed skill is not used | Check Standard mode, agent binding, and required tools in [Skills](skills.md) |
+| File missing or deletion was accidental | Open Recently deleted in Files; conversation deletion is separate. See [File library](file-library.md) |
+| New chat cannot read project files | Associate the same workspace folder or attach the material again; changing workspaces does not move earlier files |
+| Backup is busy, incompatible, or out of space | Finish tasks, check the source archive and free space; see [Backup and restore](backup-and-restore.md) |
+| No translation action or saved result | Only completed local text replies qualify; check the model. Incomplete translations are not saved. See [Translation](translation.md) |
+| MCP has no interactive view or prompt | Check server capabilities, connection, and agent binding in [Plugins](plugins.md) |
+| Follow-ups continue after a failed reply | Inspect the queue and remove unwanted waiting inputs; leaving the screen does not cancel them |
+| An older version lacks Health or new features | Check About; native changes require a new package. See [Installation and updates](installation.md) |
+
 ## How do I report an unresolved issue?
 
-Include app/device/system versions, reproduction steps, and error text in the [App repository's issue tracker](https://github.com/CherryHQ/cherry-studio-app/issues). Redact keys, private conversations, and file contents first.
+Open **Settings → About → Feedback**, describe reproduction steps and expected/actual results, then submit. The app attaches error/request summaries and system information from the last 24 hours. Copy the report ID after success and follow its progress in **Feedback history**.
+
+Shake feedback is off by default. When enabled, shaking in the foreground captures the page and opens the form. A screenshot uploads only when selected for that submission; inspect it for private content. Removing local history does not withdraw a submitted report.
+
+You can also report app/device versions, steps, and error details in the [App repository Issues](https://github.com/CherryHQ/cherry-studio-app/issues). Do not publish keys, private conversations, or full backups. See [Privacy](data-privacy.md) for data scope.

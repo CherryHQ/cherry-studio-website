@@ -4,64 +4,78 @@ icon: image
 
 # Image generation
 
-Create pictures from a description, reference image, or template. Configure an image-generation model first: a text model that understands images does not necessarily generate them.
-
-<div data-mobile-gallery="pair">
-<figure data-mobile-shot="phone"><a href="../../../assets/mobile/en/iphone-drawing.webp"><img src="../../../assets/mobile/en/iphone-drawing.webp" alt="Drawings home in Cherry Studio Mobile on iPhone"></a><figcaption><p><strong>Drawings</strong> · Start creating from a photo or template</p></figcaption></figure>
-<figure data-mobile-shot="tablet"><a href="../../../assets/mobile/en/ipad-image-preview.webp"><img src="../../../assets/mobile/en/ipad-image-preview.webp" alt="Drawing template preview in Cherry Studio Mobile on iPad"></a><figcaption><p><strong>Template preview</strong> · Review the example and prompt before using a template</p></figcaption></figure>
-</div>
+Standalone drawing in Mobile **0.3.0** uses a board to retain the relationships between generations and edits. Start from text, a reference image, or a template, then choose a result to develop further. Configure an image-generation model first; understanding images does not necessarily mean a model can generate them.
 
 ## Three ways to create
 
-| Workflow | Start here | Where results appear |
+| Workflow | Start here | Results |
 | --- | --- | --- |
-| Standalone drawing | Open **Drawings** in the sidebar, tap add at the top right, and choose a model | Drawing history |
-| Image model in chat | Select an image-generation model for the agent | Image attachments in that conversation |
-| Drawing tool used by a text agent | Set a drawing model in **Settings → Default model**, enable the agent’s **Image generation**, then ask a tool-capable text model to draw | Tool activity and images in that conversation |
+| Standalone drawing | Open **Drawings**, start a creation, select a photo, or use a template | Board results, accessible again from the drawing list |
+| Image model in chat | Choose an image-generation model for a Standard-mode agent | Image attachments in that conversation |
+| Drawing tool used by a text agent | Select a drawing model in **Settings → Default model** and enable the agent's image-generation capability | Tool activity and images in chat |
 
-The third workflow requests confirmation before its image tool runs, even under automatic approval. For standalone drawing or a directly selected image model, pressing Send/Generate submits the request.
+The tool workflow requests confirmation for every image call, including under automatic approval. Standalone and direct image-model requests are submitted when you press Send. Board instructions below apply to standalone drawing.
 
 ## Start from a description
 
-1. Choose an image-generation model.
-2. Describe the subject, purpose, style, and composition.
-3. Open parameters and adjust the size, aspect ratio, count, or other available controls.
-4. Submit, wait, and tap the result to enlarge it.
+1. Open a new creation from Drawings.
+2. Choose a model and generation parameters through the composer's **＋** menu.
+3. Describe the subject, purpose, style, and composition; check references and send.
+4. Wait for the result and inspect its details. On failure, open error details before retrying.
 
 Example:
 
-> A landscape cover for reading notes: an open book and cup of tea on a wooden table, soft morning light, warm white and pale wood tones, empty space on the left, no text.
+> A landscape cover for reading notes: an open book and cup of tea on a wooden table, soft morning light, warm white and pale wood, space on the left, no text.
 
-Controls depend on the model. Larger images or more outputs can increase time and cost.
+The first generation creates a board. Aspect ratio, size, count, and other parameters depend on the model. Larger or more numerous outputs can take longer and cost more. Expand the composer for a longer editing field.
+
+<div data-mobile-gallery="pair">
+<figure data-mobile-shot="phone"><a href="../../../assets/mobile/en/painting-home.webp"><img src="../../../assets/mobile/en/painting-home.webp" alt="Drawings: start new, or begin from photos or templates"></a><figcaption><p><strong>iPhone</strong> · Drawings: start new, or begin from photos or templates</p></figcaption></figure>
+<figure data-mobile-shot="phone"><a href="../../../assets/mobile/en/painting-generate.webp"><img src="../../../assets/mobile/en/painting-generate.webp" alt="Choose a drawing model in + → Generation settings, describe, and generate"></a><figcaption><p><strong>iPhone walkthrough</strong> · Choose a drawing model in + → Generation settings, describe, and generate</p></figcaption></figure>
+</div>
 
 ## Start with a template
 
-Choose a drawing template, inspect its preview, and customize its subject and other available inputs. Templates are starting points; the model and your input determine the final result.
+Choose a template, inspect its example and prompt, then use its try action. This prepares an editable text draft; it does not immediately generate or automatically attach the template preview as a reference.
 
-Revisit drawing history and **Generation details** to reuse successful prompts.
+Customize the subject, purpose, or composition, select a model, and check parameters before sending. The preview is an example, not a result generated by your request.
+
+## Switch between focus and overview
+
+* **Focus** displays the current image. Pinch or double-tap to zoom; swipe horizontally between images from the same generation.
+* Use the board action in the header for the **overview**. Pan and zoom through related nodes, then tap a thumbnail to focus it.
+* The lineage strip shows sources, the current image, and later results. Tap to navigate or hold a thumbnail for a temporary comparison.
+* Tap a prompt caption in the overview, or open generation information from the menu, to read the full description. Rename the board from its overview.
+
+<div data-mobile-gallery="pair">
+<figure data-mobile-shot="phone"><a href="../../../assets/mobile/en/painting-branch.webp"><img src="../../../assets/mobile/en/painting-branch.webp" alt="Edit a result, return to the original for another direction, and the board branches"></a><figcaption><p><strong>iPhone walkthrough</strong> · Edit a result, return to the original for another direction, and the board branches</p></figcaption></figure>
+<figure data-mobile-shot="phone"><a href="../../../assets/mobile/en/painting-board.webp"><img src="../../../assets/mobile/en/painting-board.webp" alt="Board overview: one original with two edit directions"></a><figcaption><p><strong>iPhone</strong> · Board overview: one original with two edit directions</p></figcaption></figure>
+</div>
 
 ## Continue with a reference image
 
-The automatic-reference and input-preservation rules below apply to **standalone drawing** and **direct image-model conversations**. A text agent calling the drawing tool selects material through its conversation/tool request instead.
+The focused image becomes a reference for the next generation. Inspect references before submitting. Removing it means this request will not continue from that image. The overview's composer starts a new branch without referencing an existing image.
 
-For models supporting references or editing, attach an image and describe the change: “Keep the composition, change the background to evening, and preserve everything else.”
+> Keep this image's composition and subject, change the background to evening, and preserve the other details where possible.
 
-* A compatible follow-up can automatically use the previous single successful output. With multiple outputs, select the one to continue from.
-* Input edited while generation runs is retained rather than replaced by the result.
-* Manual references replace automatic references. Check the images attached before submitting.
-* Switching to a text-to-image-only model pauses automatic references. Incompatible explicitly attached images require removal or a different model.
-* Image-required models need a reference before submission. Some modes allow no text; follow the page's feedback.
+Reference and editing support depend on the model. A text-to-image-only model does not gain editing capabilities from the board; image-required models need a reference. Not every image on the board is sent with the next request.
 
-Edit and resize actions in the image viewer take the selected image into creation. Support still depends on the target model; not every image model can perform arbitrary edits.
+### Explain changes with positional notes
+
+Long-press the focused image to add a note, select it, and type the change. Switch to the whole-image selection for general instructions. Sending supplies the reference and these instructions to the model.
+
+Notes are positional text guidance, **not precise masks**. They cannot guarantee that changes remain inside a marked area. Describe what must stay unchanged and inspect the result.
+
+Supported models offer ratio shortcuts. Choosing one prepares settings or instructions without sending; review the input and submit explicitly.
 
 ## Failures, cancellation, and repeated requests
 
-Failed or cancelled follow-ups preserve input/reference intent where possible. Standalone drawing retains the previous successful result. Cancellation does not prove the provider stopped processing and does not guarantee a refund.
+You can browse the board while generation runs. Check task status before taking the next step. Failed results offer retry and error details; earlier successful results remain usable. Stopping a running generation removes its placeholder.
 
-Inspect the error: unsupported model, incompatible references, credits, rate limits, and timeouts require different remedies. Check the earlier task before repeatedly pressing Generate.
+Cancellation does not prove the provider stopped processing or guarantee a refund. Unsupported models, incompatible references, credits, rate limits, and network failures need different remedies.
 
 ## Save and share
 
-The image viewer offers saving to Photos, system sharing, and opening in another app. Saving to Photos needs system access.
+Use the focused image's menu to save to Photos, share, or inspect generation information. Saving to Photos needs permission. Deleting a painting version differs from deleting its library file; see [File library and shared workspaces](file-library.md).
 
-Use **Settings → General → Share watermark** to control future exports. Images created in chat can be exported with selected messages; standalone results are in drawing history. See [sharing and export](sharing-and-export.md).
+Control future exports through **Settings → General → Share watermark**. Chat images can be exported with selected exchanges; see [Sharing and export](sharing-and-export.md).
