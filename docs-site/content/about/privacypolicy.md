@@ -2,7 +2,7 @@
 icon: user-shield
 ---
 
-# 隐私协议
+# 隐私政策
 
 ## Cherry Studio 隐私政策
 
