@@ -8,25 +8,24 @@ icon: download
 
 ## Android
 
-推荐从 [Google Play](https://play.google.com/store/apps/details?id=com.cherryai.cherrystudio_app) 安装 Cherry Studio，后续更新由商店管理。
+国内站默认提供 **APK** 下载，安装包来自 GitCode。当前 APK 适用于 ARM64 设备。
 
-1. 在移动版下载页的 Android 一栏，扫描二维码或选择 **Google Play** 按钮。
-2. 在 Google Play 中选择 **安装**。
-
-### 其他方式：APK
-
-无法使用 Google Play 时，可在下载页 Android 一栏切换到 **APK**。当前 APK 适用于 ARM64 设备。
-
-1. 在下载页 Android 一栏切换到 **APK**，扫描二维码或选择下载按钮。
+1. 在下载页 Android 一栏，扫描 **APK** 二维码或选择下载按钮。
 2. 下载完成后，从浏览器下载记录或文件管理器打开 APK。
 3. 如果系统阻止安装，按提示临时允许当前浏览器或文件管理器“安装未知应用”。
 4. 返回安装界面并完成安装。
 
 安装完成后，可以关闭刚才授予的“安装未知应用”权限。新版本发布时，重新从官方下载页获取 APK 并覆盖安装；升级前请先查看版本说明。
 
+### 其他方式：Google Play
+
+可使用 [Google Play](https://play.google.com/store/apps/details?id=com.cherryai.cherrystudio_app) 的用户，也可以在 Android 一栏切换到 **Google Play** 安装，后续更新由商店管理。
+
+[国际站](https://cherryai.com/download?platform=mobile)默认推荐 Google Play，其备用 APK 下载来自 GitHub。
+
 ## iPhone 与 iPad
 
-推荐从 [App Store](https://apps.apple.com/us/app/cherry-studio-app/id6809783714) 安装 Cherry Studio，支持 iOS / iPadOS 17.0 及以上版本。
+推荐从[国区 App Store](https://apps.apple.com/cn/app/cherry-studio-%E5%85%A8%E8%83%BD-ai-%E5%B7%A5%E4%BD%9C%E7%AB%99/id6809783714) 安装 Cherry Studio，支持 iOS / iPadOS 17.0 及以上版本。国内站链接指向中国大陆商店，国际站保留美区商店链接。
 
 1. 在移动版下载页的 iPhone / iPad 一栏，扫描二维码或选择 **App Store** 按钮。
 2. 在 App Store 中选择 **获取** 并完成安装。

@@ -21,8 +21,8 @@ Cherry Studio 移动版是为 Android、iPhone 与 iPad 设计的 AI 客户端�
 
 移动版已上架 Google Play 与 App Store：
 
-* Android 可从 [Google Play](https://play.google.com/store/apps/details?id=com.cherryai.cherrystudio_app) 安装，也保留 APK 下载。
-* iPhone 与 iPad 可从 [App Store](https://apps.apple.com/us/app/cherry-studio-app/id6809783714) 安装，也保留 TestFlight 测试版入口。
+* Android 推荐从[国内站下载页](https://cherryai.com.cn/download?platform=mobile)下载 APK（GitCode），也保留 [Google Play](https://play.google.com/store/apps/details?id=com.cherryai.cherrystudio_app) 安装入口。
+* iPhone 与 iPad 可从[国区 App Store](https://apps.apple.com/cn/app/cherry-studio-%E5%85%A8%E8%83%BD-ai-%E5%B7%A5%E4%BD%9C%E7%AB%99/id6809783714) 安装，也保留 TestFlight 测试版入口。
 * 界面与功能可能随版本调整，具体以你安装的版本为准。
 
 前往[下载页的移动端选项](https://cherryai.com.cn/download?platform=mobile)，或先阅读[安装指南](installation.md)。

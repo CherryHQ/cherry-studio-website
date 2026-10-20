@@ -1,9 +1,7 @@
 import { useEffect, useSyncExternalStore } from 'react'
 
-import { mobileDownloads } from '@/config/mobileDownloads'
+import { mobileDownloads, mobileReleaseSource } from '@/config/mobileDownloads'
 
-const releasesURL =
-  'https://api.gitcode.com/api/v5/repos/CherryHQ/cherry-studio-app/releases?direction=desc&page=1&per_page=100'
 const cacheDuration = 5 * 60 * 1000
 const retryDelay = 30 * 1000
 
@@ -23,19 +21,21 @@ function getAndroidRelease(value: unknown): AndroidRelease | null {
     !/^v?\d+\.\d+\.\d+(?:-[\w.-]+)?$/.test(value.tag_name) ||
     value.draft === true ||
     value.release_status === 'draft' ||
-    typeof value.created_at !== 'string' ||
     !Array.isArray(value.assets)
   ) {
     return null
   }
 
-  const publishedAt = Date.parse(value.created_at)
+  const releaseDate = mobileReleaseSource.name === 'GitHub' ? value.published_at : value.created_at
+  if (typeof releaseDate !== 'string') return null
+
+  const publishedAt = Date.parse(releaseDate)
   if (!Number.isFinite(publishedAt)) return null
 
   for (const asset of value.assets) {
     if (
       !isRecord(asset) ||
-      asset.type !== 'attach' ||
+      (mobileReleaseSource.name === 'GitCode' && asset.type !== 'attach') ||
       typeof asset.name !== 'string' ||
       !asset.name.toLowerCase().endsWith('.apk') ||
       typeof asset.browser_download_url !== 'string'
@@ -46,7 +46,12 @@ function getAndroidRelease(value: unknown): AndroidRelease | null {
     try {
       const url = new URL(asset.browser_download_url)
       const expectedPath = `/CherryHQ/cherry-studio-app/releases/download/${encodeURIComponent(value.tag_name)}/${encodeURIComponent(asset.name)}`
-      if (url.origin === 'https://gitcode.com' && url.pathname === expectedPath && !url.username && !url.password) {
+      if (
+        url.origin === mobileReleaseSource.downloadOrigin &&
+        url.pathname === expectedPath &&
+        !url.username &&
+        !url.password
+      ) {
         return { url: url.href, publishedAt }
       }
     } catch {
@@ -78,22 +83,22 @@ async function refreshDownloads(): Promise<void> {
     const timeout = window.setTimeout(() => controller.abort(), 8000)
 
     try {
-      const response = await fetch(releasesURL, {
+      const response = await fetch(mobileReleaseSource.apiUrl, {
         signal: controller.signal,
         credentials: 'omit',
         cache: 'no-store'
       })
-      if (!response.ok) throw new Error(`GitCode returned ${response.status}`)
+      if (!response.ok) throw new Error(`${mobileReleaseSource.name} returned ${response.status}`)
 
       const data: unknown = await response.json()
-      if (!Array.isArray(data)) throw new Error('GitCode returned an invalid release list')
+      if (!Array.isArray(data)) throw new Error(`${mobileReleaseSource.name} returned an invalid release list`)
 
       // Include beta releases, exclude legacy tags, and skip releases whose APK is not uploaded yet.
       const latest = data
         .map(getAndroidRelease)
         .filter((release): release is AndroidRelease => release !== null)
         .sort((a, b) => b.publishedAt - a.publishedAt)[0]
-      if (!latest) throw new Error('GitCode returned no Android release')
+      if (!latest) throw new Error(`${mobileReleaseSource.name} returned no Android release`)
 
       refreshAfter = Date.now() + cacheDuration
       if (downloads.find(({ channel }) => channel === 'apk')?.url !== latest.url) {

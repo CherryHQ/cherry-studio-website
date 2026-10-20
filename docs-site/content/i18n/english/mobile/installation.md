@@ -15,7 +15,7 @@ Install Cherry Studio from [Google Play](https://play.google.com/store/apps/deta
 
 ### Alternative: APK
 
-If you cannot use Google Play, switch the Android column on the download page to **APK**. The current APK is provided for ARM64 devices.
+If you cannot use Google Play, switch the Android column on the download page to **APK**. The international site downloads APKs from GitHub; the [China site](https://cherryai.com.cn/download?platform=mobile) defaults to APK downloads from GitCode. The current APK is provided for ARM64 devices.
 
 1. Switch the Android column on the download page to **APK**, then scan the QR code or select the download button.
 2. Open the APK from your browser downloads or file manager.
@@ -26,7 +26,7 @@ You can revoke the “install unknown apps” permission after installation. Whe
 
 ## iPhone and iPad
 
-Install Cherry Studio from the [App Store](https://apps.apple.com/us/app/cherry-studio-app/id6809783714). Requires iOS or iPadOS 17.0 or later.
+Install Cherry Studio from the [App Store](https://apps.apple.com/us/app/cherry-studio-ai-anywhere/id6809783714). The international site links to the US storefront; the China site links to the [China mainland storefront](https://apps.apple.com/cn/app/cherry-studio-%E5%85%A8%E8%83%BD-ai-%E5%B7%A5%E4%BD%9C%E7%AB%99/id6809783714). Requires iOS or iPadOS 17.0 or later.
 
 1. In the iPhone / iPad column of the mobile download page, scan the QR code or select the **App Store** button.
 2. Select **Get** in the App Store and finish installation.

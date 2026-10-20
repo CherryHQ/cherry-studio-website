@@ -22,7 +22,7 @@ These guides describe Mobile **0.3.0**, including skills, folder workspaces, pai
 The mobile app is now available on Google Play and the App Store:
 
 * Install on Android from [Google Play](https://play.google.com/store/apps/details?id=com.cherryai.cherrystudio_app). APK downloads remain available.
-* Install on iPhone and iPad from the [App Store](https://apps.apple.com/us/app/cherry-studio-app/id6809783714). The TestFlight beta remains available.
+* Install on iPhone and iPad from the [App Store](https://apps.apple.com/us/app/cherry-studio-ai-anywhere/id6809783714). The TestFlight beta remains available.
 * Screens and capabilities may change between versions. Follow the behavior of the version installed on your device.
 
 Open the [mobile option on the download page](https://cherryai.com/download?platform=mobile), or read the [installation guide](installation.md) first.
