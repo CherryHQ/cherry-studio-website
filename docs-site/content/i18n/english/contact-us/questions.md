@@ -13,4 +13,4 @@ This address is for business inquiries only. For help using Cherry Studio:
 * Join the community on [Discord](https://discord.gg/wez8HtpxqQ)
 {% endhint %}
 
-> Commercial licensing details: [Cherry Studio License Agreement](questions/cherrystudio-xu-ke-xie-yi.md)
+> Commercial licensing details: [Cherry Studio License Agreement](questions/license.md)

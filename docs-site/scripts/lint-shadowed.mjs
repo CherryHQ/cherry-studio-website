@@ -1,15 +1,11 @@
 // Fails when a page file can never be rendered because another file claims the same canonical name
-// (the generator keeps one file per canonical name, so legacy duplicates silently disappear).
-//
-// `--write-baseline` records today's known-dead files, so the check can guard against new ones while
-// the existing backlog is burned down by deleting the files (and their SUMMARY references).
-import { existsSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
+// (the generator keeps one file per canonical name, so duplicate files silently disappear).
+import { existsSync, readdirSync, readFileSync } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const app = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const contentRoot = path.join(app, 'content')
-const baselineFile = path.join(app, 'shadowed-baseline.json')
 const locales = JSON.parse(readFileSync(path.join(app, 'locales.json'), 'utf8'))
 const aliases = JSON.parse(readFileSync(path.join(app, 'page-aliases.json'), 'utf8'))
 const canonicalFile = (file) => aliases[file] || file
@@ -47,32 +43,11 @@ for (const locale of locales) {
   }
 }
 
-if (process.argv.includes('--write-baseline')) {
-  const files = shadowed.map((entry) => entry.id).sort()
-  writeFileSync(
-    baselineFile,
-    `${JSON.stringify(
-      {
-        '//': 'Page files that can never render because a same-named page wins. Delete the file, then remove its entry here.',
-        files
-      },
-      null,
-      2
-    )}\n`
-  )
-  console.log(`lint-shadowed: baseline written with ${files.length} known dead file(s)`)
-  process.exit(0)
-}
-
-const known = new Set(existsSync(baselineFile) ? JSON.parse(readFileSync(baselineFile, 'utf8')).files : [])
-const added = shadowed.filter((entry) => !known.has(entry.id))
-
-if (added.length) {
-  console.error(`Found ${added.length} new page file(s) that can never render:\n`)
-  for (const entry of added) console.error(`  ${entry.id} is shadowed by ${entry.winner} (canonical name ${entry.key})`)
-  console.error('\nRename or delete them, or run `node docs-site/scripts/lint-shadowed.mjs --write-baseline`.')
+if (shadowed.length) {
+  console.error(`Found ${shadowed.length} page file(s) that can never render:\n`)
+  for (const entry of shadowed)
+    console.error(`  ${entry.id} is shadowed by ${entry.winner} (canonical name ${entry.key})`)
+  console.error('\nDelete the duplicate file, or map it through page-aliases.json.')
   process.exit(1)
 }
-console.log(
-  `lint-shadowed: ${checked} canonical names checked, 0 new shadowed files (${shadowed.length} known dead files in the baseline)`
-)
+console.log(`lint-shadowed: ${checked} canonical names checked, 0 shadowed files`)

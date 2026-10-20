@@ -29,6 +29,7 @@
   "knowledge-base/zhi-shi-ku-wen-dang-yu-chu-li.md": "knowledge-base/document-preprocessing.md",
   "cherrystudio/download.md": "cherry-studio/installation/README.md",
   "contact-us/questions/README.md": "contact-us/questions.md",
+  "contact-us/questions/overview.md": "contact-us/questions.md",
   "question-contact/version-switching.md": "cherry-studio/installation/upgrade-downgrade.md",
   "advanced-basic/cherry-agent-shi-yong-jiao-cheng.md": "advanced-basic/agent.md",
   "advanced-basic/code-tools-shi-yong-jiao-cheng.md": "advanced-basic/developer-tools/code-cli.md",
