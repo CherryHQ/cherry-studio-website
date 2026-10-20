@@ -22,6 +22,7 @@ const ThemeSelector: FC = () => {
         <button
           key={opt.id}
           type="button"
+          aria-pressed={theme === opt.id}
           onClick={() => setTheme(opt.id)}
           className={cn(
             'h-7 cursor-pointer rounded-md border px-2 text-xs font-medium transition-all duration-200',
