@@ -15,8 +15,8 @@
   "page_description": {
     "home": "Cherry Studio AI桌面客户端，开源、免费、且功能强大。AI agent、AI 对话、AI绘图、知识库等功能齐全，支持所有主流大模型，支持Windows/macOS/Linux，支持数据本地存储，是AI深度使用者的首选",
     "download": "下载 Cherry Studio AI 客户端，支持 Windows、macOS、Linux 平台。集成 100+ AI 模型，完全免费开源。",
-    "mobile": "了解 Cherry Studio 移动版，在手机上连接 AI 模型、进行对话、创作图像和使用工具。现已上架 Google Play 与 App Store。",
-    "mobile_download": "从 Google Play 或 App Store 下载 Cherry Studio 移动版，支持 Android、iPhone 与 iPad，也提供 APK 与 TestFlight 测试版入口。",
+    "mobile": "了解 Cherry Studio 移动版，在手机上连接 AI 模型、进行对话、创作图像和使用工具。现已上架国区 App Store，Android 提供 APK 下载。",
+    "mobile_download": "下载 Cherry Studio 移动版：iPhone 与 iPad 可从国区 App Store 安装，Android 推荐下载 APK，也保留 Google Play 与 TestFlight 测试版入口。",
     "theme": "发现和分享美丽的 Cherry Studio 主题，个性化你的 AI 助手界面。支持浅色和深色模式主题。",
     "careers": "加入 Cherry Studio，探索研发、设计、企业 AI 交付、运营及实习岗位，一起打造下一代 AI 产品。",
     "download_v1": "下载 Cherry Studio AI 客户端，支持 Windows、macOS、Linux 平台。集成 100+ AI 模型，完全免费开源。",
@@ -65,7 +65,7 @@
     "unavailable": "暂未开放"
   },
   "mobile_page": {
-    "availability": "现已上架 Google Play 与 App Store",
+    "availability": "iPhone / iPad 现已上架国区 App Store，Android 提供 APK 下载",
     "current_device": "当前设备",
     "channels": {
       "apk": "适用于 ARM64 设备",

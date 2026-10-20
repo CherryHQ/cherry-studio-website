@@ -45,18 +45,21 @@ export default function MobileDownloads() {
   const mobileDownloads = useMobileDownloads()
   const isMobile = isMobileDevice()
   const [selected, setSelected] = useState<Partial<Record<Platform, Channel>>>({})
-  const storeDownloads = mobileDownloads.filter(({ channel }) => channel === 'store')
+  const primaryDownloads = mobileDownloads.filter(({ primary }) => primary)
 
   return (
     <div className="px-6 py-10 text-center sm:px-10 sm:py-12">
       <div className="flex flex-col items-center justify-center gap-10 sm:flex-row sm:items-start sm:gap-20">
-        {storeDownloads.map((store) => {
-          const name = store.platform === 'android' ? 'Android' : 'iPhone / iPad'
-          const options = mobileDownloads.filter(({ platform, url }) => platform === store.platform && url)
-          const current = options.find(({ channel }) => channel === selected[store.platform]) ?? store
+        {primaryDownloads.map((primaryDownload) => {
+          const name = primaryDownload.platform === 'android' ? 'Android' : 'iPhone / iPad'
+          const options = mobileDownloads
+            .filter(({ platform, url }) => platform === primaryDownload.platform && url)
+            .sort((a, b) => Number(b.primary) - Number(a.primary))
+          const current =
+            options.find(({ channel }) => channel === selected[primaryDownload.platform]) ?? primaryDownload
 
           return (
-            <section key={store.platform} aria-label={name} className="flex flex-col items-center gap-5">
+            <section key={primaryDownload.platform} aria-label={name} className="flex flex-col items-center gap-5">
               {options.length > 1 && (
                 <div role="group" aria-label={name} className="bg-secondary inline-flex rounded-lg p-0.5 text-xs">
                   {options.map((option) => (
@@ -64,7 +67,7 @@ export default function MobileDownloads() {
                       key={option.channel}
                       type="button"
                       aria-pressed={option.channel === current.channel}
-                      onClick={() => setSelected((value) => ({ ...value, [store.platform]: option.channel }))}
+                      onClick={() => setSelected((value) => ({ ...value, [primaryDownload.platform]: option.channel }))}
                       className={cn(
                         'text-muted-foreground hover:text-foreground focus-visible:ring-ring rounded-md px-3 py-1 font-medium transition-colors focus-visible:outline-none focus-visible:ring-2',
                         option.channel === current.channel && 'bg-background text-foreground shadow-sm'

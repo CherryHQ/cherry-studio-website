@@ -46,11 +46,12 @@ export default function MobileDownloadButton({ variant = 'text' }: MobileDownloa
           className="border-border w-96 max-w-[calc(100vw-24px)] overflow-hidden rounded-2xl p-0">
           <div className="grid grid-cols-1 gap-5 p-5 text-center min-[380px]:grid-cols-2">
             {mobileDownloads
-              .filter(({ channel }) => channel === 'store')
-              .map(({ platform, url }) => {
+              .filter(({ primary }) => primary)
+              .map(({ platform, channel, url }) => {
                 const name = platform === 'android' ? 'Android' : 'iPhone / iPad'
                 const store = platform === 'android' ? 'Google Play' : 'App Store'
-                const description = t('mobile_download.store', { store })
+                const description =
+                  channel === 'store' ? t('mobile_download.store', { store }) : t(`mobile_download.${channel}`)
 
                 return (
                   <div key={platform} className="min-w-0">
