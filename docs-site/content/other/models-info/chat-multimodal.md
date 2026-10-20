@@ -4,7 +4,7 @@
 
 上下文长度与最大输出以 K / M 缩写并四舍五入（1K 约为 1,000～1,024 tokens，1M 约为 100 万 tokens），例如 131,072 与 128,000 均写作 128K。悬停可查看完整数值，精确限制请以模型服务商为准。
 
-> **数据更新时间**: 2026-10-18 13:59:34 UTC / 2026-10-18 21:59:34 CST (北京时间)
+> **数据更新时间**: 2026-10-20 13:27:32 UTC / 2026-10-20 21:27:32 CST (北京时间)
 
 <div data-models-table="num:2,3;sort:1;search:0,1;cap:4:函数调用,推理,识图,语音识别,视频理解,结构化输出,文件输入,电脑操作,文件检索;in:5:文本输入=文本,图片输入=图片,音频输入=音频,视频输入=视频">
 
@@ -155,7 +155,7 @@
 | Muse Spark Open 816B A42B<br><code>muse-spark-open-816b-a42b</code> | meta | <span title="1,048,576">1.05M</span> | - | 函数调用、推理、识图、语音识别、视频理解、文件输入 | 文本、图片、音频、视频 | 文本 |
 | Muse Spark Open 816B A42B NVFP4<br><code>muse-spark-open-816b-a42b-nvfp4</code> | meta | <span title="1,048,576">1.05M</span> | - | 函数调用、推理、识图、语音识别、视频理解、文件输入 | 文本、图片、音频、视频 | 文本 |
 | MiniMax-M3<br><code>minimax-m3</code> | minimax | <span title="1,048,576">1.05M</span> | <span title="524,288">512K</span> | 函数调用、推理、识图、视频理解、结构化输出、文件输入 | 文本、图片、视频 | 文本 |
-| MiniMax-M3.1-Flash-Preview<br><code>minimax-m3-1-flash-preview</code> | minimax | <span title="1,000,000">1M</span> | - | 推理、函数调用、识图、视频理解 | 文本、图片、视频 | 文本 |
+| MiniMax-M3.1-Flash<br><code>minimax-m3-1-flash</code> | minimax | <span title="1,000,000">1M</span> | <span title="524,288">512K</span> | 推理、函数调用、识图、视频理解 | 文本、图片、视频 | 文本 |
 | MiniMax: MiniMax-01<br><code>minimax-01</code> | minimax | <span title="1,000,192">1M</span> | - | 识图 | 文本、图片 | 文本 |
 | Devstral Small<br><code>devstral-small</code> | mistral | <span title="256,000">256K</span> | <span title="256,000">256K</span> | 函数调用、识图 | 文本、图片 | 文本 |
 | Devstral Small 2<br><code>devstral-small-2</code> | mistral | <span title="256,000">256K</span> | <span title="256,000">256K</span> | 函数调用、识图 | 文本、图片 | 文本 |

@@ -445,7 +445,7 @@
 {"name":"Muse Spark Open 816B A42B","id":"muse-spark-open-816b-a42b","provider":"meta","category":"chat-multimodal"},
 {"name":"Muse Spark Open 816B A42B NVFP4","id":"muse-spark-open-816b-a42b-nvfp4","provider":"meta","category":"chat-multimodal"},
 {"name":"MiniMax-M3","id":"minimax-m3","provider":"minimax","category":"chat-multimodal"},
-{"name":"MiniMax-M3.1-Flash-Preview","id":"minimax-m3-1-flash-preview","provider":"minimax","category":"chat-multimodal"},
+{"name":"MiniMax-M3.1-Flash","id":"minimax-m3-1-flash","provider":"minimax","category":"chat-multimodal"},
 {"name":"MiniMax: MiniMax-01","id":"minimax-01","provider":"minimax","category":"chat-multimodal"},
 {"name":"Devstral Small","id":"devstral-small","provider":"mistral","category":"chat-multimodal"},
 {"name":"Devstral Small 2","id":"devstral-small-2","provider":"mistral","category":"chat-multimodal"},

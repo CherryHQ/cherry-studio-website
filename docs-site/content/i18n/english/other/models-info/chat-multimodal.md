@@ -4,7 +4,7 @@ Data comes from the model catalog bundled with Cherry Studio ([provider-registry
 
 Context length and max output are abbreviated with K / M and rounded (1K is roughly 1,000–1,024 tokens, 1M roughly one million), e.g. 131,072 and 128,000 both read 128K. Hover a value to see the exact number; confirm limits with the model provider.
 
-> **Data updated**: 2026-10-18 13:59:34 UTC / 2026-10-18 21:59:34 CST (Beijing time)
+> **Data updated**: 2026-10-20 13:27:32 UTC / 2026-10-20 21:27:32 CST (Beijing time)
 
 <div data-models-table="num:2,3;sort:1;search:0,1;cap:4:Function calling,Reasoning,Image recognition,Speech recognition,Video understanding,Structured output,File input,Computer use,File search;in:5:Text input=Text,Image input=Image,Audio input=Audio,Video input=Video">
 
@@ -155,7 +155,7 @@ Context length and max output are abbreviated with K / M and rounded (1K is roug
 | Muse Spark Open 816B A42B<br><code>muse-spark-open-816b-a42b</code> | meta | <span title="1,048,576">1.05M</span> | - | Function calling, Reasoning, Image recognition, Speech recognition, Video understanding, File input | Text, Image, Audio, Video | Text |
 | Muse Spark Open 816B A42B NVFP4<br><code>muse-spark-open-816b-a42b-nvfp4</code> | meta | <span title="1,048,576">1.05M</span> | - | Function calling, Reasoning, Image recognition, Speech recognition, Video understanding, File input | Text, Image, Audio, Video | Text |
 | MiniMax-M3<br><code>minimax-m3</code> | minimax | <span title="1,048,576">1.05M</span> | <span title="524,288">512K</span> | Function calling, Reasoning, Image recognition, Video understanding, Structured output, File input | Text, Image, Video | Text |
-| MiniMax-M3.1-Flash-Preview<br><code>minimax-m3-1-flash-preview</code> | minimax | <span title="1,000,000">1M</span> | - | Reasoning, Function calling, Image recognition, Video understanding | Text, Image, Video | Text |
+| MiniMax-M3.1-Flash<br><code>minimax-m3-1-flash</code> | minimax | <span title="1,000,000">1M</span> | <span title="524,288">512K</span> | Reasoning, Function calling, Image recognition, Video understanding | Text, Image, Video | Text |
 | MiniMax: MiniMax-01<br><code>minimax-01</code> | minimax | <span title="1,000,192">1M</span> | - | Image recognition | Text, Image | Text |
 | Devstral Small<br><code>devstral-small</code> | mistral | <span title="256,000">256K</span> | <span title="256,000">256K</span> | Function calling, Image recognition | Text, Image | Text |
 | Devstral Small 2<br><code>devstral-small-2</code> | mistral | <span title="256,000">256K</span> | <span title="256,000">256K</span> | Function calling, Image recognition | Text, Image | Text |
