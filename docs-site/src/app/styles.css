@@ -185,3 +185,11 @@
 .prose details > :last-child {
   margin-bottom: 1rem;
 }
+
+/* Model reference tables: abbreviated token values reveal the exact number on hover. */
+[data-models-table] span[title],
+[data-models-table] span[data-tip] {
+  cursor: help;
+  text-decoration: underline dotted;
+  text-underline-offset: 3px;
+}

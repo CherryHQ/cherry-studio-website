@@ -9,7 +9,6 @@
   "label": "English",
   "directory": "i18n/english",
   "removed": {
-   "other/models-info.md": "other/model_rank/README.md",
    "pre-basic/websearch/volcengine.md": "pre-basic/websearch/README.md",
    "pre-basic/websearch/tavily.md": "pre-basic/websearch/README.md",
    "pre-basic/personalization-settings/font.md": "pre-basic/settings/display.md",
