@@ -83,6 +83,7 @@ export function DocsShell({
       }}
       slots={{ sidebar: { provider: SidebarProvider, root: DocsSidebar, trigger: SidebarTrigger, useSidebar } }}
       sidebar={{ banner: <SectionSwitch locale={locale} labels={labels} mobile={mobile} /> }}
+      themeSwitch={{ mode: 'light-dark-system' }}
       githubUrl="https://github.com/CherryHQ/cherry-studio-website">
       {children}
     </DocsLayout>
