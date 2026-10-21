@@ -19,7 +19,8 @@
     "dev:website": "vite",
     "docs:verify": "node docs-site/scripts/verify-output.mjs",
     "docs:generate": "pnpm --dir docs-site generate",
-    "docs:lint": "node docs-site/scripts/lint-links.mjs && node docs-site/scripts/lint-shadowed.mjs"
+    "docs:lint": "node docs-site/scripts/lint-links.mjs && node docs-site/scripts/lint-shadowed.mjs",
+    "indexnow": "node scripts/indexnow.mjs"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.15",

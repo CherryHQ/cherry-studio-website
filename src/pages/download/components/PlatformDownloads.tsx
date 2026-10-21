@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 
 import { Button } from '@/components/ui/button'
 import type { VersionData } from '@/hooks/useVersionData'
+import { trackDownload } from '@/utils/analytics'
 import type { DetectedArch } from '@/utils/systemDetection'
 import type { Platform } from './PlatformTabs'
 
@@ -195,8 +196,9 @@ export const PlatformDownloadPrimary: FC<PlatformDownloadPrimaryProps> = ({
     }
 
     autoDownloadTriggeredRef.current = true
+    trackDownload({ platform, packageName: recommendedItem.name, trigger: 'auto' })
     window.location.href = recommendedItem.url
-  }, [autoDownload, autoDownloadReady, loading, recommendedItem?.url])
+  }, [autoDownload, autoDownloadReady, loading, recommendedItem?.url, recommendedItem?.name, platform])
 
   if (loading) {
     return <PrimarySkeleton />
@@ -208,7 +210,10 @@ export const PlatformDownloadPrimary: FC<PlatformDownloadPrimaryProps> = ({
     <div className="border-border border-b p-4 sm:px-8 sm:py-8">
       <Button
         size="lg"
-        onClick={() => (window.location.href = recommendedItem.url)}
+        onClick={() => {
+          trackDownload({ platform, packageName: recommendedItem.name, trigger: 'button' })
+          window.location.href = recommendedItem.url
+        }}
         className="bg-foreground text-background hover:bg-foreground/85 mx-auto flex h-12 w-auto min-w-64 gap-2 rounded-full px-8 text-sm sm:min-w-72">
         <Download className="h-4 w-4" />
         {t('download_page.download_now', { package: recommendedItem.desc })}
@@ -244,7 +249,10 @@ export const PlatformDownloadOptions: FC<PlatformDownloadOptionsProps> = ({
             <button
               type="button"
               key={item.url}
-              onClick={() => (window.location.href = item.url)}
+              onClick={() => {
+                trackDownload({ platform, packageName: item.name, trigger: 'button' })
+                window.location.href = item.url
+              }}
               className="group hover:bg-secondary/55 flex w-full min-w-0 cursor-pointer items-center justify-between gap-4 px-5 py-3.5 text-left transition-colors">
               <div className="min-w-0 flex-1">
                 <div className="text-foreground text-sm font-medium">{item.desc}</div>

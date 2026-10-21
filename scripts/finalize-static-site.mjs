@@ -81,14 +81,17 @@ const ROUTES = {
 
 const NOT_FOUND = { path: '/404', key: 'not_found', noindex: true }
 
+// lastmod 是页面正文最后一次实质修改的日期（YYYY-MM-DD）。Google 用它决定先重新
+// 抓哪些页面，所以只在正文、结构化数据或链接真正变化时才改；改样式、改页脚不要动。
+// 每次部署都刷新的话，Google 会学会无视这个日期。不填则不输出 lastmod。
 const SITEMAP = {
   en: [
-    { path: '/', priority: '1.0' },
-    { path: '/download', priority: '0.9' },
-    { path: '/mobile', priority: '0.9' },
-    { path: '/flash', priority: '0.9' },
-    { path: '/flash/usage', priority: '0.6' },
-    { path: '/theme', priority: '0.7' }
+    { path: '/', priority: '1.0', lastmod: '2026-10-19' },
+    { path: '/download', priority: '0.9', lastmod: '2026-10-20' },
+    { path: '/mobile', priority: '0.9', lastmod: '2026-09-22' },
+    { path: '/flash', priority: '0.9', lastmod: '2026-10-19' },
+    { path: '/flash/usage', priority: '0.6', lastmod: '2026-10-19' },
+    { path: '/theme', priority: '0.7', lastmod: '2026-02-13' }
   ],
   zh: [
     { path: '/', priority: '1.0' },
@@ -387,8 +390,8 @@ Sitemap: ${config.domain}/sitemap.xml
 function applySitemapTarget() {
   const entries = SITEMAP[target]
     .map(
-      ({ path, priority }) => `  <url>
-    <loc>${config.domain}${path === '/' ? '/' : path}</loc>
+      ({ path, priority, lastmod }) => `  <url>
+    <loc>${config.domain}${path === '/' ? '/' : path}</loc>${lastmod ? `\n    <lastmod>${lastmod}</lastmod>` : ''}
     <priority>${priority}</priority>
   </url>`
     )
