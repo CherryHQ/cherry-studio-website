@@ -180,6 +180,32 @@
       "description": "Including local backup and cloud backup, worry-free switching between multiple devices, more convenient and safer."
     }
   },
+  "team_collaboration": {
+    "eyebrow": "Team collaboration",
+    "title": "Turn AI into team productivity",
+    "description": "Bring models, knowledge, and permissions into one shared workspace so individual workflows can scale into team-wide productivity.",
+    "cta": "Explore Enterprise",
+    "mockup": {
+      "title": "Team AI workspace",
+      "subtitle": "Centralized · Collaborative",
+      "status": "Collaborating live",
+      "members": "Your team works from the same shared workspace"
+    },
+    "capabilities": {
+      "workspace": {
+        "title": "Shared workspace",
+        "description": "Keep team knowledge, assistants, and workflows in one place."
+      },
+      "models": {
+        "title": "Models and permissions",
+        "description": "Manage model access, keys, and roles for your organization."
+      },
+      "insights": {
+        "title": "Usage insights",
+        "description": "See adoption trends and make AI investment measurable."
+      }
+    }
+  },
   "project": {
     "title": "Project Related",
     "intro": {
@@ -287,6 +313,7 @@
     "description": "Cherry Studio is a multi-platform AI client, and we are committed to allowing more people to enjoy the convenience brought by AI.",
     "cherry_studio": {
       "title": "Cherry Studio",
+      "enterprise": "Enterprise",
       "mobile": "Mobile",
       "mobile_download": "Mobile download",
       "github": "GitHub",

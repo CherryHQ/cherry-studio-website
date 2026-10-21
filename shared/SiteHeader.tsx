@@ -64,6 +64,7 @@ interface SiteHeaderProps {
   closeLabel: string
   mobileControls?: ReactNode
   renderLink?: (props: LinkProps) => ReactNode
+  onLinkClick?: (item: HeaderLink) => void
 }
 
 /** Shared visual navigation; each app supplies its routing, translations and controls. */
@@ -77,7 +78,8 @@ export function SiteHeader({
   menuLabel,
   closeLabel,
   mobileControls,
-  renderLink = (props) => <a {...props} />
+  renderLink = (props) => <a {...props} />,
+  onLinkClick
 }: SiteHeaderProps) {
   const [scrolled, setScrolled] = useState(false)
   // Keep the first client render identical to the static HTML; apply cached stars in the effect.
@@ -95,7 +97,12 @@ export function SiteHeader({
   )
   const link = (item: HeaderLink, className: string) =>
     item.external ? (
-      <a href={item.href} target="_blank" rel="noopener noreferrer" className={className}>
+      <a
+        href={item.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={() => onLinkClick?.(item)}
+        className={className}>
         {linkContent(item)}
         <ArrowUpRight className="h-3 w-3" />
       </a>

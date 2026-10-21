@@ -4,6 +4,7 @@ export interface HeaderLink {
   badge?: string
   external?: boolean
   active?: boolean
+  analyticsLocation?: string
 }
 
 interface HeaderLabels {
@@ -46,7 +47,8 @@ export function getHeaderLinks({
   const enterprise: HeaderLink = {
     href: chinese ? 'https://enterprise.cherryai.com.cn' : 'https://enterprise.cherryai.com',
     label: labels.enterprise,
-    external: true
+    external: true,
+    analyticsLocation: 'header_enterprise'
   }
 
   return englishSite

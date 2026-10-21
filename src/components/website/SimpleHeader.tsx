@@ -4,6 +4,7 @@ import { Link, useLocation } from 'react-router-dom'
 import cherryLogoSvg from '@/assets/images/cherry-logo.svg'
 import githubIcon from '@/assets/images/icons/github.svg'
 import cherryLogoPng from '@/assets/images/logo.png'
+import { capture, EV_CTA_TO_ENTERPRISE } from '@/utils/analytics'
 import { isEnglishSite } from '@/utils/urls'
 import { getHeaderLinks } from '../../../shared/header-navigation'
 import { SiteHeader } from '../../../shared/SiteHeader'
@@ -40,6 +41,11 @@ export default function SimpleHeader() {
       downloadHref={pathname.startsWith('/mobile') ? '/download?platform=mobile' : '/download'}
       menuLabel={t('nav.menu')}
       closeLabel={t('nav.close_menu')}
+      onLinkClick={(item) => {
+        if (item.analyticsLocation) {
+          capture(EV_CTA_TO_ENTERPRISE, { location: item.analyticsLocation })
+        }
+      }}
       mobileControls={
         <>
           <LanguageSelector />

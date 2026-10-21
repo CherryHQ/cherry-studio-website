@@ -13,6 +13,7 @@ import FlagshipModelsSection from './components/FlagshipModelsSection'
 import HeroSection from './components/HeroSection'
 import HighlightsSection from './components/HighlightsSection'
 import ProvidersSection from './components/ProvidersSection'
+import TeamCollaborationSection from './components/TeamCollaborationSection'
 import TestimonialsSection from './components/TestimonialsSection'
 import WhySection from './components/WhySection'
 
@@ -24,10 +25,11 @@ const HomePage: FC = () => {
   // 英文站与线上英文官网保持一致：特性区换成 “Why Choose Cherry Studio”，
   // 不再展示国产模型高亮与旧版 Highlights；中文站保持原有区块顺序。
   const sections = isEn
-    ? [WhySection, ProvidersSection, TestimonialsSection, ContributorsSection]
+    ? [WhySection, TeamCollaborationSection, ProvidersSection, TestimonialsSection, ContributorsSection]
     : [
         FlagshipModelsSection,
         FeaturesSection,
+        TeamCollaborationSection,
         ProvidersSection,
         TestimonialsSection,
         HighlightsSection,
