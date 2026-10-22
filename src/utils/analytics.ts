@@ -126,8 +126,12 @@ export function getEnterprisePortalUrl(language: string, path = '/'): string {
   return url.toString()
 }
 
-export function trackEnterpriseNavigation(location: string): void {
+export function trackEnterpriseNavigation(
+  location: string,
+  language = getSiteRegion() === 'global' ? 'en-US' : 'zh-CN'
+): string {
   capturePosthog(EV_CTA_TO_ENTERPRISE, { location, source: 'community_website' })
+  return getEnterprisePortalUrl(language)
 }
 
 /** Backward-compatible helpers for the community landing section and footer. */

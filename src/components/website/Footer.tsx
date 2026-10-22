@@ -16,7 +16,7 @@ import xIcon from '@/assets/images/icons/x.svg'
 import xColorIcon from '@/assets/images/icons/x-color.svg'
 import cherryWxQR from '@/assets/images/resource/cherrywx.png'
 import { copyRSSLink } from '@/utils'
-import { capture, EV_CTA_TO_ENTERPRISE, getEnterpriseUrl } from '@/utils/analytics'
+import { getEnterpriseUrl, trackEnterpriseNavigation } from '@/utils/analytics'
 import { getDocsUrl } from '@/utils/urls'
 import LanguageSelector from './LanguageSelector'
 import ThemeSelector from './ThemeSelector'
@@ -186,7 +186,9 @@ const Footer: FC = () => {
                       href={link.href}
                       onClick={
                         link.analyticsLocation
-                          ? () => capture(EV_CTA_TO_ENTERPRISE, { location: link.analyticsLocation })
+                          ? (event) => {
+                              event.currentTarget.href = trackEnterpriseNavigation(link.analyticsLocation ?? 'footer')
+                            }
                           : undefined
                       }
                       target={link.href.startsWith('/') ? undefined : '_blank'}

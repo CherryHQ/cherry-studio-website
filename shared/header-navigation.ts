@@ -5,7 +5,7 @@ export interface HeaderLink {
   external?: boolean
   active?: boolean
   analyticsLocation?: string
-  onClick?: () => void
+  onClick?: () => string | undefined
 }
 
 interface HeaderLabels {
@@ -26,7 +26,7 @@ interface HeaderNavigationOptions {
   pathname: string
   docsActive?: boolean
   enterpriseHref?: string
-  onEnterpriseClick?: () => void
+  onEnterpriseClick?: () => string | undefined
 }
 
 export function getHeaderLinks({

@@ -30,7 +30,7 @@ export default function SimpleHeader() {
     englishSite,
     pathname,
     enterpriseHref: getEnterprisePortalUrl(i18n.language),
-    onEnterpriseClick: () => trackEnterpriseNavigation('header')
+    onEnterpriseClick: () => trackEnterpriseNavigation('header', i18n.language)
   })
   return (
     <SiteHeader

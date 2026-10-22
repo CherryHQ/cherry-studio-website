@@ -101,9 +101,10 @@ export function SiteHeader({
         href={item.href}
         target="_blank"
         rel="noopener noreferrer"
-        onClick={() => {
+        onClick={(event) => {
           onLinkClick?.(item)
-          item.onClick?.()
+          const refreshedHref = item.onClick?.()
+          if (refreshedHref) event.currentTarget.href = refreshedHref
         }}
         className={className}>
         {linkContent(item)}
