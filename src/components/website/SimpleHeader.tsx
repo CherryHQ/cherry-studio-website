@@ -4,6 +4,7 @@ import { Link, useLocation } from 'react-router-dom'
 import cherryLogoSvg from '@/assets/images/cherry-logo.svg'
 import githubIcon from '@/assets/images/icons/github.svg'
 import cherryLogoPng from '@/assets/images/logo.png'
+import { getEnterprisePortalUrl, trackEnterpriseNavigation } from '@/utils/analytics'
 import { isEnglishSite } from '@/utils/urls'
 import { getHeaderLinks } from '../../../shared/header-navigation'
 import { SiteHeader } from '../../../shared/SiteHeader'
@@ -27,7 +28,9 @@ export default function SimpleHeader() {
     },
     language: i18n.language,
     englishSite,
-    pathname
+    pathname,
+    enterpriseHref: getEnterprisePortalUrl(i18n.language),
+    onEnterpriseClick: () => trackEnterpriseNavigation('header')
   })
 
   return (

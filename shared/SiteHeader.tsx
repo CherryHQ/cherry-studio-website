@@ -95,7 +95,7 @@ export function SiteHeader({
   )
   const link = (item: HeaderLink, className: string) =>
     item.external ? (
-      <a href={item.href} target="_blank" rel="noopener noreferrer" className={className}>
+      <a href={item.href} target="_blank" rel="noopener noreferrer" className={className} onClick={item.onClick}>
         {linkContent(item)}
         <ArrowUpRight className="h-3 w-3" />
       </a>

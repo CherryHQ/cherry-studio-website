@@ -9,6 +9,10 @@ interface ImportMeta {
 }
 
 interface Window {
+  env?: {
+    POSTHOG_KEY?: string
+    POSTHOG_HOST?: string
+  }
   $: typeof import('jquery')
   marked: typeof import('marked')
   flatpickr: any
