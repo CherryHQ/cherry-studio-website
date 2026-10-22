@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom'
 import cherryLogoSvg from '@/assets/images/cherry-logo.svg'
 import githubIcon from '@/assets/images/icons/github.svg'
 import cherryLogoPng from '@/assets/images/logo.png'
-import { capture, EV_CTA_TO_ENTERPRISE } from '@/utils/analytics'
+import { capture, EV_CTA_TO_ENTERPRISE, getEnterpriseUrl } from '@/utils/analytics'
 import { isEnglishSite } from '@/utils/urls'
 import { getHeaderLinks } from '../../../shared/header-navigation'
 import { SiteHeader } from '../../../shared/SiteHeader'
@@ -30,13 +30,19 @@ export default function SimpleHeader() {
     englishSite,
     pathname
   })
+  // The header's enterprise link is an external navigation just like the
+  // landing-page CTA. Build it at render time so the anonymous PostHog ID and
+  // current campaign parameters travel with either entry point.
+  const linksWithHandover = links.map((item) =>
+    item.analyticsLocation === 'header_enterprise' ? { ...item, href: getEnterpriseUrl() } : item
+  )
 
   return (
     <SiteHeader
       logo={cherryLogoPng}
       mobileLogo={cherryLogoSvg}
       githubIcon={githubIcon}
-      links={links}
+      links={linksWithHandover}
       downloadLabel={t('nav.download')}
       downloadHref={pathname.startsWith('/mobile') ? '/download?platform=mobile' : '/download'}
       menuLabel={t('nav.menu')}
