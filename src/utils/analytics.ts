@@ -1,72 +1,61 @@
 import posthog from 'posthog-js'
 
-import { getSiteRegion } from '@/utils/urls'
+import { getEnterpriseUrl as getEnterpriseBaseUrl, getSiteRegion } from './urls'
 
-const ENTERPRISE_PORTAL_URLS = {
-  cn: 'https://enterprise.cherryai.com.cn/',
-  global: 'https://enterprise.cherryai.com/'
-} as const
-
-/** The primary conversion event for community traffic sent to the enterprise site. */
-export const EV_CTA_TO_ENTERPRISE = 'cta_to_enterprise'
-
-interface RuntimeEnv {
-  POSTHOG_KEY?: string
-  POSTHOG_HOST?: string
-}
+/**
+ * GA4 自定义事件。
+ *
+ * gtag 由 index.html 里的内联脚本挂到 window 上。构建期（Node）没有 window，
+ * 浏览器里也可能被广告拦截插件拿掉，所以每次调用前都要判断，缺失时静默跳过。
+ */
 
 declare global {
   interface Window {
-    env?: RuntimeEnv
     gtag?: (...args: unknown[]) => void
   }
 }
 
-let ready = false
-
-function runtimeEnv(key: keyof RuntimeEnv): string | undefined {
-  if (typeof window === 'undefined') return undefined
-  return window.env?.[key]?.trim() || undefined
+interface DownloadEventParams {
+  platform: string
+  packageName: string
+  /** button：用户点击；auto：下载页按系统自动开始下载 */
+  trigger: 'button' | 'auto'
 }
 
-/**
- * Keep the community site on the same PostHog project and capture policy as the
- * enterprise marketing site: pageviews, route changes, page leaves, autocapture,
- * and identified-only person profiles. Session replay remains controlled by the
- * existing enterprise policy (disabled in the SDK).
- */
-export function initAnalytics(): void {
-  if (ready || typeof window === 'undefined') return
+/** Primary conversion from the community site into the enterprise site. */
+export const EV_CTA_TO_ENTERPRISE = 'cta_to_enterprise'
 
-  const key = runtimeEnv('POSTHOG_KEY') || import.meta.env.VITE_PUBLIC_POSTHOG_KEY
-  if (!key) return
-
-  const host = runtimeEnv('POSTHOG_HOST') || import.meta.env.VITE_PUBLIC_POSTHOG_HOST || 'https://us.i.posthog.com'
-  const handoverId = crossDomainHandoverId(key)
-
-  posthog.init(key, {
-    api_host: host,
-    defaults: '2026-01-30',
-    capture_pageview: 'history_change',
-    capture_pageleave: true,
-    autocapture: true,
-    disable_session_recording: true,
-    person_profiles: 'identified_only',
-    ...(handoverId ? { bootstrap: { distinctID: handoverId } } : {})
-  })
-
-  ready = true
+interface RuntimeAnalyticsConfig {
+  POSTHOG_KEY?: string
+  POSTHOG_HOST?: string
 }
 
-// Cookies do not cross registrable domains. Pass the anonymous PostHog id to
-// the enterprise portal so community → enterprise journeys stay in one person
-// funnel. The enterprise site consumes and removes this parameter on startup.
-function crossDomainHandoverId(key: string): string | null {
+let posthogReady = false
+const currentPosthogContext: Record<string, unknown> = {
+  customer_type: 'anonymous',
+  lifecycle_stage: 'anonymous_visit',
+  analytics_surface: 'community_website',
+  person_id: null
+}
+
+function runtimeAnalyticsConfig(): RuntimeAnalyticsConfig {
+  if (typeof window === 'undefined') return {}
+  return window.env ?? {}
+}
+
+// Cookies do not cross the community and enterprise registrable domains. The
+// source site therefore hands the same anonymous person/session IDs to the
+// enterprise site through one-time query parameters.
+function readCrossDomainHandover(key: string): { distinctID: string; sessionID?: string } | null {
+  if (typeof window === 'undefined') return null
+
   const params = new URLSearchParams(window.location.search)
-  const id = params.get('ph_did')
-  if (!id) return null
+  const distinctID = params.get('ph_did')
+  const sessionID = params.get('ph_sid') || undefined
+  if (!distinctID) return null
 
   params.delete('ph_did')
+  params.delete('ph_sid')
   const query = params.toString()
   window.history.replaceState(null, '', window.location.pathname + (query ? `?${query}` : '') + window.location.hash)
 
@@ -74,45 +63,92 @@ function crossDomainHandoverId(key: string): string | null {
     const storageKey = `ph_${key}_posthog`
     if (localStorage.getItem(storageKey) || document.cookie.includes(storageKey)) return null
   } catch {
-    // If storage is unavailable, use the handed-over id as the best fallback.
+    // Storage can be unavailable in private browsing; the handed-over ID is
+    // still useful in that case.
   }
 
-  return id
+  return sessionID ? { distinctID, sessionID } : { distinctID }
 }
 
-/** Capture a custom event after PostHog has initialized. */
-export function capture(event: string, properties?: Record<string, unknown>): void {
-  if (!ready) return
+export function initPosthog(): void {
+  if (posthogReady || typeof window === 'undefined') return
+
+  const runtime = runtimeAnalyticsConfig()
+  const key = runtime.POSTHOG_KEY || import.meta.env.VITE_PUBLIC_POSTHOG_KEY
+  if (!key) return
+
+  const host = runtime.POSTHOG_HOST || import.meta.env.VITE_PUBLIC_POSTHOG_HOST || 'https://us.i.posthog.com'
+  const handover = readCrossDomainHandover(key)
+
+  try {
+    posthog.init(key, {
+      api_host: host,
+      defaults: '2026-01-30',
+      capture_pageview: 'history_change',
+      capture_pageleave: true,
+      autocapture: true,
+      disable_session_recording: true,
+      person_profiles: 'identified_only',
+      before_send: (event) => {
+        if (!event) return event
+        event.properties = { ...event.properties, ...currentPosthogContext }
+        return event
+      },
+      ...(handover ? { bootstrap: handover } : {})
+    })
+    posthog.register(currentPosthogContext)
+    posthogReady = true
+  } catch (error) {
+    // Analytics must never prevent the community site from rendering.
+    console.warn('[posthog] disabled after initialization failure', error)
+  }
+}
+
+export function capturePosthog(event: string, properties?: Record<string, unknown>): void {
+  if (!posthogReady) return
   posthog.capture(event, properties)
 }
 
-/** Build the enterprise link while forwarding source parameters and the id. */
-export function getEnterpriseUrl(): string {
-  const url = new URL(ENTERPRISE_PORTAL_URLS[getSiteRegion() === 'cn' ? 'cn' : 'global'])
+/** Build the enterprise URL and carry the anonymous PostHog identity across. */
+export function getEnterprisePortalUrl(language: string, path = '/'): string {
+  const url = new URL(getEnterpriseBaseUrl(language))
+  url.pathname = path.startsWith('/') ? path : `/${path}`
+  url.search = window.location.search
+  url.searchParams.delete('ph_did')
+  url.searchParams.delete('ph_sid')
+  url.searchParams.set('source', 'community_website')
 
-  if (typeof window !== 'undefined') {
-    for (const [key, value] of new URLSearchParams(window.location.search)) {
-      url.searchParams.set(key, value)
-    }
+  if (posthogReady) {
+    url.searchParams.set('ph_did', posthog.get_distinct_id())
+    url.searchParams.set('ph_sid', posthog.get_session_id())
   }
 
-  if (ready) url.searchParams.set('ph_did', posthog.get_distinct_id())
   return url.toString()
 }
 
-/** Capture and open the enterprise portal from a CTA. */
+export function trackEnterpriseNavigation(location: string): void {
+  capturePosthog(EV_CTA_TO_ENTERPRISE, { location, source: 'community_website' })
+}
+
+/** Backward-compatible helpers for the community landing section and footer. */
+export function capture(event: string, properties?: Record<string, unknown>): void {
+  capturePosthog(event, properties)
+}
+
+export function getEnterpriseUrl(): string {
+  return getEnterprisePortalUrl(getSiteRegion() === 'global' ? 'en-US' : 'zh-CN')
+}
+
 export function goToEnterprise(location: string, properties?: Record<string, unknown>): void {
-  capture(EV_CTA_TO_ENTERPRISE, { location, ...properties })
+  capturePosthog(EV_CTA_TO_ENTERPRISE, { location, source: 'community_website', ...properties })
   window.open(getEnterpriseUrl(), '_blank', 'noopener')
 }
 
-/** Existing GA4 download event, retained for the current download funnel. */
-interface DownloadEventParams {
-  platform: string
-  packageName: string
-  trigger: 'button' | 'auto'
-}
-
+/**
+ * 下载按钮用 window.location.href 跳到安装包，不是 <a> 链接，
+ * GA4 增强型衡量的 file_download 抓不到，所以单独上报。
+ * 事件名 download_click 需要在 GA4 后台标记为关键事件才会计入转化。
+ */
 export const trackDownload = ({ platform, packageName, trigger }: DownloadEventParams): void => {
   if (typeof window === 'undefined' || typeof window.gtag !== 'function') return
 
@@ -120,8 +156,7 @@ export const trackDownload = ({ platform, packageName, trigger }: DownloadEventP
     platform,
     package_name: packageName,
     trigger,
+    // 紧接着就会跳转，beacon 能保证事件在页面离开前发出
     transport_type: 'beacon'
   })
 }
-
-export { posthog }

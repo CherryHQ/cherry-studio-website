@@ -101,7 +101,8 @@ const TeamCollaborationSection: FC = () => {
                   alt={name}
                   loading="lazy"
                   className="border-background h-7 w-7 rounded-full border-2 bg-white object-cover"
-                  style={{ opacity: 1 - index * 0.12 }} />
+                  style={{ opacity: 1 - index * 0.12 }}
+                />
               ))}
             </div>
             <p className="text-muted-foreground text-xs">{t('team_collaboration.mockup.members')}</p>

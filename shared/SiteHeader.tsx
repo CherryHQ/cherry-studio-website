@@ -101,7 +101,10 @@ export function SiteHeader({
         href={item.href}
         target="_blank"
         rel="noopener noreferrer"
-        onClick={() => onLinkClick?.(item)}
+        onClick={() => {
+          onLinkClick?.(item)
+          item.onClick?.()
+        }}
         className={className}>
         {linkContent(item)}
         <ArrowUpRight className="h-3 w-3" />

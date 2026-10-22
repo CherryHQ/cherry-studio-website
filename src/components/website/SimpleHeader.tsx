@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom'
 import cherryLogoSvg from '@/assets/images/cherry-logo.svg'
 import githubIcon from '@/assets/images/icons/github.svg'
 import cherryLogoPng from '@/assets/images/logo.png'
-import { capture, EV_CTA_TO_ENTERPRISE, getEnterpriseUrl } from '@/utils/analytics'
+import { getEnterprisePortalUrl, trackEnterpriseNavigation } from '@/utils/analytics'
 import { isEnglishSite } from '@/utils/urls'
 import { getHeaderLinks } from '../../../shared/header-navigation'
 import { SiteHeader } from '../../../shared/SiteHeader'
@@ -28,30 +28,20 @@ export default function SimpleHeader() {
     },
     language: i18n.language,
     englishSite,
-    pathname
+    pathname,
+    enterpriseHref: getEnterprisePortalUrl(i18n.language),
+    onEnterpriseClick: () => trackEnterpriseNavigation('header')
   })
-  // The header's enterprise link is an external navigation just like the
-  // landing-page CTA. Build it at render time so the anonymous PostHog ID and
-  // current campaign parameters travel with either entry point.
-  const linksWithHandover = links.map((item) =>
-    item.analyticsLocation === 'header_enterprise' ? { ...item, href: getEnterpriseUrl() } : item
-  )
-
   return (
     <SiteHeader
       logo={cherryLogoPng}
       mobileLogo={cherryLogoSvg}
       githubIcon={githubIcon}
-      links={linksWithHandover}
+      links={links}
       downloadLabel={t('nav.download')}
       downloadHref={pathname.startsWith('/mobile') ? '/download?platform=mobile' : '/download'}
       menuLabel={t('nav.menu')}
       closeLabel={t('nav.close_menu')}
-      onLinkClick={(item) => {
-        if (item.analyticsLocation) {
-          capture(EV_CTA_TO_ENTERPRISE, { location: item.analyticsLocation })
-        }
-      }}
       mobileControls={
         <>
           <LanguageSelector />
