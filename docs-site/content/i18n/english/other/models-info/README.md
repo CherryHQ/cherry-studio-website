@@ -2,7 +2,7 @@
 
 This page mirrors the model catalog bundled with Cherry Studio ([provider-registry](https://github.com/CherryHQ/cherry-studio/tree/main/packages/provider-registry)), synced automatically with the application repository. Information is for reference only: always confirm context length, capabilities and pricing with the model provider. A `-` means the source data does not provide that field.
 
-> **Data updated**: 2026-10-20 13:27:32 UTC / 2026-10-20 21:27:32 CST (Beijing time) (catalog version `6b81bfc9f3902e8c`)
+> **Data updated**: 2026-10-23 13:14:42 UTC / 2026-10-23 21:14:42 CST (Beijing time) (catalog version `7692e6f21e262cae`)
 
 ## Categories
 
