@@ -15,6 +15,7 @@ import tgColorIcon from '@/assets/images/icons/tg-color.svg'
 import xIcon from '@/assets/images/icons/x.svg'
 import xColorIcon from '@/assets/images/icons/x-color.svg'
 import cherryWxQR from '@/assets/images/resource/cherrywx.png'
+import { COMPARE_SLUGS, hasCompare } from '@/content/compare'
 import { copyRSSLink } from '@/utils'
 import { getDocsUrl } from '@/utils/urls'
 import LanguageSelector from './LanguageSelector'
@@ -93,6 +94,12 @@ const Footer: FC = () => {
         { href: 'https://github.com/CherryHQ/cherry-studio/issues', label: t('footer.cherry_studio.feedback') }
       ]
 
+  // 对比页入口：只列出当前站点已有正文的页面
+  const compareLinks = COMPARE_SLUGS.filter((slug) => hasCompare(isEn ? 'en' : 'zh', slug)).map((slug) => ({
+    href: `/compare/${slug}`,
+    label: t(`compare.links.${slug}`)
+  }))
+
   const communityLinks = [
     { href: 'https://discord.gg/wez8HtpxqQ', label: 'Discord' },
     { href: 'https://x.com/CherryStudioHQ', label: 'X' },
@@ -165,7 +172,8 @@ const Footer: FC = () => {
           </div>
 
           {/* Links Columns */}
-          <div className={`grid grid-cols-2 gap-8 lg:col-span-5 ${isEn ? '' : 'sm:grid-cols-3'}`}>
+          <div
+            className={`grid grid-cols-2 gap-8 lg:col-span-5 ${isEn && compareLinks.length === 0 ? '' : 'sm:grid-cols-3'}`}>
             {/* Cherry Studio Links */}
             <div>
               <h4 className="text-foreground mb-4 text-sm font-semibold">{t('footer.cherry_studio.title')}</h4>
@@ -195,6 +203,24 @@ const Footer: FC = () => {
                         href={link.href}
                         target="_blank"
                         rel="noopener noreferrer"
+                        className="text-muted-foreground hover:text-primary text-sm transition-colors duration-200">
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* Compare Links */}
+            {compareLinks.length > 0 && (
+              <div>
+                <h4 className="text-foreground mb-4 text-sm font-semibold">{t('compare.title')}</h4>
+                <ul className="space-y-2.5">
+                  {compareLinks.map((link) => (
+                    <li key={link.href}>
+                      <a
+                        href={link.href}
                         className="text-muted-foreground hover:text-primary text-sm transition-colors duration-200">
                         {link.label}
                       </a>

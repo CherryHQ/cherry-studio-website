@@ -10,7 +10,10 @@
     "download_v2": "Download Cherry Studio V2 for Mac, Windows & Linux",
     "flash": "Cherry Studio Pricing - Flash Plan from $8/month",
     "flash_usage": "Cherry Flash Usage Terms",
-    "not_found": "Page Not Found - Cherry Studio"
+    "not_found": "Page Not Found - Cherry Studio",
+    "compare_manus": "Cherry Studio vs Manus: Local or Cloud AI Agent?",
+    "compare_chatgpt_desktop_app": "ChatGPT Desktop App Alternative for Every Model | Cherry Studio",
+    "compare_lm_studio": "LM Studio Alternative: Local and Cloud Models in One App"
   },
   "page_description": {
     "home": "Cherry Studio is an open-source, free, and powerful AI desktop client. It includes AI agents, AI chat, AI image generation, knowledge base, and more, supports all major LLMs, runs on Windows/macOS/Linux, stores data locally, and is built for heavy AI users.",
@@ -23,7 +26,10 @@
     "download_v2": "Download the latest Cherry Studio V2 release for macOS, Windows and Linux. Free and open source under AGPL.",
     "flash": "Flash gives you DeepSeek V4.1, Qwen 3.8 and GLM 5.3 in one $8/month subscription. No separate provider accounts, cancel anytime.",
     "flash_usage": "What the Cherry Flash subscription includes: the models in the plan, per-token rates, monthly allowances, peak hours and privacy.",
-    "not_found": "The page you are looking for does not exist."
+    "not_found": "The page you are looking for does not exist.",
+    "compare_manus": "Manus runs agents in the cloud and bills in credits. Cherry Studio runs them on your own computer with any model. Compare price, privacy and tools.",
+    "compare_chatgpt_desktop_app": "Use GPT, Claude, Gemini, DeepSeek and local models in one free desktop app. Sign in with your ChatGPT plan or pay per token.",
+    "compare_lm_studio": "Keep LM Studio for running local models and add Cherry Studio for agents, knowledge bases, MCP tools and cloud models."
   },
   "nav": {
     "home": "Home",
@@ -709,5 +715,14 @@
     "description": "The link may be outdated or mistyped. Head back to the homepage, or grab the latest build.",
     "back_home": "Back to home",
     "download": "Download Cherry Studio"
+  },
+  "compare": {
+    "title": "Compare",
+    "related": "More comparisons",
+    "links": {
+      "manus": "Cherry Studio vs Manus",
+      "chatgpt-desktop-app": "ChatGPT desktop app alternative",
+      "lm-studio": "LM Studio alternative"
+    }
   }
 }

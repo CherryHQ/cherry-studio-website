@@ -1,6 +1,8 @@
 import { createHash } from 'node:crypto'
-import { mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, readdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
+
+import { marked } from 'marked'
 
 const distDir = join(process.cwd(), 'dist')
 const target = process.env.SITE_LOCALE || process.argv[2] || 'zh'
@@ -79,6 +81,31 @@ const ROUTES = {
   zh: []
 }
 
+// 对比页：src/content/compare/<locale>/<slug>.md 存在就生成 /compare/<slug>。
+// 中文正文审核通过前不放文件，中文站就不会生成也不会进 sitemap，英文页也不输出 zh-CN 的 hreflang。
+const COMPARE_DIR = join(process.cwd(), 'src/content/compare')
+const COMPARE_LASTMOD = '2026-10-23'
+const compareArticleClass = JSON.parse(readFileSync(join(COMPARE_DIR, 'article-style.json'), 'utf8')).className
+
+function listCompareSlugs(locale) {
+  const dir = join(COMPARE_DIR, locale)
+  if (!existsSync(dir)) return []
+  return readdirSync(dir)
+    .filter((file) => file.endsWith('.md'))
+    .map((file) => file.slice(0, -3))
+    .sort()
+}
+
+const compareRoutes = listCompareSlugs(target).map((slug) => ({
+  path: `/compare/${slug}`,
+  key: `compare_${slug.replace(/-/g, '_')}`,
+  compare: slug,
+  chineseCounterpart: existsSync(join(COMPARE_DIR, 'zh', `${slug}.md`)),
+  dropSoftwareApplication: true
+}))
+
+ROUTES[target].push(...compareRoutes)
+
 const NOT_FOUND = { path: '/404', key: 'not_found', noindex: true }
 
 // lastmod 是页面正文最后一次实质修改的日期（YYYY-MM-DD）。Google 用它决定先重新
@@ -99,6 +126,8 @@ const SITEMAP = {
     { path: '/mobile', priority: '0.9' }
   ]
 }
+
+SITEMAP[target].push(...compareRoutes.map(({ path }) => ({ path, priority: '0.7', lastmod: COMPARE_LASTMOD })))
 
 function replaceTagAttribute(html, tagPattern, attribute, value) {
   return html.replace(tagPattern, (tag) => {
@@ -199,6 +228,18 @@ function buildRouteHtml(route) {
     html = dropJsonLd(html, 'SoftwareApplication')
   }
 
+  if (route.compare) {
+    const markdown = readFileSync(join(COMPARE_DIR, target, `${route.compare}.md`), 'utf8')
+    // 正文直接写进 #root：不跑 JS 的爬虫也能读到全文，createRoot 挂载后会整块替换掉
+    html = html.replace(
+      '<div id="root"></div>',
+      `<div id="root"><div class="bg-background min-h-screen"><article class="${compareArticleClass}">${renderCompareMarkdown(markdown)}</article></div></div>`
+    )
+    html = appendJsonLd(html, buildCompareArticleJsonLd(markdown, canonicalUrl, description))
+    const faq = extractFaq(markdown)
+    if (faq.length > 0) html = appendJsonLd(html, buildFaqJsonLd(faq))
+  }
+
   if (route.flashPlan) {
     html = dropJsonLd(html, 'SoftwareApplication')
     html = appendJsonLd(html, buildFlashProductJsonLd(canonicalUrl))
@@ -249,6 +290,84 @@ function buildFlashFaqJsonLd() {
         text: item.answer
       }
     }))
+  }
+}
+
+// 与 src/content/compare/index.ts 的 renderCompareMarkdown 保持一致
+function renderCompareMarkdown(markdown) {
+  return marked
+    .parse(markdown, { async: false })
+    .replace(/<table>/g, '<div class="overflow-x-auto"><table>')
+    .replace(/<\/table>/g, '</table></div>')
+}
+
+function markdownToPlainText(text) {
+  return text
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, '')
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
+    .replace(/\*\*([^*]+)\*\*/g, '$1')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
+// FAQ 写法约定：「## FAQ」之后每个问题是一个三级标题，下面是答案段落
+function extractFaq(markdown) {
+  const section = markdown.split(/^## (?:FAQ|常见问题)\s*$/m)[1]
+  if (!section) return []
+
+  return section
+    .split(/^### /m)
+    .slice(1)
+    .map((block) => {
+      const [question, ...answer] = block.split('\n')
+      return { question: question.trim(), answer: markdownToPlainText(answer.join('\n')) }
+    })
+    .filter((item) => item.question && item.answer)
+}
+
+function buildFaqJsonLd(items) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: items.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer
+      }
+    }))
+  }
+}
+
+function buildCompareArticleJsonLd(markdown, url, description) {
+  const headline = markdown.match(/^# (.+)$/m)?.[1].trim()
+  const image = markdown.match(/!\[[^\]]*\]\((\/[^)]+)\)/)?.[1]
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline,
+    description,
+    inLanguage: config.lang,
+    url,
+    mainEntityOfPage: url,
+    ...(image ? { image: `${config.domain}${image}` } : {}),
+    datePublished: COMPARE_LASTMOD,
+    dateModified: COMPARE_LASTMOD,
+    author: {
+      '@type': 'Organization',
+      name: 'Cherry Studio',
+      url: config.domain
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: config.publisherName,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${config.domain}/assets/images/favicon.png`
+      }
+    }
   }
 }
 
@@ -418,13 +537,14 @@ ${entries}${extras ? `\n${extras}` : ''}
 const LLMS_INTRO =
   'Open-source AI desktop client for macOS, Windows and Linux. Run 300+ models from 50+ providers in one app, with conversations stored locally.'
 
-const LLMS_PAGES = ['home', 'download', 'flash', 'flash_usage', 'theme']
+const LLMS_PAGES = ['home', 'download', 'flash', 'flash_usage', 'theme', ...compareRoutes.map(({ key }) => key)]
 const LLMS_PATH_BY_KEY = {
   home: '/',
   download: '/download',
   flash: '/flash',
   flash_usage: '/flash/usage',
-  theme: '/theme'
+  theme: '/theme',
+  ...Object.fromEntries(compareRoutes.map(({ key, path }) => [key, path]))
 }
 
 const LLMS_FULL = `# Cherry Studio
