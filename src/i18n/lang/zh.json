@@ -10,7 +10,10 @@
     "download_v2": "下载 Cherry Studio - 多平台 AI 客户端",
     "flash": "Cherry Studio 定价 - Flash 套餐每月 $8 起",
     "flash_usage": "Cherry Flash 使用须知",
-    "not_found": "页面不存在 - Cherry Studio"
+    "not_found": "页面不存在 - Cherry Studio",
+    "compare_manus": "Cherry Studio 和 Manus 怎么选：本地还是云端 AI Agent",
+    "compare_chatgpt_desktop_app": "ChatGPT 桌面版替代：一个应用用上所有模型 | Cherry Studio",
+    "compare_lm_studio": "LM Studio 替代：本地和云端模型放在一个应用里用"
   },
   "page_description": {
     "home": "Cherry Studio AI桌面客户端，开源、免费、且功能强大。AI agent、AI 对话、AI绘图、知识库等功能齐全，支持所有主流大模型，支持Windows/macOS/Linux，支持数据本地存储，是AI深度使用者的首选",
@@ -23,7 +26,10 @@
     "download_v2": "下载 Cherry Studio AI 客户端，支持 Windows、macOS、Linux 平台。集成 100+ AI 模型，完全免费开源。",
     "flash": "Flash 用一份每月 $8 的订阅，把 DeepSeek V4.1、Qwen 3.8 和 GLM 5.3 放在一起。不用再单独注册各家服务商，随时可以取消。",
     "flash_usage": "Cherry Flash 订阅包含什么：套餐内的模型、每百万 token 单价、每月额度、峰谷时段与隐私说明。",
-    "not_found": "你访问的页面不存在。"
+    "not_found": "你访问的页面不存在。",
+    "compare_manus": "Manus 在云端跑 Agent、按积分计费；Cherry Studio 在你自己的电脑上跑 Agent，模型随你接。从价格、隐私和工具三方面对比。",
+    "compare_chatgpt_desktop_app": "一个免费的桌面应用里用 GPT、Claude、Gemini、DeepSeek 和本地模型。可以用 ChatGPT 账号登录，也可以按 token 付费。",
+    "compare_lm_studio": "LM Studio 负责跑本地模型，Cherry Studio 在上面加上 Agent、知识库、MCP 工具和云端模型。两者对比与搭配用法。"
   },
   "nav": {
     "home": "主页",
@@ -728,5 +734,14 @@
     "description": "链接可能已失效或输入有误。请回到首页，或下载最新版本。",
     "back_home": "返回首页",
     "download": "下载 Cherry Studio"
+  },
+  "compare": {
+    "title": "对比",
+    "related": "更多对比",
+    "links": {
+      "manus": "Cherry Studio 和 Manus 对比",
+      "chatgpt-desktop-app": "ChatGPT 桌面版替代",
+      "lm-studio": "LM Studio 替代"
+    }
   }
 }
