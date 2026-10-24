@@ -41,7 +41,12 @@ jobs:
       - name: Fetch and update leaderboards
         id: leaderboard
         continue-on-error: true
+        timeout-minutes: 20
         env:
+          # 主 provider 必填；次 provider 留空即禁用。可选值：firecrawl / scraperapi
+          LEADERBOARD_PRIMARY_PROVIDER: firecrawl
+          LEADERBOARD_SECONDARY_PROVIDER: scraperapi
+          FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
           SCRAPER_API_KEY: ${{ secrets.SCRAPER_API_KEY }}
         run: python .github/scripts/fetch_leaderboard.py
 

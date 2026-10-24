@@ -1,7 +1,6 @@
 import os
 import re
 import time
-from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
 from io import StringIO
 
@@ -234,57 +233,141 @@ COLUMN_MAPPING = {
 # ---------------------------------------------------------------------------
 # 抓取与解析
 # ---------------------------------------------------------------------------
-def fetch_page_html(url, api_key):
-    """
-    使用 ScraperAPI 抓取指定 URL 的 HTML。榜单页是服务端预渲染的，表格已在原始 HTML 中，
-    因此不需要 render=true（每个请求 10 credits → 1 credit）。
-    带重试与指数退避。
-    """
-    scraperapi_url = f"http://api.scraperapi.com?api_key={api_key}&url={url}"
+FIRECRAWL_SCRAPE_URL = "https://api.firecrawl.dev/v2/scrape"
+SCRAPERAPI_URL = "https://api.scraperapi.com"
+# arena.ai 属高难度域名，响应头缺失时按官方报价估算单次消耗。
+SCRAPERAPI_DEFAULT_CREDITS = 10
+FETCH_ATTEMPTS = 2
+RETRY_DELAY = 10
+BOARD_GAP = 2
+MIN_ROWS = 10
 
-    retries = 3
-    delay = 60
-    last_exc = None
-    last_html = None
 
-    for i in range(retries):
-        try:
-            print(f"  Attempt {i + 1}/{retries} to fetch {url} via ScraperAPI...")
-            response = requests.get(scraperapi_url, timeout=180)
-            response.raise_for_status()
-            # 挑战页与软错误页同样返回 200，缺表格时重抓一次比让整个榜单停更划算。
-            if "<table" not in response.text:
-                last_html = response.text
-                if i < retries - 1:
-                    print(f"  No <table> in the response ({len(response.text)} bytes). Retrying in {delay}s...")
-                    time.sleep(delay)
-                    delay *= 2
-                else:
-                    print("  All retries returned a page without a leaderboard table.")
-                continue
-            print("  Successfully fetched page.")
-            return response.text
-        except requests.exceptions.HTTPError as e:
-            last_exc = e
-            if i < retries - 1:
-                print(f"  HTTP error: {e}. Retrying in {delay}s...")
-                time.sleep(delay)
-                delay *= 2
-            else:
-                print("  All retries failed with HTTP errors.")
-        except requests.exceptions.RequestException as e:
-            last_exc = e
-            if i < retries - 1:
-                print(f"  Network error: {e}. Retrying in {delay}s...")
-                time.sleep(delay)
-                delay *= 2
-            else:
-                print("  All retries failed due to network errors.")
+def firecrawl_fetch(url):
+    """返回 (html, credits, error)。未配置 key 时走 keyless（受出口 IP 限制）。"""
+    headers = {"Content-Type": "application/json"}
+    api_key = os.getenv("FIRECRAWL_API_KEY")
+    if api_key:
+        headers["Authorization"] = f"Bearer {api_key}"
+    # maxAge=0 强制新鲜抓取，否则默认命中 2 天缓存，每日快照会悄悄变成隔日数据。
+    payload = {
+        "url": url,
+        "formats": ["html"],
+        "onlyMainContent": False,
+        "maxAge": 0,
+        "storeInCache": False,
+    }
+    try:
+        response = requests.post(FIRECRAWL_SCRAPE_URL, json=payload, headers=headers, timeout=180)
+    except requests.exceptions.RequestException as e:
+        return None, 0, type(e).__name__
+    if response.status_code != 200:
+        return None, 0, f"HTTP {response.status_code}"
+    try:
+        data = response.json().get("data") or {}
+    except ValueError:
+        return None, 0, "invalid JSON"
+    metadata = data.get("metadata") or {}
+    provider_cost = (metadata.get("provider") or {}).get("creditsCost")
+    credits = int(provider_cost) if provider_cost else 1
+    target_status = metadata.get("statusCode")
+    if target_status not in (None, 200):
+        return None, credits, f"target HTTP {target_status}"
+    html = data.get("html") or ""
+    if not html:
+        return None, credits, "empty html"
+    return html, credits, None
 
-    if last_exc:
-        raise last_exc
-    # 始终交回最后一次响应，交由下游按「未解析到表格」处理并保留旧快照。
-    return last_html
+
+def scraperapi_fetch(url):
+    """返回 (html, credits, error)；credits 取自 sa-credit-cost 响应头。"""
+    api_key = os.getenv("SCRAPER_API_KEY")
+    if not api_key:
+        return None, 0, "SCRAPER_API_KEY is not set"
+    try:
+        response = requests.get(SCRAPERAPI_URL, params={"api_key": api_key, "url": url}, timeout=180)
+    except requests.exceptions.RequestException as e:
+        return None, 0, type(e).__name__
+    credits = int(response.headers.get("sa-credit-cost") or 0)
+    if response.status_code != 200:
+        return None, credits, f"HTTP {response.status_code}"
+    return response.text, credits or SCRAPERAPI_DEFAULT_CREDITS, None
+
+
+PROVIDERS = {"firecrawl": firecrawl_fetch, "scraperapi": scraperapi_fetch}
+
+
+def resolve_providers():
+    """主 provider 必填，次 provider 可留空；返回按优先级排列的列表。"""
+    primary = os.getenv("LEADERBOARD_PRIMARY_PROVIDER", "firecrawl").strip().lower()
+    secondary = os.getenv("LEADERBOARD_SECONDARY_PROVIDER", "scraperapi").strip().lower()
+    if not primary:
+        raise ValueError("LEADERBOARD_PRIMARY_PROVIDER must not be empty")
+    for name in (primary, secondary):
+        if name and name not in PROVIDERS:
+            raise ValueError(f"Unknown provider: {name}")
+    if secondary and secondary == primary:
+        raise ValueError("Primary and secondary providers must differ")
+    if primary == "scraperapi" and not os.getenv("SCRAPER_API_KEY"):
+        raise ValueError("SCRAPER_API_KEY is required when scraperapi is the primary provider")
+    if secondary == "scraperapi" and not os.getenv("SCRAPER_API_KEY"):
+        print("警告：未配置 SCRAPER_API_KEY，已禁用次 provider scraperapi。")
+        secondary = ""
+    if primary == "firecrawl" and not os.getenv("FIRECRAWL_API_KEY"):
+        print("警告：未配置 FIRECRAWL_API_KEY，使用 Firecrawl keyless（受出口 IP 限制）。")
+    return [name for name in (primary, secondary) if name]
+
+
+def new_stats(providers):
+    return {name: {"requests": 0, "credits": 0, "failures": 0} for name in providers}
+
+
+def fetch_leaderboard_data(cfg, providers, stats):
+    """主 provider 连续失败两次后换次 provider 再试两次；都失败返回 None。"""
+    for name in providers:
+        fetcher = PROVIDERS[name]
+        for attempt in range(1, FETCH_ATTEMPTS + 1):
+            print(f"  {name} {attempt}/{FETCH_ATTEMPTS} to fetch {cfg['url']}...")
+            html, credits, error = fetcher(cfg["url"])
+            stats[name]["requests"] += 1
+            stats[name]["credits"] += credits
+            df = None
+            if not error and html and "<table" in html:
+                try:
+                    df = parse_leaderboard_table(html, cfg)
+                except Exception as e:
+                    error = f"parse error: {type(e).__name__}"
+            if df is not None and len(df) >= MIN_ROWS:
+                print(f"  Successfully fetched page ({name}).")
+                return df
+            stats[name]["failures"] += 1
+            print(f"  {name} failed: {error or 'no leaderboard table parsed'}")
+            if attempt < FETCH_ATTEMPTS:
+                time.sleep(RETRY_DELAY)
+    return None
+
+
+def emit_credit_summary(stats):
+    """每次运行输出各 provider 的额度消耗，并写入 Actions 的 step summary。"""
+    used = [(name, s) for name, s in stats.items() if s["requests"]]
+    total = {key: sum(s[key] for _, s in used) for key in ("requests", "credits", "failures")}
+    print("\n=== 额度消耗 ===")
+    for name, s in used:
+        print(f"{name}: {s['requests']} 请求 / {s['credits']} credits / {s['failures']} 次失败")
+    print(f"合计: {total['requests']} 请求 / {total['credits']} credits / {total['failures']} 次失败")
+
+    summary_path = os.getenv("GITHUB_STEP_SUMMARY")
+    if not summary_path:
+        return
+    table = ["", "### 额度消耗", "", "| Provider | 请求数 | Credits | 失败 |", "| --- | ---: | ---: | ---: |"]
+    for name, s in used:
+        table.append(f"| {name} | {s['requests']} | {s['credits']} | {s['failures']} |")
+    table.append(f"| **合计** | **{total['requests']}** | **{total['credits']}** | **{total['failures']}** |")
+    try:
+        with open(summary_path, "a", encoding="utf-8") as f:
+            f.write("\n".join(table) + "\n")
+    except OSError as e:
+        print(f"  Could not write step summary: {type(e).__name__}")
 
 
 def parse_rank_spread(cell):
@@ -658,11 +741,15 @@ def generate_readme(lang="zh-cn"):
 # 主流程
 # ---------------------------------------------------------------------------
 def main():
-    api_key = os.getenv("SCRAPER_API_KEY")
-    if not api_key:
-        print("错误：SCRAPER_API_KEY 环境变量未设置。")
-        raise ValueError("SCRAPER_API_KEY is not set.")
+    providers = resolve_providers()
+    stats = new_stats(providers)
+    try:
+        run(providers, stats)
+    finally:
+        emit_credit_summary(stats)
 
+
+def run(providers, stats):
     for directory in (OUTPUT_DIR, EN_OUTPUT_DIR):
         if not os.path.exists(directory):
             os.makedirs(directory)
@@ -674,41 +761,29 @@ def main():
 
     updated_files = []
 
-    # 1. 生成各子榜单
-    # 由于 free plan 并发上限为 5，这里将全部榜单分为多组、每组 3 个，
-    # 组内并发抓取，组间串行执行。
-    def process_leaderboard(cfg):
+    # 1. 逐个抓取并生成子榜单。串行让主/次回退可确定，也避开 Firecrawl 免费额度的速率限制。
+    for index, cfg in enumerate(LEADERBOARDS):
         print(f"\n=== Processing {cfg['slug']} ({cfg['url']}) ===")
-        try:
-            html = fetch_page_html(cfg["url"], api_key)
-            df = parse_leaderboard_table(html, cfg)
-            # 抓取或解析失败时保留上一份快照，绝不把页面覆盖成占位内容
-            if df is None or df.empty:
-                print(f"  Skipped {cfg['slug']}: no leaderboard data parsed")
-                return None
-            # 两种语言的正文先生成再落盘，避免写入中途失败留下半新半旧的页面
-            contents = {lang: generate_markdown(df, cfg, utc_now, beijing_now, lang) for lang in ("zh-cn", "en")}
-
-            paths = []
-            for lang, directory in (("zh-cn", OUTPUT_DIR), ("en", EN_OUTPUT_DIR)):
-                output_path = os.path.join(directory, f"{cfg['slug']}.md")
-                with open(output_path, "w", encoding="utf-8") as f:
-                    f.write(contents[lang])
-                print(f"  Updated: {output_path}")
-                paths.append(output_path)
-            return paths
-        except Exception as e:
-            print(f"  Failed to update {cfg['slug']}: {e}")
-            return None
-
-    groups = [LEADERBOARDS[i : i + 3] for i in range(0, len(LEADERBOARDS), 3)]
-    for group in groups:
-        with ThreadPoolExecutor(max_workers=len(group)) as executor:
-            futures = [executor.submit(process_leaderboard, cfg) for cfg in group]
-            for future in futures:
-                result = future.result()
-                if result:
-                    updated_files.extend(result)
+        df = fetch_leaderboard_data(cfg, providers, stats)
+        # 抓取或解析失败时保留上一份快照，绝不把页面覆盖成占位内容
+        if df is None or df.empty:
+            print(f"  Skipped {cfg['slug']}: no leaderboard data parsed")
+        else:
+            try:
+                # 两种语言的正文先生成再落盘，避免写入中途失败留下半新半旧的页面
+                contents = {
+                    lang: generate_markdown(df, cfg, utc_now, beijing_now, lang) for lang in ("zh-cn", "en")
+                }
+                for lang, directory in (("zh-cn", OUTPUT_DIR), ("en", EN_OUTPUT_DIR)):
+                    output_path = os.path.join(directory, f"{cfg['slug']}.md")
+                    with open(output_path, "w", encoding="utf-8") as f:
+                        f.write(contents[lang])
+                    print(f"  Updated: {output_path}")
+                    updated_files.append(output_path)
+            except Exception as e:
+                print(f"  Failed to update {cfg['slug']}: {e}")
+        if index < len(LEADERBOARDS) - 1:
+            time.sleep(BOARD_GAP)
 
     # 2. 生成 / 更新目录页 README.md
     for lang, directory in (("zh-cn", OUTPUT_DIR), ("en", EN_OUTPUT_DIR)):
