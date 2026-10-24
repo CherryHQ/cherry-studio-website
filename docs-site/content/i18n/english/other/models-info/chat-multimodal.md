@@ -4,7 +4,7 @@ Data comes from the model catalog bundled with Cherry Studio ([provider-registry
 
 Context length and max output are abbreviated with K / M and rounded (1K is roughly 1,000–1,024 tokens, 1M roughly one million), e.g. 131,072 and 128,000 both read 128K. Hover a value to see the exact number; confirm limits with the model provider.
 
-> **Data updated**: 2026-10-23 13:14:42 UTC / 2026-10-23 21:14:42 CST (Beijing time)
+> **Data updated**: 2026-10-24 12:32:18 UTC / 2026-10-24 20:32:18 CST (Beijing time)
 
 <div data-models-table="num:2,3;sort:1;search:0,1;cap:4:Function calling,Reasoning,Image recognition,Speech recognition,Video understanding,Structured output,File input,Computer use,File search;in:5:Text input=Text,Image input=Image,Audio input=Audio,Video input=Video">
 
@@ -192,6 +192,8 @@ Context length and max output are abbreviated with K / M and rounded (1K is roug
 | Kimi K2.7 Code High Speed<br><code>kimi-k2-7-code-highspeed</code> | moonshot | <span title="262,144">256K</span> | <span title="262,144">256K</span> | Function calling, Reasoning, Image recognition, Video understanding, Structured output, File input | Text, Image, Video | Text |
 | Kimi K3<br><code>kimi-k3</code> | moonshot | <span title="1,048,576">1.05M</span> | <span title="131,072">128K</span> | Function calling, Reasoning, Image recognition, Video understanding, Structured output, File input | Text, Image, Video | Text |
 | Kimi K3 Fast<br><code>kimi-k3-fast</code> | moonshot | <span title="1,000,000">1M</span> | <span title="131,072">128K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| Kimi K3.1 Pro<br><code>kimi-k3-1-pro</code> | moonshot | <span title="1,048,576">1.05M</span> | <span title="1,048,576">1.05M</span> | Reasoning, Function calling, Image recognition, Video understanding, Structured output | Text, Image, Video | Text |
+| Kimi K3.1 Pro Highspeed<br><code>kimi-k3-1-pro-highspeed</code> | moonshot | <span title="1,048,576">1.05M</span> | <span title="1,048,576">1.05M</span> | Reasoning, Function calling, Image recognition, Video understanding, Structured output | Text, Image, Video | Text |
 | Moonshot Kimi K2.5<br><code>kimi-k2-5</code> | moonshot | <span title="262,144">256K</span> | <span title="262,144">256K</span> | Function calling, Reasoning, Image recognition, Video understanding, Structured output, File input | Text, Image, Video | Text |
 | Moonshot Kimi K2.6<br><code>kimi-k2-6</code> | moonshot | <span title="262,144">256K</span> | <span title="262,144">256K</span> | Function calling, Reasoning, Image recognition, Video understanding, Structured output, File input | Text, Image, Video | Text |
 | MoonshotAI Kimi Latest<br><code>kimi-latest</code> | moonshot | <span title="1,048,576">1.05M</span> | - | Function calling, Reasoning, Image recognition, Video understanding, Structured output | Text, Image, Video | Text |

@@ -4,7 +4,7 @@
 
 本榜单是 Arena AI 最核心的文本对战榜单，根据人类盲投对战估算模型相对实力。
 
-> **数据更新时间**: 2026-10-23 13:14:38 UTC / 2026-10-23 21:14:38 CST (北京时间)
+> **数据更新时间**: 2026-10-24 12:32:13 UTC / 2026-10-24 20:32:13 CST (北京时间)
 
 {% hint style="info" %}
 排行榜反映特定评测和用户投票偏好，不等同于模型在你的任务中一定更好。选择模型时还要考虑价格、速度、上下文、工具调用、隐私和地区可用性。
@@ -14,7 +14,7 @@
 
 |   排名 | 排名区间   | 模型                                                                                                                                                               | 分数                    |      票数 | 价格 $/百万Token   | 上下文   |
 |-----:|:-------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------|--------:|:---------------|:------|
-|    1 | 1-3    | Gemini 4 Argon (High) [<sup>1</sup>](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/)                                    | 1517 (±7) Preliminary |  10,083 | $2/$10         | 1M    |
+|    1 | 1-3    | Gemini 4 Argon (High) [<sup>1</sup>](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/)                                    | 1517 (±7)             |  10,083 | $2/$10         | 1M    |
 |    2 | 1-7    | Claude Opus 5.5 (High) [<sup>1</sup>](https://www.anthropic.com/claude-opus-5-5)                                                                                 | 1509 (±7)             |  10,322 | $4/$20         | 1M    |
 |    3 | 1-8    | Muse Wonder (Max) [<sup>1</sup>](https://research.meta.ai/blog/muse-wonder)                                                                                      | 1509 (±8)             |   6,001 | $4/$20         | 1M    |
 |    4 | 2-10   | Claude Fable 5 (High) [<sup>1</sup>](https://www.anthropic.com/news/claude-fable-5-mythos-5)                                                                     | 1503 (±4)             |  44,253 | $10/$50        | 1M    |

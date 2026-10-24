@@ -482,6 +482,8 @@
 {"name":"Kimi K2.7 Code High Speed","id":"kimi-k2-7-code-highspeed","provider":"moonshot","category":"chat-multimodal"},
 {"name":"Kimi K3","id":"kimi-k3","provider":"moonshot","category":"chat-multimodal"},
 {"name":"Kimi K3 Fast","id":"kimi-k3-fast","provider":"moonshot","category":"chat-multimodal"},
+{"name":"Kimi K3.1 Pro","id":"kimi-k3-1-pro","provider":"moonshot","category":"chat-multimodal"},
+{"name":"Kimi K3.1 Pro Highspeed","id":"kimi-k3-1-pro-highspeed","provider":"moonshot","category":"chat-multimodal"},
 {"name":"Moonshot Kimi K2.5","id":"kimi-k2-5","provider":"moonshot","category":"chat-multimodal"},
 {"name":"Moonshot Kimi K2.6","id":"kimi-k2-6","provider":"moonshot","category":"chat-multimodal"},
 {"name":"MoonshotAI Kimi Latest","id":"kimi-latest","provider":"moonshot","category":"chat-multimodal"},

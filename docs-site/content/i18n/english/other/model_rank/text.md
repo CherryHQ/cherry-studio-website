@@ -4,7 +4,7 @@ This page shows the top 30 models on the [Arena AI](https://arena.ai/leaderboard
 
 This is Arena AI's core text battle leaderboard, which estimates relative model strength from blind human-voted matchups.
 
-> **Data updated**: 2026-10-23 13:14:38 UTC / 2026-10-23 21:14:38 CST (Beijing time)
+> **Data updated**: 2026-10-24 12:32:13 UTC / 2026-10-24 20:32:13 CST (Beijing time)
 
 {% hint style="info" %}
 A leaderboard reflects one particular evaluation and the preferences of its voters, so a high rank does not mean a model will do better on your tasks. Weigh price, speed, context, tool calling, privacy and regional availability as well.
@@ -14,7 +14,7 @@ A leaderboard reflects one particular evaluation and the preferences of its vote
 
 |   Rank | Rank Spread   | Model                                                                                                                                                            | Score                 |   Votes | Price $/M   | Context   |
 |-------:|:--------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------|--------:|:------------|:----------|
-|      1 | 1-3           | Gemini 4 Argon (High) [<sup>1</sup>](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/)                                    | 1517 (±7) Preliminary |  10,083 | $2/$10      | 1M        |
+|      1 | 1-3           | Gemini 4 Argon (High) [<sup>1</sup>](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/)                                    | 1517 (±7)             |  10,083 | $2/$10      | 1M        |
 |      2 | 1-7           | Claude Opus 5.5 (High) [<sup>1</sup>](https://www.anthropic.com/claude-opus-5-5)                                                                                 | 1509 (±7)             |  10,322 | $4/$20      | 1M        |
 |      3 | 1-8           | Muse Wonder (Max) [<sup>1</sup>](https://research.meta.ai/blog/muse-wonder)                                                                                      | 1509 (±8)             |   6,001 | $4/$20      | 1M        |
 |      4 | 2-10          | Claude Fable 5 (High) [<sup>1</sup>](https://www.anthropic.com/news/claude-fable-5-mythos-5)                                                                     | 1503 (±4)             |  44,253 | $10/$50     | 1M        |
