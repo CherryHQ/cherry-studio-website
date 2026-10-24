@@ -4,6 +4,8 @@ export interface HeaderLink {
   badge?: string
   external?: boolean
   active?: boolean
+  analyticsLocation?: string
+  onClick?: () => string | undefined
 }
 
 interface HeaderLabels {
@@ -23,6 +25,8 @@ interface HeaderNavigationOptions {
   englishSite: boolean
   pathname: string
   docsActive?: boolean
+  enterpriseHref?: string
+  onEnterpriseClick?: () => string | undefined
 }
 
 export function getHeaderLinks({
@@ -30,7 +34,9 @@ export function getHeaderLinks({
   language,
   englishSite,
   pathname,
-  docsActive = false
+  docsActive = false,
+  enterpriseHref,
+  onEnterpriseClick
 }: HeaderNavigationOptions): HeaderLink[] {
   const chinese = language.toLowerCase().startsWith('zh')
   const mobile: HeaderLink = {
@@ -44,9 +50,11 @@ export function getHeaderLinks({
     active: docsActive
   }
   const enterprise: HeaderLink = {
-    href: chinese ? 'https://enterprise.cherryai.com.cn' : 'https://enterprise.cherryai.com',
+    href: enterpriseHref ?? (chinese ? 'https://enterprise.cherryai.com.cn' : 'https://enterprise.cherryai.com'),
     label: labels.enterprise,
-    external: true
+    external: true,
+    analyticsLocation: 'header_enterprise',
+    onClick: onEnterpriseClick
   }
 
   return englishSite

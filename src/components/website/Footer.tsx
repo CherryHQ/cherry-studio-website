@@ -16,6 +16,7 @@ import xIcon from '@/assets/images/icons/x.svg'
 import xColorIcon from '@/assets/images/icons/x-color.svg'
 import cherryWxQR from '@/assets/images/resource/cherrywx.png'
 import { copyRSSLink } from '@/utils'
+import { getEnterpriseUrl, trackEnterpriseNavigation } from '@/utils/analytics'
 import { getDocsUrl } from '@/utils/urls'
 import LanguageSelector from './LanguageSelector'
 import ThemeSelector from './ThemeSelector'
@@ -75,9 +76,17 @@ const Footer: FC = () => {
     }
   ]
 
-  // 英文站不展示 GitCode；两站均保留移动版和站内文档入口。
-  const cherryLinks = isEn
+  interface FooterLink {
+    href: string
+    label: string
+    analyticsLocation?: string
+  }
+
+  // 英文站不展示 GitCode；两站均保留企业版、移动版和站内文档入口。
+  const enterpriseHref = getEnterpriseUrl()
+  const cherryLinks: FooterLink[] = isEn
     ? [
+        { href: enterpriseHref, label: t('footer.cherry_studio.enterprise'), analyticsLocation: 'footer' },
         { href: '/mobile', label: t('footer.cherry_studio.mobile') },
         { href: '/download?platform=mobile', label: t('footer.cherry_studio.mobile_download') },
         { href: 'https://github.com/CherryHQ/cherry-studio', label: t('footer.cherry_studio.github') },
@@ -85,6 +94,7 @@ const Footer: FC = () => {
         { href: 'https://github.com/CherryHQ/cherry-studio/issues', label: t('footer.cherry_studio.feedback') }
       ]
     : [
+        { href: enterpriseHref, label: t('footer.cherry_studio.enterprise'), analyticsLocation: 'footer' },
         { href: '/mobile', label: t('footer.cherry_studio.mobile') },
         { href: '/download?platform=mobile', label: t('footer.cherry_studio.mobile_download') },
         { href: 'https://github.com/CherryHQ/cherry-studio', label: t('footer.cherry_studio.github') },
@@ -174,6 +184,13 @@ const Footer: FC = () => {
                   <li key={link.href}>
                     <a
                       href={link.href}
+                      onClick={
+                        link.analyticsLocation
+                          ? (event) => {
+                              event.currentTarget.href = trackEnterpriseNavigation(link.analyticsLocation ?? 'footer')
+                            }
+                          : undefined
+                      }
                       target={link.href.startsWith('/') ? undefined : '_blank'}
                       rel="noopener noreferrer"
                       className="text-muted-foreground hover:text-primary text-sm transition-colors duration-200">

@@ -178,6 +178,33 @@
       "description": "包括本地备份和云端备份，多个设备无忧切换，更便捷更安全。"
     }
   },
+  "team_collaboration": {
+    "eyebrow": "团队协作能力",
+    "title": "让 AI 真正成为团队生产力",
+    "description": "统一模型、知识与权限，让团队共享同一套 AI 工作方式，把个人效率自然扩展为组织效率。",
+    "cta": "了解企业版",
+    "activity": "限时活动-注册企业版赠送88元体验金",
+    "mockup": {
+      "title": "团队 AI 工作空间",
+      "subtitle": "统一管理 · 协同使用",
+      "status": "实时协作中",
+      "members": "团队成员共同使用同一套工作空间"
+    },
+    "capabilities": {
+      "workspace": {
+        "title": "共享工作空间",
+        "description": "沉淀团队知识、助手与工作流，减少重复配置。"
+      },
+      "models": {
+        "title": "统一模型与权限",
+        "description": "按组织需要管理模型、密钥和成员访问权限。"
+      },
+      "insights": {
+        "title": "掌握使用情况",
+        "description": "了解团队使用趋势，让 AI 投入更可衡量。"
+      }
+    }
+  },
   "project": {
     "title": "项目相关",
     "intro": {
@@ -283,6 +310,7 @@
     "description": "Cherry Studio 是一个支持多平台的 AI 客户端，我们致力于让更多人能够享受到 AI 带来的便利。",
     "cherry_studio": {
       "title": "Cherry Studio",
+      "enterprise": "企业版",
       "mobile": "移动版",
       "mobile_download": "移动版下载",
       "github": "GitHub",
