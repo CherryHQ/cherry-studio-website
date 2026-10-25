@@ -434,6 +434,19 @@ def parse_rank_cell(cell):
     return (m.group(0) if m else txt), ""
 
 
+_PRICE_RE = re.compile(r"^\$[\d.,]+(?:\s*/\s*\$[\d.,]+)+$")
+
+
+def _normalize_price(value):
+    """统一价格写法：渲染路径给 `$10 / $50`，直连路径给 `$10/$50`，不统一会在主备切换时抖动。"""
+    if not isinstance(value, str):
+        return value
+    text = value.strip()
+    if not _PRICE_RE.fullmatch(text):
+        return text
+    return re.sub(r"\s*/\s*", " / ", text)
+
+
 def parse_leaderboard_table(html, config):
     """
     解析页面 HTML 中的排行榜表格，返回 pandas DataFrame。
@@ -492,6 +505,9 @@ def parse_leaderboard_table(html, config):
                         full_url = (
                             f"{BASE_URL}{href}" if href.startswith("/") else href
                         )
+                        # 渲染路径会把部分链接降级成 http://，统一升级，避免主/次 provider 交替时抖动。
+                        if full_url.startswith("http://"):
+                            full_url = "https://" + full_url[len("http://") :]
                         row_data.append(f"{model_name} [<sup>1</sup>]({full_url})")
                     else:
                         row_data.append(model_name)
@@ -531,6 +547,9 @@ def parse_leaderboard_table(html, config):
         rows.append(row_data)
 
     df = pd.DataFrame(rows, columns=headers)
+    # 在解析层统一成 provider 无关的数据，中英两版与后续任何输出都不会再分叉。
+    if "Price $/M" in df.columns:
+        df["Price $/M"] = df["Price $/M"].apply(_normalize_price)
     return df
 
 
