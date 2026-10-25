@@ -4,7 +4,7 @@ This page shows the top 30 models on the [Arena AI](https://arena.ai/leaderboard
 
 This leaderboard measures how multimodal models perform on image-understanding tasks.
 
-> **Data updated**: 2026-10-24 15:58:03 UTC / 2026-10-24 23:58:03 CST (Beijing time)
+> **Data updated**: 2026-10-25 02:15:38 UTC / 2026-10-25 10:15:38 CST (Beijing time)
 
 {% hint style="info" %}
 A leaderboard reflects one particular evaluation and the preferences of its voters, so a high rank does not mean a model will do better on your tasks. Weigh price, speed, context, tool calling, privacy and regional availability as well.
@@ -27,7 +27,7 @@ A leaderboard reflects one particular evaluation and the preferences of its vote
 |     11 | 1-34          | Muse Spark 1.2 (xHigh) [<sup>1</sup>](https://developer.meta.com/ai/models/muse-spark/)                                                                          | 1293 (±14)             |   1,948 | $1.25 / $4.25 | N/A       |
 |     12 | 2-33          | Gemini 3.8 Flash (High) [<sup>1</sup>](https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/)                   | 1291 (±10) Preliminary |   4,645 | $0.75 / $3.75 | 1M        |
 |     13 | 2-34          | Muse Spark 1.3 (Max) [<sup>1</sup>](https://developer.meta.com/ai/models/muse-spark/)                                                                            | 1290 (±9)              |   5,392 | N/A           | N/A       |
-|     14 | 2-33          | Gemini 3 Pro [<sup>1</sup>](http://aistudio.google.com/app/prompts/new_chat?model=gemini-3-pro-preview)                                                          | 1289 (±7)              |  13,623 | $2 / $12      | 1M        |
+|     14 | 2-33          | Gemini 3 Pro [<sup>1</sup>](https://aistudio.google.com/app/prompts/new_chat?model=gemini-3-pro-preview)                                                         | 1289 (±7)              |  13,623 | $2 / $12      | 1M        |
 |     15 | 2-34          | Claude Opus 5 (High) [<sup>1</sup>](https://www.anthropic.com/news/claude-opus-5)                                                                                | 1288 (±7)              |  17,743 | $5 / $25      | 1M        |
 |     16 | 2-34          | Muse Spark 1.3 (xHigh) [<sup>1</sup>](https://developer.meta.com/ai/models/muse-spark/)                                                                          | 1288 (±10)             |   4,897 | N/A           | N/A       |
 |     17 | 2-34          | Claude Fable 5.1 (Max) [<sup>1</sup>](https://www.anthropic.com/claude-fable-and-mythos-5-1)                                                                     | 1288 (±9)              |   5,026 | $10 / $50     | 1M        |

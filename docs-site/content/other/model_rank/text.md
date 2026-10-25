@@ -4,7 +4,7 @@
 
 本榜单是 Arena AI 最核心的文本对战榜单，根据人类盲投对战估算模型相对实力。
 
-> **数据更新时间**: 2026-10-24 15:58:03 UTC / 2026-10-24 23:58:03 CST (北京时间)
+> **数据更新时间**: 2026-10-25 02:15:38 UTC / 2026-10-25 10:15:38 CST (北京时间)
 
 {% hint style="info" %}
 排行榜反映特定评测和用户投票偏好，不等同于模型在你的任务中一定更好。选择模型时还要考虑价格、速度、上下文、工具调用、隐私和地区可用性。
@@ -33,7 +33,7 @@
 |   17 | 8-30   | Muse Spark [<sup>1</sup>](https://ai.meta.com/blog/introducing-muse-spark-msl/)                                                                                  | 1489 (±6)             |  14,147 | N/A            | N/A   |
 |   18 | 9-30   | Kimi K3 (Max) [<sup>1</sup>](https://platform.kimi.ai/docs/guide/kimi-k3-quickstart)                                                                             | 1487 (±4)             |  35,379 | N/A            | N/A   |
 |   19 | 11-29  | Gemini 3.1 Pro Preview [<sup>1</sup>](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-pro/)                                   | 1487 (±3)             | 130,819 | $1 / $6        | 1M    |
-|   20 | 12-32  | Gemini 3 Pro [<sup>1</sup>](http://aistudio.google.com/app/prompts/new_chat?model=gemini-3-pro-preview)                                                          | 1486 (±4)             |  42,054 | $2 / $12       | 1M    |
+|   20 | 12-32  | Gemini 3 Pro [<sup>1</sup>](https://aistudio.google.com/app/prompts/new_chat?model=gemini-3-pro-preview)                                                         | 1486 (±4)             |  42,054 | $2 / $12       | 1M    |
 |   21 | 12-33  | GPT-5.6 Sol (xHigh) [<sup>1</sup>](https://openai.com/index/gpt-5-6/)                                                                                            | 1485 (±4)             |  42,713 | $4 / $20       | N/A   |
 |   22 | 12-40  | Gemini 3.6 Flash (High) [<sup>1</sup>](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-6-flash-3-5-flash-lite-3-5-flash-cyber/) | 1483 (±4)             |  36,102 | $0.75 / $3.75  | 1M    |
 |   23 | 12-41  | Qwen3.8-Max [<sup>1</sup>](https://www.qwencloud.com/models/qwen3.8-max)                                                                                         | 1483 (±5)             |  30,500 | $2 / $6        | 1M    |

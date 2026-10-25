@@ -4,7 +4,7 @@
 
 本榜单评测多模态模型在图像理解类任务上的表现。
 
-> **数据更新时间**: 2026-10-24 15:58:03 UTC / 2026-10-24 23:58:03 CST (北京时间)
+> **数据更新时间**: 2026-10-25 02:15:38 UTC / 2026-10-25 10:15:38 CST (北京时间)
 
 {% hint style="info" %}
 排行榜反映特定评测和用户投票偏好，不等同于模型在你的任务中一定更好。选择模型时还要考虑价格、速度、上下文、工具调用、隐私和地区可用性。
@@ -27,7 +27,7 @@
 |   11 | 1-34   | Muse Spark 1.2 (xHigh) [<sup>1</sup>](https://developer.meta.com/ai/models/muse-spark/)                                                                          | 1293 (±14)             |  1,948 | $1.25 / $4.25  | N/A   |
 |   12 | 2-33   | Gemini 3.8 Flash (High) [<sup>1</sup>](https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/)                   | 1291 (±10) Preliminary |  4,645 | $0.75 / $3.75  | 1M    |
 |   13 | 2-34   | Muse Spark 1.3 (Max) [<sup>1</sup>](https://developer.meta.com/ai/models/muse-spark/)                                                                            | 1290 (±9)              |  5,392 | N/A            | N/A   |
-|   14 | 2-33   | Gemini 3 Pro [<sup>1</sup>](http://aistudio.google.com/app/prompts/new_chat?model=gemini-3-pro-preview)                                                          | 1289 (±7)              | 13,623 | $2 / $12       | 1M    |
+|   14 | 2-33   | Gemini 3 Pro [<sup>1</sup>](https://aistudio.google.com/app/prompts/new_chat?model=gemini-3-pro-preview)                                                         | 1289 (±7)              | 13,623 | $2 / $12       | 1M    |
 |   15 | 2-34   | Claude Opus 5 (High) [<sup>1</sup>](https://www.anthropic.com/news/claude-opus-5)                                                                                | 1288 (±7)              | 17,743 | $5 / $25       | 1M    |
 |   16 | 2-34   | Muse Spark 1.3 (xHigh) [<sup>1</sup>](https://developer.meta.com/ai/models/muse-spark/)                                                                          | 1288 (±10)             |  4,897 | N/A            | N/A   |
 |   17 | 2-34   | Claude Fable 5.1 (Max) [<sup>1</sup>](https://www.anthropic.com/claude-fable-and-mythos-5-1)                                                                     | 1288 (±9)              |  5,026 | $10 / $50      | 1M    |

@@ -4,7 +4,7 @@ This page shows the top 30 models on the [Arena AI](https://arena.ai/leaderboard
 
 This is Arena AI's core text battle leaderboard, which estimates relative model strength from blind human-voted matchups.
 
-> **Data updated**: 2026-10-24 15:58:03 UTC / 2026-10-24 23:58:03 CST (Beijing time)
+> **Data updated**: 2026-10-25 02:15:38 UTC / 2026-10-25 10:15:38 CST (Beijing time)
 
 {% hint style="info" %}
 A leaderboard reflects one particular evaluation and the preferences of its voters, so a high rank does not mean a model will do better on your tasks. Weigh price, speed, context, tool calling, privacy and regional availability as well.
@@ -33,7 +33,7 @@ A leaderboard reflects one particular evaluation and the preferences of its vote
 |     17 | 8-30          | Muse Spark [<sup>1</sup>](https://ai.meta.com/blog/introducing-muse-spark-msl/)                                                                                  | 1489 (±6)             |  14,147 | N/A           | N/A       |
 |     18 | 9-30          | Kimi K3 (Max) [<sup>1</sup>](https://platform.kimi.ai/docs/guide/kimi-k3-quickstart)                                                                             | 1487 (±4)             |  35,379 | N/A           | N/A       |
 |     19 | 11-29         | Gemini 3.1 Pro Preview [<sup>1</sup>](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-pro/)                                   | 1487 (±3)             | 130,819 | $1 / $6       | 1M        |
-|     20 | 12-32         | Gemini 3 Pro [<sup>1</sup>](http://aistudio.google.com/app/prompts/new_chat?model=gemini-3-pro-preview)                                                          | 1486 (±4)             |  42,054 | $2 / $12      | 1M        |
+|     20 | 12-32         | Gemini 3 Pro [<sup>1</sup>](https://aistudio.google.com/app/prompts/new_chat?model=gemini-3-pro-preview)                                                         | 1486 (±4)             |  42,054 | $2 / $12      | 1M        |
 |     21 | 12-33         | GPT-5.6 Sol (xHigh) [<sup>1</sup>](https://openai.com/index/gpt-5-6/)                                                                                            | 1485 (±4)             |  42,713 | $4 / $20      | N/A       |
 |     22 | 12-40         | Gemini 3.6 Flash (High) [<sup>1</sup>](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-6-flash-3-5-flash-lite-3-5-flash-cyber/) | 1483 (±4)             |  36,102 | $0.75 / $3.75 | 1M        |
 |     23 | 12-41         | Qwen3.8-Max [<sup>1</sup>](https://www.qwencloud.com/models/qwen3.8-max)                                                                                         | 1483 (±5)             |  30,500 | $2 / $6       | 1M        |

@@ -4,7 +4,7 @@ This page shows the top 30 models on the [Arena AI](https://arena.ai/leaderboard
 
 This leaderboard measures how well text-to-image models turn a text prompt into an image.
 
-> **Data updated**: 2026-10-24 15:58:03 UTC / 2026-10-24 23:58:03 CST (Beijing time)
+> **Data updated**: 2026-10-25 02:15:38 UTC / 2026-10-25 10:15:38 CST (Beijing time)
 
 {% hint style="info" %}
 A leaderboard reflects one particular evaluation and the preferences of its voters, so a high rank does not mean a model will do better on your tasks. Weigh price, speed, context, tool calling, privacy and regional availability as well.
@@ -20,10 +20,10 @@ A leaderboard reflects one particular evaluation and the preferences of its vote
 |      4 | 4-6           | Grok Imagine Image 2.0 [<sup>1</sup>](https://grok.com/imagine)                                                                                                                | 1334 (±12) Preliminary |   3,113 |
 |      5 | 4-6           | MAI-Image-2.6 [<sup>1</sup>](https://microsoft.ai/news/mai-image-2-6-launches-at-no-2-on-arena-ahead-of-google-meta-and-xai/)                                                  | 1332 (±5)              |  25,091 |
 |      6 | 4-6           | Gemini Nano Banana 2.1 [<sup>1</sup>](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/nano-banana-2-1)                                            | 1328 (±9) Preliminary  |   5,310 |
-|      7 | 7-8           | Reve 2.1 [<sup>1</sup>](http://reve.com/)                                                                                                                                      | 1302 (±8)              |   8,249 |
+|      7 | 7-8           | Reve 2.1 [<sup>1</sup>](https://reve.com/)                                                                                                                                     | 1302 (±8)              |   8,249 |
 |      8 | 7-8           | Grok Imagine Image 2.0 (20260801) [<sup>1</sup>](https://x.ai/news/grok-imagine-image-2)                                                                                       | 1294 (±6)              |  14,483 |
 |      9 | 9-10          | Muse Image [<sup>1</sup>](https://ai.meta.com/blog/introducing-muse-image-muse-video-msl/)                                                                                     | 1274 (±5)              |  42,262 |
-|     10 | 9-11          | Reve 2.0 [<sup>1</sup>](http://reve.com/)                                                                                                                                      | 1269 (±6)              |  15,773 |
+|     10 | 9-11          | Reve 2.0 [<sup>1</sup>](https://reve.com/)                                                                                                                                     | 1269 (±6)              |  15,773 |
 |     11 | 10-14         | Gemini 3.1 Flash Image (nano-banana-2, Web Search) [<sup>1</sup>](https://aistudio.google.com/prompts/new_chat?model=gemini-3.1-flash-image)                                   | 1262 (±4)              |  60,515 |
 |     12 | 11-15         | Seedream 5.0 Pro [<sup>1</sup>](https://seed.bytedance.com/en/seedream5_0_pro)                                                                                                 | 1255 (±4)              |  94,181 |
 |     13 | 11-16         | Qwen-Image-3.0-Pro [<sup>1</sup>](https://www.qwencloud.com/try-ai?scene=image&models=qwen-image-3.0-pro)                                                                      | 1255 (±6)              |  11,440 |

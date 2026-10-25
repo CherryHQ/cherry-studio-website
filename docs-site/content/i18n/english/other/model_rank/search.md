@@ -4,7 +4,7 @@ This page shows the top 30 models on the [Arena AI](https://arena.ai/leaderboard
 
 This leaderboard measures how models perform on web search and information-retrieval tasks.
 
-> **Data updated**: 2026-10-24 15:58:03 UTC / 2026-10-24 23:58:03 CST (Beijing time)
+> **Data updated**: 2026-10-25 02:15:38 UTC / 2026-10-25 10:15:38 CST (Beijing time)
 
 {% hint style="info" %}
 A leaderboard reflects one particular evaluation and the preferences of its voters, so a high rank does not mean a model will do better on your tasks. Weigh price, speed, context, tool calling, privacy and regional availability as well.
@@ -15,7 +15,7 @@ A leaderboard reflects one particular evaluation and the preferences of its vote
 |   Rank | Rank Spread   | Model                                                                                                                 | Score      |   Votes | Price $/M     | Context   |
 |-------:|:--------------|:----------------------------------------------------------------------------------------------------------------------|:-----------|--------:|:--------------|:----------|
 |      1 | 1-3           | GPT-5.6 Sol (xHigh) [<sup>1</sup>](https://openai.com/index/gpt-5-6/)                                                 | 1261 (±6)  |  60,437 | $4 / $20      | 1.1M      |
-|      2 | 1-6           | Qwen3.8-Max [<sup>1</sup>](https://www.qwencloud.com/models/qwen3.8-max)                                              | 1261 (±13) |   1,870 | $1.69 / $5.07 | 1M        |
+|      2 | 1-6           | Qwen3.8-Max [<sup>1</sup>](https://www.qwencloud.com/models/qwen3.8-max)                                              | 1261 (±13) |   1,870 | $2 / $6       | 1M        |
 |      3 | 1-6           | Claude Opus 4.6 (Search) [<sup>1</sup>](https://www.anthropic.com/news/claude-opus-4-6)                               | 1251 (±5)  | 173,191 | $5 / $25      | 1M        |
 |      4 | 2-7           | GPT-5.5 (Search) [<sup>1</sup>](https://openai.com/index/introducing-gpt-5-5/)                                        | 1247 (±5)  | 125,957 | $5 / $30      | 1.1M      |
 |      5 | 2-8           | Claude Fable 5.1 (High) [<sup>1</sup>](https://www.anthropic.com/claude-fable-and-mythos-5-1)                         | 1246 (±7)  |  12,782 | $5 / $25      | 1M        |
