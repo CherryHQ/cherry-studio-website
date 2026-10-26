@@ -19,6 +19,8 @@ rich: true
 {% step %}
 ### 1. 添加远程服务器
 
+首次启动若停在欢迎页，点击右上角【稍后设置】。配置此 MCP 连接无需登录 CherryIN，也无需先配置模型服务。进入主界面后点击【设置】；若默认显示模型服务的登录提示，直接选择左侧【MCP】。
+
 打开【设置】→【MCP】→【MCP 服务器】→【添加】，选择快速创建。名称填“百智云浏览器”，类型选【可流式传输的 HTTP (streamableHttp)】，URL 填：
 
 ```text
@@ -34,7 +36,13 @@ https://capybrowser.app.baizhi.cloud/mcp
 Authorization=Bearer <自己的浏览器 Key>
 ```
 
-在本地替换占位符，只保留一个 `Bearer` 前缀。这里使用等号分隔名称和值，是普通文本输入区；不要分享真实 Key、含 Key 的截图或配置导出。添加后服务器初始禁用；保存并核对该条目，再明确打开顶部开关。
+不能只填 `Authorization=Bearer`：`Bearer` 后必须有一个空格，再跟完整 Key。将 `<自己的浏览器 Key>` 整段（包括尖括号）替换为自己的 Key，只保留一个 `Bearer` 前缀。例如，假设 Key 是虚构的 `example-browser-key`，完整一行应为：
+
+```text
+Authorization=Bearer example-browser-key
+```
+
+这个虚构值仅用于说明格式，不能用于正式服务。这里使用等号分隔名称和值，是普通文本输入区；不要分享真实 Key、含 Key 的截图或配置导出。添加后服务器初始禁用；保存并核对该条目，再明确打开顶部开关。
 
 ![快速创建远程 MCP：名称、HTTP 类型、URL 和请求头输入区，未填写凭据](../../../assets/baizhi-cloud-browser/config.png)
 

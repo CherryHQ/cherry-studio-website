@@ -19,6 +19,8 @@ Browser startup and runtime are billed. Closing Cherry Studio, unbinding the age
 {% step %}
 ### 1. Add a remote server
 
+On first launch, choose **Set up later** in the upper-right corner of the welcome screen. Configuring this MCP connection does not require a CherryIN login or a model provider. Open **Settings** from the main window. If Settings initially shows a model provider's login prompt, select **MCP** in the left sidebar.
+
 Open **Settings → MCP → MCP Servers → Add → Quick Create**. Enter `Baizhi Cloud Browser` as the name, select **Streamable HTTP (streamableHttp)** and enter this URL:
 
 ```text
@@ -34,7 +36,13 @@ Under **Advanced Settings → Headers**, enter one line. An existing entry can b
 Authorization=Bearer <your-browser-key>
 ```
 
-Replace the placeholder locally, keeping one `Bearer` prefix. Use an equals sign between the name and value. This is a plain text area; do not share the key, screenshots containing it or exported configuration. A newly added server starts disabled. Save and inspect it before explicitly switching it on.
+Do not enter only `Authorization=Bearer`: add one space after `Bearer`, followed by the complete key. Replace all of `<your-browser-key>`, including the angle brackets, with your own key, keeping one `Bearer` prefix. For example, if the key were the fictional value `example-browser-key`, the complete line would be:
+
+```text
+Authorization=Bearer example-browser-key
+```
+
+This fictional value illustrates the format and will not authenticate with the real service. Use an equals sign between the name and value. This is a plain text area; do not share the key, screenshots containing it or exported configuration. A newly added server starts disabled. Save and inspect it before explicitly switching it on.
 
 ![Quick Create in the real client: name, HTTP type, URL and empty header field](../../../../../assets/baizhi-cloud-browser/config.png)
 
