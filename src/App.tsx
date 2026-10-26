@@ -4,6 +4,7 @@ import ScrollToTop from '@/components/ScrollToTop'
 import SimpleHeader from '@/components/website/SimpleHeader.tsx'
 import { ThemeProvider } from '@/contexts/ThemeContext'
 import CareersPage from '@/pages/careers'
+import ComparePage from '@/pages/compare'
 import DownloadPage from '@/pages/download'
 import FlashPage from '@/pages/flash'
 import FlashUsagePage from '@/pages/flash/usage'
@@ -28,6 +29,7 @@ function App() {
           <Route path="/flash/usage" element={<FlashUsagePage />} />
           <Route path="/theme" element={<ThemePage />} />
           <Route path="/careers" element={<CareersPage />} />
+          <Route path="/compare/:slug" element={<ComparePage />} />
           <Route path="/404" element={<NotFoundPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
