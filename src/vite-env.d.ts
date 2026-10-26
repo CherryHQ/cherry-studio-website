@@ -2,6 +2,8 @@
 
 interface ImportMetaEnv {
   readonly VITE_SITE_LOCALE?: string
+  readonly VITE_PUBLIC_POSTHOG_KEY?: string
+  readonly VITE_PUBLIC_POSTHOG_HOST?: string
 }
 
 interface ImportMeta {
@@ -9,6 +11,10 @@ interface ImportMeta {
 }
 
 interface Window {
+  env?: {
+    POSTHOG_KEY?: string
+    POSTHOG_HOST?: string
+  }
   $: typeof import('jquery')
   marked: typeof import('marked')
   flatpickr: any
