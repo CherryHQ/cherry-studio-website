@@ -1,10 +1,18 @@
 ---
-description: Cherry Studio articles — how to use GPT, Claude, Gemini, DeepSeek and local models in one desktop app, build AI agents, chat with your documents and more.
+description: Cherry Studio articles — how it compares with Manus, ChatGPT and LM Studio, how to use GPT, Claude, Gemini, DeepSeek and local models in one desktop app, build AI agents, chat with your documents and more.
 icon: compass
 ---
 # Cherry Studio Articles
 
 Articles on getting real work done with Cherry Studio, the free desktop AI client for Windows, macOS and Linux. Each one starts from a goal and links to the reference pages you need along the way.
+
+## Compare Cherry Studio
+
+How Cherry Studio stacks up against other AI apps you might already be using.
+
+* [Cherry Studio vs Manus: local or cloud AI agent?](https://cherryai.com/compare/manus)
+* [A ChatGPT desktop app alternative that runs every model](https://cherryai.com/compare/chatgpt-desktop-app)
+* [LM Studio alternative: local and cloud models in one app](https://cherryai.com/compare/lm-studio)
 
 ## Use Popular Models in One App
 
