@@ -4,7 +4,7 @@
 
 本榜单评测模型在 Web 前端开发（HTML/CSS/JS）任务上的实际表现。
 
-> **数据更新时间**: 2026-10-25 13:05:23 UTC / 2026-10-25 21:05:23 CST (北京时间)
+> **数据更新时间**: 2026-10-26 15:00:46 UTC / 2026-10-26 23:00:46 CST (北京时间)
 
 {% hint style="info" %}
 排行榜反映特定评测和用户投票偏好，不等同于模型在你的任务中一定更好。选择模型时还要考虑价格、速度、上下文、工具调用、隐私和地区可用性。
@@ -27,7 +27,7 @@
 |   11 | 8-17   | Gemini 4 Argon (High) [<sup>1</sup>](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/) | 1674 (++13/-13)             |  2,729 | $2 / $10       | 1M    |
 |   12 | 9-14   | Qwen3.8-Max (0902) [<sup>1</sup>](https://www.qianwenai.com/models/qwen3.8-max-0902)                                          | 1673 (++7/-7) Preliminary   | 15,637 | $2 / $6        | N/A   |
 |   13 | 9-18   | Qwen3.8-Max [<sup>1</sup>](https://www.qwencloud.com/models/qwen3.8-max)                                                      | 1672 (++12/-12) Preliminary |  3,429 | $2 / $6        | 1M    |
-|   14 | 10-18  | DeepSeek-V4.1-Flash-20261017 (Max) [<sup>1</sup>](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017)                | 1665 (++13/-13)             |  2,500 | $0.30 / $1.20  | 1M    |
+|   14 | 10-18  | DeepSeek-V4.1-Flash-20261017 (Max) [<sup>1</sup>](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017)                | 1665 (++13/-13)             |  2,500 | $0.15 / $0.60  | 1M    |
 |   15 | 12-18  | Claude Opus 5 (High) [<sup>1</sup>](https://www.anthropic.com/news/claude-opus-5)                                             | 1659 (++5/-5)               | 25,607 | $5 / $25       | 1M    |
 |   16 | 12-18  | Muse Spark 1.3 (Max) [<sup>1</sup>](https://developer.meta.com/ai/models/muse-spark/)                                         | 1657 (++8/-8)               |  9,921 | $1.25 / $4.25  | 1M    |
 |   17 | 13-18  | Kimi K3 (Max) [<sup>1</sup>](https://platform.kimi.ai/docs/guide/kimi-k3-quickstart)                                          | 1655 (++6/-6)               | 20,312 | $3 / $15       | 1M    |
