@@ -158,6 +158,7 @@
     * [API 网关](advanced-basic/developer-tools/api-gateway.md)
   * [贡献代码](contribution/code.md)
   * [贡献文档](contribution/docs.md)
+  * [Cherry Studio 文章](articles/README.md)
   * **参考资料**
     * [AI 基础知识](question-contact/knowledge.md)
     * [模型数据](other/models-info/README.md)

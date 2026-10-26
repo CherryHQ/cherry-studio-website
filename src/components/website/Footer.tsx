@@ -173,7 +173,7 @@ const Footer: FC = () => {
           </div>
 
           {/* Links Columns */}
-          <div className={`grid grid-cols-2 gap-8 lg:col-span-5 ${isEn ? '' : 'sm:grid-cols-3'}`}>
+          <div className="grid grid-cols-2 gap-8 lg:col-span-5">
             {/* Cherry Studio Links */}
             <div>
               <h4 className="text-foreground mb-4 text-sm font-semibold">{t('footer.cherry_studio.title')}</h4>
@@ -238,17 +238,6 @@ const Footer: FC = () => {
                 </ul>
               </div>
             )}
-
-            {/* Contact QR - Compact */}
-            {!isEn && (
-              <div>
-                <h4 className="text-foreground mb-4 text-sm font-semibold">{t('footer.contact_us.title')}</h4>
-                <div className="border-border mb-3 inline-block overflow-hidden rounded-lg border bg-white p-1.5">
-                  <img src={cherryWxQR} alt={t('footer.contact_us.wechat_qr_alt')} className="h-24 w-24" />
-                </div>
-                <p className="text-muted-foreground text-xs">{t('footer.contact_us.wechat_official_account')}</p>
-              </div>
-            )}
           </div>
 
           {/* Contact Info Column */}
@@ -277,6 +266,15 @@ const Footer: FC = () => {
                 </li>
               )}
             </ul>
+            {/* 中文站：公众号二维码并入联系我们 */}
+            {!isEn && (
+              <div className="mt-5 flex items-center gap-3">
+                <div className="border-border overflow-hidden rounded-lg border bg-white p-1.5">
+                  <img src={cherryWxQR} alt={t('footer.contact_us.wechat_qr_alt')} className="h-20 w-20" />
+                </div>
+                <p className="text-muted-foreground text-xs">{t('footer.contact_us.wechat_official_account')}</p>
+              </div>
+            )}
           </div>
         </div>
       </div>
