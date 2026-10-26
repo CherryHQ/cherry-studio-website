@@ -71,6 +71,7 @@
   * [Extending Agent Capabilities](advanced-basic/extensions/README.md)
     * [Skills and Capability Library](advanced-basic/extensions/skills.md)
     * [MCP and External Tools](advanced-basic/extensions/mcp/README.md)
+      * [Connect Baizhi Cloud Browser](advanced-basic/extensions/mcp/baizhi-cloud-browser.md)
   * [Automation and External Triggers](advanced-basic/automation/README.md)
     * [Channels](advanced-basic/automation/channels.md)
     * [Scheduled Tasks, Heartbeats, and Run History](advanced-basic/automation/scheduled-heartbeat.md)
