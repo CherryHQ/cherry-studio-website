@@ -15,19 +15,11 @@ import tgColorIcon from '@/assets/images/icons/tg-color.svg'
 import xIcon from '@/assets/images/icons/x.svg'
 import xColorIcon from '@/assets/images/icons/x-color.svg'
 import cherryWxQR from '@/assets/images/resource/cherrywx.png'
-import { COMPARE_SLUGS, hasCompare } from '@/content/compare'
-import { cn } from '@/lib/utils'
 import { copyRSSLink } from '@/utils'
 import { getEnterpriseUrl, trackEnterpriseNavigation } from '@/utils/analytics'
 import { getDocsUrl } from '@/utils/urls'
 import LanguageSelector from './LanguageSelector'
 import ThemeSelector from './ThemeSelector'
-
-const LINK_COLUMN_CLASS: Record<number, string> = {
-  2: '',
-  3: 'sm:grid-cols-3',
-  4: 'sm:grid-cols-4'
-}
 
 const Footer: FC = () => {
   const { t, i18n } = useTranslation()
@@ -96,7 +88,6 @@ const Footer: FC = () => {
     ? [
         { href: enterpriseHref, label: t('footer.cherry_studio.enterprise'), analyticsLocation: 'footer' },
         { href: '/mobile', label: t('footer.cherry_studio.mobile') },
-        { href: '/download?platform=mobile', label: t('footer.cherry_studio.mobile_download') },
         { href: 'https://github.com/CherryHQ/cherry-studio', label: t('footer.cherry_studio.github') },
         { href: getDocsUrl(i18n.language), label: t('footer.cherry_studio.docs') },
         { href: 'https://github.com/CherryHQ/cherry-studio/issues', label: t('footer.cherry_studio.feedback') }
@@ -104,21 +95,11 @@ const Footer: FC = () => {
     : [
         { href: enterpriseHref, label: t('footer.cherry_studio.enterprise'), analyticsLocation: 'footer' },
         { href: '/mobile', label: t('footer.cherry_studio.mobile') },
-        { href: '/download?platform=mobile', label: t('footer.cherry_studio.mobile_download') },
         { href: 'https://github.com/CherryHQ/cherry-studio', label: t('footer.cherry_studio.github') },
         { href: 'https://gitcode.com/CherryHQ/cherry-studio', label: t('footer.cherry_studio.gitcode') },
         { href: getDocsUrl(i18n.language), label: t('footer.cherry_studio.docs') },
         { href: 'https://github.com/CherryHQ/cherry-studio/issues', label: t('footer.cherry_studio.feedback') }
       ]
-
-  // 对比页入口：只列出当前站点已有正文的页面
-  const compareLinks = COMPARE_SLUGS.filter((slug) => hasCompare(isEn ? 'en' : 'zh', slug)).map((slug) => ({
-    href: `/compare/${slug}`,
-    label: t(`compare.links.${slug}`)
-  }))
-
-  // 英文站：Cherry Studio + Community；中文站：Cherry Studio + 友情链接 + 公众号；有对比页时再加一列
-  const linkColumnCount = (isEn ? 2 : 3) + (compareLinks.length > 0 ? 1 : 0)
 
   const communityLinks = [
     { href: 'https://discord.gg/wez8HtpxqQ', label: 'Discord' },
@@ -192,7 +173,7 @@ const Footer: FC = () => {
           </div>
 
           {/* Links Columns */}
-          <div className={cn('grid grid-cols-2 gap-8 lg:col-span-5', LINK_COLUMN_CLASS[linkColumnCount])}>
+          <div className="grid grid-cols-2 gap-8 lg:col-span-5">
             {/* Cherry Studio Links */}
             <div>
               <h4 className="text-foreground mb-4 text-sm font-semibold">{t('footer.cherry_studio.title')}</h4>
@@ -238,24 +219,6 @@ const Footer: FC = () => {
               </div>
             )}
 
-            {/* Compare Links */}
-            {compareLinks.length > 0 && (
-              <div>
-                <h4 className="text-foreground mb-4 text-sm font-semibold">{t('compare.title')}</h4>
-                <ul className="space-y-2.5">
-                  {compareLinks.map((link) => (
-                    <li key={link.href}>
-                      <a
-                        href={link.href}
-                        className="text-muted-foreground hover:text-primary text-sm transition-colors duration-200">
-                        {link.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-
             {/* Friendly Links */}
             {!isEn && (
               <div>
@@ -273,17 +236,6 @@ const Footer: FC = () => {
                     </li>
                   ))}
                 </ul>
-              </div>
-            )}
-
-            {/* Contact QR - Compact */}
-            {!isEn && (
-              <div>
-                <h4 className="text-foreground mb-4 text-sm font-semibold">{t('footer.contact_us.title')}</h4>
-                <div className="border-border mb-3 inline-block overflow-hidden rounded-lg border bg-white p-1.5">
-                  <img src={cherryWxQR} alt={t('footer.contact_us.wechat_qr_alt')} className="h-24 w-24" />
-                </div>
-                <p className="text-muted-foreground text-xs">{t('footer.contact_us.wechat_official_account')}</p>
               </div>
             )}
           </div>
@@ -314,6 +266,15 @@ const Footer: FC = () => {
                 </li>
               )}
             </ul>
+            {/* 中文站：公众号二维码并入联系我们 */}
+            {!isEn && (
+              <div className="mt-5 flex items-center gap-3">
+                <div className="border-border overflow-hidden rounded-lg border bg-white p-1.5">
+                  <img src={cherryWxQR} alt={t('footer.contact_us.wechat_qr_alt')} className="h-20 w-20" />
+                </div>
+                <p className="text-muted-foreground text-xs">{t('footer.contact_us.wechat_official_account')}</p>
+              </div>
+            )}
           </div>
         </div>
       </div>

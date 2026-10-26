@@ -322,7 +322,6 @@
       "title": "Cherry Studio",
       "enterprise": "Enterprise",
       "mobile": "Mobile",
-      "mobile_download": "Mobile download",
       "github": "GitHub",
       "gitcode": "GitCode",
       "docs": "Documentation",
@@ -332,7 +331,6 @@
       "title": "Friendly Links"
     },
     "contact_us": {
-      "title": "Contact Us",
       "wechat_qr_alt": "WeChat Official Account QR Code",
       "wechat_official_account": "Official Instagram",
       "support_email": "Support",
@@ -745,7 +743,6 @@
     "download": "Download Cherry Studio"
   },
   "compare": {
-    "title": "Compare",
     "related": "More comparisons",
     "links": {
       "manus": "Cherry Studio vs Manus",
