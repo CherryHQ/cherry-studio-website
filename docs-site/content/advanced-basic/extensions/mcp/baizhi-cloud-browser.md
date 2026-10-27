@@ -44,7 +44,7 @@ Authorization=Bearer example-browser-key
 
 这个虚构值仅用于说明格式，不能用于正式服务。这里使用等号分隔名称和值，是普通文本输入区；不要分享真实 Key、含 Key 的截图或配置导出。添加后服务器初始禁用；保存并核对该条目，再明确打开顶部开关。
 
-![快速创建远程 MCP：名称、HTTP 类型、URL 和请求头输入区，未填写凭据](../../../assets/baizhi-cloud-browser/config.png)
+![快速创建远程 MCP：名称、HTTP 类型、URL 和请求头输入区，未填写凭据](../../../assets/baizhi-cloud-browser/config.webp)
 
 图中为真实客户端的本地合成演示，未填写凭据；正式接入请使用正文中的服务地址和自己的 Key。
 {% endstep %}
@@ -55,7 +55,7 @@ Authorization=Bearer example-browser-key
 
 打开【工作】→智能体菜单→【编辑】→【MCP】，只给需要的智能体启用该服务器。首次使用先核对身份与价格；工具可见不代表全部可调用，也不代表完整网页任务已能完成。
 
-![真实客户端显示已连接并发现一个本地合成工具，未展示请求头](../../../assets/baizhi-cloud-browser/connected.png)
+![真实客户端显示已连接并发现一个本地合成工具，未展示请求头](../../../assets/baizhi-cloud-browser/connected.webp)
 
 截图仅演示本地合成工具的发现，`fixture_status` 不是生产服务工具目录。
 {% endstep %}
@@ -75,11 +75,11 @@ Authorization=Bearer example-browser-key
 <details>
 <summary>停用和移除时会看到什么？</summary>
 
-![测试连接已关闭，列表中的服务器开关为关闭](../../../assets/baizhi-cloud-browser/disabled.png)
+![测试连接已关闭，列表中的服务器开关为关闭](../../../assets/baizhi-cloud-browser/disabled.webp)
 
 关闭开关只停用本地连接，已有云端运行仍须明确结束。
 
-![删除合成测试条目后显示未配置服务器](../../../assets/baizhi-cloud-browser/removed.png)
+![删除合成测试条目后显示未配置服务器](../../../assets/baizhi-cloud-browser/removed.webp)
 
 删除时只选择该条目并确认；本示例使用独立测试配置，正式环境请保留其他连接。
 </details>

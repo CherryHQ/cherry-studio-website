@@ -44,7 +44,7 @@ Authorization=Bearer example-browser-key
 
 This fictional value illustrates the format and will not authenticate with the real service. Use an equals sign between the name and value. This is a plain text area; do not share the key, screenshots containing it or exported configuration. A newly added server starts disabled. Save and inspect it before explicitly switching it on.
 
-![Quick Create in the real client: name, HTTP type, URL and empty header field](../../../../../assets/baizhi-cloud-browser/config.png)
+![Quick Create in the real client: name, HTTP type, URL and empty header field](../../../../../assets/baizhi-cloud-browser/config.webp)
 
 The screenshots show the actual client in Simplified Chinese with a local synthetic service. Credentials have not been entered in this configuration image. Use the service URL above and your own key for a real connection.
 {% endstep %}
@@ -55,7 +55,7 @@ Wait for **Connected**, then open **Tools** in the server details. Inspect the t
 
 Open **Work → agent menu → Edit → MCP** and enable this server only for the agent that needs it. Check identity and pricing first. A visible tool list does not prove that all tools are permitted or that a complete browser task can run.
 
-![Actual client connected to a local synthetic service and showing one discovered tool, without headers](../../../../../assets/baizhi-cloud-browser/connected.png)
+![Actual client connected to a local synthetic service and showing one discovered tool, without headers](../../../../../assets/baizhi-cloud-browser/connected.webp)
 
 This image demonstrates local synthetic discovery only; `fixture_status` is not the production service's tool catalog.
 {% endstep %}
@@ -75,11 +75,11 @@ Tool inputs go to Baizhi Cloud and page activity reaches the visited sites. Read
 <details>
 <summary>What do disabling and removal look like?</summary>
 
-![Synthetic connection disabled in the real client's server list](../../../../../assets/baizhi-cloud-browser/disabled.png)
+![Synthetic connection disabled in the real client's server list](../../../../../assets/baizhi-cloud-browser/disabled.webp)
 
 Disabling affects the local connection; cloud runs still need to be ended explicitly.
 
-![No configured servers after removing the synthetic test entry](../../../../../assets/baizhi-cloud-browser/removed.png)
+![No configured servers after removing the synthetic test entry](../../../../../assets/baizhi-cloud-browser/removed.webp)
 
 Select only the entry you intend to delete and confirm. These screenshots use an isolated test configuration; preserve unrelated connections in your own setup.
 </details>
