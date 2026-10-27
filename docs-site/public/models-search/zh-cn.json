@@ -537,6 +537,7 @@
 {"name":"GPT-6 Luna","id":"gpt-6-luna","provider":"openai","category":"chat-multimodal"},
 {"name":"GPT-6 Sol","id":"gpt-6-sol","provider":"openai","category":"chat-multimodal"},
 {"name":"GPT-6.1 Sol","id":"gpt-6-1-sol","provider":"openai","category":"chat-multimodal"},
+{"name":"GPT-6.1 Terra","id":"gpt-6-1-terra","provider":"openai","category":"chat-multimodal"},
 {"name":"o1","id":"o1","provider":"openai","category":"chat-multimodal"},
 {"name":"o1-pro","id":"o1-pro","provider":"openai","category":"chat-multimodal"},
 {"name":"o3","id":"o3","provider":"openai","category":"chat-multimodal"},

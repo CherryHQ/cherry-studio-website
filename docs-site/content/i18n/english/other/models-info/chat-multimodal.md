@@ -4,7 +4,7 @@ Data comes from the model catalog bundled with Cherry Studio ([provider-registry
 
 Context length and max output are abbreviated with K / M and rounded (1K is roughly 1,000–1,024 tokens, 1M roughly one million), e.g. 131,072 and 128,000 both read 128K. Hover a value to see the exact number; confirm limits with the model provider.
 
-> **Data updated**: 2026-10-24 12:32:18 UTC / 2026-10-24 20:32:18 CST (Beijing time)
+> **Data updated**: 2026-10-27 14:14:54 UTC / 2026-10-27 22:14:54 CST (Beijing time)
 
 <div data-models-table="num:2,3;sort:1;search:0,1;cap:4:Function calling,Reasoning,Image recognition,Speech recognition,Video understanding,Structured output,File input,Computer use,File search;in:5:Text input=Text,Image input=Image,Audio input=Audio,Video input=Video">
 
@@ -247,6 +247,7 @@ Context length and max output are abbreviated with K / M and rounded (1K is roug
 | GPT-6 Luna<br><code>gpt-6-luna</code> | openai | <span title="1,050,000">1.05M</span> | <span title="128,000">128K</span> | Reasoning, Function calling, Image recognition, Structured output, File search | Text, Image | Text |
 | GPT-6 Sol<br><code>gpt-6-sol</code> | openai | <span title="1,050,000">1.05M</span> | <span title="128,000">128K</span> | Reasoning, Function calling, Image recognition, Structured output, File search | Text, Image | Text |
 | GPT-6.1 Sol<br><code>gpt-6-1-sol</code> | openai | <span title="1,050,000">1.05M</span> | <span title="128,000">128K</span> | Reasoning, Function calling, Image recognition, Structured output, File search | Text, Image | Text |
+| GPT-6.1 Terra<br><code>gpt-6-1-terra</code> | openai | <span title="1,050,000">1.05M</span> | <span title="128,000">128K</span> | Reasoning, Function calling, Image recognition, Structured output, File search | Text, Image | Text |
 | o1<br><code>o1</code> | openai | <span title="200,000">200K</span> | <span title="100,000">100K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
 | o1-pro<br><code>o1-pro</code> | openai | <span title="200,000">200K</span> | <span title="100,000">100K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
 | o3<br><code>o3</code> | openai | <span title="200,000">200K</span> | <span title="100,000">100K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |

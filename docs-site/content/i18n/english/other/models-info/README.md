@@ -2,12 +2,12 @@
 
 This page mirrors the model catalog bundled with Cherry Studio ([provider-registry](https://github.com/CherryHQ/cherry-studio/tree/main/packages/provider-registry)), synced automatically with the application repository. Information is for reference only: always confirm context length, capabilities and pricing with the model provider. A `-` means the source data does not provide that field.
 
-> **Data updated**: 2026-10-24 12:32:18 UTC / 2026-10-24 20:32:18 CST (Beijing time) (catalog version `496aef37f9a35b5d`)
+> **Data updated**: 2026-10-27 14:14:54 UTC / 2026-10-27 22:14:54 CST (Beijing time) (catalog version `38986c5ef01254eb`)
 
 ## Categories
 
 * [Text Chat](chat-text.md): 301 text-only chat models.
-* [Multimodal Chat](chat-multimodal.md): 296 chat models that accept image, video or audio input.
+* [Multimodal Chat](chat-multimodal.md): 297 chat models that accept image, video or audio input.
 * [Image Generation](image-generation.md): 133 image generation models.
 * [Video Generation](video-generation.md): 64 video generation models.
 * [Audio](audio.md): 52 speech recognition and speech generation models.
