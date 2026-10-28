@@ -1,6 +1,6 @@
 'use client'
 
-import { ArrowUpRight, Download, Menu, Star, X } from 'lucide-react'
+import { ArrowUpRight, Menu, Star, X } from 'lucide-react'
 import { type ReactNode, useEffect, useRef, useState } from 'react'
 
 import { cn } from '../src/lib/utils'
@@ -59,10 +59,9 @@ interface SiteHeaderProps {
   mobileLogo: string
   githubIcon: string
   links: HeaderLink[]
-  downloadLabel: string
-  downloadHref?: string
   menuLabel: string
   closeLabel: string
+  bordered?: boolean
   mobileControls?: ReactNode
   renderLink?: (props: LinkProps) => ReactNode
   onLinkClick?: (item: HeaderLink) => void
@@ -74,10 +73,9 @@ export function SiteHeader({
   mobileLogo,
   githubIcon,
   links,
-  downloadLabel,
-  downloadHref = '/download',
   menuLabel,
   closeLabel,
+  bordered = false,
   mobileControls,
   renderLink = (props) => <a {...props} />,
   onLinkClick
@@ -148,14 +146,14 @@ export function SiteHeader({
     <>
       <header
         className={cn(
-          'site-header fixed inset-x-0 top-0 z-50 flex h-[72px] items-center border-b border-border/50 bg-background/80 backdrop-blur-sm transition-shadow duration-200',
-          scrolled && 'shadow-sm'
+          'site-header fixed inset-x-0 top-0 z-50 flex h-[72px] items-center border-b border-transparent bg-background/80 text-foreground antialiased backdrop-blur-sm',
+          (bordered || scrolled) && 'border-border/50'
         )}>
         <div className="mx-auto flex w-full max-w-[97rem] items-center justify-between px-4">
-          <div className="flex items-center gap-4">
+          <div className="flex min-w-0 items-center gap-8">
             {renderLink({
               href: '/',
-              className: 'group flex items-center gap-3',
+              className: 'group flex shrink-0 items-center gap-3',
               children: (
                 <>
                   <img src={mobileLogo} alt="Cherry Studio" className="h-8 w-auto sm:hidden" />
@@ -164,21 +162,7 @@ export function SiteHeader({
                 </>
               )
             })}
-            <a
-              href="https://github.com/CherryHQ/cherry-studio"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="GitHub"
-              className="hidden h-[34px] w-[102px] items-center justify-center gap-2 rounded-[8px] border border-border/50 bg-secondary/50 px-3 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground sm:flex">
-              <img src={githubIcon} alt="GitHub" className="h-4 w-4 dark:invert" />
-              <span className="flex w-[3.25rem] shrink-0 items-center gap-1" aria-hidden="true">
-                <Star className="h-3.5 w-3.5 shrink-0 fill-yellow-500 text-yellow-500" />
-                <span className="min-w-[2rem] tabular-nums">{formatStarCount(starCount)}</span>
-              </span>
-            </a>
-          </div>
-          <div className="flex items-center gap-1">
-            <nav aria-label={menuLabel} className="hidden items-center gap-1 lg:flex">
+            <nav aria-label={menuLabel} className="hidden shrink-0 items-center gap-1 whitespace-nowrap lg:flex">
               {links.map((item) => (
                 <span key={item.href}>
                   {item.children ? (
@@ -187,7 +171,7 @@ export function SiteHeader({
                     link(
                       item,
                       cn(
-                        'flex items-center gap-1.5 px-4 py-2 text-base font-medium transition-colors',
+                        'flex items-center gap-1.5 px-4 py-2 text-[15px] leading-5 font-medium transition-colors',
                         item.active ? 'text-black dark:text-white' : 'text-muted-foreground hover:text-foreground'
                       )
                     )
@@ -195,22 +179,25 @@ export function SiteHeader({
                 </span>
               ))}
             </nav>
-            {renderLink({
-              href: downloadHref,
-              className:
-                'ml-2 hidden items-center gap-2 rounded-[8px] bg-black px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-black/80 sm:flex dark:bg-white dark:text-black dark:hover:bg-white/80',
-              children: (
-                <>
-                  <Download className="h-4 w-4" />
-                  {downloadLabel}
-                </>
-              )
-            })}
+          </div>
+          <div className="flex shrink-0 items-center gap-3">
+            <a
+              href="https://github.com/CherryHQ/cherry-studio"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="GitHub"
+              className="flex h-9 shrink-0 items-center justify-center gap-2 rounded-lg border border-border/50 bg-secondary/50 px-3 py-2 text-sm font-medium text-muted-foreground transition-colors duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-secondary hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 motion-reduce:transition-none">
+              <img src={githubIcon} alt="GitHub" className="h-4 w-4 dark:invert" />
+              <span className="flex w-[3.25rem] shrink-0 items-center gap-1">
+                <Star className="h-3.5 w-3.5 shrink-0 fill-yellow-500 text-yellow-500" />
+                <span className="min-w-[2rem] tabular-nums">{formatStarCount(starCount)}</span>
+              </span>
+            </a>
             <button
               type="button"
               aria-label={menuLabel}
               aria-haspopup="dialog"
-              className="ml-2 flex h-9 w-9 items-center justify-center rounded-[8px] text-foreground hover:bg-accent lg:hidden"
+              className="flex h-9 w-9 items-center justify-center rounded-lg text-foreground hover:bg-accent lg:hidden"
               onClick={() => dialog.current?.showModal()}>
               <Menu className="h-5 w-5" />
             </button>
@@ -220,7 +207,7 @@ export function SiteHeader({
       <dialog
         ref={dialog}
         aria-label={menuLabel}
-        className="site-header-menu fixed inset-0 m-0 h-dvh max-h-none w-full max-w-none border-0 bg-transparent p-0 text-foreground backdrop:bg-black/60"
+        className="site-header-menu fixed inset-0 m-0 h-dvh max-h-none w-full max-w-none border-0 bg-transparent p-0 text-foreground antialiased backdrop:bg-black/60"
         onClick={(event) => {
           if (event.target === event.currentTarget) dialog.current?.close()
         }}>
@@ -241,7 +228,7 @@ export function SiteHeader({
             onClick={(event) => {
               if ((event.target as HTMLElement).closest('a')) dialog.current?.close()
             }}>
-            {[{ href: downloadHref, label: downloadLabel }, ...links].map((item) => (
+            {links.map((item) => (
               <div key={item.href}>
                 {item.children ? (
                   <HeaderDropdown item={item} renderItem={link} mobile />

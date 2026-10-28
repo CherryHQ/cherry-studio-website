@@ -10,6 +10,7 @@ export interface HeaderLink {
 }
 
 interface HeaderLabels {
+  desktop: string
   mobile: string
   docs: string
   theme: string
@@ -41,6 +42,11 @@ export function getHeaderLinks({
   onEnterpriseClick
 }: HeaderNavigationOptions): HeaderLink[] {
   const chinese = language.toLowerCase().startsWith('zh')
+  const desktop: HeaderLink = {
+    href: '/',
+    label: labels.desktop,
+    active: !docsActive && pathname === '/'
+  }
   const mobile: HeaderLink = {
     href: '/mobile',
     label: labels.mobile,
@@ -81,16 +87,18 @@ export function getHeaderLinks({
           badge: labels.pricing_badge,
           active: !docsActive && pathname.startsWith('/flash')
         },
+        desktop,
         mobile,
-        docs,
+        enterprise,
         resources,
-        enterprise
+        docs
       ]
     : [
+        desktop,
         mobile,
-        docs,
-        { href: '/careers', label: labels.careers, active: !docsActive && pathname === '/careers' },
+        enterprise,
         resources,
-        enterprise
+        { href: '/careers', label: labels.careers, active: !docsActive && pathname === '/careers' },
+        docs
       ]
 }

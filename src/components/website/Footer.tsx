@@ -89,18 +89,14 @@ const Footer: FC = () => {
         { href: enterpriseHref, label: t('footer.cherry_studio.enterprise'), analyticsLocation: 'footer' },
         { href: '/mobile', label: t('footer.cherry_studio.mobile') },
         { href: 'https://github.com/CherryHQ/cherry-studio', label: t('footer.cherry_studio.github') },
-        { href: getDocsUrl(i18n.language), label: t('footer.cherry_studio.docs') },
-        { href: '/resources/articles/', label: t('articles.title') },
-        { href: 'https://github.com/CherryHQ/cherry-studio/issues', label: t('footer.cherry_studio.feedback') }
+        { href: getDocsUrl(i18n.language), label: t('footer.cherry_studio.docs') }
       ]
     : [
         { href: enterpriseHref, label: t('footer.cherry_studio.enterprise'), analyticsLocation: 'footer' },
         { href: '/mobile', label: t('footer.cherry_studio.mobile') },
         { href: 'https://github.com/CherryHQ/cherry-studio', label: t('footer.cherry_studio.github') },
         { href: 'https://gitcode.com/CherryHQ/cherry-studio', label: t('footer.cherry_studio.gitcode') },
-        { href: getDocsUrl(i18n.language), label: t('footer.cherry_studio.docs') },
-        { href: '/resources/articles/', label: t('articles.title') },
-        { href: 'https://github.com/CherryHQ/cherry-studio/issues', label: t('footer.cherry_studio.feedback') }
+        { href: getDocsUrl(i18n.language), label: t('footer.cherry_studio.docs') }
       ]
 
   const communityLinks = [
@@ -111,6 +107,7 @@ const Footer: FC = () => {
   ]
 
   const friendlyLinks = [
+    { href: 'https://www.newapi.ai/zh', label: 'New API' },
     { href: 'https://poe.com/', label: 'Poe' },
     { href: 'https://suanleme.cn', label: isZhCN ? '算了么' : 'suanleme.cn' },
     { href: 'https://gongke.net/', label: isZhCN ? '攻壳智能体' : 'gongke.net' },

@@ -82,7 +82,10 @@ export function DocsShell({
         url: mobile ? `/${locale}/mobile/` : `/${locale}/`
       }}
       slots={{ sidebar: { provider: SidebarProvider, root: DocsSidebar, trigger: SidebarTrigger, useSidebar } }}
-      sidebar={{ banner: <SectionSwitch locale={locale} labels={labels} mobile={mobile} /> }}
+      sidebar={{
+        className: 'border-border/50 bg-transparent data-[collapsed=true]:bg-fd-background',
+        banner: <SectionSwitch locale={locale} labels={labels} mobile={mobile} />
+      }}
       themeSwitch={{ mode: 'light-dark-system' }}
       githubUrl="https://github.com/CherryHQ/cherry-studio-website">
       {children}
