@@ -89,16 +89,16 @@ export function getHeaderLinks({
         },
         desktop,
         mobile,
+        enterprise,
         docs,
-        resources,
-        enterprise
+        resources
       ]
     : [
         desktop,
         mobile,
+        enterprise,
         docs,
         { href: '/careers', label: labels.careers, active: !docsActive && pathname === '/careers' },
-        resources,
-        enterprise
+        resources
       ]
 }
