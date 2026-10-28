@@ -13,6 +13,7 @@ interface HeaderDropdownProps {
 
 export function HeaderDropdown({ item, renderItem, mobile = false }: HeaderDropdownProps) {
   const container = useRef<HTMLDetailsElement>(null)
+  const hovered = useRef(false)
 
   useEffect(() => {
     if (mobile) return
@@ -29,6 +30,18 @@ export function HeaderDropdown({ item, renderItem, mobile = false }: HeaderDropd
     <details
       ref={container}
       className="group relative"
+      onPointerEnter={(event) => {
+        if (!mobile && event.pointerType === 'mouse') {
+          hovered.current = true
+          event.currentTarget.open = true
+        }
+      }}
+      onPointerLeave={(event) => {
+        if (!mobile && event.pointerType === 'mouse') {
+          hovered.current = false
+          if (!event.currentTarget.contains(document.activeElement)) event.currentTarget.open = false
+        }
+      }}
       onBlur={(event) => {
         if (!mobile && event.relatedTarget && !event.currentTarget.contains(event.relatedTarget)) {
           event.currentTarget.open = false
@@ -43,6 +56,13 @@ export function HeaderDropdown({ item, renderItem, mobile = false }: HeaderDropd
         }
       }}>
       <summary
+        onClick={(event) => {
+          // A mouse click must not immediately undo the hover-open action.
+          if (hovered.current && event.detail > 0) {
+            event.preventDefault()
+            if (container.current) container.current.open = true
+          }
+        }}
         className={cn(
           'flex cursor-pointer list-none items-center justify-between gap-3 rounded-lg px-4 py-2 font-medium focus-visible:outline-2 focus-visible:outline-offset-4 [&::-webkit-details-marker]:hidden',
           mobile ? 'py-3 text-sm' : 'text-base',
