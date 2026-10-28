@@ -8,6 +8,7 @@ on:
 # The job commits the refreshed snapshots back to the branch it runs on.
 permissions:
   contents: write
+  actions: write
 
 jobs:
   update-reference-data:
@@ -58,7 +59,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      # Commits pushed with the default token do not trigger the docs workflow, so validate here.
+      # Validate before pushing; dispatch Docs explicitly below because GITHUB_TOKEN
+      # pushes do not trigger push workflows.
       - name: Generate documentation content
         run: pnpm docs:generate
 
@@ -67,6 +69,7 @@ jobs:
           node -e "const r=require('./docs-site/generated/report.json'); if (r.issues.length) { console.error(JSON.stringify(r.issues, null, 2)); process.exit(1); } console.log('report.json: 0 source issues');"
 
       - name: Commit and push if there are changes
+        id: commit
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
@@ -75,9 +78,16 @@ jobs:
             git commit -m "Update reference data"
             git pull --rebase
             git push
+            echo 'changed=true' >> "$GITHUB_OUTPUT"
           else
             echo "No changes to commit"
           fi
+
+      - name: Validate and release the updated snapshots
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run docs.yml --ref "$GITHUB_REF_NAME" --repo "$GITHUB_REPOSITORY"
 
       - name: Fail when a snapshot could not be refreshed
         if: steps.leaderboard.outcome != 'success' || steps.models.outcome != 'success'

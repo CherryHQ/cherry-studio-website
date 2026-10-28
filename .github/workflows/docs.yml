@@ -4,10 +4,14 @@ on:
   pull_request:
   push:
     branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 concurrency:
   group: docs-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
 jobs:
   # Content and lint checks: locale-independent, so they run once and fail fast.
@@ -29,6 +33,9 @@ jobs:
 
       - name: Content conversion tests
         run: pnpm docs:test
+
+      - name: Container release script tests
+        run: node --test .github/scripts/container-deploy.test.cjs
 
       - name: Generate documentation content
         run: pnpm docs:generate
@@ -71,3 +78,94 @@ jobs:
 
       - name: Verify the exported site
         run: pnpm docs:verify
+
+  container:
+    needs: [checks, build]
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      packages: write
+    # Complete the current write before starting another release. The updater also
+    # checks main and uses the GitOps file SHA to reject stale/concurrent writes.
+    concurrency:
+      group: website-container-${{ github.ref }}
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - uses: docker/setup-buildx-action@v4
+
+      - name: Build the production Dockerfile without credentials
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          platforms: linux/amd64
+          load: true
+          tags: website-test:${{ github.sha }}
+          cache-from: type=gha,scope=website-container
+          cache-to: type=gha,scope=website-container,mode=max
+
+      - name: Smoke test the container
+        env:
+          TEST_IMAGE: website-test:${{ github.sha }}
+        run: bash .github/scripts/smoke-container.sh
+
+      - name: Validate production configuration
+        if: >-
+          github.repository == 'CherryHQ/cherry-studio-website' &&
+          github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        id: config
+        env:
+          CONTAINER_REGISTRY_HOST: ${{ vars.CONTAINER_REGISTRY_HOST }}
+          CONTAINER_REGISTRY_PULL_HOST: ${{ vars.CONTAINER_REGISTRY_PULL_HOST }}
+          CONTAINER_REGISTRY_NAMESPACE: ${{ vars.CONTAINER_REGISTRY_NAMESPACE }}
+          CONTAINER_REGISTRY_AUTH_MODE: ${{ vars.CONTAINER_REGISTRY_AUTH_MODE }}
+          CONTAINER_REGISTRY_USERNAME: ${{ secrets.CONTAINER_REGISTRY_USERNAME }}
+          CONTAINER_REGISTRY_PASSWORD: ${{ secrets.CONTAINER_REGISTRY_PASSWORD }}
+          GITOPS_TOKEN: ${{ secrets.GITOPS_TOKEN }}
+        run: node .github/scripts/container-deploy.cjs config
+
+      - name: Log in with registry credentials
+        if: steps.config.outputs.authMode == 'credentials'
+        uses: docker/login-action@v4
+        with:
+          registry: ${{ steps.config.outputs.host }}
+          username: ${{ secrets.CONTAINER_REGISTRY_USERNAME }}
+          password: ${{ secrets.CONTAINER_REGISTRY_PASSWORD }}
+
+      - name: Log in to GHCR
+        if: steps.config.outputs.authMode == 'github-token'
+        uses: docker/login-action@v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ github.token }}
+
+      - name: Push the tested image
+        if: steps.config.outputs.tag != ''
+        id: push
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          platforms: linux/amd64
+          push: true
+          tags: ${{ steps.config.outputs.tag }}
+          # Match the single-platform image that was loaded and smoke tested.
+          provenance: false
+          sbom: false
+
+      - name: Update the production GitOps image and digest
+        if: steps.push.outputs.digest != ''
+        env:
+          SOURCE_TOKEN: ${{ github.token }}
+          GITOPS_TOKEN: ${{ secrets.GITOPS_TOKEN }}
+          DEPLOY_IMAGE: ${{ steps.config.outputs.pullImage }}
+          BUILD_DIGEST: ${{ steps.push.outputs.digest }}
+        run: node .github/scripts/container-deploy.cjs update

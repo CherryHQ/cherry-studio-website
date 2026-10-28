@@ -20,7 +20,7 @@ RUN pnpm install --frozen-lockfile
 COPY . .
 
 # Build the Chinese mainland deployment
-RUN pnpm build:cn
+RUN pnpm build:cn && pnpm docs:verify
 
 ARG MIRROR
 
