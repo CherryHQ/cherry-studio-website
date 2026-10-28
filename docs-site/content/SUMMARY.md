@@ -73,6 +73,7 @@
   * [扩展智能体的能力](advanced-basic/extensions/README.md)
     * [技能与能力库](advanced-basic/extensions/skills.md)
     * [MCP 与外部工具](advanced-basic/extensions/mcp/README.md)
+      * [连接百智云浏览器](advanced-basic/extensions/mcp/baizhi-cloud-browser.md)
   * [自动化与外部触达](advanced-basic/automation/README.md)
     * [频道](advanced-basic/automation/channels.md)
     * [定时任务、心跳与运行记录](advanced-basic/automation/scheduled-heartbeat.md)
