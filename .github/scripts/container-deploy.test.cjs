@@ -151,7 +151,7 @@ test('conditional write pins one GitOps file/ref and records bot identity, sourc
     email: '41898282+github-actions[bot]@users.noreply.github.com'
   })
   assert.deepEqual(writes[0].committer, writes[0].author)
-  assert.ok(writes[0].message.startsWith(`deploy(website): ${sha.slice(0, 12)}\n\n`))
+  assert.ok(writes[0].message.startsWith(`deploy(cherry-studio-website): ${sha.slice(0, 12)}\n\n`))
   assert.ok(writes[0].message.includes(`Source: https://github.com/CherryHQ/cherry-studio-website/commit/${sha}\n`))
   assert.ok(
     writes[0].message.endsWith(

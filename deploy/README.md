@@ -83,7 +83,7 @@ Actions 的临时 Token。推送和拉取域名相同时可以省略 `CONTAINER_
 写入使用独立 `GITOPS_TOKEN`。修改同时包含 `newName` 和 `digest`，两者都未变则不提交。
 遇到 409 只在重新读取后确认文件 blob SHA 已变化时重试，最多五次，每次重新检查源 main。
 401/403、目标缺失、校验失败和无法证明为并发的拒绝立即失败。回写提交使用
-`github-actions[bot]` 作为作者和提交者，标题为 `deploy(website): <12 位源 SHA>`，
+`github-actions[bot]` 作为作者和提交者，标题为 `deploy(cherry-studio-website): <12 位源 SHA>`，
 正文包含源提交链接、镜像地址与 digest、工作流链接和 bot 的 `Signed-off-by`。
 提交署名与认证分开，跨仓库访问仍使用 `GITOPS_TOKEN`。
 

@@ -153,7 +153,7 @@ async function updateGitops({ source, gitops, sha, image, digest, runUrl, log = 
         author: gitopsBot,
         committer: gitopsBot,
         message: [
-          `deploy(website): ${sha.slice(0, 12)}`,
+          `deploy(${sourceRepository.split('/')[1]}): ${sha.slice(0, 12)}`,
           '',
           `Source: https://github.com/${sourceRepository}/commit/${sha}`,
           `Image: ${image}@${digest}`,
