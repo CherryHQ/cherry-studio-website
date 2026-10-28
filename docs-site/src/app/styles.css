@@ -22,7 +22,7 @@
 @theme inline {
   --color-background: var(--color-fd-background);
   --color-foreground: var(--color-fd-foreground);
-  --color-border: var(--color-fd-border);
+  --color-border: var(--site-border);
   --color-secondary: var(--color-fd-secondary);
   --color-muted-foreground: var(--color-fd-muted-foreground);
   --color-accent: var(--color-fd-accent);
@@ -75,10 +75,12 @@
 
 :root {
   --color-fd-background: #ffffff;
+  --site-border: #e4e4e7;
 }
 
 .dark {
   --color-fd-background: #0a0a0b;
+  --site-border: rgba(255, 255, 255, 0.08);
 }
 
 .site-header,
@@ -88,7 +90,6 @@
   --color-fd-secondary: #f4f4f5;
   --color-fd-muted-foreground: #71717a;
   --color-fd-accent: #f4f4f5;
-  --color-fd-border: #e4e4e7;
   font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
@@ -99,7 +100,6 @@
   --color-fd-secondary: #1c1c1f;
   --color-fd-muted-foreground: #a1a1aa;
   --color-fd-accent: #27272a;
-  --color-fd-border: rgba(255, 255, 255, 0.08);
 }
 
 .prose pre > code {

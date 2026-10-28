@@ -13,7 +13,6 @@ import zh from '../../../src/i18n/lang/zh.json'
 export function DocsSiteHeader({ locale }: { locale: string }) {
   const pathname = usePathname()
   const chinese = locale.startsWith('zh')
-  const mobileDocs = pathname.includes(`/${locale}/mobile`)
   const { nav } = chinese ? zh : en
   return (
     <SiteHeader
@@ -21,10 +20,9 @@ export function DocsSiteHeader({ locale }: { locale: string }) {
       mobileLogo={mobileLogo.src}
       githubIcon={githubIcon.src}
       links={getHeaderLinks({ labels: nav, language: locale, englishSite: !chinese, pathname, docsActive: true })}
-      downloadLabel={nav.download}
-      downloadHref={mobileDocs ? '/download?platform=mobile' : '/download'}
       menuLabel={nav.menu}
       closeLabel={nav.close_menu}
+      bordered
     />
   )
 }

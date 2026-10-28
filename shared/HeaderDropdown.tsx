@@ -76,7 +76,10 @@ export function HeaderDropdown({ item, renderItem, mobile = false }: HeaderDropd
       </summary>
       <div className={mobile ? 'px-4 pb-2' : 'absolute right-0 top-full w-64 pt-2'}>
         <div
-          className={cn(!mobile && 'rounded-xl border border-border bg-background p-2 shadow-lg')}
+          className={cn(
+            'flex flex-col gap-1',
+            !mobile && 'rounded-xl border border-border bg-background p-2 shadow-lg'
+          )}
           onClick={(event) => {
             if ((event.target as HTMLElement).closest('a')) container.current?.removeAttribute('open')
           }}>

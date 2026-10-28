@@ -90,15 +90,15 @@ export function getHeaderLinks({
         desktop,
         mobile,
         enterprise,
-        docs,
-        resources
+        resources,
+        docs
       ]
     : [
         desktop,
         mobile,
         enterprise,
-        docs,
+        resources,
         { href: '/careers', label: labels.careers, active: !docsActive && pathname === '/careers' },
-        resources
+        docs
       ]
 }

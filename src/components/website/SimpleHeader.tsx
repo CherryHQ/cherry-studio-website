@@ -40,8 +40,6 @@ export default function SimpleHeader() {
       mobileLogo={cherryLogoSvg}
       githubIcon={githubIcon}
       links={links}
-      downloadLabel={t('nav.download')}
-      downloadHref={pathname.startsWith('/mobile') ? '/download?platform=mobile' : '/download'}
       menuLabel={t('nav.menu')}
       closeLabel={t('nav.close_menu')}
       mobileControls={
