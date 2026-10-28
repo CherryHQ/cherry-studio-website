@@ -1,5 +1,7 @@
 const { appendFileSync } = require('node:fs')
 
+const { isBuildInput } = require('./build-impact.cjs')
+
 const target = Object.freeze({
   repository: 'CherryInternal/cherry-gitops',
   branch: 'main',
@@ -125,7 +127,20 @@ async function updateGitops({ source, gitops, sha, image, digest, runUrl, log = 
     }
     return file
   }
-  const isCurrent = async () => (await source('GET', headPath)).object.sha === sha
+  const isCurrent = async () => {
+    const head = (await source('GET', headPath)).object.sha
+    if (head === sha) return true
+    if (!/^[a-f0-9]{40}$/.test(head)) throw new Error('Invalid source main head')
+    const comparison = await source('GET', `/repos/${sourceRepository}/compare/${sha}...${head}`)
+    if (comparison.status !== 'ahead') return false
+    if (!Array.isArray(comparison.files) || comparison.files.length >= 300) {
+      throw new Error('Source comparison incomplete; rebuild current main before publishing')
+    }
+    // An internal-only commit must not strand an otherwise current product release.
+    return !comparison.files.some(
+      (file) => isBuildInput(file.filename) || (file.previous_filename && isBuildInput(file.previous_filename))
+    )
+  }
   let pending
   for (let attempt = 1; attempt <= 5; attempt++) {
     if (!(await isCurrent())) {

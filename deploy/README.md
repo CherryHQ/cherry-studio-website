@@ -6,6 +6,13 @@
 `sha-<完整提交 SHA>`，将本次构建返回的 digest 回写 GitOps。Dockerfile 始终构建
 `build:cn`，包含完整 `/docs`；海外站现有发布方式不受此流程影响。
 
+自动运行先判断改动是否影响发布产物。README、AGENTS、内部部署说明、测试、开发工具和
+仅用于 GitOps 回写的脚本改动仍运行检查，但跳过中英文构建、镜像构建与后续发布。
+页面、`docs-site/content`（包括其中的 README）、公开资源、依赖及构建配置仍触发构建；
+构建工作流、影响判断脚本和容器冒烟脚本自身也会触发。未知路径默认构建。
+push 比较整批提交，PR 比较分支共同祖先后的改动，删除和重命名也参与判断。
+手动运行 `Docs` 始终构建，选择 main 时按既有规则发布，可用于强制重新构建。
+
 参考数据工作流使用默认 `GITHUB_TOKEN` 提交，GitHub 不会因此触发 push 工作流，
 所以有更新时显式 dispatch `docs.yml`，让这些更新也经过同一套检查和发布。
 参见 [GitHub 工作流触发规则](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow)。
@@ -87,12 +94,17 @@ Actions 的临时 Token。推送和拉取域名相同时可以省略 `CONTAINER_
 正文包含源提交链接、镜像地址与 digest、工作流链接和 bot 的 `Signed-off-by`。
 提交署名与认证分开，跨仓库访问仍使用 `GITOPS_TOKEN`。
 
-main 发布串行执行，旧源 SHA 不回写。源 head 检查与跨仓库写入之间仍存在短暂窗口，
+main 镜像发布串行执行；检查和构建不会被后续的内部改动工作流替换。
+回写时若 main 已前进，只有确认源 SHA 是其祖先且所有后续差异均不影响构建时才允许继续，
+避免内部说明提交使在途代码发布失效；后续存在产物改动或历史分叉则跳过旧构建。
+比较文件列表缺失或达到 API 的 [300 文件上限](https://docs.github.com/en/rest/commits/commits#compare-two-commits)
+时立即失败，应手动构建当前 main。
+源 head 检查与跨仓库写入之间仍存在短暂窗口，
 不是跨仓库事务；新 main 的成功发布会再次收敛。GitHub 的并发机制参见
 [官方文档](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/control-workflow-concurrency)。
 
 ```bash
-node --test .github/scripts/container-deploy.test.cjs
+node --test .github/scripts/*.test.cjs
 pnpm exec biome ci .
 pnpm docs:test
 pnpm docs:generate
