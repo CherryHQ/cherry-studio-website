@@ -9,7 +9,9 @@ docker run --platform linux/amd64 --name website-test -d -p 127.0.0.1:8080:80 "$
 trap cleanup EXIT
 
 base=http://127.0.0.1:8080
-curl --fail --silent --show-error --retry 10 --retry-delay 1 --retry-connrefused "$base/" -o /tmp/website-home.html
+# The published port can reset connections until Nginx finishes starting.
+curl --fail --silent --show-error --retry 10 --retry-all-errors --retry-delay 1 \
+  --max-time 2 --retry-max-time 15 "$base/" -o /tmp/website-home.html
 grep -q '<html' /tmp/website-home.html
 curl --fail --silent --show-error "$base/download" -o /tmp/website-download.html
 grep -q '<html' /tmp/website-download.html
