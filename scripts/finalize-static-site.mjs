@@ -1,6 +1,6 @@
 import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs'
-import { join } from 'node:path'
+import { dirname, join } from 'node:path'
 
 import { marked } from 'marked'
 
@@ -373,8 +373,20 @@ function buildCompareArticleJsonLd(markdown, url, description) {
 
 function writeRouteHtml(route) {
   const html = buildRouteHtml(route)
-  const dir = join(distDir, route.path)
 
+  // 英文站跑在 Cloudflare Workers 静态资源上，默认 html_handling 是 auto-trailing-slash：
+  // /download/index.html 会让 /download 被 307 到 /download/，和不带斜杠的 canonical、
+  // sitemap 互相矛盾，拖慢收录。写成 /download.html 后 /download 直接返回 200，
+  // /download/ 反过来跳到 /download。不全局改成 drop-trailing-slash，是因为文档站
+  // 的 canonical 带斜杠，那样会把文档页搞反。中文站走 nginx，保持目录 + index.html。
+  if (target === 'en') {
+    const file = join(distDir, `${route.path}.html`)
+    mkdirSync(dirname(file), { recursive: true })
+    writeFileSync(file, html)
+    return
+  }
+
+  const dir = join(distDir, route.path)
   mkdirSync(dir, { recursive: true })
   writeFileSync(join(dir, 'index.html'), html)
 }
