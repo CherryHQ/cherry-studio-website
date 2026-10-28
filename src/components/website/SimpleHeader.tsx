@@ -17,6 +17,7 @@ export default function SimpleHeader() {
   const englishSite = isEnglishSite(i18n.resolvedLanguage || i18n.language)
   const links = getHeaderLinks({
     labels: {
+      desktop: t('nav.desktop'),
       mobile: t('nav.mobile'),
       docs: t('nav.docs'),
       theme: t('nav.theme'),
