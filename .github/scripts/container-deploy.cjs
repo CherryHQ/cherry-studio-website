@@ -7,6 +7,10 @@ const target = Object.freeze({
   alias: 'cherryai-web'
 })
 const sourceRepository = 'CherryHQ/cherry-studio-website'
+const gitopsBot = Object.freeze({
+  name: 'github-actions[bot]',
+  email: '41898282+github-actions[bot]@users.noreply.github.com'
+})
 const digestPattern = /^sha256:[a-f0-9]{64}$/
 
 function required(value, name) {
@@ -146,7 +150,17 @@ async function updateGitops({ source, gitops, sha, image, digest, runUrl, log = 
         branch: target.branch,
         sha: file.sha,
         content: Buffer.from(updated).toString('base64'),
-        message: `deploy(website): ${sha.slice(0, 12)}\n\nSource: ${sourceRepository}@${sha}\nImage: ${image}@${digest}\nWorkflow: ${runUrl}`
+        author: gitopsBot,
+        committer: gitopsBot,
+        message: [
+          `deploy(website): ${sha.slice(0, 12)}`,
+          '',
+          `Source: https://github.com/${sourceRepository}/commit/${sha}`,
+          `Image: ${image}@${digest}`,
+          `Workflow: ${runUrl}`,
+          '',
+          `Signed-off-by: ${gitopsBot.name} <${gitopsBot.email}>`
+        ].join('\n')
       })
       log(`Updated ${target.repository}/${target.path} to ${image}@${digest}`)
       return 'updated'

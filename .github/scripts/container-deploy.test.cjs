@@ -139,13 +139,25 @@ function fixture({ heads = [sha], putErrors = [], contents = [content], fileShas
   return { args: { source, gitops, sha, image, digest, runUrl, log() {} }, writes, reads }
 }
 
-test('conditional write pins one GitOps file/ref and records source, digest and workflow', async () => {
+test('conditional write pins one GitOps file/ref and records bot identity, source, digest and workflow', async () => {
   const { args, writes } = fixture()
   assert.equal(await updateGitops(args), 'updated')
   assert.equal(writes.length, 1)
   assert.equal(writes[0].branch, 'main')
   assert.equal(writes[0].sha, 'd'.repeat(40))
   assert.equal(Buffer.from(writes[0].content, 'base64').toString(), updateImage(content, image, digest))
+  assert.deepEqual(writes[0].author, {
+    name: 'github-actions[bot]',
+    email: '41898282+github-actions[bot]@users.noreply.github.com'
+  })
+  assert.deepEqual(writes[0].committer, writes[0].author)
+  assert.ok(writes[0].message.startsWith(`deploy(website): ${sha.slice(0, 12)}\n\n`))
+  assert.ok(writes[0].message.includes(`Source: https://github.com/CherryHQ/cherry-studio-website/commit/${sha}\n`))
+  assert.ok(
+    writes[0].message.endsWith(
+      '\n\nSigned-off-by: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>'
+    )
+  )
   for (const value of [sha, image, digest, runUrl]) assert.ok(writes[0].message.includes(value))
 })
 
