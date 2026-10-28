@@ -39,28 +39,23 @@ function repository(t) {
   return { git, commit, base, push, pr }
 }
 
-test('internal documentation, CI helpers, tests and development tooling only require checks', () => {
+test('root Markdown, internal directories and unrelated CI files only require checks', () => {
   for (const file of [
     'README.md',
     'AGENTS.md',
+    'CONTRIBUTING.md',
     'docs-site/README.md',
     'deploy/README.md',
     '.github/PULL_REQUEST_TEMPLATE.md',
     '.github/scripts/container-deploy.cjs',
     '.github/scripts/build-impact.test.cjs',
     '.github/workflows/update-reference-data.yml',
-    '.gitignore',
-    'biome.json',
-    'scripts/dev.mjs',
-    'docs-site/scripts/lint-links.mjs',
-    'src/utils/example.test.ts',
-    'docs-site/scripts/__tests__/content.test.mjs',
     '.vscode/settings.json'
   ])
     assert.equal(isBuildInput(file), false, file)
 })
 
-test('published content and build inputs still build, including published README and Markdown', () => {
+test('all other paths build by default, including published README, tests and unknown files', () => {
   for (const file of [
     'docs-site/content/README.md',
     'docs-site/content/i18n/english/SUMMARY.md',
@@ -85,6 +80,13 @@ test('published content and build inputs still build, including published README
     '.github/workflows/docs.yml',
     '.github/scripts/build-impact.cjs',
     '.github/scripts/smoke-container.sh',
+    '.gitignore',
+    'biome.json',
+    'scripts/dev.mjs',
+    'docs-site/scripts/lint-links.mjs',
+    'src/utils/example.test.ts',
+    'docs-site/scripts/__tests__/content.test.mjs',
+    'new-directory/README.md',
     'new-runtime-input.json'
   ])
     assert.equal(isBuildInput(file), true, file)

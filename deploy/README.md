@@ -6,10 +6,11 @@
 `sha-<完整提交 SHA>`，将本次构建返回的 digest 回写 GitOps。Dockerfile 始终构建
 `build:cn`，包含完整 `/docs`；海外站现有发布方式不受此流程影响。
 
-自动运行先判断改动是否影响发布产物。README、AGENTS、内部部署说明、测试、开发工具和
-仅用于 GitOps 回写的脚本改动仍运行检查，但跳过中英文构建、镜像构建与后续发布。
-页面、`docs-site/content`（包括其中的 README）、公开资源、依赖及构建配置仍触发构建；
-构建工作流、影响判断脚本和容器冒烟脚本自身也会触发。未知路径默认构建。
+自动构建采用简单的路径忽略规则：仅修改根目录 `*.md`、`docs-site/README.md`、
+`deploy/**`、`.github/**`、`.vscode/**`、`.claude/**`、`.conductor/**` 或 `.context/**`
+时只运行检查，跳过中英文构建、镜像构建与后续发布。其中三个文件始终触发构建：
+`.github/workflows/docs.yml`、`.github/scripts/build-impact.cjs`、`.github/scripts/smoke-container.sh`。
+其他路径一律构建，包括公开文档、页面、资源、测试和未知路径，不再按文件类型细分。
 push 比较整批提交，PR 比较分支共同祖先后的改动，删除和重命名也参与判断。
 手动运行 `Docs` 始终构建，选择 main 时按既有规则发布，可用于强制重新构建。
 

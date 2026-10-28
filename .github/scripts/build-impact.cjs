@@ -1,46 +1,27 @@
 const { execFileSync } = require('node:child_process')
 const { appendFileSync, readFileSync } = require('node:fs')
+const { matchesGlob } = require('node:path')
 
 const buildChecks = new Set([
   '.github/workflows/docs.yml',
   '.github/scripts/build-impact.cjs',
   '.github/scripts/smoke-container.sh'
 ])
-const internalFiles = new Set([
-  '.gitignore',
-  'biome.json',
-  'eslint.config.js',
-  'components.json',
-  'scripts/dev.mjs',
-  'scripts/indexnow.mjs',
-  'docs-site/scripts/dev.mjs',
-  'docs-site/scripts/lint-links.mjs',
-  'docs-site/scripts/lint-shadowed.mjs'
-])
-const internalDirectories = [
-  '.github/',
-  '.vscode/',
-  '.claude/',
-  '.conductor/',
-  '.context/',
-  'deploy/',
-  'tests/',
-  'test/'
+const ignoredPaths = [
+  '*.md',
+  'docs-site/README.md',
+  'deploy/**',
+  '.github/**',
+  '.vscode/**',
+  '.claude/**',
+  '.conductor/**',
+  '.context/**'
 ]
 
 function isBuildInput(file) {
   if (typeof file !== 'string' || !file) throw new Error('Invalid changed path')
-  if (buildChecks.has(file)) return true
-  // Published Markdown and public files are product content, including README.md.
-  if (['docs-site/content/', 'docs-site/public/', 'public/'].some((prefix) => file.startsWith(prefix))) return true
-  if (/\.md$/i.test(file) && ['src/', 'shared/', 'docs-site/src/'].some((prefix) => file.startsWith(prefix)))
-    return true
-  if (/(^|\/)(README|AGENTS|CLAUDE)\.md$/i.test(file)) return false
-  if (/\.(test|spec)\.[cm]?[jt]sx?$/.test(file) || /(^|\/)__tests__\//.test(file)) return false
-  if (internalFiles.has(file) || internalDirectories.some((prefix) => file.startsWith(prefix))) return false
-  if (/\.md$/i.test(file)) return false
-  // Unknown files build conservatively so a new runtime dependency cannot be missed.
-  return true
+  // Only known internal paths are skipped; everything else builds by default.
+  return buildChecks.has(file) || !ignoredPaths.some((pattern) => matchesGlob(file, pattern))
 }
 
 function shouldBuild({ eventName, event, sha, cwd = process.cwd() }) {
