@@ -17,10 +17,11 @@ export default function SimpleHeader() {
   const englishSite = isEnglishSite(i18n.resolvedLanguage || i18n.language)
   const links = getHeaderLinks({
     labels: {
-      home: t('nav.home'),
       mobile: t('nav.mobile'),
       docs: t('nav.docs'),
       theme: t('nav.theme'),
+      resources: t('nav.resources'),
+      articles: t('nav.articles'),
       careers: t('nav.careers'),
       enterprise: t('nav.enterprise'),
       pricing: t('nav.pricing'),

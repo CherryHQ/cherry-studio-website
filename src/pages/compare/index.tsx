@@ -1,6 +1,6 @@
 import { type FC, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Link, useParams } from 'react-router-dom'
+import { Link, Navigate, useLocation, useParams } from 'react-router-dom'
 
 import Footer from '@/components/website/Footer'
 import {
@@ -37,6 +37,11 @@ const CompareArticle: FC<{ slug: CompareSlug; locale: CompareLocale; markdown: s
   return (
     <div className="bg-background min-h-screen">
       <article className={articleStyle.className}>
+        <Link
+          to="/resources/articles/"
+          className="mb-8 inline-block text-sm focus-visible:outline-2 focus-visible:outline-offset-4">
+          {t('articles.back')}
+        </Link>
         {/* 正文来自仓库内的 Markdown，不含用户输入 */}
         <div dangerouslySetInnerHTML={{ __html: html }} />
 
@@ -47,7 +52,7 @@ const CompareArticle: FC<{ slug: CompareSlug; locale: CompareLocale; markdown: s
               {related.map((other) => (
                 <li key={other}>
                   <Link
-                    to={`/compare/${other}`}
+                    to={`/resources/articles/${other}`}
                     className="text-muted-foreground hover:text-foreground text-sm transition-colors">
                     {t(`compare.links.${other}`)}
                   </Link>
@@ -75,3 +80,10 @@ const ComparePage: FC = () => {
 }
 
 export default ComparePage
+
+export function LegacyCompareRedirect() {
+  const { slug } = useParams()
+  const { search, hash } = useLocation()
+  if (!isCompareSlug(slug)) return <NotFoundPage />
+  return <Navigate replace to={`/resources/articles/${slug}${search}${hash}`} />
+}

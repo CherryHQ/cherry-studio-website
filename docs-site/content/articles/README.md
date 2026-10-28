@@ -1,18 +1,20 @@
 ---
-description: Cherry Studio 文章合集：和 Manus、ChatGPT 桌面版、LM Studio 的对比，以及如何在一个桌面应用里用上 GPT、Claude、Gemini、DeepSeek 和本地模型、搭建 AI 智能体、和自己的文档对话。
+description: 比较 Cherry Studio 与其他 AI 应用，并按使用目标查找模型接入、本地运行、智能体、知识库、创作与翻译指南。
 icon: compass
 ---
-# Cherry Studio 文章
+# 选型与使用指南
 
-用 Cherry Studio 把事情做成的文章合集。Cherry Studio 是免费的 AI 桌面客户端，支持 Windows、macOS 和 Linux。每篇文章都从一个具体目标出发，并附上过程中需要用到的参考页面。
+还在比较 AI 应用，或想知道 Cherry Studio 能帮你做什么？这里按使用目标整理了产品对比和使用指南，帮助你选择适合的工具、接入模型并找到具体操作方法。
+
+[浏览全部文章](https://cherryai.com.cn/resources/articles/)
 
 ## Cherry Studio 对比
 
 和你可能正在用的其他 AI 应用相比，Cherry Studio 有什么不一样。
 
-* [Cherry Studio VS. Manus：本地 AI Agent 还是云端 AI Agent？](https://cherryai.com.cn/compare/manus)
-* [ChatGPT 桌面版替代：一个应用里用上所有模型](https://cherryai.com.cn/compare/chatgpt-desktop-app)
-* [LM Studio 替代：在一个桌面应用里同时用本地和云端模型](https://cherryai.com.cn/compare/lm-studio)
+* [Cherry Studio VS. Manus：本地 AI Agent 还是云端 AI Agent？](https://cherryai.com.cn/resources/articles/manus)
+* [ChatGPT 桌面版替代：一个应用里用上所有模型](https://cherryai.com.cn/resources/articles/chatgpt-desktop-app)
+* [LM Studio 替代：在一个桌面应用里同时用本地和云端模型](https://cherryai.com.cn/resources/articles/lm-studio)
 
 ## 一个应用用上主流模型
 

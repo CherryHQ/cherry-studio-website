@@ -4,6 +4,7 @@ import { ArrowUpRight, Download, Menu, Star, X } from 'lucide-react'
 import { type ReactNode, useEffect, useRef, useState } from 'react'
 
 import { cn } from '../src/lib/utils'
+import { HeaderDropdown } from './HeaderDropdown'
 import type { HeaderLink } from './header-navigation'
 
 export type { HeaderLink } from './header-navigation'
@@ -180,11 +181,15 @@ export function SiteHeader({
             <nav aria-label={menuLabel} className="hidden items-center gap-1 lg:flex">
               {links.map((item) => (
                 <span key={item.href}>
-                  {link(
-                    item,
-                    cn(
-                      'flex items-center gap-1.5 px-4 py-2 text-base font-medium transition-colors',
-                      item.active ? 'text-black dark:text-white' : 'text-muted-foreground hover:text-foreground'
+                  {item.children ? (
+                    <HeaderDropdown item={item} renderItem={link} />
+                  ) : (
+                    link(
+                      item,
+                      cn(
+                        'flex items-center gap-1.5 px-4 py-2 text-base font-medium transition-colors',
+                        item.active ? 'text-black dark:text-white' : 'text-muted-foreground hover:text-foreground'
+                      )
                     )
                   )}
                 </span>
@@ -238,13 +243,17 @@ export function SiteHeader({
             }}>
             {[{ href: downloadHref, label: downloadLabel }, ...links].map((item) => (
               <div key={item.href}>
-                {link(
-                  item,
-                  cn(
-                    'flex items-center gap-2 rounded-lg px-4 py-3 text-sm font-medium',
-                    item.active
-                      ? 'bg-accent text-foreground'
-                      : 'text-muted-foreground hover:bg-accent hover:text-foreground'
+                {item.children ? (
+                  <HeaderDropdown item={item} renderItem={link} mobile />
+                ) : (
+                  link(
+                    item,
+                    cn(
+                      'flex items-center gap-2 rounded-lg px-4 py-3 text-sm font-medium',
+                      item.active
+                        ? 'bg-accent text-foreground'
+                        : 'text-muted-foreground hover:bg-accent hover:text-foreground'
+                    )
                   )
                 )}
               </div>

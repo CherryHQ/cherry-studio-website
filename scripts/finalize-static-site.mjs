@@ -81,7 +81,7 @@ const ROUTES = {
   zh: []
 }
 
-// 对比页：src/content/compare/<locale>/<slug>.md 存在就生成 /compare/<slug>。
+// 文章页：src/content/compare/<locale>/<slug>.md 存在就生成 /resources/articles/<slug>。
 // 中文正文审核通过前不放文件，中文站就不会生成也不会进 sitemap，英文页也不输出 zh-CN 的 hreflang。
 const COMPARE_DIR = join(process.cwd(), 'src/content/compare')
 const COMPARE_LASTMOD = '2026-10-23'
@@ -97,14 +97,15 @@ function listCompareSlugs(locale) {
 }
 
 const compareRoutes = listCompareSlugs(target).map((slug) => ({
-  path: `/compare/${slug}`,
+  path: `/resources/articles/${slug}`,
   key: `compare_${slug.replace(/-/g, '_')}`,
   compare: slug,
   chineseCounterpart: existsSync(join(COMPARE_DIR, 'zh', `${slug}.md`)),
   dropSoftwareApplication: true
 }))
 
-ROUTES[target].push(...compareRoutes)
+const articlesIndex = { path: '/resources/articles/', key: 'articles', articlesIndex: true, dropSoftwareApplication: true }
+ROUTES[target].push(articlesIndex, ...compareRoutes)
 
 const NOT_FOUND = { path: '/404', key: 'not_found', noindex: true }
 
@@ -127,7 +128,10 @@ const SITEMAP = {
   ]
 }
 
-SITEMAP[target].push(...compareRoutes.map(({ path }) => ({ path, priority: '0.7', lastmod: COMPARE_LASTMOD })))
+SITEMAP[target].push(
+  { path: articlesIndex.path, priority: '0.7', lastmod: '2026-10-28' },
+  ...compareRoutes.map(({ path }) => ({ path, priority: '0.7', lastmod: COMPARE_LASTMOD }))
+)
 
 function replaceTagAttribute(html, tagPattern, attribute, value) {
   return html.replace(tagPattern, (tag) => {
@@ -181,6 +185,10 @@ function appendJsonLd(html, data) {
   return html.replace('</head>', `  ${block}\n</head>`)
 }
 
+function escapeHtml(value) {
+  return value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+}
+
 // 英文站的 llms.txt / 404 页与中文站共用同一套 meta 生成逻辑
 function buildRouteHtml(route) {
   const title = translations.page_title[route.key]
@@ -228,12 +236,50 @@ function buildRouteHtml(route) {
     html = dropJsonLd(html, 'SoftwareApplication')
   }
 
+  if (route.redirectTo) {
+    // Portable fallback for hosts that do not consume nginx.conf or _redirects.
+    html = html.replace(
+      '</head>',
+      `<meta http-equiv="refresh" content="0;url=${route.redirectTo}"/><script>location.replace(${JSON.stringify(route.redirectTo)}+location.search+location.hash)</script></head>`
+    )
+    return html.replace(
+      '<div id="root"></div>',
+      `<div id="root"><a href="${route.redirectTo}">${escapeHtml(title)}</a></div>`
+    )
+  }
+
+  if (route.articlesIndex) {
+    const items = compareRoutes.map(({ path, compare, key }) =>
+      `<li><h2 class="text-foreground text-xl font-semibold text-balance"><a href="${path}" class="underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4">${escapeHtml(translations.compare.links[compare])}</a></h2><p class="text-muted-foreground mt-2 leading-7 text-pretty">${escapeHtml(translations.page_description[key])}</p></li>`
+    ).join('')
+    html = html.replace(
+      '<div id="root"></div>',
+      `<div id="root"><main class="mx-auto min-h-svh max-w-5xl px-4 pt-32 pb-16 sm:px-6 lg:px-8"><h1 class="text-foreground text-3xl font-semibold text-balance sm:text-4xl">${escapeHtml(translations.articles.title)}</h1><p class="text-muted-foreground mt-4 text-lg leading-8 text-pretty">${escapeHtml(translations.articles.description)}</p><ul class="mt-12 space-y-8">${items}</ul></main></div>`
+    )
+    html = appendJsonLd(html, {
+      '@context': 'https://schema.org',
+      '@type': 'CollectionPage',
+      name: translations.articles.title,
+      description,
+      url: canonicalUrl,
+      mainEntity: {
+        '@type': 'ItemList',
+        itemListElement: compareRoutes.map(({ path, compare }, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          name: translations.compare.links[compare],
+          url: `${config.domain}${path}`
+        }))
+      }
+    })
+  }
+
   if (route.compare) {
     const markdown = readFileSync(join(COMPARE_DIR, target, `${route.compare}.md`), 'utf8')
     // 正文直接写进 #root：不跑 JS 的爬虫也能读到全文，createRoot 挂载后会整块替换掉
     html = html.replace(
       '<div id="root"></div>',
-      `<div id="root"><div class="bg-background min-h-screen"><article class="${compareArticleClass}">${renderCompareMarkdown(markdown)}</article></div></div>`
+      `<div id="root"><div class="bg-background min-h-screen"><article class="${compareArticleClass}"><a href="/resources/articles/" class="mb-8 inline-block text-sm focus-visible:outline-2 focus-visible:outline-offset-4">${escapeHtml(translations.articles.back)}</a>${renderCompareMarkdown(markdown)}</article></div></div>`
     )
     html = appendJsonLd(html, buildCompareArticleJsonLd(markdown, canonicalUrl, description))
     const faq = extractFaq(markdown)
@@ -379,7 +425,7 @@ function writeRouteHtml(route) {
   // sitemap 互相矛盾，拖慢收录。写成 /download.html 后 /download 直接返回 200，
   // /download/ 反过来跳到 /download。不全局改成 drop-trailing-slash，是因为文档站
   // 的 canonical 带斜杠，那样会把文档页搞反。中文站走 nginx，保持目录 + index.html。
-  if (target === 'en') {
+  if (target === 'en' && !route.path.endsWith('/')) {
     const file = join(distDir, `${route.path}.html`)
     mkdirSync(dirname(file), { recursive: true })
     writeFileSync(file, html)
@@ -549,13 +595,14 @@ ${entries}${extras ? `\n${extras}` : ''}
 const LLMS_INTRO =
   'Open-source AI desktop client for macOS, Windows and Linux. Run 300+ models from 50+ providers in one app, with conversations stored locally.'
 
-const LLMS_PAGES = ['home', 'download', 'flash', 'flash_usage', 'theme', ...compareRoutes.map(({ key }) => key)]
+const LLMS_PAGES = ['home', 'download', 'flash', 'flash_usage', 'theme', 'articles', ...compareRoutes.map(({ key }) => key)]
 const LLMS_PATH_BY_KEY = {
   home: '/',
   download: '/download',
   flash: '/flash',
   flash_usage: '/flash/usage',
   theme: '/theme',
+  articles: '/resources/articles/',
   ...Object.fromEntries(compareRoutes.map(({ key, path }) => [key, path]))
 }
 
@@ -644,6 +691,18 @@ applyIndexTarget()
 
 for (const route of ROUTES[target]) {
   writeRouteHtml(route)
+}
+
+for (const route of compareRoutes) {
+  writeRouteHtml({
+    path: `/compare/${route.compare}`,
+    key: route.key,
+    canonicalPath: route.path,
+    redirectTo: route.path,
+    noindex: true,
+    chineseCounterpart: route.chineseCounterpart,
+    dropSoftwareApplication: true
+  })
 }
 
 // 404 页面：中英文站都输出，供静态托管直接使用

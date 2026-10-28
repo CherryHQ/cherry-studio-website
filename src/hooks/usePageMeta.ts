@@ -15,6 +15,7 @@ export type PageType =
   | 'careers'
   | 'flash'
   | 'flashUsage'
+  | 'articles'
   | 'compareManus'
   | 'compareChatgptDesktopApp'
   | 'compareLmStudio'
@@ -41,19 +42,20 @@ const PAGE_META: Record<PageType, PageMetaConfig> = {
   careers: { path: '/careers' },
   flash: { path: '/flash', chineseCounterpart: false },
   flashUsage: { path: '/flash/usage', translationKey: 'flash_usage', chineseCounterpart: false },
+  articles: { path: '/resources/articles/' },
   // 对比页的中文版审核通过后才上线；没有中文正文时不输出 zh-CN 的 hreflang
   compareManus: {
-    path: '/compare/manus',
+    path: '/resources/articles/manus',
     translationKey: 'compare_manus',
     chineseCounterpart: hasCompare('zh', 'manus')
   },
   compareChatgptDesktopApp: {
-    path: '/compare/chatgpt-desktop-app',
+    path: '/resources/articles/chatgpt-desktop-app',
     translationKey: 'compare_chatgpt_desktop_app',
     chineseCounterpart: hasCompare('zh', 'chatgpt-desktop-app')
   },
   compareLmStudio: {
-    path: '/compare/lm-studio',
+    path: '/resources/articles/lm-studio',
     translationKey: 'compare_lm_studio',
     chineseCounterpart: hasCompare('zh', 'lm-studio')
   },
