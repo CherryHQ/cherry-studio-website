@@ -106,16 +106,29 @@ test('reject absent/duplicate aliases, unexpected fields, extra images, tags and
   assert.throws(() => updateImage(content, image, 'sha256:short'))
 })
 
-function fixture({ heads = [sha], putErrors = [], contents = [content], fileShas = ['d'.repeat(40)] } = {}) {
+function fixture({
+  heads = [sha],
+  comparisons = [{ status: 'ahead', files: [{ filename: 'src/App.tsx' }] }],
+  putErrors = [],
+  contents = [content],
+  fileShas = ['d'.repeat(40)]
+} = {}) {
   const writes = []
   const reads = []
   let sourceCalls = 0
+  let compareCalls = 0
   let targetCalls = 0
   let putCalls = 0
   const source = async (method, path) => {
     assert.equal(method, 'GET')
-    assert.equal(path, '/repos/CherryHQ/cherry-studio-website/git/ref/heads/main')
-    return { object: { sha: heads[Math.min(sourceCalls++, heads.length - 1)] } }
+    if (path.endsWith('/git/ref/heads/main')) {
+      return { object: { sha: heads[Math.min(sourceCalls++, heads.length - 1)] } }
+    }
+    assert.equal(
+      path,
+      `/repos/CherryHQ/cherry-studio-website/compare/${sha}...${heads[Math.min(sourceCalls - 1, heads.length - 1)]}`
+    )
+    return comparisons[Math.min(compareCalls++, comparisons.length - 1)]
   }
   const gitops = async (method, path, body) => {
     assert.ok(path.startsWith(`/repos/${target.repository}/contents/${target.path}`))
@@ -139,13 +152,25 @@ function fixture({ heads = [sha], putErrors = [], contents = [content], fileShas
   return { args: { source, gitops, sha, image, digest, runUrl, log() {} }, writes, reads }
 }
 
-test('conditional write pins one GitOps file/ref and records source, digest and workflow', async () => {
+test('conditional write pins one GitOps file/ref and records bot identity, source, digest and workflow', async () => {
   const { args, writes } = fixture()
   assert.equal(await updateGitops(args), 'updated')
   assert.equal(writes.length, 1)
   assert.equal(writes[0].branch, 'main')
   assert.equal(writes[0].sha, 'd'.repeat(40))
   assert.equal(Buffer.from(writes[0].content, 'base64').toString(), updateImage(content, image, digest))
+  assert.deepEqual(writes[0].author, {
+    name: 'github-actions[bot]',
+    email: '41898282+github-actions[bot]@users.noreply.github.com'
+  })
+  assert.deepEqual(writes[0].committer, writes[0].author)
+  assert.ok(writes[0].message.startsWith(`deploy(cherry-studio-website): ${sha.slice(0, 12)}\n\n`))
+  assert.ok(writes[0].message.includes(`Source: https://github.com/CherryHQ/cherry-studio-website/commit/${sha}\n`))
+  assert.ok(
+    writes[0].message.endsWith(
+      '\n\nSigned-off-by: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>'
+    )
+  )
   for (const value of [sha, image, digest, runUrl]) assert.ok(writes[0].message.includes(value))
 })
 
@@ -173,6 +198,50 @@ test('retry confirmed concurrent file changes with new SHA, preserving other edi
   assert.equal(writes.length, 2)
   assert.equal(writes[1].sha, 'e'.repeat(40))
   assert.ok(Buffer.from(writes[1].content, 'base64').toString().includes('# concurrent edit'))
+})
+
+test('publish through newer internal commits without stranding the product release', async () => {
+  const { args, writes } = fixture({
+    heads: ['e'.repeat(40)],
+    comparisons: [{ status: 'ahead', files: [{ filename: 'README.md' }, { filename: 'deploy/README.md' }] }]
+  })
+  assert.equal(await updateGitops(args), 'updated')
+  assert.equal(writes.length, 1)
+})
+
+test('reject renamed product inputs and non-descendant main history', async () => {
+  for (const comparison of [
+    { status: 'ahead', files: [{ filename: 'deploy/old.md', previous_filename: 'docs-site/content/old.md' }] },
+    { status: 'diverged', files: [] },
+    { status: 'behind', files: [] }
+  ]) {
+    const { args, writes } = fixture({ heads: ['e'.repeat(40)], comparisons: [comparison] })
+    assert.equal(await updateGitops(args), 'stale')
+    assert.equal(writes.length, 0)
+  }
+})
+
+test('fail closed on missing or potentially truncated source comparisons', async () => {
+  for (const files of [undefined, Array.from({ length: 300 }, (_, index) => ({ filename: `deploy/${index}.md` }))]) {
+    const { args, writes } = fixture({ heads: ['e'.repeat(40)], comparisons: [{ status: 'ahead', files }] })
+    await assert.rejects(updateGitops(args), /Source comparison incomplete/)
+    assert.equal(writes.length, 0)
+  }
+})
+
+test('recheck build impact after reading the target and after confirmed conflicts', async () => {
+  const internal = { status: 'ahead', files: [{ filename: 'README.md' }] }
+  const product = { status: 'ahead', files: [{ filename: 'src/App.tsx' }] }
+  for (const conflict of [false, true]) {
+    const { args, writes } = fixture({
+      heads: ['e'.repeat(40)],
+      comparisons: conflict ? [internal, internal, product] : [internal, product],
+      putErrors: conflict ? [409] : [],
+      fileShas: ['d'.repeat(40), 'f'.repeat(40)]
+    })
+    assert.equal(await updateGitops(args), 'stale')
+    assert.equal(writes.length, conflict ? 1 : 0)
+  }
 })
 
 test('recheck source on conflicts and stop once main advances', async () => {

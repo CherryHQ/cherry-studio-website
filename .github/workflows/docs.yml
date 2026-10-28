@@ -10,15 +10,21 @@ permissions:
   contents: read
 
 concurrency:
-  group: docs-${{ github.ref }}
+  # Main releases are guarded/serialized by the container job. A checks-only run
+  # must not replace a queued product build in the workflow concurrency group.
+  group: docs-${{ github.ref == 'refs/heads/main' && github.run_id || github.ref }}
   cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
 jobs:
   # Content and lint checks: locale-independent, so they run once and fail fast.
   checks:
     runs-on: ubuntu-latest
+    outputs:
+      build: ${{ steps.changes.outputs.build }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       # No version input: action-setup reads packageManager from package.json.
       - uses: pnpm/action-setup@v4
@@ -28,14 +34,18 @@ jobs:
           node-version: 24
           cache: pnpm
 
+      - name: Determine build impact
+        id: changes
+        run: node .github/scripts/build-impact.cjs
+
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
       - name: Content conversion tests
         run: pnpm docs:test
 
-      - name: Container release script tests
-        run: node --test .github/scripts/container-deploy.test.cjs
+      - name: CI script tests
+        run: node --test .github/scripts/*.test.cjs
 
       - name: Generate documentation content
         run: pnpm docs:generate
@@ -55,6 +65,7 @@ jobs:
   # image ship, build:en is the default. Each build also re-runs the docs generation internally.
   build:
     needs: checks
+    if: needs.checks.outputs.build == 'true'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -81,6 +92,7 @@ jobs:
 
   container:
     needs: [checks, build]
+    if: needs.checks.outputs.build == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 30
     permissions:

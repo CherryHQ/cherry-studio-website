@@ -1,5 +1,7 @@
 const { appendFileSync } = require('node:fs')
 
+const { isBuildInput } = require('./build-impact.cjs')
+
 const target = Object.freeze({
   repository: 'CherryInternal/cherry-gitops',
   branch: 'main',
@@ -7,6 +9,10 @@ const target = Object.freeze({
   alias: 'cherryai-web'
 })
 const sourceRepository = 'CherryHQ/cherry-studio-website'
+const gitopsBot = Object.freeze({
+  name: 'github-actions[bot]',
+  email: '41898282+github-actions[bot]@users.noreply.github.com'
+})
 const digestPattern = /^sha256:[a-f0-9]{64}$/
 
 function required(value, name) {
@@ -121,7 +127,20 @@ async function updateGitops({ source, gitops, sha, image, digest, runUrl, log = 
     }
     return file
   }
-  const isCurrent = async () => (await source('GET', headPath)).object.sha === sha
+  const isCurrent = async () => {
+    const head = (await source('GET', headPath)).object.sha
+    if (head === sha) return true
+    if (!/^[a-f0-9]{40}$/.test(head)) throw new Error('Invalid source main head')
+    const comparison = await source('GET', `/repos/${sourceRepository}/compare/${sha}...${head}`)
+    if (comparison.status !== 'ahead') return false
+    if (!Array.isArray(comparison.files) || comparison.files.length >= 300) {
+      throw new Error('Source comparison incomplete; rebuild current main before publishing')
+    }
+    // An internal-only commit must not strand an otherwise current product release.
+    return !comparison.files.some(
+      (file) => isBuildInput(file.filename) || (file.previous_filename && isBuildInput(file.previous_filename))
+    )
+  }
   let pending
   for (let attempt = 1; attempt <= 5; attempt++) {
     if (!(await isCurrent())) {
@@ -146,7 +165,17 @@ async function updateGitops({ source, gitops, sha, image, digest, runUrl, log = 
         branch: target.branch,
         sha: file.sha,
         content: Buffer.from(updated).toString('base64'),
-        message: `deploy(website): ${sha.slice(0, 12)}\n\nSource: ${sourceRepository}@${sha}\nImage: ${image}@${digest}\nWorkflow: ${runUrl}`
+        author: gitopsBot,
+        committer: gitopsBot,
+        message: [
+          `deploy(${sourceRepository.split('/')[1]}): ${sha.slice(0, 12)}`,
+          '',
+          `Source: https://github.com/${sourceRepository}/commit/${sha}`,
+          `Image: ${image}@${digest}`,
+          `Workflow: ${runUrl}`,
+          '',
+          `Signed-off-by: ${gitopsBot.name} <${gitopsBot.email}>`
+        ].join('\n')
       })
       log(`Updated ${target.repository}/${target.path} to ${image}@${digest}`)
       return 'updated'
