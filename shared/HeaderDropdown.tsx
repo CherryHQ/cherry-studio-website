@@ -65,7 +65,7 @@ export function HeaderDropdown({ item, renderItem, mobile = false }: HeaderDropd
         }}
         className={cn(
           'flex cursor-pointer list-none items-center justify-between gap-3 rounded-lg px-4 py-2 font-medium focus-visible:outline-2 focus-visible:outline-offset-4 [&::-webkit-details-marker]:hidden',
-          mobile ? 'py-3 text-sm' : 'text-base',
+          mobile ? 'py-3 text-sm' : 'text-[15px] leading-5',
           item.active ? 'text-foreground' : 'text-muted-foreground hover:bg-accent hover:text-foreground'
         )}>
         {item.label}

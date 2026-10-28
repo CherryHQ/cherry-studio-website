@@ -171,7 +171,7 @@ export function SiteHeader({
                     link(
                       item,
                       cn(
-                        'flex items-center gap-1.5 px-4 py-2 text-base font-medium transition-colors',
+                        'flex items-center gap-1.5 px-4 py-2 text-[15px] leading-5 font-medium transition-colors',
                         item.active ? 'text-black dark:text-white' : 'text-muted-foreground hover:text-foreground'
                       )
                     )
