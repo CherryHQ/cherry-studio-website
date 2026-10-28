@@ -1,5 +1,6 @@
 {
   "page_title": {
+    "articles": "精选文章 | Cherry Studio",
     "home": "Cherry Studio 官方网站 - 全能 AI 工作站",
     "download": "下载 Cherry Studio - 多平台 AI 客户端",
     "mobile": "Cherry Studio 移动版 - 随身的 AI 工作站",
@@ -16,6 +17,7 @@
     "compare_lm_studio": "LM Studio 替代：本地和云端模型放在一个应用里用"
   },
   "page_description": {
+    "articles": "阅读 Cherry Studio 的产品对比与使用文章，了解多模型对话、本地 AI 和智能体的应用方式。",
     "home": "Cherry Studio AI桌面客户端，开源、免费、且功能强大。AI agent、AI 对话、AI绘图、知识库等功能齐全，支持所有主流大模型，支持Windows/macOS/Linux，支持数据本地存储，是AI深度使用者的首选",
     "download": "下载 Cherry Studio AI 客户端，支持 Windows、macOS、Linux 平台。集成 100+ AI 模型，完全免费开源。",
     "mobile": "了解 Cherry Studio 移动版，在手机上连接 AI 模型、进行对话、创作图像和使用工具。现已上架国区 App Store，Android 提供 APK 下载。",
@@ -32,7 +34,8 @@
     "compare_lm_studio": "LM Studio 负责跑本地模型，Cherry Studio 在上面加上 Agent、知识库、MCP 工具和云端模型。两者对比与搭配用法。"
   },
   "nav": {
-    "home": "主页",
+    "resources": "资源",
+    "articles": "精选文章",
     "download": "下载",
     "mobile": "移动版",
     "theme": "主题",
@@ -760,6 +763,11 @@
     "description": "链接可能已失效或输入有误。请回到首页，或下载最新版本。",
     "back_home": "返回首页",
     "download": "下载 Cherry Studio"
+  },
+  "articles": {
+    "title": "精选文章",
+    "description": "阅读 Cherry Studio 的产品对比与使用文章，了解多模型对话、本地 AI 和智能体的应用方式。",
+    "back": "全部文章"
   },
   "compare": {
     "related": "更多对比",

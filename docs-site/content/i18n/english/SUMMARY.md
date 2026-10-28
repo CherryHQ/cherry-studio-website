@@ -5,6 +5,7 @@
 * **Getting Started**
   * [Documentation Home](README.md)
   * [Quick Start](getting-started/quick-start.md)
+  * [Choosing and Using Cherry Studio](articles/README.md)
   * [Installation Tutorial](cherry-studio/installation/README.md)
     * [Windows](cherry-studio/installation/windows.md)
     * [macOS](cherry-studio/installation/macos.md)
@@ -146,7 +147,6 @@
     * [API Gateway](advanced-basic/developer-tools/api-gateway.md)
   * [Contribute Code](contribution/code.md)
   * [Contribute to Documentation](contribution/docs.md)
-  * [Cherry Studio Articles](articles/README.md)
   * **Reference**
     * [Knowledge Popularization](question-contact/knowledge.md)
     * [Model Reference](other/models-info/README.md)

@@ -53,6 +53,16 @@ export default tseslint.config({
 
 The Fumadocs documentation is published under `/docs` and built with the website. See [docs-site/README.md](docs-site/README.md) for local development, editing local content in `docs-site/content/`, languages, and deployment.
 
+## Articles
+
+The article series lives at `/resources/articles/`, with individual articles at `/resources/articles/<slug>`.
+Chinese and English Markdown sources are in `src/content/compare/`. Update both languages when editing an article.
+The Vite app and `scripts/finalize-static-site.mjs` share those sources for client rendering and static HTML,
+including canonical URLs, language alternates, structured data and the sitemap.
+
+Published `/compare/<slug>` links redirect to the new paths through `nginx.conf` in the container and
+`public/_redirects` on Cloudflare. The build also emits static redirect pages for other hosts.
+
 ## Browser caching
 
 Cloudflare Pages uses `public/_headers` (copied into `dist/_headers`); the container uses `nginx.conf`. HTML, documentation RSC payloads, search indexes, and fixed-name files must revalidate on every request. Only fingerprinted files in `/assets/`, `/docs/_next/static/`, and `/docs/content-assets/` receive a one-year immutable cache. Keep fixed-name public resources outside those directories. The build fingerprints the blocking theme initializer as well.

@@ -1,6 +1,6 @@
 import { marked } from 'marked'
 
-// 对比页正文：每种语言一个 Markdown 文件，文件名就是 URL slug（/compare/<slug>）。
+// 文章正文：每种语言一个 Markdown 文件，文件名就是 URL slug（/resources/articles/<slug>）。
 // scripts/finalize-static-site.mjs 读取同一批文件生成静态 HTML、sitemap 和 FAQ 结构化数据，
 // 所以新增或删除页面只需要改这里的列表和对应的 Markdown 文件。
 

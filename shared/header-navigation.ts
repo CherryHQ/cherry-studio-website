@@ -6,13 +6,15 @@ export interface HeaderLink {
   active?: boolean
   analyticsLocation?: string
   onClick?: () => string | undefined
+  children?: HeaderLink[]
 }
 
 interface HeaderLabels {
-  home: string
   mobile: string
   docs: string
   theme: string
+  resources: string
+  articles: string
   careers: string
   enterprise: string
   pricing: string
@@ -56,6 +58,20 @@ export function getHeaderLinks({
     analyticsLocation: 'header_enterprise',
     onClick: onEnterpriseClick
   }
+  const resourceLinks: HeaderLink[] = [
+    { href: '/theme', label: labels.theme, active: !docsActive && pathname === '/theme' },
+    {
+      href: '/resources/articles/',
+      label: labels.articles,
+      active: !docsActive && pathname.startsWith('/resources/articles')
+    }
+  ]
+  const resources: HeaderLink = {
+    href: '/resources',
+    label: labels.resources,
+    active: resourceLinks.some((item) => item.active),
+    children: resourceLinks
+  }
 
   return englishSite
     ? [
@@ -67,14 +83,14 @@ export function getHeaderLinks({
         },
         mobile,
         docs,
+        resources,
         enterprise
       ]
     : [
-        { href: '/', label: labels.home, active: !docsActive && pathname === '/' },
         mobile,
         docs,
-        { href: '/theme', label: labels.theme, active: !docsActive && pathname === '/theme' },
         { href: '/careers', label: labels.careers, active: !docsActive && pathname === '/careers' },
+        resources,
         enterprise
       ]
 }
