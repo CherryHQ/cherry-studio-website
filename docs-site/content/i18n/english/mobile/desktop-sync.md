@@ -50,7 +50,10 @@ Read the reason shown beside the provider:
 
 * **Unsupported authentication:** a desktop login may not provide an exportable key usable on mobile. Configure a supported method separately on mobile.
 * **No usable API key:** key-based providers need a valid enabled key on desktop. Explicitly keyless HTTP gateways follow the import preview's requirements.
+* **No Base URL for the default protocol:** a custom provider's default chat protocol has no Base URL on desktop. Add that address on desktop and synchronize again.
 * **Unreadable configuration:** update mobile, or skip that entry and import the others.
+
+Desktop lists every protocol a model supports. When importing a custom provider, mobile calls each model through a protocol that provider has a Base URL for; a model it could only call through chat protocols without one is left out of the import list and is not counted as skipped. To import such models, add the Base URL for their protocol on desktop, then synchronize again.
 
 0.3.0 can import supported HTTP-service configurations, including gateways such as LM Studio and keyless connections. Invocation still depends on the exported API: native Ollama endpoints remain unsupported; compatible endpoints depend on their actual configuration.
 
