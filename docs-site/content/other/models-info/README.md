@@ -2,7 +2,7 @@
 
 本页数据来自 Cherry Studio 内置模型目录（[provider-registry](https://github.com/CherryHQ/cherry-studio/tree/main/packages/provider-registry)），随应用仓库自动同步；信息仅供参考，实际上下文长度、能力与价格请以模型服务商为准。表中 `-` 表示数据源未提供该字段。
 
-> **数据更新时间**: 2026-10-27 14:14:54 UTC / 2026-10-27 22:14:54 CST (北京时间)（数据版本 `38986c5ef01254eb`）
+> **数据更新时间**: 2026-10-31 14:26:24 UTC / 2026-10-31 22:26:24 CST (北京时间)（数据版本 `14baeedb14bc2134`）
 
 ## 分类目录
 
