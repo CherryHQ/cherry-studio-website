@@ -92,3 +92,9 @@ jobs:
       - name: Fail when a snapshot could not be refreshed
         if: steps.leaderboard.outcome != 'success' || steps.models.outcome != 'success'
         run: exit 1
+
+      - name: Request synchronization after the default-token push
+        if: always() && steps.commit.outputs.changed == 'true' && vars.WEBSITE_DOCS_SYNC_ENABLED == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run website-docs-sync.yml --ref main --repo "$GITHUB_REPOSITORY"
