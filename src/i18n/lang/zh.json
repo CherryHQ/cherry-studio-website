@@ -14,7 +14,12 @@
     "not_found": "页面不存在 - Cherry Studio",
     "compare_manus": "Cherry Studio 和 Manus 怎么选：本地还是云端 AI Agent",
     "compare_chatgpt_desktop_app": "ChatGPT 桌面版替代：一个应用用上所有模型 | Cherry Studio",
-    "compare_lm_studio": "LM Studio 替代：本地和云端模型放在一个应用里用"
+    "compare_lm_studio": "LM Studio 替代：本地和云端模型放在一个应用里用",
+    "compare_ai_translation": "AI 翻译软件：划词翻译、文档和 PDF 翻译 | Cherry Studio",
+    "compare_mcp": "MCP 是什么？在桌面 AI 客户端里使用 MCP 工具 | Cherry Studio",
+    "compare_ai_knowledge_base": "AI 知识库搭建：在自己电脑上建本地知识库 | Cherry Studio",
+    "compare_ai_office_assistant": "AI 办公助手：用 AI 处理文档、表格和周报 | Cherry Studio",
+    "compare_free_ai_models": "免费 AI 模型有哪些？在 Cherry Studio 里免费使用 | Cherry Studio"
   },
   "page_description": {
     "articles": "阅读 Cherry Studio 的产品对比与使用文章，了解多模型对话、本地 AI 和智能体的应用方式。",
@@ -31,7 +36,12 @@
     "not_found": "你访问的页面不存在。",
     "compare_manus": "Manus 在云端跑 Agent、按积分计费；Cherry Studio 在你自己的电脑上跑 Agent，模型随你接。从价格、隐私和工具三方面对比。",
     "compare_chatgpt_desktop_app": "一个免费的桌面应用里用 GPT、Claude、Gemini、DeepSeek 和本地模型。可以用 ChatGPT 账号登录，也可以按 token 付费。",
-    "compare_lm_studio": "LM Studio 负责跑本地模型，Cherry Studio 在上面加上 Agent、知识库、MCP 工具和云端模型。两者对比与搭配用法。"
+    "compare_lm_studio": "LM Studio 负责跑本地模型，Cherry Studio 在上面加上 Agent、知识库、MCP 工具和云端模型。两者对比与搭配用法。",
+    "compare_ai_translation": "在任何应用里选中文字就能翻译，图片、Word、PDF 也能直接拖进来翻译。翻译模型随你选，GPT、Claude、DeepSeek、通义千问都行。",
+    "compare_mcp": "MCP 让 AI 调用外部工具和数据。看懂 MCP 是什么，以及怎么在 Cherry Studio 里添加 MCP 服务器、交给智能体使用。",
+    "compare_ai_knowledge_base": "把 PDF、Word、笔记和网页建成知识库，提问时带出处回答。支持本地嵌入模型，资料可以完全不出电脑。",
+    "compare_ai_office_assistant": "让 AI 读会议记录、整理周报、审阅长文档、生成 Excel 和 PPT。Cherry Studio 的智能体直接处理你电脑上的文件。",
+    "compare_free_ai_models": "不花钱也能用大模型：Cherry Studio 内置免费模型，还能接魔搭、OpenRouter 免费版、智谱 Flash 和本地 Ollama 模型。"
   },
   "nav": {
     "resources": "资源",
@@ -767,15 +777,32 @@
   },
   "articles": {
     "title": "精选文章",
-    "description": "阅读 Cherry Studio 的产品对比与使用文章，了解多模型对话、本地 AI 和智能体的应用方式。",
-    "back": "全部文章"
+    "description": "Cherry Studio 的产品对比和使用场景文章：怎么选 AI 桌面应用，以及怎么用它翻译、搭知识库、接 MCP 工具和处理日常办公。",
+    "back": "全部文章",
+    "breadcrumb": "面包屑导航",
+    "categories_label": "文章分类",
+    "categories": {
+      "compare": {
+        "title": "产品对比",
+        "description": "和你可能正在用的其他 AI 应用相比，Cherry Studio 有什么不一样。"
+      },
+      "use-cases": {
+        "title": "使用场景",
+        "description": "用 Cherry Studio 完成具体的事：翻译、知识库、MCP 工具、办公和免费模型。"
+      }
+    }
   },
   "compare": {
-    "related": "更多对比",
+    "related": "相关文章",
     "links": {
       "manus": "Cherry Studio 和 Manus 对比",
       "chatgpt-desktop-app": "ChatGPT 桌面版替代",
-      "lm-studio": "LM Studio 替代"
+      "lm-studio": "LM Studio 替代",
+      "ai-translation": "AI 翻译软件：划词翻译、文档和 PDF 翻译",
+      "mcp": "MCP 是什么：在 Cherry Studio 里使用 MCP 工具",
+      "ai-knowledge-base": "AI 知识库：在自己电脑上搭建本地知识库",
+      "ai-office-assistant": "AI 办公助手：让 AI 处理文档、表格和周报",
+      "free-ai-models": "免费 AI 模型：在 Cherry Studio 里能免费用哪些模型"
     }
   }
 }

@@ -16,6 +16,16 @@ icon: compass
 * [ChatGPT 桌面版替代：一个应用里用上所有模型](https://cherryai.com.cn/resources/articles/chatgpt-desktop-app)
 * [LM Studio 替代：在一个桌面应用里同时用本地和云端模型](https://cherryai.com.cn/resources/articles/lm-studio)
 
+## 使用场景
+
+用 Cherry Studio 完成具体的事。
+
+* [AI 翻译软件：划词翻译、文档和 PDF 翻译](https://cherryai.com.cn/resources/articles/ai-translation)
+* [MCP 是什么：在 Cherry Studio 里使用 MCP 工具](https://cherryai.com.cn/resources/articles/mcp)
+* [AI 知识库：在自己电脑上搭建本地知识库](https://cherryai.com.cn/resources/articles/ai-knowledge-base)
+* [AI 办公助手：让 AI 处理文档、表格和周报](https://cherryai.com.cn/resources/articles/ai-office-assistant)
+* [免费 AI 模型：在 Cherry Studio 里能免费用哪些模型](https://cherryai.com.cn/resources/articles/free-ai-models)
+
 ## 一个应用用上主流模型
 
 Cherry Studio 支持几十家模型服务商，同一段对话里也能随时切换模型。

@@ -14,7 +14,12 @@
     "not_found": "Page Not Found - Cherry Studio",
     "compare_manus": "Cherry Studio vs Manus: Local or Cloud AI Agent?",
     "compare_chatgpt_desktop_app": "ChatGPT Desktop App Alternative for Every Model | Cherry Studio",
-    "compare_lm_studio": "LM Studio Alternative: Local and Cloud Models in One App"
+    "compare_lm_studio": "LM Studio Alternative: Local and Cloud Models in One App",
+    "compare_ai_translation": "AI Translation App for Selected Text, Documents and PDFs | Cherry Studio",
+    "compare_mcp": "What Is MCP? How to Use MCP Tools in a Desktop AI App | Cherry Studio",
+    "compare_ai_knowledge_base": "Build a Local AI Knowledge Base on Your Computer | Cherry Studio",
+    "compare_ai_office_assistant": "AI Office Assistant for Documents, Spreadsheets and Reports | Cherry Studio",
+    "compare_free_ai_models": "Free AI Models You Can Use in Cherry Studio | Cherry Studio"
   },
   "page_description": {
     "articles": "Explore Cherry Studio product comparisons and practical articles on multi-model chat, local AI and agents.",
@@ -31,7 +36,12 @@
     "not_found": "The page you are looking for does not exist.",
     "compare_manus": "Manus runs agents in the cloud and bills in credits. Cherry Studio runs them on your own computer with any model. Compare price, privacy and tools.",
     "compare_chatgpt_desktop_app": "Use GPT, Claude, Gemini, DeepSeek and local models in one free desktop app. Sign in with your ChatGPT plan or pay per token.",
-    "compare_lm_studio": "Keep LM Studio for running local models and add Cherry Studio for agents, knowledge bases, MCP tools and cloud models."
+    "compare_lm_studio": "Keep LM Studio for running local models and add Cherry Studio for agents, knowledge bases, MCP tools and cloud models.",
+    "compare_ai_translation": "Translate selected text in any app, or drop in images, Word files and PDFs. Pick the translation model yourself: GPT, Claude, Gemini, DeepSeek and more.",
+    "compare_mcp": "MCP lets AI call external tools and data. Learn what MCP is and how to add MCP servers in Cherry Studio and hand them to agents.",
+    "compare_ai_knowledge_base": "Turn PDFs, Word files, notes and web pages into a knowledge base that answers with sources. Use a local embedding model to keep files on your computer.",
+    "compare_ai_office_assistant": "Let AI read meeting notes, draft weekly reports, review long documents and produce spreadsheets and slides, working on files on your computer.",
+    "compare_free_ai_models": "Use AI models without paying: Cherry Studio has a built-in free model and connects to OpenRouter free models, Gemini, Groq and local Ollama models."
   },
   "nav": {
     "resources": "Resources",
@@ -748,15 +758,32 @@
   },
   "articles": {
     "title": "Articles",
-    "description": "Explore Cherry Studio product comparisons and practical articles on multi-model chat, local AI and agents.",
-    "back": "All articles"
+    "description": "Cherry Studio comparisons and use cases: how to choose an AI desktop app, and how to use it for translation, knowledge bases, MCP tools and everyday work.",
+    "back": "All articles",
+    "breadcrumb": "Breadcrumb",
+    "categories_label": "Article categories",
+    "categories": {
+      "compare": {
+        "title": "Comparisons",
+        "description": "How Cherry Studio differs from the AI apps you may already use."
+      },
+      "use-cases": {
+        "title": "Use cases",
+        "description": "Get specific work done with Cherry Studio: translation, knowledge bases, MCP tools, office work and free models."
+      }
+    }
   },
   "compare": {
-    "related": "More comparisons",
+    "related": "Related articles",
     "links": {
       "manus": "Cherry Studio vs Manus",
       "chatgpt-desktop-app": "ChatGPT desktop app alternative",
-      "lm-studio": "LM Studio alternative"
+      "lm-studio": "LM Studio alternative",
+      "ai-translation": "AI translation app: selected text, documents and PDFs",
+      "mcp": "What is MCP? Using MCP tools in Cherry Studio",
+      "ai-knowledge-base": "AI knowledge base on your own computer",
+      "ai-office-assistant": "AI office assistant for documents, spreadsheets and reports",
+      "free-ai-models": "Free AI models you can use in Cherry Studio"
     }
   }
 }

@@ -16,6 +16,16 @@ How Cherry Studio stacks up against other AI apps you might already be using.
 * [A ChatGPT desktop app alternative that runs every model](https://cherryai.com/resources/articles/chatgpt-desktop-app)
 * [LM Studio alternative: local and cloud models in one app](https://cherryai.com/resources/articles/lm-studio)
 
+## Use Cases
+
+Get specific work done with Cherry Studio.
+
+* [AI translation app: selected text, documents and PDFs](https://cherryai.com/resources/articles/ai-translation)
+* [What is MCP? Using MCP tools in Cherry Studio](https://cherryai.com/resources/articles/mcp)
+* [Build a local AI knowledge base on your computer](https://cherryai.com/resources/articles/ai-knowledge-base)
+* [AI office assistant for documents, spreadsheets and reports](https://cherryai.com/resources/articles/ai-office-assistant)
+* [Free AI models you can use in Cherry Studio](https://cherryai.com/resources/articles/free-ai-models)
+
 ## Use Popular Models in One App
 
 Cherry Studio connects to dozens of model providers, so you can switch between models in the same conversation.

@@ -84,7 +84,9 @@ const ROUTES = {
 // 文章页：src/content/compare/<locale>/<slug>.md 存在就生成 /resources/articles/<slug>。
 // 中文正文审核通过前不放文件，中文站就不会生成也不会进 sitemap，英文页也不输出 zh-CN 的 hreflang。
 const COMPARE_DIR = join(process.cwd(), 'src/content/compare')
-const COMPARE_LASTMOD = '2026-10-23'
+const ARTICLE_CATALOG = JSON.parse(readFileSync(join(COMPARE_DIR, 'catalog.json'), 'utf8'))
+// 只有最早三篇用过 /compare/<slug> 地址，需要保留旧地址跳转
+const LEGACY_COMPARE_SLUGS = new Set(['manus', 'chatgpt-desktop-app', 'lm-studio'])
 const compareArticleClass = JSON.parse(readFileSync(join(COMPARE_DIR, 'article-style.json'), 'utf8')).className
 
 function listCompareSlugs(locale) {
@@ -96,8 +98,16 @@ function listCompareSlugs(locale) {
     .sort()
 }
 
+function articleMeta(slug) {
+  const meta = ARTICLE_CATALOG.articles[slug]
+  if (!meta) throw new Error(`src/content/compare/catalog.json is missing article "${slug}"`)
+  return meta
+}
+
 const compareRoutes = listCompareSlugs(target).map((slug) => ({
   path: `/resources/articles/${slug}`,
+  category: articleMeta(slug).category,
+  lastmod: articleMeta(slug).lastmod,
   key: `compare_${slug.replace(/-/g, '_')}`,
   compare: slug,
   chineseCounterpart: existsSync(join(COMPARE_DIR, 'zh', `${slug}.md`)),
@@ -129,8 +139,12 @@ const SITEMAP = {
 }
 
 SITEMAP[target].push(
-  { path: articlesIndex.path, priority: '0.7', lastmod: '2026-10-28' },
-  ...compareRoutes.map(({ path }) => ({ path, priority: '0.7', lastmod: COMPARE_LASTMOD }))
+  {
+    path: articlesIndex.path,
+    priority: '0.7',
+    lastmod: ['2026-11-01', ...compareRoutes.map(({ lastmod }) => lastmod)].sort().at(-1)
+  },
+  ...compareRoutes.map(({ path, lastmod }) => ({ path, priority: '0.7', lastmod }))
 )
 
 function replaceTagAttribute(html, tagPattern, attribute, value) {
@@ -249,12 +263,31 @@ function buildRouteHtml(route) {
   }
 
   if (route.articlesIndex) {
-    const items = compareRoutes.map(({ path, compare, key }) =>
-      `<li><h2 class="text-foreground text-xl font-semibold text-balance"><a href="${path}" class="underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4">${escapeHtml(translations.compare.links[compare])}</a></h2><p class="text-muted-foreground mt-2 leading-7 text-pretty">${escapeHtml(translations.page_description[key])}</p></li>`
-    ).join('')
+    const groups = articleGroups()
+    const chips =
+      groups.length > 1
+        ? `<nav aria-label="${escapeHtml(translations.articles.categories_label)}" class="mt-8 flex flex-wrap gap-2">${groups
+            .map(
+              ({ category }) =>
+                `<a href="#${category}" class="border-border text-muted-foreground hover:text-foreground rounded-full border px-4 py-1.5 text-sm transition-colors">${escapeHtml(translations.articles.categories[category].title)}</a>`
+            )
+            .join('')}</nav>`
+        : ''
+    const sections = groups
+      .map(({ category, routes }) => {
+        const items = routes
+          .map(
+            ({ path, compare, key }) =>
+              `<li><a href="${path}" class="border-border hover:border-foreground/30 block h-full rounded-xl border p-5 transition-colors focus-visible:outline-2 focus-visible:outline-offset-4"><h3 class="text-foreground text-lg font-semibold text-balance">${escapeHtml(translations.compare.links[compare])}</h3><p class="text-muted-foreground mt-2 text-sm leading-6 text-pretty">${escapeHtml(translations.page_description[key])}</p></a></li>`
+          )
+          .join('')
+        const { title: categoryTitle, description: categoryDescription } = translations.articles.categories[category]
+        return `<section id="${category}" class="mt-14 scroll-mt-28"><h2 class="text-foreground text-2xl font-semibold">${escapeHtml(categoryTitle)}</h2><p class="text-muted-foreground mt-2 leading-7 text-pretty">${escapeHtml(categoryDescription)}</p><ul class="mt-6 grid gap-4 sm:grid-cols-2">${items}</ul></section>`
+      })
+      .join('')
     html = html.replace(
       '<div id="root"></div>',
-      `<div id="root"><main class="mx-auto min-h-svh max-w-5xl px-4 pt-32 pb-16 sm:px-6 lg:px-8"><h1 class="text-foreground text-3xl font-semibold text-balance sm:text-4xl">${escapeHtml(translations.articles.title)}</h1><p class="text-muted-foreground mt-4 text-lg leading-8 text-pretty">${escapeHtml(translations.articles.description)}</p><ul class="mt-12 space-y-8">${items}</ul></main></div>`
+      `<div id="root"><main class="mx-auto min-h-svh max-w-5xl px-4 pt-32 pb-16 sm:px-6 lg:px-8"><h1 class="text-foreground text-3xl font-semibold text-balance sm:text-4xl">${escapeHtml(translations.articles.title)}</h1><p class="text-muted-foreground mt-4 text-lg leading-8 text-pretty">${escapeHtml(translations.articles.description)}</p>${chips}${sections}</main></div>`
     )
     html = appendJsonLd(html, {
       '@context': 'https://schema.org',
@@ -264,12 +297,14 @@ function buildRouteHtml(route) {
       url: canonicalUrl,
       mainEntity: {
         '@type': 'ItemList',
-        itemListElement: compareRoutes.map(({ path, compare }, index) => ({
-          '@type': 'ListItem',
-          position: index + 1,
-          name: translations.compare.links[compare],
-          url: `${config.domain}${path}`
-        }))
+        itemListElement: groups
+          .flatMap(({ routes }) => routes)
+          .map(({ path, compare }, index) => ({
+            '@type': 'ListItem',
+            position: index + 1,
+            name: translations.compare.links[compare],
+            url: `${config.domain}${path}`
+          }))
       }
     })
   }
@@ -279,9 +314,10 @@ function buildRouteHtml(route) {
     // 正文直接写进 #root：不跑 JS 的爬虫也能读到全文，createRoot 挂载后会整块替换掉
     html = html.replace(
       '<div id="root"></div>',
-      `<div id="root"><div class="bg-background min-h-screen"><article class="${compareArticleClass}"><a href="/resources/articles/" class="mb-8 inline-block text-sm focus-visible:outline-2 focus-visible:outline-offset-4">${escapeHtml(translations.articles.back)}</a>${renderCompareMarkdown(markdown)}</article></div></div>`
+      `<div id="root"><div class="bg-background min-h-screen"><article class="${compareArticleClass}">${buildBreadcrumbHtml(route.category)}<div class="article-body">${renderCompareMarkdown(markdown)}</div>${buildRelatedHtml(route)}</article></div></div>`
     )
-    html = appendJsonLd(html, buildCompareArticleJsonLd(markdown, canonicalUrl, description))
+    html = appendJsonLd(html, buildCompareArticleJsonLd(markdown, canonicalUrl, description, route.lastmod))
+    html = appendJsonLd(html, buildArticleBreadcrumbJsonLd(route, markdown, canonicalUrl))
     const faq = extractFaq(markdown)
     if (faq.length > 0) html = appendJsonLd(html, buildFaqJsonLd(faq))
   }
@@ -386,7 +422,75 @@ function buildFaqJsonLd(items) {
   }
 }
 
-function buildCompareArticleJsonLd(markdown, url, description) {
+// 按 catalog.json 的分类顺序分组，组内按 catalog.json 里的书写顺序（和 COMPARE_SLUGS 保持一致）
+function articleGroups() {
+  const order = Object.keys(ARTICLE_CATALOG.articles)
+  return ARTICLE_CATALOG.categories
+    .map((category) => ({
+      category,
+      routes: compareRoutes
+        .filter((route) => route.category === category)
+        .sort((a, b) => order.indexOf(a.compare) - order.indexOf(b.compare))
+    }))
+    .filter(({ routes }) => routes.length > 0)
+}
+
+// 与 src/content/compare/index.ts 的 getRelatedArticles 保持一致：同分类在前，其他分类补足
+function relatedRoutes(route, limit = 6) {
+  const others = articleGroups()
+    .flatMap(({ routes }) => routes)
+    .filter((other) => other.compare !== route.compare)
+  return [
+    ...others.filter((other) => other.category === route.category),
+    ...others.filter((other) => other.category !== route.category)
+  ].slice(0, limit)
+}
+
+// 与 src/pages/compare/index.tsx 的面包屑和相关文章保持同样的结构和样式
+function buildBreadcrumbHtml(category) {
+  return `<nav aria-label="${escapeHtml(translations.articles.breadcrumb)}" class="mb-8 text-sm"><ol class="text-muted-foreground flex flex-wrap items-center gap-x-2 gap-y-1"><li><a href="/resources/articles/" class="hover:text-foreground focus-visible:outline-2">${escapeHtml(translations.articles.title)}</a></li><li aria-hidden="true">/</li><li><a href="/resources/articles/#${category}" class="hover:text-foreground focus-visible:outline-2">${escapeHtml(translations.articles.categories[category].title)}</a></li></ol></nav>`
+}
+
+function buildRelatedHtml(route) {
+  const related = relatedRoutes(route)
+  if (related.length === 0) return ''
+  const items = related
+    .map(
+      ({ path, compare }) =>
+        `<li><a href="${path}" class="text-muted-foreground hover:text-foreground text-sm transition-colors">${escapeHtml(translations.compare.links[compare])}</a></li>`
+    )
+    .join('')
+  return `<nav class="border-border mt-14 border-t pt-6" aria-label="${escapeHtml(translations.compare.related)}"><p class="text-foreground text-sm font-semibold">${escapeHtml(translations.compare.related)}</p><ul class="mt-3 grid gap-2 sm:grid-cols-2">${items}</ul></nav>`
+}
+
+function buildArticleBreadcrumbJsonLd(route, markdown, url) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: translations.articles.title,
+        item: `${config.domain}/resources/articles/`
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: translations.articles.categories[route.category].title,
+        item: `${config.domain}/resources/articles/#${route.category}`
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: markdown.match(/^# (.+)$/m)?.[1].trim() ?? translations.compare.links[route.compare],
+        item: url
+      }
+    ]
+  }
+}
+
+function buildCompareArticleJsonLd(markdown, url, description, lastmod) {
   const headline = markdown.match(/^# (.+)$/m)?.[1].trim()
   const image = markdown.match(/!\[[^\]]*\]\((\/[^)]+)\)/)?.[1]
 
@@ -399,8 +503,8 @@ function buildCompareArticleJsonLd(markdown, url, description) {
     url,
     mainEntityOfPage: url,
     ...(image ? { image: `${config.domain}${image}` } : {}),
-    datePublished: COMPARE_LASTMOD,
-    dateModified: COMPARE_LASTMOD,
+    datePublished: lastmod,
+    dateModified: lastmod,
     author: {
       '@type': 'Organization',
       name: 'Cherry Studio',
@@ -693,7 +797,7 @@ for (const route of ROUTES[target]) {
   writeRouteHtml(route)
 }
 
-for (const route of compareRoutes) {
+for (const route of compareRoutes.filter(({ compare }) => LEGACY_COMPARE_SLUGS.has(compare))) {
   writeRouteHtml({
     path: `/compare/${route.compare}`,
     key: route.key,
