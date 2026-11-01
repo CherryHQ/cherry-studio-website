@@ -13,8 +13,7 @@ export const COMPARE_SLUGS = [
   'ai-translation',
   'mcp',
   'ai-knowledge-base',
-  'ai-office-assistant',
-  'free-ai-models'
+  'ai-office-assistant'
 ] as const
 
 export type CompareSlug = (typeof COMPARE_SLUGS)[number]

@@ -24,7 +24,6 @@ Get specific work done with Cherry Studio.
 * [What is MCP? Using MCP tools in Cherry Studio](https://cherryai.com/resources/articles/mcp)
 * [Build a local AI knowledge base on your computer](https://cherryai.com/resources/articles/ai-knowledge-base)
 * [AI office assistant for documents, spreadsheets and reports](https://cherryai.com/resources/articles/ai-office-assistant)
-* [Free AI models you can use in Cherry Studio](https://cherryai.com/resources/articles/free-ai-models)
 
 ## Use Popular Models in One App
 

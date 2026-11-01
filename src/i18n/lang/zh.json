@@ -18,8 +18,7 @@
     "compare_ai_translation": "AI 翻译软件：划词翻译、文档和 PDF 翻译 | Cherry Studio",
     "compare_mcp": "MCP 是什么？在桌面 AI 客户端里使用 MCP 工具 | Cherry Studio",
     "compare_ai_knowledge_base": "AI 知识库搭建：在自己电脑上建本地知识库 | Cherry Studio",
-    "compare_ai_office_assistant": "AI 办公助手：用 AI 处理文档、表格和周报 | Cherry Studio",
-    "compare_free_ai_models": "免费 AI 模型有哪些？在 Cherry Studio 里免费使用 | Cherry Studio"
+    "compare_ai_office_assistant": "AI 办公助手：用 AI 处理文档、表格和周报 | Cherry Studio"
   },
   "page_description": {
     "articles": "阅读 Cherry Studio 的产品对比与使用文章，了解多模型对话、本地 AI 和智能体的应用方式。",
@@ -40,8 +39,7 @@
     "compare_ai_translation": "在任何应用里选中文字就能翻译，图片、Word、PDF 也能直接拖进来翻译。翻译模型随你选，GPT、Claude、DeepSeek、通义千问都行。",
     "compare_mcp": "MCP 让 AI 调用外部工具和数据。看懂 MCP 是什么，以及怎么在 Cherry Studio 里添加 MCP 服务器、交给智能体使用。",
     "compare_ai_knowledge_base": "把 PDF、Word、笔记和网页建成知识库，提问时带出处回答。支持本地嵌入模型，资料可以完全不出电脑。",
-    "compare_ai_office_assistant": "让 AI 读会议记录、整理周报、审阅长文档、生成 Excel 和 PPT。Cherry Studio 的智能体直接处理你电脑上的文件。",
-    "compare_free_ai_models": "不花钱也能用大模型：Cherry Studio 内置免费模型，还能接魔搭、OpenRouter 免费版、智谱 Flash 和本地 Ollama 模型。"
+    "compare_ai_office_assistant": "让 AI 读会议记录、整理周报、审阅长文档、生成 Excel 和 PPT。Cherry Studio 的智能体直接处理你电脑上的文件。"
   },
   "nav": {
     "resources": "资源",
@@ -788,7 +786,7 @@
       },
       "use-cases": {
         "title": "使用场景",
-        "description": "用 Cherry Studio 完成具体的事：翻译、知识库、MCP 工具、办公和免费模型。"
+        "description": "用 Cherry Studio 完成具体的事：翻译、知识库、MCP 工具和日常办公。"
       }
     }
   },
@@ -801,8 +799,7 @@
       "ai-translation": "AI 翻译软件：划词翻译、文档和 PDF 翻译",
       "mcp": "MCP 是什么：在 Cherry Studio 里使用 MCP 工具",
       "ai-knowledge-base": "AI 知识库：在自己电脑上搭建本地知识库",
-      "ai-office-assistant": "AI 办公助手：让 AI 处理文档、表格和周报",
-      "free-ai-models": "免费 AI 模型：在 Cherry Studio 里能免费用哪些模型"
+      "ai-office-assistant": "AI 办公助手：让 AI 处理文档、表格和周报"
     }
   }
 }
