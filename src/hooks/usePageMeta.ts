@@ -42,9 +42,9 @@ const PAGE_META: Record<PageType, PageMetaConfig> = {
   mobile_download: { path: '/download' },
   theme: { path: '/theme' },
   careers: { path: '/careers' },
-  flash: { path: '/flash' },
-  plus: { path: '/flash' },
-  flashUsage: { path: '/flash/usage', translationKey: 'flash_usage', chineseCounterpart: false },
+  flash: { path: '/subscription' },
+  plus: { path: '/subscription' },
+  flashUsage: { path: '/subscription/usage', translationKey: 'flash_usage', chineseCounterpart: false },
   faq: { path: '/subscription/faq' },
   articles: { path: '/resources/articles/' },
   // 对比页的中文版审核通过后才上线；没有中文正文时不输出 zh-CN 的 hreflang

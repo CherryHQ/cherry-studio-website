@@ -213,7 +213,7 @@ export default function ChinaPricingPage() {
               <p className="mt-2 text-sm leading-6 text-muted-foreground">{t('plus_page.peak.description')}</p>
             </aside>
             <a
-              href="https://cherryai.com/flash/usage"
+              href="https://cherryai.com/subscription/usage"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-5 inline-flex items-center gap-1 text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline">

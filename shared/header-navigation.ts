@@ -82,10 +82,10 @@ export function getHeaderLinks({
   return englishSite
     ? [
         {
-          href: '/flash',
+          href: '/subscription',
           label: labels.pricing,
           badge: labels.pricing_badge,
-          active: !docsActive && pathname.startsWith('/flash')
+          active: !docsActive && (pathname === '/subscription' || pathname.startsWith('/subscription/'))
         },
         desktop,
         mobile,

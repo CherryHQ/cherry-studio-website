@@ -17,7 +17,7 @@ export default function SubscriptionFaqPage() {
       <main className="min-h-[70vh] bg-background px-4 pb-20 pt-28 text-foreground sm:px-8 sm:pt-32">
         <div className="mx-auto max-w-3xl">
           <Link
-            to="/flash"
+            to="/subscription"
             className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring">
             <ArrowLeft className="size-4" aria-hidden="true" />
             {t('faq_page.back')}

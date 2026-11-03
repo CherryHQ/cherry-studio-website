@@ -156,7 +156,7 @@ function FlashContent() {
           </div>
 
           <Link
-            to="/flash/usage"
+            to="/subscription/usage"
             className="text-muted-foreground hover:text-foreground mt-5 inline-flex items-center gap-1 text-sm transition-colors hover:underline">
             {t('pricing.rules_link')}
             <ArrowRight className="h-3.5 w-3.5" />
@@ -189,7 +189,7 @@ function FlashContent() {
   )
 }
 
-const FlashPage: FC = () => {
+const SubscriptionPage: FC = () => {
   const { i18n } = useTranslation()
 
   if (!isEnglishSite(i18n.resolvedLanguage || i18n.language)) return <ChinaPricingPage />
@@ -197,4 +197,4 @@ const FlashPage: FC = () => {
   return <FlashContent />
 }
 
-export default FlashPage
+export default SubscriptionPage
