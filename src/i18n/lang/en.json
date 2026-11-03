@@ -14,7 +14,8 @@
     "not_found": "Page Not Found - Cherry Studio",
     "compare_manus": "Cherry Studio vs Manus: Local or Cloud AI Agent?",
     "compare_chatgpt_desktop_app": "ChatGPT Desktop App Alternative for Every Model | Cherry Studio",
-    "compare_lm_studio": "LM Studio Alternative: Local and Cloud Models in One App"
+    "compare_lm_studio": "LM Studio Alternative: Local and Cloud Models in One App",
+    "plus": "Cherry Plus for China — Everyday work from CNY 19.9/month"
   },
   "page_description": {
     "articles": "Explore Cherry Studio product comparisons and practical articles on multi-model chat, local AI and agents.",
@@ -31,7 +32,8 @@
     "not_found": "The page you are looking for does not exist.",
     "compare_manus": "Manus runs agents in the cloud and bills in credits. Cherry Studio runs them on your own computer with any model. Compare price, privacy and tools.",
     "compare_chatgpt_desktop_app": "Use GPT, Claude, Gemini, DeepSeek and local models in one free desktop app. Sign in with your ChatGPT plan or pay per token.",
-    "compare_lm_studio": "Keep LM Studio for running local models and add Cherry Studio for agents, knowledge bases, MCP tools and cloud models."
+    "compare_lm_studio": "Keep LM Studio for running local models and add Cherry Studio for agents, knowledge bases, MCP tools and cloud models.",
+    "plus": "Cherry Plus for China: one subscription for DeepSeek, Qwen, and GLM at CNY 19.9 per month. Transparent pricing. Cancel anytime."
   },
   "nav": {
     "resources": "Resources",
@@ -47,7 +49,8 @@
     "pricing": "Flash",
     "pricing_badge": "20% off",
     "menu": "Site navigation",
-    "close_menu": "Close navigation"
+    "close_menu": "Close navigation",
+    "plus": "Plus"
   },
   "theme_switcher": {
     "dark": "Dark",
@@ -757,6 +760,94 @@
       "manus": "Cherry Studio vs Manus",
       "chatgpt-desktop-app": "ChatGPT desktop app alternative",
       "lm-studio": "LM Studio alternative"
+    }
+  },
+  "plus_page": {
+    "skip_link": "Skip to main content",
+    "subtitle": "Built for everyday work.",
+    "benefits_label": "Three benefits of Plus",
+    "benefits": {
+      "cost": {
+        "title": "Spend less",
+        "description": "Access multiple model providers for less,\nwith enough usage for a month of everyday work."
+      },
+      "freedom": {
+        "title": "Use it on your schedule",
+        "description": "No rolling time windows or daily limits.\nUse your monthly allowance whenever you need it."
+      },
+      "transparency": {
+        "title": "Clear pricing, visible usage",
+        "description": "Token rates and usage are fully transparent.\nSee exactly how much of your allowance remains."
+      }
+    },
+    "pricing_label": "Plus monthly subscription for China",
+    "per_month": "CNY/month",
+    "subscribe": "Subscribe to Plus",
+    "fine_print": "Cancel anytime · No hidden fees",
+    "usage": {
+      "title": "Monthly usage limits",
+      "table_label": "Equivalent limits when using only one model throughout the month",
+      "model": "Model",
+      "single_model": "Single-model usage limit",
+      "monthly_usage": "Monthly usage",
+      "exclusive_model": "When using only this model throughout the month",
+      "up_to": "Up to",
+      "note": "These are equivalent limits for using only the corresponding model all month, not separate allowances for each model.",
+      "rules": "View full usage rules"
+    },
+    "rates": {
+      "title": "Token pricing",
+      "description": "CNY per million tokens, based on each model provider’s standard published rates.",
+      "scroll_hint": "Swipe to see all rates →",
+      "table_label": "Model token pricing, scroll horizontally to view all columns",
+      "caption": "Plus model pricing in CNY per million tokens",
+      "model": "Model",
+      "input": "Input",
+      "output": "Output",
+      "cache_read": "Cache read",
+      "cache_write": "Cache write",
+      "off_peak": "Off-peak",
+      "peak": "Peak",
+      "free": "Free"
+    },
+    "peak": {
+      "title": "DeepSeek peak and off-peak hours",
+      "description": "DeepSeek V4.1 Flash rates depend on the time of use. Peak hours are Monday through Friday, 09:00–12:00 and 14:00–18:00 Beijing time, excluding Chinese public holidays. Off-peak rates apply at all other times, on weekends, and throughout Chinese public holidays. Qwen and GLM do not have peak and off-peak rates."
+    },
+    "faq": {
+      "title": "Questions about your subscription",
+      "quota": {
+        "question": "What happens when my monthly allowance runs out?",
+        "answer": "All models share one monthly allowance. Switching models does not provide additional plan usage after it runs out. You can continue using Cherry Studio with your own model provider API keys."
+      },
+      "invoice": {
+        "question": "Can I get an invoice?",
+        "answer": "To request an invoice, email your subscription account and billing information to <email>support@cherry-ai.com</email>."
+      },
+      "cancel": {
+        "question": "Can I cancel anytime?",
+        "answer": "Yes. Canceling stops automatic renewal. You can continue using your remaining allowance until the end of the current billing cycle."
+      },
+      "refund": {
+        "question": "Can I request a refund?",
+        "answer": "You may qualify for a refund if the charge was made within the past 14 days and you have not used any subscription allowance during that billing cycle. Contact <email>support@cherry-ai.com</email> to request a refund."
+      },
+      "accounts": {
+        "question": "Do I need an account with each model provider?",
+        "answer": "No. One subscription gives you access to the included models without signing up or adding funds with each provider separately."
+      }
+    },
+    "cta": {
+      "title": "Start with Plus today",
+      "description": "CNY 19.9 per month, with no separate accounts for each model."
+    },
+    "support": {
+      "open": "Contact support",
+      "close": "Close support dialog",
+      "title": "How can we help?",
+      "description": "For questions about subscriptions, usage, or billing, contact the Cherry Studio support team.",
+      "email": "Email the support team",
+      "faq": "Read the FAQ first"
     }
   }
 }

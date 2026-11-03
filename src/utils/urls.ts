@@ -22,6 +22,24 @@ function getCurrentHostname(): string {
   return window.location.hostname.toLowerCase()
 }
 
+function isBranchPreviewHost(hostname: string): boolean {
+  return hostname.endsWith('-cherryai-website.cherryai.workers.dev')
+}
+
+function getPreviewLanguage(): 'en-US' | 'zh-CN' | null {
+  if (!isBranchPreviewHost(getCurrentHostname())) return null
+
+  const locale = new URLSearchParams(window.location.search).get('locale')
+  const language = locale === 'zh' ? 'zh-CN' : locale === 'en' ? 'en-US' : null
+  try {
+    if (language) window.sessionStorage.setItem('preview-language', language)
+    const saved = window.sessionStorage.getItem('preview-language')
+    return language ?? (saved === 'zh-CN' || saved === 'en-US' ? saved : null)
+  } catch {
+    return language
+  }
+}
+
 function isLocalDevelopmentHost(hostname: string): boolean {
   return (
     import.meta.env.DEV ||
@@ -35,7 +53,7 @@ function isLocalDevelopmentHost(hostname: string): boolean {
 }
 
 export function getDomainDefaultLanguage(): 'en-US' | 'zh-CN' | null {
-  return DOMAIN_LANGUAGE_MAP[getCurrentHostname()] ?? null
+  return DOMAIN_LANGUAGE_MAP[getCurrentHostname()] ?? getPreviewLanguage()
 }
 
 export function getSiteRegion(): 'cn' | 'global' {
@@ -62,6 +80,14 @@ export function redirectToLanguageDomain(language: string, options?: { replace?:
 
   const hostname = getCurrentHostname()
   const targetHostname = getLanguageDomain(language)
+
+  if (isBranchPreviewHost(hostname)) {
+    const previewUrl = new URL(window.location.href)
+    previewUrl.searchParams.set('locale', language.toLowerCase().startsWith('zh') ? 'zh' : 'en')
+    if (options?.replace) window.location.replace(previewUrl.toString())
+    else window.location.assign(previewUrl.toString())
+    return true
+  }
 
   if (isLocalDevelopmentHost(hostname) || hostname === targetHostname) return false
 

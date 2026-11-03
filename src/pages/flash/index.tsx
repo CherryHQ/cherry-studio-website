@@ -1,7 +1,7 @@
 import { ArrowRight, ChevronDown, Clock, Gauge, Wallet } from 'lucide-react'
 import { type FC, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Link, Navigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import deepseekLogo from '@/assets/images/provider_logo/deepseek-color.svg'
 import qwenLogo from '@/assets/images/provider_logo/qwen-color.svg'
@@ -12,6 +12,7 @@ import SectionDivider from '@/components/website/SectionDivider'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { cn } from '@/lib/utils'
 import { isEnglishSite } from '@/utils/urls'
+import ChinaPricingPage from './china'
 
 const PRICE = { price: 8, list: 10 }
 const FLASH_PLANS_URL = 'https://cloud.cherryai.com/account/plans'
@@ -252,7 +253,7 @@ function FlashContent() {
 const FlashPage: FC = () => {
   const { i18n } = useTranslation()
 
-  if (!isEnglishSite(i18n.resolvedLanguage || i18n.language)) return <Navigate to="/" replace />
+  if (!isEnglishSite(i18n.resolvedLanguage || i18n.language)) return <ChinaPricingPage />
 
   return <FlashContent />
 }

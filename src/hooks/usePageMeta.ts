@@ -14,6 +14,7 @@ export type PageType =
   | 'theme'
   | 'careers'
   | 'flash'
+  | 'plus'
   | 'flashUsage'
   | 'articles'
   | 'compareManus'
@@ -27,7 +28,7 @@ interface PageMetaConfig {
   // 归档页把 canonical 指回正式页面（与线上英文站一致）
   canonicalPath?: string
   noindex?: boolean
-  // Flash 相关页面只在英文站存在，中文站没有对应页面
+  // 没有中文对应页面时，不输出 zh-CN 的 hreflang
   chineseCounterpart?: boolean
 }
 
@@ -40,7 +41,8 @@ const PAGE_META: Record<PageType, PageMetaConfig> = {
   mobile_download: { path: '/download' },
   theme: { path: '/theme' },
   careers: { path: '/careers' },
-  flash: { path: '/flash', chineseCounterpart: false },
+  flash: { path: '/flash' },
+  plus: { path: '/flash' },
   flashUsage: { path: '/flash/usage', translationKey: 'flash_usage', chineseCounterpart: false },
   articles: { path: '/resources/articles/' },
   // 对比页的中文版审核通过后才上线；没有中文正文时不输出 zh-CN 的 hreflang

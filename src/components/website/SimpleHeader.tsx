@@ -34,6 +34,9 @@ export default function SimpleHeader() {
     enterpriseHref: getEnterprisePortalUrl(i18n.language),
     onEnterpriseClick: () => trackEnterpriseNavigation('header', i18n.language)
   })
+  if (!englishSite) {
+    links.unshift({ href: '/flash', label: t('nav.plus'), active: pathname.replace(/\/$/, '') === '/flash' })
+  }
   return (
     <SiteHeader
       logo={cherryLogoPng}

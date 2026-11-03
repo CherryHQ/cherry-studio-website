@@ -53,6 +53,8 @@ export default tseslint.config({
 
 The Fumadocs documentation is published under `/docs` and built with the website. See [docs-site/README.md](docs-site/README.md) for local development, editing local content in `docs-site/content/`, languages, and deployment.
 
+Cloudflare branch previews support `?locale=zh` and `?locale=en` on marketing pages (for example, `/flash?locale=zh`). The choice persists within the preview tab, and the language selector stays on that preview. Production domains keep their fixed language.
+
 ## Articles
 
 The article series lives at `/resources/articles/`, with individual articles at `/resources/articles/<slug>`.
