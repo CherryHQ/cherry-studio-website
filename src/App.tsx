@@ -6,6 +6,7 @@ import { ThemeProvider } from '@/contexts/ThemeContext'
 import CareersPage from '@/pages/careers'
 import ComparePage, { LegacyCompareRedirect } from '@/pages/compare'
 import DownloadPage from '@/pages/download'
+import FaqPage from '@/pages/faq'
 import FlashPage from '@/pages/flash'
 import FlashUsagePage from '@/pages/flash/usage'
 import HomePage from '@/pages/home'
@@ -28,6 +29,7 @@ function App() {
           <Route path="/mobile" element={<MobilePage />} />
           <Route path="/flash" element={<FlashPage />} />
           <Route path="/flash/usage" element={<FlashUsagePage />} />
+          <Route path="/faq" element={<FaqPage />} />
           <Route path="/theme" element={<ThemePage />} />
           <Route path="/careers" element={<CareersPage />} />
           <Route path="/resources/articles" element={<ArticlesPage />} />

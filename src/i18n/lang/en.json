@@ -1,5 +1,6 @@
 {
   "page_title": {
+    "faq": "Cherry Flash FAQ | Cherry Studio",
     "articles": "Articles | Cherry Studio",
     "home": "Cherry Studio - The All-in-One AI Workstation",
     "download": "Download Cherry Studio for Mac, Windows & Linux",
@@ -18,6 +19,7 @@
     "plus": "Cherry Plus for China — Everyday work from CNY 19.9/month"
   },
   "page_description": {
+    "faq": "Answers about your subscription allowance, cancellations, refunds, and model provider accounts.",
     "articles": "Explore Cherry Studio product comparisons and practical articles on multi-model chat, local AI and agents.",
     "home": "Cherry Studio is an open-source, free, and powerful AI desktop client. It includes AI agents, AI chat, AI image generation, knowledge base, and more, supports all major LLMs, runs on Windows/macOS/Linux, stores data locally, and is built for heavy AI users.",
     "download": "Download Cherry Studio AI client supporting Windows, macOS, and Linux platforms. Integrates 100+ AI models, completely free and open source.",
@@ -761,6 +763,14 @@
       "chatgpt-desktop-app": "ChatGPT desktop app alternative",
       "lm-studio": "LM Studio alternative"
     }
+  },
+  "faq_page": {
+    "title": "Cherry Flash FAQ",
+    "description": "Answers about your subscription allowance, cancellations, refunds, and model provider accounts.",
+    "back": "View subscription plans",
+    "link": "FAQ",
+    "contact_title": "Still need help?",
+    "contact_description": "Contact our support team by email."
   },
   "plus_page": {
     "skip_link": "Skip to main content",

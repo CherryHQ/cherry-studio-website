@@ -1,5 +1,6 @@
 {
   "page_title": {
+    "faq": "Cherry Plus 常见问题 | Cherry Studio",
     "articles": "精选文章 | Cherry Studio",
     "home": "Cherry Studio 官方网站 - 全能 AI 工作站",
     "download": "下载 Cherry Studio - 多平台 AI 客户端",
@@ -18,6 +19,7 @@
     "plus": "Cherry Plus — 轻松办公，从每月 19.9 元开始"
   },
   "page_description": {
+    "faq": "查看关于订阅额度、发票、取消订阅和退款的常见问题。",
     "articles": "阅读 Cherry Studio 的产品对比与使用文章，了解多模型对话、本地 AI 和智能体的应用方式。",
     "home": "Cherry Studio AI桌面客户端，开源、免费、且功能强大。AI agent、AI 对话、AI绘图、知识库等功能齐全，支持所有主流大模型，支持Windows/macOS/Linux，支持数据本地存储，是AI深度使用者的首选",
     "download": "下载 Cherry Studio AI 客户端，支持 Windows、macOS、Linux 平台。集成 100+ AI 模型，完全免费开源。",
@@ -780,6 +782,14 @@
       "chatgpt-desktop-app": "ChatGPT 桌面版替代",
       "lm-studio": "LM Studio 替代"
     }
+  },
+  "faq_page": {
+    "title": "Cherry Plus 常见问题",
+    "description": "查看关于订阅额度、发票、取消订阅和退款的常见问题。",
+    "back": "查看订阅套餐",
+    "link": "常见问题",
+    "contact_title": "还有其他问题？",
+    "contact_description": "请通过邮件联系我们的支持团队。"
   },
   "plus_page": {
     "skip_link": "跳至主要内容",

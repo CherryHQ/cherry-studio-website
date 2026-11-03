@@ -1,10 +1,12 @@
-import { ArrowRight, ChevronDown, Clock3, Gauge, MessageCircle, Wallet, X } from 'lucide-react'
-import { useEffect, useRef, useState } from 'react'
-import { Trans, useTranslation } from 'react-i18next'
+import { ArrowRight, Clock3, Gauge, MessageCircle, Wallet, X } from 'lucide-react'
+import { useEffect, useRef } from 'react'
+import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
 
 import { Button } from '@/components/ui/button'
 import Footer from '@/components/website/Footer'
 import SectionDivider from '@/components/website/SectionDivider'
+import SubscriptionFaq from '@/components/website/SubscriptionFaq'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { cn } from '@/lib/utils'
 
@@ -26,14 +28,10 @@ const rates = [
   { model: 'Qwen 3.8 Flash', period: null, input: '0.80', output: '2.70', read: '0.10', write: '1.25' },
   { model: 'GLM 5.3 Flash', period: null, input: '0.80', output: '2.80', read: '0.23', write: null }
 ]
-const faqKeys = ['quota', 'invoice', 'cancel', 'refund', 'accounts'] as const
-type FaqKey = (typeof faqKeys)[number]
 
 export default function ChinaPricingPage() {
   const { t } = useTranslation()
-  const [openFaq, setOpenFaq] = useState<FaqKey | null>('quota')
   const supportDialog = useRef<HTMLDialogElement>(null)
-  const faqTitle = useRef<HTMLHeadingElement>(null)
   usePageMeta('plus')
 
   useEffect(() => {
@@ -230,55 +228,12 @@ export default function ChinaPricingPage() {
         <section id="plus-faq" aria-labelledby="plus-faq-title" className="scroll-mt-24 px-4 py-16 sm:px-8">
           <div className="mx-auto max-w-3xl">
             <h2
-              ref={faqTitle}
               id="plus-faq-title"
               tabIndex={-1}
               className="text-center text-2xl font-bold leading-10 tracking-tight sm:text-3xl">
               {t('plus_page.faq.title')}
             </h2>
-            <div className="mt-10 grid gap-4">
-              {faqKeys.map((key) => (
-                <article key={key} className="overflow-hidden rounded-2xl border border-border bg-secondary/20">
-                  <h3>
-                    <button
-                      type="button"
-                      id={`plus-question-${key}`}
-                      aria-expanded={openFaq === key}
-                      aria-controls={`plus-answer-${key}`}
-                      onClick={() => setOpenFaq(openFaq === key ? null : key)}
-                      className="flex w-full cursor-pointer items-center justify-between gap-6 p-6 text-left text-base font-medium leading-6 hover:bg-secondary/60 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-ring">
-                      {t(`plus_page.faq.${key}.question`)}
-                      <ChevronDown
-                        aria-hidden="true"
-                        className={cn(
-                          'size-5 shrink-0 text-muted-foreground motion-safe:transition-transform',
-                          openFaq === key && 'rotate-180'
-                        )}
-                      />
-                    </button>
-                  </h3>
-                  <div
-                    id={`plus-answer-${key}`}
-                    role="region"
-                    aria-labelledby={`plus-question-${key}`}
-                    hidden={openFaq !== key}
-                    className="border-t border-border px-6 pb-6 pt-4 text-sm leading-6 text-muted-foreground">
-                    <p>
-                      <Trans
-                        i18nKey={`plus_page.faq.${key}.answer`}
-                        components={{
-                          email: (
-                            <a href={`mailto:${SUPPORT_EMAIL}`} className="break-all text-primary hover:underline">
-                              {SUPPORT_EMAIL}
-                            </a>
-                          )
-                        }}
-                      />
-                    </p>
-                  </div>
-                </article>
-              ))}
-            </div>
+            <SubscriptionFaq variant="plus" />
           </div>
         </section>
 
@@ -343,16 +298,13 @@ export default function ChinaPricingPage() {
         <Button asChild className="w-full">
           <a href={`mailto:${SUPPORT_EMAIL}`}>{t('plus_page.support.email')}</a>
         </Button>
-        <a
-          href="#plus-faq"
-          onClick={() => {
-            supportDialog.current?.close()
-            faqTitle.current?.focus({ preventScroll: true })
-          }}
+        <Link
+          to="/faq"
+          onClick={() => supportDialog.current?.close()}
           className="mt-4 flex items-center justify-center gap-1 text-sm text-muted-foreground hover:text-foreground">
           {t('plus_page.support.faq')}
           <ArrowRight className="size-4" aria-hidden="true" />
-        </a>
+        </Link>
       </dialog>
     </>
   )
