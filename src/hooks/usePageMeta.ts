@@ -45,7 +45,7 @@ const PAGE_META: Record<PageType, PageMetaConfig> = {
   flash: { path: '/flash' },
   plus: { path: '/flash' },
   flashUsage: { path: '/flash/usage', translationKey: 'flash_usage', chineseCounterpart: false },
-  faq: { path: '/faq' },
+  faq: { path: '/subscription/faq' },
   articles: { path: '/resources/articles/' },
   // 对比页的中文版审核通过后才上线；没有中文正文时不输出 zh-CN 的 hreflang
   compareManus: {

@@ -7,7 +7,7 @@ import SubscriptionFaq from '@/components/website/SubscriptionFaq'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { isEnglishSite } from '@/utils/urls'
 
-export default function FaqPage() {
+export default function SubscriptionFaqPage() {
   const { t, i18n } = useTranslation()
   const variant = isEnglishSite(i18n.language) ? 'flash' : 'plus'
   usePageMeta('faq')

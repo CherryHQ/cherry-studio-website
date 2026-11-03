@@ -299,7 +299,7 @@ export default function ChinaPricingPage() {
           <a href={`mailto:${SUPPORT_EMAIL}`}>{t('plus_page.support.email')}</a>
         </Button>
         <Link
-          to="/faq"
+          to="/subscription/faq"
           onClick={() => supportDialog.current?.close()}
           className="mt-4 flex items-center justify-center gap-1 text-sm text-muted-foreground hover:text-foreground">
           {t('plus_page.support.faq')}

@@ -1,6 +1,6 @@
 {
   "page_title": {
-    "faq": "Cherry Flash FAQ | Cherry Studio",
+    "faq": "Subscription FAQ | Cherry Studio",
     "articles": "Articles | Cherry Studio",
     "home": "Cherry Studio - The All-in-One AI Workstation",
     "download": "Download Cherry Studio for Mac, Windows & Linux",
@@ -765,10 +765,10 @@
     }
   },
   "faq_page": {
-    "title": "Cherry Flash FAQ",
+    "title": "Subscription FAQ",
     "description": "Answers about your subscription allowance, cancellations, refunds, and model provider accounts.",
     "back": "View subscription plans",
-    "link": "FAQ",
+    "link": "Subscription FAQ",
     "contact_title": "Still need help?",
     "contact_description": "Contact our support team by email."
   },
@@ -857,7 +857,7 @@
       "title": "How can we help?",
       "description": "For questions about subscriptions, usage, or billing, contact the Cherry Studio support team.",
       "email": "Email the support team",
-      "faq": "Read the FAQ first"
+      "faq": "Read the subscription FAQ"
     }
   }
 }

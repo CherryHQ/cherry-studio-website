@@ -75,10 +75,10 @@ const ROUTES = {
     { path: '/download/v2', key: 'download_v2', canonicalPath: '/download' },
     { path: '/flash', key: 'flash', chineseCounterpart: false, flashPlan: true },
     { path: '/flash/usage', key: 'flash_usage', chineseCounterpart: false, dropSoftwareApplication: true },
-    { path: '/faq', key: 'faq', subscriptionFaq: true, dropSoftwareApplication: true },
+    { path: '/subscription/faq', key: 'faq', subscriptionFaq: true, dropSoftwareApplication: true },
     { path: '/theme', key: 'theme', dropSoftwareApplication: true }
   ],
-  zh: [{ path: '/faq', key: 'faq', subscriptionFaq: true, dropSoftwareApplication: true }]
+  zh: [{ path: '/subscription/faq', key: 'faq', subscriptionFaq: true, dropSoftwareApplication: true }]
 }
 
 // 文章页：src/content/compare/<locale>/<slug>.md 存在就生成 /resources/articles/<slug>。
@@ -119,14 +119,14 @@ const SITEMAP = {
     { path: '/mobile', priority: '0.9', lastmod: '2026-09-22' },
     { path: '/flash', priority: '0.9', lastmod: '2026-10-19' },
     { path: '/flash/usage', priority: '0.6', lastmod: '2026-10-19' },
-    { path: '/faq', priority: '0.6', lastmod: '2026-11-03' },
+    { path: '/subscription/faq', priority: '0.6', lastmod: '2026-11-03' },
     { path: '/theme', priority: '0.7', lastmod: '2026-02-13' }
   ],
   zh: [
     { path: '/', priority: '1.0' },
     { path: '/download', priority: '0.9' },
     { path: '/mobile', priority: '0.9' },
-    { path: '/faq', priority: '0.6', lastmod: '2026-11-03' }
+    { path: '/subscription/faq', priority: '0.6', lastmod: '2026-11-03' }
   ]
 }
 
