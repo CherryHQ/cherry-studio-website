@@ -59,7 +59,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      # Validate before pushing; dispatch Docs explicitly below because GITHUB_TOKEN
+      # Validate before pushing; dispatch Website CI/CD explicitly below because GITHUB_TOKEN
       # pushes do not trigger push workflows.
       - name: Generate documentation content
         run: pnpm docs:generate

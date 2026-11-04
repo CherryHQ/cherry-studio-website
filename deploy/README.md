@@ -12,7 +12,7 @@
 `.github/workflows/docs.yml`、`.github/scripts/build-impact.cjs`、`.github/scripts/smoke-container.sh`。
 其他路径一律构建，包括公开文档、页面、资源、测试和未知路径，不再按文件类型细分。
 push 比较整批提交，PR 比较分支共同祖先后的改动，删除和重命名也参与判断。
-手动运行 `Docs` 始终构建，选择 main 时按既有规则发布，可用于强制重新构建。
+手动运行 `Website CI/CD` 始终构建，选择 main 时按既有规则发布，可用于强制重新构建。
 
 参考数据工作流使用默认 `GITHUB_TOKEN` 提交，GitHub 不会因此触发 push 工作流，
 所以有更新时显式 dispatch `docs.yml`，让这些更新也经过同一套检查和发布。
@@ -76,7 +76,7 @@ Actions 的临时 Token。推送和拉取域名相同时可以省略 `CONTAINER_
    **开启自动同步可能立即应用该应用当前 Git 与线上之间的其他差异**；保留 digest
    不代表不会变更副本、路由等配置。不要只凭本地渲染就执行生产同步。
 4. 核实父 Application 已下发该子 Application 的自动同步配置，再合并应用工作流。
-   首次启用后推送 main，或手动运行 Docs 并选择 main。工作流缺少别名配套时会停止回写；
+   首次启用后推送 main，或手动运行 Website CI/CD 并选择 main。工作流缺少别名配套时会停止回写；
    完成配套后重跑最新 main 即可。
 5. 分别核实 Actions 质量检查、镜像推送、GitOps 提交、Argo CD 同步、Pod 就绪及
    `imageID`，最后验证中国站首页、下载页和中英文 `/docs` 的真实请求。
@@ -123,7 +123,7 @@ TEST_IMAGE=website-test:local bash .github/scripts/smoke-container.sh
 
 ## 回退
 
-先暂停 Docs 发布并取消在途发布；必要时暂时关闭该子 Application 的自动同步。
+先暂停 Website CI/CD 发布并取消在途发布；必要时暂时关闭该子 Application 的自动同步。
 在 GitOps 恢复上一个**已验证**的 `newName` 和 `digest`，再恢复同步并核实真实入口。
 不要只改 tag 或重新读取 latest。保留当前与前一可用 digest 对应镜像，检查 ACR 清理
 规则不会提前删除它们。恢复旧 ACR 回调前先停止 GitOps 发布，确保只有一条链路管理工作负载。
