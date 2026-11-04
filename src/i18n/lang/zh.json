@@ -22,7 +22,7 @@
     "compare_chatbox": "Cherry Studio 和 Chatbox 怎么选：两款 AI 桌面客户端对比"
   },
   "page_description": {
-    "articles": "阅读 Cherry Studio 的产品对比与使用文章，了解多模型对话、本地 AI 和智能体的应用方式。",
+    "articles": "Cherry Studio 的文章：怎么选、怎么用 AI 工具的实用内容，帮你把 AI 真正用到日常工作里。",
     "home": "Cherry Studio AI桌面客户端，开源、免费、且功能强大。AI agent、AI 对话、AI绘图、知识库等功能齐全，支持所有主流大模型，支持Windows/macOS/Linux，支持数据本地存储，是AI深度使用者的首选",
     "download": "下载 Cherry Studio AI 客户端，支持 Windows、macOS、Linux 平台。集成 100+ AI 模型，完全免费开源。",
     "mobile": "了解 Cherry Studio 移动版，在手机上连接 AI 模型、进行对话、创作图像和使用工具。现已上架国区 App Store，Android 提供 APK 下载。",
@@ -777,9 +777,9 @@
   },
   "articles": {
     "title": "文章",
+    "description": "关于怎么选、怎么用 AI 工具的实用文章，帮你把 AI 真正用到日常工作里。",
     "back": "全部文章",
     "breadcrumb": "面包屑导航",
-    "categories_label": "文章分类",
     "categories": {
       "compare": {
         "title": "产品对比",

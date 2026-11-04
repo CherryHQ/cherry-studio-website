@@ -265,15 +265,6 @@ function buildRouteHtml(route) {
   if (route.articlesIndex) {
     // 与 src/pages/resources/articles/index.tsx 保持同样的结构和样式
     const groups = articleGroups()
-    const chips =
-      groups.length > 1
-        ? `<nav aria-label="${escapeHtml(translations.articles.categories_label)}" class="${style.indexChips}">${groups
-            .map(
-              ({ category, routes }) =>
-                `<a href="#${category}" class="${style.indexChip}">${escapeHtml(translations.articles.categories[category].title)}<span class="${style.indexChipCount}">${routes.length}</span></a>`
-            )
-            .join('')}</nav>`
-        : ''
     const sections = groups
       .map(({ category, routes }) => {
         const items = routes
@@ -288,7 +279,7 @@ function buildRouteHtml(route) {
       .join('')
     html = html.replace(
       '<div id="root"></div>',
-      `<div id="root"><div class="bg-background min-h-screen"><main class="${style.index}"><h1 class="${style.indexTitle}">${escapeHtml(translations.articles.title)}</h1>${chips}${sections}</main></div></div>`
+      `<div id="root"><div class="bg-background min-h-screen"><main class="${style.index}"><h1 class="${style.indexTitle}">${escapeHtml(translations.articles.title)}</h1><p class="${style.indexDescription}">${escapeHtml(translations.articles.description)}</p>${sections}</main></div></div>`
     )
     html = appendJsonLd(html, {
       '@context': 'https://schema.org',

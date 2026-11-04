@@ -18,16 +18,7 @@ export default function ArticlesPage() {
     <div className="bg-background min-h-screen">
       <main className={style.index}>
         <h1 className={style.indexTitle}>{t('articles.title')}</h1>
-        {groups.length > 1 && (
-          <nav aria-label={t('articles.categories_label')} className={style.indexChips}>
-            {groups.map(({ category, slugs }) => (
-              <a key={category} href={`#${category}`} className={style.indexChip}>
-                {t(`articles.categories.${category}.title`)}
-                <span className={style.indexChipCount}>{slugs.length}</span>
-              </a>
-            ))}
-          </nav>
-        )}
+        <p className={style.indexDescription}>{t('articles.description')}</p>
         {groups.map(({ category, slugs }) => (
           <section key={category} id={category} className={style.indexSection}>
             <h2 className={style.indexSectionTitle}>{t(`articles.categories.${category}.title`)}</h2>
