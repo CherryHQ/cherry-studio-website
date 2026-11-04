@@ -18,7 +18,8 @@
     "compare_ai_translation": "AI Translation App for Selected Text, Documents and PDFs | Cherry Studio",
     "compare_mcp": "What Is MCP? How to Use MCP Tools in a Desktop AI App | Cherry Studio",
     "compare_ai_knowledge_base": "Build a Local AI Knowledge Base on Your Computer | Cherry Studio",
-    "compare_ai_office_assistant": "AI Office Assistant for Documents, Spreadsheets and Reports | Cherry Studio"
+    "compare_ai_office_assistant": "AI Office Assistant for Documents, Spreadsheets and Reports | Cherry Studio",
+    "compare_chatbox": "Cherry Studio vs Chatbox: Which AI Desktop Client Fits You?"
   },
   "page_description": {
     "articles": "Explore Cherry Studio product comparisons and practical articles on multi-model chat, local AI and agents.",
@@ -39,7 +40,8 @@
     "compare_ai_translation": "Translate selected text in any app, or drop in images, Word files and PDFs. Pick the translation model yourself: GPT, Claude, Gemini, DeepSeek and more.",
     "compare_mcp": "MCP lets AI call external tools and data. Learn what MCP is and how to add MCP servers in Cherry Studio and hand them to agents.",
     "compare_ai_knowledge_base": "Turn PDFs, Word files, notes and web pages into a knowledge base that answers with sources. Use a local embedding model to keep files on your computer.",
-    "compare_ai_office_assistant": "Let AI read meeting notes, draft weekly reports, review long documents and produce spreadsheets and slides, working on files on your computer."
+    "compare_ai_office_assistant": "Let AI read meeting notes, draft weekly reports, review long documents and produce spreadsheets and slides, working on files on your computer.",
+    "compare_chatbox": "Chatbox and Cherry Studio both run many models on your own API keys. Compare agents, MCP, knowledge bases and open source to pick the right one."
   },
   "nav": {
     "resources": "Resources",
@@ -756,7 +758,6 @@
   },
   "articles": {
     "title": "Articles",
-    "description": "Cherry Studio comparisons and use cases: how to choose an AI desktop app, and how to use it for translation, knowledge bases, MCP tools and everyday work.",
     "back": "All articles",
     "breadcrumb": "Breadcrumb",
     "categories_label": "Article categories",
@@ -777,6 +778,7 @@
       "manus": "Cherry Studio vs Manus",
       "chatgpt-desktop-app": "ChatGPT desktop app alternative",
       "lm-studio": "LM Studio alternative",
+      "chatbox": "Cherry Studio vs Chatbox",
       "ai-translation": "AI translation app: selected text, documents and PDFs",
       "mcp": "What is MCP? Using MCP tools in Cherry Studio",
       "ai-knowledge-base": "AI knowledge base on your own computer",

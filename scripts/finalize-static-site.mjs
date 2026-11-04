@@ -287,7 +287,7 @@ function buildRouteHtml(route) {
       .join('')
     html = html.replace(
       '<div id="root"></div>',
-      `<div id="root"><main class="mx-auto min-h-svh max-w-5xl px-4 pt-32 pb-16 sm:px-6 lg:px-8"><h1 class="text-foreground text-3xl font-semibold text-balance sm:text-4xl">${escapeHtml(translations.articles.title)}</h1><p class="text-muted-foreground mt-4 text-lg leading-8 text-pretty">${escapeHtml(translations.articles.description)}</p>${chips}${sections}</main></div>`
+      `<div id="root"><main class="mx-auto min-h-svh max-w-5xl px-4 pt-32 pb-16 sm:px-6 lg:px-8"><h1 class="text-foreground text-3xl font-semibold text-balance sm:text-4xl">${escapeHtml(translations.articles.title)}</h1>${chips}${sections}</main></div>`
     )
     html = appendJsonLd(html, {
       '@context': 'https://schema.org',

@@ -10,6 +10,7 @@ export const COMPARE_SLUGS = [
   'manus',
   'chatgpt-desktop-app',
   'lm-studio',
+  'chatbox',
   'ai-translation',
   'mcp',
   'ai-knowledge-base',

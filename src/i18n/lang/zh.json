@@ -18,7 +18,8 @@
     "compare_ai_translation": "AI 翻译软件：划词翻译、文档和 PDF 翻译 | Cherry Studio",
     "compare_mcp": "MCP 是什么？在桌面 AI 客户端里使用 MCP 工具 | Cherry Studio",
     "compare_ai_knowledge_base": "AI 知识库搭建：在自己电脑上建本地知识库 | Cherry Studio",
-    "compare_ai_office_assistant": "AI 办公助手：用 AI 处理文档、表格和周报 | Cherry Studio"
+    "compare_ai_office_assistant": "AI 办公助手：用 AI 处理文档、表格和周报 | Cherry Studio",
+    "compare_chatbox": "Cherry Studio 和 Chatbox 怎么选：两款 AI 桌面客户端对比"
   },
   "page_description": {
     "articles": "阅读 Cherry Studio 的产品对比与使用文章，了解多模型对话、本地 AI 和智能体的应用方式。",
@@ -39,7 +40,8 @@
     "compare_ai_translation": "在任何应用里选中文字就能翻译，图片、Word、PDF 也能直接拖进来翻译。翻译模型随你选，GPT、Claude、DeepSeek、通义千问都行。",
     "compare_mcp": "MCP 让 AI 调用外部工具和数据。看懂 MCP 是什么，以及怎么在 Cherry Studio 里添加 MCP 服务器、交给智能体使用。",
     "compare_ai_knowledge_base": "把 PDF、Word、笔记和网页建成知识库，提问时带出处回答。支持本地嵌入模型，资料可以完全不出电脑。",
-    "compare_ai_office_assistant": "让 AI 读会议记录、整理周报、审阅长文档、生成 Excel 和 PPT。Cherry Studio 的智能体直接处理你电脑上的文件。"
+    "compare_ai_office_assistant": "让 AI 读会议记录、整理周报、审阅长文档、生成 Excel 和 PPT。Cherry Studio 的智能体直接处理你电脑上的文件。",
+    "compare_chatbox": "Chatbox 和 Cherry Studio 都能接入多家模型。对比 Agent、MCP、知识库和开源程度，看看哪个更适合你。"
   },
   "nav": {
     "resources": "资源",
@@ -775,7 +777,6 @@
   },
   "articles": {
     "title": "精选文章",
-    "description": "Cherry Studio 的产品对比和使用场景文章：怎么选 AI 桌面应用，以及怎么用它翻译、搭知识库、接 MCP 工具和处理日常办公。",
     "back": "全部文章",
     "breadcrumb": "面包屑导航",
     "categories_label": "文章分类",
@@ -796,6 +797,7 @@
       "manus": "Cherry Studio 和 Manus 对比",
       "chatgpt-desktop-app": "ChatGPT 桌面版替代",
       "lm-studio": "LM Studio 替代",
+      "chatbox": "Cherry Studio 和 Chatbox 对比",
       "ai-translation": "AI 翻译软件：划词翻译、文档和 PDF 翻译",
       "mcp": "MCP 是什么：在 Cherry Studio 里使用 MCP 工具",
       "ai-knowledge-base": "AI 知识库：在自己电脑上搭建本地知识库",

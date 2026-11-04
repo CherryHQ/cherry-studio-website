@@ -15,6 +15,7 @@ icon: compass
 * [Cherry Studio VS. Manus：本地 AI Agent 还是云端 AI Agent？](https://cherryai.com.cn/resources/articles/manus)
 * [ChatGPT 桌面版替代：一个应用里用上所有模型](https://cherryai.com.cn/resources/articles/chatgpt-desktop-app)
 * [LM Studio 替代：在一个桌面应用里同时用本地和云端模型](https://cherryai.com.cn/resources/articles/lm-studio)
+* [Cherry Studio vs Chatbox：两款 AI 桌面客户端怎么选？](https://cherryai.com.cn/resources/articles/chatbox)
 
 ## 使用场景
 

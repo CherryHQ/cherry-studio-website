@@ -17,7 +17,6 @@ export default function ArticlesPage() {
     <div className="bg-background min-h-screen">
       <main className="mx-auto min-h-svh max-w-5xl px-4 pt-32 pb-16 sm:px-6 lg:px-8">
         <h1 className="text-foreground text-3xl font-semibold text-balance sm:text-4xl">{t('articles.title')}</h1>
-        <p className="text-muted-foreground mt-4 text-lg leading-8 text-pretty">{t('articles.description')}</p>
         {groups.length > 1 && (
           <nav aria-label={t('articles.categories_label')} className="mt-8 flex flex-wrap gap-2">
             {groups.map(({ category }) => (
