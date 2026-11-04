@@ -9,7 +9,7 @@ import { parseSummary } from './content.mjs'
 
 const app = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const locales = JSON.parse(readFileSync(path.join(app, 'locales.json'), 'utf8'))
-const groupNames = {
+const mobileGroupNames = {
   'zh-cn': ['开始使用', '日常使用', '智能体与自动化', '配置与数据', '故障排查', '开发者与贡献'],
   en: [
     'Getting Started',
@@ -20,6 +20,20 @@ const groupNames = {
     'Developers & Contribution'
   ]
 }
+const groupNames = {
+  'zh-cn': ['开始使用', '日常使用', '智能体与自动化', '配置与数据', '选型与参考', '故障排查', '开发者与贡献', '关于'],
+  en: [
+    'Getting Started',
+    'Everyday Tasks',
+    'Agents & Automation',
+    'Configuration & Data',
+    'Choosing & Reference',
+    'Troubleshooting',
+    'Developers & Contribution',
+    'About'
+  ]
+}
+const aliases = JSON.parse(readFileSync(path.join(app, 'page-aliases.json'), 'utf8'))
 
 for (const locale of locales) {
   const root = path.join(app, 'content', locale.directory)
@@ -30,12 +44,12 @@ for (const locale of locales) {
     else sections.at(-1).push(entry)
   }
 
-  test(`${locale.code}: desktop and mobile each expose the same six task groups`, () => {
+  test(`${locale.code}: desktop exposes eight task groups and mobile keeps its six groups`, () => {
     assert.equal(sections.length, 2)
-    for (const section of sections) {
+    for (const [index, section] of sections.entries()) {
       assert.deepEqual(
         section.filter((entry) => entry.depth === 0).map((entry) => entry.name),
-        groupNames[locale.code]
+        (index === 0 ? groupNames : mobileGroupNames)[locale.code]
       )
       assert.ok(section.filter((entry) => entry.depth === 0).every((entry) => entry.type === 'folder'))
     }
@@ -45,18 +59,21 @@ for (const locale of locales) {
     assert.ok(sections[1].filter((entry) => entry.type === 'page').every((entry) => entry.file.startsWith('mobile/')))
   })
 
-  test(`${locale.code}: knowledge-base guidance has one primary entry with legacy pages below it`, () => {
+  test(`${locale.code}: consolidated guides have one primary entry and preserve legacy aliases`, () => {
     const primary = entries.findIndex((entry) => entry.file === 'knowledge-base/knowledge-base.md')
     assert.ok(primary >= 0)
     assert.equal(entries[primary].depth, 1)
-    for (const file of [
-      'cherrystudio/preview/knowledge-base.md',
-      'advanced-basic/knowledge-content/knowledge-base.md'
+    const reference = entries.findIndex((entry) => entry.file === 'cherrystudio/preview/knowledge-base.md')
+    assert.ok(reference > primary)
+    assert.equal(entries[reference].depth, 2)
+    assert.ok(entries.slice(primary + 1, reference).every((entry) => entry.depth > 1))
+    for (const [legacy, target] of [
+      ['advanced-basic/knowledge-content/knowledge-base.md', 'knowledge-base/knowledge-base.md'],
+      ['cherrystudio/preview/code-cli.md', 'advanced-basic/developer-tools/code-cli.md']
     ]) {
-      const index = entries.findIndex((entry) => entry.file === file)
-      assert.ok(index > primary)
-      assert.equal(entries[index].depth, 2)
-      assert.ok(entries.slice(primary + 1, index).every((entry) => entry.depth > 1))
+      assert.equal(aliases[legacy], target)
+      assert.ok(!entries.some((entry) => entry.file === legacy))
+      assert.equal(entries.filter((entry) => entry.file === target).length, 1)
     }
   })
 

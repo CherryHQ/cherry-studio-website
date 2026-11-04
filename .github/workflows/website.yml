@@ -1,4 +1,4 @@
-name: Docs
+name: Website CI/CD
 
 on:
   pull_request:

@@ -59,7 +59,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      # Validate before pushing; dispatch Docs explicitly below because GITHUB_TOKEN
+      # Validate before pushing; dispatch Website CI/CD explicitly below because GITHUB_TOKEN
       # pushes do not trigger push workflows.
       - name: Generate documentation content
         run: pnpm docs:generate
@@ -87,7 +87,7 @@ jobs:
         if: steps.commit.outputs.changed == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh workflow run docs.yml --ref "$GITHUB_REF_NAME" --repo "$GITHUB_REPOSITORY"
+        run: gh workflow run website.yml --ref "$GITHUB_REF_NAME" --repo "$GITHUB_REPOSITORY"
 
       - name: Fail when a snapshot could not be refreshed
         if: steps.leaderboard.outcome != 'success' || steps.models.outcome != 'success'
