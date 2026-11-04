@@ -4,7 +4,7 @@ This page shows the top 30 models on the [Arena AI](https://arena.ai/leaderboard
 
 This leaderboard measures how models perform in practice on web front-end development (HTML/CSS/JS) tasks.
 
-> **Data updated**: 2026-11-03 16:00:38 UTC / 2026-11-04 00:00:38 CST (Beijing time)
+> **Data updated**: 2026-11-04 16:05:06 UTC / 2026-11-05 00:05:06 CST (Beijing time)
 
 {% hint style="info" %}
 A leaderboard reflects one particular evaluation and the preferences of its voters, so a high rank does not mean a model will do better on your tasks. Weigh price, speed, context, tool calling, privacy and regional availability as well.
@@ -43,7 +43,7 @@ A leaderboard reflects one particular evaluation and the preferences of its vote
 |     27 | 21-31         | GLM-5.3 (Max) [<sup>1</sup>](https://z.ai/blog/glm-5.3)                                                                                     | 1623 (++7/-7)               |  11,150 | $1.40 / $4.40 | 1M        |
 |     28 | 23-32         | Muse Spark 1.3 (xHigh) [<sup>1</sup>](https://developer.meta.com/ai/models/muse-spark/)                                                     | 1620 (++7/-7)               |  10,243 | $1.25 / $4.25 | 1M        |
 |     29 | 21-33         | DeepSeek-V4.1-Flash-20260910 (Max) [<sup>1</sup>](https://www.deepseek.com/en/news/deepseek-v4-1-flash/)                                    | 1619 (++11/-11)             |   3,510 | $0.30 / $1.20 | 1M        |
-|     30 | 23-33         | Grok 4.6 (High) [<sup>1</sup>](https://docs.x.ai/developers/models/grok-4.6)                                                                | 1616 (++7/-7)               |  11,966 | $2 / $6       | 500K      |
+|     30 | 23-33         | Grok 4.6 (High) [<sup>1</sup>](https://docs.x.ai/developers/models/grok-4.6)                                                                | 1616 (++7/-7)               |  11,966 | $1.60 / $4.80 | 500K      |
 
 ## How to read this table
 
