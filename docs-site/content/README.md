@@ -52,6 +52,10 @@ Cherry Studio 使用文档：按你要完成的事找到教程。
 
 [连接模型服务](pre-basic/providers/README.md) · [软件设置](pre-basic/settings/README.md) · [备份与数据管理](pre-basic/data-settings/README.md)
 
+## 选型与参考
+
+[选型与使用指南](articles/README.md) · [AI 基础知识](question-contact/knowledge.md) · [模型数据](other/models-info/README.md) · [模型榜单](other/model_rank/README.md)
+
 ## 故障排查
 
 [常见问题](question-contact/questions.md) · [知识库排错](knowledge-base/troubleshooting.md) · [MCP 排错](advanced-basic/extensions/mcp/troubleshooting.md) · [反馈问题](question-contact/suggestions.md)
@@ -59,6 +63,10 @@ Cherry Studio 使用文档：按你要完成的事找到教程。
 ## 开发者与贡献
 
 [API 网关与诊断工具](advanced-basic/developer-tools/README.md) · [贡献代码](contribution/code.md) · [贡献文档](contribution/docs.md)
+
+## 关于与法律
+
+[商务合作](contact-us/questions.md) · [隐私政策](about/privacypolicy.md) · [开源协议](contact-us/questions/license.md)
 
 ***
 
