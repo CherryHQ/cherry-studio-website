@@ -4,12 +4,12 @@
 
 * **开始使用**
   * [文档首页](README.md)
+  * [快速开始](getting-started/quick-start.md)
+  * [启动台](cherrystudio/preview/launchpad.md)
   * [下载与安装教程](cherry-studio/installation/README.md)
     * [Windows 安装](cherry-studio/installation/windows.md)
     * [macOS 安装](cherry-studio/installation/macos.md)
     * [Linux](cherry-studio/installation/linux.md)
-  * [快速开始](getting-started/quick-start.md)
-  * [启动台](cherrystudio/preview/launchpad.md)
   * [升级与降级](cherry-studio/installation/upgrade-downgrade.md)
     * [破坏性更新提醒](cherry-studio/installation/v2-breaking-update-notice.md)
     * [功能差异](cherry-studio/installation/v1-v2-feature-differences.md)

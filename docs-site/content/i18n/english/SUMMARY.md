@@ -4,12 +4,12 @@
 
 * **Getting Started**
   * [Documentation Home](README.md)
+  * [Quick Start](getting-started/quick-start.md)
+  * [Launchpad](cherrystudio/preview/launchpad.md)
   * [Installation Tutorial](cherry-studio/installation/README.md)
     * [Windows](cherry-studio/installation/windows.md)
     * [macOS](cherry-studio/installation/macos.md)
     * [Linux](cherry-studio/installation/linux.md)
-  * [Quick Start](getting-started/quick-start.md)
-  * [Launchpad](cherrystudio/preview/launchpad.md)
   * [Upgrade and Downgrade](cherry-studio/installation/upgrade-downgrade.md)
     * [Breaking Update Notice](cherry-studio/installation/v2-breaking-update-notice.md)
     * [Feature Differences](cherry-studio/installation/v1-v2-feature-differences.md)
