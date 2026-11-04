@@ -5,7 +5,6 @@
 * **开始使用**
   * [文档首页](README.md)
   * [快速开始](getting-started/quick-start.md)
-  * [启动台](cherrystudio/preview/launchpad.md)
   * [下载与安装教程](cherry-studio/installation/README.md)
     * [Windows 安装](cherry-studio/installation/windows.md)
     * [macOS 安装](cherry-studio/installation/macos.md)
@@ -17,6 +16,7 @@
     * [V2 降级到 V1](cherry-studio/installation/v2-to-v1-downgrade.md)
 * **日常使用**
   * [功能总览](cherrystudio/preview/README.md)
+  * [启动台](cherrystudio/preview/launchpad.md)
   * [对话与助手](cherrystudio/preview/chat.md)
     * [对话进阶](advanced-basic/chat/README.md)
     * [多模型对比与消息分支](advanced-basic/chat/model-compare-branches.md)
@@ -115,6 +115,7 @@
     * **模型**
       * [默认模型设置](pre-basic/settings/default-models.md)
       * [本地模型](pre-basic/settings/local-models.md)
+      * [API 网关](advanced-basic/developer-tools/api-gateway.md)
     * **工具与联网**
       * [联网模式](pre-basic/websearch/README.md)
         * [免费联网模式](pre-basic/websearch/free-search.md)
@@ -144,7 +145,7 @@
     * [修改存储位置](pre-basic/personalization-settings/storage.md)
 * **选型与参考**
   * [选型与使用指南](articles/README.md)
-  * [全部 Provider 快速参考](pre-basic/providers/quick-reference.md)
+  * [全部服务商快速参考](pre-basic/providers/quick-reference.md)
   * [AI 基础知识](question-contact/knowledge.md)
   * [进阶能力地图](advanced-basic/capability-map.md)
   * [知识与内容工作流](advanced-basic/knowledge-content/README.md)
@@ -171,10 +172,9 @@
   * [问题反馈与功能建议](question-contact/suggestions.md)
 * **开发者与贡献**
   * [开发与诊断](advanced-basic/developer-tools/README.md)
-    * [API 网关](advanced-basic/developer-tools/api-gateway.md)
   * [贡献代码](contribution/code.md)
   * [贡献文档](contribution/docs.md)
-* **关于与法律**
+* **关于**
   * [商务合作](contact-us/questions.md)
   * [隐私政策](about/privacypolicy.md)
   * [开源协议](contact-us/questions/license.md)

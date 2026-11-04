@@ -50,7 +50,7 @@ Cherry Studio 使用文档：按你要完成的事找到教程。
 
 ## 配置与数据
 
-[连接模型服务](pre-basic/providers/README.md) · [软件设置](pre-basic/settings/README.md) · [备份与数据管理](pre-basic/data-settings/README.md)
+[连接模型服务](pre-basic/providers/README.md) · [API 网关](advanced-basic/developer-tools/api-gateway.md) · [软件设置](pre-basic/settings/README.md) · [备份与数据管理](pre-basic/data-settings/README.md)
 
 ## 选型与参考
 
@@ -62,9 +62,9 @@ Cherry Studio 使用文档：按你要完成的事找到教程。
 
 ## 开发者与贡献
 
-[API 网关与诊断工具](advanced-basic/developer-tools/README.md) · [贡献代码](contribution/code.md) · [贡献文档](contribution/docs.md)
+[开发与诊断](advanced-basic/developer-tools/README.md) · [贡献代码](contribution/code.md) · [贡献文档](contribution/docs.md)
 
-## 关于与法律
+## 关于
 
 [商务合作](contact-us/questions.md) · [隐私政策](about/privacypolicy.md) · [开源协议](contact-us/questions/license.md)
 

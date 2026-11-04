@@ -21,16 +21,7 @@ const mobileGroupNames = {
   ]
 }
 const groupNames = {
-  'zh-cn': [
-    '开始使用',
-    '日常使用',
-    '智能体与自动化',
-    '配置与数据',
-    '选型与参考',
-    '故障排查',
-    '开发者与贡献',
-    '关于与法律'
-  ],
+  'zh-cn': ['开始使用', '日常使用', '智能体与自动化', '配置与数据', '选型与参考', '故障排查', '开发者与贡献', '关于'],
   en: [
     'Getting Started',
     'Everyday Tasks',
@@ -39,7 +30,7 @@ const groupNames = {
     'Choosing & Reference',
     'Troubleshooting',
     'Developers & Contribution',
-    'About & Legal'
+    'About'
   ]
 }
 const aliases = JSON.parse(readFileSync(path.join(app, 'page-aliases.json'), 'utf8'))

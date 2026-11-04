@@ -5,7 +5,6 @@
 * **Getting Started**
   * [Documentation Home](README.md)
   * [Quick Start](getting-started/quick-start.md)
-  * [Launchpad](cherrystudio/preview/launchpad.md)
   * [Installation Tutorial](cherry-studio/installation/README.md)
     * [Windows](cherry-studio/installation/windows.md)
     * [macOS](cherry-studio/installation/macos.md)
@@ -17,6 +16,7 @@
     * [Downgrading from V2 to V1](cherry-studio/installation/v2-to-v1-downgrade.md)
 * **Everyday Tasks**
   * [Feature Overview](cherrystudio/preview/README.md)
+  * [Launchpad](cherrystudio/preview/launchpad.md)
   * [Chat and Assistants](cherrystudio/preview/chat.md)
     * [Advanced Chat](advanced-basic/chat/README.md)
     * [Multi-Model Comparison](advanced-basic/chat/model-compare-branches.md)
@@ -106,6 +106,7 @@
     * **Models**
       * [Default Model Settings](pre-basic/settings/default-models.md)
       * [Local Models](pre-basic/settings/local-models.md)
+      * [API Gateway](advanced-basic/developer-tools/api-gateway.md)
     * **Tools & Web Search**
       * [Network Access](pre-basic/websearch/README.md)
         * [Free Internet Mode](pre-basic/websearch/free-search.md)
@@ -158,10 +159,9 @@
   * [Feedback & Suggestions](question-contact/suggestions.md)
 * **Developers & Contribution**
   * [Development and Diagnostics](advanced-basic/developer-tools/README.md)
-    * [API Gateway](advanced-basic/developer-tools/api-gateway.md)
   * [Contribute Code](contribution/code.md)
   * [Contribute to Documentation](contribution/docs.md)
-* **About & Legal**
+* **About**
   * [Business Cooperation](contact-us/questions.md)
   * [Privacy Policy](about/privacypolicy.md)
   * [Open Source License](contact-us/questions/license.md)
