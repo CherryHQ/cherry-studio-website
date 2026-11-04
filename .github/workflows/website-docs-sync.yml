@@ -1,0 +1,34 @@
+name: Website documentation synchronization
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "docs-site/content/**"
+      - "docs-site/locales.json"
+      - "docs-site/page-aliases.json"
+      - "docs-site/shadowed-baseline.json"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  notify:
+    if: github.ref == 'refs/heads/main' && vars.WEBSITE_DOCS_SYNC_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Create a token for the coordinator
+        id: app
+        uses: actions/create-github-app-token@v2
+        with:
+          app-id: ${{ vars.WEBSITE_DOCS_APP_ID }}
+          private-key: ${{ secrets.WEBSITE_DOCS_APP_PRIVATE_KEY }}
+          owner: CherryHQ
+          repositories: cherry-studio
+          permission-contents: write
+      - name: Request a comparison of both current main branches
+        env:
+          GH_TOKEN: ${{ steps.app.outputs.token }}
+        run: gh api --method POST repos/CherryHQ/cherry-studio/dispatches -f event_type=website-docs-changed
