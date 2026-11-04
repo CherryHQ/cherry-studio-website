@@ -770,7 +770,10 @@
         "title": "Use cases",
         "description": "Get specific work done with Cherry Studio: translation, knowledge bases, MCP tools and office work."
       }
-    }
+    },
+    "updated": "Updated {{date}}",
+    "reading_time": "{{count}} min read",
+    "read_more": "Read"
   },
   "compare": {
     "related": "Related articles",

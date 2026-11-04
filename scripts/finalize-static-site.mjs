@@ -87,7 +87,7 @@ const COMPARE_DIR = join(process.cwd(), 'src/content/compare')
 const ARTICLE_CATALOG = JSON.parse(readFileSync(join(COMPARE_DIR, 'catalog.json'), 'utf8'))
 // 只有最早三篇用过 /compare/<slug> 地址，需要保留旧地址跳转
 const LEGACY_COMPARE_SLUGS = new Set(['manus', 'chatgpt-desktop-app', 'lm-studio'])
-const compareArticleClass = JSON.parse(readFileSync(join(COMPARE_DIR, 'article-style.json'), 'utf8')).className
+const style = JSON.parse(readFileSync(join(COMPARE_DIR, 'article-style.json'), 'utf8'))
 
 function listCompareSlugs(locale) {
   const dir = join(COMPARE_DIR, locale)
@@ -263,13 +263,14 @@ function buildRouteHtml(route) {
   }
 
   if (route.articlesIndex) {
+    // 与 src/pages/resources/articles/index.tsx 保持同样的结构和样式
     const groups = articleGroups()
     const chips =
       groups.length > 1
-        ? `<nav aria-label="${escapeHtml(translations.articles.categories_label)}" class="mt-8 flex flex-wrap gap-2">${groups
+        ? `<nav aria-label="${escapeHtml(translations.articles.categories_label)}" class="${style.indexChips}">${groups
             .map(
-              ({ category }) =>
-                `<a href="#${category}" class="border-border text-muted-foreground hover:text-foreground rounded-full border px-4 py-1.5 text-sm transition-colors">${escapeHtml(translations.articles.categories[category].title)}</a>`
+              ({ category, routes }) =>
+                `<a href="#${category}" class="${style.indexChip}">${escapeHtml(translations.articles.categories[category].title)}<span class="${style.indexChipCount}">${routes.length}</span></a>`
             )
             .join('')}</nav>`
         : ''
@@ -277,17 +278,17 @@ function buildRouteHtml(route) {
       .map(({ category, routes }) => {
         const items = routes
           .map(
-            ({ path, compare, key }) =>
-              `<li><a href="${path}" class="border-border hover:border-foreground/30 block h-full rounded-xl border p-5 transition-colors focus-visible:outline-2 focus-visible:outline-offset-4"><h3 class="text-foreground text-lg font-semibold text-balance">${escapeHtml(translations.compare.links[compare])}</h3><p class="text-muted-foreground mt-2 text-sm leading-6 text-pretty">${escapeHtml(translations.page_description[key])}</p></a></li>`
+            ({ path, compare, key, lastmod }) =>
+              `<li><a href="${path}" class="${style.indexCard}"><h3 class="${style.indexCardTitle}">${escapeHtml(translations.compare.links[compare])}</h3><p class="${style.indexCardDescription}">${escapeHtml(translations.page_description[key])}</p><span class="${style.indexCardFooter}"><time datetime="${lastmod}">${formatArticleDate(lastmod)}</time><span class="${style.indexCardMore}" aria-hidden="true">${escapeHtml(translations.articles.read_more)} →</span></span></a></li>`
           )
           .join('')
         const { title: categoryTitle, description: categoryDescription } = translations.articles.categories[category]
-        return `<section id="${category}" class="mt-14 scroll-mt-28"><h2 class="text-foreground text-2xl font-semibold">${escapeHtml(categoryTitle)}</h2><p class="text-muted-foreground mt-2 leading-7 text-pretty">${escapeHtml(categoryDescription)}</p><ul class="mt-6 grid gap-4 sm:grid-cols-2">${items}</ul></section>`
+        return `<section id="${category}" class="${style.indexSection}"><h2 class="${style.indexSectionTitle}">${escapeHtml(categoryTitle)}</h2><p class="${style.indexSectionDescription}">${escapeHtml(categoryDescription)}</p><ul class="${style.indexList}">${items}</ul></section>`
       })
       .join('')
     html = html.replace(
       '<div id="root"></div>',
-      `<div id="root"><main class="mx-auto min-h-svh max-w-5xl px-4 pt-32 pb-16 sm:px-6 lg:px-8"><h1 class="text-foreground text-3xl font-semibold text-balance sm:text-4xl">${escapeHtml(translations.articles.title)}</h1>${chips}${sections}</main></div>`
+      `<div id="root"><div class="bg-background min-h-screen"><main class="${style.index}"><h1 class="${style.indexTitle}">${escapeHtml(translations.articles.title)}</h1>${chips}${sections}</main></div></div>`
     )
     html = appendJsonLd(html, {
       '@context': 'https://schema.org',
@@ -311,10 +312,11 @@ function buildRouteHtml(route) {
 
   if (route.compare) {
     const markdown = readFileSync(join(COMPARE_DIR, target, `${route.compare}.md`), 'utf8')
+    const { header, body } = splitArticleHtml(renderCompareMarkdown(markdown))
     // 正文直接写进 #root：不跑 JS 的爬虫也能读到全文，createRoot 挂载后会整块替换掉
     html = html.replace(
       '<div id="root"></div>',
-      `<div id="root"><div class="bg-background min-h-screen"><article class="${compareArticleClass}">${buildBreadcrumbHtml(route.category)}<div class="article-body">${renderCompareMarkdown(markdown)}</div>${buildRelatedHtml(route)}</article></div></div>`
+      `<div id="root"><div class="bg-background min-h-screen"><article class="${style.article}">${buildArticleHeaderHtml(route, markdown, header)}<div class="${style.body}">${body}</div>${buildRelatedHtml(route)}</article></div></div>`
     )
     html = appendJsonLd(html, buildCompareArticleJsonLd(markdown, canonicalUrl, description, route.lastmod))
     html = appendJsonLd(html, buildArticleBreadcrumbJsonLd(route, markdown, canonicalUrl))
@@ -446,9 +448,32 @@ function relatedRoutes(route, limit = 6) {
   ].slice(0, limit)
 }
 
-// 与 src/pages/compare/index.tsx 的面包屑和相关文章保持同样的结构和样式
-function buildBreadcrumbHtml(category) {
-  return `<nav aria-label="${escapeHtml(translations.articles.breadcrumb)}" class="mb-8 text-sm"><ol class="text-muted-foreground flex flex-wrap items-center gap-x-2 gap-y-1"><li><a href="/resources/articles/" class="hover:text-foreground focus-visible:outline-2">${escapeHtml(translations.articles.title)}</a></li><li aria-hidden="true">/</li><li><a href="/resources/articles/#${category}" class="hover:text-foreground focus-visible:outline-2">${escapeHtml(translations.articles.categories[category].title)}</a></li></ol></nav>`
+// 与 src/content/compare/index.ts 的同名函数保持一致
+function formatArticleDate(date) {
+  return new Intl.DateTimeFormat(target === 'zh' ? 'zh-CN' : 'en-US', { dateStyle: 'long', timeZone: 'UTC' }).format(
+    new Date(`${date}T00:00:00Z`)
+  )
+}
+
+function getReadingMinutes(markdown) {
+  const text = markdown.replace(/!\[[^\]]*\]\([^)]*\)/g, '').replace(/\]\([^)]*\)/g, ']')
+  const units = target === 'zh' ? (text.match(/[\u4e00-\u9fff]/g) ?? []).length : text.split(/\s+/).length
+  return Math.max(1, Math.round(units / (target === 'zh' ? 400 : 220)))
+}
+
+function splitArticleHtml(html) {
+  const index = html.indexOf('<h2')
+  return index === -1 ? { header: '', body: html } : { header: html.slice(0, index), body: html.slice(index) }
+}
+
+// 与 src/pages/compare/index.tsx 的文章头部、面包屑和相关文章保持同样的结构和样式
+function buildArticleHeaderHtml(route, markdown, headerHtml) {
+  const { articles } = translations
+  const breadcrumb = `<nav aria-label="${escapeHtml(articles.breadcrumb)}"><ol class="${style.breadcrumb}"><li><a href="/resources/articles/" class="${style.breadcrumbLink}">${escapeHtml(articles.title)}</a></li><li aria-hidden="true">/</li><li><a href="/resources/articles/#${route.category}" class="${style.breadcrumbCategory}">${escapeHtml(articles.categories[route.category].title)}</a></li></ol></nav>`
+  const updated = articles.updated.replace('{{date}}', formatArticleDate(route.lastmod))
+  const readingTime = articles.reading_time.replace('{{count}}', String(getReadingMinutes(markdown)))
+  const meta = `<p class="${style.meta}"><time datetime="${route.lastmod}">${escapeHtml(updated)}</time><span aria-hidden="true">·</span><span>${escapeHtml(readingTime)}</span></p>`
+  return `<header class="${style.header}">${breadcrumb}<div>${headerHtml}</div>${meta}</header>`
 }
 
 function buildRelatedHtml(route) {
@@ -456,11 +481,11 @@ function buildRelatedHtml(route) {
   if (related.length === 0) return ''
   const items = related
     .map(
-      ({ path, compare }) =>
-        `<li><a href="${path}" class="text-muted-foreground hover:text-foreground text-sm transition-colors">${escapeHtml(translations.compare.links[compare])}</a></li>`
+      ({ path, compare, category }) =>
+        `<li><a href="${path}" class="${style.relatedCard}"><span class="${style.relatedCategory}">${escapeHtml(translations.articles.categories[category].title)}</span><span class="${style.relatedLinkTitle}">${escapeHtml(translations.compare.links[compare])}</span></a></li>`
     )
     .join('')
-  return `<nav class="border-border mt-14 border-t pt-6" aria-label="${escapeHtml(translations.compare.related)}"><p class="text-foreground text-sm font-semibold">${escapeHtml(translations.compare.related)}</p><ul class="mt-3 grid gap-2 sm:grid-cols-2">${items}</ul></nav>`
+  return `<nav class="${style.related}" aria-label="${escapeHtml(translations.compare.related)}"><p class="${style.relatedTitle}">${escapeHtml(translations.compare.related)}</p><ul class="${style.relatedList}">${items}</ul></nav>`
 }
 
 function buildArticleBreadcrumbJsonLd(route, markdown, url) {

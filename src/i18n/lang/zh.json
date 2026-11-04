@@ -789,7 +789,10 @@
         "title": "使用场景",
         "description": "用 Cherry Studio 完成具体的事：翻译、知识库、MCP 工具和日常办公。"
       }
-    }
+    },
+    "updated": "更新于 {{date}}",
+    "reading_time": "约 {{count}} 分钟读完",
+    "read_more": "阅读全文"
   },
   "compare": {
     "related": "相关文章",

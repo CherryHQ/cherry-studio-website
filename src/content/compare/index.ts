@@ -37,8 +37,34 @@ export function hasCompare(locale: CompareLocale, slug: CompareSlug): boolean {
   return getCompareMarkdown(locale, slug) !== undefined
 }
 
+type ArticleMeta = { category: ArticleCategory; lastmod: string }
+
 export function getArticleCategory(slug: CompareSlug): ArticleCategory {
-  return (catalog.articles as Record<string, { category: ArticleCategory }>)[slug].category
+  return (catalog.articles as Record<string, ArticleMeta>)[slug].category
+}
+
+export function getArticleLastmod(slug: CompareSlug): string {
+  return (catalog.articles as Record<string, ArticleMeta>)[slug].lastmod
+}
+
+// 以下三个函数在 finalize-static-site.mjs 里有同样的实现，改这里时两边一起改
+export function formatArticleDate(locale: CompareLocale, date: string): string {
+  return new Intl.DateTimeFormat(locale === 'zh' ? 'zh-CN' : 'en-US', { dateStyle: 'long', timeZone: 'UTC' }).format(
+    new Date(`${date}T00:00:00Z`)
+  )
+}
+
+// 中文按每分钟 400 字、英文按每分钟 220 词估算
+export function getReadingMinutes(locale: CompareLocale, markdown: string): number {
+  const text = markdown.replace(/!\[[^\]]*\]\([^)]*\)/g, '').replace(/\]\([^)]*\)/g, ']')
+  const units = locale === 'zh' ? (text.match(/[\u4e00-\u9fff]/g) ?? []).length : text.split(/\s+/).length
+  return Math.max(1, Math.round(units / (locale === 'zh' ? 400 : 220)))
+}
+
+// 在第一个 h2 处拆开：H1 和导语放进文章头部，其余是正文
+export function splitArticleHtml(html: string): { header: string; body: string } {
+  const index = html.indexOf('<h2')
+  return index === -1 ? { header: '', body: html } : { header: html.slice(0, index), body: html.slice(index) }
 }
 
 // 当前语言已上线、按分类分组的文章，分类顺序和组内顺序都跟 catalog.json 一致

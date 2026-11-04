@@ -6,13 +6,17 @@ import Footer from '@/components/website/Footer'
 import {
   type CompareLocale,
   type CompareSlug,
+  formatArticleDate,
   getArticleCategory,
+  getArticleLastmod,
   getCompareMarkdown,
+  getReadingMinutes,
   getRelatedArticles,
   isCompareSlug,
-  renderCompareMarkdown
+  renderCompareMarkdown,
+  splitArticleHtml
 } from '@/content/compare'
-import articleStyle from '@/content/compare/article-style.json'
+import style from '@/content/compare/article-style.json'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import NotFoundPage from '@/pages/not-found'
 import { isEnglishSite } from '@/utils/urls'
@@ -25,42 +29,52 @@ const CompareArticle: FC<{ slug: CompareSlug; locale: CompareLocale; markdown: s
   const { t } = useTranslation()
   usePageMeta(`article:${slug}`)
 
-  const html = useMemo(() => renderCompareMarkdown(markdown), [markdown])
+  const { header, body } = useMemo(() => splitArticleHtml(renderCompareMarkdown(markdown)), [markdown])
   const category = getArticleCategory(slug)
+  const lastmod = getArticleLastmod(slug)
   const related = getRelatedArticles(locale, slug)
 
   return (
     <div className="bg-background min-h-screen">
-      <article className={articleStyle.className}>
-        {/* 面包屑：和 finalize-static-site.mjs 生成的静态 HTML、BreadcrumbList 结构化数据保持一致 */}
-        <nav aria-label={t('articles.breadcrumb')} className="mb-8 text-sm">
-          <ol className="text-muted-foreground flex flex-wrap items-center gap-x-2 gap-y-1">
-            <li>
-              <Link to="/resources/articles/" className="hover:text-foreground focus-visible:outline-2">
-                {t('articles.title')}
-              </Link>
-            </li>
-            <li aria-hidden="true">/</li>
-            <li>
-              <Link to={`/resources/articles/#${category}`} className="hover:text-foreground focus-visible:outline-2">
-                {t(`articles.categories.${category}.title`)}
-              </Link>
-            </li>
-          </ol>
-        </nav>
-        {/* 正文来自仓库内的 Markdown，不含用户输入 */}
-        <div className="article-body" dangerouslySetInnerHTML={{ __html: html }} />
+      <article className={style.article}>
+        {/* 结构和 finalize-static-site.mjs 生成的静态 HTML、BreadcrumbList 结构化数据保持一致 */}
+        <header className={style.header}>
+          <nav aria-label={t('articles.breadcrumb')}>
+            <ol className={style.breadcrumb}>
+              <li>
+                <Link to="/resources/articles/" className={style.breadcrumbLink}>
+                  {t('articles.title')}
+                </Link>
+              </li>
+              <li aria-hidden="true">/</li>
+              <li>
+                <Link to={`/resources/articles/#${category}`} className={style.breadcrumbCategory}>
+                  {t(`articles.categories.${category}.title`)}
+                </Link>
+              </li>
+            </ol>
+          </nav>
+          {/* 正文来自仓库内的 Markdown，不含用户输入 */}
+          <div dangerouslySetInnerHTML={{ __html: header }} />
+          <p className={style.meta}>
+            <time dateTime={lastmod}>{t('articles.updated', { date: formatArticleDate(locale, lastmod) })}</time>
+            <span aria-hidden="true">·</span>
+            <span>{t('articles.reading_time', { count: getReadingMinutes(locale, markdown) })}</span>
+          </p>
+        </header>
+        <div className={style.body} dangerouslySetInnerHTML={{ __html: body }} />
 
         {related.length > 0 && (
-          <nav className="border-border mt-14 border-t pt-6" aria-label={t('compare.related')}>
-            <p className="text-foreground text-sm font-semibold">{t('compare.related')}</p>
-            <ul className="mt-3 grid gap-2 sm:grid-cols-2">
+          <nav className={style.related} aria-label={t('compare.related')}>
+            <p className={style.relatedTitle}>{t('compare.related')}</p>
+            <ul className={style.relatedList}>
               {related.map((other) => (
                 <li key={other}>
-                  <Link
-                    to={`/resources/articles/${other}`}
-                    className="text-muted-foreground hover:text-foreground text-sm transition-colors">
-                    {t(`compare.links.${other}`)}
+                  <Link to={`/resources/articles/${other}`} className={style.relatedCard}>
+                    <span className={style.relatedCategory}>
+                      {t(`articles.categories.${getArticleCategory(other)}.title`)}
+                    </span>
+                    <span className={style.relatedLinkTitle}>{t(`compare.links.${other}`)}</span>
                   </Link>
                 </li>
               ))}
