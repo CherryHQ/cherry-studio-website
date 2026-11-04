@@ -77,7 +77,7 @@ test('all other paths build by default, including published README, tests and un
     'docs-site/next.config.mjs',
     'docs-site/scripts/generate-content.mjs',
     'scripts/finalize-static-site.mjs',
-    '.github/workflows/docs.yml',
+    '.github/workflows/website.yml',
     '.github/scripts/build-impact.cjs',
     '.github/scripts/smoke-container.sh',
     '.gitignore',

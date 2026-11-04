@@ -1,6 +1,6 @@
 # 中国站容器与 GitOps 发布
 
-`.github/workflows/docs.yml` 复用既有内容检查、Biome 和中英文构建，再构建并实际启动
+`.github/workflows/website.yml` 复用既有内容检查、Biome 和中英文构建，再构建并实际启动
 `linux/amd64` Docker 镜像。PR、fork 和非 main 手动运行只验证构建。
 `CherryHQ/cherry-studio-website` 的 main push 或 main 手动运行通过检查后，推送
 `sha-<完整提交 SHA>`，将本次构建返回的 digest 回写 GitOps。Dockerfile 始终构建
@@ -9,13 +9,13 @@
 自动构建采用简单的路径忽略规则：仅修改根目录 `*.md`、`docs-site/README.md`、
 `deploy/**`、`.github/**`、`.vscode/**`、`.claude/**`、`.conductor/**` 或 `.context/**`
 时只运行检查，跳过中英文构建、镜像构建与后续发布。其中三个文件始终触发构建：
-`.github/workflows/docs.yml`、`.github/scripts/build-impact.cjs`、`.github/scripts/smoke-container.sh`。
+`.github/workflows/website.yml`、`.github/scripts/build-impact.cjs`、`.github/scripts/smoke-container.sh`。
 其他路径一律构建，包括公开文档、页面、资源、测试和未知路径，不再按文件类型细分。
 push 比较整批提交，PR 比较分支共同祖先后的改动，删除和重命名也参与判断。
 手动运行 `Website CI/CD` 始终构建，选择 main 时按既有规则发布，可用于强制重新构建。
 
 参考数据工作流使用默认 `GITHUB_TOKEN` 提交，GitHub 不会因此触发 push 工作流，
-所以有更新时显式 dispatch `docs.yml`，让这些更新也经过同一套检查和发布。
+所以有更新时显式 dispatch `website.yml`，让这些更新也经过同一套检查和发布。
 参见 [GitHub 工作流触发规则](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow)。
 
 ## 实际目标
