@@ -82,7 +82,7 @@ const ROUTES = {
 }
 
 // 文章页：src/content/compare/<locale>/<slug>.md 存在就生成 /resources/articles/<slug>。
-// 中文正文审核通过前不放文件，中文站就不会生成也不会进 sitemap，英文页也不输出 zh-CN 的 hreflang。
+// 某种语言审核通过前不放文件，该语言站点就不会生成也不会进 sitemap，另一种语言的页面也不输出指向它的 hreflang。
 const COMPARE_DIR = join(process.cwd(), 'src/content/compare')
 const ARTICLE_CATALOG = JSON.parse(readFileSync(join(COMPARE_DIR, 'catalog.json'), 'utf8'))
 // 只有最早三篇用过 /compare/<slug> 地址，需要保留旧地址跳转
@@ -111,6 +111,7 @@ const compareRoutes = listCompareSlugs(target).map((slug) => ({
   key: `compare_${slug.replace(/-/g, '_')}`,
   compare: slug,
   chineseCounterpart: existsSync(join(COMPARE_DIR, 'zh', `${slug}.md`)),
+  englishCounterpart: existsSync(join(COMPARE_DIR, 'en', `${slug}.md`)),
   dropSoftwareApplication: true
 }))
 
@@ -222,8 +223,14 @@ function buildRouteHtml(route) {
   )
   html = replaceLinkHref(html, 'canonical', '', canonicalUrl)
 
-  for (const language of ['en', 'x-default']) {
-    html = replaceLinkHref(html, 'alternate', `\\s+hreflang="${language}"`, englishUrl)
+  if (route.englishCounterpart === false) {
+    // 只有中文版的文章：不指向不存在的英文页，x-default 指回中文页本身
+    html = html.replace(/<link\s+rel="alternate"\s+hreflang="en"[^>]*>/g, '')
+    html = replaceLinkHref(html, 'alternate', '\\s+hreflang="x-default"', canonicalUrl)
+  } else {
+    for (const language of ['en', 'x-default']) {
+      html = replaceLinkHref(html, 'alternate', `\\s+hreflang="${language}"`, englishUrl)
+    }
   }
   if (route.chineseCounterpart === false) {
     html = html.replace(/<link\s+rel="alternate"\s+hreflang="zh-CN"[^>]*>/g, '')

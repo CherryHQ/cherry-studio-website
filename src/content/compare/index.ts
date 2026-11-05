@@ -11,10 +11,9 @@ export const COMPARE_SLUGS = [
   'chatgpt-desktop-app',
   'lm-studio',
   'chatbox',
-  'ai-translation',
-  'mcp',
-  'ai-knowledge-base',
-  'ai-office-assistant'
+  'claude-code',
+  'claude-desktop-app',
+  'deepseek-local'
 ] as const
 
 export type CompareSlug = (typeof COMPARE_SLUGS)[number]

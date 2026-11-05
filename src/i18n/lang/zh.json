@@ -15,11 +15,9 @@
     "compare_manus": "Cherry Studio 和 Manus 怎么选：本地还是云端 AI Agent",
     "compare_chatgpt_desktop_app": "ChatGPT 桌面版替代：一个应用用上所有模型 | Cherry Studio",
     "compare_lm_studio": "LM Studio 替代：本地和云端模型放在一个应用里用",
-    "compare_ai_translation": "AI 翻译软件：划词翻译、文档和 PDF 翻译 | Cherry Studio",
-    "compare_mcp": "MCP 是什么？在桌面 AI 客户端里使用 MCP 工具 | Cherry Studio",
-    "compare_ai_knowledge_base": "AI 知识库搭建：在自己电脑上建本地知识库 | Cherry Studio",
-    "compare_ai_office_assistant": "AI 办公助手：用 AI 处理文档、表格和周报 | Cherry Studio",
-    "compare_chatbox": "Cherry Studio 和 Chatbox 怎么选：两款 AI 桌面客户端对比"
+    "compare_chatbox": "Cherry Studio 和 Chatbox 怎么选：两款 AI 桌面客户端对比",
+    "compare_deepseek_local": "DeepSeek 本地部署教程：Ollama + Cherry Studio 三步跑起来",
+    "compare_claude_code": "Claude Code 替代：Claude 和其他模型放在一个应用里用 | Cherry Studio"
   },
   "page_description": {
     "articles": "Cherry Studio 的文章：怎么选、怎么用 AI 工具的实用内容，帮你把 AI 真正用到日常工作里。",
@@ -37,11 +35,9 @@
     "compare_manus": "Manus 在云端跑 Agent、按积分计费；Cherry Studio 在你自己的电脑上跑 Agent，模型随你接。从价格、隐私和工具三方面对比。",
     "compare_chatgpt_desktop_app": "一个免费的桌面应用里用 GPT、Claude、Gemini、DeepSeek 和本地模型。可以用 ChatGPT 账号登录，也可以按 token 付费。",
     "compare_lm_studio": "LM Studio 负责跑本地模型，Cherry Studio 在上面加上 Agent、知识库、MCP 工具和云端模型。两者对比与搭配用法。",
-    "compare_ai_translation": "在任何应用里选中文字就能翻译，图片、Word、PDF 也能直接拖进来翻译。翻译模型随你选，GPT、Claude、DeepSeek、通义千问都行。",
-    "compare_mcp": "MCP 让 AI 调用外部工具和数据。看懂 MCP 是什么，以及怎么在 Cherry Studio 里添加 MCP 服务器、交给智能体使用。",
-    "compare_ai_knowledge_base": "把 PDF、Word、笔记和网页建成知识库，提问时带出处回答。支持本地嵌入模型，资料可以完全不出电脑。",
-    "compare_ai_office_assistant": "让 AI 读会议记录、整理周报、审阅长文档、生成 Excel 和 PPT。Cherry Studio 的智能体直接处理你电脑上的文件。",
-    "compare_chatbox": "Chatbox 和 Cherry Studio 都能接入多家模型。对比 Agent、MCP、知识库和开源程度，看看哪个更适合你。"
+    "compare_chatbox": "Chatbox 和 Cherry Studio 都能接入多家模型。对比 Agent、MCP、知识库和开源程度，看看哪个更适合你。",
+    "compare_deepseek_local": "用 Ollama 下载 DeepSeek-R1 蒸馏版，再接入 Cherry Studio 图形界面。按电脑配置选版本，三步在自己电脑上离线运行 DeepSeek，还能读本地文件。",
+    "compare_claude_code": "Cherry Studio 的 Agent 可以直接用 Claude Code 订阅，聊天时 Claude、GPT、Gemini、DeepSeek 和本地模型都能放在同一个应用里，回答并排对比。"
   },
   "nav": {
     "resources": "资源",
@@ -785,6 +781,10 @@
         "title": "产品对比",
         "description": "和你可能正在用的其他 AI 应用相比，Cherry Studio 有什么不一样。"
       },
+      "tutorials": {
+        "title": "教程",
+        "description": "一步步带你在 Cherry Studio 里把事情做成。"
+      },
       "use-cases": {
         "title": "使用场景",
         "description": "用 Cherry Studio 完成具体的事：翻译、知识库、MCP 工具和日常办公。"
@@ -801,10 +801,8 @@
       "chatgpt-desktop-app": "ChatGPT 桌面版替代",
       "lm-studio": "LM Studio 替代",
       "chatbox": "Cherry Studio 和 Chatbox 对比",
-      "ai-translation": "AI 翻译软件：划词翻译、文档和 PDF 翻译",
-      "mcp": "MCP 是什么：在 Cherry Studio 里使用 MCP 工具",
-      "ai-knowledge-base": "AI 知识库：在自己电脑上搭建本地知识库",
-      "ai-office-assistant": "AI 办公助手：让 AI 处理文档、表格和周报"
+      "deepseek-local": "DeepSeek 本地部署教程",
+      "claude-code": "Claude Code 替代：Claude 和其他模型一起用"
     }
   }
 }

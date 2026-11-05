@@ -15,11 +15,9 @@
     "compare_manus": "Cherry Studio vs Manus: Local or Cloud AI Agent?",
     "compare_chatgpt_desktop_app": "ChatGPT Desktop App Alternative for Every Model | Cherry Studio",
     "compare_lm_studio": "LM Studio Alternative: Local and Cloud Models in One App",
-    "compare_ai_translation": "AI Translation App for Selected Text, Documents and PDFs | Cherry Studio",
-    "compare_mcp": "What Is MCP? How to Use MCP Tools in a Desktop AI App | Cherry Studio",
-    "compare_ai_knowledge_base": "Build a Local AI Knowledge Base on Your Computer | Cherry Studio",
-    "compare_ai_office_assistant": "AI Office Assistant for Documents, Spreadsheets and Reports | Cherry Studio",
-    "compare_chatbox": "Cherry Studio vs Chatbox: Which AI Desktop Client Fits You?"
+    "compare_chatbox": "Cherry Studio vs Chatbox: Which AI Desktop Client Fits You?",
+    "compare_deepseek_local": "How to Run DeepSeek Locally with Ollama and Cherry Studio",
+    "compare_claude_desktop_app": "Claude Desktop App vs Cherry Studio: Claude and Every Other Model"
   },
   "page_description": {
     "articles": "Articles from Cherry Studio: practical reading on choosing and using AI tools, so AI actually helps with your everyday work.",
@@ -37,11 +35,9 @@
     "compare_manus": "Manus runs agents in the cloud and bills in credits. Cherry Studio runs them on your own computer with any model. Compare price, privacy and tools.",
     "compare_chatgpt_desktop_app": "Use GPT, Claude, Gemini, DeepSeek and local models in one free desktop app. Sign in with your ChatGPT plan or pay per token.",
     "compare_lm_studio": "Keep LM Studio for running local models and add Cherry Studio for agents, knowledge bases, MCP tools and cloud models.",
-    "compare_ai_translation": "Translate selected text in any app, or drop in images, Word files and PDFs. Pick the translation model yourself: GPT, Claude, Gemini, DeepSeek and more.",
-    "compare_mcp": "MCP lets AI call external tools and data. Learn what MCP is and how to add MCP servers in Cherry Studio and hand them to agents.",
-    "compare_ai_knowledge_base": "Turn PDFs, Word files, notes and web pages into a knowledge base that answers with sources. Use a local embedding model to keep files on your computer.",
-    "compare_ai_office_assistant": "Let AI read meeting notes, draft weekly reports, review long documents and produce spreadsheets and slides, working on files on your computer.",
-    "compare_chatbox": "Chatbox and Cherry Studio both run many models on your own API keys. Compare agents, MCP, knowledge bases and open source to pick the right one."
+    "compare_chatbox": "Chatbox and Cherry Studio both run many models on your own API keys. Compare agents, MCP, knowledge bases and open source to pick the right one.",
+    "compare_deepseek_local": "Run DeepSeek-R1 distilled models on your own computer: pick a size for your hardware, pull it with Ollama and chat in Cherry Studio, offline and with your files kept local.",
+    "compare_claude_desktop_app": "Compare the Claude desktop app with Cherry Studio: use Claude through your API key or Claude Code subscription, next to GPT, Gemini, DeepSeek and local models."
   },
   "nav": {
     "resources": "Resources",
@@ -766,6 +762,10 @@
         "title": "Comparisons",
         "description": "How Cherry Studio differs from the AI apps you may already use."
       },
+      "tutorials": {
+        "title": "Tutorials",
+        "description": "Step-by-step guides to getting things done with Cherry Studio."
+      },
       "use-cases": {
         "title": "Use cases",
         "description": "Get specific work done with Cherry Studio: translation, knowledge bases, MCP tools and office work."
@@ -782,10 +782,8 @@
       "chatgpt-desktop-app": "ChatGPT desktop app alternative",
       "lm-studio": "LM Studio alternative",
       "chatbox": "Cherry Studio vs Chatbox",
-      "ai-translation": "AI translation app: selected text, documents and PDFs",
-      "mcp": "What is MCP? Using MCP tools in Cherry Studio",
-      "ai-knowledge-base": "AI knowledge base on your own computer",
-      "ai-office-assistant": "AI office assistant for documents, spreadsheets and reports"
+      "deepseek-local": "How to run DeepSeek locally",
+      "claude-desktop-app": "Claude desktop app vs Cherry Studio"
     }
   }
 }

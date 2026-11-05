@@ -27,6 +27,8 @@ interface PageMetaConfig {
   noindex?: boolean
   // Flash 相关页面只在英文站存在，中文站没有对应页面
   chineseCounterpart?: boolean
+  // 只有中文版的文章（如 claude-code）没有英文对应页面
+  englishCounterpart?: boolean
 }
 
 const PAGE_META: Record<PageType, PageMetaConfig> = {
@@ -41,14 +43,15 @@ const PAGE_META: Record<PageType, PageMetaConfig> = {
   flash: { path: '/flash', chineseCounterpart: false },
   flashUsage: { path: '/flash/usage', translationKey: 'flash_usage', chineseCounterpart: false },
   articles: { path: '/resources/articles/' },
-  // 文章的中文版审核通过后才上线；没有中文正文时不输出 zh-CN 的 hreflang
+  // 文章按语言单独上线；某种语言没有正文时不输出该语言的 hreflang
   ...(Object.fromEntries(
     COMPARE_SLUGS.map((slug) => [
       `article:${slug}`,
       {
         path: `/resources/articles/${slug}`,
         translationKey: `compare_${slug.replace(/-/g, '_')}`,
-        chineseCounterpart: hasCompare('zh', slug)
+        chineseCounterpart: hasCompare('zh', slug),
+        englishCounterpart: hasCompare('en', slug)
       }
     ])
   ) as Record<`article:${CompareSlug}`, PageMetaConfig>),
@@ -97,11 +100,14 @@ export const usePageMeta = (pageType: PageType) => {
     if (config.chineseCounterpart === false) {
       document.querySelector('link[rel="alternate"][hreflang="zh-CN"]')?.remove()
     }
+    if (config.englishCounterpart === false) {
+      document.querySelector('link[rel="alternate"][hreflang="en"]')?.remove()
+    }
     const alternates = [
       ...(config.chineseCounterpart === false
         ? []
         : [{ language: 'zh-CN', href: `https://cherryai.com.cn${pagePath}` }]),
-      { language: 'en', href: `https://cherryai.com${pagePath}` },
+      ...(config.englishCounterpart === false ? [] : [{ language: 'en', href: `https://cherryai.com${pagePath}` }]),
       { language: 'x-default', href: canonicalUrl }
     ]
     for (const { language, href } of alternates) {
