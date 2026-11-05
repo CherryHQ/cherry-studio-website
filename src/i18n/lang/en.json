@@ -48,7 +48,7 @@
     "enterprise": "Enterprise",
     "docs": "Docs",
     "contact": "Contact Us",
-    "pricing": "Flash",
+    "pricing": "Pricing",
     "pricing_badge": "20% off",
     "menu": "Site navigation",
     "close_menu": "Close navigation",
@@ -792,6 +792,13 @@
     },
     "pricing_label": "Plus monthly subscription for China",
     "per_month": "CNY/month",
+    "offer": {
+      "title": "Double 11 special offer",
+      "first_month": "First month",
+      "original_price": "Original price",
+      "renewal": "Then CNY 19.9 / month",
+      "ends_on": "Offer ends:"
+    },
     "subscribe": "Subscribe to Plus",
     "fine_print": "Cancel anytime · No hidden fees",
     "usage": {
@@ -849,7 +856,7 @@
     },
     "cta": {
       "title": "Start with Plus today",
-      "description": "CNY 19.9 per month, with no separate accounts for each model."
+      "description": "Double 11 special: CNY 9.9 for the first month, then CNY 19.9 per month."
     },
     "support": {
       "open": "Contact support",

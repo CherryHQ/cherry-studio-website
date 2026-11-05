@@ -75,11 +75,18 @@ export default function ChinaPricingPage() {
         </section>
 
         <section aria-label={t('plus_page.pricing_label')} className="px-4 pb-20 sm:px-8">
-          <div className="mx-auto max-w-lg rounded-3xl border-2 border-primary/35 bg-background p-10 text-center shadow-xl">
-            <div className="flex items-baseline justify-center gap-2 tabular-nums">
-              <strong className="text-6xl font-bold leading-none tracking-[-2px]">19.9</strong>
-              <span className="text-xl text-muted-foreground">{t('plus_page.per_month')}</span>
+          <div className="mx-auto max-w-lg rounded-3xl border-2 border-primary/35 bg-background px-6 py-8 text-center shadow-xl sm:p-10">
+            <p className="font-semibold text-primary">{t('plus_page.offer.title')}</p>
+            <p className="mt-5 text-sm text-muted-foreground">{t('plus_page.offer.first_month')}</p>
+            <div className="mt-2 flex flex-wrap items-baseline justify-center gap-x-3 gap-y-2 tabular-nums">
+              <span className="sr-only">{t('plus_page.offer.original_price')}</span>
+              <del className="text-2xl text-muted-foreground decoration-1">¥19.9</del>
+              <strong className="text-6xl font-bold leading-none tracking-tight">¥9.9</strong>
             </div>
+            <p className="mt-4 text-sm text-muted-foreground">{t('plus_page.offer.renewal')}</p>
+            <p className="mt-2 text-xs leading-5 text-muted-foreground">
+              {t('plus_page.offer.ends_on')} <time dateTime="2026-11-20">2026/11/20</time>
+            </p>
             <Button asChild size="lg" className="mt-8 w-full">
               <a href={SUBSCRIPTION_URL} target="_blank" rel="noopener noreferrer">
                 {t('plus_page.subscribe')}
@@ -212,14 +219,6 @@ export default function ChinaPricingPage() {
               <h3 className="text-sm font-semibold leading-5">{t('plus_page.peak.title')}</h3>
               <p className="mt-2 text-sm leading-6 text-muted-foreground">{t('plus_page.peak.description')}</p>
             </aside>
-            <a
-              href="https://cherryai.com/subscription/usage"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-5 inline-flex items-center gap-1 text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline">
-              {t('plus_page.usage.rules')}
-              <ArrowRight className="size-4" aria-hidden="true" />
-            </a>
           </div>
         </section>
 

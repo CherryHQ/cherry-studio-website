@@ -48,7 +48,7 @@
     "enterprise": "企业版",
     "docs": "文档",
     "contact": "联系我们",
-    "pricing": "Flash",
+    "pricing": "订阅",
     "pricing_badge": "20% off",
     "menu": "网站导航",
     "close_menu": "关闭导航",
@@ -811,6 +811,13 @@
     },
     "pricing_label": "Plus 月度订阅价格",
     "per_month": "元/月",
+    "offer": {
+      "title": "双十一特惠",
+      "first_month": "首月",
+      "original_price": "原价",
+      "renewal": "之后 ¥19.9 / 月",
+      "ends_on": "优惠截止时间："
+    },
     "subscribe": "订阅 Plus",
     "fine_print": "随时取消 · 无隐藏费用",
     "usage": {
@@ -868,7 +875,7 @@
     },
     "cta": {
       "title": "今天，就从 Plus 开始",
-      "description": "每月 19.9 元，无需为每家模型单独注册。"
+      "description": "双十一特惠首月 9.9 元，之后每月 19.9 元。"
     },
     "support": {
       "open": "联系支持",

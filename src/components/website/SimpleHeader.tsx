@@ -34,13 +34,6 @@ export default function SimpleHeader() {
     enterpriseHref: getEnterprisePortalUrl(i18n.language),
     onEnterpriseClick: () => trackEnterpriseNavigation('header', i18n.language)
   })
-  if (!englishSite) {
-    links.unshift({
-      href: '/subscription',
-      label: t('nav.plus'),
-      active: pathname === '/subscription' || pathname.startsWith('/subscription/')
-    })
-  }
   return (
     <SiteHeader
       logo={cherryLogoPng}
