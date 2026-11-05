@@ -689,6 +689,8 @@
 {"name":"GPT Image 1.5","id":"gpt-image-1-5","provider":"openai","category":"image-generation"},
 {"name":"GPT Image 2.5 Flare","id":"gpt-image-2-5-flare","provider":"openai","category":"image-generation"},
 {"name":"GPT Image 2.5 Sunburst","id":"gpt-image-2-5-sunburst","provider":"openai","category":"image-generation"},
+{"name":"GPT Image 2.6 Flare","id":"gpt-image-2-6-flare","provider":"openai","category":"image-generation"},
+{"name":"GPT Image 2.6 Sunburst","id":"gpt-image-2-6-sunburst","provider":"openai","category":"image-generation"},
 {"name":"GPT-Image-1","id":"gpt-image-1","provider":"openai","category":"image-generation"},
 {"name":"GPT-Image-1-Mini","id":"gpt-image-1-mini","provider":"openai","category":"image-generation"},
 {"name":"GPT-Image-2","id":"gpt-image-2","provider":"openai","category":"image-generation"},
