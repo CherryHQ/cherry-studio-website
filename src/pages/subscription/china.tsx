@@ -75,19 +75,19 @@ export default function ChinaPricingPage() {
         </section>
 
         <section aria-label={t('plus_page.pricing_label')} className="px-4 pb-20 sm:px-8">
-          <div className="mx-auto max-w-lg rounded-3xl border-2 border-primary/35 bg-background px-6 py-8 text-center shadow-xl sm:p-10">
-            <p className="font-semibold text-primary">{t('plus_page.offer.title')}</p>
-            <p className="mt-5 text-sm text-muted-foreground">{t('plus_page.offer.first_month')}</p>
-            <div className="mt-2 flex flex-wrap items-baseline justify-center gap-x-3 gap-y-2 tabular-nums">
+          <div className="mx-auto max-w-lg rounded-3xl border-2 border-primary/30 bg-card px-6 py-8 text-center shadow-xl sm:p-10">
+            <p className="mb-4 text-sm font-medium text-primary">{t('plus_page.offer.title')}</p>
+            <div className="flex flex-wrap items-baseline justify-center gap-2 tabular-nums">
+              <strong className="text-5xl font-bold tracking-tight sm:text-6xl">¥9.9</strong>
               <span className="sr-only">{t('plus_page.offer.original_price')}</span>
               <del className="text-2xl text-muted-foreground decoration-1">¥19.9</del>
-              <strong className="text-6xl font-bold leading-none tracking-tight">¥9.9</strong>
+              <span className="text-lg text-muted-foreground">/ {t('plus_page.offer.first_month')}</span>
             </div>
-            <p className="mt-4 text-sm text-muted-foreground">{t('plus_page.offer.renewal')}</p>
-            <p className="mt-2 text-xs leading-5 text-muted-foreground">
+            <p className="mt-2 text-xs leading-5 text-muted-foreground">{t('plus_page.offer.renewal')}</p>
+            <p className="text-xs leading-5 text-muted-foreground">
               {t('plus_page.offer.ends_on')} <time dateTime="2026-11-20">2026/11/20</time>
             </p>
-            <Button asChild size="lg" className="mt-8 w-full">
+            <Button asChild size="lg" className="mt-6 w-full">
               <a href={SUBSCRIPTION_URL} target="_blank" rel="noopener noreferrer">
                 {t('plus_page.subscribe')}
               </a>

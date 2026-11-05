@@ -48,7 +48,7 @@
     "enterprise": "Enterprise",
     "docs": "Docs",
     "contact": "Contact Us",
-    "pricing": "Pricing",
+    "pricing": "Flash",
     "pricing_badge": "20% off",
     "menu": "Site navigation",
     "close_menu": "Close navigation",
@@ -856,7 +856,7 @@
     },
     "cta": {
       "title": "Start with Plus today",
-      "description": "Double 11 special: CNY 9.9 for the first month, then CNY 19.9 per month."
+      "description": "CNY 19.9 per month, with no separate accounts for each model."
     },
     "support": {
       "open": "Contact support",
