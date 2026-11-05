@@ -87,7 +87,3 @@ ollama pull deepseek-r1:8b
 ### Ollama 下载模型很慢怎么办？
 
 可以换个时间段重试，或者改用 LM Studio 下载模型，Cherry Studio 同样能接入（见[接入 LM Studio](/docs/zh-cn/pre-basic/providers/lm-studio/)）。
-
-### Cherry Studio 收费吗？
-
-不收费，软件免费开源。用本地模型的话，全程一分钱不用花。

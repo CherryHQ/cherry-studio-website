@@ -80,7 +80,3 @@ Yes. Once the model is downloaded, chat and local knowledge bases don't need the
 ### Is local DeepSeek the same as the official app?
 
 No. Locally you run a distilled R1 model, which is much smaller and weaker at complex reasoning and long-form writing.
-
-### Is Cherry Studio free?
-
-Yes, it's free and open source. With local models, the whole setup costs nothing.
