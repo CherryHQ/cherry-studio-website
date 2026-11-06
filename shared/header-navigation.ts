@@ -85,10 +85,11 @@ export function getHeaderLinks({
   }
 
   return englishSite
-    ? [pricing, desktop, mobile, enterprise, resources, docs]
+    ? [desktop, mobile, pricing, enterprise, resources, docs]
     : [
         desktop,
         mobile,
+        pricing,
         enterprise,
         resources,
         { href: '/careers', label: labels.careers, active: !docsActive && pathname === '/careers' },
