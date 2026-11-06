@@ -45,7 +45,7 @@ jobs:
         run: pnpm docs:test
 
       - name: CI script tests
-        run: node --test .github/scripts/*.test.cjs
+        run: node --test .github/scripts/*.test.cjs scripts/website-worker.test.mjs
 
       - name: Generate documentation content
         run: pnpm docs:generate
