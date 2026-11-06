@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 
 import Footer from '@/components/website/Footer'
 import SectionDivider from '@/components/website/SectionDivider'
+import WebsiteBanner from '@/components/website/WebsiteBanner'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { isEnglishSite } from '@/utils/urls'
 import CommunitySection from './components/CommunitySection'
@@ -38,6 +39,7 @@ const HomePage: FC = () => {
 
   return (
     <div className="bg-background min-h-screen">
+      <WebsiteBanner />
       <HeroSection />
       {sections.map((Section, index) => (
         <Fragment key={index}>

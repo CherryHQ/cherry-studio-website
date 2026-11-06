@@ -1,39 +1,24 @@
+import { fetchWebsiteConfigs, safePublicURL } from './website-api'
+
 interface ChannelResponse {
-  data: {
-    id: number
-    qq_group_link: string
-    wechat_qr_code1: string
-    wechat_qr_code2: string
-    wechat_qr_code3: string
-  }
+  data: { qq_group_link: string; wechat_qrcodes: string[] }
 }
-
-const BASE_URL = 'https://data1.cherry-ai.com'
-
-export const fetchChannelData = async () => {
+export const fetchChannelData = async (): Promise<ChannelResponse | null> => {
   try {
-    const response = await fetch(`${BASE_URL}/items/channel`, {
-      method: 'GET'
-    })
-    const data: ChannelResponse = await response.json()
-    return data
+    const configs = await fetchWebsiteConfigs()
+    const qrCodes = configs['community.wechat_qrcodes']
+    return {
+      data: {
+        qq_group_link: safePublicURL(configs['community.qq_group_link']),
+        wechat_qrcodes: Array.isArray(qrCodes) ? qrCodes.map(safePublicURL).filter(Boolean) : []
+      }
+    }
   } catch (error) {
     console.error('Error fetching channel data:', error)
     return null
   }
 }
-
 export const getRandomWechatQRCode = (channelData: ChannelResponse) => {
-  if (!channelData?.data) return ''
-
-  const qrCodes = [
-    channelData.data.wechat_qr_code1,
-    channelData.data.wechat_qr_code2,
-    channelData.data.wechat_qr_code3
-  ].filter(Boolean) // Filter out any empty/null values
-
-  const randomIndex = Math.floor(Math.random() * qrCodes.length)
-  const randomQRCode = qrCodes[randomIndex]
-
-  return `${BASE_URL}/assets/${randomQRCode}`
+  const qrCodes = channelData?.data?.wechat_qrcodes ?? []
+  return qrCodes.length ? qrCodes[Math.floor(Math.random() * qrCodes.length)] : ''
 }
