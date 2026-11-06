@@ -647,7 +647,8 @@ const ThemePage: React.FC = () => {
   const [activeImageMode, setActiveImageMode] = useState<Record<string, 'light' | 'dark'>>({})
   const [loading, setLoading] = useState(true)
   const [loadingMore, setLoadingMore] = useState(false)
-  const [page, setPage] = useState(1)
+  const [page, setPage] = useState(0)
+  const [fetchError, setFetchError] = useState(false)
   const [hasMore, setHasMore] = useState(true)
   const [copySuccess, setCopySuccess] = useState<string | null>(null)
   const [authorFilter, setAuthorFilter] = useState<string | null>(null)
@@ -670,7 +671,6 @@ const ThemePage: React.FC = () => {
       requestRef.current?.abort()
     }
   }, [])
-  const searchInputRef = useRef<HTMLInputElement>(null)
   const [searchInputValue, setSearchInputValue] = useState('')
 
   const ITEMS_PER_PAGE = 6
@@ -775,11 +775,6 @@ const ThemePage: React.FC = () => {
     return result
   }
 
-  const showNotification = useCallback((type: 'info' | 'error', message: string) => {
-    console.log(`${type}: ${message}`)
-    alert(message)
-  }, [])
-
   const fetchCssData = useCallback(
     async (
       pageNum: number,
@@ -792,8 +787,13 @@ const ThemePage: React.FC = () => {
       const controller = new AbortController()
       requestRef.current = controller
       const sequence = ++requestSequence.current
-      if (initial) setLoading(true)
-      else setLoadingMore(true)
+      setFetchError(false)
+      if (initial) {
+        setLoading(true)
+        setPage(0)
+        setCssItems([])
+        setHasMore(true)
+      } else setLoadingMore(true)
       try {
         const query = new URLSearchParams({
           limit: String(ITEMS_PER_PAGE),
@@ -822,7 +822,7 @@ const ThemePage: React.FC = () => {
       } catch (error) {
         if (controller.signal.aborted) return
         console.error('Error fetching themes:', error)
-        showNotification('error', t('theme_page.notifications.data_fetch_error'))
+        setFetchError(true)
       } finally {
         if (sequence === requestSequence.current) {
           setLoading(false)
@@ -831,7 +831,7 @@ const ThemePage: React.FC = () => {
         }
       }
     },
-    [t, showNotification]
+    []
   )
 
   useEffect(() => {
@@ -985,11 +985,10 @@ const ThemePage: React.FC = () => {
             <div className="relative mb-8">
               <form onSubmit={handleSearchSubmit} className="mx-auto flex max-w-xl">
                 <input
-                  ref={searchInputRef}
                   type="text"
                   className="border-border bg-card text-foreground focus:border-primary flex-1 rounded-l-lg border-2 px-4 py-3 transition-colors focus:outline-none"
                   placeholder={t('theme_page.search_placeholder')}
-                  defaultValue={searchTerm}
+                  value={searchInputValue}
                   onChange={handleSearchInputChange}
                 />
                 <button
@@ -1010,6 +1009,24 @@ const ThemePage: React.FC = () => {
               </form>
             </div>
 
+            {fetchError && (
+              <div role="alert" className="mb-6 text-center">
+                <p className="mb-3">{t('theme_page.notifications.data_fetch_error')}</p>
+                <Button
+                  disabled={loading || loadingMore}
+                  onClick={() =>
+                    void fetchCssData(
+                      page + 1,
+                      page === 0,
+                      authorFilter,
+                      parseSearchInput(searchTerm).plainText || null,
+                      tagFilter
+                    )
+                  }>
+                  {t('theme_page.refresh_page')}
+                </Button>
+              </div>
+            )}
             {/* Filter Info */}
             {(authorFilter || tagFilter || (searchTerm && parseSearchInput(searchTerm).plainText)) && (
               <div className="border-border bg-card mb-5 flex flex-wrap items-center justify-between gap-4 rounded-lg border px-4 py-3">
