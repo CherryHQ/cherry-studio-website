@@ -24,9 +24,11 @@ Chatbox 的 Agent 模式可以执行代码、调用技能和 MCP。Cherry Studio
 
 换个模型，答案可能就差很多。Cherry Studio 可以把一条提问同时发给多个模型，回答并排显示，哪个模型更适合手头的任务，一眼就能看出来。（详见[多模型对比](/docs/zh-cn/advanced-basic/chat/model-compare-branches/)）
 
-## 知识库：文件不出电脑
+## 知识库：本地存储，模型自己选
 
-两边都有桌面知识库。Cherry Studio 的嵌入模型可以自己挑，搭配 Ollama 跑本地嵌入模型，文档从头到尾都留在你自己的电脑上。提问前还能先做一次召回测试，看清楚模型会读到哪些段落。（详见[创建知识库](/docs/zh-cn/knowledge-base/create/)）
+两边都有桌面知识库。Cherry Studio 的知识库保存在本地，嵌入模型可以自己挑，搭配 Ollama 跑本地嵌入模型，向量化就在本机完成。提问前还能先做一次召回测试，看清楚模型会读到哪些段落。（详见[创建知识库](/docs/zh-cn/knowledge-base/create/)）
+
+本地存储和本地嵌入不代表文档内容全程不出电脑。云端解析、OCR、重排或聊天仍可能把文件或相关片段发送给所选服务商。要让整个流程保持本地，需要各环节都使用本地能力，并避免调用会向外部发送内容的工具。（详见[数据、隐私与维护](/docs/zh-cn/knowledge-base/data/)）
 
 ## 日常用起来的小功能
 

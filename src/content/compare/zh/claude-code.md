@@ -41,9 +41,11 @@ Claude Code 不是每件事都最强。Cherry Studio 能够把一条提问同时
 
 ![Cherry Studio 多模型对比：同一个问题同时发给 Claude Opus 和 GLM，两边的回答并排显示](/images/compare/claude-model-compare-zh.webp)
 
-## 跟自己的文件对话，不用上传
+## 用本地知识库和自己的文件对话
 
-Claude Code 读的是项目目录里的代码，翻一堆 PDF 和笔记就不太顺手。Cherry Studio 的知识库直接在你自己的电脑上为 PDF、笔记和网页建立索引，任何模型都能基于这些内容回答，还会标出引用。再配一个本地嵌入模型，文档从头到尾都不出电脑。（详见[知识库](/docs/zh-cn/knowledge-base/knowledge-base/)）
+Claude Code 读的是项目目录里的代码，翻一堆 PDF 和笔记就不太顺手。Cherry Studio 的知识库保存在你自己的电脑上，所选聊天模型能基于召回片段回答，并标出引用。本地嵌入模型只保证向量化在本机完成；云端解析、OCR、重排或聊天仍可能把文档内容发送给所选服务商，包括用 Claude 聊天时发送给 Anthropic。（详见[知识库](/docs/zh-cn/knowledge-base/knowledge-base/)）
+
+要让文档内容全程留在电脑上，解析、OCR、嵌入、重排和聊天都需要使用本地能力，并避免调用会向外部发送内容的工具。（详见[数据、隐私与维护](/docs/zh-cn/knowledge-base/data/)）
 
 ## 写代码以外的日常小功能
 

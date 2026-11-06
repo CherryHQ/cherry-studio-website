@@ -54,9 +54,9 @@ ollama pull deepseek-r1:8b
 
 ## 进阶：用本地 DeepSeek 读你自己的文件
 
-只聊天有点浪费本地部署的优势。在 Cherry Studio 里建一个知识库，把 PDF、Word、笔记放进去，再配一个本地嵌入模型（比如 `ollama pull bge-m3`），整个过程文件都不出电脑，适合合同、内部资料这类不方便上传的内容。（详见[创建知识库](/docs/zh-cn/knowledge-base/create/)）
+只聊天有点浪费本地部署的优势。在 Cherry Studio 里建一个知识库，把 PDF、Word、笔记放进去，再配一个本地嵌入模型（比如 `ollama pull bge-m3`），就能在本机完成向量化。处理合同、内部资料等不能外发的内容时，解析、OCR、重排和聊天也要使用本地能力，并避免调用会向外部发送内容的工具。即使嵌入在本地完成，云端服务仍可能收到文件或召回片段。（详见[创建知识库](/docs/zh-cn/knowledge-base/create/)和[数据、隐私与维护](/docs/zh-cn/knowledge-base/data/)）
 
-想更进一步，还可以让本地模型当 Agent，在指定的文件夹里整理文件、写报告。小模型做多步骤任务比较吃力，建议用 14b 以上的版本，或者规划交给云端模型、敏感内容交给本地模型。（详见 [Agent 工作区](/docs/zh-cn/advanced-basic/agent-workspace/)）
+想更进一步，还可以让本地模型当 Agent，在指定的文件夹里整理文件、写报告。小模型做多步骤任务比较吃力，建议用 14b 以上的版本。如果切到云端模型，对话上下文或工具结果中包含的文档内容就会发送给该服务商。（详见 [Agent 工作区](/docs/zh-cn/advanced-basic/agent-workspace/)）
 
 ## 本地部署和直接用 API，怎么选
 
@@ -78,7 +78,7 @@ ollama pull deepseek-r1:8b
 
 ### 本地部署后断网还能用吗？
 
-能。模型下载完成后，聊天和本地知识库都不需要联网。
+能，前提是所需模型已下载，解析、OCR、嵌入、重排和聊天都使用本地能力。需要外部服务的工具仍然需要联网。
 
 ### 本地的 DeepSeek 和官网的一样吗？
 

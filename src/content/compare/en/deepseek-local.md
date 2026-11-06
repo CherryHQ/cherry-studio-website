@@ -51,9 +51,9 @@ More detail: [Ollama setup guide](/docs/en/pre-basic/providers/ollama/).
 
 ## Go further: let local DeepSeek read your files
 
-Create a knowledge base in Cherry Studio, add PDFs, Word files and notes, and pair it with a local embedding model (for example `ollama pull bge-m3`). Your files stay on your computer the whole time, which suits contracts and internal documents you'd rather not upload. (See [Create a knowledge base](/docs/en/knowledge-base/create/).)
+Create a knowledge base in Cherry Studio, add PDFs, Word files and notes, and pair it with a local embedding model (for example `ollama pull bge-m3`). This keeps vectorization local. For contracts or internal documents that must stay on your computer, parsing, OCR, reranking and chat must also use local options, with no tools that send content externally. Cloud services can receive files or retrieved passages even when embeddings run locally. (See [Create a knowledge base](/docs/en/knowledge-base/create/) and [Data and privacy](/docs/en/knowledge-base/data/).)
 
-You can also run a local model as an agent that sorts files and writes reports in a folder you choose. Small models struggle with multi-step tasks, so use 14b or larger, or let a cloud model plan while the local model handles sensitive content. (See [Agent workspace](/docs/en/advanced-basic/agent-workspace/).)
+You can also run a local model as an agent that sorts files and writes reports in a folder you choose. Small models struggle with multi-step tasks, so use 14b or larger. If you switch to a cloud model, any document content included in its conversation context or tool results is sent to that provider. (See [Agent workspace](/docs/en/advanced-basic/agent-workspace/).)
 
 ## Local model or API?
 
@@ -75,7 +75,7 @@ No. 1.5b and 7b run on a CPU, just more slowly. A GPU with 8 GB+ VRAM or an Appl
 
 ### Does it work offline?
 
-Yes. Once the model is downloaded, chat and local knowledge bases don't need the internet.
+Yes, once the required models are downloaded and parsing, OCR, embedding, reranking and chat all use local options. Tools that require external services still need a connection.
 
 ### Is local DeepSeek the same as the official app?
 

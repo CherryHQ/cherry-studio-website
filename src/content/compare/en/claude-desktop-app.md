@@ -42,9 +42,11 @@ Claude isn't the best at everything. Cherry Studio can send one prompt to Claude
 
 ![Cherry Studio sending one question to two models and showing both answers side by side](/images/compare/claude-model-compare-en.webp)
 
-## Chat with your files without uploading them
+## Chat with a knowledge base stored on your computer
 
-Claude Projects keeps your files in your Anthropic account. Cherry Studio's knowledge base indexes PDFs, notes and saved pages on your own computer, and any model can answer from them with citations. Pair it with a local embedding model and the documents never leave your machine. (See [Knowledge base](/docs/en/knowledge-base/knowledge-base/).)
+Claude Projects keeps your files in your Anthropic account. Cherry Studio stores its knowledge base locally, and your chosen chat model can answer from retrieved passages with citations. A local embedding model keeps vectorization on your computer, but cloud parsing, OCR, reranking or chat can still send document content to the selected provider, including Anthropic when you chat with Claude. (See [Knowledge base](/docs/en/knowledge-base/knowledge-base/).)
+
+To keep document content on your computer throughout the workflow, use local parsing, OCR, embedding, reranking and chat, and avoid tools that send content externally. (See [Data and privacy](/docs/en/knowledge-base/data/).)
 
 ## Familiar desktop shortcuts
 
@@ -54,13 +56,13 @@ Claude Projects keeps your files in your Anthropic account. Cherry Studio's know
 
 ## Should you switch?
 
-Choose Cherry Studio if you want more than one model, would rather pay for what you use than hit a five-hour limit, or want your chats and files to stay on your computer. The app is free, and Claude is still one click away in the model menu.
+Choose Cherry Studio if you want more than one model, would rather pay for what you use than hit a five-hour limit, or want local storage for your chat history and knowledge base. The app is free, and Claude is still one click away in the model menu.
 
 Stay with the Claude desktop app if Claude is all you use, you're happy with Pro or Max, and you want Cowork, Claude Code and Claude in Chrome built into one place.
 
 > **Use Claude, GPT, Gemini and DeepSeek in one app**
 >
-> Download Cherry Studio for free, add your Anthropic API key, and bring in every other model you use. Your chats stay on your computer.
+> Download Cherry Studio for free, add your Anthropic API key, and bring in every other model you use. Your chat history is stored locally.
 >
 > [Download free →](/download) · [Anthropic setup guide](/docs/en/pre-basic/providers/anthropic/)
 

@@ -24,9 +24,11 @@ Chatbox's Agent Mode can run code and call skills and MCP tools. Cherry Studio's
 
 Different models often give very different answers. Cherry Studio can send one prompt to several models and show the replies side by side, so you can see which one suits the task. (See [Model comparison](/docs/en/advanced-basic/chat/model-compare-branches/).)
 
-## A knowledge base that stays on your computer
+## A local knowledge base with your choice of models
 
-Both apps have a desktop knowledge base. In Cherry Studio you pick the embedding model, so with a local embedding model in Ollama your documents never leave your machine. A recall test shows which passages the model will read before you ask. (See [Create a knowledge base](/docs/en/knowledge-base/create/).)
+Both apps have a desktop knowledge base. Cherry Studio stores its knowledge base locally and lets you pick the embedding model. Running that model in Ollama keeps vectorization on your computer. A recall test shows which passages the model will read before you ask. (See [Create a knowledge base](/docs/en/knowledge-base/create/).)
+
+Local storage and embedding alone do not keep document content offline. Cloud parsing, OCR, reranking or chat can send files or relevant passages to the selected provider. To keep the whole workflow local, use local options for every stage and avoid tools that send content externally. (See [Data and privacy](/docs/en/knowledge-base/data/).)
 
 ## Which one should you pick?
 
