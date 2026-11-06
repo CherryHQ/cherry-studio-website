@@ -208,7 +208,7 @@ function UsageContent() {
         </section>
 
         <p className="border-border mt-14 border-t pt-6">
-          <Link to="/flash" className="text-muted-foreground hover:text-foreground text-sm transition-colors">
+          <Link to="/subscription" className="text-muted-foreground hover:text-foreground text-sm transition-colors">
             ← {t('nav.pricing')}
           </Link>
         </p>
@@ -219,7 +219,7 @@ function UsageContent() {
   )
 }
 
-const FlashUsagePage: FC = () => {
+const SubscriptionUsagePage: FC = () => {
   const { i18n } = useTranslation()
 
   if (!isEnglishSite(i18n.resolvedLanguage || i18n.language)) return <Navigate to="/" replace />
@@ -227,4 +227,4 @@ const FlashUsagePage: FC = () => {
   return <UsageContent />
 }
 
-export default FlashUsagePage
+export default SubscriptionUsagePage

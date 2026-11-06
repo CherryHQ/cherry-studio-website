@@ -89,14 +89,16 @@ const Footer: FC = () => {
         { href: enterpriseHref, label: t('footer.cherry_studio.enterprise'), analyticsLocation: 'footer' },
         { href: '/mobile', label: t('footer.cherry_studio.mobile') },
         { href: 'https://github.com/CherryHQ/cherry-studio', label: t('footer.cherry_studio.github') },
-        { href: getDocsUrl(i18n.language), label: t('footer.cherry_studio.docs') }
+        { href: getDocsUrl(i18n.language), label: t('footer.cherry_studio.docs') },
+        { href: '/subscription/faq', label: t('faq_page.link') }
       ]
     : [
         { href: enterpriseHref, label: t('footer.cherry_studio.enterprise'), analyticsLocation: 'footer' },
         { href: '/mobile', label: t('footer.cherry_studio.mobile') },
         { href: 'https://github.com/CherryHQ/cherry-studio', label: t('footer.cherry_studio.github') },
         { href: 'https://gitcode.com/CherryHQ/cherry-studio', label: t('footer.cherry_studio.gitcode') },
-        { href: getDocsUrl(i18n.language), label: t('footer.cherry_studio.docs') }
+        { href: getDocsUrl(i18n.language), label: t('footer.cherry_studio.docs') },
+        { href: '/subscription/faq', label: t('faq_page.link') }
       ]
 
   const communityLinks = [

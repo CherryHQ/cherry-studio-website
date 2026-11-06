@@ -1,7 +1,7 @@
-import { ArrowRight, ChevronDown, Clock, Gauge, Wallet } from 'lucide-react'
-import { type FC, useState } from 'react'
+import { ArrowRight, Clock, Gauge, Wallet } from 'lucide-react'
+import type { FC } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Link, Navigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import deepseekLogo from '@/assets/images/provider_logo/deepseek-color.svg'
 import qwenLogo from '@/assets/images/provider_logo/qwen-color.svg'
@@ -9,13 +9,13 @@ import zhipuLogo from '@/assets/images/provider_logo/zhipu-color.svg'
 import { Button } from '@/components/ui/button'
 import Footer from '@/components/website/Footer'
 import SectionDivider from '@/components/website/SectionDivider'
+import SubscriptionFaq from '@/components/website/SubscriptionFaq'
 import { usePageMeta } from '@/hooks/usePageMeta'
-import { cn } from '@/lib/utils'
 import { isEnglishSite } from '@/utils/urls'
+import ChinaPricingPage from './china'
 
 const PRICE = { price: 8, list: 10 }
 const FLASH_PLANS_URL = 'https://cloud.cherryai.com/account/plans'
-const SUPPORT_EMAIL = 'support@cherry-ai.com'
 const RATE_KEYS = ['input', 'output', 'cache_read', 'cache_write'] as const
 const BADGE_ICONS = [Wallet, Clock, Gauge]
 const MODEL_LOGOS: Record<string, string> = {
@@ -34,11 +34,6 @@ interface PricingModel {
   allowance: string
   tokens: string
   free?: string[]
-}
-
-interface PricingFaqItem {
-  question: string
-  answer: string
 }
 
 function RateValue({ value, free }: { value: string; free: boolean }) {
@@ -63,66 +58,11 @@ function RateValue({ value, free }: { value: string; free: boolean }) {
   )
 }
 
-function BillingFaq({ items }: { items: PricingFaqItem[] }) {
-  const [openIndex, setOpenIndex] = useState<number | null>(0)
-
-  return (
-    <div className="mt-10 space-y-4">
-      {items.map((item, index) => {
-        const isOpen = openIndex === index
-        const emailIndex = item.answer.indexOf(SUPPORT_EMAIL)
-
-        return (
-          <div
-            key={item.question}
-            className="border-border bg-secondary/30 overflow-hidden rounded-xl border transition-all duration-200">
-            <h3>
-              <button
-                type="button"
-                aria-expanded={isOpen}
-                onClick={() => setOpenIndex(isOpen ? null : index)}
-                className="hover:bg-secondary/50 text-foreground flex w-full cursor-pointer items-center justify-between gap-4 p-6 text-left font-medium transition-colors">
-                <span className="pr-4">{item.question}</span>
-                <ChevronDown
-                  className={cn(
-                    'text-muted-foreground h-5 w-5 shrink-0 transition-transform duration-200',
-                    isOpen && 'rotate-180'
-                  )}
-                />
-              </button>
-            </h3>
-            <div className={cn('grid transition-all duration-200', isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]')}>
-              <div className="overflow-hidden">
-                <div className="text-muted-foreground border-border border-t px-6 pt-4 pb-6 text-sm leading-relaxed">
-                  {emailIndex < 0 ? (
-                    item.answer
-                  ) : (
-                    <>
-                      {item.answer.slice(0, emailIndex)}
-                      <a
-                        href={`mailto:${SUPPORT_EMAIL}`}
-                        className="text-foreground underline underline-offset-2 hover:text-primary">
-                        {SUPPORT_EMAIL}
-                      </a>
-                      {item.answer.slice(emailIndex + SUPPORT_EMAIL.length)}
-                    </>
-                  )}
-                </div>
-              </div>
-            </div>
-          </div>
-        )
-      })}
-    </div>
-  )
-}
-
 function FlashContent() {
   const { t } = useTranslation()
   usePageMeta('flash')
 
   const models = t('pricing.models', { returnObjects: true }) as PricingModel[]
-  const faq = t('pricing.faq', { returnObjects: true }) as PricingFaqItem[]
   const table = t('pricing.table', { returnObjects: true }) as Record<string, string>
 
   return (
@@ -216,7 +156,7 @@ function FlashContent() {
           </div>
 
           <Link
-            to="/flash/usage"
+            to="/subscription/usage"
             className="text-muted-foreground hover:text-foreground mt-5 inline-flex items-center gap-1 text-sm transition-colors hover:underline">
             {t('pricing.rules_link')}
             <ArrowRight className="h-3.5 w-3.5" />
@@ -229,7 +169,7 @@ function FlashContent() {
       <section className="px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl">
           <h2 className="text-foreground text-center text-2xl font-bold sm:text-3xl">{t('pricing.faq_title')}</h2>
-          <BillingFaq items={faq} />
+          <SubscriptionFaq variant="flash" />
         </div>
       </section>
 
@@ -249,12 +189,12 @@ function FlashContent() {
   )
 }
 
-const FlashPage: FC = () => {
+const SubscriptionPage: FC = () => {
   const { i18n } = useTranslation()
 
-  if (!isEnglishSite(i18n.resolvedLanguage || i18n.language)) return <Navigate to="/" replace />
+  if (!isEnglishSite(i18n.resolvedLanguage || i18n.language)) return <ChinaPricingPage />
 
   return <FlashContent />
 }
 
-export default FlashPage
+export default SubscriptionPage

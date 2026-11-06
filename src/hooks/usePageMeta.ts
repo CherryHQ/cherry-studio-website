@@ -14,7 +14,9 @@ export type PageType =
   | 'theme'
   | 'careers'
   | 'flash'
+  | 'plus'
   | 'flashUsage'
+  | 'faq'
   | 'articles'
   | `article:${CompareSlug}`
   | 'notFound'
@@ -25,7 +27,7 @@ interface PageMetaConfig {
   // 归档页把 canonical 指回正式页面（与线上英文站一致）
   canonicalPath?: string
   noindex?: boolean
-  // Flash 相关页面只在英文站存在，中文站没有对应页面
+  // 没有中文对应页面时，不输出 zh-CN 的 hreflang
   chineseCounterpart?: boolean
   // 只有中文版的文章（如 claude-code）没有英文对应页面
   englishCounterpart?: boolean
@@ -40,8 +42,10 @@ const PAGE_META: Record<PageType, PageMetaConfig> = {
   mobile_download: { path: '/download' },
   theme: { path: '/theme' },
   careers: { path: '/careers' },
-  flash: { path: '/flash', chineseCounterpart: false },
-  flashUsage: { path: '/flash/usage', translationKey: 'flash_usage', chineseCounterpart: false },
+  flash: { path: '/subscription' },
+  plus: { path: '/subscription' },
+  flashUsage: { path: '/subscription/usage', translationKey: 'flash_usage', chineseCounterpart: false },
+  faq: { path: '/subscription/faq' },
   articles: { path: '/resources/articles/' },
   // 文章按语言单独上线；某种语言没有正文时不输出该语言的 hreflang
   ...(Object.fromEntries(

@@ -17,7 +17,9 @@
     "compare_lm_studio": "LM Studio 替代：本地和云端模型放在一个应用里用",
     "compare_chatbox": "Cherry Studio 和 Chatbox 怎么选：两款 AI 桌面客户端对比",
     "compare_deepseek_local": "DeepSeek 本地部署教程：Ollama + Cherry Studio 三步跑起来",
-    "compare_claude_code": "Claude Code 替代：Claude 和其他模型放在一个应用里用 | Cherry Studio"
+    "compare_claude_code": "Claude Code 替代：Claude 和其他模型放在一个应用里用 | Cherry Studio",
+    "faq": "订阅 FAQ | Cherry Studio",
+    "plus": "Cherry Plus — 轻松办公，从每月 19.9 元开始"
   },
   "page_description": {
     "articles": "Cherry Studio 的文章：怎么选、怎么用 AI 工具的实用内容，帮你把 AI 真正用到日常工作里。",
@@ -37,7 +39,9 @@
     "compare_lm_studio": "LM Studio 负责跑本地模型，Cherry Studio 在上面加上 Agent、知识库、MCP 工具和云端模型。两者对比与搭配用法。",
     "compare_chatbox": "Chatbox 和 Cherry Studio 都能接入多家模型。对比 Agent、MCP、知识库和开源程度，看看哪个更适合你。",
     "compare_deepseek_local": "用 Ollama 下载 DeepSeek-R1 蒸馏版，再接入 Cherry Studio 图形界面。按电脑配置选版本，三步在自己电脑上离线运行 DeepSeek，还能读本地文件。",
-    "compare_claude_code": "Cherry Studio 的 Agent 可以直接用 Claude Code 订阅，聊天时 Claude、GPT、Gemini、DeepSeek 和本地模型都能放在同一个应用里，回答并排对比。"
+    "compare_claude_code": "Cherry Studio 的 Agent 可以直接用 Claude Code 订阅，聊天时 Claude、GPT、Gemini、DeepSeek 和本地模型都能放在同一个应用里，回答并排对比。",
+    "faq": "查看关于订阅额度、发票、取消订阅和退款的常见问题。",
+    "plus": "Cherry Plus：每月 19.9 元，一份订阅畅用 DeepSeek、Qwen 和 GLM，费用透明，随时取消。"
   },
   "nav": {
     "resources": "资源",
@@ -50,10 +54,11 @@
     "enterprise": "企业版",
     "docs": "文档",
     "contact": "联系我们",
-    "pricing": "Flash",
+    "pricing": "订阅",
     "pricing_badge": "20% off",
     "menu": "网站导航",
-    "close_menu": "关闭导航"
+    "close_menu": "关闭导航",
+    "plus": "Plus"
   },
   "theme_switcher": {
     "dark": "深色",
@@ -803,6 +808,109 @@
       "chatbox": "Cherry Studio 和 Chatbox 对比",
       "deepseek-local": "DeepSeek 本地部署教程",
       "claude-code": "Claude Code 替代：Claude 和其他模型一起用"
+    }
+  },
+  "faq_page": {
+    "title": "订阅 FAQ",
+    "description": "查看关于订阅额度、发票、取消订阅和退款的常见问题。",
+    "back": "查看订阅套餐",
+    "link": "订阅 FAQ",
+    "contact_title": "还有其他问题？",
+    "contact_description": "请通过邮件联系我们的支持团队。"
+  },
+  "plus_page": {
+    "skip_link": "跳至主要内容",
+    "subtitle": "为日常办公而生。",
+    "benefits_label": "Plus 的三大优势",
+    "benefits": {
+      "cost": {
+        "title": "成本更低",
+        "description": "以更便宜的价格享受多家模型服务，\n额度充足，覆盖一整月的日常工作"
+      },
+      "freedom": {
+        "title": "不限时段，自由使用",
+        "description": "没有滚动时间窗口，也没有每日限额。\n整月额度，由你自由安排。"
+      },
+      "transparency": {
+        "title": "价格透明，用量实时可见",
+        "description": "Token 计费单价和用量完全公开，\n使用额度透明可查"
+      }
+    },
+    "pricing_label": "Plus 月度订阅价格",
+    "per_month": "元/月",
+    "offer": {
+      "title": "双十一特惠",
+      "first_month": "首月",
+      "original_price": "原价",
+      "renewal": "之后 ¥19.9 / 月",
+      "ends_on": "优惠截止时间："
+    },
+    "subscribe": "订阅 Plus",
+    "fine_print": "随时取消 · 无隐藏费用",
+    "usage": {
+      "title": "月度用量上限",
+      "table_label": "整月仅使用一种模型时的折算上限",
+      "model": "模型",
+      "single_model": "单一模型使用上限",
+      "monthly_usage": "月度用量",
+      "exclusive_model": "整月仅使用该模型",
+      "up_to": "最高",
+      "note": "以上为整月仅使用对应模型时的折算上限，不是各模型的独立额度。",
+      "rules": "查看完整使用规则"
+    },
+    "rates": {
+      "title": "计费单价",
+      "description": "人民币元 / 每百万 Token，参照各家模型官方标准标价。",
+      "scroll_hint": "左右滑动查看完整单价 →",
+      "table_label": "模型计费单价表，可横向滚动",
+      "caption": "Plus 模型计费单价，单位为人民币元 / 每百万 Token",
+      "model": "模型",
+      "input": "输入",
+      "output": "输出",
+      "cache_read": "缓存读取",
+      "cache_write": "缓存写入",
+      "off_peak": "谷时",
+      "peak": "峰时",
+      "free": "免费"
+    },
+    "peak": {
+      "title": "DeepSeek 峰谷时段说明",
+      "description": "DeepSeek V4.1 Flash 按使用时段计费。高峰时段为北京时间周一至周五（不含中国法定节假日）09:00–12:00 和 14:00–18:00；其他时段、周末及中国法定节假日全天均享谷时价格。Qwen 和 GLM 不区分峰谷时段。"
+    },
+    "faq": {
+      "title": "关于订阅，你可能想知道",
+      "quota": {
+        "question": "当月额度用完了怎么办？",
+        "answer": "所有模型共享同一份月度用量，用完后无法通过切换模型继续获得套餐额度。你仍可使用自己的模型服务商 API 密钥继续使用 Cherry Studio。"
+      },
+      "invoice": {
+        "question": "可以开发票吗？",
+        "answer": "如需开具发票请发送订阅账号及开票信息至 <email>support@cherry-ai.com</email> 。"
+      },
+      "cancel": {
+        "question": "可以随时取消订阅吗？",
+        "answer": "可以。取消订阅后将不再自动续费，你仍可继续使用剩余额度，直至当前计费周期结束。"
+      },
+      "refund": {
+        "question": "可以申请退款吗？",
+        "answer": "如果扣款发生在过去 14 天内，且你在该计费周期中尚未使用任何订阅套餐额度，则可能符合退款条件。请联系 <email>support@cherry-ai.com</email> 申请退款。"
+      },
+      "accounts": {
+        "question": "还需要分别注册各家模型服务商吗？",
+        "answer": "不需要。这正是订阅套餐的意义：一份订阅即可使用套餐中的模型，无需向每家模型服务商分别注册账号或充值。"
+      }
+    },
+    "cta": {
+      "title": "今天，就从 Plus 开始",
+      "description": "每月 19.9 元，无需为每家模型单独注册。"
+    },
+    "support": {
+      "open": "联系支持",
+      "close": "关闭支持窗口",
+      "title": "有什么可以帮你？",
+      "description": "有关订阅、额度或账单的问题，欢迎联系 Cherry Studio 支持团队。",
+      "email": "发送邮件给支持团队",
+      "faq": "查看订阅 FAQ"
     }
   }
 }

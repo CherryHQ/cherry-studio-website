@@ -67,18 +67,21 @@ const DEFAULT_ROBOTS = 'index, follow, max-image-preview:large, max-snippet:-1, 
 const NOINDEX_ROBOTS = 'noindex, follow'
 
 // 与 src/hooks/usePageMeta.ts 的页面表保持一致；canonicalPath 指回正式页面。
-// 英文站额外生成每个路由的静态 HTML，中文站目前仍只输出首页。
+// 为公开页面生成对应语言的静态 HTML。
 const ROUTES = {
   en: [
     { path: '/download', key: 'download' },
     { path: '/download/v1', key: 'download_v1', canonicalPath: '/download', noindex: true },
     { path: '/download/v2', key: 'download_v2', canonicalPath: '/download' },
-    { path: '/flash', key: 'flash', chineseCounterpart: false, flashPlan: true },
-    { path: '/flash/usage', key: 'flash_usage', chineseCounterpart: false, dropSoftwareApplication: true },
+    { path: '/subscription', key: 'flash', flashPlan: true },
+    { path: '/subscription/usage', key: 'flash_usage', chineseCounterpart: false, dropSoftwareApplication: true },
+    { path: '/subscription/faq', key: 'faq', subscriptionFaq: true, dropSoftwareApplication: true },
     { path: '/theme', key: 'theme', dropSoftwareApplication: true }
   ],
-  // 中文站保持原有产物：只输出首页，不额外生成路由 HTML
-  zh: []
+  zh: [
+    { path: '/subscription', key: 'plus', dropSoftwareApplication: true },
+    { path: '/subscription/faq', key: 'faq', subscriptionFaq: true, dropSoftwareApplication: true }
+  ]
 }
 
 // 文章页：src/content/compare/<locale>/<slug>.md 存在就生成 /resources/articles/<slug>。
@@ -128,14 +131,17 @@ const SITEMAP = {
     { path: '/', priority: '1.0', lastmod: '2026-10-19' },
     { path: '/download', priority: '0.9', lastmod: '2026-10-20' },
     { path: '/mobile', priority: '0.9', lastmod: '2026-09-22' },
-    { path: '/flash', priority: '0.9', lastmod: '2026-10-19' },
-    { path: '/flash/usage', priority: '0.6', lastmod: '2026-10-19' },
+    { path: '/subscription', priority: '0.9', lastmod: '2026-10-19' },
+    { path: '/subscription/usage', priority: '0.6', lastmod: '2026-10-19' },
+    { path: '/subscription/faq', priority: '0.6', lastmod: '2026-11-03' },
     { path: '/theme', priority: '0.7', lastmod: '2026-02-13' }
   ],
   zh: [
     { path: '/', priority: '1.0' },
     { path: '/download', priority: '0.9' },
-    { path: '/mobile', priority: '0.9' }
+    { path: '/mobile', priority: '0.9' },
+    { path: '/subscription', priority: '0.9', lastmod: '2026-11-03' },
+    { path: '/subscription/faq', priority: '0.6', lastmod: '2026-11-03' }
   ]
 }
 
@@ -326,6 +332,21 @@ function buildRouteHtml(route) {
     html = dropJsonLd(html, 'SoftwareApplication')
     html = appendJsonLd(html, buildFlashProductJsonLd(canonicalUrl))
     html = appendJsonLd(html, buildFlashFaqJsonLd())
+  }
+
+  if (route.subscriptionFaq) {
+    const items = target === 'zh'
+      ? Object.values(translations.plus_page.faq).filter((item) => typeof item === 'object')
+      : translations.pricing.faq
+    const plainItems = items.map((item) => ({ ...item, answer: item.answer.replace(/<\/?email>/g, '') }))
+    const questions = plainItems.map((item) =>
+      `<section class="mt-8"><h2 class="text-lg font-semibold">${escapeHtml(item.question)}</h2><p class="mt-3 leading-7">${escapeHtml(item.answer)}</p></section>`
+    ).join('')
+    html = html.replace(
+      '<div id="root"></div>',
+      `<div id="root"><main class="mx-auto max-w-3xl px-4 pt-32 pb-20"><a href="/subscription">${escapeHtml(translations.faq_page.back)}</a><h1 class="mt-8 text-3xl font-bold">${escapeHtml(translations.faq_page.title)}</h1><p class="mt-4">${escapeHtml(translations.faq_page.description)}</p>${questions}</main></div>`
+    )
+    html = appendJsonLd(html, buildFaqJsonLd(plainItems))
   }
 
   return html
@@ -726,8 +747,8 @@ const LLMS_PAGES = ['home', 'download', 'flash', 'flash_usage', 'theme', 'articl
 const LLMS_PATH_BY_KEY = {
   home: '/',
   download: '/download',
-  flash: '/flash',
-  flash_usage: '/flash/usage',
+  flash: '/subscription',
+  flash_usage: '/subscription/usage',
   theme: '/theme',
   articles: '/resources/articles/',
   ...Object.fromEntries(compareRoutes.map(({ key, path }) => [key, path]))
@@ -771,7 +792,7 @@ frontier models with no separate provider accounts:
 - Qwen 3.8 Flash: input $0.15, output $0.47, monthly allowance $15
 - GLM 5.3 Flash: input $0.15, output $0.50, monthly allowance $15
 
-Full pricing: https://cherryai.com/flash
+Full pricing: https://cherryai.com/subscription
 
 ## Frequently asked questions
 
@@ -781,7 +802,7 @@ ${translations.pricing.faq.map((item) => `Q: ${item.question}\nA: ${item.answer}
 
 - Website: https://cherryai.com
 - Download: https://cherryai.com/download
-- Flash: https://cherryai.com/flash
+- Flash: https://cherryai.com/subscription
 - GitHub: https://github.com/CherryHQ/cherry-studio
 - Discord: https://discord.gg/wez8HtpxqQ
 `
@@ -805,7 +826,7 @@ ${pages}
 ## Links
 
 - [Download](${config.domain}/download)
-- [Flash](${config.domain}/flash)
+- [Flash](${config.domain}/subscription)
 - [GitHub](https://github.com/CherryHQ/cherry-studio)
 - [Discord](https://discord.gg/wez8HtpxqQ)
 `
@@ -818,6 +839,23 @@ applyIndexTarget()
 
 for (const route of ROUTES[target]) {
   writeRouteHtml(route)
+}
+
+// Keep previously shared pricing links working on static hosts as well as in the SPA.
+for (const [path, key] of [
+  ['/flash', target === 'zh' ? 'plus' : 'flash'],
+  ['/flash/usage', 'flash_usage']
+]) {
+  const destination = path.replace('/flash', '/subscription')
+  writeRouteHtml({
+    path,
+    key,
+    canonicalPath: destination,
+    redirectTo: destination,
+    noindex: true,
+    chineseCounterpart: path === '/flash',
+    dropSoftwareApplication: true
+  })
 }
 
 for (const route of compareRoutes.filter(({ compare }) => LEGACY_COMPARE_SLUGS.has(compare))) {
