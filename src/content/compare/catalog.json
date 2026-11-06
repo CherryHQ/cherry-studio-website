@@ -1,0 +1,13 @@
+{
+  "_comment": "文章目录：分类顺序和每篇文章所属的分类、正文最后一次实质修改的日期。src/content/compare/index.ts 和 scripts/finalize-static-site.mjs 共用；新增文章时在这里加一行，并在 index.ts 的 COMPARE_SLUGS 里加上同一个 slug。",
+  "categories": ["compare", "tutorials", "use-cases"],
+  "articles": {
+    "manus": { "category": "compare", "lastmod": "2026-10-23" },
+    "chatgpt-desktop-app": { "category": "compare", "lastmod": "2026-10-23" },
+    "lm-studio": { "category": "compare", "lastmod": "2026-10-23" },
+    "chatbox": { "category": "compare", "lastmod": "2026-11-06" },
+    "claude-code": { "category": "compare", "lastmod": "2026-11-06" },
+    "claude-desktop-app": { "category": "compare", "lastmod": "2026-11-06" },
+    "deepseek-local": { "category": "tutorials", "lastmod": "2026-11-06" }
+  }
+}

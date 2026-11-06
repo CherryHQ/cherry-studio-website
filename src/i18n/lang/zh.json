@@ -1,6 +1,6 @@
 {
   "page_title": {
-    "articles": "精选文章 | Cherry Studio",
+    "articles": "文章 | Cherry Studio",
     "home": "Cherry Studio 官方网站 - 全能 AI 工作站",
     "download": "下载 Cherry Studio - 多平台 AI 客户端",
     "mobile": "Cherry Studio 移动版 - 随身的 AI 工作站",
@@ -14,10 +14,13 @@
     "not_found": "页面不存在 - Cherry Studio",
     "compare_manus": "Cherry Studio 和 Manus 怎么选：本地还是云端 AI Agent",
     "compare_chatgpt_desktop_app": "ChatGPT 桌面版替代：一个应用用上所有模型 | Cherry Studio",
-    "compare_lm_studio": "LM Studio 替代：本地和云端模型放在一个应用里用"
+    "compare_lm_studio": "LM Studio 替代：本地和云端模型放在一个应用里用",
+    "compare_chatbox": "Cherry Studio 和 Chatbox 怎么选：两款 AI 桌面客户端对比",
+    "compare_deepseek_local": "DeepSeek 本地部署教程：Ollama + Cherry Studio 三步跑起来",
+    "compare_claude_code": "Claude Code 替代：Claude 和其他模型放在一个应用里用 | Cherry Studio"
   },
   "page_description": {
-    "articles": "阅读 Cherry Studio 的产品对比与使用文章，了解多模型对话、本地 AI 和智能体的应用方式。",
+    "articles": "Cherry Studio 的文章：怎么选、怎么用 AI 工具的实用内容，帮你把 AI 真正用到日常工作里。",
     "home": "Cherry Studio AI桌面客户端，开源、免费、且功能强大。AI agent、AI 对话、AI绘图、知识库等功能齐全，支持所有主流大模型，支持Windows/macOS/Linux，支持数据本地存储，是AI深度使用者的首选",
     "download": "下载 Cherry Studio AI 客户端，支持 Windows、macOS、Linux 平台。集成 100+ AI 模型，完全免费开源。",
     "mobile": "了解 Cherry Studio 移动版，在手机上连接 AI 模型、进行对话、创作图像和使用工具。现已上架国区 App Store，Android 提供 APK 下载。",
@@ -31,11 +34,14 @@
     "not_found": "你访问的页面不存在。",
     "compare_manus": "Manus 在云端跑 Agent、按积分计费；Cherry Studio 在你自己的电脑上跑 Agent，模型随你接。从价格、隐私和工具三方面对比。",
     "compare_chatgpt_desktop_app": "一个免费的桌面应用里用 GPT、Claude、Gemini、DeepSeek 和本地模型。可以用 ChatGPT 账号登录，也可以按 token 付费。",
-    "compare_lm_studio": "LM Studio 负责跑本地模型，Cherry Studio 在上面加上 Agent、知识库、MCP 工具和云端模型。两者对比与搭配用法。"
+    "compare_lm_studio": "LM Studio 负责跑本地模型，Cherry Studio 在上面加上 Agent、知识库、MCP 工具和云端模型。两者对比与搭配用法。",
+    "compare_chatbox": "Chatbox 和 Cherry Studio 都能接入多家模型。对比 Agent、MCP、知识库和开源程度，看看哪个更适合你。",
+    "compare_deepseek_local": "用 Ollama 下载 DeepSeek-R1 蒸馏版，再接入 Cherry Studio 图形界面。按电脑配置选版本，三步在自己电脑上离线运行 DeepSeek，还能读本地文件。",
+    "compare_claude_code": "Cherry Studio 的 Agent 可以直接用 Claude Code 订阅，聊天时 Claude、GPT、Gemini、DeepSeek 和本地模型都能放在同一个应用里，回答并排对比。"
   },
   "nav": {
     "resources": "资源",
-    "articles": "精选文章",
+    "articles": "文章",
     "download": "下载",
     "desktop": "桌面版",
     "mobile": "移动版",
@@ -766,16 +772,37 @@
     "download": "下载 Cherry Studio"
   },
   "articles": {
-    "title": "精选文章",
-    "description": "阅读 Cherry Studio 的产品对比与使用文章，了解多模型对话、本地 AI 和智能体的应用方式。",
-    "back": "全部文章"
+    "title": "文章",
+    "description": "关于怎么选、怎么用 AI 工具的实用文章，帮你把 AI 真正用到日常工作里。",
+    "back": "全部文章",
+    "breadcrumb": "面包屑导航",
+    "categories": {
+      "compare": {
+        "title": "产品对比",
+        "description": "和你可能正在用的其他 AI 应用相比，Cherry Studio 有什么不一样。"
+      },
+      "tutorials": {
+        "title": "教程",
+        "description": "一步步带你在 Cherry Studio 里把事情做成。"
+      },
+      "use-cases": {
+        "title": "使用场景",
+        "description": "用 Cherry Studio 完成具体的事：翻译、知识库、MCP 工具和日常办公。"
+      }
+    },
+    "updated": "更新于 {{date}}",
+    "reading_time": "约 {{count}} 分钟读完",
+    "read_more": "阅读全文"
   },
   "compare": {
-    "related": "更多对比",
+    "related": "相关文章",
     "links": {
       "manus": "Cherry Studio 和 Manus 对比",
       "chatgpt-desktop-app": "ChatGPT 桌面版替代",
-      "lm-studio": "LM Studio 替代"
+      "lm-studio": "LM Studio 替代",
+      "chatbox": "Cherry Studio 和 Chatbox 对比",
+      "deepseek-local": "DeepSeek 本地部署教程",
+      "claude-code": "Claude Code 替代：Claude 和其他模型一起用"
     }
   }
 }
