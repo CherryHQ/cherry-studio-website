@@ -4,6 +4,11 @@ import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 
+const publicAPIProxy = {
+  '/api/configs': { target: process.env.OPS_API_TARGET || 'http://localhost:3388', changeOrigin: false },
+  '/api/website/': { target: process.env.OPS_API_TARGET || 'http://localhost:3388', changeOrigin: false }
+}
+
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
@@ -33,7 +38,7 @@ export default defineConfig({
       }
     }
   ],
-  preview: { proxy: {} },
+  preview: { proxy: publicAPIProxy },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src')
@@ -42,11 +47,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/docs': { target: 'http://127.0.0.1:3001', changeOrigin: true, ws: true },
-      '/api': {
-        target: 'http://rack1.raincs.cc:18192',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, '')
-      }
+      ...publicAPIProxy
     }
   }
 })

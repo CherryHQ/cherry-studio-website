@@ -256,9 +256,9 @@ const HeroSection: FC = () => {
               style={{
                 color: notice.text_color,
                 fontSize: `${notice.text_size}px`
-              }}
-              dangerouslySetInnerHTML={{ __html: notice.notice }}
-            />
+              }}>
+              {notice.notice}
+            </div>
           )}
 
           {/* CTA Buttons */}

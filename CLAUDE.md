@@ -79,7 +79,7 @@ Platform detection is handled by [src/utils/systemDetection.ts](src/utils/system
 
 Community channel data (QQ groups and WeChat QR codes) is fetched from:
 
-- Base URL: `https://data1.cherry-ai.com`
+- Base URL: `/api/configs?product=website`
 - API function: `fetchChannelData()` in [src/assets/js/data.ts](src/assets/js/data.ts)
 - Used in JoinCommunity component to display social links
 
@@ -118,7 +118,7 @@ import SimpleHeader from '@/components/website/SimpleHeader'
 
 ## Development Proxy
 
-API requests to `/api` are proxied to `http://rack1.raincs.cc:18192` during development (see [vite.config.ts:16-22](vite.config.ts#L16-L22)).
+Public website API requests are proxied to `OPS_API_TARGET` (default `http://localhost:3388`) in development and preview. Production Nginx forwards only the public config, theme and submission routes to Ops.
 
 ## Styling Approach
 
