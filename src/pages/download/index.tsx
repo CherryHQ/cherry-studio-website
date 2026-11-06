@@ -33,32 +33,35 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
 
   const isV2 = edition === 'v2'
   const isV1 = edition === 'v1'
+  const mobileAvailable = !isV1
   const { loading, error, versionData } = useVersionData({
     releaseLine: isV1 ? 'v1' : 'stable',
     exactMajorVersion: isV1 ? 1 : undefined,
     minimumMajorVersion: isV2 ? 2 : undefined
   })
   const [activePlatform, setActivePlatform] = useState<DownloadPlatform>(() => {
-    if (
-      platformParam === 'mobile' ||
-      platformParam === 'windows' ||
-      platformParam === 'macos' ||
-      platformParam === 'linux'
-    ) {
+    if (platformParam === 'windows' || platformParam === 'macos' || platformParam === 'linux') {
       return platformParam
     }
-    return isMobileDevice() ? 'mobile' : 'windows'
+    if (mobileAvailable && platformParam === 'mobile') {
+      return 'mobile'
+    }
+    return mobileAvailable && isMobileDevice() ? 'mobile' : 'windows'
   })
   const [detectedPlatform, setDetectedPlatform] = useState<Platform | null>(null)
   const [detectedArch, setDetectedArch] = useState<DetectedArch | null>(null)
   const [systemDetectionReady, setSystemDetectionReady] = useState(false)
   const userSelectedPlatformRef = useRef(false)
   const isMobile = isMobileDevice()
-  const showMobile = activePlatform === 'mobile'
+  const showMobile = mobileAvailable && activePlatform === 'mobile'
+  const desktopPlatform = activePlatform === 'mobile' ? 'windows' : activePlatform
+  const displayPlatform = showMobile ? activePlatform : desktopPlatform
   usePageMeta(
     showMobile ? 'mobile_download' : edition === 'v1' ? 'downloadV1' : edition === 'v2' ? 'downloadV2' : 'download'
   )
   const autoDownloadRequested = searchParams.get('autodownload')?.toLowerCase() === 'true'
+  // Do not auto-download a desktop build when v1 links explicitly request the unavailable mobile one.
+  const autoDownloadAllowed = autoDownloadRequested && !isMobile && (mobileAvailable || platformParam !== 'mobile')
   const releaseHistoryUrl = RELEASE_HISTORY_URLS[getSiteRegion()]
 
   useEffect(() => {
@@ -71,7 +74,7 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
     // Optional debug overrides: /download?platform=windows&arch=arm64
     // platform: windows|macos|linux|mobile
     // arch: arm64|x64|ia32|unknown|null
-    if (platformParam === 'mobile') {
+    if (mobileAvailable && platformParam === 'mobile') {
       setActivePlatform('mobile')
       setSystemDetectionReady(true)
       return
@@ -100,7 +103,7 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
     }
 
     // Fast path: sync OS detection for immediate UX.
-    setActivePlatform(isMobileDevice() ? 'mobile' : 'windows')
+    setActivePlatform(mobileAvailable && isMobileDevice() ? 'mobile' : 'windows')
     const detected = detectPlatform()
     if (detected) {
       setDetectedPlatform(detected)
@@ -130,7 +133,7 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
     return () => {
       cancelled = true
     }
-  }, [platformParam, archParam])
+  }, [platformParam, archParam, mobileAvailable])
 
   return (
     <div className="bg-background min-h-screen overflow-hidden">
@@ -166,30 +169,31 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
 
           <div className="border-border bg-card mx-auto mt-9 max-w-3xl overflow-hidden rounded-3xl border text-left shadow-sm dark:border-white/15">
             <PlatformTabs
-              activePlatform={activePlatform}
+              activePlatform={displayPlatform}
               detectedPlatform={detectedPlatform}
               detectedArch={detectedArch}
+              mobileAvailable={mobileAvailable}
               onPlatformChange={(platform) => {
                 userSelectedPlatformRef.current = true
                 setActivePlatform(platform)
               }}
             />
 
-            {activePlatform === 'mobile' ? (
+            {showMobile ? (
               <MobileDownloads />
             ) : (
               <>
                 <PlatformDownloadPrimary
-                  platform={activePlatform}
-                  detectedArch={detectedPlatform === activePlatform ? detectedArch : null}
+                  platform={desktopPlatform}
+                  detectedArch={detectedPlatform === desktopPlatform ? detectedArch : null}
                   versionData={versionData}
                   loading={loading}
-                  autoDownload={autoDownloadRequested && !isMobile && detectedPlatform === activePlatform}
+                  autoDownload={autoDownloadAllowed && detectedPlatform === desktopPlatform}
                   autoDownloadReady={systemDetectionReady}
                 />
                 <PlatformDownloadOptions
-                  platform={activePlatform}
-                  detectedArch={detectedPlatform === activePlatform ? detectedArch : null}
+                  platform={desktopPlatform}
+                  detectedArch={detectedPlatform === desktopPlatform ? detectedArch : null}
                   versionData={versionData}
                   loading={loading}
                 />

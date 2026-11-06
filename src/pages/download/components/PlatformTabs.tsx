@@ -12,6 +12,7 @@ interface PlatformTabsProps {
   activePlatform: DownloadPlatform
   detectedPlatform: Platform | null
   detectedArch?: DetectedArch | null
+  mobileAvailable?: boolean
   onPlatformChange: (platform: DownloadPlatform) => void
 }
 
@@ -26,9 +27,11 @@ const PlatformTabs: FC<PlatformTabsProps> = ({
   activePlatform,
   detectedPlatform,
   detectedArch = null,
+  mobileAvailable = true,
   onPlatformChange
 }) => {
   const { t } = useTranslation()
+  const visiblePlatforms = mobileAvailable ? platforms : platforms.filter(({ id }) => id !== 'mobile')
 
   const archLabel =
     detectedArch === 'arm64'
@@ -41,8 +44,8 @@ const PlatformTabs: FC<PlatformTabsProps> = ({
 
   return (
     <div className="border-border border-b p-2 sm:p-3">
-      <div className="grid grid-cols-4 gap-1">
-        {platforms.map(({ id, icon: PlatformIcon }) => {
+      <div className={cn('grid gap-1', mobileAvailable ? 'grid-cols-4' : 'grid-cols-3')}>
+        {visiblePlatforms.map(({ id, icon: PlatformIcon }) => {
           const isActive = activePlatform === id
           const isDetected = detectedPlatform === id
 
