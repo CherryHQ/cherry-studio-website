@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { hasCompare } from '@/content/compare'
+import { COMPARE_SLUGS, type CompareSlug, hasCompare } from '@/content/compare'
 import { getLanguageDomain } from '@/utils/urls'
 
 export type PageType =
@@ -18,9 +18,7 @@ export type PageType =
   | 'flashUsage'
   | 'faq'
   | 'articles'
-  | 'compareManus'
-  | 'compareChatgptDesktopApp'
-  | 'compareLmStudio'
+  | `article:${CompareSlug}`
   | 'notFound'
 
 interface PageMetaConfig {
@@ -31,6 +29,8 @@ interface PageMetaConfig {
   noindex?: boolean
   // 没有中文对应页面时，不输出 zh-CN 的 hreflang
   chineseCounterpart?: boolean
+  // 只有中文版的文章（如 claude-code）没有英文对应页面
+  englishCounterpart?: boolean
 }
 
 const PAGE_META: Record<PageType, PageMetaConfig> = {
@@ -47,22 +47,18 @@ const PAGE_META: Record<PageType, PageMetaConfig> = {
   flashUsage: { path: '/subscription/usage', translationKey: 'flash_usage', chineseCounterpart: false },
   faq: { path: '/subscription/faq' },
   articles: { path: '/resources/articles/' },
-  // 对比页的中文版审核通过后才上线；没有中文正文时不输出 zh-CN 的 hreflang
-  compareManus: {
-    path: '/resources/articles/manus',
-    translationKey: 'compare_manus',
-    chineseCounterpart: hasCompare('zh', 'manus')
-  },
-  compareChatgptDesktopApp: {
-    path: '/resources/articles/chatgpt-desktop-app',
-    translationKey: 'compare_chatgpt_desktop_app',
-    chineseCounterpart: hasCompare('zh', 'chatgpt-desktop-app')
-  },
-  compareLmStudio: {
-    path: '/resources/articles/lm-studio',
-    translationKey: 'compare_lm_studio',
-    chineseCounterpart: hasCompare('zh', 'lm-studio')
-  },
+  // 文章按语言单独上线；某种语言没有正文时不输出该语言的 hreflang
+  ...(Object.fromEntries(
+    COMPARE_SLUGS.map((slug) => [
+      `article:${slug}`,
+      {
+        path: `/resources/articles/${slug}`,
+        translationKey: `compare_${slug.replace(/-/g, '_')}`,
+        chineseCounterpart: hasCompare('zh', slug),
+        englishCounterpart: hasCompare('en', slug)
+      }
+    ])
+  ) as Record<`article:${CompareSlug}`, PageMetaConfig>),
   notFound: { path: '/404', translationKey: 'not_found', noindex: true }
 }
 
@@ -108,11 +104,14 @@ export const usePageMeta = (pageType: PageType) => {
     if (config.chineseCounterpart === false) {
       document.querySelector('link[rel="alternate"][hreflang="zh-CN"]')?.remove()
     }
+    if (config.englishCounterpart === false) {
+      document.querySelector('link[rel="alternate"][hreflang="en"]')?.remove()
+    }
     const alternates = [
       ...(config.chineseCounterpart === false
         ? []
         : [{ language: 'zh-CN', href: `https://cherryai.com.cn${pagePath}` }]),
-      { language: 'en', href: `https://cherryai.com${pagePath}` },
+      ...(config.englishCounterpart === false ? [] : [{ language: 'en', href: `https://cherryai.com${pagePath}` }]),
       { language: 'x-default', href: canonicalUrl }
     ]
     for (const { language, href } of alternates) {

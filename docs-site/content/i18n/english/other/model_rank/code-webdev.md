@@ -4,7 +4,7 @@ This page shows the top 30 models on the [Arena AI](https://arena.ai/leaderboard
 
 This leaderboard measures how models perform in practice on web front-end development (HTML/CSS/JS) tasks.
 
-> **Data updated**: 2026-11-02 18:02:56 UTC / 2026-11-03 02:02:56 CST (Beijing time)
+> **Data updated**: 2026-11-05 16:19:27 UTC / 2026-11-06 00:19:27 CST (Beijing time)
 
 {% hint style="info" %}
 A leaderboard reflects one particular evaluation and the preferences of its voters, so a high rank does not mean a model will do better on your tasks. Weigh price, speed, context, tool calling, privacy and regional availability as well.
@@ -36,14 +36,14 @@ A leaderboard reflects one particular evaluation and the preferences of its vote
 |     20 | 14-22         | Muse Wonder (Max) [<sup>1</sup>](https://research.meta.ai/blog/muse-wonder)                                                                 | 1652 (++11/-11)             |   3,724 | $4 / $20      | 1M        |
 |     21 | 20-28         | Grok 4.7 (xHigh) [<sup>1</sup>](https://docs.x.ai/developers/models/grok-4.7)                                                               | 1637 (++9/-9)               |   6,572 | $2 / $6       | 500K      |
 |     22 | 20-28         | MiMo-V2.6-Flash [<sup>1</sup>](https://mimo.xiaomi.com/mimo-v2-6)                                                                           | 1637 (++8/-8)               |   7,068 | $0.14 / $0.28 | 1.1M      |
-|     23 | 21-31         | Hy4 preview [<sup>1</sup>](https://hy.tencent.ai/research/hy4-preview)                                                                      | 1631 (++10/-10) Preliminary |   4,765 | $0.75 / $2.25 | 1M        |
+|     23 | 21-31         | Hy4 preview [<sup>1</sup>](https://hy.tencent.ai/research/hy4-preview)                                                                      | 1631 (++10/-10) Preliminary |   4,765 | $0.83 / $2.50 | 1M        |
 |     24 | 21-31         | Qwen3.8-Flash-Next [<sup>1</sup>](https://qwen.ai/blog?id=qwen3.8-flash-next)                                                               | 1628 (++8/-8) Preliminary   |   9,703 | $0.16 / $0.47 | 1M        |
 |     25 | 21-31         | MiMo-V2.6-Pro [<sup>1</sup>](https://mimo.xiaomi.com/mimo-v2-6)                                                                             | 1625 (++8/-8)               |   6,820 | $0.43 / $0.87 | 1.1M      |
 |     26 | 21-31         | Claude Fable 5 (High) [<sup>1</sup>](https://www.anthropic.com/news/claude-fable-5-mythos-5)                                                | 1624 (++6/-6)               |  16,951 | $10 / $50     | 1M        |
 |     27 | 21-31         | GLM-5.3 (Max) [<sup>1</sup>](https://z.ai/blog/glm-5.3)                                                                                     | 1623 (++7/-7)               |  11,150 | $1.40 / $4.40 | 1M        |
 |     28 | 23-32         | Muse Spark 1.3 (xHigh) [<sup>1</sup>](https://developer.meta.com/ai/models/muse-spark/)                                                     | 1620 (++7/-7)               |  10,243 | $1.25 / $4.25 | 1M        |
 |     29 | 21-33         | DeepSeek-V4.1-Flash-20260910 (Max) [<sup>1</sup>](https://www.deepseek.com/en/news/deepseek-v4-1-flash/)                                    | 1619 (++11/-11)             |   3,510 | $0.30 / $1.20 | 1M        |
-|     30 | 23-33         | Grok 4.6 (High) [<sup>1</sup>](https://docs.x.ai/developers/models/grok-4.6)                                                                | 1616 (++7/-7)               |  11,966 | $2 / $6       | 500K      |
+|     30 | 23-33         | Grok 4.6 (High) [<sup>1</sup>](https://docs.x.ai/developers/models/grok-4.6)                                                                | 1616 (++7/-7)               |  11,966 | $1.60 / $4.80 | 500K      |
 
 ## How to read this table
 

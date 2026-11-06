@@ -4,7 +4,7 @@
 
 本榜单评测模型在 Web 前端开发（HTML/CSS/JS）任务上的实际表现。
 
-> **数据更新时间**: 2026-11-02 18:02:56 UTC / 2026-11-03 02:02:56 CST (北京时间)
+> **数据更新时间**: 2026-11-05 16:19:27 UTC / 2026-11-06 00:19:27 CST (北京时间)
 
 {% hint style="info" %}
 排行榜反映特定评测和用户投票偏好，不等同于模型在你的任务中一定更好。选择模型时还要考虑价格、速度、上下文、工具调用、隐私和地区可用性。
@@ -36,14 +36,14 @@
 |   20 | 14-22  | Muse Wonder (Max) [<sup>1</sup>](https://research.meta.ai/blog/muse-wonder)                                                                 | 1652 (++11/-11)             |  3,724 | $4 / $20       | 1M    |
 |   21 | 20-28  | Grok 4.7 (xHigh) [<sup>1</sup>](https://docs.x.ai/developers/models/grok-4.7)                                                               | 1637 (++9/-9)               |  6,572 | $2 / $6        | 500K  |
 |   22 | 20-28  | MiMo-V2.6-Flash [<sup>1</sup>](https://mimo.xiaomi.com/mimo-v2-6)                                                                           | 1637 (++8/-8)               |  7,068 | $0.14 / $0.28  | 1.1M  |
-|   23 | 21-31  | Hy4 preview [<sup>1</sup>](https://hy.tencent.ai/research/hy4-preview)                                                                      | 1631 (++10/-10) Preliminary |  4,765 | $0.75 / $2.25  | 1M    |
+|   23 | 21-31  | Hy4 preview [<sup>1</sup>](https://hy.tencent.ai/research/hy4-preview)                                                                      | 1631 (++10/-10) Preliminary |  4,765 | $0.83 / $2.50  | 1M    |
 |   24 | 21-31  | Qwen3.8-Flash-Next [<sup>1</sup>](https://qwen.ai/blog?id=qwen3.8-flash-next)                                                               | 1628 (++8/-8) Preliminary   |  9,703 | $0.16 / $0.47  | 1M    |
 |   25 | 21-31  | MiMo-V2.6-Pro [<sup>1</sup>](https://mimo.xiaomi.com/mimo-v2-6)                                                                             | 1625 (++8/-8)               |  6,820 | $0.43 / $0.87  | 1.1M  |
 |   26 | 21-31  | Claude Fable 5 (High) [<sup>1</sup>](https://www.anthropic.com/news/claude-fable-5-mythos-5)                                                | 1624 (++6/-6)               | 16,951 | $10 / $50      | 1M    |
 |   27 | 21-31  | GLM-5.3 (Max) [<sup>1</sup>](https://z.ai/blog/glm-5.3)                                                                                     | 1623 (++7/-7)               | 11,150 | $1.40 / $4.40  | 1M    |
 |   28 | 23-32  | Muse Spark 1.3 (xHigh) [<sup>1</sup>](https://developer.meta.com/ai/models/muse-spark/)                                                     | 1620 (++7/-7)               | 10,243 | $1.25 / $4.25  | 1M    |
 |   29 | 21-33  | DeepSeek-V4.1-Flash-20260910 (Max) [<sup>1</sup>](https://www.deepseek.com/en/news/deepseek-v4-1-flash/)                                    | 1619 (++11/-11)             |  3,510 | $0.30 / $1.20  | 1M    |
-|   30 | 23-33  | Grok 4.6 (High) [<sup>1</sup>](https://docs.x.ai/developers/models/grok-4.6)                                                                | 1616 (++7/-7)               | 11,966 | $2 / $6        | 500K  |
+|   30 | 23-33  | Grok 4.6 (High) [<sup>1</sup>](https://docs.x.ai/developers/models/grok-4.6)                                                                | 1616 (++7/-7)               | 11,966 | $1.60 / $4.80  | 500K  |
 
 ## 怎么看这张表
 

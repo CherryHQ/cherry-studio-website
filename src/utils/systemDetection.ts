@@ -93,11 +93,7 @@ export async function detectArchitecture(platform: DetectedPlatform = detectPlat
 
   const ua = navigator.userAgent.toLowerCase()
 
-  // 1) Fast path: parse classic UA
-  const fromUa = detectArchFromUserAgent(ua)
-  if (fromUa) return fromUa
-
-  // 2) UA Client Hints (Chrome/Edge etc) - best-effort
+  // UA-CH first: Chromium's reduced UA reports x86_64 on ARM Windows/Linux.
   const uaData = (navigator as any).userAgentData
   if (uaData?.getHighEntropyValues) {
     try {
@@ -112,7 +108,11 @@ export async function detectArchitecture(platform: DetectedPlatform = detectPlat
     }
   }
 
-  // 3) macOS fallback: try WebGL renderer heuristic (works on some Safari/Chrome configurations)
+  // Classic UA fallback for browsers without UA-CH (Firefox/Safari).
+  const fromUa = detectArchFromUserAgent(ua)
+  if (fromUa) return fromUa
+
+  // macOS fallback: try WebGL renderer heuristic (works on some Safari/Chrome configurations)
   if (platform === 'macos') {
     const webglArch = detectAppleSiliconFromWebGL()
     if (webglArch) return webglArch

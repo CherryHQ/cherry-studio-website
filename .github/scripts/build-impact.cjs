@@ -3,7 +3,7 @@ const { appendFileSync, readFileSync } = require('node:fs')
 const { matchesGlob } = require('node:path')
 
 const buildChecks = new Set([
-  '.github/workflows/docs.yml',
+  '.github/workflows/website.yml',
   '.github/scripts/build-impact.cjs',
   '.github/scripts/smoke-container.sh'
 ])

@@ -1,0 +1,30 @@
+name: Website documentation plan
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  plan:
+    name: Website docs plan
+    if: github.head_ref == 'docs-sync/content' && github.event.pull_request.head.repo.full_name == 'CherryHQ/cherry-studio-website'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Read the coordinator from the desktop main branch
+        uses: actions/checkout@v4
+        with:
+          repository: CherryHQ/cherry-studio
+          ref: main
+          persist-credentials: false
+          sparse-checkout: scripts/websiteDocs
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Validate the proposed content against both main branches
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DOCS_PR_HEAD: ${{ github.event.pull_request.head.sha }}
+        run: node scripts/websiteDocs/checkPlan.mjs --side website --head "$DOCS_PR_HEAD"
