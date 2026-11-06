@@ -67,6 +67,7 @@ export function getHeaderLinks({
   const pricing: HeaderLink = {
     href: '/subscription',
     label: labels.pricing,
+    badge: englishSite ? labels.pricing_badge : undefined,
     active: !docsActive && (pathname === '/subscription' || pathname.startsWith('/subscription/'))
   }
   const resourceLinks: HeaderLink[] = [
