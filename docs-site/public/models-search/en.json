@@ -560,6 +560,7 @@
 {"name":"Step 3.7 Flash","id":"step-3-7-flash","provider":"stepfun","category":"chat-multimodal"},
 {"name":"Kat Coder Air V2.5","id":"kat-coder-air-v2-5","provider":"streamlake","category":"chat-multimodal"},
 {"name":"Kat Coder Pro V2.5","id":"kat-coder-pro-v2-5","provider":"streamlake","category":"chat-multimodal"},
+{"name":"Hunyuan 4","id":"hy4","provider":"tencent","category":"chat-multimodal"},
 {"name":"Fugu Ultra","id":"fugu-ultra","provider":"vercel","category":"chat-multimodal"},
 {"name":"Interfaze Beta","id":"interfaze-beta","provider":"vercel","category":"chat-multimodal"},
 {"name":"Muse Spark 1.1","id":"muse-spark-1-1","provider":"vercel","category":"chat-multimodal"},
