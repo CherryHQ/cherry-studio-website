@@ -46,6 +46,8 @@ If you use different keys on desktop and mobile, take particular care with the f
 
 ## Why are some providers unavailable?
 
+The default-protocol Base URL message and model filtering described below are available from mobile version **0.5.2**. If an older version marks a custom provider as unreadable, update the mobile app and try again.
+
 Read the reason shown beside the provider:
 
 * **Unsupported authentication:** a desktop login may not provide an exportable key usable on mobile. Configure a supported method separately on mobile.
