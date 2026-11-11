@@ -6,12 +6,14 @@ import { ThemeProvider } from '@/contexts/ThemeContext'
 import CareersPage from '@/pages/careers'
 import ComparePage, { LegacyCompareRedirect } from '@/pages/compare'
 import DownloadPage from '@/pages/download'
-import FlashPage from '@/pages/flash'
-import FlashUsagePage from '@/pages/flash/usage'
 import HomePage from '@/pages/home'
 import MobilePage from '@/pages/mobile'
 import NotFoundPage from '@/pages/not-found'
 import ArticlesPage from '@/pages/resources/articles'
+import SubscriptionPage from '@/pages/subscription'
+import SubscriptionFaqPage from '@/pages/subscription/faq'
+import LegacySubscriptionRedirect from '@/pages/subscription/legacy-redirect'
+import SubscriptionUsagePage from '@/pages/subscription/usage'
 import ThemePage from '@/pages/theme'
 
 function App() {
@@ -26,8 +28,11 @@ function App() {
           <Route path="/download/v1" element={<DownloadPage edition="v1" />} />
           <Route path="/download/v2" element={<DownloadPage edition="v2" />} />
           <Route path="/mobile" element={<MobilePage />} />
-          <Route path="/flash" element={<FlashPage />} />
-          <Route path="/flash/usage" element={<FlashUsagePage />} />
+          <Route path="/subscription" element={<SubscriptionPage />} />
+          <Route path="/flash" element={<LegacySubscriptionRedirect to="/subscription" />} />
+          <Route path="/subscription/usage" element={<SubscriptionUsagePage />} />
+          <Route path="/flash/usage" element={<LegacySubscriptionRedirect to="/subscription/usage" />} />
+          <Route path="/subscription/faq" element={<SubscriptionFaqPage />} />
           <Route path="/theme" element={<ThemePage />} />
           <Route path="/careers" element={<CareersPage />} />
           <Route path="/resources/articles" element={<ArticlesPage />} />

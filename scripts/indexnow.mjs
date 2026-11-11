@@ -5,7 +5,7 @@
  *
  * 用法（在 pnpm build:en 或 build:cn 之后）：
  *   pnpm indexnow                                # 提交 dist 里主站和文档站 sitemap 的全部 URL
- *   pnpm indexnow https://cherryai.com/flash     # 只提交指定 URL（可传多个，必须同一个域名）
+ *   pnpm indexnow https://cherryai.com/subscription     # 只提交指定 URL（可传多个，必须同一个域名）
  *
  * 搜索引擎会去 https://<域名>/<key>.txt 核对密钥，所以必须在新版本部署上线之后
  * 再跑，否则 key 文件还不存在，这批提交会被静默丢弃。key 文件就是 public/ 下那个

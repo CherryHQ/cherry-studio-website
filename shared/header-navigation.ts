@@ -64,6 +64,12 @@ export function getHeaderLinks({
     analyticsLocation: 'header_enterprise',
     onClick: onEnterpriseClick
   }
+  const pricing: HeaderLink = {
+    href: '/subscription',
+    label: labels.pricing,
+    badge: englishSite ? labels.pricing_badge : undefined,
+    active: !docsActive && (pathname === '/subscription' || pathname.startsWith('/subscription/'))
+  }
   const resourceLinks: HeaderLink[] = [
     { href: '/theme', label: labels.theme, active: !docsActive && pathname === '/theme' },
     {
@@ -80,22 +86,11 @@ export function getHeaderLinks({
   }
 
   return englishSite
-    ? [
-        {
-          href: '/flash',
-          label: labels.pricing,
-          badge: labels.pricing_badge,
-          active: !docsActive && pathname.startsWith('/flash')
-        },
-        desktop,
-        mobile,
-        enterprise,
-        resources,
-        docs
-      ]
+    ? [desktop, mobile, pricing, enterprise, resources, docs]
     : [
         desktop,
         mobile,
+        pricing,
         enterprise,
         resources,
         { href: '/careers', label: labels.careers, active: !docsActive && pathname === '/careers' },

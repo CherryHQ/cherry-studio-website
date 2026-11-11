@@ -1,3 +1,7 @@
+/flash /subscription 301
+/flash/ /subscription 301
+/flash/usage /subscription/usage 301
+/flash/usage/ /subscription/usage 301
 /compare/manus /resources/articles/manus 301
 /compare/manus/ /resources/articles/manus 301
 /compare/chatgpt-desktop-app /resources/articles/chatgpt-desktop-app 301
