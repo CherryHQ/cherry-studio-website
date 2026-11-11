@@ -4,7 +4,7 @@ This page shows the top 30 models on the [Arena AI](https://arena.ai/leaderboard
 
 This leaderboard measures how models perform on web search and information-retrieval tasks.
 
-> **Data updated**: 2026-11-10 16:17:46 UTC / 2026-11-11 00:17:46 CST (Beijing time)
+> **Data updated**: 2026-11-11 16:22:47 UTC / 2026-11-12 00:22:47 CST (Beijing time)
 
 {% hint style="info" %}
 A leaderboard reflects one particular evaluation and the preferences of its voters, so a high rank does not mean a model will do better on your tasks. Weigh price, speed, context, tool calling, privacy and regional availability as well.
