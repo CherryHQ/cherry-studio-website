@@ -625,7 +625,7 @@
         "description": "一份 ${{price}} 的账单，替代三家服务商的订阅；额度足够覆盖一整个月的用量。"
       },
       {
-        "title": "无时段与周期限制",
+        "title": "无时段与周期限制<limited>（限时）</limited>",
         "description": "没有时段限制，也没有每日上限，整个账单周期内怎么用都由你。"
       },
       {
@@ -633,7 +633,21 @@
         "description": "每百万 token 的单价都写在下面，用了多少在应用里随时能看。"
       }
     ],
-    "models_title": "每月包含什么",
+    "models_title": "月度用量上限",
+    "usage": {
+      "table_label": "整月仅使用单一模型时的折算用量上限",
+      "single_model": "单一模型使用上限",
+      "monthly_usage": "月度用量",
+      "exclusive_model": "整月仅使用该模型",
+      "up_to": "最高",
+      "note": "以上为整月仅使用对应模型时的折算上限，不是各模型的独立额度。"
+    },
+    "rates": {
+      "title": "计费单价",
+      "scroll_hint": "滑动查看全部单价 →",
+      "table_label": "模型计费单价表，可横向滚动",
+      "caption": "Flash 模型计费单价，单位为美元 / 每百万 Token"
+    },
     "table": {
       "model": "模型",
       "input": "输入",
@@ -828,7 +842,7 @@
         "description": "以更便宜的价格享受多家模型服务，\n额度充足，覆盖一整月的日常工作"
       },
       "freedom": {
-        "title": "不限时段，自由使用",
+        "title": "不限时段，自由使用<limited>（限时）</limited>",
         "description": "没有滚动时间窗口，也没有每日限额。\n整月额度，由你自由安排。"
       },
       "transparency": {

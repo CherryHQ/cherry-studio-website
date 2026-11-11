@@ -1,16 +1,14 @@
 import { ArrowRight, Clock, Gauge, Wallet } from 'lucide-react'
 import type { FC } from 'react'
-import { useTranslation } from 'react-i18next'
+import { Trans, useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
-import deepseekLogo from '@/assets/images/provider_logo/deepseek-color.svg'
-import qwenLogo from '@/assets/images/provider_logo/qwen-color.svg'
-import zhipuLogo from '@/assets/images/provider_logo/zhipu-color.svg'
 import { Button } from '@/components/ui/button'
 import Footer from '@/components/website/Footer'
 import SectionDivider from '@/components/website/SectionDivider'
 import SubscriptionFaq from '@/components/website/SubscriptionFaq'
 import { usePageMeta } from '@/hooks/usePageMeta'
+import { cn } from '@/lib/utils'
 import { isEnglishSite } from '@/utils/urls'
 import ChinaPricingPage from './china'
 
@@ -18,11 +16,6 @@ const PRICE = { price: 8, list: 10 }
 const FLASH_PLANS_URL = 'https://cloud.cherryai.com/account/plans'
 const RATE_KEYS = ['input', 'output', 'cache_read', 'cache_write'] as const
 const BADGE_ICONS = [Wallet, Clock, Gauge]
-const MODEL_LOGOS: Record<string, string> = {
-  'deepseek-v41': deepseekLogo,
-  qwen: qwenLogo,
-  glm: zhipuLogo
-}
 
 interface PricingModel {
   id: string
@@ -40,11 +33,7 @@ function RateValue({ value, free }: { value: string; free: boolean }) {
   const { t } = useTranslation()
 
   if (free) {
-    return (
-      <span className="bg-primary/10 text-primary rounded-full px-2 py-0.5 text-[11px] font-semibold">
-        {t('pricing.table.free')}
-      </span>
-    )
+    return <>{t('pricing.table.free')}</>
   }
 
   return (
@@ -83,7 +72,14 @@ function FlashContent() {
               <div className="bg-primary/10 text-primary mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg">
                 <Icon className="h-5 w-5" />
               </div>
-              <h3 className="text-foreground text-base font-semibold">{t(`pricing.badges.${index}.title`)}</h3>
+              <h3 className="text-foreground text-base font-semibold">
+                <Trans
+                  i18nKey={`pricing.badges.${index}.title`}
+                  components={{
+                    limited: <span className="whitespace-nowrap text-xs font-normal text-muted-foreground" />
+                  }}
+                />
+              </h3>
               <p className="text-muted-foreground mt-2 text-sm leading-6">
                 {t(`pricing.badges.${index}.description`, PRICE)}
               </p>
@@ -112,43 +108,116 @@ function FlashContent() {
 
       <SectionDivider />
 
-      <section className="px-4 py-16 sm:px-6 lg:px-8">
+      <section aria-labelledby="flash-usage-title" className="px-4 py-16 sm:px-8">
         <div className="mx-auto max-w-6xl">
-          <div className="text-center">
-            <h2 className="text-foreground text-2xl font-bold sm:text-3xl">{t('pricing.models_title')}</h2>
+          <div className="flex items-center justify-between gap-4">
+            <h2 id="flash-usage-title" className="text-[23px] font-semibold leading-9 tracking-tight sm:text-[26px]">
+              {t('pricing.models_title')}
+            </h2>
+            <span className="flex items-center gap-2.5 font-mono text-sm font-semibold">
+              <span className="h-[17px] w-1 rounded-sm bg-primary" aria-hidden="true" />
+              Flash
+            </span>
           </div>
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {models.map((model) => (
-              <div
-                key={model.id}
-                className="border-border/60 bg-card/50 hover:border-primary/30 flex flex-col rounded-2xl border p-6 transition-colors">
-                <div className="flex items-center gap-3">
-                  <img src={MODEL_LOGOS[model.id]} alt={model.name} className="h-8 w-8 shrink-0" />
-                  <h3 className="text-foreground text-base font-semibold">{model.name}</h3>
-                </div>
-                <div className="border-border/60 mt-6 border-t pt-6">
-                  <p className="text-muted-foreground text-xs">{table.included}</p>
-                  <div className="mt-1 flex items-baseline gap-2">
-                    <p className="text-primary text-4xl font-bold tracking-tight">{model.allowance}</p>
-                    <p className="text-muted-foreground text-sm font-medium">{model.tokens}</p>
-                  </div>
-                </div>
-                <dl className="mt-6 mb-5 space-y-2 text-xs">
-                  {RATE_KEYS.map((key) => (
-                    <div key={key} className="flex items-baseline justify-between gap-3">
-                      <dt className="text-muted-foreground shrink-0">{table[key]}</dt>
-                      <dd className="text-foreground flex items-baseline justify-end gap-1.5 text-right font-medium tabular-nums">
-                        <RateValue value={model[key]} free={Boolean(model.free?.includes(key))} />
-                      </dd>
-                    </div>
+          <table
+            aria-label={t('pricing.usage.table_label')}
+            aria-describedby="flash-usage-note"
+            className="mt-7 block w-full text-left">
+            <thead className="block">
+              <tr className="grid grid-cols-[minmax(0,1fr)_86px] gap-3 rounded-lg border border-border bg-secondary/70 px-2.5 py-3 text-[13px] text-muted-foreground sm:grid-cols-[minmax(200px,1.2fr)_minmax(80px,1fr)_140px] sm:gap-5 sm:px-5 sm:py-3.5 lg:grid-cols-[minmax(220px,1.15fr)_minmax(100px,1.8fr)_160px] lg:gap-8">
+                <th scope="col" className="font-normal">
+                  {table.model}
+                </th>
+                <th scope="col" className="hidden font-normal sm:block">
+                  {t('pricing.usage.single_model')}
+                </th>
+                <th scope="col" className="text-right font-normal">
+                  {t('pricing.usage.monthly_usage')}
+                </th>
+              </tr>
+            </thead>
+            <tbody className="block">
+              {models.map((model) => (
+                <tr
+                  key={model.id}
+                  className="grid grid-cols-[minmax(0,1fr)_86px] items-center gap-3 px-2.5 py-5 sm:grid-cols-[minmax(200px,1.2fr)_minmax(80px,1fr)_140px] sm:gap-5 sm:px-5 sm:py-6 lg:grid-cols-[minmax(220px,1.15fr)_minmax(100px,1.8fr)_160px] lg:gap-8">
+                  <th scope="row" className="font-mono text-[13px] font-normal sm:text-base">
+                    {model.name}
+                  </th>
+                  <td className="col-span-2 row-start-2 sm:col-auto sm:row-auto">
+                    <span className="block h-2 overflow-hidden rounded-[3px] bg-secondary sm:h-2.5" aria-hidden="true">
+                      <span
+                        className={cn(
+                          'block h-full rounded-[3px] bg-gradient-to-r from-primary/60 to-primary',
+                          model.id === 'deepseek-v41' ? 'w-full' : 'w-3/4'
+                        )}
+                      />
+                    </span>
+                    <span className="sr-only">{t('pricing.usage.exclusive_model')}</span>
+                  </td>
+                  <td className="whitespace-nowrap text-right font-mono text-base tabular-nums">
+                    <span className="text-xs text-muted-foreground">{t('pricing.usage.up_to')}</span> {model.allowance}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <p
+            id="flash-usage-note"
+            className="border-t border-border pt-[18px] text-[13px] leading-6 text-muted-foreground">
+            {t('pricing.usage.note')}
+          </p>
+
+          <section aria-labelledby="flash-rates-title" className="mt-12 sm:mt-16">
+            <h3 id="flash-rates-title" className="text-[23px] font-semibold leading-9 tracking-tight sm:text-[26px]">
+              {t('pricing.rates.title')}
+            </h3>
+            <p
+              id="flash-rates-description"
+              className="mt-2 text-sm leading-[26px] text-muted-foreground sm:text-[15px]">
+              {table.rate_unit}
+            </p>
+            <div className="mt-6 border-b border-border">
+              <span className="-mb-px inline-block border-b-2 border-foreground px-[22px] pb-4 pt-3 font-mono text-[17px] font-semibold">
+                Flash
+              </span>
+            </div>
+            <p className="mt-3.5 text-xs text-muted-foreground lg:hidden">{t('pricing.rates.scroll_hint')}</p>
+            <div
+              role="region"
+              aria-label={t('pricing.rates.table_label')}
+              aria-describedby="flash-rates-description"
+              // biome-ignore lint/a11y/noNoninteractiveTabindex: Keyboard users need to scroll the pricing table horizontally.
+              tabIndex={0}
+              className="overflow-x-auto overscroll-x-contain focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-4">
+              <table className="w-full min-w-[900px] border-collapse font-mono text-sm tabular-nums sm:text-[15px] [&_td]:whitespace-nowrap [&_td]:border-b [&_td]:border-border [&_td]:px-5 [&_td]:py-[22px] [&_td:last-child]:pr-0 [&_th]:whitespace-nowrap [&_th]:border-b [&_th]:border-border [&_th]:px-5 [&_th]:text-left [&_th:first-child]:pl-0 [&_th:last-child]:pr-0">
+                <caption className="sr-only">{t('pricing.rates.caption')}</caption>
+                <thead>
+                  <tr>
+                    {['model', ...RATE_KEYS].map((key) => (
+                      <th scope="col" key={key} className="py-[26px] text-sm font-semibold">
+                        {table[key]}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {models.map((model) => (
+                    <tr key={model.id} className="hover:bg-secondary/30">
+                      <th scope="row" className="py-[22px] font-normal">
+                        {model.name}
+                      </th>
+                      {RATE_KEYS.map((key) => (
+                        <td key={key}>
+                          <RateValue value={model[key]} free={Boolean(model.free?.includes(key))} />
+                        </td>
+                      ))}
+                    </tr>
                   ))}
-                </dl>
-                <p className="text-muted-foreground/70 border-border/60 mt-auto border-t pt-3 text-left text-[11px]">
-                  {table.rate_unit}
-                </p>
-              </div>
-            ))}
-          </div>
+                </tbody>
+              </table>
+            </div>
+          </section>
 
           <div className="border-border bg-secondary/30 mt-8 rounded-xl border p-5">
             <h3 className="text-foreground text-sm font-semibold">{t('pricing.peak_title')}</h3>
