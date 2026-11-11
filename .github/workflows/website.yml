@@ -163,15 +163,26 @@ jobs:
       - name: Push the tested image
         if: steps.config.outputs.tag != ''
         id: push
-        uses: docker/build-push-action@v7
-        with:
-          context: .
-          platforms: linux/amd64
-          push: true
-          tags: ${{ steps.config.outputs.tag }}
-          # Match the single-platform image that was loaded and smoke tested.
-          provenance: false
-          sbom: false
+        timeout-minutes: 10
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+          DEPLOY_TAG: ${{ steps.config.outputs.tag }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          push_log="$(mktemp)"
+          trap 'rm -f "$push_log"' EXIT
+
+          # Publish the exact local image that passed the container smoke test.
+          docker tag "website-test:${SOURCE_SHA}" "$DEPLOY_TAG"
+          docker push "$DEPLOY_TAG" 2>&1 | tee "$push_log"
+
+          digest="$(sed -nE 's/^.*digest: (sha256:[0-9a-f]{64}) size: [0-9]+.*$/\1/p' "$push_log" | tail -n 1)"
+          if [[ ! "$digest" =~ ^sha256:[0-9a-f]{64}$ ]]; then
+            echo '::error::Docker push did not return a valid manifest digest'
+            exit 1
+          fi
+          echo "digest=$digest" >> "$GITHUB_OUTPUT"
 
       - name: Update the production GitOps image and digest
         if: steps.push.outputs.digest != ''
