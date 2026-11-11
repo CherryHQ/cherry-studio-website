@@ -10,7 +10,7 @@ import SubscriptionFaq from '@/components/website/SubscriptionFaq'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { cn } from '@/lib/utils'
 
-const SUBSCRIPTION_URL = 'https://cloud.cherryai.com/account/plans'
+const SUBSCRIPTION_URL = 'https://cloud.cherryai.com.cn/account/plans'
 const SUPPORT_EMAIL = 'support@cherry-ai.com'
 const benefits = [
   { key: 'cost', icon: Wallet },
