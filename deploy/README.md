@@ -14,6 +14,10 @@
 push 比较整批提交，PR 比较分支共同祖先后的改动，删除和重命名也参与判断。
 手动运行 `Website CI/CD` 始终构建，选择 main 时按既有规则发布，可用于强制重新构建。
 
+镜像构建并通过容器冒烟测试后，使用 `docker tag` 和 `docker push` 直接上传已测试的本地镜像，
+不再通过第二次 BuildKit 构建来推送。上传日志逐层显示进度，推送步骤最多运行 10 分钟；
+只有推送成功且取得有效的 manifest digest 后才更新 GitOps。若上传超时，现有生产镜像保持不变。
+
 参考数据工作流使用默认 `GITHUB_TOKEN` 提交，GitHub 不会因此触发 push 工作流，
 所以有更新时显式 dispatch `website.yml`，让这些更新也经过同一套检查和发布。
 参见 [GitHub 工作流触发规则](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow)。
