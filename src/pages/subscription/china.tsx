@@ -1,6 +1,6 @@
 import { ArrowRight, Clock3, Gauge, MessageCircle, Wallet, X } from 'lucide-react'
 import { useEffect, useRef } from 'react'
-import { useTranslation } from 'react-i18next'
+import { Trans, useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
 import { Button } from '@/components/ui/button'
@@ -65,7 +65,14 @@ export default function ChinaPricingPage() {
                 <div className="mx-auto flex size-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
                   <Icon className="size-5" strokeWidth={1.65} aria-hidden="true" />
                 </div>
-                <h2 className="mt-4 text-base font-semibold leading-6">{t(`plus_page.benefits.${key}.title`)}</h2>
+                <h2 className="mt-4 text-base font-semibold leading-6">
+                  <Trans
+                    i18nKey={`plus_page.benefits.${key}.title`}
+                    components={{
+                      limited: <span className="whitespace-nowrap text-xs font-normal text-muted-foreground" />
+                    }}
+                  />
+                </h2>
                 <p className="mx-auto mt-2 max-w-[350px] whitespace-pre-line text-sm leading-6 text-muted-foreground">
                   {t(`plus_page.benefits.${key}.description`)}
                 </p>

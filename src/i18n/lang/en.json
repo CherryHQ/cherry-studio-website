@@ -606,7 +606,7 @@
         "description": "One ${{price}} bill instead of three provider subscriptions, with enough tokens to cover a full month of work."
       },
       {
-        "title": "No time or period limits",
+        "title": "No time or period limits <limited>(limited time)</limited>",
         "description": "No rolling windows and no daily caps — the allowance is yours for the whole billing month."
       },
       {
@@ -614,7 +614,21 @@
         "description": "Per-token rates are published below, and current consumption is visible inside the app."
       }
     ],
-    "models_title": "What you get each month",
+    "models_title": "Monthly usage limits",
+    "usage": {
+      "table_label": "Equivalent limits when using only one model throughout the month",
+      "single_model": "Single-model usage limit",
+      "monthly_usage": "Monthly usage",
+      "exclusive_model": "When using only this model throughout the month",
+      "up_to": "Up to",
+      "note": "These are equivalent limits for using only the corresponding model all month, not separate allowances for each model."
+    },
+    "rates": {
+      "title": "Token pricing",
+      "scroll_hint": "Swipe to see all rates →",
+      "table_label": "Model token pricing, scroll horizontally to view all columns",
+      "caption": "Flash model token pricing in USD per million tokens"
+    },
     "table": {
       "model": "Model",
       "input": "Input",
@@ -809,7 +823,7 @@
         "description": "Access multiple model providers for less,\nwith enough usage for a month of everyday work."
       },
       "freedom": {
-        "title": "Use it on your schedule",
+        "title": "Use it on your schedule <limited>(limited time)</limited>",
         "description": "No rolling time windows or daily limits.\nUse your monthly allowance whenever you need it."
       },
       "transparency": {
