@@ -4,7 +4,7 @@ Data comes from the model catalog bundled with Cherry Studio ([provider-registry
 
 Context length and max output are abbreviated with K / M and rounded (1K is roughly 1,000–1,024 tokens, 1M roughly one million), e.g. 131,072 and 128,000 both read 128K. Hover a value to see the exact number; confirm limits with the model provider.
 
-> **Data updated**: 2026-11-09 18:34:59 UTC / 2026-11-10 02:34:59 CST (Beijing time)
+> **Data updated**: 2026-11-12 16:47:00 UTC / 2026-11-13 00:47:00 CST (Beijing time)
 
 <div data-models-table="num:2,3;sort:1;search:0,1;cap:4:Function calling,Reasoning,Image recognition,Speech recognition,Video understanding,Structured output,File input,Computer use,File search;in:5:Text input=Text,Image input=Image,Audio input=Audio,Video input=Video">
 
@@ -111,9 +111,9 @@ Context length and max output are abbreviated with K / M and rounded (1K is roug
 | Command A Vision<br><code>command-a-vision-07-2025</code> | cohere | <span title="131,072">128K</span> | <span title="8,192">8K</span> | Function calling, Image recognition | Text, Image | Text |
 | Command A+<br><code>command-a-plus-05-2026</code> | cohere | <span title="131,072">128K</span> | <span title="65,536">64K</span> | Function calling, Reasoning, Image recognition | Text, Image | Text |
 | DeepSeek V4 Flash Vision Exp<br><code>deepseek-v4-flash-vision-exp</code> | deepseek | <span title="1,048,576">1.05M</span> | <span title="393,216">384K</span> | Function calling, Image recognition, Reasoning, Structured output | Text, Image | Text |
-| DeepSeek V4.1 Flash<br><code>deepseek-flash</code> | deepseek | <span title="1,000,000">1M</span> | <span title="393,216">384K</span> | Function calling, Image recognition, Reasoning, Structured output | Text, Image | Text |
+| DeepSeek V4.1 Flash<br><code>deepseek-flash</code> | deepseek | <span title="1,048,576">1.05M</span> | <span title="393,216">384K</span> | Function calling, Image recognition, Reasoning, Structured output | Text, Image | Text |
+| DeepSeek V4.1 Flash<br><code>deepseek-v4-1-flash</code> | deepseek | <span title="1,048,576">1.05M</span> | <span title="393,216">384K</span> | Function calling, Image recognition, Reasoning, Structured output | Text, Image | Text |
 | DeepSeek V4.1 Flash Beta<br><code>deepseek-v4-1-flash-beta</code> | deepseek | <span title="1,000,000">1M</span> | <span title="384,000">384K</span> | Function calling, Reasoning, Image recognition, File input | Text, Image | Text |
-| DeepSeek: DeepSeek V4.1 Flash<br><code>deepseek-v4-1-flash</code> | deepseek | <span title="1,048,576">1.05M</span> | - | Function calling, Reasoning, Image recognition, Structured output | Text, Image | Text |
 | Gemini 2.5 Computer Use Preview 10-2025<br><code>gemini-2-5-computer-use-preview-10-2025</code> | google | <span title="131,072">128K</span> | <span title="65,536">64K</span> | Function calling, Reasoning, Image recognition, File input | Text, Image | Text |
 | Gemini 2.5 Flash<br><code>gemini-2-5-flash</code> | google | <span title="1,048,576">1.05M</span> | <span title="65,536">64K</span> | Function calling, Reasoning, Image recognition, Speech recognition, Video understanding, Structured output, File input | Text, Image, Audio, Video | Text |
 | Gemini 2.5 Flash-Lite<br><code>gemini-2-5-flash-lite</code> | google | <span title="1,048,576">1.05M</span> | <span title="65,536">64K</span> | Function calling, Reasoning, Image recognition, Speech recognition, Video understanding, Structured output, File input | Text, Image, Audio, Video | Text |
