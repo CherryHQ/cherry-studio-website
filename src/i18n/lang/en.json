@@ -19,7 +19,11 @@
     "compare_chatbox": "Cherry Studio vs Chatbox: Which AI Desktop Client Fits You?",
     "compare_deepseek_local": "How to Run DeepSeek Locally with Ollama and Cherry Studio",
     "compare_claude_desktop_app": "Claude Desktop App vs Cherry Studio: Claude and Every Other Model",
-    "plus": "Cherry Plus for China — Everyday work from CNY 19.9/month"
+    "plus": "Cherry Plus for China — Everyday work from CNY 19.9/month",
+    "compare_ai_translation": "AI Translation App for Selected Text, Documents and PDFs | Cherry Studio",
+    "compare_mcp": "What Is MCP? How to Use MCP Tools in a Desktop AI App | Cherry Studio",
+    "compare_ai_knowledge_base": "Build a Local AI Knowledge Base on Your Computer | Cherry Studio",
+    "compare_ai_office_assistant": "AI Office Assistant for Documents, Spreadsheets and Reports | Cherry Studio"
   },
   "page_description": {
     "articles": "Articles from Cherry Studio: practical reading on choosing and using AI tools, so AI actually helps with your everyday work.",
@@ -41,7 +45,11 @@
     "compare_deepseek_local": "Run DeepSeek-R1 distilled models on your own computer: pick a size for your hardware, pull it with Ollama and chat in Cherry Studio, offline and with your files kept local.",
     "compare_claude_desktop_app": "Compare the Claude desktop app with Cherry Studio: use Claude through your API key or Claude Code subscription, next to GPT, Gemini, DeepSeek and local models.",
     "faq": "Answers about your subscription allowance, cancellations, refunds, and model provider accounts.",
-    "plus": "Cherry Plus for China: one subscription for DeepSeek, Qwen, and GLM at CNY 19.9 per month. Transparent pricing. Cancel anytime."
+    "plus": "Cherry Plus for China: one subscription for DeepSeek, Qwen, and GLM at CNY 19.9 per month. Transparent pricing. Cancel anytime.",
+    "compare_ai_translation": "Translate selected text in any app, or drop in images, Word files and PDFs. Pick the translation model yourself: GPT, Claude, Gemini, DeepSeek and more.",
+    "compare_mcp": "MCP lets AI call external tools and data. Learn what MCP is and how to add MCP servers in Cherry Studio and hand them to agents.",
+    "compare_ai_knowledge_base": "Turn PDFs, Word files, notes and web pages into a knowledge base that answers with sources. Use a local embedding model to keep files on your computer.",
+    "compare_ai_office_assistant": "Let AI read meeting notes, draft weekly reports, review long documents and produce spreadsheets and slides, working on files on your computer."
   },
   "nav": {
     "resources": "Resources",
@@ -802,7 +810,11 @@
       "lm-studio": "LM Studio alternative",
       "chatbox": "Cherry Studio vs Chatbox",
       "deepseek-local": "How to run DeepSeek locally",
-      "claude-desktop-app": "Claude desktop app vs Cherry Studio"
+      "claude-desktop-app": "Claude desktop app vs Cherry Studio",
+      "ai-translation": "AI translation app: selected text, documents and PDFs",
+      "mcp": "What is MCP? Using MCP tools in Cherry Studio",
+      "ai-knowledge-base": "AI knowledge base on your own computer",
+      "ai-office-assistant": "AI office assistant for documents, spreadsheets and reports"
     }
   },
   "faq_page": {

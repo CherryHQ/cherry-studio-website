@@ -8,6 +8,10 @@
     "chatbox": { "category": "compare", "lastmod": "2026-11-06" },
     "claude-code": { "category": "compare", "lastmod": "2026-11-06" },
     "claude-desktop-app": { "category": "compare", "lastmod": "2026-11-06" },
-    "deepseek-local": { "category": "tutorials", "lastmod": "2026-11-06" }
+    "deepseek-local": { "category": "tutorials", "lastmod": "2026-11-06" },
+    "ai-translation": { "category": "use-cases", "lastmod": "2026-11-12" },
+    "mcp": { "category": "use-cases", "lastmod": "2026-11-12" },
+    "ai-knowledge-base": { "category": "use-cases", "lastmod": "2026-11-12" },
+    "ai-office-assistant": { "category": "use-cases", "lastmod": "2026-11-12" }
   }
 }
