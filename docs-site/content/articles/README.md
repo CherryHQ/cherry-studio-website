@@ -24,6 +24,15 @@ icon: compass
 
 * [DeepSeek 本地部署教程：Ollama + Cherry Studio，三步在自己电脑上跑起来](https://cherryai.com.cn/resources/articles/deepseek-local)
 
+## 使用场景
+
+用 Cherry Studio 完成具体的事。
+
+* [AI 翻译软件：划词翻译、文档和 PDF 翻译](https://cherryai.com.cn/resources/articles/ai-translation)
+* [MCP 是什么：在 Cherry Studio 里使用 MCP 工具](https://cherryai.com.cn/resources/articles/mcp)
+* [AI 知识库：在自己电脑上搭建本地知识库](https://cherryai.com.cn/resources/articles/ai-knowledge-base)
+* [AI 办公助手：让 AI 处理文档、表格和周报](https://cherryai.com.cn/resources/articles/ai-office-assistant)
+
 ## 一个应用用上主流模型
 
 Cherry Studio 支持几十家模型服务商，同一段对话里也能随时切换模型。
