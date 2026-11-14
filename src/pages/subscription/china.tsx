@@ -1,5 +1,5 @@
 import { ArrowRight, Clock3, Gauge, MessageCircle, Wallet, X } from 'lucide-react'
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
@@ -33,13 +33,6 @@ export default function ChinaPricingPage() {
   const { t } = useTranslation()
   const supportDialog = useRef<HTMLDialogElement>(null)
   usePageMeta('plus')
-
-  useEffect(() => {
-    // This page has its own subscription support dialog. Restore the site chatbot on navigation.
-    const chatbotClasses = ['[&>#dify-chatbot-bubble-button]:hidden!', '[&>#dify-chatbot-bubble-window]:hidden!']
-    document.body.classList.add(...chatbotClasses)
-    return () => document.body.classList.remove(...chatbotClasses)
-  }, [])
 
   return (
     <>
