@@ -299,9 +299,9 @@
         "title": "Forward Deployed Engineer (Enterprise AI Delivery)",
         "description": "Diagnose enterprise business needs, design and implement AI workflows, and deliver ongoing improvements"
       },
-      "engineer": {
-        "title": "Software Engineer",
-        "description": "Build AI Agent products through full-stack development across web, backend, and cross-platform clients"
+      "technical_director": {
+        "title": "Engineering Director",
+        "description": "Lead engineering and architecture decisions, write core code, build the team, and ensure delivery quality"
       },
       "backend": {
         "title": "Backend Engineer (Go / Node.js)",
@@ -311,17 +311,13 @@
         "title": "Software Engineering Intern",
         "description": "Contribute to multi-model gateways, Agent runtimes, knowledge bases, and web and desktop clients"
       },
-      "visual_design_intern": {
-        "title": "Visual Design Intern",
-        "description": "Create product visuals, short videos, and motion content for product demos and brand communication"
-      },
       "commercial_operations_intern": {
         "title": "AI Product Commercial Operations Intern",
         "description": "Drive product commercialization through user segmentation, customer interviews, data analysis, and experiments"
       },
       "content_operations_intern": {
-        "title": "Content Operations Intern",
-        "description": "Run accounts on Xiaohongshu, WeChat, Bilibili, X, and other channels, creating content around real use cases"
+        "title": "AI Content Operations Intern",
+        "description": "Plan content for WeChat, Xiaohongshu, Douyin, and Bilibili, using product scenarios and performance data to build AI content workflows"
       },
       "technical_support_intern": {
         "title": "Technical Support Intern",

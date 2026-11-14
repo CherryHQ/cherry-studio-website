@@ -295,9 +295,9 @@
         "title": "FDE（企业 AI 落地交付）",
         "description": "深入企业诊断业务场景，设计并落地 AI 工作流，持续交付与迭代"
       },
-      "engineer": {
-        "title": "研发工程师",
-        "description": "负责 Web、后端与跨平台客户端的全栈研发，构建 AI 智能体产品"
+      "technical_director": {
+        "title": "技术总监",
+        "description": "负责产研技术与架构决策，亲手开发核心代码，搭建团队并把控迭代交付质量"
       },
       "backend": {
         "title": "后端研发工程师（Go / Node.js）",
@@ -307,17 +307,13 @@
         "title": "研发实习生",
         "description": "参与多模型网关、智能体运行时、知识库及 Web 与桌面客户端研发"
       },
-      "visual_design_intern": {
-        "title": "视效设计实习生",
-        "description": "制作产品视觉、短视频与动态内容，提升产品演示与品牌传播效果"
-      },
       "commercial_operations_intern": {
         "title": "AI 产品商业化运营实习生",
         "description": "通过用户分层、客户访谈、数据分析与实验，推动产品商业化运营"
       },
       "content_operations_intern": {
-        "title": "内容运营实习生",
-        "description": "运营小红书、公众号、B站与 X 等账号，围绕真实使用场景创作内容"
+        "title": "AI 内容运营实习生",
+        "description": "策划公众号、小红书、抖音与 B 站内容，结合产品场景与数据复盘，沉淀 AI 内容生产工作流"
       },
       "technical_support_intern": {
         "title": "技术支持实习生",

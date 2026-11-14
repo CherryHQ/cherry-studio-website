@@ -15,14 +15,13 @@ const CareersPage: FC = () => {
   const positions = [
     { key: 'designer', icon: '🎨', table: 'ldx7Nenw6VUg5dly' },
     { key: 'fde', icon: '🤝', table: 'ldxcDrKorwZBKY8i' },
-    { key: 'engineer', icon: '💻', table: 'ldxla0rK7nDuI9GU' },
-    { key: 'backend', icon: '⚙️', table: 'ldxz0HLNWBvC0aC1' },
+    { key: 'technical_director', icon: '💻', table: 'ldxOwuMYDuEmE5Xt' },
     { key: 'engineering_intern', icon: '🔧', table: 'ldxOPacqg7TLd4kX' },
-    { key: 'visual_design_intern', icon: '🎬', table: 'ldxSOCA5cmjzZEci' },
+    { key: 'talent_operations', icon: '🌱', table: 'ldxcj4PsIjJNn1JP' },
     { key: 'commercial_operations_intern', icon: '📈', table: 'ldxSeabyfQ0Njg7A' },
-    { key: 'content_operations_intern', icon: '✍️', table: 'ldxCJgzVmKoUrgwE' },
+    { key: 'backend', icon: '⚙️', table: 'ldxz0HLNWBvC0aC1' },
     { key: 'technical_support_intern', icon: '🛠️', table: 'ldxlPzgsxSEMnI7Z' },
-    { key: 'talent_operations', icon: '🌱', table: 'ldxcj4PsIjJNn1JP' }
+    { key: 'content_operations_intern', icon: '✍️', table: 'ldxyJLL0OOGJax9s' }
   ]
 
   const benefits = ['ai_native', 'open_source', 'early_team', 'product']
