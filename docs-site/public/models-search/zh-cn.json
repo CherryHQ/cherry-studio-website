@@ -420,6 +420,8 @@
 {"name":"Gemini 3.7 Flash","id":"gemini-3-7-flash","provider":"google","category":"chat-multimodal"},
 {"name":"Gemini 3.8 Flash","id":"gemini-3-8-flash","provider":"google","category":"chat-multimodal"},
 {"name":"Gemini 4 Argon","id":"gemini-4-argon","provider":"google","category":"chat-multimodal"},
+{"name":"Gemini 4 Carbon","id":"gemini-4-carbon","provider":"google","category":"chat-multimodal"},
+{"name":"Gemini 4 Hydrogen","id":"gemini-4-hydrogen","provider":"google","category":"chat-multimodal"},
 {"name":"Gemini Flash Latest","id":"gemini-flash-latest","provider":"google","category":"chat-multimodal"},
 {"name":"Gemini Flash-Lite Latest","id":"gemini-flash-lite-latest","provider":"google","category":"chat-multimodal"},
 {"name":"Gemma 3 12B IT","id":"gemma-3-12b-it","provider":"google","category":"chat-multimodal"},

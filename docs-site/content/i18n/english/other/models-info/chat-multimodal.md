@@ -4,7 +4,7 @@ Data comes from the model catalog bundled with Cherry Studio ([provider-registry
 
 Context length and max output are abbreviated with K / M and rounded (1K is roughly 1,000–1,024 tokens, 1M roughly one million), e.g. 131,072 and 128,000 both read 128K. Hover a value to see the exact number; confirm limits with the model provider.
 
-> **Data updated**: 2026-11-12 16:47:00 UTC / 2026-11-13 00:47:00 CST (Beijing time)
+> **Data updated**: 2026-11-14 14:54:41 UTC / 2026-11-14 22:54:41 CST (Beijing time)
 
 <div data-models-table="num:2,3;sort:1;search:0,1;cap:4:Function calling,Reasoning,Image recognition,Speech recognition,Video understanding,Structured output,File input,Computer use,File search;in:5:Text input=Text,Image input=Image,Audio input=Audio,Video input=Video">
 
@@ -130,6 +130,8 @@ Context length and max output are abbreviated with K / M and rounded (1K is roug
 | Gemini 3.7 Flash<br><code>gemini-3-7-flash</code> | google | <span title="1,048,576">1.05M</span> | <span title="65,536">64K</span> | Function calling, Reasoning, Image recognition, Speech recognition, Video understanding, Structured output, File input | Text, Image, Audio, Video | Text |
 | Gemini 3.8 Flash<br><code>gemini-3-8-flash</code> | google | <span title="1,048,576">1.05M</span> | <span title="65,536">64K</span> | Function calling, Reasoning, Image recognition, Speech recognition, Video understanding, Structured output, File input | Text, Image, Audio, Video | Text |
 | Gemini 4 Argon<br><code>gemini-4-argon</code> | google | <span title="1,048,576">1.05M</span> | <span title="1,048,576">1.05M</span> | Reasoning, Function calling, Image recognition, Speech recognition, Video understanding, Structured output, File input | Text, Image, Audio, Video | Text |
+| Gemini 4 Carbon<br><code>gemini-4-carbon</code> | google | <span title="1,048,576">1.05M</span> | <span title="1,048,576">1.05M</span> | Reasoning, Function calling, Image recognition, Speech recognition, Video understanding, Structured output, File input | Text, Image, Audio, Video | Text |
+| Gemini 4 Hydrogen<br><code>gemini-4-hydrogen</code> | google | <span title="1,048,576">1.05M</span> | <span title="1,048,576">1.05M</span> | Reasoning, Function calling, Image recognition, Speech recognition, Video understanding, Structured output, File input | Text, Image, Audio, Video | Text |
 | Gemini Flash Latest<br><code>gemini-flash-latest</code> | google | <span title="1,048,576">1.05M</span> | <span title="65,536">64K</span> | Function calling, Reasoning, Image recognition, Speech recognition, Video understanding, Structured output, File input | Text, Image, Audio, Video | Text |
 | Gemini Flash-Lite Latest<br><code>gemini-flash-lite-latest</code> | google | <span title="1,048,576">1.05M</span> | <span title="65,536">64K</span> | Function calling, Reasoning, Image recognition, Speech recognition, Video understanding, Structured output, File input | Text, Image, Audio, Video | Text |
 | Gemma 3 12B IT<br><code>gemma-3-12b-it</code> | google | <span title="131,072">128K</span> | <span title="16,384">16K</span> | Function calling, Image recognition, Structured output, File input | Text, Image | Text |
