@@ -64,6 +64,8 @@ Turning off the global switch does not uninstall the skill; after re-enabling it
 
 ### Exporting Skills to External Agents
 
+This switch is available in desktop version **2.2.2 and later**. If it is missing from **Settings → Skills**, check your version and update to 2.2.2 or later.
+
 - Settings → Skills has an "Export skills to external agents" switch, off by default for fresh installs; upgrades with existing preferences stay enabled unless a choice is already saved; while it is on, Cherry Studio links skills into `~/.agents/skills` for other agent tools to read.
 - Turning it off stops creating or restoring those links and removes links that carry a skill's name and point at that skill's mirror directory, so a link you created yourself with the same name and target is removed too, while regular files, directories, and links under other names are left alone. If this sync fails, the switch state is still saved and the UI offers a retry.
 - Preboot user-data relocation does not read this preference and can still redirect this app’s residual old links.
