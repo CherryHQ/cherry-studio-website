@@ -103,11 +103,3 @@ First, confirm the skill is not globally disabled. Then, enable it in the [Skill
 Skill packages can contain instructions, resources, and scripts. Whether scripts can be executed depends on the Agent's tools, working directory, environment dependencies, and permission mode.
 
 </details>
-
-<details>
-
-<summary>Can skills contain programs? </summary>
-
-Skill packages can contain instructions, resources, and scripts. Whether scripts can be executed depends on the Agent's tools, working directory, environment dependencies, and permission mode.
-
-</details>
