@@ -4,7 +4,7 @@ This page shows the top 30 models on the [Arena AI](https://arena.ai/leaderboard
 
 This leaderboard measures how multimodal models perform on image-understanding tasks.
 
-> **Data updated**: 2026-11-15 15:30:15 UTC / 2026-11-15 23:30:15 CST (Beijing time)
+> **Data updated**: 2026-11-16 18:10:59 UTC / 2026-11-17 02:10:59 CST (Beijing time)
 
 {% hint style="info" %}
 A leaderboard reflects one particular evaluation and the preferences of its voters, so a high rank does not mean a model will do better on your tasks. Weigh price, speed, context, tool calling, privacy and regional availability as well.
