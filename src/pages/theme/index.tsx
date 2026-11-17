@@ -493,6 +493,7 @@ const SubmitModal: React.FC<SubmitModalProps> = ({ isOpen, onClose, exampleImage
                       </div>
                     ) : (
                       <div
+                        data-analytics-click="upload-light-preview"
                         className="hover:bg-secondary/30 flex cursor-pointer flex-col items-center justify-center gap-2.5 p-8 transition-colors"
                         onClick={() => document.getElementById('light_pic')?.click()}>
                         <span className="text-muted-foreground text-2xl">📷</span>
@@ -545,6 +546,7 @@ const SubmitModal: React.FC<SubmitModalProps> = ({ isOpen, onClose, exampleImage
                       </div>
                     ) : (
                       <div
+                        data-analytics-click="upload-dark-preview"
                         className="hover:bg-secondary/30 flex cursor-pointer flex-col items-center justify-center gap-2.5 p-8 transition-colors"
                         onClick={() => document.getElementById('dark_pic')?.click()}>
                         <span className="text-muted-foreground text-2xl">📷</span>
@@ -955,7 +957,9 @@ const ThemePage: React.FC = () => {
                   onClick={() => setHelpTooltipVisible(!helpTooltipVisible)}
                   onMouseEnter={() => setHelpTooltipVisible(true)}
                   onMouseLeave={() => setHelpTooltipVisible(false)}>
-                  <span className="bg-secondary text-muted-foreground flex h-6 w-6 items-center justify-center rounded-full text-sm font-bold">
+                  <span
+                    data-analytics-click="theme-help"
+                    className="bg-secondary text-muted-foreground flex h-6 w-6 items-center justify-center rounded-full text-sm font-bold">
                     <HelpCircle className="h-4 w-4" />
                   </span>
                   <div
@@ -1084,6 +1088,7 @@ const ThemePage: React.FC = () => {
                       key={item.id}
                       className="group border-border bg-card flex flex-col overflow-hidden rounded-2xl border transition-all duration-200 hover:-translate-y-1 hover:shadow-xl">
                       <div
+                        data-analytics-click="theme-preview"
                         className="bg-secondary/30 relative cursor-pointer pt-[56.25%]"
                         onClick={(e) =>
                           handleExamplePreview(
@@ -1121,6 +1126,7 @@ const ThemePage: React.FC = () => {
                           <div className="text-muted-foreground text-sm">
                             {t('theme_page.author_by')}
                             <span
+                              data-analytics-click="theme-author"
                               className={cn(
                                 'hover:text-primary ml-1 cursor-pointer font-medium transition-colors hover:underline',
                                 authorFilter === item.author && 'text-primary'
@@ -1134,6 +1140,7 @@ const ThemePage: React.FC = () => {
                         <div className="mb-3 flex gap-2">
                           {item.light_mode && (
                             <span
+                              data-analytics-click="theme-light-mode"
                               className={cn(
                                 'cursor-pointer rounded px-2 py-0.5 text-xs transition-colors',
                                 activeImageMode[item.id] === 'light'
@@ -1146,6 +1153,7 @@ const ThemePage: React.FC = () => {
                           )}
                           {item.dark_mode && (
                             <span
+                              data-analytics-click="theme-dark-mode"
                               className={cn(
                                 'cursor-pointer rounded px-2 py-0.5 text-xs transition-colors',
                                 activeImageMode[item.id] === 'dark'
@@ -1163,6 +1171,7 @@ const ThemePage: React.FC = () => {
                             item.title.map((titleItem, index) => (
                               <span
                                 key={index}
+                                data-analytics-click="theme-tag"
                                 className={cn(
                                   'cursor-pointer rounded px-2.5 py-1 text-sm font-medium transition-colors',
                                   tagFilter === titleItem
@@ -1175,6 +1184,7 @@ const ThemePage: React.FC = () => {
                             ))
                           ) : (
                             <span
+                              data-analytics-click="theme-tag"
                               className={cn(
                                 'cursor-pointer rounded px-2.5 py-1 text-sm font-medium transition-colors',
                                 tagFilter === (Array.isArray(item.title) ? item.title[0] : item.title)

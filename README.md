@@ -74,3 +74,29 @@ Pages already defaults to `public, max-age=0, must-revalidate` for other files. 
 ## Container deployment
 
 GitHub Actions validates the site and Docker image, publishes main by commit SHA, and updates the China production GitOps image by digest. Required configuration, the companion GitOps changes, activation order and rollback are documented in [deploy/README.md](deploy/README.md).
+
+## Community-site click analytics
+
+PostHog interaction autocapture is limited to clicks on buttons, links, native
+summary/checkbox controls and explicit interactive roles. Existing custom div/span controls opt in using
+`data-analytics-click`; never put that attribute on decorative or page-wide containers.
+Nested text/icons inside a control count as the same click. Input changes, form
+submission events, background clicks, heatmaps, rage clicks, dead clicks and session
+replay are not collected by this community-site PostHog configuration.
+
+Controls already sending a dedicated PostHog event use `data-analytics-manual` to
+avoid an additional `$autocapture` event. Enterprise navigation keeps
+`cta_to_enterprise`, including its location and cross-domain person/session IDs.
+Ordinary control clicks remain `$autocapture` events, so they can be grouped by
+page and element in PostHog. Pageviews, pageleaves, attribution and the existing GA4
+tracking are unchanged. These client settings do not modify the enterprise/SaaS
+sites, shared project settings, or historical data.
+
+Configuration/identity regression checks run with
+`node --test .github/scripts/analytics.test.cjs` (also included in Website CI).
+For browser verification, use a fake PostHog key and intercept analytics requests;
+never send local test interactions to the production project. Verify control clicks
+and nested icons, non-interactive text/backgrounds, input/change/submit events,
+enterprise CTA deduplication, SPA navigation and ID handover on both site languages.
+Disabling heatmaps reduces collected data, not billable heatmap events: heatmap
+ingestion is free. Any event savings depend on which interaction events are omitted.

@@ -52,6 +52,7 @@ const TeamCollaborationSection: FC = () => {
           <div className="mt-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-3 sm:mt-7 sm:flex-nowrap">
             <button
               type="button"
+              data-analytics-manual
               onClick={() => goToEnterprise('team_collaboration_section')}
               className="border-primary/25 bg-primary/10 text-primary hover:bg-primary/15 inline-flex items-center gap-2 rounded-xl border px-5 py-3 text-sm font-semibold shadow-sm transition-colors sm:px-6 sm:py-3.5 sm:text-base">
               {t('team_collaboration.cta')}

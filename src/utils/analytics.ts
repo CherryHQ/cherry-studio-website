@@ -86,7 +86,35 @@ export function initPosthog(): void {
       defaults: '2026-01-30',
       capture_pageview: 'history_change',
       capture_pageleave: true,
-      autocapture: true,
+      // Count intentional controls, not arbitrary page clicks or form input.
+      // Custom div/span controls opt in with data-analytics-click. Their nested
+      // icons/text are included; decorative containers must never opt in.
+      autocapture: {
+        dom_event_allowlist: ['click'],
+        css_selector_allowlist: [
+          'button',
+          'a[href]',
+          'summary',
+          'input[type="checkbox"]',
+          '[role="button"]',
+          '[role="menuitem"]',
+          '[role="tab"]',
+          '[role="option"]',
+          '[data-analytics-click]'
+        ],
+        css_selector_ignorelist: [
+          '.ph-no-autocapture',
+          '[data-ph-no-autocapture]',
+          '[data-analytics-manual]',
+          '[disabled]',
+          '[aria-disabled="true"]'
+        ],
+        capture_copied_text: false
+      },
+      // Override shared project settings only for this community-site client.
+      enable_heatmaps: false,
+      rageclick: false,
+      capture_dead_clicks: false,
       disable_session_recording: true,
       person_profiles: 'identified_only',
       before_send: (event) => {

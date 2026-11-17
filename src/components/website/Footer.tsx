@@ -183,6 +183,7 @@ const Footer: FC = () => {
                   <li key={link.href}>
                     <a
                       href={link.href}
+                      data-analytics-manual={link.analyticsLocation ? true : undefined}
                       onClick={
                         link.analyticsLocation
                           ? (event) => {

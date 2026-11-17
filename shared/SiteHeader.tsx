@@ -98,6 +98,7 @@ export function SiteHeader({
     item.external ? (
       <a
         href={item.href}
+        data-analytics-manual={item.analyticsLocation && item.onClick ? true : undefined}
         target="_blank"
         rel="noopener noreferrer"
         onClick={(event) => {
