@@ -71,6 +71,12 @@ Cloudflare Pages uses `public/_headers` (copied into `dist/_headers`); the conta
 
 Pages already defaults to `public, max-age=0, must-revalidate` for other files. Do not override this with a site-wide browser TTL or a Cache Everything rule in the CDN dashboard. Deploy the complete artifact, including `_headers`. A new visit fetches or validates the entry page, which references the current asset URLs; existing open tabs are not automatically reloaded. These rules do not force a network request when merely switching to an existing tab or restoring a page from browser history.
 
+## HTTPS and browser security headers
+
+At the Cloudflare edge, enable [Always Use HTTPS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/always-use-https/) for the English site, or use a redirect rule limited to `cherryai.com` and `www.cherryai.com` if other subdomains must still support HTTP. Verify that both hosts redirect before serving the download page and preserve the path and query string. Enable HSTS at the edge only after HTTPS coverage is verified; start with a short lifetime and do not include subdomains or preload until they have been audited. Keep the China site's HTTP-to-HTTPS redirect at its TLS edge. The Nginx container emits relative redirects so it does not downgrade HTTPS behind a TLS-terminating proxy.
+
+The static hosts enforce framing, object and base-URL restrictions. Before enforcing a stricter script or resource policy, test it in report-only mode against marketing pages, docs, downloads and analytics on both locales.
+
 ## Container deployment
 
 GitHub Actions validates the site and Docker image, publishes main by commit SHA, and updates the China production GitOps image by digest. Required configuration, the companion GitOps changes, activation order and rollback are documented in [deploy/README.md](deploy/README.md).

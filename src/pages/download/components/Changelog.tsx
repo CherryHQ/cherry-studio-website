@@ -1,4 +1,5 @@
 import * as Dialog from '@radix-ui/react-dialog'
+import DOMPurify from 'dompurify'
 import { BookOpen, X } from 'lucide-react'
 import { marked } from 'marked'
 import { type FC, useMemo } from 'react'
@@ -14,12 +15,17 @@ interface ChangelogProps {
 const Changelog: FC<ChangelogProps> = ({ versionData }) => {
   const { t, i18n } = useTranslation()
 
-  const parsedChangelog = useMemo(() => {
+  const changelogHtml = useMemo(() => {
     if (!versionData) return ''
-    return parseChangelog(versionData.changelog, i18n.language)
+    const markdown = parseChangelog(versionData.changelog, i18n.language)
+    return DOMPurify.sanitize(marked.parse(markdown, { async: false }), {
+      USE_PROFILES: { html: true },
+      FORBID_TAGS: ['style', 'form'],
+      FORBID_ATTR: ['style']
+    })
   }, [versionData, i18n.language])
 
-  if (!versionData || !parsedChangelog.trim()) return null
+  if (!versionData || !changelogHtml.trim()) return null
 
   return (
     <>
@@ -53,7 +59,7 @@ const Changelog: FC<ChangelogProps> = ({ versionData }) => {
             </div>
             <div
               className="prose prose-neutral dark:prose-invert prose-headings:text-foreground prose-p:text-muted-foreground prose-li:text-muted-foreground prose-strong:text-foreground prose-headings:font-semibold prose-a:text-primary max-w-none overflow-y-auto px-5 py-5 text-left sm:px-6"
-              dangerouslySetInnerHTML={{ __html: marked.parse(parsedChangelog) as string }}
+              dangerouslySetInnerHTML={{ __html: changelogHtml }}
             />
           </Dialog.Content>
         </Dialog.Portal>

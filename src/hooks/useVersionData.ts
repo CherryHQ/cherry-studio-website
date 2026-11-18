@@ -219,7 +219,7 @@ async function loadVersionData(releaseLine: ReleaseLine, store: VersionDataStore
       const versionData: VersionData = {
         version,
         publishedAt: Number.isNaN(publishedAt.getTime()) ? '' : publishedAt.toLocaleDateString(),
-        changelog: data.body ?? '',
+        changelog: typeof data.body === 'string' ? data.body : '',
         assets: data.assets.filter((asset: Asset) => asset.type === 'attach'),
         cleanVersion
       }
