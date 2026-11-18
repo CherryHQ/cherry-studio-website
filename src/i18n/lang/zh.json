@@ -29,7 +29,7 @@
     "articles": "Cherry Studio 的文章：怎么选、怎么用 AI 工具的实用内容，帮你把 AI 真正用到日常工作里。",
     "home": "Cherry Studio AI桌面客户端，开源、免费、且功能强大。AI agent、AI 对话、AI绘图、知识库等功能齐全，支持所有主流大模型，支持Windows/macOS/Linux，支持数据本地存储，是AI深度使用者的首选",
     "download": "下载 Cherry Studio AI 客户端，支持 Windows、macOS、Linux 平台。集成 100+ AI 模型，完全免费开源。",
-    "mobile": "了解 Cherry Studio 移动版，在手机上连接 AI 模型、进行对话、创作图像和使用工具。现已上架国区 App Store，Android 提供 APK 下载。",
+    "mobile": "Cherry Studio 移动版支持 Android、iPhone 与 iPad。接入模型，使用智能体、技能、插件、文件创作与绘图，也可连接电脑智能体、远程服务器和组织空间。",
     "mobile_download": "下载 Cherry Studio 移动版：iPhone 与 iPad 可从国区 App Store 安装，Android 推荐下载 APK，也保留 Google Play 与 TestFlight 测试版入口。",
     "theme": "发现和分享美丽的 Cherry Studio 主题，个性化你的 AI 助手界面。支持浅色和深色模式主题。",
     "careers": "加入 Cherry Studio，探索研发、设计、企业 AI 交付、运营及实习岗位，一起打造下一代 AI 产品。",
@@ -101,42 +101,81 @@
       "testflight": "需先安装 TestFlight",
       "store": "通过 {{store}} 安装"
     },
-    "download_banner": "在手机上对话、绘图、连接工具。"
+    "download_banner": "把模型、技能与工具带在身边。"
   },
   "mobile_site": {
     "hero": {
-      "eyebrow": "Cherry Studio Mobile · Beta",
+      "eyebrow": "Cherry Studio Mobile",
       "title": "把你的 AI 工作台，装进口袋",
-      "description": "在手机和平板上连接常用模型，继续对话、调用智能体并完成创作。熟悉的 Cherry Studio，针对移动设备重新设计。",
+      "description": "把常用模型、智能体、技能和工具放在一起。在手机和平板上查资料、处理文件、创作图片，也能连接电脑继续处理任务。",
       "download": "下载移动版",
       "docs": "查看移动端文档",
-      "platforms": "支持 Android、iPhone 与 iPad；当前为 Beta 版本。"
+      "platforms": "支持 Android、iPhone 与 iPad，可通过官方商店或下载页安装。"
     },
     "screenshots": {
-      "group_alt": "Cherry Studio Mobile 对话、智能体与绘画界面",
+      "group_alt": "Cherry Studio Mobile 对话、绘画与导航界面",
       "conversation": "Cherry Studio Mobile 的 AI 对话界面",
-      "drawing": "Cherry Studio Mobile 的 AI 绘画界面",
-      "agent": "Cherry Studio Mobile 的智能体界面",
+      "drawing": "Cherry Studio Mobile 的绘画模板界面",
+      "sidebar": "Cherry Studio Mobile 的导航与对话列表",
       "tablet_conversation": "Cherry Studio Mobile 的 iPad 对话界面",
-      "tablet_drawing": "Cherry Studio Mobile 的 iPad 图片预览界面"
+      "tablet_drawing": "Cherry Studio Mobile 的 iPad 图片预览界面",
+      "files": "Cherry Studio Mobile 的文件库与项目文件夹",
+      "preview": "Cherry Studio Mobile 中的 HTML 文件预览示例"
     },
     "mobile_first": {
-      "eyebrow": "为移动而设计",
-      "title": "不是缩小的桌面端",
-      "description": "把移动场景真正需要的操作放在手边，让对话、智能体与系统能力在触屏上自然衔接。",
+      "eyebrow": "随身的 AI 工作站",
+      "title": "从一句话开始，把事情做完",
+      "description": "从查找资料到交付文件，把模型、常用流程和外部工具接到一起，让智能体在你的授权范围内完成任务。",
+      "docs": "了解这些功能怎么用",
       "items": {
-        "touch": {
-          "title": "触控优先",
-          "description": "更轻的导航与输入方式，单手也能快速开始任务。"
+        "skills": {
+          "title": "把常用流程保存成技能",
+          "description": "发现并安装技能，把调研、写作和整理资料等常用流程交给智能体反复使用。"
         },
         "tools": {
-          "title": "调用设备能力",
-          "description": "按需连接日历、提醒事项等系统工具，并由你控制权限。"
+          "title": "连接服务与设备能力",
+          "description": "连接飞书、Notion，或通过 MCP 连接远程工具，也能按需使用日历与提醒事项；账号授权、系统权限和工具审批由你掌握。"
         },
-        "continuity": {
-          "title": "手机与平板一致",
-          "description": "同一套核心体验适配不同屏幕，不需要重新学习。"
+        "files": {
+          "title": "把资料变成可以带走的成果",
+          "description": "用文件库、文件夹和对话工作区组织附件与生成文件，预览、修改后继续分享或导出。"
+        },
+        "images": {
+          "title": "在画板里展开创作",
+          "description": "配合支持的图片模型，从文字、参考图或模板开始，在画板中生成、编辑并整理不同版本。"
+        },
+        "desktop": {
+          "title": "电脑上的任务，手机接着处理",
+          "description": "配对兼容的桌面端，在手机上发送任务、查看会话、回答追问和处理审批；任务由电脑执行。"
+        },
+        "ssh": {
+          "title": "连上你的远程服务器",
+          "description": "通过 SSH 保存服务器连接，浏览、预览与传输远程文件，也可在确认后让智能体执行远程命令。"
         }
+      }
+    },
+    "workflows": {
+      "eyebrow": "围绕你的工作方式",
+      "title": "开始更简单，任务继续向前",
+      "description": "首次设置带你完成隐私、权限、账号和模型配置。日常使用中，随时编辑智能体、补充任务要求，让对话、资料和成果接在一起。",
+      "items": {
+        "accounts": {
+          "title": "在个人与组织空间之间切换",
+          "description": "支持企业及私有部署登录、组织切换。个人空间与组织空间分别保留本机数据，组织提供的资源遵循组织配置。"
+        },
+        "steer": {
+          "title": "执行中，也能补充方向",
+          "description": "任务进行中可以先排队补充消息，再点“引导”交给当前任务，继续调整处理方向。"
+        },
+        "import": {
+          "title": "带上原来的 DeepSeek 对话",
+          "description": "粘贴 DeepSeek 导出的下载链接，把可读取的会话导入一个新的 DeepSeek 智能体，保留已有对话。"
+        }
+      },
+      "docs": "查看使用教程",
+      "captions": {
+        "files": "按项目整理资料与文件",
+        "preview": "HTML 文件预览示例"
       }
     },
     "tablet": {
