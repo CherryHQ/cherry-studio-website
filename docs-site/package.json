@@ -15,7 +15,7 @@
     "github-slugger": "^2.0.0",
     "hast-util-to-text": "^4.0.2",
     "lucide-react": "^0.546.0",
-    "next": "16.3.5",
+    "next": "16.4.6",
     "pinyin-pro": "^3.29.4",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
@@ -31,11 +31,11 @@
     "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4.1.14",
+    "@tailwindcss/postcss": "^4.3.3",
     "@types/node": "^22.13.1",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
-    "tailwindcss": "^4.1.14",
+    "tailwindcss": "^4.3.3",
     "typescript": "^5.9.3"
   }
 }

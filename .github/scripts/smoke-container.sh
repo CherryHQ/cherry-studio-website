@@ -22,7 +22,12 @@ done
 for path in /assets/does-not-exist.js /docs/does-not-exist/; do
   test "$(curl --silent --show-error -o /dev/null -w '%{http_code}' "$base$path")" = 404
 done
-test "$(curl --silent --show-error -o /dev/null -w '%{redirect_url}' -H 'Host: cherryai.com.cn' "$base/docs")" = 'http://cherryai.com.cn/docs/zh-cn/'
+for docs_entry in /docs /docs/; do
+  curl --silent --show-error --head -H 'Host: cherryai.com.cn' "$base$docs_entry" |
+    tr -d '\r' | grep -qi '^Location: /docs/zh-cn/$'
+done
 curl --fail --silent --show-error --head "$base/" -o /tmp/website-headers
 grep -qi 'Cache-Control: public, max-age=0, must-revalidate' /tmp/website-headers
+grep -qi "^Content-Security-Policy: frame-ancestors 'self'; object-src 'none'; base-uri 'self'" /tmp/website-headers
+grep -qi '^X-Frame-Options: SAMEORIGIN' /tmp/website-headers
 echo 'Container serves the website, both docs locales, redirects, real 404s and revalidation headers'

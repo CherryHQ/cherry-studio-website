@@ -1,2 +1,10 @@
 packages:
   - docs-site
+
+overrides:
+  'browserslist@>=4.0.0 <4.28.7': ^4.28.7
+  'nanoid@>=3.0.0 <3.3.18': ^3.3.18
+  'picomatch@>=4.0.0 <4.0.4': ^4.0.4
+  'postcss@>=8.0.0 <8.5.23': ^8.5.23
+  'rollup@>=4.0.0 <4.59.0': ^4.59.0
+  'source-map-js@>=1.0.0 <1.2.2': ^1.2.2

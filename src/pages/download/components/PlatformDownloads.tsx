@@ -5,7 +5,9 @@ import { useTranslation } from 'react-i18next'
 import { Button } from '@/components/ui/button'
 import type { VersionData } from '@/hooks/useVersionData'
 import { trackDownload } from '@/utils/analytics'
+import { getDesktopReleaseUrl } from '@/utils/desktopReleaseUrl'
 import type { DetectedArch } from '@/utils/systemDetection'
+import { getSiteRegion } from '@/utils/urls'
 import type { Platform } from './PlatformTabs'
 
 interface DownloadItemConfig {
@@ -113,11 +115,12 @@ const getDownloadItems = (
     ]
   }
 
-  const assetURLs = new Map(
-    versionData.assets
-      .filter((asset) => asset.browser_download_url)
-      .map((asset) => [asset.name, asset.browser_download_url])
-  )
+  const assetURLs = new Map<string, string>()
+  const region = getSiteRegion()
+  for (const asset of versionData.assets) {
+    const url = getDesktopReleaseUrl(asset.browser_download_url, versionData.version, asset.name, region)
+    if (url) assetURLs.set(asset.name, url)
+  }
   return configs[platform].flatMap((item) => {
     const name = item.assetNames.find((assetName) => assetURLs.has(assetName))
     const url = name ? assetURLs.get(name) : undefined
