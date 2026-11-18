@@ -76,12 +76,12 @@ const TEMPLATES: Template[] = [
   }
 ]
 
-// 低饱和的灰蓝、石色、墨色、灰绿，用于成品示意
+// 樱桃红系配色，用于成品示意
 const TONES = {
-  slate: { bg: 'bg-[#1f2a37]', accent: 'bg-[#8fa3b8]', text: 'text-[#e6ecf2]', sub: 'text-[#9fb0c2]' },
-  stone: { bg: 'bg-[#efebe4]', accent: 'bg-[#8a7f70]', text: 'text-[#2f2a24]', sub: 'text-[#7a7064]' },
-  ink: { bg: 'bg-[#15171c]', accent: 'bg-[#c9a27a]', text: 'text-[#f1ede7]', sub: 'text-[#a29a90]' },
-  sage: { bg: 'bg-[#e4e9e4]', accent: 'bg-[#6f8577]', text: 'text-[#25302a]', sub: 'text-[#5f6f65]' }
+  slate: { bg: 'bg-[#7f1d1d]', accent: 'bg-[#fca5a5]', text: 'text-[#fff1f1]', sub: 'text-[#fecaca]' },
+  stone: { bg: 'bg-[#fdf2f2]', accent: 'bg-[#dc2626]', text: 'text-[#450a0a]', sub: 'text-[#991b1b]' },
+  ink: { bg: 'bg-[#1a0f10]', accent: 'bg-[#e54d4d]', text: 'text-[#fdeaea]', sub: 'text-[#d4a5a5]' },
+  sage: { bg: 'bg-[#dc2626]', accent: 'bg-[#fff1f1]', text: 'text-white', sub: 'text-[#fee2e2]' }
 }
 
 const STEPS = [
@@ -215,7 +215,7 @@ export default function AiPptUseCasePage() {
         <section className="relative overflow-hidden">
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-x-0 top-0 h-[520px] bg-[radial-gradient(60%_60%_at_50%_0%,rgba(100,116,139,0.18),transparent_70%)]"
+            className="pointer-events-none absolute inset-x-0 top-0 h-[520px] bg-[radial-gradient(60%_60%_at_50%_0%,rgba(220,38,38,0.16),transparent_70%)]"
           />
           <div className="relative mx-auto max-w-4xl px-4 pt-28 pb-12 text-center sm:px-6 sm:pt-36">
             <nav aria-label="面包屑" className="text-muted-foreground text-sm">
@@ -226,14 +226,14 @@ export default function AiPptUseCasePage() {
               <span>应用场景</span>
             </nav>
             <h1 className="text-foreground mt-6 text-4xl font-bold tracking-tight text-balance sm:text-5xl">
-              AI 生成 PPT
+              AI 生成 <span className="text-primary">PPT</span>
             </h1>
             <p className="text-muted-foreground mx-auto mt-5 max-w-2xl text-lg leading-8 text-pretty">
               把资料放进一个文件夹，用一句话说清要什么。Cherry Studio 的智能体会读完你的文件，做出一份可以直接编辑的
               PPT。
             </p>
 
-            <div className="border-border bg-card mx-auto mt-10 max-w-3xl rounded-2xl border p-2 text-left shadow-[0_24px_60px_-30px_rgb(15_23_42/0.35)]">
+            <div className="border-border bg-card mx-auto mt-10 max-w-3xl rounded-2xl border p-2 text-left shadow-[0_24px_60px_-30px_rgb(220_38_38/0.35)]">
               <div className="flex flex-wrap gap-1 p-1" role="tablist" aria-label="提示词模板">
                 {TEMPLATES.map(({ id, label }) => (
                   <button
@@ -245,7 +245,7 @@ export default function AiPptUseCasePage() {
                     className={cn(
                       'rounded-lg px-3 py-1.5 text-sm transition-colors',
                       id === active
-                        ? 'bg-muted text-foreground font-medium'
+                        ? 'bg-primary/10 text-primary font-medium'
                         : 'text-muted-foreground hover:text-foreground'
                     )}>
                     {label}
@@ -265,7 +265,7 @@ export default function AiPptUseCasePage() {
                   </button>
                   <Link
                     to="/download"
-                    className="bg-foreground text-background inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium transition-opacity hover:opacity-90">
+                    className="bg-primary text-primary-foreground inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium transition-opacity hover:opacity-90">
                     <Download className="size-4" />
                     免费下载
                   </Link>
@@ -277,7 +277,7 @@ export default function AiPptUseCasePage() {
 
         {/* 演示：真实截图 */}
         <section className="mx-auto max-w-5xl px-4 sm:px-6">
-          <figure className="border-border bg-muted/40 rounded-3xl border p-3 sm:p-5">
+          <figure className="border-primary/15 from-primary/10 rounded-3xl border bg-linear-to-b to-transparent p-3 sm:p-5">
             <img
               src="/images/compare/ai-office-assistant-zh-2.webp"
               alt="Cherry Studio 智能体根据对话生成 PPT，右侧预览面板直接打开生成的幻灯片"
@@ -295,10 +295,12 @@ export default function AiPptUseCasePage() {
           <h2 className="text-foreground text-center text-3xl font-semibold tracking-tight">三步做出一份 PPT</h2>
           <ol className="mt-10 grid gap-4 md:grid-cols-3">
             {STEPS.map(({ icon: Icon, title, body }, index) => (
-              <li key={title} className="border-border bg-card rounded-2xl border p-6">
+              <li
+                key={title}
+                className="border-border bg-card hover:border-primary/30 rounded-2xl border p-6 transition-colors">
                 <div className="flex items-center justify-between">
-                  <Icon className="text-muted-foreground size-5" />
-                  <span className="text-muted-foreground/60 text-sm tabular-nums">0{index + 1}</span>
+                  <Icon className="text-primary size-5" />
+                  <span className="text-primary/60 text-sm tabular-nums">0{index + 1}</span>
                 </div>
                 <h3 className="text-foreground mt-5 text-lg font-semibold">{title}</h3>
                 <p className="text-muted-foreground mt-2 text-sm leading-6">{body}</p>
@@ -340,8 +342,10 @@ export default function AiPptUseCasePage() {
           <h2 className="text-foreground text-3xl font-semibold tracking-tight">为什么用 Cherry Studio 做 PPT</h2>
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
             {FEATURES.map(({ icon: Icon, title, body }) => (
-              <div key={title} className="border-border rounded-2xl border p-6">
-                <Icon className="text-muted-foreground size-5" />
+              <div
+                key={title}
+                className="border-border hover:border-primary/30 rounded-2xl border p-6 transition-colors">
+                <Icon className="text-primary size-5" />
                 <h3 className="text-foreground mt-4 font-semibold">{title}</h3>
                 <p className="text-muted-foreground mt-2 text-sm leading-6">{body}</p>
               </div>
@@ -357,7 +361,7 @@ export default function AiPptUseCasePage() {
               <details key={q} className="group py-5">
                 <summary className="text-foreground flex cursor-pointer list-none items-center justify-between gap-4 font-medium">
                   {q}
-                  <span className="text-muted-foreground transition-transform group-open:rotate-45">+</span>
+                  <span className="text-primary transition-transform group-open:rotate-45">+</span>
                 </summary>
                 <p className="text-muted-foreground mt-3 leading-7">{a}</p>
               </details>
@@ -373,7 +377,7 @@ export default function AiPptUseCasePage() {
               <li key={to}>
                 <Link
                   to={to}
-                  className="border-border hover:border-foreground/30 block rounded-xl border p-4 transition-colors">
+                  className="border-border hover:border-primary/40 block rounded-xl border p-4 transition-colors">
                   <p className="text-foreground text-sm font-medium">{title}</p>
                   <p className="text-muted-foreground mt-1 text-xs">{body}</p>
                 </Link>
@@ -381,7 +385,7 @@ export default function AiPptUseCasePage() {
             ))}
           </ul>
 
-          <div className="border-border bg-muted/40 mt-16 rounded-3xl border px-6 py-12 text-center sm:px-12">
+          <div className="border-primary/20 from-primary/15 via-primary/5 mt-16 rounded-3xl border bg-linear-to-br to-transparent px-6 py-12 text-center sm:px-12">
             <h2 className="text-foreground text-2xl font-semibold tracking-tight sm:text-3xl">
               下一份 PPT，交给智能体
             </h2>
@@ -390,7 +394,7 @@ export default function AiPptUseCasePage() {
             </p>
             <Link
               to="/download"
-              className="bg-foreground text-background mt-6 inline-flex items-center gap-1.5 rounded-full px-6 py-3 text-sm font-medium transition-opacity hover:opacity-90">
+              className="bg-primary text-primary-foreground mt-6 inline-flex items-center gap-1.5 rounded-full px-6 py-3 text-sm font-medium transition-opacity hover:opacity-90">
               <Download className="size-4" />
               免费下载 Cherry Studio
             </Link>
