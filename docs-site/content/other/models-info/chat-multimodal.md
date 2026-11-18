@@ -4,7 +4,7 @@
 
 上下文长度与最大输出以 K / M 缩写并四舍五入（1K 约为 1,000～1,024 tokens，1M 约为 100 万 tokens），例如 131,072 与 128,000 均写作 128K。悬停可查看完整数值，精确限制请以模型服务商为准。
 
-> **数据更新时间**: 2026-11-17 17:30:28 UTC / 2026-11-18 01:30:28 CST (北京时间)
+> **数据更新时间**: 2026-11-18 17:05:19 UTC / 2026-11-19 01:05:19 CST (北京时间)
 
 <div data-models-table="num:2,3;sort:1;search:0,1;cap:4:函数调用,推理,识图,语音识别,视频理解,结构化输出,文件输入,电脑操作,文件检索;in:5:文本输入=文本,图片输入=图片,音频输入=音频,视频输入=视频">
 
@@ -181,6 +181,7 @@
 | Mistral Small (latest)<br><code>mistral-small</code> | mistral | <span title="262,144">256K</span> | <span title="256,000">256K</span> | 函数调用、推理、识图、结构化输出、文件输入 | 文本、图片 | 文本 |
 | Mistral Small (latest)<br><code>mistral-small-latest</code> | mistral | <span title="256,000">256K</span> | <span title="256,000">256K</span> | 函数调用、推理、识图、文件输入 | 文本、图片 | 文本 |
 | mistral-small-4-119b-2603<br><code>mistral-small-4-119b</code> | mistral | <span title="128,000">128K</span> | <span title="8,192">8K</span> | 函数调用、推理、识图、结构化输出、文件输入 | 文本、图片 | 文本 |
+| Mistral: Mistral Large 4<br><code>mistral-large-4-0</code> | mistral | <span title="1,048,576">1.05M</span> | - | 函数调用、推理、识图、结构化输出 | 文本、图片 | 文本 |
 | Mistral: Mistral Medium 3<br><code>mistral-medium-3</code> | mistral | <span title="131,072">128K</span> | - | 函数调用、识图、结构化输出、文件输入 | 文本、图片 | 文本 |
 | Mistral: Mistral Medium 3.1<br><code>mistral-medium-3-1</code> | mistral | <span title="131,072">128K</span> | - | 函数调用、识图、结构化输出、文件输入 | 文本、图片 | 文本 |
 | Mistral: Mistral Small 3.1 24B<br><code>mistral-small-3-1-24b-instruct</code> | mistral | <span title="128,000">128K</span> | - | 识图 | 文本、图片 | 文本 |
@@ -251,6 +252,8 @@
 | GPT-6 Sol<br><code>gpt-6-sol</code> | openai | <span title="1,050,000">1.05M</span> | <span title="128,000">128K</span> | 推理、函数调用、识图、结构化输出、文件检索 | 文本、图片 | 文本 |
 | GPT-6.1 Sol<br><code>gpt-6-1-sol</code> | openai | <span title="1,050,000">1.05M</span> | <span title="128,000">128K</span> | 推理、函数调用、识图、结构化输出、文件检索 | 文本、图片 | 文本 |
 | GPT-6.1 Terra<br><code>gpt-6-1-terra</code> | openai | <span title="1,050,000">1.05M</span> | <span title="128,000">128K</span> | 推理、函数调用、识图、结构化输出、文件检索 | 文本、图片 | 文本 |
+| GPT-6.2 Astra<br><code>gpt-6-2-astra</code> | openai | <span title="1,050,000">1.05M</span> | <span title="128,000">128K</span> | 推理、函数调用、识图、结构化输出、文件检索 | 文本、图片 | 文本 |
+| GPT-6.2 Sol<br><code>gpt-6-2-sol</code> | openai | <span title="1,050,000">1.05M</span> | <span title="128,000">128K</span> | 推理、函数调用、识图、结构化输出、文件检索 | 文本、图片 | 文本 |
 | o1<br><code>o1</code> | openai | <span title="200,000">200K</span> | <span title="100,000">100K</span> | 函数调用、推理、识图、结构化输出、文件输入 | 文本、图片 | 文本 |
 | o1-pro<br><code>o1-pro</code> | openai | <span title="200,000">200K</span> | <span title="100,000">100K</span> | 函数调用、推理、识图、结构化输出、文件输入 | 文本、图片 | 文本 |
 | o3<br><code>o3</code> | openai | <span title="200,000">200K</span> | <span title="100,000">100K</span> | 函数调用、推理、识图、结构化输出、文件输入 | 文本、图片 | 文本 |
