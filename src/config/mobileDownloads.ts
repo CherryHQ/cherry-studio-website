@@ -9,6 +9,8 @@ interface MobileDownload {
 
 const isChinaSite = getSiteRegion() === 'cn'
 
+const mobileApkFallbackVersion = '0.6.0'
+
 export const mobileReleaseSource = isChinaSite
   ? {
       name: 'GitCode',
@@ -42,7 +44,7 @@ export const mobileDownloads: MobileDownload[] = [
   {
     platform: 'android',
     channel: 'apk',
-    url: `${mobileReleaseSource.downloadOrigin}/CherryHQ/cherry-studio-app/releases/download/v0.3.0/cherry-studio-0.3.0-android.apk`,
+    url: `${mobileReleaseSource.downloadOrigin}/CherryHQ/cherry-studio-app/releases/download/v${mobileApkFallbackVersion}/cherry-studio-${mobileApkFallbackVersion}-android.apk`,
     primary: isChinaSite
   },
   { platform: 'ios', channel: 'testflight', url: 'https://testflight.apple.com/join/2ryzjB66', primary: false }
