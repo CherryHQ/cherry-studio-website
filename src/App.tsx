@@ -10,6 +10,7 @@ import HomePage from '@/pages/home'
 import MobilePage from '@/pages/mobile'
 import NotFoundPage from '@/pages/not-found'
 import ArticlesPage from '@/pages/resources/articles'
+import AiPptUseCasePage from '@/pages/resources/use-cases/ai-ppt'
 import SubscriptionPage from '@/pages/subscription'
 import SubscriptionFaqPage from '@/pages/subscription/faq'
 import LegacySubscriptionRedirect from '@/pages/subscription/legacy-redirect'
@@ -37,6 +38,7 @@ function App() {
           <Route path="/careers" element={<CareersPage />} />
           <Route path="/resources/articles" element={<ArticlesPage />} />
           <Route path="/resources/articles/:slug" element={<ComparePage />} />
+          <Route path="/resources/use-cases/ai-ppt" element={<AiPptUseCasePage />} />
           <Route path="/compare/:slug" element={<LegacyCompareRedirect />} />
           <Route path="/404" element={<NotFoundPage />} />
           <Route path="*" element={<NotFoundPage />} />
