@@ -85,7 +85,7 @@ export default function ChinaPricingPage() {
             </div>
             <p className="mt-2 text-xs leading-5 text-muted-foreground">{t('plus_page.offer.renewal')}</p>
             <p className="text-xs leading-5 text-muted-foreground">
-              {t('plus_page.offer.ends_on')} <time dateTime="2026-11-20">2026/11/20</time>
+              {t('plus_page.offer.ends_on')} <time dateTime="2026-11-30">2026/11/30</time>
             </p>
             <Button asChild size="lg" className="mt-6 w-full">
               <a href={SUBSCRIPTION_URL} target="_blank" rel="noopener noreferrer">
