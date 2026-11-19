@@ -29,6 +29,7 @@ interface PlatformDownloadsProps {
   loading: boolean
   autoDownload?: boolean
   autoDownloadReady?: boolean
+  excludeAutocapture?: boolean
 }
 
 const getDownloadItems = (
@@ -180,6 +181,7 @@ const pickRecommendedItem = (
 type PlatformDownloadPrimaryProps = PlatformDownloadsProps
 
 export const PlatformDownloadPrimary: FC<PlatformDownloadPrimaryProps> = ({
+  excludeAutocapture = false,
   platform,
   detectedArch = null,
   versionData,
@@ -210,7 +212,9 @@ export const PlatformDownloadPrimary: FC<PlatformDownloadPrimaryProps> = ({
   if (!versionData || !recommendedItem) return null
 
   return (
-    <div className="border-border border-b p-4 sm:px-8 sm:py-8">
+    <div
+      data-ph-no-autocapture={excludeAutocapture ? '' : undefined}
+      className="border-border border-b p-4 sm:px-8 sm:py-8">
       <Button
         size="lg"
         onClick={() => {
@@ -227,10 +231,11 @@ export const PlatformDownloadPrimary: FC<PlatformDownloadPrimaryProps> = ({
 
 type PlatformDownloadOptionsProps = Pick<
   PlatformDownloadsProps,
-  'platform' | 'detectedArch' | 'versionData' | 'loading'
+  'platform' | 'detectedArch' | 'versionData' | 'loading' | 'excludeAutocapture'
 >
 
 export const PlatformDownloadOptions: FC<PlatformDownloadOptionsProps> = ({
+  excludeAutocapture = false,
   platform,
   detectedArch = null,
   versionData,
@@ -245,7 +250,7 @@ export const PlatformDownloadOptions: FC<PlatformDownloadOptionsProps> = ({
   if (loading || !versionData) return null
 
   return (
-    <div>
+    <div data-ph-no-autocapture={excludeAutocapture ? '' : undefined}>
       {otherItems.length > 0 && (
         <div id="other-download-packages" className="bg-secondary/20 divide-border divide-y">
           {otherItems.map((item) => (

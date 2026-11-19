@@ -173,6 +173,7 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
               detectedPlatform={detectedPlatform}
               detectedArch={detectedArch}
               mobileAvailable={mobileAvailable}
+              excludeDesktopAutocapture={!isV1}
               onPlatformChange={(platform) => {
                 userSelectedPlatformRef.current = true
                 setActivePlatform(platform)
@@ -184,6 +185,7 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
             ) : (
               <>
                 <PlatformDownloadPrimary
+                  excludeAutocapture={!isV1}
                   platform={desktopPlatform}
                   detectedArch={detectedPlatform === desktopPlatform ? detectedArch : null}
                   versionData={versionData}
@@ -192,6 +194,7 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
                   autoDownloadReady={systemDetectionReady}
                 />
                 <PlatformDownloadOptions
+                  excludeAutocapture={!isV1}
                   platform={desktopPlatform}
                   detectedArch={detectedPlatform === desktopPlatform ? detectedArch : null}
                   versionData={versionData}
@@ -225,6 +228,7 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
                 href={CLOUD_DRIVE_DOWNLOAD_URL}
                 target="_blank"
                 rel="noopener noreferrer"
+                data-ph-no-autocapture={!isV1 ? '' : undefined}
                 className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1.5 text-sm underline-offset-4 transition-colors hover:underline">
                 {t('download_page.cloud_drive_download')}
                 <ExternalLink className="h-3.5 w-3.5" />

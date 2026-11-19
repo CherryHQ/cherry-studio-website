@@ -13,6 +13,7 @@ interface PlatformTabsProps {
   detectedPlatform: Platform | null
   detectedArch?: DetectedArch | null
   mobileAvailable?: boolean
+  excludeDesktopAutocapture?: boolean
   onPlatformChange: (platform: DownloadPlatform) => void
 }
 
@@ -28,6 +29,7 @@ const PlatformTabs: FC<PlatformTabsProps> = ({
   detectedPlatform,
   detectedArch = null,
   mobileAvailable = true,
+  excludeDesktopAutocapture = false,
   onPlatformChange
 }) => {
   const { t } = useTranslation()
@@ -53,6 +55,7 @@ const PlatformTabs: FC<PlatformTabsProps> = ({
             <button
               type="button"
               key={id}
+              data-ph-no-autocapture={excludeDesktopAutocapture && id !== 'mobile' ? '' : undefined}
               aria-pressed={isActive}
               onClick={() => onPlatformChange(id)}
               className={cn(
