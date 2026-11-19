@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next'
 import StoreDownloadBadge from '@/components/website/StoreDownloadBadge'
 import { useMobileDownloads } from '@/hooks/useMobileDownloads'
 import { cn } from '@/lib/utils'
-import { isMobileDevice } from '@/utils/systemDetection'
+import { detectMobilePlatform, isMobileDevice } from '@/utils/systemDetection'
 
 type MobileDownload = ReturnType<typeof useMobileDownloads>[number]
 type Platform = MobileDownload['platform']
@@ -46,12 +46,20 @@ export default function MobileDownloads() {
   const isMobile = isMobileDevice()
   const [selected, setSelected] = useState<Partial<Record<Platform, Channel>>>({})
   const primaryDownloads = mobileDownloads.filter(({ primary }) => primary)
+  const recommendedPlatform = isMobile ? detectMobilePlatform() : null
+  const orderedDownloads = recommendedPlatform
+    ? [...primaryDownloads].sort(
+        (a, b) => Number(b.platform === recommendedPlatform) - Number(a.platform === recommendedPlatform)
+      )
+    : primaryDownloads
 
   return (
     <div className="px-6 py-10 text-center sm:px-10 sm:py-12">
       <div className="flex flex-col items-center justify-center gap-10 sm:flex-row sm:items-start sm:gap-20">
-        {primaryDownloads.map((primaryDownload) => {
+        {orderedDownloads.map((primaryDownload) => {
           const name = primaryDownload.platform === 'android' ? 'Android' : 'iPhone / iPad'
+          const isRecommended = primaryDownload.platform === recommendedPlatform
+          const headingId = `mobile-download-${primaryDownload.platform}`
           const options = mobileDownloads
             .filter(({ platform, url }) => platform === primaryDownload.platform && url)
             .sort((a, b) => Number(b.primary) - Number(a.primary))
@@ -59,7 +67,18 @@ export default function MobileDownloads() {
             options.find(({ channel }) => channel === selected[primaryDownload.platform]) ?? primaryDownload
 
           return (
-            <section key={primaryDownload.platform} aria-label={name} className="flex flex-col items-center gap-5">
+            <section
+              key={primaryDownload.platform}
+              aria-labelledby={headingId}
+              className="flex flex-col items-center gap-5">
+              <h2 id={headingId} className="flex flex-wrap items-center justify-center gap-2 text-sm font-semibold">
+                {name}
+                {isRecommended && (
+                  <span className="text-primary bg-primary/10 rounded-full px-2.5 py-1 text-[11px] font-medium">
+                    {t('download_page.recommended_download')}
+                  </span>
+                )}
+              </h2>
               {options.length > 1 && (
                 <div role="group" aria-label={name} className="bg-secondary inline-flex rounded-lg p-0.5 text-xs">
                   {options.map((option) => (
