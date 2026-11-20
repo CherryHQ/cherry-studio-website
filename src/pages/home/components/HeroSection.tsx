@@ -267,7 +267,7 @@ const HeroSection: FC = () => {
               <MobileDownloadButton variant="primary" />
             ) : (
               <Button variant="glow" size="lg" asChild>
-                <Link to="/download" className="gap-2">
+                <Link to="/download" data-ph-no-autocapture="" className="gap-2">
                   <Download className="h-5 w-5" />
                   <span>
                     {t('download')} {versionData?.version}
