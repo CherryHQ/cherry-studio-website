@@ -148,8 +148,11 @@
     * [Text Leaderboard](other/model_rank/text.md)
     * [Search Leaderboard](other/model_rank/search.md)
     * [Vision Leaderboard](other/model_rank/vision.md)
+    * [Document Leaderboard](other/model_rank/document.md)
     * [Code / Web Development Leaderboard](other/model_rank/code-webdev.md)
     * [Text-to-Image Leaderboard](other/model_rank/text-to-image.md)
+    * [Single-Image Editing Leaderboard](other/model_rank/image-edit-single.md)
+    * [Text-to-Video Leaderboard](other/model_rank/text-to-video.md)
 * **Troubleshooting**
   * [Common Issues](question-contact/questions.md)
   * [Knowledge Base Troubleshooting](knowledge-base/troubleshooting.md)
