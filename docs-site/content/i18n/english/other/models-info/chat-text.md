@@ -4,7 +4,7 @@ Data comes from the model catalog bundled with Cherry Studio ([provider-registry
 
 Context length and max output are abbreviated with K / M and rounded (1K is roughly 1,000–1,024 tokens, 1M roughly one million), e.g. 131,072 and 128,000 both read 128K. Hover a value to see the exact number; confirm limits with the model provider.
 
-> **Data updated**: 2026-11-19 17:17:11 UTC / 2026-11-20 01:17:11 CST (Beijing time)
+> **Data updated**: 2026-11-22 16:10:01 UTC / 2026-11-23 00:10:01 CST (Beijing time)
 
 <div data-models-table="num:2,3;sort:1;search:0,1;cap:4:Function calling,Reasoning,Image recognition,Structured output,File input">
 
@@ -251,6 +251,7 @@ Context length and max output are abbreviated with K / M and rounded (1K is roug
 | Hunyuan MT2 Plus<br><code>hy-mt2-plus</code> | tencent | <span title="8,192">8K</span> | <span title="4,096">4K</span> | - | Text | Text |
 | Hunyuan MT2 Pro<br><code>hy-mt2-pro</code> | tencent | <span title="8,192">8K</span> | <span title="4,096">4K</span> | - | Text | Text |
 | Hunyuan Role<br><code>hy-role</code> | tencent | <span title="32,768">32K</span> | <span title="4,096">4K</span> | - | - | - |
+| Hunyuan Role Latest<br><code>hunyuan-role-latest</code> | tencent | <span title="32,768">32K</span> | <span title="4,096">4K</span> | - | - | - |
 | Hunyuan T1<br><code>hunyuan-t1</code> | tencent | - | - | Reasoning, Function calling | - | - |
 | Hunyuan TurboS<br><code>hunyuan-turbos</code> | tencent | - | - | Function calling | - | - |
 | Tencent Code<br><code>tc-code</code> | tencent | - | - | Function calling | - | - |
@@ -278,9 +279,9 @@ Context length and max output are abbreviated with K / M and rounded (1K is roug
 | Grok 4.1<br><code>grok-4-1</code> | xai | <span title="256,000">256K</span> | - | Reasoning, Function calling | - | - |
 | Grok Beta<br><code>grok-beta</code> | xai | <span title="131,072">128K</span> | - | Function calling | - | - |
 | Grok Code Fast 1<br><code>grok-code-fast-1</code> | xai | <span title="256,000">256K</span> | - | Function calling | - | - |
-| MiMo V2.5 Pro<br><code>mimo-v2-5-pro</code> | xiaomi | <span title="1,050,000">1.05M</span> | <span title="131,072">128K</span> | Function calling, Reasoning, Structured output | Text | Text |
 | MiMo-V2-Flash<br><code>mimo-v2-flash</code> | xiaomi | <span title="262,144">256K</span> | <span title="65,536">64K</span> | Function calling, Reasoning | Text | Text |
 | MiMo-V2-Pro<br><code>mimo-v2-pro</code> | xiaomi | <span title="1,048,576">1.05M</span> | <span title="131,072">128K</span> | Function calling, Reasoning | Text | Text |
+| MiMo-V2.5-Pro<br><code>mimo-v2-5-pro</code> | xiaomi | <span title="1,048,576">1.05M</span> | <span title="131,072">128K</span> | Function calling, Reasoning, Structured output | Text | Text |
 | MiMo-V2.5-Pro-UltraSpeed<br><code>mimo-v2-5-pro-ultraspeed</code> | xiaomi | <span title="1,048,576">1.05M</span> | <span title="131,072">128K</span> | Function calling, Reasoning | Text | Text |
 | GLM 4.5<br><code>glm-4-5</code> | zhipu | <span title="131,072">128K</span> | <span title="98,304">96K</span> | Function calling, Reasoning, Structured output | Text | Text |
 | GLM 4.5 Air<br><code>glm-4-5-air</code> | zhipu | <span title="131,072">128K</span> | <span title="98,304">96K</span> | Function calling, Reasoning | Text | Text |
@@ -290,7 +291,7 @@ Context length and max output are abbreviated with K / M and rounded (1K is roug
 | GLM 4.7 FlashX<br><code>glm-4-7-flashx</code> | zhipu | <span title="200,000">200K</span> | <span title="131,072">128K</span> | Function calling, Reasoning | Text | Text |
 | GLM 5 Turbo<br><code>glm-5-turbo</code> | zhipu | <span title="202,800">202.8K</span> | <span title="131,100">131.1K</span> | Function calling, Reasoning, Structured output | Text | Text |
 | GLM 5.2 Fast<br><code>glm-5-2-fast</code> | zhipu | <span title="1,000,000">1M</span> | <span title="128,000">128K</span> | Function calling, Reasoning, Structured output | Text | Text |
-| GLM 5.3<br><code>glm-5-3</code> | zhipu | <span title="1,310,720">1.31M</span> | <span title="131,072">128K</span> | Function calling, Reasoning, Structured output | Text | Text |
+| GLM 5.3<br><code>glm-5-3</code> | zhipu | <span title="1,048,576">1.05M</span> | <span title="131,072">128K</span> | Function calling, Reasoning, Structured output | Text | Text |
 | GLM 5.3 Fast<br><code>glm-5-3-fast</code> | zhipu | <span title="1,048,576">1.05M</span> | <span title="262,144">256K</span> | Function calling, Reasoning, Structured output | Text | Text |
 | GLM-3-Turbo<br><code>glm-3-turbo</code> | zhipu | <span title="131,072">128K</span> | - | Function calling | - | - |
 | GLM-4<br><code>glm-4</code> | zhipu | <span title="131,072">128K</span> | - | Function calling | - | - |

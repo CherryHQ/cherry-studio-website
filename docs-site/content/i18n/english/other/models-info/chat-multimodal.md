@@ -4,7 +4,7 @@ Data comes from the model catalog bundled with Cherry Studio ([provider-registry
 
 Context length and max output are abbreviated with K / M and rounded (1K is roughly 1,000–1,024 tokens, 1M roughly one million), e.g. 131,072 and 128,000 both read 128K. Hover a value to see the exact number; confirm limits with the model provider.
 
-> **Data updated**: 2026-11-19 17:17:11 UTC / 2026-11-20 01:17:11 CST (Beijing time)
+> **Data updated**: 2026-11-22 16:10:01 UTC / 2026-11-23 00:10:01 CST (Beijing time)
 
 <div data-models-table="num:2,3;sort:1;search:0,1;cap:4:Function calling,Reasoning,Image recognition,Speech recognition,Video understanding,Structured output,File input,Computer use,File search;in:5:Text input=Text,Image input=Image,Audio input=Audio,Video input=Video">
 
@@ -194,7 +194,8 @@ Context length and max output are abbreviated with K / M and rounded (1K is roug
 | Voxtral Small (latest)<br><code>voxtral-small-latest</code> | mistral | <span title="32,000">32K</span> | <span title="32,000">32K</span> | Function calling, Speech recognition, File input | Text, Audio | Text |
 | Voxtral Small 24B 2507<br><code>voxtral-small-24b</code> | mistral | <span title="32,768">32K</span> | <span title="8,192">8K</span> | Function calling, Speech recognition, Structured output, File input | Text, Audio | Text |
 | Kimi K2.7 Code<br><code>kimi-k2-7-code</code> | moonshot | <span title="262,144">256K</span> | <span title="262,144">256K</span> | Function calling, Reasoning, Image recognition, Video understanding, Structured output, File input | Text, Image, Video | Text |
-| Kimi K2.7 Code High Speed<br><code>kimi-k2-7-code-highspeed</code> | moonshot | <span title="262,144">256K</span> | <span title="262,144">256K</span> | Function calling, Reasoning, Image recognition, Video understanding, Structured output, File input | Text, Image, Video | Text |
+| Kimi K2.7 Code HighSpeed<br><code>kimi-k2-7-code-highspeed</code> | moonshot | <span title="262,144">256K</span> | <span title="262,144">256K</span> | Function calling, Reasoning, Image recognition, Video understanding, Structured output, File input | Text, Image, Video | Text |
+| Kimi K2.8 Preview<br><code>kimi-k2-8-preview</code> | moonshot | <span title="1,048,576">1.05M</span> | <span title="131,072">128K</span> | Reasoning, Function calling, Image recognition, Video understanding, Structured output | Text, Image, Video | Text |
 | Kimi K3<br><code>kimi-k3</code> | moonshot | <span title="1,048,576">1.05M</span> | <span title="131,072">128K</span> | Function calling, Reasoning, Image recognition, Video understanding, Structured output, File input | Text, Image, Video | Text |
 | Kimi K3 Fast<br><code>kimi-k3-fast</code> | moonshot | <span title="1,000,000">1M</span> | <span title="131,072">128K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
 | Kimi K3.1 Pro<br><code>kimi-k3-1-pro</code> | moonshot | <span title="1,048,576">1.05M</span> | <span title="1,048,576">1.05M</span> | Reasoning, Function calling, Image recognition, Video understanding, Structured output | Text, Image, Video | Text |
@@ -274,6 +275,7 @@ Context length and max output are abbreviated with K / M and rounded (1K is roug
 | Reka Edge<br><code>reka-edge</code> | reka | <span title="16,384">16K</span> | - | Function calling, Image recognition, Video understanding, Structured output | Text, Image, Video | Text |
 | Step 3.5 Flash 2603<br><code>step-3-5-flash</code> | stepfun | <span title="262,144">256K</span> | <span title="262,114">262.11K</span> | Function calling, Reasoning, Image recognition | Text, Image | Text |
 | Step 3.7 Flash<br><code>step-3-7-flash</code> | stepfun | <span title="262,144">256K</span> | <span title="256,000">256K</span> | Function calling, Reasoning, Image recognition, Video understanding, Structured output, File input | Text, Image, Video | Text |
+| Step 5 Preview<br><code>step-5-preview</code> | stepfun | <span title="1,048,576">1.05M</span> | <span title="1,048,576">1.05M</span> | Reasoning, Function calling, Image recognition, Video understanding | Text, Image, Video | Text |
 | Kat Coder Air V2.5<br><code>kat-coder-air-v2-5</code> | streamlake | <span title="256,000">256K</span> | <span title="80,000">80K</span> | Function calling, Reasoning, Image recognition | Text, Image | Text |
 | Kat Coder Pro V2.5<br><code>kat-coder-pro-v2-5</code> | streamlake | <span title="262,144">256K</span> | <span title="80,000">80K</span> | Function calling, Reasoning, Image recognition, Structured output | Text, Image | Text |
 | Hunyuan 4<br><code>hy4</code> | tencent | <span title="1,048,576">1.05M</span> | <span title="65,536">64K</span> | Reasoning, Function calling, Structured output, Image recognition | Text, Image | - |
@@ -315,6 +317,7 @@ Context length and max output are abbreviated with K / M and rounded (1K is roug
 | GLM-4V-Flash<br><code>glm-4v-flash</code> | zhipu | <span title="8,192">8K</span> | - | Image recognition | Text, Image | - |
 | GLM-4V-Plus<br><code>glm-4v-plus</code> | zhipu | <span title="8,192">8K</span> | - | Image recognition | Text, Image | - |
 | GLM-5.3-Flash<br><code>glm-5-3-flash</code> | zhipu | <span title="1,000,000">1M</span> | <span title="131,072">128K</span> | Function calling, Reasoning, Image recognition, Video understanding, Structured output, File input | Text, Image, Video | Text |
+| GLM-5.3-FlashX<br><code>glm-5-3-flashx</code> | zhipu | <span title="1,000,000">1M</span> | <span title="131,072">128K</span> | Function calling, Reasoning, Image recognition, Video understanding, Structured output, File input | Text, Image, Video | Text |
 | Z.ai: GLM Flash Latest<br><code>glm-flash-latest</code> | zhipu | <span title="1,310,720">1.31M</span> | - | Function calling, Reasoning, Image recognition, Video understanding, Structured output | Text, Image, Video | Text |
 
 </div>

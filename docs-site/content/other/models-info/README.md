@@ -2,12 +2,12 @@
 
 本页数据来自 Cherry Studio 内置模型目录（[provider-registry](https://github.com/CherryHQ/cherry-studio/tree/main/packages/provider-registry)），随应用仓库自动同步；信息仅供参考，实际上下文长度、能力与价格请以模型服务商为准。表中 `-` 表示数据源未提供该字段。
 
-> **数据更新时间**: 2026-11-19 17:17:11 UTC / 2026-11-20 01:17:11 CST (北京时间)（数据版本 `92d2386de7dd37d4`）
+> **数据更新时间**: 2026-11-22 16:10:01 UTC / 2026-11-23 00:10:01 CST (北京时间)（数据版本 `6a6a80c02c1f6a2c`）
 
 ## 分类目录
 
-* [文本对话](chat-text.md)：301 个仅接受文本输入的对话模型。
-* [多模态对话](chat-multimodal.md)：306 个支持图片、视频或音频输入的对话模型。
+* [文本对话](chat-text.md)：302 个仅接受文本输入的对话模型。
+* [多模态对话](chat-multimodal.md)：309 个支持图片、视频或音频输入的对话模型。
 * [图像生成](image-generation.md)：136 个图像生成模型。
 * [视频生成](video-generation.md)：64 个视频生成模型。
 * [语音](audio.md)：52 个语音识别或语音生成模型。

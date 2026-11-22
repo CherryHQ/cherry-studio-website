@@ -4,7 +4,7 @@
 
 上下文长度与最大输出以 K / M 缩写并四舍五入（1K 约为 1,000～1,024 tokens，1M 约为 100 万 tokens），例如 131,072 与 128,000 均写作 128K。悬停可查看完整数值，精确限制请以模型服务商为准。
 
-> **数据更新时间**: 2026-11-19 17:17:11 UTC / 2026-11-20 01:17:11 CST (北京时间)
+> **数据更新时间**: 2026-11-22 16:10:01 UTC / 2026-11-23 00:10:01 CST (北京时间)
 
 <div data-models-table="num:2,3;sort:1;search:0,1;cap:4:函数调用,推理,识图,语音识别,视频理解,结构化输出,文件输入,电脑操作,文件检索;in:5:文本输入=文本,图片输入=图片,音频输入=音频,视频输入=视频">
 
@@ -194,7 +194,8 @@
 | Voxtral Small (latest)<br><code>voxtral-small-latest</code> | mistral | <span title="32,000">32K</span> | <span title="32,000">32K</span> | 函数调用、语音识别、文件输入 | 文本、音频 | 文本 |
 | Voxtral Small 24B 2507<br><code>voxtral-small-24b</code> | mistral | <span title="32,768">32K</span> | <span title="8,192">8K</span> | 函数调用、语音识别、结构化输出、文件输入 | 文本、音频 | 文本 |
 | Kimi K2.7 Code<br><code>kimi-k2-7-code</code> | moonshot | <span title="262,144">256K</span> | <span title="262,144">256K</span> | 函数调用、推理、识图、视频理解、结构化输出、文件输入 | 文本、图片、视频 | 文本 |
-| Kimi K2.7 Code High Speed<br><code>kimi-k2-7-code-highspeed</code> | moonshot | <span title="262,144">256K</span> | <span title="262,144">256K</span> | 函数调用、推理、识图、视频理解、结构化输出、文件输入 | 文本、图片、视频 | 文本 |
+| Kimi K2.7 Code HighSpeed<br><code>kimi-k2-7-code-highspeed</code> | moonshot | <span title="262,144">256K</span> | <span title="262,144">256K</span> | 函数调用、推理、识图、视频理解、结构化输出、文件输入 | 文本、图片、视频 | 文本 |
+| Kimi K2.8 Preview<br><code>kimi-k2-8-preview</code> | moonshot | <span title="1,048,576">1.05M</span> | <span title="131,072">128K</span> | 推理、函数调用、识图、视频理解、结构化输出 | 文本、图片、视频 | 文本 |
 | Kimi K3<br><code>kimi-k3</code> | moonshot | <span title="1,048,576">1.05M</span> | <span title="131,072">128K</span> | 函数调用、推理、识图、视频理解、结构化输出、文件输入 | 文本、图片、视频 | 文本 |
 | Kimi K3 Fast<br><code>kimi-k3-fast</code> | moonshot | <span title="1,000,000">1M</span> | <span title="131,072">128K</span> | 函数调用、推理、识图、结构化输出、文件输入 | 文本、图片 | 文本 |
 | Kimi K3.1 Pro<br><code>kimi-k3-1-pro</code> | moonshot | <span title="1,048,576">1.05M</span> | <span title="1,048,576">1.05M</span> | 推理、函数调用、识图、视频理解、结构化输出 | 文本、图片、视频 | 文本 |
@@ -274,6 +275,7 @@
 | Reka Edge<br><code>reka-edge</code> | reka | <span title="16,384">16K</span> | - | 函数调用、识图、视频理解、结构化输出 | 文本、图片、视频 | 文本 |
 | Step 3.5 Flash 2603<br><code>step-3-5-flash</code> | stepfun | <span title="262,144">256K</span> | <span title="262,114">262.11K</span> | 函数调用、推理、识图 | 文本、图片 | 文本 |
 | Step 3.7 Flash<br><code>step-3-7-flash</code> | stepfun | <span title="262,144">256K</span> | <span title="256,000">256K</span> | 函数调用、推理、识图、视频理解、结构化输出、文件输入 | 文本、图片、视频 | 文本 |
+| Step 5 Preview<br><code>step-5-preview</code> | stepfun | <span title="1,048,576">1.05M</span> | <span title="1,048,576">1.05M</span> | 推理、函数调用、识图、视频理解 | 文本、图片、视频 | 文本 |
 | Kat Coder Air V2.5<br><code>kat-coder-air-v2-5</code> | streamlake | <span title="256,000">256K</span> | <span title="80,000">80K</span> | 函数调用、推理、识图 | 文本、图片 | 文本 |
 | Kat Coder Pro V2.5<br><code>kat-coder-pro-v2-5</code> | streamlake | <span title="262,144">256K</span> | <span title="80,000">80K</span> | 函数调用、推理、识图、结构化输出 | 文本、图片 | 文本 |
 | Hunyuan 4<br><code>hy4</code> | tencent | <span title="1,048,576">1.05M</span> | <span title="65,536">64K</span> | 推理、函数调用、结构化输出、识图 | 文本、图片 | - |
@@ -315,6 +317,7 @@
 | GLM-4V-Flash<br><code>glm-4v-flash</code> | zhipu | <span title="8,192">8K</span> | - | 识图 | 文本、图片 | - |
 | GLM-4V-Plus<br><code>glm-4v-plus</code> | zhipu | <span title="8,192">8K</span> | - | 识图 | 文本、图片 | - |
 | GLM-5.3-Flash<br><code>glm-5-3-flash</code> | zhipu | <span title="1,000,000">1M</span> | <span title="131,072">128K</span> | 函数调用、推理、识图、视频理解、结构化输出、文件输入 | 文本、图片、视频 | 文本 |
+| GLM-5.3-FlashX<br><code>glm-5-3-flashx</code> | zhipu | <span title="1,000,000">1M</span> | <span title="131,072">128K</span> | 函数调用、推理、识图、视频理解、结构化输出、文件输入 | 文本、图片、视频 | 文本 |
 | Z.ai: GLM Flash Latest<br><code>glm-flash-latest</code> | zhipu | <span title="1,310,720">1.31M</span> | - | 函数调用、推理、识图、视频理解、结构化输出 | 文本、图片、视频 | 文本 |
 
 </div>
