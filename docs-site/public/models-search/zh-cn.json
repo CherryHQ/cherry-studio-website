@@ -353,6 +353,7 @@
 {"name":"Anthropic: Claude Opus Latest","id":"claude-opus-latest","provider":"anthropic","category":"chat-multimodal"},
 {"name":"Claude Fable 5","id":"claude-fable-5","provider":"anthropic","category":"chat-multimodal"},
 {"name":"Claude Fable 5.1","id":"claude-fable-5-1","provider":"anthropic","category":"chat-multimodal"},
+{"name":"Claude Fable 5.2","id":"claude-fable-5-2","provider":"anthropic","category":"chat-multimodal"},
 {"name":"Claude Haiku 3","id":"claude-3-haiku","provider":"anthropic","category":"chat-multimodal"},
 {"name":"Claude Haiku 4.5","id":"claude-haiku-4-5","provider":"anthropic","category":"chat-multimodal"},
 {"name":"Claude Haiku 5.5","id":"claude-haiku-5-5","provider":"anthropic","category":"chat-multimodal"},

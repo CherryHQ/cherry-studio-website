@@ -4,7 +4,7 @@ Data comes from the model catalog bundled with Cherry Studio ([provider-registry
 
 Context length and max output are abbreviated with K / M and rounded (1K is roughly 1,000–1,024 tokens, 1M roughly one million), e.g. 131,072 and 128,000 both read 128K. Hover a value to see the exact number; confirm limits with the model provider.
 
-> **Data updated**: 2026-11-22 16:10:01 UTC / 2026-11-23 00:10:01 CST (Beijing time)
+> **Data updated**: 2026-11-23 20:00:12 UTC / 2026-11-24 04:00:12 CST (Beijing time)
 
 <div data-models-table="num:2,3;sort:1;search:0,1;cap:4:Function calling,Reasoning,Image recognition,Speech recognition,Video understanding,Structured output,File input,Computer use,File search;in:5:Text input=Text,Image input=Image,Audio input=Audio,Video input=Video">
 
@@ -62,6 +62,7 @@ Context length and max output are abbreviated with K / M and rounded (1K is roug
 | Anthropic: Claude Opus Latest<br><code>claude-opus-latest</code> | anthropic | <span title="1,000,000">1M</span> | - | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
 | Claude Fable 5<br><code>claude-fable-5</code> | anthropic | <span title="1,000,000">1M</span> | <span title="128,000">128K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
 | Claude Fable 5.1<br><code>claude-fable-5-1</code> | anthropic | <span title="1,000,000">1M</span> | <span title="128,000">128K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
+| Claude Fable 5.2<br><code>claude-fable-5-2</code> | anthropic | <span title="1,000,000">1M</span> | <span title="128,000">128K</span> | Reasoning, Function calling, Image recognition, Structured output, File input | Text, Image | Text |
 | Claude Haiku 3<br><code>claude-3-haiku</code> | anthropic | <span title="200,000">200K</span> | <span title="4,096">4K</span> | Function calling, Image recognition, File input | Text, Image | Text |
 | Claude Haiku 4.5<br><code>claude-haiku-4-5</code> | anthropic | <span title="200,000">200K</span> | <span title="64,000">64K</span> | Function calling, Reasoning, Image recognition, Structured output, File input | Text, Image | Text |
 | Claude Haiku 5.5<br><code>claude-haiku-5-5</code> | anthropic | <span title="1,000,000">1M</span> | <span title="128,000">128K</span> | Reasoning, Function calling, Image recognition, Structured output, File input | Text, Image | Text |

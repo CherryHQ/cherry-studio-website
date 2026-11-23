@@ -4,7 +4,7 @@
 
 上下文长度与最大输出以 K / M 缩写并四舍五入（1K 约为 1,000～1,024 tokens，1M 约为 100 万 tokens），例如 131,072 与 128,000 均写作 128K。悬停可查看完整数值，精确限制请以模型服务商为准。
 
-> **数据更新时间**: 2026-11-22 16:10:01 UTC / 2026-11-23 00:10:01 CST (北京时间)
+> **数据更新时间**: 2026-11-23 20:00:12 UTC / 2026-11-24 04:00:12 CST (北京时间)
 
 <div data-models-table="num:2,3;sort:1;search:0,1;cap:4:函数调用,推理,识图,语音识别,视频理解,结构化输出,文件输入,电脑操作,文件检索;in:5:文本输入=文本,图片输入=图片,音频输入=音频,视频输入=视频">
 
@@ -62,6 +62,7 @@
 | Anthropic: Claude Opus Latest<br><code>claude-opus-latest</code> | anthropic | <span title="1,000,000">1M</span> | - | 函数调用、推理、识图、结构化输出、文件输入 | 文本、图片 | 文本 |
 | Claude Fable 5<br><code>claude-fable-5</code> | anthropic | <span title="1,000,000">1M</span> | <span title="128,000">128K</span> | 函数调用、推理、识图、结构化输出、文件输入 | 文本、图片 | 文本 |
 | Claude Fable 5.1<br><code>claude-fable-5-1</code> | anthropic | <span title="1,000,000">1M</span> | <span title="128,000">128K</span> | 函数调用、推理、识图、结构化输出、文件输入 | 文本、图片 | 文本 |
+| Claude Fable 5.2<br><code>claude-fable-5-2</code> | anthropic | <span title="1,000,000">1M</span> | <span title="128,000">128K</span> | 推理、函数调用、识图、结构化输出、文件输入 | 文本、图片 | 文本 |
 | Claude Haiku 3<br><code>claude-3-haiku</code> | anthropic | <span title="200,000">200K</span> | <span title="4,096">4K</span> | 函数调用、识图、文件输入 | 文本、图片 | 文本 |
 | Claude Haiku 4.5<br><code>claude-haiku-4-5</code> | anthropic | <span title="200,000">200K</span> | <span title="64,000">64K</span> | 函数调用、推理、识图、结构化输出、文件输入 | 文本、图片 | 文本 |
 | Claude Haiku 5.5<br><code>claude-haiku-5-5</code> | anthropic | <span title="1,000,000">1M</span> | <span title="128,000">128K</span> | 推理、函数调用、识图、结构化输出、文件输入 | 文本、图片 | 文本 |
