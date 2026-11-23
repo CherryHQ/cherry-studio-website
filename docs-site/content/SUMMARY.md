@@ -161,8 +161,11 @@
     * [文本榜单](other/model_rank/text.md)
     * [搜索榜单](other/model_rank/search.md)
     * [视觉榜单](other/model_rank/vision.md)
+    * [文档榜单](other/model_rank/document.md)
     * [代码 / Web 开发榜单](other/model_rank/code-webdev.md)
     * [文生图榜单](other/model_rank/text-to-image.md)
+    * [单图编辑榜单](other/model_rank/image-edit-single.md)
+    * [文生视频榜单](other/model_rank/text-to-video.md)
 * **故障排查**
   * [常见问题](question-contact/questions.md)
   * [知识库排错](knowledge-base/troubleshooting.md)

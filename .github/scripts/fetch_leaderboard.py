@@ -1,3 +1,4 @@
+import json
 import os
 import re
 import time
@@ -31,6 +32,7 @@ LEADERBOARDS = [
     {
         "slug": "agent",
         "url": f"{BASE_URL}/leaderboard/agent",
+        "parser": "agent",
         "title": "智能体榜单",
         "legacy_anchors": ["agent-zhi-neng-ti-bang-dan"],
         "description": "本榜单评测模型在多轮工具调用 / 智能体任务上的综合表现，涵盖净改进率、确认成功率、赞踩比、可控性、Bash 恢复率、工具幻觉率等维度。",
@@ -75,7 +77,7 @@ LEADERBOARDS = [
     },
     {
         "slug": "text",
-        "url": f"{BASE_URL}/leaderboard/text",
+        "url": f"{BASE_URL}/leaderboard/chat/text",
         "title": "文本榜单",
         "description": "本榜单是 Arena AI 最核心的文本对战榜单，根据人类盲投对战估算模型相对实力。",
         "en": {
@@ -102,7 +104,7 @@ LEADERBOARDS = [
     },
     {
         "slug": "search",
-        "url": f"{BASE_URL}/leaderboard/search",
+        "url": f"{BASE_URL}/leaderboard/chat/search",
         "title": "搜索榜单",
         "description": "本榜单评测模型在联网搜索 / 信息检索类任务上的表现。",
         "en": {
@@ -129,7 +131,7 @@ LEADERBOARDS = [
     },
     {
         "slug": "vision",
-        "url": f"{BASE_URL}/leaderboard/vision",
+        "url": f"{BASE_URL}/leaderboard/chat/vision",
         "title": "视觉榜单",
         "description": "本榜单评测多模态模型在图像理解类任务上的表现。",
         "en": {
@@ -148,6 +150,33 @@ LEADERBOARDS = [
         "top_n": 30,
         "how_to_read": [
             "**排名 / 排名区间**：Arena AI 根据对战投票估算的相对名次；排名区间表示在置信范围内的名次波动。",
+            "**分数**：相对评分，适合比较同一时刻榜单中的模型。",
+            "**票数 / 会话数**：样本量参考；样本较少时，排名通常更容易波动。",
+            "**价格 $/百万Token**：输入 / 输出每百万 Token 的参考价格。",
+            "**上下文**：模型支持的最大上下文长度。",
+        ],
+    },
+    {
+        "slug": "document",
+        "url": f"{BASE_URL}/leaderboard/chat/document",
+        "title": "文档榜单",
+        "description": "本榜单评测模型在文档理解与分析类任务（长文档、图表、扫描件等）上的表现。",
+        "en": {
+            "title": "Document Leaderboard",
+            "description": "This leaderboard measures how models perform on document understanding and analysis tasks, such as long documents, charts and scans.",
+            "how_to_read": [
+                "**Rank / Rank Spread**: relative position estimated from battle votes. The spread shows how far the rank moves within the confidence interval.",
+                "**Score**: a relative score, useful for comparing the models listed at the same moment.",
+                "**Votes / Sessions**: sample size. Rankings move more when there are fewer votes.",
+                "**Price $/M**: reference price per million tokens for input / output.",
+                "**Context**: maximum context length the model supports.",
+            ],
+        },
+        "model_col": 2,
+        "preferred": ["Rank", "Rank Spread", "Model", "Score", "Votes", "Price $/M", "Context"],
+        "top_n": 30,
+        "how_to_read": [
+            "**排名 / 排名区间**：Arena AI 根据文档任务对战投票估算的相对名次；排名区间表示在置信范围内的名次波动。",
             "**分数**：相对评分，适合比较同一时刻榜单中的模型。",
             "**票数 / 会话数**：样本量参考；样本较少时，排名通常更容易波动。",
             "**价格 $/百万Token**：输入 / 输出每百万 Token 的参考价格。",
@@ -183,7 +212,7 @@ LEADERBOARDS = [
     },
     {
         "slug": "text-to-image",
-        "url": f"{BASE_URL}/leaderboard/text-to-image",
+        "url": f"{BASE_URL}/leaderboard/image/text-to-image",
         "title": "文生图榜单",
         "description": "本榜单评测文生图模型根据文本提示生成图像的能力。",
         "en": {
@@ -200,6 +229,52 @@ LEADERBOARDS = [
         "top_n": 30,
         "how_to_read": [
             "**排名 / 排名区间**：Arena AI 根据文生图对战投票估算的相对名次；排名区间表示在置信范围内的名次波动。",
+            "**分数**：相对评分，适合比较同一时刻榜单中的模型。",
+            "**票数**：样本量参考；样本较少时，排名通常更容易波动。",
+        ],
+    },
+    {
+        "slug": "image-edit-single",
+        "url": f"{BASE_URL}/leaderboard/image/image-edit/single-image",
+        "title": "单图编辑榜单",
+        "description": "本榜单评测模型根据指令编辑单张输入图像的能力。",
+        "en": {
+            "title": "Single-Image Editing Leaderboard",
+            "description": "This leaderboard measures how well models edit a single input image following an instruction.",
+            "how_to_read": [
+                "**Rank / Rank Spread**: relative position estimated from image-edit battles. The spread shows how far the rank moves within the confidence interval.",
+                "**Score**: a relative score, useful for comparing the models listed at the same moment.",
+                "**Votes**: sample size. Rankings move more when there are fewer votes.",
+            ],
+        },
+        "model_col": 2,
+        "preferred": ["Rank", "Rank Spread", "Model", "Score", "Votes"],
+        "top_n": 30,
+        "how_to_read": [
+            "**排名 / 排名区间**：Arena AI 根据单图编辑对战投票估算的相对名次；排名区间表示在置信范围内的名次波动。",
+            "**分数**：相对评分，适合比较同一时刻榜单中的模型。",
+            "**票数**：样本量参考；样本较少时，排名通常更容易波动。",
+        ],
+    },
+    {
+        "slug": "text-to-video",
+        "url": f"{BASE_URL}/leaderboard/video/text-to-video",
+        "title": "文生视频榜单",
+        "description": "本榜单评测文生视频模型根据文本提示生成视频的能力。",
+        "en": {
+            "title": "Text-to-Video Leaderboard",
+            "description": "This leaderboard measures how well text-to-video models turn a text prompt into a video.",
+            "how_to_read": [
+                "**Rank / Rank Spread**: relative position estimated from text-to-video battles. The spread shows how far the rank moves within the confidence interval.",
+                "**Score**: a relative score, useful for comparing the models listed at the same moment.",
+                "**Votes**: sample size. Rankings move more when there are fewer votes.",
+            ],
+        },
+        "model_col": 1,
+        "preferred": ["Rank", "Rank Spread", "Model", "Score", "Votes"],
+        "top_n": 30,
+        "how_to_read": [
+            "**排名 / 排名区间**：Arena AI 根据文生视频对战投票估算的相对名次；排名区间表示在置信范围内的名次波动。",
             "**分数**：相对评分，适合比较同一时刻榜单中的模型。",
             "**票数**：样本量参考；样本较少时，排名通常更容易波动。",
         ],
@@ -242,6 +317,182 @@ RETRY_DELAY = 10
 BOARD_GAP = 2
 MIN_ROWS = 10
 
+RSC_CHUNK_RE = re.compile(r'self\.__next_f\.push\(\[1,("(?:[^"\\]|\\.)*")\]\)')
+JSON_DECODER = json.JSONDecoder()
+
+
+def parse_rsc_payload(html):
+    """还原 Next.js RSC 流：每个 chunk 是 JS 字符串字面量，需逐条解码再拼接。"""
+    chunks = RSC_CHUNK_RE.findall(html)
+    if not chunks:
+        return ""
+    try:
+        return "".join(json.loads(chunk) for chunk in chunks)
+    except ValueError:
+        return ""
+
+
+def _extract_chat_entries(payload):
+    """页面里还有 battleCost 等带 entries 的对象，只认榜单主对象。"""
+    marker = '"leaderboard":'
+    start = payload.find(marker)
+    while start >= 0:
+        try:
+            obj, _ = JSON_DECODER.raw_decode(payload[start + len(marker) :])
+        except ValueError:
+            obj = None
+        if isinstance(obj, dict):
+            entries = obj.get("entries")
+            if isinstance(entries, list) and len(entries) >= MIN_ROWS:
+                return entries
+        start = payload.find(marker, start + 1)
+    return None
+
+
+def _extract_agent_rows(payload):
+    marker = '"snapshot":'
+    start = payload.find(marker)
+    while start >= 0:
+        try:
+            obj, _ = JSON_DECODER.raw_decode(payload[start + len(marker) :])
+        except ValueError:
+            obj = None
+        if isinstance(obj, dict):
+            rows = obj.get("rows")
+            if isinstance(rows, list) and len(rows) >= MIN_ROWS:
+                return rows
+        start = payload.find(marker, start + 1)
+    return None
+
+
+def _fmt_number(value):
+    if not isinstance(value, (int, float)):
+        return ""
+    if isinstance(value, float) and value.is_integer():
+        value = int(value)
+    return f"{value:,}"
+
+
+def _fmt_price(value):
+    if value is None:
+        return "N/A"
+    return "$" + f"{value:.4f}".rstrip("0").rstrip(".")
+
+
+def _fmt_price_pair(prices):
+    if all(price is None for price in prices):
+        return "N/A"
+    return " / ".join(_fmt_price(price) for price in prices)
+
+
+def _fmt_context(value):
+    if not value:
+        return "N/A"
+    if value >= 1_000_000:
+        return f"{value / 1_000_000:.1f}".rstrip("0").rstrip(".") + "M"
+    if value >= 1_000:
+        return f"{value / 1_000:.1f}".rstrip("0").rstrip(".") + "K"
+    return str(value)
+
+
+def _fmt_model(name, url):
+    if not url:
+        return name or ""
+    if url.startswith("http://"):
+        url = "https://" + url[len("http://") :]
+    return f"{name} [<sup>1</sup>]({url})"
+
+
+def _fmt_score(entry):
+    rating = entry.get("rating")
+    if rating is None:
+        return ""
+    text = str(round(rating))
+    upper = entry.get("ratingUpper")
+    lower = entry.get("ratingLower")
+    if upper is not None and lower is not None:
+        text += f" (±{round((upper - lower) / 2)})"
+    if entry.get("releaseType") == "pre_release":
+        text += " Preliminary"
+    return text
+
+
+def _fmt_pct(value, ci):
+    if value is None:
+        return ""
+    text = f"{value * 100:.2f}%"
+    if ci is not None:
+        text += f"±{ci * 100:.2f}%"
+    return text
+
+
+def build_chat_dataframe(entries, config):
+    rows = []
+    for entry in entries:
+        rows.append(
+            {
+                "Rank": str(entry.get("rank", "")),
+                "Rank Spread": f"{entry.get('rankUpper')}-{entry.get('rankLower')}",
+                "Model": _fmt_model(entry.get("modelDisplayName"), entry.get("modelUrl")),
+                "Score": _fmt_score(entry),
+                "Votes": _fmt_number(entry.get("votes")),
+                "Price $/M": _fmt_price_pair(
+                    (entry.get("inputPricePerMillion"), entry.get("outputPricePerMillion"))
+                ),
+                "Context": _fmt_context(entry.get("contextLength")),
+            }
+        )
+    return pd.DataFrame(rows)
+
+
+def build_agent_dataframe(rows, config):
+    out = []
+    for row in rows:
+        spread = row.get("rankSpread") or {}
+        avg = row.get("avgScore") or {}
+        signals = row.get("signalScores") or {}
+        signal_ci = row.get("signalCi") or {}
+        out.append(
+            {
+                "Rank": str(row.get("rank", "")),
+                "Rank Spread": f"{spread.get('min')}-{spread.get('max')}",
+                "Model": _fmt_model(row.get("model"), row.get("modelUrl")),
+                "Net Improvement": _fmt_pct(avg.get("value"), avg.get("ci")),
+                "Praise vs Complaint": _fmt_pct(
+                    signals.get("praise_complaint"), signal_ci.get("praise_complaint")
+                ),
+                "Steerability": _fmt_pct(
+                    signals.get("steering_burden"), signal_ci.get("steering_burden")
+                ),
+                "Tool Hallucination": _fmt_pct(
+                    signals.get("tool_hallucination"), signal_ci.get("tool_hallucination")
+                ),
+                "Sessions": _fmt_number(row.get("sessions")),
+            }
+        )
+    return pd.DataFrame(out)
+
+
+def parse_leaderboard(html, config):
+    """优先解析页面内嵌的 RSC 数据，旧版 <table> 保留为兜底。"""
+    payload = parse_rsc_payload(html)
+    if payload:
+        if config.get("parser") == "agent":
+            rows = _extract_agent_rows(payload)
+            if rows:
+                return build_agent_dataframe(rows, config)
+            print("  No agent snapshot rows in the RSC payload.")
+        else:
+            entries = _extract_chat_entries(payload)
+            if entries:
+                return build_chat_dataframe(entries, config)
+            print("  No leaderboard entries in the RSC payload.")
+    elif html:
+        print("  No RSC payload found.")
+    if "<table" in (html or ""):
+        return parse_leaderboard_table(html, config)
+    return None
+
 
 def firecrawl_fetch(url):
     """返回 (html, credits, error)。未配置 key 时走 keyless（受出口 IP 限制）。"""
@@ -250,9 +501,10 @@ def firecrawl_fetch(url):
     if api_key:
         headers["Authorization"] = f"Bearer {api_key}"
     # maxAge=0 强制新鲜抓取，否则默认命中 2 天缓存，每日快照会悄悄变成隔日数据。
+    # 必须用 rawHtml：html 会删掉 <script>，而榜单数据只存在于 RSC 载荷里。
     payload = {
         "url": url,
-        "formats": ["html"],
+        "formats": ["rawHtml"],
         "onlyMainContent": False,
         "maxAge": 0,
         "storeInCache": False,
@@ -273,9 +525,9 @@ def firecrawl_fetch(url):
     target_status = metadata.get("statusCode")
     if target_status not in (None, 200):
         return None, credits, f"target HTTP {target_status}"
-    html = data.get("html") or ""
+    html = data.get("rawHtml") or ""
     if not html:
-        return None, credits, "empty html"
+        return None, credits, "empty rawHtml"
     return html, credits, None
 
 
@@ -332,16 +584,16 @@ def fetch_leaderboard_data(cfg, providers, stats):
             stats[name]["requests"] += 1
             stats[name]["credits"] += credits
             df = None
-            if not error and html and "<table" in html:
+            if not error and html:
                 try:
-                    df = parse_leaderboard_table(html, cfg)
+                    df = parse_leaderboard(html, cfg)
                 except Exception as e:
                     error = f"parse error: {type(e).__name__}"
             if df is not None and len(df) >= MIN_ROWS:
                 print(f"  Successfully fetched page ({name}).")
                 return df
             stats[name]["failures"] += 1
-            print(f"  {name} failed: {error or 'no leaderboard table parsed'}")
+            print(f"  {name} failed: {error or 'no leaderboard data parsed'}")
             if attempt < FETCH_ATTEMPTS:
                 time.sleep(RETRY_DELAY)
     return None
