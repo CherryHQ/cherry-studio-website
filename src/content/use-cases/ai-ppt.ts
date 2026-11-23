@@ -10,6 +10,8 @@ export type PptTemplate = {
   file: string
   files: string[]
   prompt: string
+  style: string
+  styleHint: string
 }
 
 export type AiPptCopy = {
@@ -39,6 +41,8 @@ export type AiPptCopy = {
   deckLabel: string
   card: {
     promptLabel: string
+    styleLabel: string
+    withStyle: (prompt: string, hint: string) => string
     copy: string
     use: string
     coverAlt: (label: string) => string
@@ -93,10 +97,12 @@ export const AI_PPT_COPY: Record<UseCaseLocale, AiPptCopy> = {
       }
     ],
     deckTitle: '能做出什么样的 PPT',
-    deckHint: '点一张卡片翻面，看看它的提示词',
+    deckHint: '同一个智能体，四种完全不同的风格。点一张卡片翻面，看看它的提示词',
     deckLabel: '示例 PPT',
     card: {
       promptLabel: '提示词',
+      styleLabel: '风格',
+      withStyle: (prompt, hint) => `${prompt}风格：${hint}。`,
       copy: '复制',
       use: '用这个模板',
       coverAlt: (label) => `${label} PPT 封面`,
@@ -152,6 +158,8 @@ export const AI_PPT_COPY: Record<UseCaseLocale, AiPptCopy> = {
       {
         id: 'report',
         label: '工作汇报',
+        style: '咨询报告风',
+        styleHint: '白底深蓝标题，右侧深色问题栏，用细红线分隔',
         short: '帮我做一份季度工作汇报 PPT，数据用图表',
         file: 'Q3-report.pptx',
         files: ['周报-Q3.md', '项目数据.csv', '会议记录.md'],
@@ -161,6 +169,8 @@ export const AI_PPT_COPY: Record<UseCaseLocale, AiPptCopy> = {
       {
         id: 'lecture',
         label: '课程讲义',
+        style: '学术讲义风',
+        styleHint: '米黄纸张底、衬线大标题，配一张手绘感的供需图',
         short: '把课程笔记做成 45 分钟的讲义 PPT',
         file: 'lecture-week5.pptx',
         files: ['课程笔记.md', '课堂讨论.md'],
@@ -170,6 +180,8 @@ export const AI_PPT_COPY: Record<UseCaseLocale, AiPptCopy> = {
       {
         id: 'launch',
         label: '产品介绍',
+        style: '瑞士极简风',
+        styleHint: '白底超大黑字，右侧整块樱桃红，严格的网格排版',
         short: '根据产品文档做一份给客户看的介绍 PPT',
         file: 'product-intro.pptx',
         files: ['产品文档.md', '用户反馈.csv'],
@@ -179,6 +191,8 @@ export const AI_PPT_COPY: Record<UseCaseLocale, AiPptCopy> = {
       {
         id: 'reading',
         label: '读书分享',
+        style: '杂志拼贴风',
+        styleHint: '奶油色底、叠在一起的大色块圆形，衬线标题',
         short: '用读书笔记做一份 15 分钟的分享会 PPT',
         file: 'book-share.pptx',
         files: ['读书笔记.md'],
@@ -224,10 +238,12 @@ export const AI_PPT_COPY: Record<UseCaseLocale, AiPptCopy> = {
       }
     ],
     deckTitle: 'What you can make',
-    deckHint: 'Click a card to flip it and see the prompt behind it',
+    deckHint: 'One agent, four very different styles. Click a card to flip it and see the prompt behind it',
     deckLabel: 'Sample decks',
     card: {
       promptLabel: 'Prompt',
+      styleLabel: 'Style',
+      withStyle: (prompt, hint) => `${prompt} Style: ${hint}.`,
       copy: 'Copy',
       use: 'Use this template',
       coverAlt: (label) => `${label} deck cover`,
@@ -307,6 +323,8 @@ export const AI_PPT_COPY: Record<UseCaseLocale, AiPptCopy> = {
       {
         id: 'report',
         label: 'Business review',
+        style: 'Consulting',
+        styleHint: 'white page, navy headline, a dark question panel and a thin red rule',
         short: 'Make a quarterly review deck with charts',
         file: 'Q3-report.pptx',
         files: ['weekly-reports-Q3.md', 'project-data.csv', 'meeting-notes.md'],
@@ -316,6 +334,8 @@ export const AI_PPT_COPY: Record<UseCaseLocale, AiPptCopy> = {
       {
         id: 'lecture',
         label: 'Lecture',
+        style: 'Academic',
+        styleHint: 'paper-toned background, serif headline and a hand-drawn supply and demand chart',
         short: 'Turn my course notes into a 45-minute lecture deck',
         file: 'lecture-week5.pptx',
         files: ['course-notes.md', 'discussion-questions.md'],
@@ -325,6 +345,8 @@ export const AI_PPT_COPY: Record<UseCaseLocale, AiPptCopy> = {
       {
         id: 'launch',
         label: 'Product pitch',
+        style: 'Swiss bold',
+        styleHint: 'huge black type on white, a full cherry-red panel and a strict grid',
         short: 'Build a customer-facing product deck from our docs',
         file: 'product-intro.pptx',
         files: ['product-doc.md', 'customer-feedback.csv'],
@@ -334,6 +356,8 @@ export const AI_PPT_COPY: Record<UseCaseLocale, AiPptCopy> = {
       {
         id: 'reading',
         label: 'Book talk',
+        style: 'Magazine',
+        styleHint: 'cream background, overlapping colour circles and a serif title',
         short: 'Make a 15-minute book club deck from my notes',
         file: 'book-share.pptx',
         files: ['reading-notes.md'],

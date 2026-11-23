@@ -15,14 +15,15 @@ import { isEnglishSite } from '@/utils/urls'
 
 const FEATURE_ICONS = [FileText, Layers, Sparkles, MessageSquare]
 
-// 示例 PPT 的真实页面截图：public/images/use-cases/<语言>/ai-ppt-<模板>-<页>.webp，第 1 页是封面
-const SlideImage: FC<{ locale: UseCaseLocale; id: string; page: number; alt: string; className?: string }> = ({
-  locale,
-  id,
-  page,
-  alt,
-  className
-}) => (
+// 示例 PPT 的页面截图：public/images/use-cases/<语言>/ai-ppt-<模板>-<页>.webp。
+// 1～3 页是首屏动画用的同一套风格；-style 是卡牌区展示的各自风格的封面
+const SlideImage: FC<{
+  locale: UseCaseLocale
+  id: string
+  page: number | 'style'
+  alt: string
+  className?: string
+}> = ({ locale, id, page, alt, className }) => (
   <img
     src={`/images/use-cases/${locale}/ai-ppt-${id}-${page}.webp`}
     alt={alt}
@@ -212,16 +213,18 @@ const CardBack: FC<{ template: PptTemplate; copy: AiPptCopy; onUse: (id: string)
   return (
     <div className="border-primary/30 bg-card flex h-full flex-col rounded-lg border p-3.5 text-left">
       <p className="text-primary text-xs font-medium">
-        {template.label} · {copy.card.promptLabel}
+        {template.label} · {template.style}
       </p>
-      <p className="text-foreground/80 mt-1.5 line-clamp-3 text-xs leading-5">{template.prompt}</p>
+      <p className="text-foreground/80 mt-1.5 line-clamp-3 text-[11px] leading-4">
+        {copy.card.withStyle(template.prompt, template.styleHint)}
+      </p>
       <div className="mt-auto flex gap-2 pt-2">
         <button
           type="button"
           onClick={async (event) => {
             stop(event)
             try {
-              await navigator.clipboard.writeText(template.prompt)
+              await navigator.clipboard.writeText(copy.card.withStyle(template.prompt, template.styleHint))
               setCopied(true)
               window.setTimeout(() => setCopied(false), 1500)
             } catch {
@@ -278,7 +281,7 @@ const FlipCard: FC<{
           <SlideImage
             locale={locale}
             id={template.id}
-            page={1}
+            page="style"
             alt={copy.card.coverAlt(template.label)}
             className="h-full shadow-xl"
           />
@@ -336,6 +339,7 @@ const SlideDeck: FC<{ copy: AiPptCopy; locale: UseCaseLocale; onUse: (id: string
                 onUse={onUse}
               />
               <p className="text-foreground mt-3 text-center text-sm font-medium">{template.label}</p>
+              <p className="text-muted-foreground text-center text-xs">{template.style}</p>
             </motion.div>
           )
         })}
@@ -354,6 +358,7 @@ const SlideDeck: FC<{ copy: AiPptCopy; locale: UseCaseLocale; onUse: (id: string
               onUse={onUse}
             />
             <p className="text-foreground mt-2 text-sm font-medium">{template.label}</p>
+            <p className="text-muted-foreground text-xs">{template.style}</p>
           </li>
         ))}
       </ul>
