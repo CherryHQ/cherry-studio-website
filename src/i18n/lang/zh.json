@@ -766,6 +766,7 @@
   "usage": {
     "title": "Cherry Flash 订阅计划使用须知",
     "subtitle": "低成本的开源办公模型订阅服务。",
+    "agreement_link": "阅读完整的 Cherry Flash 订阅服务协议",
     "intro": {
       "title": "Cherry Flash 是什么",
       "body": [
@@ -800,21 +801,22 @@
     },
     "limits": {
       "title": "使用限制",
-      "intro": "下表单价均为每 100 万 token。「月额度」是每月包含的用量价值。",
+      "intro": "下表单价以美元计，每 100 万 token 为一单位。所有包含的模型共享一份月度额度。每行的金额表示整个计费月只使用该模型时可用的用量价值。",
       "peak_note": "DeepSeek V4.1 Flash：峰时为周一至周五 UTC 01:00–04:00 与 06:00–10:00；其余所有时段（含周末）均为谷时。",
       "console": "你可以在控制台中查看当前的使用情况。",
       "change": "使用限制可能会随着我们从早期使用和反馈中学习而调整。"
     },
     "overage": {
-      "title": "超出额度之后",
-      "body": "如果用完了 Cherry Flash 的每月额度，你可以添加自己的 API Key，在 Cherry Studio 里继续不间断地工作。"
+      "title": "额度用完后",
+      "body": "共享月度额度用完后，在本计费周期内将无法通过 Cherry Flash 使用套餐内的模型。你仍可以使用自己的模型服务商 API 密钥继续使用 Cherry Studio。"
     },
     "privacy": {
-      "title": "隐私保护",
-      "intro": "方案内的模型都不会用你的数据做训练。",
-      "col_model": "模型",
-      "col_training": "用于模型训练",
-      "value_no": "不使用"
+      "title": "数据与隐私",
+      "body": [
+        "CherryAI 会对服务使用数据（包括 AI 对话）进行去标识化处理，使其无法用于识别你的身份。处理后的数据仅用于产品改进和模型训练。",
+        "请避免输入身份证件号码、银行卡号、密码、详细健康信息或家庭住址等敏感个人信息。",
+        "如果你不同意上述数据用途，请停止订阅 Cherry Flash。"
+      ]
     },
     "goals": {
       "title": "我们想做到的",
