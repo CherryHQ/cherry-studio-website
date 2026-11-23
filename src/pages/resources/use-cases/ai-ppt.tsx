@@ -18,12 +18,8 @@ import Footer from '@/components/website/Footer'
 import { cn } from '@/lib/utils'
 
 // 应用场景落地页原型（仅中文，本地评审用），结构参考 Kimi /use-cases：
-// 首屏（提示词打字 + 生成过程动画）→ 樱桃三步 → 卡牌式成品示意（点开翻面看提示词）→ 真实界面 → 能力 → 常见问题 → 更多场景
+// 首屏（提示词打字 + 生成过程动画）→ 樱桃三步 → 卡牌式示例 PPT（点开翻面看提示词）→ 真实界面 → 能力 → 常见问题 → 更多场景
 // 所有动画在系统开启「减少动态效果」时直接显示最终状态
-
-type Tone = 'slate' | 'stone' | 'ink' | 'sage'
-
-type Slide = { kicker: string; title: string; lines: string[]; tone: Tone }
 
 type Template = {
   id: string
@@ -32,7 +28,6 @@ type Template = {
   file: string
   files: string[]
   prompt: string
-  slide: Slide
 }
 
 const TEMPLATES: Template[] = [
@@ -43,13 +38,7 @@ const TEMPLATES: Template[] = [
     file: 'Q3-report.pptx',
     files: ['周报-Q3.docx', '项目数据.xlsx', '会议记录.md'],
     prompt:
-      '阅读工作目录里的周报和项目数据，做一份 10 页左右的季度工作汇报 PPT：先讲整体进展，再讲三个重点项目，最后列出下季度计划。风格简洁，数据用图表呈现，保存为 Q3-report.pptx。',
-    slide: {
-      kicker: 'Q3 · 工作汇报',
-      title: '第三季度进展与下季度计划',
-      lines: ['整体进展', '重点项目', '下季度计划'],
-      tone: 'slate'
-    }
+      '阅读工作目录里的周报和项目数据，做一份 10 页左右的季度工作汇报 PPT：先讲整体进展，再讲三个重点项目，最后列出下季度计划。风格简洁，数据用图表呈现，保存为 Q3-report.pptx。'
   },
   {
     id: 'lecture',
@@ -58,13 +47,7 @@ const TEMPLATES: Template[] = [
     file: 'lecture-week5.pptx',
     files: ['课程笔记.md', '参考论文.pdf', '课堂讨论.docx'],
     prompt:
-      '根据目录里的课程笔记和参考论文，做一份 45 分钟课程用的讲义 PPT：每页一个核心概念，配一个生活中的例子，最后两页放课堂讨论题。保存为 lecture-week5.pptx。',
-    slide: {
-      kicker: '第 5 周 · 课程讲义',
-      title: '供给与需求：价格是怎么形成的',
-      lines: ['核心概念', '生活中的例子', '课堂讨论'],
-      tone: 'stone'
-    }
+      '根据目录里的课程笔记和参考论文，做一份 45 分钟课程用的讲义 PPT：每页一个核心概念，配一个生活中的例子，最后两页放课堂讨论题。保存为 lecture-week5.pptx。'
   },
   {
     id: 'launch',
@@ -73,13 +56,7 @@ const TEMPLATES: Template[] = [
     file: 'product-intro.pptx',
     files: ['产品文档.pdf', '用户反馈.xlsx', '功能清单.md'],
     prompt:
-      '根据目录里的产品文档和用户反馈，做一份给客户看的产品介绍 PPT：痛点、解决方案、核心功能、使用场景和下一步合作方式，控制在 12 页以内，保存为 product-intro.pptx。',
-    slide: {
-      kicker: '产品介绍',
-      title: '让团队的资料，变成随时能用的答案',
-      lines: ['用户痛点', '核心功能', '使用场景'],
-      tone: 'ink'
-    }
+      '根据目录里的产品文档和用户反馈，做一份给客户看的产品介绍 PPT：痛点、解决方案、核心功能、使用场景和下一步合作方式，控制在 12 页以内，保存为 product-intro.pptx。'
   },
   {
     id: 'reading',
@@ -88,23 +65,9 @@ const TEMPLATES: Template[] = [
     file: 'book-share.pptx',
     files: ['读书笔记.md', '摘抄.docx', '思维导图.png'],
     prompt:
-      '读一下目录里这本书的读书笔记，做一份 15 分钟读书分享会用的 PPT：作者和背景、三个最打动我的观点、我的思考，语气轻松一点。保存为 book-share.pptx。',
-    slide: {
-      kicker: '读书分享',
-      title: '《思考，快与慢》里的两个系统',
-      lines: ['作者与背景', '三个观点', '我的思考'],
-      tone: 'sage'
-    }
+      '读一下目录里这本书的读书笔记，做一份 15 分钟读书分享会用的 PPT：作者和背景、三个最打动我的观点、我的思考，语气轻松一点。保存为 book-share.pptx。'
   }
 ]
-
-// 樱桃红系配色，用于成品示意
-const TONES: Record<Tone, { bg: string; accent: string; text: string; sub: string }> = {
-  slate: { bg: 'bg-[#7f1d1d]', accent: 'bg-[#fca5a5]', text: 'text-[#fff1f1]', sub: 'text-[#fecaca]' },
-  stone: { bg: 'bg-[#fdf2f2]', accent: 'bg-[#dc2626]', text: 'text-[#450a0a]', sub: 'text-[#991b1b]' },
-  ink: { bg: 'bg-[#1a0f10]', accent: 'bg-[#e54d4d]', text: 'text-[#fdeaea]', sub: 'text-[#d4a5a5]' },
-  sage: { bg: 'bg-[#dc2626]', accent: 'bg-[#fff1f1]', text: 'text-white', sub: 'text-[#fee2e2]' }
-}
 
 const STEPS = [
   {
@@ -176,40 +139,23 @@ const MORE = [
   { to: '/resources/articles/ai-knowledge-base', title: 'AI 知识库', body: '用自己的资料回答问题' }
 ]
 
-const SlideMock: FC<{ slide: Slide; className?: string }> = ({ slide, className }) => {
-  const tone = TONES[slide.tone]
-  return (
-    <div className={cn('relative aspect-video w-full overflow-hidden rounded-lg', tone.bg, className)}>
-      <div className="absolute inset-0 flex flex-col justify-between p-[7%]">
-        <div>
-          <p className={cn('text-[0.62em] tracking-wide', tone.sub)}>{slide.kicker}</p>
-          <p className={cn('mt-[0.6em] text-[1.15em] leading-snug font-semibold text-balance', tone.text)}>
-            {slide.title}
-          </p>
-        </div>
-        <div className="flex items-end justify-between gap-4">
-          <ul className={cn('space-y-[0.35em] text-[0.62em]', tone.sub)}>
-            {slide.lines.map((line, index) => (
-              <li key={line} className="flex items-center gap-[0.6em]">
-                <span className={cn('inline-block h-[0.12em] w-[1.4em]', tone.accent)} />
-                {String(index + 1).padStart(2, '0')} {line}
-              </li>
-            ))}
-          </ul>
-          <div className="flex h-[3.2em] items-end gap-[0.35em]" aria-hidden="true">
-            {[45, 70, 55, 90].map((height) => (
-              <span
-                key={height}
-                className={cn('w-[0.7em] rounded-t-sm opacity-80', tone.accent)}
-                style={{ height: `${height}%` }}
-              />
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
+// 示例 PPT 的真实页面截图：public/images/use-cases/ai-ppt-<模板>-<页>.webp，第 1 页是封面
+const SlideImage: FC<{ id: string; page: number; alt: string; className?: string }> = ({
+  id,
+  page,
+  alt,
+  className
+}) => (
+  <img
+    src={`/images/use-cases/ai-ppt-${id}-${page}.webp`}
+    alt={alt}
+    width={959}
+    height={540}
+    loading="lazy"
+    draggable={false}
+    className={cn('aspect-video w-full rounded-lg object-cover', className)}
+  />
+)
 
 // 提示词逐字出现；减少动态效果时直接显示全文
 function useTyping(text: string, reduce: boolean) {
@@ -258,11 +204,8 @@ const GenerationDemo: FC<{ template: Template }> = ({ template }) => {
     }
   }, [template.id, run, reduce])
 
-  const slides: Slide[] = [
-    { kicker: '03', title: template.slide.lines[1], lines: [], tone: template.slide.tone },
-    { kicker: '02', title: template.slide.lines[0], lines: [], tone: template.slide.tone },
-    template.slide
-  ]
+  // 内页先落下，封面最后落在最上面
+  const pages = [3, 2, 1]
   const spring = { type: 'spring' as const, stiffness: 260, damping: 18 }
 
   return (
@@ -340,16 +283,16 @@ const GenerationDemo: FC<{ template: Template }> = ({ template }) => {
         )}
 
         <div className="relative mt-auto h-[210px]">
-          {slides.map((slide, index) =>
+          {pages.map((page, index) =>
             phase >= 3 + index ? (
               <motion.div
-                key={`${template.id}-${slide.kicker}`}
+                key={`${template.id}-${page}`}
                 initial={reduce ? false : { opacity: 0, y: -90, rotate: index % 2 ? 8 : -8 }}
                 animate={{ opacity: 1, y: index * 12, x: index * 18, rotate: [-3, 2, -1][index] }}
                 transition={spring}
-                className="absolute top-0 left-0 w-[68%] text-[11px] shadow-lg"
+                className="absolute top-0 left-0 w-[68%] rounded-lg shadow-lg"
                 style={{ zIndex: index }}>
-                <SlideMock slide={slide} />
+                <SlideImage id={template.id} page={page} alt={`${template.label} PPT 第 ${page} 页`} />
               </motion.div>
             ) : null
           )}
@@ -442,7 +385,7 @@ const FlipCard: FC<{ template: Template; flipped: boolean; onToggle: () => void;
         transition={reduce ? { duration: 0 } : { type: 'spring', stiffness: 200, damping: 22 }}
         className="relative size-full [transform-style:preserve-3d]">
         <div className="absolute inset-0 [backface-visibility:hidden]">
-          <SlideMock slide={template.slide} className="h-full shadow-xl" />
+          <SlideImage id={template.id} page={1} alt={`${template.label} PPT 封面`} className="h-full shadow-xl" />
         </div>
         <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)]">
           <CardBack template={template} onUse={onUse} />
@@ -695,10 +638,7 @@ export default function AiPptUseCasePage() {
         <section className="mx-auto max-w-5xl px-4 pt-24 sm:px-6">
           <div className="text-center">
             <h2 className="text-foreground text-3xl font-semibold tracking-tight">能做出什么样的 PPT</h2>
-            <p className="text-muted-foreground mt-2 text-sm">
-              点一张卡片翻面，看看它的提示词
-              <span className="text-muted-foreground/60 ml-2 text-xs">（示意图，上线前换成真实生成的封面）</span>
-            </p>
+            <p className="text-muted-foreground mt-2 text-sm">点一张卡片翻面，看看它的提示词</p>
           </div>
           <SlideDeck onUse={applyTemplate} />
         </section>
