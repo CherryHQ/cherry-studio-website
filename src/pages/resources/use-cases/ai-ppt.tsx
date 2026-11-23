@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 
 import Footer from '@/components/website/Footer'
 import { AI_PPT_COPY, type AiPptCopy, type PptTemplate, type UseCaseLocale } from '@/content/use-cases/ai-ppt'
+import { usePageMeta } from '@/hooks/usePageMeta'
 import { cn } from '@/lib/utils'
 import { isEnglishSite } from '@/utils/urls'
 
@@ -449,9 +450,7 @@ export default function AiPptUseCasePage() {
   const template = copy.templates.find(({ id }) => id === active) ?? copy.templates[0]
   const { typed, done } = useTyping(template.prompt, reduce)
 
-  useEffect(() => {
-    document.title = copy.title
-  }, [copy.title])
+  usePageMeta('useCaseAiPpt')
 
   const copyPrompt = async () => {
     try {

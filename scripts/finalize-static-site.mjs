@@ -119,7 +119,12 @@ const compareRoutes = listCompareSlugs(target).map((slug) => ({
 }))
 
 const articlesIndex = { path: '/resources/articles/', key: 'articles', articlesIndex: true, dropSoftwareApplication: true }
-ROUTES[target].push(articlesIndex, ...compareRoutes)
+// 应用场景页：中英文都有，一起上线
+const useCaseRoutes = [
+  { path: '/resources/use-cases/ai-ppt', key: 'use_case_ai_ppt', lastmod: '2026-11-23', dropSoftwareApplication: true }
+]
+
+ROUTES[target].push(articlesIndex, ...compareRoutes, ...useCaseRoutes)
 
 const NOT_FOUND = { path: '/404', key: 'not_found', noindex: true }
 
@@ -151,7 +156,8 @@ SITEMAP[target].push(
     priority: '0.7',
     lastmod: ['2026-11-01', ...compareRoutes.map(({ lastmod }) => lastmod)].sort().at(-1)
   },
-  ...compareRoutes.map(({ path, lastmod }) => ({ path, priority: '0.7', lastmod }))
+  ...compareRoutes.map(({ path, lastmod }) => ({ path, priority: '0.7', lastmod })),
+  ...useCaseRoutes.map(({ path, lastmod }) => ({ path, priority: '0.7', lastmod }))
 )
 
 function replaceTagAttribute(html, tagPattern, attribute, value) {

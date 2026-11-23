@@ -2,6 +2,7 @@
   "page_title": {
     "faq": "Subscription FAQ | Cherry Studio",
     "articles": "Articles | Cherry Studio",
+    "use_case_ai_ppt": "AI PPT Generator: Let an Agent Build Your Slide Deck | Cherry Studio",
     "home": "Cherry Studio - The All-in-One AI Workstation",
     "download": "Download Cherry Studio for Mac, Windows & Linux",
     "mobile": "Cherry Studio Mobile - Your AI Workstation, Anywhere",
@@ -27,6 +28,7 @@
   },
   "page_description": {
     "articles": "Articles from Cherry Studio: practical reading on choosing and using AI tools, so AI actually helps with your everyday work.",
+    "use_case_ai_ppt": "Generate PowerPoint slides with a Cherry Studio agent: drop your files in a folder, describe the deck in one sentence, and get an editable .pptx. Includes prompt templates in four styles.",
     "home": "Cherry Studio is an open-source, free, and powerful AI desktop client. It includes AI agents, AI chat, AI image generation, knowledge base, and more, supports all major LLMs, runs on Windows/macOS/Linux, stores data locally, and is built for heavy AI users.",
     "download": "Download Cherry Studio AI client supporting Windows, macOS, and Linux platforms. Integrates 100+ AI models, completely free and open source.",
     "mobile": "Cherry Studio Mobile for Android, iPhone, and iPad brings models, agents, skills, connected tools, files, and image creation together. Connect desktop agents, remote servers, and organization spaces on the go.",
