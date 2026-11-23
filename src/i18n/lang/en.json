@@ -750,7 +750,7 @@
     "intro": {
       "title": "What Cherry Flash is",
       "body": [
-        "Cherry Flash is a low-cost subscription that gives you steady access to a curated set of open-source Flash models — for writing, summarising, translation, data work, drafting email and taking meeting notes. The price is whatever the sign-up page shows.",
+        "Cherry Flash is a low-cost subscription that gives you steady access to a curated set of open-source Flash models — for writing, summarising, translation, data work, drafting email and taking meeting notes. Your subscription price is shown at sign-up.",
         "It works like any other model provider. Once you subscribe, the models show up in Cherry Studio’s model selector — there is no API key to configure. It is entirely optional and is not required to use any of our products.",
         "It is designed to be used inside Cherry Studio, where it provides steady model access for everyday office tasks."
       ]
@@ -781,21 +781,22 @@
     },
     "limits": {
       "title": "Usage limits",
-      "intro": "Rates are per 1M tokens. The allowance column is the value of usage included each month.",
-      "peak_note": "DeepSeek V4.1 Flash: peak hours are Monday to Friday, 01:00–04:00 and 06:00–10:00 UTC; all other times, including weekends, are off-peak.",
+      "intro": "Rates are in USD per million tokens. All included models share one monthly allowance. The amount in each row shows how much usage is included if you use only that model for the entire billing month.",
+      "peak_note": "DeepSeek V4.1 Flash peak hours are Monday to Friday, 01:00–04:00 and 06:00–10:00 UTC. Off-peak rates apply at all other times, including weekends. Qwen and GLM rates are the same at all hours.",
       "console": "You can track your current usage in the console.",
       "change": "Limits may change as we learn from early usage and feedback."
     },
     "overage": {
-      "title": "Going over the limit",
-      "body": "If you use up your monthly Cherry Flash allowance, you can add your own API key and keep working in Cherry Studio without interruption."
+      "title": "When your allowance runs out",
+      "body": "Once you use up the shared monthly allowance, access to the included models through Cherry Flash stops for the rest of that billing period. You can keep using Cherry Studio with your own model provider API key."
     },
     "privacy": {
-      "title": "Privacy",
-      "intro": "None of the models in the plan use your data for training.",
-      "col_model": "Model",
-      "col_training": "Used for training",
-      "value_no": "No"
+      "title": "Data and privacy",
+      "body": [
+        "CherryAI de-identifies service usage data, including AI conversations, so it cannot be used to identify you. CherryAI uses the resulting data only for product improvement and model training.",
+        "Avoid entering sensitive personal information such as government ID numbers, bank card numbers, passwords, detailed health information or your home address.",
+        "If you do not agree to these data uses, please stop subscribing to Cherry Flash."
+      ]
     },
     "goals": {
       "title": "What we are aiming for",

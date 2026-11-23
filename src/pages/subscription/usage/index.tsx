@@ -57,13 +57,7 @@ function UsageContent() {
     change: string
   }
   const overage = t('usage.overage', { returnObjects: true }) as { title: string; body: string }
-  const privacy = t('usage.privacy', { returnObjects: true }) as {
-    title: string
-    intro: string
-    col_model: string
-    col_training: string
-    value_no: string
-  }
+  const privacy = t('usage.privacy', { returnObjects: true }) as Section
   const goals = t('usage.goals', { returnObjects: true }) as { title: string; items: string[] }
 
   const table = t('pricing.table', { returnObjects: true }) as Record<string, string>
@@ -144,7 +138,9 @@ function UsageContent() {
                       {table[key]}
                     </th>
                   ))}
-                  <th className="text-muted-foreground py-3 pr-4 text-left text-xs font-medium">{table.allowance}</th>
+                  <th className="text-muted-foreground py-3 pr-4 text-left text-xs font-medium">
+                    {t('pricing.usage.single_model')}
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -174,25 +170,11 @@ function UsageContent() {
 
         <section className="mt-12">
           <h2 className="text-foreground text-xl font-semibold">{privacy.title}</h2>
-          <p className="text-muted-foreground mt-4 leading-7">{privacy.intro}</p>
-          <div className="mt-6 overflow-x-auto">
-            <table className="w-full border-collapse text-sm">
-              <thead>
-                <tr className="border-border border-b">
-                  <th className="text-muted-foreground py-3 pr-4 text-left text-xs font-medium">{privacy.col_model}</th>
-                  <th className="text-muted-foreground py-3 text-left text-xs font-medium">{privacy.col_training}</th>
-                </tr>
-              </thead>
-              <tbody>
-                {models.map((model) => (
-                  <tr key={model.id} className="border-border/60 border-b last:border-0">
-                    <td className="text-foreground py-3 pr-4 font-medium">{model.name}</td>
-                    <td className="text-foreground py-3">{privacy.value_no}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          {privacy.body.map((paragraph) => (
+            <p key={paragraph} className="text-muted-foreground mt-4 leading-7">
+              {paragraph}
+            </p>
+          ))}
         </section>
 
         <section className="mt-12">
