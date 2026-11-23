@@ -23,7 +23,6 @@ interface Section {
 }
 
 const RATE_KEYS = ['input', 'output', 'cache_read', 'cache_write'] as const
-const FLASH_AGREEMENT_URL = 'https://accounts.cherryai.com/login/legal/global/subscription-service/v1'
 
 function RateCell({ value, free, freeLabel }: { value: string; free: boolean; freeLabel: string }) {
   if (free) return <>{freeLabel}</>
@@ -70,11 +69,6 @@ function UsageContent() {
         <header>
           <h1 className="text-foreground text-3xl font-bold tracking-tight sm:text-4xl">{t('usage.title')}</h1>
           <p className="text-muted-foreground mt-4 text-lg leading-8">{t('usage.subtitle')}</p>
-          <a
-            href={FLASH_AGREEMENT_URL}
-            className="text-primary hover:text-foreground mt-4 inline-block font-medium underline underline-offset-4">
-            {t('usage.agreement_link')}
-          </a>
         </header>
 
         <section className="mt-12">

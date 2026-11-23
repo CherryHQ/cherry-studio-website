@@ -766,7 +766,6 @@
   "usage": {
     "title": "Cherry Flash 订阅计划使用须知",
     "subtitle": "低成本的开源办公模型订阅服务。",
-    "agreement_link": "阅读完整的 Cherry Flash 订阅服务协议",
     "intro": {
       "title": "Cherry Flash 是什么",
       "body": [
@@ -802,7 +801,7 @@
     "limits": {
       "title": "使用限制",
       "intro": "下表单价以美元计，每 100 万 token 为一单位。所有包含的模型共享一份月度额度。每行的金额表示整个计费月只使用该模型时可用的用量价值。",
-      "peak_note": "DeepSeek V4.1 Flash：峰时为周一至周五 UTC 01:00–04:00 与 06:00–10:00；其余所有时段（含周末）均为谷时。",
+      "peak_note": "DeepSeek V4.1 Flash 的峰时为周一至周五 UTC 01:00–04:00 与 06:00–10:00。其余所有时段（含周末）均按谷时费率计费。Qwen 和 GLM 各时段的费率相同。",
       "console": "你可以在控制台中查看当前的使用情况。",
       "change": "使用限制可能会随着我们从早期使用和反馈中学习而调整。"
     },

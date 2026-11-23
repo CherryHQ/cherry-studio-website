@@ -747,7 +747,6 @@
   "usage": {
     "title": "Cherry Flash usage terms",
     "subtitle": "A low-cost subscription to open-source models for everyday office work.",
-    "agreement_link": "Read the full Cherry Flash Subscription Service Agreement",
     "intro": {
       "title": "What Cherry Flash is",
       "body": [
@@ -783,7 +782,7 @@
     "limits": {
       "title": "Usage limits",
       "intro": "Rates are in USD per million tokens. All included models share one monthly allowance. The amount in each row shows how much usage is included if you use only that model for the entire billing month.",
-      "peak_note": "DeepSeek V4.1 Flash: peak hours are Monday to Friday, 01:00–04:00 and 06:00–10:00 UTC; all other times, including weekends, are off-peak.",
+      "peak_note": "DeepSeek V4.1 Flash peak hours are Monday to Friday, 01:00–04:00 and 06:00–10:00 UTC. Off-peak rates apply at all other times, including weekends. Qwen and GLM rates are the same at all hours.",
       "console": "You can track your current usage in the console.",
       "change": "Limits may change as we learn from early usage and feedback."
     },
