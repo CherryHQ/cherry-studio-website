@@ -18,6 +18,7 @@ export type PageType =
   | 'flashUsage'
   | 'faq'
   | 'articles'
+  | 'useCaseAiPpt'
   | `article:${CompareSlug}`
   | 'notFound'
 
@@ -47,6 +48,7 @@ const PAGE_META: Record<PageType, PageMetaConfig> = {
   flashUsage: { path: '/subscription/usage', translationKey: 'flash_usage', chineseCounterpart: false },
   faq: { path: '/subscription/faq' },
   articles: { path: '/resources/articles/' },
+  useCaseAiPpt: { path: '/resources/use-cases/ai-ppt', translationKey: 'use_case_ai_ppt' },
   // 文章按语言单独上线；某种语言没有正文时不输出该语言的 hreflang
   ...(Object.fromEntries(
     COMPARE_SLUGS.map((slug) => [
