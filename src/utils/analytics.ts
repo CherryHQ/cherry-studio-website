@@ -87,6 +87,8 @@ export function initPosthog(): void {
       capture_pageview: 'history_change',
       capture_pageleave: true,
       autocapture: true,
+      // Disable community-site performance metrics even when enabled remotely.
+      capture_performance: false,
       disable_session_recording: true,
       person_profiles: 'identified_only',
       before_send: (event) => {
