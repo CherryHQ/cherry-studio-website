@@ -1,397 +1,130 @@
-import { ArrowRight, BookOpen, Bot, BrushIcon, Download, History, MessageSquare, ServerIcon } from 'lucide-react'
-import { type FC, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { ArrowDown, ArrowRight, Download, History } from 'lucide-react'
+import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
-import { annotate } from 'rough-notation'
 
-import agentDarkEn from '@/assets/images/screenshots/product-features-0819/agent-dark-en.webp'
-import agentDarkZh from '@/assets/images/screenshots/product-features-0819/agent-dark-zh.webp'
-import agentLightEn from '@/assets/images/screenshots/product-features-0819/agent-light-en.webp'
-import agentLightZh from '@/assets/images/screenshots/product-features-0819/agent-light-zh.webp'
-import chatDarkEn from '@/assets/images/screenshots/product-features-0819/chat-dark-en.webp'
-import chatDarkZh from '@/assets/images/screenshots/product-features-0819/chat-dark-zh.webp'
-import chatLightEn from '@/assets/images/screenshots/product-features-0819/chat-light-en.webp'
-import chatLightZh from '@/assets/images/screenshots/product-features-0819/chat-light-zh.webp'
-import drawingDarkEn from '@/assets/images/screenshots/product-features-0819/drawing-dark-en.webp'
-import drawingDarkZh from '@/assets/images/screenshots/product-features-0819/drawing-dark-zh.webp'
-import drawingLightEn from '@/assets/images/screenshots/product-features-0819/drawing-light-en.webp'
-import drawingLightZh from '@/assets/images/screenshots/product-features-0819/drawing-light-zh.webp'
-import knowledgeDarkEn from '@/assets/images/screenshots/product-features-0819/knowledge-dark-en.webp'
-import knowledgeDarkZh from '@/assets/images/screenshots/product-features-0819/knowledge-dark-zh.webp'
-import knowledgeLightEn from '@/assets/images/screenshots/product-features-0819/knowledge-light-en.webp'
-import knowledgeLightZh from '@/assets/images/screenshots/product-features-0819/knowledge-light-zh.webp'
-import providerDarkEn from '@/assets/images/screenshots/product-features-0819/provider-dark-en.webp'
-import providerDarkZh from '@/assets/images/screenshots/product-features-0819/provider-dark-zh.webp'
-import providerLightEn from '@/assets/images/screenshots/product-features-0819/provider-light-en.webp'
-import providerLightZh from '@/assets/images/screenshots/product-features-0819/provider-light-zh.webp'
 import { fetchNotice, type NoticeResponse } from '@/assets/js/notice'
-import { Button } from '@/components/ui/button'
 import MobileDownloadButton from '@/components/website/MobileDownloadButton'
-import { useTheme } from '@/hooks/useTheme'
 import { useVersionData } from '@/hooks/useVersionData'
-import { cn } from '@/lib/utils'
 import { isMobileDevice } from '@/utils/systemDetection'
 import { getDocsUrl, isEnglishSite } from '@/utils/urls'
+import WorkspacePanel from './WorkspacePanel'
 
-interface FeatureTab {
-  id: string
-  labelZh: string
-  labelEn: string
-  icon: React.ReactNode
-  screenshotDark: string
-  screenshotLight: string
-  screenshotDarkZh: string
-  screenshotLightZh: string
-}
-
-const featureTabs: FeatureTab[] = [
-  {
-    id: 'agent',
-    labelZh: '智能体',
-    labelEn: 'Agent',
-    icon: <Bot className="h-4 w-4" />,
-    screenshotDark: agentDarkEn,
-    screenshotLight: agentLightEn,
-    screenshotDarkZh: agentDarkZh,
-    screenshotLightZh: agentLightZh
-  },
-  {
-    id: 'chat',
-    labelZh: 'AI 对话',
-    labelEn: 'AI Chat',
-    icon: <MessageSquare className="h-4 w-4" />,
-    screenshotDark: chatDarkEn,
-    screenshotLight: chatLightEn,
-    screenshotDarkZh: chatDarkZh,
-    screenshotLightZh: chatLightZh
-  },
-  {
-    id: 'drawing',
-    labelZh: 'AI 生图',
-    labelEn: 'AI Images',
-    icon: <BrushIcon className="h-4 w-4" />,
-    screenshotDark: drawingDarkEn,
-    screenshotLight: drawingLightEn,
-    screenshotDarkZh: drawingDarkZh,
-    screenshotLightZh: drawingLightZh
-  },
-  {
-    id: 'knowledge',
-    labelZh: '知识库',
-    labelEn: 'Knowledge Base',
-    icon: <BookOpen className="h-4 w-4" />,
-    screenshotDark: knowledgeDarkEn,
-    screenshotLight: knowledgeLightEn,
-    screenshotDarkZh: knowledgeDarkZh,
-    screenshotLightZh: knowledgeLightZh
-  },
-  {
-    id: 'providers',
-    labelZh: '多模型服务商',
-    labelEn: 'Providers',
-    icon: <ServerIcon className="h-4 w-4" />,
-    screenshotDark: providerDarkEn,
-    screenshotLight: providerLightEn,
-    screenshotDarkZh: providerDarkZh,
-    screenshotLightZh: providerLightZh
-  }
-]
-
-const HeroSection: FC = () => {
+export default function HeroSection() {
   const { t, i18n } = useTranslation()
-  const { isDark } = useTheme()
   const { versionData } = useVersionData()
   const [notice, setNotice] = useState<NoticeResponse['data'] | null>(null)
-  const [activeTab, setActiveTab] = useState(featureTabs[0].id)
-  const [isPaused, setIsPaused] = useState(false)
 
-  const isZh = i18n.language === 'zh-CN'
-  const isEn = isEnglishSite(i18n.resolvedLanguage || i18n.language)
+  const language = i18n.resolvedLanguage || i18n.language
+  const isEn = isEnglishSite(language)
   const isMobile = isMobileDevice()
   const stableMajorVersion = Number(versionData?.version.match(/^v?(\d+)\./)?.[1])
-  const showV1Download = Number.isFinite(stableMajorVersion) && stableMajorVersion >= 2
 
-  const tabsContainerRef = useRef<HTMLDivElement>(null)
-  const tabButtonRefs = useRef<Record<string, HTMLButtonElement | null>>({})
-  const [indicatorReady, setIndicatorReady] = useState(false)
-  const [indicatorRect, setIndicatorRect] = useState<{ x: number; width: number }>({ x: 0, width: 0 })
-
-  const measureIndicator = useCallback(() => {
-    const container = tabsContainerRef.current
-    const activeButton = tabButtonRefs.current[activeTab]
-
-    if (!container || !activeButton) return
-
-    const containerRect = container.getBoundingClientRect()
-    const buttonRect = activeButton.getBoundingClientRect()
-
-    setIndicatorRect({
-      x: buttonRect.left - containerRect.left,
-      width: buttonRect.width
+  useEffect(() => {
+    let active = true
+    void fetchNotice().then((result) => {
+      if (active) setNotice(result)
     })
-
-    setIndicatorReady(true)
-  }, [activeTab])
-
-  useLayoutEffect(() => {
-    measureIndicator()
-  }, [measureIndicator, i18n.language])
-
-  useEffect(() => {
-    const container = tabsContainerRef.current
-    if (!container) return
-
-    const ro = new ResizeObserver(() => measureIndicator())
-    ro.observe(container)
-
-    window.addEventListener('resize', measureIndicator)
-
     return () => {
-      ro.disconnect()
-      window.removeEventListener('resize', measureIndicator)
+      active = false
     }
-  }, [measureIndicator])
-
-  // Auto-switch tabs every 5 seconds
-  useEffect(() => {
-    if (isPaused) return
-
-    const interval = setInterval(() => {
-      setActiveTab((current) => {
-        const currentIndex = featureTabs.findIndex((tab) => tab.id === current)
-        const nextIndex = (currentIndex + 1) % featureTabs.length
-        return featureTabs[nextIndex].id
-      })
-    }, 5000)
-
-    return () => clearInterval(interval)
-  }, [isPaused])
-
-  const ref1 = useRef<HTMLSpanElement>(null)
-  const ref2 = useRef<HTMLSpanElement>(null)
-  const ref3 = useRef<HTMLSpanElement>(null)
-
-  useEffect(() => {
-    const getNotices = async () => {
-      const noticeContent = await fetchNotice()
-      if (noticeContent?.status) {
-        setNotice(noticeContent)
-      }
-    }
-    getNotices()
-  }, [])
-
-  useEffect(() => {
-    if (ref1.current && ref2.current && ref3.current) {
-      const a1 = annotate(ref1.current, {
-        type: 'underline',
-        color: '#f472b6',
-        strokeWidth: 2,
-        padding: 2
-      })
-      const a2 = annotate(ref2.current, {
-        type: 'underline',
-        color: '#22d3ee',
-        strokeWidth: 2,
-        padding: 2
-      })
-      const a3 = annotate(ref3.current, {
-        type: 'underline',
-        color: '#a78bfa',
-        strokeWidth: 2,
-        padding: 2
-      })
-
-      a1.show()
-      a2.show()
-      a3.show()
-
-      return () => {
-        a1.remove()
-        a2.remove()
-        a3.remove()
-      }
-    }
-  }, [i18n.language])
+  }, [language])
 
   return (
-    <section className="bg-background relative overflow-hidden pt-16 sm:pt-20">
-      {/* Subtle gradient background */}
-      <div className="via-primary/[0.02] absolute inset-0 bg-gradient-to-b from-transparent to-transparent" />
+    <section className="relative overflow-hidden border-b border-border bg-background text-foreground">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-y-0 left-[40%] hidden w-[70%] [mask-image:linear-gradient(to_right,transparent,black_34%)] lg:block">
+        <div className="absolute -top-16 left-10 grid w-[1000px] origin-center -rotate-[24deg] skew-x-[22deg] grid-cols-12 border-t border-l border-border/70">
+          {Array.from({ length: 96 }, (_, index) => (
+            <span
+              key={index}
+              className={
+                [9, 20, 21, 31, 42, 43, 56, 67, 69, 77, 89, 91].includes(index)
+                  ? 'relative z-10 aspect-square -translate-x-1.5 -translate-y-1.5 border border-input/65 bg-secondary shadow-[5px_5px_0_var(--border)]'
+                  : 'aspect-square border-r border-b border-border/70'
+              }
+            />
+          ))}
+        </div>
+      </div>
+      <div className="site-container site-split site-section relative">
+        <div className="min-w-0">
+          <Link
+            to="/download"
+            className="mb-6 inline-flex flex-wrap items-center gap-2 rounded-md border border-border bg-card px-2 py-1 font-mono text-xs text-muted-foreground transition-colors duration-300 hover:border-primary/60 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
+            <span className="size-1.5 rounded-full bg-primary" aria-hidden="true" />
+            <span>
+              {versionData?.version ? `Cherry Studio ${versionData.version}` : t('mobile_download.desktop_title')}
+            </span>
+            {versionData?.version && <span className="text-primary">{t('stable_badge')}</span>}
+          </Link>
 
-      <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
-        <div className="pt-8 pb-4 text-center sm:pt-24 sm:pb-8 lg:pt-32">
-          {/* Main Heading */}
-          <h1 className="text-foreground mb-4 text-3xl font-semibold tracking-tight sm:mb-6 sm:text-5xl lg:text-6xl">
-            {isZh ? '全能 AI 工作站' : 'The All-in-One AI Workstation'}
+          <h1 className="text-balance text-4xl font-semibold tracking-tight sm:text-5xl xl:text-6xl">
+            <span className="block">{t('home_page.title_first')}</span>
+            <span className="mt-2 block text-foreground">{t('home_page.title_second')}</span>
           </h1>
+          <p className="mt-5 max-w-lg text-pretty text-base text-muted-foreground sm:text-lg">{t('home_page.intro')}</p>
 
-          {/* Subtitle */}
-          <p className="text-muted-foreground mx-auto mb-6 max-w-2xl text-base leading-7 sm:mb-10 sm:whitespace-nowrap sm:text-lg">
-            {isZh ? (
-              <>
-                <span ref={ref1}>智能对话</span>
-                {' · '}
-                <span ref={ref2}>自主 Agent</span>
-                {' · '}
-                <span ref={ref3}>无限创造</span>
-                ，统一接入主流大模型
-              </>
-            ) : (
-              <>
-                <span ref={ref1}>Agent</span>
-                {' · '}
-                <span ref={ref2}>Chat</span>
-                {' · '}
-                <span ref={ref3}>Creation</span>
-                {' — Unified Access to Frontier LLMs'}
-              </>
-            )}
-          </p>
-
-          {/* Notice */}
-          {notice?.status && (
-            <div
-              className="mb-8"
-              style={{
-                color: notice.text_color,
-                fontSize: `${notice.text_size}px`
-              }}>
+          {notice?.status && notice.notice && (
+            <p className="mt-4 text-muted-foreground" style={{ fontSize: notice.text_size }}>
               {notice.notice}
-            </div>
+            </p>
           )}
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col items-center gap-3">
+          <div className="mt-6 flex flex-wrap items-center gap-3">
             {isMobile ? (
-              <MobileDownloadButton variant="primary" />
+              <MobileDownloadButton
+                variant="primary"
+                className="rounded-md bg-foreground px-4 font-semibold text-background hover:bg-foreground/85"
+              />
             ) : (
-              <Button variant="glow" size="lg" asChild>
-                <Link to="/download" data-ph-no-autocapture="" className="gap-2">
-                  <Download className="h-5 w-5" />
-                  <span>
-                    {t('download')} {versionData?.version}
-                  </span>
-                  <span className="text-background/55 text-sm font-normal">
-                    <span aria-hidden="true">· </span>
-                    {t('stable_badge')}
-                  </span>
-                </Link>
-              </Button>
+              <Link
+                to="/download"
+                data-ph-no-autocapture=""
+                className="inline-flex items-center gap-2 rounded-md bg-foreground px-4 py-2.5 text-base font-semibold text-background transition-colors duration-300 hover:bg-foreground/85 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary active:translate-y-px">
+                <Download className="size-4" aria-hidden="true" />
+                {t('home_page.download_desktop')}
+              </Link>
             )}
-            <div className="text-muted-foreground flex items-center justify-center gap-3 text-xs sm:gap-4 sm:text-sm">
-              {!isMobile && (
-                <>
-                  <MobileDownloadButton />
-                  {!isEn && <span aria-hidden="true" className="bg-border h-3.5 w-px" />}
-                </>
-              )}
-              {/* 英文站按 demo 只保留 Mobile download，去掉 V1 与 Docs 次级入口 */}
-              {!isEn && isMobile && (
-                <>
-                  <Link
-                    to="/download"
-                    className="hover:text-foreground inline-flex items-center gap-1.5 rounded-md py-1 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
-                    {t('mobile_download.desktop')}
-                  </Link>
-                  <span aria-hidden="true" className="bg-border h-3.5 w-px" />
-                </>
-              )}
-              {!isEn && !isMobile && showV1Download && (
-                <>
-                  <Link
-                    to="/download/v1"
-                    className="hover:text-foreground inline-flex items-center gap-1.5 rounded-md py-1 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
-                    <History className="h-3.5 w-3.5" />
-                    {t('download_v1')}
-                  </Link>
-                  <span aria-hidden="true" className="bg-border h-3.5 w-px" />
-                </>
-              )}
-              {!isEn && (
-                <a
-                  href={getDocsUrl(i18n.language)}
-                  className="hover:text-foreground inline-flex items-center gap-1.5 rounded-md py-1 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
-                  {t('nav.docs')}
-                  <ArrowRight className="h-3.5 w-3.5" />
-                </a>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Feature Tabs */}
-      <div
-        className="relative mx-auto mt-8 max-w-[1200px] px-4 sm:mt-10 sm:px-6 lg:px-8"
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}>
-        {/* Screenshot Display with Embedded Tabs */}
-        <div className="relative overflow-hidden">
-          {/* Tab Navigation - Embedded in image */}
-          <div className="absolute top-4 left-1/2 z-10 -translate-x-1/2">
-            <div
-              ref={tabsContainerRef}
-              className="relative inline-flex gap-1 rounded-full border border-black/10 bg-white/80 p-1 backdrop-blur-md dark:border-white/20 dark:bg-black/40">
-              <div
-                aria-hidden="true"
-                className={cn(
-                  'pointer-events-none absolute top-1 bottom-1 left-0 rounded-full bg-black/10 shadow-sm dark:bg-white/20',
-                  indicatorReady
-                    ? 'opacity-100 transition-[transform,width,opacity] duration-[320ms] ease-[cubic-bezier(0.2,0.8,0.2,1)]'
-                    : 'opacity-0'
-                )}
-                style={{
-                  width: indicatorRect.width,
-                  transform: `translateX(${indicatorRect.x}px)`
-                }}
-              />
-
-              {featureTabs.map((tab) => (
-                <button
-                  type="button"
-                  key={tab.id}
-                  ref={(el) => {
-                    tabButtonRefs.current[tab.id] = el
-                  }}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={cn(
-                    'relative z-10 flex shrink-0 cursor-pointer items-center gap-2 whitespace-nowrap rounded-full px-3 py-2 text-sm font-medium transition-colors duration-200 sm:px-4',
-                    activeTab === tab.id
-                      ? 'text-black dark:text-white'
-                      : 'text-black/70 hover:text-black dark:text-white/70 dark:hover:text-white'
-                  )}>
-                  {tab.icon}
-                  <span className="hidden sm:inline">{isZh ? tab.labelZh : tab.labelEn}</span>
-                </button>
-              ))}
-            </div>
+            <a
+              href="#home-capabilities"
+              className="inline-flex items-center gap-2 rounded-md border border-border px-4 py-2.5 text-sm font-semibold text-foreground transition-colors duration-300 hover:bg-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary active:translate-y-px">
+              {t('home_page.explore')}
+              <ArrowDown className="size-3.5" aria-hidden="true" />
+            </a>
           </div>
 
-          {/* Screenshots */}
-          {featureTabs.map((tab) => {
-            const lightSrc = isZh ? tab.screenshotLightZh : tab.screenshotLight
-            const darkSrc = isZh ? tab.screenshotDarkZh : tab.screenshotDark
+          <p className="mt-4 font-mono text-xs text-muted-foreground">{t('home_page.platforms')}</p>
 
-            return (
-              <img
-                key={tab.id}
-                src={isDark ? darkSrc : lightSrc}
-                alt={isZh ? tab.labelZh : tab.labelEn}
-                className={cn(
-                  'w-full transition-opacity duration-300',
-                  activeTab === tab.id ? 'block opacity-100' : 'hidden opacity-0'
-                )}
-              />
-            )
-          })}
+          <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground">
+            {!isMobile && <MobileDownloadButton className="hover:text-foreground" />}
+            {!isEn && isMobile && (
+              <Link to="/download" className="rounded-sm hover:text-foreground focus-visible:outline-2">
+                {t('mobile_download.desktop')}
+              </Link>
+            )}
+            {!isEn && !isMobile && stableMajorVersion >= 2 && (
+              <Link
+                to="/download/v1"
+                className="inline-flex items-center gap-1.5 rounded-sm hover:text-foreground focus-visible:outline-2">
+                <History className="size-3.5" aria-hidden="true" />
+                {t('download_v1')}
+              </Link>
+            )}
+            {!isEn && (
+              <a
+                href={getDocsUrl(language)}
+                className="inline-flex items-center gap-1.5 rounded-sm hover:text-foreground focus-visible:outline-2">
+                {t('nav.docs')}
+                <ArrowRight className="size-3.5" aria-hidden="true" />
+              </a>
+            )}
+          </div>
         </div>
-      </div>
 
-      {/* Bottom Gradient Fade */}
-      <div className="from-background absolute right-0 bottom-0 left-0 h-48 bg-gradient-to-t to-transparent" />
+        <WorkspacePanel />
+      </div>
     </section>
   )
 }
-
-export default HeroSection

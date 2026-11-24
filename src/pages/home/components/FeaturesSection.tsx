@@ -2,17 +2,14 @@ import { ArrowRight, Cloud, Image, Languages, MessageSquare, Shield, Users } fro
 import type { FC } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 
-import { cn } from '@/lib/utils'
 import { getDocsUrl } from '@/utils/urls'
+import SectionBackdrop from './SectionBackdrop'
 
 interface Feature {
   icon: React.ElementType
   titleKey: string
   descriptionKey: string
   slug: string
-  borderColor: string
-  iconColor: string
-  iconBg: string
 }
 
 const features: Feature[] = [
@@ -20,55 +17,37 @@ const features: Feature[] = [
     icon: MessageSquare,
     titleKey: 'features.conversation.title',
     descriptionKey: 'features.conversation.description',
-    slug: 'cherrystudio/preview/chat/',
-    borderColor: 'hover:border-blue-500',
-    iconColor: 'text-blue-500',
-    iconBg: 'bg-blue-500/10'
+    slug: 'cherrystudio/preview/chat/'
   },
   {
     icon: Image,
     titleKey: 'features.drawing.title',
     descriptionKey: 'features.drawing.description',
-    slug: 'cherrystudio/preview/drawing/',
-    borderColor: 'hover:border-purple-500',
-    iconColor: 'text-purple-500',
-    iconBg: 'bg-purple-500/10'
+    slug: 'cherrystudio/preview/drawing/'
   },
   {
     icon: Languages,
     titleKey: 'features.translation.title',
     descriptionKey: 'features.translation.description',
-    slug: 'cherrystudio/preview/translation/',
-    borderColor: 'hover:border-green-500',
-    iconColor: 'text-green-500',
-    iconBg: 'bg-green-500/10'
+    slug: 'cherrystudio/preview/translation/'
   },
   {
     icon: Users,
     titleKey: 'features.assistants.title',
     descriptionKey: 'features.assistants.description',
-    slug: 'advanced-basic/agent/',
-    borderColor: 'hover:border-orange-500',
-    iconColor: 'text-orange-500',
-    iconBg: 'bg-orange-500/10'
+    slug: 'advanced-basic/agent/'
   },
   {
     icon: Shield,
     titleKey: 'features.knowledge_base.title',
     descriptionKey: 'features.knowledge_base.description',
-    slug: 'knowledge-base/knowledge-base/',
-    borderColor: 'hover:border-red-500',
-    iconColor: 'text-red-500',
-    iconBg: 'bg-red-500/10'
+    slug: 'knowledge-base/knowledge-base/'
   },
   {
     icon: Cloud,
     titleKey: 'features.backup.title',
     descriptionKey: 'features.backup.description',
-    slug: 'pre-basic/data-settings/',
-    borderColor: 'hover:border-indigo-500',
-    iconColor: 'text-indigo-500',
-    iconBg: 'bg-indigo-500/10'
+    slug: 'pre-basic/data-settings/'
   }
 ]
 
@@ -77,17 +56,15 @@ const FeaturesSection: FC = () => {
   const docsUrl = getDocsUrl(i18n.language)
 
   return (
-    <section className="bg-background relative overflow-hidden py-8 sm:py-16">
-      {/* Background */}
-      <div className="dot-pattern absolute inset-0 opacity-30" />
-
-      <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
+    <section className="isolate bg-background relative overflow-hidden site-section">
+      <SectionBackdrop variant="grid" />
+      <div className="site-container relative z-10">
         {/* Section Header */}
-        <div className="mb-8 text-center sm:mb-16">
-          <h2 className="text-foreground mb-3 text-2xl font-bold sm:mb-4 sm:text-4xl lg:text-5xl">
+        <div className="mb-8 sm:mb-12">
+          <h2 className="text-foreground mb-3 text-3xl font-semibold tracking-tight sm:mb-4 sm:text-4xl">
             {t('features.title')}
           </h2>
-          <p className="text-muted-foreground mx-auto max-w-2xl text-sm sm:text-base">
+          <p className="text-muted-foreground max-w-2xl text-sm sm:text-base">
             <Trans i18nKey="features.description">
               以下仅为部分功能介绍，更多功能可以下载客户端体验，或在
               <a href={docsUrl} className="text-primary hover:underline">
@@ -104,21 +81,12 @@ const FeaturesSection: FC = () => {
             <a
               key={feature.titleKey}
               href={`${docsUrl}${feature.slug}`}
-              className={cn(
-                'border-border/50 bg-card/50 group relative overflow-hidden rounded-2xl border p-6',
-                'transition-all duration-300',
-                feature.borderColor
-              )}>
+              className="group relative overflow-hidden rounded-lg border border-border bg-card p-6 transition-colors duration-300 hover:border-input focus-visible:outline-2 focus-visible:outline-primary">
               {/* Content */}
               <div className="relative z-10">
                 {/* Icon */}
-                <div
-                  className={cn(
-                    'mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl',
-                    feature.iconBg,
-                    feature.iconColor
-                  )}>
-                  <feature.icon className="h-6 w-6" />
+                <div className="mb-4 inline-flex size-9 items-center justify-center rounded-md border border-border bg-secondary text-muted-foreground">
+                  <feature.icon className="size-4" aria-hidden="true" />
                 </div>
 
                 {/* Title */}

@@ -58,35 +58,35 @@ export default function MobilePage() {
   usePageMeta('mobile')
 
   return (
-    <div className="min-h-screen bg-white pt-[72px] text-zinc-950 dark:bg-zinc-950 dark:text-white">
+    <div className="min-h-screen bg-background pt-[60px] text-foreground">
       <main>
-        <section className="overflow-hidden px-4 pt-14 pb-10 sm:px-6 sm:pt-20 sm:pb-16 lg:px-8 lg:pt-24">
-          <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:gap-6">
-            <div className="mx-auto max-w-xl text-center lg:mx-0 lg:text-left">
-              <p className="text-primary mb-5 text-sm font-semibold tracking-[0.14em] uppercase">
+        <section className="overflow-hidden border-b border-border py-12 sm:py-16">
+          <div className="site-container site-split lg:items-center">
+            <div className="max-w-xl">
+              <p className="text-primary mb-4 font-mono text-xs tracking-widest uppercase">
                 {t('mobile_site.hero.eyebrow')}
               </p>
-              <h1 className="text-4xl leading-[1.04] font-semibold tracking-[-0.045em] text-balance sm:text-6xl lg:text-7xl">
+              <h1 className="text-4xl leading-[1.04] font-semibold tracking-[-0.045em] text-balance sm:text-5xl">
                 {t('mobile_site.hero.title')}
               </h1>
-              <p className="mx-auto mt-6 max-w-lg text-lg leading-8 text-zinc-600 lg:mx-0 dark:text-zinc-300">
+              <p className="mt-5 max-w-lg text-pretty text-base leading-7 text-muted-foreground sm:text-lg">
                 {t('mobile_site.hero.description')}
               </p>
-              <div className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center lg:justify-start">
-                <Button asChild size="lg" className="rounded-full px-7 active:scale-95">
+              <div className="mt-6 flex flex-wrap items-center gap-3">
+                <Button asChild size="lg" className="rounded-md px-4">
                   <Link to="/download?platform=mobile">
                     <Download aria-hidden="true" />
                     {t('mobile_site.hero.download')}
                   </Link>
                 </Button>
-                <Button asChild variant="outline" size="lg" className="rounded-full px-7 active:scale-95">
+                <Button asChild variant="outline" size="lg" className="rounded-md px-4">
                   <a href={mobileDocsUrl}>
                     {t('mobile_site.hero.docs')}
                     <ArrowRight aria-hidden="true" />
                   </a>
                 </Button>
               </div>
-              <p className="mt-5 text-sm leading-6 text-zinc-500 dark:text-zinc-400">
+              <p className="mt-4 font-mono text-xs leading-6 text-muted-foreground">
                 {t('mobile_site.hero.platforms')}
               </p>
             </div>
@@ -94,15 +94,14 @@ export default function MobilePage() {
             <div
               role="group"
               aria-label={t('mobile_site.screenshots.group_alt')}
-              className="relative mx-auto h-[450px] w-full max-w-[690px] sm:h-[620px]">
-              <div className="bg-primary/10 absolute top-1/2 left-1/2 h-[330px] w-[330px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl sm:h-[480px] sm:w-[480px]" />
+              className="grid w-full grid-cols-[1fr_1.12fr_1fr] items-center gap-2 rounded-lg border border-border bg-card p-3 sm:gap-4 sm:p-6">
               <img
                 src={screenshots.sidebar}
                 alt={t('mobile_site.screenshots.sidebar')}
                 width={1206}
                 height={2622}
                 loading="eager"
-                className="absolute top-14 left-[1%] w-[145px] -rotate-6 rounded-[1.65rem] shadow-[3px_5px_30px_rgba(0,0,0,0.22)] sm:left-[4%] sm:w-[205px] sm:rounded-[2.25rem]"
+                className="block h-auto w-full rounded-lg border border-border"
               />
               <img
                 src={screenshots.drawing}
@@ -110,7 +109,7 @@ export default function MobilePage() {
                 width={1206}
                 height={2622}
                 loading="eager"
-                className="absolute top-14 right-[1%] w-[145px] rotate-6 rounded-[1.65rem] shadow-[3px_5px_30px_rgba(0,0,0,0.22)] sm:right-[4%] sm:w-[205px] sm:rounded-[2.25rem]"
+                className="order-last block h-auto w-full rounded-lg border border-border"
               />
               <img
                 src={screenshots.conversation}
@@ -119,14 +118,14 @@ export default function MobilePage() {
                 height={2622}
                 loading="eager"
                 fetchPriority="high"
-                className="absolute top-0 left-1/2 z-10 w-[176px] -translate-x-1/2 rounded-[1.9rem] shadow-[3px_5px_30px_rgba(0,0,0,0.22)] sm:w-[250px] sm:rounded-[2.75rem]"
+                className="block h-auto w-full rounded-lg border border-primary/50"
               />
             </div>
           </div>
         </section>
 
-        <section className="bg-zinc-950 px-4 py-20 text-white sm:px-6 sm:py-28 lg:px-8">
-          <div className="mx-auto max-w-6xl">
+        <section className="border-b border-border bg-card py-12 sm:py-16">
+          <div className="site-container">
             <div className="max-w-3xl">
               <p className="text-primary mb-4 text-sm font-semibold tracking-[0.16em] uppercase">
                 {t('mobile_site.mobile_first.eyebrow')}
@@ -134,16 +133,16 @@ export default function MobilePage() {
               <h2 className="text-3xl leading-tight font-semibold tracking-[-0.035em] text-balance sm:text-5xl">
                 {t('mobile_site.mobile_first.title')}
               </h2>
-              <p className="mt-6 max-w-xl text-lg leading-8 text-zinc-300">
+              <p className="mt-6 max-w-xl text-lg leading-8 text-muted-foreground">
                 {t('mobile_site.mobile_first.description')}
               </p>
             </div>
             <ul className="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
               {capabilities.map(({ key, icon: Icon }) => (
-                <li key={key} className="min-w-0 border-t border-white/15 pt-6">
-                  <Icon aria-hidden="true" className="text-primary mb-5 h-6 w-6" />
+                <li key={key} className="min-w-0 border-t border-border pt-6">
+                  <Icon aria-hidden="true" className="text-muted-foreground mb-5 h-6 w-6" />
                   <h3 className="text-lg font-semibold">{t(`mobile_site.mobile_first.items.${key}.title`)}</h3>
-                  <p className="mt-3 leading-7 text-zinc-400">
+                  <p className="mt-3 leading-7 text-muted-foreground">
                     {t(`mobile_site.mobile_first.items.${key}.description`)}
                   </p>
                 </li>
@@ -151,15 +150,15 @@ export default function MobilePage() {
             </ul>
             <a
               href={mobileDocsUrl}
-              className="mt-10 inline-flex items-center gap-2 rounded-sm text-sm font-semibold underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
+              className="mt-10 inline-flex items-center gap-2 rounded-sm text-sm font-semibold underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current">
               {t('mobile_site.mobile_first.docs')}
               <ArrowRight aria-hidden="true" className="h-4 w-4" />
             </a>
           </div>
         </section>
 
-        <section className="bg-zinc-50 px-4 py-20 sm:px-6 sm:py-28 lg:px-8 dark:bg-zinc-900/60">
-          <div className="mx-auto grid max-w-6xl items-center gap-14 lg:grid-cols-2 lg:gap-20">
+        <section className="border-b border-border py-12 sm:py-16">
+          <div className="site-container grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
             <div className="min-w-0">
               <p className="text-primary mb-4 text-sm font-semibold tracking-[0.14em]">
                 {t('mobile_site.workflows.eyebrow')}
@@ -167,14 +166,12 @@ export default function MobilePage() {
               <h2 className="text-3xl leading-tight font-semibold tracking-[-0.035em] text-balance sm:text-5xl">
                 {t('mobile_site.workflows.title')}
               </h2>
-              <p className="mt-6 text-lg leading-8 text-zinc-600 dark:text-zinc-300">
-                {t('mobile_site.workflows.description')}
-              </p>
+              <p className="mt-6 text-lg leading-8 text-muted-foreground">{t('mobile_site.workflows.description')}</p>
               <ul className="mt-8 space-y-6">
                 {(['accounts', 'steer', 'import'] as const).map((item) => (
                   <li key={item}>
                     <h3 className="font-semibold">{t(`mobile_site.workflows.items.${item}.title`)}</h3>
-                    <p className="mt-2 leading-7 text-zinc-600 dark:text-zinc-400">
+                    <p className="mt-2 leading-7 text-muted-foreground">
                       {t(`mobile_site.workflows.items.${item}.description`)}
                     </p>
                   </li>
@@ -200,9 +197,9 @@ export default function MobilePage() {
                     width={1206}
                     height={2622}
                     loading="lazy"
-                    className="block h-auto w-full rounded-2xl shadow-[3px_5px_30px_rgba(0,0,0,0.12)] sm:rounded-3xl"
+                    className="block h-auto w-full rounded-lg border border-border"
                   />
-                  <figcaption className="mt-4 text-center text-sm leading-6 text-zinc-600 dark:text-zinc-400">
+                  <figcaption className="mt-4 text-center text-sm leading-6 text-muted-foreground">
                     {t(`mobile_site.workflows.captions.${key}`)}
                   </figcaption>
                 </figure>
@@ -211,8 +208,8 @@ export default function MobilePage() {
           </div>
         </section>
 
-        <section className="overflow-hidden px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
-          <div className="mx-auto max-w-6xl">
+        <section className="border-b border-border bg-card py-12 sm:py-16">
+          <div className="site-container">
             <div className="mx-auto max-w-3xl text-center">
               <p className="text-primary mb-4 text-sm font-semibold tracking-[0.16em] uppercase">
                 {t('mobile_site.tablet.eyebrow')}
@@ -220,18 +217,16 @@ export default function MobilePage() {
               <h2 className="text-3xl leading-tight font-semibold tracking-[-0.035em] text-balance sm:text-5xl">
                 {t('mobile_site.tablet.title')}
               </h2>
-              <p className="mt-5 text-lg leading-8 text-zinc-600 dark:text-zinc-300">
-                {t('mobile_site.tablet.description')}
-              </p>
+              <p className="mt-5 text-lg leading-8 text-muted-foreground">{t('mobile_site.tablet.description')}</p>
             </div>
-            <div className="relative mx-auto mt-14 h-[350px] max-w-5xl sm:h-[560px] lg:h-[680px]">
+            <div className="mx-auto mt-8 grid max-w-4xl grid-cols-2 items-start gap-3 rounded-lg border border-border bg-background p-3 sm:gap-6 sm:p-6">
               <img
                 src={screenshots.tabletDrawing}
                 alt={t('mobile_site.screenshots.tablet_drawing')}
                 width={2064}
                 height={2752}
                 loading="lazy"
-                className="absolute top-10 left-0 w-[52%] -rotate-3 rounded-[1.6rem] shadow-[3px_5px_30px_rgba(0,0,0,0.22)] sm:rounded-[2.2rem]"
+                className="block h-auto w-full rounded-lg border border-border"
               />
               <img
                 src={screenshots.tabletConversation}
@@ -239,31 +234,31 @@ export default function MobilePage() {
                 width={2064}
                 height={2752}
                 loading="lazy"
-                className="absolute top-0 right-0 w-[52%] rotate-3 rounded-[1.6rem] shadow-[3px_5px_30px_rgba(0,0,0,0.22)] sm:rounded-[2.2rem]"
+                className="block h-auto w-full rounded-lg border border-border"
               />
             </div>
           </div>
         </section>
 
-        <section className="bg-zinc-100 px-4 py-20 text-zinc-950 sm:px-6 sm:py-24 lg:px-8 dark:bg-zinc-900 dark:text-white">
-          <div className="mx-auto max-w-6xl text-center">
+        <section className="py-12 sm:py-16">
+          <div className="site-container text-center">
             <p className="text-primary text-sm font-semibold tracking-[0.16em] uppercase">
               {t('mobile_site.cta.eyebrow')}
             </p>
             <h2 className="mx-auto mt-4 max-w-3xl text-3xl font-semibold tracking-[-0.035em] text-balance sm:text-5xl">
               {t('mobile_site.cta.title')}
             </h2>
-            <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-zinc-600 dark:text-zinc-300">
+            <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-muted-foreground">
               {t('mobile_site.cta.description')}
             </p>
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-              <Button asChild size="lg" className="rounded-full px-7 active:scale-95">
+              <Button asChild size="lg" className="rounded-md px-4">
                 <Link to="/download?platform=mobile">
                   <Download aria-hidden="true" />
                   {t('mobile_site.cta.download')}
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="rounded-full px-7 active:scale-95">
+              <Button asChild variant="outline" size="lg" className="rounded-md px-4">
                 <a href={mobileDocsUrl}>{t('mobile_site.cta.docs')}</a>
               </Button>
             </div>

@@ -15,15 +15,15 @@ const VersionInfo: FC<VersionInfoProps> = ({ versionData, loading, unavailableMe
 
   if (loading) {
     return (
-      <div className="mt-4 flex justify-center">
-        <div className="h-5 w-48 animate-pulse rounded-full bg-black/10 dark:bg-white/10" />
+      <div className="mt-4 flex">
+        <div className="h-5 w-48 rounded-md bg-muted motion-safe:animate-pulse" />
       </div>
     )
   }
 
   if (versionData) {
     return (
-      <div className="mt-4 flex flex-wrap items-center justify-center gap-2 text-sm text-black/55 dark:text-white/55">
+      <div className="mt-4 flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
         <span>{t('download_page.stable_release')}</span>
         {versionData.publishedAt && (
           <>
@@ -37,7 +37,7 @@ const VersionInfo: FC<VersionInfoProps> = ({ versionData, loading, unavailableMe
   }
 
   return (
-    <p className="mx-auto mt-4 max-w-xl text-sm leading-6 text-black/55 dark:text-white/55">
+    <p className="mt-4 max-w-xl text-sm leading-6 text-muted-foreground">
       {unavailableMessage ?? t('download_page.version_error')}
     </p>
   )

@@ -65,9 +65,11 @@ function UsageContent() {
 
   return (
     <div className="bg-background min-h-screen">
-      <article className="mx-auto max-w-3xl px-4 pt-28 pb-20 sm:px-6 sm:pt-32 lg:px-8">
+      <article className="site-page-top mx-auto max-w-3xl px-6 pb-16">
         <header>
-          <h1 className="text-foreground text-3xl font-bold tracking-tight sm:text-4xl">{t('usage.title')}</h1>
+          <h1 className="text-foreground text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
+            {t('usage.title')}
+          </h1>
           <p className="text-muted-foreground mt-4 text-lg leading-8">{t('usage.subtitle')}</p>
         </header>
 

@@ -23,26 +23,28 @@ function App() {
       <BrowserRouter>
         <ScrollToTop />
         <SimpleHeader />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/download" element={<DownloadPage />} />
-          <Route path="/download/v1" element={<DownloadPage edition="v1" />} />
-          <Route path="/download/v2" element={<DownloadPage edition="v2" />} />
-          <Route path="/mobile" element={<MobilePage />} />
-          <Route path="/subscription" element={<SubscriptionPage />} />
-          <Route path="/flash" element={<LegacySubscriptionRedirect to="/subscription" />} />
-          <Route path="/subscription/usage" element={<SubscriptionUsagePage />} />
-          <Route path="/flash/usage" element={<LegacySubscriptionRedirect to="/subscription/usage" />} />
-          <Route path="/subscription/faq" element={<SubscriptionFaqPage />} />
-          <Route path="/theme" element={<ThemePage />} />
-          <Route path="/careers" element={<CareersPage />} />
-          <Route path="/resources/articles" element={<ArticlesPage />} />
-          <Route path="/resources/articles/:slug" element={<ComparePage />} />
-          <Route path="/resources/use-cases/ai-ppt" element={<AiPptUseCasePage />} />
-          <Route path="/compare/:slug" element={<LegacyCompareRedirect />} />
-          <Route path="/404" element={<NotFoundPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
+        <div id="site-content" tabIndex={-1} className="min-h-dvh">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/download" element={<DownloadPage />} />
+            <Route path="/download/v1" element={<DownloadPage edition="v1" />} />
+            <Route path="/download/v2" element={<DownloadPage edition="v2" />} />
+            <Route path="/mobile" element={<MobilePage />} />
+            <Route path="/subscription" element={<SubscriptionPage />} />
+            <Route path="/flash" element={<LegacySubscriptionRedirect to="/subscription" />} />
+            <Route path="/subscription/usage" element={<SubscriptionUsagePage />} />
+            <Route path="/flash/usage" element={<LegacySubscriptionRedirect to="/subscription/usage" />} />
+            <Route path="/subscription/faq" element={<SubscriptionFaqPage />} />
+            <Route path="/theme" element={<ThemePage />} />
+            <Route path="/careers" element={<CareersPage />} />
+            <Route path="/resources/articles" element={<ArticlesPage />} />
+            <Route path="/resources/articles/:slug" element={<ComparePage />} />
+            <Route path="/resources/use-cases/ai-ppt" element={<AiPptUseCasePage />} />
+            <Route path="/compare/:slug" element={<LegacyCompareRedirect />} />
+            <Route path="/404" element={<NotFoundPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </div>
       </BrowserRouter>
     </ThemeProvider>
   )

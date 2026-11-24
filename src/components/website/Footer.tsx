@@ -1,19 +1,13 @@
 import { type FC, useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import cherryLogo from '@/assets/images/cherry-logo.svg'
 import gitcodeIcon from '@/assets/images/icons/gitcode.svg'
-import gitcodeColorIcon from '@/assets/images/icons/gitcode-color.svg'
 import githubIcon from '@/assets/images/icons/github.svg'
-import githubColorIcon from '@/assets/images/icons/github-color.svg'
 import pIcon from '@/assets/images/icons/p.svg'
-import pColorIcon from '@/assets/images/icons/p-color.svg'
 import rssIcon from '@/assets/images/icons/rss.svg'
-import rssColorIcon from '@/assets/images/icons/rss-color.svg'
 import tgIcon from '@/assets/images/icons/tg.svg'
-import tgColorIcon from '@/assets/images/icons/tg-color.svg'
 import xIcon from '@/assets/images/icons/x.svg'
-import xColorIcon from '@/assets/images/icons/x-color.svg'
+import cherryLogo from '@/assets/images/logo.png'
 import cherryWxQR from '@/assets/images/resource/cherrywx.png'
 import { copyRSSLink } from '@/utils'
 import { getEnterpriseUrl, trackEnterpriseNavigation } from '@/utils/analytics'
@@ -53,25 +47,21 @@ const Footer: FC = () => {
   }, [])
 
   const socialLinks = [
-    { href: 'https://x.com/CherryStudioHQ', icon: xIcon, colorIcon: xColorIcon, alt: 'X', colorDarkInvert: true },
-    { href: 'https://t.me/CherryStudioAI', icon: tgIcon, colorIcon: tgColorIcon, alt: 'Telegram' },
+    { href: 'https://x.com/CherryStudioHQ', icon: xIcon, alt: 'X' },
+    { href: 'https://t.me/CherryStudioAI', icon: tgIcon, alt: 'Telegram' },
     {
       href: 'https://github.com/CherryHQ/cherry-studio',
       icon: githubIcon,
-      colorIcon: githubColorIcon,
-      alt: 'GitHub',
-      colorDarkInvert: true
+      alt: 'GitHub'
     },
     {
       href: 'https://gitcode.com/CherryHQ/cherry-studio',
       icon: gitcodeIcon,
-      colorIcon: gitcodeColorIcon,
       alt: 'GitCode'
     },
     {
       href: 'https://www.producthunt.com/products/cherry-studio',
       icon: pIcon,
-      colorIcon: pColorIcon,
       alt: 'Product Hunt'
     }
   ]
@@ -117,13 +107,16 @@ const Footer: FC = () => {
   ]
 
   return (
-    <footer className="border-border bg-card relative border-t">
+    <footer className="border-border bg-secondary/30 relative border-t">
       {/* Main Footer */}
-      <div className="mx-auto max-w-[1400px] px-4 py-12 sm:px-6 lg:px-8">
+      <div className="site-container py-12">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-12">
           {/* Brand Column */}
           <div className="space-y-5 lg:col-span-4">
-            <img src={cherryLogo} alt="Cherry Studio" className="h-8 w-auto" />
+            <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
+              <img src={cherryLogo} alt="" className="size-7 rounded-md" />
+              Cherry Studio
+            </div>
             <p className="text-muted-foreground text-sm leading-relaxed">{t('footer.description')}</p>
             {!isEn && (
               <div className="flex flex-wrap gap-2">
@@ -133,16 +126,11 @@ const Footer: FC = () => {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group border-border bg-secondary/50 hover:bg-secondary relative flex h-9 w-9 items-center justify-center rounded-lg border transition-all duration-200">
+                    className="group border-border bg-secondary/50 hover:bg-secondary relative flex size-9 items-center justify-center rounded-md border transition-all duration-200">
                     <img
                       src={link.icon}
                       alt={link.alt}
-                      className="h-4 w-4 transition-opacity duration-200 group-hover:opacity-0 dark:invert"
-                    />
-                    <img
-                      src={link.colorIcon}
-                      alt={link.alt}
-                      className={`absolute h-4 w-4 opacity-0 transition-opacity duration-200 group-hover:opacity-100 ${link.colorDarkInvert ? 'dark:invert' : ''}`}
+                      className="size-4 brightness-0 opacity-75 transition-opacity group-hover:opacity-100 dark:invert"
                     />
                   </a>
                 ))}
@@ -150,16 +138,11 @@ const Footer: FC = () => {
                   <button
                     type="button"
                     onClick={handleCopyRSS}
-                    className="group border-border bg-secondary/50 hover:bg-secondary relative flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg border transition-all duration-200">
+                    className="group border-border bg-secondary/50 hover:bg-secondary relative flex size-9 cursor-pointer items-center justify-center rounded-md border transition-colors">
                     <img
                       src={rssIcon}
                       alt="RSS"
-                      className="h-4 w-4 cursor-pointer transition-opacity duration-200 group-hover:opacity-0 dark:invert"
-                    />
-                    <img
-                      src={rssColorIcon}
-                      alt="RSS"
-                      className="absolute h-4 w-4 cursor-pointer opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+                      className="size-4 brightness-0 opacity-75 transition-opacity group-hover:opacity-100 dark:invert"
                     />
                   </button>
 
@@ -282,7 +265,7 @@ const Footer: FC = () => {
 
       {/* Bottom Bar */}
       <div className="border-border border-t">
-        <div className="mx-auto max-w-[1400px] px-4 py-5 sm:px-6 lg:px-8">
+        <div className="site-container py-5">
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
             {/* Copyright */}
             <p className="text-muted-foreground text-xs">

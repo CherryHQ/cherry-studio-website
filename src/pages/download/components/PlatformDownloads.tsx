@@ -132,7 +132,7 @@ const getDownloadItems = (
 const PrimarySkeleton: FC = () => {
   return (
     <div className="border-border border-b p-4 sm:px-8 sm:py-8">
-      <div className="mx-auto h-12 w-full max-w-72 animate-pulse rounded-full bg-black/10 dark:bg-white/10" />
+      <div className="mx-auto h-12 w-full max-w-72 rounded-md bg-muted motion-safe:animate-pulse" />
     </div>
   )
 }
@@ -221,7 +221,7 @@ export const PlatformDownloadPrimary: FC<PlatformDownloadPrimaryProps> = ({
           trackDownload({ platform, packageName: recommendedItem.name, trigger: 'button' })
           window.location.href = recommendedItem.url
         }}
-        className="bg-foreground text-background hover:bg-foreground/85 mx-auto flex h-12 w-auto min-w-64 gap-2 rounded-full px-8 text-sm sm:min-w-72">
+        className="flex h-auto min-h-12 w-full gap-2 whitespace-normal rounded-md px-4 py-3 text-sm sm:w-fit sm:px-6">
         <Download className="h-4 w-4" />
         {t('download_page.download_now', { package: recommendedItem.desc })}
       </Button>

@@ -40,9 +40,7 @@ const PlatformTabs: FC<PlatformTabsProps> = ({
       ? t('download_page.arch_arm64')
       : detectedArch === 'x64'
         ? t('download_page.arch_x64')
-        : detectedArch === 'ia32'
-          ? t('download_page.arch_ia32')
-          : t('download_page.arch_unknown')
+        : t('download_page.arch_ia32')
 
   return (
     <div className="border-border border-b p-2 sm:p-3">
@@ -59,14 +57,14 @@ const PlatformTabs: FC<PlatformTabsProps> = ({
               aria-pressed={isActive}
               onClick={() => onPlatformChange(id)}
               className={cn(
-                'flex min-w-0 cursor-pointer items-center justify-center gap-1.5 rounded-2xl px-2 py-3 text-xs font-semibold transition-colors duration-200 sm:gap-2 sm:px-5 sm:text-sm',
+                'flex min-w-0 cursor-pointer items-center justify-center gap-1.5 rounded-md px-1 py-3 text-xs font-semibold transition-colors duration-200 sm:gap-2 sm:px-2 sm:text-sm',
                 isActive
-                  ? 'bg-secondary text-foreground shadow-sm dark:bg-white/15 dark:text-white dark:ring-1 dark:ring-white/10'
-                  : 'text-muted-foreground hover:bg-secondary/50 hover:text-foreground dark:text-white/65 dark:hover:bg-white/10 dark:hover:text-white'
+                  ? 'bg-primary/10 text-primary ring-1 ring-primary/25'
+                  : 'text-muted-foreground hover:bg-secondary hover:text-foreground'
               )}>
-              <PlatformIcon className="h-4 w-4 shrink-0" />
+              <PlatformIcon className="hidden size-4 shrink-0 min-[375px]:block" aria-hidden="true" />
               <span>{t(`download_page.platform_${id}`)}</span>
-              {isDetected && <span className="hidden opacity-55 sm:inline">· {archLabel}</span>}
+              {isDetected && detectedArch && <span className="hidden opacity-55 md:inline">· {archLabel}</span>}
             </button>
           )
         })}

@@ -14,7 +14,7 @@ export default function SubscriptionFaqPage() {
 
   return (
     <>
-      <main className="min-h-[70vh] bg-background px-4 pb-20 pt-28 text-foreground sm:px-8 sm:pt-32">
+      <main className="site-page-top min-h-[70vh] bg-background px-6 pb-16 text-foreground">
         <div className="mx-auto max-w-3xl">
           <Link
             to="/subscription"
@@ -22,10 +22,10 @@ export default function SubscriptionFaqPage() {
             <ArrowLeft className="size-4" aria-hidden="true" />
             {t('faq_page.back')}
           </Link>
-          <h1 className="mt-8 text-3xl font-bold tracking-tight sm:text-4xl">{t('faq_page.title')}</h1>
+          <h1 className="mt-8 text-balance text-4xl font-semibold tracking-tight sm:text-5xl">{t('faq_page.title')}</h1>
           <p className="mt-4 text-base leading-7 text-muted-foreground">{t('faq_page.description')}</p>
           <SubscriptionFaq key={variant} variant={variant} headingLevel="h2" />
-          <aside className="mt-10 rounded-2xl border border-border p-6">
+          <aside className="mt-10 rounded-lg border border-border p-6">
             <h2 className="font-semibold">{t('faq_page.contact_title')}</h2>
             <p className="mt-2 text-sm leading-6 text-muted-foreground">{t('faq_page.contact_description')}</p>
             <a

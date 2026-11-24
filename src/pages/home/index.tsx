@@ -1,18 +1,20 @@
-import { type FC, Fragment } from 'react'
+import type { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import Footer from '@/components/website/Footer'
-import SectionDivider from '@/components/website/SectionDivider'
 import WebsiteBanner from '@/components/website/WebsiteBanner'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { isEnglishSite } from '@/utils/urls'
+import AppsSection from './components/AppsSection'
 import CommunitySection from './components/CommunitySection'
 import ContributorsSection from './components/ContributorsSection'
+import DownloadSection from './components/DownloadSection'
 import FAQSection from './components/FAQSection'
 import FeaturesSection from './components/FeaturesSection'
 import FlagshipModelsSection from './components/FlagshipModelsSection'
 import HeroSection from './components/HeroSection'
 import HighlightsSection from './components/HighlightsSection'
+import ProductPreview from './components/ProductPreview'
 import ProvidersSection from './components/ProvidersSection'
 import TeamCollaborationSection from './components/TeamCollaborationSection'
 import TestimonialsSection from './components/TestimonialsSection'
@@ -23,32 +25,35 @@ const HomePage: FC = () => {
   const { i18n } = useTranslation()
   const isEn = isEnglishSite(i18n.resolvedLanguage || i18n.language)
 
-  // 英文站与线上英文官网保持一致：特性区换成 “Why Choose Cherry Studio”，
-  // 不再展示国产模型高亮与旧版 Highlights；中文站保持原有区块顺序。
+  // 中文站额外展示国产旗舰模型与本地化功能入口。
   const sections = isEn
-    ? [WhySection, TeamCollaborationSection, ProvidersSection, TestimonialsSection, ContributorsSection]
+    ? [WhySection, TeamCollaborationSection, TestimonialsSection, ContributorsSection]
     : [
         FlagshipModelsSection,
         FeaturesSection,
         TeamCollaborationSection,
-        ProvidersSection,
         TestimonialsSection,
         HighlightsSection,
         ContributorsSection
       ]
 
   return (
-    <div className="bg-background min-h-screen">
-      <WebsiteBanner />
-      <HeroSection />
-      {sections.map((Section, index) => (
-        <Fragment key={index}>
-          <SectionDivider />
-          <Section />
-        </Fragment>
-      ))}
-      <FAQSection />
-      <CommunitySection />
+    <div className="min-h-screen bg-background text-foreground">
+      <main id="home-content" tabIndex={-1} className="pt-[60px]">
+        <WebsiteBanner />
+        <HeroSection />
+        <ProvidersSection />
+        <ProductPreview />
+        <div className="bg-background [&>section+section]:border-t">
+          {sections.map((Section, index) => (
+            <Section key={index} />
+          ))}
+          <AppsSection />
+          <FAQSection />
+          <CommunitySection />
+        </div>
+        <DownloadSection />
+      </main>
       <Footer />
     </div>
   )

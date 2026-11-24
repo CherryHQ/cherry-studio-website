@@ -7,18 +7,20 @@ import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card'
 import { useMobileDownloads } from '@/hooks/useMobileDownloads'
+import { cn } from '@/lib/utils'
 import { isMobileDevice } from '@/utils/systemDetection'
 
 interface MobileDownloadButtonProps {
   variant?: 'text' | 'primary'
+  className?: string
 }
 
-export default function MobileDownloadButton({ variant = 'text' }: MobileDownloadButtonProps) {
+export default function MobileDownloadButton({ variant = 'text', className }: MobileDownloadButtonProps) {
   const { t } = useTranslation()
   const mobileDownloads = useMobileDownloads()
   const trigger =
     variant === 'primary' ? (
-      <Button variant="glow" size="lg" asChild>
+      <Button variant="glow" size="lg" className={className} asChild>
         <Link to="/mobile">
           <Smartphone aria-hidden="true" />
           {t('mobile_download.button')}
@@ -27,7 +29,10 @@ export default function MobileDownloadButton({ variant = 'text' }: MobileDownloa
     ) : (
       <Link
         to="/mobile"
-        className="hover:text-foreground inline-flex items-center gap-1.5 whitespace-nowrap rounded-md py-1 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+        className={cn(
+          'hover:text-foreground inline-flex items-center gap-1.5 whitespace-nowrap rounded-md py-1 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+          className
+        )}>
         <Smartphone aria-hidden="true" className="h-3.5 w-3.5" />
         {t('mobile_download.button')}
       </Link>

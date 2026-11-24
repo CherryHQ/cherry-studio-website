@@ -29,7 +29,7 @@ export function HeaderDropdown({ item, renderItem, mobile = false }: HeaderDropd
   return (
     <details
       ref={container}
-      className="group relative"
+      className={cn('group relative', !mobile && 'h-full')}
       onPointerEnter={(event) => {
         if (!mobile && event.pointerType === 'mouse') {
           hovered.current = true
@@ -65,8 +65,10 @@ export function HeaderDropdown({ item, renderItem, mobile = false }: HeaderDropd
         }}
         className={cn(
           'flex cursor-pointer list-none items-center justify-between gap-3 rounded-lg px-4 py-2 font-medium focus-visible:outline-2 focus-visible:outline-offset-4 [&::-webkit-details-marker]:hidden',
-          mobile ? 'py-3 text-sm' : 'text-[15px] leading-5',
-          item.active ? 'text-foreground' : 'text-muted-foreground hover:bg-accent hover:text-foreground'
+          mobile ? 'py-3 text-sm' : 'h-full gap-2 rounded-none border-b-2 border-transparent px-2 text-sm',
+          item.active
+            ? cn('text-foreground', !mobile && 'border-foreground')
+            : 'text-muted-foreground hover:bg-accent hover:text-foreground'
         )}>
         {item.label}
         <span
