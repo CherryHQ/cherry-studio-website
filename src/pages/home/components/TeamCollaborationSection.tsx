@@ -35,6 +35,8 @@ const teamAvatars = [
 
 const TeamCollaborationSection: FC = () => {
   const { t } = useTranslation()
+  // An empty translation hides the promotion for that locale.
+  const activity = t('team_collaboration.activity')
 
   return (
     <section className="bg-background relative overflow-hidden py-8 sm:py-16">
@@ -57,12 +59,16 @@ const TeamCollaborationSection: FC = () => {
               {t('team_collaboration.cta')}
               <ArrowUpRight className="h-4 w-4" />
             </button>
-            <span className="text-border hidden text-base sm:inline" aria-hidden="true">
-              |
-            </span>
-            <span className="text-primary/75 text-center text-sm font-medium sm:text-left sm:text-base">
-              {t('team_collaboration.activity')}
-            </span>
+            {activity && (
+              <>
+                <span className="text-border hidden text-base sm:inline" aria-hidden="true">
+                  |
+                </span>
+                <span className="text-primary/75 text-center text-sm font-medium sm:text-left sm:text-base">
+                  {activity}
+                </span>
+              </>
+            )}
           </div>
         </div>
 
