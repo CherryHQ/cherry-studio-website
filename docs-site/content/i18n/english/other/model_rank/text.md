@@ -4,7 +4,7 @@ This page shows the top 30 models on the [Arena AI](https://arena.ai/leaderboard
 
 This is Arena AI's core text battle leaderboard, which estimates relative model strength from blind human-voted matchups.
 
-> **Data updated**: 2026-11-23 19:59:21 UTC / 2026-11-24 03:59:21 CST (Beijing time)
+> **Data updated**: 2026-11-24 19:26:10 UTC / 2026-11-25 03:26:10 CST (Beijing time)
 
 {% hint style="info" %}
 A leaderboard reflects one particular evaluation and the preferences of its voters, so a high rank does not mean a model will do better on your tasks. Weigh price, speed, context, tool calling, privacy and regional availability as well.
@@ -16,7 +16,7 @@ A leaderboard reflects one particular evaluation and the preferences of its vote
 |-------:|:--------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------|--------:|:--------------|:----------|
 |      1 | 1-4           | Gemini 4 Carbon (High) [<sup>1</sup>](https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/)                      | 1527 (±10)            |   4,255 | $2 / $10      | N/A       |
 |      2 | 1-4           | Gemini 4 Argon (High) [<sup>1</sup>](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/)                                    | 1520 (±5)             |  28,856 | $2 / $10      | 1M        |
-|      3 | 1-10          | Gemini 4 Neon (High) [<sup>1</sup>](https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/)                          | 1512 (±8) Preliminary |   5,611 | $1.5 / $7.5   | 1M        |
+|      3 | 1-10          | Gemini 4 Neon (xHigh) [<sup>1</sup>](https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/)                         | 1512 (±8) Preliminary |   5,611 | $1.5 / $7.5   | 1M        |
 |      4 | 1-8           | Muse Wonder (Max) [<sup>1</sup>](https://research.meta.ai/blog/muse-wonder)                                                                                      | 1512 (±6)             |  17,102 | $4 / $20      | 1M        |
 |      5 | 3-12          | Claude Opus 5.5 (High) [<sup>1</sup>](https://www.anthropic.com/claude-opus-5-5)                                                                                 | 1507 (±6)             |  18,959 | $4 / $20      | 1M        |
 |      6 | 3-12          | Claude Fable 5 (High) [<sup>1</sup>](https://www.anthropic.com/news/claude-fable-5-mythos-5)                                                                     | 1504 (±4)             |  45,277 | $10 / $50     | 1M        |
@@ -30,7 +30,7 @@ A leaderboard reflects one particular evaluation and the preferences of its vote
 |     14 | 8-24          | Claude Opus 4.7 [<sup>1</sup>](https://www.anthropic.com/news/claude-opus-4-7)                                                                                   | 1494 (±4)             |  65,114 | $5 / $25      | 1M        |
 |     15 | 8-29          | Muse Spark 1.2 (xHigh) [<sup>1</sup>](https://developer.meta.com/ai/models/muse-spark/)                                                                          | 1493 (±5)             |  18,973 | $1.25 / $4.25 | N/A       |
 |     16 | 10-29         | Muse Spark 1.1 [<sup>1</sup>](https://ai.meta.com/blog/introducing-muse-spark-meta-model-api/)                                                                   | 1491 (±4)             |  45,294 | $1.25 / $4.25 | N/A       |
-|     17 | 8-36          | Gemini 4 Hydrogen (High) [<sup>1</sup>](https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/)                  | 1490 (±9) Preliminary |   4,737 | $1.5 / $7.5   | N/A       |
+|     17 | 8-36          | Gemini 4 Hydrogen (xHigh) [<sup>1</sup>](https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/)                 | 1490 (±9) Preliminary |   4,737 | $1.5 / $7.5   | N/A       |
 |     18 | 10-32         | Gemini 3.7 Flash (High) [<sup>1</sup>](https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-3-7-flash/)                    | 1490 (±5)             |  33,059 | $0.75 / $3.75 | 1M        |
 |     19 | 12-30         | Claude Opus 5 (High) [<sup>1</sup>](https://www.anthropic.com/news/claude-opus-5)                                                                                | 1490 (±4)             |  73,350 | $5 / $25      | 1M        |
 |     20 | 10-33         | Muse Spark [<sup>1</sup>](https://ai.meta.com/blog/introducing-muse-spark-msl/)                                                                                  | 1489 (±6)             |  13,959 | N/A           | N/A       |
