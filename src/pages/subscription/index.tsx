@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 
 import { Button } from '@/components/ui/button'
 import Footer from '@/components/website/Footer'
+import SectionBackdrop from '@/components/website/SectionBackdrop'
 import SectionDivider from '@/components/website/SectionDivider'
 import SubscriptionFaq from '@/components/website/SubscriptionFaq'
 import { usePageMeta } from '@/hooks/usePageMeta'
@@ -55,12 +56,13 @@ function FlashContent() {
   const table = t('pricing.table', { returnObjects: true }) as Record<string, string>
 
   return (
-    <div className="bg-background min-h-screen">
+    <div className="relative isolate overflow-hidden bg-background min-h-screen">
+      <SectionBackdrop variant="grid-glow" />
       <div className="site-container site-page-top grid gap-8 pb-12 sm:pb-16 lg:grid-cols-[1.25fr_0.75fr] lg:gap-12">
         <div className="min-w-0">
           <section className="pb-6">
             <div className="max-w-3xl">
-              <h1 className="text-foreground text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
+              <h1 className="text-gradient text-balance text-4xl font-semibold tracking-[-0.03em] sm:text-6xl zh:tracking-normal">
                 {t('pricing.headline_brand')}{' '}
                 <span className="text-muted-foreground">{t('pricing.headline_plan')}</span>
               </h1>
@@ -69,12 +71,12 @@ function FlashContent() {
           </section>
 
           <section>
-            <div className="divide-y divide-border rounded-lg border border-border bg-card">
+            <div className="glass-card divide-y divide-border rounded-2xl">
               {BADGE_ICONS.map((Icon, index) => (
                 <div
                   key={t(`pricing.badges.${index}.title`)}
                   className="grid grid-cols-[auto_minmax(0,1fr)] items-start gap-x-3 gap-y-1 px-4 py-3">
-                  <div className="row-span-2 flex size-8 items-center justify-center rounded-md border border-border bg-secondary text-muted-foreground">
+                  <div className="row-span-2 flex size-8 items-center justify-center rounded-lg border border-border bg-primary/10 text-primary">
                     <Icon className="h-5 w-5" />
                   </div>
                   <h3 className="text-foreground text-base font-semibold">
@@ -95,7 +97,7 @@ function FlashContent() {
         </div>
         <section className="min-w-0 lg:self-start">
           <div className="relative max-w-lg">
-            <div className="relative rounded-lg border border-primary/35 bg-card p-6 text-left sm:p-8">
+            <div className="relative glass-card rounded-2xl border-primary/40! shadow-[0_0_80px_-24px_var(--color-primary)] p-6 text-left sm:p-8">
               <div className="flex flex-wrap items-baseline gap-2 tabular-nums">
                 <span className="text-foreground text-6xl font-bold tracking-tight">${PRICE.price}</span>
                 <span className="text-muted-foreground text-2xl line-through">

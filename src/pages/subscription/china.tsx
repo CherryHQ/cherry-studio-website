@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 
 import { Button } from '@/components/ui/button'
 import Footer from '@/components/website/Footer'
+import SectionBackdrop from '@/components/website/SectionBackdrop'
 import SectionDivider from '@/components/website/SectionDivider'
 import SubscriptionFaq from '@/components/website/SubscriptionFaq'
 import { usePageMeta } from '@/hooks/usePageMeta'
@@ -41,23 +42,26 @@ export default function ChinaPricingPage() {
         className="fixed left-4 top-4 z-[60] -translate-y-24 rounded-lg bg-foreground px-4 py-2 text-background focus:translate-y-0">
         {t('plus_page.skip_link')}
       </a>
-      <main id="plus-main" className="bg-background text-foreground">
+      <main id="plus-main" className="relative isolate overflow-hidden bg-background text-foreground">
+        <SectionBackdrop variant="grid-glow" />
         <div className="site-container site-page-top grid gap-8 pb-12 sm:pb-16 lg:grid-cols-[1.25fr_0.75fr] lg:gap-12">
           <div className="min-w-0">
             <section aria-labelledby="plus-title" className="pb-6">
-              <h1 id="plus-title" className="text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
+              <h1
+                id="plus-title"
+                className="text-gradient text-balance text-4xl font-semibold tracking-[-0.03em] sm:text-6xl zh:tracking-normal">
                 Cherry <span className="text-muted-foreground">Plus</span>
               </h1>
               <p className="mt-6 text-lg leading-8 text-muted-foreground sm:text-xl">{t('plus_page.subtitle')}</p>
             </section>
 
             <section aria-label={t('plus_page.benefits_label')} className="pt-1">
-              <div className="divide-y divide-border rounded-lg border border-border bg-card">
+              <div className="glass-card divide-y divide-border rounded-2xl">
                 {benefits.map(({ key, icon: Icon }) => (
                   <article
                     key={key}
                     className="grid grid-cols-[auto_minmax(0,1fr)] items-start gap-x-3 gap-y-1 px-4 py-3">
-                    <div className="row-span-2 flex size-8 items-center justify-center rounded-md border border-border bg-secondary text-muted-foreground">
+                    <div className="row-span-2 flex size-8 items-center justify-center rounded-lg border border-border bg-primary/10 text-primary">
                       <Icon className="size-5" strokeWidth={1.65} aria-hidden="true" />
                     </div>
                     <h2 className="text-base font-semibold leading-6">
@@ -77,7 +81,7 @@ export default function ChinaPricingPage() {
             </section>
           </div>
           <section aria-label={t('plus_page.pricing_label')} className="min-w-0 lg:self-start">
-            <div className="max-w-lg rounded-lg border border-primary/35 bg-card p-6 text-left sm:p-8">
+            <div className="max-w-lg glass-card rounded-2xl border-primary/40! shadow-[0_0_80px_-24px_var(--color-primary)] p-6 text-left sm:p-8">
               <p className="mb-4 text-sm font-medium text-primary">{t('plus_page.offer.title')}</p>
               <div className="flex flex-wrap items-baseline gap-2 tabular-nums">
                 <strong className="text-5xl font-bold tracking-tight sm:text-6xl">¥9.9</strong>

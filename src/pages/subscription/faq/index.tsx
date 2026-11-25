@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
 import Footer from '@/components/website/Footer'
+import SectionBackdrop from '@/components/website/SectionBackdrop'
 import SubscriptionFaq from '@/components/website/SubscriptionFaq'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { isEnglishSite } from '@/utils/urls'
@@ -14,7 +15,8 @@ export default function SubscriptionFaqPage() {
 
   return (
     <>
-      <main className="site-page-top min-h-[70vh] bg-background px-6 pb-16 text-foreground">
+      <main className="site-page-top relative isolate min-h-[70vh] overflow-hidden bg-background px-6 pb-16 text-foreground">
+        <SectionBackdrop variant="grid-glow" />
         <div className="mx-auto max-w-3xl">
           <Link
             to="/subscription"
@@ -22,7 +24,9 @@ export default function SubscriptionFaqPage() {
             <ArrowLeft className="size-4" aria-hidden="true" />
             {t('faq_page.back')}
           </Link>
-          <h1 className="mt-8 text-balance text-4xl font-semibold tracking-tight sm:text-5xl">{t('faq_page.title')}</h1>
+          <h1 className="mt-8 text-gradient text-balance text-4xl font-semibold tracking-[-0.03em] sm:text-6xl zh:tracking-normal">
+            {t('faq_page.title')}
+          </h1>
           <p className="mt-4 text-base leading-7 text-muted-foreground">{t('faq_page.description')}</p>
           <SubscriptionFaq key={variant} variant={variant} headingLevel="h2" />
           <aside className="mt-10 rounded-lg border border-border p-6">

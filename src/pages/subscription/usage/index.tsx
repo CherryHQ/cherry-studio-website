@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { Link, Navigate } from 'react-router-dom'
 
 import Footer from '@/components/website/Footer'
+import SectionBackdrop from '@/components/website/SectionBackdrop'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { isEnglishSite } from '@/utils/urls'
 
@@ -64,10 +65,11 @@ function UsageContent() {
   const models = t('pricing.models', { returnObjects: true }) as UsageModel[]
 
   return (
-    <div className="bg-background min-h-screen">
+    <div className="relative isolate overflow-hidden bg-background min-h-screen">
+      <SectionBackdrop variant="grid-glow" />
       <article className="site-page-top mx-auto max-w-3xl px-6 pb-16">
         <header>
-          <h1 className="text-foreground text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
+          <h1 className="text-gradient text-balance text-4xl font-semibold tracking-[-0.03em] sm:text-6xl zh:tracking-normal">
             {t('usage.title')}
           </h1>
           <p className="text-muted-foreground mt-4 text-lg leading-8">{t('usage.subtitle')}</p>
