@@ -115,10 +115,6 @@
       "platforms": "支持 Android、iPhone 与 iPad，可通过官方商店或下载页安装。"
     },
     "screenshots": {
-      "group_alt": "Cherry Studio Mobile 对话、绘画与导航界面",
-      "conversation": "Cherry Studio Mobile 的 AI 对话界面",
-      "drawing": "Cherry Studio Mobile 的绘画模板界面",
-      "sidebar": "Cherry Studio Mobile 的导航与对话列表",
       "tablet_conversation": "Cherry Studio Mobile 的 iPad 对话界面",
       "tablet_drawing": "Cherry Studio Mobile 的 iPad 图片预览界面",
       "files": "Cherry Studio Mobile 的文件库与项目文件夹",
@@ -191,6 +187,16 @@
       "description": "下载 Cherry Studio Mobile，或先阅读安装与模型配置文档。",
       "download": "获取移动版",
       "docs": "阅读移动端文档"
+    },
+    "picker": {
+      "eyebrow": "模型选择",
+      "title": "所有模型，拇指一划就到",
+      "description": "在服务商索引上滑动，就能在服务商之间快速跳转；松手前先预览，抽屉高度随手调整。"
+    },
+    "pairing": {
+      "eyebrow": "桌面互联",
+      "title": "配对一次，桌面随身带",
+      "description": "用手机扫描电脑上 Cherry Studio 的二维码，核对六位验证码，就能导入服务商和模型；之后还能在手机上和桌面智能体对话，并审批它的每一步操作。"
     }
   },
   "stable_badge": "正式版",
@@ -538,7 +544,74 @@
     "apps_platform_windows": "提供 x64 和 ARM64 的安装版及便携版。",
     "apps_platform_linux": "提供 AppImage、DEB 和 RPM。",
     "desktop_app_screenshot": "Cherry Studio 桌面版的对话界面",
-    "cta_download": "下载 Cherry Studio"
+    "cta_download": "下载 Cherry Studio",
+    "stat_providers": "服务商",
+    "stat_models": "模型",
+    "stat_assistants": "智能助手",
+    "capabilities": {
+      "eyebrow": "走进 Cherry Studio",
+      "title": "用 AI 做的每件事，都在一个窗口里",
+      "subtitle": "下面每个演示都重现了 Cherry Studio 里的真实交互：一样的布局、一样的节奏、一样的细节。",
+      "chapters": {
+        "chat": {
+          "nav": "对话",
+          "title": "为长时间工作打磨的对话界面",
+          "description": "看模型如何思考，工具调用直接显示在对话里，长对话也能快速定位。",
+          "points": [
+            "每条消息都能单独设置思考强度",
+            "消息导航条，几百轮对话也能一键跳转",
+            "网络搜索、知识库、MCP 工具，一个 / 全部调出"
+          ]
+        },
+        "compare": {
+          "nav": "多模型",
+          "title": "一次提问，多个模型同时回答",
+          "description": "同一个问题发给多个模型，回答可以折叠、纵向、横向或网格排列。",
+          "points": ["四种多模型回答布局", "各模型回答同时流式输出", "云端模型和本地模型可以混用"]
+        },
+        "agents": {
+          "nav": "智能体",
+          "title": "把任务交给智能体",
+          "description": "交代一个任务，智能体会列待办、跑命令、改文件，遇到有风险的操作先问你。",
+          "points": [
+            "权限模式可选每次询问或自动接受",
+            "代码差异和终端输出直接显示在对话里",
+            "用自己的模型启动 {{codeClis}} 款编程 CLI"
+          ]
+        },
+        "knowledge": {
+          "nav": "知识库",
+          "title": "把文件变成知识",
+          "description": "添加文件、文件夹、网页和笔记，Cherry Studio 会建立索引，并标出回答引用了哪些段落。",
+          "points": [
+            "支持 PDF、Office、Markdown、网址和文件夹",
+            "召回测试，直接看到检索结果",
+            "内置 {{translateLanguages}} 种语言互译"
+          ]
+        },
+        "create": {
+          "nav": "创作",
+          "title": "生成图片和可运行的 Artifacts",
+          "description": "从绘画模板出发，用多个绘图模型生成图片；HTML 回答可以在对话旁直接运行预览。",
+          "points": [
+            "多个绘图模型共用的绘画模板",
+            "HTML Artifacts 支持代码、预览、分屏三种视图",
+            "Mermaid、图表和流程图直接渲染"
+          ]
+        }
+      }
+    },
+    "everywhere": {
+      "eyebrow": "在桌面的任何地方",
+      "title": "在任何应用里，一个快捷键就能用 AI",
+      "subtitle": "在任意应用里划词，就能翻译、解释、总结；也可以随时呼出快捷助手，不用切换窗口。",
+      "stats": {
+        "mcp": "内置 MCP 服务器",
+        "mini_apps": "小程序",
+        "translate": "种翻译语言",
+        "locales": "种界面语言"
+      }
+    }
   },
   "home_faq": {
     "title": "常见问题",

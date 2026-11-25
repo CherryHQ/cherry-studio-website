@@ -113,7 +113,7 @@ const ContributorsSection: FC = () => {
         <SectionBackdrop variant="rules" />
         <div className="site-container relative z-10">
           <div className="mx-auto mb-6 max-w-3xl text-center">
-            <h2 className="text-foreground mb-3 text-3xl font-semibold tracking-tight sm:mb-4 sm:text-4xl">
+            <h2 className="text-gradient mb-3 text-3xl font-semibold tracking-tight text-balance sm:mb-4 sm:text-4xl">
               {t('contributors.project_contributors')}
             </h2>
             <p className="text-muted-foreground text-sm sm:text-base">
@@ -136,11 +136,11 @@ const ContributorsSection: FC = () => {
             </a>
           </div>
 
-          <div className="border-border/50 bg-card/50 mx-auto max-w-[520px] rounded-lg border p-6">
+          <div className="glass-card mx-auto max-w-[560px] rounded-2xl p-6">
             <dl className="grid grid-cols-3 gap-4">
               {stats.map((stat) => (
                 <div key={stat.label} className="text-center">
-                  <dd className="text-foreground text-2xl font-bold tabular-nums sm:text-3xl">
+                  <dd className="font-mono text-2xl font-semibold tracking-tight text-foreground tabular-nums sm:text-3xl">
                     {formatStat(stat.value)}
                   </dd>
                   <dt className="text-muted-foreground mt-1 text-xs sm:text-sm">{stat.label}</dt>
@@ -188,10 +188,28 @@ const ContributorsSection: FC = () => {
     )
   }
 
-  const communityLinks = [
-    { title: 'Product Hunt', href: 'https://www.producthunt.com/posts/cherry-studio' },
-    { title: 'GitHub Trending', href: 'https://trendshift.io/repositories/14318' },
-    { title: 'HelloGitHub', href: 'https://hellogithub.com/repository/1605492e1e2a4df3be07abfa4578dd37' }
+  const badges = [
+    {
+      href: 'https://www.producthunt.com/posts/cherry-studio?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-cherry-studio',
+      alt: 'Cherry Studio - AI Chatbots, AI Desktop Client | Product Hunt',
+      light: 'https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=496640&theme=light',
+      dark: 'https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=496640&theme=dark',
+      height: 'h-[46px]'
+    },
+    {
+      href: 'https://trendshift.io/repositories/14318',
+      alt: 'CherryHQ/cherry-studio | Trendshift',
+      light: 'https://trendshift.io/api/badge/repositories/14318',
+      dark: 'https://trendshift.io/api/badge/repositories/14318?theme=dark',
+      height: 'h-[58px]'
+    },
+    {
+      href: 'https://hellogithub.com/repository/1605492e1e2a4df3be07abfa4578dd37',
+      alt: 'Featured | HelloGitHub',
+      light: 'https://api.hellogithub.com/v1/widgets/recommend.svg?rid=1605492e1e2a4df3be07abfa4578dd37',
+      dark: 'https://api.hellogithub.com/v1/widgets/recommend.svg?rid=1605492e1e2a4df3be07abfa4578dd37&theme=dark',
+      height: 'h-[46px]'
+    }
   ]
 
   const people = contributors.map((contributor) => (
@@ -223,12 +241,12 @@ const ContributorsSection: FC = () => {
   ))
 
   return (
-    <section id="contributors" className="isolate relative scroll-mt-[60px] bg-secondary/45 site-section">
+    <section id="contributors" className="relative isolate site-section">
       <SectionBackdrop variant="rules" />
       <div className="site-container">
         <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
           <div className="max-w-2xl">
-            <h2 className="mb-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="text-gradient mb-3 text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
               {t('contributors.project_contributors')}
             </h2>
             <p className="text-sm text-muted-foreground sm:text-base">
@@ -266,16 +284,26 @@ const ContributorsSection: FC = () => {
           </details>
         )}
 
-        <div className="mt-8 flex flex-wrap gap-2 border-t border-border pt-5">
-          {communityLinks.map(({ title, href }) => (
+        <div className="glass-card mt-10 flex flex-wrap items-center justify-center gap-4 rounded-2xl px-6 py-5 sm:gap-6">
+          {badges.map((badge) => (
             <a
-              key={href}
-              href={href}
+              key={badge.href}
+              href={badge.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-md border border-border bg-background px-2.5 py-1.5 text-xs font-medium text-muted-foreground hover:border-input hover:text-foreground focus-visible:outline-2 focus-visible:outline-primary">
-              {title}
-              <ArrowUpRight aria-hidden="true" className="size-3.5" />
+              className="rounded-md transition-transform duration-300 ease-settle hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
+              <img
+                src={badge.light}
+                alt={badge.alt}
+                loading="lazy"
+                className={`block w-auto dark:hidden ${badge.height}`}
+              />
+              <img
+                src={badge.dark}
+                alt={badge.alt}
+                loading="lazy"
+                className={`hidden w-auto dark:block ${badge.height}`}
+              />
             </a>
           ))}
         </div>

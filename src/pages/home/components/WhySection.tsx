@@ -21,7 +21,7 @@ const WhySection: FC = () => {
       <SectionBackdrop variant="grid" />
       <div className="site-container relative z-10">
         <div className="mb-8 max-w-3xl sm:mb-12">
-          <h2 className="text-foreground mb-4 text-3xl font-semibold tracking-tight sm:text-4xl">
+          <h2 className="text-gradient mb-4 text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
             {t('highlights.title')}
           </h2>
           <p className="text-muted-foreground text-base sm:text-lg">{t('highlights.subtitle')}</p>
@@ -31,9 +31,9 @@ const WhySection: FC = () => {
           {whyItems.map((item) => (
             <div
               key={item.key}
-              className="border-border/50 bg-card/50 hover:border-border hover:bg-card/80 rounded-lg border p-6 transition-colors">
-              <h3 className="text-foreground mb-3 flex items-center gap-3 text-lg font-bold sm:text-xl">
-                <span className="flex size-9 shrink-0 items-center justify-center rounded-md border border-border bg-secondary text-muted-foreground">
+              className="glass-card rounded-xl p-6 transition-[border-color,transform] duration-300 ease-settle hover:-translate-y-0.5 hover:border-hairline-strong">
+              <h3 className="text-foreground mb-3 flex items-center gap-3 text-lg font-semibold">
+                <span className="flex size-9 shrink-0 items-center justify-center rounded-lg border border-border bg-primary/10 text-primary">
                   <item.icon className="size-4" aria-hidden="true" />
                 </span>
                 {t(`${item.key}.title`)}

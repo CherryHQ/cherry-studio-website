@@ -1,4 +1,3 @@
-import { ChevronDown } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 
 import ai302Logo from '@/assets/images/provider_logo/302ai.svg'
@@ -31,7 +30,10 @@ import stepfunLogo from '@/assets/images/provider_logo/stepfun-color.svg'
 import xaiLogo from '@/assets/images/provider_logo/xai.svg'
 import zeroOneLogo from '@/assets/images/provider_logo/zeroone.svg'
 import zhipuLogo from '@/assets/images/provider_logo/zhipu-color.svg'
+import DemoMount from '@/components/demos/primitives/DemoMount'
+import productStats from '@/content/product-stats.json'
 import { cn } from '@/lib/utils'
+import { isEnglishSite } from '@/utils/urls'
 
 interface LogoInfo {
   src: string
@@ -39,16 +41,13 @@ interface LogoInfo {
   darkInvert?: boolean
 }
 
-const globalFeatured: LogoInfo[] = [
+const globalLogos: LogoInfo[] = [
   { src: openaiLogo, name: 'OpenAI', darkInvert: true },
   { src: anthropicLogo, name: 'Anthropic', darkInvert: true },
   { src: googleLogo, name: 'Google' },
   { src: xaiLogo, name: 'xAI', darkInvert: true },
   { src: metaLogo, name: 'Meta' },
-  { src: deepseekLogo, name: 'DeepSeek' }
-]
-
-const globalAdditional: LogoInfo[] = [
+  { src: deepseekLogo, name: 'DeepSeek' },
   { src: mistralLogo, name: 'Mistral' },
   { src: azureLogo, name: 'Azure' },
   { src: qwenLogo, name: 'Qwen' },
@@ -66,16 +65,13 @@ const globalAdditional: LogoInfo[] = [
   { src: stepfunLogo, name: 'StepFun' }
 ]
 
-const cnFeatured: LogoInfo[] = [
+const cnLogos: LogoInfo[] = [
   { src: deepseekLogo, name: 'DeepSeek' },
   { src: qwenLogo, name: '通义千问' },
   { src: zhipuLogo, name: '智谱 AI' },
   { src: moonshotLogo, name: 'Kimi', darkInvert: true },
   { src: minimaxLogo, name: 'MiniMax' },
-  { src: bytedanceLogo, name: '豆包' }
-]
-
-const cnAdditional: LogoInfo[] = [
+  { src: bytedanceLogo, name: '豆包' },
   { src: siliconcloudLogo, name: '硅基流动' },
   { src: baichuanLogo, name: '百川智能' },
   { src: stepfunLogo, name: '阶跃星辰' },
@@ -91,12 +87,14 @@ const cnAdditional: LogoInfo[] = [
   { src: higressLogo, name: 'Higress' }
 ]
 
-function ProviderList({ logos, className }: { logos: LogoInfo[]; className?: string }) {
+function LogoRow({ logos, hidden }: { logos: LogoInfo[]; hidden?: boolean }) {
   return (
-    <ul className={cn('flex flex-wrap gap-x-6 gap-y-3', className)}>
+    <ul aria-hidden={hidden || undefined} className="flex shrink-0 items-center gap-10 pr-10">
       {logos.map(({ name, src, darkInvert }) => (
-        <li key={name} className="flex items-center gap-2 text-sm font-medium">
-          <img src={src} alt="" className={cn('size-4 object-contain saturate-60', darkInvert && 'dark:invert')} />
+        <li
+          key={name}
+          className="flex items-center gap-2.5 text-sm font-medium whitespace-nowrap text-muted-foreground transition-colors duration-200 hover:text-foreground">
+          <img src={src} alt="" className={cn('size-5 object-contain', darkInvert && 'dark:invert')} />
           {name}
         </li>
       ))}
@@ -106,29 +104,41 @@ function ProviderList({ logos, className }: { logos: LogoInfo[]; className?: str
 
 export default function ProvidersSection() {
   const { t, i18n } = useTranslation()
-  const isZh = i18n.language.startsWith('zh')
-  const featured = isZh ? cnFeatured : globalFeatured
-  const additional = isZh ? cnAdditional : globalAdditional
+  const logos = isEnglishSite(i18n.resolvedLanguage || i18n.language) ? globalLogos : cnLogos
+  const stats = [
+    { value: productStats.labels.providers, label: t('home_page.stat_providers') },
+    { value: productStats.labels.models, label: t('home_page.stat_models') },
+    { value: productStats.labels.assistants, label: t('home_page.stat_assistants') }
+  ]
 
   return (
-    <section className="border-b border-border bg-card" aria-labelledby="home-providers">
-      <div className="site-container py-6 lg:grid lg:grid-cols-[1fr_auto] lg:items-center lg:gap-x-6 lg:gap-y-3">
-        <h2
-          id="home-providers"
-          className="mb-3 font-mono lg:col-span-2 lg:mb-0 text-xs font-medium tracking-wider text-muted-foreground uppercase">
-          {t('home_page.providers')}
-        </h2>
-        <ProviderList logos={featured} />
-        <details className="group mt-3 lg:contents">
-          <summary className="inline-flex cursor-pointer list-none items-center gap-1.5 rounded-sm text-xs text-muted-foreground hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 lg:justify-self-end [&::-webkit-details-marker]:hidden">
-            {t('home_page.more_providers')}
-            <ChevronDown
-              aria-hidden="true"
-              className="size-3.5 group-open:rotate-180 motion-safe:transition-transform"
-            />
-          </summary>
-          <ProviderList logos={additional} className="mt-4 border-t border-border pt-4 lg:col-span-2 lg:mt-0" />
-        </details>
+    <section className="relative border-y border-border bg-card/40" aria-labelledby="home-providers">
+      <div className="site-container grid gap-10 py-14 sm:py-20 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:items-center lg:gap-16">
+        <div>
+          <p className="mb-3 font-mono text-xs tracking-wider text-primary uppercase">{t('home_page.providers')}</p>
+          <h2
+            id="home-providers"
+            className="text-gradient text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
+            {t('providers.title')}
+          </h2>
+          <p className="mt-4 max-w-md text-pretty text-muted-foreground zh:leading-[1.8]">{t('providers.subtitle')}</p>
+          <dl className="mt-8 grid max-w-md grid-cols-3 divide-x divide-border rounded-xl border border-border">
+            {stats.map((stat) => (
+              <div key={stat.label} className="px-4 py-3.5">
+                <dt className="text-xs text-muted-foreground">{stat.label}</dt>
+                <dd className="mt-1 font-mono text-2xl font-semibold tracking-tight tabular-nums">{stat.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+        <DemoMount load={() => import('@/components/demos/models/ModelSelectorDemo')} className="min-h-[520px]" />
+      </div>
+
+      <div className="group relative overflow-hidden border-t border-border py-6 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+        <div className="flex w-max motion-safe:animate-marquee group-hover:[animation-play-state:paused]">
+          <LogoRow logos={logos} />
+          <LogoRow logos={logos} hidden />
+        </div>
       </div>
     </section>
   )

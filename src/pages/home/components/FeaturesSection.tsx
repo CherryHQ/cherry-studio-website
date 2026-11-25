@@ -61,7 +61,7 @@ const FeaturesSection: FC = () => {
       <div className="site-container relative z-10">
         {/* Section Header */}
         <div className="mb-8 sm:mb-12">
-          <h2 className="text-foreground mb-3 text-3xl font-semibold tracking-tight sm:mb-4 sm:text-4xl">
+          <h2 className="text-gradient mb-3 text-3xl font-semibold tracking-tight text-balance sm:mb-4 sm:text-4xl">
             {t('features.title')}
           </h2>
           <p className="text-muted-foreground max-w-2xl text-sm sm:text-base">
@@ -81,11 +81,11 @@ const FeaturesSection: FC = () => {
             <a
               key={feature.titleKey}
               href={`${docsUrl}${feature.slug}`}
-              className="group relative overflow-hidden rounded-lg border border-border bg-card p-6 transition-colors duration-300 hover:border-input focus-visible:outline-2 focus-visible:outline-primary">
+              className="glass-card group relative overflow-hidden rounded-xl p-6 transition-[border-color,transform] duration-300 ease-settle hover:-translate-y-0.5 hover:border-hairline-strong focus-visible:outline-2 focus-visible:outline-primary">
               {/* Content */}
               <div className="relative z-10">
                 {/* Icon */}
-                <div className="mb-4 inline-flex size-9 items-center justify-center rounded-md border border-border bg-secondary text-muted-foreground">
+                <div className="mb-4 inline-flex size-9 items-center justify-center rounded-lg border border-border bg-primary/10 text-primary">
                   <feature.icon className="size-4" aria-hidden="true" />
                 </div>
 

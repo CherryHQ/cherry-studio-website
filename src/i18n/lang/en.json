@@ -115,10 +115,6 @@
       "platforms": "For Android, iPhone, and iPad. Install through official stores or our download page."
     },
     "screenshots": {
-      "group_alt": "Cherry Studio Mobile chat, drawing, and navigation interfaces",
-      "conversation": "AI conversation in Cherry Studio Mobile",
-      "drawing": "Drawing templates in Cherry Studio Mobile",
-      "sidebar": "Navigation and conversation list in Cherry Studio Mobile",
       "tablet_conversation": "Conversation interface on Cherry Studio Mobile for iPad",
       "tablet_drawing": "Image preview on Cherry Studio Mobile for iPad",
       "files": "File library and project folders in Cherry Studio Mobile",
@@ -191,6 +187,16 @@
       "description": "Download Cherry Studio Mobile, or read the installation and model setup guide first.",
       "download": "Get the mobile app",
       "docs": "Read mobile docs"
+    },
+    "picker": {
+      "eyebrow": "Model picker",
+      "title": "Every model, one thumb away",
+      "description": "Scrub the provider index to jump across providers, preview one before you land on it, and pull the sheet to the height you need."
+    },
+    "pairing": {
+      "eyebrow": "Desktop pairing",
+      "title": "Pair once, take your desktop with you",
+      "description": "Scan the QR code from Cherry Studio on your computer, confirm the six-digit code, and import your providers and models. Then chat with desktop agents from your phone and approve their steps."
     }
   },
   "stable_badge": "Stable",
@@ -542,7 +548,78 @@
     "apps_platform_windows": "Installers and portable builds for x64 and ARM64.",
     "apps_platform_linux": "Available as AppImage, DEB, and RPM packages.",
     "desktop_app_screenshot": "The Cherry Studio desktop chat interface",
-    "cta_download": "Download Cherry Studio"
+    "cta_download": "Download Cherry Studio",
+    "stat_providers": "Providers",
+    "stat_models": "Models",
+    "stat_assistants": "Assistants",
+    "capabilities": {
+      "eyebrow": "Inside Cherry Studio",
+      "title": "Everything you do with AI, in one window",
+      "subtitle": "Each demo below replays a real Cherry Studio interaction: same layouts, same timings, same details.",
+      "chapters": {
+        "chat": {
+          "nav": "Chat",
+          "title": "A chat surface built for long sessions",
+          "description": "Watch the model think, see tools run inline, and move through long threads without losing your place.",
+          "points": [
+            "Set reasoning effort per message",
+            "Jump across hundreds of turns with the message rail",
+            "Web search, knowledge bases and MCP tools from one / menu"
+          ]
+        },
+        "compare": {
+          "nav": "Compare",
+          "title": "Ask several models at once",
+          "description": "Send one prompt to multiple models and read the answers folded, stacked, side by side or as a grid.",
+          "points": [
+            "Four layouts for multi-model answers",
+            "Answers stream in parallel",
+            "Mix cloud and local models in one group"
+          ]
+        },
+        "agents": {
+          "nav": "Agents",
+          "title": "Agents that finish the job",
+          "description": "Hand off a task. The agent plans with a todo list, runs commands, edits files and asks before risky steps.",
+          "points": [
+            "Permission modes from ask-every-time to auto-accept",
+            "Diffs and terminal output right in the thread",
+            "Launch {{codeClis}} coding CLIs with your own models"
+          ]
+        },
+        "knowledge": {
+          "nav": "Knowledge",
+          "title": "Turn your files into knowledge",
+          "description": "Add files, folders, web pages and notes. Cherry Studio indexes them and shows which passages an answer used.",
+          "points": [
+            "PDF, Office, Markdown, URLs and folders",
+            "Recall tests show what a query retrieves",
+            "Translation across {{translateLanguages}} languages"
+          ]
+        },
+        "create": {
+          "nav": "Create",
+          "title": "Images and live artifacts",
+          "description": "Start from a painting template, generate across image models, and open HTML answers as runnable previews beside the chat.",
+          "points": [
+            "Painting templates for multiple image models",
+            "Code, preview and split views for HTML artifacts",
+            "Mermaid, charts and diagrams render inline"
+          ]
+        }
+      }
+    },
+    "everywhere": {
+      "eyebrow": "Everywhere on your desktop",
+      "title": "Help in any app, one shortcut away",
+      "subtitle": "Select text anywhere to translate, explain or summarize it, or bring up the quick assistant without leaving what you are doing.",
+      "stats": {
+        "mcp": "Built-in MCP servers",
+        "mini_apps": "Mini apps",
+        "translate": "Translation languages",
+        "locales": "Interface languages"
+      }
+    }
   },
   "home_faq": {
     "title": "Frequently Asked Questions",

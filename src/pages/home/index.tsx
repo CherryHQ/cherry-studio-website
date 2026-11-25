@@ -6,15 +6,16 @@ import WebsiteBanner from '@/components/website/WebsiteBanner'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { isEnglishSite } from '@/utils/urls'
 import AppsSection from './components/AppsSection'
+import CapabilitiesSection from './components/CapabilitiesSection'
 import CommunitySection from './components/CommunitySection'
 import ContributorsSection from './components/ContributorsSection'
 import DownloadSection from './components/DownloadSection'
+import EverywhereSection from './components/EverywhereSection'
 import FAQSection from './components/FAQSection'
 import FeaturesSection from './components/FeaturesSection'
 import FlagshipModelsSection from './components/FlagshipModelsSection'
 import HeroSection from './components/HeroSection'
 import HighlightsSection from './components/HighlightsSection'
-import ProductPreview from './components/ProductPreview'
 import ProvidersSection from './components/ProvidersSection'
 import TeamCollaborationSection from './components/TeamCollaborationSection'
 import TestimonialsSection from './components/TestimonialsSection'
@@ -43,8 +44,9 @@ const HomePage: FC = () => {
         <WebsiteBanner />
         <HeroSection />
         <ProvidersSection />
-        <ProductPreview />
-        <div className="bg-background [&>section+section]:border-t">
+        <CapabilitiesSection />
+        <EverywhereSection />
+        <div className="bg-background [&>section]:border-t [&>section]:border-border">
           {sections.map((Section, index) => (
             <Section key={index} />
           ))}

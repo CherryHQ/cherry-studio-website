@@ -1,49 +1,55 @@
-import { Download, Monitor, Smartphone } from 'lucide-react'
+import { m } from 'framer-motion'
+import { Download, Smartphone } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
-import { Button } from '@/components/ui/button'
+import logo from '@/assets/images/logo.png'
 import SectionBackdrop from '@/components/website/SectionBackdrop'
+import { reveal } from '@/lib/motion'
+import { cn } from '@/lib/utils'
 import { isMobileDevice } from '@/utils/systemDetection'
 
 export default function DownloadSection() {
   const { t } = useTranslation()
   const isMobile = isMobileDevice()
   const actions = [
-    { href: '/download', label: t('home_page.download_desktop'), icon: Monitor },
+    { href: '/download', label: t('home_page.download_desktop'), icon: Download },
     { href: '/mobile', label: t('mobile_download.button'), icon: Smartphone }
   ]
 
   return (
     <section
       aria-labelledby="home-download-heading"
-      className="isolate relative border-t border-border bg-card py-10 sm:py-12">
-      <SectionBackdrop variant="dots" />
-      <div className="site-container site-split lg:items-center">
-        <div>
-          <h2
-            id="home-download-heading"
-            className="text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-            {t('home_page.cta_download')}
-          </h2>
-          <p className="mt-3 font-mono text-xs text-muted-foreground">{t('home_page.platforms')}</p>
-        </div>
-        <div className="flex flex-wrap items-center gap-3">
+      className="relative isolate overflow-hidden border-t border-border py-24 sm:py-32">
+      <SectionBackdrop variant="beams" />
+      <div className="bg-grid absolute inset-0 -z-10 [mask-image:radial-gradient(ellipse_50%_60%_at_50%_50%,black,transparent_75%)]" />
+      <m.div {...reveal()} className="site-container flex flex-col items-center text-center">
+        <span className="relative mb-8 flex size-16 items-center justify-center rounded-2xl border border-border bg-card shadow-[0_0_60px_-10px_var(--color-primary)]">
+          <img src={logo} alt="" className="size-10 rounded-xl" />
+        </span>
+        <h2
+          id="home-download-heading"
+          className="text-gradient max-w-3xl text-4xl font-semibold tracking-tight text-balance sm:text-6xl zh:tracking-normal">
+          {t('home_page.cta_download')}
+        </h2>
+        <p className="mt-4 font-mono text-xs text-muted-foreground">{t('home_page.platforms')}</p>
+        <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
           {(isMobile ? [actions[1], actions[0]] : actions).map(({ href, label, icon: Icon }, index) => (
-            <Button
+            <Link
               key={href}
-              asChild
-              size="lg"
-              variant={index === 0 ? 'default' : 'outline'}
-              className="h-11 rounded-md px-4">
-              <Link to={href}>
-                {index === 0 ? <Download aria-hidden="true" /> : <Icon aria-hidden="true" />}
-                {label}
-              </Link>
-            </Button>
+              to={href}
+              className={cn(
+                'inline-flex h-11 items-center gap-2 rounded-full px-6 text-sm font-semibold transition-[background-color,border-color,transform] duration-200 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary active:scale-[0.97]',
+                index === 0
+                  ? 'bg-foreground text-background shadow-[0_8px_32px_-8px_var(--color-primary)] hover:bg-foreground/85'
+                  : 'border border-border bg-surface-glass text-foreground backdrop-blur hover:border-hairline-strong hover:bg-accent'
+              )}>
+              <Icon className="size-4" aria-hidden="true" />
+              {label}
+            </Link>
           ))}
         </div>
-      </div>
+      </m.div>
     </section>
   )
 }

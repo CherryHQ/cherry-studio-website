@@ -1,8 +1,11 @@
-import { ArrowRight, Minus, Plus } from 'lucide-react'
+import { m } from 'framer-motion'
+import { ArrowRight, Plus } from 'lucide-react'
 import { type FC, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import SectionBackdrop from '@/components/website/SectionBackdrop'
+import { ease } from '@/lib/motion'
+import { cn } from '@/lib/utils'
 import { getDocsUrl } from '@/utils/urls'
 
 interface FAQItem {
@@ -25,13 +28,13 @@ const FAQSection: FC = () => {
     <section
       id="faq"
       aria-labelledby="home-faq-heading"
-      className="isolate relative scroll-mt-[60px] border-border bg-card border-t py-10 sm:py-12">
+      className="relative isolate border-t border-border py-20 sm:py-28">
       <SectionBackdrop variant="rules" />
       <div className="site-container site-split">
         <div className="max-w-sm">
           <h2
             id="home-faq-heading"
-            className="text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+            className="text-gradient text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
             {t('home_faq.title')}
           </h2>
           {isZh && <p className="mt-3 text-base text-muted-foreground">{t('home_faq.subtitle')}</p>}
@@ -43,12 +46,16 @@ const FAQSection: FC = () => {
           </a>
         </div>
 
-        <div className="divide-y divide-border border-y border-border">
+        <div className="space-y-2">
           {faqItems.map(({ question, answer }, index) => {
             const isOpen = openIndex === index
-            const Icon = isOpen ? Minus : Plus
             return (
-              <div key={question}>
+              <div
+                key={question}
+                className={cn(
+                  'rounded-xl border px-5 transition-colors duration-200',
+                  isOpen ? 'glass-card border-hairline-strong' : 'border-border hover:border-hairline-strong'
+                )}>
                 <h3>
                   <button
                     type="button"
@@ -57,12 +64,27 @@ const FAQSection: FC = () => {
                     onClick={() => toggleItem(index)}
                     className="flex w-full cursor-pointer items-center justify-between gap-4 py-4 pr-1 text-left text-base font-medium text-foreground transition-colors hover:text-primary focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-primary">
                     <span>{question}</span>
-                    <Icon aria-hidden="true" className="size-4 shrink-0 text-muted-foreground" />
+                    <Plus
+                      aria-hidden="true"
+                      className={cn(
+                        'size-4 shrink-0 text-muted-foreground transition-transform duration-200 ease-settle',
+                        isOpen && 'rotate-45 text-primary'
+                      )}
+                    />
                   </button>
                 </h3>
-                <div id={`home-faq-answer-${index}`} hidden={!isOpen} className="max-w-2xl pb-5 pr-6">
-                  <p className="text-pretty text-sm leading-6 text-muted-foreground">{answer}</p>
-                </div>
+                {/* Desktop tool accordions open in 200ms and close in 160ms. */}
+                <m.div
+                  id={`home-faq-answer-${index}`}
+                  initial={false}
+                  animate={isOpen ? { height: 'auto', opacity: 1 } : { height: 0, opacity: 0 }}
+                  transition={{ duration: isOpen ? 0.2 : 0.16, ease: ease.settle }}
+                  aria-hidden={!isOpen}
+                  className="overflow-hidden">
+                  <p className="max-w-2xl pr-6 pb-5 text-pretty text-sm leading-6 text-muted-foreground zh:leading-7">
+                    {answer}
+                  </p>
+                </m.div>
               </div>
             )
           })}
