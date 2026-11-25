@@ -2,12 +2,7 @@ import { Apple, ArrowRight, Monitor, Terminal } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
-import chatDarkEn from '@/assets/images/screenshots/product-features-0819/chat-dark-en.webp'
-import chatDarkZh from '@/assets/images/screenshots/product-features-0819/chat-dark-zh.webp'
-import chatLightEn from '@/assets/images/screenshots/product-features-0819/chat-light-en.webp'
-import chatLightZh from '@/assets/images/screenshots/product-features-0819/chat-light-zh.webp'
 import SectionBackdrop from '@/components/website/SectionBackdrop'
-import { useTheme } from '@/hooks/useTheme'
 
 const platforms = [
   { id: 'macos', icon: Apple },
@@ -18,16 +13,10 @@ const platformLinkStyle =
   'inline-flex items-center gap-1 rounded-sm font-medium text-foreground underline decoration-border underline-offset-4 hover:decoration-current hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary'
 
 export default function AppsSection() {
-  const { t, i18n } = useTranslation()
-  const { isDark } = useTheme()
-  const isZh = i18n.language.startsWith('zh')
-  const desktopScreenshot = isZh ? (isDark ? chatDarkZh : chatLightZh) : isDark ? chatDarkEn : chatLightEn
+  const { t } = useTranslation()
 
   return (
-    <section
-      id="apps"
-      aria-labelledby="home-apps-heading"
-      className="isolate relative site-section scroll-mt-[60px] bg-background">
+    <section id="apps" aria-labelledby="home-apps-heading" className="relative isolate site-section bg-background">
       <SectionBackdrop variant="modules" />
       <div className="site-container">
         <div className="site-split">
@@ -35,7 +24,7 @@ export default function AppsSection() {
             <p className="mb-3 font-mono text-xs tracking-widest text-primary uppercase">{t('home_page.apps_label')}</p>
             <h2
               id="home-apps-heading"
-              className="max-w-lg text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+              className="text-gradient max-w-lg text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
               {t('home_page.apps_title')}
             </h2>
             <p className="mt-4 max-w-md text-pretty text-base leading-7 text-muted-foreground">
@@ -43,7 +32,7 @@ export default function AppsSection() {
             </p>
           </div>
 
-          <dl className="divide-y divide-border border-y border-border">
+          <dl className="glass-card divide-y divide-border rounded-2xl px-5">
             {platforms.map(({ id, icon: Icon }) => (
               <div
                 key={id}
@@ -64,22 +53,6 @@ export default function AppsSection() {
             ))}
           </dl>
         </div>
-
-        <figure className="mt-8 overflow-hidden rounded-lg border border-border bg-card sm:mt-10">
-          <figcaption className="border-b border-border px-4 py-3 font-mono text-xs text-muted-foreground">
-            Cherry Studio · {t('home_page.preview_chat')}
-          </figcaption>
-          <div className="relative aspect-[16/10] w-full max-h-[min(68vh,680px)]">
-            <img
-              src={desktopScreenshot}
-              alt={t('home_page.desktop_app_screenshot')}
-              width={2408}
-              height={1644}
-              loading="lazy"
-              className="absolute inset-0 size-full object-contain"
-            />
-          </div>
-        </figure>
       </div>
     </section>
   )
