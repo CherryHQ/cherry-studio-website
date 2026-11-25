@@ -50,7 +50,7 @@ export default function DemoFrame({
             <button
               type="button"
               onClick={onReplay}
-              className="inline-flex cursor-pointer items-center gap-1 rounded-sm hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+              className="inline-flex shrink-0 cursor-pointer items-center gap-1 rounded-sm whitespace-nowrap hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
               <RotateCcw className="size-3" aria-hidden="true" />
               {t('demos.replay')}
             </button>

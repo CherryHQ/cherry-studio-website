@@ -57,7 +57,7 @@ export const chatDemo: Record<DemoLocale, ChatDemoCopy> = {
         toolRunning: 'Searching the web',
         toolDone: 'Read 4 sources',
         sources: ['japan-guide.com', 'kyoto.travel', 'booking.com', 'reddit.com'],
-        model: { name: 'Claude Sonnet 4.5', provider: 'anthropic' },
+        model: { name: 'Claude Sonnet 4.6', provider: 'anthropic' },
         prompt: 'Plan 3 days in Kyoto in early December, under $600',
         thinking: [
           'They want a budget plan for Kyoto in early December.',
@@ -75,7 +75,7 @@ export const chatDemo: Record<DemoLocale, ChatDemoCopy> = {
         toolRunning: 'Searching “Product specs”',
         toolDone: 'Recalled 5 passages',
         sources: ['spec-v3.pdf', 'roadmap.md', 'meeting-0912.docx'],
-        model: { name: 'GPT-5.1', provider: 'openai' },
+        model: { name: 'GPT-5.6', provider: 'openai' },
         prompt: 'What changed in the Q3 product spec?',
         thinking: [
           'Compare the v3 spec against the roadmap notes.',
@@ -93,7 +93,7 @@ export const chatDemo: Record<DemoLocale, ChatDemoCopy> = {
         toolRunning: 'Calling search_files',
         toolDone: 'Scanned 214 files',
         sources: ['src/api', 'src/ui', 'scripts'],
-        model: { name: 'Gemini 2.5 Pro', provider: 'google' },
+        model: { name: 'Gemini 3.5 Flash', provider: 'google' },
         prompt: 'Find TODOs in my project and group them by owner',
         thinking: [
           'Search the repo for TODO and FIXME markers.',
@@ -131,7 +131,7 @@ export const chatDemo: Record<DemoLocale, ChatDemoCopy> = {
         toolRunning: '正在搜索网页',
         toolDone: '阅读了 4 个来源',
         sources: ['japan-guide.com', 'kyoto.travel', 'ctrip.com', 'xiaohongshu.com'],
-        model: { name: 'DeepSeek V3.2', provider: 'deepseek' },
+        model: { name: 'DeepSeek V4 Pro', provider: 'deepseek' },
         prompt: '12 月初去京都玩 3 天，预算 4000 元以内，帮我排个行程',
         thinking: [
           '用户要一份 12 月初京都 3 天的省钱行程。',
@@ -149,7 +149,7 @@ export const chatDemo: Record<DemoLocale, ChatDemoCopy> = {
         toolRunning: '正在检索「产品需求」',
         toolDone: '召回 5 个片段',
         sources: ['需求文档-v3.pdf', 'roadmap.md', '0912 会议纪要.docx'],
-        model: { name: 'Qwen3 Max', provider: 'qwen' },
+        model: { name: 'Qwen3.7 Max', provider: 'qwen' },
         prompt: 'Q3 需求文档有哪些变化？',
         thinking: ['对比 v3 需求文档和路线图。', '找出 9 月会议上的决定。', '只保留影响发布时间的变化。'],
         answer:
@@ -163,7 +163,7 @@ export const chatDemo: Record<DemoLocale, ChatDemoCopy> = {
         toolRunning: '正在调用 search_files',
         toolDone: '扫描了 214 个文件',
         sources: ['src/api', 'src/ui', 'scripts'],
-        model: { name: 'Kimi K2', provider: 'moonshot' },
+        model: { name: 'Kimi K3', provider: 'moonshot' },
         prompt: '找出项目里的 TODO，按负责人分组',
         thinking: ['在仓库里搜索 TODO 和 FIXME 标记。', '读取每个标记旁的负责人。', '先按负责人分组，再按目录分组。'],
         answer:
