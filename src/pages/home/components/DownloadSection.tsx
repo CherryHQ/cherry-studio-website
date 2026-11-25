@@ -3,8 +3,8 @@ import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
 import { Button } from '@/components/ui/button'
+import SectionBackdrop from '@/components/website/SectionBackdrop'
 import { isMobileDevice } from '@/utils/systemDetection'
-import SectionBackdrop from './SectionBackdrop'
 
 export default function DownloadSection() {
   const { t } = useTranslation()

@@ -6,8 +6,8 @@ import flagshipModelDarkEn from '@/assets/images/screenshots/flagship-model-dark
 import flagshipModelDarkZh from '@/assets/images/screenshots/flagship-model-dark-zh.webp'
 import flagshipModelLightEn from '@/assets/images/screenshots/flagship-model-light-en.webp'
 import flagshipModelLightZh from '@/assets/images/screenshots/flagship-model-light-zh.webp'
+import SectionBackdrop from '@/components/website/SectionBackdrop'
 import { cn } from '@/lib/utils'
-import SectionBackdrop from './SectionBackdrop'
 
 interface FlagshipModel {
   nameKey: string

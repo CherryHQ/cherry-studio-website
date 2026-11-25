@@ -2,8 +2,8 @@ import { ArrowRight, Minus, Plus } from 'lucide-react'
 import { type FC, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import SectionBackdrop from '@/components/website/SectionBackdrop'
 import { getDocsUrl } from '@/utils/urls'
-import SectionBackdrop from './SectionBackdrop'
 
 interface FAQItem {
   question: string

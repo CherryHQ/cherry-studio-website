@@ -8,7 +8,32 @@ const treatments = {
     'right-auto left-0 w-[45%] bg-[repeating-linear-gradient(to_bottom,transparent_0_13px,var(--border)_13px_14px)] [mask-image:radial-gradient(ellipse_at_0%_86%,black_3%,transparent_59%)]'
 } as const
 
-export default function SectionBackdrop({ variant }: { variant: keyof typeof treatments | 'modules' }) {
+export type SectionBackdropVariant = keyof typeof treatments | 'modules' | 'glow' | 'grid-glow' | 'beams'
+
+export default function SectionBackdrop({ variant }: { variant: SectionBackdropVariant }) {
+  if (variant === 'glow') {
+    return <div aria-hidden="true" className="glow-top pointer-events-none absolute inset-x-0 top-0 -z-10 h-[640px]" />
+  }
+
+  if (variant === 'grid-glow') {
+    return (
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+        <div className="glow-top absolute inset-x-0 top-0 h-[720px]" />
+        <div className="bg-grid absolute inset-0 [mask-image:radial-gradient(ellipse_70%_55%_at_50%_0%,black,transparent_75%)]" />
+      </div>
+    )
+  }
+
+  if (variant === 'beams') {
+    return (
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10 overflow-hidden [mask-image:radial-gradient(ellipse_60%_60%_at_50%_40%,black,transparent_80%)]">
+        <div className="absolute top-1/2 left-1/2 size-[1200px] -translate-1/2 bg-[conic-gradient(from_200deg_at_50%_50%,transparent_0deg,var(--glow)_40deg,transparent_80deg,transparent_180deg,var(--glow-violet)_220deg,transparent_260deg)] opacity-70 blur-2xl" />
+      </div>
+    )
+  }
+
   if (variant === 'modules') {
     return (
       <div

@@ -6,8 +6,8 @@ import chatDarkEn from '@/assets/images/screenshots/product-features-0819/chat-d
 import chatDarkZh from '@/assets/images/screenshots/product-features-0819/chat-dark-zh.webp'
 import chatLightEn from '@/assets/images/screenshots/product-features-0819/chat-light-en.webp'
 import chatLightZh from '@/assets/images/screenshots/product-features-0819/chat-light-zh.webp'
+import SectionBackdrop from '@/components/website/SectionBackdrop'
 import { useTheme } from '@/hooks/useTheme'
-import SectionBackdrop from './SectionBackdrop'
 
 const platforms = [
   { id: 'macos', icon: Apple },

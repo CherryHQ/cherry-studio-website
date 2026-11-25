@@ -1016,5 +1016,9 @@
       "email": "发送邮件给支持团队",
       "faq": "查看订阅 FAQ"
     }
+  },
+  "demos": {
+    "simulated": "可交互演示 · 按 Cherry Studio 应用的真实交互重现",
+    "replay": "重播"
   }
 }

@@ -2,9 +2,9 @@ import { ArrowUpRight } from 'lucide-react'
 import type { FC, ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import SectionBackdrop from '@/components/website/SectionBackdrop'
 import { type TestimonialPlatform, testimonials } from '@/content/testimonials'
 import { isEnglishSite } from '@/utils/urls'
-import SectionBackdrop from './SectionBackdrop'
 
 type SourcePlatform = TestimonialPlatform | 'github'
 

@@ -2,8 +2,8 @@ import { ArrowRight, Cloud, Image, Languages, MessageSquare, Shield, Users } fro
 import type { FC } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 
+import SectionBackdrop from '@/components/website/SectionBackdrop'
 import { getDocsUrl } from '@/utils/urls'
-import SectionBackdrop from './SectionBackdrop'
 
 interface Feature {
   icon: React.ElementType

@@ -2,7 +2,7 @@ import { Bot, Boxes, FileText, Library, Sparkles, WandSparkles } from 'lucide-re
 import type { FC } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 
-import SectionBackdrop from './SectionBackdrop'
+import SectionBackdrop from '@/components/website/SectionBackdrop'
 
 const whyItems = [
   { key: 'highlights.agents', icon: Bot },

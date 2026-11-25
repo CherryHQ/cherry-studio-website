@@ -3,8 +3,8 @@ import { type FC, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import GitHubUserCard from '@/components/GitHubUserCard'
+import SectionBackdrop from '@/components/website/SectionBackdrop'
 import { isEnglishSite } from '@/utils/urls'
-import SectionBackdrop from './SectionBackdrop'
 
 interface Contributor {
   id: number

@@ -2,7 +2,7 @@ import { Bot, FileText, Palette, Puzzle, Sparkles, Zap } from 'lucide-react'
 import type { FC } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 
-import SectionBackdrop from './SectionBackdrop'
+import SectionBackdrop from '@/components/website/SectionBackdrop'
 
 const highlights = [
   { key: 'highlights.multi_model', icon: Bot },

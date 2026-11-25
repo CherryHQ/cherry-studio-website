@@ -6,8 +6,8 @@ import teamAvatar1 from '@/assets/images/team-avatars/avatar-1-v2.png'
 import teamAvatar2 from '@/assets/images/team-avatars/avatar-2-v2.png'
 import teamAvatar3 from '@/assets/images/team-avatars/avatar-3-v2.png'
 import teamAvatar4 from '@/assets/images/team-avatars/avatar-4-v2.png'
+import SectionBackdrop from '@/components/website/SectionBackdrop'
 import { goToEnterprise } from '@/utils/analytics'
-import SectionBackdrop from './SectionBackdrop'
 
 const capabilities = [
   {

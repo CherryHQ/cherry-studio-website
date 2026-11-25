@@ -11,7 +11,7 @@ import pIcon from '@/assets/images/icons/p.svg'
 import tgIcon from '@/assets/images/icons/tg.svg'
 import xIcon from '@/assets/images/icons/x.svg'
 import { fetchChannelData, getRandomWechatQRCode } from '@/assets/js/data'
-import SectionBackdrop from './SectionBackdrop'
+import SectionBackdrop from '@/components/website/SectionBackdrop'
 
 const xLink = { href: 'https://x.com/CherryStudioHQ', icon: xIcon, label: 'X' }
 const enSocialLinks = [
