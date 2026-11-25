@@ -9,7 +9,7 @@ import ChatStreamDemo from '@/components/demos/chat/ChatStreamDemo'
 import MobileDownloadButton from '@/components/website/MobileDownloadButton'
 import SectionBackdrop from '@/components/website/SectionBackdrop'
 import { useVersionData } from '@/hooks/useVersionData'
-import { spring } from '@/lib/motion'
+import { lineRise, spring } from '@/lib/motion'
 import { isMobileDevice } from '@/utils/systemDetection'
 import { getDocsUrl, isEnglishSite } from '@/utils/urls'
 
@@ -36,6 +36,10 @@ export default function HeroSection() {
   return (
     <section className="relative isolate overflow-hidden bg-background text-foreground">
       <SectionBackdrop variant="grid-glow" />
+      <div
+        aria-hidden="true"
+        className="bg-grain pointer-events-none absolute inset-0 -z-10 opacity-[0.05] dark:opacity-[0.07]"
+      />
       <div className="site-container flex flex-col items-center pt-14 pb-12 text-center sm:pt-20 lg:pt-24">
         <Link
           to="/download"
@@ -50,10 +54,14 @@ export default function HeroSection() {
         </Link>
 
         <h1 className="max-w-4xl text-5xl font-semibold tracking-[-0.035em] text-balance sm:text-6xl lg:text-7xl zh:tracking-normal">
-          <span className="text-gradient block pb-1">{t('home_page.title_first')}</span>
-          <span className="block bg-linear-to-r from-primary via-[color-mix(in_oklab,var(--color-primary)_60%,var(--color-violet))] to-violet bg-clip-text pb-2 text-transparent">
+          <m.span {...lineRise(0)} className="text-gradient block pb-1">
+            {t('home_page.title_first')}
+          </m.span>
+          <m.span
+            {...lineRise(1)}
+            className="block bg-linear-to-r from-primary via-[color-mix(in_oklab,var(--color-primary)_60%,var(--color-violet))] to-violet bg-clip-text pb-2 text-transparent">
             {t('home_page.title_second')}
-          </span>
+          </m.span>
         </h1>
         <p className="mt-6 max-w-2xl text-pretty text-base text-muted-foreground sm:text-lg zh:leading-[1.8]">
           {t('home_page.intro')}
