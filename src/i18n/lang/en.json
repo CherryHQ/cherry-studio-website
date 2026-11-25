@@ -30,7 +30,7 @@
     "articles": "Articles from Cherry Studio: practical reading on choosing and using AI tools, so AI actually helps with your everyday work.",
     "use_case_ai_ppt": "Generate PowerPoint slides with a Cherry Studio agent: drop your files in a folder, describe the deck in one sentence, and get an editable .pptx. Includes prompt templates in four styles.",
     "home": "Cherry Studio is an open-source, free, and powerful AI desktop client. It includes AI agents, AI chat, AI image generation, knowledge base, and more, supports all major LLMs, runs on Windows/macOS/Linux, stores data locally, and is built for heavy AI users.",
-    "download": "Download Cherry Studio AI client supporting Windows, macOS, and Linux platforms. Integrates 100+ AI models, completely free and open source.",
+    "download": "Download Cherry Studio AI client supporting Windows, macOS, and Linux platforms. Integrates {{models}} AI models from {{providers}} providers, completely free and open source.",
     "mobile": "Cherry Studio Mobile for Android, iPhone, and iPad brings models, agents, skills, connected tools, files, and image creation together. Connect desktop agents, remote servers, and organization spaces on the go.",
     "mobile_download": "Download Cherry Studio Mobile from Google Play or the App Store for Android, iPhone, and iPad. APK and TestFlight beta downloads are also available.",
     "theme": "Discover and share beautiful Cherry Studio themes to personalize your AI assistant interface. Supports both light and dark mode themes.",
@@ -238,8 +238,8 @@
       "description": "Whether it's the translation page or the conversation bar, Cherry Studio can quickly translate the content you enter."
     },
     "assistants": {
-      "title": "1000+ Built-in Assistants",
-      "description": "Cherry Studio has built-in thousands of assistants in various categories, making you more efficient when using AI."
+      "title": "{{assistants}} Built-in Assistants",
+      "description": "Cherry Studio has {{assistants}} built-in assistants in various categories, making you more efficient when using AI."
     },
     "knowledge_base": {
       "title": "Multi-source Knowledge Base",
@@ -411,7 +411,7 @@
   },
   "providers": {
     "title": "One Hub, All AI Models",
-    "subtitle": "Seamlessly integrate 300+ leading AI models. Switch freely, use effortlessly."
+    "subtitle": "Seamlessly integrate {{models}} leading AI models from {{providers}} providers. Switch freely, use effortlessly."
   },
   "download_page": {
     "click_download": "Click to Download",
@@ -491,7 +491,7 @@
     },
     "multi_model": {
       "title": "Multi-Model Freedom",
-      "description": "Switch between <highlight>300+ models from 50+ providers</highlight> — OpenAI, Anthropic, Google, DeepSeek and more — or run locally with Ollama and LM Studio, on your own API keys."
+      "description": "Switch between <highlight>{{models}} models from {{providers}} providers</highlight> — OpenAI, Anthropic, Google, DeepSeek and more — or run locally with Ollama and LM Studio, on your own API keys."
     },
     "knowledge": {
       "title": "Your Own Knowledge Base",
@@ -502,7 +502,7 @@
       "description": "Create and edit images across <highlight>multiple drawing models</highlight>, without leaving the app or paying for another subscription."
     },
     "assistants": {
-      "title": "1000+ Smart Assistants",
+      "title": "{{assistants}} Smart Assistants",
       "description": "Ready-made assistants for writing, coding, learning, translation and marketing. <highlight>No prompt engineering needed</highlight> — pick one and start."
     },
     "documents": {
@@ -512,7 +512,10 @@
   },
   "testimonials": {
     "title": "Loved by the community",
-    "view_on": "Read on {{platform}}"
+    "view_on": "Read on {{platform}}",
+    "eyebrow": "Community",
+    "subtitle": "Unedited reviews from Product Hunt, AlternativeTo, Hacker News and Medium. Each card links to the original.",
+    "source_hint": "Read more reviews on"
   },
   "home_page": {
     "title_first": "Your models.",
@@ -554,7 +557,7 @@
     "items": [
       {
         "question": "What is Cherry Studio?",
-        "answer": "Cherry Studio is a desktop AI client for macOS, Windows and Linux. It brings 300+ models from 50+ providers into one app, alongside agents, a knowledge base, image generation and translation."
+        "answer": "Cherry Studio is a desktop AI client for macOS, Windows and Linux. It brings {{models}} models from {{providers}} providers into one app, alongside agents, a knowledge base, image generation and translation."
       },
       {
         "question": "Does Cherry Studio support MCP (Model Context Protocol)?",

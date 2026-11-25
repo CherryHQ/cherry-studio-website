@@ -30,13 +30,13 @@
     "articles": "Cherry Studio 的文章：怎么选、怎么用 AI 工具的实用内容，帮你把 AI 真正用到日常工作里。",
     "use_case_ai_ppt": "用 Cherry Studio 的智能体生成 PPT：把资料放进文件夹，一句话说清需求，读完你的文件后做出可直接编辑的 .pptx，附四种风格的提示词模板。",
     "home": "Cherry Studio AI桌面客户端，开源、免费、且功能强大。AI agent、AI 对话、AI绘图、知识库等功能齐全，支持所有主流大模型，支持Windows/macOS/Linux，支持数据本地存储，是AI深度使用者的首选",
-    "download": "下载 Cherry Studio AI 客户端，支持 Windows、macOS、Linux 平台。集成 100+ AI 模型，完全免费开源。",
+    "download": "下载 Cherry Studio AI 客户端，支持 Windows、macOS、Linux 平台。集成 {{providers}} 家服务商的 {{models}} AI 模型，完全免费开源。",
     "mobile": "Cherry Studio 移动版支持 Android、iPhone 与 iPad。接入模型，使用智能体、技能、插件、文件创作与绘图，也可连接电脑智能体、远程服务器和组织空间。",
     "mobile_download": "下载 Cherry Studio 移动版：iPhone 与 iPad 可从国区 App Store 安装，Android 推荐下载 APK，也保留 Google Play 与 TestFlight 测试版入口。",
     "theme": "发现和分享美丽的 Cherry Studio 主题，个性化你的 AI 助手界面。支持浅色和深色模式主题。",
     "careers": "加入 Cherry Studio，探索研发、设计、企业 AI 交付、运营及实习岗位，一起打造下一代 AI 产品。",
-    "download_v1": "下载 Cherry Studio AI 客户端，支持 Windows、macOS、Linux 平台。集成 100+ AI 模型，完全免费开源。",
-    "download_v2": "下载 Cherry Studio AI 客户端，支持 Windows、macOS、Linux 平台。集成 100+ AI 模型，完全免费开源。",
+    "download_v1": "下载 Cherry Studio AI 客户端，支持 Windows、macOS、Linux 平台。集成 {{providers}} 家服务商的 {{models}} AI 模型，完全免费开源。",
+    "download_v2": "下载 Cherry Studio AI 客户端，支持 Windows、macOS、Linux 平台。集成 {{providers}} 家服务商的 {{models}} AI 模型，完全免费开源。",
     "flash": "Flash 用一份每月 $8 的订阅，把 DeepSeek V4.1、Qwen 3.8 和 GLM 5.3 放在一起。不用再单独注册各家服务商，随时可以取消。",
     "flash_usage": "Cherry Flash 订阅包含什么：套餐内的模型、每百万 token 单价、每月额度、峰谷时段与隐私说明。",
     "not_found": "你访问的页面不存在。",
@@ -403,7 +403,7 @@
   },
   "providers": {
     "title": "一个入口，连接所有 AI",
-    "subtitle": "无缝集成 300+ 主流大模型，自由切换，随心所用"
+    "subtitle": "无缝集成 {{providers}} 家服务商的 {{models}} 主流大模型，自由切换，随心所用"
   },
   "download_page": {
     "click_download": "点此下载",
@@ -477,11 +477,11 @@
     "subtitle": "一站式 AI 助手平台，让 AI 触手可及",
     "multi_model": {
       "title": "多模型自由切换",
-      "description": "支持 <highlight>50+ AI 服务商</highlight>，包括 DeepSeek、Kimi、通义千问、智谱 GLM 等国产模型，并支持本地模型部署，<highlight>一个客户端满足所有需求</highlight>。"
+      "description": "支持 <highlight>{{providers}} 家 AI 服务商</highlight>，包括 DeepSeek、Kimi、通义千问、智谱 GLM 等国产模型，并支持本地模型部署，<highlight>一个客户端满足所有需求</highlight>。"
     },
     "assistants": {
-      "title": "300+ 智能助手",
-      "description": "内置 <highlight>300+ 预配置助手</highlight>，覆盖写作、编程、学习、翻译、营销等场景，<highlight>无需编写提示词</highlight>，开箱即用。"
+      "title": "{{assistants}} 个智能助手",
+      "description": "内置 <highlight>{{assistants}} 个预配置助手</highlight>，覆盖写作、编程、学习、翻译、营销等场景，<highlight>无需编写提示词</highlight>，开箱即用。"
     },
     "documents": {
       "title": "智能文档处理",
@@ -508,8 +508,10 @@
   },
   "testimonials": {
     "title": "用户为何喜欢 Cherry Studio",
-    "subtitle": "听听社区用户对 Cherry Studio 的真实评价",
-    "source_hint": "来自各平台的真实评价"
+    "subtitle": "来自 Product Hunt、AlternativeTo、Hacker News 和 Medium 的真实评价，点击卡片可查看原文。",
+    "source_hint": "在这些平台查看更多评价",
+    "eyebrow": "社区评价",
+    "view_on": "在 {{platform}} 查看"
   },
   "home_page": {
     "title_first": "你的模型。",
@@ -552,7 +554,7 @@
     "items": [
       {
         "question": "Cherry Studio 是什么？",
-        "answer": "Cherry Studio 是一款跨平台的 AI 对话客户端，支持 Windows、macOS 和 Linux。它集成了 300+ 主流 AI 模型，包括 DeepSeek、Kimi、通义千问、智谱 GLM 等国产模型，也支持本地模型部署。除了 AI 助手之外，Cherry Studio 还具备强大的智能体能力——自主思考、规划和行动的 AI。给智能体一个目标，它会自动推理问题、拆解步骤、调用工具并独立执行，同时您始终保持控制权。"
+        "answer": "Cherry Studio 是一款跨平台的 AI 对话客户端，支持 Windows、macOS 和 Linux。它集成了 {{providers}} 家服务商的 {{models}} 主流 AI 模型，包括 DeepSeek、Kimi、通义千问、智谱 GLM 等国产模型，也支持本地模型部署。除了 AI 助手之外，Cherry Studio 还具备强大的智能体能力——自主思考、规划和行动的 AI。给智能体一个目标，它会自动推理问题、拆解步骤、调用工具并独立执行，同时您始终保持控制权。"
       },
       {
         "question": "Cherry Studio 是免费的吗？",
@@ -564,7 +566,7 @@
       },
       {
         "question": "Cherry Studio 支持哪些 AI 模型？",
-        "answer": "Cherry Studio 支持 50+ AI 服务商，包括 DeepSeek、Kimi、通义千问、智谱 GLM、豆包、MiniMax 等众多国产模型。同时支持本地模型部署，实现完全离线运行。"
+        "answer": "Cherry Studio 支持 {{providers}} 家 AI 服务商，包括 DeepSeek、Kimi、通义千问、智谱 GLM、豆包、MiniMax 等众多国产模型。同时支持本地模型部署，实现完全离线运行。"
       },
       {
         "question": "知识库功能是什么？",

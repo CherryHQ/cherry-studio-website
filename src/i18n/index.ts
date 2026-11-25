@@ -1,6 +1,7 @@
 import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
 
+import productStats from '@/content/product-stats.json'
 import { getDomainDefaultLanguage, isLanguageRedirectDomain, redirectToLanguageDomain } from '@/utils/urls'
 import en from './lang/en.json'
 import zh from './lang/zh.json'
@@ -80,7 +81,8 @@ i18n.use(initReactI18next).init({
   fallbackLng: domainDefaultLanguage ?? 'zh-CN',
   lng: initialLanguage,
   interpolation: {
-    escapeValue: false
+    escapeValue: false,
+    defaultVariables: productStats.labels
   }
 })
 
