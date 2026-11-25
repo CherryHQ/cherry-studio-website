@@ -221,7 +221,7 @@ export const PlatformDownloadPrimary: FC<PlatformDownloadPrimaryProps> = ({
           trackDownload({ platform, packageName: recommendedItem.name, trigger: 'button' })
           window.location.href = recommendedItem.url
         }}
-        className="flex h-auto min-h-12 w-full gap-2 whitespace-normal rounded-md px-4 py-3 text-sm sm:w-fit sm:px-6">
+        className="flex h-auto min-h-12 w-full gap-2 whitespace-normal rounded-full px-4 py-3 text-sm shadow-[0_8px_32px_-8px_var(--color-primary)] sm:w-fit sm:px-6">
         <Download className="h-4 w-4" />
         {t('download_page.download_now', { package: recommendedItem.desc })}
       </Button>

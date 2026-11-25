@@ -57,9 +57,9 @@ const PlatformTabs: FC<PlatformTabsProps> = ({
               aria-pressed={isActive}
               onClick={() => onPlatformChange(id)}
               className={cn(
-                'flex min-w-0 cursor-pointer items-center justify-center gap-1.5 rounded-md px-1 py-3 text-xs font-semibold transition-colors duration-200 sm:gap-2 sm:px-2 sm:text-sm',
+                'flex min-w-0 cursor-pointer items-center justify-center gap-1.5 rounded-lg px-1 py-3 text-xs font-semibold transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-primary sm:gap-2 sm:px-2 sm:text-sm',
                 isActive
-                  ? 'bg-primary/10 text-primary ring-1 ring-primary/25'
+                  ? 'bg-primary/10 text-primary ring-1 ring-primary/30 shadow-[0_0_24px_-8px_var(--color-primary)]'
                   : 'text-muted-foreground hover:bg-secondary hover:text-foreground'
               )}>
               <PlatformIcon className="hidden size-4 shrink-0 min-[375px]:block" aria-hidden="true" />

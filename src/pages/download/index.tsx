@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { useSearchParams } from 'react-router-dom'
 
 import Footer from '@/components/website/Footer'
+import SectionBackdrop from '@/components/website/SectionBackdrop'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { useVersionData } from '@/hooks/useVersionData'
 import { type DetectedArch, detectPlatform, detectSystem, isMobileDevice } from '@/utils/systemDetection'
@@ -137,18 +138,24 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
-      <main className="site-page-top flex-1 pb-16 sm:pb-24">
+      <main className="site-page-top relative isolate flex-1 overflow-hidden pb-16 sm:pb-24">
+        <SectionBackdrop variant="grid-glow" />
         <div className="site-container site-split">
           <div className="min-w-0">
             <p className="mb-4 font-mono text-xs tracking-widest text-primary uppercase">{t('download')}</p>
-            <h1 className="text-balance text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
+            <h1 className="text-gradient text-4xl font-semibold tracking-[-0.03em] text-balance sm:text-6xl zh:tracking-normal">
               {showMobile
                 ? t('mobile_download.title')
                 : isMobile
                   ? t('mobile_download.desktop_title')
                   : 'Cherry Studio'}
               {!showMobile && versionData && (
-                <span className="mt-2 block font-mono text-xl font-medium text-primary">{versionData.version}</span>
+                <span className="mt-4 flex">
+                  <span className="glass-card inline-flex items-center gap-2 rounded-full px-3 py-1 font-mono text-sm font-medium tracking-normal text-primary [-webkit-text-fill-color:currentColor]">
+                    <span className="size-1.5 rounded-full bg-primary shadow-[0_0_8px_var(--color-primary)]" />
+                    {versionData.version}
+                  </span>
+                </span>
               )}
             </h1>
             {showMobile ? (
@@ -169,8 +176,12 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
             )}
           </div>
 
-          <div className="min-w-0">
-            <div className="overflow-hidden rounded-lg border border-border bg-card text-left">
+          <div className="relative min-w-0">
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-x-[10%] top-10 -z-10 h-64 rounded-full bg-primary/20 blur-[110px]"
+            />
+            <div className="glass-card overflow-hidden rounded-2xl text-left">
               <PlatformTabs
                 activePlatform={displayPlatform}
                 detectedPlatform={detectedPlatform}
@@ -213,7 +224,7 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
                   href={releaseHistoryUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1.5 text-sm underline-offset-4 transition-colors hover:underline">
+                  className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1 text-sm text-muted-foreground transition-colors hover:border-hairline-strong hover:text-foreground focus-visible:outline-2 focus-visible:outline-primary">
                   {t('download_page.release_history')}
                   <ExternalLink className="h-3.5 w-3.5" />
                 </a>
@@ -222,7 +233,7 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
                     href="https://discord.gg/wez8HtpxqQ"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1.5 text-sm underline-offset-4 transition-colors hover:underline">
+                    className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1 text-sm text-muted-foreground transition-colors hover:border-hairline-strong hover:text-foreground focus-visible:outline-2 focus-visible:outline-primary">
                     {t('download_page.join_discord')}
                     <ExternalLink className="h-3.5 w-3.5" />
                   </a>
@@ -232,7 +243,7 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   data-ph-no-autocapture={!isV1 ? '' : undefined}
-                  className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1.5 text-sm underline-offset-4 transition-colors hover:underline">
+                  className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1 text-sm text-muted-foreground transition-colors hover:border-hairline-strong hover:text-foreground focus-visible:outline-2 focus-visible:outline-primary">
                   {t('download_page.cloud_drive_download')}
                   <ExternalLink className="h-3.5 w-3.5" />
                 </a>
