@@ -1,6 +1,10 @@
 :root {
   --site-layout-width: 85rem;
+  --site-header-height: 60px;
   /* Cherry Studio desktop's default primary color, with a stronger ink for light surfaces. */
   --cherry-green: #00b96b;
   --cherry-green-ink: #007346;
+  /* Desktop brand-500 and the hue-300 end of the reasoning-effort peak gradient. */
+  --cherry-green-glow: oklch(0.77 0.208 146);
+  --cherry-violet: oklch(0.77 0.208 300);
 }
