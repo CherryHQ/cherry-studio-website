@@ -135,7 +135,7 @@ export function SiteHeader({
 
   return (
     <>
-      <header className="site-header fixed inset-x-0 top-0 z-50 flex h-[60px] items-center border-b border-border bg-background/95 text-foreground antialiased backdrop-blur-md">
+      <header className="site-header fixed inset-x-0 top-0 z-50 flex h-[60px] items-center border-b border-border bg-background/70 text-foreground antialiased backdrop-blur-xl backdrop-saturate-150">
         <div className="mx-auto flex h-full w-full max-w-(--site-layout-width) items-center justify-between gap-3 px-6 lg:px-8">
           <div className="flex h-full min-w-0 items-center gap-7">
             {renderLink({
@@ -160,9 +160,10 @@ export function SiteHeader({
                     link(
                       item,
                       cn(
-                        'flex h-full items-center gap-1.5 border-b-2 border-transparent px-2 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-primary',
+                        'relative flex h-full items-center gap-1.5 px-2.5 text-sm font-medium transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-primary',
+                        // Active link: a hairline of primary light along the header's bottom edge.
                         item.active
-                          ? 'border-foreground text-foreground'
+                          ? 'text-foreground after:absolute after:inset-x-2.5 after:-bottom-px after:h-px after:bg-primary after:shadow-[0_0_12px_1px_var(--color-primary)]'
                           : 'text-muted-foreground hover:text-foreground'
                       )
                     )
@@ -177,7 +178,7 @@ export function SiteHeader({
               target="_blank"
               rel="noopener noreferrer"
               title="GitHub"
-              className="hidden h-8 shrink-0 items-center justify-center gap-2 rounded-md px-1 text-sm font-medium text-muted-foreground transition-colors duration-300 hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:flex">
+              className="hidden h-8 shrink-0 items-center justify-center gap-2 rounded-full border border-border px-3 text-sm font-medium text-muted-foreground transition-colors duration-300 hover:bg-accent hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:flex">
               <img src={githubIcon} alt="GitHub" className="size-4 dark:invert" />
               <span className="flex w-[3.25rem] shrink-0 items-center gap-1">
                 <Star aria-hidden="true" className="size-3.5 shrink-0" />
@@ -189,7 +190,7 @@ export function SiteHeader({
               renderLink({
                 href: downloadAction.href,
                 className:
-                  'inline-flex h-8 items-center whitespace-nowrap rounded-md bg-foreground px-2 text-xs sm:px-3 sm:text-sm font-semibold text-background transition-colors duration-300 hover:bg-foreground/85 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary active:translate-y-px',
+                  'inline-flex h-8 items-center whitespace-nowrap rounded-full bg-foreground px-3 text-xs sm:px-4 sm:text-sm font-semibold text-background shadow-[0_0_0_1px_var(--color-border),0_8px_24px_-8px_var(--color-primary)] transition-[background-color,transform] duration-200 hover:bg-foreground/85 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary active:scale-[0.97]',
                 children: downloadAction.label
               })}
             <button

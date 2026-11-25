@@ -1,4 +1,4 @@
-import { motion, useReducedMotion } from 'framer-motion'
+import { m, useReducedMotion } from 'framer-motion'
 import { Check, Copy, Download, FileText, Layers, MessageSquare, Presentation, RotateCcw, Sparkles } from 'lucide-react'
 import { type FC, type KeyboardEvent, type MouseEvent, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -111,34 +111,34 @@ const GenerationDemo: FC<{ template: PptTemplate; copy: AiPptCopy; locale: UseCa
 
       <div className="flex min-h-[420px] flex-col gap-3 p-4 sm:p-5">
         {phase >= 1 && (
-          <motion.div
+          <m.div
             initial={reduce ? false : { opacity: 0, y: 12, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={spring}
             className="bg-primary text-primary-foreground ml-auto max-w-[85%] rounded-2xl rounded-br-sm px-3.5 py-2 text-sm">
             {template.short}
-          </motion.div>
+          </m.div>
         )}
 
         {phase >= 2 && (
-          <motion.div initial={reduce ? false : { opacity: 0 }} animate={{ opacity: 1 }} className="space-y-2">
+          <m.div initial={reduce ? false : { opacity: 0 }} animate={{ opacity: 1 }} className="space-y-2">
             <p className="text-muted-foreground flex items-center gap-1.5 text-xs">
               <CherryDot className="size-4" />
               {t.readFiles(template.files.length)}
             </p>
             <div className="flex flex-wrap gap-1.5">
               {template.files.map((file, index) => (
-                <motion.span
+                <m.span
                   key={file}
                   initial={reduce ? false : { opacity: 0, y: 6 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: reduce ? 0 : index * 0.15 }}
                   className="border-border bg-muted/60 text-foreground/80 rounded-md border px-2 py-0.5 text-xs">
                   {file}
-                </motion.span>
+                </m.span>
               ))}
             </div>
-          </motion.div>
+          </m.div>
         )}
 
         {phase >= 2 && (
@@ -148,7 +148,7 @@ const GenerationDemo: FC<{ template: PptTemplate; copy: AiPptCopy; locale: UseCa
                 {t.generating}
                 <span className="inline-flex gap-0.5">
                   {[0, 1, 2].map((dot) => (
-                    <motion.span
+                    <m.span
                       key={dot}
                       className="bg-primary inline-block size-1 rounded-full"
                       animate={reduce ? undefined : { opacity: [0.2, 1, 0.2] }}
@@ -169,7 +169,7 @@ const GenerationDemo: FC<{ template: PptTemplate; copy: AiPptCopy; locale: UseCa
         <div className="relative mt-auto h-[210px]">
           {pages.map((page, index) =>
             phase >= 3 + index ? (
-              <motion.div
+              <m.div
                 key={`${template.id}-${page}`}
                 initial={reduce ? false : { opacity: 0, y: -90, rotate: index % 2 ? 8 : -8 }}
                 animate={{ opacity: 1, y: index * 12, x: index * 18, rotate: [-3, 2, -1][index] }}
@@ -177,12 +177,12 @@ const GenerationDemo: FC<{ template: PptTemplate; copy: AiPptCopy; locale: UseCa
                 className="absolute top-0 left-0 w-[68%] rounded-lg shadow-lg"
                 style={{ zIndex: index }}>
                 <SlideImage locale={locale} id={template.id} page={page} alt={t.pageAlt(template.label, page)} />
-              </motion.div>
+              </m.div>
             ) : null
           )}
 
           {phase >= FINAL_PHASE && (
-            <motion.div
+            <m.div
               initial={reduce ? false : { scale: 0, rotate: -12 }}
               animate={{ scale: 1, rotate: 0 }}
               transition={{ type: 'spring', stiffness: 380, damping: 12 }}
@@ -194,7 +194,7 @@ const GenerationDemo: FC<{ template: PptTemplate; copy: AiPptCopy; locale: UseCa
                 <span className="text-foreground block text-sm font-medium">{template.file}</span>
                 <span className="text-muted-foreground block text-xs">{t.fileNote}</span>
               </span>
-            </motion.div>
+            </m.div>
           )}
         </div>
       </div>
@@ -274,7 +274,7 @@ const FlipCard: FC<{
       onClick={onToggle}
       onKeyDown={onKeyDown}
       className="aspect-video w-full cursor-pointer [perspective:1200px] focus-visible:outline-2 focus-visible:outline-offset-4">
-      <motion.div
+      <m.div
         animate={{ rotateY: flipped ? 180 : 0 }}
         transition={reduce ? { duration: 0 } : { type: 'spring', stiffness: 200, damping: 22 }}
         className="relative size-full [transform-style:preserve-3d]">
@@ -290,7 +290,7 @@ const FlipCard: FC<{
         <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)]">
           <CardBack template={template} copy={copy} onUse={onUse} />
         </div>
-      </motion.div>
+      </m.div>
     </div>
   )
 }
@@ -319,7 +319,7 @@ const SlideDeck: FC<{ copy: AiPptCopy; locale: UseCaseLocale; onUse: (id: string
           const offset = index - (templates.length - 1) / 2
           const isFlipped = flipped === template.id
           return (
-            <motion.div
+            <m.div
               key={template.id}
               className="absolute top-6 left-1/2 -ml-[130px] w-[260px] text-[12px]"
               animate={{
@@ -341,7 +341,7 @@ const SlideDeck: FC<{ copy: AiPptCopy; locale: UseCaseLocale; onUse: (id: string
               />
               <p className="text-foreground mt-3 text-center text-sm font-medium">{template.label}</p>
               <p className="text-muted-foreground text-center text-xs">{template.style}</p>
-            </motion.div>
+            </m.div>
           )
         })}
       </section>
@@ -398,7 +398,7 @@ const Cherry: FC<{ ripe: boolean; delay: number; label: string }> = ({ ripe, del
         strokeLinecap="round"
       />
       <path d="M36 6 C41 1 49 2 52 7 C46 10 40 10 36 6 Z" fill="var(--primary)" />
-      <motion.circle
+      <m.circle
         cx="28"
         cy="40"
         r="18"
@@ -419,14 +419,14 @@ const CherrySteps: FC<{ steps: AiPptCopy['steps'] }> = ({ steps }) => {
   const reduce = useReducedMotion() ?? false
   const [ripe, setRipe] = useState(false)
   return (
-    <motion.div className="relative mt-12" onViewportEnter={() => setRipe(true)} viewport={{ once: true, amount: 0.4 }}>
+    <m.div className="relative mt-12" onViewportEnter={() => setRipe(true)} viewport={{ once: true, amount: 0.4 }}>
       {/* 连接三颗樱桃的枝条（桌面） */}
       <svg
         className="pointer-events-none absolute top-6 right-[16.66%] left-[16.66%] hidden h-[30px] md:block"
         viewBox="0 0 650 30"
         preserveAspectRatio="none"
         aria-hidden="true">
-        <motion.path
+        <m.path
           d="M0 15 C 80 0, 245 0, 325 15 S 570 30, 650 15"
           fill="none"
           stroke="var(--input)"
@@ -446,7 +446,7 @@ const CherrySteps: FC<{ steps: AiPptCopy['steps'] }> = ({ steps }) => {
           </li>
         ))}
       </ol>
-    </motion.div>
+    </m.div>
   )
 }
 
