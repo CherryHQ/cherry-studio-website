@@ -4,7 +4,7 @@ This page shows the top 30 models on the [Arena AI](https://arena.ai/leaderboard
 
 This is Arena AI's core text battle leaderboard, which estimates relative model strength from blind human-voted matchups.
 
-> **Data updated**: 2026-11-24 19:26:10 UTC / 2026-11-25 03:26:10 CST (Beijing time)
+> **Data updated**: 2026-11-25 18:38:03 UTC / 2026-11-26 02:38:03 CST (Beijing time)
 
 {% hint style="info" %}
 A leaderboard reflects one particular evaluation and the preferences of its voters, so a high rank does not mean a model will do better on your tasks. Weigh price, speed, context, tool calling, privacy and regional availability as well.
