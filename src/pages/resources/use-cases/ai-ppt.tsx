@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
 import Footer from '@/components/website/Footer'
+import SectionBackdrop from '@/components/website/SectionBackdrop'
 import { AI_PPT_COPY, type AiPptCopy, type PptTemplate, type UseCaseLocale } from '@/content/use-cases/ai-ppt'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { cn } from '@/lib/utils'
@@ -93,11 +94,11 @@ const GenerationDemo: FC<{ template: PptTemplate; copy: AiPptCopy; locale: UseCa
   const spring = { type: 'spring' as const, stiffness: 260, damping: 18 }
 
   return (
-    <div className="border-border bg-card relative overflow-hidden rounded-2xl border shadow-[0_30px_80px_-40px_rgb(220_38_38/0.45)]">
+    <div className="glass-card relative overflow-hidden rounded-2xl shadow-[0_30px_80px_-40px_var(--color-primary)]">
       <div className="border-border flex items-center gap-2 border-b px-4 py-3">
-        <span className="size-2.5 rounded-full bg-muted-foreground/35" />
-        <span className="size-2.5 rounded-full bg-muted-foreground/35" />
-        <span className="size-2.5 rounded-full bg-muted-foreground/35" />
+        <span className="size-2.5 rounded-full bg-[#ff5f57]/80" />
+        <span className="size-2.5 rounded-full bg-[#febc2e]/80" />
+        <span className="size-2.5 rounded-full bg-[#28c840]/80" />
         <span className="text-muted-foreground ml-2 text-xs">{t.window}</span>
         <button
           type="button"
@@ -483,7 +484,8 @@ export default function AiPptUseCasePage() {
     <div className="bg-background min-h-screen overflow-x-hidden">
       <main>
         {/* 1. 首屏：左边提示词，右边生成过程 */}
-        <section className="relative">
+        <section className="relative isolate">
+          <SectionBackdrop variant="grid-glow" />
           <div className="site-container site-page-top site-split relative pb-12 sm:pb-16 lg:items-center">
             <div>
               <nav aria-label={copy.breadcrumb.label} className="text-muted-foreground text-sm">
@@ -493,7 +495,7 @@ export default function AiPptUseCasePage() {
                 <span className="mx-2">/</span>
                 <span>{copy.breadcrumb.current}</span>
               </nav>
-              <h1 className="text-foreground mt-5 text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
+              <h1 className="text-gradient mt-5 text-4xl font-semibold tracking-[-0.03em] text-balance sm:text-6xl zh:tracking-normal">
                 {copy.h1Lead} <span className="text-primary">PPT</span>
               </h1>
               <p className="text-muted-foreground mt-5 max-w-xl text-lg leading-8 text-pretty">{copy.intro}</p>
