@@ -416,10 +416,19 @@ export default function ChatStreamDemo() {
 
   return (
     <div ref={ref} role="region" aria-label={copy.window}>
-      <DemoFrame title={copy.window} onReplay={() => choose(scenarioIndex)} bodyClassName="h-[480px] sm:h-[500px]">
+      <DemoFrame
+        chromeless
+        title={copy.window}
+        onReplay={() => choose(scenarioIndex)}
+        bodyClassName="h-[480px] sm:h-[500px]">
         <div className="flex h-full bg-sidebar">
           <aside className="hidden w-[50px] shrink-0 flex-col items-center sm:flex" aria-hidden="true">
-            <div className="h-11 shrink-0" />
+            {/* macOS draws the window controls inside the rail's top band. */}
+            <div className="flex h-11 shrink-0 items-center gap-1.5 pl-1">
+              <span className="size-2.5 rounded-full bg-foreground/20" />
+              <span className="size-2.5 rounded-full bg-foreground/20" />
+              <span className="size-2.5 rounded-full bg-foreground/20" />
+            </div>
             <div className="flex flex-1 flex-col items-center gap-1 px-1.5">
               {SIDEBAR_APPS.map((Icon, index) => (
                 <span
