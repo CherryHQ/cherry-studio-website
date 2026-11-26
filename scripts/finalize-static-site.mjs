@@ -364,7 +364,7 @@ function buildFlashProductJsonLd(url) {
     '@type': 'Product',
     name: 'Cherry Studio Flash',
     description:
-      'Monthly subscription bundling DeepSeek V4.1 Flash, Qwen 3.8 Flash and GLM 5.3 Flash inside Cherry Studio, with no separate provider accounts.',
+      'Monthly subscription bundling DeepSeek V4.1 Flash 1017, Qwen 3.8 Flash and GLM 5.3 Flash inside Cherry Studio, with no separate provider accounts.',
     brand: {
       '@type': 'Brand',
       name: 'Cherry Studio'
@@ -794,7 +794,7 @@ Cherry Studio itself is free and open source.
 Flash is an optional subscription at $8 per month (regular price $10) that bundles
 frontier models with no separate provider accounts:
 
-- DeepSeek V4.1 Flash: input Off-peak $0.15 / Peak $0.30, output Off-peak $0.60 / Peak $1.20, monthly allowance $20
+- DeepSeek V4.1 Flash 1017: input Off-peak $0.15 / Peak $0.30, output Off-peak $0.60 / Peak $1.20, monthly allowance $20
 - Qwen 3.8 Flash: input $0.15, output $0.47, monthly allowance $15
 - GLM 5.3 Flash: input $0.15, output $0.50, monthly allowance $15
 
