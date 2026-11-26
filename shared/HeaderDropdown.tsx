@@ -29,7 +29,7 @@ export function HeaderDropdown({ item, renderItem, mobile = false }: HeaderDropd
   return (
     <details
       ref={container}
-      className={cn('group relative', !mobile && 'h-full')}
+      className={cn('group relative', !mobile && 'flex h-full items-center')}
       onPointerEnter={(event) => {
         if (!mobile && event.pointerType === 'mouse') {
           hovered.current = true
@@ -65,10 +65,8 @@ export function HeaderDropdown({ item, renderItem, mobile = false }: HeaderDropd
         }}
         className={cn(
           'flex cursor-pointer list-none items-center justify-between gap-3 rounded-lg px-4 py-2 font-medium focus-visible:outline-2 focus-visible:outline-offset-4 [&::-webkit-details-marker]:hidden',
-          mobile ? 'py-3 text-sm' : 'h-full gap-2 rounded-none border-b-2 border-transparent px-2 text-sm',
-          item.active
-            ? cn('text-foreground', !mobile && 'border-foreground')
-            : 'text-muted-foreground hover:bg-accent hover:text-foreground'
+          mobile ? 'py-3 text-sm' : 'h-8 gap-2 rounded-full px-3 text-sm',
+          item.active ? 'bg-accent text-foreground' : 'text-muted-foreground hover:bg-accent hover:text-foreground'
         )}>
         {item.label}
         <span
@@ -80,7 +78,7 @@ export function HeaderDropdown({ item, renderItem, mobile = false }: HeaderDropd
         <div
           className={cn(
             'flex flex-col gap-1',
-            !mobile && 'rounded-xl border border-border bg-background p-2 shadow-lg'
+            !mobile && 'rounded-2xl border border-border bg-background/90 p-2 shadow-lg backdrop-blur-xl'
           )}
           onClick={(event) => {
             if ((event.target as HTMLElement).closest('a')) container.current?.removeAttribute('open')

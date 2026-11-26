@@ -60,7 +60,7 @@ export default function MobilePage() {
               <p className="text-primary mb-4 font-mono text-xs tracking-widest uppercase">
                 {t('mobile_site.hero.eyebrow')}
               </p>
-              <h1 className="text-gradient text-4xl leading-[1.04] font-semibold tracking-[-0.045em] text-balance sm:text-6xl zh:tracking-normal">
+              <h1 className="text-gradient text-5xl leading-[1.04] font-display text-balance sm:text-7xl">
                 {t('mobile_site.hero.title')}
               </h1>
               <p className="mt-5 max-w-lg text-pretty text-base leading-7 text-muted-foreground sm:text-lg">
@@ -101,7 +101,7 @@ export default function MobilePage() {
               <p className="text-primary mb-4 text-sm font-semibold tracking-[0.16em] uppercase">
                 {t('mobile_site.mobile_first.eyebrow')}
               </p>
-              <h2 className="text-gradient text-3xl leading-tight font-semibold tracking-[-0.035em] text-balance sm:text-5xl zh:tracking-normal">
+              <h2 className="text-gradient text-4xl leading-tight font-display text-balance sm:text-6xl">
                 {t('mobile_site.mobile_first.title')}
               </h2>
               <p className="mt-6 max-w-xl text-lg leading-8 text-muted-foreground">
@@ -135,7 +135,7 @@ export default function MobilePage() {
               <p className="mb-4 font-mono text-xs tracking-widest text-primary uppercase">
                 {t('mobile_site.picker.eyebrow')}
               </p>
-              <h2 className="text-gradient text-3xl leading-tight font-semibold tracking-[-0.035em] text-balance sm:text-5xl zh:tracking-normal">
+              <h2 className="text-gradient text-4xl leading-tight font-display text-balance sm:text-6xl">
                 {t('mobile_site.picker.title')}
               </h2>
               <p className="mt-6 text-lg leading-8 text-muted-foreground">{t('mobile_site.picker.description')}</p>
@@ -153,7 +153,7 @@ export default function MobilePage() {
               <p className="mb-4 font-mono text-xs tracking-widest text-primary uppercase">
                 {t('mobile_site.pairing.eyebrow')}
               </p>
-              <h2 className="text-gradient text-3xl leading-tight font-semibold tracking-[-0.035em] text-balance sm:text-5xl zh:tracking-normal">
+              <h2 className="text-gradient text-4xl leading-tight font-display text-balance sm:text-6xl">
                 {t('mobile_site.pairing.title')}
               </h2>
               <p className="mt-6 text-lg leading-8 text-muted-foreground">{t('mobile_site.pairing.description')}</p>
@@ -168,7 +168,7 @@ export default function MobilePage() {
               <p className="text-primary mb-4 text-sm font-semibold tracking-[0.14em]">
                 {t('mobile_site.workflows.eyebrow')}
               </p>
-              <h2 className="text-gradient text-3xl leading-tight font-semibold tracking-[-0.035em] text-balance sm:text-5xl zh:tracking-normal">
+              <h2 className="text-gradient text-4xl leading-tight font-display text-balance sm:text-6xl">
                 {t('mobile_site.workflows.title')}
               </h2>
               <p className="mt-6 text-lg leading-8 text-muted-foreground">{t('mobile_site.workflows.description')}</p>
@@ -219,7 +219,7 @@ export default function MobilePage() {
               <p className="text-primary mb-4 text-sm font-semibold tracking-[0.16em] uppercase">
                 {t('mobile_site.tablet.eyebrow')}
               </p>
-              <h2 className="text-gradient text-3xl leading-tight font-semibold tracking-[-0.035em] text-balance sm:text-5xl zh:tracking-normal">
+              <h2 className="text-gradient text-4xl leading-tight font-display text-balance sm:text-6xl">
                 {t('mobile_site.tablet.title')}
               </h2>
               <p className="mt-5 text-lg leading-8 text-muted-foreground">{t('mobile_site.tablet.description')}</p>
@@ -250,7 +250,7 @@ export default function MobilePage() {
             <p className="text-primary text-sm font-semibold tracking-[0.16em] uppercase">
               {t('mobile_site.cta.eyebrow')}
             </p>
-            <h2 className="mx-auto mt-4 max-w-3xl text-gradient text-3xl font-semibold tracking-[-0.035em] text-balance sm:text-5xl zh:tracking-normal">
+            <h2 className="mx-auto mt-4 max-w-3xl text-gradient text-4xl font-display text-balance sm:text-6xl">
               {t('mobile_site.cta.title')}
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-muted-foreground">

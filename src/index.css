@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "../shared/site-tokens.css";
@@ -22,9 +22,10 @@
 
 @theme inline {
   --font-sans:
-    "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB",
+    "Inter Tight", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB",
     "Microsoft YaHei", "Noto Sans SC", sans-serif;
-  --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+  --font-serif: "Instrument Serif", "Noto Serif SC", "Source Han Serif SC", "Songti SC", Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -179,88 +180,88 @@
 
 :root {
   color-scheme: dark;
-  --radius: 0.625rem;
-  --background: #08090a;
-  --foreground: #f4f5f6;
-  --card: #0f1011;
-  --card-foreground: #f4f5f6;
-  --popover: #141516;
-  --popover-foreground: #f4f5f6;
-  --primary: var(--cherry-green);
-  --primary-foreground: #08090a;
-  --secondary: #161718;
-  --secondary-foreground: #f4f5f6;
-  --muted: #161718;
-  --muted-foreground: #8a8f98;
-  --accent: #1c1d1f;
-  --accent-foreground: #f4f5f6;
+  --radius: 0.75rem;
+  --background: #0a0a0a;
+  --foreground: #f5f5f5;
+  --card: #111111;
+  --card-foreground: #f5f5f5;
+  --popover: #151515;
+  --popover-foreground: #f5f5f5;
+  --primary: var(--cherry-snow);
+  --primary-foreground: #0a0a0a;
+  --secondary: #191919;
+  --secondary-foreground: #f5f5f5;
+  --muted: #191919;
+  --muted-foreground: #9a9a96;
+  --accent: #232323;
+  --accent-foreground: #f5f5f5;
   --destructive: #ef4444;
-  --border: rgb(255 255 255 / 0.08);
-  --input: rgb(255 255 255 / 0.14);
-  --ring: var(--cherry-green);
-  --chart-1: var(--cherry-green);
-  --chart-2: var(--cherry-violet);
-  --chart-3: #3b82f6;
-  --chart-4: #f18737;
-  --chart-5: #94a3b8;
-  --sidebar: #0b0c0d;
-  --sidebar-foreground: #f4f5f6;
-  --sidebar-primary: var(--cherry-green);
-  --sidebar-primary-foreground: #08090a;
-  --sidebar-accent: #1c1d1f;
-  --sidebar-accent-foreground: #f4f5f6;
-  --sidebar-border: rgb(255 255 255 / 0.08);
-  --sidebar-ring: var(--cherry-green);
+  --border: rgb(255 255 255 / 0.1);
+  --input: rgb(255 255 255 / 0.16);
+  --ring: rgb(255 255 255 / 0.45);
+  --chart-1: var(--cherry-snow);
+  --chart-2: var(--cherry-blue);
+  --chart-3: #c8c8c8;
+  --chart-4: #8e8e8e;
+  --chart-5: #5a5a5a;
+  --sidebar: #0e0e0e;
+  --sidebar-foreground: #f5f5f5;
+  --sidebar-primary: var(--cherry-snow);
+  --sidebar-primary-foreground: #0a0a0a;
+  --sidebar-accent: #232323;
+  --sidebar-accent-foreground: #f5f5f5;
+  --sidebar-border: rgb(255 255 255 / 0.1);
+  --sidebar-ring: rgb(255 255 255 / 0.45);
 
-  --surface-glass: rgb(255 255 255 / 0.025);
-  --hairline-strong: rgb(255 255 255 / 0.14);
-  --glow: color-mix(in oklab, var(--cherry-green-glow) 34%, transparent);
-  --glow-violet: color-mix(in oklab, var(--cherry-violet) 22%, transparent);
+  --surface-glass: rgb(16 16 16 / 0.66);
+  --hairline-strong: rgb(255 255 255 / 0.18);
+  --glow: rgb(255 255 255 / 0.1);
+  --glow-2: color-mix(in oklab, var(--cherry-blue) 16%, transparent);
   --grid-line: rgb(255 255 255 / 0.045);
-  --composer: #1a1b1c;
-  --chat-user: #1f2022;
-  --shadow-card: inset 0 1px 0 rgb(255 255 255 / 0.05), 0 24px 48px -24px rgb(0 0 0 / 0.7);
-  --shadow-float: inset 0 1px 0 rgb(255 255 255 / 0.06), 0 16px 40px -12px rgb(0 0 0 / 0.8);
+  --composer: #151515;
+  --chat-user: #1e1e1e;
+  --shadow-card: inset 0 1px 0 rgb(255 255 255 / 0.06), 0 24px 50px -20px rgb(0 0 0 / 0.7);
+  --shadow-float: inset 0 1px 0 rgb(255 255 255 / 0.08), 0 40px 90px -40px rgb(0 0 0 / 0.85);
 }
 
 .light {
   color-scheme: light;
-  --background: #fbfbfa;
-  --foreground: #111213;
-  --card: #ffffff;
-  --card-foreground: #111213;
-  --popover: #ffffff;
-  --popover-foreground: #111213;
-  --primary: var(--cherry-green-ink);
-  --primary-foreground: #ffffff;
-  --secondary: #f2f2f0;
-  --secondary-foreground: #111213;
-  --muted: #f2f2f0;
-  --muted-foreground: #5d6168;
-  --accent: #ebebe8;
-  --accent-foreground: #111213;
+  --background: #f4f2ec;
+  --foreground: #17181a;
+  --card: #faf9f5;
+  --card-foreground: #17181a;
+  --popover: #fbfaf7;
+  --popover-foreground: #17181a;
+  --primary: var(--cherry-ink);
+  --primary-foreground: #f4f2ec;
+  --secondary: #eae7df;
+  --secondary-foreground: #17181a;
+  --muted: #eae7df;
+  --muted-foreground: #64625c;
+  --accent: #e0dcd2;
+  --accent-foreground: #17181a;
   --destructive: #dc2626;
-  --border: rgb(0 0 0 / 0.08);
-  --input: rgb(0 0 0 / 0.16);
-  --ring: var(--cherry-green-ink);
-  --sidebar: #f6f6f4;
-  --sidebar-foreground: #111213;
-  --sidebar-primary: var(--cherry-green-ink);
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #ebebe8;
-  --sidebar-accent-foreground: #111213;
-  --sidebar-border: rgb(0 0 0 / 0.08);
-  --sidebar-ring: var(--cherry-green-ink);
+  --border: #dedad1;
+  --input: #cbc6bb;
+  --ring: rgb(23 24 26 / 0.4);
+  --sidebar: #ece9e2;
+  --sidebar-foreground: #17181a;
+  --sidebar-primary: var(--cherry-ink);
+  --sidebar-primary-foreground: #f4f2ec;
+  --sidebar-accent: #e0dcd2;
+  --sidebar-accent-foreground: #17181a;
+  --sidebar-border: #dedad1;
+  --sidebar-ring: rgb(23 24 26 / 0.4);
 
-  --surface-glass: rgb(255 255 255 / 0.72);
-  --hairline-strong: rgb(0 0 0 / 0.14);
-  --glow: color-mix(in oklab, var(--cherry-green-glow) 16%, transparent);
-  --glow-violet: color-mix(in oklab, var(--cherry-violet) 10%, transparent);
-  --grid-line: rgb(0 0 0 / 0.05);
-  --composer: #ffffff;
-  --chat-user: rgb(0 0 0 / 0.045);
-  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.04), 0 12px 32px -16px rgb(0 0 0 / 0.14);
-  --shadow-float: 0 1px 2px rgb(0 0 0 / 0.05), 0 16px 40px -12px rgb(0 0 0 / 0.18);
+  --surface-glass: rgb(250 249 245 / 0.78);
+  --hairline-strong: #c9c4b9;
+  --glow: rgb(23 24 26 / 0.06);
+  --glow-2: color-mix(in oklab, var(--cherry-blue) 9%, transparent);
+  --grid-line: rgb(23 24 26 / 0.05);
+  --composer: #fbfaf7;
+  --chat-user: #eae7df;
+  --shadow-card: 0 1px 2px rgb(23 24 26 / 0.04), 0 12px 32px -16px rgb(23 24 26 / 0.14);
+  --shadow-float: 0 1px 2px rgb(23 24 26 / 0.05), 0 34px 70px -24px rgb(23 24 26 / 0.22);
 }
 
 @utility site-container {
@@ -319,10 +320,21 @@
 @utility glow-top {
   background-image:
     radial-gradient(ellipse 50% 60% at 50% 0%, var(--glow), transparent 70%),
-    radial-gradient(ellipse 30% 40% at 78% 8%, var(--glow-violet), transparent 70%);
+    radial-gradient(ellipse 30% 40% at 78% 8%, var(--glow-2), transparent 70%);
 }
 
 /* Heading ink that fades toward the muted tone, as on Linear-style marketing pages. */
+/* Display serif for headlines, after the Instrument Serif headings of editorial "fancy" sites. */
+@utility font-display {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: -0.012em;
+  &:lang(zh) {
+    font-weight: 600;
+    letter-spacing: 0;
+  }
+}
+
 @utility text-gradient {
   background-image: linear-gradient(
     to bottom right,
@@ -353,7 +365,7 @@
     scroll-padding-top: var(--site-header-height);
   }
   ::selection {
-    background: color-mix(in oklab, var(--cherry-green) 32%, transparent);
+    background: color-mix(in oklab, var(--foreground) 22%, transparent);
   }
   :lang(zh) h1,
   :lang(zh) h2,

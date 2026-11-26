@@ -96,9 +96,9 @@ const GenerationDemo: FC<{ template: PptTemplate; copy: AiPptCopy; locale: UseCa
   return (
     <div className="glass-card relative overflow-hidden rounded-2xl shadow-[0_30px_80px_-40px_var(--color-primary)]">
       <div className="border-border flex items-center gap-2 border-b px-4 py-3">
-        <span className="size-2.5 rounded-full bg-[#ff5f57]/80" />
-        <span className="size-2.5 rounded-full bg-[#febc2e]/80" />
-        <span className="size-2.5 rounded-full bg-[#28c840]/80" />
+        <span className="size-2.5 rounded-full bg-foreground/20" />
+        <span className="size-2.5 rounded-full bg-foreground/20" />
+        <span className="size-2.5 rounded-full bg-foreground/20" />
         <span className="text-muted-foreground ml-2 text-xs">{t.window}</span>
         <button
           type="button"
@@ -495,7 +495,7 @@ export default function AiPptUseCasePage() {
                 <span className="mx-2">/</span>
                 <span>{copy.breadcrumb.current}</span>
               </nav>
-              <h1 className="text-gradient mt-5 text-4xl font-semibold tracking-[-0.03em] text-balance sm:text-6xl zh:tracking-normal">
+              <h1 className="text-gradient mt-5 text-5xl font-display text-balance sm:text-7xl">
                 {copy.h1Lead} <span className="text-primary">PPT</span>
               </h1>
               <p className="text-muted-foreground mt-5 max-w-xl text-lg leading-8 text-pretty">{copy.intro}</p>

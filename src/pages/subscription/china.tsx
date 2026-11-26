@@ -47,9 +47,7 @@ export default function ChinaPricingPage() {
         <div className="site-container site-page-top grid gap-8 pb-12 sm:pb-16 lg:grid-cols-[1.25fr_0.75fr] lg:gap-12">
           <div className="min-w-0">
             <section aria-labelledby="plus-title" className="pb-6">
-              <h1
-                id="plus-title"
-                className="text-gradient text-balance text-4xl font-semibold tracking-[-0.03em] sm:text-6xl zh:tracking-normal">
+              <h1 id="plus-title" className="text-gradient text-balance text-5xl font-display sm:text-7xl">
                 Cherry <span className="text-muted-foreground">Plus</span>
               </h1>
               <p className="mt-6 text-lg leading-8 text-muted-foreground sm:text-xl">{t('plus_page.subtitle')}</p>

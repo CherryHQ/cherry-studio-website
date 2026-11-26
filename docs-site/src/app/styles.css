@@ -78,7 +78,7 @@
 :root {
   --color-fd-background: #ffffff;
   --color-fd-foreground: #1b1b1b;
-  --color-fd-primary: var(--cherry-green-ink);
+  --color-fd-primary: var(--cherry-ink);
   --color-fd-card: #fafafa;
   --color-fd-secondary: #f4f4f4;
   --color-fd-accent: #ededed;
@@ -89,7 +89,7 @@
 .dark {
   --color-fd-background: #101010;
   --color-fd-foreground: #efefef;
-  --color-fd-primary: var(--cherry-green);
+  --color-fd-primary: var(--cherry-snow);
   --color-fd-card: #171717;
   --color-fd-secondary: #1c1c1c;
   --color-fd-accent: #262626;

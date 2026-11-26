@@ -53,13 +53,11 @@ export default function HeroSection() {
           <ArrowRight className="size-3" aria-hidden="true" />
         </Link>
 
-        <h1 className="max-w-4xl text-5xl font-semibold tracking-[-0.035em] text-balance sm:text-6xl lg:text-7xl zh:tracking-normal">
-          <m.span {...lineRise(0)} className="text-gradient block pb-1">
+        <h1 className="font-display max-w-5xl text-6xl leading-[0.95] text-balance sm:text-7xl lg:text-8xl">
+          <m.span {...lineRise(0)} className="text-gradient block pb-2">
             {t('home_page.title_first')}
           </m.span>
-          <m.span
-            {...lineRise(1)}
-            className="block bg-linear-to-r from-primary via-[color-mix(in_oklab,var(--color-primary)_60%,var(--color-violet))] to-violet bg-clip-text pb-2 text-transparent">
+          <m.span {...lineRise(1)} className="block pb-3 text-foreground italic zh:not-italic">
             {t('home_page.title_second')}
           </m.span>
         </h1>

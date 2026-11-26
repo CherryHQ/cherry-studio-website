@@ -29,7 +29,7 @@ export default function DownloadSection() {
         </span>
         <h2
           id="home-download-heading"
-          className="text-gradient max-w-3xl text-4xl font-semibold tracking-tight text-balance sm:text-6xl zh:tracking-normal">
+          className="text-gradient max-w-3xl text-5xl font-display text-balance sm:text-7xl">
           {t('home_page.cta_download')}
         </h2>
         <p className="mt-4 font-mono text-xs text-muted-foreground">{t('home_page.platforms')}</p>

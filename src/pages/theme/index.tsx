@@ -984,7 +984,7 @@ const ThemePage: React.FC = () => {
         <SectionBackdrop variant="grid-glow" />
         <main className="site-page-top relative z-10 pb-16">
           <div className="site-container">
-            <h1 className="text-gradient mb-4 text-balance text-4xl font-semibold tracking-[-0.03em] sm:text-6xl zh:tracking-normal">
+            <h1 className="text-gradient mb-4 text-balance text-5xl font-display sm:text-7xl">
               {t('theme_page.title')}
             </h1>
             <div className="mb-6">

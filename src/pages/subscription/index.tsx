@@ -62,7 +62,7 @@ function FlashContent() {
         <div className="min-w-0">
           <section className="pb-6">
             <div className="max-w-3xl">
-              <h1 className="text-gradient text-balance text-4xl font-semibold tracking-[-0.03em] sm:text-6xl zh:tracking-normal">
+              <h1 className="text-gradient text-balance text-5xl font-display sm:text-7xl">
                 {t('pricing.headline_brand')}{' '}
                 <span className="text-muted-foreground">{t('pricing.headline_plan')}</span>
               </h1>

@@ -135,8 +135,9 @@ export function SiteHeader({
 
   return (
     <>
-      <header className="site-header fixed inset-x-0 top-0 z-50 flex h-[60px] items-center border-b border-border bg-background/70 text-foreground antialiased backdrop-blur-xl backdrop-saturate-150">
-        <div className="mx-auto flex h-full w-full max-w-(--site-layout-width) items-center justify-between gap-3 px-6 lg:px-8">
+      <header className="site-header fixed inset-x-0 top-0 z-50 flex h-[60px] items-center px-3 text-foreground antialiased sm:px-4">
+        {/* Floating pill bar inside the fixed 60px band, so docs offsets stay unchanged. */}
+        <div className="mx-auto flex h-12 w-full max-w-(--site-layout-width) items-center justify-between gap-3 rounded-full border border-border bg-background/70 pr-2 pl-4 shadow-[0_10px_40px_-18px_rgb(0_0_0/0.25)] backdrop-blur-xl backdrop-saturate-150 sm:pl-5">
           <div className="flex h-full min-w-0 items-center gap-7">
             {renderLink({
               href: '/',
@@ -151,7 +152,7 @@ export function SiteHeader({
             })}
             <nav
               aria-label={menuLabel}
-              className="hidden h-full shrink-0 items-center gap-1 whitespace-nowrap min-[1100px]:flex">
+              className="hidden h-full shrink-0 items-center gap-0.5 whitespace-nowrap min-[1100px]:flex">
               {links.map((item) => (
                 <span key={item.href} className="flex h-full items-center">
                   {item.children ? (
@@ -160,11 +161,8 @@ export function SiteHeader({
                     link(
                       item,
                       cn(
-                        'relative flex h-full items-center gap-1.5 px-2.5 text-sm font-medium transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-primary',
-                        // Active link: a hairline of primary light along the header's bottom edge.
-                        item.active
-                          ? 'text-foreground after:absolute after:inset-x-2.5 after:-bottom-px after:h-px after:bg-primary after:shadow-[0_0_12px_1px_var(--color-primary)]'
-                          : 'text-muted-foreground hover:text-foreground'
+                        'flex h-8 items-center gap-1.5 rounded-full px-3 text-sm font-medium transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-primary',
+                        item.active ? 'bg-accent text-foreground' : 'text-muted-foreground hover:text-foreground'
                       )
                     )
                   )}
@@ -190,14 +188,14 @@ export function SiteHeader({
               renderLink({
                 href: downloadAction.href,
                 className:
-                  'inline-flex h-8 items-center whitespace-nowrap rounded-full bg-foreground px-3 text-xs sm:px-4 sm:text-sm font-semibold text-background shadow-[0_0_0_1px_var(--color-border),0_8px_24px_-8px_var(--color-primary)] transition-[background-color,transform] duration-200 hover:bg-foreground/85 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary active:scale-[0.97]',
+                  'inline-flex h-8 items-center whitespace-nowrap rounded-full bg-foreground px-3 text-xs sm:px-4 sm:text-sm font-semibold text-background transition-[background-color,transform] duration-200 hover:bg-foreground/85 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary active:scale-[0.97]',
                 children: downloadAction.label
               })}
             <button
               type="button"
               aria-label={menuLabel}
               aria-haspopup="dialog"
-              className="flex size-8 items-center justify-center rounded-md border border-border text-foreground hover:bg-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary min-[1100px]:hidden"
+              className="flex size-8 items-center justify-center rounded-full border border-border text-foreground hover:bg-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary min-[1100px]:hidden"
               onClick={() => dialog.current?.showModal()}>
               <Menu className="h-5 w-5" />
             </button>

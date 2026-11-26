@@ -32,9 +32,9 @@ export default function DemoFrame({
       <div className="glass-card overflow-hidden rounded-xl">
         <div className="flex h-10 items-center gap-3 border-b border-border px-3.5">
           <span className="flex gap-1.5" aria-hidden="true">
-            <span className="size-2.5 rounded-full bg-[#ff5f57]/80" />
-            <span className="size-2.5 rounded-full bg-[#febc2e]/80" />
-            <span className="size-2.5 rounded-full bg-[#28c840]/80" />
+            <span className="size-2.5 rounded-full bg-foreground/20" />
+            <span className="size-2.5 rounded-full bg-foreground/20" />
+            <span className="size-2.5 rounded-full bg-foreground/20" />
           </span>
           <span className="min-w-0 flex-1 truncate text-center font-mono text-[11px] text-muted-foreground">
             {title}

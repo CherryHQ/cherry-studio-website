@@ -61,7 +61,7 @@ const FeaturesSection: FC = () => {
       <div className="site-container relative z-10">
         {/* Section Header */}
         <div className="mb-8 sm:mb-12">
-          <h2 className="text-gradient mb-3 text-3xl font-semibold tracking-tight text-balance sm:mb-4 sm:text-4xl">
+          <h2 className="text-gradient mb-3 text-4xl font-display text-balance sm:mb-4 sm:text-5xl">
             {t('features.title')}
           </h2>
           <p className="text-muted-foreground max-w-2xl text-sm sm:text-base">

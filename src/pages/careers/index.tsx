@@ -37,9 +37,7 @@ const CareersPage: FC = () => {
           <span className="mb-4 inline-block font-mono text-xs tracking-widest text-primary uppercase">
             {t('careers.badge')}
           </span>
-          <h1 className="mb-5 text-gradient text-balance text-4xl font-semibold tracking-[-0.03em] sm:text-6xl zh:tracking-normal">
-            {t('careers.title')}
-          </h1>
+          <h1 className="mb-5 text-gradient text-balance text-5xl font-display sm:text-7xl">{t('careers.title')}</h1>
           <p className="mb-6 max-w-2xl text-pretty text-lg text-muted-foreground">{t('careers.subtitle')}</p>
           <Button size="lg" className="rounded-full px-5" asChild>
             <a href={`mailto:${APPLICATION_EMAIL}`}>{t('careers.apply_button')}</a>

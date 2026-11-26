@@ -69,9 +69,7 @@ export default function CommunitySection() {
       <SectionBackdrop variant="arcs" />
       <div className="site-container site-split">
         <div className="max-w-md">
-          <h2
-            id="home-community-heading"
-            className="text-gradient text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
+          <h2 id="home-community-heading" className="text-gradient text-4xl font-display text-balance sm:text-5xl">
             {t('community.title')}
           </h2>
           <p className="mt-3 text-pretty text-base text-muted-foreground">{t('community.subtitle')}</p>

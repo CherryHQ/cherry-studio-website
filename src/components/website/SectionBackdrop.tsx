@@ -29,7 +29,7 @@ export default function SectionBackdrop({ variant }: { variant: SectionBackdropV
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10 overflow-hidden [mask-image:radial-gradient(ellipse_60%_60%_at_50%_40%,black,transparent_80%)]">
-        <div className="absolute top-1/2 left-1/2 size-[1200px] -translate-1/2 bg-[conic-gradient(from_200deg_at_50%_50%,transparent_0deg,var(--glow)_40deg,transparent_80deg,transparent_180deg,var(--glow-violet)_220deg,transparent_260deg)] opacity-70 blur-2xl" />
+        <div className="absolute top-1/2 left-1/2 size-[1200px] -translate-1/2 bg-[conic-gradient(from_200deg_at_50%_50%,transparent_0deg,var(--glow)_40deg,transparent_80deg,transparent_180deg,var(--glow-2)_220deg,transparent_260deg)] opacity-70 blur-2xl" />
       </div>
     )
   }

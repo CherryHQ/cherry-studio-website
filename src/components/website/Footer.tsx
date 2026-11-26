@@ -268,7 +268,7 @@ const Footer: FC = () => {
       </div>
 
       <div aria-hidden="true" className="site-container pointer-events-none select-none">
-        <p className="text-gradient -mb-[0.18em] text-[clamp(3.5rem,13vw,11rem)] leading-none font-semibold tracking-[-0.05em] whitespace-nowrap opacity-20 [mask-image:linear-gradient(to_bottom,black_40%,transparent)]">
+        <p className="text-gradient -mb-[0.18em] text-[clamp(3.5rem,13vw,11rem)] leading-none font-display whitespace-nowrap opacity-20 [mask-image:linear-gradient(to_bottom,black_40%,transparent)]">
           Cherry Studio
         </p>
       </div>

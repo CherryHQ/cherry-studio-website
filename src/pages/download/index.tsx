@@ -143,7 +143,7 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
         <div className="site-container site-split">
           <div className="min-w-0">
             <p className="mb-4 font-mono text-xs tracking-widest text-primary uppercase">{t('download')}</p>
-            <h1 className="text-gradient text-4xl font-semibold tracking-[-0.03em] text-balance sm:text-6xl zh:tracking-normal">
+            <h1 className="text-gradient text-5xl font-display text-balance sm:text-7xl">
               {showMobile
                 ? t('mobile_download.title')
                 : isMobile

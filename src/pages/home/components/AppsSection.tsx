@@ -24,7 +24,7 @@ export default function AppsSection() {
             <p className="mb-3 font-mono text-xs tracking-widest text-primary uppercase">{t('home_page.apps_label')}</p>
             <h2
               id="home-apps-heading"
-              className="text-gradient max-w-lg text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
+              className="text-gradient max-w-lg text-balance text-4xl font-display sm:text-5xl">
               {t('home_page.apps_title')}
             </h2>
             <p className="mt-4 max-w-md text-pretty text-base leading-7 text-muted-foreground">

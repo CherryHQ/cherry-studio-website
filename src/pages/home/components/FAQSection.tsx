@@ -32,9 +32,7 @@ const FAQSection: FC = () => {
       <SectionBackdrop variant="rules" />
       <div className="site-container site-split">
         <div className="max-w-sm">
-          <h2
-            id="home-faq-heading"
-            className="text-gradient text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
+          <h2 id="home-faq-heading" className="text-gradient text-4xl font-display text-balance sm:text-5xl">
             {t('home_faq.title')}
           </h2>
           {isZh && <p className="mt-3 text-base text-muted-foreground">{t('home_faq.subtitle')}</p>}

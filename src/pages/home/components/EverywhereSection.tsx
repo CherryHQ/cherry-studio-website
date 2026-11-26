@@ -26,9 +26,7 @@ export default function EverywhereSection() {
           <p className="mb-3 font-mono text-xs tracking-wider text-primary uppercase">
             {t('home_page.everywhere.eyebrow')}
           </p>
-          <h2
-            id="home-everywhere"
-            className="text-gradient text-3xl font-semibold tracking-tight text-balance sm:text-5xl">
+          <h2 id="home-everywhere" className="text-gradient text-4xl font-display text-balance sm:text-6xl">
             {t('home_page.everywhere.title')}
           </h2>
           <p className="mt-5 text-pretty text-muted-foreground sm:text-lg">{t('home_page.everywhere.subtitle')}</p>

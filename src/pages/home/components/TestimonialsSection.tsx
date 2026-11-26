@@ -80,9 +80,7 @@ const TestimonialsSection: FC = () => {
       <div className="site-container relative">
         <div className="mb-10 max-w-2xl sm:mb-14">
           <p className="mb-3 font-mono text-xs tracking-wider text-primary uppercase">{t('testimonials.eyebrow')}</p>
-          <h2
-            id="home-testimonials"
-            className="text-gradient text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
+          <h2 id="home-testimonials" className="text-gradient text-4xl font-display text-balance sm:text-5xl">
             {t('testimonials.title')}
           </h2>
           <p className="mt-4 text-pretty text-muted-foreground">{t('testimonials.subtitle')}</p>

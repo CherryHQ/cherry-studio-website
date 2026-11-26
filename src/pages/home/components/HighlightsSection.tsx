@@ -22,9 +22,7 @@ const HighlightsSection: FC = () => {
       <div className="site-container relative z-10">
         {/* Section Header */}
         <div className="mb-8 max-w-3xl sm:mb-12">
-          <h2 className="text-gradient mb-4 text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
-            {t('highlights.title')}
-          </h2>
+          <h2 className="text-gradient mb-4 text-4xl font-display text-balance sm:text-5xl">{t('highlights.title')}</h2>
           <p className="text-muted-foreground text-base sm:text-lg">{t('highlights.subtitle')}</p>
         </div>
 

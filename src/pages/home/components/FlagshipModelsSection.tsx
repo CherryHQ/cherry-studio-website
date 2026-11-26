@@ -49,7 +49,7 @@ const FlagshipModelsSection: FC = () => {
       <SectionBackdrop variant="grid" />
       <div className="site-container relative z-10">
         <div className="mb-8 max-w-3xl sm:mb-12">
-          <h2 className="text-gradient mb-3 text-3xl font-semibold tracking-tight text-balance sm:mb-4 sm:text-4xl">
+          <h2 className="text-gradient mb-3 text-4xl font-display text-balance sm:mb-4 sm:text-5xl">
             {t('flagship_models.title')}
           </h2>
           <p className="text-sm text-muted-foreground sm:text-base">{t('flagship_models.subtitle')}</p>
