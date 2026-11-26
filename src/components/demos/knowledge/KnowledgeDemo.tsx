@@ -182,7 +182,7 @@ export default function KnowledgeDemo() {
   }
 
   return (
-    <div ref={ref} role="region" aria-label={copy.region}>
+    <div ref={ref} role="region" aria-label={copy.region} className="@container">
       <DemoFrame
         title={copy.window}
         onReplay={() => {
@@ -190,7 +190,7 @@ export default function KnowledgeDemo() {
           replay()
         }}
         bodyClassName="h-[460px]">
-        <div className="relative grid h-full overflow-hidden md:grid-cols-[220px_minmax(0,1fr)] lg:grid-cols-[250px_minmax(0,1fr)]">
+        <div className="relative grid h-full overflow-hidden md:grid-cols-[200px_minmax(0,1fr)] @4xl:grid-cols-[250px_minmax(0,1fr)]">
           <aside className="hidden flex-col border-r-[0.5px] border-border p-1.5 md:flex" aria-hidden="true">
             <div className="flex min-h-8 items-center gap-1.5 rounded-lg px-1.5 py-1 text-[13px] leading-5 text-foreground">
               <span className="flex size-5 shrink-0 items-center justify-center">

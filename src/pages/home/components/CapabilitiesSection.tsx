@@ -173,7 +173,7 @@ function PinnedStory() {
 
   return (
     <div ref={track} className="relative" style={{ height: `${steps.length * 100}svh` }}>
-      <div className="site-container sticky top-(--site-header-height) grid h-[calc(100svh-var(--site-header-height))] grid-cols-[minmax(260px,340px)_minmax(0,1fr)] gap-10 xl:gap-16">
+      <div className="site-container sticky top-(--site-header-height) grid h-[calc(100svh-var(--site-header-height))] grid-cols-[minmax(240px,290px)_minmax(0,1fr)] gap-10 xl:grid-cols-[minmax(260px,340px)_minmax(0,1fr)] xl:gap-16">
         <div className="flex min-h-0 flex-col justify-center gap-10 py-8">
           <nav aria-label={t('home_page.capabilities.eyebrow')}>
             <div className="relative pl-5">
