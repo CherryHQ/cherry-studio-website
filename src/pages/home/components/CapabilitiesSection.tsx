@@ -64,10 +64,10 @@ function useMinWidth(query: string) {
 }
 
 /**
- * Scales its content to fill the available box (down on small screens, up to `maxScale` on large ones), centered.
+ * Centers its content in the available box and scales it down when it would not fit (never above `maxScale`).
  * The content is laid out at width / scale so the scaled result always spans the box width.
  */
-function FitToBox({ children, maxScale = 1.25 }: { children: ReactNode; maxScale?: number }) {
+function FitToBox({ children, maxScale = 1 }: { children: ReactNode; maxScale?: number }) {
   const outer = useRef<HTMLDivElement>(null)
   const inner = useRef<HTMLDivElement>(null)
   const [scale, setScale] = useState(1)
