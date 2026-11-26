@@ -8,8 +8,6 @@ import { ThemeProvider } from '@/contexts/ThemeContext'
 import { LegacyCompareRedirect } from '@/pages/compare'
 import DownloadPage from '@/pages/download'
 import HomePage from '@/pages/home'
-import MobilePage from '@/pages/mobile'
-import NotFoundPage from '@/pages/not-found'
 import LegacySubscriptionRedirect from '@/pages/subscription/legacy-redirect'
 
 // Rarely visited routes load on demand so the home and download pages ship less JavaScript.
@@ -21,6 +19,8 @@ const SubscriptionPage = lazy(() => import('@/pages/subscription'))
 const SubscriptionFaqPage = lazy(() => import('@/pages/subscription/faq'))
 const SubscriptionUsagePage = lazy(() => import('@/pages/subscription/usage'))
 const ThemePage = lazy(() => import('@/pages/theme'))
+const NotFoundPage = lazy(() => import('@/pages/not-found'))
+const MobilePage = lazy(() => import('@/pages/mobile'))
 const loadMotionFeatures = () => import('@/lib/motion-features').then((module) => module.default)
 
 function App() {
