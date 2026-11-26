@@ -17,8 +17,10 @@ const DROPLETS = [
   { x: 10, y: 22, size: 3 },
   { x: -6, y: -24, size: 2 }
 ]
-const PEAK_HUE = 'oklch(from var(--primary) l c 300)'
-const SPARKLE_DOT = 'oklch(from var(--primary) 0.98 0.01 h)'
+// The site's primary is monochrome, so the peak uses fixed hues ending at the app's hue-300 shift.
+const PEAK_START = 'oklch(0.6 0.17 255)'
+const PEAK_HUE = 'oklch(0.68 0.2 300)'
+const SPARKLE_DOT = 'oklch(0.98 0.01 280)'
 const sparkleStyle = {
   backgroundImage: `radial-gradient(circle, ${SPARKLE_DOT} 0 0.7px, transparent 1.2px), radial-gradient(circle, ${SPARKLE_DOT} 0 0.5px, transparent 1px)`,
   backgroundSize: '43px 13px, 67px 17px',
@@ -208,7 +210,7 @@ export default function EffortSliderDemo() {
                           'absolute inset-0 transition-opacity duration-240 ease-out motion-reduce:transition-none',
                           isPeak ? 'opacity-100' : 'opacity-0'
                         )}
-                        style={{ backgroundImage: `linear-gradient(90deg, var(--primary), ${PEAK_HUE})` }}
+                        style={{ backgroundImage: `linear-gradient(90deg, ${PEAK_START}, ${PEAK_HUE})` }}
                       />
                       <span
                         className={cn(
