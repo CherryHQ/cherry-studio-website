@@ -63,8 +63,11 @@ function useMinWidth(query: string) {
   )
 }
 
-/** Shrinks its content to the available height so a tall demo never spills past the pinned screen. */
-function FitToHeight({ children }: { children: ReactNode }) {
+/**
+ * Scales its content to fill the available box (down on small screens, up to `maxScale` on large ones), centered.
+ * The content is laid out at width / scale so the scaled result always spans the box width.
+ */
+function FitToBox({ children, maxScale = 1.25 }: { children: ReactNode; maxScale?: number }) {
   const outer = useRef<HTMLDivElement>(null)
   const inner = useRef<HTMLDivElement>(null)
   const [scale, setScale] = useState(1)
@@ -73,18 +76,24 @@ function FitToHeight({ children }: { children: ReactNode }) {
     const box = outer.current
     const content = inner.current
     if (!box || !content) return
-    // offsetHeight ignores transforms, so scaling never feeds back into the measurement.
-    const update = () => setScale(Math.min(1, box.clientHeight / Math.max(1, content.offsetHeight)))
+    // offsetHeight ignores transforms; the threshold stops width-driven reflow from oscillating.
+    const update = () => {
+      const next = Math.min(maxScale, box.clientHeight / Math.max(1, content.offsetHeight))
+      setScale((current) => (Math.abs(current - next) < 0.015 ? current : next))
+    }
     const observer = new ResizeObserver(update)
     observer.observe(box)
     observer.observe(content)
     update()
     return () => observer.disconnect()
-  }, [])
+  }, [maxScale])
 
   return (
     <div ref={outer} className="relative min-h-0 flex-1">
-      <div ref={inner} style={{ transform: `scale(${scale})`, transformOrigin: 'top center' }}>
+      <div
+        ref={inner}
+        className="absolute top-1/2 left-1/2"
+        style={{ width: `${100 / scale}%`, transform: `translate(-50%, -50%) scale(${scale})` }}>
         {children}
       </div>
     </div>
@@ -100,13 +109,21 @@ function ChapterText({ chapter, compact }: { chapter: ChapterId; compact?: boole
       <p className="font-mono text-xs text-muted-foreground">
         0{chapterIds.indexOf(chapter) + 1} · {t(`home_page.capabilities.chapters.${chapter}.nav`)}
       </p>
-      <h3 className="font-display mt-2 text-3xl text-balance sm:text-4xl">
+      <h3
+        className={cn(
+          'font-display mt-2 text-3xl text-balance sm:text-4xl',
+          compact && 'xl:text-[2.75rem] xl:leading-[1.05]'
+        )}>
         {t(`home_page.capabilities.chapters.${chapter}.title`)}
       </h3>
-      <p className={cn('mt-2 text-pretty text-muted-foreground zh:leading-[1.8]', compact && 'line-clamp-2')}>
+      <p className={cn('mt-3 text-pretty text-muted-foreground zh:leading-[1.8]', compact && 'line-clamp-4')}>
         {t(`home_page.capabilities.chapters.${chapter}.description`)}
       </p>
-      <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-1.5 text-sm">
+      <ul
+        className={cn(
+          'mt-4 flex flex-wrap gap-x-6 gap-y-1.5 text-sm',
+          compact && 'flex-col [@media(max-height:760px)]:hidden'
+        )}>
         {points.map((point) => (
           <li key={point} className="flex gap-2 text-foreground/85">
             <Check className="mt-0.5 size-3.5 shrink-0 text-primary" aria-hidden="true" />
@@ -118,9 +135,9 @@ function ChapterText({ chapter, compact }: { chapter: ChapterId; compact?: boole
   )
 }
 
-function StepDemos({ step }: { step: Step }) {
+function StepDemos({ step, stacked }: { step: Step; stacked?: boolean }) {
   return (
-    <div className={cn('grid gap-4', step.demos.length > 1 && 'md:grid-cols-2')}>
+    <div className={cn('grid gap-4', step.demos.length > 1 && !stacked && 'md:grid-cols-2')}>
       {step.demos.map((demo, index) => (
         <DemoMount key={index} load={demo.load} className={demo.height} />
       ))}
@@ -156,44 +173,43 @@ function PinnedStory() {
 
   return (
     <div ref={track} className="relative" style={{ height: `${steps.length * 100}svh` }}>
-      <div className="site-container sticky top-(--site-header-height) grid h-[calc(100svh-var(--site-header-height))] grid-cols-[200px_minmax(0,1fr)] gap-14">
-        <nav aria-label={t('home_page.capabilities.eyebrow')} className="self-center">
-          <div className="relative pl-5">
-            <span className="absolute inset-y-1 left-0 w-px bg-border" aria-hidden="true" />
-            <m.span
-              className="absolute inset-y-1 left-0 w-px origin-top bg-primary"
-              style={{ scaleY: progress }}
-              aria-hidden="true"
-            />
-            <ol className="space-y-1">
-              {chapterIds.map((chapter, chapterIndex) => (
-                <li key={chapter}>
-                  <button
-                    type="button"
-                    onClick={() => goTo(steps.findIndex((item) => item.chapter === chapter))}
-                    aria-current={step.chapter === chapter ? 'step' : undefined}
-                    className={cn(
-                      'relative flex w-full cursor-pointer items-center gap-3 rounded-md px-2 py-1.5 text-left text-sm transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-primary',
-                      step.chapter === chapter ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'
-                    )}>
-                    {step.chapter === chapter && (
-                      <m.span
-                        layoutId="capability-nav-active"
-                        transition={spring.settle}
-                        className="absolute inset-0 -z-10 rounded-md bg-accent"
-                        aria-hidden="true"
-                      />
-                    )}
-                    <span className="font-mono text-[11px] text-muted-foreground">0{chapterIndex + 1}</span>
-                    {t(`home_page.capabilities.chapters.${chapter}.nav`)}
-                  </button>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </nav>
-
-        <div className="flex min-h-0 flex-col gap-6 py-8">
+      <div className="site-container sticky top-(--site-header-height) grid h-[calc(100svh-var(--site-header-height))] grid-cols-[minmax(260px,340px)_minmax(0,1fr)] gap-10 xl:gap-16">
+        <div className="flex min-h-0 flex-col justify-center gap-10 py-8">
+          <nav aria-label={t('home_page.capabilities.eyebrow')}>
+            <div className="relative pl-5">
+              <span className="absolute inset-y-1 left-0 w-px bg-border" aria-hidden="true" />
+              <m.span
+                className="absolute inset-y-1 left-0 w-px origin-top bg-primary"
+                style={{ scaleY: progress }}
+                aria-hidden="true"
+              />
+              <ol className="space-y-0.5">
+                {chapterIds.map((chapter, chapterIndex) => (
+                  <li key={chapter}>
+                    <button
+                      type="button"
+                      onClick={() => goTo(steps.findIndex((item) => item.chapter === chapter))}
+                      aria-current={step.chapter === chapter ? 'step' : undefined}
+                      className={cn(
+                        'relative flex w-full cursor-pointer items-center gap-3 rounded-md px-2 py-1.5 text-left text-sm transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-primary',
+                        step.chapter === chapter ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'
+                      )}>
+                      {step.chapter === chapter && (
+                        <m.span
+                          layoutId="capability-nav-active"
+                          transition={spring.settle}
+                          className="absolute inset-0 -z-10 rounded-md bg-accent"
+                          aria-hidden="true"
+                        />
+                      )}
+                      <span className="font-mono text-[11px] text-muted-foreground">0{chapterIndex + 1}</span>
+                      {t(`home_page.capabilities.chapters.${chapter}.nav`)}
+                    </button>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </nav>
           <AnimatePresence mode="wait" initial={false}>
             <m.div
               key={step.chapter}
@@ -204,20 +220,21 @@ function PinnedStory() {
               <ChapterText chapter={step.chapter} compact />
             </m.div>
           </AnimatePresence>
-          <AnimatePresence mode="wait" initial={false}>
-            <m.div
-              key={index}
-              className="flex min-h-0 flex-1 flex-col"
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -24 }}
-              transition={{ duration: 0.35, ease: ease.settle }}>
-              <FitToHeight>
-                <StepDemos step={step} />
-              </FitToHeight>
-            </m.div>
-          </AnimatePresence>
         </div>
+
+        <AnimatePresence mode="wait" initial={false}>
+          <m.div
+            key={index}
+            className="flex min-h-0 flex-col py-8"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -24 }}
+            transition={{ duration: 0.35, ease: ease.settle }}>
+            <FitToBox>
+              <StepDemos step={step} stacked />
+            </FitToBox>
+          </m.div>
+        </AnimatePresence>
       </div>
     </div>
   )

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..600&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "../shared/site-tokens.css";
@@ -24,7 +24,7 @@
   --font-sans:
     "Inter Tight", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB",
     "Microsoft YaHei", "Noto Sans SC", sans-serif;
-  --font-serif: "Instrument Serif", "Noto Serif SC", "Source Han Serif SC", "Songti SC", Georgia, serif;
+  --font-serif: "Newsreader", "Noto Serif SC", "Source Han Serif SC", "Songti SC", Georgia, serif;
   --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 
   --radius-sm: calc(var(--radius) - 4px);
@@ -324,11 +324,11 @@
 }
 
 /* Heading ink that fades toward the muted tone, as on Linear-style marketing pages. */
-/* Display serif for headlines, after the Instrument Serif headings of editorial "fancy" sites. */
+/* Display serif for headlines in the editorial "fancy" style; Newsreader's optical sizes keep large titles crisp. */
 @utility font-display {
   font-family: var(--font-serif);
   font-weight: 400;
-  letter-spacing: -0.012em;
+  letter-spacing: -0.02em;
   &:lang(zh) {
     font-weight: 600;
     letter-spacing: 0;

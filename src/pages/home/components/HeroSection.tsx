@@ -131,7 +131,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 28, scale: 0.985 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ ...spring.gentle, delay: 0.15 }}
-          className="mx-auto max-w-5xl text-left">
+          className="mx-auto max-w-5xl text-left xl:max-w-6xl 2xl:max-w-7xl">
           <ChatStreamDemo />
         </m.div>
       </div>
