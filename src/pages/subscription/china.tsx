@@ -6,10 +6,10 @@ import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import Footer from '@/components/website/Footer'
 import SectionBackdrop from '@/components/website/SectionBackdrop'
-import SectionDivider from '@/components/website/SectionDivider'
 import SubscriptionFaq from '@/components/website/SubscriptionFaq'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { cn } from '@/lib/utils'
+import { ModelMark, PLAN_BUTTON, PLAN_SURFACE, TABLE_LABEL, USAGE_GRID } from './planStyles'
 
 const SUBSCRIPTION_URL = 'https://cloud.cherryai.com.cn/account/plans'
 const SUPPORT_EMAIL = 'support@cherry-ai.com'
@@ -44,72 +44,71 @@ export default function ChinaPricingPage() {
       </a>
       <main id="plus-main" className="relative isolate overflow-hidden bg-background text-foreground">
         <SectionBackdrop variant="grid-glow" />
-        <div className="site-container site-page-top grid gap-8 pb-12 sm:pb-16 lg:grid-cols-[1.25fr_0.75fr] lg:gap-12">
-          <div className="min-w-0">
-            <section aria-labelledby="plus-title" className="pb-6">
-              <h1 id="plus-title" className="text-gradient text-balance text-5xl font-display sm:text-7xl">
-                Cherry <span className="text-muted-foreground">Plus</span>
-              </h1>
-              <p className="mt-6 text-lg leading-8 text-muted-foreground sm:text-xl">{t('plus_page.subtitle')}</p>
-            </section>
+        <section aria-labelledby="plus-title" className="site-container site-page-top pb-16 text-center sm:pb-24">
+          <h1 id="plus-title" className="font-display text-6xl leading-none text-balance sm:text-8xl">
+            <span className="text-gradient">Cherry</span> <span className="text-muted-foreground italic">Plus</span>
+          </h1>
+          <p className="mx-auto mt-6 max-w-xl text-lg text-pretty text-muted-foreground">{t('plus_page.subtitle')}</p>
 
-            <section aria-label={t('plus_page.benefits_label')} className="pt-1">
-              <div className="glass-card divide-y divide-border rounded-2xl">
-                {benefits.map(({ key, icon: Icon }) => (
-                  <article
-                    key={key}
-                    className="grid grid-cols-[auto_minmax(0,1fr)] items-start gap-x-3 gap-y-1 px-4 py-3">
-                    <div className="row-span-2 flex size-8 items-center justify-center rounded-lg border border-border bg-primary/10 text-primary">
-                      <Icon className="size-5" strokeWidth={1.65} aria-hidden="true" />
-                    </div>
-                    <h2 className="text-base font-semibold leading-6">
-                      <Trans
-                        i18nKey={`plus_page.benefits.${key}.title`}
-                        components={{
-                          limited: <span className="whitespace-nowrap text-xs font-normal text-muted-foreground" />
-                        }}
-                      />
-                    </h2>
-                    <p className="col-start-2 text-pretty text-sm leading-6 text-muted-foreground">
-                      {t(`plus_page.benefits.${key}.description`)}
-                    </p>
-                  </article>
-                ))}
-              </div>
-            </section>
-          </div>
-          <section aria-label={t('plus_page.pricing_label')} className="min-w-0 lg:self-start">
-            <div className="max-w-lg glass-card rounded-2xl border-primary/40! shadow-[0_0_80px_-24px_var(--color-primary)] p-6 text-left sm:p-8">
-              <p className="mb-4 text-sm font-medium text-primary">{t('plus_page.offer.title')}</p>
-              <div className="flex flex-wrap items-baseline gap-2 tabular-nums">
-                <strong className="text-5xl font-bold tracking-tight sm:text-6xl">¥9.9</strong>
+          <section aria-label={t('plus_page.pricing_label')} className="relative mx-auto mt-12 max-w-md">
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-x-8 -inset-y-6 -z-10 rounded-full bg-foreground/10 blur-3xl"
+            />
+            <div className="rounded-[28px] bg-card p-8 text-left shadow-[inset_0_0_0_1px_var(--color-border),var(--shadow-float)] sm:p-10">
+              <p className="text-sm font-medium text-muted-foreground">{t('plus_page.offer.title')}</p>
+              <div className="mt-4 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                <strong className="font-display text-8xl leading-none font-normal tabular-nums">¥9.9</strong>
                 <span className="sr-only">{t('plus_page.offer.original_price')}</span>
-                <del className="text-2xl text-muted-foreground decoration-1">¥19.9</del>
+                <del className="text-2xl text-muted-foreground tabular-nums decoration-1">¥19.9</del>
                 <span className="text-lg text-muted-foreground">/ {t('plus_page.offer.first_month')}</span>
               </div>
-              <p className="mt-2 text-xs leading-5 text-muted-foreground">{t('plus_page.offer.renewal')}</p>
-              <p className="text-xs leading-5 text-muted-foreground">
-                {t('plus_page.offer.ends_on')} <time dateTime="2026-11-30">2026/11/30</time>
+              <p className="mt-3 text-xs leading-5 text-muted-foreground">
+                {t('plus_page.offer.renewal')} · {t('plus_page.offer.ends_on')}{' '}
+                <time dateTime="2026-11-30">2026/11/30</time>
               </p>
-              <Button asChild size="lg" className="mt-6 w-full rounded-md">
-                <a href={SUBSCRIPTION_URL} target="_blank" rel="noopener noreferrer">
-                  {t('plus_page.subscribe')}
-                </a>
-              </Button>
-              <p className="mt-3.5 text-xs leading-5 text-muted-foreground">{t('plus_page.fine_print')}</p>
+              <a
+                href={SUBSCRIPTION_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cn(PLAN_BUTTON, 'mt-8 flex w-full')}>
+                {t('plus_page.subscribe')}
+              </a>
+              <p className="mt-4 text-center text-xs leading-5 text-muted-foreground">{t('plus_page.fine_print')}</p>
             </div>
           </section>
-        </div>
-        <SectionDivider className="py-4 sm:py-4" />
 
-        <section aria-labelledby="plus-usage-title" className="py-12 sm:py-16">
-          <div className="site-container">
-            <div className="flex items-center justify-between gap-4">
-              <h2 id="plus-usage-title" className="text-[23px] font-semibold leading-9 tracking-tight sm:text-[26px]">
+          <ul
+            aria-label={t('plus_page.benefits_label')}
+            className="mx-auto mt-14 grid max-w-5xl gap-4 text-left md:grid-cols-3">
+            {benefits.map(({ key, icon: Icon }) => (
+              <li key={key} className={cn(PLAN_SURFACE, 'p-6')}>
+                <span className="flex size-10 items-center justify-center rounded-full bg-background shadow-[inset_0_0_0_1px_var(--color-border)]">
+                  <Icon className="size-[18px]" aria-hidden="true" />
+                </span>
+                <h2 className="mt-6 text-base font-semibold">
+                  <Trans
+                    i18nKey={`plus_page.benefits.${key}.title`}
+                    components={{
+                      limited: <span className="text-xs font-normal whitespace-nowrap text-muted-foreground" />
+                    }}
+                  />
+                </h2>
+                <p className="mt-2 text-sm leading-6 text-pretty text-muted-foreground">
+                  {t(`plus_page.benefits.${key}.description`)}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section aria-labelledby="plus-usage-title" className="border-t border-border py-20 sm:py-28">
+          <div className="site-container max-w-5xl">
+            <div className="flex flex-wrap items-end justify-between gap-4">
+              <h2 id="plus-usage-title" className="font-display text-4xl sm:text-5xl">
                 {t('plus_page.usage.title')}
               </h2>
-              <span className="flex items-center gap-2.5 font-mono text-sm font-semibold">
-                <span className="h-[17px] w-1 rounded-sm bg-muted-foreground" aria-hidden="true" />
+              <span className="rounded-full px-3 py-1 font-mono text-xs tracking-widest text-muted-foreground uppercase shadow-[inset_0_0_0_1px_var(--color-border)]">
                 Plus
               </span>
             </div>
@@ -117,82 +116,80 @@ export default function ChinaPricingPage() {
             <table
               aria-label={t('plus_page.usage.table_label')}
               aria-describedby="plus-usage-note"
-              className="mt-7 block w-full text-left">
+              className="mt-10 block w-full text-left">
               <thead className="block">
-                <tr className="grid grid-cols-[minmax(0,1fr)_86px] gap-3 rounded-lg border border-border bg-secondary/70 px-2.5 py-3 text-[13px] text-muted-foreground sm:grid-cols-[minmax(200px,1.2fr)_minmax(80px,1fr)_110px] sm:gap-5 sm:px-5 sm:py-3.5 lg:grid-cols-[minmax(220px,1.15fr)_minmax(100px,1.8fr)_140px] lg:gap-8">
-                  <th scope="col" className="font-normal">
+                <tr className={cn(USAGE_GRID, TABLE_LABEL, 'px-6 pb-3')}>
+                  <th scope="col" className="font-medium">
                     {t('plus_page.usage.model')}
                   </th>
-                  <th scope="col" className="hidden font-normal sm:block">
+                  <th scope="col" className="hidden font-medium sm:block">
                     {t('plus_page.usage.single_model')}
                   </th>
-                  <th scope="col" className="text-right font-normal">
+                  <th scope="col" className="text-right font-medium">
                     {t('plus_page.usage.monthly_usage')}
                   </th>
                 </tr>
               </thead>
-              <tbody className="block">
+              <tbody className="block space-y-2">
                 {usageLimits.map(({ model, amount }) => (
-                  <tr
-                    key={model}
-                    className="grid grid-cols-[minmax(0,1fr)_86px] items-center gap-3 px-2.5 py-5 sm:grid-cols-[minmax(200px,1.2fr)_minmax(80px,1fr)_110px] sm:gap-5 sm:px-5 sm:py-6 lg:grid-cols-[minmax(220px,1.15fr)_minmax(100px,1.8fr)_140px] lg:gap-8">
-                    <th scope="row" className="font-mono text-[13px] font-normal sm:text-base">
+                  <tr key={model} className={cn(USAGE_GRID, PLAN_SURFACE, 'items-center px-6 py-5')}>
+                    <th scope="row" className="flex items-center gap-3 text-base font-medium">
+                      <ModelMark model={model} />
                       {model}
                     </th>
                     <td className="col-span-2 row-start-2 sm:col-auto sm:row-auto">
-                      <span
-                        className="block h-2 overflow-hidden rounded-[3px] bg-secondary sm:h-2.5"
-                        aria-hidden="true">
+                      <span className="block h-1.5 overflow-hidden rounded-full bg-secondary" aria-hidden="true">
                         <span
-                          className={cn(
-                            'block h-full rounded-[3px] bg-foreground/65',
-                            amount === 40 ? 'w-full' : 'w-3/4'
-                          )}
+                          className={cn('block h-full rounded-full bg-foreground', amount === 40 ? 'w-full' : 'w-3/4')}
                         />
                       </span>
                       <span className="sr-only">{t('plus_page.usage.exclusive_model')}</span>
                     </td>
-                    <td className="whitespace-nowrap text-right font-mono text-base tabular-nums">
-                      <span className="text-xs text-muted-foreground">{t('plus_page.usage.up_to')}</span> ¥{amount}
+                    <td className="text-right whitespace-nowrap">
+                      <span className="text-xs text-muted-foreground">{t('plus_page.usage.up_to')}</span>{' '}
+                      <span className="font-display text-3xl tabular-nums">¥{amount}</span>
                     </td>
                   </tr>
                 ))}
               </tbody>
             </table>
-            <p
-              id="plus-usage-note"
-              className="border-t border-border pt-[18px] text-[13px] leading-6 text-muted-foreground">
+            <p id="plus-usage-note" className="mt-5 px-6 text-[13px] leading-6 text-muted-foreground">
               {t('plus_page.usage.note')}
             </p>
 
-            <section aria-labelledby="plus-rates-title" className="mt-12 sm:mt-16">
-              <h3 id="plus-rates-title" className="text-[23px] font-semibold leading-9 tracking-tight sm:text-[26px]">
-                {t('plus_page.rates.title')}
-              </h3>
-              <p
-                id="plus-rates-description"
-                className="mt-2 text-sm leading-[26px] text-muted-foreground sm:text-[15px]">
-                {t('plus_page.rates.description')}
-              </p>
-              <div className="mt-6 border-b border-border">
-                <span className="-mb-px inline-block border-b-2 border-foreground px-[22px] pb-4 pt-3 font-mono text-[17px] font-semibold">
-                  Plus
+            <section aria-labelledby="plus-rates-title" className="mt-24">
+              <div className="flex flex-wrap items-end justify-between gap-4">
+                <div>
+                  <h3 id="plus-rates-title" className="font-display text-4xl sm:text-5xl">
+                    {t('plus_page.rates.title')}
+                  </h3>
+                  <p id="plus-rates-description" className="mt-3 text-[15px] text-muted-foreground">
+                    {t('plus_page.rates.description')}
+                  </p>
+                </div>
+                <span className="inline-flex rounded-full bg-secondary p-1">
+                  <span className="rounded-full bg-background px-4 py-1.5 text-sm font-medium shadow-[inset_0_0_0_1px_var(--color-border)]">
+                    Plus
+                  </span>
                 </span>
               </div>
-              <p className="mt-3.5 text-xs text-muted-foreground lg:hidden">{t('plus_page.rates.scroll_hint')}</p>
+              <p className="mt-4 text-xs text-muted-foreground lg:hidden">{t('plus_page.rates.scroll_hint')}</p>
               <div
                 role="region"
                 aria-label={t('plus_page.rates.table_label')}
                 aria-describedby="plus-rates-description"
                 // biome-ignore lint/a11y/noNoninteractiveTabindex: Keyboard users need to scroll the pricing table horizontally.
                 tabIndex={0}
-                className="overflow-x-auto overscroll-x-contain focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-4">
-                <table className="w-full min-w-[720px] border-collapse font-mono text-sm tabular-nums sm:text-[15px] [&_td]:whitespace-nowrap [&_td]:border-b [&_td]:border-border [&_td]:px-5 [&_td]:py-[22px] [&_td:last-child]:pr-0 [&_th]:whitespace-nowrap [&_th]:border-b [&_th]:border-border [&_th]:px-5 [&_th]:text-left [&_th:first-child]:pl-0 [&_th:last-child]:pr-0">
+                className={cn(
+                  PLAN_SURFACE,
+                  'mt-8 overflow-x-auto overscroll-x-contain px-6 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring'
+                )}>
+                <table className="w-full min-w-[720px] border-collapse text-[15px] tabular-nums [&_td]:border-t [&_td]:border-border [&_td]:px-4 [&_td]:py-5 [&_td]:whitespace-nowrap [&_td:last-child]:pr-0 [&_th]:px-4 [&_th]:text-left [&_th]:whitespace-nowrap [&_th:first-child]:pl-0">
                   <caption className="sr-only">{t('plus_page.rates.caption')}</caption>
                   <thead>
                     <tr>
                       {['model', 'input', 'output', 'cache_read', 'cache_write'].map((key) => (
-                        <th scope="col" key={key} className="py-[26px] text-sm font-semibold">
+                        <th scope="col" key={key} className={cn(TABLE_LABEL, 'py-4')}>
                           {t(`plus_page.rates.${key}`)}
                         </th>
                       ))}
@@ -200,57 +197,61 @@ export default function ChinaPricingPage() {
                   </thead>
                   <tbody>
                     {rates.map((rate) => (
-                      <tr key={`${rate.model}-${rate.period}`} className="hover:bg-secondary/30">
-                        <th scope="row" className="py-[22px] font-normal">
-                          {rate.model}
-                          {rate.period && (
-                            <span className="ml-2 inline-block border border-border px-1.5 py-px align-middle text-[11px] text-muted-foreground">
-                              {t(`plus_page.rates.${rate.period}`)}
-                            </span>
-                          )}
+                      <tr key={`${rate.model}-${rate.period}`}>
+                        <th scope="row" className="border-t border-border py-5 font-medium">
+                          <span className="flex items-center gap-3">
+                            <ModelMark model={rate.model} />
+                            {rate.model}
+                            {rate.period && (
+                              <span className="rounded-full px-2 py-0.5 text-[11px] font-normal text-muted-foreground shadow-[inset_0_0_0_1px_var(--color-border)]">
+                                {t(`plus_page.rates.${rate.period}`)}
+                              </span>
+                            )}
+                          </span>
                         </th>
-                        <td>¥{rate.input}</td>
-                        <td>¥{rate.output}</td>
-                        <td>¥{rate.read}</td>
-                        <td>{rate.write ? `¥${rate.write}` : t('plus_page.rates.free')}</td>
+                        <td className="text-foreground/85">¥{rate.input}</td>
+                        <td className="text-foreground/85">¥{rate.output}</td>
+                        <td className="text-foreground/85">¥{rate.read}</td>
+                        <td className="text-foreground/85">
+                          {rate.write ? `¥${rate.write}` : t('plus_page.rates.free')}
+                        </td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               </div>
             </section>
-            <aside className="mt-8 rounded-2xl border border-border bg-secondary/20 p-5">
+            <aside className={cn(PLAN_SURFACE, 'mt-6 p-6')}>
               <h3 className="text-sm font-semibold leading-5">{t('plus_page.peak.title')}</h3>
               <p className="mt-2 text-sm leading-6 text-muted-foreground">{t('plus_page.peak.description')}</p>
             </aside>
           </div>
         </section>
 
-        <SectionDivider className="py-4 sm:py-4" />
-
-        <section id="plus-faq" aria-labelledby="plus-faq-title" className="scroll-mt-24 px-4 py-16 sm:px-8">
+        <section
+          id="plus-faq"
+          aria-labelledby="plus-faq-title"
+          className="scroll-mt-24 border-t border-border px-4 py-20 sm:px-8 sm:py-28">
           <div className="mx-auto max-w-3xl">
-            <h2
-              id="plus-faq-title"
-              tabIndex={-1}
-              className="text-center text-2xl font-bold leading-10 tracking-tight sm:text-3xl">
+            <h2 id="plus-faq-title" tabIndex={-1} className="font-display text-center text-4xl sm:text-5xl">
               {t('plus_page.faq.title')}
             </h2>
             <SubscriptionFaq variant="plus" />
           </div>
         </section>
 
-        <section aria-labelledby="plus-cta-title" className="px-4 py-16 text-center sm:px-8">
-          <h2 id="plus-cta-title" className="text-2xl font-bold leading-10 tracking-tight sm:text-3xl">
+        <section
+          aria-labelledby="plus-cta-title"
+          className="relative isolate overflow-hidden border-t border-border px-4 py-24 text-center sm:px-8 sm:py-32">
+          <SectionBackdrop variant="beams" />
+          <h2 id="plus-cta-title" className="font-display text-4xl text-balance sm:text-6xl">
             {t('plus_page.cta.title')}
           </h2>
-          <p className="mt-3 text-base leading-7 text-muted-foreground">{t('plus_page.cta.description')}</p>
-          <Button asChild size="lg" className="mt-6 min-w-[186px]">
-            <a href={SUBSCRIPTION_URL} target="_blank" rel="noopener noreferrer">
-              {t('plus_page.subscribe')}
-            </a>
-          </Button>
-          <p className="mt-3.5 text-xs leading-5 text-muted-foreground">{t('plus_page.fine_print')}</p>
+          <p className="mt-4 text-base leading-7 text-muted-foreground">{t('plus_page.cta.description')}</p>
+          <a href={SUBSCRIPTION_URL} target="_blank" rel="noopener noreferrer" className={cn(PLAN_BUTTON, 'mt-8')}>
+            {t('plus_page.subscribe')}
+          </a>
+          <p className="mt-4 text-xs leading-5 text-muted-foreground">{t('plus_page.fine_print')}</p>
         </section>
       </main>
       <Footer />
