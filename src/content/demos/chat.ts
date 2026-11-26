@@ -1,17 +1,19 @@
-// Scripted conversations for the home hero chat demo. Each scenario plays one tool from the desktop composer.
+// Scripted conversations for the home hero chat demo. Labels mirror the desktop renderer's en-us / zh-cn locales.
 export type DemoLocale = 'en' | 'zh'
 
 export type ChatTool = 'web' | 'knowledge' | 'mcp'
 
+export type ChatPanelItemId = 'new' | 'attachment' | ChatTool | 'prompts' | 'clear'
+
 export interface ChatScenario {
   id: string
-  chip: string
+  /** Topic row in the conversation list and the tab title. */
+  topic: string
   tool: ChatTool
-  toolLabel: string
-  toolRunning: string
-  toolDone: string
-  sources: string[]
-  model: { name: string; provider: string }
+  /** Search query, or the knowledge base name inserted as a composer token. */
+  query: string
+  toolResult: string
+  model: { name: string; provider: string; providerName: string }
   prompt: string
   thinking: string[]
   answer: string
@@ -19,45 +21,62 @@ export interface ChatScenario {
 
 export interface ChatDemoCopy {
   window: string
+  assistant: string
+  addAssistant: string
+  section: string
   greeting: string
   placeholder: string
-  topics: string[]
-  assistant: string
-  panelTitle: string
-  panelItems: { id: ChatTool | 'files' | 'phrases' | 'mention'; label: string; hint: string }[]
+  disclaimer: string
+  panelItems: { id: ChatPanelItemId; label: string }[]
+  panelHints: { close: string; select: string; confirm: string }
   thinking: string
-  thought: string
+  reasoned: string
+  processing: string
+  processed: string
+  seconds: (value: number) => string
+  searching: string
+  mcpRunning: string
+  mcpDone: string
+  effort: string
   scenarios: ChatScenario[]
 }
 
 export const chatDemo: Record<DemoLocale, ChatDemoCopy> = {
   en: {
-    window: 'Cherry Studio — Default Assistant',
-    greeting: 'What should we work on?',
-    placeholder: 'Message, / for tools, # for knowledge',
-    topics: ['Kyoto trip', 'Q3 spec review', 'Refactor TODOs', 'Weekly notes'],
-    assistant: 'Default Assistant',
-    panelTitle: 'Tools',
+    window: 'Cherry Studio',
+    assistant: 'Cherie',
+    addAssistant: 'Add Assistant',
+    section: 'Assistant',
+    greeting: 'What should we talk about today?',
+    placeholder: 'Type a message. Type / for tools and actions, @ to reference topics.',
+    disclaimer: 'AI-generated content, for reference only',
     panelItems: [
-      { id: 'web', label: 'Web search', hint: '20 engines' },
-      { id: 'knowledge', label: 'Knowledge base', hint: '#' },
-      { id: 'mcp', label: 'MCP servers', hint: '12 built in' },
-      { id: 'files', label: 'Attach files', hint: 'PDF, Office, images' },
-      { id: 'mention', label: 'Mention models', hint: '@' },
-      { id: 'phrases', label: 'Quick phrases', hint: '' }
+      { id: 'new', label: 'New Chat' },
+      { id: 'attachment', label: 'Upload attachment' },
+      { id: 'web', label: 'Web Search' },
+      { id: 'knowledge', label: 'Knowledge Base' },
+      { id: 'mcp', label: 'MCP' },
+      { id: 'prompts', label: 'Prompts' },
+      { id: 'clear', label: 'Clear Context' }
     ],
-    thinking: 'Thinking',
-    thought: 'Thought for 3 seconds',
+    panelHints: { close: 'Close', select: 'Select', confirm: 'Confirm' },
+    thinking: 'Let me think this through',
+    reasoned: 'Deep reasoning',
+    processing: 'Processing',
+    processed: 'Processed',
+    seconds: (value) => `${value}s`,
+    searching: 'Searching...',
+    mcpRunning: 'Getting started',
+    mcpDone: 'All wrapped up',
+    effort: 'Medium',
     scenarios: [
       {
         id: 'trip',
-        chip: 'Plan a Kyoto trip',
+        topic: 'Kyoto trip plan',
         tool: 'web',
-        toolLabel: 'Web search',
-        toolRunning: 'Searching the web',
-        toolDone: 'Read 4 sources',
-        sources: ['japan-guide.com', 'kyoto.travel', 'booking.com', 'reddit.com'],
-        model: { name: 'Claude Sonnet 4.6', provider: 'anthropic' },
+        query: 'Kyoto early December itinerary',
+        toolResult: '4 search result(s)',
+        model: { name: 'Claude Sonnet 4.6', provider: 'anthropic', providerName: 'Anthropic' },
         prompt: 'Plan 3 days in Kyoto in early December, under $600',
         thinking: [
           'They want a budget plan for Kyoto in early December.',
@@ -69,13 +88,11 @@ export const chatDemo: Record<DemoLocale, ChatDemoCopy> = {
       },
       {
         id: 'spec',
-        chip: 'Summarize our spec',
+        topic: 'Q3 spec changes',
         tool: 'knowledge',
-        toolLabel: 'Knowledge base',
-        toolRunning: 'Searching “Product specs”',
-        toolDone: 'Recalled 5 passages',
-        sources: ['spec-v3.pdf', 'roadmap.md', 'meeting-0912.docx'],
-        model: { name: 'GPT-5.6', provider: 'openai' },
+        query: 'Product specs',
+        toolResult: '5 search result(s)',
+        model: { name: 'GPT-5.6', provider: 'openai', providerName: 'OpenAI' },
         prompt: 'What changed in the Q3 product spec?',
         thinking: [
           'Compare the v3 spec against the roadmap notes.',
@@ -87,13 +104,11 @@ export const chatDemo: Record<DemoLocale, ChatDemoCopy> = {
       },
       {
         id: 'todos',
-        chip: 'Group my TODOs',
+        topic: 'TODOs by owner',
         tool: 'mcp',
-        toolLabel: 'MCP · filesystem',
-        toolRunning: 'Calling search_files',
-        toolDone: 'Scanned 214 files',
-        sources: ['src/api', 'src/ui', 'scripts'],
-        model: { name: 'Gemini 3.5 Flash', provider: 'google' },
+        query: 'filesystem : search_files',
+        toolResult: '',
+        model: { name: 'Gemini 3.5 Flash', provider: 'google', providerName: 'Gemini' },
         prompt: 'Find TODOs in my project and group them by owner',
         thinking: [
           'Search the repo for TODO and FIXME markers.',
@@ -106,32 +121,40 @@ export const chatDemo: Record<DemoLocale, ChatDemoCopy> = {
     ]
   },
   zh: {
-    window: 'Cherry Studio — 默认助手',
-    greeting: '今天想做点什么？',
-    placeholder: '输入消息，/ 调出工具，# 引用知识库',
-    topics: ['京都旅行', 'Q3 需求评审', '整理 TODO', '周报'],
-    assistant: '默认助手',
-    panelTitle: '工具',
+    window: 'Cherry Studio',
+    assistant: 'Cherry 助手',
+    addAssistant: '添加助手',
+    section: '助手',
+    greeting: '今天想聊点什么？',
+    placeholder: '输入消息，输入 / 选择工具或操作，输入 @ 引用话题',
+    disclaimer: '内容由 AI 生成，仅供参考',
     panelItems: [
-      { id: 'web', label: '网络搜索', hint: '20 个搜索引擎' },
-      { id: 'knowledge', label: '知识库', hint: '#' },
-      { id: 'mcp', label: 'MCP 服务器', hint: '内置 12 个' },
-      { id: 'files', label: '上传文件', hint: 'PDF、Office、图片' },
-      { id: 'mention', label: '@ 提及模型', hint: '@' },
-      { id: 'phrases', label: '快捷短语', hint: '' }
+      { id: 'new', label: '新对话' },
+      { id: 'attachment', label: '上传附件' },
+      { id: 'web', label: '网络搜索' },
+      { id: 'knowledge', label: '知识库' },
+      { id: 'mcp', label: 'MCP' },
+      { id: 'prompts', label: '提示词' },
+      { id: 'clear', label: '清除上下文' }
     ],
-    thinking: '思考中',
-    thought: '已深度思考 3 秒',
+    panelHints: { close: '关闭', select: '选择', confirm: '确认' },
+    thinking: '让我认真想一想',
+    reasoned: '已深度思考',
+    processing: '正在处理',
+    processed: '已处理',
+    seconds: (value) => `${value} 秒`,
+    searching: '正在搜索...',
+    mcpRunning: '开始处理',
+    mcpDone: '任务已顺利完成',
+    effort: '中',
     scenarios: [
       {
         id: 'trip',
-        chip: '规划京都旅行',
+        topic: '京都旅行计划',
         tool: 'web',
-        toolLabel: '网络搜索',
-        toolRunning: '正在搜索网页',
-        toolDone: '阅读了 4 个来源',
-        sources: ['japan-guide.com', 'kyoto.travel', 'ctrip.com', 'xiaohongshu.com'],
-        model: { name: 'DeepSeek V4 Pro', provider: 'deepseek' },
+        query: '京都 12 月初 三日游 攻略',
+        toolResult: '4 个搜索结果',
+        model: { name: 'DeepSeek V4 Pro', provider: 'deepseek', providerName: '深度求索' },
         prompt: '12 月初去京都玩 3 天，预算 4000 元以内，帮我排个行程',
         thinking: [
           '用户要一份 12 月初京都 3 天的省钱行程。',
@@ -143,13 +166,11 @@ export const chatDemo: Record<DemoLocale, ChatDemoCopy> = {
       },
       {
         id: 'spec',
-        chip: '总结需求文档',
+        topic: 'Q3 需求变化',
         tool: 'knowledge',
-        toolLabel: '知识库',
-        toolRunning: '正在检索「产品需求」',
-        toolDone: '召回 5 个片段',
-        sources: ['需求文档-v3.pdf', 'roadmap.md', '0912 会议纪要.docx'],
-        model: { name: 'Qwen3.7 Max', provider: 'qwen' },
+        query: '产品需求',
+        toolResult: '5 个搜索结果',
+        model: { name: 'Qwen3.7 Max', provider: 'qwen', providerName: '千问 AI 平台' },
         prompt: 'Q3 需求文档有哪些变化？',
         thinking: ['对比 v3 需求文档和路线图。', '找出 9 月会议上的决定。', '只保留影响发布时间的变化。'],
         answer:
@@ -157,13 +178,11 @@ export const chatDemo: Record<DemoLocale, ChatDemoCopy> = {
       },
       {
         id: 'todos',
-        chip: '整理项目 TODO',
+        topic: '按负责人整理 TODO',
         tool: 'mcp',
-        toolLabel: 'MCP · filesystem',
-        toolRunning: '正在调用 search_files',
-        toolDone: '扫描了 214 个文件',
-        sources: ['src/api', 'src/ui', 'scripts'],
-        model: { name: 'Kimi K3', provider: 'moonshot' },
+        query: 'filesystem : search_files',
+        toolResult: '',
+        model: { name: 'Kimi K3', provider: 'moonshot', providerName: '月之暗面' },
         prompt: '找出项目里的 TODO，按负责人分组',
         thinking: ['在仓库里搜索 TODO 和 FIXME 标记。', '读取每个标记旁的负责人。', '先按负责人分组，再按目录分组。'],
         answer:

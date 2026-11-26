@@ -13,6 +13,7 @@ import {
   type LucideIcon,
   MessageSquare,
   Pin,
+  Volume2,
   X,
   Zap
 } from 'lucide-react'
@@ -30,6 +31,7 @@ import Kbd from '../primitives/Kbd'
 import ProviderIcon from '../primitives/ProviderIcon'
 import StreamingText from '../primitives/StreamingText'
 import { useStickToBottom } from '../primitives/useStickToBottom'
+import { readAloud } from './SelectionActionWindow'
 
 type Route = 'home' | QuickFeatureId
 type Phase = 'preparing' | 'streaming' | 'done'
@@ -70,7 +72,10 @@ function AnswerScroller({ children }: { children: ReactNode }) {
   useStickToBottom(scroller, thread)
   return (
     <div ref={scroller} className="min-h-0 flex-1 overflow-y-auto [scrollbar-width:thin]">
-      <div ref={thread} className="pb-2 text-[14px] leading-relaxed text-foreground/90" aria-live="polite">
+      <div
+        ref={thread}
+        className="flex min-h-full flex-col justify-end pb-5 text-sm leading-relaxed text-foreground"
+        aria-live="polite">
         {children}
       </div>
     </div>
@@ -131,6 +136,7 @@ export function QuickAssistantTab({ copy, locale, tag, playing, active }: QuickA
   const start = (feature: QuickFeatureId) => {
     if (!requestText) return
     setAsked(value)
+    setValue('')
     setRoute(feature)
     setRun((count) => count + 1)
     setPhase('preparing')
@@ -223,21 +229,40 @@ export function QuickAssistantTab({ copy, locale, tag, playing, active }: QuickA
     </div>
   )
 
+  const stream = (
+    <StreamingText
+      key={run}
+      text={answer}
+      locale={answerTag}
+      active={phase === 'streaming' && playing}
+      rate={44}
+      onDone={() => setPhase('done')}
+    />
+  )
+
+  // Chat shows the sent request as a user bubble; summary and explanation hide it, as the desktop does.
   const answerView = (
     <AnswerScroller>
+      {route === 'chat' && (
+        <div className="mt-5 max-w-[85%] self-end rounded-[10px] bg-muted px-4 py-2.5 whitespace-pre-wrap">
+          {[clipboard, asked].filter(Boolean).join('\n\n')}
+        </div>
+      )}
       {phase === 'preparing' ? (
-        <Loader2 className="size-4 text-muted-foreground motion-safe:animate-spin" aria-hidden="true" />
-      ) : (
-        <StreamingText
-          key={run}
-          text={answer}
-          locale={answerTag}
-          active={phase === 'streaming' && playing}
-          rate={44}
-          onDone={() => setPhase('done')}
+        <Loader2
+          className="mt-5 size-4 self-center text-muted-foreground motion-safe:animate-spin"
+          aria-hidden="true"
         />
+      ) : (
+        <div className="mt-5 w-full">{stream}</div>
       )}
     </AnswerScroller>
+  )
+
+  const translateView = (
+    <div className="min-h-0 flex-1 overflow-y-auto text-sm leading-relaxed whitespace-pre-wrap [scrollbar-width:thin]">
+      {phase === 'preparing' ? <span className="text-muted-foreground/70 italic">{text.translating}</span> : stream}
+    </div>
   )
 
   return (
@@ -264,7 +289,19 @@ export function QuickAssistantTab({ copy, locale, tag, playing, active }: QuickA
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.97, transition: { duration: 0.12 } }}
             transition={{ duration: 0.22, ease: ease.expo }}
-            className="flex h-[340px] w-[min(560px,100%)] flex-col rounded-xl outline-none border border-border bg-popover px-2.5 py-2 shadow-(--shadow-float)">
+            className="relative flex h-[360px] w-[min(550px,100%)] flex-col rounded-xl border border-border bg-background px-2.5 py-2 shadow-(--shadow-float) outline-none">
+            <AnimatePresence>
+              {copied && (
+                <m.p
+                  role="status"
+                  initial={{ opacity: 0, y: -4 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0 }}
+                  className="absolute top-2 left-1/2 z-10 -translate-x-1/2 rounded-full border border-border bg-popover px-3 py-1 text-xs shadow-md">
+                  {text.footer.copied}
+                </m.p>
+              )}
+            </AnimatePresence>
             {route === 'home' && (
               <>
                 {inputBar}
@@ -278,7 +315,7 @@ export function QuickAssistantTab({ copy, locale, tag, playing, active }: QuickA
                       onClick={() => start(id)}
                       onMouseEnter={() => setSelected(index)}
                       className={cn(
-                        'flex w-full shrink-0 cursor-pointer items-center gap-3 rounded-lg px-4 py-1.5 text-left transition-colors hover:bg-accent focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-primary',
+                        'flex w-full shrink-0 cursor-pointer items-center gap-3 rounded-lg px-4 py-2 text-left transition-colors hover:bg-accent focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-primary',
                         index === selected && 'bg-accent'
                       )}>
                       <Icon className="size-4 shrink-0 text-foreground" aria-hidden="true" />
@@ -308,7 +345,7 @@ export function QuickAssistantTab({ copy, locale, tag, playing, active }: QuickA
             {route === 'translate' && (
               <div className="flex min-h-0 flex-1 flex-col p-3">
                 <div className="mb-4 flex items-center gap-3 sm:gap-5" aria-hidden="true">
-                  <span className="flex h-9 min-w-0 flex-1 items-center truncate rounded-md border border-input bg-muted px-3 text-sm text-muted-foreground/70">
+                  <span className="flex h-9 min-w-0 flex-1 items-center truncate rounded-md border border-input bg-muted px-3 text-sm text-muted-foreground/60">
                     {text.anyLanguage}
                   </span>
                   <ArrowLeftRight className="size-4 shrink-0 text-muted-foreground" />
@@ -318,11 +355,11 @@ export function QuickAssistantTab({ copy, locale, tag, playing, active }: QuickA
                     <ChevronDown className="size-3.5 text-muted-foreground" />
                   </span>
                 </div>
-                {answerView}
+                {translateView}
               </div>
             )}
             {separator}
-            <div className="flex shrink-0 items-center justify-between py-1 text-xs">
+            <div className="flex shrink-0 items-center justify-between py-1.5 text-xs">
               <div className="flex min-w-0 items-center gap-1 overflow-hidden">
                 <FooterAction onClick={handleEscape}>
                   {loading ? (
@@ -345,7 +382,13 @@ export function QuickAssistantTab({ copy, locale, tag, playing, active }: QuickA
                 {route !== 'home' && !loading && (
                   <FooterAction onClick={copyAnswer}>
                     <Copy className="size-3.5 text-foreground" aria-hidden="true" />
-                    <span aria-live="polite">{copied ? text.footer.copied : text.footer.copy}</span>
+                    {text.footer.copy}
+                  </FooterAction>
+                )}
+                {route !== 'home' && route !== 'translate' && !loading && (
+                  <FooterAction onClick={() => readAloud(answer, answerTag)}>
+                    <Volume2 className="size-3.5 text-foreground" aria-hidden="true" />
+                    {text.footer.readAloud}
                   </FooterAction>
                 )}
               </div>
@@ -355,7 +398,7 @@ export function QuickAssistantTab({ copy, locale, tag, playing, active }: QuickA
                 aria-pressed={pinned}
                 aria-label={text.pin}
                 title={text.pin}
-                className="mr-1 flex size-6 shrink-0 cursor-pointer items-center justify-center rounded focus-visible:outline-2 focus-visible:outline-primary">
+                className="mr-1 flex shrink-0 cursor-pointer items-center rounded focus-visible:outline-2 focus-visible:outline-primary">
                 <Pin
                   className={cn(
                     'size-3.5 transition-transform',

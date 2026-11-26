@@ -1,7 +1,6 @@
-import { AnimatePresence, m } from 'framer-motion'
+import { AnimatePresence } from 'framer-motion'
 import {
   Bot,
-  Check,
   ChevronLeft,
   ChevronRight,
   ClipboardCheck,
@@ -9,15 +8,11 @@ import {
   ClipboardX,
   FileQuestion,
   Languages,
-  LoaderCircle,
   Lock,
   type LucideIcon,
-  Quote,
   ScanText,
   Search,
-  TextSelect,
-  WandSparkles,
-  X
+  TextSelect
 } from 'lucide-react'
 import { Fragment, useEffect, useLayoutEffect, useRef, useState } from 'react'
 
@@ -29,27 +24,25 @@ import {
   type SelectionActionId,
   type WindowActionId
 } from '@/content/demos/assistants'
-import { spring } from '@/lib/motion'
 import { cn } from '@/lib/utils'
 import { useDemoScript } from '../primitives/useDemoScript'
 import { type ActionSession, SelectionActionWindow } from './SelectionActionWindow'
+import { type AgentCapsuleState, SelectionAgentCapsule, SelectionAgentCompose } from './SelectionAgentCompose'
 
-// Built-in order and icons from the desktop `feature.selection.action_items` default.
+// Enabled entries of the desktop `feature.selection.action_items` default, in order.
 const ACTIONS: { id: SelectionActionId; icon: LucideIcon }[] = [
   { id: 'translate', icon: Languages },
   { id: 'explain', icon: FileQuestion },
   { id: 'summary', icon: ScanText },
   { id: 'search', icon: Search },
   { id: 'copy', icon: ClipboardCopy },
-  { id: 'ask-agent', icon: Bot },
-  { id: 'refine', icon: WandSparkles },
-  { id: 'quote', icon: Quote }
+  { id: 'ask-agent', icon: Bot }
 ]
 const ACTION_ICONS = Object.fromEntries(ACTIONS.map((action) => [action.id, action.icon])) as Record<
   SelectionActionId,
   LucideIcon
 >
-const WINDOW_ACTIONS: SelectionActionId[] = ['translate', 'explain', 'summary', 'refine']
+const WINDOW_ACTIONS: SelectionActionId[] = ['translate', 'explain', 'summary']
 const SAMPLES = ['p0-1', 'p1-0', 'p0-0', 'p1-1']
 const TOOLBAR_HEIGHT = 36
 const COPY_ICON = 'absolute inset-0 size-4 transition-[color,opacity,transform] duration-300'
@@ -98,8 +91,8 @@ export function SelectionAssistantTab({ copy, locale, playing }: SelectionAssist
   const [hovered, setHovered] = useState<SelectionActionId | null>(null)
   const [copyState, setCopyState] = useState<CopyState>({ status: 'normal', animation: 'none' })
   const [session, setSession] = useState<ActionSession | null>(null)
-  const [capsule, setCapsule] = useState<{ step: number; done: boolean } | null>(null)
-  const [toast, setToast] = useState<string | null>(null)
+  const [compose, setCompose] = useState<{ id: number; quote: string } | null>(null)
+  const [capsule, setCapsule] = useState<AgentCapsuleState | null>(null)
   const translation = assistantsTranslation[locale].article
   const resultTag = locale === 'en' ? 'zh-CN' : 'en-US'
 
@@ -178,16 +171,10 @@ export function SelectionAssistantTab({ copy, locale, playing }: SelectionAssist
     if (!capsule || capsule.done || !playing) return
     const timer = setTimeout(
       () => setCapsule(capsule.step >= 3 ? { ...capsule, done: true } : { ...capsule, step: capsule.step + 1 }),
-      950
+      capsule.step === 0 ? 700 : 950
     )
     return () => clearTimeout(timer)
   }, [capsule, playing])
-
-  useEffect(() => {
-    if (!toast) return
-    const timer = setTimeout(() => setToast(null), 2400)
-    return () => clearTimeout(timer)
-  }, [toast])
 
   const buildResult = (action: WindowActionId, ids: string[]) => {
     const parts = ids.map(parseSentenceId)
@@ -223,8 +210,10 @@ export function SelectionAssistantTab({ copy, locale, playing }: SelectionAssist
     // The toolbar hides after an action; a late selectionchange must not bring it back.
     consumed.current = text
     hide()
+    // Both windows open at the toolbar, so the newer one replaces the other instead of stacking.
     if (WINDOW_ACTIONS.includes(id)) {
       const action = id as WindowActionId
+      setCompose(null)
       setSession((previous) => ({
         id: (previous?.id ?? 0) + 1,
         action,
@@ -235,9 +224,8 @@ export function SelectionAssistantTab({ copy, locale, playing }: SelectionAssist
     } else if (id === 'search') {
       window.open(`https://www.google.com/search?q=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer')
     } else if (id === 'ask-agent') {
-      setCapsule({ step: 1, done: false })
-    } else if (id === 'quote') {
-      setToast(copy.quoted)
+      setSession(null)
+      setCompose((previous) => ({ id: (previous?.id ?? 0) + 1, quote: text }))
     }
   }
 
@@ -278,7 +266,7 @@ export function SelectionAssistantTab({ copy, locale, playing }: SelectionAssist
 
   const boxWidth = root.current?.clientWidth ?? 0
   const boxHeight = root.current?.clientHeight ?? 0
-  const width = toolbarWidth || (compact ? 300 : 660)
+  const width = toolbarWidth || (compact ? 230 : 520)
   const position = anchor && {
     left: Math.max(8, Math.min(anchor.x - width / 2, boxWidth - width - 8)),
     top: anchor.below + TOOLBAR_HEIGHT < boxHeight - 8 ? anchor.below : Math.max(8, anchor.above - TOOLBAR_HEIGHT)
@@ -437,59 +425,22 @@ export function SelectionAssistantTab({ copy, locale, playing }: SelectionAssist
       </AnimatePresence>
 
       <AnimatePresence>
-        {capsule && (
-          <m.div
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 6 }}
-            transition={spring.settle}
-            className="group absolute right-3 bottom-14 z-30 flex h-9 items-center gap-2 rounded-full border border-border bg-popover pr-1.5 pl-[7px] text-xs shadow-md">
-            <span
-              aria-hidden="true"
-              className="inline-flex size-[18px] shrink-0 items-center justify-center rounded-sm bg-muted text-[11px] leading-none">
-              {copy.agent.avatar}
-            </span>
-            <span className="font-medium">{copy.agent.name}</span>
-            <span className="hidden max-w-[180px] truncate text-muted-foreground group-focus-within:inline group-hover:inline">
-              {copy.agent.session}
-            </span>
-            <span
-              aria-live="polite"
-              className={cn(
-                'inline-flex items-center gap-1 whitespace-nowrap tabular-nums',
-                capsule.done ? 'text-emerald-600 dark:text-emerald-400' : 'text-muted-foreground'
-              )}>
-              {capsule.done ? (
-                <Check className="size-3" aria-hidden="true" />
-              ) : (
-                <LoaderCircle className="size-3 motion-safe:animate-spin" aria-hidden="true" />
-              )}
-              {capsule.done ? copy.agent.done : copy.agent.step.replace('{n}', String(capsule.step))}
-            </span>
-            <button
-              type="button"
-              onClick={() => setCapsule(null)}
-              aria-label={copy.agent.dismiss}
-              className="flex size-6 cursor-pointer items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-accent hover:text-foreground focus-visible:outline-2 focus-visible:outline-primary">
-              <X className="size-3" aria-hidden="true" />
-            </button>
-          </m.div>
+        {compose && (
+          <SelectionAgentCompose
+            key={compose.id}
+            copy={copy}
+            quote={compose.quote}
+            onClose={() => setCompose(null)}
+            onSend={(instruction) => {
+              setCompose(null)
+              setCapsule({ title: instruction, step: 0, done: false })
+            }}
+          />
         )}
       </AnimatePresence>
 
       <AnimatePresence>
-        {toast && (
-          <m.p
-            role="status"
-            initial={{ opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0 }}
-            transition={spring.settle}
-            className="absolute bottom-14 left-1/2 z-30 -translate-x-1/2 rounded-full border border-border bg-popover px-3 py-1.5 text-xs whitespace-nowrap shadow-md">
-            <Quote className="mr-1.5 inline size-3 text-primary" aria-hidden="true" />
-            {toast}
-          </m.p>
-        )}
+        {capsule && <SelectionAgentCapsule copy={copy} capsule={capsule} onClose={() => setCapsule(null)} />}
       </AnimatePresence>
     </div>
   )

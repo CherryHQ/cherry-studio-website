@@ -35,7 +35,7 @@ export default function DesktopAssistantsDemo() {
       <DemoFrame
         title={tab === 'selection' ? copy.tabs.selection : copy.quick.window}
         onReplay={replay}
-        bodyClassName="h-[440px]">
+        bodyClassName="h-[470px]">
         <div className="flex h-full flex-col">
           <div role="tablist" className="flex h-11 shrink-0 items-center gap-1 border-b border-border px-3">
             {TABS.map(({ id, icon: Icon }) => (

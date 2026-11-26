@@ -1,17 +1,10 @@
 // Copy for the desktop selection assistant and quick assistant demos.
-// Action and window labels come from the desktop locale (selection.action.*, quickAssistant.*).
+// Action and window labels come from the desktop locale (selection.*, quickAssistant.*, translate.*).
 export type DemoLocale = 'en' | 'zh'
 
-export type SelectionActionId =
-  | 'translate'
-  | 'explain'
-  | 'summary'
-  | 'search'
-  | 'copy'
-  | 'ask-agent'
-  | 'refine'
-  | 'quote'
-export type WindowActionId = 'translate' | 'explain' | 'summary' | 'refine'
+// Only the actions enabled by default; Refine and Quote ship disabled.
+export type SelectionActionId = 'translate' | 'explain' | 'summary' | 'search' | 'copy' | 'ask-agent'
+export type WindowActionId = 'translate' | 'explain' | 'summary'
 export type QuickFeatureId = 'chat' | 'translate' | 'summary' | 'explanation'
 
 export interface LanguageTag {
@@ -30,20 +23,48 @@ export interface AssistantsDemoCopy {
   actions: Record<SelectionActionId, string>
   /** One result per paragraph; the title borrows the first paragraph's. */
   results: Record<Exclude<WindowActionId, 'translate'>, string[]>
-  translate: { from: LanguageTag; to: LanguageTag; detecting: string }
+  /** `from` is the detected language's raw name, which the desktop shows untranslated. */
+  translate: {
+    from: LanguageTag
+    to: LanguageTag
+    detecting: string
+    settings: string
+    preferredTarget: string
+    alterLanguage: string
+    preferred: LanguageTag
+    alter: LanguageTag
+    smartTips: string
+  }
   actionWindow: {
     showOriginal: string
     hideOriginal: string
     pin: string
     pinned: string
+    opacity: string
     escClose: string
     escStop: string
     regenerate: string
     copy: string
+    copied: string
+    readAloud: string
     close: string
   }
-  quoted: string
-  agent: { name: string; avatar: string; session: string; step: string; done: string; dismiss: string }
+  agent: {
+    name: string
+    avatar: string
+    session: string
+    quote: string
+    chars: string
+    lines: string
+    placeholder: string
+    workspace: string
+    saved: string
+    send: string
+    running: string
+    step: string
+    done: string
+    dismiss: string
+  }
   quick: {
     window: string
     model: string
@@ -56,7 +77,16 @@ export interface AssistantsDemoCopy {
     customReply: string
     anyLanguage: string
     target: LanguageTag
-    footer: { escClose: string; escBack: string; escPause: string; backspace: string; copy: string; copied: string }
+    translating: string
+    footer: {
+      escClose: string
+      escBack: string
+      escPause: string
+      backspace: string
+      copy: string
+      readAloud: string
+      copied: string
+    }
     pin: string
     shortcut: string
   }
@@ -106,9 +136,7 @@ export const assistantsDemo: Record<DemoLocale, AssistantsDemoCopy> = {
       summary: 'Summarize',
       search: 'Search',
       copy: 'Copy',
-      'ask-agent': 'Ask Agent',
-      refine: 'Refine',
-      quote: 'Quote'
+      'ask-agent': 'Ask Agent'
     },
     results: {
       explain: [
@@ -118,33 +146,46 @@ export const assistantsDemo: Record<DemoLocale, AssistantsDemoCopy> = {
       summary: [
         '• Recalling a fact right before you forget it strengthens the memory.\n• This is the spacing effect.\n• Ebbinghaus first measured it in 1885.',
         '• Flashcard apps space each review further apart than the last.\n• About ten minutes a day keeps hundreds of cards fresh.'
-      ],
-      refine: [
-        'Each time you retrieve a fact just as it begins to fade, it returns stronger than before. Psychologists call this the spacing effect, first measured by Hermann Ebbinghaus in 1885.',
-        'Flashcard apps harness this by spacing every review a little further apart than the last. Just ten focused minutes a day can keep hundreds of cards fresh.'
       ]
     },
     translate: {
       from: { emoji: '🇺🇸', label: 'English' },
       to: { emoji: '🇨🇳', label: 'Chinese' },
-      detecting: 'Detecting...'
+      detecting: 'Detecting...',
+      settings: 'Language Settings',
+      preferredTarget: 'Preferred Target',
+      alterLanguage: 'Alternative Language',
+      preferred: { emoji: '🇨🇳', label: 'Chinese' },
+      alter: { emoji: '🇺🇸', label: 'English' },
+      smartTips:
+        'Smart Translation: Content will be translated to the target language first; content already in the target language will be translated to the alternative language'
     },
     actionWindow: {
       showOriginal: 'Show Original',
       hideOriginal: 'Hide Original',
       pin: 'Pin',
       pinned: 'Pinned',
+      opacity: 'Window Opacity',
       escClose: 'Esc: Close',
       escStop: 'Esc: Stop',
       regenerate: 'R: Regenerate',
       copy: 'C: Copy',
+      copied: 'Copied!',
+      readAloud: 'Read result aloud',
       close: 'Close'
     },
-    quoted: 'Quoted into the Cherry Studio input box',
     agent: {
-      name: 'Research agent',
-      avatar: '🔬',
-      session: 'Sources on the spacing effect',
+      name: 'Cherry Assistant',
+      avatar: '🍒',
+      session: 'Spacing effect sources',
+      quote: 'Quote',
+      chars: '{n} chars',
+      lines: '{n} lines',
+      placeholder: 'What should the agent do?',
+      workspace: 'No work directory',
+      saved: 'Saved as a conversation',
+      send: 'Send',
+      running: 'Running',
       step: 'Step {n}',
       done: 'Done',
       dismiss: 'Close'
@@ -173,12 +214,14 @@ export const assistantsDemo: Record<DemoLocale, AssistantsDemoCopy> = {
         'This is a simulated preview, so the scripted model cannot read what you typed. In Cherry Studio, the model you pick answers right here, with the clipboard text as context.',
       anyLanguage: 'Any language',
       target: { emoji: '🇨🇳', label: 'Chinese' },
+      translating: 'Translation...',
       footer: {
         escClose: 'ESC to close',
         escBack: 'ESC to return',
         escPause: 'ESC to pause',
         backspace: 'Backspace to clear',
         copy: 'Press C to copy',
+        readAloud: 'Read aloud',
         copied: 'Copied!'
       },
       pin: 'Keep Window on Top',
@@ -198,9 +241,7 @@ export const assistantsDemo: Record<DemoLocale, AssistantsDemoCopy> = {
       summary: '总结',
       search: '搜索',
       copy: '复制',
-      'ask-agent': '问智能体',
-      refine: '优化',
-      quote: '引用'
+      'ask-agent': '问智能体'
     },
     results: {
       explain: [
@@ -210,33 +251,45 @@ export const assistantsDemo: Record<DemoLocale, AssistantsDemoCopy> = {
       summary: [
         '• 在快要遗忘时回想，记忆会更牢固。\n• 这就是间隔效应。\n• 艾宾浩斯在 1885 年最早测量了它。',
         '• 闪卡应用让每次复习的间隔逐步拉长。\n• 每天约十分钟就能维持几百张卡片的记忆。'
-      ],
-      refine: [
-        '每当一个知识点即将淡忘时再把它回想起来，记忆就会比之前更牢固。心理学家称之为间隔效应，最早由艾宾浩斯于 1885 年测得。',
-        '闪卡应用正是借助这一规律，让每次复习都比上一次间隔更久。每天只需专注十分钟，就能让几百张卡片常记常新。'
       ]
     },
     translate: {
-      from: { emoji: '🇨🇳', label: '简体中文' },
+      from: { emoji: '🇨🇳', label: 'Chinese (Simplified)' },
       to: { emoji: '🇺🇸', label: '英文' },
-      detecting: '检测中...'
+      detecting: '检测中...',
+      settings: '语言设置',
+      preferredTarget: '首选目标',
+      alterLanguage: '备用语言',
+      preferred: { emoji: '🇨🇳', label: '简体中文' },
+      alter: { emoji: '🇺🇸', label: '英文' },
+      smartTips: '智能翻译：内容将优先翻译为目标语言；内容已是目标语言的，将翻译为备选语言'
     },
     actionWindow: {
       showOriginal: '显示原文',
       hideOriginal: '隐藏原文',
       pin: '置顶',
       pinned: '已置顶',
+      opacity: '窗口透明度',
       escClose: 'Esc 关闭',
       escStop: 'Esc 停止',
       regenerate: 'R 重新生成',
       copy: 'C 复制',
+      copied: '复制成功',
+      readAloud: '朗读结果',
       close: '关闭'
     },
-    quoted: '已引用到 Cherry Studio 输入框',
     agent: {
-      name: '调研智能体',
-      avatar: '🔬',
-      session: '查找间隔效应的文献',
+      name: 'Cherry 助手',
+      avatar: '🍒',
+      session: '间隔效应的文献来源',
+      quote: '引用',
+      chars: '{n} 字',
+      lines: '{n} 行',
+      placeholder: '让智能体做什么？',
+      workspace: '不使用工作目录',
+      saved: '会保存为会话',
+      send: '发送',
+      running: '运行中',
       step: '第 {n} 步',
       done: '完成',
       dismiss: '关闭'
@@ -264,12 +317,14 @@ export const assistantsDemo: Record<DemoLocale, AssistantsDemoCopy> = {
         '这是模拟演示，脚本里的模型读不到你输入的内容。在 Cherry Studio 中，你选择的模型会直接在这里作答，并把剪贴板文字作为上下文。',
       anyLanguage: '任意语言',
       target: { emoji: '🇺🇸', label: '英文' },
+      translating: '翻译...',
       footer: {
         escClose: '按 ESC 关闭',
         escBack: '按 ESC 返回',
         escPause: '按 ESC 暂停',
         backspace: '按 Backspace 清空',
         copy: '按 C 键复制',
+        readAloud: '朗读',
         copied: '复制成功'
       },
       pin: '窗口置顶',

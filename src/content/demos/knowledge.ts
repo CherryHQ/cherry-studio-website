@@ -1,5 +1,6 @@
 // Copy for the knowledge base and translate demos. UI labels come from the desktop locale
 // (knowledge.*, translate.*, languages.*); the sample documents and chunks are demo data.
+// Relative times match desktop formatRelativeTime (Intl.RelativeTimeFormat, numeric: 'auto').
 export type DemoLocale = 'en' | 'zh'
 
 export type KnowledgeItemType = 'file' | 'url' | 'note' | 'directory'
@@ -21,10 +22,14 @@ export interface KnowledgeDemoCopy {
   settings: string
   updated: string
   add: string
-  addHint: string
   drop: string
+  /** Add Data Source menu labels (knowledge.data_source.add_dialog.sources.*). */
+  sources: Record<KnowledgeItemType, string>
+  /** Type column labels (knowledge.data_source.filters.*). */
   types: Record<KnowledgeItemType, string>
   columns: { name: string; type: string; status: string; updated: string }
+  selectAll: string
+  more: string
   status: { pending: string; reading: string; embedding: string; ready: string }
   justNow: string
   items: { type: KnowledgeItemType; title: string; updated: string }[]
@@ -40,7 +45,9 @@ export interface KnowledgeDemoCopy {
     relevance: string
     emptyTitle: string
     emptyDescription: string
-    noMatch: string
+    copy: string
+    expand: string
+    collapse: string
     close: string
     query: string
   }
@@ -59,12 +66,14 @@ export const knowledgeDemo: Record<DemoLocale, KnowledgeDemoCopy> = {
     settings: 'Knowledge Base Settings',
     updated: 'Updated {time}',
     add: 'Add Data Source',
-    addHint: 'Or drop files here',
     drop: 'Drag files here to upload',
-    types: { file: 'File', url: 'URL', note: 'Note', directory: 'Folder' },
+    sources: { file: 'File', note: 'Note', directory: 'Folder', url: 'URL' },
+    types: { file: 'Files', note: 'Notes', directory: 'Folders', url: 'URLs' },
     columns: { name: 'Name', type: 'Type', status: 'Status', updated: 'Updated' },
+    selectAll: 'Select all',
+    more: 'More',
     status: { pending: 'Waiting', reading: 'Reading', embedding: 'Embedding', ready: 'Ready' },
-    justNow: 'just now',
+    justNow: 'this minute',
     items: [
       { type: 'file', title: 'onboarding-guide.pdf', updated: '3 days ago' },
       { type: 'url', title: 'https://help.example.com/billing', updated: '2 days ago' },
@@ -87,7 +96,9 @@ export const knowledgeDemo: Record<DemoLocale, KnowledgeDemoCopy> = {
       relevance: 'Relevance {score}',
       emptyTitle: 'Enter a query to test retrieval',
       emptyDescription: 'Matched document chunks and scores will appear here',
-      noMatch: 'No results',
+      copy: 'Copy Chunk',
+      expand: 'Expand Chunk',
+      collapse: 'Collapse Chunk',
       close: 'Close',
       query: 'How do refunds work on annual plans?'
     },
@@ -172,17 +183,19 @@ export const knowledgeDemo: Record<DemoLocale, KnowledgeDemoCopy> = {
     settings: '知识库设置',
     updated: '更新于 {time}',
     add: '添加数据源',
-    addHint: '也可以直接拖入文件',
     drop: '拖拽文件到此处上传',
-    types: { file: '文件', url: '链接', note: '笔记', directory: '目录' },
+    sources: { file: '文件', note: '笔记', directory: '目录', url: '链接' },
+    types: { file: '文件', note: '笔记', directory: '目录', url: '链接' },
     columns: { name: '名称', type: '类型', status: '状态', updated: '更新时间' },
+    selectAll: '全选',
+    more: '更多',
     status: { pending: '等待中', reading: '读取文档中', embedding: '嵌入中', ready: '就绪' },
-    justNow: '刚刚',
+    justNow: '此刻',
     items: [
-      { type: 'file', title: '新手上路指南.pdf', updated: '3 天前' },
-      { type: 'url', title: 'https://help.example.com/billing', updated: '2 天前' },
+      { type: 'file', title: '新手上路指南.pdf', updated: '3天前' },
+      { type: 'url', title: 'https://help.example.com/billing', updated: '前天' },
       { type: 'note', title: '退款政策备忘', updated: '昨天' },
-      { type: 'directory', title: '合同', updated: '5 小时前' }
+      { type: 'directory', title: '合同', updated: '5小时前' }
     ],
     samples: {
       file: ['价格常见问题.docx', '年付套餐条款.pdf', '接口文档.md', '客服快捷回复.xlsx'],
@@ -200,7 +213,9 @@ export const knowledgeDemo: Record<DemoLocale, KnowledgeDemoCopy> = {
       relevance: '相关度 {score}',
       emptyTitle: '输入查询语句开始检索测试',
       emptyDescription: '结果将展示匹配的文档片段和分数',
-      noMatch: '无结果',
+      copy: '复制片段',
+      expand: '展开片段',
+      collapse: '收起片段',
       close: '关闭',
       query: '年付套餐怎么退款？'
     },
@@ -321,51 +336,71 @@ export const translateSamples: Record<string, string> = {
 export interface TranslateDemoCopy {
   region: string
   window: string
+  translateTo: string
+  target: string
   translate: string
   stop: string
-  source: string
-  target: string
-  autoDetect: string
-  detecting: string
-  translateTo: string
-  output: string
+  processing: string
+  placeholder: string
+  upload: string
+  clear: string
   copy: string
   copied: string
-  /** Detected source language for the scripted sample. */
+  readAloud: string
+  copyImage: string
+  saveToNotes: string
+  history: string
+  settings: string
+  /** Demo translation model shown on the model avatar. */
+  model: string
+  /** Language of the scripted input text. */
   defaultSource: string
   defaultTarget: string
 }
 
+// Labels from desktop translate.*, common.*, preview.copy.image, notes.save and chat.message.read_aloud.label.
 export const translateDemo: Record<DemoLocale, TranslateDemoCopy> = {
   en: {
     region: 'Translate demo',
     window: 'Cherry Studio — Translate',
+    translateTo: 'Translate to',
+    target: 'Target Language',
     translate: 'Translate',
     stop: 'Stop',
-    source: 'Source Language',
-    target: 'Target Language',
-    autoDetect: 'Auto Detect',
-    detecting: 'Detecting...',
-    translateTo: 'Translate to',
-    output: 'Translation',
+    processing: 'Translation in progress...',
+    placeholder: 'Enter text...',
+    upload: 'Drop or click to upload image/document',
+    clear: 'Clear',
     copy: 'Copy',
     copied: 'Copied',
+    readAloud: 'Read aloud',
+    copyImage: 'Copy as image',
+    saveToNotes: 'Save to Notes',
+    history: 'Translation History',
+    settings: 'Translation Settings',
+    model: 'GPT-5 mini',
     defaultSource: 'en-us',
     defaultTarget: 'ja-jp'
   },
   zh: {
     region: '翻译演示',
     window: 'Cherry Studio — 翻译',
+    translateTo: '译为',
+    target: '目标语言',
     translate: '翻译',
     stop: '停止',
-    source: '源语言',
-    target: '目标语言',
-    autoDetect: '自动检测',
-    detecting: '检测中...',
-    translateTo: '译为',
-    output: '翻译',
+    processing: '翻译中...',
+    placeholder: '请输入文本...',
+    upload: '拖入或点击上传图片/文档',
+    clear: '清除',
     copy: '复制',
     copied: '已复制',
+    readAloud: '朗读',
+    copyImage: '复制为图片',
+    saveToNotes: '保存到笔记',
+    history: '翻译历史',
+    settings: '翻译设置',
+    model: 'GPT-5 mini',
     defaultSource: 'zh-cn',
     defaultTarget: 'en-us'
   }

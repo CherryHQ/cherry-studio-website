@@ -1,9 +1,10 @@
-import { m, useReducedMotion } from 'framer-motion'
+import { useReducedMotion } from 'framer-motion'
 import { type KeyboardEvent, type PointerEvent, useLayoutEffect, useRef, useState } from 'react'
 
 import { anchorDemo } from '@/content/demos/chatTools'
 import { cn } from '@/lib/utils'
 import DemoFrame from '../primitives/DemoFrame'
+import ProviderIcon from '../primitives/ProviderIcon'
 import { useDemoLocale } from '../primitives/useDemoLocale'
 import { useDemoPlayback, useDemoScript } from '../primitives/useDemoScript'
 
@@ -19,7 +20,6 @@ const RAIL_TICK_PITCH_PX = 10
 const HIT_STRIP_WIDTH = 32
 const tickTransition =
   'transition-[width,height,background-color] duration-150 ease-[cubic-bezier(0.25,1,0.5,1)] [will-change:width] motion-reduce:transition-none'
-const SKELETON_WIDTHS = [['92%', '74%'], ['86%', '58%', '70%'], ['80%']]
 
 export default function AnchorRailDemo() {
   const { locale } = useDemoLocale()
@@ -40,7 +40,6 @@ export default function AnchorRailDemo() {
   const mouseY = pointerY ?? ghostY
   const [keyboardIndex, setKeyboardIndex] = useState<number | null>(null)
   const [activeIndex, setActiveIndex] = useState(turns.length - 1)
-  const [highlight, setHighlight] = useState<{ index: number; id: number } | null>(null)
 
   useLayoutEffect(() => {
     const rail = railRef.current
@@ -63,11 +62,9 @@ export default function AnchorRailDemo() {
     return Math.abs(mouseY - centerOf(index)) <= FOCUS_MAX_DISTANCE ? index : null
   })()
   const focusedIndex = pointerIndex ?? keyboardIndex
-  // Keyboard focus drives the same wave as the pointer, centred on the focused tick.
-  const waveY = mouseY ?? (keyboardIndex !== null ? centerOf(keyboardIndex) : null)
   const waveBonus = (index: number) => {
-    if (waveY === null) return 0
-    const falloff = Math.max(0, 1 - Math.abs(centerOf(index) - waveY) / HOVER_FALLOFF_DISTANCE)
+    if (mouseY === null) return 0
+    const falloff = Math.max(0, 1 - Math.abs(centerOf(index) - mouseY) / HOVER_FALLOFF_DISTANCE)
     return TICK_WAVE_BONUS * falloff ** 1.5
   }
   const cardTop =
@@ -116,9 +113,10 @@ export default function AnchorRailDemo() {
     const scroller = scrollerRef.current
     const turn = turnRefs.current[index]
     if (!scroller || !turn) return
-    const top = turn.offsetTop - (scroller.clientHeight - turn.offsetHeight) / 2
-    scroller.scrollTo({ top, behavior: reduced ? 'auto' : 'smooth' })
-    setHighlight((previous) => ({ index, id: (previous?.id ?? 0) + 1 }))
+    // Desktop scrollToKey(key, 'start'): smooth for nearby turns, instant beyond three viewports.
+    const top = turn.offsetTop - 8
+    const far = Math.abs(top - scroller.scrollTop) > scroller.clientHeight * 3
+    scroller.scrollTo({ top, behavior: reduced || far ? 'auto' : 'smooth' })
   }
 
   const onRailKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
@@ -161,7 +159,7 @@ export default function AnchorRailDemo() {
 
   const tabStop = keyboardIndex ?? activeIndex
   const focusedTurn = focusedIndex !== null ? turns[focusedIndex] : null
-  const isHovering = waveY !== null
+  const isHovering = mouseY !== null
 
   return (
     <div ref={ref} role="region" aria-label={copy.window}>
@@ -178,33 +176,27 @@ export default function AnchorRailDemo() {
           tabIndex={-1}
           aria-hidden="true"
           className="absolute inset-0 overflow-y-auto py-6 pr-14 pl-4 [mask-image:linear-gradient(to_bottom,transparent,black_28px,black_calc(100%-60px),transparent)] [scrollbar-width:none] sm:pl-6">
-          <div className="space-y-4">
+          <div className="space-y-1">
             {turns.map((turn, index) => (
               <div
                 key={index}
                 ref={(node) => {
                   turnRefs.current[index] = node
                 }}
-                className="relative -mx-2 space-y-2 rounded-lg px-2 py-1.5">
-                {highlight?.index === index && (
-                  <m.span
-                    key={highlight.id}
-                    className="pointer-events-none absolute inset-0 rounded-lg bg-primary/30"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: [0, 1, 1, 0] }}
-                    transition={{ duration: 2.5, times: [0, 0.1, 0.7, 1], ease: 'easeInOut', delay: 0.5 }}
-                  />
-                )}
-                <div className="relative flex justify-end">
-                  <p className="max-w-[85%] rounded-[10px] bg-chat-user px-3 py-1.5 text-[13px] leading-5">
+                className="space-y-2.5">
+                <div className="flex justify-end pt-2.5">
+                  <p className="max-w-[85%] rounded-[10px] bg-chat-user px-4 py-2.5 text-sm leading-5">
                     {turn.question}
                   </p>
                 </div>
-                <div className="relative space-y-1.5">
-                  <p className="text-[13px] leading-5 text-foreground/75">{turn.answer}</p>
-                  {SKELETON_WIDTHS[index % SKELETON_WIDTHS.length].map((width, line) => (
-                    <span key={line} className="block h-2 rounded-full bg-foreground/[0.07]" style={{ width }} />
-                  ))}
+                <div className="flex items-start gap-2.5 pt-2.5">
+                  <span className="flex size-[30px] shrink-0 items-center justify-center overflow-hidden rounded-full border border-border bg-background">
+                    <ProviderIcon id="anthropic" className="size-4" />
+                  </span>
+                  <div className="min-w-0 flex-1">
+                    <p className="truncate text-sm leading-5 font-semibold">{copy.model}</p>
+                    <p className="mt-1 text-sm leading-6 text-foreground/85">{turn.answer}</p>
+                  </div>
                 </div>
               </div>
             ))}
@@ -262,7 +254,7 @@ export default function AnchorRailDemo() {
                       'block rounded-full',
                       tickTransition,
                       isFocused ? 'h-0.5' : 'h-[1.5px]',
-                      emphasized ? 'bg-foreground' : 'bg-muted-foreground/45'
+                      emphasized ? 'bg-foreground' : 'bg-foreground/20'
                     )}
                     style={{ width }}
                   />
@@ -274,10 +266,10 @@ export default function AnchorRailDemo() {
           {focusedTurn && (
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute right-full z-30 flex w-max max-w-[min(20rem,68vw)] -translate-y-1/2 flex-col gap-1 rounded-xl border-[0.5px] border-hairline-strong bg-popover p-3 text-popover-foreground shadow-(--shadow-float) transition-[top] duration-150 ease-[cubic-bezier(0.25,1,0.5,1)] motion-reduce:transition-none"
+              className="pointer-events-none absolute right-full z-30 flex w-max max-w-[min(20rem,68vw)] -translate-y-1/2 flex-col gap-1 rounded-xl border-[0.5px] border-border bg-popover p-3 text-popover-foreground shadow-lg transition-[top] duration-150 ease-[cubic-bezier(0.25,1,0.5,1)] motion-reduce:transition-none"
               style={{ top: cardTop }}>
-              <p className="line-clamp-1 text-sm font-medium break-words text-foreground">{focusedTurn.question}</p>
-              <p className="line-clamp-2 text-sm leading-5 break-words text-muted-foreground">{focusedTurn.answer}</p>
+              <p className="line-clamp-1 text-sm font-medium break-all text-foreground">{focusedTurn.question}</p>
+              <p className="line-clamp-2 text-sm leading-5 break-all text-muted-foreground">{focusedTurn.answer}</p>
             </div>
           )}
         </div>

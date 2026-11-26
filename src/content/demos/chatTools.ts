@@ -1,17 +1,22 @@
 // Copy for the composer effort slider and the message anchor rail demos.
-// Effort labels and control names come from the desktop locale keys (agent.speed.*, reasoning_effort.*).
+// Labels come from the desktop locale keys (agent.speed.*, assistants.settings.reasoning_effort.*, chat.input.*,
+// chat.navigation.anchor.*); the effort stops are what Claude Opus 4.8 declares in the provider registry.
 import type { DemoLocale } from './chat'
 
 export interface EffortDemoCopy {
   region: string
+  /** agent.speed.title: the trigger's accessible name. */
   title: string
-  model: string
   effort: string
   faster: string
   smarter: string
+  default: string
   off: string
-  /** Slider stops, low to high: none, low, medium, high, max. */
+  /** Slider stops, low to high: none, low, medium, high, xhigh, max. */
   levels: string[]
+  placeholder: string
+  toolMenu: string
+  send: string
   hint: string
 }
 
@@ -22,6 +27,8 @@ export interface AnchorTurn {
 
 export interface AnchorDemoCopy {
   window: string
+  /** Assistant message header: the model name shown beside its avatar. */
+  model: string
   railLabel: string
   /** `{number}` is replaced with the 1-based turn number. */
   jumpTo: string
@@ -33,23 +40,29 @@ export const effortDemo: Record<DemoLocale, EffortDemoCopy> = {
   en: {
     region: 'Reasoning effort slider demo',
     title: 'Response settings',
-    model: 'Claude Opus 4.8',
     effort: 'Effort',
     faster: 'Faster',
     smarter: 'Smarter',
+    default: 'Default',
     off: 'Off',
-    levels: ['Off', 'Low', 'Medium', 'High', 'Max'],
+    levels: ['Off', 'Low', 'Medium', 'High', 'Extra High', 'Max'],
+    placeholder: 'Type a message. Type / for tools and actions, @ to reference topics.',
+    toolMenu: 'Input Quick Panel',
+    send: 'Send',
     hint: 'Drag, click or use arrow keys'
   },
   zh: {
     region: '思考强度滑块演示',
     title: '响应设置',
-    model: 'Claude Opus 4.8',
     effort: '强度',
     faster: '更快',
     smarter: '更智能',
+    default: '默认',
     off: '关闭',
-    levels: ['关闭', '低', '中', '高', '最大'],
+    levels: ['关闭', '低', '中', '高', '极高', '最大'],
+    placeholder: '输入消息，输入 / 选择工具或操作，输入 @ 引用话题',
+    toolMenu: '输入快捷面板',
+    send: '发送',
     hint: '拖动、点击或用方向键调节'
   }
 }
@@ -57,6 +70,7 @@ export const effortDemo: Record<DemoLocale, EffortDemoCopy> = {
 export const anchorDemo: Record<DemoLocale, AnchorDemoCopy> = {
   en: {
     window: 'Cherry Studio — Migration planning',
+    model: 'Claude Opus 4.8',
     railLabel: 'Conversation turns',
     jumpTo: 'Jump to turn {number}',
     hint: 'Hover the rail, or focus it and use ↑ ↓ Enter',
@@ -121,6 +135,7 @@ export const anchorDemo: Record<DemoLocale, AnchorDemoCopy> = {
   },
   zh: {
     window: 'Cherry Studio — 数据迁移方案',
+    model: 'Claude Opus 4.8',
     railLabel: '对话轮次',
     jumpTo: '跳转到第 {number} 轮对话',
     hint: '悬停在右侧刻度上，或聚焦后用 ↑ ↓ 回车',

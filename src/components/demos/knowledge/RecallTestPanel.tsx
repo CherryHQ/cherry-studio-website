@@ -1,8 +1,10 @@
 import { m } from 'framer-motion'
 import {
+  Check,
   ChevronDown,
   ChevronUp,
   Clock,
+  Copy,
   FileText,
   Folder,
   Link2,
@@ -62,48 +64,63 @@ export function rankChunks(chunks: KnowledgeChunk[], terms: string[]): RecallRes
     .slice(0, 4)
 }
 
-const escapeRegExp = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-const percent = (score: number) => `${Math.round(score * 100)}%`
+const percent = (score: number) => `${Math.round(Math.max(0, Math.min(score, 1)) * 100)}%`
 
-function Highlighted({ text, terms }: { text: string; terms: string[] }) {
-  if (terms.length === 0) return text
-  const pattern = new RegExp(`(${terms.map(escapeRegExp).join('|')})`, 'gi')
-  return text.split(pattern).map((part, index) =>
-    index % 2 === 1 ? (
-      <mark key={index} className="rounded-[3px] bg-primary/20 px-px text-foreground">
-        {part}
-      </mark>
-    ) : (
-      part
-    )
-  )
+// Desktop shows a material-icon-theme glyph per file extension; approximated with tinted FileText.
+const FILE_TINTS: Record<string, string> = {
+  pdf: 'text-red-500',
+  doc: 'text-blue-500',
+  docx: 'text-blue-500',
+  md: 'text-sky-500',
+  xlsx: 'text-green-600'
 }
 
-function ResultCard({ result, index, label }: { result: RecallResult; index: number; label: string }) {
+function ResultCard({ result, index, copy }: { result: RecallResult; index: number; copy: KnowledgeDemoCopy }) {
   const [expanded, setExpanded] = useState(false)
-  const { icon: Icon, tint } = TYPE_ICONS[result.type]
+  const [copied, setCopied] = useState(false)
+  const tint =
+    result.type === 'file'
+      ? (FILE_TINTS[result.source.split('.').pop() ?? ''] ?? 'text-muted-foreground')
+      : 'text-muted-foreground/80'
+  const iconButton =
+    'flex size-5 shrink-0 cursor-pointer items-center justify-center rounded text-muted-foreground transition-all hover:bg-accent hover:text-foreground focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-primary'
   return (
     <m.li
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ ...spring.settle, delay: index * 0.07 }}
-      className="rounded-md border border-border bg-background/70 transition-colors hover:border-hairline-strong">
-      <div className="flex items-center gap-2 px-3 pt-2 pb-1.5">
-        <span className="flex size-5 shrink-0 items-center justify-center rounded bg-secondary text-[11px] text-muted-foreground">
+      className="group/chunk rounded-md border border-border bg-background transition-colors hover:border-hairline-strong">
+      <div className="flex items-center gap-2 px-3 py-2">
+        <span className="flex size-5 shrink-0 items-center justify-center rounded bg-muted text-xs text-muted-foreground/80">
           {index + 1}
         </span>
-        <Icon className={cn('size-3.5 shrink-0', tint)} aria-hidden="true" />
-        <span className="min-w-0 truncate text-xs text-muted-foreground">{result.source}</span>
-        <span className="shrink-0 text-xs text-muted-foreground/70">#{result.chunk}</span>
-        <span className="ml-auto shrink-0 text-xs text-muted-foreground tabular-nums">
-          {label.replace('{score}', percent(result.score))}
+        <span className="flex min-w-0 flex-1 items-center gap-1">
+          <FileText className={cn('size-3.5 shrink-0', tint)} aria-hidden="true" />
+          <span className="truncate text-xs text-muted-foreground/80">{result.source}</span>
+          <span className="shrink-0 text-xs text-muted-foreground/80">#{result.chunk}</span>
         </span>
+        <span className="min-w-16 shrink-0 text-right text-xs whitespace-nowrap text-muted-foreground/80 tabular-nums">
+          {copy.recall.relevance.replace('{score}', percent(result.score))}
+        </span>
+        <button
+          type="button"
+          onClick={() =>
+            navigator.clipboard?.writeText(result.text).then(
+              () => setCopied(true),
+              () => {}
+            )
+          }
+          onBlur={() => setCopied(false)}
+          aria-label={copy.recall.copy}
+          className={cn(iconButton, copied ? 'text-green-500 opacity-100' : 'opacity-0 group-hover/chunk:opacity-100')}>
+          {copied ? <Check className="size-3" aria-hidden="true" /> : <Copy className="size-3" aria-hidden="true" />}
+        </button>
         <button
           type="button"
           onClick={() => setExpanded((value) => !value)}
           aria-expanded={expanded}
-          aria-label={result.source}
-          className="flex size-5 shrink-0 cursor-pointer items-center justify-center rounded text-muted-foreground transition-colors hover:bg-accent hover:text-foreground focus-visible:outline-2 focus-visible:outline-primary">
+          aria-label={expanded ? copy.recall.collapse : copy.recall.expand}
+          className={iconButton}>
           {expanded ? (
             <ChevronUp className="size-3.5" aria-hidden="true" />
           ) : (
@@ -111,20 +128,31 @@ function ResultCard({ result, index, label }: { result: RecallResult; index: num
           )}
         </button>
       </div>
-      <div className="mx-3 h-1 overflow-hidden rounded-full bg-secondary" aria-hidden="true">
-        <m.div
-          initial={{ width: 0 }}
-          animate={{ width: percent(result.score) }}
-          transition={{ duration: 0.7, ease: ease.settle, delay: 0.1 + index * 0.07 }}
-          className="h-full rounded-full bg-primary"
-        />
-      </div>
-      <div className="px-3 pt-2 pb-3">
-        <p className={cn('text-[13px] leading-relaxed text-muted-foreground', !expanded && 'line-clamp-2')}>
-          <Highlighted text={result.text} terms={result.matched} />
+      <div className="px-3 pb-3">
+        <p className={cn('text-sm leading-relaxed text-muted-foreground', !expanded && 'line-clamp-2')}>
+          {result.text}
         </p>
       </div>
     </m.li>
+  )
+}
+
+/** Desktop EmptyState "inbox" illustration. */
+function EmptyIllustration() {
+  return (
+    <svg width={64} height={41} viewBox="0 0 64 41" className="mb-4 text-muted-foreground" aria-hidden="true">
+      <g transform="translate(0 1)" fill="none" fillRule="evenodd">
+        <ellipse fill="currentColor" fillOpacity={0.08} cx="32" cy="33" rx="32" ry="7" />
+        <g fillRule="nonzero" stroke="currentColor" strokeOpacity={0.4}>
+          <path d="M55 12.76 44.854 1.258C44.367.474 43.656 0 42.907 0H21.093c-.749 0-1.46.474-1.947 1.257L9 12.761V22h46v-9.24z" />
+          <path
+            fill="currentColor"
+            fillOpacity={0.05}
+            d="M41.613 15.931c0-1.605.994-2.93 2.227-2.931H55v18.137C55 33.26 53.68 35 52.05 35h-40.1C10.32 35 9 33.259 9 31.137V13h11.16c1.233 0 2.227 1.323 2.227 2.928v.022c0 1.605 1.005 2.901 2.237 2.901h14.752c1.232 0 2.237-1.308 2.237-2.913v-.007z"
+          />
+        </g>
+      </g>
+    </svg>
   )
 }
 
@@ -167,95 +195,83 @@ export function RecallTestPanel({
       onKeyDown={(event) => {
         if (event.key === 'Escape') onClose()
       }}
-      initial={{ x: '110%' }}
+      initial={{ x: '100%' }}
       animate={{ x: 0 }}
-      exit={{ x: '110%' }}
+      exit={{ x: '100%' }}
       transition={{ duration: 0.18, ease: ease.expo }}
-      className="absolute top-3 right-3 bottom-3 z-40 flex w-[min(400px,calc(100%-24px))] flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-(--shadow-float)">
-      <div className="flex shrink-0 items-center justify-between px-5 pt-4 pb-3">
-        <span className="text-[15px] font-semibold">{copy.recallTest}</span>
+      className="absolute top-3 right-3 bottom-3 z-40 flex w-[min(400px,calc(100%-24px))] flex-col overflow-hidden rounded-3xl bg-card text-card-foreground shadow-xl">
+      <div className="flex shrink-0 items-center justify-between px-6 pt-6 pb-3">
+        <span className="text-base font-semibold">{copy.recallTest}</span>
         <button
           type="button"
           onClick={onClose}
           aria-label={text.close}
-          className="flex size-7 cursor-pointer items-center justify-center rounded-md opacity-70 transition-opacity hover:opacity-100 focus-visible:outline-2 focus-visible:outline-primary">
+          className="ml-3 flex size-7 cursor-pointer items-center justify-center rounded-md opacity-70 transition-opacity hover:opacity-100 focus-visible:outline-2 focus-visible:outline-primary">
           <X className="size-4" aria-hidden="true" />
         </button>
       </div>
 
-      <div className="flex shrink-0 items-center gap-2 px-5">
-        <label className="flex h-8 min-w-0 flex-1 items-center gap-1.5 rounded-lg border border-border px-2.5 transition-colors focus-within:border-primary/60 focus-within:ring-1 focus-within:ring-primary/30 focus-within:ring-inset">
-          <Search className="size-3.5 shrink-0 text-muted-foreground" aria-hidden="true" />
-          <input
-            ref={inputRef}
-            value={query}
-            onChange={(event) => onQueryChange(event.target.value)}
-            onKeyDown={(event) => {
-              if (event.key === 'Enter' && canSearch) onSearch()
-            }}
-            placeholder={text.placeholder}
-            aria-label={text.placeholder}
-            className="min-w-0 flex-1 bg-transparent text-sm text-foreground outline-none placeholder:text-muted-foreground"
-          />
-        </label>
-        <button
-          type="button"
-          onClick={onSearch}
-          disabled={!canSearch}
-          className="flex h-8 shrink-0 cursor-pointer items-center gap-1.5 rounded-md bg-primary px-3 text-[13px] font-medium text-primary-foreground transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:cursor-default disabled:opacity-50">
-          {state.status === 'searching' ? (
-            <LoaderCircle className="size-3.5 motion-safe:animate-spin" aria-hidden="true" />
-          ) : (
+      <div className="grid min-h-0 flex-1 grid-rows-[auto_minmax(0,1fr)] gap-2 px-6">
+        <div className="flex items-center gap-2">
+          <label className="flex min-w-0 flex-1 items-center gap-1.5 rounded-lg border border-border px-2.5 py-1.25 transition-all focus-within:border-ring focus-within:ring-1 focus-within:ring-ring/50 focus-within:ring-inset">
+            <Search className="size-3.5 shrink-0 text-muted-foreground/80" aria-hidden="true" />
+            <input
+              ref={inputRef}
+              value={query}
+              onChange={(event) => onQueryChange(event.target.value)}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter' && canSearch) onSearch()
+              }}
+              placeholder={text.placeholder}
+              aria-label={text.placeholder}
+              className="min-w-0 flex-1 bg-transparent text-sm leading-5 text-foreground outline-none placeholder:text-muted-foreground"
+            />
+          </label>
+          <button
+            type="button"
+            onClick={onSearch}
+            disabled={!canSearch}
+            className="flex min-h-7 shrink-0 cursor-pointer items-center gap-1.5 rounded-md bg-primary px-2.5 text-xs font-medium text-primary-foreground transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:cursor-default disabled:opacity-50">
             <Zap className="size-3.5" aria-hidden="true" />
-          )}
-          {text.submit}
-        </button>
-      </div>
+            {text.submit}
+          </button>
+        </div>
 
-      <div className="mt-3 flex min-h-0 flex-1 flex-col border-t border-border" aria-live="polite">
-        {state.status === 'empty' && (
-          <div className="flex flex-1 flex-col items-center justify-center gap-1 px-6 text-center">
-            <p className="text-sm">{text.emptyTitle}</p>
-            <p className="text-xs text-muted-foreground">{text.emptyDescription}</p>
-          </div>
-        )}
-        {state.status === 'searching' && (
-          <div className="flex flex-1 items-center justify-center gap-2 text-sm text-muted-foreground">
-            <LoaderCircle className="size-4 motion-safe:animate-spin" aria-hidden="true" />
-            {text.searching}
-          </div>
-        )}
-        {state.status === 'done' && (
-          <>
-            <div className="flex shrink-0 items-center gap-2.5 border-b border-border px-5 py-2.5 text-xs text-muted-foreground">
-              <span className="flex items-center gap-1">
-                <Sparkles className="size-3" aria-hidden="true" />
-                {text.results.replace('{count}', String(results.length))}
-              </span>
-              <span className="flex items-center gap-1">
-                <Clock className="size-3" aria-hidden="true" />
-                {text.duration.replace('{duration}', String(96 + searchedQuery.length * 7))}
-              </span>
-              {results.length > 0 && <span>{text.top.replace('{score}', percent(top))}</span>}
+        <div className="min-h-0 min-w-0" aria-live="polite">
+          {state.status === 'empty' && (
+            <div className="flex h-full flex-col items-center justify-center px-6 py-12 text-center">
+              <EmptyIllustration />
+              <p className="mb-1.5 text-sm text-muted-foreground">{text.emptyTitle}</p>
+              <p className="max-w-md text-xs leading-relaxed text-muted-foreground">{text.emptyDescription}</p>
             </div>
-            {results.length === 0 ? (
-              <p className="flex flex-1 items-center justify-center text-sm text-muted-foreground">{text.noMatch}</p>
-            ) : (
-              <ul
-                key={searchedQuery}
-                className="min-h-0 flex-1 space-y-2 overflow-y-auto px-5 py-3 [scrollbar-width:thin]">
+          )}
+          {state.status === 'searching' && (
+            <div className="flex h-full flex-col items-center justify-center py-12 text-center text-muted-foreground/80">
+              <LoaderCircle className="size-5.5 text-primary motion-safe:animate-spin" aria-hidden="true" />
+              <p className="mt-2 text-sm leading-5">{text.searching}</p>
+            </div>
+          )}
+          {state.status === 'done' && (
+            <div className="h-full overflow-y-auto rounded-lg border border-border bg-card [scrollbar-width:none]">
+              <div className="flex items-center gap-2.5 border-b border-border px-4 py-3 text-xs leading-4 text-muted-foreground/80">
+                <span className="flex items-center gap-0.5">
+                  <Sparkles className="size-3" aria-hidden="true" />
+                  {text.results.replace('{count}', String(results.length))}
+                </span>
+                <span className="flex items-center gap-0.5">
+                  <Clock className="size-3" aria-hidden="true" />
+                  {text.duration.replace('{duration}', String(96 + searchedQuery.length * 7))}
+                </span>
+                <span>{text.top.replace('{score}', results.length === 0 ? top.toFixed(2) : percent(top))}</span>
+              </div>
+              <ul key={searchedQuery} className="space-y-2 p-3">
                 {results.map((result, index) => (
-                  <ResultCard
-                    key={`${result.source}-${result.chunk}`}
-                    result={result}
-                    index={index}
-                    label={text.relevance}
-                  />
+                  <ResultCard key={`${result.source}-${result.chunk}`} result={result} index={index} copy={copy} />
                 ))}
               </ul>
-            )}
-          </>
-        )}
+            </div>
+          )}
+        </div>
       </div>
     </m.section>
   )

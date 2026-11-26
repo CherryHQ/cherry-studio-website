@@ -4,29 +4,51 @@ export type DemoLocale = 'en' | 'zh'
 
 export type PaintingTemplateId = 'tennis-collage' | 'train-window' | 'light-trails' | 'circular-cutout' | 'y2k-street'
 
+export type PaintingFieldKey =
+  | 'size'
+  | 'aspectRatio'
+  | 'numImages'
+  | 'personGeneration'
+  | 'quality'
+  | 'style'
+  | 'addWatermark'
+  | 'negativePrompt'
+  | 'promptExtend'
+  | 'seed'
+
+export type PaintingOptionKey = 'DONT_ALLOW' | 'ALLOW_ADULT' | 'ALLOW_ALL' | 'standard' | 'hd' | 'vivid' | 'natural'
+
 export interface PaintingsDemoCopy {
   window: string
   title: string
   caption: string
   stylesLabel: string
-  previous: string
-  next: string
   templates: { id: PaintingTemplateId; label: string; prompt: string }[]
-  promptLabel: string
   placeholder: string
-  generate: string
-  stop: string
+  send: string
+  pause: string
+  dictation: string
+  quickPanel: string
+  prompts: string
   settings: string
-  selectModel: string
-  imageSize: string
-  numberImages: string
-  fewer: string
-  more: string
-  sizeAuto: string
+  searchModels: string
+  providers: { dashscope: string; gemini: string; openai: string }
+  fields: Record<PaintingFieldKey, string>
+  options: Record<PaintingOptionKey, string>
+  randomSeed: string
   newImage: string
   selectImage: string
+  deleteImage: string
+  expandPrompt: string
+  minimizePrompt: string
   generating: string
   revealing: string
+  toolbar: string
+  zoomOut: string
+  zoomIn: string
+  rotateLeft: string
+  rotateRight: string
+  reset: string
 }
 
 export interface ArtifactsDemoCopy {
@@ -35,14 +57,23 @@ export interface ArtifactsDemoCopy {
   prompt: string
   intro: string
   outro: string
-  placeholder: string
-  generating: string
-  openPreview: string
-  closePreview: string
+  htmlPreview: string
+  viewWebpage: string
+  viewWebpageHint: string
+  zoomOut: string
+  zoomIn: string
+  resetZoom: string
+  openExternal: string
+  download: string
+  maximize: string
+  copySource: string
   viewMode: string
   split: string
   code: string
   preview: string
+  fullscreen: string
+  close: string
+  save: string
   app: {
     lang: string
     title: string
@@ -62,8 +93,6 @@ export const paintingsDemo: Record<DemoLocale, PaintingsDemoCopy> = {
     title: 'A place for your next masterpiece.',
     caption: 'Choose a template to start, then make the prompt your own below.',
     stylesLabel: 'Prompt templates',
-    previous: 'Previous template',
-    next: 'Next template',
     templates: [
       {
         id: 'tennis-collage',
@@ -92,29 +121,56 @@ export const paintingsDemo: Record<DemoLocale, PaintingsDemoCopy> = {
         prompt: 'Create a Y2K-style candid street portrait of a cheerful woman flashing a peace sign at the lens.'
       }
     ],
-    promptLabel: 'Prompt',
     placeholder: 'Describe the image you want to create, e.g. A serene lake at sunset with mountains in the background',
-    generate: 'Generate',
-    stop: 'Stop',
+    send: 'Send',
+    pause: 'Pause',
+    dictation: 'Start dictation',
+    quickPanel: 'Input Quick Panel',
+    prompts: 'Prompts',
     settings: 'Settings',
-    selectModel: 'Select Model',
-    imageSize: 'Image Size',
-    numberImages: 'Number of images',
-    fewer: 'Fewer images',
-    more: 'More images',
-    sizeAuto: 'Auto',
+    searchModels: 'Search models...',
+    providers: { dashscope: 'Qianwen AI platform - CN', gemini: 'Gemini', openai: 'OpenAI' },
+    fields: {
+      size: 'Image Size',
+      aspectRatio: 'Aspect Ratio',
+      numImages: 'Number Images',
+      personGeneration: 'Generate people',
+      quality: 'Quality',
+      style: 'Style',
+      addWatermark: 'Add Watermark',
+      negativePrompt: 'Negative Prompt',
+      promptExtend: 'Prompt Enhancement',
+      seed: 'Seed'
+    },
+    options: {
+      DONT_ALLOW: 'Not allowed',
+      ALLOW_ADULT: 'Allow adult',
+      ALLOW_ALL: 'Allow all',
+      standard: 'Standard',
+      hd: 'HD',
+      vivid: 'Vivid',
+      natural: 'Natural'
+    },
+    randomSeed: 'Random seed',
     newImage: 'New Image',
     selectImage: 'Select Image',
-    generating: 'Drawing in progress',
-    revealing: 'Revealing generated image'
+    deleteImage: 'Delete Image',
+    expandPrompt: 'Expand prompt',
+    minimizePrompt: 'Minimize prompt',
+    generating: 'Drawing in progress. Please do not leave this page.',
+    revealing: 'Revealing generated image',
+    toolbar: 'Preview',
+    zoomOut: 'Zoom Out',
+    zoomIn: 'Zoom In',
+    rotateLeft: 'Rotate Left',
+    rotateRight: 'Rotate Right',
+    reset: 'Reset'
   },
   zh: {
     window: 'Cherry Studio — 绘画',
     title: '给你的下一幅杰作，留一个位置。',
     caption: '选择一个模板作为起点，再在下方把提示词改成你的表达。',
     stylesLabel: '提示词模板',
-    previous: '上一个模板',
-    next: '下一个模板',
     templates: [
       { id: 'tennis-collage', label: '网球拼贴', prompt: '创作一张三栏布局的电影感网球时尚拼贴。' },
       {
@@ -134,21 +190,50 @@ export const paintingsDemo: Record<DemoLocale, PaintingsDemoCopy> = {
         prompt: '创作一张 Y2K 风格的街头抓拍肖像，开朗的女生对着镜头比出剪刀手。'
       }
     ],
-    promptLabel: '提示词',
     placeholder: '描述你想创建的图片，例如：一个宁静的湖泊，夕阳西下，远处是群山',
-    generate: '生成',
-    stop: '停止',
+    send: '发送',
+    pause: '暂停',
+    dictation: '开始听写',
+    quickPanel: '输入快捷面板',
+    prompts: '提示词',
     settings: '设置',
-    selectModel: '选择模型',
-    imageSize: '图片尺寸',
-    numberImages: '生成数量',
-    fewer: '减少数量',
-    more: '增加数量',
-    sizeAuto: '自动',
+    searchModels: '搜索模型...',
+    providers: { dashscope: '千问 AI 平台', gemini: 'Gemini', openai: 'OpenAI' },
+    fields: {
+      size: '图片尺寸',
+      aspectRatio: '画幅比例',
+      numImages: '生成数量',
+      personGeneration: '生成人物',
+      quality: '质量',
+      style: '风格',
+      addWatermark: '添加水印',
+      negativePrompt: '反向提示词',
+      promptExtend: '提示词增强',
+      seed: '随机种子'
+    },
+    options: {
+      DONT_ALLOW: '不允许',
+      ALLOW_ADULT: '允许成人',
+      ALLOW_ALL: '允许所有',
+      standard: '标准',
+      hd: '高清',
+      vivid: '鲜艳',
+      natural: '自然'
+    },
+    randomSeed: '随机种子',
     newImage: '新建图片',
     selectImage: '选择图片',
-    generating: '绘图进行中',
-    revealing: '正在呈现生成的图片'
+    deleteImage: '删除图片',
+    expandPrompt: '展开提示词',
+    minimizePrompt: '收起提示词',
+    generating: '绘图进行中，请不要离开页面',
+    revealing: '正在呈现生成的图片',
+    toolbar: '预览',
+    zoomOut: '缩小',
+    zoomIn: '放大',
+    rotateLeft: '向左旋转',
+    rotateRight: '向右旋转',
+    reset: '重置'
   }
 }
 
@@ -160,14 +245,24 @@ export const artifactsDemo: Record<DemoLocale, ArtifactsDemoCopy> = {
     intro:
       'Here is a single-file pomodoro timer: 25 minutes of focus, a 5-minute break, and a ring that drains as the clock runs down.',
     outro: 'Press Start in the preview to try it.',
-    placeholder: 'Ask for changes, / for tools',
-    generating: 'Generating',
-    openPreview: 'Preview',
-    closePreview: 'Close preview',
+    htmlPreview: 'HTML Preview',
+    viewWebpage: 'View webpage',
+    viewWebpageHint:
+      'This webpage contains scripts or external resources. Opening it may run code and connect to the internet.',
+    zoomOut: 'Zoom Out',
+    zoomIn: 'Zoom In',
+    resetZoom: 'Reset',
+    openExternal: 'Open in external browser',
+    download: 'Download',
+    maximize: 'Maximize',
+    copySource: 'Copy Source Code',
     viewMode: 'View mode',
     split: 'Split',
     code: 'Code',
     preview: 'Preview',
+    fullscreen: 'Full screen',
+    close: 'Close',
+    save: 'Save Changes',
     app: {
       lang: 'en',
       title: 'Pomodoro',
@@ -186,14 +281,23 @@ export const artifactsDemo: Record<DemoLocale, ArtifactsDemoCopy> = {
     prompt: '帮我做一个能直接点着用的番茄钟小网页。',
     intro: '给你一个单文件的番茄钟：专注 25 分钟、休息 5 分钟，进度环会随着倒计时一点点走完。',
     outro: '在预览里点「开始」就能试用。',
-    placeholder: '继续提出修改，/ 调用工具',
-    generating: '生成中',
-    openPreview: '预览',
-    closePreview: '关闭预览',
+    htmlPreview: 'HTML 预览',
+    viewWebpage: '查看网页',
+    viewWebpageHint: '此网页包含脚本或外部资源，打开后可能运行代码并连接网络。',
+    zoomOut: '缩小',
+    zoomIn: '放大',
+    resetZoom: '重置',
+    openExternal: '外部浏览器打开',
+    download: '下载',
+    maximize: '最大化',
+    copySource: '复制源代码',
     viewMode: '视图模式',
     split: '分屏',
     code: '代码',
     preview: '预览',
+    fullscreen: '全屏',
+    close: '关闭',
+    save: '保存修改',
     app: {
       lang: 'zh-CN',
       title: '番茄钟',

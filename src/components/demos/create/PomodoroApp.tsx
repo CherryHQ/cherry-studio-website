@@ -90,7 +90,7 @@ export function PomodoroApp({ app, playing }: { app: ArtifactsDemoCopy['app']; p
           type="button"
           onClick={() => setRunning((value) => !value)}
           className={cn(
-            'inline-flex h-7 items-center gap-1 rounded-full px-3 text-xs font-medium text-white',
+            'inline-flex h-7 items-center gap-1 rounded-full px-3 text-xs font-medium whitespace-nowrap text-white',
             focusRing,
             mode === 'focus' ? 'bg-rose-500 hover:bg-rose-600' : 'bg-emerald-600 hover:bg-emerald-700'
           )}>

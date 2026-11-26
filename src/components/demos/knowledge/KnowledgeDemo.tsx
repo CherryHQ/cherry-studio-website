@@ -1,5 +1,5 @@
 import { AnimatePresence, m, useReducedMotion } from 'framer-motion'
-import { Check, FlaskConical, LoaderCircle, Plus, SlidersHorizontal } from 'lucide-react'
+import { ArrowUpDown, Check, FlaskConical, LoaderCircle, MoreHorizontal, Plus, SlidersHorizontal } from 'lucide-react'
 import { type DragEvent, useEffect, useRef, useState } from 'react'
 
 import { type KnowledgeItemType, knowledgeDemo } from '@/content/demos/knowledge'
@@ -26,7 +26,8 @@ const PENDING_MS = 500
 const READING_MS = 900
 const EMBEDDING_MS = 2200
 const TICK_MS = 100
-const TYPE_ORDER: KnowledgeItemType[] = ['file', 'directory', 'url', 'note']
+// Desktop KNOWLEDGE_DATA_SOURCE_TYPES order.
+const SOURCE_ORDER: KnowledgeItemType[] = ['file', 'note', 'directory', 'url']
 
 function stageOf(item: Item): { stage: Stage; percent: number } {
   if (item.elapsed === null) return { stage: 'ready', percent: 100 }
@@ -40,15 +41,20 @@ function stageOf(item: Item): { stage: Stage; percent: number } {
   return { stage: 'embedding', percent: Math.round(100 * (1 - (1 - progress) ** 2)) }
 }
 
+// Desktop status tokens: pending zinc-500, reading --info, embedding --warning, ready --success.
 const STAGE_TONE: Record<Stage, string> = {
   pending: 'text-zinc-500',
-  reading: 'text-sky-600 dark:text-sky-400',
-  embedding: 'text-amber-600 dark:text-amber-400',
-  ready: 'text-emerald-600 dark:text-emerald-400'
+  reading: 'text-blue-500 dark:text-blue-400',
+  embedding: 'text-amber-500 dark:text-amber-400',
+  ready: 'text-green-500 dark:text-green-400'
 }
 
+// Desktop KNOWLEDGE_ITEM_ROW_GRID: checkbox / name / type / status / updated / actions; narrow keeps the first three.
 const ROW_GRID =
-  'grid grid-cols-[minmax(0,1fr)_7.5rem] items-center gap-2 sm:grid-cols-[minmax(0,1fr)_3.5rem_8rem_6rem]'
+  'grid grid-cols-[1.75rem_minmax(0,1fr)_6.5rem] items-center gap-2 sm:grid-cols-[2.5rem_minmax(0,1fr)_4rem_7rem_6rem_2rem]'
+
+/** Decorative stand-in for the desktop row checkbox (selection drives bulk actions the demo omits). */
+const CheckboxBox = () => <span className="size-4 rounded-[4px] border border-border bg-background/40" />
 
 export default function KnowledgeDemo() {
   const { locale } = useDemoLocale()
@@ -64,7 +70,7 @@ export default function KnowledgeDemo() {
   const initialItems = (): Item[] => copy.items.map((item, index) => ({ ...item, id: `seed-${index}`, elapsed: null }))
   const [items, setItems] = useState<Item[]>(initialItems)
   const [menuOpen, setMenuOpen] = useState(false)
-  const [addPressed, setAddPressed] = useState(false)
+  const [menuHighlight, setMenuHighlight] = useState<KnowledgeItemType | null>(null)
   const [dragging, setDragging] = useState(false)
   const [panelOpen, setPanelOpen] = useState(false)
   const [query, setQuery] = useState('')
@@ -117,6 +123,8 @@ export default function KnowledgeDemo() {
     sampleCursor.current = { file: 0, url: 0, note: 0, directory: 0 }
     setItems(initialItems())
     setPanelOpen(false)
+    setMenuOpen(false)
+    setMenuHighlight(null)
     setQuery('')
     setRecall({ status: 'empty' })
     const query = copy.recall.query
@@ -130,11 +138,16 @@ export default function KnowledgeDemo() {
     }
     await wait(900)
     if (touched.current) return
-    setAddPressed(true)
-    await wait(260)
-    setAddPressed(false)
+    setMenuOpen(true)
+    await wait(520)
+    setMenuHighlight('file')
+    await wait(320)
+    if (touched.current) return
+    // File and Folder go straight to the OS picker on desktop; the picked files land together.
+    setMenuOpen(false)
+    setMenuHighlight(null)
+    await wait(360)
     addItem('file')
-    await wait(420)
     addItem('file')
     await wait(PENDING_MS + READING_MS + EMBEDDING_MS + 900)
     if (touched.current) return
@@ -177,19 +190,21 @@ export default function KnowledgeDemo() {
           replay()
         }}
         bodyClassName="h-[460px]">
-        <div className="grid h-full md:grid-cols-[180px_minmax(0,1fr)]">
-          <aside className="hidden flex-col gap-1 border-r-[0.5px] border-border p-1.5 md:flex" aria-hidden="true">
-            <div className="flex h-8 items-center gap-2 rounded-md px-2.5 text-[13px] text-muted-foreground">
-              <Plus className="size-3.5 shrink-0" />
+        <div className="relative grid h-full overflow-hidden md:grid-cols-[220px_minmax(0,1fr)] lg:grid-cols-[250px_minmax(0,1fr)]">
+          <aside className="hidden flex-col border-r-[0.5px] border-border p-1.5 md:flex" aria-hidden="true">
+            <div className="flex min-h-8 items-center gap-1.5 rounded-lg px-1.5 py-1 text-[13px] leading-5 text-foreground">
+              <span className="flex size-5 shrink-0 items-center justify-center">
+                <Plus className="size-4" />
+              </span>
               <span className="truncate">{copy.newBase}</span>
             </div>
-            <div className="mt-1 space-y-0.5">
+            <div className="space-y-1 pt-1">
               {copy.bases.map((base, index) => (
                 <div
                   key={base}
                   className={cn(
-                    'flex h-8 items-center truncate rounded-md px-2.5 text-[13px]',
-                    index === 0 ? 'bg-muted text-foreground' : 'text-muted-foreground'
+                    'flex h-8 items-center truncate rounded-md px-2.5 text-sm leading-5 text-foreground',
+                    index === 0 && 'bg-muted'
                   )}>
                   {base}
                 </div>
@@ -203,92 +218,111 @@ export default function KnowledgeDemo() {
             onDragOver={(event) => event.preventDefault()}
             onDragLeave={onDragLeave}
             onDrop={onDrop}>
-            <div className="mx-3 flex h-11 shrink-0 items-center gap-2 border-b border-border">
-              <span className="min-w-0 flex-1 truncate text-sm font-medium">{copy.bases[0]}</span>
-              <button
-                type="button"
-                onClick={() => {
-                  touched.current = true
-                  openPanel()
-                }}
-                className="inline-flex h-7 cursor-pointer items-center gap-1.5 rounded-md px-2 text-[13px] text-muted-foreground transition-colors hover:bg-accent hover:text-foreground focus-visible:outline-2 focus-visible:outline-primary">
-                <FlaskConical className="size-3.5" aria-hidden="true" />
-                {copy.recallTest}
-              </button>
-              <span className="flex size-6 items-center justify-center text-muted-foreground" aria-hidden="true">
-                <SlidersHorizontal className="size-3.5" />
-              </span>
-            </div>
-
-            <div className="flex h-11 shrink-0 items-center justify-between gap-2 px-3">
-              <span className="min-w-0 truncate pl-2 text-xs text-muted-foreground">
-                {copy.updated.replace('{time}', copy.justNow)}
-              </span>
-              <div
-                className="relative"
-                onBlur={(event) => {
-                  if (!event.currentTarget.contains(event.relatedTarget)) setMenuOpen(false)
-                }}
-                onKeyDown={(event) => {
-                  if (event.key === 'Escape') setMenuOpen(false)
-                }}>
+            <div className="relative mt-2 flex h-9 shrink-0 items-center justify-between gap-2 pr-3 pb-1 pl-5 after:pointer-events-none after:absolute after:right-3 after:bottom-0 after:left-3 after:border-b after:border-border">
+              <h3 className="min-w-0 flex-1 truncate text-sm font-medium">{copy.bases[0]}</h3>
+              <div className="flex shrink-0 items-center gap-1">
                 <button
                   type="button"
-                  aria-expanded={menuOpen}
-                  aria-haspopup="true"
                   onClick={() => {
                     touched.current = true
-                    setMenuOpen((open) => !open)
+                    openPanel()
                   }}
-                  className={cn(
-                    'inline-flex h-7 cursor-pointer items-center gap-1 rounded-md px-2 text-xs font-medium text-muted-foreground transition-[background-color,color,scale] duration-150 hover:bg-accent hover:text-foreground focus-visible:outline-2 focus-visible:outline-primary',
-                    (menuOpen || addPressed) && 'bg-accent text-foreground',
-                    addPressed && 'scale-95'
-                  )}>
-                  <Plus className="size-3" aria-hidden="true" />
-                  {copy.add}
+                  className="inline-flex h-7 cursor-pointer items-center gap-1.5 rounded-md px-2.5 text-xs text-muted-foreground transition-colors hover:bg-accent hover:text-foreground focus-visible:outline-2 focus-visible:outline-primary">
+                  <FlaskConical className="size-3.5" aria-hidden="true" />
+                  {copy.recallTest}
                 </button>
-                <AnimatePresence>
-                  {menuOpen && (
-                    <m.div
-                      initial={{ opacity: 0, y: -4 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -2 }}
-                      transition={{ duration: 0.16, ease: ease.expo }}
-                      className="absolute top-full right-0 z-30 mt-1 w-44 space-y-0.5 rounded-xl border border-border bg-popover p-1.5 shadow-(--shadow-float)">
-                      {TYPE_ORDER.map((type) => {
-                        const { icon: Icon, tint } = TYPE_ICONS[type]
-                        return (
+                <span
+                  className="flex size-6 items-center justify-center text-muted-foreground"
+                  title={copy.settings}
+                  aria-hidden="true">
+                  <SlidersHorizontal className="size-3.5" />
+                </span>
+              </div>
+            </div>
+
+            <div className="shrink-0 px-3">
+              <div className="flex h-11 items-center justify-between gap-2 border-b border-border">
+                <span className="min-w-0 truncate pl-2 text-xs leading-4 text-muted-foreground/80">
+                  {copy.updated.replace('{time}', copy.justNow)}
+                </span>
+                <div
+                  className="relative shrink-0"
+                  onBlur={(event) => {
+                    if (!event.currentTarget.contains(event.relatedTarget)) setMenuOpen(false)
+                  }}
+                  onKeyDown={(event) => {
+                    if (event.key === 'Escape') setMenuOpen(false)
+                  }}>
+                  <button
+                    type="button"
+                    aria-expanded={menuOpen}
+                    aria-haspopup="menu"
+                    onClick={() => {
+                      touched.current = true
+                      setMenuOpen((open) => !open)
+                    }}
+                    className={cn(
+                      'inline-flex h-7 cursor-pointer items-center gap-1 rounded-md border border-border px-2 text-xs leading-4 font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground focus-visible:outline-2 focus-visible:outline-primary',
+                      menuOpen && 'bg-accent text-foreground'
+                    )}>
+                    <Plus className="size-3" aria-hidden="true" />
+                    {copy.add}
+                  </button>
+                  <AnimatePresence>
+                    {menuOpen && (
+                      <m.div
+                        role="menu"
+                        initial={{ opacity: 0, y: -4 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -2 }}
+                        transition={{ duration: 0.16, ease: ease.expo }}
+                        className="absolute top-full right-0 z-30 mt-2 flex w-full min-w-28 flex-col gap-1 rounded-xl border border-border bg-popover p-1.5 shadow-(--shadow-float)">
+                        {SOURCE_ORDER.map((type) => (
                           <button
                             key={type}
                             type="button"
+                            role="menuitem"
                             onClick={() => {
                               addItem(type)
                               setMenuOpen(false)
                             }}
-                            className="flex h-8 w-full cursor-pointer items-center gap-2 rounded-lg px-2.5 text-left text-[13px] transition-colors hover:bg-accent focus-visible:bg-accent focus-visible:outline-none">
-                            <Icon className={cn('size-3.5', tint)} aria-hidden="true" />
-                            {copy.types[type]}
+                            className={cn(
+                              'flex h-8 w-full cursor-pointer items-center rounded-lg px-2.5 text-left text-sm transition-colors hover:bg-accent focus-visible:bg-accent focus-visible:outline-none',
+                              menuHighlight === type && 'bg-accent'
+                            )}>
+                            {copy.sources[type]}
                           </button>
-                        )
-                      })}
-                      <p className="px-2.5 pt-1 pb-0.5 text-[11px] text-muted-foreground">{copy.addHint}</p>
-                    </m.div>
-                  )}
-                </AnimatePresence>
+                        ))}
+                      </m.div>
+                    )}
+                  </AnimatePresence>
+                </div>
               </div>
             </div>
 
             <div
-              className={cn(ROW_GRID, 'mx-3 h-9 shrink-0 border-b border-border px-2.5 text-xs text-muted-foreground')}
+              className={cn(ROW_GRID, 'mx-3 mb-2 h-11 shrink-0 border-b border-border px-2.5 text-xs font-medium')}
               aria-hidden="true">
-              <span>{copy.columns.name}</span>
-              <span className="hidden sm:block">{copy.columns.type}</span>
-              <span>{copy.columns.status}</span>
-              <span className="hidden sm:block">{copy.columns.updated}</span>
+              <span className="flex items-center" title={copy.selectAll}>
+                <CheckboxBox />
+              </span>
+              {(['name', 'type', 'status', 'updated'] as const).map((column) => (
+                <span
+                  key={column}
+                  className={cn(
+                    'flex min-w-0 items-center gap-1 text-muted-foreground/80',
+                    (column === 'type' || column === 'updated') && 'hidden sm:flex'
+                  )}>
+                  <span className="truncate">{copy.columns[column]}</span>
+                  <ArrowUpDown className="size-3 shrink-0" />
+                </span>
+              ))}
+              <span className="hidden sm:block" />
             </div>
 
-            <ul className="min-h-0 flex-1 overflow-y-auto px-3 py-1 [scrollbar-width:thin]" aria-live="polite">
+            <ul
+              className="min-h-0 flex-1 space-y-1.5 overflow-y-auto px-3 pb-6 [scrollbar-width:thin]"
+              aria-live="polite">
               <AnimatePresence initial={false}>
                 {items.map((item) => {
                   const { icon: Icon, tint } = TYPE_ICONS[item.type]
@@ -300,12 +334,15 @@ export default function KnowledgeDemo() {
                       initial={{ opacity: 0, y: -6 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={spring.settle}
-                      className={cn(ROW_GRID, 'rounded-md px-2.5 py-1.5 transition-colors hover:bg-muted')}>
+                      className={cn(ROW_GRID, 'group/row rounded-md px-2.5 py-1.5 transition-colors hover:bg-muted')}>
+                      <span className="flex items-center" aria-hidden="true">
+                        <CheckboxBox />
+                      </span>
                       <span className="flex min-w-0 items-center gap-2">
-                        <span className="flex size-6 shrink-0 items-center justify-center rounded bg-secondary">
+                        <span className="flex size-6 shrink-0 items-center justify-center rounded bg-muted/60">
                           <Icon className={cn('size-3.5', tint)} aria-hidden="true" />
                         </span>
-                        <span className="truncate text-[13px]" title={item.title}>
+                        <span className="truncate text-sm" title={item.title}>
                           {item.title}
                         </span>
                       </span>
@@ -324,6 +361,12 @@ export default function KnowledgeDemo() {
                         </span>
                       </span>
                       <span className="hidden truncate text-xs text-muted-foreground/80 sm:block">{item.updated}</span>
+                      <span
+                        className="hidden size-6 items-center justify-center justify-self-center rounded-md text-muted-foreground opacity-0 transition-opacity group-hover/row:opacity-100 sm:flex"
+                        title={copy.more}
+                        aria-hidden="true">
+                        <MoreHorizontal className="size-3.5" />
+                      </span>
                     </m.li>
                   )
                 })}
@@ -333,43 +376,45 @@ export default function KnowledgeDemo() {
             {dragging && (
               <div
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-3 z-20 flex items-center justify-center rounded-lg border border-dashed border-primary bg-background/90 text-sm font-medium">
+                className="pointer-events-none absolute inset-3 z-10 flex items-center justify-center rounded-lg border border-dashed border-primary bg-background/90 text-sm font-medium text-foreground shadow-sm">
                 {copy.drop}
               </div>
             )}
-
-            <AnimatePresence>
-              {panelOpen && (
-                <m.div
-                  key="backdrop"
-                  aria-hidden="true"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.15 }}
-                  className="absolute inset-0 z-30 bg-black/40"
-                />
-              )}
-              {panelOpen && (
-                <RecallTestPanel
-                  key="panel"
-                  copy={copy}
-                  query={query}
-                  state={recall}
-                  inputRef={recallInput}
-                  onQueryChange={(value) => {
-                    touched.current = true
-                    setQuery(value)
-                  }}
-                  onSearch={() => {
-                    touched.current = true
-                    runSearch()
-                  }}
-                  onClose={() => setPanelOpen(false)}
-                />
-              )}
-            </AnimatePresence>
           </main>
+
+          {/* PageSidePanel portals into the tab root, so its backdrop and panel cover the base list too. */}
+          <AnimatePresence>
+            {panelOpen && (
+              <m.div
+                key="backdrop"
+                aria-hidden="true"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.15 }}
+                onClick={() => setPanelOpen(false)}
+                className="absolute inset-0 z-30 bg-black/50"
+              />
+            )}
+            {panelOpen && (
+              <RecallTestPanel
+                key="panel"
+                copy={copy}
+                query={query}
+                state={recall}
+                inputRef={recallInput}
+                onQueryChange={(value) => {
+                  touched.current = true
+                  setQuery(value)
+                }}
+                onSearch={() => {
+                  touched.current = true
+                  runSearch()
+                }}
+                onClose={() => setPanelOpen(false)}
+              />
+            )}
+          </AnimatePresence>
         </div>
       </DemoFrame>
     </div>
