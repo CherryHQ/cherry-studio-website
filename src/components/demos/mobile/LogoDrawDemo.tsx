@@ -13,6 +13,7 @@ import { logoDrawDemo } from '@/content/demos/mobile'
 import { cn } from '@/lib/utils'
 import { useDemoLocale } from '../primitives/useDemoLocale'
 import { useDemoPlayback, useDemoScript } from '../primitives/useDemoScript'
+import { tone } from './MobileUi'
 import PhoneFrame from './PhoneFrame'
 
 // Fill outlines and the reconstructed pen centerlines from the mobile onboarding LogoDraw (utils/logoPaths.ts).
@@ -84,7 +85,7 @@ export default function LogoDrawDemo({ size, bare, className }: LogoDrawDemoProp
     setFinished(true)
   }, playing)
 
-  const drawing = <LogoDrawing progress={progress} finished={finished} height={size ?? (bare ? 96 : 88)} />
+  const drawing = <LogoDrawing progress={progress} finished={finished} height={size ?? (bare ? 96 : 104)} />
 
   if (bare) {
     return (
@@ -97,25 +98,42 @@ export default function LogoDrawDemo({ size, bare, className }: LogoDrawDemoProp
   return (
     <div ref={ref} role="region" aria-label={copy.region} className={className}>
       <PhoneFrame onReplay={replay}>
-        <div className="flex h-full flex-col px-6 pb-8">
-          <div className="flex flex-1 flex-col items-center justify-center gap-6 text-center">
-            {drawing}
-            <div className="space-y-3">
-              <p className="text-[24px] leading-8 font-semibold tracking-tight">{copy.title}</p>
-              <p className="text-[15px] leading-6 text-muted-foreground">{copy.description}</p>
+        <div className={cn('flex h-full flex-col pt-[54px]', tone.background)}>
+          <div className="min-h-20 shrink-0" />
+          <div className="flex min-h-0 flex-1 flex-col justify-center gap-8 px-6 pt-12 pb-52 text-center">
+            <div className="flex justify-center">{drawing}</div>
+            <div className="flex flex-col gap-3">
+              <p className="text-[32px] leading-10 font-semibold">{copy.title}</p>
+              <p className={cn('text-[16px] leading-6', tone.muted)}>{copy.description}</p>
             </div>
           </div>
-          <div aria-hidden="true" className="space-y-2.5">
-            <span className="flex h-12 items-center justify-center rounded-full bg-foreground text-[15px] font-medium text-background">
-              {copy.actions[0]}
-            </span>
-            <span className="flex h-12 items-center justify-center rounded-full bg-black/[0.06] text-[15px] font-medium dark:bg-white/10">
-              {copy.actions[1]}
+          <div className="shrink-0 px-6 pt-3 pb-[34px]">
+            <span
+              aria-hidden="true"
+              className="flex items-center justify-center rounded-xl bg-[#171717] px-5 py-3 text-[18px] leading-7 font-medium text-[#f5f5f5] shadow-xs dark:bg-[#ededed] dark:text-black">
+              {copy.start}
             </span>
           </div>
         </div>
       </PhoneFrame>
     </div>
+  )
+}
+
+/** The settled mark, as OnboardingPage docks it beside "Cherry Studio" on step pages. */
+export function LogoMark({ height }: { height: number }) {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox={`0 0 ${VIEW_WIDTH} ${VIEW_HEIGHT}`}
+      style={{ height, width: (height * VIEW_WIDTH) / VIEW_HEIGHT }}
+      className="shrink-0">
+      <g transform={`translate(${INSET} ${INSET})`}>
+        <path d={SWIRL_LEFT_FILL} fill={SWIRL_COLOR} />
+        <path d={SWIRL_RIGHT_FILL} fill={SWIRL_COLOR} />
+        <path d={CHECK_FILL} fill={CHECK_COLOR} />
+      </g>
+    </svg>
   )
 }
 

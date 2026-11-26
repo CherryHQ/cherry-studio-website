@@ -1,66 +1,59 @@
-import { AnimatePresence, animate, m, useMotionValue, useReducedMotion, useTransform } from 'framer-motion'
+import { AnimatePresence, m } from 'framer-motion'
 import {
-  ArrowUp,
+  AtSign,
+  Boxes,
   Camera,
-  ChevronDown,
+  Check,
+  ChevronRight,
+  Copy,
+  Ellipsis,
   FileText,
+  Folder,
   Images,
-  Menu,
-  Mic,
-  Paperclip,
   Plus,
-  Square,
-  SquarePen,
-  X
+  RotateCcw,
+  Split,
+  ToolCase,
+  Volume2
 } from 'lucide-react'
-import { type KeyboardEvent, useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { type KeyboardEvent, type ReactNode, useEffect, useMemo, useRef, useState } from 'react'
 
-import { type ComposerMenuItem, mobileComposerDemo } from '@/content/demos/mobile'
-import { ease, press, spring } from '@/lib/motion'
+import { type MobileComposerCopy, mobileComposerDemo } from '@/content/demos/mobile'
+import { ease } from '@/lib/motion'
 import { cn } from '@/lib/utils'
 import BeatDots from '../primitives/BeatDots'
-import ProviderIcon from '../primitives/ProviderIcon'
-import StreamingText from '../primitives/StreamingText'
+import { tokenize, useStreamedCount } from '../primitives/StreamingText'
 import { useDemoLocale } from '../primitives/useDemoLocale'
 import { useDemoPlayback, useDemoScript } from '../primitives/useDemoScript'
 import { useStickToBottom } from '../primitives/useStickToBottom'
+import {
+  BrandAvatar,
+  ChatHeader,
+  CherryAvatar,
+  ComposerCircle,
+  ComposerSurface,
+  canvasFocus,
+  SendSlot,
+  SheetHandle,
+  tone
+} from './MobileUi'
 import PhoneFrame from './PhoneFrame'
-import { RotatingText } from './ShimmerText'
+import ShimmerText from './ShimmerText'
 
-type Phase = 'idle' | 'compose' | 'sent' | 'pending' | 'answer' | 'done'
+type Phase = 'draft' | 'editing' | 'sent' | 'thinking' | 'answer' | 'done'
 
 interface DemoState {
   phase: Phase
-  menuOpen: boolean
-  pressed: ComposerMenuItem | null
-  attachment: ComposerMenuItem | null
-  sentAttachment: ComposerMenuItem | null
   typed: string
-  statusIndex: number
+  elapsed: number
 }
 
-const INITIAL: DemoState = {
-  phase: 'idle',
-  menuOpen: false,
-  pressed: null,
-  attachment: null,
-  sentAttachment: null,
-  typed: '',
-  statusIndex: 0
-}
-
-const menuIcons = { camera: Camera, photos: Images, file: Paperclip }
-
-// composer-layout.ts: 32pt toolbar circles inside a 26pt-radius surface; the menu panel uses rounded-4xl.
-const TRIGGER = 32
-const PANEL_RADIUS = 32
-// menu-motion.ts: open 350ms overshoot, close 250ms settle; the plus clears over the first 200 of 350ms.
-const openMotion = { duration: 0.35, ease: ease.overshoot }
-const closeMotion = { duration: 0.25, ease: ease.settle }
-const FADE_SHARE = 0.2 / 0.35
-const SLIDE = 40
-const RESTING_SCALE = 0.97
-const BLUR = 2
+const INITIAL: DemoState = { phase: 'draft', typed: '', elapsed: 0 }
+const THINK_SECONDS = 3
+// Composer editor: the resting row grows into field + toolbar over 90ms on the settle curve.
+const editorMotion = { duration: 0.09, ease: ease.settle }
+// BottomSheet presentation curve.
+const sheetMotion = { duration: 0.35, ease: ease.sheet }
 
 export default function MobileComposerDemo() {
   const { locale, tag } = useDemoLocale()
@@ -70,168 +63,111 @@ export default function MobileComposerDemo() {
   const thread = useRef<HTMLDivElement>(null)
   const playing = useDemoPlayback(ref)
   const [state, setState] = useState<DemoState>(INITIAL)
+  const [sheetOpen, setSheetOpen] = useState(false)
   const update = (patch: Partial<DemoState>) => setState((previous) => ({ ...previous, ...patch }))
   useStickToBottom(scroller, thread)
 
   const { replay } = useDemoScript(async ({ wait, reduced }) => {
+    setSheetOpen(false)
     if (reduced) {
-      setState({ ...INITIAL, phase: 'done', sentAttachment: 'photos', statusIndex: copy.status.length - 1 })
+      setState({ phase: 'done', typed: '', elapsed: THINK_SECONDS })
       return
     }
     setState(INITIAL)
-    await wait(800)
-    update({ phase: 'compose', menuOpen: true })
-    await wait(1100)
-    update({ pressed: 'photos' })
-    await wait(180)
-    update({ menuOpen: false, pressed: null, attachment: 'photos' })
-    await wait(600)
+    await wait(900)
+    update({ phase: 'editing' })
+    await wait(350)
     for (let index = 1; index <= copy.prompt.length; index++) {
       update({ typed: copy.prompt.slice(0, index) })
-      await wait(locale === 'zh' ? 70 : 30)
+      await wait(locale === 'zh' ? 70 : 24)
     }
-    await wait(450)
-    setState((previous) => ({
-      ...previous,
-      phase: 'sent',
-      typed: '',
-      sentAttachment: previous.attachment,
-      attachment: null
-    }))
     await wait(500)
-    update({ phase: 'pending', statusIndex: 0 })
-    for (let index = 1; index < copy.status.length; index++) {
-      await wait(2200)
-      update({ statusIndex: index })
+    update({ phase: 'sent', typed: '' })
+    await wait(900)
+    update({ phase: 'thinking', elapsed: 0 })
+    for (let second = 1; second <= THINK_SECONDS; second++) {
+      await wait(1000)
+      update({ elapsed: second })
     }
-    await wait(1500)
     update({ phase: 'answer' })
   }, playing)
 
-  const choose = (item: ComposerMenuItem) => update({ menuOpen: false, attachment: item })
   const { phase } = state
-  const sent = phase === 'sent' || phase === 'pending' || phase === 'answer' || phase === 'done'
-  const busy = phase === 'sent' || phase === 'pending' || phase === 'answer'
-  const draftAttachment = state.attachment
+  const sent = phase === 'sent' || phase === 'thinking' || phase === 'answer' || phase === 'done'
+  const streaming = phase === 'sent' || phase === 'thinking' || phase === 'answer'
 
   return (
     <div ref={ref} role="region" aria-label={copy.region}>
-      <PhoneFrame onReplay={replay}>
-        <div className="flex h-full flex-col">
-          <div aria-hidden="true" className="flex h-11 shrink-0 items-center justify-between px-4">
-            <Menu className="size-5" />
-            <span className="inline-flex items-center gap-1.5 rounded-full px-2 py-1 text-[14px] font-medium">
-              <ProviderIcon id="anthropic" className="size-3.5" />
-              {copy.model}
-              <ChevronDown className="size-3.5 text-muted-foreground" />
-            </span>
-            <SquarePen className="size-5" />
+      <PhoneFrame
+        onReplay={replay}
+        overlay={<ToolsSheet copy={copy} open={sheetOpen} onClose={() => setSheetOpen(false)} />}>
+        <div className={cn('relative h-full', tone.chat)}>
+          <div ref={scroller} className="absolute inset-0 overflow-y-auto [scrollbar-width:none]">
+            <div ref={thread} className="flex min-h-full flex-col px-4 pt-[122px] pb-[150px]">
+              {sent ? (
+                <Conversation
+                  copy={copy}
+                  state={state}
+                  tag={tag}
+                  playing={playing}
+                  onDone={() => update({ phase: 'done' })}
+                />
+              ) : (
+                <div className="flex flex-1 flex-col items-center justify-center gap-6 px-6 pb-10">
+                  <CherryAvatar size={48} />
+                  <p className="max-w-[320px] text-center text-[20px] leading-[26px] font-medium">{copy.greeting}</p>
+                </div>
+              )}
+            </div>
           </div>
 
-          <div className="relative min-h-0 flex-1">
-            <div ref={scroller} className="h-full overflow-y-auto px-4 [scrollbar-width:none]">
-              <div ref={thread} className="flex min-h-full flex-col justify-end gap-4 pt-4 pb-28">
-                {!sent && (
-                  <p className="text-gradient mb-auto pt-24 text-center text-[20px] leading-7 font-semibold tracking-tight">
-                    {copy.greeting}
-                  </p>
-                )}
-                {sent && (
-                  <m.div
-                    initial={{ opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={spring.settle}
-                    className="flex flex-col items-end gap-1.5">
-                    {state.sentAttachment && <AttachmentPreview item={state.sentAttachment} label={copy.attachments} />}
-                    <p className="max-w-[85%] rounded-[20px] bg-white px-4 py-2.5 text-[15px] leading-6 shadow-[0_1px_2px_rgb(0_0_0/0.04)] dark:bg-[#1c1c1e]">
-                      {copy.prompt}
-                    </p>
-                  </m.div>
-                )}
-                {(phase === 'pending' || phase === 'sent') && (
-                  <div
-                    role="status"
-                    className="flex h-6 items-center gap-2 text-[14px] motion-safe:animate-in motion-safe:fade-in">
-                    <BeatDots className="p-0.5 text-muted-foreground" />
-                    {phase === 'pending' && (
-                      <RotatingText phrases={copy.status} index={state.statusIndex} active={playing} />
-                    )}
-                  </div>
-                )}
-                {(phase === 'answer' || phase === 'done') && (
-                  <div className="text-[15px] leading-6">
-                    <StreamingText
-                      key={locale}
-                      text={copy.answer}
-                      locale={tag}
-                      active={phase === 'answer' && playing}
-                      rate={40}
-                      onDone={() => update({ phase: 'done' })}
-                    />
-                  </div>
-                )}
-              </div>
-            </div>
+          <ChatHeader agentName={copy.agentName} sidebarLabel={copy.openMenu} newChatLabel={copy.newChat} />
 
-            <div className="absolute inset-x-0 bottom-0 px-3 pb-6">
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-x-0 -top-5 bottom-0 bg-linear-to-b from-[#f5f5f5]/0 to-[#f5f5f5] to-[20px] dark:from-black/0 dark:to-black"
-              />
-              <div className="relative rounded-[26px] border border-black/[0.06] bg-white/90 px-2.5 py-[9px] shadow-[0_8px_24px_-12px_rgb(0_0_0/0.18)] backdrop-blur-xl dark:border-white/10 dark:bg-[#1c1c1e]/90">
-                <AnimatePresence initial={false}>
-                  {draftAttachment && (
-                    <m.div
-                      key={draftAttachment}
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.25, ease: ease.settle }}
-                      className="overflow-hidden">
-                      <div className="mb-2 flex items-center gap-2">
-                        <span className="inline-flex h-8 max-w-[75%] items-center gap-1.5 rounded-full bg-black/[0.05] ps-2.5 pe-1 text-[13px] dark:bg-white/10">
-                          {draftAttachment === 'file' ? (
-                            <FileText className="size-3.5 shrink-0" aria-hidden="true" />
-                          ) : (
-                            <Images className="size-3.5 shrink-0" aria-hidden="true" />
-                          )}
-                          <span className="truncate">{copy.attachments[draftAttachment]}</span>
-                          <m.button
-                            type="button"
-                            {...press}
-                            onClick={() => update({ attachment: null })}
-                            aria-label={copy.removeAttachment}
-                            className="flex size-6 shrink-0 cursor-pointer items-center justify-center rounded-full text-muted-foreground hover:text-foreground focus-visible:outline-2 focus-visible:outline-primary">
-                            <X className="size-3.5" aria-hidden="true" />
-                          </m.button>
-                        </span>
-                      </div>
-                    </m.div>
-                  )}
-                </AnimatePresence>
-                <div className="flex items-center gap-2">
-                  <MorphMenu
-                    label={copy.attach}
-                    items={copy.menu}
-                    open={state.menuOpen}
-                    pressed={state.pressed}
-                    onOpenChange={(menuOpen) => update({ menuOpen })}
-                    onSelect={choose}
-                  />
-                  <p className="line-clamp-3 min-w-0 flex-1 text-[16px] leading-6 break-words">
-                    {state.typed ? (
-                      <span>
-                        {state.typed}
-                        <span className="ml-px inline-block h-4 w-px translate-y-0.5 bg-foreground motion-safe:animate-caret" />
+          <div className="absolute inset-x-0 bottom-0 z-10 px-4 pb-[38px]">
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-x-0 -top-6 bottom-0 bg-linear-to-b from-[#f9f9f9]/0 to-[#f9f9f9] to-[24px] dark:from-black/0 dark:to-black"
+            />
+            <ComposerSurface className="relative overflow-hidden">
+              <m.div layout transition={editorMotion}>
+                {phase === 'editing' ? (
+                  <div>
+                    <p className="min-h-8 py-1 text-[16px] leading-5 break-words">
+                      {state.typed ? (
+                        <>
+                          {state.typed}
+                          <span className="ms-px inline-block h-[18px] w-[2px] translate-y-[3px] bg-[#2563eb] motion-safe:animate-caret" />
+                        </>
+                      ) : (
+                        <span className={tone.placeholder}>{copy.placeholder}</span>
+                      )}
+                    </p>
+                    <div className="mt-[10px] flex items-center gap-2">
+                      <PlusButton label={copy.attach} onClick={() => setSheetOpen(true)} />
+                      <span
+                        className={cn(
+                          'flex h-8 min-w-0 items-center gap-[6px] rounded-full px-[10px]',
+                          tone.secondary
+                        )}>
+                        <BrandAvatar id={copy.modelProvider} size={20} />
+                        <span className="truncate text-[14px] leading-5 font-semibold">{copy.model}</span>
                       </span>
-                    ) : (
-                      <span className="text-muted-foreground">{copy.placeholder}</span>
-                    )}
-                  </p>
-                  <PrimarySlot mode={busy ? 'stop' : state.typed || draftAttachment ? 'send' : 'voice'} />
-                </div>
-              </div>
-            </div>
+                      <span className="ms-auto">
+                        <SendSlot state={state.typed ? 'ready' : 'disabled'} />
+                      </span>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="flex items-center gap-2">
+                    <PlusButton label={copy.attach} onClick={() => setSheetOpen(true)} />
+                    <span className={cn('min-w-0 flex-1 truncate text-[16px] leading-5', tone.placeholder)}>
+                      {copy.placeholder}
+                    </span>
+                    <SendSlot state={streaming ? 'stop' : 'disabled'} />
+                  </div>
+                )}
+              </m.div>
+            </ComposerSurface>
           </div>
         </div>
       </PhoneFrame>
@@ -239,199 +175,308 @@ export default function MobileComposerDemo() {
   )
 }
 
-/** Voice, send and stop share one slot and swap as a single object on spring.morph. */
-function PrimarySlot({ mode }: { mode: 'voice' | 'send' | 'stop' }) {
-  const Icon = mode === 'voice' ? Mic : mode === 'send' ? ArrowUp : Square
+function PlusButton({ label, onClick }: { label: string; onClick: () => void }) {
   return (
-    <span
-      aria-hidden="true"
-      className={cn(
-        'flex size-8 shrink-0 items-center justify-center rounded-full transition-colors duration-200',
-        mode === 'voice' ? 'bg-black/[0.05] dark:bg-white/10' : 'bg-foreground text-background'
-      )}>
-      <AnimatePresence mode="popLayout" initial={false}>
-        <m.span
-          key={mode}
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.9 }}
-          transition={spring.morph}>
-          <Icon className={cn(mode === 'stop' ? 'size-3 fill-current' : 'size-4')} />
-        </m.span>
-      </AnimatePresence>
-    </span>
+    <button
+      type="button"
+      aria-label={label}
+      aria-haspopup="dialog"
+      onClick={onClick}
+      className={cn('shrink-0 cursor-pointer rounded-full active:opacity-60', canvasFocus)}>
+      <ComposerCircle>
+        <Plus className="size-[18px]" strokeWidth={1.9} aria-hidden="true" />
+      </ComposerCircle>
+    </button>
   )
 }
 
-function AttachmentPreview({ item, label }: { item: ComposerMenuItem; label: Record<ComposerMenuItem, string> }) {
-  if (item === 'file') {
-    return (
-      <span className="inline-flex items-center gap-2 rounded-2xl bg-white px-3 py-2 text-[13px] dark:bg-[#1c1c1e]">
-        <FileText className="size-4" aria-hidden="true" />
-        {label.file}
-      </span>
-    )
-  }
+function Conversation({
+  copy,
+  state,
+  tag,
+  playing,
+  onDone
+}: {
+  copy: MobileComposerCopy
+  state: DemoState
+  tag: string
+  playing: boolean
+  onDone: () => void
+}) {
+  const { phase } = state
+  const [expanded, setExpanded] = useState(false)
+  const answered = phase === 'answer' || phase === 'done'
+
   return (
-    <span
-      aria-hidden="true"
-      className="relative block h-[84px] w-[112px] overflow-hidden rounded-2xl border border-black/[0.06] bg-[#fbfbf8] p-2.5 dark:border-white/10 dark:bg-[#e9e9e4]">
-      {[
-        'w-14 bg-[#2563eb]',
-        'w-20 bg-[#111]/70',
-        'w-16 bg-[#111]/70',
-        'w-[72px] bg-[#dc2626]/80',
-        'w-12 bg-[#111]/70'
-      ].map((bar, index) => (
-        <span key={index} className={cn('mb-2 block h-[3px] rounded-full', bar)} />
+    <div className="flex flex-col gap-4">
+      <p className={cn('text-center font-mono text-[13px] leading-[18px]', tone.muted)}>{copy.time}</p>
+      <m.div
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.25, ease: ease.settle }}
+        className="flex justify-end">
+        <p className={cn('w-fit max-w-[88%] rounded-[18px] px-4 py-[10px] text-[16px] leading-6', tone.secondary)}>
+          {copy.prompt}
+        </p>
+      </m.div>
+
+      <div className="flex flex-col gap-2.5">
+        <div className="flex items-start gap-2">
+          <CherryAvatar />
+          <p className="mt-0.5 flex min-w-0 flex-wrap items-center gap-x-1.5 text-[14px] leading-5">
+            <span className="font-semibold">{copy.agentName}</span>
+            <BrandAvatar id={copy.modelProvider} size={16} />
+            <span className={tone.tertiary}>{copy.model}</span>
+          </p>
+        </div>
+
+        {phase === 'sent' && (
+          <span role="status" aria-label={copy.thinking} className="flex h-7 items-center">
+            <BeatDots className="p-0.5 text-[#7d7d7d]" />
+          </span>
+        )}
+
+        {phase !== 'sent' && (
+          <div className={cn('border-b', tone.borderSubtle, expanded && 'pb-4')}>
+            <button
+              type="button"
+              aria-expanded={expanded}
+              onClick={() => setExpanded((open) => !open)}
+              className={cn('flex min-h-9 w-full cursor-pointer items-center gap-1 text-start', canvasFocus)}>
+              {phase === 'thinking' ? (
+                <ShimmerText active={playing} className="text-[14px] leading-5">
+                  {copy.thinking}
+                </ShimmerText>
+              ) : (
+                <span className={cn('text-[14px] leading-5', tone.tertiary)}>{copy.took(state.elapsed)}</span>
+              )}
+              <ChevronRight
+                aria-hidden="true"
+                className={cn(
+                  'size-3 shrink-0 transition-transform duration-200',
+                  tone.tertiary,
+                  expanded && 'rotate-90'
+                )}
+              />
+              {phase === 'thinking' && (
+                <span className={cn('ms-auto text-[13px] tabular-nums', tone.tertiary)}>{state.elapsed}s</span>
+              )}
+            </button>
+            {expanded && <p className={cn('pt-1 text-[14px] leading-[22px]', tone.muted)}>{copy.reasoning}</p>}
+          </div>
+        )}
+
+        {answered && (
+          <Answer items={copy.answer} tag={tag} streaming={phase === 'answer'} playing={playing} onDone={onDone} />
+        )}
+
+        {phase === 'done' && <Toolbar copy={copy} />}
+      </div>
+    </div>
+  )
+}
+
+/** Markdown answer: a numbered list with bold lead-ins, streamed token by token. */
+function Answer({
+  items,
+  tag,
+  streaming,
+  playing,
+  onDone
+}: {
+  items: MobileComposerCopy['answer']
+  tag: string
+  streaming: boolean
+  playing: boolean
+  onDone: () => void
+}) {
+  const segments = useMemo(
+    () => items.map((item) => [tokenize(item.title, tag), tokenize(` — ${item.body}`, tag)] as const),
+    [items, tag]
+  )
+  const total = segments.reduce((sum, [title, body]) => sum + title.length + body.length, 0)
+  const { count } = useStreamedCount(total, streaming && playing, 34, onDone)
+  let budget = streaming ? count : total
+
+  return (
+    <div className="text-[16px] leading-[26px]">
+      <span className="sr-only">{items.map((item) => `${item.title} — ${item.body}`).join(' ')}</span>
+      <ol aria-hidden="true" className="list-decimal space-y-2 ps-[26px]">
+        {segments.map(([title, body], index) => {
+          if (budget <= 0) return null
+          const titleTokens = title.slice(0, budget)
+          budget -= title.length
+          const bodyTokens = budget > 0 ? body.slice(0, budget) : []
+          budget -= body.length
+          return (
+            <li key={items[index].title} className="ps-1">
+              <strong className="font-semibold">{titleTokens.join('')}</strong>
+              {bodyTokens.join('')}
+            </li>
+          )
+        })}
+      </ol>
+    </div>
+  )
+}
+
+/** AssistantMessageToolbar default pins (copy, read aloud, retry, answer with, fork) and More, then usage. */
+function Toolbar({ copy }: { copy: MobileComposerCopy }) {
+  const [copied, setCopied] = useState(false)
+  useEffect(() => {
+    if (!copied) return
+    const timer = setTimeout(() => setCopied(false), 1500)
+    return () => clearTimeout(timer)
+  }, [copied])
+  const icons = [
+    [Volume2, copy.actions.readAloud],
+    [RotateCcw, copy.actions.regenerate],
+    [AtSign, copy.actions.answerWith],
+    [Split, copy.actions.fork],
+    [Ellipsis, copy.actions.more]
+  ] as const
+
+  return (
+    <m.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.2 }}
+      className="flex min-h-7 items-center gap-1">
+      <button
+        type="button"
+        aria-label={copy.actions.copy}
+        onClick={() => setCopied(true)}
+        className={cn('flex size-[27px] cursor-pointer items-center justify-center rounded-lg', canvasFocus)}>
+        {copied ? (
+          <Check className="size-[15px] text-[oklch(0.5175_0.1453_147.65)]" aria-hidden="true" />
+        ) : (
+          <Copy className={cn('size-[15px]', tone.muted)} aria-hidden="true" />
+        )}
+      </button>
+      {icons.map(([Icon, label]) => (
+        <span key={label} title={label} aria-hidden="true" className="flex size-[27px] items-center justify-center">
+          <Icon className={cn('size-[15px]', tone.muted)} />
+        </span>
       ))}
-      <span className="absolute right-2.5 bottom-2.5 size-6 rounded-md border-2 border-[#16a34a]/70" />
-    </span>
+      <span className={cn('ms-auto text-[13px] tabular-nums', tone.muted)}>{copy.usage}</span>
+    </m.div>
   )
-}
-
-interface MorphMenuProps {
-  label: string
-  items: { id: ComposerMenuItem; label: string }[]
-  open: boolean
-  pressed: ComposerMenuItem | null
-  onOpenChange: (open: boolean) => void
-  onSelect: (item: ComposerMenuItem) => void
 }
 
 /**
- * Composer.Menu: the circular + trigger morphs into the panel. Width, height and corner radius interpolate
- * from the 32px circle to the measured panel, unclamped so the overshoot curve visibly overshoots.
+ * ChatInputMenu: the + action opens a content-height sheet with only a drag handle (its title is the
+ * accessible name), three media tiles, then the Folders, Plugins and Skills rows.
  */
-function MorphMenu({ label, items, open, pressed, onOpenChange, onSelect }: MorphMenuProps) {
-  const reduced = useReducedMotion()
-  const progress = useMotionValue(0)
-  const content = useRef<HTMLDivElement>(null)
-  const trigger = useRef<HTMLButtonElement>(null)
-  const userOpened = useRef(false)
-  const root = useRef<HTMLDivElement>(null)
-  const [size, setSize] = useState({ width: 180, height: 188 })
-  const [presented, setPresented] = useState(false)
-
-  useLayoutEffect(() => {
-    const node = content.current
-    if (node) setSize({ width: node.offsetWidth, height: node.offsetHeight })
-  }, [items])
+function ToolsSheet({ copy, open, onClose }: { copy: MobileComposerCopy; open: boolean; onClose: () => void }) {
+  const panel = useRef<HTMLDivElement>(null)
+  const opener = useRef<Element | null>(null)
 
   useEffect(() => {
-    if (open) setPresented(true)
-    if (reduced) {
-      progress.set(open ? 1 : 0)
-      if (!open) setPresented(false)
-      return
-    }
-    // Animating the same value from wherever it is makes a mid-flight reversal continue smoothly.
-    const controls = animate(progress, open ? 1 : 0, open ? openMotion : closeMotion)
-    if (!open) controls.then(() => setPresented(false))
-    return () => controls.stop()
-  }, [open, reduced, progress])
-
-  useEffect(() => {
-    if (open && userOpened.current) content.current?.querySelector('button')?.focus({ preventScroll: true })
-    if (!open && userOpened.current) {
-      userOpened.current = false
-      trigger.current?.focus({ preventScroll: true })
+    if (open) {
+      opener.current = document.activeElement
+      panel.current?.querySelector('button')?.focus({ preventScroll: true })
+    } else if (opener.current instanceof HTMLElement) {
+      opener.current.focus({ preventScroll: true })
+      opener.current = null
     }
   }, [open])
 
-  useEffect(() => {
-    if (!open) return
-    const dismiss = (event: PointerEvent) => {
-      if (!root.current?.contains(event.target as Node)) onOpenChange(false)
-    }
-    document.addEventListener('pointerdown', dismiss)
-    return () => document.removeEventListener('pointerdown', dismiss)
-  }, [open, onOpenChange])
-
-  const width = useTransform(progress, (p) => TRIGGER + (size.width - TRIGGER) * p)
-  const height = useTransform(progress, (p) => TRIGGER + (size.height - TRIGGER) * p)
-  const radius = useTransform(progress, (p) => TRIGGER / 2 + (PANEL_RADIUS - TRIGGER / 2) * p)
-  const panelOpacity = useTransform(progress, (p) => Math.min(1, Math.max(0, p)))
-  const panelX = useTransform(progress, (p) => SLIDE * (1 - p))
-  const panelScale = useTransform(progress, (p) => RESTING_SCALE + (1 - RESTING_SCALE) * p)
-  const panelFilter = useTransform(progress, (p) => `blur(${Math.max(0, 1 - p) * BLUR}px)`)
-  const fade = useTransform(progress, (p) => Math.min(1, Math.max(0, p / FADE_SHARE)))
-  const plusOpacity = useTransform(fade, (f) => 1 - f)
-  const plusFilter = useTransform(fade, (f) => `blur(${f * BLUR}px)`)
-  const plusX = useTransform(progress, (p) => -SLIDE * p)
-  const plusRotate = useTransform(progress, (p) => 45 * p)
-  const plusScale = useTransform(progress, (p) => 1 - (1 - RESTING_SCALE) * p)
-
   const onKeyDown = (event: KeyboardEvent) => {
-    if (event.key === 'Escape') onOpenChange(false)
-    if (event.key !== 'ArrowDown' && event.key !== 'ArrowUp') return
-    event.preventDefault()
-    const buttons = Array.from(content.current?.querySelectorAll('button') ?? [])
-    const index = buttons.indexOf(document.activeElement as HTMLButtonElement)
-    const next = (index + (event.key === 'ArrowDown' ? 1 : -1) + buttons.length) % buttons.length
-    buttons[next]?.focus()
+    if (event.key === 'Escape') onClose()
   }
+  const tiles: [typeof Camera, string][] = [
+    [Camera, copy.media.camera],
+    [Images, copy.media.photos],
+    [FileText, copy.media.file]
+  ]
+  const rows: [typeof Folder, string, string?][] = [
+    [Folder, copy.tools.folders, copy.tools.noFolder],
+    [Boxes, copy.tools.plugins],
+    [ToolCase, copy.tools.skills]
+  ]
 
   return (
-    <div ref={root} className="relative size-8 shrink-0">
-      <m.div
-        style={{ width, height, borderRadius: radius }}
-        onKeyDown={onKeyDown}
-        className={cn(
-          'absolute bottom-0 left-0 z-30 overflow-hidden',
-          presented
-            ? 'bg-white shadow-[0_18px_40px_-16px_rgb(0_0_0/0.3)] ring-1 ring-black/[0.06] dark:bg-[#1c1c1e] dark:ring-white/10'
-            : 'bg-black/[0.05] dark:bg-white/10'
-        )}>
-        <m.div
-          ref={content}
-          aria-hidden={!open}
-          style={{ opacity: panelOpacity, x: panelX, scale: panelScale, filter: panelFilter, originX: 0, originY: 1 }}
-          className="absolute bottom-0 left-0 flex w-max min-w-[170px] flex-col gap-0.5 p-2">
-          {items.map((item) => {
-            const Icon = menuIcons[item.id]
-            return (
-              <m.button
-                key={item.id}
-                type="button"
-                tabIndex={open ? 0 : -1}
-                {...press}
-                animate={{ scale: pressed === item.id ? 0.97 : 1 }}
-                onClick={() => onSelect(item.id)}
-                className={cn(
-                  'flex min-h-14 cursor-pointer items-center gap-3 rounded-2xl px-3 py-2 text-start text-[16px] transition-colors duration-100 hover:bg-black/[0.04] focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-primary dark:hover:bg-white/[0.06]',
-                  pressed === item.id && 'bg-black/[0.06] dark:bg-white/10'
-                )}>
-                <span className="flex size-10 items-center justify-center rounded-full bg-black/[0.05] dark:bg-white/10">
-                  <Icon className="size-5" aria-hidden="true" />
-                </span>
-                <span className="pe-4">{item.label}</span>
-              </m.button>
-            )
-          })}
-        </m.div>
-      </m.div>
-      <m.button
-        ref={trigger}
-        type="button"
-        aria-label={label}
-        aria-expanded={open}
-        tabIndex={open ? -1 : 0}
-        onClick={() => {
-          userOpened.current = true
-          onOpenChange(true)
-        }}
-        whileTap={press.whileTap}
-        className={cn(
-          'absolute inset-0 z-40 flex cursor-pointer items-center justify-center rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary',
-          open && 'pointer-events-none'
-        )}>
-        <m.span
-          style={{ opacity: plusOpacity, filter: plusFilter, x: plusX, rotate: plusRotate, scale: plusScale }}
-          className="flex">
-          <Plus className="size-[18px]" aria-hidden="true" />
-        </m.span>
-      </m.button>
-    </div>
+    <AnimatePresence>
+      {open && (
+        <div className="absolute inset-0 z-40">
+          <m.button
+            type="button"
+            tabIndex={-1}
+            aria-label={copy.closeSheet}
+            onClick={onClose}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={sheetMotion}
+            className="absolute inset-0 cursor-default bg-black/40"
+          />
+          <m.div
+            ref={panel}
+            role="dialog"
+            aria-modal="true"
+            aria-label={copy.attach}
+            onKeyDown={onKeyDown}
+            initial={{ y: '100%' }}
+            animate={{ y: 0 }}
+            exit={{ y: '100%' }}
+            transition={sheetMotion}
+            className={cn(
+              'absolute inset-x-0 bottom-0 rounded-t-[32px] pb-[34px] dark:border-x dark:border-t dark:border-white/[0.09]',
+              tone.sheet
+            )}>
+            <SheetHandle />
+            <div className="flex flex-col gap-5 px-6 pt-1 pb-3">
+              <div className="flex gap-3">
+                {tiles.map(([Icon, label]) => (
+                  <SheetAction
+                    key={label}
+                    onClick={onClose}
+                    className="min-h-20 flex-1 flex-col gap-3 rounded-2xl px-2 py-4">
+                    <Icon className="size-6" strokeWidth={1.8} aria-hidden="true" />
+                    <span className="text-[14px] leading-5">{label}</span>
+                  </SheetAction>
+                ))}
+              </div>
+              <div>
+                {rows.map(([Icon, label, value]) => (
+                  <SheetAction key={label} onClick={onClose} row className="min-h-14 w-full gap-3 rounded-xl py-2">
+                    <Icon className={cn('size-5', tone.muted)} strokeWidth={1.8} aria-hidden="true" />
+                    <span className="min-w-0 flex-1 text-start text-[16px] leading-6">{label}</span>
+                    {value && <span className={cn('max-w-32 truncate text-[14px]', tone.muted)}>{value}</span>}
+                    <ChevronRight className={cn('size-4', tone.muted)} aria-hidden="true" />
+                  </SheetAction>
+                ))}
+              </div>
+            </div>
+          </m.div>
+        </div>
+      )}
+    </AnimatePresence>
+  )
+}
+
+function SheetAction({
+  children,
+  className,
+  row,
+  onClick
+}: {
+  children: ReactNode
+  className?: string
+  row?: boolean
+  onClick: () => void
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={cn(
+        'flex cursor-pointer items-center active:opacity-60',
+        !row && tone.secondary,
+        canvasFocus,
+        className
+      )}>
+      {children}
+    </button>
   )
 }

@@ -1,27 +1,25 @@
 import { AnimatePresence, m } from 'framer-motion'
-import {
-  Check,
-  ChevronLeft,
-  CircleCheck,
-  Folder,
-  Loader2,
-  Menu,
-  MonitorSmartphone,
-  Plus,
-  ScanLine,
-  Smartphone,
-  Terminal
-} from 'lucide-react'
-import { useRef, useState } from 'react'
+import { Check, ChevronRight, CircleCheck, Loader2, MonitorSmartphone, Plus, Smartphone } from 'lucide-react'
+import { type ReactNode, useRef, useState } from 'react'
 
 import { type PairingCopy, type PairingStage, pairingDemo } from '@/content/demos/mobile'
-import { press, spring } from '@/lib/motion'
+import { ease, press, spring } from '@/lib/motion'
 import { cn } from '@/lib/utils'
 import BeatDots from '../primitives/BeatDots'
-import ProviderIcon from '../primitives/ProviderIcon'
 import StreamingText from '../primitives/StreamingText'
 import { useDemoLocale } from '../primitives/useDemoLocale'
 import { useDemoPlayback, useDemoScript } from '../primitives/useDemoScript'
+import { LogoMark } from './LogoDrawDemo'
+import {
+  ChatHeader,
+  CherryAvatar,
+  ComposerCircle,
+  ComposerSurface,
+  canvasFocus,
+  SelectionMark,
+  SendSlot,
+  tone
+} from './MobileUi'
 import PhoneFrame from './PhoneFrame'
 import ShimmerText from './ShimmerText'
 
@@ -30,7 +28,6 @@ type AgentPhase = 'idle' | 'typing' | 'approval' | 'running' | 'answer' | 'done'
 
 interface DemoState {
   step: Step
-  scanned: boolean
   progress: PairingStage[]
   claim: boolean
   approved: boolean
@@ -38,7 +35,7 @@ interface DemoState {
   sync: 'fetching' | 'list' | 'importing' | 'done'
   agent: AgentPhase
   typed: string
-  pressed: 'approve' | 'continue' | null
+  pressed: 'approve' | 'continue' | 'paste' | null
 }
 
 const STEPS: Step[] = ['scan', 'verify', 'import', 'agent']
@@ -47,7 +44,6 @@ const CODE = '482913'
 
 const INITIAL: DemoState = {
   step: 'scan',
-  scanned: false,
   progress: [],
   claim: false,
   approved: false,
@@ -60,11 +56,9 @@ const INITIAL: DemoState = {
 
 /** State as it stands when the timeline enters `step`, so the step chips can start anywhere. */
 const entering = (step: Step): DemoState =>
-  step === 'scan'
-    ? INITIAL
-    : step === 'verify'
-      ? { ...INITIAL, step, scanned: true }
-      : { ...INITIAL, step, scanned: true, progress: STAGES, approved: true, connected: true }
+  step === 'scan' || step === 'verify'
+    ? { ...INITIAL, step }
+    : { ...INITIAL, step, progress: STAGES, approved: true, connected: true }
 
 const focusRing = 'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary'
 
@@ -97,9 +91,13 @@ export default function PairingDemo() {
     await wait(500)
 
     if (from <= 0) {
-      await until(() => pasted.current, 1800)
-      update({ scanned: true })
-      await wait(800)
+      await until(() => pasted.current, 2200)
+      if (!pasted.current) {
+        update({ pressed: 'paste' })
+        await wait(200)
+      }
+      update({ pressed: null })
+      await wait(250)
     }
     if (from <= 1) {
       update({ step: 'verify', progress: ['connecting'] })
@@ -117,17 +115,17 @@ export default function PairingDemo() {
       update({ progress: STAGES })
       await wait(450)
       update({ connected: true })
-      await wait(1300)
+      await wait(1400)
     }
     if (from <= 2) {
       update({ step: 'import', sync: 'fetching' })
       await wait(1100)
       update({ sync: 'list' })
-      await wait(1500)
+      await wait(1600)
       update({ sync: 'importing' })
       await wait(1200)
       update({ sync: 'done' })
-      await wait(1800)
+      await wait(1900)
     }
     update({ step: 'agent', agent: 'idle', typed: '' })
     await wait(700)
@@ -138,7 +136,7 @@ export default function PairingDemo() {
     }
     await wait(450)
     update({ agent: 'approval', typed: '' })
-    await until(() => decision.current !== null, 3000)
+    await until(() => decision.current !== null, 3200)
     if (decision.current === 'deny') {
       update({ agent: 'denied' })
       return
@@ -181,28 +179,26 @@ export default function PairingDemo() {
               pressed={state.pressed === 'continue'}
               onRespond={respond}
             />
-          }
-          screenClassName={state.step === 'scan' ? 'text-white dark:bg-black bg-black' : undefined}>
-          <AnimatePresence mode="popLayout" initial={false}>
+          }>
+          <AnimatePresence initial={false}>
             <m.div
               key={state.step}
-              initial={{ opacity: 0, x: 24 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -24 }}
-              transition={spring.settle}
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '-30%', opacity: 0.6 }}
+              transition={{ duration: 0.35, ease: ease.sheet }}
               className="absolute inset-0">
               {state.step === 'scan' && (
                 <ScanScreen
-                  copy={copy.scan}
-                  scanned={state.scanned}
-                  playing={playing}
+                  copy={copy}
+                  pressed={state.pressed === 'paste'}
                   onPaste={() => {
                     pasted.current = true
                   }}
                 />
               )}
-              {state.step === 'verify' && <VerifyScreen copy={copy.pair} state={state} />}
-              {state.step === 'import' && <ImportScreen copy={copy.sync} phase={state.sync} />}
+              {state.step === 'verify' && <VerifyScreen copy={copy} state={state} />}
+              {state.step === 'import' && <ImportScreen copy={copy} phase={state.sync} />}
               {state.step === 'agent' && (
                 <AgentScreen
                   copy={copy.agent}
@@ -228,13 +224,13 @@ export default function PairingDemo() {
               'inline-flex cursor-pointer items-center gap-1.5 rounded-full border px-3 py-1 text-xs transition-colors duration-200',
               focusRing,
               step === state.step
-                ? 'border-primary/40 bg-primary/10 text-foreground'
+                ? 'border-foreground/30 bg-foreground/10 text-foreground'
                 : 'border-border text-muted-foreground hover:border-hairline-strong hover:text-foreground'
             )}>
             <span
               className={cn(
                 'flex size-4 items-center justify-center rounded-full font-mono text-[10px]',
-                index < stepIndex ? 'bg-primary text-primary-foreground' : 'bg-secondary'
+                index < stepIndex ? 'bg-foreground text-background' : 'bg-secondary'
               )}>
               {index < stepIndex ? <Check className="size-2.5" aria-hidden="true" /> : index + 1}
             </span>
@@ -385,108 +381,173 @@ function DesktopCard({
   )
 }
 
-function ScanScreen({
+/**
+ * OnboardingPage step variant: docked mark with "Cherry Studio" and Back, a three-segment progress
+ * bar, a 24pt heading with its description, then the footer actions above the home indicator.
+ */
+function OnboardingScreen({
   copy,
-  scanned,
-  playing,
-  onPaste
+  step,
+  title,
+  description,
+  back = true,
+  footer,
+  children
 }: {
-  copy: PairingCopy['scan']
-  scanned: boolean
-  playing: boolean
-  onPaste: () => void
+  copy: PairingCopy
+  step: number
+  title: string
+  description: string
+  back?: boolean
+  footer?: ReactNode
+  children: ReactNode
 }) {
   return (
-    <div className="flex h-full flex-col bg-black px-5 pb-8 text-white">
-      <div className="flex h-11 items-center gap-2" aria-hidden="true">
-        <ChevronLeft className="size-5" />
-        <span className="text-[16px] font-semibold">{copy.title}</span>
-      </div>
-      <p className="text-[12px] text-white/55">{copy.step}</p>
-      <div className="flex flex-1 items-center justify-center">
-        <div aria-hidden="true" className="relative size-[200px]">
-          {[
-            'top-0 left-0 border-t-[3px] border-l-[3px] rounded-tl-2xl',
-            'top-0 right-0 border-t-[3px] border-r-[3px] rounded-tr-2xl',
-            'bottom-0 left-0 border-b-[3px] border-l-[3px] rounded-bl-2xl',
-            'bottom-0 right-0 border-b-[3px] border-r-[3px] rounded-br-2xl'
-          ].map((corner) => (
-            <span
-              key={corner}
-              className={cn(
-                'absolute size-9 transition-colors duration-300',
-                corner,
-                scanned ? 'border-[#23af69]' : 'border-white/90'
-              )}
-            />
-          ))}
-          <span className="absolute inset-8 rounded-lg bg-white/95 p-2 opacity-90 [transform:perspective(400px)_rotateX(14deg)_rotateZ(-4deg)]">
-            <QrCode className="size-full" />
+    <div className={cn('flex h-full flex-col pt-[54px]', tone.background)}>
+      <div className="flex min-h-16 shrink-0 items-center justify-between px-6 py-3">
+        <span className="flex items-center gap-3">
+          <LogoMark height={28} />
+          <span className="text-[18px] leading-7 font-semibold">Cherry Studio</span>
+        </span>
+        {back && (
+          <span aria-hidden="true" className="rounded-xl px-3 py-2 text-[14px] leading-5 font-medium">
+            {copy.onboarding.back}
           </span>
-          {!scanned && playing && (
-            <m.span
-              className="absolute inset-x-5 h-0.5 rounded-full bg-[#23af69] shadow-[0_0_12px_#23af69]"
-              initial={{ top: '12%' }}
-              animate={{ top: ['12%', '88%', '12%'] }}
-              transition={{ duration: 2.4, ease: 'easeInOut', repeat: Number.POSITIVE_INFINITY }}
-            />
-          )}
-          {scanned && (
-            <m.span
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={spring.morph}
-              className="absolute inset-0 m-auto flex size-12 items-center justify-center rounded-full bg-[#23af69] text-white">
-              <Check className="size-6" strokeWidth={3} />
-            </m.span>
-          )}
-        </div>
+        )}
       </div>
-      <p className="mb-4 text-center text-[13px] leading-5 text-white/70">{copy.guidance}</p>
-      <m.button
-        type="button"
-        {...press}
-        onClick={onPaste}
-        className="flex h-11 cursor-pointer items-center justify-center gap-2 rounded-full bg-white/15 text-[14px] font-medium focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
-        <ScanLine className="size-4" aria-hidden="true" />
-        {copy.paste}
-      </m.button>
+      <div aria-label={copy.onboarding.step(step)} role="img" className="flex shrink-0 gap-1.5 px-6 pt-2 pb-3">
+        {[1, 2, 3].map((index) => (
+          <span
+            key={index}
+            className={cn(
+              'h-0.5 flex-1 rounded-full',
+              index <= step ? 'bg-[#171717] dark:bg-[#ededed]' : 'bg-black/[0.08] dark:bg-white/[0.09]'
+            )}
+          />
+        ))}
+      </div>
+      <div className="flex min-h-0 flex-1 flex-col gap-6 overflow-hidden px-6 pt-6 pb-6">
+        <div className="flex flex-col gap-3">
+          <p className="text-[24px] leading-8 font-semibold">{title}</p>
+          <p className={cn('text-[16px] leading-6', tone.muted)}>{description}</p>
+        </div>
+        {children}
+      </div>
+      {footer && <div className="flex shrink-0 flex-col gap-3 px-6 pt-3 pb-[34px]">{footer}</div>}
     </div>
   )
 }
 
-function VerifyScreen({ copy, state }: { copy: PairingCopy['pair']; state: DemoState }) {
-  const current = state.progress.at(-1)
-  const waiting = current === 'waiting' && !state.connected
+/** OnboardingButton: CherryUI Button at lg size; primary is the foreground fill, secondary is outlined. */
+function OnboardingButton({
+  children,
+  variant = 'primary',
+  pressed,
+  onClick,
+  loading
+}: {
+  children: ReactNode
+  variant?: 'primary' | 'secondary' | 'text'
+  pressed?: boolean
+  onClick?: () => void
+  loading?: boolean
+}) {
+  const className = cn(
+    'flex w-full items-center justify-center gap-2.5 rounded-xl px-5 py-3 text-[18px] leading-7 font-medium',
+    variant === 'primary' && 'bg-[#171717] text-[#f5f5f5] shadow-xs dark:bg-[#ededed] dark:text-black',
+    variant === 'secondary' && cn('border', tone.border)
+  )
+  const content = (
+    <>
+      {loading && <Loader2 className="size-5 motion-safe:animate-spin" aria-hidden="true" />}
+      {children}
+    </>
+  )
+  if (!onClick) {
+    return (
+      <span aria-hidden="true" className={className}>
+        {content}
+      </span>
+    )
+  }
   return (
-    <div className="flex h-full flex-col px-5 pb-8">
-      <div className="flex h-11 items-center gap-2" aria-hidden="true">
-        <ChevronLeft className="size-5" />
-        <span className="text-[16px] font-semibold">{copy.title}</span>
+    <m.button
+      type="button"
+      {...press}
+      animate={{ scale: pressed ? 0.97 : 1 }}
+      onClick={onClick}
+      className={cn(className, 'cursor-pointer', canvasFocus)}>
+      {content}
+    </m.button>
+  )
+}
+
+/** OnboardingMessage: ContentState with a leading spinner while loading. */
+function OnboardingMessage({ children, loading }: { children: string; loading?: boolean }) {
+  return (
+    <p role="status" className={cn('flex items-center gap-3 py-6 text-[16px] leading-6', tone.muted)}>
+      {loading && <Loader2 className="size-5 shrink-0 motion-safe:animate-spin" aria-hidden="true" />}
+      {children}
+    </p>
+  )
+}
+
+/** OnboardingScannerScreen: the square camera view with a two-thirds frame; paste is the footer action. */
+function ScanScreen({ copy, pressed, onPaste }: { copy: PairingCopy; pressed: boolean; onPaste: () => void }) {
+  return (
+    <OnboardingScreen
+      copy={copy}
+      step={1}
+      title={copy.scan.title}
+      description={copy.scan.guidance}
+      footer={
+        <OnboardingButton variant="secondary" pressed={pressed} onClick={onPaste}>
+          {copy.scan.paste}
+        </OnboardingButton>
+      }>
+      <div
+        aria-hidden="true"
+        className="relative aspect-square w-full overflow-hidden rounded-3xl bg-[radial-gradient(circle_at_50%_40%,#4a4a4c,#151516_75%)]">
+        <span className="absolute inset-x-10 top-[18%] bottom-[22%] rounded-lg bg-[#2a2a2c] p-3 shadow-[0_10px_30px_rgb(0_0_0/0.5)] [transform:perspective(500px)_rotateX(10deg)]">
+          <span className="flex h-full items-center justify-center rounded bg-[#1d1d1f]">
+            <span className="rounded-md bg-white p-1.5">
+              <QrCode className="size-[104px]" />
+            </span>
+          </span>
+        </span>
+        <span className="absolute inset-0 flex items-center justify-center">
+          <span className="aspect-square w-2/3 rounded-3xl border-2 border-white" />
+        </span>
       </div>
-      <div className="mt-2 space-y-1.5">
-        <p className="text-[22px] leading-7 font-semibold">{copy.desktopName}</p>
-        <p aria-live="polite" className="text-[14px] leading-5 text-muted-foreground">
-          {state.connected ? copy.complete : waiting ? copy.approveOnDesktop : copy.inProgress}
-        </p>
-      </div>
-      <AnimatePresence initial={false}>
-        {waiting && (
-          <m.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={spring.settle}
-            className="overflow-hidden">
-            <div className="mt-4 flex flex-col items-center gap-1 rounded-2xl bg-white p-4 dark:bg-[#1c1c1e]">
-              <span className="text-[12px] text-muted-foreground">{copy.verificationCode}</span>
-              <span className="font-mono text-[28px] tracking-[0.2em]">{CODE}</span>
-            </div>
-          </m.div>
-        )}
-      </AnimatePresence>
-      <p className="mt-5 mb-2.5 text-[13px] font-medium text-muted-foreground">{copy.progress}</p>
-      <ol className="space-y-2.5">
+    </OnboardingScreen>
+  )
+}
+
+/** OnboardingPairingScreen: the stage list, with the verification code card while the PC decides. */
+function VerifyScreen({ copy, state }: { copy: PairingCopy; state: DemoState }) {
+  const current = state.progress.at(-1)
+  const waiting = current === 'waiting' && !state.approved
+  return (
+    <OnboardingScreen
+      copy={copy}
+      step={1}
+      title={copy.pair.title}
+      description={copy.pair.desktopName}
+      footer={<OnboardingButton>{state.connected ? copy.pair.continue : copy.pair.cancel}</OnboardingButton>}>
+      {state.connected ? (
+        <OnboardingMessage>{copy.pair.complete}</OnboardingMessage>
+      ) : waiting ? (
+        <div className={cn('flex flex-col gap-4 rounded-2xl p-6', tone.card)}>
+          <p className="text-[16px] leading-6">{copy.pair.approveOnDesktop}</p>
+          <p className="font-mono text-[30px] leading-9">
+            <span className="sr-only">{copy.pair.verificationCode}: </span>
+            {CODE}
+          </p>
+        </div>
+      ) : (
+        <OnboardingMessage loading>{copy.pair.inProgress}</OnboardingMessage>
+      )}
+      <ol className="flex flex-col gap-5">
         {state.progress.map((stage, index) => {
           const complete = state.connected || index < state.progress.length - 1
           return (
@@ -495,80 +556,66 @@ function VerifyScreen({ copy, state }: { copy: PairingCopy['pair']; state: DemoS
               initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
               transition={spring.settle}
-              className="flex items-start gap-3">
-              <span className="flex size-5 shrink-0 items-center justify-center text-[13px] text-muted-foreground">
-                {complete ? <Check className="size-4 text-foreground" aria-hidden="true" /> : index + 1}
-              </span>
-              <span className="min-w-0">
-                <span className="block text-[14px] leading-5">{copy.stages[stage]}</span>
-                <span className="block text-[12px] text-muted-foreground">
-                  {complete ? copy.done : copy.inProgress}
-                </span>
-              </span>
+              className="flex items-center gap-4">
+              {complete ? (
+                <Check className="size-5 shrink-0" aria-hidden="true" />
+              ) : (
+                <span className={cn('w-5 text-center text-[14px]', tone.muted)}>{index + 1}</span>
+              )}
+              <span className="text-[16px] leading-6">{copy.pair.stages[stage]}</span>
             </m.li>
           )
         })}
       </ol>
-      <span
-        aria-hidden="true"
-        className={cn(
-          'mx-auto mt-auto inline-flex h-9 items-center rounded-full px-5 text-[14px] font-medium transition-colors duration-200',
-          state.connected ? 'bg-foreground text-background' : 'bg-black/[0.06] dark:bg-white/10'
-        )}>
-        {state.connected ? copy.done : copy.cancel}
-      </span>
-    </div>
+    </OnboardingScreen>
   )
 }
 
-function ImportScreen({ copy, phase }: { copy: PairingCopy['sync']; phase: DemoState['sync'] }) {
+/** OnboardingDesktopSyncScreen: provider checkboxes, the credentials notice, Sync and Retry. */
+function ImportScreen({ copy, phase }: { copy: PairingCopy; phase: DemoState['sync'] }) {
+  const loaded = phase !== 'fetching'
   return (
-    <div className="relative flex h-full flex-col px-5 pb-8">
-      <div className="flex h-11 items-center" aria-hidden="true">
-        <ChevronLeft className="size-5" />
-      </div>
-      <p className="text-[12px] text-muted-foreground">{copy.step}</p>
-      <p className="mt-1 text-[22px] leading-7 font-semibold">{copy.title}</p>
-      <p className="mt-1 text-[14px] text-muted-foreground">{copy.source}</p>
-      <div className="mt-5 min-h-0 flex-1">
-        {phase === 'fetching' ? (
-          <p role="status" className="flex items-center gap-2 text-[14px] text-muted-foreground">
-            <Loader2 className="size-4 motion-safe:animate-spin" aria-hidden="true" />
-            {copy.fetching}
-          </p>
-        ) : (
-          <ul className="space-y-2">
-            {copy.providers.map((provider, index) => (
+    <div className="relative h-full">
+      <OnboardingScreen
+        copy={copy}
+        step={2}
+        title={copy.sync.title}
+        description={copy.sync.source}
+        back={phase !== 'importing'}
+        footer={
+          loaded ? (
+            <>
+              <p className={cn('text-center text-[13px] leading-[18px]', tone.muted)}>{copy.sync.notice}</p>
+              <OnboardingButton loading={phase === 'importing'}>
+                {copy.sync.apply(copy.sync.providers.length)}
+              </OnboardingButton>
+              <OnboardingButton variant="text">{copy.sync.retry}</OnboardingButton>
+            </>
+          ) : undefined
+        }>
+        {loaded ? (
+          <ul className="flex flex-col">
+            {copy.sync.providers.map((provider, index) => (
               <m.li
                 key={provider.provider}
                 initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: phase === 'importing' ? 0.6 : 1, y: 0 }}
+                animate={{ opacity: phase === 'importing' ? 0.4 : 1, y: 0 }}
                 transition={{ ...spring.settle, delay: index * 0.05 }}
-                className="flex items-center gap-3 rounded-2xl bg-white px-3.5 py-2.5 dark:bg-[#1c1c1e]">
-                <ProviderIcon id={provider.provider} className="size-5" />
+                className="flex min-h-14 items-center gap-3 py-3">
                 <span className="min-w-0 flex-1">
-                  <span className="block truncate text-[14px] font-medium">{provider.name}</span>
-                  <span className="block text-[12px] text-muted-foreground">{copy.modelCount(provider.models)}</span>
+                  <span className="block truncate text-[16px] leading-6">{provider.name}</span>
+                  <span className={cn('block text-[14px] leading-5', tone.muted)}>
+                    {copy.sync.modelCount(provider.models)}
+                  </span>
                 </span>
-                <span className="flex size-5 items-center justify-center rounded-full bg-foreground text-background">
-                  <Check className="size-3" strokeWidth={3} aria-hidden="true" />
-                </span>
+                <SelectionMark selected square />
               </m.li>
             ))}
           </ul>
+        ) : (
+          <OnboardingMessage loading>{copy.sync.fetching}</OnboardingMessage>
         )}
-      </div>
-      {phase !== 'fetching' && (
-        <div className="space-y-2.5">
-          <p className="text-center text-[11px] leading-4 text-muted-foreground">{copy.notice}</p>
-          <span
-            aria-hidden="true"
-            className="flex h-11 items-center justify-center gap-2 rounded-full bg-foreground text-[14px] font-medium text-background">
-            {phase === 'importing' && <Loader2 className="size-4 motion-safe:animate-spin" />}
-            {copy.apply(copy.providers.length)}
-          </span>
-        </div>
-      )}
+      </OnboardingScreen>
       <AnimatePresence>
         {phase === 'done' && (
           <m.p
@@ -577,9 +624,12 @@ function ImportScreen({ copy, phase }: { copy: PairingCopy['sync']; phase: DemoS
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
             transition={spring.settle}
-            className="absolute inset-x-4 top-2 flex items-start gap-2 rounded-2xl bg-foreground px-3.5 py-2.5 text-[12px] leading-[18px] text-background shadow-lg">
-            <CircleCheck className="mt-px size-4 shrink-0" aria-hidden="true" />
-            {copy.success}
+            className={cn(
+              'absolute inset-x-4 top-[58px] flex items-start gap-2.5 rounded-2xl px-4 py-3 text-[14px] leading-5 shadow-[0_10px_30px_-10px_rgb(0_0_0/0.3)]',
+              tone.card
+            )}>
+            <CircleCheck className="mt-px size-5 shrink-0 text-[oklch(0.5175_0.1453_147.65)]" aria-hidden="true" />
+            {copy.sync.success}
           </m.p>
         )}
       </AnimatePresence>
@@ -587,6 +637,7 @@ function ImportScreen({ copy, phase }: { copy: PairingCopy['sync']; phase: DemoS
   )
 }
 
+/** Remote chat with the PC Agent: the same header and transcript, a Bash tool group, the remote composer. */
 function AgentScreen({
   copy,
   state,
@@ -602,34 +653,16 @@ function AgentScreen({
 }) {
   const { agent } = state
   const sent = agent !== 'idle' && agent !== 'typing'
-  const toolStatus =
-    agent === 'approval'
-      ? copy.approvalRequested
-      : agent === 'denied'
-        ? copy.denied
-        : agent === 'running'
-          ? copy.running
-          : copy.approved
+  const running = agent === 'running'
   return (
-    <div className="flex h-full flex-col">
-      <div className="flex h-12 shrink-0 items-center gap-3 px-4" aria-hidden="true">
-        <Menu className="size-5" />
-        <span className="min-w-0 flex-1 text-center">
-          <span className="block truncate text-[15px] leading-5 font-semibold">{copy.agentName}</span>
-          <span className="flex items-center justify-center gap-1 text-[11px] text-muted-foreground">
-            <span className="size-1.5 rounded-full bg-[#23af69]" />
-            {copy.connected}
-          </span>
-        </span>
-        <span className="size-5" />
-      </div>
-      <div className="flex min-h-0 flex-1 flex-col justify-end gap-3 overflow-hidden px-4 pb-3">
+    <div className={cn('relative h-full', tone.chat)}>
+      <div className="flex h-full flex-col justify-end gap-4 overflow-hidden px-4 pt-[122px] pb-[136px]">
         {sent && (
           <m.p
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={spring.settle}
-            className="ms-auto max-w-[85%] rounded-[20px] bg-white px-4 py-2.5 text-[14px] leading-5 dark:bg-[#1c1c1e]">
+            className={cn('w-fit max-w-[88%] self-end rounded-[18px] px-4 py-[10px]', tone.secondary)}>
             {copy.prompt}
           </m.p>
         )}
@@ -638,28 +671,33 @@ function AgentScreen({
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ ...spring.settle, delay: 0.15 }}
-            className="space-y-2">
-            <div className="rounded-2xl border border-black/[0.06] bg-white/70 px-3 py-2.5 dark:border-white/10 dark:bg-white/[0.04]">
-              <div className="flex items-center gap-2 text-[13px]">
-                <Terminal className="size-3.5 text-muted-foreground" aria-hidden="true" />
-                <span className="font-medium">{copy.toolName}</span>
-                <span className="ms-auto text-[12px] text-muted-foreground">
-                  {agent === 'running' ? <ShimmerText active={playing}>{toolStatus}</ShimmerText> : toolStatus}
-                </span>
-              </div>
-              <p className="mt-1.5 font-mono text-[11px] text-muted-foreground">$ {copy.command}</p>
-              {(agent === 'answer' || agent === 'done') && (
-                <p className="mt-1 font-mono text-[11px] text-foreground/80">{copy.output}</p>
-              )}
+            className="flex flex-col gap-2.5">
+            <div className="flex items-center gap-2 text-[14px] leading-5">
+              <CherryAvatar />
+              <span className="font-semibold">{copy.agentName}</span>
             </div>
-            {agent === 'approval' && (
-              <p className="flex items-center gap-2 text-[13px] text-muted-foreground">
-                <BeatDots />
-                {copy.awaiting}
-              </p>
-            )}
+            <div className={cn('flex min-h-9 items-center gap-1 border-b', tone.borderSubtle)}>
+              {running ? (
+                <ShimmerText active={playing} className="text-[14px] leading-5">
+                  {copy.toolName}
+                </ShimmerText>
+              ) : (
+                <span className={cn('text-[14px] leading-5', tone.tertiary)}>{copy.toolName}</span>
+              )}
+              <ChevronRight className={cn('size-3', tone.tertiary)} aria-hidden="true" />
+              <span
+                className={cn(
+                  'ms-auto text-[13px] tabular-nums',
+                  agent === 'approval'
+                    ? 'text-[oklch(0.528_0.15_54.65)] dark:text-[oklch(0.82_0.17_76)]'
+                    : tone.tertiary
+                )}>
+                {agent === 'approval' ? copy.awaiting : agent === 'denied' ? copy.denied : running ? '1s' : ''}
+              </span>
+            </div>
+            {agent === 'approval' && <BeatDots className="p-0.5 text-[#7d7d7d]" />}
             {(agent === 'answer' || agent === 'done') && (
-              <p className="text-[14px] leading-[22px]">
+              <p className="text-[16px] leading-[26px]">
                 <StreamingText
                   text={copy.answer}
                   locale={tag}
@@ -669,37 +707,63 @@ function AgentScreen({
                 />
               </p>
             )}
-            {agent === 'done' && (
-              <p className="text-[11px] text-muted-foreground motion-safe:animate-in motion-safe:fade-in">
-                {copy.finished}
-              </p>
-            )}
           </m.div>
         )}
       </div>
-      <div className="shrink-0 space-y-2 px-3 pb-6">
-        <span
-          aria-hidden="true"
-          className="inline-flex h-7 items-center gap-1.5 rounded-full bg-black/[0.05] px-2.5 text-[12px] dark:bg-white/10">
-          <Folder className="size-3.5" />
-          {copy.workspace}
-        </span>
-        <div
-          aria-hidden="true"
-          className="flex items-center gap-2 rounded-[26px] border border-black/[0.06] bg-white/90 px-2.5 py-[9px] dark:border-white/10 dark:bg-[#1c1c1e]/90">
-          <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-black/[0.05] dark:bg-white/10">
-            <Plus className="size-[18px]" />
-          </span>
-          <span className="min-w-0 flex-1 truncate text-[14px]">
-            {state.typed || <span className="text-muted-foreground">{copy.placeholder}</span>}
-          </span>
-        </div>
+      <ChatHeader agentName={copy.agentName} sidebarLabel={copy.openMenu} newChatLabel={copy.newChat} />
+      <div aria-hidden="true" className="absolute inset-x-0 bottom-0 px-4 pb-[38px]">
+        <ComposerSurface>
+          {agent === 'typing' ? (
+            <>
+              <p className="min-h-8 py-1 text-[16px] leading-5">
+                {state.typed}
+                <span className="ms-px inline-block h-[18px] w-[2px] translate-y-[3px] bg-[#2563eb] motion-safe:animate-caret" />
+              </p>
+              <div className="mt-[10px] flex items-center gap-2">
+                <ComposerCircle>
+                  <Plus className="size-[18px]" strokeWidth={1.9} />
+                </ComposerCircle>
+                <span className={cn('flex h-8 items-center gap-[6px] rounded-full px-[10px]', tone.secondary)}>
+                  <FolderGlyph />
+                  <span className="text-[14px] font-semibold">{copy.workspace}</span>
+                </span>
+                <span className="ms-auto">
+                  <SendSlot state={state.typed ? 'ready' : 'disabled'} />
+                </span>
+              </div>
+            </>
+          ) : (
+            <div className="flex items-center gap-2">
+              <ComposerCircle>
+                <Plus className="size-[18px]" strokeWidth={1.9} />
+              </ComposerCircle>
+              <span className={cn('min-w-0 flex-1 truncate text-[16px] leading-5', tone.placeholder)}>
+                {copy.placeholder}
+              </span>
+              <SendSlot state={running || agent === 'answer' ? 'stop' : 'disabled'} />
+            </div>
+          )}
+        </ComposerSurface>
       </div>
     </div>
   )
 }
 
-/** ToolApprovalSheet: the tool's title, its arguments, then Deny beside Continue. */
+function FolderGlyph() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className="size-5"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.8}
+      strokeLinejoin="round">
+      <path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z" />
+    </svg>
+  )
+}
+
+/** ToolApprovalSheet: not dismissible, so no handle; the tool's name, its arguments, then Deny and Continue. */
 function ApprovalSheet({
   copy,
   open,
@@ -720,6 +784,7 @@ function ApprovalSheet({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.35, ease: ease.sheet }}
             className="absolute inset-0 bg-black/40"
           />
           <m.div
@@ -728,23 +793,34 @@ function ApprovalSheet({
             initial={{ y: '100%' }}
             animate={{ y: 0 }}
             exit={{ y: '100%' }}
-            transition={spring.settle}
-            className="absolute inset-x-0 bottom-0 rounded-t-[32px] bg-white px-5 pt-2 pb-8 dark:bg-[#1c1c1e]">
-            <span aria-hidden="true" className="mx-auto block h-1 w-9 rounded-full bg-black/20 dark:bg-white/25" />
-            <p className="mt-4 text-[12px] text-muted-foreground">{copy.approvalRequested}</p>
-            <p className="text-[18px] leading-7 font-semibold">{copy.toolName}</p>
-            <p className="mt-3 text-[12px] font-medium text-muted-foreground">{copy.arguments}</p>
-            <pre className="mt-1.5 rounded-xl bg-black/[0.05] px-3 py-2.5 font-mono text-[11px] leading-4 dark:bg-white/[0.06]">
-              {`{ "command": "${copy.command}" }`}
-            </pre>
-            <div className="mt-5 grid grid-cols-2 gap-2.5">
+            transition={{ duration: 0.35, ease: ease.sheet }}
+            className={cn(
+              'absolute inset-x-0 bottom-0 flex h-[479px] flex-col rounded-t-[32px] pt-3 dark:border-x dark:border-t dark:border-white/[0.09]',
+              tone.sheet
+            )}>
+            <div className="flex min-h-14 items-start px-5 py-1.5">
+              <p className="py-2 text-[18px] leading-7 font-semibold">{copy.toolName}</p>
+            </div>
+            <div className="flex min-h-0 flex-1 flex-col gap-2 px-5 pt-2 pb-4">
+              <p className={cn('text-[14px] leading-5 font-medium', tone.muted)}>{copy.arguments}</p>
+              <pre
+                className={cn(
+                  'rounded-xl p-3 font-mono text-[13px] leading-5 whitespace-pre-wrap',
+                  'bg-[#f2f2f2] dark:bg-[#1a1a1a]'
+                )}>
+                {`{\n  "command": "${copy.command}"\n}`}
+              </pre>
+            </div>
+            <div className={cn('flex gap-3 border-t px-4 pt-3 pb-[34px]', tone.border)}>
               <m.button
                 type="button"
                 {...press}
                 onClick={() => onRespond('deny')}
                 className={cn(
-                  'h-11 cursor-pointer rounded-full bg-black/[0.06] text-[14px] font-medium dark:bg-white/10',
-                  focusRing
+                  'flex-1 cursor-pointer rounded-xl border px-4 py-2.5 text-[16px] leading-6 font-medium',
+                  tone.border,
+                  tone.card,
+                  canvasFocus
                 )}>
                 {copy.deny}
               </m.button>
@@ -754,8 +830,8 @@ function ApprovalSheet({
                 animate={{ scale: pressed ? 0.97 : 1 }}
                 onClick={() => onRespond('continue')}
                 className={cn(
-                  'h-11 cursor-pointer rounded-full bg-foreground text-[14px] font-medium text-background',
-                  focusRing
+                  'flex-1 cursor-pointer rounded-xl bg-[#171717] px-4 py-2.5 text-[16px] leading-6 font-medium text-[#f5f5f5] shadow-xs dark:bg-[#ededed] dark:text-black',
+                  canvasFocus
                 )}>
                 {copy.continue}
               </m.button>
