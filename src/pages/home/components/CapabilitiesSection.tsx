@@ -1,165 +1,264 @@
-import { m, useInView, useScroll, useSpring } from 'framer-motion'
+import { AnimatePresence, m, useMotionValueEvent, useScroll, useSpring } from 'framer-motion'
 import { Check } from 'lucide-react'
-import { type ComponentType, useEffect, useRef, useState } from 'react'
+import { type ComponentType, type ReactNode, useEffect, useRef, useState, useSyncExternalStore } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import DemoMount from '@/components/demos/primitives/DemoMount'
 import SectionBackdrop from '@/components/website/SectionBackdrop'
-import { reveal, spring } from '@/lib/motion'
+import { ease, reveal, spring } from '@/lib/motion'
 import { cn } from '@/lib/utils'
 
-type DemoLoader = () => Promise<{ default: ComponentType }>
+type ChapterId = 'chat' | 'compare' | 'agents' | 'knowledge' | 'create'
 
-interface Chapter {
-  id: 'chat' | 'compare' | 'agents' | 'knowledge' | 'create'
-  /** Demos rendered in a bento grid; `wide` spans both columns. */
-  demos: { load: DemoLoader; height: string; wide?: boolean }[]
+interface Step {
+  chapter: ChapterId
+  demos: { load: () => Promise<{ default: ComponentType }>; height: string }[]
 }
 
-const chapters: Chapter[] = [
+// One step per screen: chapters with two large demos get one screen per demo.
+const steps: Step[] = [
   {
-    id: 'chat',
+    chapter: 'chat',
     demos: [
-      { load: () => import('@/components/demos/chat-tools/EffortSliderDemo'), height: 'min-h-[300px]' },
-      { load: () => import('@/components/demos/chat-tools/AnchorRailDemo'), height: 'min-h-[300px]' }
+      { load: () => import('@/components/demos/chat-tools/EffortSliderDemo'), height: 'min-h-[320px]' },
+      { load: () => import('@/components/demos/chat-tools/AnchorRailDemo'), height: 'min-h-[320px]' }
     ]
   },
   {
-    id: 'compare',
-    demos: [{ load: () => import('@/components/demos/models/ModelCompareDemo'), height: 'min-h-[500px]', wide: true }]
+    chapter: 'compare',
+    demos: [{ load: () => import('@/components/demos/models/ModelCompareDemo'), height: 'min-h-[500px]' }]
   },
   {
-    id: 'agents',
-    demos: [{ load: () => import('@/components/demos/agents/AgentRunDemo'), height: 'min-h-[680px]', wide: true }]
+    chapter: 'agents',
+    demos: [{ load: () => import('@/components/demos/agents/AgentRunDemo'), height: 'min-h-[680px]' }]
   },
   {
-    id: 'knowledge',
-    demos: [
-      { load: () => import('@/components/demos/knowledge/KnowledgeDemo'), height: 'min-h-[540px]', wide: true },
-      { load: () => import('@/components/demos/knowledge/TranslateDemo'), height: 'min-h-[340px]', wide: true }
-    ]
+    chapter: 'knowledge',
+    demos: [{ load: () => import('@/components/demos/knowledge/KnowledgeDemo'), height: 'min-h-[540px]' }]
   },
   {
-    id: 'create',
-    demos: [
-      { load: () => import('@/components/demos/create/PaintingsDemo'), height: 'min-h-[540px]', wide: true },
-      { load: () => import('@/components/demos/create/ArtifactsDemo'), height: 'min-h-[540px]', wide: true }
-    ]
+    chapter: 'knowledge',
+    demos: [{ load: () => import('@/components/demos/knowledge/TranslateDemo'), height: 'min-h-[340px]' }]
+  },
+  {
+    chapter: 'create',
+    demos: [{ load: () => import('@/components/demos/create/PaintingsDemo'), height: 'min-h-[540px]' }]
+  },
+  {
+    chapter: 'create',
+    demos: [{ load: () => import('@/components/demos/create/ArtifactsDemo'), height: 'min-h-[540px]' }]
   }
 ]
+const chapterIds = [...new Set(steps.map((step) => step.chapter))]
 
-function ChapterBlock({ chapter, index, onActive }: { chapter: Chapter; index: number; onActive: () => void }) {
-  const { t } = useTranslation()
-  const ref = useRef<HTMLElement>(null)
-  // The chapter crossing the middle band of the viewport drives the sticky navigation.
-  const active = useInView(ref, { margin: '-45% 0px -45% 0px' })
-  const points = t(`home_page.capabilities.chapters.${chapter.id}.points`, { returnObjects: true }) as string[]
+function useMinWidth(query: string) {
+  return useSyncExternalStore(
+    (notify) => {
+      const list = window.matchMedia(query)
+      list.addEventListener('change', notify)
+      return () => list.removeEventListener('change', notify)
+    },
+    () => window.matchMedia(query).matches,
+    () => false
+  )
+}
+
+/** Shrinks its content to the available height so a tall demo never spills past the pinned screen. */
+function FitToHeight({ children }: { children: ReactNode }) {
+  const outer = useRef<HTMLDivElement>(null)
+  const inner = useRef<HTMLDivElement>(null)
+  const [scale, setScale] = useState(1)
 
   useEffect(() => {
-    if (active) onActive()
-  }, [active, onActive])
+    const box = outer.current
+    const content = inner.current
+    if (!box || !content) return
+    // offsetHeight ignores transforms, so scaling never feeds back into the measurement.
+    const update = () => setScale(Math.min(1, box.clientHeight / Math.max(1, content.offsetHeight)))
+    const observer = new ResizeObserver(update)
+    observer.observe(box)
+    observer.observe(content)
+    update()
+    return () => observer.disconnect()
+  }, [])
 
   return (
-    <article ref={ref} id={`capability-${chapter.id}`} aria-labelledby={`capability-${chapter.id}-title`}>
-      <m.div {...reveal()} className="max-w-2xl">
-        <p className="font-mono text-xs text-muted-foreground">
-          0{index + 1} · {t(`home_page.capabilities.chapters.${chapter.id}.nav`)}
-        </p>
-        <h3
-          id={`capability-${chapter.id}-title`}
-          className="mt-3 text-2xl font-semibold tracking-tight text-balance sm:text-3xl">
-          {t(`home_page.capabilities.chapters.${chapter.id}.title`)}
-        </h3>
-        <p className="mt-3 text-pretty text-muted-foreground zh:leading-[1.8]">
-          {t(`home_page.capabilities.chapters.${chapter.id}.description`)}
-        </p>
-        <ul className="mt-5 grid gap-2 text-sm sm:grid-cols-3 sm:gap-4">
-          {points.map((point) => (
-            <li key={point} className="flex gap-2 text-foreground/85">
-              <Check className="mt-0.5 size-3.5 shrink-0 text-primary" aria-hidden="true" />
-              {point}
-            </li>
-          ))}
-        </ul>
-      </m.div>
-      <div className="mt-8 grid gap-4 md:grid-cols-2">
-        {chapter.demos.map((demo, demoIndex) => (
-          <DemoMount key={demoIndex} load={demo.load} className={cn(demo.height, demo.wide && 'md:col-span-2')} />
-        ))}
+    <div ref={outer} className="relative min-h-0 flex-1">
+      <div ref={inner} style={{ transform: `scale(${scale})`, transformOrigin: 'top center' }}>
+        {children}
       </div>
-    </article>
+    </div>
+  )
+}
+
+function ChapterText({ chapter, compact }: { chapter: ChapterId; compact?: boolean }) {
+  const { t } = useTranslation()
+  const points = t(`home_page.capabilities.chapters.${chapter}.points`, { returnObjects: true }) as string[]
+
+  return (
+    <div className="max-w-3xl">
+      <p className="font-mono text-xs text-muted-foreground">
+        0{chapterIds.indexOf(chapter) + 1} · {t(`home_page.capabilities.chapters.${chapter}.nav`)}
+      </p>
+      <h3 className="font-display mt-2 text-3xl text-balance sm:text-4xl">
+        {t(`home_page.capabilities.chapters.${chapter}.title`)}
+      </h3>
+      <p className={cn('mt-2 text-pretty text-muted-foreground zh:leading-[1.8]', compact && 'line-clamp-2')}>
+        {t(`home_page.capabilities.chapters.${chapter}.description`)}
+      </p>
+      <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-1.5 text-sm">
+        {points.map((point) => (
+          <li key={point} className="flex gap-2 text-foreground/85">
+            <Check className="mt-0.5 size-3.5 shrink-0 text-primary" aria-hidden="true" />
+            {point}
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
+function StepDemos({ step }: { step: Step }) {
+  return (
+    <div className={cn('grid gap-4', step.demos.length > 1 && 'md:grid-cols-2')}>
+      {step.demos.map((demo, index) => (
+        <DemoMount key={index} load={demo.load} className={demo.height} />
+      ))}
+    </div>
+  )
+}
+
+/** Desktop: the section pins to one screen and scrolling swaps steps in place. */
+function PinnedStory() {
+  const { t } = useTranslation()
+  const track = useRef<HTMLDivElement>(null)
+  const [index, setIndex] = useState(0)
+  const { scrollYProgress } = useScroll({ target: track, offset: ['start start', 'end end'] })
+  const progress = useSpring(scrollYProgress, { stiffness: 220, damping: 40, mass: 0.6 })
+  const step = steps[index]
+
+  useMotionValueEvent(scrollYProgress, 'change', (value) => {
+    setIndex(Math.min(steps.length - 1, Math.max(0, Math.floor(value * steps.length))))
+  })
+
+  // Warm the next demo's chunk so the swap does not wait on the network.
+  useEffect(() => {
+    for (const demo of steps[index + 1]?.demos ?? []) void demo.load()
+  }, [index])
+
+  const goTo = (target: number) => {
+    const element = track.current
+    if (!element) return
+    const top = element.getBoundingClientRect().top + window.scrollY
+    const span = element.offsetHeight - window.innerHeight
+    window.scrollTo({ top: top + span * ((target + 0.5) / steps.length) })
+  }
+
+  return (
+    <div ref={track} className="relative" style={{ height: `${steps.length * 100}svh` }}>
+      <div className="site-container sticky top-(--site-header-height) grid h-[calc(100svh-var(--site-header-height))] grid-cols-[200px_minmax(0,1fr)] gap-14">
+        <nav aria-label={t('home_page.capabilities.eyebrow')} className="self-center">
+          <div className="relative pl-5">
+            <span className="absolute inset-y-1 left-0 w-px bg-border" aria-hidden="true" />
+            <m.span
+              className="absolute inset-y-1 left-0 w-px origin-top bg-primary"
+              style={{ scaleY: progress }}
+              aria-hidden="true"
+            />
+            <ol className="space-y-1">
+              {chapterIds.map((chapter, chapterIndex) => (
+                <li key={chapter}>
+                  <button
+                    type="button"
+                    onClick={() => goTo(steps.findIndex((item) => item.chapter === chapter))}
+                    aria-current={step.chapter === chapter ? 'step' : undefined}
+                    className={cn(
+                      'relative flex w-full cursor-pointer items-center gap-3 rounded-md px-2 py-1.5 text-left text-sm transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-primary',
+                      step.chapter === chapter ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'
+                    )}>
+                    {step.chapter === chapter && (
+                      <m.span
+                        layoutId="capability-nav-active"
+                        transition={spring.settle}
+                        className="absolute inset-0 -z-10 rounded-md bg-accent"
+                        aria-hidden="true"
+                      />
+                    )}
+                    <span className="font-mono text-[11px] text-muted-foreground">0{chapterIndex + 1}</span>
+                    {t(`home_page.capabilities.chapters.${chapter}.nav`)}
+                  </button>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </nav>
+
+        <div className="flex min-h-0 flex-col gap-6 py-8">
+          <AnimatePresence mode="wait" initial={false}>
+            <m.div
+              key={step.chapter}
+              initial={{ opacity: 0, y: 16, filter: 'blur(6px)' }}
+              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              exit={{ opacity: 0, y: -12, filter: 'blur(4px)' }}
+              transition={{ duration: 0.35, ease: ease.settle }}>
+              <ChapterText chapter={step.chapter} compact />
+            </m.div>
+          </AnimatePresence>
+          <AnimatePresence mode="wait" initial={false}>
+            <m.div
+              key={index}
+              className="flex min-h-0 flex-1 flex-col"
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -24 }}
+              transition={{ duration: 0.35, ease: ease.settle }}>
+              <FitToHeight>
+                <StepDemos step={step} />
+              </FitToHeight>
+            </m.div>
+          </AnimatePresence>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+/** Small screens: plain scrolling, but every step still gets a screen of its own. */
+function StackedStory() {
+  return (
+    <div className="site-container">
+      {steps.map((step, index) => (
+        <article
+          key={index}
+          className="flex min-h-[calc(100svh-var(--site-header-height))] flex-col justify-center gap-8 py-12">
+          {steps[index - 1]?.chapter !== step.chapter && <ChapterText chapter={step.chapter} />}
+          <StepDemos step={step} />
+        </article>
+      ))}
+    </div>
   )
 }
 
 export default function CapabilitiesSection() {
   const { t } = useTranslation()
-  const [activeId, setActiveId] = useState<Chapter['id']>('chat')
-  const listRef = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({ target: listRef, offset: ['start 60%', 'end 60%'] })
-  const progress = useSpring(scrollYProgress, { stiffness: 220, damping: 40, mass: 0.6 })
+  const pinned = useMinWidth('(min-width: 1024px)')
 
   return (
     <section
       id="home-capabilities"
-      className="relative isolate overflow-x-clip py-20 sm:py-28"
+      className="relative isolate overflow-x-clip pt-20 sm:pt-28"
       aria-labelledby="home-capabilities-title">
       <SectionBackdrop variant="glow" />
-      <div className="site-container">
-        <m.div {...reveal()} className="mx-auto mb-16 max-w-3xl text-center sm:mb-20">
-          <p className="mb-3 font-mono text-xs tracking-wider text-primary uppercase">
-            {t('home_page.capabilities.eyebrow')}
-          </p>
-          <h2 id="home-capabilities-title" className="text-gradient text-4xl font-display text-balance sm:text-6xl">
-            {t('home_page.capabilities.title')}
-          </h2>
-          <p className="mt-5 text-pretty text-muted-foreground sm:text-lg">{t('home_page.capabilities.subtitle')}</p>
-        </m.div>
-
-        <div className="lg:grid lg:grid-cols-[200px_minmax(0,1fr)] lg:gap-14">
-          <nav
-            aria-label={t('home_page.capabilities.eyebrow')}
-            className="sticky top-[calc(var(--site-header-height)+48px)] hidden self-start lg:block">
-            <div className="relative pl-5">
-              <span className="absolute inset-y-1 left-0 w-px bg-border" aria-hidden="true" />
-              <m.span
-                className="absolute inset-y-1 left-0 w-px origin-top bg-primary shadow-[0_0_10px_var(--color-primary)]"
-                style={{ scaleY: progress }}
-                aria-hidden="true"
-              />
-              <ol className="space-y-1">
-                {chapters.map((chapter, index) => (
-                  <li key={chapter.id}>
-                    <a
-                      href={`#capability-${chapter.id}`}
-                      aria-current={activeId === chapter.id ? 'step' : undefined}
-                      className={cn(
-                        'relative flex items-center gap-3 rounded-md px-2 py-1.5 text-sm transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-primary',
-                        activeId === chapter.id ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'
-                      )}>
-                      {activeId === chapter.id && (
-                        <m.span
-                          layoutId="capability-nav-active"
-                          transition={spring.settle}
-                          className="absolute inset-0 -z-10 rounded-md bg-accent"
-                          aria-hidden="true"
-                        />
-                      )}
-                      <span className="font-mono text-[11px] text-muted-foreground">0{index + 1}</span>
-                      {t(`home_page.capabilities.chapters.${chapter.id}.nav`)}
-                    </a>
-                  </li>
-                ))}
-              </ol>
-            </div>
-          </nav>
-
-          <div ref={listRef} className="space-y-24 sm:space-y-32">
-            {chapters.map((chapter, index) => (
-              <ChapterBlock key={chapter.id} chapter={chapter} index={index} onActive={() => setActiveId(chapter.id)} />
-            ))}
-          </div>
-        </div>
-      </div>
+      <m.div {...reveal()} className="site-container mx-auto mb-4 max-w-3xl text-center">
+        <p className="mb-3 font-mono text-xs tracking-wider text-primary uppercase">
+          {t('home_page.capabilities.eyebrow')}
+        </p>
+        <h2 id="home-capabilities-title" className="text-gradient text-4xl font-display text-balance sm:text-6xl">
+          {t('home_page.capabilities.title')}
+        </h2>
+        <p className="mt-5 text-pretty text-muted-foreground sm:text-lg">{t('home_page.capabilities.subtitle')}</p>
+      </m.div>
+      {pinned ? <PinnedStory /> : <StackedStory />}
     </section>
   )
 }
