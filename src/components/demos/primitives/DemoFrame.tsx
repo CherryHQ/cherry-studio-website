@@ -46,7 +46,8 @@ export default function DemoFrame({
             <span className="flex min-w-[42px] items-center justify-end gap-1">{toolbar}</span>
           </div>
         )}
-        <div className={cn('relative bg-card/60', bodyClassName)}>{children}</div>
+        {/* Inside a [data-fill] stage the body grows to --demo-fill-h, never below its own design height. */}
+        <div className={cn('relative bg-card/60', bodyClassName, 'in-data-fill:min-h-(--demo-fill-h)')}>{children}</div>
       </div>
       {!bare && (
         <figcaption className="mt-2.5 flex items-center justify-between gap-3 px-1 font-mono text-[11px] text-muted-foreground">

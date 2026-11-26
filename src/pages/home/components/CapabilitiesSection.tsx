@@ -1,6 +1,14 @@
 import { AnimatePresence, m, useMotionValueEvent, useScroll, useSpring } from 'framer-motion'
 import { Check } from 'lucide-react'
-import { type ComponentType, type ReactNode, useEffect, useRef, useState, useSyncExternalStore } from 'react'
+import {
+  type ComponentType,
+  type CSSProperties,
+  type ReactNode,
+  useEffect,
+  useRef,
+  useState,
+  useSyncExternalStore
+} from 'react'
 import { useTranslation } from 'react-i18next'
 
 import DemoMount from '@/components/demos/primitives/DemoMount'
@@ -50,6 +58,9 @@ const steps: Step[] = [
   }
 ]
 const chapterIds = [...new Set(steps.map((step) => step.chapter))]
+// Window title bar plus the caption under each demo frame, and the tallest a filled frame body may grow.
+const FRAME_CHROME = 80
+const FILL_MAX = 760
 
 function useMinWidth(query: string) {
   return useSyncExternalStore(
@@ -64,13 +75,14 @@ function useMinWidth(query: string) {
 }
 
 /**
- * Centers its content in the available box and scales it down when it would not fit (never above `maxScale`).
- * The content is laid out at width / scale so the scaled result always spans the box width.
+ * Centers its content in the available box, lets demo frames grow into the free height (`--demo-fill-h`),
+ * and scales everything down when it still would not fit.
  */
-function FitToBox({ children, maxScale = 1 }: { children: ReactNode; maxScale?: number }) {
+function FitToBox({ children, frames = 1 }: { children: ReactNode; frames?: number }) {
   const outer = useRef<HTMLDivElement>(null)
   const inner = useRef<HTMLDivElement>(null)
   const [scale, setScale] = useState(1)
+  const [fill, setFill] = useState(0)
 
   useEffect(() => {
     const box = outer.current
@@ -78,7 +90,8 @@ function FitToBox({ children, maxScale = 1 }: { children: ReactNode; maxScale?: 
     if (!box || !content) return
     // offsetHeight ignores transforms; the threshold stops width-driven reflow from oscillating.
     const update = () => {
-      const next = Math.min(maxScale, box.clientHeight / Math.max(1, content.offsetHeight))
+      setFill(Math.min(FILL_MAX, (box.clientHeight - frames * FRAME_CHROME - (frames - 1) * 16) / frames))
+      const next = Math.min(1, box.clientHeight / Math.max(1, content.offsetHeight))
       setScale((current) => (Math.abs(current - next) < 0.015 ? current : next))
     }
     const observer = new ResizeObserver(update)
@@ -86,14 +99,21 @@ function FitToBox({ children, maxScale = 1 }: { children: ReactNode; maxScale?: 
     observer.observe(content)
     update()
     return () => observer.disconnect()
-  }, [maxScale])
+  }, [frames])
 
   return (
     <div ref={outer} className="relative min-h-0 flex-1">
       <div
         ref={inner}
+        data-fill=""
         className="absolute top-1/2 left-1/2"
-        style={{ width: `${100 / scale}%`, transform: `translate(-50%, -50%) scale(${scale})` }}>
+        style={
+          {
+            width: `${100 / scale}%`,
+            transform: `translate(-50%, -50%) scale(${scale})`,
+            '--demo-fill-h': `${Math.max(0, fill)}px`
+          } as CSSProperties
+        }>
         {children}
       </div>
     </div>
@@ -230,7 +250,7 @@ function PinnedStory() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -24 }}
             transition={{ duration: 0.35, ease: ease.settle }}>
-            <FitToBox>
+            <FitToBox frames={step.demos.length}>
               <StepDemos step={step} stacked />
             </FitToBox>
           </m.div>
