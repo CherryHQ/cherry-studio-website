@@ -2,6 +2,7 @@ import { Bot, Boxes, FileText, Library, Sparkles, WandSparkles } from 'lucide-re
 import type { FC } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 
+import FeatureBento from '@/components/website/FeatureBento'
 import SectionBackdrop from '@/components/website/SectionBackdrop'
 
 const whyItems = [
@@ -25,28 +26,19 @@ const WhySection: FC = () => {
           <p className="text-muted-foreground text-base sm:text-lg">{t('highlights.subtitle')}</p>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2">
-          {whyItems.map((item) => (
-            <div
-              key={item.key}
-              className="glass-card rounded-xl p-6 transition-[border-color,transform] duration-300 ease-settle hover:-translate-y-0.5 hover:border-hairline-strong">
-              <h3 className="text-foreground mb-3 flex items-center gap-3 text-lg font-semibold">
-                <span className="flex size-9 shrink-0 items-center justify-center rounded-lg border border-border bg-primary/10 text-primary">
-                  <item.icon className="size-4" aria-hidden="true" />
-                </span>
-                {t(`${item.key}.title`)}
-              </h3>
-              <p className="text-muted-foreground pl-12 text-sm leading-relaxed sm:text-base">
-                <Trans
-                  i18nKey={`${item.key}.description`}
-                  components={{
-                    highlight: <span className="font-medium text-foreground" />
-                  }}
-                />
-              </p>
-            </div>
-          ))}
-        </div>
+        <FeatureBento
+          items={whyItems.map((item) => ({
+            key: item.key,
+            icon: item.icon,
+            title: t(`${item.key}.title`),
+            description: (
+              <Trans
+                i18nKey={`${item.key}.description`}
+                components={{ highlight: <span className="font-medium text-foreground" /> }}
+              />
+            )
+          }))}
+        />
       </div>
     </section>
   )

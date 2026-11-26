@@ -6,6 +6,7 @@ import LogoDrawDemo from '@/components/demos/mobile/LogoDrawDemo'
 import MobileComposerDemo from '@/components/demos/mobile/MobileComposerDemo'
 import DemoMount from '@/components/demos/primitives/DemoMount'
 import { Button } from '@/components/ui/button'
+import FeatureBento from '@/components/website/FeatureBento'
 import Footer from '@/components/website/Footer'
 import SectionBackdrop from '@/components/website/SectionBackdrop'
 import { usePageMeta } from '@/hooks/usePageMeta'
@@ -84,17 +85,15 @@ export default function MobilePage() {
                 {t('mobile_site.mobile_first.description')}
               </p>
             </div>
-            <ul className="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
-              {capabilities.map(({ key, icon: Icon }) => (
-                <li key={key} className="glass-card min-w-0 rounded-2xl p-6">
-                  <Icon aria-hidden="true" className="mb-5 h-6 w-6 text-primary" />
-                  <h3 className="text-lg font-semibold">{t(`mobile_site.mobile_first.items.${key}.title`)}</h3>
-                  <p className="mt-3 leading-7 text-muted-foreground">
-                    {t(`mobile_site.mobile_first.items.${key}.description`)}
-                  </p>
-                </li>
-              ))}
-            </ul>
+            <FeatureBento
+              className="mt-12"
+              items={capabilities.map(({ key, icon }) => ({
+                key,
+                icon,
+                title: t(`mobile_site.mobile_first.items.${key}.title`),
+                description: t(`mobile_site.mobile_first.items.${key}.description`)
+              }))}
+            />
             <a
               href={mobileDocsUrl}
               className="mt-10 inline-flex items-center gap-2 rounded-sm text-sm font-semibold underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current">

@@ -1,7 +1,8 @@
-import { ArrowRight, Cloud, Image, Languages, MessageSquare, Shield, Users } from 'lucide-react'
+import { Cloud, Image, Languages, type LucideIcon, MessageSquare, Shield, Users } from 'lucide-react'
 import type { FC } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 
+import FeatureBento from '@/components/website/FeatureBento'
 import SectionBackdrop from '@/components/website/SectionBackdrop'
 import { getDocsUrl } from '@/utils/urls'
 
@@ -75,32 +76,15 @@ const FeaturesSection: FC = () => {
           </p>
         </div>
 
-        {/* Features Grid */}
-        <div className="grid gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {features.map((feature) => (
-            <a
-              key={feature.titleKey}
-              href={`${docsUrl}${feature.slug}`}
-              className="glass-card group relative overflow-hidden rounded-xl p-6 transition-[border-color,transform] duration-300 ease-settle hover:-translate-y-0.5 hover:border-hairline-strong focus-visible:outline-2 focus-visible:outline-primary">
-              {/* Content */}
-              <div className="relative z-10">
-                {/* Icon */}
-                <div className="mb-4 inline-flex size-9 items-center justify-center rounded-lg border border-border bg-primary/10 text-primary">
-                  <feature.icon className="size-4" aria-hidden="true" />
-                </div>
-
-                {/* Title */}
-                <h3 className="text-foreground mb-2 flex items-center gap-2 text-lg font-semibold">
-                  {t(feature.titleKey)}
-                  <ArrowRight className="h-4 w-4 opacity-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:opacity-100" />
-                </h3>
-
-                {/* Description */}
-                <p className="text-muted-foreground text-sm leading-relaxed">{t(feature.descriptionKey)}</p>
-              </div>
-            </a>
-          ))}
-        </div>
+        <FeatureBento
+          items={features.map((feature) => ({
+            key: feature.titleKey,
+            icon: feature.icon as LucideIcon,
+            title: t(feature.titleKey),
+            description: t(feature.descriptionKey),
+            href: `${docsUrl}${feature.slug}`
+          }))}
+        />
       </div>
     </section>
   )

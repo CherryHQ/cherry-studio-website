@@ -2,6 +2,7 @@ import { Bot, FileText, Palette, Puzzle, Sparkles, Zap } from 'lucide-react'
 import type { FC } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 
+import FeatureBento from '@/components/website/FeatureBento'
 import SectionBackdrop from '@/components/website/SectionBackdrop'
 
 const highlights = [
@@ -27,28 +28,19 @@ const HighlightsSection: FC = () => {
         </div>
 
         {/* Highlights Grid */}
-        <div className="grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-2">
-          {highlights.map((highlight) => (
-            <div
-              key={highlight.key}
-              className="group glass-card rounded-xl p-6 transition-[border-color,transform] duration-300 ease-settle hover:-translate-y-0.5 hover:border-hairline-strong">
-              <h3 className="text-foreground mb-3 flex items-center gap-3 text-lg font-semibold">
-                <span className="flex size-9 shrink-0 items-center justify-center rounded-lg border border-border bg-primary/10 text-primary">
-                  <highlight.icon className="size-4" aria-hidden="true" />
-                </span>
-                {t(`${highlight.key}.title`)}
-              </h3>
-              <p className="text-muted-foreground pl-12 text-sm leading-relaxed sm:text-base">
-                <Trans
-                  i18nKey={`${highlight.key}.description`}
-                  components={{
-                    highlight: <span className="font-medium text-foreground" />
-                  }}
-                />
-              </p>
-            </div>
-          ))}
-        </div>
+        <FeatureBento
+          items={highlights.map((item) => ({
+            key: item.key,
+            icon: item.icon,
+            title: t(`${item.key}.title`),
+            description: (
+              <Trans
+                i18nKey={`${item.key}.description`}
+                components={{ highlight: <span className="font-medium text-foreground" /> }}
+              />
+            )
+          }))}
+        />
       </div>
     </section>
   )
