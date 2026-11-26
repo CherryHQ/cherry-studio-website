@@ -37,7 +37,7 @@
     "careers": "Join Cherry Studio. Explore engineering, design, enterprise AI delivery, operations, and internship opportunities to build the next generation of AI products.",
     "download_v1": "Archived Cherry Studio V1 builds for macOS, Windows and Linux. V2 is the recommended release.",
     "download_v2": "Download the latest Cherry Studio V2 release for macOS, Windows and Linux. Free and open source under AGPL.",
-    "flash": "Flash gives you DeepSeek V4.1, Qwen 3.8 and GLM 5.3 in one $8/month subscription. No separate provider accounts, cancel anytime.",
+    "flash": "Flash gives you DeepSeek V4.1 Flash 1017, Qwen 3.8 and GLM 5.3 in one $8/month subscription. No separate provider accounts, cancel anytime.",
     "flash_usage": "What the Cherry Flash subscription includes: the models in the plan, per-token rates, monthly allowances, peak hours and privacy.",
     "not_found": "The page you are looking for does not exist.",
     "compare_manus": "Manus runs agents in the cloud and bills in credits. Cherry Studio runs them on your own computer with any model. Compare price, privacy and tools.",
@@ -688,7 +688,7 @@
     "models": [
       {
         "id": "deepseek-v41",
-        "name": "DeepSeek V4.1 Flash",
+        "name": "DeepSeek V4.1 Flash 1017",
         "input": "Off-peak $0.15 / Peak $0.30",
         "output": "Off-peak $0.60 / Peak $1.20",
         "cache_read": "Off-peak $0.003 / Peak $0.006",
@@ -721,7 +721,7 @@
       }
     ],
     "peak_title": "DeepSeek peak and off-peak hours",
-    "peak_body": "DeepSeek V4.1 Flash is billed by time of day. Peak hours are Monday to Friday, 01:00–04:00 and 06:00–10:00 UTC; all other times, including weekends, are billed at the off-peak rate. Qwen and GLM use a single rate around the clock.",
+    "peak_body": "DeepSeek V4.1 Flash 1017 is billed by time of day. Peak hours are Monday to Friday, 01:00–04:00 and 06:00–10:00 UTC; all other times, including weekends, are billed at the off-peak rate. Qwen and GLM use a single rate around the clock.",
     "faq_title": "Questions about billing",
     "faq": [
       {
@@ -784,7 +784,7 @@
     "limits": {
       "title": "Usage limits",
       "intro": "Rates are in USD per million tokens. All included models share one monthly allowance. The amount in each row shows how much usage is included if you use only that model for the entire billing month.",
-      "peak_note": "DeepSeek V4.1 Flash peak hours are Monday to Friday, 01:00–04:00 and 06:00–10:00 UTC. Off-peak rates apply at all other times, including weekends. Qwen and GLM rates are the same at all hours.",
+      "peak_note": "DeepSeek V4.1 Flash 1017 peak hours are Monday to Friday, 01:00–04:00 and 06:00–10:00 UTC. Off-peak rates apply at all other times, including weekends. Qwen and GLM rates are the same at all hours.",
       "console": "You can track your current usage in the console.",
       "change": "Limits may change as we learn from early usage and feedback."
     },
@@ -920,7 +920,7 @@
     },
     "peak": {
       "title": "DeepSeek peak and off-peak hours",
-      "description": "DeepSeek V4.1 Flash rates depend on the time of use. Peak hours are Monday through Friday, 09:00–12:00 and 14:00–18:00 Beijing time, excluding Chinese public holidays. Off-peak rates apply at all other times, on weekends, and throughout Chinese public holidays. Qwen and GLM do not have peak and off-peak rates."
+      "description": "DeepSeek V4.1 Flash 1017 rates depend on the time of use. Peak hours are Monday through Friday, 09:00–12:00 and 14:00–18:00 Beijing time, excluding Chinese public holidays. Off-peak rates apply at all other times, on weekends, and throughout Chinese public holidays. Qwen and GLM do not have peak and off-peak rates."
     },
     "faq": {
       "title": "Questions about your subscription",

@@ -18,13 +18,13 @@ const benefits = [
   { key: 'transparency', icon: Gauge }
 ] as const
 const usageLimits = [
-  { model: 'DeepSeek V4.1 Flash', amount: 40 },
+  { model: 'DeepSeek V4.1 Flash 1017', amount: 40 },
   { model: 'Qwen 3.8 Flash', amount: 30 },
   { model: 'GLM 5.3 Flash', amount: 30 }
 ]
 const rates = [
-  { model: 'DeepSeek V4.1 Flash', period: 'off_peak', input: '1.00', output: '4.00', read: '0.02', write: null },
-  { model: 'DeepSeek V4.1 Flash', period: 'peak', input: '2.00', output: '8.00', read: '0.04', write: null },
+  { model: 'DeepSeek V4.1 Flash 1017', period: 'off_peak', input: '1.00', output: '4.00', read: '0.02', write: null },
+  { model: 'DeepSeek V4.1 Flash 1017', period: 'peak', input: '2.00', output: '8.00', read: '0.04', write: null },
   { model: 'Qwen 3.8 Flash', period: null, input: '0.80', output: '2.70', read: '0.10', write: '1.25' },
   { model: 'GLM 5.3 Flash', period: null, input: '0.80', output: '2.80', read: '0.23', write: null }
 ]

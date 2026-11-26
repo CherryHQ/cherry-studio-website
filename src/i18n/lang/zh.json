@@ -37,7 +37,7 @@
     "careers": "加入 Cherry Studio，探索研发、设计、企业 AI 交付、运营及实习岗位，一起打造下一代 AI 产品。",
     "download_v1": "下载 Cherry Studio AI 客户端，支持 Windows、macOS、Linux 平台。集成 100+ AI 模型，完全免费开源。",
     "download_v2": "下载 Cherry Studio AI 客户端，支持 Windows、macOS、Linux 平台。集成 100+ AI 模型，完全免费开源。",
-    "flash": "Flash 用一份每月 $8 的订阅，把 DeepSeek V4.1、Qwen 3.8 和 GLM 5.3 放在一起。不用再单独注册各家服务商，随时可以取消。",
+    "flash": "Flash 用一份每月 $8 的订阅，把 DeepSeek V4.1 Flash 1017、Qwen 3.8 和 GLM 5.3 放在一起。不用再单独注册各家服务商，随时可以取消。",
     "flash_usage": "Cherry Flash 订阅包含什么：套餐内的模型、每百万 token 单价、每月额度、峰谷时段与隐私说明。",
     "not_found": "你访问的页面不存在。",
     "compare_manus": "Manus 在云端跑 Agent、按积分计费；Cherry Studio 在你自己的电脑上跑 Agent，模型随你接。从价格、隐私和工具三方面对比。",
@@ -707,7 +707,7 @@
     "models": [
       {
         "id": "deepseek-v41",
-        "name": "DeepSeek V4.1 Flash",
+        "name": "DeepSeek V4.1 Flash 1017",
         "input": "谷时 $0.15 / 峰时 $0.30",
         "output": "谷时 $0.60 / 峰时 $1.20",
         "cache_read": "谷时 $0.003 / 峰时 $0.006",
@@ -740,7 +740,7 @@
       }
     ],
     "peak_title": "DeepSeek 的峰谷时段",
-    "peak_body": "DeepSeek V4.1 Flash 按时段计费：峰时为周一至周五 UTC 01:00–04:00 与 06:00–10:00，其余时间（含周末）均按谷时计费。Qwen 和 GLM 全天单一价。",
+    "peak_body": "DeepSeek V4.1 Flash 1017 按时段计费：峰时为周一至周五 UTC 01:00–04:00 与 06:00–10:00，其余时间（含周末）均按谷时计费。Qwen 和 GLM 全天单一价。",
     "faq_title": "关于计费",
     "faq": [
       {
@@ -803,7 +803,7 @@
     "limits": {
       "title": "使用限制",
       "intro": "下表单价以美元计，每 100 万 token 为一单位。所有包含的模型共享一份月度额度。每行的金额表示整个计费月只使用该模型时可用的用量价值。",
-      "peak_note": "DeepSeek V4.1 Flash 的峰时为周一至周五 UTC 01:00–04:00 与 06:00–10:00。其余所有时段（含周末）均按谷时费率计费。Qwen 和 GLM 各时段的费率相同。",
+      "peak_note": "DeepSeek V4.1 Flash 1017 的峰时为周一至周五 UTC 01:00–04:00 与 06:00–10:00。其余所有时段（含周末）均按谷时费率计费。Qwen 和 GLM 各时段的费率相同。",
       "console": "你可以在控制台中查看当前的使用情况。",
       "change": "使用限制可能会随着我们从早期使用和反馈中学习而调整。"
     },
@@ -939,7 +939,7 @@
     },
     "peak": {
       "title": "DeepSeek 峰谷时段说明",
-      "description": "DeepSeek V4.1 Flash 按使用时段计费。高峰时段为北京时间周一至周五（不含中国法定节假日）09:00–12:00 和 14:00–18:00；其他时段、周末及中国法定节假日全天均享谷时价格。Qwen 和 GLM 不区分峰谷时段。"
+      "description": "DeepSeek V4.1 Flash 1017 按使用时段计费。高峰时段为北京时间周一至周五（不含中国法定节假日）09:00–12:00 和 14:00–18:00；其他时段、周末及中国法定节假日全天均享谷时价格。Qwen 和 GLM 不区分峰谷时段。"
     },
     "faq": {
       "title": "关于订阅，你可能想知道",
