@@ -114,12 +114,6 @@
       "docs": "Read mobile docs",
       "platforms": "For Android, iPhone, and iPad. Install through official stores or our download page."
     },
-    "screenshots": {
-      "tablet_conversation": "Conversation interface on Cherry Studio Mobile for iPad",
-      "tablet_drawing": "Image preview on Cherry Studio Mobile for iPad",
-      "files": "File library and project folders in Cherry Studio Mobile",
-      "preview": "An example HTML file preview in Cherry Studio Mobile"
-    },
     "mobile_first": {
       "eyebrow": "Your AI workspace, anywhere",
       "title": "Start with a message. Take it through to a result.",

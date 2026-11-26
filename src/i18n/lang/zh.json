@@ -114,12 +114,6 @@
       "docs": "查看移动端文档",
       "platforms": "支持 Android、iPhone 与 iPad，可通过官方商店或下载页安装。"
     },
-    "screenshots": {
-      "tablet_conversation": "Cherry Studio Mobile 的 iPad 对话界面",
-      "tablet_drawing": "Cherry Studio Mobile 的 iPad 图片预览界面",
-      "files": "Cherry Studio Mobile 的文件库与项目文件夹",
-      "preview": "Cherry Studio Mobile 中的 HTML 文件预览示例"
-    },
     "mobile_first": {
       "eyebrow": "随身的 AI 工作站",
       "title": "从一句话开始，把事情做完",

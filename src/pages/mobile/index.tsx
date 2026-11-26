@@ -2,14 +2,6 @@ import { ArrowRight, Download, Files, ImagePlus, Monitor, Plug, Sparkles, Termin
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
-import fileLibraryEn from '@/assets/images/screenshots/mobile/en/file-library.webp'
-import htmlPreviewEn from '@/assets/images/screenshots/mobile/en/html-preview.webp'
-import ipadConversationEn from '@/assets/images/screenshots/mobile/en/ipad-conversation.webp'
-import ipadImagePreviewEn from '@/assets/images/screenshots/mobile/en/ipad-image-preview.webp'
-import fileLibraryZh from '@/assets/images/screenshots/mobile/zh/file-library.webp'
-import htmlPreviewZh from '@/assets/images/screenshots/mobile/zh/html-preview.webp'
-import ipadConversationZh from '@/assets/images/screenshots/mobile/zh/ipad-conversation.webp'
-import ipadImagePreviewZh from '@/assets/images/screenshots/mobile/zh/ipad-image-preview.webp'
 import LogoDrawDemo from '@/components/demos/mobile/LogoDrawDemo'
 import MobileComposerDemo from '@/components/demos/mobile/MobileComposerDemo'
 import DemoMount from '@/components/demos/primitives/DemoMount'
@@ -18,21 +10,6 @@ import Footer from '@/components/website/Footer'
 import SectionBackdrop from '@/components/website/SectionBackdrop'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { getMobileDocsUrl } from '@/utils/urls'
-
-const screenshotsByLanguage = {
-  zh: {
-    files: fileLibraryZh,
-    preview: htmlPreviewZh,
-    tabletConversation: ipadConversationZh,
-    tabletDrawing: ipadImagePreviewZh
-  },
-  en: {
-    files: fileLibraryEn,
-    preview: htmlPreviewEn,
-    tabletConversation: ipadConversationEn,
-    tabletDrawing: ipadImagePreviewEn
-  }
-}
 
 const capabilities = [
   { key: 'skills', icon: Sparkles },
@@ -46,7 +23,6 @@ const capabilities = [
 export default function MobilePage() {
   const { t, i18n } = useTranslation()
   const mobileDocsUrl = getMobileDocsUrl(i18n.language)
-  const screenshots = screenshotsByLanguage[(i18n.resolvedLanguage || i18n.language).startsWith('zh') ? 'zh' : 'en']
   usePageMeta('mobile')
 
   return (
@@ -95,7 +71,7 @@ export default function MobilePage() {
           </div>
         </section>
 
-        <section className="border-b border-border bg-card py-12 sm:py-16">
+        <section className="border-b border-border py-12 sm:py-20">
           <div className="site-container">
             <div className="max-w-3xl">
               <p className="text-primary mb-4 text-sm font-semibold tracking-[0.16em] uppercase">
@@ -190,30 +166,14 @@ export default function MobilePage() {
               </a>
             </div>
 
-            <div className="mx-auto grid w-full max-w-lg grid-cols-2 items-start gap-4 sm:gap-6">
-              {[
-                { key: 'files', src: screenshots.files },
-                { key: 'preview', src: screenshots.preview }
-              ].map(({ key, src }) => (
-                <figure key={key} className="min-w-0">
-                  <img
-                    src={src}
-                    alt={t(`mobile_site.screenshots.${key}`)}
-                    width={1206}
-                    height={2622}
-                    loading="lazy"
-                    className="block h-auto w-full rounded-2xl border border-border shadow-(--shadow-card)"
-                  />
-                  <figcaption className="mt-4 text-center text-sm leading-6 text-muted-foreground">
-                    {t(`mobile_site.workflows.captions.${key}`)}
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
+            <DemoMount
+              load={() => import('@/components/demos/mobile/MobileFilesDemo')}
+              className="flex min-h-[720px] justify-center"
+            />
           </div>
         </section>
 
-        <section className="border-b border-border bg-card py-12 sm:py-16">
+        <section className="border-b border-border py-12 sm:py-20">
           <div className="site-container">
             <div className="mx-auto max-w-3xl text-center">
               <p className="text-primary mb-4 text-sm font-semibold tracking-[0.16em] uppercase">
@@ -224,24 +184,11 @@ export default function MobilePage() {
               </h2>
               <p className="mt-5 text-lg leading-8 text-muted-foreground">{t('mobile_site.tablet.description')}</p>
             </div>
-            <div className="mx-auto mt-8 grid max-w-4xl grid-cols-2 items-start gap-3 rounded-lg border border-border bg-background p-3 sm:gap-6 sm:p-6">
-              <img
-                src={screenshots.tabletDrawing}
-                alt={t('mobile_site.screenshots.tablet_drawing')}
-                width={2064}
-                height={2752}
-                loading="lazy"
-                className="block h-auto w-full rounded-2xl border border-border shadow-(--shadow-card)"
-              />
-              <img
-                src={screenshots.tabletConversation}
-                alt={t('mobile_site.screenshots.tablet_conversation')}
-                width={2064}
-                height={2752}
-                loading="lazy"
-                className="block h-auto w-full rounded-2xl border border-border shadow-(--shadow-card)"
-              />
-            </div>
+            {/* The iPad canvas is unreadable on phones, so it only mounts from the md breakpoint. */}
+            <DemoMount
+              load={() => import('@/components/demos/mobile/TabletLayoutDemo')}
+              className="mx-auto mt-10 hidden min-h-[680px] max-w-[900px] md:block"
+            />
           </div>
         </section>
 
