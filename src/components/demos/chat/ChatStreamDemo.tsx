@@ -415,12 +415,12 @@ export default function ChatStreamDemo() {
   )
 
   return (
-    <div ref={ref} role="region" aria-label={copy.window}>
+    <div ref={ref} role="region" aria-label={copy.window} className="@container">
       <DemoFrame
         chromeless
         title={copy.window}
         onReplay={() => choose(scenarioIndex)}
-        bodyClassName="h-[480px] sm:h-[500px]">
+        bodyClassName="h-[clamp(480px,62.5cqw,78svh)]">
         <div className="flex h-full bg-sidebar">
           <aside className="hidden w-[50px] shrink-0 flex-col items-center sm:flex" aria-hidden="true">
             {/* macOS draws the window controls inside the rail's top band. */}
