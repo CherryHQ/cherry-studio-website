@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom'
 import LogoDrawDemo from '@/components/demos/mobile/LogoDrawDemo'
 import { Button } from '@/components/ui/button'
 import Footer from '@/components/website/Footer'
-import SectionBackdrop from '@/components/website/SectionBackdrop'
 import { usePageMeta } from '@/hooks/usePageMeta'
 
 const NotFoundPage: FC = () => {
@@ -15,11 +14,10 @@ const NotFoundPage: FC = () => {
 
   return (
     <div className="relative isolate overflow-hidden bg-background flex min-h-screen flex-col">
-      <SectionBackdrop variant="grid-glow" />
       <main className="site-container site-page-top flex flex-1 flex-col items-start justify-center pb-16">
         <LogoDrawDemo bare size={72} className="mb-8" />
-        <p className="text-primary font-mono text-xs tracking-widest uppercase">{t('not_found.code')}</p>
-        <h1 className="mt-4 text-gradient text-balance text-5xl font-display sm:text-7xl">{t('not_found.title')}</h1>
+        <p className="text-sm font-medium text-muted-foreground">{t('not_found.code')}</p>
+        <h1 className="mt-4 text-balance text-5xl font-display sm:text-7xl">{t('not_found.title')}</h1>
         <p className="text-muted-foreground mt-4 max-w-md text-base">{t('not_found.description')}</p>
         <div className="mt-8 flex flex-wrap items-center gap-3">
           <Button size="lg" className="rounded-full px-5" asChild>

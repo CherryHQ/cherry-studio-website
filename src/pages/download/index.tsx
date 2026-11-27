@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next'
 import { useSearchParams } from 'react-router-dom'
 
 import Footer from '@/components/website/Footer'
-import SectionBackdrop from '@/components/website/SectionBackdrop'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { useVersionData } from '@/hooks/useVersionData'
 import { type DetectedArch, detectPlatform, detectSystem, isMobileDevice } from '@/utils/systemDetection'
@@ -139,11 +138,10 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
   return (
     <div className="flex min-h-screen flex-col bg-background">
       <main className="site-page-top relative isolate flex-1 overflow-hidden pb-16 sm:pb-24">
-        <SectionBackdrop variant="grid-glow" />
         <div className="site-container flex flex-col items-center">
           <div className="flex min-w-0 flex-col items-center text-center [&>div]:justify-center">
-            <p className="mb-4 font-mono text-xs tracking-widest text-muted-foreground uppercase">{t('download')}</p>
-            <h1 className="text-gradient font-display text-6xl leading-none text-balance sm:text-8xl">
+            <p className="mb-4 text-sm font-medium text-muted-foreground">{t('download')}</p>
+            <h1 className="font-display text-6xl leading-none text-balance sm:text-8xl">
               {showMobile
                 ? t('mobile_download.title')
                 : isMobile
@@ -152,7 +150,7 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
               {!showMobile && versionData && (
                 <span className="mt-6 flex justify-center">
                   <span className="glass-card inline-flex items-center gap-2 rounded-full px-3 py-1 font-mono text-sm font-medium tracking-normal text-primary [-webkit-text-fill-color:currentColor]">
-                    <span className="size-1.5 rounded-full bg-primary shadow-[0_0_8px_var(--color-primary)]" />
+                    <span className="size-1.5 rounded-full bg-primary" />
                     {versionData.version}
                   </span>
                 </span>
@@ -177,10 +175,6 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
           </div>
 
           <div className="relative mt-12 w-full max-w-3xl min-w-0">
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-x-[10%] top-10 -z-10 h-64 rounded-full bg-primary/20 blur-[110px]"
-            />
             <div className="overflow-hidden rounded-[28px] bg-card text-left shadow-[inset_0_0_0_1px_var(--color-border),var(--shadow-float)]">
               <PlatformTabs
                 activePlatform={displayPlatform}

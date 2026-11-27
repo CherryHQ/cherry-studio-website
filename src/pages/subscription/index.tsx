@@ -4,7 +4,6 @@ import { Trans, useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
 import Footer from '@/components/website/Footer'
-import SectionBackdrop from '@/components/website/SectionBackdrop'
 import SubscriptionFaq from '@/components/website/SubscriptionFaq'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { cn } from '@/lib/utils'
@@ -56,21 +55,16 @@ function FlashContent() {
 
   return (
     <div className="relative isolate overflow-hidden bg-background min-h-screen">
-      <SectionBackdrop variant="grid-glow" />
       <section className="site-container site-page-top pb-16 text-center sm:pb-24">
         <h1 className="font-display text-6xl leading-none text-balance sm:text-8xl">
-          <span className="text-gradient">{t('pricing.headline_brand')}</span>{' '}
+          <span>{t('pricing.headline_brand')}</span>{' '}
           <span className="font-accent text-muted-foreground">{t('pricing.headline_plan')}</span>
         </h1>
         <p className="mx-auto mt-6 max-w-xl text-lg text-pretty text-muted-foreground">{t('pricing.subtitle')}</p>
 
         <div className="relative mx-auto mt-12 max-w-md">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-x-8 -inset-y-6 -z-10 rounded-full bg-foreground/10 blur-3xl"
-          />
           <div className="rounded-[28px] bg-card p-8 text-left shadow-[inset_0_0_0_1px_var(--color-border),var(--shadow-float)] sm:p-10">
-            <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase">Flash</p>
+            <p className="text-sm font-medium text-muted-foreground">Flash</p>
             <div className="mt-4 flex flex-wrap items-baseline gap-x-3 gap-y-1">
               <span className="font-display text-8xl leading-none tabular-nums">${PRICE.price}</span>
               <span className="text-2xl text-muted-foreground line-through tabular-nums">
@@ -113,7 +107,7 @@ function FlashContent() {
             <h2 id="flash-usage-title" className="font-display text-4xl sm:text-5xl">
               {t('pricing.models_title')}
             </h2>
-            <span className="rounded-full px-3 py-1 font-mono text-xs tracking-widest text-muted-foreground uppercase shadow-[inset_0_0_0_1px_var(--color-border)]">
+            <span className="rounded-full px-3 py-1 text-sm font-medium text-muted-foreground shadow-[inset_0_0_0_1px_var(--color-border)]">
               Flash
             </span>
           </div>
@@ -245,7 +239,6 @@ function FlashContent() {
       </section>
 
       <section className="relative isolate overflow-hidden border-t border-border px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
-        <SectionBackdrop variant="beams" />
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="font-display text-4xl text-balance sm:text-6xl">{t('pricing.cta_title')}</h2>
           <p className="mt-4 text-base text-muted-foreground">{t('pricing.cta_body', PRICE)}</p>

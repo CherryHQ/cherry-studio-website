@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
 import logo from '@/assets/images/logo.png'
-import SectionBackdrop from '@/components/website/SectionBackdrop'
 import { reveal } from '@/lib/motion'
 import { cn } from '@/lib/utils'
 import { isMobileDevice } from '@/utils/systemDetection'
@@ -21,15 +20,11 @@ export default function DownloadSection() {
     <section
       aria-labelledby="home-download-heading"
       className="relative isolate overflow-hidden border-t border-border py-24 sm:py-32">
-      <SectionBackdrop variant="beams" />
-      <div className="bg-grid absolute inset-0 -z-10 [mask-image:radial-gradient(ellipse_50%_60%_at_50%_50%,black,transparent_75%)]" />
       <m.div {...reveal()} className="site-container flex flex-col items-center text-center">
-        <span className="relative mb-8 flex size-16 items-center justify-center rounded-2xl border border-border bg-card shadow-[0_0_60px_-10px_var(--color-primary)]">
+        <span className="relative mb-8 flex size-16 items-center justify-center rounded-2xl border border-border bg-card">
           <img src={logo} alt="" className="size-10 rounded-xl" />
         </span>
-        <h2
-          id="home-download-heading"
-          className="text-gradient max-w-3xl text-5xl font-display text-balance sm:text-7xl">
+        <h2 id="home-download-heading" className="max-w-3xl text-5xl font-display text-balance sm:text-7xl">
           {t('home_page.cta_download')}
         </h2>
         <p className="mt-4 font-mono text-xs text-muted-foreground">{t('home_page.platforms')}</p>
@@ -41,7 +36,7 @@ export default function DownloadSection() {
               className={cn(
                 'inline-flex h-11 items-center gap-2 rounded-full px-6 text-sm font-semibold transition-[background-color,border-color,transform] duration-200 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary active:scale-[0.97]',
                 index === 0
-                  ? 'bg-foreground text-background shadow-[0_8px_32px_-8px_var(--color-primary)] hover:bg-foreground/85'
+                  ? 'bg-foreground text-background hover:bg-foreground/85'
                   : 'border border-border bg-surface-glass text-foreground backdrop-blur hover:border-hairline-strong hover:bg-accent'
               )}>
               <Icon className="size-4" aria-hidden="true" />

@@ -21,7 +21,6 @@ import { useTranslation } from 'react-i18next'
 import { Button } from '@/components/ui/button'
 import FeatureBento from '@/components/website/FeatureBento'
 import Footer from '@/components/website/Footer'
-import SectionBackdrop from '@/components/website/SectionBackdrop'
 import { usePageMeta } from '@/hooks/usePageMeta'
 
 const JD_COLLECTION_URL = 'https://mcnnox2fhjfq.feishu.cn/wiki/SnERwz76Zi9HPEkMuG5cSTHanVd'
@@ -52,14 +51,11 @@ const CareersPage: FC = () => {
 
   return (
     <div className="relative isolate overflow-hidden bg-background min-h-screen">
-      <SectionBackdrop variant="grid-glow" />
       {/* Hero */}
       <section className="site-page-top pb-12 sm:pb-16">
         <div className="site-container">
-          <span className="mb-4 inline-block font-mono text-xs tracking-widest text-primary uppercase">
-            {t('careers.badge')}
-          </span>
-          <h1 className="mb-5 text-gradient text-balance text-5xl font-display sm:text-7xl">{t('careers.title')}</h1>
+          <span className="mb-4 inline-block text-sm font-medium text-muted-foreground">{t('careers.badge')}</span>
+          <h1 className="mb-5 text-balance text-5xl font-display sm:text-7xl">{t('careers.title')}</h1>
           <p className="mb-6 max-w-2xl text-pretty text-lg text-muted-foreground">{t('careers.subtitle')}</p>
           <Button size="lg" className="rounded-full px-5" asChild>
             <a href={`mailto:${APPLICATION_EMAIL}`}>{t('careers.apply_button')}</a>
@@ -132,7 +128,6 @@ const CareersPage: FC = () => {
 
       {/* Location and CTA */}
       <section className="relative isolate overflow-hidden border-t border-border py-24 sm:py-32">
-        <SectionBackdrop variant="beams" />
         <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
           <p className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm text-muted-foreground shadow-[inset_0_0_0_1px_var(--color-border)]">
             <MapPin className="size-3.5" aria-hidden="true" />

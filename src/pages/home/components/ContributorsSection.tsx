@@ -3,7 +3,6 @@ import { type FC, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import GitHubUserCard from '@/components/GitHubUserCard'
-import SectionBackdrop from '@/components/website/SectionBackdrop'
 import { isEnglishSite } from '@/utils/urls'
 
 interface Contributor {
@@ -110,10 +109,9 @@ const ContributorsSection: FC = () => {
 
     return (
       <section className="isolate bg-background relative overflow-hidden site-section">
-        <SectionBackdrop variant="rules" />
         <div className="site-container relative z-10">
           <div className="mx-auto mb-6 max-w-3xl text-center">
-            <h2 className="text-gradient mb-3 text-4xl font-display text-balance sm:mb-4 sm:text-5xl">
+            <h2 className="mb-3 text-4xl font-display text-balance sm:mb-4 sm:text-5xl">
               {t('contributors.project_contributors')}
             </h2>
             <p className="text-muted-foreground text-sm sm:text-base">
@@ -242,11 +240,10 @@ const ContributorsSection: FC = () => {
 
   return (
     <section id="contributors" className="relative isolate site-section">
-      <SectionBackdrop variant="rules" />
       <div className="site-container">
         <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
           <div className="max-w-2xl">
-            <h2 className="text-gradient mb-3 text-4xl font-display text-balance sm:text-5xl">
+            <h2 className="mb-3 text-4xl font-display text-balance sm:text-5xl">
               {t('contributors.project_contributors')}
             </h2>
             <p className="text-sm text-muted-foreground sm:text-base">

@@ -2,8 +2,6 @@ import { Apple, ArrowRight, Monitor, Terminal } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
-import SectionBackdrop from '@/components/website/SectionBackdrop'
-
 const platforms = [
   { id: 'macos', icon: Apple },
   { id: 'windows', icon: Monitor },
@@ -17,14 +15,11 @@ export default function AppsSection() {
 
   return (
     <section id="apps" aria-labelledby="home-apps-heading" className="relative isolate site-section bg-background">
-      <SectionBackdrop variant="modules" />
       <div className="site-container">
         <div className="site-split">
           <div>
-            <p className="mb-3 font-mono text-xs tracking-widest text-primary uppercase">{t('home_page.apps_label')}</p>
-            <h2
-              id="home-apps-heading"
-              className="text-gradient max-w-lg text-balance text-4xl font-display sm:text-5xl">
+            <p className="mb-3 text-sm font-medium text-muted-foreground">{t('home_page.apps_label')}</p>
+            <h2 id="home-apps-heading" className="max-w-lg text-balance text-4xl font-display sm:text-5xl">
               {t('home_page.apps_title')}
             </h2>
             <p className="mt-4 max-w-md text-pretty text-base leading-7 text-muted-foreground">

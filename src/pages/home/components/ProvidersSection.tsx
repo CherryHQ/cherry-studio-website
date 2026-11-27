@@ -115,8 +115,8 @@ export default function ProvidersSection() {
     <section className="relative border-y border-border bg-card/40" aria-labelledby="home-providers">
       <div className="site-container grid gap-10 py-14 sm:py-20 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:items-center lg:gap-16">
         <div>
-          <p className="mb-3 font-mono text-xs tracking-wider text-primary uppercase">{t('home_page.providers')}</p>
-          <h2 id="home-providers" className="text-gradient text-4xl font-display text-balance sm:text-5xl">
+          <p className="mb-3 text-sm font-medium text-muted-foreground">{t('home_page.providers')}</p>
+          <h2 id="home-providers" className="text-4xl font-display text-balance sm:text-5xl">
             {t('providers.title')}
           </h2>
           <p className="mt-4 max-w-md text-pretty text-muted-foreground zh:leading-[1.8]">{t('providers.subtitle')}</p>

@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom'
 import { fetchNotice, type NoticeResponse } from '@/assets/js/notice'
 import ChatStreamDemo from '@/components/demos/chat/ChatStreamDemo'
 import MobileDownloadButton from '@/components/website/MobileDownloadButton'
-import SectionBackdrop from '@/components/website/SectionBackdrop'
 import { useVersionData } from '@/hooks/useVersionData'
 import { lineRise, spring } from '@/lib/motion'
 import { isMobileDevice } from '@/utils/systemDetection'
@@ -35,7 +34,6 @@ export default function HeroSection() {
 
   return (
     <section className="relative isolate overflow-hidden bg-background text-foreground">
-      <SectionBackdrop variant="film" />
       <div className="site-container flex flex-col items-center pt-14 pb-12 text-center sm:pt-20 lg:pt-24">
         <Link
           to="/download"
@@ -50,7 +48,7 @@ export default function HeroSection() {
         </Link>
 
         <h1 className="font-display max-w-5xl text-5xl leading-[0.98] text-balance sm:text-7xl lg:text-[5.5rem]">
-          <m.span {...lineRise(0)} className="text-gradient block pb-2">
+          <m.span {...lineRise(0)} className="block pb-2">
             {t('home_page.title_first')}
           </m.span>
           <m.span {...lineRise(1)} className="font-accent block pb-3 text-foreground">
@@ -77,7 +75,7 @@ export default function HeroSection() {
             <Link
               to="/download"
               data-ph-no-autocapture=""
-              className="inline-flex h-11 items-center gap-2 rounded-full bg-foreground px-6 text-[15px] font-semibold text-background shadow-[0_8px_32px_-8px_var(--color-primary)] transition-[background-color,transform] duration-200 hover:bg-foreground/85 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary active:scale-[0.97]">
+              className="inline-flex h-11 items-center gap-2 rounded-full bg-foreground px-6 text-[15px] font-semibold text-background transition-[background-color,transform] duration-200 hover:bg-foreground/85 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary active:scale-[0.97]">
               <Download className="size-4" aria-hidden="true" />
               {t('home_page.download_desktop')}
             </Link>
@@ -119,10 +117,6 @@ export default function HeroSection() {
       </div>
 
       <div className="site-container relative pb-16 sm:pb-24">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-x-[15%] top-6 -z-10 h-72 rounded-full bg-primary/25 blur-[120px] dark:bg-primary/20"
-        />
         <m.div
           initial={{ opacity: 0, y: 28, scale: 0.985 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}

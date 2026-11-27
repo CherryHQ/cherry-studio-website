@@ -2,7 +2,6 @@ import { m } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 
 import DemoMount from '@/components/demos/primitives/DemoMount'
-import SectionBackdrop from '@/components/website/SectionBackdrop'
 import productStats from '@/content/product-stats.json'
 import { reveal } from '@/lib/motion'
 
@@ -20,13 +19,10 @@ export default function EverywhereSection() {
     <section
       className="relative isolate overflow-hidden border-t border-border py-20 sm:py-28"
       aria-labelledby="home-everywhere">
-      <SectionBackdrop variant="beams" />
       <div className="site-container">
         <m.div {...reveal()} className="mx-auto mb-12 max-w-3xl text-center">
-          <p className="mb-3 font-mono text-xs tracking-wider text-primary uppercase">
-            {t('home_page.everywhere.eyebrow')}
-          </p>
-          <h2 id="home-everywhere" className="text-gradient text-4xl font-display text-balance sm:text-6xl">
+          <p className="mb-3 text-sm font-medium text-muted-foreground">{t('home_page.everywhere.eyebrow')}</p>
+          <h2 id="home-everywhere" className="text-4xl font-display text-balance sm:text-6xl">
             {t('home_page.everywhere.title')}
           </h2>
           <p className="mt-5 text-pretty text-muted-foreground sm:text-lg">{t('home_page.everywhere.subtitle')}</p>

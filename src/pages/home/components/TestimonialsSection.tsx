@@ -2,7 +2,6 @@ import { ArrowUpRight } from 'lucide-react'
 import type { FC, ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import SectionBackdrop from '@/components/website/SectionBackdrop'
 import { type TestimonialPlatform, testimonials } from '@/content/testimonials'
 import { isEnglishSite } from '@/utils/urls'
 
@@ -76,11 +75,10 @@ const TestimonialsSection: FC = () => {
     <section
       className="site-section relative isolate overflow-hidden bg-background"
       aria-labelledby="home-testimonials">
-      <SectionBackdrop variant="arcs" />
       <div className="site-container relative">
         <div className="mb-10 max-w-2xl sm:mb-14">
-          <p className="mb-3 font-mono text-xs tracking-wider text-primary uppercase">{t('testimonials.eyebrow')}</p>
-          <h2 id="home-testimonials" className="text-gradient text-4xl font-display text-balance sm:text-5xl">
+          <p className="mb-3 text-sm font-medium text-muted-foreground">{t('testimonials.eyebrow')}</p>
+          <h2 id="home-testimonials" className="text-4xl font-display text-balance sm:text-5xl">
             {t('testimonials.title')}
           </h2>
           <p className="mt-4 text-pretty text-muted-foreground">{t('testimonials.subtitle')}</p>

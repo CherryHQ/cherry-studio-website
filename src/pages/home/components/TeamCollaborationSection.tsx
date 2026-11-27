@@ -6,7 +6,6 @@ import teamAvatar1 from '@/assets/images/team-avatars/avatar-1-v2.png'
 import teamAvatar2 from '@/assets/images/team-avatars/avatar-2-v2.png'
 import teamAvatar3 from '@/assets/images/team-avatars/avatar-3-v2.png'
 import teamAvatar4 from '@/assets/images/team-avatars/avatar-4-v2.png'
-import SectionBackdrop from '@/components/website/SectionBackdrop'
 import { goToEnterprise } from '@/utils/analytics'
 
 const capabilities = [
@@ -39,12 +38,9 @@ const TeamCollaborationSection: FC = () => {
 
   return (
     <section className="isolate bg-background relative overflow-hidden site-section">
-      <SectionBackdrop variant="modules" />
       <div className="site-container site-split relative z-10">
         <div className="min-w-0">
-          <h2 className="text-gradient mb-4 text-4xl font-display text-balance sm:text-5xl">
-            {t('team_collaboration.title')}
-          </h2>
+          <h2 className="mb-4 text-4xl font-display text-balance sm:text-5xl">{t('team_collaboration.title')}</h2>
           <p className="text-muted-foreground max-w-md text-sm leading-7 sm:text-base">
             {t('team_collaboration.description')}
           </p>

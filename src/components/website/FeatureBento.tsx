@@ -22,7 +22,7 @@ function trackPointer(event: PointerEvent<HTMLElement>) {
   event.currentTarget.style.setProperty('--my', `${event.clientY - rect.top}px`)
 }
 
-/** Editorial bento grid for feature lists: mixed spans, a pointer spotlight and oversized line glyphs. */
+/** Bento grid for feature lists: mixed column spans and a subtle pointer spotlight. */
 export default function FeatureBento({ items, className }: { items: FeatureBentoItem[]; className?: string }) {
   return (
     <ul className={cn('grid gap-4 md:grid-cols-2 lg:grid-cols-6', className)}>
@@ -48,20 +48,6 @@ export default function FeatureBento({ items, className }: { items: FeatureBento
                     'radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), color-mix(in oklab, var(--color-foreground) 7%, transparent), transparent 60%)'
                 }}
               />
-              {wide && (
-                <div
-                  aria-hidden="true"
-                  className="pointer-events-none absolute -right-6 -bottom-10 hidden text-foreground/[0.07] transition-transform duration-500 ease-settle group-hover:-translate-y-1 group-hover:rotate-[-4deg] sm:block">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle,var(--color-foreground)_1px,transparent_1.5px)] [mask-image:radial-gradient(circle,black,transparent_70%)] [background-size:14px_14px] opacity-40" />
-                  <item.icon className="relative size-56" strokeWidth={0.75} />
-                </div>
-              )}
-              <span
-                aria-hidden="true"
-                className="font-display absolute top-6 right-7 text-4xl leading-none text-foreground/15 tabular-nums transition-colors duration-300 group-hover:text-foreground/30">
-                {String(index + 1).padStart(2, '0')}
-              </span>
-
               <span className="relative flex size-10 items-center justify-center rounded-full bg-background shadow-[inset_0_0_0_1px_var(--color-border)] transition-transform duration-300 ease-settle group-hover:scale-105">
                 <item.icon className="size-[18px]" aria-hidden="true" />
               </span>

@@ -14,7 +14,7 @@
   "relatedCategory": "text-muted-foreground text-xs",
   "relatedLinkTitle": "text-foreground group-hover:text-primary mt-1 text-sm leading-6 font-medium text-pretty transition-colors",
   "index": "site-container site-page-top min-h-svh pb-16",
-  "indexTitle": "text-gradient text-5xl font-display text-balance sm:text-7xl",
+  "indexTitle": "text-5xl font-display text-balance sm:text-7xl",
   "indexDescription": "text-muted-foreground mt-4 max-w-2xl text-lg leading-8 text-pretty",
   "indexSection": "mt-16 scroll-mt-28",
   "indexSectionTitle": "font-display text-foreground text-3xl",

@@ -12,7 +12,6 @@ import {
 import { useTranslation } from 'react-i18next'
 
 import DemoMount from '@/components/demos/primitives/DemoMount'
-import SectionBackdrop from '@/components/website/SectionBackdrop'
 import { ease, reveal, spring } from '@/lib/motion'
 import { cn } from '@/lib/utils'
 
@@ -61,6 +60,7 @@ const chapterIds = [...new Set(steps.map((step) => step.chapter))]
 // Caption under each chromeless demo frame, and the tallest a filled frame body may grow.
 const FRAME_CHROME = 40
 const FILL_MAX = 760
+const WINDOW_RATIO = 10 / 16
 
 function useMinWidth(query: string) {
   return useSyncExternalStore(
@@ -90,7 +90,9 @@ function FitToBox({ children, frames = 1 }: { children: ReactNode; frames?: numb
     if (!box || !content) return
     // offsetHeight ignores transforms; the threshold stops width-driven reflow from oscillating.
     const update = () => {
-      setFill(Math.min(FILL_MAX, (box.clientHeight - frames * FRAME_CHROME - (frames - 1) * 16) / frames))
+      // Never taller than a 16:10 desktop window, so a tall viewport does not turn the demo square.
+      const free = (box.clientHeight - frames * FRAME_CHROME - (frames - 1) * 16) / frames
+      setFill(Math.min(FILL_MAX, free, box.clientWidth * WINDOW_RATIO))
       const next = Math.min(1, box.clientHeight / Math.max(1, content.offsetHeight))
       setScale((current) => (Math.abs(current - next) < 0.015 ? current : next))
     }
@@ -289,12 +291,9 @@ export default function CapabilitiesSection() {
       id="home-capabilities"
       className="relative isolate overflow-x-clip pt-20 sm:pt-28"
       aria-labelledby="home-capabilities-title">
-      <SectionBackdrop variant="glow" />
       <m.div {...reveal()} className="site-container mx-auto mb-4 max-w-3xl text-center">
-        <p className="mb-3 font-mono text-xs tracking-wider text-primary uppercase">
-          {t('home_page.capabilities.eyebrow')}
-        </p>
-        <h2 id="home-capabilities-title" className="text-gradient text-4xl font-display text-balance sm:text-6xl">
+        <p className="mb-3 text-sm font-medium text-muted-foreground">{t('home_page.capabilities.eyebrow')}</p>
+        <h2 id="home-capabilities-title" className="text-4xl font-display text-balance sm:text-6xl">
           {t('home_page.capabilities.title')}
         </h2>
         <p className="mt-5 text-pretty text-muted-foreground sm:text-lg">{t('home_page.capabilities.subtitle')}</p>

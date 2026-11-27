@@ -86,7 +86,6 @@
   --color-cap-embedding: #ffa500;
   --color-cap-rerank: #6495ed;
 
-  --animate-shimmer: shimmer 3s linear infinite;
   --animate-beat: beat 875ms linear infinite;
   --animate-blink: blink 2s ease-in-out infinite;
   --animate-breathe: breathe 2.4s ease-in-out infinite;
@@ -95,16 +94,7 @@
   --animate-dock-down: dock-down 220ms cubic-bezier(0.16, 1, 0.3, 1) both;
   --animate-marquee: marquee 48s linear infinite;
   --animate-caret: caret 1s steps(1) infinite;
-  --animate-film-drift: film-drift 26s ease-in-out infinite alternate;
 
-  @keyframes shimmer {
-    0% {
-      background-position: 200% 0;
-    }
-    100% {
-      background-position: -200% 0;
-    }
-  }
   @keyframes beat {
     0%,
     100% {
@@ -172,14 +162,6 @@
       transform: translateX(-50%);
     }
   }
-  @keyframes film-drift {
-    from {
-      transform: translate3d(-6%, 0, 0) scale(1);
-    }
-    to {
-      transform: translate3d(6%, 4%, 0) scale(1.08);
-    }
-  }
   @keyframes caret {
     50% {
       opacity: 0;
@@ -224,10 +206,6 @@
 
   --surface-glass: rgb(16 16 16 / 0.66);
   --hairline-strong: rgb(255 255 255 / 0.18);
-  --glow: rgb(255 255 255 / 0.1);
-  --glow-2: color-mix(in oklab, var(--film-violet) 20%, transparent);
-  --film-a: color-mix(in oklab, var(--film-blue) 55%, transparent);
-  --film-b: color-mix(in oklab, var(--film-violet) 40%, transparent);
   --grid-line: rgb(255 255 255 / 0.045);
   --composer: #151515;
   --chat-user: #1e1e1e;
@@ -266,10 +244,6 @@
 
   --surface-glass: rgb(255 255 255 / 0.8);
   --hairline-strong: #cfcfcd;
-  --glow: rgb(17 17 19 / 0.06);
-  --glow-2: color-mix(in oklab, var(--film-violet) 12%, transparent);
-  --film-a: color-mix(in oklab, var(--film-blue) 28%, transparent);
-  --film-b: color-mix(in oklab, var(--film-violet) 22%, transparent);
   --grid-line: rgb(17 17 19 / 0.05);
   --composer: #ffffff;
   --chat-user: #efefee;
@@ -309,30 +283,11 @@
   box-shadow: var(--shadow-card);
 }
 
-@utility float-card {
-  border: 1px solid var(--border);
-  background-color: var(--popover);
-  box-shadow: var(--shadow-float);
-}
-
 @utility bg-grid {
   background-image:
     linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
     linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
   background-size: 56px 56px;
-}
-
-/* Film grain for the hero, as in editorial "grain hero" treatments. */
-@utility bg-grain {
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size: 200px 200px;
-  mix-blend-mode: overlay;
-}
-
-@utility glow-top {
-  background-image:
-    radial-gradient(ellipse 50% 60% at 50% 0%, var(--glow), transparent 70%),
-    radial-gradient(ellipse 30% 40% at 78% 8%, var(--glow-2), transparent 70%);
 }
 
 /* Heading ink that fades toward the muted tone, as on Linear-style marketing pages. */
@@ -356,30 +311,6 @@
     font-style: normal;
     font-weight: 600;
     letter-spacing: 0;
-  }
-}
-
-@utility text-gradient {
-  background-image: linear-gradient(
-    to bottom right,
-    var(--foreground) 30%,
-    color-mix(in oklab, var(--foreground) 45%, transparent)
-  );
-  background-clip: text;
-  color: transparent;
-}
-
-/* Desktop PlaceholderShimmerText: a 3s linear sweep across clipped text. */
-@utility text-shimmer {
-  --shimmer-mid: var(--foreground);
-  --shimmer-end: color-mix(in srgb, var(--foreground) 30%, transparent);
-  background-image: linear-gradient(to left, var(--shimmer-end), var(--shimmer-mid), var(--shimmer-end));
-  background-size: 200% 100%;
-  background-clip: text;
-  color: transparent;
-  animation: var(--animate-shimmer);
-  @media (prefers-reduced-motion: reduce) {
-    animation: none;
   }
 }
 

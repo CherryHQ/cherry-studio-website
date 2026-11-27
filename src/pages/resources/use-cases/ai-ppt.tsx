@@ -5,7 +5,6 @@ import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
 import Footer from '@/components/website/Footer'
-import SectionBackdrop from '@/components/website/SectionBackdrop'
 import { AI_PPT_COPY, type AiPptCopy, type PptTemplate, type UseCaseLocale } from '@/content/use-cases/ai-ppt'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { cn } from '@/lib/utils'
@@ -485,7 +484,6 @@ export default function AiPptUseCasePage() {
       <main>
         {/* 1. 首屏：左边提示词，右边生成过程 */}
         <section className="relative isolate">
-          <SectionBackdrop variant="grid-glow" />
           <div className="site-container site-page-top site-split relative pb-12 sm:pb-16 lg:items-center">
             <div>
               <nav aria-label={copy.breadcrumb.label} className="text-muted-foreground text-sm">
@@ -495,7 +493,7 @@ export default function AiPptUseCasePage() {
                 <span className="mx-2">/</span>
                 <span>{copy.breadcrumb.current}</span>
               </nav>
-              <h1 className="text-gradient mt-5 text-5xl font-display text-balance sm:text-7xl">
+              <h1 className="mt-5 text-5xl font-display text-balance sm:text-7xl">
                 {copy.h1Lead} <span className="text-primary">PPT</span>
               </h1>
               <p className="text-muted-foreground mt-5 max-w-xl text-lg leading-8 text-pretty">{copy.intro}</p>

@@ -3,7 +3,6 @@ import type { FC } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 
 import FeatureBento from '@/components/website/FeatureBento'
-import SectionBackdrop from '@/components/website/SectionBackdrop'
 import { getDocsUrl } from '@/utils/urls'
 
 interface Feature {
@@ -58,13 +57,10 @@ const FeaturesSection: FC = () => {
 
   return (
     <section className="isolate bg-background relative overflow-hidden site-section">
-      <SectionBackdrop variant="grid" />
       <div className="site-container relative z-10">
         {/* Section Header */}
         <div className="mb-8 sm:mb-12">
-          <h2 className="text-gradient mb-3 text-4xl font-display text-balance sm:mb-4 sm:text-5xl">
-            {t('features.title')}
-          </h2>
+          <h2 className="mb-3 text-4xl font-display text-balance sm:mb-4 sm:text-5xl">{t('features.title')}</h2>
           <p className="text-muted-foreground max-w-2xl text-sm sm:text-base">
             <Trans i18nKey="features.description">
               以下仅为部分功能介绍，更多功能可以下载客户端体验，或在

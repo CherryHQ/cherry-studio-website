@@ -8,7 +8,6 @@ import DemoMount from '@/components/demos/primitives/DemoMount'
 import { Button } from '@/components/ui/button'
 import FeatureBento from '@/components/website/FeatureBento'
 import Footer from '@/components/website/Footer'
-import SectionBackdrop from '@/components/website/SectionBackdrop'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { getMobileDocsUrl } from '@/utils/urls'
 
@@ -30,14 +29,11 @@ export default function MobilePage() {
     <div className="min-h-screen bg-background pt-[60px] text-foreground">
       <main>
         <section className="relative isolate overflow-hidden border-b border-border py-12 sm:py-20">
-          <SectionBackdrop variant="grid-glow" />
           <div className="site-container site-split lg:items-center">
             <div className="max-w-xl">
               <LogoDrawDemo bare size={44} className="mb-6" />
-              <p className="text-primary mb-4 font-mono text-xs tracking-widest uppercase">
-                {t('mobile_site.hero.eyebrow')}
-              </p>
-              <h1 className="text-gradient text-5xl leading-[1.04] font-display text-balance sm:text-7xl">
+              <p className="mb-4 text-sm font-medium text-muted-foreground">{t('mobile_site.hero.eyebrow')}</p>
+              <h1 className="text-5xl leading-[1.04] font-display text-balance sm:text-7xl">
                 {t('mobile_site.hero.title')}
               </h1>
               <p className="mt-5 max-w-lg text-pretty text-base leading-7 text-muted-foreground sm:text-lg">
@@ -63,10 +59,6 @@ export default function MobilePage() {
             </div>
 
             <div className="relative flex justify-center">
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute top-1/4 left-1/2 -z-10 size-80 -translate-x-1/2 rounded-full bg-primary/25 blur-[100px]"
-              />
               <MobileComposerDemo />
             </div>
           </div>
@@ -75,10 +67,8 @@ export default function MobilePage() {
         <section className="border-b border-border py-12 sm:py-20">
           <div className="site-container">
             <div className="max-w-3xl">
-              <p className="text-primary mb-4 text-sm font-semibold tracking-[0.16em] uppercase">
-                {t('mobile_site.mobile_first.eyebrow')}
-              </p>
-              <h2 className="text-gradient text-4xl leading-tight font-display text-balance sm:text-6xl">
+              <p className="mb-4 text-sm font-medium text-muted-foreground">{t('mobile_site.mobile_first.eyebrow')}</p>
+              <h2 className="text-4xl leading-tight font-display text-balance sm:text-6xl">
                 {t('mobile_site.mobile_first.title')}
               </h2>
               <p className="mt-6 max-w-xl text-lg leading-8 text-muted-foreground">
@@ -104,13 +94,10 @@ export default function MobilePage() {
         </section>
 
         <section className="relative isolate overflow-hidden border-b border-border py-16 sm:py-24">
-          <SectionBackdrop variant="beams" />
           <div className="site-container grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
             <div className="min-w-0">
-              <p className="mb-4 font-mono text-xs tracking-widest text-primary uppercase">
-                {t('mobile_site.picker.eyebrow')}
-              </p>
-              <h2 className="text-gradient text-4xl leading-tight font-display text-balance sm:text-6xl">
+              <p className="mb-4 text-sm font-medium text-muted-foreground">{t('mobile_site.picker.eyebrow')}</p>
+              <h2 className="text-4xl leading-tight font-display text-balance sm:text-6xl">
                 {t('mobile_site.picker.title')}
               </h2>
               <p className="mt-6 text-lg leading-8 text-muted-foreground">{t('mobile_site.picker.description')}</p>
@@ -125,10 +112,8 @@ export default function MobilePage() {
         <section className="relative isolate overflow-hidden border-b border-border py-16 sm:py-24">
           <div className="site-container">
             <div className="mx-auto mb-12 max-w-3xl text-center">
-              <p className="mb-4 font-mono text-xs tracking-widest text-primary uppercase">
-                {t('mobile_site.pairing.eyebrow')}
-              </p>
-              <h2 className="text-gradient text-4xl leading-tight font-display text-balance sm:text-6xl">
+              <p className="mb-4 text-sm font-medium text-muted-foreground">{t('mobile_site.pairing.eyebrow')}</p>
+              <h2 className="text-4xl leading-tight font-display text-balance sm:text-6xl">
                 {t('mobile_site.pairing.title')}
               </h2>
               <p className="mt-6 text-lg leading-8 text-muted-foreground">{t('mobile_site.pairing.description')}</p>
@@ -140,10 +125,8 @@ export default function MobilePage() {
         <section className="border-b border-border py-12 sm:py-16">
           <div className="site-container grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
             <div className="min-w-0">
-              <p className="text-primary mb-4 text-sm font-semibold tracking-[0.14em]">
-                {t('mobile_site.workflows.eyebrow')}
-              </p>
-              <h2 className="text-gradient text-4xl leading-tight font-display text-balance sm:text-6xl">
+              <p className="mb-4 text-sm font-medium text-muted-foreground">{t('mobile_site.workflows.eyebrow')}</p>
+              <h2 className="text-4xl leading-tight font-display text-balance sm:text-6xl">
                 {t('mobile_site.workflows.title')}
               </h2>
               <p className="mt-6 text-lg leading-8 text-muted-foreground">{t('mobile_site.workflows.description')}</p>
@@ -175,10 +158,8 @@ export default function MobilePage() {
         <section className="border-b border-border py-12 sm:py-20">
           <div className="site-container">
             <div className="mx-auto max-w-3xl text-center">
-              <p className="text-primary mb-4 text-sm font-semibold tracking-[0.16em] uppercase">
-                {t('mobile_site.tablet.eyebrow')}
-              </p>
-              <h2 className="text-gradient text-4xl leading-tight font-display text-balance sm:text-6xl">
+              <p className="mb-4 text-sm font-medium text-muted-foreground">{t('mobile_site.tablet.eyebrow')}</p>
+              <h2 className="text-4xl leading-tight font-display text-balance sm:text-6xl">
                 {t('mobile_site.tablet.title')}
               </h2>
               <p className="mt-5 text-lg leading-8 text-muted-foreground">{t('mobile_site.tablet.description')}</p>
@@ -193,10 +174,8 @@ export default function MobilePage() {
 
         <section className="py-12 sm:py-16">
           <div className="site-container text-center">
-            <p className="text-primary text-sm font-semibold tracking-[0.16em] uppercase">
-              {t('mobile_site.cta.eyebrow')}
-            </p>
-            <h2 className="mx-auto mt-4 max-w-3xl text-gradient text-4xl font-display text-balance sm:text-6xl">
+            <p className="text-sm font-medium text-muted-foreground">{t('mobile_site.cta.eyebrow')}</p>
+            <h2 className="mx-auto mt-4 max-w-3xl text-4xl font-display text-balance sm:text-6xl">
               {t('mobile_site.cta.title')}
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-muted-foreground">

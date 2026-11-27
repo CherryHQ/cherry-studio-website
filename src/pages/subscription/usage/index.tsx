@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next'
 import { Link, Navigate } from 'react-router-dom'
 
 import Footer from '@/components/website/Footer'
-import SectionBackdrop from '@/components/website/SectionBackdrop'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { isEnglishSite } from '@/utils/urls'
 
@@ -66,10 +65,9 @@ function UsageContent() {
 
   return (
     <div className="relative isolate overflow-hidden bg-background min-h-screen">
-      <SectionBackdrop variant="grid-glow" />
       <article className="site-page-top mx-auto max-w-3xl px-6 pb-16">
         <header>
-          <h1 className="text-gradient text-balance text-5xl font-display sm:text-7xl">{t('usage.title')}</h1>
+          <h1 className="text-balance text-5xl font-display sm:text-7xl">{t('usage.title')}</h1>
           <p className="text-muted-foreground mt-4 text-lg leading-8">{t('usage.subtitle')}</p>
         </header>
 

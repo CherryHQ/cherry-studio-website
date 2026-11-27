@@ -3,7 +3,6 @@ import { ArrowRight, Plus } from 'lucide-react'
 import { type FC, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import SectionBackdrop from '@/components/website/SectionBackdrop'
 import { ease } from '@/lib/motion'
 import { cn } from '@/lib/utils'
 import { getDocsUrl } from '@/utils/urls'
@@ -29,10 +28,9 @@ const FAQSection: FC = () => {
       id="faq"
       aria-labelledby="home-faq-heading"
       className="relative isolate border-t border-border py-20 sm:py-28">
-      <SectionBackdrop variant="rules" />
       <div className="site-container site-split">
         <div className="max-w-sm">
-          <h2 id="home-faq-heading" className="text-gradient text-4xl font-display text-balance sm:text-5xl">
+          <h2 id="home-faq-heading" className="text-4xl font-display text-balance sm:text-5xl">
             {t('home_faq.title')}
           </h2>
           {isZh && <p className="mt-3 text-base text-muted-foreground">{t('home_faq.subtitle')}</p>}

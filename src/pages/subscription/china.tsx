@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 
 import { Button } from '@/components/ui/button'
 import Footer from '@/components/website/Footer'
-import SectionBackdrop from '@/components/website/SectionBackdrop'
 import SubscriptionFaq from '@/components/website/SubscriptionFaq'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { cn } from '@/lib/utils'
@@ -43,19 +42,13 @@ export default function ChinaPricingPage() {
         {t('plus_page.skip_link')}
       </a>
       <main id="plus-main" className="relative isolate overflow-hidden bg-background text-foreground">
-        <SectionBackdrop variant="grid-glow" />
         <section aria-labelledby="plus-title" className="site-container site-page-top pb-16 text-center sm:pb-24">
           <h1 id="plus-title" className="font-display text-6xl leading-none text-balance sm:text-8xl">
-            <span className="text-gradient">Cherry</span>{' '}
-            <span className="font-accent text-muted-foreground">Plus</span>
+            <span>Cherry</span> <span className="font-accent text-muted-foreground">Plus</span>
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-lg text-pretty text-muted-foreground">{t('plus_page.subtitle')}</p>
 
           <section aria-label={t('plus_page.pricing_label')} className="relative mx-auto mt-12 max-w-md">
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-x-8 -inset-y-6 -z-10 rounded-full bg-foreground/10 blur-3xl"
-            />
             <div className="rounded-[28px] bg-card p-8 text-left shadow-[inset_0_0_0_1px_var(--color-border),var(--shadow-float)] sm:p-10">
               <p className="text-sm font-medium text-muted-foreground">{t('plus_page.offer.title')}</p>
               <div className="mt-4 flex flex-wrap items-baseline gap-x-3 gap-y-1">
@@ -109,7 +102,7 @@ export default function ChinaPricingPage() {
               <h2 id="plus-usage-title" className="font-display text-4xl sm:text-5xl">
                 {t('plus_page.usage.title')}
               </h2>
-              <span className="rounded-full px-3 py-1 font-mono text-xs tracking-widest text-muted-foreground uppercase shadow-[inset_0_0_0_1px_var(--color-border)]">
+              <span className="rounded-full px-3 py-1 text-sm font-medium text-muted-foreground shadow-[inset_0_0_0_1px_var(--color-border)]">
                 Plus
               </span>
             </div>
@@ -244,7 +237,6 @@ export default function ChinaPricingPage() {
         <section
           aria-labelledby="plus-cta-title"
           className="relative isolate overflow-hidden border-t border-border px-4 py-24 text-center sm:px-8 sm:py-32">
-          <SectionBackdrop variant="beams" />
           <h2 id="plus-cta-title" className="font-display text-4xl text-balance sm:text-6xl">
             {t('plus_page.cta.title')}
           </h2>

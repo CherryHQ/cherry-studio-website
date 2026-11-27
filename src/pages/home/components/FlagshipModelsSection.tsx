@@ -2,8 +2,6 @@ import { ArrowUpRight, Sparkles, Zap } from 'lucide-react'
 import type { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import SectionBackdrop from '@/components/website/SectionBackdrop'
-
 interface FlagshipModel {
   nameKey: string
   descriptionKey: string
@@ -46,12 +44,9 @@ const FlagshipModelsSection: FC = () => {
 
   return (
     <section className="relative isolate overflow-hidden bg-background site-section">
-      <SectionBackdrop variant="grid" />
       <div className="site-container relative z-10">
         <div className="mb-8 max-w-3xl sm:mb-12">
-          <h2 className="text-gradient mb-3 text-4xl font-display text-balance sm:mb-4 sm:text-5xl">
-            {t('flagship_models.title')}
-          </h2>
+          <h2 className="mb-3 text-4xl font-display text-balance sm:mb-4 sm:text-5xl">{t('flagship_models.title')}</h2>
           <p className="text-sm text-muted-foreground sm:text-base">{t('flagship_models.subtitle')}</p>
         </div>
 
@@ -63,10 +58,6 @@ const FlagshipModelsSection: FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="glass-card group relative overflow-hidden rounded-2xl p-6 transition-[border-color,transform] duration-300 ease-settle hover:-translate-y-0.5 hover:border-hairline-strong focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:p-8">
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute -top-24 -right-24 size-64 rounded-full bg-primary/15 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100"
-              />
               <div className="relative">
                 <div className="mb-4 flex items-start justify-between">
                   <div className="flex items-center gap-3">
