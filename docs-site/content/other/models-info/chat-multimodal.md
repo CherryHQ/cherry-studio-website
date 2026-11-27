@@ -4,7 +4,7 @@
 
 上下文长度与最大输出以 K / M 缩写并四舍五入（1K 约为 1,000～1,024 tokens，1M 约为 100 万 tokens），例如 131,072 与 128,000 均写作 128K。悬停可查看完整数值，精确限制请以模型服务商为准。
 
-> **数据更新时间**: 2026-11-23 20:00:12 UTC / 2026-11-24 04:00:12 CST (北京时间)
+> **数据更新时间**: 2026-11-27 17:59:10 UTC / 2026-11-28 01:59:10 CST (北京时间)
 
 <div data-models-table="num:2,3;sort:1;search:0,1;cap:4:函数调用,推理,识图,语音识别,视频理解,结构化输出,文件输入,电脑操作,文件检索;in:5:文本输入=文本,图片输入=图片,音频输入=音频,视频输入=视频">
 
@@ -85,8 +85,6 @@
 | Baidu: ERNIE 4.5 VL 424B A47B <br><code>ernie-4-5-vl-424b-a47b</code> | baidu | <span title="123,000">123K</span> | - | 推理、识图 | 文本、图片 | 文本 |
 | ERNIE 4.5 Turbo VL<br><code>ernie-4-5-turbo-vl</code> | baidu | <span title="32,768">32K</span> | - | 函数调用、识图 | 文本、图片 | - |
 | ERNIE 4.5 VL A3B<br><code>ernie-4-5-vl-a3b</code> | baidu | <span title="32,768">32K</span> | - | 推理、识图 | 文本、图片 | - |
-| Inkling<br><code>inkling</code> | bailing | <span title="1,048,576">1.05M</span> | <span title="256,000">256K</span> | 函数调用、推理、识图、语音识别、结构化输出、文件输入 | 文本、图片、音频 | 文本 |
-| Inkling Small<br><code>inkling-small</code> | bailing | <span title="1,048,576">1.05M</span> | <span title="1,000,000">1M</span> | 函数调用、推理、识图、语音识别、文件输入 | 文本、图片、音频 | 文本 |
 | Doubao 1.5 Thinking Vision Pro<br><code>doubao-1-5-thinking-vision-pro</code> | bytedance | <span title="131,072">128K</span> | <span title="16,384">16K</span> | 推理、函数调用、识图 | 文本、图片 | 文本 |
 | Doubao 1.5 UI-TARS<br><code>doubao-1-5-ui-tars</code> | bytedance | - | - | 电脑操作、识图、函数调用 | 文本、图片 | 文本 |
 | Doubao 1.5 Vision Lite<br><code>doubao-1-5-vision-lite</code> | bytedance | - | - | 识图、函数调用 | 文本、图片 | 文本 |
@@ -274,6 +272,10 @@
 | Sonar Pro<br><code>sonar-pro</code> | perplexity | <span title="200,000">200K</span> | <span title="8,192">8K</span> | 函数调用、推理、识图、结构化输出、文件输入 | 文本、图片 | 文本 |
 | Sonar Reasoning Pro<br><code>sonar-reasoning-pro</code> | perplexity | <span title="128,000">128K</span> | <span title="8,000">8K</span> | 推理、识图、文件输入 | 文本、图片 | 文本 |
 | Reka Edge<br><code>reka-edge</code> | reka | <span title="16,384">16K</span> | - | 函数调用、识图、视频理解、结构化输出 | 文本、图片、视频 | 文本 |
+| Fugu Max<br><code>fugu-max</code> | sakana | <span title="1,000,000">1M</span> | <span title="128,000">128K</span> | 函数调用、推理、识图、结构化输出、文件输入 | 文本、图片 | 文本 |
+| Fugu Ultra<br><code>fugu-ultra</code> | sakana | <span title="1,000,000">1M</span> | <span title="1,000,000">1M</span> | 函数调用、推理、识图、结构化输出、文件输入 | 文本、图片 | 文本 |
+| Fugu Ultra v2<br><code>fugu-ultra-v2</code> | sakana | <span title="1,000,000">1M</span> | <span title="128,000">128K</span> | 函数调用、推理、识图、结构化输出、文件输入 | 文本、图片 | 文本 |
+| Sakana Namazu<br><code>namazu</code> | sakana | <span title="262,144">256K</span> | <span title="65,536">64K</span> | 函数调用、推理、识图、结构化输出、文件输入 | 文本、图片 | 文本 |
 | Step 3.5 Flash 2603<br><code>step-3-5-flash</code> | stepfun | <span title="262,144">256K</span> | <span title="262,114">262.11K</span> | 函数调用、推理、识图 | 文本、图片 | 文本 |
 | Step 3.7 Flash<br><code>step-3-7-flash</code> | stepfun | <span title="262,144">256K</span> | <span title="256,000">256K</span> | 函数调用、推理、识图、视频理解、结构化输出、文件输入 | 文本、图片、视频 | 文本 |
 | Step 5 Preview<br><code>step-5-preview</code> | stepfun | <span title="1,048,576">1.05M</span> | <span title="1,048,576">1.05M</span> | 推理、函数调用、识图、视频理解 | 文本、图片、视频 | 文本 |
@@ -281,13 +283,15 @@
 | Kat Coder Pro V2.5<br><code>kat-coder-pro-v2-5</code> | streamlake | <span title="262,144">256K</span> | <span title="80,000">80K</span> | 函数调用、推理、识图、结构化输出 | 文本、图片 | 文本 |
 | Hunyuan 4<br><code>hy4</code> | tencent | <span title="1,048,576">1.05M</span> | <span title="65,536">64K</span> | 推理、函数调用、结构化输出、识图 | 文本、图片 | - |
 | Hunyuan 4 Flash<br><code>hy4-flash</code> | tencent | <span title="1,048,576">1.05M</span> | <span title="65,536">64K</span> | 推理、函数调用、结构化输出、识图 | 文本、图片 | - |
-| Fugu Ultra<br><code>fugu-ultra</code> | vercel | <span title="1,000,000">1M</span> | <span title="1,000,000">1M</span> | 函数调用、推理、识图、结构化输出、文件输入 | 文本、图片 | 文本 |
+| Inkling<br><code>inkling</code> | thinkingmachines | <span title="1,048,576">1.05M</span> | <span title="256,000">256K</span> | 函数调用、推理、识图、结构化输出、文件输入、语音识别 | 文本、图片、音频 | 文本 |
+| Inkling 2 Mini<br><code>inkling-2-mini</code> | thinkingmachines | <span title="1,048,576">1.05M</span> | <span title="65,536">64K</span> | 函数调用、推理、识图、结构化输出、文件输入 | 文本、图片 | 文本 |
+| Inkling 2 Small<br><code>inkling-2-small</code> | thinkingmachines | <span title="1,048,576">1.05M</span> | <span title="262,144">256K</span> | 函数调用、推理、识图、结构化输出、文件输入 | 文本、图片 | 文本 |
+| Inkling Small<br><code>inkling-small</code> | thinkingmachines | <span title="1,048,576">1.05M</span> | <span title="1,000,000">1M</span> | 函数调用、推理、识图、语音识别、文件输入 | 文本、图片、音频 | 文本 |
 | Interfaze Beta<br><code>interfaze-beta</code> | vercel | <span title="1,000,000">1M</span> | <span title="32,000">32K</span> | 推理、识图 | 文本、图片 | 文本 |
 | Muse Spark 1.1<br><code>muse-spark-1-1</code> | vercel | <span title="1,048,576">1.05M</span> | <span title="1,048,576">1.05M</span> | 函数调用、推理、识图、语音识别、视频理解、结构化输出、文件输入 | 文本、图片、音频、视频 | 文本 |
 | Muse Spark 1.2<br><code>muse-spark-1-2</code> | vercel | <span title="1,048,576">1.05M</span> | <span title="1,048,576">1.05M</span> | 函数调用、推理、识图、语音识别、视频理解、结构化输出、文件输入 | 文本、图片、音频、视频 | 文本 |
 | Muse Spark 1.2 Contributor<br><code>muse-spark-1-2-contributor</code> | vercel | <span title="1,048,576">1.05M</span> | <span title="1,048,576">1.05M</span> | 函数调用、推理、识图、语音识别、视频理解、结构化输出、文件输入 | 文本、图片、音频、视频 | 文本 |
 | Muse Spark 1.3 Contributor<br><code>muse-spark-1-3-contributor</code> | vercel | <span title="1,048,576">1.05M</span> | <span title="1,048,576">1.05M</span> | 函数调用、推理、识图、语音识别、视频理解、结构化输出、文件输入 | 文本、图片、音频、视频 | 文本 |
-| Sakana Namazu<br><code>namazu</code> | vercel | <span title="262,144">256K</span> | <span title="256,000">256K</span> | 函数调用、推理、识图、结构化输出、文件输入 | 文本、图片 | 文本 |
 | Grok 2 Vision<br><code>grok-2-vision</code> | xai | <span title="32,768">32K</span> | - | 函数调用、识图 | 文本、图片 | - |
 | Grok 4.1 Fast Non-Reasoning<br><code>grok-4-1-fast-non-reasoning</code> | xai | <span title="1,000,000">1M</span> | <span title="1,000,000">1M</span> | 函数调用、识图、文件输入 | 文本、图片 | 文本 |
 | Grok 4.1 Fast Reasoning<br><code>grok-4-1-fast</code> | xai | <span title="1,000,000">1M</span> | <span title="1,000,000">1M</span> | 函数调用、推理、识图、文件输入 | 文本、图片 | 文本 |
