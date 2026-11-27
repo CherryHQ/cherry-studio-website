@@ -8,9 +8,29 @@ const treatments = {
     'right-auto left-0 w-[45%] bg-[repeating-linear-gradient(to_bottom,transparent_0_13px,var(--border)_13px_14px)] [mask-image:radial-gradient(ellipse_at_0%_86%,black_3%,transparent_59%)]'
 } as const
 
-export type SectionBackdropVariant = keyof typeof treatments | 'modules' | 'glow' | 'grid-glow' | 'beams'
+export type SectionBackdropVariant = keyof typeof treatments | 'modules' | 'glow' | 'grid-glow' | 'beams' | 'film'
 
 export default function SectionBackdrop({ variant }: { variant: SectionBackdropVariant }) {
+  // Fancy "shot on film": drifting blue/violet light under a grain layer, fading into the page.
+  if (variant === 'film') {
+    return (
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10 overflow-hidden [mask-image:linear-gradient(to_bottom,black_55%,transparent)]">
+        <div className="absolute top-[-18%] left-1/2 h-[760px] w-[min(1200px,120%)] -translate-x-1/2">
+          <div
+            className="size-full blur-[100px] will-change-transform motion-safe:animate-film-drift"
+            style={{
+              background:
+                'radial-gradient(closest-side at 32% 45%, var(--film-a), transparent), radial-gradient(closest-side at 70% 40%, var(--film-b), transparent)'
+            }}
+          />
+        </div>
+        <div className="bg-grain absolute inset-0 opacity-[0.1] dark:opacity-[0.13]" />
+      </div>
+    )
+  }
+
   if (variant === 'glow') {
     return <div aria-hidden="true" className="glow-top pointer-events-none absolute inset-x-0 top-0 -z-10 h-[640px]" />
   }

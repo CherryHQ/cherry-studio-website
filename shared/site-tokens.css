@@ -7,4 +7,7 @@
   /* Faint cool tint for glows, and the reasoning-effort peak hue mirrored from the app. */
   --cherry-blue: oklch(0.62 0.09 250);
   --cherry-violet: oklch(0.77 0.208 300);
+  /* Film-grain glow hues for hero backdrops (Fancy "shot on film" treatment); never green or red. */
+  --film-blue: oklch(0.56 0.2 262);
+  --film-violet: oklch(0.6 0.19 300);
 }

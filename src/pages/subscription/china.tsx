@@ -46,7 +46,8 @@ export default function ChinaPricingPage() {
         <SectionBackdrop variant="grid-glow" />
         <section aria-labelledby="plus-title" className="site-container site-page-top pb-16 text-center sm:pb-24">
           <h1 id="plus-title" className="font-display text-6xl leading-none text-balance sm:text-8xl">
-            <span className="text-gradient">Cherry</span> <span className="text-muted-foreground italic">Plus</span>
+            <span className="text-gradient">Cherry</span>{' '}
+            <span className="font-accent text-muted-foreground">Plus</span>
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-lg text-pretty text-muted-foreground">{t('plus_page.subtitle')}</p>
 

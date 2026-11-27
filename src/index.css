@@ -95,6 +95,7 @@
   --animate-dock-down: dock-down 220ms cubic-bezier(0.16, 1, 0.3, 1) both;
   --animate-marquee: marquee 48s linear infinite;
   --animate-caret: caret 1s steps(1) infinite;
+  --animate-film-drift: film-drift 26s ease-in-out infinite alternate;
 
   @keyframes shimmer {
     0% {
@@ -171,6 +172,14 @@
       transform: translateX(-50%);
     }
   }
+  @keyframes film-drift {
+    from {
+      transform: translate3d(-6%, 0, 0) scale(1);
+    }
+    to {
+      transform: translate3d(6%, 4%, 0) scale(1.08);
+    }
+  }
   @keyframes caret {
     50% {
       opacity: 0;
@@ -192,7 +201,7 @@
   --secondary: #191919;
   --secondary-foreground: #f5f5f5;
   --muted: #191919;
-  --muted-foreground: #9a9a96;
+  --muted-foreground: #98989e;
   --accent: #232323;
   --accent-foreground: #f5f5f5;
   --destructive: #ef4444;
@@ -216,7 +225,9 @@
   --surface-glass: rgb(16 16 16 / 0.66);
   --hairline-strong: rgb(255 255 255 / 0.18);
   --glow: rgb(255 255 255 / 0.1);
-  --glow-2: color-mix(in oklab, var(--cherry-blue) 16%, transparent);
+  --glow-2: color-mix(in oklab, var(--film-violet) 20%, transparent);
+  --film-a: color-mix(in oklab, var(--film-blue) 55%, transparent);
+  --film-b: color-mix(in oklab, var(--film-violet) 40%, transparent);
   --grid-line: rgb(255 255 255 / 0.045);
   --composer: #151515;
   --chat-user: #1e1e1e;
@@ -226,42 +237,44 @@
 
 .light {
   color-scheme: light;
-  --background: #f4f2ec;
-  --foreground: #17181a;
-  --card: #faf9f5;
-  --card-foreground: #17181a;
-  --popover: #fbfaf7;
-  --popover-foreground: #17181a;
-  --primary: var(--cherry-ink);
-  --primary-foreground: #f4f2ec;
-  --secondary: #eae7df;
-  --secondary-foreground: #17181a;
-  --muted: #eae7df;
-  --muted-foreground: #64625c;
-  --accent: #e0dcd2;
-  --accent-foreground: #17181a;
+  --background: #f7f7f6;
+  --foreground: #111113;
+  --card: #ffffff;
+  --card-foreground: #111113;
+  --popover: #ffffff;
+  --popover-foreground: #111113;
+  --primary: #111113;
+  --primary-foreground: #ffffff;
+  --secondary: #efefee;
+  --secondary-foreground: #111113;
+  --muted: #efefee;
+  --muted-foreground: #67676c;
+  --accent: #e8e8e7;
+  --accent-foreground: #111113;
   --destructive: #dc2626;
-  --border: #dedad1;
-  --input: #cbc6bb;
-  --ring: rgb(23 24 26 / 0.4);
-  --sidebar: #ece9e2;
-  --sidebar-foreground: #17181a;
-  --sidebar-primary: var(--cherry-ink);
-  --sidebar-primary-foreground: #f4f2ec;
-  --sidebar-accent: #e0dcd2;
-  --sidebar-accent-foreground: #17181a;
-  --sidebar-border: #dedad1;
-  --sidebar-ring: rgb(23 24 26 / 0.4);
+  --border: #e4e4e2;
+  --input: #d4d4d2;
+  --ring: rgb(17 17 19 / 0.4);
+  --sidebar: #f0f0ef;
+  --sidebar-foreground: #111113;
+  --sidebar-primary: #111113;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #e8e8e7;
+  --sidebar-accent-foreground: #111113;
+  --sidebar-border: #e4e4e2;
+  --sidebar-ring: rgb(17 17 19 / 0.4);
 
-  --surface-glass: rgb(250 249 245 / 0.78);
-  --hairline-strong: #c9c4b9;
-  --glow: rgb(23 24 26 / 0.06);
-  --glow-2: color-mix(in oklab, var(--cherry-blue) 9%, transparent);
-  --grid-line: rgb(23 24 26 / 0.05);
-  --composer: #fbfaf7;
-  --chat-user: #eae7df;
-  --shadow-card: 0 1px 2px rgb(23 24 26 / 0.04), 0 12px 32px -16px rgb(23 24 26 / 0.14);
-  --shadow-float: 0 1px 2px rgb(23 24 26 / 0.05), 0 34px 70px -24px rgb(23 24 26 / 0.22);
+  --surface-glass: rgb(255 255 255 / 0.8);
+  --hairline-strong: #cfcfcd;
+  --glow: rgb(17 17 19 / 0.06);
+  --glow-2: color-mix(in oklab, var(--film-violet) 12%, transparent);
+  --film-a: color-mix(in oklab, var(--film-blue) 28%, transparent);
+  --film-b: color-mix(in oklab, var(--film-violet) 22%, transparent);
+  --grid-line: rgb(17 17 19 / 0.05);
+  --composer: #ffffff;
+  --chat-user: #efefee;
+  --shadow-card: 0 1px 2px rgb(17 17 19 / 0.04), 0 12px 32px -16px rgb(17 17 19 / 0.14);
+  --shadow-float: 0 1px 2px rgb(17 17 19 / 0.05), 0 34px 70px -24px rgb(17 17 19 / 0.22);
 }
 
 @utility site-container {
@@ -323,12 +336,24 @@
 }
 
 /* Heading ink that fades toward the muted tone, as on Linear-style marketing pages. */
-/* Display serif for headlines in the editorial "fancy" style; Newsreader's optical sizes keep large titles crisp. */
+/* Display headlines: tight-tracked sans. Accent words switch to a serif italic via font-accent. */
 @utility font-display {
-  font-family: var(--font-serif);
-  font-weight: 400;
-  letter-spacing: -0.02em;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: -0.035em;
   &:lang(zh) {
+    letter-spacing: 0;
+  }
+}
+
+/* Editorial accent for a word or line inside a sans headline. */
+@utility font-accent {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  &:lang(zh) {
+    font-style: normal;
     font-weight: 600;
     letter-spacing: 0;
   }

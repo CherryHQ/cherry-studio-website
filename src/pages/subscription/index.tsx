@@ -60,7 +60,7 @@ function FlashContent() {
       <section className="site-container site-page-top pb-16 text-center sm:pb-24">
         <h1 className="font-display text-6xl leading-none text-balance sm:text-8xl">
           <span className="text-gradient">{t('pricing.headline_brand')}</span>{' '}
-          <span className="text-muted-foreground italic">{t('pricing.headline_plan')}</span>
+          <span className="font-accent text-muted-foreground">{t('pricing.headline_plan')}</span>
         </h1>
         <p className="mx-auto mt-6 max-w-xl text-lg text-pretty text-muted-foreground">{t('pricing.subtitle')}</p>
 

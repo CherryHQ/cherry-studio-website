@@ -35,11 +35,7 @@ export default function HeroSection() {
 
   return (
     <section className="relative isolate overflow-hidden bg-background text-foreground">
-      <SectionBackdrop variant="grid-glow" />
-      <div
-        aria-hidden="true"
-        className="bg-grain pointer-events-none absolute inset-0 -z-10 opacity-[0.05] dark:opacity-[0.07]"
-      />
+      <SectionBackdrop variant="film" />
       <div className="site-container flex flex-col items-center pt-14 pb-12 text-center sm:pt-20 lg:pt-24">
         <Link
           to="/download"
@@ -53,11 +49,11 @@ export default function HeroSection() {
           <ArrowRight className="size-3" aria-hidden="true" />
         </Link>
 
-        <h1 className="font-display max-w-5xl text-6xl leading-[0.95] text-balance sm:text-7xl lg:text-8xl">
+        <h1 className="font-display max-w-5xl text-5xl leading-[0.98] text-balance sm:text-7xl lg:text-[5.5rem]">
           <m.span {...lineRise(0)} className="text-gradient block pb-2">
             {t('home_page.title_first')}
           </m.span>
-          <m.span {...lineRise(1)} className="block pb-3 text-foreground italic zh:not-italic">
+          <m.span {...lineRise(1)} className="font-accent block pb-3 text-foreground">
             {t('home_page.title_second')}
           </m.span>
         </h1>
