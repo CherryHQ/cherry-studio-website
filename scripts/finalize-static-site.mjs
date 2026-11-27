@@ -119,12 +119,17 @@ const compareRoutes = listCompareSlugs(target).map((slug) => ({
 }))
 
 const articlesIndex = { path: '/resources/articles/', key: 'articles', articlesIndex: true, dropSoftwareApplication: true }
-// 应用场景页：中英文都有，一起上线
-const useCaseRoutes = [
-  { path: '/resources/use-cases/ai-ppt', key: 'use_case_ai_ppt', lastmod: '2026-11-23', dropSoftwareApplication: true }
-]
+// 独立页面（如应用场景页）：中英文都有，一起上线；列表页里排在所属分类的文章前面
+const pageRoutes = Object.entries(ARTICLE_CATALOG.pages).map(([id, { category, path, key, lastmod }]) => ({
+  path,
+  key,
+  category,
+  lastmod,
+  pageTitle: translations.articles.pages[id.replace(/-/g, '_')],
+  dropSoftwareApplication: true
+}))
 
-ROUTES[target].push(articlesIndex, ...compareRoutes, ...useCaseRoutes)
+ROUTES[target].push(articlesIndex, ...compareRoutes, ...pageRoutes)
 
 const NOT_FOUND = { path: '/404', key: 'not_found', noindex: true }
 
@@ -154,10 +159,12 @@ SITEMAP[target].push(
   {
     path: articlesIndex.path,
     priority: '0.7',
-    lastmod: ['2026-11-01', ...compareRoutes.map(({ lastmod }) => lastmod)].sort().at(-1)
+    lastmod: ['2026-11-01', ...compareRoutes.map(({ lastmod }) => lastmod), ...pageRoutes.map(({ lastmod }) => lastmod)]
+      .sort()
+      .at(-1)
   },
   ...compareRoutes.map(({ path, lastmod }) => ({ path, priority: '0.7', lastmod })),
-  ...useCaseRoutes.map(({ path, lastmod }) => ({ path, priority: '0.7', lastmod }))
+  ...pageRoutes.map(({ path, lastmod }) => ({ path, priority: '0.7', lastmod }))
 )
 
 function replaceTagAttribute(html, tagPattern, attribute, value) {
@@ -288,8 +295,8 @@ function buildRouteHtml(route) {
       .map(({ category, routes }) => {
         const items = routes
           .map(
-            ({ path, compare, key, lastmod }) =>
-              `<li><a href="${path}" class="${style.indexCard}"><h3 class="${style.indexCardTitle}">${escapeHtml(translations.compare.links[compare])}</h3><p class="${style.indexCardDescription}">${escapeHtml(translations.page_description[key])}</p><span class="${style.indexCardFooter}"><time datetime="${lastmod}">${formatArticleDate(lastmod)}</time><span class="${style.indexCardMore}" aria-hidden="true">${escapeHtml(translations.articles.read_more)} →</span></span></a></li>`
+            ({ path, name, key, lastmod }) =>
+              `<li><a href="${path}" class="${style.indexCard}"><h3 class="${style.indexCardTitle}">${escapeHtml(name)}</h3><p class="${style.indexCardDescription}">${escapeHtml(translations.page_description[key])}</p><span class="${style.indexCardFooter}"><time datetime="${lastmod}">${formatArticleDate(lastmod)}</time><span class="${style.indexCardMore}" aria-hidden="true">${escapeHtml(translations.articles.read_more)} →</span></span></a></li>`
           )
           .join('')
         const { title: categoryTitle, description: categoryDescription } = translations.articles.categories[category]
@@ -310,10 +317,10 @@ function buildRouteHtml(route) {
         '@type': 'ItemList',
         itemListElement: groups
           .flatMap(({ routes }) => routes)
-          .map(({ path, compare }, index) => ({
+          .map(({ path, name }, index) => ({
             '@type': 'ListItem',
             position: index + 1,
-            name: translations.compare.links[compare],
+            name,
             url: `${config.domain}${path}`
           }))
       }
@@ -455,9 +462,13 @@ function articleGroups() {
   return ARTICLE_CATALOG.categories
     .map((category) => ({
       category,
-      routes: compareRoutes
-        .filter((route) => route.category === category)
-        .sort((a, b) => order.indexOf(a.compare) - order.indexOf(b.compare))
+      routes: [
+        ...pageRoutes.filter((route) => route.category === category).map((route) => ({ ...route, name: route.pageTitle })),
+        ...compareRoutes
+          .filter((route) => route.category === category)
+          .sort((a, b) => order.indexOf(a.compare) - order.indexOf(b.compare))
+          .map((route) => ({ ...route, name: translations.compare.links[route.compare] }))
+      ]
     }))
     .filter(({ routes }) => routes.length > 0)
 }
@@ -466,7 +477,7 @@ function articleGroups() {
 function relatedRoutes(route, limit = 6) {
   const others = articleGroups()
     .flatMap(({ routes }) => routes)
-    .filter((other) => other.compare !== route.compare)
+    .filter((other) => other.compare && other.compare !== route.compare)
   return [
     ...others.filter((other) => other.category === route.category),
     ...others.filter((other) => other.category !== route.category)
