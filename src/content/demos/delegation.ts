@@ -17,12 +17,14 @@ export interface DelegationCopy {
   summary: string
   /** Delivered-result label: "From {agent} / {session}". */
   from: string
-  /** Per delegation target, in delegationScript.targets order: its new session and the result it reports back. */
-  targets: { session: string; result: string }[]
+  /**
+   * Per delegation target, in delegationScript.targets order: its new session, the live steps shown while it runs,
+   * the change summary once done, and the result it reports back.
+   */
+  targets: { session: string; steps: string[]; stat: string; result: string }[]
   /** Earlier sessions under some local Agents in the sidebar, keyed by roster id. */
   history: Record<string, string[]>
   status: Record<DelegationStatus, string>
-  open: string
   cancel: string
   approval: { title: string; source: string; command: string; allowOnce: string; alwaysAllow: string; deny: string }
   outputs: string
@@ -32,6 +34,10 @@ export interface DelegationCopy {
   openWith: string
   preview: string
   close: string
+  /** Heading of the tool group listing the delegations. */
+  delegated: string
+  /** The reported launch page, previewed live. */
+  launch: { badge: string; title: string; subtitle: string; primary: string; secondary: string }
 }
 
 /**
@@ -39,8 +45,8 @@ export interface DelegationCopy {
  * packages/ui/icons/general. The first three take part in the delegation.
  */
 export const delegationScript = {
-  workspace: 'pomodoro',
-  workspacePath: '~/code/pomodoro',
+  workspace: 'launch',
+  workspacePath: '~/code/launch',
   targets: [
     { id: 'claude-code', name: 'Claude Code' },
     { id: 'openai-codex', name: 'Codex' },
@@ -85,10 +91,10 @@ export const delegationScript = {
     { id: 'cortex-code-cli', name: 'Cortex Code' },
     { id: 'command-code-cli', name: 'Command Code' }
   ],
-  approvalCommand: 'pnpm create vite pomodoro --template vanilla-ts',
-  approvalTarget: 'pnpm create',
+  approvalCommand: 'pnpm add @paper-design/shaders-react',
+  approvalTarget: 'pnpm add',
   /** report_artifacts paths, in display order; the first is the previewable web page. */
-  outputs: ['pomodoro/index.html', 'pomodoro/src/timer.test.ts', 'pomodoro/README.md']
+  outputs: ['launch/index.html', 'launch/tests/smoke.spec.ts', 'launch/RELEASE_NOTES.md']
 }
 
 export const delegationDemo: Record<DemoLocale, DelegationCopy> = {
@@ -96,23 +102,37 @@ export const delegationDemo: Record<DemoLocale, DelegationCopy> = {
     region: 'Local agent delegation demo',
     addAgent: 'Add Agent',
     agentName: 'Release Agent',
-    session: 'Pomodoro web app',
-    task: 'Build a Pomodoro timer web app. Claude Code writes the app, Codex adds tests, Grok Build writes the README.',
+    session: 'v2.3 launch page',
+    task: 'Ship a launch page for v2.3 with a liquid-metal logo. Claude Code builds the page, Codex adds a smoke test, Grok Build drafts the release notes.',
     intro:
-      'Splitting this across three local agents in pomodoro: Claude Code on the app, Codex on tests, Grok Build on docs.',
+      'Delegating to three local agents in launch: Claude Code on the page, Codex on the smoke test, Grok Build on the release notes.',
     summary:
-      'The Pomodoro app is ready: a 25/5 focus timer with session dots, 12 passing tests and a README. Preview it below.',
+      'The v2.3 launch page is ready: a liquid-metal logo built with Paper Shaders, a passing smoke test and release notes. Preview it on the right.',
     from: 'From {agent} / {session}',
     targets: [
       {
-        session: 'Timer app',
-        result: 'Built index.html and src/timer.ts: focus and break modes, ring progress, 4-session dots.'
+        session: 'Launch page',
+        steps: [
+          'Scaffolding the Vite app',
+          'Adding Paper Shaders',
+          'Shaping the liquid-metal logo',
+          'Writing the hero copy'
+        ],
+        stat: '4 files · +268',
+        result: 'Built index.html with a liquid-metal Cherry logo (Paper Shaders), the hero copy and download buttons.'
       },
       {
-        session: 'Timer tests',
-        result: 'Added src/timer.test.ts with 12 tests for countdown, mode switch and reset. All pass.'
+        session: 'Smoke test',
+        steps: ['Reading index.html', 'Writing smoke.spec.ts', 'Running Playwright'],
+        stat: '1 file · 3 tests pass',
+        result: 'Added tests/smoke.spec.ts: the page loads, the logo canvas renders and both buttons link out. 3 pass.'
       },
-      { session: 'README', result: 'Wrote README.md with setup, keyboard shortcuts and a screenshot.' }
+      {
+        session: 'Release notes',
+        steps: ['Reading the v2.3 changelog', 'Writing RELEASE_NOTES.md'],
+        stat: '1 file · +64',
+        result: 'Drafted RELEASE_NOTES.md: local agents, delegation and approvals, plus upgrade notes.'
+      }
     ],
     history: {
       'claude-code': ['Refactor auth hooks'],
@@ -127,7 +147,6 @@ export const delegationDemo: Record<DemoLocale, DelegationCopy> = {
       completed: 'Completed',
       cancelled: 'Cancelled'
     },
-    open: 'Open session',
     cancel: 'Cancel',
     approval: {
       title: 'Approval required',
@@ -142,21 +161,44 @@ export const delegationDemo: Record<DemoLocale, DelegationCopy> = {
     openPreview: 'Open preview',
     openWith: 'Open with',
     preview: 'Preview',
-    close: 'Close'
+    close: 'Close',
+    delegated: 'Delegated to {count} local agents',
+    launch: {
+      badge: 'v2.3 · Local agents',
+      title: 'Every agent. One workspace.',
+      subtitle: 'Claude Code, Codex, Grok Build and 30+ local agents, working side by side in Cherry Studio.',
+      primary: 'Download',
+      secondary: 'Release notes'
+    }
   },
   zh: {
     region: '本地 Agent 委派演示',
     addAgent: '添加智能体',
     agentName: '发布助手',
-    session: '番茄钟网页应用',
-    task: '做一个番茄钟网页应用：Claude Code 写应用，Codex 补测试，Grok Build 写 README。',
-    intro: '交给 pomodoro 项目里的三个本地 Agent：Claude Code 写应用，Codex 写测试，Grok Build 写文档。',
-    summary: '番茄钟做好了：25/5 专注计时、轮次圆点、12 个通过的测试和一份 README。下面可以直接预览。',
+    session: 'v2.3 发布页',
+    task: '做一个 v2.3 发布页，主视觉用液态金属 logo：Claude Code 做页面，Codex 补冒烟测试，Grok Build 起草发布说明。',
+    intro: '委派给 launch 项目里的三个本地 Agent：Claude Code 做页面，Codex 写冒烟测试，Grok Build 写发布说明。',
+    summary: 'v2.3 发布页做好了：用 Paper Shaders 做的液态金属 logo、通过的冒烟测试和发布说明。右侧直接预览。',
     from: '来自 {agent} / {session}',
     targets: [
-      { session: '计时应用', result: '写好了 index.html 和 src/timer.ts：专注/休息两种模式、环形进度、4 轮圆点。' },
-      { session: '计时测试', result: '新增 src/timer.test.ts，12 个测试覆盖倒计时、模式切换和重置，全部通过。' },
-      { session: 'README', result: '写好了 README.md：安装步骤、快捷键和截图。' }
+      {
+        session: '发布页',
+        steps: ['初始化 Vite 项目', '引入 Paper Shaders', '塑形液态金属 logo', '撰写主视觉文案'],
+        stat: '4 个文件 · +268',
+        result: '写好了 index.html：液态金属 Cherry logo（Paper Shaders）、主视觉文案和下载按钮。'
+      },
+      {
+        session: '冒烟测试',
+        steps: ['阅读 index.html', '编写 smoke.spec.ts', '运行 Playwright'],
+        stat: '1 个文件 · 3 个测试通过',
+        result: '新增 tests/smoke.spec.ts：页面能打开、logo 画布正常渲染、两个按钮链接正确，3 个全部通过。'
+      },
+      {
+        session: '发布说明',
+        steps: ['阅读 v2.3 更新日志', '编写 RELEASE_NOTES.md'],
+        stat: '1 个文件 · +64',
+        result: '起草了 RELEASE_NOTES.md：本地 Agent、委派与审批，以及升级说明。'
+      }
     ],
     history: {
       'claude-code': ['重构登录 hooks'],
@@ -165,7 +207,6 @@ export const delegationDemo: Record<DemoLocale, DelegationCopy> = {
       'qwen-code': ['翻译设置页']
     },
     status: { pending: '等待中', running: '运行中', awaiting: '待输入', completed: '已完成', cancelled: '已取消' },
-    open: '打开会话',
     cancel: '取消',
     approval: {
       title: '需要你的批准',
@@ -180,6 +221,14 @@ export const delegationDemo: Record<DemoLocale, DelegationCopy> = {
     openPreview: '打开预览',
     openWith: '打开方式',
     preview: '预览',
-    close: '关闭'
+    close: '关闭',
+    delegated: '已委派给 {count} 个本地 Agent',
+    launch: {
+      badge: 'v2.3 · 本地 Agent',
+      title: '所有 Agent，一个工作台。',
+      subtitle: 'Claude Code、Codex、Grok Build 等 30 多个本地 Agent，在 Cherry Studio 里并肩工作。',
+      primary: '下载',
+      secondary: '发布说明'
+    }
   }
 }

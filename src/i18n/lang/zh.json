@@ -514,7 +514,7 @@
     "view_on": "在 {{platform}} 查看"
   },
   "home_page": {
-    "title_first": "你的模型。",
+    "title_first": "你的 Agent。",
     "title_second": "你的 AI 工作台。",
     "intro": "在一个开源桌面应用里切换主流大模型，和 AI 对话，让智能体处理多步骤任务，也能用自己的资料构建知识库。",
     "download_desktop": "下载桌面版",

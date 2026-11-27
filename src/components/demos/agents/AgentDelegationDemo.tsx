@@ -2,6 +2,7 @@ import { AnimatePresence, m, useReducedMotion } from 'framer-motion'
 import {
   ArrowUp,
   ArrowUpRight,
+  Check,
   ChevronDown,
   CirclePause,
   Ellipsis,
@@ -13,21 +14,24 @@ import {
   Plus,
   ShieldCheck,
   ToolCase,
+  Waypoints,
   X
 } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 
 import { agentDemo, agentScript } from '@/content/demos/agents'
-import { artifactsDemo } from '@/content/demos/create'
 import { type DelegationStatus, delegationDemo, delegationScript } from '@/content/demos/delegation'
+import { spring } from '@/lib/motion'
 import { cn } from '@/lib/utils'
-import { PomodoroApp } from '../create/PomodoroApp'
+import ShimmerText from '../mobile/ShimmerText'
 import AppShell from '../primitives/AppShell'
+import BeatDots from '../primitives/BeatDots'
 import DemoFrame from '../primitives/DemoFrame'
 import StreamingText from '../primitives/StreamingText'
 import { useDemoLocale } from '../primitives/useDemoLocale'
 import { useDemoPlayback, useDemoScript } from '../primitives/useDemoScript'
 import { useStickToBottom } from '../primitives/useStickToBottom'
+import { LaunchPage } from './LaunchPage'
 import { AgentSessionBar, blockEnter, CliLogo, EmojiAvatar, TOOLBAR_ICON, UserAvatar } from './parts'
 
 interface RunState {
@@ -60,6 +64,25 @@ const FOCUS = 'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visi
 const BUTTON = 'inline-flex h-8 items-center justify-center rounded-md px-3 text-[13px] font-medium whitespace-nowrap'
 const OUTLINE = 'border border-border bg-background'
 const SIDEBAR_ROW = 'flex h-8 min-w-0 items-center gap-2 rounded-lg px-2'
+// Status tone of each delegation row; the app's info/warning/success tokens.
+const TONE: Record<DelegationStatus, string> = {
+  pending: 'text-muted-foreground',
+  running: 'text-blue-500 dark:text-blue-400',
+  awaiting: 'text-amber-600 dark:text-amber-400',
+  completed: 'text-green-600 dark:text-green-400',
+  cancelled: 'text-muted-foreground'
+}
+
+/** The step a running local Agent is on, advancing every 1.5s and sweeping with the app's shimmer. */
+function LiveStep({ steps, active }: { steps: string[]; active: boolean }) {
+  const [step, setStep] = useState(0)
+  useEffect(() => {
+    if (!active) return
+    const timer = setInterval(() => setStep((value) => Math.min(value + 1, steps.length - 1)), 1500)
+    return () => clearInterval(timer)
+  }, [active, steps.length])
+  return <ShimmerText active={active}>{`${steps[step]}…`}</ShimmerText>
+}
 
 /**
  * An Agent delegates parts of one task to local CLI Agents in its workspace (CherryHQ/cherry-studio#21221). Each
@@ -220,44 +243,41 @@ export default function AgentDelegationDemo({ bezel }: { bezel?: boolean }) {
     </nav>
   )
 
+  // PermissionRequestComposer: a pending delegated approval takes the composer's place in the parent conversation.
   const approval = (
-    <m.div
-      initial={{ opacity: 0, height: 0 }}
-      animate={{ opacity: 1, height: 'auto' }}
-      exit={{ opacity: 0, height: 0 }}
-      className="overflow-hidden">
-      <div className="rounded-[17px] border-[0.5px] border-border p-2.5 shadow-[0_1px_5px_rgba(15,23,42,0.05)] dark:shadow-[0_1px_5px_rgba(0,0,0,0.14)]">
-        <h4 className="flex items-center gap-2 px-1 text-sm leading-5 font-semibold">
-          <ShieldCheck className="size-4 shrink-0 text-muted-foreground" aria-hidden="true" />
-          {copy.approval.title}
-        </h4>
-        <p className="mt-1 flex flex-wrap items-center gap-x-1.5 px-1 text-xs text-muted-foreground">
-          <span>{copy.approval.source}</span>
-          <span className="text-foreground">{delegationScript.targets[0].name}</span>
-        </p>
-        <div className="mt-2 rounded-[12px] bg-muted px-3 py-2 dark:bg-muted/30">
-          <div className="mb-1 text-xs text-muted-foreground">{copy.approval.command}</div>
-          <code className="block font-mono text-xs break-all text-foreground">{delegationScript.approvalCommand}</code>
-        </div>
-        <div className="mt-2.5 flex flex-wrap justify-end gap-2 px-1 pb-0.5">
-          <button type="button" onClick={() => cancel(0)} className={cn(BUTTON, OUTLINE, 'cursor-pointer', FOCUS)}>
-            {copy.approval.deny}
-          </button>
-          <button
-            type="button"
-            onClick={() => approveRef.current?.()}
-            className={cn(BUTTON, 'cursor-pointer bg-secondary text-secondary-foreground', FOCUS)}>
-            {copy.approval.alwaysAllow.replace('{target}', delegationScript.approvalTarget)}
-          </button>
-          <button
-            type="button"
-            onClick={() => approveRef.current?.()}
-            className={cn(BUTTON, 'cursor-pointer bg-foreground text-background hover:bg-foreground/85', FOCUS)}>
-            {copy.approval.allowOnce}
-          </button>
-        </div>
+    <div className="rounded-[17px] border-[0.5px] border-border bg-background p-2.5 shadow-[0_1px_5px_rgba(15,23,42,0.05)] dark:shadow-[0_1px_5px_rgba(0,0,0,0.14)]">
+      <h4 className="flex items-center gap-2 px-1 text-sm leading-5 font-semibold">
+        <ShieldCheck className="size-4 shrink-0 text-muted-foreground" aria-hidden="true" />
+        {copy.approval.title}
+      </h4>
+      <p className="mt-1 flex flex-wrap items-center gap-x-1.5 px-1 text-xs text-muted-foreground">
+        <span>{copy.approval.source}</span>
+        <span className="text-foreground">
+          {delegationScript.targets[0].name} / {copy.targets[0].session}
+        </span>
+      </p>
+      <div className="mt-2 rounded-[12px] bg-muted px-3 py-2 dark:bg-muted/30">
+        <div className="mb-1 text-xs text-muted-foreground">{copy.approval.command}</div>
+        <code className="block font-mono text-xs break-all text-foreground">{delegationScript.approvalCommand}</code>
       </div>
-    </m.div>
+      <div className="mt-2.5 flex flex-wrap justify-end gap-2 px-1 pb-0.5">
+        <button type="button" onClick={() => cancel(0)} className={cn(BUTTON, OUTLINE, 'cursor-pointer', FOCUS)}>
+          {copy.approval.deny}
+        </button>
+        <button
+          type="button"
+          onClick={() => approveRef.current?.()}
+          className={cn(BUTTON, 'cursor-pointer bg-secondary text-secondary-foreground', FOCUS)}>
+          {copy.approval.alwaysAllow.replace('{target}', delegationScript.approvalTarget)}
+        </button>
+        <button
+          type="button"
+          onClick={() => approveRef.current?.()}
+          className={cn(BUTTON, 'cursor-pointer bg-foreground text-background hover:bg-foreground/85', FOCUS)}>
+          {copy.approval.allowOnce}
+        </button>
+      </div>
+    </div>
   )
 
   const composer = (
@@ -385,8 +405,8 @@ export default function AgentDelegationDemo({ bezel }: { bezel?: boolean }) {
           <X className="size-4" />
         </button>
       </div>
-      <div className="min-h-0 flex-1">
-        <PomodoroApp app={artifactsDemo[locale].app} playing={playing} />
+      <div className="@container min-h-0 flex-1">
+        <LaunchPage copy={copy.launch} playing={playing} />
       </div>
     </m.aside>
   )
@@ -445,42 +465,57 @@ export default function AgentDelegationDemo({ bezel }: { bezel?: boolean }) {
                           <StreamingText key={locale} text={copy.intro} locale={tag} active={playing} rate={40} />
                         </p>
                         {state.cards.length > 0 && (
-                          <div className="mt-3 grid items-start gap-2.5 @5xl:grid-cols-3">
+                          <m.div {...blockEnter} className="mt-3 flex flex-col gap-1">
+                            <div className="flex min-h-7 items-center gap-1.5 text-[13px] text-muted-foreground">
+                              <Waypoints className="size-3.5 shrink-0 text-muted-foreground/80" aria-hidden="true" />
+                              {copy.delegated.replace('{count}', String(state.cards.length))}
+                              {state.busy && <BeatDots className="text-muted-foreground/80" />}
+                            </div>
                             {state.cards.map((status, index) => {
                               const target = delegationScript.targets[index]
                               return (
                                 <m.div
                                   key={target.id}
-                                  layout={!reduced}
                                   {...blockEnter}
-                                  className="min-w-0 space-y-3 overflow-hidden rounded-lg border border-border bg-background p-3">
-                                  <div className="flex items-center justify-between gap-2">
-                                    <span className="truncate text-sm font-medium">{target.name}</span>
+                                  className="group/row flex min-h-9 min-w-0 items-center gap-2.5 rounded-lg px-2 text-[13px] hover:bg-accent/50">
+                                  <CliLogo id={target.id} name={target.name} />
+                                  <span className="shrink-0 font-medium">{target.name}</span>
+                                  <span className="truncate text-muted-foreground">{copy.targets[index].session}</span>
+                                  <span className="ml-auto flex shrink-0 items-center gap-2 text-xs">
+                                    {status === 'running' && (
+                                      <span className="hidden max-w-56 truncate @3xl:inline">
+                                        <LiveStep steps={copy.targets[index].steps} active={playing} />
+                                      </span>
+                                    )}
+                                    {status === 'completed' && (
+                                      <span className="hidden text-muted-foreground @3xl:inline">
+                                        {copy.targets[index].stat}
+                                      </span>
+                                    )}
                                     <span
                                       role="status"
-                                      className="shrink-0 rounded-md border border-border px-2 py-0.5 text-xs font-medium">
+                                      className={cn('flex items-center gap-1 font-medium', TONE[status])}>
+                                      {status === 'running' && <BeatDots />}
+                                      {status === 'completed' && <Check className="size-3.5" aria-hidden="true" />}
                                       {copy.status[status]}
                                     </span>
-                                  </div>
-                                  <div className="text-xs break-all text-muted-foreground">
-                                    {delegationScript.workspacePath}
-                                  </div>
-                                  {status === 'awaiting' && approval}
-                                  <div className="flex justify-between gap-2">
-                                    <span className={cn(BUTTON, OUTLINE)}>{copy.open}</span>
                                     {!TERMINAL.includes(status) && (
                                       <button
                                         type="button"
                                         onClick={() => cancel(index)}
-                                        className={cn(BUTTON, OUTLINE, 'cursor-pointer hover:bg-accent', FOCUS)}>
-                                        {copy.cancel}
+                                        aria-label={`${copy.cancel} · ${target.name}`}
+                                        className={cn(
+                                          'flex size-6 cursor-pointer items-center justify-center rounded-md text-muted-foreground opacity-0 group-hover/row:opacity-100 hover:bg-accent focus-visible:opacity-100',
+                                          FOCUS
+                                        )}>
+                                        <X className="size-3.5" />
                                       </button>
                                     )}
-                                  </div>
+                                  </span>
                                 </m.div>
                               )
                             })}
-                          </div>
+                          </m.div>
                         )}
                       </div>
                     </m.div>
@@ -523,7 +558,18 @@ export default function AgentDelegationDemo({ bezel }: { bezel?: boolean }) {
                   )}
                 </div>
               </div>
-              <div className="shrink-0 px-3 pb-3 sm:px-5">{composer}</div>
+              <div className="shrink-0 px-3 pb-3 sm:px-5">
+                <AnimatePresence mode="wait" initial={false}>
+                  <m.div
+                    key={state.cards[0] === 'awaiting' ? 'approval' : 'composer'}
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 8 }}
+                    transition={spring.settle}>
+                    {state.cards[0] === 'awaiting' ? approval : composer}
+                  </m.div>
+                </AnimatePresence>
+              </div>
             </div>
             <AnimatePresence>{state.preview && previewPane}</AnimatePresence>
           </div>
