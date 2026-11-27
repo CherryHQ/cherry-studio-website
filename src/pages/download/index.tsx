@@ -140,17 +140,17 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
     <div className="flex min-h-screen flex-col bg-background">
       <main className="site-page-top relative isolate flex-1 overflow-hidden pb-16 sm:pb-24">
         <SectionBackdrop variant="grid-glow" />
-        <div className="site-container site-split">
-          <div className="min-w-0">
-            <p className="mb-4 font-mono text-xs tracking-widest text-primary uppercase">{t('download')}</p>
-            <h1 className="text-gradient text-5xl font-display text-balance sm:text-7xl">
+        <div className="site-container flex flex-col items-center">
+          <div className="flex min-w-0 flex-col items-center text-center [&>div]:justify-center">
+            <p className="mb-4 font-mono text-xs tracking-widest text-muted-foreground uppercase">{t('download')}</p>
+            <h1 className="text-gradient font-display text-6xl leading-none text-balance sm:text-8xl">
               {showMobile
                 ? t('mobile_download.title')
                 : isMobile
                   ? t('mobile_download.desktop_title')
                   : 'Cherry Studio'}
               {!showMobile && versionData && (
-                <span className="mt-4 flex">
+                <span className="mt-6 flex justify-center">
                   <span className="glass-card inline-flex items-center gap-2 rounded-full px-3 py-1 font-mono text-sm font-medium tracking-normal text-primary [-webkit-text-fill-color:currentColor]">
                     <span className="size-1.5 rounded-full bg-primary shadow-[0_0_8px_var(--color-primary)]" />
                     {versionData.version}
@@ -169,19 +169,19 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
               />
             )}
             {isMobile && !showMobile && (
-              <div className="mt-5 flex max-w-md items-start gap-2 text-xs text-muted-foreground">
+              <div className="mt-5 flex max-w-md items-start justify-center gap-2 text-xs text-muted-foreground">
                 <Laptop className="mt-0.5 h-4 w-4 shrink-0" />
                 <span>{t('download_page.mobile_hint')}</span>
               </div>
             )}
           </div>
 
-          <div className="relative min-w-0">
+          <div className="relative mt-12 w-full max-w-3xl min-w-0">
             <div
               aria-hidden="true"
               className="pointer-events-none absolute inset-x-[10%] top-10 -z-10 h-64 rounded-full bg-primary/20 blur-[110px]"
             />
-            <div className="glass-card overflow-hidden rounded-2xl text-left">
+            <div className="overflow-hidden rounded-[28px] bg-card text-left shadow-[inset_0_0_0_1px_var(--color-border),var(--shadow-float)]">
               <PlatformTabs
                 activePlatform={displayPlatform}
                 detectedPlatform={detectedPlatform}
@@ -219,7 +219,7 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
             </div>
 
             {!showMobile && (
-              <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2">
+              <div className="mt-6 flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
                 <a
                   href={releaseHistoryUrl}
                   target="_blank"

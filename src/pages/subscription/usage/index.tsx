@@ -74,7 +74,7 @@ function UsageContent() {
         </header>
 
         <section className="mt-12">
-          <h2 className="text-foreground text-xl font-semibold">{intro.title}</h2>
+          <h2 className="font-display text-3xl text-foreground">{intro.title}</h2>
           {intro.body.map((paragraph) => (
             <p key={paragraph} className="text-muted-foreground mt-4 leading-7">
               {paragraph}
@@ -83,7 +83,7 @@ function UsageContent() {
         </section>
 
         <section className="mt-12">
-          <h2 className="text-foreground text-xl font-semibold">{background.title}</h2>
+          <h2 className="font-display text-3xl text-foreground">{background.title}</h2>
           {background.body.map((paragraph) => (
             <p key={paragraph} className="text-muted-foreground mt-4 leading-7">
               {paragraph}
@@ -103,7 +103,7 @@ function UsageContent() {
         </section>
 
         <section className="mt-12">
-          <h2 className="text-foreground text-xl font-semibold">{how.title}</h2>
+          <h2 className="font-display text-3xl text-foreground">{how.title}</h2>
           {how.body.map((paragraph) => (
             <p key={paragraph} className="text-muted-foreground mt-4 leading-7">
               {paragraph}
@@ -115,7 +115,7 @@ function UsageContent() {
         </section>
 
         <section className="mt-12">
-          <h2 className="text-foreground text-xl font-semibold">{modelsSection.title}</h2>
+          <h2 className="font-display text-3xl text-foreground">{modelsSection.title}</h2>
           <ul className="mt-4 space-y-2">
             {models.map((model) => (
               <li key={model.id} className="text-muted-foreground flex items-baseline gap-2.5 leading-7">
@@ -128,7 +128,7 @@ function UsageContent() {
         </section>
 
         <section className="mt-12">
-          <h2 className="text-foreground text-xl font-semibold">{limits.title}</h2>
+          <h2 className="font-display text-3xl text-foreground">{limits.title}</h2>
           <p className="text-muted-foreground mt-4 leading-7">{limits.intro}</p>
           <div className="mt-6 overflow-x-auto">
             <table className="w-full min-w-[620px] border-collapse text-sm">
@@ -166,12 +166,12 @@ function UsageContent() {
         </section>
 
         <section className="mt-12">
-          <h2 className="text-foreground text-xl font-semibold">{overage.title}</h2>
+          <h2 className="font-display text-3xl text-foreground">{overage.title}</h2>
           <p className="text-muted-foreground mt-4 leading-7">{overage.body}</p>
         </section>
 
         <section className="mt-12">
-          <h2 className="text-foreground text-xl font-semibold">{privacy.title}</h2>
+          <h2 className="font-display text-3xl text-foreground">{privacy.title}</h2>
           {privacy.body.map((paragraph) => (
             <p key={paragraph} className="text-muted-foreground mt-4 leading-7">
               {paragraph}
@@ -180,7 +180,7 @@ function UsageContent() {
         </section>
 
         <section className="mt-12">
-          <h2 className="text-foreground text-xl font-semibold">{goals.title}</h2>
+          <h2 className="font-display text-3xl text-foreground">{goals.title}</h2>
           <ul className="mt-4 space-y-3">
             {goals.items.map((item) => (
               <li key={item} className="text-muted-foreground flex gap-3 leading-7">
