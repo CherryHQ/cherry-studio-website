@@ -23,11 +23,11 @@ export const duration = { instant: 0.12, fast: 0.2, base: 0.25, slow: 0.35, dial
 
 export const press = { whileTap: { scale: 0.97 }, transition: { duration: 0.11, ease: ease.settle } } as const
 
-/** Scroll-reveal props: a short rise out of a 6px blur; entrances never start from scale(0). */
+/** Scroll-reveal props: a short rise (no blur, which is costly to paint while scrolling); never from scale(0). */
 export function reveal(index = 0) {
   return {
-    initial: { opacity: 0, y: 16, filter: 'blur(6px)' },
-    whileInView: { opacity: 1, y: 0, filter: 'blur(0px)' },
+    initial: { opacity: 0, y: 16 },
+    whileInView: { opacity: 1, y: 0 },
     viewport: { once: true, margin: '-10% 0px' },
     transition: { ...spring.gentle, delay: index * 0.06 }
   } as const

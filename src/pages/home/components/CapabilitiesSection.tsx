@@ -58,8 +58,8 @@ const steps: Step[] = [
   }
 ]
 const chapterIds = [...new Set(steps.map((step) => step.chapter))]
-// Window title bar plus the caption under each demo frame, and the tallest a filled frame body may grow.
-const FRAME_CHROME = 80
+// Caption under each chromeless demo frame, and the tallest a filled frame body may grow.
+const FRAME_CHROME = 40
 const FILL_MAX = 760
 
 function useMinWidth(query: string) {
@@ -174,8 +174,13 @@ function PinnedStory() {
   const progress = useSpring(scrollYProgress, { stiffness: 220, damping: 40, mass: 0.6 })
   const step = steps[index]
 
+  // Steps stay mounted once shown, so scrolling back and forth never remounts a demo or restarts its script.
+  const [visited, setVisited] = useState<number[]>([0])
+
   useMotionValueEvent(scrollYProgress, 'change', (value) => {
-    setIndex(Math.min(steps.length - 1, Math.max(0, Math.floor(value * steps.length))))
+    const next = Math.min(steps.length - 1, Math.max(0, Math.floor(value * steps.length)))
+    setIndex(next)
+    setVisited((current) => (current.includes(next) ? current : [...current, next]))
   })
 
   // Warm the next demo's chunk so the swap does not wait on the network.
@@ -233,28 +238,27 @@ function PinnedStory() {
           <AnimatePresence mode="wait" initial={false}>
             <m.div
               key={step.chapter}
-              initial={{ opacity: 0, y: 16, filter: 'blur(6px)' }}
-              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-              exit={{ opacity: 0, y: -12, filter: 'blur(4px)' }}
-              transition={{ duration: 0.35, ease: ease.settle }}>
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.2, ease: ease.settle }}>
               <ChapterText chapter={step.chapter} compact />
             </m.div>
           </AnimatePresence>
         </div>
 
-        <AnimatePresence mode="wait" initial={false}>
-          <m.div
-            key={index}
-            className="flex min-h-0 flex-col py-8"
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -24 }}
-            transition={{ duration: 0.35, ease: ease.settle }}>
-            <FitToBox frames={step.demos.length}>
-              <StepDemos step={step} stacked />
-            </FitToBox>
-          </m.div>
-        </AnimatePresence>
+        <div className="grid min-h-0 py-8">
+          {visited.map((stepIndex) => (
+            <div
+              key={stepIndex}
+              hidden={stepIndex !== index}
+              className="col-start-1 row-start-1 flex min-h-0 flex-col motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-3 motion-safe:duration-300 motion-safe:ease-out">
+              <FitToBox frames={steps[stepIndex].demos.length}>
+                <StepDemos step={steps[stepIndex]} stacked />
+              </FitToBox>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   )

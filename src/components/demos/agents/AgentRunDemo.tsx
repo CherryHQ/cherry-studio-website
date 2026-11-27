@@ -42,6 +42,7 @@ import {
 import productStats from '@/content/product-stats.json'
 import { spring } from '@/lib/motion'
 import { cn } from '@/lib/utils'
+import AppShell, { tabTitle } from '../primitives/AppShell'
 import BeatDots from '../primitives/BeatDots'
 import { cliIcon, providerIcon } from '../primitives/brand'
 import DemoFrame from '../primitives/DemoFrame'
@@ -707,204 +708,206 @@ export default function AgentRunDemo() {
 
   return (
     <div ref={ref} role="region" aria-label={copy.region}>
-      <DemoFrame title={copy.window} onReplay={replay} bodyClassName="h-[520px]">
-        <div className="flex h-full min-h-0 flex-col">
-          <div className="flex h-11 shrink-0 items-center justify-between gap-2 px-3" aria-hidden="true">
-            <div className="flex min-w-0 items-center gap-0.5">
-              <span className="flex size-[30px] shrink-0 items-center justify-center text-muted-foreground">
-                <svg viewBox="0 0 24 24" fill="none" className="size-[18px]">
-                  <rect x="3.5" y="4" width="17" height="16" rx="4" stroke="currentColor" strokeWidth="1.7" />
-                  <path d="M9.5 5v14" stroke="currentColor" strokeLinecap="round" strokeWidth="1.7" />
-                </svg>
-              </span>
-              <span className="flex size-7 shrink-0 items-center justify-center">
-                <EmojiAvatar size={20} />
-              </span>
-              <span className="hidden h-8 shrink-0 items-center gap-1.5 rounded-lg px-2.5 text-xs font-medium md:flex">
-                {copy.agentName}
-                {!state.user && <ChevronDown className="size-3.5 text-muted-foreground" />}
-              </span>
-              <span className="flex h-8 min-w-0 items-center gap-1.5 rounded-lg px-2.5 text-xs font-medium">
-                <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-background">
-                  <ProviderIcon id={agentScript.model.provider} className="size-3.5" />
+      <DemoFrame chromeless title={copy.window} onReplay={replay} bodyClassName="h-[570px]">
+        <AppShell active="agents" tab={{ title: tabTitle(copy.window), emoji: '🤖' }}>
+          <div className="flex h-full min-h-0 flex-col">
+            <div className="flex h-11 shrink-0 items-center justify-between gap-2 px-3" aria-hidden="true">
+              <div className="flex min-w-0 items-center gap-0.5">
+                <span className="flex size-[30px] shrink-0 items-center justify-center text-muted-foreground">
+                  <svg viewBox="0 0 24 24" fill="none" className="size-[18px]">
+                    <rect x="3.5" y="4" width="17" height="16" rx="4" stroke="currentColor" strokeWidth="1.7" />
+                    <path d="M9.5 5v14" stroke="currentColor" strokeLinecap="round" strokeWidth="1.7" />
+                  </svg>
                 </span>
-                <span className="hidden truncate sm:inline">
-                  {agentScript.model.name} | {agentScript.model.providerName}
+                <span className="flex size-7 shrink-0 items-center justify-center">
+                  <EmojiAvatar size={20} />
                 </span>
-                <ChevronDown className="hidden size-3.5 shrink-0 text-muted-foreground sm:block" />
-              </span>
-              <span className="flex h-8 shrink-0 items-center gap-1.5 rounded-lg px-2.5 text-xs font-medium">
-                <Folder className="size-5 text-muted-foreground" />
-                <span className="hidden sm:inline">{copy.workspace}</span>
-                <ChevronDown className="hidden size-3.5 text-muted-foreground sm:block" />
-              </span>
-            </div>
-            <div className="flex shrink-0 items-center gap-0.5 text-muted-foreground">
-              {[FolderOpen, ListCollapse, Waypoints].map((Icon, index) => (
-                <span key={index} className="flex size-[30px] items-center justify-center">
-                  <Icon className="size-3.5" />
+                <span className="hidden h-8 shrink-0 items-center gap-1.5 rounded-lg px-2.5 text-xs font-medium md:flex">
+                  {copy.agentName}
+                  {!state.user && <ChevronDown className="size-3.5 text-muted-foreground" />}
                 </span>
-              ))}
-            </div>
-          </div>
-
-          <div ref={scroller} className="relative min-h-0 flex-1 overflow-y-auto px-4 [scrollbar-width:none] sm:px-6">
-            {!state.user && (
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-6 text-center">
-                <EmojiAvatar size={48} />
-                <p className="text-lg font-medium">{copy.greeting}</p>
-              </div>
-            )}
-            <div ref={thread} className="space-y-4 py-4">
-              {state.user && (
-                <m.div {...blockEnter} className="flex justify-end">
-                  <div className="flex max-w-[calc(100%-2.5rem)] items-start gap-2.5">
-                    <p className="rounded-[10px] bg-muted px-4 py-2.5 text-sm leading-relaxed">{copy.task}</p>
-                    <UserAvatar className="mt-1.5" />
-                  </div>
-                </m.div>
-              )}
-
-              {state.intro && (
-                <m.div {...blockEnter} className="flex items-start gap-2.5">
-                  <EmojiAvatar size={30} />
-                  <div className="flex min-w-0 flex-1 flex-col">
-                    <span className="truncate text-sm leading-5 font-semibold">{copy.agentName}</span>
-                    <div className="mt-2 min-w-0">
-                      {state.busy ? (
-                        <div className="mb-2 pb-2">
-                          <div className="flex min-h-7 items-center py-0.5">{processHeader}</div>
-                          {processBody}
-                        </div>
-                      ) : (
-                        <div className="mb-2">
-                          <button
-                            type="button"
-                            aria-expanded={processOpen}
-                            onClick={() => setProcessOpen((open) => !open)}
-                            className="flex min-h-7 cursor-pointer items-center gap-1.5 rounded py-0.5 outline-none hover:text-foreground focus-visible:bg-accent/50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
-                            {processHeader}
-                            <ChevronDown
-                              aria-hidden="true"
-                              className={cn(
-                                'size-3.5 shrink-0 opacity-60 transition-transform',
-                                !processOpen && '-rotate-90'
-                              )}
-                            />
-                          </button>
-                          {processOpen && <div className="pb-2">{processBody}</div>}
-                        </div>
-                      )}
-                      {state.summary !== null && (
-                        <p className="text-sm leading-relaxed">
-                          <StreamingText
-                            key={`${locale}-${state.summary}`}
-                            text={copy.summary[state.summary]}
-                            locale={tag}
-                            active={playing}
-                            rate={44}
-                          />
-                        </p>
-                      )}
-                    </div>
-                  </div>
-                </m.div>
-              )}
-            </div>
-          </div>
-
-          <div className="shrink-0 px-3 pb-3 sm:px-5">
-            <AnimatePresence initial={false}>
-              {showCapsule && !state.asking && (
-                <m.div
-                  key="capsule"
-                  aria-hidden="true"
-                  initial={{ opacity: 0, y: 6 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 6 }}
-                  className="flex justify-center pb-2">
-                  <span className="flex h-9 items-center gap-1.5 rounded-full border border-border bg-popover px-2.5 text-sm shadow-sm">
-                    <svg viewBox="0 0 20 20" className="size-[17px] -rotate-90">
-                      <circle cx="10" cy="10" r="8" fill="none" strokeWidth="2" className="stroke-border" />
-                      <circle
-                        cx="10"
-                        cy="10"
-                        r="8"
-                        fill="none"
-                        strokeWidth="2"
-                        strokeDasharray={50.27}
-                        strokeDashoffset={50.27 * (1 - planDone / (plan?.length ?? 1))}
-                        className={cn('stroke-current transition-[stroke-dashoffset] duration-300', INFO)}
-                      />
-                    </svg>
-                    <span className="tabular-nums">
-                      {copy.stepProgress
-                        .replace('{current}', String(Math.min(planDone + 1, plan?.length ?? 1)))
-                        .replace('{total}', String(plan?.length ?? 0))}
-                    </span>
+                <span className="flex h-8 min-w-0 items-center gap-1.5 rounded-lg px-2.5 text-xs font-medium">
+                  <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-background">
+                    <ProviderIcon id={agentScript.model.provider} className="size-3.5" />
                   </span>
-                </m.div>
-              )}
-            </AnimatePresence>
-            <AnimatePresence mode="wait" initial={false}>
-              <m.div
-                key={state.asking ? 'ask' : 'composer'}
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 8 }}
-                transition={spring.settle}>
-                {state.asking ? questionPanel : composer}
-              </m.div>
-            </AnimatePresence>
-          </div>
-        </div>
-
-        <AnimatePresence>
-          {confirming && (
-            <m.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="absolute inset-0 z-40 flex items-center justify-center bg-black/40 p-4">
-              <div
-                role="alertdialog"
-                aria-modal="true"
-                aria-label={copy.permission.confirm.title}
-                className="w-full max-w-sm rounded-xl border border-border bg-popover p-5 shadow-(--shadow-float)">
-                <h4 className="text-base font-semibold">{copy.permission.confirm.title}</h4>
-                <p className="mt-1.5 text-sm text-muted-foreground">{copy.permission.confirm.description}</p>
-                <p className="mt-3 text-sm">
-                  <span className="text-muted-foreground">{copy.permission.confirm.scope}: </span>
-                  <span className="font-medium">{copy.agentName}</span>
-                </p>
-                <p className="mt-2 text-sm text-muted-foreground">{copy.permission.confirm.protections}</p>
-                <div className="mt-5 flex justify-end gap-2">
-                  <button
-                    type="button"
-                    onClick={() => setConfirming(false)}
-                    className={cn(
-                      'h-8 cursor-pointer rounded-md border border-border px-3 text-sm hover:bg-accent',
-                      FOCUS
-                    )}>
-                    {copy.permission.confirm.cancel}
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setMode('bypassPermissions')
-                      setConfirming(false)
-                    }}
-                    className={cn(
-                      'h-8 cursor-pointer rounded-md bg-destructive px-3 text-sm text-white hover:bg-destructive/90',
-                      FOCUS
-                    )}>
-                    {copy.permission.confirm.ok}
-                  </button>
-                </div>
+                  <span className="hidden truncate sm:inline">
+                    {agentScript.model.name} | {agentScript.model.providerName}
+                  </span>
+                  <ChevronDown className="hidden size-3.5 shrink-0 text-muted-foreground sm:block" />
+                </span>
+                <span className="flex h-8 shrink-0 items-center gap-1.5 rounded-lg px-2.5 text-xs font-medium">
+                  <Folder className="size-5 text-muted-foreground" />
+                  <span className="hidden sm:inline">{copy.workspace}</span>
+                  <ChevronDown className="hidden size-3.5 text-muted-foreground sm:block" />
+                </span>
               </div>
-            </m.div>
-          )}
-        </AnimatePresence>
+              <div className="flex shrink-0 items-center gap-0.5 text-muted-foreground">
+                {[FolderOpen, ListCollapse, Waypoints].map((Icon, index) => (
+                  <span key={index} className="flex size-[30px] items-center justify-center">
+                    <Icon className="size-3.5" />
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div ref={scroller} className="relative min-h-0 flex-1 overflow-y-auto px-4 [scrollbar-width:none] sm:px-6">
+              {!state.user && (
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-6 text-center">
+                  <EmojiAvatar size={48} />
+                  <p className="text-lg font-medium">{copy.greeting}</p>
+                </div>
+              )}
+              <div ref={thread} className="space-y-4 py-4">
+                {state.user && (
+                  <m.div {...blockEnter} className="flex justify-end">
+                    <div className="flex max-w-[calc(100%-2.5rem)] items-start gap-2.5">
+                      <p className="rounded-[10px] bg-muted px-4 py-2.5 text-sm leading-relaxed">{copy.task}</p>
+                      <UserAvatar className="mt-1.5" />
+                    </div>
+                  </m.div>
+                )}
+
+                {state.intro && (
+                  <m.div {...blockEnter} className="flex items-start gap-2.5">
+                    <EmojiAvatar size={30} />
+                    <div className="flex min-w-0 flex-1 flex-col">
+                      <span className="truncate text-sm leading-5 font-semibold">{copy.agentName}</span>
+                      <div className="mt-2 min-w-0">
+                        {state.busy ? (
+                          <div className="mb-2 pb-2">
+                            <div className="flex min-h-7 items-center py-0.5">{processHeader}</div>
+                            {processBody}
+                          </div>
+                        ) : (
+                          <div className="mb-2">
+                            <button
+                              type="button"
+                              aria-expanded={processOpen}
+                              onClick={() => setProcessOpen((open) => !open)}
+                              className="flex min-h-7 cursor-pointer items-center gap-1.5 rounded py-0.5 outline-none hover:text-foreground focus-visible:bg-accent/50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+                              {processHeader}
+                              <ChevronDown
+                                aria-hidden="true"
+                                className={cn(
+                                  'size-3.5 shrink-0 opacity-60 transition-transform',
+                                  !processOpen && '-rotate-90'
+                                )}
+                              />
+                            </button>
+                            {processOpen && <div className="pb-2">{processBody}</div>}
+                          </div>
+                        )}
+                        {state.summary !== null && (
+                          <p className="text-sm leading-relaxed">
+                            <StreamingText
+                              key={`${locale}-${state.summary}`}
+                              text={copy.summary[state.summary]}
+                              locale={tag}
+                              active={playing}
+                              rate={44}
+                            />
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  </m.div>
+                )}
+              </div>
+            </div>
+
+            <div className="shrink-0 px-3 pb-3 sm:px-5">
+              <AnimatePresence initial={false}>
+                {showCapsule && !state.asking && (
+                  <m.div
+                    key="capsule"
+                    aria-hidden="true"
+                    initial={{ opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 6 }}
+                    className="flex justify-center pb-2">
+                    <span className="flex h-9 items-center gap-1.5 rounded-full border border-border bg-popover px-2.5 text-sm shadow-sm">
+                      <svg viewBox="0 0 20 20" className="size-[17px] -rotate-90">
+                        <circle cx="10" cy="10" r="8" fill="none" strokeWidth="2" className="stroke-border" />
+                        <circle
+                          cx="10"
+                          cy="10"
+                          r="8"
+                          fill="none"
+                          strokeWidth="2"
+                          strokeDasharray={50.27}
+                          strokeDashoffset={50.27 * (1 - planDone / (plan?.length ?? 1))}
+                          className={cn('stroke-current transition-[stroke-dashoffset] duration-300', INFO)}
+                        />
+                      </svg>
+                      <span className="tabular-nums">
+                        {copy.stepProgress
+                          .replace('{current}', String(Math.min(planDone + 1, plan?.length ?? 1)))
+                          .replace('{total}', String(plan?.length ?? 0))}
+                      </span>
+                    </span>
+                  </m.div>
+                )}
+              </AnimatePresence>
+              <AnimatePresence mode="wait" initial={false}>
+                <m.div
+                  key={state.asking ? 'ask' : 'composer'}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 8 }}
+                  transition={spring.settle}>
+                  {state.asking ? questionPanel : composer}
+                </m.div>
+              </AnimatePresence>
+            </div>
+          </div>
+
+          <AnimatePresence>
+            {confirming && (
+              <m.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="absolute inset-0 z-40 flex items-center justify-center bg-black/40 p-4">
+                <div
+                  role="alertdialog"
+                  aria-modal="true"
+                  aria-label={copy.permission.confirm.title}
+                  className="w-full max-w-sm rounded-xl border border-border bg-popover p-5 shadow-(--shadow-float)">
+                  <h4 className="text-base font-semibold">{copy.permission.confirm.title}</h4>
+                  <p className="mt-1.5 text-sm text-muted-foreground">{copy.permission.confirm.description}</p>
+                  <p className="mt-3 text-sm">
+                    <span className="text-muted-foreground">{copy.permission.confirm.scope}: </span>
+                    <span className="font-medium">{copy.agentName}</span>
+                  </p>
+                  <p className="mt-2 text-sm text-muted-foreground">{copy.permission.confirm.protections}</p>
+                  <div className="mt-5 flex justify-end gap-2">
+                    <button
+                      type="button"
+                      onClick={() => setConfirming(false)}
+                      className={cn(
+                        'h-8 cursor-pointer rounded-md border border-border px-3 text-sm hover:bg-accent',
+                        FOCUS
+                      )}>
+                      {copy.permission.confirm.cancel}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setMode('bypassPermissions')
+                        setConfirming(false)
+                      }}
+                      className={cn(
+                        'h-8 cursor-pointer rounded-md bg-destructive px-3 text-sm text-white hover:bg-destructive/90',
+                        FOCUS
+                      )}>
+                      {copy.permission.confirm.ok}
+                    </button>
+                  </div>
+                </div>
+              </m.div>
+            )}
+          </AnimatePresence>
+        </AppShell>
       </DemoFrame>
 
       <div className="mt-6">

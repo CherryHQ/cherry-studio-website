@@ -3,6 +3,7 @@ import { type KeyboardEvent, type PointerEvent, useLayoutEffect, useRef, useStat
 
 import { anchorDemo } from '@/content/demos/chatTools'
 import { cn } from '@/lib/utils'
+import AppShell, { tabTitle } from '../primitives/AppShell'
 import DemoFrame from '../primitives/DemoFrame'
 import ProviderIcon from '../primitives/ProviderIcon'
 import { useDemoLocale } from '../primitives/useDemoLocale'
@@ -164,119 +165,122 @@ export default function AnchorRailDemo() {
   return (
     <div ref={ref} role="region" aria-label={copy.window}>
       <DemoFrame
+        chromeless
         title={copy.window}
         onReplay={() => {
           userRef.current = false
           replay()
         }}
-        bodyClassName="h-[320px] overflow-hidden">
-        <div
-          ref={scrollerRef}
-          onScroll={onThreadScroll}
-          tabIndex={-1}
-          aria-hidden="true"
-          className="absolute inset-0 overflow-y-auto py-6 pr-14 pl-4 [mask-image:linear-gradient(to_bottom,transparent,black_28px,black_calc(100%-60px),transparent)] [scrollbar-width:none] sm:pl-6">
-          <div className="space-y-1">
-            {turns.map((turn, index) => (
-              <div
-                key={index}
-                ref={(node) => {
-                  turnRefs.current[index] = node
-                }}
-                className="space-y-2.5">
-                <div className="flex justify-end pt-2.5">
-                  <p className="max-w-[85%] rounded-[10px] bg-chat-user px-4 py-2.5 text-sm leading-5">
-                    {turn.question}
-                  </p>
-                </div>
-                <div className="flex items-start gap-2.5 pt-2.5">
-                  <span className="flex size-[30px] shrink-0 items-center justify-center overflow-hidden rounded-full border border-border bg-background">
-                    <ProviderIcon id="anthropic" className="size-4" />
-                  </span>
-                  <div className="min-w-0 flex-1">
-                    <p className="truncate text-sm leading-5 font-semibold">{copy.model}</p>
-                    <p className="mt-1 text-sm leading-6 text-foreground/85">{turn.answer}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div
-          ref={railRef}
-          role="navigation"
-          aria-label={copy.railLabel}
-          className="absolute top-2.5 right-4 bottom-8 z-20 select-none"
-          style={{ width: HIT_STRIP_WIDTH }}
-          onPointerMove={onPointerMove}
-          onPointerLeave={onPointerLeave}>
+        bodyClassName="h-[370px] overflow-hidden">
+        <AppShell active="assistants" tab={{ title: tabTitle(copy.window), emoji: '😀' }}>
           <div
-            onKeyDown={onRailKeyDown}
-            className="absolute inset-x-0 flex flex-col items-end transition-opacity duration-150"
-            style={{
-              top: RAIL_MIN_EDGE_MARGIN_PX,
-              bottom: RAIL_MIN_EDGE_MARGIN_PX,
-              paddingTop: padTop,
-              opacity: isHovering ? 1 : 0.7
-            }}>
-            {turns.map((turn, index) => {
-              const isFocused = index === focusedIndex
-              const emphasized = focusedIndex !== null ? isFocused : index === activeIndex
-              const width = isHovering
-                ? isFocused
-                  ? TICK_PEAK_WIDTH
-                  : TICK_BASE_WIDTH + waveBonus(index)
-                : TICK_BASE_WIDTH
-              return (
-                <button
+            ref={scrollerRef}
+            onScroll={onThreadScroll}
+            tabIndex={-1}
+            aria-hidden="true"
+            className="absolute inset-0 overflow-y-auto py-6 pr-14 pl-4 [mask-image:linear-gradient(to_bottom,transparent,black_28px,black_calc(100%-60px),transparent)] [scrollbar-width:none] sm:pl-6">
+            <div className="space-y-1">
+              {turns.map((turn, index) => (
+                <div
                   key={index}
                   ref={(node) => {
-                    tickRefs.current[index] = node
+                    turnRefs.current[index] = node
                   }}
-                  type="button"
-                  tabIndex={index === tabStop ? 0 : -1}
-                  aria-label={`${copy.jumpTo.replace('{number}', String(index + 1))}: ${turn.question}`}
-                  aria-current={index === activeIndex ? 'true' : undefined}
-                  className="flex w-full shrink-0 cursor-pointer items-center justify-end rounded-sm outline-none focus-visible:ring-1 focus-visible:ring-primary"
-                  style={{ height: RAIL_TICK_PITCH_PX }}
-                  onFocus={() => {
-                    takeOver()
-                    setKeyboardIndex(index)
-                  }}
-                  onBlur={() => setKeyboardIndex((current) => (current === index ? null : current))}
-                  onClick={() => {
-                    takeOver()
-                    jump(index)
-                  }}>
-                  <span
-                    className={cn(
-                      'block rounded-full',
-                      tickTransition,
-                      isFocused ? 'h-0.5' : 'h-[1.5px]',
-                      emphasized ? 'bg-foreground' : 'bg-foreground/20'
-                    )}
-                    style={{ width }}
-                  />
-                </button>
-              )
-            })}
+                  className="space-y-2.5">
+                  <div className="flex justify-end pt-2.5">
+                    <p className="max-w-[85%] rounded-[10px] bg-chat-user px-4 py-2.5 text-sm leading-5">
+                      {turn.question}
+                    </p>
+                  </div>
+                  <div className="flex items-start gap-2.5 pt-2.5">
+                    <span className="flex size-[30px] shrink-0 items-center justify-center overflow-hidden rounded-full border border-border bg-background">
+                      <ProviderIcon id="anthropic" className="size-4" />
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <p className="truncate text-sm leading-5 font-semibold">{copy.model}</p>
+                      <p className="mt-1 text-sm leading-6 text-foreground/85">{turn.answer}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
-          {focusedTurn && (
+          <div
+            ref={railRef}
+            role="navigation"
+            aria-label={copy.railLabel}
+            className="absolute top-2.5 right-4 bottom-8 z-20 select-none"
+            style={{ width: HIT_STRIP_WIDTH }}
+            onPointerMove={onPointerMove}
+            onPointerLeave={onPointerLeave}>
             <div
-              aria-hidden="true"
-              className="pointer-events-none absolute right-full z-30 flex w-max max-w-[min(20rem,68vw)] -translate-y-1/2 flex-col gap-1 rounded-xl border-[0.5px] border-border bg-popover p-3 text-popover-foreground shadow-lg transition-[top] duration-150 ease-[cubic-bezier(0.25,1,0.5,1)] motion-reduce:transition-none"
-              style={{ top: cardTop }}>
-              <p className="line-clamp-1 text-sm font-medium break-all text-foreground">{focusedTurn.question}</p>
-              <p className="line-clamp-2 text-sm leading-5 break-all text-muted-foreground">{focusedTurn.answer}</p>
+              onKeyDown={onRailKeyDown}
+              className="absolute inset-x-0 flex flex-col items-end transition-opacity duration-150"
+              style={{
+                top: RAIL_MIN_EDGE_MARGIN_PX,
+                bottom: RAIL_MIN_EDGE_MARGIN_PX,
+                paddingTop: padTop,
+                opacity: isHovering ? 1 : 0.7
+              }}>
+              {turns.map((turn, index) => {
+                const isFocused = index === focusedIndex
+                const emphasized = focusedIndex !== null ? isFocused : index === activeIndex
+                const width = isHovering
+                  ? isFocused
+                    ? TICK_PEAK_WIDTH
+                    : TICK_BASE_WIDTH + waveBonus(index)
+                  : TICK_BASE_WIDTH
+                return (
+                  <button
+                    key={index}
+                    ref={(node) => {
+                      tickRefs.current[index] = node
+                    }}
+                    type="button"
+                    tabIndex={index === tabStop ? 0 : -1}
+                    aria-label={`${copy.jumpTo.replace('{number}', String(index + 1))}: ${turn.question}`}
+                    aria-current={index === activeIndex ? 'true' : undefined}
+                    className="flex w-full shrink-0 cursor-pointer items-center justify-end rounded-sm outline-none focus-visible:ring-1 focus-visible:ring-primary"
+                    style={{ height: RAIL_TICK_PITCH_PX }}
+                    onFocus={() => {
+                      takeOver()
+                      setKeyboardIndex(index)
+                    }}
+                    onBlur={() => setKeyboardIndex((current) => (current === index ? null : current))}
+                    onClick={() => {
+                      takeOver()
+                      jump(index)
+                    }}>
+                    <span
+                      className={cn(
+                        'block rounded-full',
+                        tickTransition,
+                        isFocused ? 'h-0.5' : 'h-[1.5px]',
+                        emphasized ? 'bg-foreground' : 'bg-foreground/20'
+                      )}
+                      style={{ width }}
+                    />
+                  </button>
+                )
+              })}
             </div>
-          )}
-        </div>
 
-        <p className="pointer-events-none absolute bottom-2 left-3 rounded-md bg-card/85 px-1.5 py-0.5 font-mono text-[10px] text-muted-foreground backdrop-blur-sm sm:left-5">
-          {copy.hint}
-        </p>
+            {focusedTurn && (
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute right-full z-30 flex w-max max-w-[min(20rem,68vw)] -translate-y-1/2 flex-col gap-1 rounded-xl border-[0.5px] border-border bg-popover p-3 text-popover-foreground shadow-lg transition-[top] duration-150 ease-[cubic-bezier(0.25,1,0.5,1)] motion-reduce:transition-none"
+                style={{ top: cardTop }}>
+                <p className="line-clamp-1 text-sm font-medium break-all text-foreground">{focusedTurn.question}</p>
+                <p className="line-clamp-2 text-sm leading-5 break-all text-muted-foreground">{focusedTurn.answer}</p>
+              </div>
+            )}
+          </div>
+
+          <p className="pointer-events-none absolute bottom-2 left-3 rounded-md bg-card/85 px-1.5 py-0.5 font-mono text-[10px] text-muted-foreground backdrop-blur-sm sm:left-5">
+            {copy.hint}
+          </p>
+        </AppShell>
       </DemoFrame>
     </div>
   )

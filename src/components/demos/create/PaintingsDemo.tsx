@@ -35,6 +35,7 @@ import {
 } from '@/content/demos/create'
 import { ease } from '@/lib/motion'
 import { cn } from '@/lib/utils'
+import AppShell, { tabTitle } from '../primitives/AppShell'
 import DemoFrame from '../primitives/DemoFrame'
 import ProviderIcon from '../primitives/ProviderIcon'
 import { useDemoLocale } from '../primitives/useDemoLocale'
@@ -809,111 +810,113 @@ export default function PaintingsDemo() {
 
   return (
     <div ref={ref} role="region" aria-label={copy.window}>
-      <DemoFrame title={copy.window} onReplay={replay} bodyClassName="h-[460px]">
-        <div className="flex h-full px-2 pt-2 pb-1">
-          <nav
-            aria-label={copy.selectImage}
-            className="flex h-full w-[68px] shrink-0 flex-col gap-2 overflow-y-auto border-r border-border px-2 py-2 [scrollbar-width:none]">
-            <button
-              type="button"
-              aria-label={copy.newImage}
-              title={copy.newImage}
-              disabled={busy}
-              onClick={newImage}
-              className="sticky top-0 z-10 mb-1 flex size-11 shrink-0 cursor-pointer items-center justify-center rounded-[12px] border border-dashed border-border bg-background text-muted-foreground transition-colors hover:bg-accent hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:cursor-default disabled:opacity-50">
-              <Plus className="size-4" aria-hidden="true" />
-            </button>
-            {state.history.map((painting) => {
-              const selectedItem = current?.id === painting.id
-              const running = selectedItem && busy
-              return (
-                <div
-                  key={painting.id}
-                  className={cn(
-                    'group relative size-11 shrink-0 rounded-[12px] bg-secondary motion-safe:animate-in motion-safe:fade-in motion-safe:zoom-in-95',
-                    selectedItem && 'bg-background'
-                  )}>
-                  <button
-                    type="button"
-                    aria-label={copy.selectImage}
-                    aria-pressed={selectedItem}
-                    disabled={busy}
-                    onClick={() => {
-                      setView({ scale: 1, rotation: 0 })
-                      act((previous) => ({ ...previous, stage: 'done', current: painting, dockCollapsed: true }))
-                    }}
-                    className="absolute inset-0 cursor-pointer overflow-hidden rounded-[12px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:cursor-default">
-                    {running ? (
-                      <PaintingSkeleton reduced={reduced} paused={!playing} onRevealed={() => {}} />
-                    ) : (
-                      <img
-                        src={IMAGES[templates[painting.template].id].src}
-                        alt=""
-                        className="size-full object-cover"
-                      />
-                    )}
-                  </button>
-                  {selectedItem && (
-                    <span className="pointer-events-none absolute inset-0 z-10 rounded-[12px] ring-1 ring-muted-foreground/55 ring-inset" />
-                  )}
-                  <button
-                    type="button"
-                    aria-label={copy.deleteImage}
-                    title={copy.deleteImage}
-                    disabled={running}
-                    onClick={() =>
-                      act((previous) => ({
-                        ...previous,
-                        history: previous.history.filter((item) => item.id !== painting.id),
-                        ...(selectedItem ? { stage: 'templates', current: null, dockCollapsed: false } : null)
-                      }))
-                    }
-                    className="absolute -top-1 -right-1 z-20 flex size-5 cursor-pointer items-center justify-center rounded-full border border-border bg-background/95 text-destructive opacity-0 shadow-sm transition group-hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-primary disabled:hidden">
-                    <Trash2 className="size-3" aria-hidden="true" />
-                  </button>
-                </div>
-              )
-            })}
-          </nav>
-
-          <div className="relative flex min-w-0 flex-1 flex-col overflow-hidden">
-            <div className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden">
-              {stage !== 'templates' && artboard}
-            </div>
-            {stage === 'templates' && templateStage}
-            {hasImages && state.dockCollapsed ? (
-              <div className="relative z-20 flex shrink-0 items-center justify-center px-2 pt-1 pb-2">
-                <button
-                  type="button"
-                  aria-expanded={false}
-                  onClick={() => act((previous) => ({ ...previous, dockCollapsed: false }))}
-                  className={dockToggle}>
-                  <ChevronUp className="size-3.5" aria-hidden="true" />
-                  {copy.expandPrompt}
-                </button>
-              </div>
-            ) : (
-              <div className="relative z-20 shrink-0 px-2 pt-2 pb-2">
-                {hasImages && (
-                  <div className="mb-1 flex justify-center">
+      <DemoFrame chromeless title={copy.window} onReplay={replay} bodyClassName="h-[510px]">
+        <AppShell active="paintings" tab={{ title: tabTitle(copy.window) }}>
+          <div className="flex h-full px-2 pt-2 pb-1">
+            <nav
+              aria-label={copy.selectImage}
+              className="flex h-full w-[68px] shrink-0 flex-col gap-2 overflow-y-auto border-r border-border px-2 py-2 [scrollbar-width:none]">
+              <button
+                type="button"
+                aria-label={copy.newImage}
+                title={copy.newImage}
+                disabled={busy}
+                onClick={newImage}
+                className="sticky top-0 z-10 mb-1 flex size-11 shrink-0 cursor-pointer items-center justify-center rounded-[12px] border border-dashed border-border bg-background text-muted-foreground transition-colors hover:bg-accent hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:cursor-default disabled:opacity-50">
+                <Plus className="size-4" aria-hidden="true" />
+              </button>
+              {state.history.map((painting) => {
+                const selectedItem = current?.id === painting.id
+                const running = selectedItem && busy
+                return (
+                  <div
+                    key={painting.id}
+                    className={cn(
+                      'group relative size-11 shrink-0 rounded-[12px] bg-secondary motion-safe:animate-in motion-safe:fade-in motion-safe:zoom-in-95',
+                      selectedItem && 'bg-background'
+                    )}>
                     <button
                       type="button"
-                      aria-expanded={true}
+                      aria-label={copy.selectImage}
+                      aria-pressed={selectedItem}
+                      disabled={busy}
                       onClick={() => {
-                        setMenu(null)
-                        act((previous) => ({ ...previous, dockCollapsed: true }))
+                        setView({ scale: 1, rotation: 0 })
+                        act((previous) => ({ ...previous, stage: 'done', current: painting, dockCollapsed: true }))
                       }}
-                      className={dockToggle}>
-                      <ChevronDown className="size-3.5" aria-hidden="true" />
-                      {copy.minimizePrompt}
+                      className="absolute inset-0 cursor-pointer overflow-hidden rounded-[12px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:cursor-default">
+                      {running ? (
+                        <PaintingSkeleton reduced={reduced} paused={!playing} onRevealed={() => {}} />
+                      ) : (
+                        <img
+                          src={IMAGES[templates[painting.template].id].src}
+                          alt=""
+                          className="size-full object-cover"
+                        />
+                      )}
+                    </button>
+                    {selectedItem && (
+                      <span className="pointer-events-none absolute inset-0 z-10 rounded-[12px] ring-1 ring-muted-foreground/55 ring-inset" />
+                    )}
+                    <button
+                      type="button"
+                      aria-label={copy.deleteImage}
+                      title={copy.deleteImage}
+                      disabled={running}
+                      onClick={() =>
+                        act((previous) => ({
+                          ...previous,
+                          history: previous.history.filter((item) => item.id !== painting.id),
+                          ...(selectedItem ? { stage: 'templates', current: null, dockCollapsed: false } : null)
+                        }))
+                      }
+                      className="absolute -top-1 -right-1 z-20 flex size-5 cursor-pointer items-center justify-center rounded-full border border-border bg-background/95 text-destructive opacity-0 shadow-sm transition group-hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-primary disabled:hidden">
+                      <Trash2 className="size-3" aria-hidden="true" />
                     </button>
                   </div>
-                )}
-                {composer}
+                )
+              })}
+            </nav>
+
+            <div className="relative flex min-w-0 flex-1 flex-col overflow-hidden">
+              <div className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden">
+                {stage !== 'templates' && artboard}
               </div>
-            )}
+              {stage === 'templates' && templateStage}
+              {hasImages && state.dockCollapsed ? (
+                <div className="relative z-20 flex shrink-0 items-center justify-center px-2 pt-1 pb-2">
+                  <button
+                    type="button"
+                    aria-expanded={false}
+                    onClick={() => act((previous) => ({ ...previous, dockCollapsed: false }))}
+                    className={dockToggle}>
+                    <ChevronUp className="size-3.5" aria-hidden="true" />
+                    {copy.expandPrompt}
+                  </button>
+                </div>
+              ) : (
+                <div className="relative z-20 shrink-0 px-2 pt-2 pb-2">
+                  {hasImages && (
+                    <div className="mb-1 flex justify-center">
+                      <button
+                        type="button"
+                        aria-expanded={true}
+                        onClick={() => {
+                          setMenu(null)
+                          act((previous) => ({ ...previous, dockCollapsed: true }))
+                        }}
+                        className={dockToggle}>
+                        <ChevronDown className="size-3.5" aria-hidden="true" />
+                        {copy.minimizePrompt}
+                      </button>
+                    </div>
+                  )}
+                  {composer}
+                </div>
+              )}
+            </div>
           </div>
-        </div>
+        </AppShell>
       </DemoFrame>
     </div>
   )

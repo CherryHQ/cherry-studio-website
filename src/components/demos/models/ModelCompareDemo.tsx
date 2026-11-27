@@ -5,6 +5,7 @@ import { type ReactNode, useEffect, useRef, useState } from 'react'
 import { type CompareAnswer, type GroupLayout, modelCompareDemo } from '@/content/demos/models'
 import { ease, spring } from '@/lib/motion'
 import { cn } from '@/lib/utils'
+import AppShell, { tabTitle } from '../primitives/AppShell'
 import BeatDots from '../primitives/BeatDots'
 import DemoFrame from '../primitives/DemoFrame'
 import StreamingText from '../primitives/StreamingText'
@@ -147,113 +148,117 @@ export default function ModelCompareDemo() {
 
   return (
     <div ref={ref} role="region" aria-label={copy.window}>
-      <DemoFrame title={copy.window} onReplay={replay} bodyClassName="h-[420px]">
-        <div className="@container relative flex h-full flex-col">
-          <div ref={scrollRef} className="relative min-h-0 flex-1 overflow-y-auto px-4 [scrollbar-width:none] sm:px-6">
-            <div className="py-4">
-              {state.sent && (
-                <m.div
-                  initial={{ opacity: 0, x: 10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={spring.block}
-                  className="mb-4 flex justify-end">
-                  {/* Desktop MessageContent lists mentioned models as plain @names above the text. */}
-                  <div className="max-w-[85%] rounded-[10px] bg-chat-user px-4 py-2.5 text-[14px] leading-6">
-                    <div className="mb-2.5 flex flex-wrap gap-2" aria-hidden="true">
-                      {models.map((model) => (
-                        <span key={model.id} className="text-primary">
-                          @{model.name}
-                        </span>
-                      ))}
+      <DemoFrame chromeless title={copy.window} onReplay={replay} bodyClassName="h-[470px]">
+        <AppShell active="assistants" tab={{ title: tabTitle(copy.window), emoji: '😀' }}>
+          <div className="@container relative flex h-full flex-col">
+            <div
+              ref={scrollRef}
+              className="relative min-h-0 flex-1 overflow-y-auto px-4 [scrollbar-width:none] sm:px-6">
+              <div className="py-4">
+                {state.sent && (
+                  <m.div
+                    initial={{ opacity: 0, x: 10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={spring.block}
+                    className="mb-4 flex justify-end">
+                    {/* Desktop MessageContent lists mentioned models as plain @names above the text. */}
+                    <div className="max-w-[85%] rounded-[10px] bg-chat-user px-4 py-2.5 text-[14px] leading-6">
+                      <div className="mb-2.5 flex flex-wrap gap-2" aria-hidden="true">
+                        {models.map((model) => (
+                          <span key={model.id} className="text-primary">
+                            @{model.name}
+                          </span>
+                        ))}
+                      </div>
+                      {copy.prompt}
                     </div>
-                    {copy.prompt}
+                  </m.div>
+                )}
+
+                {state.sent && (
+                  <div ref={groupRef} className={isGrid || layout === 'horizontal' ? 'py-1' : undefined}>
+                    <div className={cn('grid w-full', containerClass[layout])}>
+                      {models.map((model) => {
+                        const hidden = layout === 'fold' && model.id !== selected
+                        return (
+                          <m.div
+                            key={model.id}
+                            layout={projected && 'position'}
+                            transition={spring.settle}
+                            className={cn(
+                              'relative min-w-0',
+                              hidden && 'hidden',
+                              layout === 'horizontal' && 'rounded-[10px] border-[0.5px] border-border p-2.5',
+                              isGrid &&
+                                'h-[300px] cursor-pointer overflow-hidden rounded-[10px] border-[0.5px] border-border p-2.5'
+                            )}>
+                            {renderBody(model)}
+                            {isGrid && (
+                              <button
+                                type="button"
+                                aria-haspopup="dialog"
+                                aria-expanded={detail === model.id}
+                                aria-label={`${copy.expand} ${model.name}`}
+                                onClick={() => {
+                                  touched.current = true
+                                  setDetail(detail === model.id ? null : model.id)
+                                }}
+                                className="absolute inset-0 cursor-pointer rounded-[10px] focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-primary"
+                              />
+                            )}
+                          </m.div>
+                        )
+                      })}
+                    </div>
+
+                    <GroupMenuBar
+                      copy={copy}
+                      layout={layout}
+                      onLayout={chooseLayout}
+                      compactTabs={compactTabs}
+                      onCompactTabs={() => {
+                        touched.current = true
+                        setCompactTabs((value) => !value)
+                      }}
+                      models={models}
+                      selected={selected}
+                      processing={(id) => state.started.includes(id) && !state.done.includes(id)}
+                      onSelect={(id) => {
+                        touched.current = true
+                        setSelected(id)
+                      }}
+                    />
                   </div>
+                )}
+              </div>
+            </div>
+
+            {/* Desktop GridMessagePopover: the full answer opens in a popover above the clicked card. */}
+            <AnimatePresence>
+              {isGrid && detailModel && (
+                <m.div
+                  key={detailModel.id}
+                  role="dialog"
+                  aria-label={detailModel.name}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.12 } }}
+                  transition={{ duration: 0.15, ease: ease.expo }}
+                  onKeyDown={(event) => event.key === 'Escape' && setDetail(null)}
+                  className="absolute inset-x-4 top-4 z-10 max-h-[60%] overflow-y-auto rounded-lg border-[0.5px] border-border bg-popover p-4 shadow-lg sm:inset-x-16">
+                  {renderBody(detailModel, true)}
+                  <button
+                    type="button"
+                    aria-label={`${copy.collapse} ${detailModel.name}`}
+                    onClick={() => setDetail(null)}
+                    className="sr-only focus-visible:not-sr-only focus-visible:absolute focus-visible:top-2 focus-visible:right-2 focus-visible:rounded-md focus-visible:bg-accent focus-visible:px-2 focus-visible:py-1 focus-visible:text-xs">
+                    {copy.collapse} {detailModel.name}
+                  </button>
                 </m.div>
               )}
-
-              {state.sent && (
-                <div ref={groupRef} className={isGrid || layout === 'horizontal' ? 'py-1' : undefined}>
-                  <div className={cn('grid w-full', containerClass[layout])}>
-                    {models.map((model) => {
-                      const hidden = layout === 'fold' && model.id !== selected
-                      return (
-                        <m.div
-                          key={model.id}
-                          layout={projected && 'position'}
-                          transition={spring.settle}
-                          className={cn(
-                            'relative min-w-0',
-                            hidden && 'hidden',
-                            layout === 'horizontal' && 'rounded-[10px] border-[0.5px] border-border p-2.5',
-                            isGrid &&
-                              'h-[300px] cursor-pointer overflow-hidden rounded-[10px] border-[0.5px] border-border p-2.5'
-                          )}>
-                          {renderBody(model)}
-                          {isGrid && (
-                            <button
-                              type="button"
-                              aria-haspopup="dialog"
-                              aria-expanded={detail === model.id}
-                              aria-label={`${copy.expand} ${model.name}`}
-                              onClick={() => {
-                                touched.current = true
-                                setDetail(detail === model.id ? null : model.id)
-                              }}
-                              className="absolute inset-0 cursor-pointer rounded-[10px] focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-primary"
-                            />
-                          )}
-                        </m.div>
-                      )
-                    })}
-                  </div>
-
-                  <GroupMenuBar
-                    copy={copy}
-                    layout={layout}
-                    onLayout={chooseLayout}
-                    compactTabs={compactTabs}
-                    onCompactTabs={() => {
-                      touched.current = true
-                      setCompactTabs((value) => !value)
-                    }}
-                    models={models}
-                    selected={selected}
-                    processing={(id) => state.started.includes(id) && !state.done.includes(id)}
-                    onSelect={(id) => {
-                      touched.current = true
-                      setSelected(id)
-                    }}
-                  />
-                </div>
-              )}
-            </div>
+            </AnimatePresence>
           </div>
-
-          {/* Desktop GridMessagePopover: the full answer opens in a popover above the clicked card. */}
-          <AnimatePresence>
-            {isGrid && detailModel && (
-              <m.div
-                key={detailModel.id}
-                role="dialog"
-                aria-label={detailModel.name}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.12 } }}
-                transition={{ duration: 0.15, ease: ease.expo }}
-                onKeyDown={(event) => event.key === 'Escape' && setDetail(null)}
-                className="absolute inset-x-4 top-4 z-10 max-h-[60%] overflow-y-auto rounded-lg border-[0.5px] border-border bg-popover p-4 shadow-lg sm:inset-x-16">
-                {renderBody(detailModel, true)}
-                <button
-                  type="button"
-                  aria-label={`${copy.collapse} ${detailModel.name}`}
-                  onClick={() => setDetail(null)}
-                  className="sr-only focus-visible:not-sr-only focus-visible:absolute focus-visible:top-2 focus-visible:right-2 focus-visible:rounded-md focus-visible:bg-accent focus-visible:px-2 focus-visible:py-1 focus-visible:text-xs">
-                  {copy.collapse} {detailModel.name}
-                </button>
-              </m.div>
-            )}
-          </AnimatePresence>
-        </div>
+        </AppShell>
       </DemoFrame>
     </div>
   )

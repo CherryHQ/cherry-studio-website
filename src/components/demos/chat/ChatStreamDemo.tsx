@@ -4,7 +4,6 @@ import {
   Boxes,
   ChevronDown,
   CirclePause,
-  Clock,
   Copy,
   Ellipsis,
   Eraser,
@@ -16,17 +15,12 @@ import {
   LoaderCircle,
   type LucideIcon,
   Menu,
-  MessageSquare,
-  MousePointerClick,
   NotebookPen,
-  Palette,
   Paperclip,
   Plus,
   RefreshCw,
-  Search,
   Trash,
   Volume2,
-  X,
   Zap
 } from 'lucide-react'
 import { type ReactNode, type SVGProps, useRef, useState } from 'react'
@@ -34,6 +28,7 @@ import { type ReactNode, type SVGProps, useRef, useState } from 'react'
 import { type ChatPanelItemId, chatDemo } from '@/content/demos/chat'
 import { ease, spring } from '@/lib/motion'
 import { cn } from '@/lib/utils'
+import AppShell, { DefaultAvatar, EmojiIcon, SidebarCollapseIcon } from '../primitives/AppShell'
 import BeatDots from '../primitives/BeatDots'
 import DemoFrame from '../primitives/DemoFrame'
 import Kbd from '../primitives/Kbd'
@@ -79,9 +74,6 @@ const reached = (phase: Phase, target: Phase) => PHASE_ORDER.indexOf(phase) >= P
 // Default assistant seed (src/shared/data/presets/defaultAssistant.ts).
 const ASSISTANT_EMOJI = '😀'
 
-// Default sidebar shortcuts, in preference order (preferenceSchemas `ui.sidebar_shortcut`).
-const SIDEBAR_APPS: LucideIcon[] = [MousePointerClick, MessageSquare, Clock, Languages, Palette, FileSearch]
-
 // Desktop message block entrance: slide 10px from the right on a 0.3s spring without bounce.
 const blockEnter = { initial: { opacity: 0, x: 10 }, animate: { opacity: 1, x: 0 }, transition: spring.block }
 
@@ -115,30 +107,6 @@ function McpLogo(props: SVGProps<SVGSVGElement>) {
   )
 }
 
-function SidebarCollapseIcon(props: SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.7} aria-hidden="true" {...props}>
-      <rect x="3.5" y="4" width="17" height="16" rx="4" />
-      <path d="M8.2 8v8" strokeLinecap="round" />
-    </svg>
-  )
-}
-
-/** The bundled default user avatar (renderer/assets/images/avatar.svg). */
-function DefaultAvatar({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 1158 1158" aria-hidden="true" className={cn('shrink-0 rounded-full', className)}>
-      <rect width="1158" height="1158" fill="#7EDBC2" fillOpacity="0.25" />
-      <circle cx="579.5" cy="447" r="202" fill="#49B8A3" fillOpacity="0.97" />
-      <path
-        d="M579.5 689C796.272 689 972 864.728 972 1081.5V1158H187V1081.5C187 864.728 362.728 689 579.5 689Z"
-        fill="#6ACBB9"
-        fillOpacity="0.42"
-      />
-    </svg>
-  )
-}
-
 /** `icon-ic_send` glyph: a filled circle with an arrow cut out of it. */
 function SendGlyph() {
   return (
@@ -153,25 +121,6 @@ function SendGlyph() {
         strokeLinejoin="round"
       />
     </svg>
-  )
-}
-
-/** EmojiIcon from @cherrystudio/ui: the glyph over a blurred, enlarged copy of itself. */
-function EmojiIcon({ emoji, size }: { emoji: string; size: number }) {
-  return (
-    <span
-      aria-hidden="true"
-      className="relative flex shrink-0 items-center justify-center overflow-hidden rounded-full"
-      style={{ width: size, height: size }}>
-      <span
-        className="absolute inset-0 flex scale-150 items-center justify-center opacity-40 blur-sm"
-        style={{ fontSize: size * 1.2, lineHeight: 1 }}>
-        {emoji}
-      </span>
-      <span className="relative" style={{ fontSize: size * 0.7, lineHeight: 1 }}>
-        {emoji}
-      </span>
-    </span>
   )
 }
 
@@ -421,232 +370,182 @@ export default function ChatStreamDemo() {
         title={copy.window}
         onReplay={() => choose(scenarioIndex)}
         bodyClassName="h-[clamp(480px,62.5cqw,78svh)]">
-        <div className="flex h-full bg-sidebar">
-          <aside className="hidden w-[50px] shrink-0 flex-col items-center sm:flex" aria-hidden="true">
-            {/* macOS draws the window controls inside the rail's top band. */}
-            <div className="flex h-11 shrink-0 items-center gap-1.5 pl-1">
-              <span className="size-2.5 rounded-full bg-foreground/20" />
-              <span className="size-2.5 rounded-full bg-foreground/20" />
-              <span className="size-2.5 rounded-full bg-foreground/20" />
-            </div>
-            <div className="flex flex-1 flex-col items-center gap-1 px-1.5">
-              {SIDEBAR_APPS.map((Icon, index) => (
-                <span
-                  key={index}
-                  className={cn(
-                    'flex size-9 items-center justify-center rounded-full text-muted-foreground',
-                    Icon === MessageSquare && 'bg-foreground/12 text-foreground'
-                  )}>
-                  <Icon
-                    className="size-[18px]"
-                    strokeWidth={1.6}
-                    fill={Icon === MessageSquare ? 'currentColor' : 'none'}
-                  />
+        <AppShell active="assistants" tab={{ title: scenario.topic, emoji: ASSISTANT_EMOJI }}>
+          <div className="flex min-h-0 flex-1">
+            <nav
+              aria-label={copy.section}
+              className="hidden w-[210px] shrink-0 flex-col border-r-[0.5px] border-border p-1.5 text-[13px] md:flex">
+              <div className="flex min-h-8 items-center gap-1" aria-hidden="true">
+                <span className="flex min-h-8 flex-1 items-center gap-1.5 rounded-lg px-1.5">
+                  <span className="flex size-6 items-center justify-center">
+                    <Plus className="size-4" />
+                  </span>
+                  {copy.addAssistant}
                 </span>
+                <span className="flex size-[30px] items-center justify-center text-muted-foreground">
+                  <Ellipsis className="size-4" />
+                </span>
+              </div>
+              <div className="flex h-9 items-center px-2.5 text-muted-foreground" aria-hidden="true">
+                {copy.section}
+              </div>
+              <div className="flex h-9 items-center" aria-hidden="true">
+                <span className="flex h-8 w-full items-center gap-1.5 rounded-lg px-1.5">
+                  <EmojiIcon emoji={ASSISTANT_EMOJI} size={24} />
+                  <span className="truncate">{copy.assistant}</span>
+                </span>
+              </div>
+              {copy.scenarios.map((item, index) => (
+                <div key={item.id} className="flex h-9 items-center">
+                  <button
+                    type="button"
+                    onClick={() => choose(index)}
+                    aria-current={index === scenarioIndex ? 'true' : undefined}
+                    className={cn(
+                      'flex h-8 w-full cursor-pointer items-center gap-1.5 rounded-lg px-1.5 text-left transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-primary',
+                      index === scenarioIndex ? 'bg-black/8 font-medium dark:bg-white/14' : 'hover:bg-foreground/5'
+                    )}>
+                    <span className="size-6 shrink-0" />
+                    <span className="min-w-0 truncate">{item.topic}</span>
+                  </button>
+                </div>
               ))}
-            </div>
-            <span className="flex size-9 items-center justify-center pb-2.5">
-              <DefaultAvatar className="size-6.5" />
-            </span>
-          </aside>
+            </nav>
 
-          <div className="flex min-w-0 flex-1 flex-col">
-            <div className="flex h-11 shrink-0 items-center gap-1 pl-1.5 sm:pl-0" aria-hidden="true">
-              <span className="flex h-[30px] min-w-[56px] max-w-[160px] items-center gap-1.5 rounded-[10px] bg-foreground/12 px-2">
-                <EmojiIcon emoji={ASSISTANT_EMOJI} size={14} />
-                <span className="min-w-0 flex-1 truncate text-xs font-medium">{scenario.topic}</span>
-                <X className="size-2.5 shrink-0" />
-              </span>
-              <span className="ml-0.5 flex size-7 items-center justify-center text-muted-foreground">
-                <Plus className="size-3.5" />
-              </span>
-              <span className="mr-2 ml-auto flex size-8 items-center justify-center text-muted-foreground">
-                <Search className="size-4" strokeWidth={1.8} />
-              </span>
-            </div>
+            <div className="flex min-h-0 min-w-0 flex-1 flex-col">
+              <div className="flex h-11 shrink-0 items-center gap-1.5 px-2 text-xs" aria-hidden="true">
+                <span className="flex size-[30px] shrink-0 items-center justify-center text-muted-foreground">
+                  <SidebarCollapseIcon className="size-[18px]" />
+                </span>
+                <span className="flex size-7 shrink-0 items-center justify-center">
+                  <EmojiIcon emoji={ASSISTANT_EMOJI} size={20} />
+                </span>
+                <span className="hidden shrink-0 font-medium sm:inline">{copy.assistant}</span>
+                <span className="flex h-7 min-w-0 items-center gap-1.5 px-1.5 font-medium">
+                  <ProviderIcon id={scenario.model.provider} className="size-5 shrink-0 rounded-full" />
+                  <span className="truncate">
+                    {scenario.model.name} | {scenario.model.providerName}
+                  </span>
+                  <ChevronDown className="size-3.5 shrink-0 text-muted-foreground" />
+                </span>
+                <span className="ml-auto flex shrink-0 items-center gap-0.5 text-muted-foreground">
+                  <span className="flex size-[30px] items-center justify-center">
+                    <Globe className="size-3.5" />
+                  </span>
+                  <span className="flex size-[30px] items-center justify-center">
+                    <GitBranch className="size-3.5" />
+                  </span>
+                </span>
+              </div>
 
-            <div className="flex min-h-0 flex-1 pr-1.5 pb-1.5 pl-1.5 sm:pl-0">
-              <div className="flex min-w-0 flex-1 overflow-hidden rounded-[12px] border-[0.5px] border-border bg-background">
-                <nav
-                  aria-label={copy.section}
-                  className="hidden w-[210px] shrink-0 flex-col border-r-[0.5px] border-border p-1.5 text-[13px] md:flex">
-                  <div className="flex min-h-8 items-center gap-1" aria-hidden="true">
-                    <span className="flex min-h-8 flex-1 items-center gap-1.5 rounded-lg px-1.5">
-                      <span className="flex size-6 items-center justify-center">
-                        <Plus className="size-4" />
-                      </span>
-                      {copy.addAssistant}
-                    </span>
-                    <span className="flex size-[30px] items-center justify-center text-muted-foreground">
-                      <Ellipsis className="size-4" />
-                    </span>
+              <div className="relative min-h-0 flex-1">
+                {!sent && (
+                  <div
+                    className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-6 text-center"
+                    aria-hidden="true">
+                    <EmojiIcon emoji={ASSISTANT_EMOJI} size={48} />
+                    <p className="text-lg font-medium">{copy.greeting}</p>
                   </div>
-                  <div className="flex h-9 items-center px-2.5 text-muted-foreground" aria-hidden="true">
-                    {copy.section}
-                  </div>
-                  <div className="flex h-9 items-center" aria-hidden="true">
-                    <span className="flex h-8 w-full items-center gap-1.5 rounded-lg px-1.5">
-                      <EmojiIcon emoji={ASSISTANT_EMOJI} size={24} />
-                      <span className="truncate">{copy.assistant}</span>
-                    </span>
-                  </div>
-                  {copy.scenarios.map((item, index) => (
-                    <div key={item.id} className="flex h-9 items-center">
-                      <button
-                        type="button"
-                        onClick={() => choose(index)}
-                        aria-current={index === scenarioIndex ? 'true' : undefined}
-                        className={cn(
-                          'flex h-8 w-full cursor-pointer items-center gap-1.5 rounded-lg px-1.5 text-left transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-primary',
-                          index === scenarioIndex ? 'bg-black/8 font-medium dark:bg-white/14' : 'hover:bg-foreground/5'
-                        )}>
-                        <span className="size-6 shrink-0" />
-                        <span className="min-w-0 truncate">{item.topic}</span>
-                      </button>
-                    </div>
-                  ))}
-                </nav>
-
-                <div className="flex min-h-0 min-w-0 flex-1 flex-col">
-                  <div className="flex h-11 shrink-0 items-center gap-1.5 px-2 text-xs" aria-hidden="true">
-                    <span className="flex size-[30px] shrink-0 items-center justify-center text-muted-foreground">
-                      <SidebarCollapseIcon className="size-[18px]" />
-                    </span>
-                    <span className="flex size-7 shrink-0 items-center justify-center">
-                      <EmojiIcon emoji={ASSISTANT_EMOJI} size={20} />
-                    </span>
-                    <span className="hidden shrink-0 font-medium sm:inline">{copy.assistant}</span>
-                    <span className="flex h-7 min-w-0 items-center gap-1.5 px-1.5 font-medium">
-                      <ProviderIcon id={scenario.model.provider} className="size-5 shrink-0 rounded-full" />
-                      <span className="truncate">
-                        {scenario.model.name} | {scenario.model.providerName}
-                      </span>
-                      <ChevronDown className="size-3.5 shrink-0 text-muted-foreground" />
-                    </span>
-                    <span className="ml-auto flex shrink-0 items-center gap-0.5 text-muted-foreground">
-                      <span className="flex size-[30px] items-center justify-center">
-                        <Globe className="size-3.5" />
-                      </span>
-                      <span className="flex size-[30px] items-center justify-center">
-                        <GitBranch className="size-3.5" />
-                      </span>
-                    </span>
-                  </div>
-
-                  <div className="relative min-h-0 flex-1">
-                    {!sent && (
-                      <div
-                        className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-6 text-center"
-                        aria-hidden="true">
-                        <EmojiIcon emoji={ASSISTANT_EMOJI} size={48} />
-                        <p className="text-lg font-medium">{copy.greeting}</p>
-                      </div>
+                )}
+                <div ref={scroller} className="h-full overflow-y-auto [scrollbar-width:none]">
+                  <div ref={thread} className="mx-auto max-w-[848px] space-y-2.5 px-4 py-4 sm:px-6">
+                    {sent && (
+                      <m.div {...blockEnter} className="flex justify-end">
+                        <div className="flex max-w-[calc(100%-2.5rem)] items-start gap-2.5">
+                          <p className="rounded-[10px] bg-muted px-4 py-2.5 text-[14px] leading-6">{scenario.prompt}</p>
+                          <DefaultAvatar className="mt-1.5 size-[30px]" />
+                        </div>
+                      </m.div>
                     )}
-                    <div ref={scroller} className="h-full overflow-y-auto [scrollbar-width:none]">
-                      <div ref={thread} className="mx-auto max-w-[848px] space-y-2.5 px-4 py-4 sm:px-6">
-                        {sent && (
-                          <m.div {...blockEnter} className="flex justify-end">
-                            <div className="flex max-w-[calc(100%-2.5rem)] items-start gap-2.5">
-                              <p className="rounded-[10px] bg-muted px-4 py-2.5 text-[14px] leading-6">
-                                {scenario.prompt}
-                              </p>
-                              <DefaultAvatar className="mt-1.5 size-[30px]" />
-                            </div>
-                          </m.div>
-                        )}
 
-                        {reached(phase, 'process') && (
-                          <m.div {...blockEnter} className="flex gap-2.5 pt-2.5">
-                            <EmojiIcon emoji={ASSISTANT_EMOJI} size={30} />
-                            <div className="min-w-0 flex-1">
-                              <div className="flex min-w-0 items-center gap-1.5">
-                                <span className="truncate text-sm leading-5 font-semibold">{copy.assistant}</span>
-                                <span className="flex min-w-0 items-center gap-1 text-xs text-muted-foreground/70">
-                                  <ProviderIcon id={scenario.model.provider} className="size-4 rounded-full" />
-                                  <span className="truncate">{scenario.model.name}</span>
-                                </span>
+                    {reached(phase, 'process') && (
+                      <m.div {...blockEnter} className="flex gap-2.5 pt-2.5">
+                        <EmojiIcon emoji={ASSISTANT_EMOJI} size={30} />
+                        <div className="min-w-0 flex-1">
+                          <div className="flex min-w-0 items-center gap-1.5">
+                            <span className="truncate text-sm leading-5 font-semibold">{copy.assistant}</span>
+                            <span className="flex min-w-0 items-center gap-1 text-xs text-muted-foreground/70">
+                              <ProviderIcon id={scenario.model.provider} className="size-4 rounded-full" />
+                              <span className="truncate">{scenario.model.name}</span>
+                            </span>
+                          </div>
+
+                          <div className="mt-2">
+                            {phase === 'process' ? (
+                              <div className="mb-2 pb-2">
+                                <div className="flex min-h-7 items-center gap-1.5 text-[13px]">
+                                  <span className="text-muted-foreground/70">{copy.processing}</span>
+                                  <span className="text-muted-foreground/70" aria-hidden="true">
+                                    ·
+                                  </span>
+                                  <span className="text-muted-foreground">{copy.seconds(state.elapsed)}</span>
+                                </div>
+                                {processRows}
                               </div>
-
-                              <div className="mt-2">
-                                {phase === 'process' ? (
-                                  <div className="mb-2 pb-2">
-                                    <div className="flex min-h-7 items-center gap-1.5 text-[13px]">
-                                      <span className="text-muted-foreground/70">{copy.processing}</span>
-                                      <span className="text-muted-foreground/70" aria-hidden="true">
-                                        ·
-                                      </span>
-                                      <span className="text-muted-foreground">{copy.seconds(state.elapsed)}</span>
-                                    </div>
-                                    {processRows}
-                                  </div>
-                                ) : (
-                                  <div className="mb-2">
-                                    <button
-                                      type="button"
-                                      aria-expanded={processOpen}
-                                      onClick={() => setProcessOpen((open) => !open)}
-                                      className="group flex min-h-7 cursor-pointer items-center gap-1.5 rounded py-0.5 text-[13px] focus-visible:outline-2 focus-visible:outline-primary">
-                                      <span className="text-muted-foreground/70 transition-colors group-hover:text-foreground">
-                                        {copy.processed}
-                                      </span>
-                                      <span className="text-muted-foreground/70" aria-hidden="true">
-                                        ·
-                                      </span>
-                                      <span className="text-muted-foreground transition-colors group-hover:text-foreground">
-                                        {copy.seconds(state.elapsed)}
-                                      </span>
-                                      <ChevronDown
-                                        className={cn(
-                                          'size-3.5 opacity-60 transition-transform',
-                                          !processOpen && '-rotate-90'
-                                        )}
-                                        aria-hidden="true"
-                                      />
-                                    </button>
-                                    {processOpen && <div className="pb-2">{processRows}</div>}
-                                  </div>
-                                )}
-
-                                {reached(phase, 'answer') && (
-                                  <div className="text-[14px] leading-6 text-foreground/90">
-                                    <StreamingText
-                                      key={`${locale}-${scenario.id}`}
-                                      text={scenario.answer}
-                                      locale={tag}
-                                      active={phase === 'answer' && playing}
-                                      rate={42}
-                                      onDone={() => update({ phase: 'done' })}
-                                    />
-                                  </div>
-                                )}
-
-                                {phase === 'done' && (
-                                  <div
-                                    className="mt-1 flex min-h-6.5 items-center gap-0.5 text-muted-foreground/70 motion-safe:animate-in motion-safe:fade-in motion-safe:duration-200"
-                                    aria-hidden="true">
-                                    {messageActions.map((Icon, index) => (
-                                      <span
-                                        key={index}
-                                        className="flex size-6.5 items-center justify-center rounded-md">
-                                        <Icon className="size-[15px]" />
-                                      </span>
-                                    ))}
-                                  </div>
-                                )}
+                            ) : (
+                              <div className="mb-2">
+                                <button
+                                  type="button"
+                                  aria-expanded={processOpen}
+                                  onClick={() => setProcessOpen((open) => !open)}
+                                  className="group flex min-h-7 cursor-pointer items-center gap-1.5 rounded py-0.5 text-[13px] focus-visible:outline-2 focus-visible:outline-primary">
+                                  <span className="text-muted-foreground/70 transition-colors group-hover:text-foreground">
+                                    {copy.processed}
+                                  </span>
+                                  <span className="text-muted-foreground/70" aria-hidden="true">
+                                    ·
+                                  </span>
+                                  <span className="text-muted-foreground transition-colors group-hover:text-foreground">
+                                    {copy.seconds(state.elapsed)}
+                                  </span>
+                                  <ChevronDown
+                                    className={cn(
+                                      'size-3.5 opacity-60 transition-transform',
+                                      !processOpen && '-rotate-90'
+                                    )}
+                                    aria-hidden="true"
+                                  />
+                                </button>
+                                {processOpen && <div className="pb-2">{processRows}</div>}
                               </div>
-                            </div>
-                          </m.div>
-                        )}
-                      </div>
-                    </div>
+                            )}
+
+                            {reached(phase, 'answer') && (
+                              <div className="text-[14px] leading-6 text-foreground/90">
+                                <StreamingText
+                                  key={`${locale}-${scenario.id}`}
+                                  text={scenario.answer}
+                                  locale={tag}
+                                  active={phase === 'answer' && playing}
+                                  rate={42}
+                                  onDone={() => update({ phase: 'done' })}
+                                />
+                              </div>
+                            )}
+
+                            {phase === 'done' && (
+                              <div
+                                className="mt-1 flex min-h-6.5 items-center gap-0.5 text-muted-foreground/70 motion-safe:animate-in motion-safe:fade-in motion-safe:duration-200"
+                                aria-hidden="true">
+                                {messageActions.map((Icon, index) => (
+                                  <span key={index} className="flex size-6.5 items-center justify-center rounded-md">
+                                    <Icon className="size-[15px]" />
+                                  </span>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      </m.div>
+                    )}
                   </div>
-
-                  {composer}
                 </div>
               </div>
+
+              {composer}
             </div>
           </div>
-        </div>
+        </AppShell>
       </DemoFrame>
     </div>
   )

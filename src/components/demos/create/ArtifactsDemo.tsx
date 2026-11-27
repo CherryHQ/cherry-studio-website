@@ -22,6 +22,7 @@ import { useEffect, useId, useMemo, useRef, useState } from 'react'
 import { artifactsDemo } from '@/content/demos/create'
 import { spring } from '@/lib/motion'
 import { cn } from '@/lib/utils'
+import AppShell, { tabTitle } from '../primitives/AppShell'
 import DemoFrame from '../primitives/DemoFrame'
 import ProviderIcon from '../primitives/ProviderIcon'
 import StreamingText, { tokenize } from '../primitives/StreamingText'
@@ -426,57 +427,59 @@ export default function ArtifactsDemo() {
 
   return (
     <div ref={ref} role="region" aria-label={copy.window}>
-      <DemoFrame title={copy.window} onReplay={replay} bodyClassName="h-[460px]">
-        <div className="relative h-full [container-type:size]">
-          <div ref={scroller} className="h-full overflow-y-auto px-4 [scrollbar-width:none] sm:px-6">
-            <div ref={thread} className="mx-auto max-w-3xl space-y-6 py-5">
-              {reached(phase, 'sent') && (
-                <m.div {...blockEnter} className="flex justify-end">
-                  <p className="max-w-[85%] rounded-[10px] bg-chat-user px-4 py-2.5 text-[14px] leading-6">
-                    {copy.prompt}
-                  </p>
-                </m.div>
-              )}
-              {reached(phase, 'intro') && (
-                <m.div {...blockEnter} className="flex items-start gap-2.5">
-                  <span className="flex size-[30px] shrink-0 items-center justify-center rounded-full bg-background ring-1 ring-border">
-                    <ProviderIcon id={copy.model.provider} className="size-4" />
-                  </span>
-                  <div className="flex min-w-0 flex-1 flex-col">
-                    <span className="truncate text-sm leading-5 font-semibold">{copy.model.name}</span>
-                    <div className="mt-2 min-w-0 space-y-2.5 text-[14px] leading-6 text-foreground/90">
-                      <p>
-                        <StreamingText
-                          key={locale}
-                          text={copy.intro}
-                          locale={tag}
-                          active={(phase === 'intro' || reduced) && playing}
-                          rate={INTRO_RATE}
-                        />
-                      </p>
-                      {phase === 'code' && (
-                        <m.div {...blockEnter}>
-                          <StreamingCodeBlock lines={lines} count={state.codeCount} />
-                        </m.div>
-                      )}
-                      {phase === 'done' && (
-                        <div className="motion-safe:animate-in motion-safe:fade-in motion-safe:duration-300">
-                          {!approved ? consentCard : popup ? null : inlinePreview}
-                        </div>
-                      )}
-                      {phase === 'done' && (
-                        <p className="motion-safe:animate-in motion-safe:fade-in motion-safe:duration-300">
-                          {copy.outro}
+      <DemoFrame chromeless title={copy.window} onReplay={replay} bodyClassName="h-[510px]">
+        <AppShell active="assistants" tab={{ title: tabTitle(copy.window), emoji: '😀' }}>
+          <div className="relative h-full [container-type:size]">
+            <div ref={scroller} className="h-full overflow-y-auto px-4 [scrollbar-width:none] sm:px-6">
+              <div ref={thread} className="mx-auto max-w-3xl space-y-6 py-5">
+                {reached(phase, 'sent') && (
+                  <m.div {...blockEnter} className="flex justify-end">
+                    <p className="max-w-[85%] rounded-[10px] bg-chat-user px-4 py-2.5 text-[14px] leading-6">
+                      {copy.prompt}
+                    </p>
+                  </m.div>
+                )}
+                {reached(phase, 'intro') && (
+                  <m.div {...blockEnter} className="flex items-start gap-2.5">
+                    <span className="flex size-[30px] shrink-0 items-center justify-center rounded-full bg-background ring-1 ring-border">
+                      <ProviderIcon id={copy.model.provider} className="size-4" />
+                    </span>
+                    <div className="flex min-w-0 flex-1 flex-col">
+                      <span className="truncate text-sm leading-5 font-semibold">{copy.model.name}</span>
+                      <div className="mt-2 min-w-0 space-y-2.5 text-[14px] leading-6 text-foreground/90">
+                        <p>
+                          <StreamingText
+                            key={locale}
+                            text={copy.intro}
+                            locale={tag}
+                            active={(phase === 'intro' || reduced) && playing}
+                            rate={INTRO_RATE}
+                          />
                         </p>
-                      )}
+                        {phase === 'code' && (
+                          <m.div {...blockEnter}>
+                            <StreamingCodeBlock lines={lines} count={state.codeCount} />
+                          </m.div>
+                        )}
+                        {phase === 'done' && (
+                          <div className="motion-safe:animate-in motion-safe:fade-in motion-safe:duration-300">
+                            {!approved ? consentCard : popup ? null : inlinePreview}
+                          </div>
+                        )}
+                        {phase === 'done' && (
+                          <p className="motion-safe:animate-in motion-safe:fade-in motion-safe:duration-300">
+                            {copy.outro}
+                          </p>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                </m.div>
-              )}
+                  </m.div>
+                )}
+              </div>
             </div>
+            {dialog}
           </div>
-          {dialog}
-        </div>
+        </AppShell>
       </DemoFrame>
     </div>
   )
