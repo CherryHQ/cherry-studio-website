@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { useSearchParams } from 'react-router-dom'
 
 import Footer from '@/components/website/Footer'
+import HeroBackdrop from '@/components/website/HeroBackdrop'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { useVersionData } from '@/hooks/useVersionData'
 import { type DetectedArch, detectPlatform, detectSystem, isMobileDevice } from '@/utils/systemDetection'
@@ -138,10 +139,11 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
   return (
     <div className="flex min-h-screen flex-col bg-background">
       <main className="site-page-top relative isolate flex-1 overflow-hidden pb-16 sm:pb-24">
+        <HeroBackdrop className="inset-x-0 top-0 -z-10 h-[560px] sm:h-[660px] [mask-image:linear-gradient(to_bottom,#000_72%,transparent)]" />
         <div className="site-container flex flex-col items-center">
           <div className="flex min-w-0 flex-col items-center text-center [&>div]:justify-center">
-            <p className="mb-4 text-sm font-medium text-muted-foreground">{t('download')}</p>
-            <h1 className="font-display text-6xl leading-none text-balance sm:text-8xl">
+            <p className="mb-4 on-silk text-sm font-medium text-muted-foreground">{t('download')}</p>
+            <h1 className="on-silk font-display text-6xl leading-none text-balance sm:text-8xl">
               {showMobile
                 ? t('mobile_download.title')
                 : isMobile

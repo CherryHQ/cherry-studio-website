@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
 import Footer from '@/components/website/Footer'
+import HeroBackdrop from '@/components/website/HeroBackdrop'
 import { AI_PPT_COPY, type AiPptCopy, type PptTemplate, type UseCaseLocale } from '@/content/use-cases/ai-ppt'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { cn } from '@/lib/utils'
@@ -484,19 +485,20 @@ export default function AiPptUseCasePage() {
       <main>
         {/* 1. 首屏：左边提示词，右边生成过程 */}
         <section className="relative isolate">
+          <HeroBackdrop className="inset-x-0 top-0 -z-10 h-[min(100%,760px)] [mask-image:linear-gradient(to_bottom,#000_72%,transparent)]" />
           <div className="site-container site-page-top site-split relative pb-12 sm:pb-16 lg:items-center">
             <div>
-              <nav aria-label={copy.breadcrumb.label} className="text-muted-foreground text-sm">
+              <nav aria-label={copy.breadcrumb.label} className="on-silk text-muted-foreground text-sm">
                 <Link to="/resources/articles/" className="hover:text-foreground transition-colors">
                   {copy.breadcrumb.root}
                 </Link>
                 <span className="mx-2">/</span>
                 <span>{copy.breadcrumb.current}</span>
               </nav>
-              <h1 className="mt-5 text-5xl font-display text-balance sm:text-7xl">
+              <h1 className="mt-5 on-silk text-5xl font-display text-balance sm:text-7xl">
                 {copy.h1Lead} <span className="text-primary">PPT</span>
               </h1>
-              <p className="text-muted-foreground mt-5 max-w-xl text-lg leading-8 text-pretty">{copy.intro}</p>
+              <p className="on-silk text-muted-foreground mt-5 max-w-xl text-lg leading-8 text-pretty">{copy.intro}</p>
 
               <div className="border-border bg-card mt-8 rounded-lg border p-2">
                 <div className="flex flex-wrap gap-1 p-1" role="tablist" aria-label={copy.templatesLabel}>

@@ -14,7 +14,28 @@ export const blockEnter = { initial: { opacity: 0, x: 10 }, animate: { opacity: 
 export const TOOLBAR_ICON =
   'flex size-7.5 shrink-0 items-center justify-center rounded-full text-muted-foreground dark:text-foreground'
 
-const MONO_CLI = new Set(['open-code', 'pi-cli', 'qoder-cli', 'github-copilot-cli'])
+// Single-colour marks drawn in black (or currentColor, which an <img> resolves to black); inverted on dark.
+const MONO_CLI = new Set([
+  'open-code',
+  'pi-cli',
+  'qoder-cli',
+  'github-copilot-cli',
+  'auggie-cli',
+  'cline-cli',
+  'cursor-cli',
+  'deepagents-cli',
+  'devin-cli',
+  'dimcode-cli',
+  'factory-droid-cli',
+  'glm-acp-agent-cli',
+  'goose-cli',
+  'grok-build-cli',
+  'kilo-cli',
+  'muse-code-cli',
+  'omp-cli',
+  'snow-cli',
+  'zcode-cli'
+])
 const CLI_ASSET: Record<string, string> = { opencode: 'open-code', 'kimi-code': 'kimi-cli', pi: 'pi-cli' }
 const CLI_PROVIDER: Record<string, string> = {
   openclaw: 'openclaw',

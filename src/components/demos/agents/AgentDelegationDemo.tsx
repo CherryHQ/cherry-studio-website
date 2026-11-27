@@ -1,11 +1,28 @@
-import { m, useReducedMotion } from 'framer-motion'
-import { ArrowUp, ChevronDown, CirclePause, Gauge, Plus, ShieldCheck, ToolCase } from 'lucide-react'
+import { AnimatePresence, m, useReducedMotion } from 'framer-motion'
+import {
+  ArrowUp,
+  ArrowUpRight,
+  ChevronDown,
+  CirclePause,
+  Ellipsis,
+  FileCode2,
+  FileText,
+  Gauge,
+  Monitor,
+  MousePointerClick,
+  Plus,
+  ShieldCheck,
+  ToolCase,
+  X
+} from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 
 import { agentDemo, agentScript } from '@/content/demos/agents'
+import { artifactsDemo } from '@/content/demos/create'
 import { type DelegationStatus, delegationDemo, delegationScript } from '@/content/demos/delegation'
 import { cn } from '@/lib/utils'
-import AppShell, { tabTitle } from '../primitives/AppShell'
+import { PomodoroApp } from '../create/PomodoroApp'
+import AppShell from '../primitives/AppShell'
 import DemoFrame from '../primitives/DemoFrame'
 import StreamingText from '../primitives/StreamingText'
 import { useDemoLocale } from '../primitives/useDemoLocale'
@@ -19,20 +36,35 @@ interface RunState {
   intro: boolean
   /** One entry per delegation card shown so far, in target order. */
   cards: DelegationStatus[]
+  /** Target indexes in the order their results were delivered back. */
+  results: number[]
   busy: boolean
   summary: boolean
+  /** The file pane previewing the reported web page. */
+  preview: boolean
 }
 
-const INITIAL: RunState = { draft: 0, user: false, intro: false, cards: [], busy: false, summary: false }
+const INITIAL: RunState = {
+  draft: 0,
+  user: false,
+  intro: false,
+  cards: [],
+  results: [],
+  busy: false,
+  summary: false,
+  preview: false
+}
 const TERMINAL: DelegationStatus[] = ['completed', 'cancelled']
 const FOCUS = 'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary'
 // @cherrystudio/ui Button (size sm) variants used by AgentDelegationCard and PermissionRequestComposer.
 const BUTTON = 'inline-flex h-8 items-center justify-center rounded-md px-3 text-[13px] font-medium whitespace-nowrap'
 const OUTLINE = 'border border-border bg-background'
+const SIDEBAR_ROW = 'flex h-8 min-w-0 items-center gap-2 rounded-lg px-2'
 
 /**
- * An Agent delegates parts of one task to local CLI Agents in its workspace. Each delegation is an
- * AgentDelegationCard; Claude Code pauses on a command approval routed back to this conversation.
+ * An Agent delegates parts of one task to local CLI Agents in its workspace (CherryHQ/cherry-studio#21221). Each
+ * delegation opens a session under its Agent in the sidebar, runs as an AgentDelegationCard, routes Claude Code's
+ * command approval back here, and delivers its result to this conversation when it finishes.
  */
 export default function AgentDelegationDemo({ bezel }: { bezel?: boolean }) {
   const { locale, tag } = useDemoLocale()
@@ -49,18 +81,30 @@ export default function AgentDelegationDemo({ bezel }: { bezel?: boolean }) {
   useStickToBottom(scroller, thread)
 
   const update = (patch: Partial<RunState>) => setState((previous) => ({ ...previous, ...patch }))
-  // A cancelled card stays cancelled, whatever the script does next.
+  // A cancelled card stays cancelled, whatever the script does next; completing a card delivers its result.
   const setCard = (index: number, status: DelegationStatus) =>
-    setState((previous) => ({
-      ...previous,
-      cards: previous.cards.map((current, i) => (i === index && current !== 'cancelled' ? status : current))
-    }))
+    setState((previous) => {
+      if (previous.cards[index] === 'cancelled') return previous
+      return {
+        ...previous,
+        cards: previous.cards.map((current, i) => (i === index ? status : current)),
+        results: status === 'completed' ? [...previous.results, index] : previous.results
+      }
+    })
 
   const { replay } = useDemoScript(async ({ wait, reduced: skip }) => {
     approveRef.current = null
     if (skip) {
       setElapsed(38)
-      setState({ ...INITIAL, user: true, intro: true, cards: ['completed', 'completed', 'completed'], summary: true })
+      setState({
+        ...INITIAL,
+        user: true,
+        intro: true,
+        cards: ['completed', 'completed', 'completed'],
+        results: [2, 1, 0],
+        summary: true,
+        preview: true
+      })
       return
     }
     setState(INITIAL)
@@ -90,7 +134,7 @@ export default function AgentDelegationDemo({ bezel }: { bezel?: boolean }) {
     const others = (async () => {
       await wait(2400)
       setCard(2, 'completed')
-      await wait(1500)
+      await wait(1600)
       setCard(1, 'completed')
     })()
     others.catch(() => {})
@@ -105,8 +149,10 @@ export default function AgentDelegationDemo({ bezel }: { bezel?: boolean }) {
     await wait(2300)
     setCard(0, 'completed')
     await others
-    await wait(400)
+    await wait(700)
     update({ busy: false, summary: true })
+    await wait(2600)
+    update({ preview: true })
   }, playing)
 
   useEffect(() => {
@@ -119,6 +165,60 @@ export default function AgentDelegationDemo({ bezel }: { bezel?: boolean }) {
     setCard(index, 'cancelled')
     if (index === 0) approveRef.current?.()
   }
+
+  const sidebar = (
+    <nav
+      aria-hidden="true"
+      className="hidden w-[214px] shrink-0 flex-col gap-0.5 overflow-y-auto border-r-[0.5px] border-border p-1.5 text-[13px] [scrollbar-width:none] @4xl:flex">
+      <div className="flex min-h-8 items-center gap-1">
+        <span className={cn(SIDEBAR_ROW, 'flex-1')}>
+          <Plus className="size-4 shrink-0" />
+          {copy.addAgent}
+        </span>
+        <span className="flex size-[30px] items-center justify-center text-muted-foreground">
+          <Ellipsis className="size-4" />
+        </span>
+      </div>
+      <div className={SIDEBAR_ROW}>
+        <EmojiAvatar size={22} />
+        <span className="truncate">{copy.agentName}</span>
+      </div>
+      <div className={cn(SIDEBAR_ROW, 'bg-accent pl-9 font-medium')}>
+        <span className="truncate">{copy.session}</span>
+      </div>
+      {delegationScript.roster.map((runtime) => {
+        const target = delegationScript.targets.findIndex((item) => item.id === runtime.id)
+        const delegated = target >= 0 && state.cards[target] && state.cards[target] !== 'pending'
+        return (
+          <div key={runtime.id}>
+            <div className={SIDEBAR_ROW}>
+              <CliLogo id={runtime.id} name={runtime.name} />
+              <span className="truncate">{runtime.name}</span>
+              <Monitor className="size-3 shrink-0 text-muted-foreground" />
+            </div>
+            <AnimatePresence initial={false}>
+              {delegated && (
+                <m.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 32 }}
+                  className={cn(SIDEBAR_ROW, 'gap-1.5 pl-9')}>
+                  <span className="truncate">{copy.targets[target].session}</span>
+                  {!TERMINAL.includes(state.cards[target]) && (
+                    <span className="size-1.5 shrink-0 rounded-full bg-primary motion-safe:animate-pulse" />
+                  )}
+                </m.div>
+              )}
+            </AnimatePresence>
+            {(copy.history[runtime.id] ?? []).map((session) => (
+              <div key={session} className={cn(SIDEBAR_ROW, 'pl-9 text-muted-foreground')}>
+                <span className="truncate">{session}</span>
+              </div>
+            ))}
+          </div>
+        )
+      })}
+    </nav>
+  )
 
   const approval = (
     <m.div
@@ -206,6 +306,93 @@ export default function AgentDelegationDemo({ bezel }: { bezel?: boolean }) {
     </div>
   )
 
+  // ReportArtifacts MessageFileCards: the files an Agent reported, under the final answer.
+  const outputs = (
+    <m.section {...blockEnter} className="my-1 flex w-full max-w-xl flex-col gap-1.5 text-sm">
+      <p className="font-medium text-muted-foreground">{copy.outputs}</p>
+      {delegationScript.outputs.map((path, index) => {
+        const name = path.split('/').pop() ?? path
+        const Icon = index === 0 ? FileCode2 : FileText
+        return (
+          <div
+            key={path}
+            className="group/artifact flex w-full min-w-0 items-center overflow-hidden rounded-lg border-[0.5px] border-border bg-muted/40 transition-colors hover:bg-accent">
+            <button
+              type="button"
+              onClick={() => index === 0 && update({ preview: !state.preview })}
+              title={path}
+              className={cn(
+                'group/preview flex min-h-12 min-w-0 flex-1 items-center gap-2.5 px-2.5 py-2 text-left',
+                index === 0 ? 'cursor-pointer' : 'cursor-default',
+                FOCUS
+              )}>
+              <span className="flex size-8 shrink-0 items-center justify-center rounded-md bg-background">
+                <Icon
+                  className={cn('size-5', ['text-orange-500', 'text-blue-500', 'text-muted-foreground'][index])}
+                  aria-hidden="true"
+                />
+              </span>
+              <span className="flex min-w-0 flex-1 flex-col">
+                <span className="truncate text-[13px] leading-5 font-medium">{name}</span>
+                <span className="grid min-w-0 text-xs leading-4 text-muted-foreground">
+                  <span
+                    className={cn(
+                      'col-start-1 row-start-1 truncate',
+                      index === 0 && 'group-hover/preview:invisible group-focus-visible/preview:invisible'
+                    )}>
+                    {copy.outputTypes[index]}
+                  </span>
+                  {index === 0 && (
+                    <span className="invisible col-start-1 row-start-1 truncate group-hover/preview:visible group-focus-visible/preview:visible">
+                      {copy.openPreview}
+                    </span>
+                  )}
+                </span>
+              </span>
+            </button>
+            <span className={cn(BUTTON, OUTLINE, 'mr-2 gap-1 rounded-lg')} aria-hidden="true">
+              {copy.openWith}
+              <ChevronDown className="size-3.5 text-muted-foreground" />
+            </span>
+          </div>
+        )
+      })}
+    </m.section>
+  )
+
+  // File pane on the right, wiping in from its trailing edge like the desktop right pane.
+  const previewPane = (
+    <m.aside
+      key="preview"
+      aria-label={copy.preview}
+      initial={reduced ? false : { opacity: 0, clipPath: 'inset(0 0 0 100%)' }}
+      animate={{ opacity: 1, clipPath: 'inset(0 0 0 0%)' }}
+      exit={{ opacity: 0, clipPath: 'inset(0 0 0 100%)' }}
+      transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+      className="hidden w-[40%] max-w-[460px] shrink-0 flex-col border-l-[0.5px] border-border @4xl:flex">
+      <div className="flex h-11 shrink-0 items-center gap-2 border-b-[0.5px] border-border px-3 text-[13px]">
+        <FileCode2 className="size-4 shrink-0 text-orange-500" aria-hidden="true" />
+        <span className="min-w-0 flex-1 truncate font-medium">index.html</span>
+        <span className="truncate text-xs text-muted-foreground">{copy.preview}</span>
+        <button
+          type="button"
+          aria-label={copy.close}
+          onClick={() => update({ preview: false })}
+          className={cn(
+            'flex size-7 cursor-pointer items-center justify-center rounded-md text-muted-foreground hover:bg-accent',
+            FOCUS
+          )}>
+          <X className="size-4" />
+        </button>
+      </div>
+      <div className="min-h-0 flex-1">
+        <PomodoroApp app={artifactsDemo[locale].app} playing={playing} />
+      </div>
+    </m.aside>
+  )
+
+  const agentName = <span className="truncate text-sm leading-5 font-semibold">{copy.agentName}</span>
+
   return (
     <div ref={ref} role="region" aria-label={copy.region} className="@container">
       <DemoFrame
@@ -214,88 +401,114 @@ export default function AgentDelegationDemo({ bezel }: { bezel?: boolean }) {
         title={agent.window}
         onReplay={replay}
         bodyClassName="h-[clamp(480px,62.5cqw,78svh)]">
-        <AppShell active="agents" tab={{ title: tabTitle(agent.window), emoji: '🤖' }}>
-          <div className="flex h-full min-h-0 flex-col">
-            <AgentSessionBar
-              agentName={copy.agentName}
-              workspace={delegationScript.workspace}
-              model={agentScript.model}
-              picking={!state.user}
-            />
-            <div ref={scroller} className="relative min-h-0 flex-1 overflow-y-auto px-4 [scrollbar-width:none] sm:px-6">
-              {!state.user && (
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-6 text-center">
-                  <EmojiAvatar size={48} />
-                  <p className="text-lg font-medium">{agent.greeting}</p>
-                </div>
-              )}
-              <div ref={thread} className="space-y-4 py-4">
-                {state.user && (
-                  <m.div {...blockEnter} className="flex justify-end">
-                    <div className="flex max-w-[calc(100%-2.5rem)] items-start gap-2.5">
-                      <p className="rounded-[10px] bg-muted px-4 py-2.5 text-sm leading-relaxed">{copy.task}</p>
-                      <UserAvatar className="mt-1.5" />
-                    </div>
-                  </m.div>
+        <AppShell active="agents" tab={{ title: copy.session, emoji: '🤖' }}>
+          <div className="flex h-full min-h-0">
+            {sidebar}
+            <div className="flex min-w-0 flex-1 flex-col">
+              <AgentSessionBar
+                agentName={copy.agentName}
+                workspace={delegationScript.workspace}
+                model={agentScript.model}
+                picking={!state.user}
+              />
+              <div
+                ref={scroller}
+                className="relative min-h-0 flex-1 overflow-y-auto px-4 [scrollbar-width:none] sm:px-6">
+                {!state.user && (
+                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-6 text-center">
+                    <EmojiAvatar size={48} />
+                    <p className="text-lg font-medium">{agent.greeting}</p>
+                  </div>
                 )}
-                {state.intro && (
-                  <m.div {...blockEnter} className="flex items-start gap-2.5">
-                    <EmojiAvatar size={30} />
-                    <div className="flex min-w-0 flex-1 flex-col">
-                      <span className="truncate text-sm leading-5 font-semibold">{copy.agentName}</span>
-                      <div className="mt-2 flex min-h-7 items-center gap-1.5 py-0.5 text-[13px] text-muted-foreground">
-                        <span>{state.busy ? agent.processing : agent.processed}</span>
-                        <span aria-hidden="true" className="text-muted-foreground/70">
-                          ·
-                        </span>
-                        <span>{agent.seconds.replace('{s}', String(elapsed))}</span>
+                <div ref={thread} className="space-y-5 py-4">
+                  {state.user && (
+                    <m.div {...blockEnter} className="flex justify-end">
+                      <div className="flex max-w-[calc(100%-2.5rem)] items-start gap-2.5">
+                        <p className="rounded-[10px] bg-muted px-4 py-2.5 text-sm leading-relaxed">{copy.task}</p>
+                        <UserAvatar className="mt-1.5" />
                       </div>
-                      <p className="pt-2 text-sm leading-relaxed">
-                        <StreamingText key={locale} text={copy.intro} locale={tag} active={playing} rate={40} />
-                      </p>
-                      {state.cards.length > 0 && (
-                        <div className="mt-3 grid items-start gap-2.5 @4xl:grid-cols-3">
-                          {state.cards.map((status, index) => {
-                            const target = delegationScript.targets[index]
-                            return (
-                              <m.div
-                                key={target.id}
-                                layout={!reduced}
-                                {...blockEnter}
-                                className="min-w-0 space-y-3 overflow-hidden rounded-lg border border-border bg-background p-3">
-                                <div className="flex items-center justify-between gap-2">
-                                  <span className="flex min-w-0 items-center gap-2 text-sm font-medium">
-                                    <CliLogo id={target.id} name={target.name} />
-                                    <span className="truncate">{target.name}</span>
-                                  </span>
-                                  <span
-                                    role="status"
-                                    className="shrink-0 rounded-md border border-border px-2 py-0.5 text-xs font-medium">
-                                    {copy.status[status]}
-                                  </span>
-                                </div>
-                                <div className="text-xs break-all text-muted-foreground">
-                                  {delegationScript.workspacePath}
-                                </div>
-                                {status === 'awaiting' && approval}
-                                <div className="flex justify-between gap-2">
-                                  <span className={cn(BUTTON, OUTLINE)}>{copy.open}</span>
-                                  {!TERMINAL.includes(status) && (
-                                    <button
-                                      type="button"
-                                      onClick={() => cancel(index)}
-                                      className={cn(BUTTON, OUTLINE, 'cursor-pointer hover:bg-accent', FOCUS)}>
-                                      {copy.cancel}
-                                    </button>
-                                  )}
-                                </div>
-                              </m.div>
-                            )
-                          })}
+                    </m.div>
+                  )}
+                  {state.intro && (
+                    <m.div {...blockEnter} className="flex items-start gap-2.5">
+                      <EmojiAvatar size={30} />
+                      <div className="flex min-w-0 flex-1 flex-col">
+                        {agentName}
+                        <div className="mt-2 flex min-h-7 items-center gap-1.5 py-0.5 text-[13px] text-muted-foreground">
+                          <span>{state.busy ? agent.processing : agent.processed}</span>
+                          <span aria-hidden="true" className="text-muted-foreground/70">
+                            ·
+                          </span>
+                          <span>{agent.seconds.replace('{s}', String(elapsed))}</span>
                         </div>
-                      )}
-                      {state.summary && (
-                        <p className="mt-3 text-sm leading-relaxed">
+                        <p className="pt-2 text-sm leading-relaxed">
+                          <StreamingText key={locale} text={copy.intro} locale={tag} active={playing} rate={40} />
+                        </p>
+                        {state.cards.length > 0 && (
+                          <div className="mt-3 grid items-start gap-2.5 @5xl:grid-cols-3">
+                            {state.cards.map((status, index) => {
+                              const target = delegationScript.targets[index]
+                              return (
+                                <m.div
+                                  key={target.id}
+                                  layout={!reduced}
+                                  {...blockEnter}
+                                  className="min-w-0 space-y-3 overflow-hidden rounded-lg border border-border bg-background p-3">
+                                  <div className="flex items-center justify-between gap-2">
+                                    <span className="truncate text-sm font-medium">{target.name}</span>
+                                    <span
+                                      role="status"
+                                      className="shrink-0 rounded-md border border-border px-2 py-0.5 text-xs font-medium">
+                                      {copy.status[status]}
+                                    </span>
+                                  </div>
+                                  <div className="text-xs break-all text-muted-foreground">
+                                    {delegationScript.workspacePath}
+                                  </div>
+                                  {status === 'awaiting' && approval}
+                                  <div className="flex justify-between gap-2">
+                                    <span className={cn(BUTTON, OUTLINE)}>{copy.open}</span>
+                                    {!TERMINAL.includes(status) && (
+                                      <button
+                                        type="button"
+                                        onClick={() => cancel(index)}
+                                        className={cn(BUTTON, OUTLINE, 'cursor-pointer hover:bg-accent', FOCUS)}>
+                                        {copy.cancel}
+                                      </button>
+                                    )}
+                                  </div>
+                                </m.div>
+                              )
+                            })}
+                          </div>
+                        )}
+                      </div>
+                    </m.div>
+                  )}
+                  {state.results.map((index) => {
+                    const target = delegationScript.targets[index]
+                    return (
+                      <m.div key={target.id} {...blockEnter} className="flex flex-col items-end gap-1.5">
+                        <span className="mr-10 flex items-center gap-1.5 text-xs text-muted-foreground">
+                          <MousePointerClick className="size-3.5" aria-hidden="true" />
+                          {copy.from.replace('{agent}', target.name).replace('{session}', copy.targets[index].session)}
+                          <ArrowUpRight className="size-3" aria-hidden="true" />
+                        </span>
+                        <div className="flex max-w-[calc(100%-2.5rem)] items-start gap-2.5">
+                          <p className="rounded-[10px] bg-muted px-4 py-2.5 text-sm leading-relaxed">
+                            {copy.targets[index].result}
+                          </p>
+                          <UserAvatar className="mt-1.5" />
+                        </div>
+                      </m.div>
+                    )
+                  })}
+                  {state.summary && (
+                    <m.div {...blockEnter} className="flex items-start gap-2.5">
+                      <EmojiAvatar size={30} />
+                      <div className="flex min-w-0 flex-1 flex-col gap-2">
+                        {agentName}
+                        <p className="text-sm leading-relaxed">
                           <StreamingText
                             key={`${locale}-summary`}
                             text={copy.summary}
@@ -304,13 +517,15 @@ export default function AgentDelegationDemo({ bezel }: { bezel?: boolean }) {
                             rate={44}
                           />
                         </p>
-                      )}
-                    </div>
-                  </m.div>
-                )}
+                        {outputs}
+                      </div>
+                    </m.div>
+                  )}
+                </div>
               </div>
+              <div className="shrink-0 px-3 pb-3 sm:px-5">{composer}</div>
             </div>
-            <div className="shrink-0 px-3 pb-3 sm:px-5">{composer}</div>
+            <AnimatePresence>{state.preview && previewPane}</AnimatePresence>
           </div>
         </AppShell>
       </DemoFrame>

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 
 import { Button } from '@/components/ui/button'
 import Footer from '@/components/website/Footer'
+import HeroBackdrop from '@/components/website/HeroBackdrop'
 import SubscriptionFaq from '@/components/website/SubscriptionFaq'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { cn } from '@/lib/utils'
@@ -42,11 +43,14 @@ export default function ChinaPricingPage() {
         {t('plus_page.skip_link')}
       </a>
       <main id="plus-main" className="relative isolate overflow-hidden bg-background text-foreground">
+        <HeroBackdrop className="inset-x-0 top-0 -z-10 h-[480px] sm:h-[560px] [mask-image:linear-gradient(to_bottom,#000_72%,transparent)]" />
         <section aria-labelledby="plus-title" className="site-container site-page-top pb-16 text-center sm:pb-24">
-          <h1 id="plus-title" className="font-display text-6xl leading-none text-balance sm:text-8xl">
+          <h1 id="plus-title" className="on-silk font-display text-6xl leading-none text-balance sm:text-8xl">
             <span>Cherry</span> <span className="font-accent text-muted-foreground">Plus</span>
           </h1>
-          <p className="mx-auto mt-6 max-w-xl text-lg text-pretty text-muted-foreground">{t('plus_page.subtitle')}</p>
+          <p className="mx-auto mt-6 on-silk max-w-xl text-lg text-pretty text-muted-foreground">
+            {t('plus_page.subtitle')}
+          </p>
 
           <section aria-label={t('plus_page.pricing_label')} className="relative mx-auto mt-12 max-w-md">
             <div className="rounded-[28px] bg-card p-8 text-left shadow-[inset_0_0_0_1px_var(--color-border),var(--shadow-float)] sm:p-10">

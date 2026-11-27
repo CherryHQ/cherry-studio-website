@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import { fetchNotice, type NoticeResponse } from '@/assets/js/notice'
 import AgentDelegationDemo from '@/components/demos/agents/AgentDelegationDemo'
 import BlurInText from '@/components/website/BlurInText'
+import HeroBackdrop from '@/components/website/HeroBackdrop'
 import MobileDownloadButton from '@/components/website/MobileDownloadButton'
 import ParticleTitle from '@/components/website/ParticleTitle'
 import { useVersionData } from '@/hooks/useVersionData'
@@ -14,7 +15,6 @@ import { spring } from '@/lib/motion'
 import { cn } from '@/lib/utils'
 import { isMobileDevice } from '@/utils/systemDetection'
 import { getDocsUrl, isEnglishSite } from '@/utils/urls'
-import HeroBackdrop from './HeroBackdrop'
 
 /**
  * The opening reads like unwrapping a gift: a sunlit colour panel, the wordmark assembling out of scattered dots, and
@@ -65,8 +65,6 @@ export default function HeroSection() {
     const { startY, endY } = layout()
     return startY + (endY - startY) * p
   })
-  // The window starts leaning back in perspective and straightens as it grows.
-  const windowTilt = useTransform(progress, [0, 1], [24, 0])
   const headlineY = useTransform(progress, [0, 1], [0, -80])
   const headlineOpacity = useTransform(progress, [0, 0.6], [1, 0])
 
@@ -117,9 +115,7 @@ export default function HeroSection() {
 
           <m.div
             ref={frame}
-            style={
-              reduced ? undefined : { y: windowY, scale: windowScale, rotateX: windowTilt, transformPerspective: 1600 }
-            }
+            style={reduced ? undefined : { y: windowY, scale: windowScale }}
             className={cn(
               'z-10 w-[min(1480px,calc(100vw-32px))] origin-top text-left sm:w-[min(1480px,calc(100vw-48px))]',
               reduced ? 'mx-auto -mt-[clamp(36px,6.6vw,96px)] pb-6' : 'absolute inset-x-0 top-0 mx-auto'

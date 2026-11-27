@@ -21,6 +21,7 @@ import { useTranslation } from 'react-i18next'
 import { Button } from '@/components/ui/button'
 import FeatureBento from '@/components/website/FeatureBento'
 import Footer from '@/components/website/Footer'
+import HeroBackdrop from '@/components/website/HeroBackdrop'
 import { usePageMeta } from '@/hooks/usePageMeta'
 
 const JD_COLLECTION_URL = 'https://mcnnox2fhjfq.feishu.cn/wiki/SnERwz76Zi9HPEkMuG5cSTHanVd'
@@ -51,16 +52,19 @@ const CareersPage: FC = () => {
 
   return (
     <div className="relative isolate overflow-hidden bg-background min-h-screen">
+      <HeroBackdrop className="inset-x-0 top-0 -z-10 h-[560px] sm:h-[620px] [mask-image:linear-gradient(to_bottom,#000_72%,transparent)]" />
       {/* Hero */}
       <section className="site-page-top pb-12 sm:pb-16">
         <div className="site-container">
-          <span className="mb-4 inline-block text-sm font-medium text-muted-foreground">{t('careers.badge')}</span>
-          <h1 className="mb-5 text-balance text-5xl font-display sm:text-7xl">{t('careers.title')}</h1>
-          <p className="mb-6 max-w-2xl text-pretty text-lg text-muted-foreground">{t('careers.subtitle')}</p>
+          <span className="mb-4 on-silk inline-block text-sm font-medium text-muted-foreground">
+            {t('careers.badge')}
+          </span>
+          <h1 className="mb-5 on-silk text-balance text-5xl font-display sm:text-7xl">{t('careers.title')}</h1>
+          <p className="mb-6 on-silk max-w-2xl text-pretty text-lg text-muted-foreground">{t('careers.subtitle')}</p>
           <Button size="lg" className="rounded-full px-5" asChild>
             <a href={`mailto:${APPLICATION_EMAIL}`}>{t('careers.apply_button')}</a>
           </Button>
-          <p className="mt-3 text-sm text-muted-foreground">{APPLICATION_EMAIL}</p>
+          <p className="mt-3 on-silk text-sm text-muted-foreground">{APPLICATION_EMAIL}</p>
         </div>
       </section>
 

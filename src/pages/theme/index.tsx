@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next'
 import { fetchWebsiteConfigs, safePublicURL } from '@/assets/js/website-api'
 import { Button } from '@/components/ui/button'
 import Footer from '@/components/website/Footer'
+import HeroBackdrop from '@/components/website/HeroBackdrop'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { cn } from '@/lib/utils'
 
@@ -980,11 +981,12 @@ const ThemePage: React.FC = () => {
   return (
     <ErrorBoundary>
       <div className="relative isolate min-h-screen overflow-hidden bg-background">
+        <HeroBackdrop className="inset-x-0 top-0 -z-10 h-[440px] sm:h-[500px] [mask-image:linear-gradient(to_bottom,#000_72%,transparent)]" />
         <main className="site-page-top relative z-10 pb-16">
           <div className="site-container">
-            <h1 className="mb-4 text-balance text-5xl font-display sm:text-7xl">{t('theme_page.title')}</h1>
+            <h1 className="mb-4 on-silk text-balance text-5xl font-display sm:text-7xl">{t('theme_page.title')}</h1>
             <div className="mb-6">
-              <p className="text-muted-foreground">{t('theme_page.subtitle')}</p>
+              <p className="on-silk text-muted-foreground">{t('theme_page.subtitle')}</p>
               <div className="mt-4 flex items-center gap-4">
                 <details ref={searchHelp} className="relative">
                   <summary
