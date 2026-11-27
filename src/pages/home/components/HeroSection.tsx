@@ -123,7 +123,7 @@ export default function HeroSection() {
             <m.div
               initial={{ opacity: 0, y: 120 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ ...spring.gentle, delay: 0.5 }}>
+              transition={{ ...spring.gentle, delay: 0.1 }}>
               <AgentDelegationDemo bezel />
             </m.div>
           </m.div>

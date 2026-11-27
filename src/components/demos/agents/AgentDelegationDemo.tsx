@@ -35,9 +35,6 @@ import { LaunchPage } from './LaunchPage'
 import { AgentSessionBar, blockEnter, CliLogo, EmojiAvatar, TOOLBAR_ICON, UserAvatar } from './parts'
 
 interface RunState {
-  draft: number
-  user: boolean
-  intro: boolean
   /** One entry per delegation card shown so far, in target order. */
   cards: DelegationStatus[]
   /** Target indexes in the order their results were delivered back. */
@@ -49,9 +46,6 @@ interface RunState {
 }
 
 const INITIAL: RunState = {
-  draft: 0,
-  user: false,
-  intro: false,
   cards: [],
   results: [],
   busy: false,
@@ -121,8 +115,6 @@ export default function AgentDelegationDemo({ bezel }: { bezel?: boolean }) {
       setElapsed(38)
       setState({
         ...INITIAL,
-        user: true,
-        intro: true,
         cards: ['completed', 'completed', 'completed'],
         results: [2, 1, 0],
         summary: true,
@@ -130,30 +122,18 @@ export default function AgentDelegationDemo({ bezel }: { bezel?: boolean }) {
       })
       return
     }
-    setState(INITIAL)
     setElapsed(0)
-    // Paced so the finished page is on screen within about six seconds: visitors will not wait longer.
-    await wait(250)
-    const step = locale === 'zh' ? 2 : 6
-    for (let count = step; count < copy.task.length; count += step) {
-      update({ draft: count })
-      await wait(16)
-    }
-    update({ draft: 0, user: true, busy: true })
-    await wait(300)
-    update({ intro: true })
-    await wait(500)
-    for (const _ of delegationScript.targets) {
-      setState((previous) => ({ ...previous, cards: [...previous.cards, 'running'] }))
-      await wait(120)
-    }
-    await wait(700)
+    // The prompt is already sent and the finished page is on screen within about two seconds.
+    setState({ ...INITIAL, busy: true })
+    await wait(150)
+    update({ cards: ['running', 'running', 'running'] })
+    await wait(400)
     setCard(0, 'awaiting')
     // Codex and Grok Build keep working while Claude Code waits for the approval.
     const others = (async () => {
-      await wait(700)
+      await wait(300)
       setCard(2, 'completed')
-      await wait(600)
+      await wait(300)
       setCard(1, 'completed')
     })()
     others.catch(() => {})
@@ -161,15 +141,15 @@ export default function AgentDelegationDemo({ bezel }: { bezel?: boolean }) {
       new Promise<void>((resolve) => {
         approveRef.current = resolve
       }),
-      wait(1600)
+      wait(900)
     ])
     approveRef.current = null
     setCard(0, 'running')
-    await wait(900)
+    await wait(400)
     setCard(0, 'completed')
     update({ preview: true })
     await others
-    await wait(400)
+    await wait(300)
     update({ busy: false, summary: true })
   }, playing)
 
@@ -201,7 +181,7 @@ export default function AgentDelegationDemo({ bezel }: { bezel?: boolean }) {
         <EmojiAvatar size={22} />
         <span className="truncate">{copy.agentName}</span>
       </div>
-      <div className={cn(SIDEBAR_ROW, 'bg-accent pl-9 font-medium')}>
+      <div className={cn(SIDEBAR_ROW, 'bg-accent pl-9 font-medium text-foreground')}>
         <span className="truncate">{copy.session}</span>
       </div>
       {delegationScript.roster.map((runtime) => {
@@ -278,16 +258,9 @@ export default function AgentDelegationDemo({ bezel }: { bezel?: boolean }) {
   const composer = (
     <div className="rounded-[20px] border-[0.5px] border-border bg-composer pt-2 shadow-sm" aria-hidden="true">
       <div className="min-h-[46px] px-[15px] pt-1.5 text-sm leading-[1.4]">
-        {state.draft > 0 ? (
-          <span>
-            {copy.task.slice(0, state.draft)}
-            <span className="ml-px inline-block h-4 w-px translate-y-0.5 bg-foreground motion-safe:animate-caret" />
-          </span>
-        ) : (
-          <span className="line-clamp-2 text-muted-foreground">
-            {state.busy ? agent.placeholderBusy : agent.placeholder}
-          </span>
-        )}
+        <span className="line-clamp-2 text-muted-foreground">
+          {state.busy ? agent.placeholderBusy : agent.placeholder}
+        </span>
       </div>
       <div className="flex h-10 items-center justify-between gap-4 px-2 py-1.25">
         <div className="flex min-w-0 items-center gap-1.5">
@@ -303,16 +276,12 @@ export default function AgentDelegationDemo({ bezel }: { bezel?: boolean }) {
             {agent.effort.value}
             <ChevronDown className="size-[13px] shrink-0 text-muted-foreground dark:text-current" />
           </span>
-          {state.busy && state.draft === 0 ? (
+          {state.busy ? (
             <span className="flex size-7.5 items-center justify-center rounded-full text-destructive">
               <CirclePause className="size-5" />
             </span>
           ) : (
-            <span
-              className={cn(
-                'mr-0.5 flex size-[22px] items-center justify-center rounded-full transition-colors',
-                state.draft > 0 ? 'bg-primary text-primary-foreground' : 'bg-muted-foreground/35 text-background'
-              )}>
+            <span className="mr-0.5 flex size-[22px] items-center justify-center rounded-full bg-muted-foreground/35 text-background">
               <ArrowUp className="size-3.5" strokeWidth={2.6} />
             </span>
           )}
@@ -424,97 +393,87 @@ export default function AgentDelegationDemo({ bezel }: { bezel?: boolean }) {
                 agentName={copy.agentName}
                 workspace={delegationScript.workspace}
                 model={agentScript.model}
-                picking={!state.user}
+                picking={false}
               />
               <div
                 ref={scroller}
                 className="relative min-h-0 flex-1 overflow-y-auto px-4 [scrollbar-width:none] sm:px-6">
-                {!state.user && (
-                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-6 text-center">
-                    <EmojiAvatar size={48} />
-                    <p className="text-lg font-medium">{agent.greeting}</p>
-                  </div>
-                )}
                 <div ref={thread} className="space-y-5 py-4">
-                  {state.user && (
-                    <m.div {...blockEnter} className="flex justify-end">
-                      <div className="flex max-w-[calc(100%-2.5rem)] items-start gap-2.5">
-                        <p className="rounded-[10px] bg-muted px-4 py-2.5 text-sm leading-relaxed">{copy.task}</p>
-                        <UserAvatar className="mt-1.5" />
+                  <m.div {...blockEnter} className="flex justify-end">
+                    <div className="flex max-w-[calc(100%-2.5rem)] items-start gap-2.5">
+                      <p className="rounded-[10px] bg-muted px-4 py-2.5 text-sm leading-relaxed">{copy.task}</p>
+                      <UserAvatar className="mt-1.5" />
+                    </div>
+                  </m.div>
+                  <m.div {...blockEnter} className="flex items-start gap-2.5">
+                    <EmojiAvatar size={30} />
+                    <div className="flex min-w-0 flex-1 flex-col">
+                      {agentName}
+                      <div className="mt-2 flex min-h-7 items-center gap-1.5 py-0.5 text-[13px] text-muted-foreground">
+                        <span>{state.busy ? agent.processing : agent.processed}</span>
+                        <span aria-hidden="true" className="text-muted-foreground/70">
+                          ·
+                        </span>
+                        <span>{agent.seconds.replace('{s}', String(elapsed))}</span>
                       </div>
-                    </m.div>
-                  )}
-                  {state.intro && (
-                    <m.div {...blockEnter} className="flex items-start gap-2.5">
-                      <EmojiAvatar size={30} />
-                      <div className="flex min-w-0 flex-1 flex-col">
-                        {agentName}
-                        <div className="mt-2 flex min-h-7 items-center gap-1.5 py-0.5 text-[13px] text-muted-foreground">
-                          <span>{state.busy ? agent.processing : agent.processed}</span>
-                          <span aria-hidden="true" className="text-muted-foreground/70">
-                            ·
-                          </span>
-                          <span>{agent.seconds.replace('{s}', String(elapsed))}</span>
-                        </div>
-                        <p className="pt-2 text-sm leading-relaxed">
-                          <StreamingText key={locale} text={copy.intro} locale={tag} active={playing} rate={40} />
-                        </p>
-                        {state.cards.length > 0 && (
-                          <m.div {...blockEnter} className="mt-3 flex flex-col gap-1">
-                            <div className="flex min-h-7 items-center gap-1.5 text-[13px] text-muted-foreground">
-                              <Waypoints className="size-3.5 shrink-0 text-muted-foreground/80" aria-hidden="true" />
-                              {copy.delegated.replace('{count}', String(state.cards.length))}
-                              {state.busy && <BeatDots className="text-muted-foreground/80" />}
-                            </div>
-                            {state.cards.map((status, index) => {
-                              const target = delegationScript.targets[index]
-                              return (
-                                <m.div
-                                  key={target.id}
-                                  {...blockEnter}
-                                  className="group/row flex min-h-9 min-w-0 items-center gap-2.5 rounded-lg px-2 text-[13px] hover:bg-accent/50">
-                                  <CliLogo id={target.id} name={target.name} />
-                                  <span className="shrink-0 font-medium">{target.name}</span>
-                                  <span className="truncate text-muted-foreground">{copy.targets[index].session}</span>
-                                  <span className="ml-auto flex shrink-0 items-center gap-2 text-xs">
-                                    {status === 'running' && (
-                                      <span className="hidden max-w-56 truncate @3xl:inline">
-                                        <LiveStep steps={copy.targets[index].steps} active={playing} />
-                                      </span>
-                                    )}
-                                    {status === 'completed' && (
-                                      <span className="hidden text-muted-foreground @3xl:inline">
-                                        {copy.targets[index].stat}
-                                      </span>
-                                    )}
-                                    <span
-                                      role="status"
-                                      className={cn('flex items-center gap-1 font-medium', TONE[status])}>
-                                      {status === 'running' && <BeatDots />}
-                                      {status === 'completed' && <Check className="size-3.5" aria-hidden="true" />}
-                                      {copy.status[status]}
+                      <p className="pt-2 text-sm leading-relaxed">
+                        <StreamingText key={locale} text={copy.intro} locale={tag} active={playing} rate={40} />
+                      </p>
+                      {state.cards.length > 0 && (
+                        <m.div {...blockEnter} className="mt-3 flex flex-col gap-1">
+                          <div className="flex min-h-7 items-center gap-1.5 text-[13px] text-muted-foreground">
+                            <Waypoints className="size-3.5 shrink-0 text-muted-foreground/80" aria-hidden="true" />
+                            {copy.delegated.replace('{count}', String(state.cards.length))}
+                            {state.busy && <BeatDots className="text-muted-foreground/80" />}
+                          </div>
+                          {state.cards.map((status, index) => {
+                            const target = delegationScript.targets[index]
+                            return (
+                              <m.div
+                                key={target.id}
+                                {...blockEnter}
+                                className="group/row flex min-h-9 min-w-0 items-center gap-2.5 rounded-lg px-2 text-[13px] hover:bg-accent/50">
+                                <CliLogo id={target.id} name={target.name} />
+                                <span className="shrink-0 font-medium">{target.name}</span>
+                                <span className="truncate text-muted-foreground">{copy.targets[index].session}</span>
+                                <span className="ml-auto flex shrink-0 items-center gap-2 text-xs">
+                                  {status === 'running' && (
+                                    <span className="hidden max-w-56 truncate @3xl:inline">
+                                      <LiveStep steps={copy.targets[index].steps} active={playing} />
                                     </span>
-                                    {!TERMINAL.includes(status) && (
-                                      <button
-                                        type="button"
-                                        onClick={() => cancel(index)}
-                                        aria-label={`${copy.cancel} · ${target.name}`}
-                                        className={cn(
-                                          'flex size-6 cursor-pointer items-center justify-center rounded-md text-muted-foreground opacity-0 group-hover/row:opacity-100 hover:bg-accent focus-visible:opacity-100',
-                                          FOCUS
-                                        )}>
-                                        <X className="size-3.5" />
-                                      </button>
-                                    )}
+                                  )}
+                                  {status === 'completed' && (
+                                    <span className="hidden text-muted-foreground @3xl:inline">
+                                      {copy.targets[index].stat}
+                                    </span>
+                                  )}
+                                  <span
+                                    role="status"
+                                    className={cn('flex items-center gap-1 font-medium', TONE[status])}>
+                                    {status === 'running' && <BeatDots />}
+                                    {status === 'completed' && <Check className="size-3.5" aria-hidden="true" />}
+                                    {copy.status[status]}
                                   </span>
-                                </m.div>
-                              )
-                            })}
-                          </m.div>
-                        )}
-                      </div>
-                    </m.div>
-                  )}
+                                  {!TERMINAL.includes(status) && (
+                                    <button
+                                      type="button"
+                                      onClick={() => cancel(index)}
+                                      aria-label={`${copy.cancel} · ${target.name}`}
+                                      className={cn(
+                                        'flex size-6 cursor-pointer items-center justify-center rounded-md text-muted-foreground opacity-0 group-hover/row:opacity-100 hover:bg-accent focus-visible:opacity-100',
+                                        FOCUS
+                                      )}>
+                                      <X className="size-3.5" />
+                                    </button>
+                                  )}
+                                </span>
+                              </m.div>
+                            )
+                          })}
+                        </m.div>
+                      )}
+                    </div>
+                  </m.div>
                   {state.results.map((index) => {
                     const target = delegationScript.targets[index]
                     return (

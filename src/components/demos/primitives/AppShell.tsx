@@ -88,7 +88,7 @@ export default function AppShell({ active, tab, children }: AppShellProps) {
   const ActiveIcon = SIDEBAR_APPS.find((app) => app.id === active)?.icon ?? MessageSquare
 
   return (
-    <div className="flex h-full bg-sidebar">
+    <div className="app-surface flex h-full bg-sidebar text-foreground">
       <aside className="hidden w-[50px] shrink-0 flex-col items-center sm:flex" aria-hidden="true">
         <div className="flex h-11 shrink-0 items-center gap-1.5 pl-1">
           <span className="size-2.5 rounded-full bg-foreground/20" />
@@ -101,7 +101,7 @@ export default function AppShell({ active, tab, children }: AppShellProps) {
               key={id}
               className={cn(
                 'flex size-9 items-center justify-center rounded-full text-muted-foreground',
-                id === active && 'bg-foreground/12 text-foreground'
+                id === active && 'bg-sidebar-foreground/12 text-sidebar-foreground'
               )}>
               <Icon
                 className="size-[18px]"
@@ -118,7 +118,7 @@ export default function AppShell({ active, tab, children }: AppShellProps) {
 
       <div className="flex min-w-0 flex-1 flex-col">
         <div className="flex h-11 shrink-0 items-center gap-1 pl-1.5 sm:pl-0" aria-hidden="true">
-          <span className="flex h-[30px] min-w-[56px] max-w-[180px] items-center gap-1.5 rounded-[10px] bg-foreground/12 px-2">
+          <span className="flex h-[30px] min-w-[56px] max-w-[180px] items-center gap-1.5 rounded-[10px] bg-sidebar-foreground/12 px-2 text-sidebar-foreground">
             {tab.emoji ? (
               <EmojiIcon emoji={tab.emoji} size={14} />
             ) : (

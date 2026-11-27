@@ -291,6 +291,41 @@
 }
 
 /* The one card surface used across the site: card fill, hairline border, soft lift. */
+/* Inside a demo window the surfaces use the desktop app's own theme (packages/ui tokens/colors/providers.css and
+   product.css), not the website's, so replicas match the real app in both themes. */
+@layer components {
+  .app-surface {
+    --background: oklch(0.209 0 0);
+    --foreground: oklch(0.931 0 0);
+    --card: oklch(0.2 0 0);
+    --popover: oklch(0.27 0 0);
+    --secondary: oklch(1 0 0 / 0.1);
+    --muted: oklch(1 0 0 / 0.1);
+    --muted-foreground: oklch(0.708 0 0);
+    --accent: oklch(1 0 0 / 0.14);
+    --border: oklch(1 0 0 / 0.1);
+    --sidebar: oklch(0.2393 0 0);
+    --sidebar-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.269 0 0);
+    --composer: #2f2f2f;
+  }
+  .light .app-surface {
+    --background: oklch(1 0 0);
+    --foreground: oklch(0.213 0 0);
+    --card: oklch(1 0 0);
+    --popover: oklch(1 0 0);
+    --secondary: oklch(0 0 0 / 0.05);
+    --muted: oklch(0 0 0 / 0.05);
+    --muted-foreground: oklch(0.556 0 0);
+    --accent: oklch(0 0 0 / 0.08);
+    --border: oklch(0 0 0 / 0.1);
+    --sidebar: oklch(0.9672 0 0);
+    --sidebar-foreground: oklch(0.145 0 0);
+    --sidebar-accent: oklch(0.97 0 0);
+    --composer: oklch(1 0 0);
+  }
+}
+
 /* Copy set on the coral silk backdrop: white text, with muted text as translucent white. */
 @utility on-silk {
   --color-foreground: #fff;
