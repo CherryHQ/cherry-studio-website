@@ -50,12 +50,14 @@ export default function PhoneFrame({
 
   return (
     <figure className={cn('mx-auto w-full max-w-[320px] min-w-0', className)}>
-      <div className="relative w-full rounded-[52px] bg-[#1b1b1d] p-[10px] shadow-[0_0_0_1px_rgb(255_255_255/0.1),0_30px_60px_-30px_rgb(0_0_0/0.65)] ring-1 ring-black/40">
+      <div className="relative w-full rounded-[52px] p-[10px] bg-[linear-gradient(150deg,#3a3a3e_0%,#1b1b1d_38%,#141416_62%,#2e2e32_100%)] shadow-[0_0_0_1px_rgb(0_0_0/0.35),0_30px_60px_-30px_rgb(0_0_0/0.65)] dark:shadow-[0_0_0_1px_rgb(255_255_255/0.22),0_0_90px_-12px_rgb(255_255_255/0.14),0_40px_80px_-30px_rgb(0_0_0/0.9)]">
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute inset-[3px] rounded-[49px] border border-white/[0.07]"
+          className="pointer-events-none absolute inset-[3px] rounded-[49px] border border-white/[0.12] dark:border-white/[0.18]"
         />
-        <div ref={screen} className="relative aspect-[393/852] w-full overflow-hidden rounded-[42px] bg-black">
+        <div
+          ref={screen}
+          className="relative aspect-[393/852] w-full overflow-hidden rounded-[42px] bg-black ring-1 ring-white/[0.08]">
           <div
             style={{ width: SCREEN_WIDTH, height: SCREEN_HEIGHT, transform: `scale(${scale})` }}
             className={cn(
