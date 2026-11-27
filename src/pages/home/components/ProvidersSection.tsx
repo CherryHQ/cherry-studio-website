@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import ai302Logo from '@/assets/images/provider_logo/302ai.svg'
@@ -87,24 +88,51 @@ const cnLogos: LogoInfo[] = [
   { src: higressLogo, name: 'Higress' }
 ]
 
-function LogoRow({ logos, hidden }: { logos: LogoInfo[]; hidden?: boolean }) {
+// Model names from the provider registry for the second, reversed marquee row.
+const globalModels = [
+  'Claude Opus 4.8',
+  'GPT-5.6',
+  'Gemini 3.1 Pro',
+  'DeepSeek V4 Pro',
+  'Grok 4',
+  'Qwen3.7 Max',
+  'Kimi K3',
+  'GLM 5.3',
+  'Mistral Large',
+  'MiniMax M2.7'
+]
+const cnModels = [
+  'DeepSeek V4 Pro',
+  'Qwen3.7 Max',
+  'Kimi K3',
+  'GLM 5.3',
+  'MiniMax M2.7',
+  'Claude Opus 4.8',
+  'GPT-5.6',
+  'Gemini 3.1 Pro'
+]
+
+/** One marquee row: the items twice, so translating by -50% loops seamlessly. Hovering the row pauses it. */
+function MarqueeRow({ children, reverse }: { children: (hidden: boolean) => ReactNode; reverse?: boolean }) {
   return (
-    <ul aria-hidden={hidden || undefined} className="flex shrink-0 items-center gap-10 pr-10">
-      {logos.map(({ name, src, darkInvert }) => (
-        <li
-          key={name}
-          className="flex items-center gap-2.5 text-sm font-medium whitespace-nowrap text-muted-foreground transition-colors duration-200 hover:text-foreground">
-          <img src={src} alt="" className={cn('size-5 object-contain', darkInvert && 'dark:invert')} />
-          {name}
-        </li>
-      ))}
-    </ul>
+    <div className="group flex overflow-hidden">
+      <div
+        className={cn(
+          'flex w-max motion-safe:animate-marquee group-hover:[animation-play-state:paused]',
+          reverse && '[animation-direction:reverse]'
+        )}>
+        {children(false)}
+        {children(true)}
+      </div>
+    </div>
   )
 }
 
 export default function ProvidersSection() {
   const { t, i18n } = useTranslation()
-  const logos = isEnglishSite(i18n.resolvedLanguage || i18n.language) ? globalLogos : cnLogos
+  const isEn = isEnglishSite(i18n.resolvedLanguage || i18n.language)
+  const logos = isEn ? globalLogos : cnLogos
+  const models = isEn ? globalModels : cnModels
   const stats = [
     { value: productStats.labels.providers, label: t('home_page.stat_providers') },
     { value: productStats.labels.models, label: t('home_page.stat_models') },
@@ -132,11 +160,35 @@ export default function ProvidersSection() {
         <DemoMount load={() => import('@/components/demos/models/ModelSelectorDemo')} className="min-h-[520px]" />
       </div>
 
-      <div className="group relative overflow-hidden border-t border-border py-6 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-        <div className="flex w-max motion-safe:animate-marquee group-hover:[animation-play-state:paused]">
-          <LogoRow logos={logos} />
-          <LogoRow logos={logos} hidden />
-        </div>
+      {/* Marquee after Incidental AI Design Academy's MIT "Marquee": provider chips over a reversed row of model names. */}
+      <div className="grid gap-3.5 border-t border-border py-10 [mask-image:linear-gradient(90deg,transparent,black_12%,black_88%,transparent)]">
+        <MarqueeRow>
+          {(hidden) => (
+            <ul aria-hidden={hidden || undefined} className="flex shrink-0 gap-3 pr-3">
+              {logos.map(({ name, src, darkInvert }) => (
+                <li
+                  key={name}
+                  className="flex shrink-0 items-center gap-2.5 rounded-full bg-card px-[18px] py-3 text-sm font-medium whitespace-nowrap shadow-[inset_0_0_0_1px_rgb(127_127_127/0.18)]">
+                  <img src={src} alt="" className={cn('size-4 object-contain', darkInvert && 'dark:invert')} />
+                  {name}
+                </li>
+              ))}
+            </ul>
+          )}
+        </MarqueeRow>
+        <MarqueeRow reverse>
+          {(hidden) => (
+            <ul aria-hidden={hidden || undefined} className="flex shrink-0">
+              {models.map((model) => (
+                <li
+                  key={model}
+                  className="shrink-0 px-[18px] font-serif text-[34px] leading-none whitespace-nowrap italic">
+                  {model}
+                </li>
+              ))}
+            </ul>
+          )}
+        </MarqueeRow>
       </div>
     </section>
   )
