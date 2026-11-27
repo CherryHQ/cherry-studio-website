@@ -32,12 +32,3 @@ export function reveal(index = 0) {
     transition: { ...spring.gentle, delay: index * 0.06 }
   } as const
 }
-
-/** Headline line entrance: each line rises 30px out of a 6px blur, 90ms apart, over 760ms. */
-export function lineRise(index = 0) {
-  return {
-    initial: { opacity: 0, y: 30, filter: 'blur(6px)' },
-    animate: { opacity: 1, y: 0, filter: 'blur(0px)' },
-    transition: { duration: 0.76, ease: ease.settle, delay: 0.05 + index * 0.09 }
-  } as const
-}

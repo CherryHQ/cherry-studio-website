@@ -7,10 +7,14 @@ import { Link } from 'react-router-dom'
 import { fetchNotice, type NoticeResponse } from '@/assets/js/notice'
 import ChatStreamDemo from '@/components/demos/chat/ChatStreamDemo'
 import MobileDownloadButton from '@/components/website/MobileDownloadButton'
+import ParticleTitle from '@/components/website/ParticleTitle'
 import { useVersionData } from '@/hooks/useVersionData'
-import { lineRise, spring } from '@/lib/motion'
+import { spring } from '@/lib/motion'
 import { isMobileDevice } from '@/utils/systemDetection'
 import { getDocsUrl, isEnglishSite } from '@/utils/urls'
+
+// CJK fallbacks for drawing Chinese headline glyphs on the particle canvas.
+const CJK_SANS = '"PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif'
 
 export default function HeroSection() {
   const { t, i18n } = useTranslation()
@@ -47,13 +51,23 @@ export default function HeroSection() {
           <ArrowRight className="size-3" aria-hidden="true" />
         </Link>
 
-        <h1 className="font-display max-w-5xl text-5xl leading-[0.98] text-balance sm:text-7xl lg:text-[5.5rem]">
-          <m.span {...lineRise(0)} className="block pb-2">
-            {t('home_page.title_first')}
-          </m.span>
-          <m.span {...lineRise(1)} className="font-accent block pb-3 text-foreground">
-            {t('home_page.title_second')}
-          </m.span>
+        <h1 className="w-full max-w-5xl">
+          <span className="sr-only">
+            {t('home_page.title_first')} {t('home_page.title_second')}
+          </span>
+          <ParticleTitle
+            className="h-[clamp(150px,24vw,300px)]"
+            density={isEn ? 1 / 170 : 1 / 230}
+            lines={[
+              { text: t('home_page.title_first'), font: `600 {size}px "Inter Tight", ${CJK_SANS}` },
+              {
+                text: t('home_page.title_second'),
+                font: isEn
+                  ? 'italic 400 {size}px "Newsreader", Georgia, serif'
+                  : `600 {size}px "Inter Tight", ${CJK_SANS}`
+              }
+            ]}
+          />
         </h1>
         <p className="mt-6 max-w-2xl text-pretty text-base text-muted-foreground sm:text-lg zh:leading-[1.8]">
           {t('home_page.intro')}
