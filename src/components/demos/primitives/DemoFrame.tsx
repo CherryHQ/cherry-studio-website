@@ -15,6 +15,8 @@ interface DemoFrameProps {
   bare?: boolean
   /** Skip the title bar for demos that draw the app's own window chrome. */
   chromeless?: boolean
+  /** Set the window in a frosted-glass bezel with a soft lift, for showcase placements over colour. */
+  bezel?: boolean
 }
 
 /** Desktop window chrome around an interactive product demo. */
@@ -26,29 +28,43 @@ export default function DemoFrame({
   toolbar,
   onReplay,
   bare,
-  chromeless
+  chromeless,
+  bezel
 }: DemoFrameProps) {
   const { t } = useTranslation()
+  const windowBody = (
+    <div className="glass-card overflow-hidden rounded-[20px]">
+      {!chromeless && (
+        <div className="flex h-10 items-center gap-3 border-b border-border px-3.5">
+          <span className="flex gap-1.5" aria-hidden="true">
+            <span className="size-2.5 rounded-full bg-foreground/20" />
+            <span className="size-2.5 rounded-full bg-foreground/20" />
+            <span className="size-2.5 rounded-full bg-foreground/20" />
+          </span>
+          <span className="min-w-0 flex-1 truncate text-center font-mono text-[11px] text-muted-foreground">
+            {title}
+          </span>
+          <span className="flex min-w-[42px] items-center justify-end gap-1">{toolbar}</span>
+        </div>
+      )}
+      {/* Inside a [data-fill] stage the body grows to --demo-fill-h, never below its own design height. */}
+      <div className={cn('relative bg-card/60', bodyClassName, 'in-data-fill:min-h-(--demo-fill-h)')}>{children}</div>
+    </div>
+  )
 
   return (
     <figure className={cn('min-w-0', className)}>
-      <div className="glass-card overflow-hidden rounded-[20px]">
-        {!chromeless && (
-          <div className="flex h-10 items-center gap-3 border-b border-border px-3.5">
-            <span className="flex gap-1.5" aria-hidden="true">
-              <span className="size-2.5 rounded-full bg-foreground/20" />
-              <span className="size-2.5 rounded-full bg-foreground/20" />
-              <span className="size-2.5 rounded-full bg-foreground/20" />
-            </span>
-            <span className="min-w-0 flex-1 truncate text-center font-mono text-[11px] text-muted-foreground">
-              {title}
-            </span>
-            <span className="flex min-w-[42px] items-center justify-end gap-1">{toolbar}</span>
-          </div>
-        )}
-        {/* Inside a [data-fill] stage the body grows to --demo-fill-h, never below its own design height. */}
-        <div className={cn('relative bg-card/60', bodyClassName, 'in-data-fill:min-h-(--demo-fill-h)')}>{children}</div>
-      </div>
+      {bezel ? (
+        <div className="relative rounded-[28px] bg-white/15 p-2 shadow-[0_60px_140px_-40px_rgb(11_29_38/0.6),0_24px_70px_-30px_rgb(255_111_97/0.55)] ring-1 ring-white/35 ring-inset backdrop-blur-2xl dark:bg-white/8 dark:ring-white/15">
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-x-0 top-0 h-1/2 rounded-t-[28px] bg-linear-to-b from-white/35 to-transparent dark:from-white/15"
+          />
+          <div className="relative">{windowBody}</div>
+        </div>
+      ) : (
+        windowBody
+      )}
       {!bare && (
         <figcaption className="mt-2.5 flex items-center justify-between gap-3 px-1 text-xs text-muted-foreground">
           <span>{t('demos.simulated')}</span>

@@ -16,6 +16,9 @@ importers:
 
   .:
     dependencies:
+      '@paper-design/shaders-react':
+        specifier: 0.0.82
+        version: 0.0.82(@types/react@18.3.20)(react@18.3.1)
       '@radix-ui/react-dialog':
         specifier: ^1.1.15
         version: 1.1.15(@types/react-dom@18.3.6(@types/react@18.3.20))(@types/react@18.3.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -891,6 +894,18 @@ packages:
   '@nodelib/fs.walk@1.2.8':
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
+
+  '@paper-design/shaders-react@0.0.82':
+    resolution: {integrity: sha512-DSPvsCgqagN23sYJP4vB9UpKj0IM6Aq9DOulI8c6ByHdDD6mIKRCNN6tqHK1FDdzCEQNz0dstlRtcdImAWcqqQ==}
+    peerDependencies:
+      '@types/react': ^18 || ^19
+      react: ^18 || ^19
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+
+  '@paper-design/shaders@0.0.82':
+    resolution: {integrity: sha512-eCxYQrrCxRVc4KG8sLSQecsq8Ymstbaq/FqZjq/fhOa6UiR1ZZfdMO5IJpHmwL0GYmfzvZVQ4l8ZOLux0uLVdg==}
 
   '@posthog/core@1.59.3':
     resolution: {integrity: sha512-XbfpD82YSms/asHU44xQq5vqadi6rHTRg6fyoTqjdGTiC1NiPRCeO8xhtANT682BkvlKJo+JwRDBu3Q8oEqQpw==}
@@ -4367,6 +4382,15 @@ snapshots:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.19.1
+
+  '@paper-design/shaders-react@0.0.82(@types/react@18.3.20)(react@18.3.1)':
+    dependencies:
+      '@paper-design/shaders': 0.0.82
+      react: 18.3.1
+    optionalDependencies:
+      '@types/react': 18.3.20
+
+  '@paper-design/shaders@0.0.82': {}
 
   '@posthog/core@1.59.3':
     dependencies:

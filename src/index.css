@@ -95,32 +95,6 @@
   --animate-marquee: marquee 40s linear infinite;
   --animate-caret: caret 1s steps(1) infinite;
   --animate-blur-in: blur-in 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both;
-  --animate-drift: drift 22s ease-in-out infinite;
-  --animate-glint: glint 7s ease-in-out infinite;
-
-  @keyframes drift {
-    0%,
-    100% {
-      transform: translate3d(0, 0, 0) scale(1);
-    }
-    33% {
-      transform: translate3d(8%, 6%, 0) scale(1.1);
-    }
-    66% {
-      transform: translate3d(-6%, 8%, 0) scale(0.92);
-    }
-  }
-  @keyframes glint {
-    0%,
-    100% {
-      opacity: 0.2;
-      transform: scale(0.92);
-    }
-    50% {
-      opacity: 0.85;
-      transform: scale(1.06);
-    }
-  }
 
   @keyframes beat {
     0%,
