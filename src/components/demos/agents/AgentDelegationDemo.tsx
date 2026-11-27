@@ -73,12 +73,12 @@ const TONE: Record<DelegationStatus, string> = {
   cancelled: 'text-muted-foreground'
 }
 
-/** The step a running local Agent is on, advancing every 1.5s and sweeping with the app's shimmer. */
+/** The step a running local Agent is on, advancing every 0.6s and sweeping with the app's shimmer. */
 function LiveStep({ steps, active }: { steps: string[]; active: boolean }) {
   const [step, setStep] = useState(0)
   useEffect(() => {
     if (!active) return
-    const timer = setInterval(() => setStep((value) => Math.min(value + 1, steps.length - 1)), 1500)
+    const timer = setInterval(() => setStep((value) => Math.min(value + 1, steps.length - 1)), 600)
     return () => clearInterval(timer)
   }, [active, steps.length])
   return <ShimmerText active={active}>{`${steps[step]}…`}</ShimmerText>
@@ -132,32 +132,28 @@ export default function AgentDelegationDemo({ bezel }: { bezel?: boolean }) {
     }
     setState(INITIAL)
     setElapsed(0)
-    await wait(500)
-    for (let count = 1; count <= copy.task.length; count += locale === 'zh' ? 1 : 3) {
+    // Paced so the finished page is on screen within about six seconds: visitors will not wait longer.
+    await wait(250)
+    const step = locale === 'zh' ? 2 : 6
+    for (let count = step; count < copy.task.length; count += step) {
       update({ draft: count })
-      await wait(locale === 'zh' ? 40 : 26)
+      await wait(16)
     }
-    await wait(400)
     update({ draft: 0, user: true, busy: true })
-    await wait(700)
+    await wait(300)
     update({ intro: true })
-    await wait(1600)
-    for (const _ of delegationScript.targets) {
-      setState((previous) => ({ ...previous, cards: [...previous.cards, 'pending'] }))
-      await wait(280)
-    }
     await wait(500)
-    for (const index of [0, 1, 2]) {
-      setCard(index, 'running')
-      await wait(220)
+    for (const _ of delegationScript.targets) {
+      setState((previous) => ({ ...previous, cards: [...previous.cards, 'running'] }))
+      await wait(120)
     }
-    await wait(1500)
+    await wait(700)
     setCard(0, 'awaiting')
-    // Codex and OpenCode keep working while Claude Code waits for the approval.
+    // Codex and Grok Build keep working while Claude Code waits for the approval.
     const others = (async () => {
-      await wait(2400)
+      await wait(700)
       setCard(2, 'completed')
-      await wait(1600)
+      await wait(600)
       setCard(1, 'completed')
     })()
     others.catch(() => {})
@@ -165,17 +161,16 @@ export default function AgentDelegationDemo({ bezel }: { bezel?: boolean }) {
       new Promise<void>((resolve) => {
         approveRef.current = resolve
       }),
-      wait(4500)
+      wait(1600)
     ])
     approveRef.current = null
     setCard(0, 'running')
-    await wait(2300)
+    await wait(900)
     setCard(0, 'completed')
-    await others
-    await wait(700)
-    update({ busy: false, summary: true })
-    await wait(2600)
     update({ preview: true })
+    await others
+    await wait(400)
+    update({ busy: false, summary: true })
   }, playing)
 
   useEffect(() => {
