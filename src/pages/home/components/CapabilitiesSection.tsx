@@ -16,7 +16,7 @@ import BlurInText from '@/components/website/BlurInText'
 import { ease, reveal, spring } from '@/lib/motion'
 import { cn } from '@/lib/utils'
 
-type ChapterId = 'chat' | 'compare' | 'agents' | 'knowledge' | 'create'
+type ChapterId = 'agents' | 'browser' | 'marketplace' | 'tasks' | 'knowledge' | 'create'
 
 interface Step {
   chapter: ChapterId
@@ -26,27 +26,24 @@ interface Step {
 // One step per screen: chapters with two large demos get one screen per demo.
 const steps: Step[] = [
   {
-    chapter: 'chat',
-    demos: [
-      { load: () => import('@/components/demos/chat-tools/EffortSliderDemo'), height: 'min-h-[320px]' },
-      { load: () => import('@/components/demos/chat-tools/AnchorRailDemo'), height: 'min-h-[320px]' }
-    ]
-  },
-  {
-    chapter: 'compare',
-    demos: [{ load: () => import('@/components/demos/models/ModelCompareDemo'), height: 'min-h-[500px]' }]
-  },
-  {
     chapter: 'agents',
     demos: [{ load: () => import('@/components/demos/agents/AgentRunDemo'), height: 'min-h-[680px]' }]
   },
   {
-    chapter: 'knowledge',
-    demos: [{ load: () => import('@/components/demos/knowledge/KnowledgeDemo'), height: 'min-h-[540px]' }]
+    chapter: 'browser',
+    demos: [{ load: () => import('@/components/demos/browser/BrowserAgentDemo'), height: 'min-h-[610px]' }]
+  },
+  {
+    chapter: 'marketplace',
+    demos: [{ load: () => import('@/components/demos/marketplace/MarketplaceDemo'), height: 'min-h-[610px]' }]
+  },
+  {
+    chapter: 'tasks',
+    demos: [{ load: () => import('@/components/demos/tasks/ScheduledTasksDemo'), height: 'min-h-[610px]' }]
   },
   {
     chapter: 'knowledge',
-    demos: [{ load: () => import('@/components/demos/knowledge/TranslateDemo'), height: 'min-h-[340px]' }]
+    demos: [{ load: () => import('@/components/demos/knowledge/KnowledgeWikiDemo'), height: 'min-h-[610px]' }]
   },
   {
     chapter: 'create',

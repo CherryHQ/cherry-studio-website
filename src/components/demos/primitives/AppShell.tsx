@@ -8,13 +8,14 @@ import {
   Palette,
   Plus,
   Search,
+  Store,
   X
 } from 'lucide-react'
 import type { ReactNode, SVGProps } from 'react'
 
 import { cn } from '@/lib/utils'
 
-export type AppNav = 'agents' | 'assistants' | 'tasks' | 'translate' | 'paintings' | 'knowledge'
+export type AppNav = 'agents' | 'assistants' | 'tasks' | 'translate' | 'paintings' | 'knowledge' | 'marketplace'
 
 // Default sidebar shortcuts, in preference order (preferenceSchemas `ui.sidebar_shortcut`).
 const SIDEBAR_APPS: { id: AppNav; icon: LucideIcon }[] = [
@@ -85,7 +86,9 @@ interface AppShellProps {
  * a 44px tab bar, and the rounded content card the page renders into.
  */
 export default function AppShell({ active, tab, children }: AppShellProps) {
-  const ActiveIcon = SIDEBAR_APPS.find((app) => app.id === active)?.icon ?? MessageSquare
+  // Marketplace opens as a tab with its own icon and is not one of the default rail shortcuts.
+  const ActiveIcon =
+    active === 'marketplace' ? Store : (SIDEBAR_APPS.find((app) => app.id === active)?.icon ?? MessageSquare)
 
   return (
     <div className="app-surface flex h-full bg-sidebar text-foreground">

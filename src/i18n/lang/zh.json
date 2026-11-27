@@ -533,25 +533,9 @@
     "stat_assistants": "智能助手",
     "capabilities": {
       "eyebrow": "走进 Cherry Studio",
-      "title": "用 AI 做的每件事，都在一个窗口里",
-      "subtitle": "下面每个演示都重现了 Cherry Studio 里的真实交互：一样的布局、一样的节奏、一样的细节。",
+      "title": "真正把活干完的 Agent",
+      "subtitle": "下面每个演示都重现了 Cherry Studio 2 里的真实交互：一样的布局、一样的节奏、一样的细节。",
       "chapters": {
-        "chat": {
-          "nav": "对话",
-          "title": "为长时间工作打磨的对话界面",
-          "description": "看模型如何思考，工具调用直接显示在对话里，长对话也能快速定位。",
-          "points": [
-            "每条消息都能单独设置思考强度",
-            "消息导航条，几百轮对话也能一键跳转",
-            "网络搜索、知识库、MCP 工具，一个 / 全部调出"
-          ]
-        },
-        "compare": {
-          "nav": "多模型",
-          "title": "一次提问，多个模型同时回答",
-          "description": "同一个问题发给多个模型，回答可以折叠、纵向、横向或网格排列。",
-          "points": ["四种多模型回答布局", "各模型回答同时流式输出", "云端模型和本地模型可以混用"]
-        },
         "agents": {
           "nav": "智能体",
           "title": "把任务交给智能体",
@@ -564,13 +548,9 @@
         },
         "knowledge": {
           "nav": "知识库",
-          "title": "把文件变成知识",
-          "description": "添加文件、文件夹、网页和笔记，Cherry Studio 会建立索引，并标出回答引用了哪些段落。",
-          "points": [
-            "支持 PDF、Office、Markdown、网址和文件夹",
-            "召回测试，直接看到检索结果",
-            "内置 {{translateLanguages}} 种语言互译"
-          ]
+          "title": "会自己更新的知识库",
+          "description": "Agent 读取你的知识库，也会把学到的东西写回去，让它像团队 Wiki 一样不断生长。",
+          "points": ["Agent 边干活边新增和更新页面", "回答会标出引用的页面", "支持 PDF、Office、Markdown、网址和文件夹"]
         },
         "create": {
           "nav": "创作",
@@ -581,6 +561,24 @@
             "HTML Artifacts 支持代码、预览、分屏三种视图",
             "Mermaid、图表和流程图直接渲染"
           ]
+        },
+        "browser": {
+          "nav": "浏览器",
+          "title": "替你上网办事的 Agent",
+          "description": "Agent 在内置浏览器里打开网页、点击、滚动、读取内容，每一步都有指针动画演示给你看。",
+          "points": ["每个操作实时可见", "页面变化后也能重新找到元素", "调试时可查看控制台和网络请求"]
+        },
+        "marketplace": {
+          "nav": "市场",
+          "title": "技能、Agent、MCP 都在一个市场里",
+          "description": "浏览技能目录、Agent 模板和 MCP 服务，按引导一步装好。",
+          "points": ["技能目录和外部技能源", "开箱即用的 Agent 模板", "MCP 服务集中管理"]
+        },
+        "tasks": {
+          "nav": "定时任务",
+          "title": "你不在时，活也在干",
+          "description": "给 Agent 定个时间表，结果送进通知抽屉，每次运行都有自己的对话记录。",
+          "points": ["每天、每周或自定义时间", "未读结果集中在侧栏旁", "每个任务都有运行历史"]
         }
       }
     },

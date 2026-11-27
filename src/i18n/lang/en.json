@@ -537,29 +537,9 @@
     "stat_assistants": "Assistants",
     "capabilities": {
       "eyebrow": "Inside Cherry Studio",
-      "title": "Everything you do with AI, in one window",
-      "subtitle": "Each demo below replays a real Cherry Studio interaction: same layouts, same timings, same details.",
+      "title": "Agents that get real work done",
+      "subtitle": "Each demo below replays a real Cherry Studio 2 interaction: same layouts, same timings, same details.",
       "chapters": {
-        "chat": {
-          "nav": "Chat",
-          "title": "A chat surface built for long sessions",
-          "description": "Watch the model think, see tools run inline, and move through long threads without losing your place.",
-          "points": [
-            "Set reasoning effort per message",
-            "Jump across hundreds of turns with the message rail",
-            "Web search, knowledge bases and MCP tools from one / menu"
-          ]
-        },
-        "compare": {
-          "nav": "Compare",
-          "title": "Ask several models at once",
-          "description": "Send one prompt to multiple models and read the answers folded, stacked, side by side or as a grid.",
-          "points": [
-            "Four layouts for multi-model answers",
-            "Answers stream in parallel",
-            "Mix cloud and local models in one group"
-          ]
-        },
         "agents": {
           "nav": "Agents",
           "title": "Agents that finish the job",
@@ -572,12 +552,12 @@
         },
         "knowledge": {
           "nav": "Knowledge",
-          "title": "Turn your files into knowledge",
-          "description": "Add files, folders, web pages and notes. Cherry Studio indexes them and shows which passages an answer used.",
+          "title": "A knowledge base that keeps itself current",
+          "description": "Agents read your knowledge base and write back what they learn, so it grows like a team wiki.",
           "points": [
-            "PDF, Office, Markdown, URLs and folders",
-            "Recall tests show what a query retrieves",
-            "Translation across {{translateLanguages}} languages"
+            "Agents add and update pages as they work",
+            "Answers cite the pages they used",
+            "PDF, Office, Markdown, URLs and folders"
           ]
         },
         "create": {
@@ -588,6 +568,36 @@
             "Painting templates for multiple image models",
             "Code, preview and split views for HTML artifacts",
             "Mermaid, charts and diagrams render inline"
+          ]
+        },
+        "browser": {
+          "nav": "Browser",
+          "title": "Agents that use the web for you",
+          "description": "Agents open pages in the built-in browser, click, scroll and read them, with a pointer that shows every move.",
+          "points": [
+            "Watch each action as it happens",
+            "Finds elements again after the page changes",
+            "Reads console and network activity when debugging"
+          ]
+        },
+        "marketplace": {
+          "nav": "Marketplace",
+          "title": "Skills, agents and MCP in one marketplace",
+          "description": "Browse skill catalogs, Agent templates and MCP servers, then install them with a guided setup.",
+          "points": [
+            "Skill catalogs and external skill sources",
+            "Ready-made Agent templates",
+            "MCP servers with focused management"
+          ]
+        },
+        "tasks": {
+          "nav": "Scheduled tasks",
+          "title": "Work that runs while you are away",
+          "description": "Put an agent on a schedule. Results land in the notification drawer, and every run keeps its own conversation.",
+          "points": [
+            "Daily, weekly or custom schedules",
+            "Unread results gathered beside the sidebar",
+            "Run history for every task"
           ]
         }
       }
