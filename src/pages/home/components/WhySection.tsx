@@ -2,6 +2,7 @@ import { Bot, Boxes, FileText, Library, Sparkles, WandSparkles } from 'lucide-re
 import type { FC } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 
+import BlurInText from '@/components/website/BlurInText'
 import FeatureBento from '@/components/website/FeatureBento'
 
 const whyItems = [
@@ -20,7 +21,9 @@ const WhySection: FC = () => {
     <section className="isolate bg-background relative overflow-hidden site-section">
       <div className="site-container relative z-10">
         <div className="mb-8 max-w-3xl sm:mb-12">
-          <h2 className="mb-4 text-4xl font-display text-balance sm:text-5xl">{t('highlights.title')}</h2>
+          <h2 className="mb-4 text-4xl font-display text-balance sm:text-5xl">
+            <BlurInText text={t('highlights.title')} />
+          </h2>
           <p className="text-muted-foreground text-base sm:text-lg">{t('highlights.subtitle')}</p>
         </div>
 

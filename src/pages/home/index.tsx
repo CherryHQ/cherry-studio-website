@@ -9,6 +9,7 @@ import AppsSection from './components/AppsSection'
 import CapabilitiesSection from './components/CapabilitiesSection'
 import CommunitySection from './components/CommunitySection'
 import ContributorsSection from './components/ContributorsSection'
+import DownloadDock from './components/DownloadDock'
 import DownloadSection from './components/DownloadSection'
 import EverywhereSection from './components/EverywhereSection'
 import FAQSection from './components/FAQSection'
@@ -56,6 +57,7 @@ const HomePage: FC = () => {
         </div>
         <DownloadSection />
       </main>
+      <DownloadDock />
       <Footer />
     </div>
   )

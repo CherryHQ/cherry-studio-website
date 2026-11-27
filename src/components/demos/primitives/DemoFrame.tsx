@@ -32,7 +32,7 @@ export default function DemoFrame({
 
   return (
     <figure className={cn('min-w-0', className)}>
-      <div className="glass-card overflow-hidden rounded-xl">
+      <div className="glass-card overflow-hidden rounded-[20px]">
         {!chromeless && (
           <div className="flex h-10 items-center gap-3 border-b border-border px-3.5">
             <span className="flex gap-1.5" aria-hidden="true">
@@ -50,7 +50,7 @@ export default function DemoFrame({
         <div className={cn('relative bg-card/60', bodyClassName, 'in-data-fill:min-h-(--demo-fill-h)')}>{children}</div>
       </div>
       {!bare && (
-        <figcaption className="mt-2.5 flex items-center justify-between gap-3 px-1 font-mono text-[11px] text-muted-foreground">
+        <figcaption className="mt-2.5 flex items-center justify-between gap-3 px-1 text-xs text-muted-foreground">
           <span>{t('demos.simulated')}</span>
           {onReplay && (
             <button

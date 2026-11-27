@@ -1041,7 +1041,7 @@ const ThemePage: React.FC = () => {
             </div>
 
             {fetchError && (
-              <div className="glass-card mb-6 flex flex-wrap items-center justify-between gap-4 rounded-2xl p-4">
+              <div className="glass-card mb-6 flex flex-wrap items-center justify-between gap-4 rounded-[20px] p-4">
                 <p role="alert" className="text-sm text-muted-foreground">
                   {t('theme_page.notifications.data_fetch_error')}
                 </p>
@@ -1109,7 +1109,7 @@ const ThemePage: React.FC = () => {
               <div className="grid gap-6 md:grid-cols-2" role="status">
                 <span className="sr-only">{t('theme_page.loading')}</span>
                 {[0, 1].map((index) => (
-                  <div key={index} aria-hidden="true" className="glass-card rounded-2xl p-4">
+                  <div key={index} aria-hidden="true" className="glass-card rounded-[20px] p-4">
                     <div className="aspect-video rounded-md bg-muted motion-safe:animate-blink" />
                     <div className="mt-4 h-5 w-1/2 rounded-sm bg-muted" />
                     <div className="mt-3 h-3 w-3/4 rounded-sm bg-muted" />
@@ -1124,7 +1124,7 @@ const ThemePage: React.FC = () => {
                     return (
                       <div
                         key={item.id}
-                        className="glass-card group flex flex-col overflow-hidden rounded-2xl transition-[border-color,transform] duration-300 ease-settle hover:-translate-y-0.5 hover:border-hairline-strong">
+                        className="glass-card group flex flex-col overflow-hidden rounded-[20px] transition-[border-color,transform] duration-300 ease-settle hover:-translate-y-0.5 hover:border-hairline-strong">
                         <ThemeCardPreview
                           key={imageUrl}
                           src={imageUrl}

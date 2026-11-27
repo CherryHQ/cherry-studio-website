@@ -3,6 +3,7 @@ import { ArrowRight, Plus } from 'lucide-react'
 import { type FC, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import BlurInText from '@/components/website/BlurInText'
 import { ease } from '@/lib/motion'
 import { cn } from '@/lib/utils'
 import { getDocsUrl } from '@/utils/urls'
@@ -31,7 +32,7 @@ const FAQSection: FC = () => {
       <div className="site-container site-split">
         <div className="max-w-sm">
           <h2 id="home-faq-heading" className="text-4xl font-display text-balance sm:text-5xl">
-            {t('home_faq.title')}
+            <BlurInText text={t('home_faq.title')} />
           </h2>
           {isZh && <p className="mt-3 text-base text-muted-foreground">{t('home_faq.subtitle')}</p>}
           <a
@@ -49,7 +50,7 @@ const FAQSection: FC = () => {
               <div
                 key={question}
                 className={cn(
-                  'rounded-xl border px-5 transition-colors duration-200',
+                  'rounded-2xl border px-5 transition-colors duration-200',
                   isOpen ? 'glass-card border-hairline-strong' : 'border-border hover:border-hairline-strong'
                 )}>
                 <h3>

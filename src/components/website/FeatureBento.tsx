@@ -1,6 +1,6 @@
 import { m } from 'framer-motion'
 import { ArrowUpRight, type LucideIcon } from 'lucide-react'
-import type { PointerEvent, ReactNode } from 'react'
+import { type PointerEvent, type ReactNode, useRef } from 'react'
 
 import { reveal } from '@/lib/motion'
 import { cn } from '@/lib/utils'
@@ -16,16 +16,45 @@ export interface FeatureBentoItem {
 // Column spans on the 6-column grid: wide/narrow, narrow/wide, then halves; the pattern repeats.
 const SPANS = ['lg:col-span-4', 'lg:col-span-2', 'lg:col-span-2', 'lg:col-span-4', 'lg:col-span-3', 'lg:col-span-3']
 
-function trackPointer(event: PointerEvent<HTMLElement>) {
-  const rect = event.currentTarget.getBoundingClientRect()
-  event.currentTarget.style.setProperty('--mx', `${event.clientX - rect.left}px`)
-  event.currentTarget.style.setProperty('--my', `${event.clientY - rect.top}px`)
-}
+const SPOT = 'color-mix(in oklab, var(--color-foreground) 4.5%, transparent)'
+const RIM = 'color-mix(in oklab, var(--color-foreground) 45%, transparent)'
+// Keep only the 1px padding ring: the content-box layer is subtracted from the full layer.
+const RIM_MASK = {
+  WebkitMask: 'linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)',
+  WebkitMaskComposite: 'xor',
+  mask: 'linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)',
+  maskComposite: 'exclude'
+} as const
 
-/** Bento grid for feature lists: mixed column spans and a subtle pointer spotlight. */
+/**
+ * Feature grid with Incidental AI Design Academy's MIT "Spotlight cards" (one pointer lights every card's surface
+ * and 1px rim) and "Tilt card" (the hovered card tilts toward the pointer with a moving glare).
+ */
 export default function FeatureBento({ items, className }: { items: FeatureBentoItem[]; className?: string }) {
+  const grid = useRef<HTMLUListElement>(null)
+
+  const onMove = (event: PointerEvent<HTMLUListElement>) => {
+    for (const card of grid.current?.querySelectorAll<HTMLElement>('[data-card]') ?? []) {
+      const rect = card.getBoundingClientRect()
+      card.style.setProperty('--x', `${event.clientX - rect.left}px`)
+      card.style.setProperty('--y', `${event.clientY - rect.top}px`)
+    }
+  }
+  const tilt = (event: PointerEvent<HTMLElement>) => {
+    if (event.pointerType !== 'mouse') return
+    const card = event.currentTarget
+    const rect = card.getBoundingClientRect()
+    const px = (event.clientX - rect.left) / rect.width
+    const py = (event.clientY - rect.top) / rect.height
+    card.style.setProperty('--ry', `${(px - 0.5) * 8}deg`)
+    card.style.setProperty('--rx', `${(0.5 - py) * 6}deg`)
+  }
+
   return (
-    <ul className={cn('grid gap-4 md:grid-cols-2 lg:grid-cols-6', className)}>
+    <ul
+      ref={grid}
+      onPointerMove={onMove}
+      className={cn('group/grid grid gap-4 [perspective:1200px] md:grid-cols-2 lg:grid-cols-6', className)}>
       {items.map((item, index) => {
         const span = SPANS[index % SPANS.length]
         const wide = span === 'lg:col-span-4'
@@ -34,21 +63,34 @@ export default function FeatureBento({ items, className }: { items: FeatureBento
           <m.li key={item.key} {...reveal(index)} className={cn('min-w-0', span)}>
             <Card
               {...(item.href ? { href: item.href } : {})}
-              onPointerMove={trackPointer}
+              data-card=""
+              onPointerMove={tilt}
+              onPointerLeave={(event) => {
+                event.currentTarget.style.removeProperty('--rx')
+                event.currentTarget.style.removeProperty('--ry')
+              }}
               className={cn(
-                'group relative flex h-full min-h-[240px] flex-col overflow-hidden rounded-[26px] bg-card p-7 shadow-[inset_0_0_0_1px_var(--color-border)] transition-[box-shadow,transform] duration-300 ease-settle hover:-translate-y-0.5 hover:shadow-[inset_0_0_0_1px_var(--color-hairline-strong),var(--shadow-card)] sm:p-8',
+                'group relative flex h-full min-h-[240px] flex-col overflow-hidden glass-card rounded-[20px] p-7 [transform:rotateX(var(--rx,0deg))_rotateY(var(--ry,0deg))] transition-transform duration-200 ease-out will-change-transform motion-reduce:transform-none sm:p-8',
                 wide && 'lg:min-h-[280px]',
                 item.href && 'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary'
               )}>
-              <div
+              {/* Surface light and rim light both follow the grid-wide pointer; they fade in while it is over the grid. */}
+              <span
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover/grid:opacity-100"
                 style={{
-                  background:
-                    'radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), color-mix(in oklab, var(--color-foreground) 7%, transparent), transparent 60%)'
+                  background: `radial-gradient(420px circle at var(--x, 50%) var(--y, 50%), ${SPOT}, transparent 65%)`
                 }}
               />
-              <span className="relative flex size-10 items-center justify-center rounded-full bg-background shadow-[inset_0_0_0_1px_var(--color-border)] transition-transform duration-300 ease-settle group-hover:scale-105">
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 rounded-[inherit] p-px opacity-0 transition-opacity duration-300 group-hover/grid:opacity-100"
+                style={{
+                  background: `radial-gradient(200px circle at var(--x, 50%) var(--y, 50%), ${RIM}, transparent 60%)`,
+                  ...RIM_MASK
+                }}
+              />
+              <span className="relative flex size-10 items-center justify-center rounded-full bg-background shadow-[inset_0_0_0_1px_var(--color-border)]">
                 <item.icon className="size-[18px]" aria-hidden="true" />
               </span>
               <div className={cn('relative mt-auto pt-10', wide && 'max-w-md')}>
@@ -57,7 +99,7 @@ export default function FeatureBento({ items, className }: { items: FeatureBento
                   {item.href && (
                     <ArrowUpRight
                       aria-hidden="true"
-                      className="size-4 shrink-0 text-muted-foreground opacity-0 transition-[opacity,transform] duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100"
+                      className="size-4 shrink-0 text-muted-foreground opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                     />
                   )}
                 </h3>

@@ -3,6 +3,7 @@ import { type FC, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import GitHubUserCard from '@/components/GitHubUserCard'
+import BlurInText from '@/components/website/BlurInText'
 import { isEnglishSite } from '@/utils/urls'
 
 interface Contributor {
@@ -112,7 +113,7 @@ const ContributorsSection: FC = () => {
         <div className="site-container relative z-10">
           <div className="mx-auto mb-6 max-w-3xl text-center">
             <h2 className="mb-3 text-4xl font-display text-balance sm:mb-4 sm:text-5xl">
-              {t('contributors.project_contributors')}
+              <BlurInText text={t('contributors.project_contributors')} />
             </h2>
             <p className="text-muted-foreground text-sm sm:text-base">
               {t('contributors.project_contributors_subtitle')}
@@ -134,11 +135,11 @@ const ContributorsSection: FC = () => {
             </a>
           </div>
 
-          <div className="glass-card mx-auto max-w-[560px] rounded-2xl p-6">
+          <div className="glass-card mx-auto max-w-[560px] rounded-[20px] p-6">
             <dl className="grid grid-cols-3 gap-4">
               {stats.map((stat) => (
                 <div key={stat.label} className="text-center">
-                  <dd className="font-mono text-2xl font-semibold tracking-tight text-foreground tabular-nums sm:text-3xl">
+                  <dd className="font-display text-3xl text-foreground tabular-nums sm:text-3xl">
                     {formatStat(stat.value)}
                   </dd>
                   <dt className="text-muted-foreground mt-1 text-xs sm:text-sm">{stat.label}</dt>
@@ -244,7 +245,7 @@ const ContributorsSection: FC = () => {
         <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
           <div className="max-w-2xl">
             <h2 className="mb-3 text-4xl font-display text-balance sm:text-5xl">
-              {t('contributors.project_contributors')}
+              <BlurInText text={t('contributors.project_contributors')} />
             </h2>
             <p className="text-sm text-muted-foreground sm:text-base">
               {t('contributors.project_contributors_subtitle')}
@@ -281,7 +282,7 @@ const ContributorsSection: FC = () => {
           </details>
         )}
 
-        <div className="glass-card mt-10 flex flex-wrap items-center justify-center gap-4 rounded-2xl px-6 py-5 sm:gap-6">
+        <div className="glass-card mt-10 flex flex-wrap items-center justify-center gap-4 rounded-[20px] px-6 py-5 sm:gap-6">
           {badges.map((badge) => (
             <a
               key={badge.href}

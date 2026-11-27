@@ -12,6 +12,7 @@ import {
 import { useTranslation } from 'react-i18next'
 
 import DemoMount from '@/components/demos/primitives/DemoMount'
+import BlurInText from '@/components/website/BlurInText'
 import { ease, reveal, spring } from '@/lib/motion'
 import { cn } from '@/lib/utils'
 
@@ -128,7 +129,7 @@ function ChapterText({ chapter, compact }: { chapter: ChapterId; compact?: boole
 
   return (
     <div className="max-w-3xl">
-      <p className="font-mono text-xs text-muted-foreground">
+      <p className="text-sm text-muted-foreground">
         0{chapterIds.indexOf(chapter) + 1} · {t(`home_page.capabilities.chapters.${chapter}.nav`)}
       </p>
       <h3
@@ -199,7 +200,7 @@ function PinnedStory() {
   }
 
   return (
-    <div ref={track} className="relative" style={{ height: `${steps.length * 100}svh` }}>
+    <div ref={track} data-dock-hide="" className="relative" style={{ height: `${steps.length * 100}svh` }}>
       <div className="site-container sticky top-(--site-header-height) grid h-[calc(100svh-var(--site-header-height))] grid-cols-[minmax(240px,290px)_minmax(0,1fr)] gap-10 xl:grid-cols-[minmax(260px,340px)_minmax(0,1fr)] xl:gap-16">
         <div className="flex min-h-0 flex-col justify-center gap-10 py-8">
           <nav aria-label={t('home_page.capabilities.eyebrow')}>
@@ -294,7 +295,7 @@ export default function CapabilitiesSection() {
       <m.div {...reveal()} className="site-container mx-auto mb-4 max-w-3xl text-center">
         <p className="mb-3 text-sm font-medium text-muted-foreground">{t('home_page.capabilities.eyebrow')}</p>
         <h2 id="home-capabilities-title" className="text-4xl font-display text-balance sm:text-6xl">
-          {t('home_page.capabilities.title')}
+          <BlurInText text={t('home_page.capabilities.title')} />
         </h2>
         <p className="mt-5 text-pretty text-muted-foreground sm:text-lg">{t('home_page.capabilities.subtitle')}</p>
       </m.div>

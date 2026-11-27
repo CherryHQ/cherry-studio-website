@@ -2,6 +2,7 @@ import { m } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 
 import DemoMount from '@/components/demos/primitives/DemoMount'
+import BlurInText from '@/components/website/BlurInText'
 import productStats from '@/content/product-stats.json'
 import { reveal } from '@/lib/motion'
 
@@ -23,7 +24,7 @@ export default function EverywhereSection() {
         <m.div {...reveal()} className="mx-auto mb-12 max-w-3xl text-center">
           <p className="mb-3 text-sm font-medium text-muted-foreground">{t('home_page.everywhere.eyebrow')}</p>
           <h2 id="home-everywhere" className="text-4xl font-display text-balance sm:text-6xl">
-            {t('home_page.everywhere.title')}
+            <BlurInText text={t('home_page.everywhere.title')} />
           </h2>
           <p className="mt-5 text-pretty text-muted-foreground sm:text-lg">{t('home_page.everywhere.subtitle')}</p>
         </m.div>
@@ -33,11 +34,11 @@ export default function EverywhereSection() {
           className="mx-auto min-h-[540px] max-w-5xl"
         />
 
-        <dl className="mx-auto mt-14 grid max-w-5xl grid-cols-2 gap-px overflow-hidden rounded-xl border border-border bg-border md:grid-cols-4">
+        <dl className="mx-auto mt-14 grid max-w-5xl grid-cols-2 gap-px overflow-hidden rounded-[20px] border border-border bg-border md:grid-cols-4">
           {stats.map((stat, index) => (
             <m.div key={stat.key} {...reveal(index)} className="flex flex-col-reverse bg-background px-6 py-6">
               <dt className="mt-1 text-sm text-muted-foreground">{t(`home_page.everywhere.stats.${stat.key}`)}</dt>
-              <dd className="font-mono text-3xl font-semibold tracking-tight tabular-nums">{stat.value}</dd>
+              <dd className="font-display text-4xl tabular-nums">{stat.value}</dd>
             </m.div>
           ))}
         </dl>

@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
 import logo from '@/assets/images/logo.png'
+import BlurInText from '@/components/website/BlurInText'
 import { reveal } from '@/lib/motion'
 import { cn } from '@/lib/utils'
 import { isMobileDevice } from '@/utils/systemDetection'
@@ -19,15 +20,16 @@ export default function DownloadSection() {
   return (
     <section
       aria-labelledby="home-download-heading"
+      data-dock-hide=""
       className="relative isolate overflow-hidden border-t border-border py-24 sm:py-32">
       <m.div {...reveal()} className="site-container flex flex-col items-center text-center">
-        <span className="relative mb-8 flex size-16 items-center justify-center rounded-2xl border border-border bg-card">
+        <span className="mb-8 flex size-16 items-center justify-center rounded-2xl bg-card shadow-[inset_0_0_0_1px_var(--color-border),var(--shadow-float)]">
           <img src={logo} alt="" className="size-10 rounded-xl" />
         </span>
         <h2 id="home-download-heading" className="max-w-3xl text-5xl font-display text-balance sm:text-7xl">
-          {t('home_page.cta_download')}
+          <BlurInText text={t('home_page.cta_download')} />
         </h2>
-        <p className="mt-4 font-mono text-xs text-muted-foreground">{t('home_page.platforms')}</p>
+        <p className="mt-4 text-sm text-muted-foreground">{t('home_page.platforms')}</p>
         <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
           {(isMobile ? [actions[1], actions[0]] : actions).map(({ href, label, icon: Icon }, index) => (
             <Link

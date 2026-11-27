@@ -24,11 +24,7 @@ interface Particle {
 }
 
 const REPEL_RADIUS = 46
-const HOLD_SECONDS = 2.5
-
-function cssVar(name: string) {
-  return getComputedStyle(document.documentElement).getPropertyValue(name).trim()
-}
+const HOLD_SECONDS = 3.5
 
 interface ParticleTitleProps {
   lines: ParticleLine[]
@@ -102,9 +98,11 @@ export default function ParticleTitle({ lines, className, density = 1 / 170 }: P
         for (let x = 0; x < width; x += gap) {
           if (pixels[(y * width + x) * 4 + 3] <= 128) continue
           const reused = previous[particles.length]
+          // On first build the dots start scattered and spring into the letters.
+          const scatter = !reused && !reduced
           particles.push({
-            x,
-            y,
+            x: scatter ? Math.random() * width : x,
+            y: scatter ? Math.random() * height * 1.6 - height * 0.3 : y,
             vx: 0,
             vy: 0,
             tx: x,
@@ -119,8 +117,8 @@ export default function ParticleTitle({ lines, className, density = 1 / 170 }: P
     const draw = () => {
       context.setTransform(dpr, 0, 0, dpr, 0, 0)
       context.clearRect(0, 0, width, height)
-      const ink = cssVar('--foreground')
-      const accent = cssVar('--muted-foreground')
+      // Inherit the text colour so the title follows whatever surface it sits on; scattered dots fade instead.
+      context.fillStyle = getComputedStyle(canvas).color
       const radius2 = REPEL_RADIUS * REPEL_RADIUS
       for (const p of particles) {
         const dx = p.x - mouseX
@@ -141,8 +139,7 @@ export default function ParticleTitle({ lines, className, density = 1 / 170 }: P
           p.y = p.ty
         }
         const speed = Math.min(1, Math.hypot(p.vx, p.vy) / 6)
-        context.fillStyle = speed > 0.15 || p.h > 0.93 ? accent : ink
-        context.globalAlpha = 0.55 + 0.45 * (1 - speed)
+        context.globalAlpha = speed > 0.15 || p.h > 0.93 ? 0.45 : 0.55 + 0.45 * (1 - speed)
         context.beginPath()
         context.arc(p.x, p.y, p.r, 0, Math.PI * 2)
         context.fill()

@@ -78,7 +78,7 @@ export default function PhoneFrame({
         </div>
       </div>
       {!bare && (
-        <figcaption className="mt-3 flex items-center justify-between gap-3 px-1 font-mono text-[11px] text-muted-foreground">
+        <figcaption className="mt-3 flex items-center justify-between gap-3 px-1 text-xs text-muted-foreground">
           <span>{t('demos.simulated')}</span>
           {onReplay && (
             <button

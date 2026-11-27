@@ -93,7 +93,7 @@ const GenerationDemo: FC<{ template: PptTemplate; copy: AiPptCopy; locale: UseCa
   const spring = { type: 'spring' as const, stiffness: 260, damping: 18 }
 
   return (
-    <div className="glass-card relative overflow-hidden rounded-2xl shadow-[0_30px_80px_-40px_var(--color-primary)]">
+    <div className="glass-card relative overflow-hidden rounded-[20px] shadow-[0_30px_80px_-40px_var(--color-primary)]">
       <div className="border-border flex items-center gap-2 border-b px-4 py-3">
         <span className="size-2.5 rounded-full bg-foreground/20" />
         <span className="size-2.5 rounded-full bg-foreground/20" />

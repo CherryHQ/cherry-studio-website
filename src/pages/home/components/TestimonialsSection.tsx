@@ -2,6 +2,7 @@ import { ArrowUpRight } from 'lucide-react'
 import type { FC, ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import BlurInText from '@/components/website/BlurInText'
 import { type TestimonialPlatform, testimonials } from '@/content/testimonials'
 import { isEnglishSite } from '@/utils/urls'
 
@@ -79,7 +80,7 @@ const TestimonialsSection: FC = () => {
         <div className="mb-10 max-w-2xl sm:mb-14">
           <p className="mb-3 text-sm font-medium text-muted-foreground">{t('testimonials.eyebrow')}</p>
           <h2 id="home-testimonials" className="text-4xl font-display text-balance sm:text-5xl">
-            {t('testimonials.title')}
+            <BlurInText text={t('testimonials.title')} />
           </h2>
           <p className="mt-4 text-pretty text-muted-foreground">{t('testimonials.subtitle')}</p>
         </div>
@@ -91,7 +92,7 @@ const TestimonialsSection: FC = () => {
                 href={item.url}
                 target="_blank"
                 rel="noopener noreferrer nofollow"
-                className="glass-card group flex flex-col gap-5 rounded-xl p-6 transition-[border-color,transform] duration-300 ease-settle hover:-translate-y-0.5 hover:border-hairline-strong focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+                className="glass-card group flex flex-col gap-5 rounded-[20px] p-6 transition-[border-color,transform] duration-300 ease-settle hover:-translate-y-0.5 hover:border-hairline-strong focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
                 <blockquote className="text-pretty text-[15px] leading-relaxed text-foreground/90 zh:leading-[1.8]">
                   “{isEn ? item.content.en : item.content.zh}”
                 </blockquote>

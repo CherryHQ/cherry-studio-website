@@ -2,6 +2,7 @@ import { Cloud, Image, Languages, type LucideIcon, MessageSquare, Shield, Users 
 import type { FC } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 
+import BlurInText from '@/components/website/BlurInText'
 import FeatureBento from '@/components/website/FeatureBento'
 import { getDocsUrl } from '@/utils/urls'
 
@@ -60,7 +61,9 @@ const FeaturesSection: FC = () => {
       <div className="site-container relative z-10">
         {/* Section Header */}
         <div className="mb-8 sm:mb-12">
-          <h2 className="mb-3 text-4xl font-display text-balance sm:mb-4 sm:text-5xl">{t('features.title')}</h2>
+          <h2 className="mb-3 text-4xl font-display text-balance sm:mb-4 sm:text-5xl">
+            <BlurInText text={t('features.title')} />
+          </h2>
           <p className="text-muted-foreground max-w-2xl text-sm sm:text-base">
             <Trans i18nKey="features.description">
               以下仅为部分功能介绍，更多功能可以下载客户端体验，或在

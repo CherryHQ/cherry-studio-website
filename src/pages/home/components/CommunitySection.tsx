@@ -11,6 +11,7 @@ import pIcon from '@/assets/images/icons/p.svg'
 import tgIcon from '@/assets/images/icons/tg.svg'
 import xIcon from '@/assets/images/icons/x.svg'
 import { fetchChannelData, getRandomWechatQRCode } from '@/assets/js/data'
+import BlurInText from '@/components/website/BlurInText'
 import { isEnglishSite } from '@/utils/urls'
 
 const DISCORD_URL = 'https://discord.gg/wez8HtpxqQ'
@@ -68,7 +69,7 @@ export default function CommunitySection() {
       <div className="site-container site-split">
         <div className="max-w-md">
           <h2 id="home-community-heading" className="text-4xl font-display text-balance sm:text-5xl">
-            {t('community.title')}
+            <BlurInText text={t('community.title')} />
           </h2>
           <p className="mt-3 text-pretty text-base text-muted-foreground">{t('community.subtitle')}</p>
           {isEn && (
@@ -76,7 +77,7 @@ export default function CommunitySection() {
               href={DISCORD_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="group glass-card relative mt-8 flex items-center gap-4 overflow-hidden rounded-2xl p-5 transition-[border-color,transform] duration-300 ease-settle hover:-translate-y-0.5 hover:border-[#5865f2]/50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+              className="group glass-card relative mt-8 flex items-center gap-4 overflow-hidden rounded-[20px] p-5 transition-[border-color,transform] duration-300 ease-settle hover:-translate-y-0.5 hover:border-[#5865f2]/50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
               <span className="relative flex size-11 shrink-0 items-center justify-center rounded-xl bg-[#5865f2] text-white shadow-[0_8px_24px_-6px_#5865f2]">
                 <DiscordMark className="size-6" />
               </span>
@@ -91,7 +92,7 @@ export default function CommunitySection() {
           )}
         </div>
 
-        <div className="grid gap-px self-start overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-2">
+        <div className="grid gap-px self-start overflow-hidden rounded-[20px] border border-border bg-border sm:grid-cols-2">
           {(isEn ? enSocialLinks : zhSocialLinks).map(({ label, href, icon }) => (
             <a key={href} href={href} target="_blank" rel="noopener noreferrer" className={linkStyle}>
               <img src={icon} alt="" className="size-4 shrink-0 brightness-0 dark:invert" />

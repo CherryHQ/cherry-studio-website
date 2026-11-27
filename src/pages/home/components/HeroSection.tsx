@@ -1,21 +1,25 @@
-import { m } from 'framer-motion'
-import { ArrowDown, ArrowRight, Download, History } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { m, useReducedMotion, useScroll, useTransform } from 'framer-motion'
+import { ArrowRight, History } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
 import { fetchNotice, type NoticeResponse } from '@/assets/js/notice'
 import ChatStreamDemo from '@/components/demos/chat/ChatStreamDemo'
+import BlurInText from '@/components/website/BlurInText'
 import MobileDownloadButton from '@/components/website/MobileDownloadButton'
 import ParticleTitle from '@/components/website/ParticleTitle'
 import { useVersionData } from '@/hooks/useVersionData'
 import { spring } from '@/lib/motion'
+import { cn } from '@/lib/utils'
 import { isMobileDevice } from '@/utils/systemDetection'
 import { getDocsUrl, isEnglishSite } from '@/utils/urls'
+import HeroBackdrop, { HERO_PALETTE } from './HeroBackdrop'
 
-// CJK fallbacks for drawing Chinese headline glyphs on the particle canvas.
-const CJK_SANS = '"PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif'
-
+/**
+ * The opening reads like unwrapping a gift: a sunlit colour panel, the wordmark assembling out of scattered dots, and
+ * the app window resting over it. Scrolling lifts the window over the wordmark and opens onto the page below.
+ */
 export default function HeroSection() {
   const { t, i18n } = useTranslation()
   const { versionData } = useVersionData()
@@ -25,6 +29,13 @@ export default function HeroSection() {
   const isEn = isEnglishSite(language)
   const isMobile = isMobileDevice()
   const stableMajorVersion = Number(versionData?.version.match(/^v?(\d+)\./)?.[1])
+
+  const section = useRef<HTMLElement>(null)
+  const reduced = useReducedMotion() ?? false
+  const { scrollY } = useScroll()
+  // The wordmark trails the scroll at half speed, so the window slides up over it.
+  const wordmarkY = useTransform(scrollY, [0, 600], [0, reduced ? 0 : 300])
+  const windowScale = useTransform(scrollY, [0, 400], [reduced ? 1 : 0.94, 1])
 
   useEffect(() => {
     let active = true
@@ -37,74 +48,52 @@ export default function HeroSection() {
   }, [language])
 
   return (
-    <section className="relative isolate overflow-hidden bg-background text-foreground">
-      <div className="site-container flex flex-col items-center pt-14 pb-12 text-center sm:pt-20 lg:pt-24">
-        <Link
-          to="/download"
-          className="glass-card mb-7 inline-flex items-center gap-2 rounded-full py-1 pr-3 pl-1.5 font-mono text-xs text-muted-foreground transition-colors duration-300 hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
-          <span className="rounded-full bg-primary/15 px-2 py-0.5 text-primary">
-            {versionData?.version ? t('stable_badge') : 'New'}
-          </span>
-          <span>
-            {versionData?.version ? `Cherry Studio ${versionData.version}` : t('mobile_download.desktop_title')}
-          </span>
-          <ArrowRight className="size-3" aria-hidden="true" />
-        </Link>
+    <section ref={section} className={cn('relative isolate overflow-hidden bg-background', HERO_PALETTE)}>
+      <HeroBackdrop className="inset-x-0 top-0 -z-10 h-[calc(100svh-var(--site-header-height)+clamp(120px,22vw,320px))]" />
 
-        <h1 className="w-full max-w-5xl">
-          <span className="sr-only">
-            {t('home_page.title_first')} {t('home_page.title_second')}
+      <m.div
+        style={{ y: wordmarkY }}
+        className="site-container flex flex-col items-center pt-10 text-center text-(--hero-ink) sm:pt-14">
+        <h1 className="w-full max-w-6xl">
+          <span className="block text-[clamp(24px,3vw,44px)] leading-tight font-accent text-balance">
+            <BlurInText text={`${t('home_page.title_first')}${isEn ? ' ' : ''}${t('home_page.title_second')}`} />
           </span>
+          <span className="sr-only">Cherry Studio</span>
           <ParticleTitle
-            className="h-[clamp(150px,24vw,300px)]"
-            density={isEn ? 1 / 170 : 1 / 230}
-            lines={[
-              { text: t('home_page.title_first'), font: `600 {size}px "Inter Tight", ${CJK_SANS}` },
-              {
-                text: t('home_page.title_second'),
-                font: isEn
-                  ? 'italic 400 {size}px "Newsreader", Georgia, serif'
-                  : `600 {size}px "Inter Tight", ${CJK_SANS}`
-              }
-            ]}
+            className="mt-1 h-[clamp(110px,19vw,290px)]"
+            density={1 / 210}
+            lines={[{ text: 'Cherry Studio', font: '650 {size}px "Inter Tight", sans-serif' }]}
           />
         </h1>
-        <p className="mt-6 max-w-2xl text-pretty text-base text-muted-foreground sm:text-lg zh:leading-[1.8]">
-          {t('home_page.intro')}
-        </p>
-
         {notice?.status && notice.notice && (
-          <p className="mt-4" style={{ color: notice.text_color, fontSize: notice.text_size }}>
+          <p className="mt-2" style={{ color: notice.text_color, fontSize: notice.text_size }}>
             {notice.notice}
           </p>
         )}
+      </m.div>
 
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          {isMobile ? (
-            <MobileDownloadButton
-              variant="primary"
-              className="rounded-full bg-foreground px-5 font-semibold text-background hover:bg-foreground/85"
-            />
-          ) : (
-            <Link
-              to="/download"
-              data-ph-no-autocapture=""
-              className="inline-flex h-11 items-center gap-2 rounded-full bg-foreground px-6 text-[15px] font-semibold text-background transition-[background-color,transform] duration-200 hover:bg-foreground/85 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary active:scale-[0.97]">
-              <Download className="size-4" aria-hidden="true" />
-              {t('home_page.download_desktop')}
+      <m.div
+        style={{ scale: windowScale }}
+        className="site-container relative z-10 -mt-[clamp(36px,6.6vw,96px)] origin-top">
+        <m.div
+          initial={{ opacity: 0, y: 120 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ ...spring.gentle, delay: 0.5 }}
+          className="mx-auto max-w-5xl text-left xl:max-w-6xl 2xl:max-w-7xl">
+          <ChatStreamDemo />
+        </m.div>
+      </m.div>
+
+      <div className="site-container flex flex-col items-center pt-12 pb-20 text-center sm:pb-28">
+        <p className="max-w-2xl text-pretty text-base text-muted-foreground sm:text-lg zh:leading-[1.8]">
+          {t('home_page.intro')}
+        </p>
+        <div className="mt-5 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-muted-foreground">
+          {versionData?.version && (
+            <Link to="/download" className="rounded-sm hover:text-foreground focus-visible:outline-2">
+              {t('stable_badge')} · Cherry Studio {versionData.version}
             </Link>
           )}
-          <a
-            href="#home-capabilities"
-            className="inline-flex h-11 items-center gap-2 rounded-full border border-border bg-surface-glass px-5 text-sm font-semibold text-foreground backdrop-blur transition-colors duration-200 hover:border-hairline-strong hover:bg-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary active:scale-[0.97]">
-            {t('home_page.explore')}
-            <ArrowDown className="size-3.5" aria-hidden="true" />
-          </a>
-        </div>
-
-        <p className="mt-5 font-mono text-xs text-muted-foreground">{t('home_page.platforms')}</p>
-
-        <div className="mt-3 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-muted-foreground">
           {!isMobile && <MobileDownloadButton className="hover:text-foreground" />}
           {!isEn && isMobile && (
             <Link to="/download" className="rounded-sm hover:text-foreground focus-visible:outline-2">
@@ -128,16 +117,6 @@ export default function HeroSection() {
             </a>
           )}
         </div>
-      </div>
-
-      <div className="site-container relative pb-16 sm:pb-24">
-        <m.div
-          initial={{ opacity: 0, y: 28, scale: 0.985 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ ...spring.gentle, delay: 0.15 }}
-          className="mx-auto max-w-5xl text-left xl:max-w-6xl 2xl:max-w-7xl">
-          <ChatStreamDemo />
-        </m.div>
       </div>
     </section>
   )

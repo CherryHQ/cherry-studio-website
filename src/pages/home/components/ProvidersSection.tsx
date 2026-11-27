@@ -32,6 +32,7 @@ import xaiLogo from '@/assets/images/provider_logo/xai.svg'
 import zeroOneLogo from '@/assets/images/provider_logo/zeroone.svg'
 import zhipuLogo from '@/assets/images/provider_logo/zhipu-color.svg'
 import DemoMount from '@/components/demos/primitives/DemoMount'
+import BlurInText from '@/components/website/BlurInText'
 import productStats from '@/content/product-stats.json'
 import { cn } from '@/lib/utils'
 import { isEnglishSite } from '@/utils/urls'
@@ -145,14 +146,14 @@ export default function ProvidersSection() {
         <div>
           <p className="mb-3 text-sm font-medium text-muted-foreground">{t('home_page.providers')}</p>
           <h2 id="home-providers" className="text-4xl font-display text-balance sm:text-5xl">
-            {t('providers.title')}
+            <BlurInText text={t('providers.title')} />
           </h2>
           <p className="mt-4 max-w-md text-pretty text-muted-foreground zh:leading-[1.8]">{t('providers.subtitle')}</p>
-          <dl className="mt-8 grid max-w-md grid-cols-3 divide-x divide-border rounded-xl border border-border">
+          <dl className="mt-8 grid max-w-md grid-cols-3 divide-x divide-border rounded-[20px] border border-border">
             {stats.map((stat) => (
               <div key={stat.label} className="px-4 py-3.5">
                 <dt className="text-xs text-muted-foreground">{stat.label}</dt>
-                <dd className="mt-1 font-mono text-2xl font-semibold tracking-tight tabular-nums">{stat.value}</dd>
+                <dd className="mt-1 font-display text-3xl tabular-nums">{stat.value}</dd>
               </div>
             ))}
           </dl>

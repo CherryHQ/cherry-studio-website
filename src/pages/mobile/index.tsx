@@ -53,9 +53,7 @@ export default function MobilePage() {
                   </a>
                 </Button>
               </div>
-              <p className="mt-4 font-mono text-xs leading-6 text-muted-foreground">
-                {t('mobile_site.hero.platforms')}
-              </p>
+              <p className="mt-4 text-sm leading-6 text-muted-foreground">{t('mobile_site.hero.platforms')}</p>
             </div>
 
             <div className="relative flex justify-center">

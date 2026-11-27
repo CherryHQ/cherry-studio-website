@@ -2,6 +2,8 @@ import { Apple, ArrowRight, Monitor, Terminal } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
+import BlurInText from '@/components/website/BlurInText'
+
 const platforms = [
   { id: 'macos', icon: Apple },
   { id: 'windows', icon: Monitor },
@@ -20,14 +22,14 @@ export default function AppsSection() {
           <div>
             <p className="mb-3 text-sm font-medium text-muted-foreground">{t('home_page.apps_label')}</p>
             <h2 id="home-apps-heading" className="max-w-lg text-balance text-4xl font-display sm:text-5xl">
-              {t('home_page.apps_title')}
+              <BlurInText text={t('home_page.apps_title')} />
             </h2>
             <p className="mt-4 max-w-md text-pretty text-base leading-7 text-muted-foreground">
               {t('home_page.apps_intro')}
             </p>
           </div>
 
-          <dl className="glass-card divide-y divide-border rounded-2xl px-5">
+          <dl className="glass-card divide-y divide-border rounded-[20px] px-5">
             {platforms.map(({ id, icon: Icon }) => (
               <div
                 key={id}
