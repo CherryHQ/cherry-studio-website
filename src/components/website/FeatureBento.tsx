@@ -11,6 +11,8 @@ export interface FeatureBentoItem {
   title: ReactNode
   description: ReactNode
   href?: string
+  /** Small illustration shown in place of the icon. */
+  visual?: ReactNode
 }
 
 // Column spans on the 6-column grid: wide/narrow, narrow/wide, then halves; the pattern repeats.
@@ -70,8 +72,7 @@ export default function FeatureBento({ items, className }: { items: FeatureBento
                 event.currentTarget.style.removeProperty('--ry')
               }}
               className={cn(
-                'group relative flex h-full min-h-[240px] flex-col overflow-hidden glass-card rounded-[20px] p-7 [transform:rotateX(var(--rx,0deg))_rotateY(var(--ry,0deg))] transition-transform duration-200 ease-out will-change-transform motion-reduce:transform-none sm:p-8',
-                wide && 'lg:min-h-[280px]',
+                'group relative flex h-full flex-col overflow-hidden glass-card rounded-[20px] p-6 [transform:rotateX(var(--rx,0deg))_rotateY(var(--ry,0deg))] transition-transform duration-200 ease-out will-change-transform motion-reduce:transform-none',
                 item.href && 'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary'
               )}>
               {/* Surface light and rim light both follow the grid-wide pointer; they fade in while it is over the grid. */}
@@ -90,11 +91,17 @@ export default function FeatureBento({ items, className }: { items: FeatureBento
                   ...RIM_MASK
                 }}
               />
-              <span className="relative flex size-10 items-center justify-center rounded-full bg-background shadow-[inset_0_0_0_1px_var(--color-border)]">
-                <item.icon className="size-[18px]" aria-hidden="true" />
-              </span>
-              <div className={cn('relative mt-auto pt-10', wide && 'max-w-md')}>
-                <h3 className="font-display flex items-center gap-2 text-2xl leading-tight text-balance text-foreground">
+              {item.visual ? (
+                <div className="relative flex h-24 items-center" aria-hidden="true">
+                  {item.visual}
+                </div>
+              ) : (
+                <span className="relative flex size-10 items-center justify-center rounded-full bg-background shadow-[inset_0_0_0_1px_var(--color-border)]">
+                  <item.icon className="size-[18px]" aria-hidden="true" />
+                </span>
+              )}
+              <div className={cn('relative mt-auto pt-6', wide && 'max-w-md')}>
+                <h3 className="font-display flex items-center gap-2 text-xl leading-tight text-balance text-foreground">
                   {item.title}
                   {item.href && (
                     <ArrowUpRight
@@ -103,7 +110,7 @@ export default function FeatureBento({ items, className }: { items: FeatureBento
                     />
                   )}
                 </h3>
-                <p className="mt-3 text-[15px] leading-relaxed text-pretty text-muted-foreground zh:leading-7">
+                <p className="mt-2 text-sm leading-relaxed text-pretty text-muted-foreground zh:leading-6">
                   {item.description}
                 </p>
               </div>

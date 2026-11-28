@@ -328,9 +328,9 @@
 
 /* Copy set on the coral silk backdrop: white text, with muted text as translucent white. */
 @utility on-silk {
-  --color-foreground: #fff;
-  --color-muted-foreground: rgb(255 255 255 / 0.8);
-  color: var(--color-foreground);
+  --foreground: #fff;
+  --muted-foreground: rgb(255 255 255 / 0.85);
+  color: var(--foreground);
 }
 
 @utility glass-card {

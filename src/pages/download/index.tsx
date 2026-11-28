@@ -159,14 +159,16 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
               )}
             </h1>
             {showMobile ? (
-              <p className="text-muted-foreground mt-4 text-sm">{t('mobile_page.availability')}</p>
+              <p className="on-silk text-muted-foreground mt-4 text-sm">{t('mobile_page.availability')}</p>
             ) : (
-              <VersionInfo
-                versionData={versionData}
-                loading={loading}
-                changelog={<Changelog versionData={versionData} />}
-                unavailableMessage={error ? t('download_page.version_error') : undefined}
-              />
+              <div className="on-silk">
+                <VersionInfo
+                  versionData={versionData}
+                  loading={loading}
+                  changelog={<Changelog versionData={versionData} />}
+                  unavailableMessage={error ? t('download_page.version_error') : undefined}
+                />
+              </div>
             )}
             {isMobile && !showMobile && (
               <div className="mt-5 flex max-w-md items-start justify-center gap-2 text-xs text-muted-foreground">
