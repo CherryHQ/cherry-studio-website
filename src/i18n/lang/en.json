@@ -555,12 +555,12 @@
         },
         "create": {
           "nav": "Create",
-          "title": "Images and live artifacts",
-          "description": "Start from a painting template, generate across image models, and open HTML answers as runnable previews beside the chat.",
+          "title": "Images from every model",
+          "description": "Start from a painting template and generate across image models, then refine and keep every version together.",
           "points": [
             "Painting templates for multiple image models",
-            "Code, preview and split views for HTML artifacts",
-            "Mermaid, charts and diagrams render inline"
+            "Reference images and image editing",
+            "Every version kept side by side"
           ]
         },
         "browser": {

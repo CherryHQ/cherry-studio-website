@@ -40,10 +40,6 @@ const steps: Step[] = [
   {
     chapter: 'create',
     demos: [{ load: () => import('@/components/demos/create/PaintingsDemo'), height: 'min-h-[540px]' }]
-  },
-  {
-    chapter: 'create',
-    demos: [{ load: () => import('@/components/demos/create/ArtifactsDemo'), height: 'min-h-[540px]' }]
   }
 ]
 const chapterIds = [...new Set(steps.map((step) => step.chapter))]

@@ -1,4 +1,4 @@
-// Copy for the creation demos: the Paintings template stage and HTML artifacts in chat.
+// Copy for the Paintings demo: the template stage and the generation canvas.
 // Template labels and prompts are excerpts from desktop resources/data/painting-templates/locales.
 export type DemoLocale = 'en' | 'zh'
 
@@ -49,40 +49,6 @@ export interface PaintingsDemoCopy {
   rotateLeft: string
   rotateRight: string
   reset: string
-}
-
-export interface ArtifactsDemoCopy {
-  window: string
-  model: { name: string; provider: string }
-  prompt: string
-  intro: string
-  outro: string
-  htmlPreview: string
-  viewWebpage: string
-  viewWebpageHint: string
-  zoomOut: string
-  zoomIn: string
-  resetZoom: string
-  openExternal: string
-  download: string
-  maximize: string
-  copySource: string
-  viewMode: string
-  split: string
-  code: string
-  preview: string
-  fullscreen: string
-  close: string
-  save: string
-  app: {
-    lang: string
-    title: string
-    palette: string
-    /** Names of SILK_PALETTES, in order. */
-    palettes: string[]
-    speed: string
-    comment: string
-  }
 }
 
 export const paintingsDemo: Record<DemoLocale, PaintingsDemoCopy> = {
@@ -232,74 +198,5 @@ export const paintingsDemo: Record<DemoLocale, PaintingsDemoCopy> = {
     rotateLeft: '向左旋转',
     rotateRight: '向右旋转',
     reset: '重置'
-  }
-}
-
-export const artifactsDemo: Record<DemoLocale, ArtifactsDemoCopy> = {
-  en: {
-    window: 'Cherry Studio — HTML Artifacts',
-    model: { name: 'Claude Sonnet 5.5', provider: 'anthropic' },
-    prompt: 'Make me a live silk wallpaper I can recolor.',
-    intro:
-      'Here is a single-file live wallpaper: flowing silk rendered on the GPU with Paper Shaders, four palettes and a speed control.',
-    outro: 'Pick a palette or drag the speed slider in the preview.',
-    htmlPreview: 'HTML Preview',
-    viewWebpage: 'View webpage',
-    viewWebpageHint:
-      'This webpage contains scripts or external resources. Opening it may run code and connect to the internet.',
-    zoomOut: 'Zoom Out',
-    zoomIn: 'Zoom In',
-    resetZoom: 'Reset',
-    openExternal: 'Open in external browser',
-    download: 'Download',
-    maximize: 'Maximize',
-    copySource: 'Copy Source Code',
-    viewMode: 'View mode',
-    split: 'Split',
-    code: 'Code',
-    preview: 'Preview',
-    fullscreen: 'Full screen',
-    close: 'Close',
-    save: 'Save Changes',
-    app: {
-      lang: 'en',
-      title: 'Silk wallpaper',
-      palette: 'Palette',
-      palettes: ['Cherry', 'Ocean', 'Lavender', 'Citrus'],
-      speed: 'Speed',
-      comment: 'GPU-rendered silk; swatches recolor it, the slider sets its speed'
-    }
-  },
-  zh: {
-    window: 'Cherry Studio — HTML 预览',
-    model: { name: 'GLM 5.3', provider: 'zhipu' },
-    prompt: '帮我做一个能换颜色的丝绸动态壁纸。',
-    intro: '给你一个单文件的动态壁纸：用 Paper Shaders 在 GPU 上渲染流动的丝绸，带四套配色和速度调节。',
-    outro: '在预览里点色块换配色，拖动滑块调速度。',
-    htmlPreview: 'HTML 预览',
-    viewWebpage: '查看网页',
-    viewWebpageHint: '此网页包含脚本或外部资源，打开后可能运行代码并连接网络。',
-    zoomOut: '缩小',
-    zoomIn: '放大',
-    resetZoom: '重置',
-    openExternal: '外部浏览器打开',
-    download: '下载',
-    maximize: '最大化',
-    copySource: '复制源代码',
-    viewMode: '视图模式',
-    split: '分屏',
-    code: '代码',
-    preview: '预览',
-    fullscreen: '全屏',
-    close: '关闭',
-    save: '保存修改',
-    app: {
-      lang: 'zh-CN',
-      title: '丝绸壁纸',
-      palette: '配色',
-      palettes: ['樱桃', '海洋', '薰衣草', '柑橘'],
-      speed: '速度',
-      comment: 'GPU 渲染的丝绸；色块切换配色，滑块调节速度'
-    }
   }
 }
