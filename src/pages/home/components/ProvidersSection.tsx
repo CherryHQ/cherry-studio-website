@@ -152,7 +152,7 @@ export default function ProvidersSection() {
           </dl>
         </div>
         <DemoMount
-          load={() => import('@/components/demos/models/ModelSelectorDemo')}
+          load={() => import('@/components/demos/models/ModelCompareDemo')}
           className="mx-auto mt-10 min-h-[620px] max-w-5xl"
         />
       </div>
