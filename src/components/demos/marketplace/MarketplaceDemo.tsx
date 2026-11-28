@@ -34,10 +34,29 @@ import {
 } from 'lucide-react'
 import { type ReactNode, type SVGProps, useEffect, useRef, useState } from 'react'
 
+import bailianLogo from '@/assets/images/brand/mcp/bailian.svg'
+import composioLogo from '@/assets/images/brand/mcp/composio.svg'
+import difyLogo from '@/assets/images/brand/mcp/dify.svg'
+import githubLogo from '@/assets/images/brand/mcp/github.png'
+import glamaLogo from '@/assets/images/brand/mcp/glama.svg'
+import higressLogo from '@/assets/images/brand/mcp/higress.svg'
+import mcpLogo from '@/assets/images/brand/mcp/mcp.svg'
+import mcpDarkLogo from '@/assets/images/brand/mcp/mcp-dark.svg'
+import mcpsoLogo from '@/assets/images/brand/mcp/mcpso.svg'
+import mcpworldLogo from '@/assets/images/brand/mcp/mcpworld.png'
+import modelscopeLogo from '@/assets/images/brand/mcp/modelscope.svg'
+import pulseLogo from '@/assets/images/brand/mcp/pulse.svg'
+import smitheryLogo from '@/assets/images/brand/mcp/smithery.svg'
+import pdfLogo from '@/assets/images/brand/skill/pdf.svg'
+import playwrightLogo from '@/assets/images/brand/skill/playwright.svg'
+import powerpointLogo from '@/assets/images/brand/skill/powerpoint.svg'
+import tableLogo from '@/assets/images/brand/skill/table.svg'
+import wordLogo from '@/assets/images/brand/skill/word.svg'
 import {
   type MarketplaceCopy,
   type MarketplaceSkillItem,
   type MarketplaceView,
+  type McpSourceLogo,
   marketplaceDemo,
   marketplaceScript,
   type SkillIconName
@@ -45,6 +64,7 @@ import {
 import { ease } from '@/lib/motion'
 import { cn } from '@/lib/utils'
 import AppShell from '../primitives/AppShell'
+import { providerIcon } from '../primitives/brand'
 import DemoFrame from '../primitives/DemoFrame'
 import { useDemoLocale } from '../primitives/useDemoLocale'
 import { useDemoPlayback, useDemoScript } from '../primitives/useDemoScript'
@@ -56,14 +76,14 @@ interface MarketState {
   queries: Record<MarketplaceView, string>
   skillCategory: string
   agentCategory: string
+  /** The MCP view's More sources tab instead of Picks. */
+  mcpSources: boolean
   detail: Detail | null
   installed: string[]
   /** The skill being installed. */
   installing: string | null
-  added: string[]
-  adding: string | null
   pressed: string | null
-  toast: { key: number; kind: 'skill' | 'mcp'; id: string } | null
+  toast: { key: number; id: string } | null
 }
 
 const INITIAL: MarketState = {
@@ -71,11 +91,10 @@ const INITIAL: MarketState = {
   queries: { all: '', skill: '', agent: '', mcp: '' },
   skillCategory: '',
   agentCategory: '',
+  mcpSources: false,
   detail: null,
   installed: [],
   installing: null,
-  added: [],
-  adding: null,
   pressed: null,
   toast: null
 }
@@ -83,9 +102,9 @@ const FINAL: MarketState = {
   ...INITIAL,
   view: 'skill',
   queries: { ...INITIAL.queries, skill: marketplaceScript.query },
+  mcpSources: true,
   detail: { kind: 'skill', id: marketplaceScript.skill },
-  installed: [marketplaceScript.skill],
-  added: [marketplaceScript.mcpTarget]
+  installed: [marketplaceScript.skill]
 }
 
 const VIEWS: { id: MarketplaceView; icon: LucideIcon | typeof McpLogo }[] = [
@@ -106,20 +125,72 @@ const SKILL_ICONS: Record<SkillIconName, LucideIcon> = {
   brain: Brain,
   code: Code
 }
-// builtinMcpIcons in MarketplaceMcp.tsx.
-const MCP_ICONS: Record<string, LucideIcon> = {
-  flomo: NotebookPen,
-  qveris: SearchCode,
-  mcpAutoInstall: PackagePlus,
-  sequentialThinking: Workflow,
-  fetch: Globe,
-  memory: BrainCircuit,
-  filesystem: Folder,
-  braveSearch: Search,
-  difyKnowledge: BookOpen,
-  python: CodeXml,
-  didiMcp: Car,
-  nowledgeMem: Database
+// Deliberately unlike the app's grey line icons: file-type and brand marks (FileIcon's material-icon-theme set, the
+// MCP tile) on tiles, else a white glyph on a gradient. `accent` tints the detail dialog's included-skill marks.
+const SKILL_ART: Record<string, { logo?: string; dark?: string; fill?: boolean; tint: string; accent: string }> = {
+  pdf: {
+    logo: pdfLogo,
+    tint: 'from-red-50 to-red-100',
+    accent: 'text-red-500'
+  },
+  'frontend-design': { tint: 'from-pink-400 to-fuchsia-600', accent: 'text-fuchsia-500' },
+  'webapp-testing': {
+    logo: playwrightLogo,
+    tint: 'from-emerald-50 to-emerald-100',
+    accent: 'text-emerald-500'
+  },
+  docx: {
+    logo: wordLogo,
+    tint: 'from-blue-50 to-blue-100',
+    accent: 'text-blue-600 dark:text-blue-400'
+  },
+  'mcp-builder': { logo: mcpLogo, dark: mcpDarkLogo, fill: true, tint: '', accent: 'text-foreground' },
+  xlsx: {
+    logo: tableLogo,
+    tint: 'from-lime-50 to-lime-100',
+    accent: 'text-lime-600 dark:text-lime-400'
+  },
+  'skill-creator': { tint: 'from-violet-400 to-purple-600', accent: 'text-violet-500' },
+  pptx: {
+    logo: powerpointLogo,
+    tint: 'from-orange-50 to-orange-100',
+    accent: 'text-orange-500'
+  },
+  'deep-research': { tint: 'from-cyan-400 to-teal-600', accent: 'text-teal-500' },
+  changelog: { tint: 'from-indigo-400 to-blue-600', accent: 'text-indigo-500' }
+}
+// Deliberately unlike the app's grey line-icon tiles: brand logos where the repo has one, else colour tiles.
+// Glyphs follow builtinMcpIcons in MarketplaceMcp.tsx.
+const MCP_LOGOS: Record<string, string> = { difyKnowledge: difyLogo }
+const MCP_TILES: Record<string, { icon: LucideIcon; tint: string }> = {
+  flomo: { icon: NotebookPen, tint: 'from-emerald-400 to-green-600' },
+  qveris: { icon: SearchCode, tint: 'from-cyan-400 to-teal-600' },
+  mcpAutoInstall: { icon: PackagePlus, tint: 'from-violet-400 to-purple-600' },
+  sequentialThinking: { icon: Workflow, tint: 'from-amber-400 to-orange-500' },
+  fetch: { icon: Globe, tint: 'from-sky-400 to-blue-600' },
+  memory: { icon: BrainCircuit, tint: 'from-pink-400 to-fuchsia-600' },
+  filesystem: { icon: Folder, tint: 'from-yellow-400 to-amber-600' },
+  braveSearch: { icon: Search, tint: 'from-orange-500 to-red-600' },
+  python: { icon: CodeXml, tint: 'from-blue-500 to-indigo-700' },
+  didiMcp: { icon: Car, tint: 'from-lime-400 to-emerald-600' },
+  nowledgeMem: { icon: Database, tint: 'from-rose-400 to-pink-600' }
+}
+// Registry tiles keep one artwork in both themes, except the zhipu and MCP marks.
+const zhipu = providerIcon('zhipu')
+// `plate` marks remote non-tile artwork, set on a white tile.
+const SOURCE_LOGOS: Record<McpSourceLogo, { src: string; dark?: string; plate?: 'inset' | 'full' }> = {
+  bailian: { src: bailianLogo },
+  modelscope: { src: modelscopeLogo },
+  mcpworld: { src: mcpworldLogo, plate: 'inset' },
+  zhipu: { src: zhipu.light, dark: zhipu.dark },
+  higress: { src: higressLogo },
+  mcpso: { src: mcpsoLogo },
+  smithery: { src: smitheryLogo },
+  glama: { src: glamaLogo },
+  pulse: { src: pulseLogo },
+  composio: { src: composioLogo },
+  mcp: { src: mcpLogo, dark: mcpDarkLogo },
+  github: { src: githubLogo, plate: 'full' }
 }
 const FOCUS = 'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary'
 // packages/ui product tokens: border-subtle, background-subtle and foreground-tertiary.
@@ -142,32 +213,76 @@ function McpLogo(props: SVGProps<SVGSVGElement>) {
   )
 }
 
-function SkillIcon({ icon, large }: { icon: SkillIconName; large?: boolean }) {
-  const Icon = SKILL_ICONS[icon]
+/** Logo artwork that swaps to its dark file under the dark theme. */
+function Logo({ src, dark, className }: { src: string; dark?: string; className?: string }) {
+  return (
+    <>
+      <img src={src} alt="" draggable={false} className={cn(className, dark && 'dark:hidden')} />
+      {dark && <img src={dark} alt="" draggable={false} className={cn(className, 'hidden dark:block')} />}
+    </>
+  )
+}
+
+const GRADIENT_TILE = 'bg-linear-to-br text-white shadow-[inset_0_1px_0_rgb(255_255_255/0.25)]'
+// A hairline drawn above the artwork, so white tiles keep an edge on white cards.
+const TILE_EDGE =
+  'relative after:pointer-events-none after:absolute after:inset-0 after:rounded-[inherit] after:ring-1 after:ring-black/5 after:ring-inset dark:after:ring-white/10'
+
+function SkillIcon({ skill, large }: { skill: MarketplaceSkillItem; large?: boolean }) {
+  const { logo, dark, fill, tint } = SKILL_ART[skill.id]
+  const Icon = SKILL_ICONS[skill.icon]
   return (
     <span
       aria-hidden="true"
       className={cn(
-        'flex shrink-0 items-center justify-center border bg-background text-muted-foreground',
-        SUBTLE_BORDER,
-        large ? 'size-14 rounded-2xl shadow-sm' : 'size-10 rounded-xl'
+        'flex shrink-0 items-center justify-center overflow-hidden',
+        TILE_EDGE,
+        large ? 'size-14 rounded-2xl shadow-sm' : 'size-10 rounded-xl',
+        logo ? cn('bg-linear-to-br', tint) : cn(GRADIENT_TILE, tint)
       )}>
-      <Icon className={large ? 'size-7' : 'size-5'} strokeWidth={1.5} />
+      {fill && logo ? (
+        <Logo src={logo} dark={dark} className="size-full" />
+      ) : logo ? (
+        <Logo src={logo} className={large ? 'size-9' : 'size-7'} />
+      ) : (
+        <Icon className={large ? 'size-8' : 'size-6'} strokeWidth={1.75} />
+      )}
     </span>
   )
 }
 
+/** BuiltinMcpIcon's tile: mini-app icons round the MCP tile at 10px. */
 function McpIcon({ icon, large }: { icon: string; large?: boolean }) {
-  const Icon = MCP_ICONS[icon] ?? Package
-  // The MCP brand mark is a tile, so mini-app icons round it at 10px.
+  const size = large ? 'size-14' : 'size-10'
+  const logo = MCP_LOGOS[icon]
+  if (logo)
+    return (
+      <span aria-hidden="true" className={cn('flex shrink-0 overflow-hidden rounded-[10px]', TILE_EDGE, size)}>
+        <Logo src={logo} className="size-full" />
+      </span>
+    )
+  const { icon: Icon, tint } = MCP_TILES[icon]
+  return (
+    <span
+      aria-hidden="true"
+      className={cn('flex shrink-0 items-center justify-center rounded-[10px]', GRADIENT_TILE, tint, size)}>
+      <Icon className={large ? 'size-8' : 'size-6'} strokeWidth={1.75} />
+    </span>
+  )
+}
+
+/** McpSourceIcon in a 40px rounded-lg box; tile artwork fills it rather than the app's inset 32px square. */
+function SourceIcon({ logo }: { logo: McpSourceLogo }) {
+  const { src, dark, plate } = SOURCE_LOGOS[logo]
   return (
     <span
       aria-hidden="true"
       className={cn(
-        'flex shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-muted text-foreground',
-        large ? 'size-14' : 'size-10'
+        'flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-lg',
+        TILE_EDGE,
+        plate && 'bg-white'
       )}>
-      <Icon className={large ? 'size-10' : 'size-7'} strokeWidth={1.75} />
+      <Logo src={src} dark={dark} className={cn('object-contain', plate === 'inset' ? 'size-6' : 'size-full')} />
     </span>
   )
 }
@@ -200,6 +315,7 @@ function Card({
   description,
   icon,
   pressed,
+  hovered,
   onOpen,
   action,
   children
@@ -208,7 +324,8 @@ function Card({
   description: string
   icon: ReactNode
   pressed: boolean
-  onOpen: () => void
+  hovered?: boolean
+  onOpen?: () => void
   action: ReactNode
   children?: ReactNode
 }) {
@@ -217,13 +334,15 @@ function Card({
       className={cn(
         'flex h-full min-w-0 items-center gap-2 rounded-2xl border pr-3 transition-[background-color,scale] duration-150 hover:bg-accent/50',
         SUBTLE_BORDER,
+        hovered && 'bg-accent/50',
         pressed && 'scale-[0.985] bg-accent/60'
       )}>
       <button
         type="button"
         onClick={onOpen}
         className={cn(
-          'flex min-h-20 min-w-0 flex-1 cursor-pointer items-center gap-3 rounded-2xl p-3 text-left',
+          'flex min-h-20 min-w-0 flex-1 items-center gap-3 rounded-2xl p-3 text-left',
+          onOpen && 'cursor-pointer',
           FOCUS
         )}>
         {icon}
@@ -330,7 +449,7 @@ function CategoryFilter({
 
 /**
  * The Marketplace page of Cherry Studio 2.2: skill catalogs, Agent templates and MCP servers behind one search. The
- * script adds an MCP server, searches the skill catalog, opens a skill and installs it from its detail dialog.
+ * script browses the MCP sources, searches the skill catalog, opens a skill and installs it from its detail dialog.
  */
 export default function MarketplaceDemo({ bezel }: { bezel?: boolean }) {
   const { locale, tag } = useDemoLocale()
@@ -348,10 +467,6 @@ export default function MarketplaceDemo({ bezel }: { bezel?: boolean }) {
     setState((previous) =>
       previous.installing || previous.installed.includes(id) ? previous : { ...previous, installing: id }
     )
-  const startAdd = (name: string) =>
-    setState((previous) =>
-      previous.adding || previous.added.includes(name) ? previous : { ...previous, adding: name }
-    )
 
   const { replay } = useDemoScript(async ({ wait, reduced: skip }) => {
     if (skip) {
@@ -364,25 +479,29 @@ export default function MarketplaceDemo({ bezel }: { bezel?: boolean }) {
       await wait(ms)
       update({ pressed: null })
     }
-    // One click adds a ready-to-use MCP server; the skill install lands at about three seconds.
-    await wait(250)
-    await tap('nav:mcp', 110)
+    // A glance at the MCP sources, then the skill install lands at about three seconds.
+    await wait(200)
+    await tap('nav:mcp', 100)
     update({ view: 'mcp' })
     await wait(220)
-    await tap(`mcp:${marketplaceScript.mcpTarget}`, 110)
-    startAdd(marketplaceScript.mcpTarget)
-    await wait(380)
-    await tap('nav:skill', 110)
-    update({ view: 'skill' })
+    await tap('chip:sources', 100)
+    update({ mcpSources: true })
     await wait(200)
+    update({ pressed: `hover:${marketplaceScript.mcpSource}` })
+    await wait(420)
+    update({ pressed: null })
+    await wait(80)
+    await tap('nav:skill', 100)
+    update({ view: 'skill' })
+    await wait(180)
     for (let i = 1; i <= marketplaceScript.query.length; i++) {
       setQuery('skill', marketplaceScript.query.slice(0, i))
-      await wait(55)
+      await wait(50)
     }
-    await wait(200)
-    await tap(`skill:${marketplaceScript.skill}`, 110)
+    await wait(160)
+    await tap(`skill:${marketplaceScript.skill}`, 100)
     update({ detail: { kind: 'skill', id: marketplaceScript.skill } })
-    await wait(380)
+    await wait(340)
     await tap('install', 90)
     startInstall(marketplaceScript.skill)
   }, playing)
@@ -400,29 +519,13 @@ export default function MarketplaceDemo({ bezel }: { bezel?: boolean }) {
                 ...previous,
                 installing: null,
                 installed: [...previous.installed, id],
-                toast: { key: Date.now(), kind: 'skill', id }
+                toast: { key: Date.now(), id }
               }
         ),
       700
     )
     return () => clearTimeout(timer)
   }, [state.installing])
-
-  useEffect(() => {
-    const name = state.adding
-    if (!name) return
-    const timer = setTimeout(
-      () =>
-        setState((previous) => ({
-          ...previous,
-          adding: null,
-          added: [...previous.added, name],
-          toast: { key: Date.now(), kind: 'mcp', id: name }
-        })),
-      420
-    )
-    return () => clearTimeout(timer)
-  }, [state.adding])
 
   useEffect(() => {
     if (!state.toast) return
@@ -484,7 +587,7 @@ export default function MarketplaceDemo({ bezel }: { bezel?: boolean }) {
       <Card
         name={text.name}
         description={text.description}
-        icon={<SkillIcon icon={skill.icon} />}
+        icon={<SkillIcon skill={skill} />}
         pressed={state.pressed === `skill:${skill.id}`}
         onOpen={() => open({ kind: 'skill', id: skill.id })}
         action={
@@ -534,42 +637,6 @@ export default function MarketplaceDemo({ bezel }: { bezel?: boolean }) {
       </Card>
     )
 
-  const mcpAction = (name: string, full = false) => {
-    const added = state.added.includes(name)
-    const busy = state.adding === name
-    const label = added ? copy.configure : copy.add
-    const icon = busy ? (
-      <Loader2 className="size-4 animate-spin" />
-    ) : added ? (
-      <Settings2 className="size-4" />
-    ) : (
-      <Plus className="size-4" />
-    )
-    const onClick = added || busy ? undefined : () => startAdd(name)
-    if (full)
-      return (
-        <button
-          type="button"
-          aria-busy={busy}
-          onClick={onClick}
-          disabled={busy}
-          className={cn(
-            BUTTON_SM,
-            'bg-foreground text-background shadow-xs',
-            onClick ? 'cursor-pointer hover:bg-foreground/85' : 'cursor-default',
-            FOCUS
-          )}>
-          {icon}
-          {label}
-        </button>
-      )
-    return (
-      <CardAction label={`${label}: ${name}`} busy={busy} pressed={state.pressed === `mcp:${name}`} onClick={onClick}>
-        {icon}
-      </CardAction>
-    )
-  }
-
   const mcpCard = (server: (typeof marketplaceScript.mcp)[number]) =>
     gridItem(
       server.name,
@@ -579,19 +646,64 @@ export default function MarketplaceDemo({ bezel }: { bezel?: boolean }) {
         icon={<McpIcon icon={server.icon} />}
         pressed={false}
         onOpen={() => open({ kind: 'mcp', id: server.name })}
-        action={mcpAction(server.name)}>
-        {state.added.includes(server.name) ? (
-          <m.span
-            initial={{ opacity: 0, y: -2 }}
-            animate={{ opacity: 1, y: 0 }}
-            className={cn('mt-1 block text-xs', SUCCESS)}>
-            {copy.added}
-          </m.span>
-        ) : server.shouldConfig ? (
-          <span className={cn('mt-1 block text-xs', TERTIARY)}>{copy.requiresConfig}</span>
-        ) : null}
+        action={
+          <CardAction label={`${copy.add}: ${server.name}`}>
+            <Plus className="size-4" />
+          </CardAction>
+        }>
+        {server.shouldConfig && <span className={cn('mt-1 block text-xs', TERTIARY)}>{copy.requiresConfig}</span>}
       </Card>
     )
+
+  // MarketplaceMcp (moreSources): providers open their sync dialog, markets open their site in the browser.
+  const sourceAction = (Icon: LucideIcon) => (
+    <span
+      aria-hidden="true"
+      className="flex size-7 shrink-0 items-center justify-center rounded-md text-muted-foreground">
+      <Icon className="size-4" />
+    </span>
+  )
+  const sourceCard = (id: string, name: string, description: string, logo: McpSourceLogo, action: ReactNode) =>
+    gridItem(
+      id,
+      <Card
+        name={name}
+        description={description}
+        icon={<SourceIcon logo={logo} />}
+        pressed={false}
+        hovered={state.pressed === `hover:${id}`}
+        action={action}
+      />
+    )
+  const sources = () => {
+    const providers = marketplaceScript.mcpProviders.filter(({ id }) => matches([copy.providerNames[id]]))
+    const markets = marketplaceScript.mcpMarkets.filter(({ name }) => matches([name, copy.markets[name]]))
+    if (!providers.length && !markets.length) return empty
+    return (
+      <>
+        {providers.length > 0 && (
+          <section className="mb-7">
+            <h2 className="mb-3 text-sm font-medium">{copy.providers}</h2>
+            <Grid>
+              {providers.map(({ id, logo }) =>
+                sourceCard(id, copy.providerNames[id], copy.manageMcp, logo, sourceAction(Settings2))
+              )}
+            </Grid>
+          </section>
+        )}
+        {markets.length > 0 && (
+          <section>
+            <h2 className="mb-3 text-sm font-medium">{copy.marketplaces}</h2>
+            <Grid>
+              {markets.map(({ name, logo }) =>
+                sourceCard(name, name, copy.markets[name], logo, sourceAction(ExternalLink))
+              )}
+            </Grid>
+          </section>
+        )}
+      </>
+    )
+  }
 
   const empty = (
     <div className="flex flex-col items-center justify-center gap-1 py-16 text-center">
@@ -670,6 +782,7 @@ export default function MarketplaceDemo({ bezel }: { bezel?: boolean }) {
       const list = agents(false)
       return list.length ? <Grid>{list.map(agentCard)}</Grid> : empty
     }
+    if (state.mcpSources) return sources()
     const list = servers()
     return list.length ? <Grid>{list.map(mcpCard)}</Grid> : empty
   }
@@ -699,11 +812,30 @@ export default function MarketplaceDemo({ bezel }: { bezel?: boolean }) {
           />
         </>
       )
+    // MarketplacePage: Picks fills with the theme colour when active, More sources takes the accent wash.
     if (state.view === 'mcp')
       return (
-        <div className="flex shrink-0 items-center gap-2 py-3" aria-hidden="true">
-          {chip(copy.picks, true)}
-          {chip(copy.moreSources, false)}
+        <div className="flex shrink-0 items-center gap-2 py-3">
+          {[false, true].map((sources) => {
+            const active = state.mcpSources === sources
+            return (
+              <button
+                key={String(sources)}
+                type="button"
+                aria-pressed={active}
+                onClick={() => update({ mcpSources: sources })}
+                className={cn(
+                  BUTTON_SM,
+                  'cursor-pointer rounded-full transition-[background-color,scale] duration-150',
+                  active && !sources ? cn(THEME_PRIMARY, 'shadow-xs') : 'hover:bg-accent',
+                  active && sources && 'bg-accent',
+                  sources && state.pressed === 'chip:sources' && 'scale-95 bg-accent',
+                  FOCUS
+                )}>
+                {sources ? copy.moreSources : copy.picks}
+              </button>
+            )
+          })}
           {manage(copy.manageMcp)}
         </div>
       )
@@ -821,7 +953,7 @@ export default function MarketplaceDemo({ bezel }: { bezel?: boolean }) {
         {detailHeader(
           text.name,
           copy.types.skill,
-          <SkillIcon icon={skill.icon} large />,
+          <SkillIcon skill={skill} large />,
           `@${skill.author} · ${published}`
         )}
         <div ref={body} className="min-h-0 flex-1 space-y-5 overflow-y-auto bg-card px-5 py-5 [scrollbar-width:thin]">
@@ -856,7 +988,7 @@ export default function MarketplaceDemo({ bezel }: { bezel?: boolean }) {
                 <div
                   key={member}
                   className={cn('flex min-w-0 items-start gap-2 rounded-xl border p-3', SUBTLE_BORDER, SUBTLE_BG)}>
-                  <Sparkles className={cn('mt-0.5 size-3 shrink-0', TERTIARY)} />
+                  <Sparkles className={cn('mt-0.5 size-3 shrink-0', SKILL_ART[skill.id].accent)} />
                   <span className="text-xs leading-5 break-words">{member}</span>
                 </div>
               ))}
@@ -946,7 +1078,10 @@ export default function MarketplaceDemo({ bezel }: { bezel?: boolean }) {
           <ExternalLink className="size-3.5" />
           {copy.openWebsite}
         </span>,
-        mcpAction(server.name, true)
+        <span className={cn(BUTTON_SM, 'bg-foreground text-background shadow-xs')}>
+          <Plus className="size-4" />
+          {copy.add}
+        </span>
       )}
     </>
   )
@@ -966,11 +1101,7 @@ export default function MarketplaceDemo({ bezel }: { bezel?: boolean }) {
     return server && mcpDetail(server)
   }
 
-  const toastText = state.toast
-    ? state.toast.kind === 'skill'
-      ? copy.installSuccess.replace('{name}', skillText(state.toast.id).name)
-      : copy.mcpAddSuccess
-    : ''
+  const toastText = state.toast ? copy.installSuccess.replace('{name}', skillText(state.toast.id).name) : ''
 
   return (
     <div ref={ref} role="region" aria-label={copy.region} className="@container">

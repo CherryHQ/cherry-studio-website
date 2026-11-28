@@ -1,7 +1,8 @@
 // Scripted Marketplace page (src/renderer/pages/marketplace): skill catalogs, Agent templates and MCP servers in one
 // place. Labels come from the desktop locale keys marketplace.*, settings.skills.install*, settings.mcp.addSuccess,
-// settings.mcp.requiresConfig, settings.mcp.builtinServersDescriptions.*, plugins.manage_skills, title.marketplace and
-// common.*. Agent templates are resources/data/marketplace-agents.json; MCP servers are PRESET_MCP_SERVERS.
+// settings.mcp.requiresConfig, settings.mcp.builtinServersDescriptions.*, settings.mcp.more.*, plugins.manage_skills,
+// title.marketplace and common.*. Agent templates are resources/data/marketplace-agents.json; MCP servers are
+// PRESET_MCP_SERVERS; MCP sources are MCP_PROVIDER_ENTRIES and MCP_MARKETS (src/renderer/utils/mcpDiscovery.ts).
 import type { DemoLocale } from './chat'
 
 export type MarketplaceView = 'all' | 'skill' | 'agent' | 'mcp'
@@ -33,10 +34,25 @@ export interface MarketplaceSkillItem {
 
 export interface MarketplaceMcpItem {
   name: string
-  /** Key of builtinMcpIcons in MarketplaceMcp.tsx. */
+  /** Key of builtinMcpIcons in MarketplaceMcp.tsx; the demo draws it as a logo or colour tile. */
   icon: string
   shouldConfig?: boolean
 }
+
+/** Logo files in src/assets/images/brand/mcp, after the logo ids in mcpDiscovery.ts. */
+export type McpSourceLogo =
+  | 'bailian'
+  | 'modelscope'
+  | 'mcpworld'
+  | 'zhipu'
+  | 'higress'
+  | 'mcpso'
+  | 'smithery'
+  | 'glama'
+  | 'pulse'
+  | 'composio'
+  | 'mcp'
+  | 'github'
 
 /** Curated skills sorted by downloads, as MarketplaceSkills lists them. */
 const skills: MarketplaceSkillItem[] = [
@@ -155,7 +171,8 @@ const skills: MarketplaceSkillItem[] = [
 export const marketplaceScript = {
   query: 'pdf',
   skill: 'pdf',
-  mcpTarget: '@cherry/fetch',
+  /** The provider card the pointer rests on, visible at every width; a click would open its sync dialog. */
+  mcpSource: 'modelscope',
   skills,
   /** Agent templates with their emoji avatar, canonical category and the opening of their instructions. */
   agents: [
@@ -230,6 +247,23 @@ export const marketplaceScript = {
     { name: '@cherry/filesystem', icon: 'filesystem', shouldConfig: true },
     { name: '@cherry/dify-knowledge', icon: 'difyKnowledge', shouldConfig: true },
     { name: '@cherry/didi-mcp', icon: 'didiMcp', shouldConfig: true }
+  ],
+  mcpProviders: <{ id: string; logo: McpSourceLogo }[]>[
+    { id: 'bailian', logo: 'bailian' },
+    { id: 'modelscope', logo: 'modelscope' }
+  ],
+  mcpMarkets: <{ name: string; logo: McpSourceLogo }[]>[
+    { name: 'MCP World', logo: 'mcpworld' },
+    { name: 'BigModel MCP Market', logo: 'zhipu' },
+    { name: 'modelscope.cn', logo: 'modelscope' },
+    { name: 'mcp.higress.ai', logo: 'higress' },
+    { name: 'mcp.so', logo: 'mcpso' },
+    { name: 'smithery.ai', logo: 'smithery' },
+    { name: 'glama.ai', logo: 'glama' },
+    { name: 'pulsemcp.com', logo: 'pulse' },
+    { name: 'mcp.composio.dev', logo: 'composio' },
+    { name: 'Model Context Protocol Servers', logo: 'mcp' },
+    { name: 'Awesome MCP Servers', logo: 'github' }
   ]
 }
 
@@ -245,6 +279,8 @@ export interface MarketplaceCopy {
   picks: string
   moreSources: string
   manageMcp: string
+  providers: string
+  marketplaces: string
   manageSkills: string
   addSource: string
   categories: string
@@ -266,20 +302,22 @@ export interface MarketplaceCopy {
   resourceType: string
   viewRepository: string
   add: string
-  added: string
   configure: string
   requiresConfig: string
   openWebsite: string
   instructions: string
   close: string
   installSuccess: string
-  mcpAddSuccess: string
   noResults: string
   noResultsHint: string
   skills: Record<string, { name: string; description: string; detail: string; language: string }>
   agents: Record<string, { name: string; description: string }>
   /** settings.mcp.builtinServersDescriptions.* keyed by server name. */
   mcp: Record<string, string>
+  /** provider.dashscope, or the untranslated name, keyed by provider id. */
+  providerNames: Record<string, string>
+  /** settings.mcp.more.* keyed by market name. */
+  markets: Record<string, string>
 }
 
 export const marketplaceDemo: Record<DemoLocale, MarketplaceCopy> = {
@@ -295,6 +333,8 @@ export const marketplaceDemo: Record<DemoLocale, MarketplaceCopy> = {
     picks: 'Picks',
     moreSources: 'More sources',
     manageMcp: 'Manage MCP',
+    providers: 'Providers',
+    marketplaces: 'Marketplaces',
     manageSkills: 'Manage skills',
     addSource: 'Add subscription source',
     categories: 'Categories',
@@ -323,14 +363,12 @@ export const marketplaceDemo: Record<DemoLocale, MarketplaceCopy> = {
     resourceType: 'Type',
     viewRepository: 'View repository',
     add: 'Add',
-    added: 'Added',
     configure: 'Configure',
     requiresConfig: 'Requires Configuration',
     openWebsite: 'Open website',
     instructions: 'Instructions',
     close: 'Close',
     installSuccess: 'Skill installed: {name}',
-    mcpAddSuccess: 'Server added successfully',
     noResults: 'No resources found',
     noResultsHint: 'Try a different search term.',
     skills: {
@@ -455,6 +493,20 @@ export const marketplaceDemo: Record<DemoLocale, MarketplaceCopy> = {
         "Dify's MCP server implementation provides a simple API to interact with Dify. Requires configuring the Dify Key",
       '@cherry/didi-mcp':
         'DiDi MCP server providing ride-hailing services including map search, price estimation, order management, and driver tracking. Only available in Mainland China. Requires configuring the DIDI_API_KEY environment variable'
+    },
+    providerNames: { bailian: 'Qianwen AI platform - CN', modelscope: 'ModelScope' },
+    markets: {
+      'MCP World': 'Baidu MCP Aggregation Platform',
+      'BigModel MCP Market': 'Curated MCP, Fast Integration',
+      'modelscope.cn': 'ModelScope Community MCP Server',
+      'mcp.higress.ai': 'Higress MCP Server',
+      'mcp.so': 'MCP Server Discovery Platform',
+      'smithery.ai': 'Smithery MCP Tools',
+      'glama.ai': 'Glama MCP Server Directory',
+      'pulsemcp.com': 'Pulse MCP Server',
+      'mcp.composio.dev': 'Composio MCP Development Tools',
+      'Model Context Protocol Servers': 'Official MCP Server Collection',
+      'Awesome MCP Servers': 'Curated MCP Server List'
     }
   },
   zh: {
@@ -469,6 +521,8 @@ export const marketplaceDemo: Record<DemoLocale, MarketplaceCopy> = {
     picks: '精选',
     moreSources: '更多来源',
     manageMcp: '管理 MCP',
+    providers: '提供商',
+    marketplaces: '市场',
     manageSkills: '管理技能',
     addSource: '添加订阅源',
     categories: '分类',
@@ -497,14 +551,12 @@ export const marketplaceDemo: Record<DemoLocale, MarketplaceCopy> = {
     resourceType: '类型',
     viewRepository: '查看源仓库',
     add: '添加',
-    added: '已添加',
     configure: '配置',
     requiresConfig: '需要配置',
     openWebsite: '打开网站',
     instructions: '指令',
     close: '关闭',
     installSuccess: '技能已安装：{name}',
-    mcpAddSuccess: '服务器添加成功',
     noResults: '未找到资源',
     noResultsHint: '请尝试其他搜索关键词',
     skills: {
@@ -609,6 +661,20 @@ export const marketplaceDemo: Record<DemoLocale, MarketplaceCopy> = {
       '@cherry/dify-knowledge': 'Dify 的 MCP 服务器实现，提供了一个简单的 API 来与 Dify 进行交互。需要配置 Dify Key',
       '@cherry/didi-mcp':
         '一个集成了滴滴 MCP 服务器实现，提供网约车服务包括地图搜索、价格预估、订单管理和司机跟踪。仅支持中国大陆地区。需要配置 DIDI_API_KEY 环境变量'
+    },
+    providerNames: { bailian: '千问 AI 平台', modelscope: 'ModelScope' },
+    markets: {
+      'MCP World': '百度旗下 MCP 聚合平台网站',
+      'BigModel MCP Market': '精选 MCP，极速接入',
+      'modelscope.cn': '魔搭社区 MCP 服务器',
+      'mcp.higress.ai': 'Higress MCP 服务器',
+      'mcp.so': 'MCP 服务器发现平台',
+      'smithery.ai': 'Smithery MCP 工具',
+      'glama.ai': 'Glama MCP 服务器目录',
+      'pulsemcp.com': 'Pulse MCP 服务器',
+      'mcp.composio.dev': 'Composio MCP 开发工具',
+      'Model Context Protocol Servers': '官方 MCP 服务器集合',
+      'Awesome MCP Servers': '精选的 MCP 服务器列表'
     }
   }
 }
