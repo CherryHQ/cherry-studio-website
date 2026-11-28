@@ -87,7 +87,9 @@ export default function FeatureBento({ items, className }: { items: FeatureBento
                 }}
               />
               {item.visual ? (
-                <div className="relative flex h-24 items-center" aria-hidden="true">
+                <div
+                  className="relative -mx-6 -mt-6 flex h-40 items-center justify-center overflow-hidden bg-[radial-gradient(120%_90%_at_50%_0%,color-mix(in_oklab,var(--color-foreground)_6%,transparent),transparent)]"
+                  aria-hidden="true">
                   {item.visual}
                 </div>
               ) : (

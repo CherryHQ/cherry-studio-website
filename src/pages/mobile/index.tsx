@@ -1,7 +1,29 @@
-import { ArrowRight, Download, Files, ImagePlus, Monitor, Plug, Sparkles, Terminal } from 'lucide-react'
+import {
+  ArrowRight,
+  Bell,
+  BookOpen,
+  CalendarDays,
+  Cloud,
+  Download,
+  FileSearch,
+  Files,
+  ImagePlus,
+  Laptop,
+  ListChecks,
+  Monitor,
+  NotebookPen,
+  Plug,
+  Smartphone,
+  Sparkles,
+  Terminal
+} from 'lucide-react'
+import type { ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
+import lightTrails from '@/assets/images/paintings/light-trails.webp'
+import trainWindow from '@/assets/images/paintings/train-window.webp'
+import y2kStreet from '@/assets/images/paintings/y2k-street.webp'
 import LogoDrawDemo from '@/components/demos/mobile/LogoDrawDemo'
 import MobileComposerDemo from '@/components/demos/mobile/MobileComposerDemo'
 import DemoMount from '@/components/demos/primitives/DemoMount'
@@ -10,6 +32,7 @@ import FeatureBento from '@/components/website/FeatureBento'
 import Footer from '@/components/website/Footer'
 import HeroBackdrop from '@/components/website/HeroBackdrop'
 import { usePageMeta } from '@/hooks/usePageMeta'
+import { cn } from '@/lib/utils'
 import { getMobileDocsUrl } from '@/utils/urls'
 
 const capabilities = [
@@ -20,6 +43,121 @@ const capabilities = [
   { key: 'desktop', icon: Monitor },
   { key: 'ssh', icon: Terminal }
 ] as const
+
+const TILE = 'flex shrink-0 items-center justify-center bg-background shadow-[inset_0_0_0_1px_var(--color-border)]'
+const FAN = ['-rotate-[7deg]', '-rotate-[2deg]', 'rotate-[3deg]', 'rotate-[8deg]']
+const LIFT = 'transition-transform duration-500 ease-settle group-hover:rotate-0'
+
+// Small illustrations for each capability card; hover straightens and spreads them.
+const visuals: Record<(typeof capabilities)[number]['key'], ReactNode> = {
+  skills: (
+    <div className="flex items-center -space-x-2 transition-[gap] duration-500 group-hover:space-x-2">
+      {[FileSearch, NotebookPen, ListChecks].map((Icon, index) => (
+        <span key={index} className={cn(TILE, LIFT, 'relative size-16 rounded-2xl ring-4 ring-card', FAN[index])}>
+          <Icon className="size-7" strokeWidth={1.6} />
+          {index === 2 && (
+            <span className="absolute -top-1.5 -right-1.5 flex size-6 items-center justify-center rounded-full bg-foreground text-background">
+              <Sparkles className="size-3.5" />
+            </span>
+          )}
+        </span>
+      ))}
+    </div>
+  ),
+  tools: (
+    <div className="relative flex size-28 items-center justify-center">
+      <span className="absolute inset-3 rounded-full border border-dashed border-border motion-safe:animate-[spin_24s_linear_infinite]" />
+      {[CalendarDays, Bell, BookOpen, Cloud].map((Icon, index) => (
+        <span
+          key={index}
+          className={cn(TILE, 'absolute size-9 rounded-xl')}
+          style={{
+            transform: `rotate(${index * 90 + 45}deg) translateY(-50px) rotate(${-(index * 90 + 45)}deg)`
+          }}>
+          <Icon className="size-4" strokeWidth={1.7} />
+        </span>
+      ))}
+      <span className={cn(TILE, 'relative size-12 rounded-2xl bg-foreground text-background shadow-none')}>
+        <Plug className="size-5" />
+      </span>
+    </div>
+  ),
+  files: (
+    <div className="flex items-center -space-x-5 transition-[gap] duration-500 group-hover:-space-x-1">
+      {[
+        { label: 'PDF', tone: 'text-red-600 dark:text-red-400' },
+        { label: 'DOCX', tone: 'text-blue-600 dark:text-blue-400' },
+        { label: 'XLSX', tone: 'text-emerald-600 dark:text-emerald-400' },
+        { label: 'MD', tone: 'text-foreground' }
+      ].map((file, index) => (
+        <span
+          key={file.label}
+          className={cn(
+            TILE,
+            LIFT,
+            'h-24 w-[84px] flex-col justify-end gap-1.5 rounded-xl pb-2.5 ring-4 ring-card',
+            FAN[index]
+          )}>
+          <span className="h-0.5 w-10 rounded-full bg-foreground/10" />
+          <span className="h-0.5 w-8 rounded-full bg-foreground/10" />
+          <span className={cn('mt-1 text-[10px] font-semibold', file.tone)}>{file.label}</span>
+        </span>
+      ))}
+    </div>
+  ),
+  images: (
+    <div className="flex items-center -space-x-6 transition-[gap] duration-500 group-hover:-space-x-2">
+      {[lightTrails, y2kStreet, trainWindow].map((src, index) => (
+        <img
+          key={src}
+          src={src}
+          alt=""
+          loading="lazy"
+          className={cn(
+            'h-28 w-20 rounded-xl object-cover shadow-md ring-4 ring-card',
+            LIFT,
+            FAN[index],
+            index === 1 && 'z-10'
+          )}
+        />
+      ))}
+    </div>
+  ),
+  desktop: (
+    <div className="flex items-center gap-3">
+      <span className={cn(TILE, 'h-24 w-14 rounded-2xl')}>
+        <Smartphone className="size-6" strokeWidth={1.6} />
+      </span>
+      <span className="flex gap-1.5" aria-hidden="true">
+        {[0, 1, 2, 3].map((dot) => (
+          <span
+            key={dot}
+            className="size-1.5 rounded-full bg-foreground motion-safe:animate-pulse"
+            style={{ animationDelay: `${dot * 180}ms` }}
+          />
+        ))}
+      </span>
+      <span className={cn(TILE, 'h-20 w-28 rounded-xl')}>
+        <Laptop className="size-8" strokeWidth={1.5} />
+      </span>
+    </div>
+  ),
+  ssh: (
+    <div className="w-60 rounded-xl bg-[#1e1e1e] p-3 font-mono text-[11px] leading-5 text-[#d4d4d4] shadow-md">
+      <p>
+        <span className="text-emerald-400">$</span> ssh deploy@prod-01
+      </p>
+      <p className="text-[#8a8a8a]">~/app $ ls logs/</p>
+      <p>
+        api.log <span className="text-sky-400">worker.log</span>
+      </p>
+      <p>
+        <span className="text-emerald-400">~/app $</span>
+        <span className="ml-1 inline-block h-3 w-1.5 translate-y-0.5 bg-[#d4d4d4] motion-safe:animate-caret" />
+      </p>
+    </div>
+  )
+}
 
 export default function MobilePage() {
   const { t, i18n } = useTranslation()
@@ -84,6 +222,7 @@ export default function MobilePage() {
               items={capabilities.map(({ key, icon }) => ({
                 key,
                 icon,
+                visual: visuals[key],
                 title: t(`mobile_site.mobile_first.items.${key}.title`),
                 description: t(`mobile_site.mobile_first.items.${key}.description`)
               }))}
