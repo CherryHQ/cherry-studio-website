@@ -14,19 +14,15 @@ const EN_ONLY = new Set([
   'compare.links.claude-desktop-app',
   'contribution.description',
   'contribution.title',
-  'contributors.commit_count_one',
-  'contributors.commit_count_other',
   'download_page.join_discord',
   'footer.community.title',
   'page_description.compare_claude_desktop_app',
-  'page_title.compare_claude_desktop_app',
-  'statistics.forks'
+  'page_title.compare_claude_desktop_app'
 ])
 const ZH_ONLY_SUBTREES = [
   'agents',
   'compare.links.claude-code',
   'contribution',
-  'contributors.commit_count',
   'home_faq.subtitle',
   'page_description.compare_claude_code',
   'page_title.compare_claude_code'

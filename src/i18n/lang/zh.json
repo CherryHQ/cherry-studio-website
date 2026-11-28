@@ -370,7 +370,8 @@
   "statistics": {
     "days_online": "上线天数",
     "contributors": "贡献者",
-    "stars": "收藏量"
+    "stars": "收藏量",
+    "forks": "复刻"
   },
   "providers": {
     "title": "一个入口，连接所有 AI",
@@ -437,8 +438,6 @@
     "project_contributors": "与优秀的人同行",
     "project_contributors_subtitle": "感谢每一位贡献者的热情与付出",
     "view_all_on_github": "在 GitHub 查看全部",
-    "commit_count": "{{count}} 次提交",
-    "show_more": "展开其余 {{count}} 位贡献者",
     "doc_contributors": "文档贡献者",
     "contribution_stats": "贡献: {{contributions}} commits ({{rate}}%)",
     "partial": "(部分)"

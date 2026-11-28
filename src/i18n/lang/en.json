@@ -445,9 +445,6 @@
     "project_contributors": "Built by Amazing People",
     "project_contributors_subtitle": "Thank you to every contributor for your passion and dedication",
     "view_all_on_github": "View all on GitHub",
-    "commit_count_one": "{{count}} commit",
-    "commit_count_other": "{{count}} commits",
-    "show_more": "Show {{count}} more contributors",
     "doc_contributors": "Documentation Contributors",
     "contribution_stats": "Contributions: {{contributions}} commits ({{rate}}%)",
     "partial": "(Partial)"
