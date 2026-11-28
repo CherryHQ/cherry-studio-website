@@ -30,7 +30,6 @@ import stepfunLogo from '@/assets/images/provider_logo/stepfun-color.svg'
 import xaiLogo from '@/assets/images/provider_logo/xai.svg'
 import zeroOneLogo from '@/assets/images/provider_logo/zeroone.svg'
 import zhipuLogo from '@/assets/images/provider_logo/zhipu-color.svg'
-import DemoMount from '@/components/demos/primitives/DemoMount'
 import BlurInText from '@/components/website/BlurInText'
 import Marquee from '@/components/website/Marquee'
 import productStats from '@/content/product-stats.json'
@@ -130,8 +129,8 @@ export default function ProvidersSection() {
 
   return (
     <section className="relative border-y border-border bg-card/40" aria-labelledby="home-providers">
-      {/* Copy and stats share one row so the app window below gets the full width a real window has. */}
-      <div className="site-container py-14 sm:py-20">
+      {/* A light bridge between the hero and the capability demos: copy and stats, then the drifting providers. */}
+      <div className="site-container pt-14 pb-8 sm:pt-20 sm:pb-10">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end lg:gap-16">
           <div>
             <p className="mb-3 text-sm font-medium text-muted-foreground">{t('home_page.providers')}</p>
@@ -151,14 +150,10 @@ export default function ProvidersSection() {
             ))}
           </dl>
         </div>
-        <DemoMount
-          load={() => import('@/components/demos/models/ModelCompareDemo')}
-          className="mx-auto mt-10 min-h-[620px] max-w-5xl"
-        />
       </div>
 
       {/* Marquee after Incidental AI Design Academy's MIT "Marquee": provider chips over a reversed row of model names. */}
-      <div className="grid gap-3.5 border-t border-border py-10 [mask-image:linear-gradient(90deg,transparent,black_12%,black_88%,transparent)]">
+      <div className="grid gap-3.5 pb-14 sm:pb-20 [mask-image:linear-gradient(90deg,transparent,black_12%,black_88%,transparent)]">
         <Marquee>
           {(hidden) => (
             <ul aria-hidden={hidden || undefined} className="flex shrink-0 gap-3 pr-3">
