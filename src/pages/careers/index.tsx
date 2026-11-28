@@ -68,8 +68,8 @@ const CareersPage: FC = () => {
         </div>
       </section>
 
-      {/* Benefits */}
-      <section className="border-t border-border py-20 sm:py-28">
+      {/* Benefits: no top rule, the silk is still fading out here */}
+      <section className="py-20 sm:py-28">
         <div className="site-container">
           <h2 className="font-display mb-10 text-4xl sm:text-5xl">{t('careers.why_join')}</h2>
           <FeatureBento

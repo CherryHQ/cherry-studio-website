@@ -14,8 +14,9 @@ export function ModelMark({ model }: { model: string }) {
   const name = model.toLowerCase()
   const provider = name.startsWith('deepseek') ? 'deepseek' : name.startsWith('qwen') ? 'qwen' : 'zhipu'
   return (
-    <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-background shadow-[inset_0_0_0_1px_var(--color-border)]">
-      <ProviderIcon id={provider} className="size-4" />
+    // The logos are full-bleed tiles with their own background, so they fill the circle.
+    <span className="size-7 shrink-0 overflow-hidden rounded-full">
+      <ProviderIcon id={provider} className="size-full object-cover" />
     </span>
   )
 }

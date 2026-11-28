@@ -340,8 +340,14 @@ const SlideDeck: FC<{ copy: AiPptCopy; locale: UseCaseLocale; onUse: (id: string
                 onToggle={() => toggle(template.id)}
                 onUse={onUse}
               />
-              <p className="text-foreground mt-3 text-center text-sm font-medium">{template.label}</p>
-              <p className="text-muted-foreground text-center text-xs">{template.style}</p>
+              {/* Stacked captions pile onto each other, so only the front card's shows until the deck fans out. */}
+              <m.div
+                initial={false}
+                animate={{ opacity: spread || index === templates.length - 1 ? 1 : 0 }}
+                transition={{ duration: 0.2 }}>
+                <p className="text-foreground mt-3 text-center text-sm font-medium">{template.label}</p>
+                <p className="text-muted-foreground text-center text-xs">{template.style}</p>
+              </m.div>
             </m.div>
           )
         })}

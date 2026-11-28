@@ -66,14 +66,15 @@ function UsageContent() {
 
   return (
     <div className="relative isolate overflow-hidden bg-background min-h-screen">
-      <HeroBackdrop className="inset-x-0 top-0 -z-10 h-[440px] sm:h-[520px]" fade={72} />
+      <HeroBackdrop className="inset-x-0 top-0 -z-10 h-[400px] sm:h-[440px]" fade={66} />
       <article className="site-page-top mx-auto max-w-3xl px-6 pb-16">
         <header className="on-silk">
           <h1 className="text-balance text-5xl font-display sm:text-7xl">{t('usage.title')}</h1>
           <p className="text-muted-foreground mt-4 text-lg leading-8">{t('usage.subtitle')}</p>
         </header>
 
-        <section className="mt-12">
+        {/* Room for the silk to fade out between the white header copy and the dark body copy. */}
+        <section className="mt-24">
           <h2 className="font-display text-3xl text-foreground">{intro.title}</h2>
           {intro.body.map((paragraph) => (
             <p key={paragraph} className="text-muted-foreground mt-4 leading-7">
