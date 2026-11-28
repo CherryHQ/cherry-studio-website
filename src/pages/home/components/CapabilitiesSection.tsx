@@ -167,7 +167,7 @@ export default function CapabilitiesSection() {
         <p className="mt-5 text-pretty text-muted-foreground sm:text-lg">{t('home_page.capabilities.subtitle')}</p>
       </m.div>
 
-      <div className="site-container grid gap-12 lg:grid-cols-[minmax(240px,300px)_minmax(0,1fr)] xl:gap-16">
+      <div className="site-container grid gap-12 lg:grid-cols-[minmax(240px,300px)_minmax(0,1fr)] xl:gap-16 2xl:max-w-[min(110rem,94vw)] 2xl:grid-cols-[minmax(280px,340px)_minmax(0,1fr)]">
         <aside className="hidden lg:block">
           <div className="sticky top-(--site-header-height) flex h-[calc(100svh-var(--site-header-height))] flex-col justify-center gap-10 py-8">
             <nav aria-label={t('home_page.capabilities.eyebrow')}>
@@ -221,8 +221,11 @@ export default function CapabilitiesSection() {
               <div className="mb-8 lg:hidden">
                 <ChapterText chapter={chapter} />
               </div>
-              {/* Frames grow toward a 16:10 window, capped so a wide screen never turns the demo into a wall. */}
-              <div data-fill="" className="@container grid gap-10 [--demo-fill-h:min(680px,64cqw)]">
+              {/* Frames grow toward a 16:10 window and use most of the screen height, so large screens get a large
+                  window rather than empty margins. */}
+              <div
+                data-fill=""
+                className="@container grid gap-10 [--demo-fill-h:min(calc(100svh-var(--site-header-height)-9rem),64cqw)]">
                 {steps
                   .filter((step) => step.chapter === chapter)
                   .flatMap((step) => step.demos)
