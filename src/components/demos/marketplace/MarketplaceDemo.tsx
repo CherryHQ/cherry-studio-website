@@ -4,11 +4,9 @@ import {
   Bot,
   Brain,
   BrainCircuit,
-  Car,
   Check,
   CheckCircle2,
   Code,
-  CodeXml,
   Cpu,
   Database,
   Download,
@@ -19,13 +17,10 @@ import {
   Layers,
   Loader2,
   type LucideIcon,
-  NotebookPen,
   Package,
-  PackagePlus,
   Palette,
   Plus,
   Search,
-  SearchCode,
   Settings2,
   Sparkles,
   Terminal,
@@ -35,8 +30,11 @@ import {
 import { type ReactNode, type SVGProps, useEffect, useRef, useState } from 'react'
 
 import bailianLogo from '@/assets/images/brand/mcp/bailian.svg'
+import braveLogo from '@/assets/images/brand/mcp/brave.svg'
 import composioLogo from '@/assets/images/brand/mcp/composio.svg'
+import didiLogo from '@/assets/images/brand/mcp/didi.svg'
 import difyLogo from '@/assets/images/brand/mcp/dify.svg'
+import flomoLogo from '@/assets/images/brand/mcp/flomo.png'
 import githubLogo from '@/assets/images/brand/mcp/github.png'
 import glamaLogo from '@/assets/images/brand/mcp/glama.svg'
 import higressLogo from '@/assets/images/brand/mcp/higress.svg'
@@ -45,7 +43,10 @@ import mcpDarkLogo from '@/assets/images/brand/mcp/mcp-dark.svg'
 import mcpsoLogo from '@/assets/images/brand/mcp/mcpso.svg'
 import mcpworldLogo from '@/assets/images/brand/mcp/mcpworld.png'
 import modelscopeLogo from '@/assets/images/brand/mcp/modelscope.svg'
+import nowledgeLogo from '@/assets/images/brand/mcp/nowledge.png'
 import pulseLogo from '@/assets/images/brand/mcp/pulse.svg'
+import pythonLogo from '@/assets/images/brand/mcp/python.svg'
+import qverisLogo from '@/assets/images/brand/mcp/qveris.webp'
 import smitheryLogo from '@/assets/images/brand/mcp/smithery.svg'
 import pdfLogo from '@/assets/images/brand/skill/pdf.svg'
 import playwrightLogo from '@/assets/images/brand/skill/playwright.svg'
@@ -125,30 +126,44 @@ const SKILL_ICONS: Record<SkillIconName, LucideIcon> = {
   brain: Brain,
   code: Code
 }
-// Deliberately unlike the app's grey line icons: file-type and brand marks (FileIcon's material-icon-theme set, the
-// MCP tile) on a neutral raised tile where the repo has one, else a glyph on a coral wash.
-const SKILL_ART: Record<string, { logo?: string; dark?: string; fill?: boolean }> = {
+// Deliberately unlike the app's grey line icons: each item gets its own mark. Brand and file-type marks (FileIcon's
+// material-icon-theme set, each service's own logo) sit on a neutral tile; the rest are glyphs on a tint of their own.
+type Logo = { logo: string; dark?: string; fill?: boolean }
+const TINT = {
+  pink: 'bg-pink-500/12 text-pink-600 dark:text-pink-400',
+  violet: 'bg-violet-500/12 text-violet-600 dark:text-violet-400',
+  teal: 'bg-teal-500/12 text-teal-600 dark:text-teal-400',
+  indigo: 'bg-indigo-500/12 text-indigo-600 dark:text-indigo-400',
+  sky: 'bg-sky-500/12 text-sky-600 dark:text-sky-400',
+  amber: 'bg-amber-500/14 text-amber-600 dark:text-amber-400'
+}
+// Skills without a mark keep their catalog glyph.
+const SKILL_ART: Record<string, Logo | { tint: string }> = {
   pdf: { logo: pdfLogo },
+  'frontend-design': { tint: TINT.pink },
   'webapp-testing': { logo: playwrightLogo },
   docx: { logo: wordLogo },
   'mcp-builder': { logo: mcpLogo, dark: mcpDarkLogo, fill: true },
   xlsx: { logo: tableLogo },
-  pptx: { logo: powerpointLogo }
+  'skill-creator': { tint: TINT.violet },
+  pptx: { logo: powerpointLogo },
+  'deep-research': { tint: TINT.teal },
+  changelog: { tint: TINT.indigo }
 }
-// Glyphs follow builtinMcpIcons in MarketplaceMcp.tsx.
-const MCP_LOGOS: Record<string, string> = { difyKnowledge: difyLogo }
-const MCP_GLYPHS: Record<string, LucideIcon> = {
-  flomo: NotebookPen,
-  qveris: SearchCode,
-  mcpAutoInstall: PackagePlus,
-  sequentialThinking: Workflow,
-  fetch: Globe,
-  memory: BrainCircuit,
-  filesystem: Folder,
-  braveSearch: Search,
-  python: CodeXml,
-  didiMcp: Car,
-  nowledgeMem: Database
+// Third-party servers wear their service's logo; Cherry's own servers keep builtinMcpIcons' glyphs, tinted.
+const MCP_ART: Record<string, Logo | { icon: LucideIcon; tint: string }> = {
+  flomo: { logo: flomoLogo, fill: true },
+  qveris: { logo: qverisLogo },
+  mcpAutoInstall: { logo: mcpLogo, dark: mcpDarkLogo, fill: true },
+  sequentialThinking: { icon: Workflow, tint: TINT.teal },
+  fetch: { icon: Globe, tint: TINT.sky },
+  memory: { icon: BrainCircuit, tint: TINT.violet },
+  filesystem: { icon: Folder, tint: TINT.amber },
+  braveSearch: { logo: braveLogo },
+  python: { logo: pythonLogo },
+  difyKnowledge: { logo: difyLogo, fill: true },
+  didiMcp: { logo: didiLogo },
+  nowledgeMem: { logo: nowledgeLogo, fill: true }
 }
 // Registry tiles keep one artwork in both themes, except the zhipu and MCP marks.
 const zhipu = providerIcon('zhipu')
@@ -200,28 +215,37 @@ function Logo({ src, dark, className }: { src: string; dark?: string; className?
 
 const RAISED_TILE =
   'bg-linear-to-b from-white to-neutral-100 shadow-[0_1px_2px_rgb(0_0_0/0.06)] dark:from-neutral-700 dark:to-neutral-800'
-// Glyph tiles take the Cherry app icon's coral as a soft wash, one hue for every glyph.
-const CHERRY_TILE = 'bg-[#ff5f5f]/10 text-[#e5484d] dark:bg-[#ff5f5f]/15 dark:text-[#ff8f87]'
 // A hairline drawn above the artwork, so white tiles keep an edge on white cards.
 const TILE_EDGE =
   'relative after:pointer-events-none after:absolute after:inset-0 after:rounded-[inherit] after:ring-1 after:ring-black/5 after:ring-inset dark:after:ring-white/10'
 
-function SkillIcon({ skill, large }: { skill: MarketplaceSkillItem; large?: boolean }) {
-  const { logo, dark, fill } = SKILL_ART[skill.id] ?? {}
-  const Icon = SKILL_ICONS[skill.icon]
+/** One item's mark: a logo filling the tile or inset on a neutral one, or a glyph on its own tint. */
+function ItemTile({
+  art,
+  icon: Icon,
+  large,
+  rounded
+}: {
+  art: Logo | { tint: string }
+  icon: LucideIcon
+  large?: boolean
+  rounded: string
+}) {
+  const logo = 'logo' in art ? art : null
   return (
     <span
       aria-hidden="true"
       className={cn(
         'flex shrink-0 items-center justify-center overflow-hidden',
         TILE_EDGE,
-        logo ? RAISED_TILE : CHERRY_TILE,
-        large ? 'size-14 rounded-2xl' : 'size-10 rounded-xl'
+        rounded,
+        large ? 'size-14' : 'size-10',
+        logo ? !logo.fill && RAISED_TILE : (art as { tint: string }).tint
       )}>
-      {fill && logo ? (
-        <Logo src={logo} dark={dark} className="size-full" />
+      {logo?.fill ? (
+        <Logo src={logo.logo} dark={logo.dark} className="size-full object-cover" />
       ) : logo ? (
-        <Logo src={logo} className={large ? 'size-9' : 'size-7'} />
+        <Logo src={logo.logo} dark={logo.dark} className={cn('object-contain', large ? 'size-8' : 'size-6')} />
       ) : (
         <Icon className={large ? 'size-7' : 'size-5'} strokeWidth={2} />
       )}
@@ -229,24 +253,21 @@ function SkillIcon({ skill, large }: { skill: MarketplaceSkillItem; large?: bool
   )
 }
 
+function SkillIcon({ skill, large }: { skill: MarketplaceSkillItem; large?: boolean }) {
+  return (
+    <ItemTile
+      art={SKILL_ART[skill.id] ?? { tint: TINT.indigo }}
+      icon={SKILL_ICONS[skill.icon]}
+      large={large}
+      rounded={large ? 'rounded-2xl' : 'rounded-xl'}
+    />
+  )
+}
+
 /** BuiltinMcpIcon's tile: mini-app icons round the MCP tile at 10px. */
 function McpIcon({ icon, large }: { icon: string; large?: boolean }) {
-  const size = large ? 'size-14' : 'size-10'
-  const logo = MCP_LOGOS[icon]
-  if (logo)
-    return (
-      <span aria-hidden="true" className={cn('flex shrink-0 overflow-hidden rounded-[10px]', TILE_EDGE, size)}>
-        <Logo src={logo} className="size-full" />
-      </span>
-    )
-  const Icon = MCP_GLYPHS[icon]
-  return (
-    <span
-      aria-hidden="true"
-      className={cn('flex shrink-0 items-center justify-center rounded-[10px]', TILE_EDGE, CHERRY_TILE, size)}>
-      <Icon className={large ? 'size-7' : 'size-5'} strokeWidth={2} />
-    </span>
-  )
+  const art = MCP_ART[icon]
+  return <ItemTile art={art} icon={'icon' in art ? art.icon : Globe} large={large} rounded="rounded-[10px]" />
 }
 
 /** McpSourceIcon in a 40px rounded-lg box; tile artwork fills it rather than the app's inset 32px square. */
