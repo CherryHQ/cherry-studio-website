@@ -112,42 +112,46 @@ export default function CapabilitiesSection() {
       { rootMargin: '-45% 0px -45% 0px' }
     )
     for (const element of Object.values(articles.current)) if (element) observer.observe(element)
-    // Between the first and last demo, scrolling always comes to rest on one of them, centred. Snapping switches on
-    // and off only where a demo is already centred, so it never jumps, and past either end the page scrolls freely.
+    // When scrolling comes to rest between the first and last demo, glide to the nearest demo's centre so a demo always
+    // sits level with the copy. Done in script: CSS mandatory snapping also yanks jumps that leave the section.
     const root = document.documentElement
     const desktop = window.matchMedia('(min-width: 1024px)')
-    let frame = 0
-    const sync = () => {
-      frame = 0
-      const demos = stack.current?.querySelectorAll('[data-snap]')
+    let timer = 0
+    let gliding = false
+    const settle = () => {
+      if (gliding || !desktop.matches || reduced) return
+      const demos = [...(stack.current?.querySelectorAll('[data-snap]') ?? [])]
+      if (!demos.length) return
       const header = Number.parseFloat(getComputedStyle(root).getPropertyValue('--site-header-height'))
       const middle = header + (window.innerHeight - header) / 2
-      const centre = (element?: Element) => {
-        const rect = element?.getBoundingClientRect()
-        return rect ? rect.top + rect.height / 2 : Number.NaN
-      }
-      const inside =
-        desktop.matches &&
-        !!demos?.length &&
-        centre(demos[0]) <= middle + 2 &&
-        centre(demos[demos.length - 1]) >= middle - 2
-      root.classList.toggle('snap-y', inside)
-      root.classList.toggle('snap-mandatory', inside)
+      const offsets = demos.map((demo) => {
+        const rect = demo.getBoundingClientRect()
+        return rect.top + rect.height / 2 - middle
+      })
+      if (offsets[0] > 120 || offsets[offsets.length - 1] < -120) return
+      const offset = offsets.reduce((best, value) => (Math.abs(value) < Math.abs(best) ? value : best))
+      if (Math.abs(offset) < 4) return
+      gliding = true
+      animate(window.scrollY, window.scrollY + offset, {
+        duration: 0.35,
+        ease: ease.settle,
+        onUpdate: (y) => window.scrollTo(0, y),
+        onComplete: () => {
+          gliding = false
+        }
+      })
     }
     const onScroll = () => {
-      if (!frame) frame = requestAnimationFrame(sync)
+      window.clearTimeout(timer)
+      timer = window.setTimeout(settle, 140)
     }
-    sync()
     window.addEventListener('scroll', onScroll, { passive: true })
-    desktop.addEventListener('change', sync)
     return () => {
       observer.disconnect()
-      cancelAnimationFrame(frame)
+      window.clearTimeout(timer)
       window.removeEventListener('scroll', onScroll)
-      desktop.removeEventListener('change', sync)
-      root.classList.remove('snap-y', 'snap-mandatory')
     }
-  }, [])
+  }, [reduced])
 
   return (
     <section
@@ -226,7 +230,7 @@ export default function CapabilitiesSection() {
                   .filter((step) => step.chapter === chapter)
                   .flatMap((step) => step.demos)
                   .map((demo, index) => (
-                    <div key={index} data-snap="" className="lg:snap-center">
+                    <div key={index} data-snap="">
                       <DemoMount load={demo.load} className={demo.height} />
                     </div>
                   ))}

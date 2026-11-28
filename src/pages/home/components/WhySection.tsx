@@ -148,8 +148,11 @@ const WhySection: FC = () => {
                     {(hidden) => (
                       <ul aria-hidden={hidden || undefined} className="flex shrink-0 gap-3 pr-3">
                         {row.map((id) => (
-                          <li key={id} className={cn(TILE, 'size-16 rounded-2xl')}>
-                            <ProviderIcon id={id} className="size-8" />
+                          // Provider logos are full-bleed tile artwork, so they fill the tile and take its rounding.
+                          <li
+                            key={id}
+                            className="size-16 shrink-0 overflow-hidden rounded-2xl ring-1 ring-foreground/10 ring-inset">
+                            <ProviderIcon id={id} className="size-full object-cover" />
                           </li>
                         ))}
                       </ul>
