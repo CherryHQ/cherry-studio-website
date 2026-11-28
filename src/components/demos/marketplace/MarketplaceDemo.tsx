@@ -126,7 +126,7 @@ const SKILL_ICONS: Record<SkillIconName, LucideIcon> = {
   code: Code
 }
 // Deliberately unlike the app's grey line icons: file-type and brand marks (FileIcon's material-icon-theme set, the
-// MCP tile) where the repo has one, else a glyph; all on one neutral raised tile.
+// MCP tile) on a neutral raised tile where the repo has one, else a glyph on a coral wash.
 const SKILL_ART: Record<string, { logo?: string; dark?: string; fill?: boolean }> = {
   pdf: { logo: pdfLogo },
   'webapp-testing': { logo: playwrightLogo },
@@ -199,7 +199,9 @@ function Logo({ src, dark, className }: { src: string; dark?: string; className?
 }
 
 const RAISED_TILE =
-  'bg-linear-to-b from-white to-neutral-100 text-neutral-800 shadow-[0_1px_2px_rgb(0_0_0/0.06)] dark:from-neutral-700 dark:to-neutral-800 dark:text-neutral-100'
+  'bg-linear-to-b from-white to-neutral-100 shadow-[0_1px_2px_rgb(0_0_0/0.06)] dark:from-neutral-700 dark:to-neutral-800'
+// Glyph tiles take the Cherry app icon's coral as a soft wash, one hue for every glyph.
+const CHERRY_TILE = 'bg-[#ff5f5f]/10 text-[#e5484d] dark:bg-[#ff5f5f]/15 dark:text-[#ff8f87]'
 // A hairline drawn above the artwork, so white tiles keep an edge on white cards.
 const TILE_EDGE =
   'relative after:pointer-events-none after:absolute after:inset-0 after:rounded-[inherit] after:ring-1 after:ring-black/5 after:ring-inset dark:after:ring-white/10'
@@ -213,7 +215,7 @@ function SkillIcon({ skill, large }: { skill: MarketplaceSkillItem; large?: bool
       className={cn(
         'flex shrink-0 items-center justify-center overflow-hidden',
         TILE_EDGE,
-        RAISED_TILE,
+        logo ? RAISED_TILE : CHERRY_TILE,
         large ? 'size-14 rounded-2xl' : 'size-10 rounded-xl'
       )}>
       {fill && logo ? (
@@ -221,7 +223,7 @@ function SkillIcon({ skill, large }: { skill: MarketplaceSkillItem; large?: bool
       ) : logo ? (
         <Logo src={logo} className={large ? 'size-9' : 'size-7'} />
       ) : (
-        <Icon className={large ? 'size-8' : 'size-6'} strokeWidth={1.75} />
+        <Icon className={large ? 'size-7' : 'size-5'} strokeWidth={2} />
       )}
     </span>
   )
@@ -241,8 +243,8 @@ function McpIcon({ icon, large }: { icon: string; large?: boolean }) {
   return (
     <span
       aria-hidden="true"
-      className={cn('flex shrink-0 items-center justify-center rounded-[10px]', TILE_EDGE, RAISED_TILE, size)}>
-      <Icon className={large ? 'size-8' : 'size-6'} strokeWidth={1.75} />
+      className={cn('flex shrink-0 items-center justify-center rounded-[10px]', TILE_EDGE, CHERRY_TILE, size)}>
+      <Icon className={large ? 'size-7' : 'size-5'} strokeWidth={2} />
     </span>
   )
 }
