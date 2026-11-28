@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next'
 
 import DemoMount from '@/components/demos/primitives/DemoMount'
 import BlurInText from '@/components/website/BlurInText'
+import Phrases from '@/components/website/Phrases'
 import { ease, reveal } from '@/lib/motion'
 import { cn } from '@/lib/utils'
 
@@ -50,7 +51,7 @@ function ChapterText({ chapter }: { chapter: ChapterId }) {
   return (
     <div>
       <h3 className="text-3xl font-display text-balance sm:text-4xl">
-        {t(`home_page.capabilities.chapters.${chapter}.title`)}
+        <Phrases text={t(`home_page.capabilities.chapters.${chapter}.title`)} />
       </h3>
       <p className="mt-3 text-pretty text-muted-foreground zh:leading-[1.8]">
         {t(`home_page.capabilities.chapters.${chapter}.description`)}
