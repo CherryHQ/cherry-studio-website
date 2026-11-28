@@ -20,6 +20,7 @@ import {
   SendSlot,
   tone
 } from './MobileUi'
+import { FloatingDock } from './NavIcon'
 import PhoneFrame from './PhoneFrame'
 import ShimmerText from './ShimmerText'
 
@@ -637,7 +638,10 @@ function ImportScreen({ copy, phase }: { copy: PairingCopy; phase: DemoState['sy
   )
 }
 
-/** Remote chat with the PC Agent: the same header and transcript, a Bash tool group, the remote composer. */
+/**
+ * Remote chat with the PC Agent: the same header and transcript, a Bash tool group, the remote composer
+ * resting 12pt above the floating dock, as on every root chat route of a phone.
+ */
 function AgentScreen({
   copy,
   state,
@@ -656,7 +660,7 @@ function AgentScreen({
   const running = agent === 'running'
   return (
     <div className={cn('relative h-full', tone.chat)}>
-      <div className="flex h-full flex-col justify-end gap-4 overflow-hidden px-4 pt-[122px] pb-[136px]">
+      <div className="flex h-full flex-col justify-end gap-4 overflow-hidden px-4 pt-[122px] pb-[174px]">
         {sent && (
           <m.p
             initial={{ opacity: 0, y: 12 }}
@@ -711,7 +715,7 @@ function AgentScreen({
         )}
       </div>
       <ChatHeader agentName={copy.agentName} sidebarLabel={copy.openMenu} newChatLabel={copy.newChat} />
-      <div aria-hidden="true" className="absolute inset-x-0 bottom-0 px-4 pb-[38px]">
+      <div aria-hidden="true" className="absolute inset-x-0 bottom-0 px-4 pb-[76px]">
         <ComposerSurface>
           {agent === 'typing' ? (
             <>
@@ -723,10 +727,6 @@ function AgentScreen({
                 <ComposerCircle>
                   <Plus className="size-[18px]" strokeWidth={1.9} />
                 </ComposerCircle>
-                <span className={cn('flex h-8 items-center gap-[6px] rounded-full px-[10px]', tone.secondary)}>
-                  <FolderGlyph />
-                  <span className="text-[14px] font-semibold">{copy.workspace}</span>
-                </span>
                 <span className="ms-auto">
                   <SendSlot state={state.typed ? 'ready' : 'disabled'} />
                 </span>
@@ -745,21 +745,8 @@ function AgentScreen({
           )}
         </ComposerSurface>
       </div>
+      <FloatingDock />
     </div>
-  )
-}
-
-function FolderGlyph() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      className="size-5"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={1.8}
-      strokeLinejoin="round">
-      <path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z" />
-    </svg>
   )
 }
 

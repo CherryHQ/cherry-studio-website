@@ -351,7 +351,6 @@ export interface PairingCopy {
     success: string
   }
   agent: MobileChromeCopy & {
-    workspace: string
     prompt: string
     toolName: string
     command: string
@@ -429,7 +428,6 @@ export const pairingDemo: Record<DemoLocale, PairingCopy> = {
     agent: {
       ...chrome.en,
       agentName: 'Cherie',
-      workspace: 'Default PC workspace',
       prompt: 'Run the test suite and tell me what fails',
       toolName: 'Bash',
       command: 'pnpm test',
@@ -505,7 +503,6 @@ export const pairingDemo: Record<DemoLocale, PairingCopy> = {
     agent: {
       ...chrome.zh,
       agentName: 'Cherry 小助手',
-      workspace: 'PC 默认工作区',
       prompt: '跑一遍测试，告诉我哪些没通过',
       toolName: 'Bash',
       command: 'pnpm test',

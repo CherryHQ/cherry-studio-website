@@ -1,26 +1,17 @@
 import { AnimatePresence, m, useReducedMotion } from 'framer-motion'
 import {
+  AtSign,
   Bot,
-  Boxes,
   ChevronDown,
   ChevronRight,
-  Copy,
   Ellipsis,
-  Folder,
-  MessageCircle,
-  MousePointerClick,
-  Network,
-  Palette,
   PenLine,
   Plus,
   RotateCcw,
-  RotateCw,
   Search,
   Settings2,
   Split,
-  Store,
-  UserRound,
-  Volume2
+  UserRound
 } from 'lucide-react'
 import { type ReactNode, useLayoutEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -47,6 +38,7 @@ import {
   SidebarIcon,
   tone
 } from './MobileUi'
+import { NavIcon } from './NavIcon'
 
 // iPad Air 11" landscape in points; the canvas scales to the frame width like PhoneFrame.
 const WIDTH = 1180
@@ -66,16 +58,8 @@ const images: Record<string, string> = {
 
 type Page = Extract<TabletDestination, 'chat' | 'agents' | 'drawings'>
 
-// dockTabs.ts WIDE_RAIL_DESTINATIONS with NavIcon's glyphs.
-const RAIL_ITEMS: [TabletDestination, typeof MessageCircle][] = [
-  ['chat', MessageCircle],
-  ['agents', MousePointerClick],
-  ['drawings', Palette],
-  ['plugins', Boxes],
-  ['marketplace', Store],
-  ['files', Folder],
-  ['devices', Network]
-]
+// dockTabs.ts WIDE_RAIL_DESTINATIONS.
+const RAIL_ITEMS: TabletDestination[] = ['chat', 'agents', 'drawings', 'plugins', 'marketplace', 'files', 'devices']
 const PAGES = new Set<TabletDestination>(['chat', 'agents', 'drawings'])
 
 export default function TabletLayoutDemo() {
@@ -143,16 +127,14 @@ export default function TabletLayoutDemo() {
                   tone.border
                 )}>
                 <div className="flex flex-col items-center gap-1.5">
-                  {RAIL_ITEMS.map(([id, Icon]) => {
+                  {RAIL_ITEMS.map((id) => {
                     const active = page === id
                     const label = copy.nav[id]
                     const className = cn(
                       'flex size-10 items-center justify-center rounded-xl transition-colors duration-150',
                       active ? cn(tone.secondaryActive, tone.foreground) : tone.muted
                     )
-                    const icon = (
-                      <Icon key="icon" className="size-[22px]" strokeWidth={active ? 2.2 : 1.85} aria-hidden="true" />
-                    )
+                    const icon = <NavIcon key="icon" id={id} filled={active} size={22} />
                     return PAGES.has(id) ? (
                       <button
                         key={id}
@@ -391,7 +373,8 @@ function ChatPage({
             </AnimatePresence>
             {generated && (
               <div aria-hidden="true" className={cn('flex min-h-7 items-center gap-1', tone.muted)}>
-                {[Copy, Volume2, RotateCw, Split, Ellipsis].map((Icon, index) => (
+                {/* An image-only reply has no text to copy or read aloud, so the default toolbar starts at Retry. */}
+                {[RotateCcw, AtSign, Split, Ellipsis].map((Icon, index) => (
                   <span key={index} className="flex size-[27px] items-center justify-center">
                     <Icon className="size-[15px]" />
                   </span>

@@ -2,14 +2,13 @@ import { AnimatePresence, m } from 'framer-motion'
 import {
   AtSign,
   Boxes,
-  Camera,
   Check,
   ChevronRight,
   Copy,
+  createLucideIcon,
   Ellipsis,
   FileText,
   Folder,
-  Images,
   Plus,
   RotateCcw,
   Split,
@@ -37,6 +36,7 @@ import {
   SheetHandle,
   tone
 } from './MobileUi'
+import { FloatingDock } from './NavIcon'
 import PhoneFrame from './PhoneFrame'
 import ShimmerText from './ShimmerText'
 
@@ -54,6 +54,20 @@ const THINK_SECONDS = 3
 const editorMotion = { duration: 0.09, ease: ease.settle }
 // BottomSheet presentation curve.
 const sheetMotion = { duration: 0.35, ease: ease.sheet }
+// app-icons pins camera and images to the desktop's Lucide revision, which predates these glyph redraws.
+const Camera = createLucideIcon('camera', [
+  [
+    'path',
+    { d: 'M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z', key: 'body' }
+  ],
+  ['circle', { cx: '12', cy: '13', r: '3', key: 'lens' }]
+])
+const Images = createLucideIcon('images', [
+  ['path', { d: 'M18 22H4a2 2 0 0 1-2-2V6', key: 'back' }],
+  ['path', { d: 'm22 13-1.296-1.296a2.41 2.41 0 0 0-3.408 0L11 18', key: 'hill' }],
+  ['circle', { cx: '12', cy: '8', r: '2', key: 'sun' }],
+  ['rect', { width: '16', height: '16', x: '6', y: '2', rx: '2', key: 'front' }]
+])
 
 export default function MobileComposerDemo() {
   const { locale, tag } = useDemoLocale()
@@ -103,7 +117,7 @@ export default function MobileComposerDemo() {
         overlay={<ToolsSheet copy={copy} open={sheetOpen} onClose={() => setSheetOpen(false)} />}>
         <div className={cn('relative h-full', tone.chat)}>
           <div ref={scroller} className="absolute inset-0 overflow-y-auto [scrollbar-width:none]">
-            <div ref={thread} className="flex min-h-full flex-col px-4 pt-[122px] pb-[150px]">
+            <div ref={thread} className="flex min-h-full flex-col px-4 pt-[122px] pb-[188px]">
               {sent ? (
                 <Conversation
                   copy={copy}
@@ -123,7 +137,7 @@ export default function MobileComposerDemo() {
 
           <ChatHeader agentName={copy.agentName} sidebarLabel={copy.openMenu} newChatLabel={copy.newChat} />
 
-          <div className="absolute inset-x-0 bottom-0 z-10 px-4 pb-[38px]">
+          <div className="absolute inset-x-0 bottom-0 z-10 px-4 pb-[76px]">
             <div
               aria-hidden="true"
               className="pointer-events-none absolute inset-x-0 -top-6 bottom-0 bg-linear-to-b from-[#f9f9f9]/0 to-[#f9f9f9] to-[24px] dark:from-black/0 dark:to-black"
@@ -169,6 +183,8 @@ export default function MobileComposerDemo() {
               </m.div>
             </ComposerSurface>
           </div>
+          {/* A phone's chat root shows the floating nav dock, with the composer resting above it. */}
+          <FloatingDock className="z-10" />
         </div>
       </PhoneFrame>
     </div>
@@ -442,7 +458,7 @@ function ToolsSheet({ copy, open, onClose }: { copy: MobileComposerCopy; open: b
                   <SheetAction key={label} onClick={onClose} row className="min-h-14 w-full gap-3 rounded-xl py-2">
                     <Icon className={cn('size-5', tone.muted)} strokeWidth={1.8} aria-hidden="true" />
                     <span className="min-w-0 flex-1 text-start text-[16px] leading-6">{label}</span>
-                    {value && <span className={cn('max-w-32 truncate text-[14px]', tone.muted)}>{value}</span>}
+                    {value && <span className={cn('max-w-40 truncate text-[14px]', tone.muted)}>{value}</span>}
                     <ChevronRight className={cn('size-4', tone.muted)} aria-hidden="true" />
                   </SheetAction>
                 ))}
