@@ -224,7 +224,7 @@
     "title": "让 AI 真正成为团队生产力",
     "description": "统一模型、知识与权限，让团队共享同一套 AI 工作方式，把个人效率自然扩展为组织效率。",
     "cta": "了解企业版",
-    "activity": "限时活动-注册企业版赠送88元体验金",
+    "activity": "限时活动：注册企业版赠送 88 元体验金",
     "mockup": {
       "title": "团队 AI 工作空间",
       "subtitle": "统一管理 · 协同使用",
@@ -361,8 +361,8 @@
     "contact_us": {
       "wechat_qr_alt": "微信公众号二维码",
       "wechat_official_account": "官方微信公众号",
-      "support_email": "技术支持",
-      "business_email": "商务合作",
+      "support_email": "技术支持：",
+      "business_email": "商务合作：",
       "feedback": "功能建议"
     },
     "copyright": "Copyright © 2026 上海千彗科技有限公司 <0>沪ICP备2021031071号-3</0>"
@@ -480,7 +480,7 @@
   "home_page": {
     "title_first": "你的 Agent。",
     "title_second": "你的 AI 工作台。",
-    "intro": "在一个开源桌面应用里切换主流大模型，和 AI 对话，让智能体处理多步骤任务，也能用自己的资料构建知识库。",
+    "intro": "在一个开源桌面应用里切换主流大模型，和 AI 对话，让 Agent 处理多步骤任务，也能用自己的资料构建知识库。",
     "download_desktop": "下载桌面版",
     "platforms": "开源 · macOS / Windows / Linux",
     "providers": "支持的模型服务商",
@@ -495,7 +495,7 @@
       "subtitle": "下面每个窗口都能点，直接上手试试。",
       "chapters": {
         "agents": {
-          "nav": "智能体",
+          "nav": "Agent",
           "title": "把整件事交给 Agent",
           "description": "要调研、要报告、要一份 PPT，Agent 会先做计划，再让多个子 Agent 并行干活，最后交回可以一键预览的成品文件。",
           "points": ["后台子 Agent 并行工作", "计划、进度和上下文都在会话详情里", "PPT、文档、报告，成品直接预览"]
@@ -550,7 +550,7 @@
     "items": [
       {
         "question": "Cherry Studio 是什么？",
-        "answer": "Cherry Studio 是一款跨平台的 AI 对话客户端，支持 Windows、macOS 和 Linux。它集成了 {{providers}} 家服务商的 {{models}} 主流 AI 模型，包括 DeepSeek、Kimi、通义千问、智谱 GLM 等国产模型，也支持本地模型部署。除了 AI 助手之外，Cherry Studio 还具备强大的智能体能力——自主思考、规划和行动的 AI。给智能体一个目标，它会自动推理问题、拆解步骤、调用工具并独立执行，同时您始终保持控制权。"
+        "answer": "Cherry Studio 是一款跨平台的 AI 对话客户端，支持 Windows、macOS 和 Linux。它集成了 {{providers}} 家服务商的 {{models}} 主流 AI 模型，包括 DeepSeek、Kimi、通义千问、智谱 GLM 等国产模型，也支持本地模型部署。除了 AI 助手之外，Cherry Studio 还具备强大的智能体能力——自主思考、规划和行动的 AI。给智能体一个目标，它会自动推理问题、拆解步骤、调用工具并独立执行，同时你始终保持控制权。"
       },
       {
         "question": "Cherry Studio 是免费的吗？",
@@ -558,7 +558,7 @@
       },
       {
         "question": "我的数据是如何存储的？安全吗？",
-        "answer": "您的所有数据（对话记录、设置、知识库文件）都存储在本地设备上，Cherry Studio 不会将任何数据上传到第三方服务器。您对数据隐私拥有完全的控制权。我们还支持 WebDAV 备份，方便多设备同步。"
+        "answer": "你的所有数据（对话记录、设置、知识库文件）都存储在本地设备上，Cherry Studio 不会将任何数据上传到第三方服务器。你对数据隐私拥有完全的控制权。我们还支持 WebDAV 备份，方便多设备同步。"
       },
       {
         "question": "Cherry Studio 支持哪些 AI 模型？",
@@ -566,19 +566,19 @@
       },
       {
         "question": "知识库功能是什么？",
-        "answer": "知识库功能允许您导入文档（PDF、Word、Excel、TXT、Markdown）和网页来创建个人 AI 助手。AI 可以基于您导入的内容回答问题，非常适合研究、文档分析和个性化问答场景。"
+        "answer": "知识库功能允许你导入文档（PDF、Word、Excel、TXT、Markdown）和网页来创建个人 AI 助手。AI 可以基于你导入的内容回答问题，非常适合研究、文档分析和个性化问答场景。"
       },
       {
         "question": "Cherry Studio 支持 MCP（模型上下文协议）吗？",
-        "answer": "是的，Cherry Studio 完全支持 MCP 服务器，允许您通过外部工具和服务扩展其功能。您可以连接数据库、文件系统、Web 服务等，将 Cherry Studio 打造成强大的 AI 工作台。"
+        "answer": "是的，Cherry Studio 完全支持 MCP 服务器，允许你通过外部工具和服务扩展其功能。你可以连接数据库、文件系统、Web 服务等，将 Cherry Studio 打造成强大的 AI 工作台。"
       },
       {
         "question": "我想为项目做贡献，可以做什么？",
-        "answer": "您可以通过多种方式贡献：在 GitHub 给我们 Star、报告 Bug、提交代码改进的 PR、帮助完善文档，或在社区帮助其他用户答疑。请查看我们的 GitHub 仓库了解贡献指南和待解决的 Issue。"
+        "answer": "你可以通过多种方式贡献：在 GitHub 给我们 Star、报告 Bug、提交代码改进的 PR、帮助完善文档，或在社区帮助其他用户答疑。请查看我们的 GitHub 仓库了解贡献指南和待解决的 Issue。"
       },
       {
         "question": "遇到问题在哪里可以获得帮助？",
-        "answer": "您可以通过 Telegram、Discord 或 QQ 群加入我们的社区（链接在官网首页）。也可以在 GitHub 提交 Issue、发送邮件至 support@cherry-ai.com，或访问官网文档查看详细的使用文档和教程。"
+        "answer": "你可以通过 Telegram、Discord 或 QQ 群加入我们的社区（链接在官网首页）。也可以在 GitHub 提交 Issue、发送邮件至 support@cherry-ai.com，或访问官网文档查看详细的使用文档和教程。"
       }
     ]
   },

@@ -233,13 +233,13 @@ const Footer: FC = () => {
             <h4 className="text-foreground mb-4 text-sm font-semibold">{t('nav.contact')}</h4>
             <ul className="space-y-2.5">
               <li>
-                <span className="text-muted-foreground text-sm">{t('footer.contact_us.support_email')}: </span>
+                <span className="text-muted-foreground text-sm">{t('footer.contact_us.support_email')}</span>
                 <a href="mailto:support@cherry-ai.com" className="text-primary text-sm hover:underline">
                   support@cherry-ai.com
                 </a>
               </li>
               <li>
-                <span className="text-muted-foreground text-sm">{t('footer.contact_us.business_email')}: </span>
+                <span className="text-muted-foreground text-sm">{t('footer.contact_us.business_email')}</span>
                 <a href="mailto:bd@cherry-ai.com" className="text-primary text-sm hover:underline">
                   bd@cherry-ai.com
                 </a>

@@ -68,7 +68,7 @@ export const assistantsDemo: Record<DemoLocale, AssistantsDemoCopy> = {
   },
   zh: {
     translate: {
-      from: { emoji: '🇨🇳', label: 'Chinese (Simplified)' },
+      from: { emoji: '🇨🇳', label: '简体中文' },
       to: { emoji: '🇺🇸', label: '英文' },
       detecting: '检测中...',
       settings: '语言设置',

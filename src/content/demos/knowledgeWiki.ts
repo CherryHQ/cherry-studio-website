@@ -252,7 +252,7 @@ export const knowledgeWikiDemo: Record<DemoLocale, KnowledgeWikiCopy> = {
       {
         id: 'faq',
         title: '客户常见问题：账单',
-        updated: '2天前',
+        updated: '2 天前',
         blocks: [
           { kind: 'heading', text: '可以从月付改成年付吗？' },
           { kind: 'text', text: '可以，下个续费周期生效，未用完的天数会折算抵扣。' },

@@ -232,7 +232,7 @@ export const selectionAgentDemo: Record<DemoLocale, SelectionAgentCopy> = {
       ],
       subject: '续约：签约前需要的三件事',
       from: '林雅',
-      address: 'maya@northwind.io',
+      address: 'linya@northwind.io',
       to: '收件人：陈晨',
       time: '上午 9:42',
       paragraphs: zhParagraphs,
