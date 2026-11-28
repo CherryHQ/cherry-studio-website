@@ -1,4 +1,4 @@
-import { AnimatePresence, animate, m, useReducedMotion } from 'framer-motion'
+import { AnimatePresence, type AnimationPlaybackControls, animate, m, useReducedMotion } from 'framer-motion'
 import { Check } from 'lucide-react'
 import { type ComponentType, useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -67,6 +67,23 @@ function ChapterText({ chapter }: { chapter: ChapterId }) {
   )
 }
 
+// The page glide in progress, so a new glide or the reader's own wheel can stop it.
+let glide: AnimationPlaybackControls | null = null
+
+/** Steps the window scroll by hand; `instant` bypasses the root's CSS smooth scrolling, which made each frame lag. */
+function glideTo(target: number, duration: number, onComplete?: () => void) {
+  glide?.stop()
+  glide = animate(window.scrollY, target, {
+    duration,
+    ease: ease.settle,
+    onUpdate: (y) => window.scrollTo({ top: y, behavior: 'instant' }),
+    onComplete: () => {
+      glide = null
+      onComplete?.()
+    }
+  })
+}
+
 /**
  * Chapter list on the left stays in view and follows the reader; the demos on the right scroll past one after
  * another, each at a desktop-window proportion.
@@ -91,14 +108,11 @@ export default function CapabilitiesSection() {
     if (Math.abs(offset) < 4 || attempt > 2) return
     const target = window.scrollY + offset
     // Stepped by hand: demos measuring height: auto restore the scroll position, which cancels a native smooth scroll.
-    if (reduced) window.scrollTo(0, target)
+    if (reduced) window.scrollTo({ top: target, behavior: 'instant' })
     else
-      animate(window.scrollY, target, {
-        duration: attempt ? 0.3 : 0.7,
-        ease: ease.settle,
-        onUpdate: (y) => window.scrollTo(0, y),
-        onComplete: () => requestAnimationFrame(() => centre(chapter, attempt + 1))
-      })
+      glideTo(target, attempt ? 0.3 : Math.min(1.1, 0.5 + Math.abs(offset) / 6000), () =>
+        requestAnimationFrame(() => centre(chapter, attempt + 1))
+      )
   }
 
   useEffect(() => {
@@ -117,9 +131,8 @@ export default function CapabilitiesSection() {
     const root = document.documentElement
     const desktop = window.matchMedia('(min-width: 1024px)')
     let timer = 0
-    let gliding = false
     const settle = () => {
-      if (gliding || !desktop.matches || reduced) return
+      if (glide || !desktop.matches || reduced) return
       const demos = [...(stack.current?.querySelectorAll('[data-snap]') ?? [])]
       if (!demos.length) return
       const header = Number.parseFloat(getComputedStyle(root).getPropertyValue('--site-header-height'))
@@ -131,25 +144,26 @@ export default function CapabilitiesSection() {
       if (offsets[0] > 120 || offsets[offsets.length - 1] < -120) return
       const offset = offsets.reduce((best, value) => (Math.abs(value) < Math.abs(best) ? value : best))
       if (Math.abs(offset) < 4) return
-      gliding = true
-      animate(window.scrollY, window.scrollY + offset, {
-        duration: 0.35,
-        ease: ease.settle,
-        onUpdate: (y) => window.scrollTo(0, y),
-        onComplete: () => {
-          gliding = false
-        }
-      })
+      glideTo(window.scrollY + offset, 0.35)
     }
     const onScroll = () => {
       window.clearTimeout(timer)
       timer = window.setTimeout(settle, 140)
     }
+    // The reader's own wheel or touch takes over from a glide.
+    const interrupt = () => {
+      glide?.stop()
+      glide = null
+    }
     window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('wheel', interrupt, { passive: true })
+    window.addEventListener('touchstart', interrupt, { passive: true })
     return () => {
       observer.disconnect()
       window.clearTimeout(timer)
       window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('wheel', interrupt)
+      window.removeEventListener('touchstart', interrupt)
     }
   }, [reduced])
 
