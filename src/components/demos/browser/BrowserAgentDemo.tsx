@@ -744,7 +744,7 @@ export default function BrowserAgentDemo() {
       initial={reduced ? false : { opacity: 0, clipPath: 'inset(0 0 0 100%)' }}
       animate={{ opacity: 1, clipPath: 'inset(0 0 0 0%)' }}
       transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-      className="flex w-[48%] shrink-0 flex-col overflow-hidden border-l-[0.5px] border-border bg-background @4xl:w-[52%] @6xl:w-[55%]">
+      className="flex h-[58%] w-full shrink-0 flex-col overflow-hidden border-b-[0.5px] border-border bg-background @2xl:h-auto @2xl:w-[48%] @2xl:border-b-0 @2xl:border-l-[0.5px] @4xl:w-[52%] @6xl:w-[55%]">
       <div
         className="flex h-11 shrink-0 items-center gap-2 border-b-[0.5px] border-border bg-card px-2"
         aria-hidden="true">
@@ -851,8 +851,9 @@ export default function BrowserAgentDemo() {
     <div ref={ref} role="region" aria-label={copy.region} className="@container">
       <DemoFrame chromeless title={agent.window} onReplay={replay} bodyClassName="h-[570px]">
         <AppShell active="agents" tab={{ title: copy.session, emoji: '🤖' }}>
-          <div className="flex h-full min-h-0">
-            <div className="flex min-w-0 flex-1 flex-col">
+          {/* Side by side when there is room; on a phone the page sits above the chat instead of three crushed panes. */}
+          <div className="flex h-full min-h-0 flex-col-reverse @2xl:flex-row">
+            <div className="flex min-h-0 min-w-0 flex-1 flex-col">
               <AgentSessionBar
                 agentName={copy.agentName}
                 workspace="trips"
