@@ -1,0 +1,6 @@
+:root {
+  --site-layout-width: 85rem;
+  /* Cherry Studio desktop's default primary color, with a stronger ink for light surfaces. */
+  --cherry-green: #00b96b;
+  --cherry-green-ink: #007346;
+}

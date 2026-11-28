@@ -1,7 +1,6 @@
-import { type FC, useEffect, useState } from 'react'
+import { ChevronDown } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 
-// Import logos
 import ai302Logo from '@/assets/images/provider_logo/302ai.svg'
 import ai360Logo from '@/assets/images/provider_logo/ai360-color.svg'
 import aimassLogo from '@/assets/images/provider_logo/aimass-color.svg'
@@ -32,6 +31,7 @@ import stepfunLogo from '@/assets/images/provider_logo/stepfun-color.svg'
 import xaiLogo from '@/assets/images/provider_logo/xai.svg'
 import zeroOneLogo from '@/assets/images/provider_logo/zeroone.svg'
 import zhipuLogo from '@/assets/images/provider_logo/zhipu-color.svg'
+import { cn } from '@/lib/utils'
 
 interface LogoInfo {
   src: string
@@ -39,8 +39,7 @@ interface LogoInfo {
   darkInvert?: boolean
 }
 
-// 海外站内环 logos (6个) - 最知名的顶级服务商
-const globalInnerLogos: LogoInfo[] = [
+const globalFeatured: LogoInfo[] = [
   { src: openaiLogo, name: 'OpenAI', darkInvert: true },
   { src: anthropicLogo, name: 'Anthropic', darkInvert: true },
   { src: googleLogo, name: 'Google' },
@@ -49,8 +48,7 @@ const globalInnerLogos: LogoInfo[] = [
   { src: deepseekLogo, name: 'DeepSeek' }
 ]
 
-// 海外站外环 logos - 其他知名服务商
-const globalOuterLogos: LogoInfo[] = [
+const globalAdditional: LogoInfo[] = [
   { src: mistralLogo, name: 'Mistral' },
   { src: azureLogo, name: 'Azure' },
   { src: qwenLogo, name: 'Qwen' },
@@ -68,8 +66,7 @@ const globalOuterLogos: LogoInfo[] = [
   { src: stepfunLogo, name: 'StepFun' }
 ]
 
-// 中文站突出展示国产模型及服务商，海外站保持原有全球服务商阵容。
-const cnInnerLogos: LogoInfo[] = [
+const cnFeatured: LogoInfo[] = [
   { src: deepseekLogo, name: 'DeepSeek' },
   { src: qwenLogo, name: '通义千问' },
   { src: zhipuLogo, name: '智谱 AI' },
@@ -78,7 +75,7 @@ const cnInnerLogos: LogoInfo[] = [
   { src: bytedanceLogo, name: '豆包' }
 ]
 
-const cnOuterLogos: LogoInfo[] = [
+const cnAdditional: LogoInfo[] = [
   { src: siliconcloudLogo, name: '硅基流动' },
   { src: baichuanLogo, name: '百川智能' },
   { src: stepfunLogo, name: '阶跃星辰' },
@@ -94,118 +91,45 @@ const cnOuterLogos: LogoInfo[] = [
   { src: higressLogo, name: 'Higress' }
 ]
 
-const ProvidersSection: FC = () => {
+function ProviderList({ logos, className }: { logos: LogoInfo[]; className?: string }) {
+  return (
+    <ul className={cn('flex flex-wrap gap-x-6 gap-y-3', className)}>
+      {logos.map(({ name, src, darkInvert }) => (
+        <li key={name} className="flex items-center gap-2 text-sm font-medium">
+          <img src={src} alt="" className={cn('size-4 object-contain saturate-60', darkInvert && 'dark:invert')} />
+          {name}
+        </li>
+      ))}
+    </ul>
+  )
+}
+
+export default function ProvidersSection() {
   const { t, i18n } = useTranslation()
-  const [outerAngle, setOuterAngle] = useState(0)
-  const [innerAngle, setInnerAngle] = useState(0)
-
-  const isZh = i18n.language === 'zh-CN'
-  const innerLogos = isZh ? cnInnerLogos : globalInnerLogos
-  const outerLogos = isZh ? cnOuterLogos : globalOuterLogos
-
-  useEffect(() => {
-    let animationId: number
-    let lastTime = performance.now()
-
-    const animate = (currentTime: number) => {
-      const deltaTime = currentTime - lastTime
-      lastTime = currentTime
-
-      // 外环顺时针慢，内环逆时针快
-      setOuterAngle((prev) => (prev + deltaTime * 0.008) % 360)
-      setInnerAngle((prev) => (prev - deltaTime * 0.02) % 360)
-
-      animationId = requestAnimationFrame(animate)
-    }
-
-    animationId = requestAnimationFrame(animate)
-    return () => cancelAnimationFrame(animationId)
-  }, [])
-
-  const getPosition = (index: number, total: number, radius: number, baseAngle: number) => {
-    const angle = ((index * 360) / total + baseAngle - 90) * (Math.PI / 180)
-    return {
-      x: 50 + radius * Math.cos(angle),
-      y: 50 + radius * Math.sin(angle)
-    }
-  }
+  const isZh = i18n.language.startsWith('zh')
+  const featured = isZh ? cnFeatured : globalFeatured
+  const additional = isZh ? cnAdditional : globalAdditional
 
   return (
-    <section className="bg-background relative overflow-hidden py-8 sm:py-16">
-      <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="mx-auto mb-8 max-w-3xl text-center sm:mb-16">
-          <h2 className="text-foreground mb-3 text-2xl font-bold sm:mb-4 sm:text-4xl lg:text-5xl">
-            {t('providers.title')}
-          </h2>
-          <p className="text-muted-foreground text-sm sm:text-base">{t('providers.subtitle')}</p>
-        </div>
-
-        {/* Orbital Animation */}
-        <div className="relative mx-auto h-[320px] w-[320px] sm:h-[500px] sm:w-[500px] lg:h-[600px] lg:w-[600px]">
-          {/* Outer orbit ring */}
-          <div className="border-border/60 absolute inset-0 rounded-full border" />
-
-          {/* Inner orbit ring */}
-          <div className="border-border/60 absolute inset-[25%] rounded-full border" />
-
-          {/* Outer orbit logos */}
-          {outerLogos.map((logo, index) => {
-            const pos = getPosition(index, outerLogos.length, 50, outerAngle)
-            return (
-              <div
-                key={logo.name}
-                className="absolute -translate-x-1/2 -translate-y-1/2 transition-none"
-                style={{
-                  left: `${pos.x}%`,
-                  top: `${pos.y}%`
-                }}>
-                <div className="bg-background border-border/50 flex h-14 w-14 items-center justify-center rounded-full border shadow-sm sm:h-16 sm:w-16 lg:h-18 lg:w-18">
-                  <img
-                    src={logo.src}
-                    alt={logo.name}
-                    title={logo.name}
-                    className={`h-7 w-7 object-contain sm:h-8 sm:w-8 lg:h-9 lg:w-9 ${logo.darkInvert ? 'dark:invert' : ''}`}
-                  />
-                </div>
-              </div>
-            )
-          })}
-
-          {/* Inner orbit logos */}
-          {innerLogos.map((logo, index) => {
-            const pos = getPosition(index, innerLogos.length, 25, innerAngle)
-            return (
-              <div
-                key={logo.name}
-                className="absolute -translate-x-1/2 -translate-y-1/2 transition-none"
-                style={{
-                  left: `${pos.x}%`,
-                  top: `${pos.y}%`
-                }}>
-                <div className="bg-background border-border/50 flex h-11 w-11 items-center justify-center rounded-full border shadow-sm sm:h-13 sm:w-13 lg:h-14 lg:w-14">
-                  <img
-                    src={logo.src}
-                    alt={logo.name}
-                    title={logo.name}
-                    className={`h-5 w-5 object-contain sm:h-6 sm:w-6 lg:h-7 lg:w-7 ${logo.darkInvert ? 'dark:invert' : ''}`}
-                  />
-                </div>
-              </div>
-            )
-          })}
-
-          {/* Center text */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-center">
-              <div className="text-primary text-4xl font-bold sm:text-5xl lg:text-6xl">300+</div>
-              <div className="text-muted-foreground mt-1 text-sm sm:text-base">Models</div>
-            </div>
-          </div>
-        </div>
+    <section className="border-b border-border bg-card" aria-labelledby="home-providers">
+      <div className="site-container py-6 lg:grid lg:grid-cols-[1fr_auto] lg:items-center lg:gap-x-6 lg:gap-y-3">
+        <h2
+          id="home-providers"
+          className="mb-3 font-mono lg:col-span-2 lg:mb-0 text-xs font-medium tracking-wider text-muted-foreground uppercase">
+          {t('home_page.providers')}
+        </h2>
+        <ProviderList logos={featured} />
+        <details className="group mt-3 lg:contents">
+          <summary className="inline-flex cursor-pointer list-none items-center gap-1.5 rounded-sm text-xs text-muted-foreground hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 lg:justify-self-end [&::-webkit-details-marker]:hidden">
+            {t('home_page.more_providers')}
+            <ChevronDown
+              aria-hidden="true"
+              className="size-3.5 group-open:rotate-180 motion-safe:transition-transform"
+            />
+          </summary>
+          <ProviderList logos={additional} className="mt-4 border-t border-border pt-4 lg:col-span-2 lg:mt-0" />
+        </details>
       </div>
     </section>
   )
 }
-
-export default ProvidersSection

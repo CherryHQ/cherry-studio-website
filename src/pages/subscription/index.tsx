@@ -56,66 +56,71 @@ function FlashContent() {
 
   return (
     <div className="bg-background min-h-screen">
-      <section className="px-4 pt-28 pb-6 sm:px-6 sm:pt-32 lg:px-8">
-        <div className="mx-auto max-w-3xl text-center">
-          <h1 className="text-foreground text-5xl font-bold tracking-tight sm:text-6xl">
-            {t('pricing.headline_brand')} <span className="text-primary">{t('pricing.headline_plan')}</span>
-          </h1>
-          <p className="text-muted-foreground mt-5 text-lg leading-8">{t('pricing.subtitle')}</p>
-        </div>
-      </section>
+      <div className="site-container site-page-top grid gap-8 pb-12 sm:pb-16 lg:grid-cols-[1.25fr_0.75fr] lg:gap-12">
+        <div className="min-w-0">
+          <section className="pb-6">
+            <div className="max-w-3xl">
+              <h1 className="text-foreground text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
+                {t('pricing.headline_brand')}{' '}
+                <span className="text-muted-foreground">{t('pricing.headline_plan')}</span>
+              </h1>
+              <p className="text-muted-foreground mt-5 text-lg leading-8">{t('pricing.subtitle')}</p>
+            </div>
+          </section>
 
-      <section className="px-4 pt-2 pb-12 sm:px-6 lg:px-8">
-        <div className="mx-auto grid max-w-5xl gap-10 sm:grid-cols-3">
-          {BADGE_ICONS.map((Icon, index) => (
-            <div key={t(`pricing.badges.${index}.title`)} className="text-center sm:text-left">
-              <div className="bg-primary/10 text-primary mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg">
-                <Icon className="h-5 w-5" />
+          <section>
+            <div className="divide-y divide-border rounded-lg border border-border bg-card">
+              {BADGE_ICONS.map((Icon, index) => (
+                <div
+                  key={t(`pricing.badges.${index}.title`)}
+                  className="grid grid-cols-[auto_minmax(0,1fr)] items-start gap-x-3 gap-y-1 px-4 py-3">
+                  <div className="row-span-2 flex size-8 items-center justify-center rounded-md border border-border bg-secondary text-muted-foreground">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <h3 className="text-foreground text-base font-semibold">
+                    <Trans
+                      i18nKey={`pricing.badges.${index}.title`}
+                      components={{
+                        limited: <span className="whitespace-nowrap text-xs font-normal text-muted-foreground" />
+                      }}
+                    />
+                  </h3>
+                  <p className="col-start-2 text-pretty text-sm leading-6 text-muted-foreground">
+                    {t(`pricing.badges.${index}.description`, PRICE)}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
+        </div>
+        <section className="min-w-0 lg:self-start">
+          <div className="relative max-w-lg">
+            <div className="relative rounded-lg border border-primary/35 bg-card p-6 text-left sm:p-8">
+              <div className="flex flex-wrap items-baseline gap-2 tabular-nums">
+                <span className="text-foreground text-6xl font-bold tracking-tight">${PRICE.price}</span>
+                <span className="text-muted-foreground text-2xl line-through">
+                  {t('pricing.list_price', { list: PRICE.list })}
+                </span>
+                <span className="text-muted-foreground text-xl">{t('pricing.per_month')}</span>
               </div>
-              <h3 className="text-foreground text-base font-semibold">
-                <Trans
-                  i18nKey={`pricing.badges.${index}.title`}
-                  components={{
-                    limited: <span className="whitespace-nowrap text-xs font-normal text-muted-foreground" />
-                  }}
-                />
-              </h3>
-              <p className="text-muted-foreground mt-2 text-sm leading-6">
-                {t(`pricing.badges.${index}.description`, PRICE)}
-              </p>
+              <Button size="lg" className="mt-8 w-full rounded-md" asChild>
+                <a href={FLASH_PLANS_URL}>{t('pricing.subscribe')}</a>
+              </Button>
+              <p className="text-muted-foreground mt-4 text-xs">{t('pricing.cancel_note')}</p>
             </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="px-4 pb-20 sm:px-6 lg:px-8">
-        <div className="relative mx-auto max-w-lg">
-          <div className="border-primary/30 bg-card relative rounded-3xl border-2 p-10 text-center shadow-xl">
-            <div className="flex items-baseline justify-center gap-2">
-              <span className="text-foreground text-6xl font-bold tracking-tight">${PRICE.price}</span>
-              <span className="text-muted-foreground text-2xl line-through">
-                {t('pricing.list_price', { list: PRICE.list })}
-              </span>
-              <span className="text-muted-foreground text-xl">{t('pricing.per_month')}</span>
-            </div>
-            <Button size="lg" className="mt-8 w-full" asChild>
-              <a href={FLASH_PLANS_URL}>{t('pricing.subscribe')}</a>
-            </Button>
-            <p className="text-muted-foreground mt-4 text-xs">{t('pricing.cancel_note')}</p>
           </div>
-        </div>
-      </section>
-
+        </section>
+      </div>
       <SectionDivider />
 
-      <section aria-labelledby="flash-usage-title" className="px-4 py-16 sm:px-8">
-        <div className="mx-auto max-w-6xl">
+      <section aria-labelledby="flash-usage-title" className="py-12 sm:py-16">
+        <div className="site-container">
           <div className="flex items-center justify-between gap-4">
             <h2 id="flash-usage-title" className="text-[23px] font-semibold leading-9 tracking-tight sm:text-[26px]">
               {t('pricing.models_title')}
             </h2>
             <span className="flex items-center gap-2.5 font-mono text-sm font-semibold">
-              <span className="h-[17px] w-1 rounded-sm bg-primary" aria-hidden="true" />
+              <span className="h-[17px] w-1 rounded-sm bg-muted-foreground" aria-hidden="true" />
               Flash
             </span>
           </div>
@@ -148,7 +153,7 @@ function FlashContent() {
                     <span className="block h-2 overflow-hidden rounded-[3px] bg-secondary sm:h-2.5" aria-hidden="true">
                       <span
                         className={cn(
-                          'block h-full rounded-[3px] bg-gradient-to-r from-primary/60 to-primary',
+                          'block h-full rounded-[3px] bg-foreground/65',
                           model.id === 'deepseek-v41' ? 'w-full' : 'w-3/4'
                         )}
                       />

@@ -1,3 +1,4 @@
+import { Code2, Handshake, Headphones, Layers, LineChart, Palette, PenLine, Settings2, Users } from 'lucide-react'
 import type { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -13,30 +14,32 @@ const CareersPage: FC = () => {
   usePageMeta('careers')
 
   const positions = [
-    { key: 'designer', icon: '🎨', table: 'ldx7Nenw6VUg5dly' },
-    { key: 'fde', icon: '🤝', table: 'ldxcDrKorwZBKY8i' },
-    { key: 'technical_director', icon: '💻', table: 'ldxOwuMYDuEmE5Xt' },
-    { key: 'engineering_intern', icon: '🔧', table: 'ldxOPacqg7TLd4kX' },
-    { key: 'talent_operations', icon: '🌱', table: 'ldxcj4PsIjJNn1JP' },
-    { key: 'commercial_operations_intern', icon: '📈', table: 'ldxSeabyfQ0Njg7A' },
-    { key: 'backend', icon: '⚙️', table: 'ldxz0HLNWBvC0aC1' },
-    { key: 'technical_support_intern', icon: '🛠️', table: 'ldxlPzgsxSEMnI7Z' },
-    { key: 'content_operations_intern', icon: '✍️', table: 'ldxyJLL0OOGJax9s' }
+    { key: 'designer', icon: Palette, table: 'ldx7Nenw6VUg5dly' },
+    { key: 'fde', icon: Handshake, table: 'ldxcDrKorwZBKY8i' },
+    { key: 'technical_director', icon: Layers, table: 'ldxOwuMYDuEmE5Xt' },
+    { key: 'engineering_intern', icon: Code2, table: 'ldxOPacqg7TLd4kX' },
+    { key: 'talent_operations', icon: Users, table: 'ldxcj4PsIjJNn1JP' },
+    { key: 'commercial_operations_intern', icon: LineChart, table: 'ldxSeabyfQ0Njg7A' },
+    { key: 'backend', icon: Settings2, table: 'ldxz0HLNWBvC0aC1' },
+    { key: 'technical_support_intern', icon: Headphones, table: 'ldxlPzgsxSEMnI7Z' },
+    { key: 'content_operations_intern', icon: PenLine, table: 'ldxyJLL0OOGJax9s' }
   ]
 
   const benefits = ['ai_native', 'open_source', 'early_team', 'product']
 
   return (
-    <div className="bg-background min-h-screen pt-20">
+    <div className="bg-background min-h-screen">
       {/* Hero */}
-      <section className="py-20">
-        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-          <span className="mb-4 inline-block rounded-md bg-foreground/10 px-3 py-1 text-sm font-medium text-foreground">
+      <section className="site-page-top pb-12 sm:pb-16">
+        <div className="site-container">
+          <span className="mb-4 inline-block font-mono text-xs tracking-widest text-primary uppercase">
             {t('careers.badge')}
           </span>
-          <h1 className="mb-6 text-4xl font-bold text-foreground sm:text-5xl">{t('careers.title')}</h1>
-          <p className="mx-auto mb-8 max-w-2xl text-lg text-muted-foreground">{t('careers.subtitle')}</p>
-          <Button size="lg" asChild>
+          <h1 className="mb-5 text-balance text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
+            {t('careers.title')}
+          </h1>
+          <p className="mb-6 max-w-2xl text-pretty text-lg text-muted-foreground">{t('careers.subtitle')}</p>
+          <Button size="lg" className="rounded-md px-4" asChild>
             <a href={`mailto:${APPLICATION_EMAIL}`}>{t('careers.apply_button')}</a>
           </Button>
           <p className="mt-3 text-sm text-muted-foreground">{APPLICATION_EMAIL}</p>
@@ -45,8 +48,8 @@ const CareersPage: FC = () => {
 
       {/* Benefits */}
       <section className="border-t border-border/50 py-16">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <h2 className="mb-10 text-center text-2xl font-bold text-foreground">{t('careers.why_join')}</h2>
+        <div className="site-container">
+          <h2 className="mb-6 text-3xl font-semibold tracking-tight text-foreground">{t('careers.why_join')}</h2>
           <div className="grid gap-6 sm:grid-cols-2">
             {benefits.map((key) => (
               <div key={key} className="rounded-lg border border-border/50 bg-card/50 p-6">
@@ -60,9 +63,9 @@ const CareersPage: FC = () => {
 
       {/* Open Positions */}
       <section className="border-t border-border/50 py-16">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <h2 className="mb-10 text-center text-2xl font-bold text-foreground">{t('careers.positions_title')}</h2>
-          <div className="space-y-4">
+        <div className="site-container">
+          <h2 className="mb-6 text-3xl font-semibold tracking-tight text-foreground">{t('careers.positions_title')}</h2>
+          <div className="grid gap-4 md:grid-cols-2">
             {positions.map((pos) => (
               <a
                 key={pos.key}
@@ -70,8 +73,8 @@ const CareersPage: FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-start gap-4 rounded-lg border border-border/50 bg-card/50 p-5 transition-colors hover:border-border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
-                <span className="text-2xl" aria-hidden="true">
-                  {pos.icon}
+                <span className="grid size-9 shrink-0 place-items-center rounded-md border border-border bg-secondary text-muted-foreground">
+                  <pos.icon aria-hidden="true" className="size-4" />
                 </span>
                 <div className="min-w-0 flex-1">
                   <h3 className="font-semibold text-foreground">{t(`careers.positions.${pos.key}.title`)}</h3>
@@ -83,7 +86,7 @@ const CareersPage: FC = () => {
               </a>
             ))}
           </div>
-          <div className="mt-8 text-center">
+          <div className="mt-6">
             <Button variant="outline" asChild>
               <a href={JD_COLLECTION_URL} target="_blank" rel="noopener noreferrer">
                 {t('careers.view_full_jd')}
@@ -106,7 +109,7 @@ const CareersPage: FC = () => {
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <h2 className="mb-4 text-2xl font-bold text-foreground">{t('careers.cta_title')}</h2>
           <p className="mb-8 text-muted-foreground">{t('careers.cta_subtitle')}</p>
-          <Button size="lg" asChild>
+          <Button size="lg" className="rounded-md px-4" asChild>
             <a href={`mailto:${APPLICATION_EMAIL}`}>{t('careers.apply_button')}</a>
           </Button>
           <p className="mt-3 text-sm text-muted-foreground">{APPLICATION_EMAIL}</p>

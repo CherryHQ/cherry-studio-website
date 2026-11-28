@@ -42,70 +42,72 @@ export default function ChinaPricingPage() {
         {t('plus_page.skip_link')}
       </a>
       <main id="plus-main" className="bg-background text-foreground">
-        <section aria-labelledby="plus-title" className="px-4 pb-6 pt-28 text-center sm:px-8 sm:pt-32">
-          <h1
-            id="plus-title"
-            className="text-5xl font-bold leading-none tracking-[-2px] sm:text-6xl sm:tracking-[-2.5px]">
-            Cherry <span className="text-primary">Plus</span>
-          </h1>
-          <p className="mt-6 text-lg leading-8 text-muted-foreground sm:text-xl">{t('plus_page.subtitle')}</p>
-        </section>
+        <div className="site-container site-page-top grid gap-8 pb-12 sm:pb-16 lg:grid-cols-[1.25fr_0.75fr] lg:gap-12">
+          <div className="min-w-0">
+            <section aria-labelledby="plus-title" className="pb-6">
+              <h1 id="plus-title" className="text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
+                Cherry <span className="text-muted-foreground">Plus</span>
+              </h1>
+              <p className="mt-6 text-lg leading-8 text-muted-foreground sm:text-xl">{t('plus_page.subtitle')}</p>
+            </section>
 
-        <section aria-label={t('plus_page.benefits_label')} className="px-4 pb-12 pt-2 sm:px-8">
-          <div className="mx-auto grid max-w-5xl gap-10 sm:grid-cols-3">
-            {benefits.map(({ key, icon: Icon }) => (
-              <article key={key} className="text-center">
-                <div className="mx-auto flex size-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                  <Icon className="size-5" strokeWidth={1.65} aria-hidden="true" />
-                </div>
-                <h2 className="mt-4 text-base font-semibold leading-6">
-                  <Trans
-                    i18nKey={`plus_page.benefits.${key}.title`}
-                    components={{
-                      limited: <span className="whitespace-nowrap text-xs font-normal text-muted-foreground" />
-                    }}
-                  />
-                </h2>
-                <p className="mx-auto mt-2 max-w-[350px] whitespace-pre-line text-sm leading-6 text-muted-foreground">
-                  {t(`plus_page.benefits.${key}.description`)}
-                </p>
-              </article>
-            ))}
+            <section aria-label={t('plus_page.benefits_label')} className="pt-1">
+              <div className="divide-y divide-border rounded-lg border border-border bg-card">
+                {benefits.map(({ key, icon: Icon }) => (
+                  <article
+                    key={key}
+                    className="grid grid-cols-[auto_minmax(0,1fr)] items-start gap-x-3 gap-y-1 px-4 py-3">
+                    <div className="row-span-2 flex size-8 items-center justify-center rounded-md border border-border bg-secondary text-muted-foreground">
+                      <Icon className="size-5" strokeWidth={1.65} aria-hidden="true" />
+                    </div>
+                    <h2 className="text-base font-semibold leading-6">
+                      <Trans
+                        i18nKey={`plus_page.benefits.${key}.title`}
+                        components={{
+                          limited: <span className="whitespace-nowrap text-xs font-normal text-muted-foreground" />
+                        }}
+                      />
+                    </h2>
+                    <p className="col-start-2 text-pretty text-sm leading-6 text-muted-foreground">
+                      {t(`plus_page.benefits.${key}.description`)}
+                    </p>
+                  </article>
+                ))}
+              </div>
+            </section>
           </div>
-        </section>
-
-        <section aria-label={t('plus_page.pricing_label')} className="px-4 pb-20 sm:px-8">
-          <div className="mx-auto max-w-lg rounded-3xl border-2 border-primary/30 bg-card px-6 py-8 text-center shadow-xl sm:p-10">
-            <p className="mb-4 text-sm font-medium text-primary">{t('plus_page.offer.title')}</p>
-            <div className="flex flex-wrap items-baseline justify-center gap-2 tabular-nums">
-              <strong className="text-5xl font-bold tracking-tight sm:text-6xl">¥9.9</strong>
-              <span className="sr-only">{t('plus_page.offer.original_price')}</span>
-              <del className="text-2xl text-muted-foreground decoration-1">¥19.9</del>
-              <span className="text-lg text-muted-foreground">/ {t('plus_page.offer.first_month')}</span>
+          <section aria-label={t('plus_page.pricing_label')} className="min-w-0 lg:self-start">
+            <div className="max-w-lg rounded-lg border border-primary/35 bg-card p-6 text-left sm:p-8">
+              <p className="mb-4 text-sm font-medium text-primary">{t('plus_page.offer.title')}</p>
+              <div className="flex flex-wrap items-baseline gap-2 tabular-nums">
+                <strong className="text-5xl font-bold tracking-tight sm:text-6xl">¥9.9</strong>
+                <span className="sr-only">{t('plus_page.offer.original_price')}</span>
+                <del className="text-2xl text-muted-foreground decoration-1">¥19.9</del>
+                <span className="text-lg text-muted-foreground">/ {t('plus_page.offer.first_month')}</span>
+              </div>
+              <p className="mt-2 text-xs leading-5 text-muted-foreground">{t('plus_page.offer.renewal')}</p>
+              <p className="text-xs leading-5 text-muted-foreground">
+                {t('plus_page.offer.ends_on')} <time dateTime="2026-11-30">2026/11/30</time>
+              </p>
+              <Button asChild size="lg" className="mt-6 w-full rounded-md">
+                <a href={SUBSCRIPTION_URL} target="_blank" rel="noopener noreferrer">
+                  {t('plus_page.subscribe')}
+                </a>
+              </Button>
+              <p className="mt-3.5 text-xs leading-5 text-muted-foreground">{t('plus_page.fine_print')}</p>
             </div>
-            <p className="mt-2 text-xs leading-5 text-muted-foreground">{t('plus_page.offer.renewal')}</p>
-            <p className="text-xs leading-5 text-muted-foreground">
-              {t('plus_page.offer.ends_on')} <time dateTime="2026-11-30">2026/11/30</time>
-            </p>
-            <Button asChild size="lg" className="mt-6 w-full">
-              <a href={SUBSCRIPTION_URL} target="_blank" rel="noopener noreferrer">
-                {t('plus_page.subscribe')}
-              </a>
-            </Button>
-            <p className="mt-3.5 text-xs leading-5 text-muted-foreground">{t('plus_page.fine_print')}</p>
-          </div>
-        </section>
-
+          </section>
+        </div>
         <SectionDivider className="py-4 sm:py-4" />
 
-        <section aria-labelledby="plus-usage-title" className="px-4 py-16 sm:px-8">
-          <div className="mx-auto max-w-6xl">
+        <section aria-labelledby="plus-usage-title" className="py-12 sm:py-16">
+          <div className="site-container">
             <div className="flex items-center justify-between gap-4">
               <h2 id="plus-usage-title" className="text-[23px] font-semibold leading-9 tracking-tight sm:text-[26px]">
                 {t('plus_page.usage.title')}
               </h2>
               <span className="flex items-center gap-2.5 font-mono text-sm font-semibold">
-                <span className="h-[17px] w-1 rounded-sm bg-primary" aria-hidden="true" />
+                <span className="h-[17px] w-1 rounded-sm bg-muted-foreground" aria-hidden="true" />
                 Plus
               </span>
             </div>
@@ -141,7 +143,7 @@ export default function ChinaPricingPage() {
                         aria-hidden="true">
                         <span
                           className={cn(
-                            'block h-full rounded-[3px] bg-gradient-to-r from-primary/60 to-primary',
+                            'block h-full rounded-[3px] bg-foreground/65',
                             amount === 40 ? 'w-full' : 'w-3/4'
                           )}
                         />
@@ -257,7 +259,7 @@ export default function ChinaPricingPage() {
         aria-haspopup="dialog"
         aria-controls="plus-support-dialog"
         onClick={() => supportDialog.current?.showModal()}
-        className="fixed bottom-5 right-4 z-40 flex size-12 cursor-pointer items-center justify-center rounded-full bg-chart-4 text-primary-foreground shadow-lg motion-safe:transition-transform hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring">
+        className="fixed bottom-5 right-4 z-40 flex size-12 cursor-pointer items-center justify-center rounded-full border border-border bg-card text-foreground shadow-md hover:bg-accent motion-safe:transition-transform hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring">
         <MessageCircle className="size-6" aria-hidden="true" />
       </button>
       <dialog

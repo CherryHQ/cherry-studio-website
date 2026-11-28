@@ -48,7 +48,7 @@ export default function SubscriptionFaq({
         )
 
         return (
-          <article key={item.id} className="overflow-hidden rounded-2xl border border-border bg-secondary/20">
+          <article key={item.id} className="overflow-hidden rounded-lg border border-border bg-card">
             <QuestionHeading>
               <button
                 type="button"

@@ -56,12 +56,12 @@ interface LinkProps {
 }
 interface SiteHeaderProps {
   logo: string
-  mobileLogo: string
   githubIcon: string
   links: HeaderLink[]
   menuLabel: string
   closeLabel: string
-  bordered?: boolean
+  downloadAction?: { href: string; label: string }
+  themeControl?: ReactNode
   mobileControls?: ReactNode
   renderLink?: (props: LinkProps) => ReactNode
   onLinkClick?: (item: HeaderLink) => void
@@ -70,17 +70,16 @@ interface SiteHeaderProps {
 /** Shared visual navigation; each app supplies its routing, translations and controls. */
 export function SiteHeader({
   logo,
-  mobileLogo,
   githubIcon,
   links,
   menuLabel,
   closeLabel,
-  bordered = false,
+  downloadAction,
+  themeControl,
   mobileControls,
   renderLink = (props) => <a {...props} />,
   onLinkClick
 }: SiteHeaderProps) {
-  const [scrolled, setScrolled] = useState(false)
   // Keep the first client render identical to the static HTML; apply cached stars in the effect.
   const [starCount, setStarCount] = useState(GITHUB_STARS_FALLBACK)
   const dialog = useRef<HTMLDialogElement>(null)
@@ -88,7 +87,7 @@ export function SiteHeader({
     <>
       {item.label}
       {item.badge && (
-        <sup className="rounded-full bg-[#e54d4d]/10 px-1.5 py-0.5 text-[10px] font-semibold leading-none text-[#e54d4d] dark:bg-[#dc2626]/10 dark:text-[#dc2626]">
+        <sup className="rounded-sm bg-secondary px-1.5 py-0.5 text-[10px] font-semibold leading-none text-muted-foreground">
           {item.badge}
         </sup>
       )}
@@ -119,14 +118,9 @@ export function SiteHeader({
     )
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
     const cached = readGitHubStarsCache()
     if (cached) setStarCount(cached.count)
-    if (cached && Date.now() - cached.updatedAt < GITHUB_STARS_CACHE_TTL) {
-      return () => window.removeEventListener('scroll', onScroll)
-    }
+    if (cached && Date.now() - cached.updatedAt < GITHUB_STARS_CACHE_TTL) return
     const controller = new AbortController()
     fetch('https://api.github.com/repos/CherryHQ/cherry-studio', { signal: controller.signal })
       .then((response) => (response.ok ? response.json() : null))
@@ -136,43 +130,40 @@ export function SiteHeader({
         writeGitHubStarsCache({ count: data.stargazers_count, updatedAt: Date.now() })
       })
       .catch(() => {})
-    return () => {
-      window.removeEventListener('scroll', onScroll)
-      controller.abort()
-    }
+    return () => controller.abort()
   }, [])
 
   return (
     <>
-      <header
-        className={cn(
-          'site-header fixed inset-x-0 top-0 z-50 flex h-[72px] items-center border-b border-transparent bg-background/80 text-foreground antialiased backdrop-blur-sm',
-          (bordered || scrolled) && 'border-border/50'
-        )}>
-        <div className="mx-auto flex w-full max-w-[97rem] items-center justify-between px-4">
-          <div className="flex min-w-0 items-center gap-8">
+      <header className="site-header fixed inset-x-0 top-0 z-50 flex h-[60px] items-center border-b border-border bg-background/95 text-foreground antialiased backdrop-blur-md">
+        <div className="mx-auto flex h-full w-full max-w-(--site-layout-width) items-center justify-between gap-3 px-6 lg:px-8">
+          <div className="flex h-full min-w-0 items-center gap-7">
             {renderLink({
               href: '/',
-              className: 'group flex shrink-0 items-center gap-3',
+              className:
+                'flex shrink-0 items-center gap-2 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary',
               children: (
                 <>
-                  <img src={mobileLogo} alt="Cherry Studio" className="h-8 w-auto sm:hidden" />
-                  <img src={logo} alt="" className="hidden h-8 w-auto rounded-[22%] sm:block" />
-                  <span className="hidden text-lg font-semibold text-foreground sm:block">Cherry Studio</span>
+                  <img src={logo} alt="" className="size-6 rounded-md" />
+                  <span className="whitespace-nowrap text-sm font-semibold text-foreground">Cherry Studio</span>
                 </>
               )
             })}
-            <nav aria-label={menuLabel} className="hidden shrink-0 items-center gap-1 whitespace-nowrap lg:flex">
+            <nav
+              aria-label={menuLabel}
+              className="hidden h-full shrink-0 items-center gap-1 whitespace-nowrap min-[1100px]:flex">
               {links.map((item) => (
-                <span key={item.href}>
+                <span key={item.href} className="flex h-full items-center">
                   {item.children ? (
                     <HeaderDropdown item={item} renderItem={link} />
                   ) : (
                     link(
                       item,
                       cn(
-                        'flex items-center gap-1.5 px-4 py-2 text-[15px] leading-5 font-medium transition-colors',
-                        item.active ? 'text-black dark:text-white' : 'text-muted-foreground hover:text-foreground'
+                        'flex h-full items-center gap-1.5 border-b-2 border-transparent px-2 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-primary',
+                        item.active
+                          ? 'border-foreground text-foreground'
+                          : 'text-muted-foreground hover:text-foreground'
                       )
                     )
                   )}
@@ -180,24 +171,32 @@ export function SiteHeader({
               ))}
             </nav>
           </div>
-          <div className="flex shrink-0 items-center gap-3">
+          <div className="flex shrink-0 items-center gap-2 sm:gap-3">
             <a
               href="https://github.com/CherryHQ/cherry-studio"
               target="_blank"
               rel="noopener noreferrer"
               title="GitHub"
-              className="flex h-9 shrink-0 items-center justify-center gap-2 rounded-lg border border-border/50 bg-secondary/50 px-3 py-2 text-sm font-medium text-muted-foreground transition-colors duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-secondary hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 motion-reduce:transition-none">
-              <img src={githubIcon} alt="GitHub" className="h-4 w-4 dark:invert" />
+              className="hidden h-8 shrink-0 items-center justify-center gap-2 rounded-md px-1 text-sm font-medium text-muted-foreground transition-colors duration-300 hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:flex">
+              <img src={githubIcon} alt="GitHub" className="size-4 dark:invert" />
               <span className="flex w-[3.25rem] shrink-0 items-center gap-1">
-                <Star className="h-3.5 w-3.5 shrink-0 fill-yellow-500 text-yellow-500" />
+                <Star aria-hidden="true" className="size-3.5 shrink-0" />
                 <span className="min-w-[2rem] tabular-nums">{formatStarCount(starCount)}</span>
               </span>
             </a>
+            {themeControl}
+            {downloadAction &&
+              renderLink({
+                href: downloadAction.href,
+                className:
+                  'inline-flex h-8 items-center whitespace-nowrap rounded-md bg-foreground px-2 text-xs sm:px-3 sm:text-sm font-semibold text-background transition-colors duration-300 hover:bg-foreground/85 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary active:translate-y-px',
+                children: downloadAction.label
+              })}
             <button
               type="button"
               aria-label={menuLabel}
               aria-haspopup="dialog"
-              className="flex h-9 w-9 items-center justify-center rounded-lg text-foreground hover:bg-accent lg:hidden"
+              className="flex size-8 items-center justify-center rounded-md border border-border text-foreground hover:bg-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary min-[1100px]:hidden"
               onClick={() => dialog.current?.showModal()}>
               <Menu className="h-5 w-5" />
             </button>
@@ -211,9 +210,12 @@ export function SiteHeader({
         onClick={(event) => {
           if (event.target === event.currentTarget) dialog.current?.close()
         }}>
-        <div className="ml-auto flex h-full w-[280px] max-w-[85vw] flex-col border-l border-border bg-background shadow-xl">
+        <div className="ml-auto flex h-full w-full flex-col overflow-y-auto bg-background sm:max-w-md sm:border-l sm:border-border">
           <div className="flex items-center justify-between border-b border-border px-4 py-4">
-            <span className="font-semibold">Cherry Studio</span>
+            <span className="flex items-center gap-2 font-semibold">
+              <img src={logo} alt="" className="size-6 rounded-md" />
+              Cherry Studio
+            </span>
             <button
               type="button"
               aria-label={closeLabel}
@@ -224,7 +226,7 @@ export function SiteHeader({
           </div>
           <nav
             aria-label={menuLabel}
-            className="space-y-1 p-2"
+            className="divide-y divide-border px-4 py-2"
             onClick={(event) => {
               if ((event.target as HTMLElement).closest('a')) dialog.current?.close()
             }}>
@@ -236,7 +238,7 @@ export function SiteHeader({
                   link(
                     item,
                     cn(
-                      'flex items-center gap-2 rounded-lg px-4 py-3 text-sm font-medium',
+                      'flex items-center gap-2 rounded-md px-4 py-3 text-sm font-medium focus-visible:outline-2 focus-visible:outline-offset-[-2px]',
                       item.active
                         ? 'bg-accent text-foreground'
                         : 'text-muted-foreground hover:bg-accent hover:text-foreground'
@@ -246,6 +248,14 @@ export function SiteHeader({
               </div>
             ))}
           </nav>
+          <a
+            href="https://github.com/CherryHQ/cherry-studio"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mx-8 my-4 inline-flex w-fit items-center gap-2 text-sm text-muted-foreground hover:text-foreground">
+            <img src={githubIcon} alt="" className="size-4 dark:invert" /> GitHub
+            <ArrowUpRight aria-hidden="true" className="size-3" />
+          </a>
           {mobileControls && (
             <div className="mt-auto flex flex-wrap gap-3 border-t border-border p-4">{mobileControls}</div>
           )}

@@ -19,15 +19,14 @@ export default function WebsiteBanner() {
   if (!notice?.status || !notice.notice_top) return null
   return (
     <aside
-      className="relative z-10 mt-[72px] flex flex-wrap items-center justify-center gap-3 px-4 py-2 text-center text-sm"
-      style={{ backgroundColor: notice.card_color, color: notice.card_text_color, minHeight: notice.card_height }}>
+      className="relative z-10 flex flex-wrap items-center justify-center gap-3 border-b border-border bg-secondary px-4 py-2 text-center text-sm text-foreground"
+      style={{ minHeight: notice.card_height }}>
       <span>{notice.notice_top}</span>
       {notice.button_status && notice.button_link && notice.button && (
         <a
-          className="rounded-md px-3 py-1 font-medium"
+          className="rounded-md px-3 py-1 font-medium text-primary underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-primary"
           href={notice.button_link}
-          rel="noopener noreferrer"
-          style={{ backgroundColor: notice.button_color, color: notice.button_text_color }}>
+          rel="noopener noreferrer">
           {notice.button}
         </a>
       )}

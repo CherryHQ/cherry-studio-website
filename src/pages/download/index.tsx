@@ -136,17 +136,20 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
   }, [platformParam, archParam, mobileAvailable])
 
   return (
-    <div className="bg-background min-h-screen overflow-hidden">
-      <section className="pt-36 pb-40 sm:pt-40 sm:pb-44">
-        <div className="mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl">
-            <h1 className="text-3xl leading-tight font-semibold tracking-tight text-black sm:text-5xl dark:text-white">
+    <div className="flex min-h-screen flex-col bg-background">
+      <main className="site-page-top flex-1 pb-16 sm:pb-24">
+        <div className="site-container site-split">
+          <div className="min-w-0">
+            <p className="mb-4 font-mono text-xs tracking-widest text-primary uppercase">{t('download')}</p>
+            <h1 className="text-balance text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
               {showMobile
                 ? t('mobile_download.title')
                 : isMobile
                   ? t('mobile_download.desktop_title')
                   : 'Cherry Studio'}
-              {!showMobile && versionData && ` ${versionData.version}`}
+              {!showMobile && versionData && (
+                <span className="mt-2 block font-mono text-xl font-medium text-primary">{versionData.version}</span>
+              )}
             </h1>
             {showMobile ? (
               <p className="text-muted-foreground mt-4 text-sm">{t('mobile_page.availability')}</p>
@@ -158,85 +161,86 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
                 unavailableMessage={error ? t('download_page.version_error') : undefined}
               />
             )}
-          </div>
-
-          {isMobile && !showMobile && (
-            <div className="mx-auto mt-5 flex max-w-md items-start justify-center gap-2 text-xs text-black/55 dark:text-white/60">
-              <Laptop className="mt-0.5 h-4 w-4 shrink-0" />
-              <span>{t('download_page.mobile_hint')}</span>
-            </div>
-          )}
-
-          <div className="border-border bg-card mx-auto mt-9 max-w-3xl overflow-hidden rounded-3xl border text-left shadow-sm dark:border-white/15">
-            <PlatformTabs
-              activePlatform={displayPlatform}
-              detectedPlatform={detectedPlatform}
-              detectedArch={detectedArch}
-              mobileAvailable={mobileAvailable}
-              excludeDesktopAutocapture={!isV1}
-              onPlatformChange={(platform) => {
-                userSelectedPlatformRef.current = true
-                setActivePlatform(platform)
-              }}
-            />
-
-            {showMobile ? (
-              <MobileDownloads />
-            ) : (
-              <>
-                <PlatformDownloadPrimary
-                  excludeAutocapture={!isV1}
-                  platform={desktopPlatform}
-                  detectedArch={detectedPlatform === desktopPlatform ? detectedArch : null}
-                  versionData={versionData}
-                  loading={loading}
-                  autoDownload={autoDownloadAllowed && detectedPlatform === desktopPlatform}
-                  autoDownloadReady={systemDetectionReady}
-                />
-                <PlatformDownloadOptions
-                  excludeAutocapture={!isV1}
-                  platform={desktopPlatform}
-                  detectedArch={detectedPlatform === desktopPlatform ? detectedArch : null}
-                  versionData={versionData}
-                  loading={loading}
-                />
-              </>
+            {isMobile && !showMobile && (
+              <div className="mt-5 flex max-w-md items-start gap-2 text-xs text-muted-foreground">
+                <Laptop className="mt-0.5 h-4 w-4 shrink-0" />
+                <span>{t('download_page.mobile_hint')}</span>
+              </div>
             )}
           </div>
 
-          {!showMobile && (
-            <div className="mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
-              <a
-                href={releaseHistoryUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1.5 text-sm underline-offset-4 transition-colors hover:underline">
-                {t('download_page.release_history')}
-                <ExternalLink className="h-3.5 w-3.5" />
-              </a>
-              {isEnglishSite(i18n.resolvedLanguage || i18n.language) && (
+          <div className="min-w-0">
+            <div className="overflow-hidden rounded-lg border border-border bg-card text-left">
+              <PlatformTabs
+                activePlatform={displayPlatform}
+                detectedPlatform={detectedPlatform}
+                detectedArch={detectedArch}
+                mobileAvailable={mobileAvailable}
+                excludeDesktopAutocapture={!isV1}
+                onPlatformChange={(platform) => {
+                  userSelectedPlatformRef.current = true
+                  setActivePlatform(platform)
+                }}
+              />
+
+              {showMobile ? (
+                <MobileDownloads />
+              ) : (
+                <>
+                  <PlatformDownloadPrimary
+                    excludeAutocapture={!isV1}
+                    platform={desktopPlatform}
+                    detectedArch={detectedPlatform === desktopPlatform ? detectedArch : null}
+                    versionData={versionData}
+                    loading={loading}
+                    autoDownload={autoDownloadAllowed && detectedPlatform === desktopPlatform}
+                    autoDownloadReady={systemDetectionReady}
+                  />
+                  <PlatformDownloadOptions
+                    excludeAutocapture={!isV1}
+                    platform={desktopPlatform}
+                    detectedArch={detectedPlatform === desktopPlatform ? detectedArch : null}
+                    versionData={versionData}
+                    loading={loading}
+                  />
+                </>
+              )}
+            </div>
+
+            {!showMobile && (
+              <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2">
                 <a
-                  href="https://discord.gg/wez8HtpxqQ"
+                  href={releaseHistoryUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1.5 text-sm underline-offset-4 transition-colors hover:underline">
-                  {t('download_page.join_discord')}
+                  {t('download_page.release_history')}
                   <ExternalLink className="h-3.5 w-3.5" />
                 </a>
-              )}
-              <a
-                href={CLOUD_DRIVE_DOWNLOAD_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                data-ph-no-autocapture={!isV1 ? '' : undefined}
-                className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1.5 text-sm underline-offset-4 transition-colors hover:underline">
-                {t('download_page.cloud_drive_download')}
-                <ExternalLink className="h-3.5 w-3.5" />
-              </a>
-            </div>
-          )}
+                {isEnglishSite(i18n.resolvedLanguage || i18n.language) && (
+                  <a
+                    href="https://discord.gg/wez8HtpxqQ"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1.5 text-sm underline-offset-4 transition-colors hover:underline">
+                    {t('download_page.join_discord')}
+                    <ExternalLink className="h-3.5 w-3.5" />
+                  </a>
+                )}
+                <a
+                  href={CLOUD_DRIVE_DOWNLOAD_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-ph-no-autocapture={!isV1 ? '' : undefined}
+                  className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1.5 text-sm underline-offset-4 transition-colors hover:underline">
+                  {t('download_page.cloud_drive_download')}
+                  <ExternalLink className="h-3.5 w-3.5" />
+                </a>
+              </div>
+            )}
+          </div>
         </div>
-      </section>
+      </main>
       <Footer />
     </div>
   )

@@ -13,12 +13,14 @@ const NotFoundPage: FC = () => {
 
   return (
     <div className="bg-background flex min-h-screen flex-col">
-      <main className="flex flex-1 flex-col items-center justify-center px-6 py-32 text-center">
-        <p className="text-muted-foreground font-mono text-sm tracking-widest">{t('not_found.code')}</p>
-        <h1 className="text-foreground mt-4 text-3xl font-bold sm:text-4xl">{t('not_found.title')}</h1>
+      <main className="site-container site-page-top flex flex-1 flex-col items-start justify-center pb-16">
+        <p className="text-primary font-mono text-xs tracking-widest uppercase">{t('not_found.code')}</p>
+        <h1 className="text-foreground mt-4 text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
+          {t('not_found.title')}
+        </h1>
         <p className="text-muted-foreground mt-4 max-w-md text-base">{t('not_found.description')}</p>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          <Button size="lg" asChild>
+        <div className="mt-8 flex flex-wrap items-center gap-3">
+          <Button size="lg" className="rounded-md px-4" asChild>
             <Link to="/">
               <ArrowLeft className="h-4 w-4" />
               {t('not_found.back_home')}

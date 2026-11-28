@@ -7,6 +7,7 @@ import teamAvatar2 from '@/assets/images/team-avatars/avatar-2-v2.png'
 import teamAvatar3 from '@/assets/images/team-avatars/avatar-3-v2.png'
 import teamAvatar4 from '@/assets/images/team-avatars/avatar-4-v2.png'
 import { goToEnterprise } from '@/utils/analytics'
+import SectionBackdrop from './SectionBackdrop'
 
 const capabilities = [
   {
@@ -37,39 +38,33 @@ const TeamCollaborationSection: FC = () => {
   const { t } = useTranslation()
 
   return (
-    <section className="bg-background relative overflow-hidden py-8 sm:py-16">
-      <div className="grid-pattern absolute inset-0 opacity-40" />
-
-      <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto mb-8 max-w-3xl text-center sm:mb-12">
-          <h2 className="text-foreground mb-4 text-2xl font-bold tracking-tight sm:mb-5 sm:text-4xl lg:text-5xl">
+    <section className="isolate bg-background relative overflow-hidden site-section">
+      <SectionBackdrop variant="modules" />
+      <div className="site-container site-split relative z-10">
+        <div className="min-w-0">
+          <h2 className="text-foreground mb-4 text-3xl font-semibold tracking-tight sm:text-4xl">
             {t('team_collaboration.title')}
           </h2>
-          <p className="text-muted-foreground mx-auto mb-6 max-w-2xl text-sm leading-7 sm:mb-8 sm:text-base sm:leading-8">
+          <p className="text-muted-foreground max-w-md text-sm leading-7 sm:text-base">
             {t('team_collaboration.description')}
           </p>
 
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-3 sm:mt-7 sm:flex-nowrap">
+          <div className="mt-6 flex flex-wrap items-center gap-3">
             <button
               type="button"
               onClick={() => goToEnterprise('team_collaboration_section')}
-              className="border-primary/25 bg-primary/10 text-primary hover:bg-primary/15 inline-flex items-center gap-2 rounded-xl border px-5 py-3 text-sm font-semibold shadow-sm transition-colors sm:px-6 sm:py-3.5 sm:text-base">
+              className="border-border bg-secondary text-foreground hover:bg-accent inline-flex items-center gap-2 rounded-md border px-4 py-2.5 text-sm font-semibold transition-colors">
               {t('team_collaboration.cta')}
               <ArrowUpRight className="h-4 w-4" />
             </button>
-            <span className="text-border hidden text-base sm:inline" aria-hidden="true">
-              |
-            </span>
-            <span className="text-primary/75 text-center text-sm font-medium sm:text-left sm:text-base">
-              {t('team_collaboration.activity')}
-            </span>
+            <span className="text-muted-foreground text-sm">{t('team_collaboration.activity')}</span>
           </div>
         </div>
 
-        <div className="border-border/70 bg-card/70 relative mx-auto max-w-[1180px] overflow-hidden rounded-[2rem] border p-3 shadow-2xl backdrop-blur sm:p-5">
-          <div className="bg-secondary/50 flex items-center justify-between rounded-2xl px-4 py-3 sm:px-5">
+        <div className="border-border/70 bg-card/70 relative min-w-0 overflow-hidden rounded-lg border p-3 sm:p-5">
+          <div className="bg-secondary/50 flex items-center justify-between rounded-lg px-4 py-3 sm:px-5">
             <div className="flex items-center gap-3">
-              <div className="bg-primary/15 text-primary flex h-9 w-9 items-center justify-center rounded-xl">
+              <div className="bg-background text-muted-foreground flex h-9 w-9 items-center justify-center rounded-xl">
                 <ShieldCheck className="h-5 w-5" />
               </div>
               <div>
@@ -77,22 +72,22 @@ const TeamCollaborationSection: FC = () => {
                 <p className="text-muted-foreground text-xs">{t('team_collaboration.mockup.subtitle')}</p>
               </div>
             </div>
-            <span className="text-primary hidden text-xs font-medium sm:inline">
+            <span className="text-muted-foreground hidden text-xs font-medium sm:inline">
               {t('team_collaboration.mockup.status')}
             </span>
           </div>
 
           <div className="grid gap-3 py-3 sm:grid-cols-3 sm:py-5">
             {capabilities.map(({ icon: Icon, titleKey, descriptionKey }) => (
-              <div key={titleKey} className="border-border/60 bg-background/60 rounded-2xl border p-4 sm:p-5">
-                <Icon className="text-primary mb-4 h-5 w-5" />
+              <div key={titleKey} className="border-border/60 bg-background/60 rounded-lg border p-4 sm:p-5">
+                <Icon className="text-muted-foreground mb-4 h-5 w-5" />
                 <h3 className="text-foreground mb-2 text-sm font-semibold">{t(titleKey)}</h3>
                 <p className="text-muted-foreground text-xs leading-5">{t(descriptionKey)}</p>
               </div>
             ))}
           </div>
 
-          <div className="border-border/60 bg-background/50 flex flex-wrap items-center justify-between gap-3 rounded-2xl border px-4 py-3 sm:px-5">
+          <div className="border-border/60 bg-background/50 flex flex-wrap items-center justify-between gap-3 rounded-lg border px-4 py-3 sm:px-5">
             <div className="flex -space-x-2">
               {teamAvatars.map(({ name, src }, index) => (
                 <img

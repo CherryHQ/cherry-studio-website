@@ -2,6 +2,7 @@
 @import "tailwindcss";
 @import "fumadocs-ui/css/neutral.css";
 @import "fumadocs-ui/css/preset.css";
+@import "../../../shared/site-tokens.css";
 @source "../../node_modules/fumadocs-ui/dist/**/*.js";
 @source "../../../shared/**/*.tsx";
 
@@ -20,12 +21,13 @@
 }
 
 @theme inline {
-  --color-background: var(--color-fd-background);
-  --color-foreground: var(--color-fd-foreground);
-  --color-border: var(--site-border);
-  --color-secondary: var(--color-fd-secondary);
-  --color-muted-foreground: var(--color-fd-muted-foreground);
-  --color-accent: var(--color-fd-accent);
+  --color-primary: var(--color-fd-primary);
+  --color-background: var(--background, var(--color-fd-background));
+  --color-foreground: var(--foreground, var(--color-fd-foreground));
+  --color-border: var(--border, var(--site-border));
+  --color-secondary: var(--secondary, var(--color-fd-secondary));
+  --color-muted-foreground: var(--muted-foreground, var(--color-fd-muted-foreground));
+  --color-accent: var(--accent, var(--color-fd-accent));
 }
 
 /* Image viewer motion, mirroring the homepage QR modal. */
@@ -75,31 +77,29 @@
 
 :root {
   --color-fd-background: #ffffff;
-  --site-border: #e4e4e7;
+  --color-fd-foreground: #1b1b1b;
+  --color-fd-primary: var(--cherry-green-ink);
+  --color-fd-card: #fafafa;
+  --color-fd-secondary: #f4f4f4;
+  --color-fd-accent: #ededed;
+  --color-fd-border: #e2e2e2;
+  --site-border: var(--color-fd-border);
 }
 
 .dark {
-  --color-fd-background: #0a0a0b;
-  --site-border: rgba(255, 255, 255, 0.08);
+  --color-fd-background: #101010;
+  --color-fd-foreground: #efefef;
+  --color-fd-primary: var(--cherry-green);
+  --color-fd-card: #171717;
+  --color-fd-secondary: #1c1c1c;
+  --color-fd-accent: #262626;
+  --color-fd-border: #303030;
+  --site-border: var(--color-fd-border);
 }
 
 .site-header,
 .site-header-menu {
-  --color-fd-background: #ffffff;
-  --color-fd-foreground: #0a0a0b;
-  --color-fd-secondary: #f4f4f5;
-  --color-fd-muted-foreground: #71717a;
-  --color-fd-accent: #f4f4f5;
   font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-}
-
-.dark .site-header,
-.dark .site-header-menu {
-  --color-fd-background: #0a0a0b;
-  --color-fd-foreground: #fafafa;
-  --color-fd-secondary: #1c1c1f;
-  --color-fd-muted-foreground: #a1a1aa;
-  --color-fd-accent: #27272a;
 }
 
 .prose pre > code {

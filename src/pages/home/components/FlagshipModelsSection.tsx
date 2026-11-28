@@ -7,6 +7,7 @@ import flagshipModelDarkZh from '@/assets/images/screenshots/flagship-model-dark
 import flagshipModelLightEn from '@/assets/images/screenshots/flagship-model-light-en.webp'
 import flagshipModelLightZh from '@/assets/images/screenshots/flagship-model-light-zh.webp'
 import { cn } from '@/lib/utils'
+import SectionBackdrop from './SectionBackdrop'
 
 interface FlagshipModel {
   nameKey: string
@@ -14,8 +15,6 @@ interface FlagshipModel {
   href: string | { en: string; zh: string }
   features: string[]
   icon: typeof Zap
-  iconColor: string
-  iconBg: string
 }
 
 const flagshipModels: FlagshipModel[] = [
@@ -31,9 +30,7 @@ const flagshipModels: FlagshipModel[] = [
       'flagship_models.deepseek.feature2',
       'flagship_models.deepseek.feature3'
     ],
-    icon: Zap,
-    iconColor: 'text-amber-500',
-    iconBg: 'bg-amber-500/10'
+    icon: Zap
   },
   {
     nameKey: 'flagship_models.featured.name',
@@ -44,9 +41,7 @@ const flagshipModels: FlagshipModel[] = [
       'flagship_models.featured.feature2',
       'flagship_models.featured.feature3'
     ],
-    icon: Sparkles,
-    iconColor: 'text-purple-500',
-    iconBg: 'bg-purple-500/10'
+    icon: Sparkles
   }
 ]
 
@@ -59,42 +54,20 @@ const FlagshipModelsSection: FC = () => {
 
   return (
     <>
-      <section className="bg-background relative overflow-hidden py-8 sm:py-16">
-        <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
-          {/* Section Header */}
-          <div className="mx-auto mb-8 max-w-3xl text-center sm:mb-16">
-            <h2 className="text-foreground mb-3 text-2xl font-bold sm:mb-4 sm:text-4xl lg:text-5xl">
-              {t('flagship_models.title')}
-            </h2>
-            <p className="text-muted-foreground text-sm sm:text-base">{t('flagship_models.subtitle')}</p>
-          </div>
-
+      <section className="isolate bg-background relative overflow-hidden site-section">
+        <SectionBackdrop variant="grid" />
+        <div className="site-container relative z-10">
           {/* Content Grid */}
-          <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
-            {/* Left: Screenshot */}
-            <div className="relative">
-              <button
-                type="button"
-                onClick={() => setIsImageOpen(true)}
-                className="group relative cursor-zoom-in overflow-hidden rounded-xl shadow-xl shadow-black/15 ring-1 ring-black/5 transition-transform hover:scale-[1.02] dark:shadow-black/40 dark:ring-white/10">
-                <img
-                  src={flagshipModelLight}
-                  alt={t('flagship_models.title')}
-                  className="block h-auto w-full dark:hidden"
-                />
-                <img
-                  src={flagshipModelDark}
-                  alt={t('flagship_models.title')}
-                  className="hidden h-auto w-full dark:block"
-                />
-                <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition-colors group-hover:bg-black/10">
-                  <ZoomIn className="h-5 w-5 text-white opacity-0 drop-shadow-lg transition-opacity group-hover:opacity-100" />
-                </div>
-              </button>
-            </div>
+          <div className="site-split">
+            <div className="flex min-w-0 flex-col gap-4">
+              {/* Section Header */}
+              <div className="mb-2">
+                <h2 className="text-foreground mb-3 text-3xl font-semibold tracking-tight sm:mb-4 sm:text-4xl">
+                  {t('flagship_models.title')}
+                </h2>
+                <p className="text-muted-foreground text-sm sm:text-base">{t('flagship_models.subtitle')}</p>
+              </div>
 
-            {/* Right: Model Cards */}
-            <div className="flex flex-col gap-4">
               {flagshipModels.map((model) => (
                 <a
                   key={model.nameKey}
@@ -102,15 +75,15 @@ const FlagshipModelsSection: FC = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className={cn(
-                    'border-border/50 bg-card/50 group relative overflow-hidden rounded-2xl border p-6',
+                    'border-border/50 bg-card/50 group relative overflow-hidden rounded-lg border p-6',
                     'transition-all duration-300 hover:border-border hover:bg-card/80'
                   )}>
                   <div className="relative z-10">
                     {/* Header */}
                     <div className="mb-3 flex items-start justify-between">
                       <div className="flex items-center gap-3">
-                        <div className={cn('flex h-10 w-10 items-center justify-center rounded-xl', model.iconBg)}>
-                          <model.icon className={cn('h-5 w-5', model.iconColor)} />
+                        <div className="flex size-9 items-center justify-center rounded-md border border-border bg-secondary text-muted-foreground">
+                          <model.icon className="size-4" aria-hidden="true" />
                         </div>
                         <h3 className="text-foreground text-lg font-semibold">{t(model.nameKey)}</h3>
                       </div>
@@ -135,7 +108,27 @@ const FlagshipModelsSection: FC = () => {
               ))}
 
               {/* CTA */}
-              <div className="text-muted-foreground mt-2 text-center text-sm">{t('flagship_models.cta')}</div>
+              <div className="text-muted-foreground mt-2 text-sm">{t('flagship_models.cta')}</div>
+            </div>
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => setIsImageOpen(true)}
+                className="group relative block w-full cursor-zoom-in overflow-hidden rounded-lg border border-border bg-card transition-colors hover:border-primary/50 focus-visible:outline-2 focus-visible:outline-offset-4">
+                <img
+                  src={flagshipModelLight}
+                  alt={t('flagship_models.title')}
+                  className="block h-auto w-full dark:hidden"
+                />
+                <img
+                  src={flagshipModelDark}
+                  alt={t('flagship_models.title')}
+                  className="hidden h-auto w-full dark:block"
+                />
+                <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition-colors group-hover:bg-black/10">
+                  <ZoomIn className="h-5 w-5 text-white opacity-0 drop-shadow-lg transition-opacity group-hover:opacity-100" />
+                </div>
+              </button>
             </div>
           </div>
         </div>

@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 
 import GitHubUserCard from '@/components/GitHubUserCard'
 import { isEnglishSite } from '@/utils/urls'
+import SectionBackdrop from './SectionBackdrop'
 
 interface Contributor {
   id: number
@@ -21,6 +22,8 @@ interface RepoStats {
 
 const GITHUB_REPO = 'https://api.github.com/repos/CherryHQ/cherry-studio'
 const FEATURED_CONTRIBUTORS = 10
+const VISIBLE_CONTRIBUTORS = 15
+const CONTRIBUTOR_URL = 'https://github.com/CherryHQ/cherry-studio/graphs/contributors'
 
 const ContributorsSection: FC = () => {
   const { t, i18n } = useTranslation()
@@ -98,22 +101,6 @@ const ContributorsSection: FC = () => {
     return value >= 1000 ? `${(value / 1000).toFixed(1)}k` : value.toLocaleString('en-US')
   }
 
-  if (loading && !isEn) {
-    return (
-      <section className="bg-background relative overflow-hidden py-12 sm:py-16">
-        <div className="dot-pattern absolute inset-0 opacity-20" />
-        <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
-          <h2 className="text-foreground mb-8 text-center text-2xl font-bold sm:mb-10 sm:text-4xl lg:text-5xl">
-            {t('contributors.project_contributors')}
-          </h2>
-          <div className="flex justify-center">
-            <div className="border-primary h-8 w-8 animate-spin rounded-full border-2 border-t-transparent" />
-          </div>
-        </div>
-      </section>
-    )
-  }
-
   if (isEn) {
     const stats = [
       { label: t('statistics.stars'), value: repoStats.stars },
@@ -122,12 +109,11 @@ const ContributorsSection: FC = () => {
     ]
 
     return (
-      <section className="bg-background relative overflow-hidden py-12 sm:py-16">
-        <div className="dot-pattern absolute inset-0 opacity-20" />
-
-        <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
+      <section className="isolate bg-background relative overflow-hidden site-section">
+        <SectionBackdrop variant="rules" />
+        <div className="site-container relative z-10">
           <div className="mx-auto mb-6 max-w-3xl text-center">
-            <h2 className="text-foreground mb-3 text-2xl font-bold sm:mb-4 sm:text-4xl lg:text-5xl">
+            <h2 className="text-foreground mb-3 text-3xl font-semibold tracking-tight sm:mb-4 sm:text-4xl">
               {t('contributors.project_contributors')}
             </h2>
             <p className="text-muted-foreground text-sm sm:text-base">
@@ -150,7 +136,7 @@ const ContributorsSection: FC = () => {
             </a>
           </div>
 
-          <div className="border-border/50 bg-card/50 mx-auto max-w-[520px] rounded-2xl border p-6">
+          <div className="border-border/50 bg-card/50 mx-auto max-w-[520px] rounded-lg border p-6">
             <dl className="grid grid-cols-3 gap-4">
               {stats.map((stat) => (
                 <div key={stat.label} className="text-center">
@@ -188,7 +174,7 @@ const ContributorsSection: FC = () => {
                 </div>
               )}
               <a
-                href="https://github.com/CherryHQ/cherry-studio/graphs/contributors"
+                href={CONTRIBUTOR_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary focus-visible:ring-primary inline-flex items-center gap-1 text-xs whitespace-nowrap transition-colors focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-2">
@@ -202,108 +188,96 @@ const ContributorsSection: FC = () => {
     )
   }
 
+  const communityLinks = [
+    { title: 'Product Hunt', href: 'https://www.producthunt.com/posts/cherry-studio' },
+    { title: 'GitHub Trending', href: 'https://trendshift.io/repositories/14318' },
+    { title: 'HelloGitHub', href: 'https://hellogithub.com/repository/1605492e1e2a4df3be07abfa4578dd37' }
+  ]
+
+  const people = contributors.map((contributor) => (
+    <li key={contributor.id} className="min-w-0">
+      <GitHubUserCard username={contributor.login}>
+        <a
+          href={contributor.html_url}
+          target="_blank"
+          rel="noopener noreferrer"
+          title={`${contributor.login}: ${contributor.contributions} commits (${getContributionPercent(contributor.contributions)}%)`}
+          className="group flex min-w-0 items-center gap-2.5 rounded-md py-2 pr-2 transition-colors hover:bg-accent focus-visible:outline-2 focus-visible:outline-primary sm:gap-3">
+          <img
+            src={contributor.avatar_url}
+            alt=""
+            loading="lazy"
+            className="size-9 shrink-0 rounded-full object-cover"
+          />
+          <span className="flex min-w-0 flex-col gap-0.5">
+            <span className="truncate text-sm font-medium text-foreground group-hover:text-primary">
+              {contributor.login}
+            </span>
+            <span className="text-xs tabular-nums text-muted-foreground">
+              {t('contributors.commit_count', { count: contributor.contributions })}
+            </span>
+          </span>
+        </a>
+      </GitHubUserCard>
+    </li>
+  ))
+
   return (
-    <section className="bg-background relative overflow-hidden py-12 sm:py-16">
-      <div className="dot-pattern absolute inset-0 opacity-20" />
-
-      <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto mb-8 max-w-3xl text-center sm:mb-16">
-          <h2 className="text-foreground mb-3 text-2xl font-bold sm:mb-4 sm:text-4xl lg:text-5xl">
-            {t('contributors.project_contributors')}
-          </h2>
-          <p className="text-muted-foreground text-sm sm:text-base">
-            {t('contributors.project_contributors_subtitle')}
-          </p>
-
-          {/* Badges */}
-          <div className="mt-6 flex flex-nowrap items-center justify-center gap-4">
-            <a
-              href="https://www.producthunt.com/posts/cherry-studio?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-cherry-studio"
-              target="_blank"
-              rel="noopener noreferrer">
-              <img
-                src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=496640&theme=light"
-                alt="Cherry Studio - AI Chatbots, AI Desktop Client | Product Hunt"
-                className="block h-[55px] w-auto dark:hidden"
-              />
-              <img
-                src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=496640&theme=dark"
-                alt="Cherry Studio - AI Chatbots, AI Desktop Client | Product Hunt"
-                className="hidden h-[55px] w-auto dark:block"
-              />
-            </a>
-            <a href="https://trendshift.io/repositories/14318" target="_blank" rel="noopener noreferrer">
-              <img
-                src="https://trendshift.io/api/badge/repositories/14318"
-                alt="CherryHQ/cherry-studio | Trendshift"
-                className="block h-[70px] w-auto dark:hidden"
-              />
-              <img
-                src="https://trendshift.io/api/badge/repositories/14318?theme=dark"
-                alt="CherryHQ/cherry-studio | Trendshift"
-                className="hidden h-[70px] w-auto dark:block"
-              />
-            </a>
-            <a
-              href="https://hellogithub.com/repository/1605492e1e2a4df3be07abfa4578dd37"
-              target="_blank"
-              rel="noopener noreferrer">
-              <img
-                src="https://api.hellogithub.com/v1/widgets/recommend.svg?rid=1605492e1e2a4df3be07abfa4578dd37"
-                alt="Featured | HelloGitHub"
-                className="block h-[55px] w-auto dark:hidden"
-              />
-              <img
-                src="https://api.hellogithub.com/v1/widgets/recommend.svg?rid=1605492e1e2a4df3be07abfa4578dd37&theme=dark"
-                alt="Featured | HelloGitHub"
-                className="hidden h-[55px] w-auto dark:block"
-              />
-            </a>
+    <section id="contributors" className="isolate relative scroll-mt-[60px] bg-secondary/45 site-section">
+      <SectionBackdrop variant="rules" />
+      <div className="site-container">
+        <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
+          <div className="max-w-2xl">
+            <h2 className="mb-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+              {t('contributors.project_contributors')}
+            </h2>
+            <p className="text-sm text-muted-foreground sm:text-base">
+              {t('contributors.project_contributors_subtitle')}
+            </p>
           </div>
-        </div>
-
-        <div className="grid grid-cols-4 gap-2 sm:grid-cols-5 sm:gap-3 md:grid-cols-8 lg:grid-cols-10">
-          {contributors.map((contributor) => (
-            <GitHubUserCard key={contributor.id} username={contributor.login}>
-              <a
-                href={contributor.html_url}
-                target="_blank"
-                rel="noopener noreferrer"
-                title={`${contributor.login}: ${contributor.contributions} commits (${getContributionPercent(contributor.contributions)}%)`}
-                className="border-border/50 bg-card/50 hover:border-primary/30 hover:bg-card group flex flex-col items-center gap-1.5 rounded-lg border p-2 transition-all duration-300 sm:p-3">
-                <img
-                  src={contributor.avatar_url}
-                  alt={contributor.login}
-                  className="ring-border group-hover:ring-primary/50 h-10 w-10 rounded-full ring-2 transition-all duration-300 sm:h-12 sm:w-12"
-                />
-                <span className="text-muted-foreground group-hover:text-foreground max-w-full truncate text-[10px] transition-colors sm:text-xs">
-                  {contributor.login}
-                </span>
-                <span className="text-muted-foreground/60 text-[9px] sm:text-[10px]">
-                  {contributor.contributions} commits
-                </span>
-              </a>
-            </GitHubUserCard>
-          ))}
-        </div>
-
-        {/* View all on GitHub link */}
-        <div className="mt-8 text-center">
           <a
-            href="https://github.com/CherryHQ/cherry-studio/graphs/contributors"
+            href={CONTRIBUTOR_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-primary inline-flex items-center gap-2 text-sm transition-colors">
-            <span>{t('contributors.view_all_on_github')}</span>
-            <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-              />
-            </svg>
+            className="inline-flex items-center gap-1.5 rounded-sm text-sm font-medium text-primary underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
+            {t('contributors.view_all_on_github')}
+            <ArrowUpRight aria-hidden="true" className="size-4" />
           </a>
+        </div>
+
+        <ul aria-busy={loading} className="grid grid-cols-2 gap-x-4 gap-y-1 sm:grid-cols-3 lg:grid-cols-5">
+          {loading
+            ? Array.from({ length: VISIBLE_CONTRIBUTORS }, (_, index) => (
+                <li key={index} aria-hidden="true" className="flex items-center gap-3 py-2 motion-safe:animate-pulse">
+                  <span className="size-9 shrink-0 rounded-full bg-muted" />
+                  <span className="h-4 w-20 rounded-sm bg-muted" />
+                </li>
+              ))
+            : people.slice(0, VISIBLE_CONTRIBUTORS)}
+        </ul>
+        {people.length > VISIBLE_CONTRIBUTORS && (
+          <details className="mt-4 border-t border-border pt-4">
+            <summary className="w-fit cursor-pointer rounded-sm text-sm text-muted-foreground hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
+              {t('contributors.show_more', { count: people.length - VISIBLE_CONTRIBUTORS })}
+            </summary>
+            <ul className="mt-4 grid grid-cols-2 gap-x-4 gap-y-1 sm:grid-cols-3 lg:grid-cols-5">
+              {people.slice(VISIBLE_CONTRIBUTORS)}
+            </ul>
+          </details>
+        )}
+
+        <div className="mt-8 flex flex-wrap gap-2 border-t border-border pt-5">
+          {communityLinks.map(({ title, href }) => (
+            <a
+              key={href}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-md border border-border bg-background px-2.5 py-1.5 text-xs font-medium text-muted-foreground hover:border-input hover:text-foreground focus-visible:outline-2 focus-visible:outline-primary">
+              {title}
+              <ArrowUpRight aria-hidden="true" className="size-3.5" />
+            </a>
+          ))}
         </div>
       </div>
     </section>

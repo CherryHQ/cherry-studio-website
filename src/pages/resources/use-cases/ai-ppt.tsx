@@ -95,9 +95,9 @@ const GenerationDemo: FC<{ template: PptTemplate; copy: AiPptCopy; locale: UseCa
   return (
     <div className="border-border bg-card relative overflow-hidden rounded-2xl border shadow-[0_30px_80px_-40px_rgb(220_38_38/0.45)]">
       <div className="border-border flex items-center gap-2 border-b px-4 py-3">
-        <span className="size-2.5 rounded-full bg-[#ff5f57]" />
-        <span className="size-2.5 rounded-full bg-[#febc2e]" />
-        <span className="size-2.5 rounded-full bg-[#28c840]" />
+        <span className="size-2.5 rounded-full bg-muted-foreground/35" />
+        <span className="size-2.5 rounded-full bg-muted-foreground/35" />
+        <span className="size-2.5 rounded-full bg-muted-foreground/35" />
         <span className="text-muted-foreground ml-2 text-xs">{t.window}</span>
         <button
           type="button"
@@ -367,15 +367,21 @@ const SlideDeck: FC<{ copy: AiPptCopy; locale: UseCaseLocale; onUse: (id: string
   )
 }
 
-// ---------- 3. 樱桃三步：进入视野后，樱桃按顺序从青变红 ----------
+// ---------- 3. 樱桃三步：进入视野后，樱桃按顺序点亮 ----------
 
-const CHERRY_GREEN = '#b9c98e'
-const CHERRY_RED = '#dc2626'
+const CHERRY_UNRIPE = 'var(--muted-foreground)'
+const CHERRY_RIPE = 'var(--primary)'
 
 const CherryDot: FC<{ className?: string }> = ({ className }) => (
   <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
-    <path d="M12 9 C12 5 14 3 17 2" stroke="#6b8f4e" strokeWidth="1.6" fill="none" strokeLinecap="round" />
-    <circle cx="12" cy="15" r="7" fill={CHERRY_RED} />
+    <path
+      d="M12 9 C12 5 14 3 17 2"
+      stroke="var(--muted-foreground)"
+      strokeWidth="1.6"
+      fill="none"
+      strokeLinecap="round"
+    />
+    <circle cx="12" cy="15" r="7" fill={CHERRY_RIPE} />
     <ellipse cx="9.5" cy="12.5" rx="2" ry="1.2" fill="white" opacity="0.5" />
   </svg>
 )
@@ -384,19 +390,25 @@ const Cherry: FC<{ ripe: boolean; delay: number; label: string }> = ({ ripe, del
   const reduce = useReducedMotion() ?? false
   return (
     <svg viewBox="0 0 56 64" className="size-14" aria-hidden="true">
-      <path d="M28 22 C28 13 32 7 39 4" stroke="#6b8f4e" strokeWidth="2.6" fill="none" strokeLinecap="round" />
-      <path d="M36 6 C41 1 49 2 52 7 C46 10 40 10 36 6 Z" fill="#7da35a" />
+      <path
+        d="M28 22 C28 13 32 7 39 4"
+        stroke="var(--muted-foreground)"
+        strokeWidth="2.6"
+        fill="none"
+        strokeLinecap="round"
+      />
+      <path d="M36 6 C41 1 49 2 52 7 C46 10 40 10 36 6 Z" fill="var(--primary)" />
       <motion.circle
         cx="28"
         cy="40"
         r="18"
-        initial={{ fill: reduce ? CHERRY_RED : CHERRY_GREEN }}
-        animate={{ fill: ripe || reduce ? CHERRY_RED : CHERRY_GREEN, scale: ripe && !reduce ? [1, 1.12, 1] : 1 }}
+        initial={{ fill: reduce ? CHERRY_RIPE : CHERRY_UNRIPE }}
+        animate={{ fill: ripe || reduce ? CHERRY_RIPE : CHERRY_UNRIPE, scale: ripe && !reduce ? [1, 1.12, 1] : 1 }}
         transition={{ delay: reduce ? 0 : delay, duration: 0.6 }}
         style={{ transformOrigin: '28px 40px' }}
       />
       <ellipse cx="21" cy="33" rx="5" ry="3" fill="white" opacity="0.45" transform="rotate(-30 21 33)" />
-      <text x="28" y="46" textAnchor="middle" fontSize="16" fontWeight="700" fill="white">
+      <text x="28" y="46" textAnchor="middle" fontSize="16" fontWeight="700" fill="var(--background)">
         {label}
       </text>
     </svg>
@@ -417,7 +429,7 @@ const CherrySteps: FC<{ steps: AiPptCopy['steps'] }> = ({ steps }) => {
         <motion.path
           d="M0 15 C 80 0, 245 0, 325 15 S 570 30, 650 15"
           fill="none"
-          stroke="#7da35a"
+          stroke="var(--input)"
           strokeWidth="2.5"
           strokeLinecap="round"
           initial={{ pathLength: reduce ? 1 : 0 }}
@@ -472,11 +484,7 @@ export default function AiPptUseCasePage() {
       <main>
         {/* 1. 首屏：左边提示词，右边生成过程 */}
         <section className="relative">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-x-0 top-0 h-[620px] bg-[radial-gradient(55%_60%_at_70%_10%,rgba(220,38,38,0.16),transparent_70%)]"
-          />
-          <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-4 pt-28 pb-16 sm:px-6 sm:pt-36 lg:grid-cols-[1fr_1.05fr] lg:px-8">
+          <div className="site-container site-page-top site-split relative pb-12 sm:pb-16 lg:items-center">
             <div>
               <nav aria-label={copy.breadcrumb.label} className="text-muted-foreground text-sm">
                 <Link to="/resources/articles/" className="hover:text-foreground transition-colors">
@@ -485,12 +493,12 @@ export default function AiPptUseCasePage() {
                 <span className="mx-2">/</span>
                 <span>{copy.breadcrumb.current}</span>
               </nav>
-              <h1 className="text-foreground mt-5 text-4xl font-bold tracking-tight text-balance sm:text-5xl">
+              <h1 className="text-foreground mt-5 text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
                 {copy.h1Lead} <span className="text-primary">PPT</span>
               </h1>
               <p className="text-muted-foreground mt-5 max-w-xl text-lg leading-8 text-pretty">{copy.intro}</p>
 
-              <div className="border-border bg-card mt-8 rounded-2xl border p-2 shadow-[0_24px_60px_-30px_rgb(220_38_38/0.35)]">
+              <div className="border-border bg-card mt-8 rounded-lg border p-2">
                 <div className="flex flex-wrap gap-1 p-1" role="tablist" aria-label={copy.templatesLabel}>
                   {copy.templates.map(({ id, label }) => (
                     <button
@@ -529,7 +537,7 @@ export default function AiPptUseCasePage() {
                     </button>
                     <Link
                       to="/download"
-                      className="bg-primary text-primary-foreground inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium transition-opacity hover:opacity-90">
+                      className="bg-foreground text-background inline-flex items-center gap-1.5 rounded-md px-4 py-2 text-sm font-medium transition-opacity hover:opacity-90">
                       <Download className="size-4" />
                       {copy.download}
                     </Link>
@@ -628,7 +636,7 @@ export default function AiPptUseCasePage() {
             <p className="text-muted-foreground mx-auto mt-3 max-w-xl leading-7">{copy.cta.body}</p>
             <Link
               to="/download"
-              className="bg-primary text-primary-foreground mt-6 inline-flex items-center gap-1.5 rounded-full px-6 py-3 text-sm font-medium transition-opacity hover:opacity-90">
+              className="bg-foreground text-background mt-6 inline-flex items-center gap-1.5 rounded-md px-6 py-3 text-sm font-medium transition-opacity hover:opacity-90">
               <Download className="size-4" />
               {copy.cta.button}
             </Link>

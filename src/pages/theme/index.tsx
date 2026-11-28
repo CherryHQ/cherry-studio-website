@@ -1,4 +1,4 @@
-import { HelpCircle, Loader2, Plus, Search, X } from 'lucide-react'
+import { HelpCircle, ImageOff, Loader2, Plus, Search, X } from 'lucide-react'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -24,6 +24,45 @@ interface CssItem {
   date_created: string
   date_updated?: string | null
   status: boolean
+}
+
+function ThemeCardPreview({ src, name, onOpen }: { src: string; name: string; onOpen: () => void }) {
+  const { t } = useTranslation()
+  const [state, setState] = useState<'loading' | 'ready' | 'error'>('loading')
+
+  if (!src || state === 'error') {
+    return (
+      <div className="flex aspect-video items-center justify-center gap-2 border-b border-border bg-muted text-sm text-muted-foreground">
+        <ImageOff aria-hidden="true" className="size-4" />
+        {t('theme_page.no_preview')}
+      </div>
+    )
+  }
+
+  return (
+    <button
+      type="button"
+      aria-label={`${t('theme_page.preview_button')} · ${name}`}
+      disabled={state !== 'ready'}
+      onClick={onOpen}
+      className="group/preview relative aspect-video w-full cursor-zoom-in overflow-hidden border-b border-border bg-muted focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-primary disabled:cursor-default">
+      <img
+        src={src}
+        alt={name}
+        loading="lazy"
+        onLoad={() => setState('ready')}
+        onError={() => setState('error')}
+        className="absolute inset-0 size-full object-cover"
+      />
+      {state === 'ready' && (
+        <span className="absolute inset-0 grid place-items-center bg-black/30 opacity-0 transition-opacity duration-300 group-hover/preview:opacity-100 group-focus-visible/preview:opacity-100">
+          <span className="rounded-md border border-border bg-background px-3 py-1.5 text-sm font-medium text-foreground">
+            {t('theme_page.preview_button')}
+          </span>
+        </span>
+      )}
+    </button>
+  )
 }
 
 interface ErrorBoundaryProps {
@@ -164,7 +203,7 @@ const SubmitModal: React.FC<SubmitModalProps> = ({ isOpen, onClose, exampleImage
           )}
           onClick={(e) => e.stopPropagation()}>
           <button
-            className="bg-primary absolute top-1.5 right-1.5 z-10 flex h-6 w-6 cursor-pointer items-center justify-center rounded-full text-sm text-white"
+            className="bg-primary absolute top-1.5 right-1.5 z-10 flex h-6 w-6 cursor-pointer items-center justify-center rounded-full text-sm text-primary-foreground"
             onClick={closeInternalPreview}
             type="button">
             <X className="h-4 w-4" />
@@ -649,6 +688,7 @@ const ThemePage: React.FC = () => {
   const [loadingMore, setLoadingMore] = useState(false)
   const [page, setPage] = useState(0)
   const [fetchError, setFetchError] = useState(false)
+  const searchHelp = useRef<HTMLDetailsElement>(null)
   const [hasMore, setHasMore] = useState(true)
   const [copySuccess, setCopySuccess] = useState<string | null>(null)
   const [authorFilter, setAuthorFilter] = useState<string | null>(null)
@@ -675,15 +715,12 @@ const ThemePage: React.FC = () => {
 
   const ITEMS_PER_PAGE = 6
 
-  const [helpTooltipVisible, setHelpTooltipVisible] = useState(false)
   const [submitModalOpen, setSubmitModalOpen] = useState(false)
   const [previewImageUrl, setPreviewImageUrl] = useState<string | null>(null)
   const [previewClosing, setPreviewClosing] = useState(false)
   const previewCloseTimerRef = useRef<number | null>(null)
 
-  const handleExamplePreview = (e: React.MouseEvent, url: string) => {
-    e.preventDefault()
-
+  const handleExamplePreview = (url: string) => {
     if (previewCloseTimerRef.current) {
       window.clearTimeout(previewCloseTimerRef.current)
       previewCloseTimerRef.current = null
@@ -738,7 +775,7 @@ const ThemePage: React.FC = () => {
           )}
           onClick={(e) => e.stopPropagation()}>
           <button
-            className="bg-primary absolute top-1.5 right-1.5 z-10 flex h-6 w-6 cursor-pointer items-center justify-center rounded-full text-sm text-white"
+            className="bg-primary absolute top-1.5 right-1.5 z-10 flex h-6 w-6 cursor-pointer items-center justify-center rounded-full text-sm text-primary-foreground"
             onClick={onClose}
             type="button">
             <X className="h-4 w-4" />
@@ -906,9 +943,8 @@ const ThemePage: React.FC = () => {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      const target = event.target as HTMLElement
-      if (!target.closest('.help-tooltip-trigger')) {
-        setHelpTooltipVisible(false)
+      if (event.target instanceof Node && !searchHelp.current?.contains(event.target)) {
+        searchHelp.current?.removeAttribute('open')
       }
     }
 
@@ -944,33 +980,29 @@ const ThemePage: React.FC = () => {
   return (
     <ErrorBoundary>
       <div className="bg-background min-h-screen">
-        <main className="relative z-10 px-5 pt-32 pb-16">
-          <div className="mx-auto max-w-6xl">
-            <h1 className="text-foreground mb-3 text-center text-3xl font-bold sm:text-4xl">{t('theme_page.title')}</h1>
-            <div className="mb-10 text-center">
+        <main className="site-page-top relative z-10 pb-16">
+          <div className="site-container">
+            <h1 className="text-foreground mb-4 text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
+              {t('theme_page.title')}
+            </h1>
+            <div className="mb-6">
               <p className="text-muted-foreground">{t('theme_page.subtitle')}</p>
-              <div className="mt-4 flex items-center justify-center gap-4">
-                <div
-                  className="help-tooltip-trigger relative flex cursor-pointer items-center justify-center"
-                  onClick={() => setHelpTooltipVisible(!helpTooltipVisible)}
-                  onMouseEnter={() => setHelpTooltipVisible(true)}
-                  onMouseLeave={() => setHelpTooltipVisible(false)}>
-                  <span className="bg-secondary text-muted-foreground flex h-6 w-6 items-center justify-center rounded-full text-sm font-bold">
-                    <HelpCircle className="h-4 w-4" />
-                  </span>
-                  <div
-                    className={cn(
-                      'border-border bg-card absolute top-full left-1/2 z-50 mt-2.5 w-72 -translate-x-1/2 rounded-lg border p-4 text-left shadow-lg transition-opacity',
-                      helpTooltipVisible ? 'opacity-100' : 'pointer-events-none opacity-0'
-                    )}>
-                    <p className="text-foreground mb-2 text-sm font-medium">{t('theme_page.search_help')}</p>
-                    <ul className="text-muted-foreground space-y-1 text-xs">
+              <div className="mt-4 flex items-center gap-4">
+                <details ref={searchHelp} className="relative">
+                  <summary
+                    aria-label={t('theme_page.search_help')}
+                    className="flex size-8 cursor-pointer list-none items-center justify-center rounded-md border border-border bg-card text-muted-foreground hover:text-foreground focus-visible:outline-2 [&::-webkit-details-marker]:hidden">
+                    <HelpCircle className="size-4" aria-hidden="true" />
+                  </summary>
+                  <div className="absolute top-full left-0 z-50 mt-2 w-64 max-w-[calc(100vw-3rem)] rounded-md border border-border bg-card p-4 text-left shadow-lg">
+                    <p className="mb-2 text-sm font-medium text-foreground">{t('theme_page.search_help')}</p>
+                    <ul className="space-y-1 text-xs text-muted-foreground">
                       <li>{t('theme_page.search_help_tips.tag_search')}</li>
                       <li>{t('theme_page.search_help_tips.author_search')}</li>
                       <li>{t('theme_page.search_help_tips.combined_search')}</li>
                     </ul>
                   </div>
-                </div>
+                </details>
                 <button
                   className="text-primary hover:text-primary/80 inline-flex items-center gap-1 text-sm font-medium transition-colors"
                   onClick={() => setSubmitModalOpen(true)}
@@ -983,25 +1015,26 @@ const ThemePage: React.FC = () => {
 
             {/* Search Box */}
             <div className="relative mb-8">
-              <form onSubmit={handleSearchSubmit} className="mx-auto flex max-w-xl">
+              <form onSubmit={handleSearchSubmit} className="relative flex max-w-2xl">
                 <input
                   type="text"
-                  className="border-border bg-card text-foreground focus:border-primary flex-1 rounded-l-lg border-2 px-4 py-3 transition-colors focus:outline-none"
+                  aria-label={t('theme_page.search_placeholder')}
+                  className="min-w-0 flex-1 rounded-l-md border border-input bg-card px-3 py-3 text-foreground transition-colors focus-visible:z-10 focus-visible:outline-2"
                   placeholder={t('theme_page.search_placeholder')}
                   value={searchInputValue}
                   onChange={handleSearchInputChange}
                 />
                 <button
                   type="submit"
-                  className="bg-primary hover:bg-primary/90 flex items-center gap-2 rounded-r-lg px-5 text-white transition-colors disabled:cursor-not-allowed disabled:opacity-70"
+                  className="bg-primary hover:bg-primary/90 flex items-center gap-2 rounded-r-md px-3 text-primary-foreground sm:px-5 transition-colors disabled:cursor-not-allowed disabled:opacity-70"
                   disabled={!searchInputValue.trim()}>
                   <Search className="h-4 w-4" />
-                  {t('theme_page.search_button')}
+                  <span>{t('theme_page.search_button')}</span>
                 </button>
                 {searchTerm && (
                   <button
                     type="button"
-                    className="text-muted-foreground hover:text-primary absolute top-1/2 right-28 -translate-y-1/2 px-2 text-xl"
+                    className="text-muted-foreground hover:text-primary ml-2 shrink-0 px-2 text-xl"
                     onClick={handleClearSearchInput}>
                     ×
                   </button>
@@ -1010,9 +1043,12 @@ const ThemePage: React.FC = () => {
             </div>
 
             {fetchError && (
-              <div role="alert" className="mb-6 text-center">
-                <p className="mb-3">{t('theme_page.notifications.data_fetch_error')}</p>
+              <div className="mb-6 flex flex-wrap items-center justify-between gap-4 rounded-lg border border-border bg-card p-4">
+                <p role="alert" className="text-sm text-muted-foreground">
+                  {t('theme_page.notifications.data_fetch_error')}
+                </p>
                 <Button
+                  variant="outline"
                   disabled={loading || loadingMore}
                   onClick={() =>
                     void fetchCssData(
@@ -1072,158 +1108,145 @@ const ThemePage: React.FC = () => {
             )}
 
             {loading || isSearching ? (
-              <div className="flex min-h-[300px] flex-col items-center justify-center">
-                <Loader2 className="text-primary mb-5 h-12 w-12 animate-spin" />
-                <p className="text-muted-foreground">{t('theme_page.loading')}</p>
+              <div className="grid gap-6 md:grid-cols-2" role="status">
+                <span className="sr-only">{t('theme_page.loading')}</span>
+                {[0, 1].map((index) => (
+                  <div
+                    key={index}
+                    aria-hidden="true"
+                    className="rounded-lg border border-border bg-card p-4 motion-safe:animate-pulse">
+                    <div className="aspect-video rounded-md bg-muted" />
+                    <div className="mt-4 h-5 w-1/2 rounded-sm bg-muted" />
+                    <div className="mt-3 h-3 w-3/4 rounded-sm bg-muted" />
+                  </div>
+                ))}
               </div>
             ) : (
               <>
-                <div className="grid gap-8 md:grid-cols-2">
-                  {cssItems.map((item) => (
-                    <div
-                      key={item.id}
-                      className="group border-border bg-card flex flex-col overflow-hidden rounded-2xl border transition-all duration-200 hover:-translate-y-1 hover:shadow-xl">
+                <div className="grid gap-6 md:grid-cols-2">
+                  {cssItems.map((item) => {
+                    const imageUrl = getImageUrl(activeImageMode[item.id] === 'light' ? item.light_pic : item.dark_pic)
+                    return (
                       <div
-                        className="bg-secondary/30 relative cursor-pointer pt-[56.25%]"
-                        onClick={(e) =>
-                          handleExamplePreview(
-                            e,
-                            getImageUrl(activeImageMode[item.id] === 'light' ? item.light_pic : item.dark_pic)
-                          )
-                        }>
-                        {activeImageMode[item.id] === 'light' && item.light_pic ? (
-                          <img
-                            src={getImageUrl(item.light_pic)}
-                            alt={item.name}
-                            className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                          />
-                        ) : activeImageMode[item.id] === 'dark' && item.dark_pic ? (
-                          <img
-                            src={getImageUrl(item.dark_pic)}
-                            alt={item.name}
-                            className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                          />
-                        ) : (
-                          <div className="text-muted-foreground absolute inset-0 flex items-center justify-center">
-                            <span>{t('theme_page.no_preview')}</span>
-                          </div>
-                        )}
-                        <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all group-hover:bg-black/40 group-hover:opacity-100">
-                          <span className="rounded bg-white/90 px-3 py-1.5 text-sm font-medium text-black dark:bg-black/70 dark:text-white">
-                            {t('theme_page.preview_button')}
-                          </span>
-                        </div>
-                      </div>
+                        key={item.id}
+                        className="group border-border bg-card flex flex-col overflow-hidden rounded-lg border transition-colors duration-300 hover:border-primary/35">
+                        <ThemeCardPreview
+                          key={imageUrl}
+                          src={imageUrl}
+                          name={item.name}
+                          onOpen={() => handleExamplePreview(imageUrl)}
+                        />
 
-                      <div className="flex min-h-[200px] flex-1 flex-col p-5">
-                        <div className="mb-3">
-                          <h3 className="text-foreground mb-2 text-lg font-semibold">{item.name}</h3>
-                          <div className="text-muted-foreground text-sm">
-                            {t('theme_page.author_by')}
-                            <span
-                              className={cn(
-                                'hover:text-primary ml-1 cursor-pointer font-medium transition-colors hover:underline',
-                                authorFilter === item.author && 'text-primary'
-                              )}
-                              onClick={() => handleAuthorClick(item.author)}>
-                              {item.author}
-                            </span>
-                          </div>
-                        </div>
-
-                        <div className="mb-3 flex gap-2">
-                          {item.light_mode && (
-                            <span
-                              className={cn(
-                                'cursor-pointer rounded px-2 py-0.5 text-xs transition-colors',
-                                activeImageMode[item.id] === 'light'
-                                  ? 'bg-primary text-white'
-                                  : 'bg-primary/10 text-primary hover:bg-primary/20'
-                              )}
-                              onClick={() => handleImageModeChange(item.id, 'light')}>
-                              {t('theme_page.light_mode')}
-                            </span>
-                          )}
-                          {item.dark_mode && (
-                            <span
-                              className={cn(
-                                'cursor-pointer rounded px-2 py-0.5 text-xs transition-colors',
-                                activeImageMode[item.id] === 'dark'
-                                  ? 'bg-foreground text-background'
-                                  : 'bg-foreground/80 text-background hover:bg-foreground'
-                              )}
-                              onClick={() => handleImageModeChange(item.id, 'dark')}>
-                              {t('theme_page.dark_mode')}
-                            </span>
-                          )}
-                        </div>
-
-                        <div className="mb-3 flex flex-wrap gap-2">
-                          {Array.isArray(item.title) ? (
-                            item.title.map((titleItem, index) => (
+                        <div className="flex min-h-[200px] flex-1 flex-col p-5">
+                          <div className="mb-3">
+                            <h3 className="text-foreground mb-2 text-lg font-semibold">{item.name}</h3>
+                            <div className="text-muted-foreground text-sm">
+                              {t('theme_page.author_by')}
                               <span
-                                key={index}
+                                className={cn(
+                                  'hover:text-primary ml-1 cursor-pointer font-medium transition-colors hover:underline',
+                                  authorFilter === item.author && 'text-primary'
+                                )}
+                                onClick={() => handleAuthorClick(item.author)}>
+                                {item.author}
+                              </span>
+                            </div>
+                          </div>
+
+                          <div className="mb-3 flex gap-2">
+                            {item.light_mode && (
+                              <span
+                                className={cn(
+                                  'cursor-pointer rounded px-2 py-0.5 text-xs transition-colors',
+                                  activeImageMode[item.id] === 'light'
+                                    ? 'bg-primary text-primary-foreground'
+                                    : 'bg-primary/10 text-primary hover:bg-primary/20'
+                                )}
+                                onClick={() => handleImageModeChange(item.id, 'light')}>
+                                {t('theme_page.light_mode')}
+                              </span>
+                            )}
+                            {item.dark_mode && (
+                              <span
+                                className={cn(
+                                  'cursor-pointer rounded px-2 py-0.5 text-xs transition-colors',
+                                  activeImageMode[item.id] === 'dark'
+                                    ? 'bg-foreground text-background'
+                                    : 'bg-foreground/80 text-background hover:bg-foreground'
+                                )}
+                                onClick={() => handleImageModeChange(item.id, 'dark')}>
+                                {t('theme_page.dark_mode')}
+                              </span>
+                            )}
+                          </div>
+
+                          <div className="mb-3 flex flex-wrap gap-2">
+                            {Array.isArray(item.title) ? (
+                              item.title.map((titleItem, index) => (
+                                <span
+                                  key={index}
+                                  className={cn(
+                                    'cursor-pointer rounded px-2.5 py-1 text-sm font-medium transition-colors',
+                                    tagFilter === titleItem
+                                      ? 'bg-primary text-primary-foreground'
+                                      : 'bg-secondary text-foreground hover:bg-secondary/80'
+                                  )}
+                                  onClick={() => handleTagClick(titleItem)}>
+                                  {titleItem}
+                                </span>
+                              ))
+                            ) : (
+                              <span
                                 className={cn(
                                   'cursor-pointer rounded px-2.5 py-1 text-sm font-medium transition-colors',
-                                  tagFilter === titleItem
-                                    ? 'bg-primary text-white'
+                                  tagFilter === (Array.isArray(item.title) ? item.title[0] : item.title)
+                                    ? 'bg-primary text-primary-foreground'
                                     : 'bg-secondary text-foreground hover:bg-secondary/80'
                                 )}
-                                onClick={() => handleTagClick(titleItem)}>
-                                {titleItem}
+                                onClick={() =>
+                                  handleTagClick(Array.isArray(item.title) ? item.title[0] : (item.title as string))
+                                }>
+                                {Array.isArray(item.title) ? item.title[0] : item.title}
                               </span>
-                            ))
-                          ) : (
-                            <span
-                              className={cn(
-                                'cursor-pointer rounded px-2.5 py-1 text-sm font-medium transition-colors',
-                                tagFilter === (Array.isArray(item.title) ? item.title[0] : item.title)
-                                  ? 'bg-primary text-white'
-                                  : 'bg-secondary text-foreground hover:bg-secondary/80'
-                              )}
-                              onClick={() =>
-                                handleTagClick(Array.isArray(item.title) ? item.title[0] : (item.title as string))
-                              }>
-                              {Array.isArray(item.title) ? item.title[0] : item.title}
-                            </span>
-                          )}
+                            )}
+                          </div>
                         </div>
-                      </div>
 
-                      <div className="border-border mt-auto flex items-center justify-between border-t px-4 py-3">
-                        <div className="flex gap-2">
-                          <Button
-                            variant={copySuccess === `${item.id}-code` ? 'default' : 'glow'}
-                            size="sm"
-                            onClick={() => copyToClipboard(item.code, item.id, 'code')}>
-                            {copySuccess === `${item.id}-code` ? t('theme_page.copied') : t('theme_page.copy_code')}
-                          </Button>
-
-                          {item.cdn_link?.startsWith('http') && (
+                        <div className="border-border mt-auto flex items-center justify-between border-t px-4 py-3">
+                          <div className="flex gap-2">
                             <Button
-                              variant={copySuccess === `${item.id}-cdn` ? 'default' : 'outline'}
+                              variant={copySuccess === `${item.id}-code` ? 'default' : 'glow'}
                               size="sm"
-                              onClick={() => copyToClipboard(item.cdn_link as string, item.id, 'cdn')}>
-                              {copySuccess === `${item.id}-cdn` ? t('theme_page.copied') : t('theme_page.copy_cdn')}
+                              onClick={() => copyToClipboard(item.code, item.id, 'code')}>
+                              {copySuccess === `${item.id}-code` ? t('theme_page.copied') : t('theme_page.copy_code')}
                             </Button>
-                          )}
-                        </div>
-                        <div className="text-muted-foreground flex gap-3 text-xs">
-                          <span>
-                            {t('theme_page.version')}{' '}
-                            <span className="text-foreground font-medium">v{formatVersion(item.version)}</span>
-                          </span>
-                          <span>
-                            {t('theme_page.created')}{' '}
-                            <span className="text-foreground font-medium">{formatDate(item.date_created)}</span>
-                          </span>
+
+                            {item.cdn_link?.startsWith('http') && (
+                              <Button
+                                variant={copySuccess === `${item.id}-cdn` ? 'default' : 'outline'}
+                                size="sm"
+                                onClick={() => copyToClipboard(item.cdn_link as string, item.id, 'cdn')}>
+                                {copySuccess === `${item.id}-cdn` ? t('theme_page.copied') : t('theme_page.copy_cdn')}
+                              </Button>
+                            )}
+                          </div>
+                          <div className="text-muted-foreground flex gap-3 text-xs">
+                            <span>
+                              {t('theme_page.version')}{' '}
+                              <span className="text-foreground font-medium">v{formatVersion(item.version)}</span>
+                            </span>
+                            <span>
+                              {t('theme_page.created')}{' '}
+                              <span className="text-foreground font-medium">{formatDate(item.date_created)}</span>
+                            </span>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
+                    )
+                  })}
                 </div>
 
-                {cssItems.length === 0 && !loading && (
+                {cssItems.length === 0 && !fetchError && (
                   <div className="text-muted-foreground py-10 text-center">
                     <p className="mb-4">{t('theme_page.no_results')}</p>
                     <Button variant="outline" onClick={clearAllFilters}>
