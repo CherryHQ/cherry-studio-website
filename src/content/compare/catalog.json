@@ -13,5 +13,14 @@
     "mcp": { "category": "use-cases", "lastmod": "2026-11-12" },
     "ai-knowledge-base": { "category": "use-cases", "lastmod": "2026-11-12" },
     "ai-office-assistant": { "category": "use-cases", "lastmod": "2026-11-12" }
+  },
+  "_pages_comment": "不是 Markdown 文章的独立页面（如应用场景页）：在列表页对应分类里排在文章前面。卡片标题在 i18n 的 articles.pages.<id>，描述用 page_description.<key>。",
+  "pages": {
+    "ai-ppt": {
+      "category": "use-cases",
+      "path": "/resources/use-cases/ai-ppt",
+      "key": "use_case_ai_ppt",
+      "lastmod": "2026-11-23"
+    }
   }
 }

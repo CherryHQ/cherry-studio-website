@@ -852,8 +852,11 @@
       },
       "use-cases": {
         "title": "使用场景",
-        "description": "用 Cherry Studio 完成具体的事：翻译、知识库、MCP 工具和日常办公。"
+        "description": "用 Cherry Studio 完成具体的事：做 PPT、翻译、知识库、MCP 工具和日常办公。"
       }
+    },
+    "pages": {
+      "ai_ppt": "AI 生成 PPT"
     },
     "updated": "更新于 {{date}}",
     "reading_time": "约 {{count}} 分钟读完",

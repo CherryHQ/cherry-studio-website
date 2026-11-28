@@ -2,7 +2,13 @@ import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
 import Footer from '@/components/website/Footer'
-import { type CompareLocale, formatArticleDate, getArticleLastmod, getArticlesByCategory } from '@/content/compare'
+import {
+  type CompareLocale,
+  formatArticleDate,
+  getArticleLastmod,
+  getArticlesByCategory,
+  getCategoryPages
+} from '@/content/compare'
 import style from '@/content/compare/article-style.json'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { isEnglishSite } from '@/utils/urls'
@@ -24,6 +30,20 @@ export default function ArticlesPage() {
             <h2 className={style.indexSectionTitle}>{t(`articles.categories.${category}.title`)}</h2>
             <p className={style.indexSectionDescription}>{t(`articles.categories.${category}.description`)}</p>
             <ul className={style.indexList}>
+              {getCategoryPages(category).map(({ id, path, key, lastmod }) => (
+                <li key={id}>
+                  <Link to={path} className={style.indexCard}>
+                    <h3 className={style.indexCardTitle}>{t(`articles.pages.${id.replace(/-/g, '_')}`)}</h3>
+                    <p className={style.indexCardDescription}>{t(`page_description.${key}`)}</p>
+                    <span className={style.indexCardFooter}>
+                      <time dateTime={lastmod}>{formatArticleDate(locale, lastmod)}</time>
+                      <span className={style.indexCardMore} aria-hidden="true">
+                        {t('articles.read_more')} →
+                      </span>
+                    </span>
+                  </Link>
+                </li>
+              ))}
               {slugs.map((slug) => (
                 <li key={slug}>
                   <Link to={`/resources/articles/${slug}`} className={style.indexCard}>

@@ -78,6 +78,20 @@ export function getArticlesByCategory(locale: CompareLocale): { category: Articl
   })).filter(({ slugs }) => slugs.length > 0)
 }
 
+export interface CategoryPage {
+  id: string
+  path: string
+  key: string
+  lastmod: string
+}
+
+// 列表页里排在某个分类文章前面的独立页面（如 /resources/use-cases/ai-ppt），两种语言都有
+export function getCategoryPages(category: ArticleCategory): CategoryPage[] {
+  return Object.entries(catalog.pages)
+    .filter(([, page]) => page.category === category)
+    .map(([id, { path, key, lastmod }]) => ({ id, path, key, lastmod }))
+}
+
 // 相关文章：同分类在前，其他分类补足，让每篇文章都链到不同类型的内容
 export function getRelatedArticles(locale: CompareLocale, slug: CompareSlug, limit = 6): CompareSlug[] {
   const others = COMPARE_SLUGS.filter((other) => other !== slug && hasCompare(locale, other))
