@@ -187,7 +187,7 @@ export default function CapabilitiesSection() {
                 <ChapterText chapter={chapter} />
               </div>
               {/* Frames grow toward a 16:10 window, capped so a wide screen never turns the demo into a wall. */}
-              <div data-fill="" className="@container grid gap-10 [--demo-fill-h:min(640px,60cqw)]">
+              <div data-fill="" className="@container grid gap-10 [--demo-fill-h:min(680px,64cqw)]">
                 {steps
                   .filter((step) => step.chapter === chapter)
                   .flatMap((step) => step.demos)

@@ -31,7 +31,7 @@ export default function EverywhereSection() {
 
         <DemoMount
           load={() => import('@/components/demos/assistants/SelectionAgentDemo')}
-          className="mx-auto min-h-[580px] max-w-5xl"
+          className="mx-auto min-h-[620px] max-w-5xl"
         />
 
         <dl className="mx-auto mt-14 grid max-w-5xl grid-cols-2 gap-px overflow-hidden rounded-[20px] border border-border bg-border md:grid-cols-4">

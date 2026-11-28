@@ -51,7 +51,7 @@ export default function HeroSection() {
     const room = stage - DOCK_SPACE - 16
     const endScale = Math.min(1, room / height)
     return {
-      startScale: Math.min(window.innerWidth < 768 ? 0.94 : 0.72, endScale),
+      startScale: Math.min(window.innerWidth < 768 ? 0.94 : 0.8, endScale),
       endScale,
       startY: (headline.current?.offsetHeight ?? 0) - Math.min(96, Math.max(36, window.innerWidth * 0.066)),
       endY: 16 + Math.max(0, (room - height * endScale) / 2)
@@ -118,7 +118,8 @@ export default function HeroSection() {
             ref={frame}
             style={reduced ? undefined : { y: windowY, scale: windowScale }}
             className={cn(
-              'z-10 w-[min(1480px,calc(100vw-32px))] origin-top text-left sm:w-[min(1480px,calc(100vw-48px))]',
+              // Width follows the screen height too, so the window keeps a 16:10 desktop shape instead of stretching flat.
+              'z-10 w-[min(1480px,calc(100vw-32px),125svh)] origin-top text-left sm:w-[min(1480px,calc(100vw-48px),125svh)]',
               reduced ? 'mx-auto -mt-[clamp(36px,6.6vw,96px)] pb-6' : 'absolute inset-x-0 top-0 mx-auto'
             )}>
             <m.div
