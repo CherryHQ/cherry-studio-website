@@ -34,7 +34,8 @@ export function MainWindow({ turn, copy, tag }: MainWindowProps) {
       animate={{ opacity: 1, scale: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.98, transition: { duration: 0.14 } }}
       transition={{ duration: 0.3, ease: ease.expo }}
-      className="absolute inset-x-[4%] top-9 bottom-14 z-20 overflow-hidden rounded-xl border border-border shadow-(--shadow-float)">
+      // A window on the desktop, not a takeover: centred at a desktop-window shape with the mail app showing around it.
+      className="absolute top-9 bottom-14 left-1/2 z-20 w-[min(88%,760px)] -translate-x-1/2 overflow-hidden rounded-xl border border-border shadow-(--shadow-float)">
       <AppShell active="agents" tab={{ title, emoji: agent.avatar }}>
         <div className="flex h-full min-h-0 flex-col">
           <AgentSessionBar
