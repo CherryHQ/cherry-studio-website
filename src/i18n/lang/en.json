@@ -513,7 +513,7 @@
     "title": "Loved by the community",
     "view_on": "Read on {{platform}}",
     "eyebrow": "Community",
-    "subtitle": "Unedited reviews from Product Hunt, AlternativeTo, Hacker News and Medium. Each card links to the original.",
+    "subtitle": "What people wrote on Product Hunt, AlternativeTo and Medium. Each card links to the source.",
     "source_hint": "Read more reviews on"
   },
   "home_page": {

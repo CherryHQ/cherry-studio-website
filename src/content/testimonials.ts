@@ -1,5 +1,6 @@
-// Community reviews shown on both sites. Keep only quotes with a public source link.
-export type TestimonialPlatform = 'producthunt' | 'medium' | 'alternativeto' | 'hackernews'
+// Community reviews shown on both sites. Every quote is checked against its public source; text is verbatim except
+// for marked elisions, and the Chinese versions are translations.
+export type TestimonialPlatform = 'producthunt' | 'medium' | 'alternativeto'
 
 export interface Testimonial {
   id: number
@@ -55,7 +56,7 @@ export const testimonials: Testimonial[] = [
     platform: 'alternativeto',
     url: 'https://alternativeto.net/software/cherry-studio/about/',
     content: {
-      en: "It's an all-in-one AI agent. I uninstalled all my other llm applications just keep this one to replace them all. Really convenient.",
+      en: 'It’s an all-in-one AI agent. I uninstalled all my other llm applications just keep this one to replace them all. Really convenient.',
       zh: '这是一个全能的 AI 智能体。我把其他所有 LLM 应用都卸载了，只留下它一个来替代它们，真的很方便。'
     }
   },
@@ -65,18 +66,8 @@ export const testimonials: Testimonial[] = [
     platform: 'alternativeto',
     url: 'https://alternativeto.net/software/cherry-studio/about/',
     content: {
-      en: 'All-in-one app for everyday tasks — and more than just that. Huge library of prompts… Lot of API providers with local Ollama, agent & topic instructions, custom CSS, knowledge base, MCP… really a lot.',
-      zh: '日常任务的全能应用，而且远不止于此。庞大的提示词库……大量 API 服务商、本地 Ollama、助手与话题设定、自定义 CSS、知识库、MCP……真的非常丰富。'
-    }
-  },
-  {
-    id: 6,
-    name: 'novoreorx',
-    platform: 'hackernews',
-    url: 'https://news.ycombinator.com/item?id=46053347',
-    content: {
-      en: 'Cherry Studio is my daily go-to… a dedicated app to access any LLMs with full power of MCP and various tools.',
-      zh: 'Cherry Studio 是我每天都在用的工具……一个能接入任意大模型、并完整发挥 MCP 和各种工具能力的专用应用。'
+      en: 'All-in-one app for everyday tasks - and more than just that.',
+      zh: '日常任务的全能应用，而且远不止于此。'
     }
   },
   {
@@ -87,8 +78,8 @@ export const testimonials: Testimonial[] = [
     platform: 'medium',
     url: 'https://medium.com/@PowerUpSkills/the-one-ai-client-to-rule-them-all-cherry-studio-in-2025-ac71837eb892',
     content: {
-      en: 'The One AI Client to Rule Them All. Cherry Studio in 2025 has grown to be the most versatile AI desktop client with 33k+ GitHub stars.',
-      zh: '统一所有 AI 的客户端。2025 年的 Cherry Studio 已经成长为最全能的 AI 桌面客户端，GitHub 上已有 33k+ stars。'
+      en: 'The One AI Client to Rule Them All: Cherry Studio in 2025',
+      zh: '统一所有 AI 的客户端：2025 年的 Cherry Studio'
     }
   }
 ]

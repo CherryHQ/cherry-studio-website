@@ -508,7 +508,7 @@
   },
   "testimonials": {
     "title": "用户为何喜欢 Cherry Studio",
-    "subtitle": "来自 Product Hunt、AlternativeTo、Hacker News 和 Medium 的真实评价，点击卡片可查看原文。",
+    "subtitle": "来自 Product Hunt、AlternativeTo 和 Medium 的用户评价（原文为英文，此处为翻译），点击卡片可查看出处。",
     "source_hint": "在这些平台查看更多评价",
     "eyebrow": "社区评价",
     "view_on": "在 {{platform}} 查看"

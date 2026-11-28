@@ -25,11 +25,6 @@ const platformIcons: Record<SourcePlatform, ReactNode> = {
       <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z" />
     </svg>
   ),
-  hackernews: (
-    <svg className="size-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M0 0v24h24V0H0zm5.2 4h2.3l4.5 8.2L16.5 4h2.3l-5.7 10.4V20h-2.2v-5.6L5.2 4z" />
-    </svg>
-  ),
   alternativeto: (
     <svg className="size-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
       <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2a10 10 0 110 20 10 10 0 010-20zm-1.9 4.6L6 17.4h2.2l.9-2.5h4.1l.9 2.5H16L11.9 6.6h-1.8zm.9 2.9l1.4 3.9H9.6l1.4-3.9z" />
@@ -41,14 +36,12 @@ const platformNames: Record<SourcePlatform, string> = {
   producthunt: 'Product Hunt',
   github: 'GitHub',
   medium: 'Medium',
-  hackernews: 'Hacker News',
   alternativeto: 'AlternativeTo'
 }
 
 const communitySources: { platform: SourcePlatform; url: string }[] = [
   { platform: 'producthunt', url: 'https://www.producthunt.com/products/cherry-studio/reviews' },
   { platform: 'alternativeto', url: 'https://alternativeto.net/software/cherry-studio/about/' },
-  { platform: 'hackernews', url: 'https://hn.algolia.com/?query=Cherry%20Studio' },
   { platform: 'github', url: 'https://github.com/CherryHQ/cherry-studio' },
   {
     platform: 'medium',
@@ -72,9 +65,6 @@ function Avatar({ name, src }: { name: string; src?: string }) {
 const TestimonialsSection: FC = () => {
   const { t, i18n } = useTranslation()
   const isEn = isEnglishSite(i18n.resolvedLanguage || i18n.language)
-  // Two rows drift in opposite directions; each carries every review, offset so neighbours differ, and is wider
-  // than the screen so the loop never shows a card twice at once.
-  const rows = [testimonials, [...testimonials.slice(4), ...testimonials.slice(0, 4)]]
 
   const card = (item: (typeof testimonials)[number], hidden: boolean) => (
     <li key={item.id} className="w-[340px] shrink-0 pr-4">
@@ -133,16 +123,15 @@ const TestimonialsSection: FC = () => {
         </ul>
       </div>
 
-      <div className="grid gap-4 [mask-image:linear-gradient(90deg,transparent,black_8%,black_92%,transparent)]">
-        {rows.map((row, index) => (
-          <Marquee key={index} reverse={index === 1} seconds={70}>
-            {(hidden) => (
-              <ul aria-hidden={hidden || undefined} className="flex shrink-0">
-                {row.map((item) => card(item, hidden))}
-              </ul>
-            )}
-          </Marquee>
-        ))}
+      {/* One row, each review once; the marquee only repeats it to close the loop. */}
+      <div className="[mask-image:linear-gradient(90deg,transparent,black_8%,black_92%,transparent)]">
+        <Marquee seconds={60}>
+          {(hidden) => (
+            <ul aria-hidden={hidden || undefined} className="flex shrink-0">
+              {testimonials.map((item) => card(item, hidden))}
+            </ul>
+          )}
+        </Marquee>
       </div>
     </section>
   )
