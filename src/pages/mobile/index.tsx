@@ -31,6 +31,7 @@ import { Button } from '@/components/ui/button'
 import FeatureBento from '@/components/website/FeatureBento'
 import Footer from '@/components/website/Footer'
 import HeroBackdrop from '@/components/website/HeroBackdrop'
+import Phrases from '@/components/website/Phrases'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { cn } from '@/lib/utils'
 import { getMobileDocsUrl } from '@/utils/urls'
@@ -165,16 +166,16 @@ export default function MobilePage() {
   usePageMeta('mobile')
 
   return (
-    <div className="min-h-screen bg-background pt-[60px] text-foreground">
+    <div className="min-h-screen bg-background text-foreground">
       <main>
-        <section className="relative isolate overflow-hidden border-b border-border py-12 sm:py-20">
+        <section className="site-page-top relative isolate overflow-hidden border-b border-border pb-12 sm:pb-20">
           <HeroBackdrop className="inset-x-0 top-0 -z-10 h-full" fade={72} />
           <div className="site-container site-split lg:items-center">
             <div className="max-w-xl">
               <LogoDrawDemo bare size={44} className="mb-6" />
               <p className="mb-4 on-silk text-sm font-medium text-muted-foreground">{t('mobile_site.hero.eyebrow')}</p>
               <h1 className="on-silk text-5xl leading-[1.04] font-display text-balance sm:text-7xl">
-                {t('mobile_site.hero.title')}
+                <Phrases text={t('mobile_site.hero.title')} />
               </h1>
               <p className="mt-5 on-silk max-w-lg text-pretty text-base leading-7 text-muted-foreground sm:text-lg">
                 {t('mobile_site.hero.description')}
