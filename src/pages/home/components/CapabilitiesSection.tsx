@@ -1,4 +1,4 @@
-import { AnimatePresence, type AnimationPlaybackControls, animate, m, useReducedMotion } from 'framer-motion'
+import { type AnimationPlaybackControls, animate, m, useReducedMotion } from 'framer-motion'
 import { Check } from 'lucide-react'
 import { type ComponentType, useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -67,6 +67,8 @@ function ChapterText({ chapter }: { chapter: ChapterId }) {
   )
 }
 
+// Quiet time after the last scroll or wheel input before the page settles on a demo.
+const QUIET_MS = 220
 // The page glide in progress, so a new glide or the reader's own wheel can stop it.
 let glide: AnimationPlaybackControls | null = null
 
@@ -126,13 +128,20 @@ export default function CapabilitiesSection() {
       { rootMargin: '-45% 0px -45% 0px' }
     )
     for (const element of Object.values(articles.current)) if (element) observer.observe(element)
-    // When scrolling comes to rest between the first and last demo, glide to the nearest demo's centre so a demo always
-    // sits level with the copy. Done in script: CSS mandatory snapping also yanks jumps that leave the section.
+    // When scrolling comes to rest near a demo, glide to its centre so it sits level with the copy. Done in script: CSS
+    // mandatory snapping also yanks jumps that leave the section.
     const root = document.documentElement
     const desktop = window.matchMedia('(min-width: 1024px)')
     let timer = 0
+    // Wheel and touch keep arriving through trackpad momentum, so settling waits until they go quiet too.
+    let lastInput = 0
+    let touching = false
     const settle = () => {
-      if (glide || !desktop.matches || reduced) return
+      if (glide || touching || !desktop.matches || reduced) return
+      if (performance.now() - lastInput < QUIET_MS) {
+        timer = window.setTimeout(settle, QUIET_MS)
+        return
+      }
       const demos = [...(stack.current?.querySelectorAll('[data-snap]') ?? [])]
       if (!demos.length) return
       const header = Number.parseFloat(getComputedStyle(root).getPropertyValue('--site-header-height'))
@@ -141,29 +150,41 @@ export default function CapabilitiesSection() {
         const rect = demo.getBoundingClientRect()
         return rect.top + rect.height / 2 - middle
       })
-      if (offsets[0] > 120 || offsets[offsets.length - 1] < -120) return
       const offset = offsets.reduce((best, value) => (Math.abs(value) < Math.abs(best) ? value : best))
-      if (Math.abs(offset) < 4) return
+      // Only a reader who stopped close to a demo is nudged; one resting between demos is left alone.
+      if (Math.abs(offset) < 4 || Math.abs(offset) > window.innerHeight * 0.2) return
       glideTo(window.scrollY + offset, 0.35)
     }
     const onScroll = () => {
+      // A glide's own steps are not the reader stopping.
+      if (glide) return
       window.clearTimeout(timer)
-      timer = window.setTimeout(settle, 140)
+      timer = window.setTimeout(settle, QUIET_MS)
     }
     // The reader's own wheel or touch takes over from a glide.
-    const interrupt = () => {
+    const onInput = () => {
+      lastInput = performance.now()
       glide?.stop()
       glide = null
     }
+    const onTouchStart = () => {
+      touching = true
+      onInput()
+    }
+    const onTouchEnd = () => {
+      touching = false
+    }
     window.addEventListener('scroll', onScroll, { passive: true })
-    window.addEventListener('wheel', interrupt, { passive: true })
-    window.addEventListener('touchstart', interrupt, { passive: true })
+    window.addEventListener('wheel', onInput, { passive: true })
+    window.addEventListener('touchstart', onTouchStart, { passive: true })
+    window.addEventListener('touchend', onTouchEnd, { passive: true })
     return () => {
       observer.disconnect()
       window.clearTimeout(timer)
       window.removeEventListener('scroll', onScroll)
-      window.removeEventListener('wheel', interrupt)
-      window.removeEventListener('touchstart', interrupt)
+      window.removeEventListener('wheel', onInput)
+      window.removeEventListener('touchstart', onTouchStart)
+      window.removeEventListener('touchend', onTouchEnd)
     }
   }, [reduced])
 
@@ -209,16 +230,21 @@ export default function CapabilitiesSection() {
                 ))}
               </ol>
             </nav>
-            <AnimatePresence mode="wait" initial={false}>
-              <m.div
-                key={active}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -6 }}
-                transition={{ duration: 0.2, ease: ease.settle }}>
-                <ChapterText chapter={active} />
-              </m.div>
-            </AnimatePresence>
+            {/* Every chapter's copy shares one grid cell, so the column keeps the tallest height and the centred list
+                never shifts as chapters change. */}
+            <div className="grid">
+              {chapterIds.map((chapter) => (
+                <m.div
+                  key={chapter}
+                  initial={false}
+                  animate={active === chapter ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 }}
+                  transition={{ duration: 0.25, ease: ease.settle }}
+                  aria-hidden={active !== chapter}
+                  className={cn('col-start-1 row-start-1', active !== chapter && 'pointer-events-none')}>
+                  <ChapterText chapter={chapter} />
+                </m.div>
+              ))}
+            </div>
           </div>
         </aside>
 
