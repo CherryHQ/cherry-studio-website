@@ -1,6 +1,6 @@
-import { m } from 'framer-motion'
+import { m, useInView, useReducedMotion } from 'framer-motion'
 import { ArrowRight, Plus } from 'lucide-react'
-import { type FC, useState } from 'react'
+import { type FC, useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import BlurInText from '@/components/website/BlurInText'
@@ -13,14 +13,30 @@ interface FAQItem {
   answer: string
 }
 
+const CYCLE_MS = 5000
+
 const FAQSection: FC = () => {
   const { t, i18n } = useTranslation()
   const [openIndex, setOpenIndex] = useState<number | null>(0)
   const isZh = i18n.language.startsWith('zh')
 
   const faqItems = t('home_faq.items', { returnObjects: true }) as FAQItem[]
+  // The list cycles through its answers while on screen; hovering pauses it and a click hands control to the reader.
+  const list = useRef<HTMLDivElement>(null)
+  const inView = useInView(list, { amount: 0.5 })
+  const reduced = useReducedMotion() ?? false
+  const [paused, setPaused] = useState(false)
+  const [manual, setManual] = useState(false)
+  const cycling = inView && !paused && !manual && !reduced
+
+  useEffect(() => {
+    if (!cycling) return
+    const timer = window.setTimeout(() => setOpenIndex((current) => ((current ?? -1) + 1) % faqItems.length), CYCLE_MS)
+    return () => window.clearTimeout(timer)
+  }, [cycling, openIndex, faqItems.length])
 
   const toggleItem = (index: number) => {
+    setManual(true)
     setOpenIndex((current) => (current === index ? null : index))
   }
 
@@ -45,11 +61,28 @@ const FAQSection: FC = () => {
           </a>
         </div>
 
-        <div className="divide-y divide-border border-y border-border">
+        <div
+          ref={list}
+          onPointerEnter={() => setPaused(true)}
+          onPointerLeave={() => setPaused(false)}
+          onFocus={() => setPaused(true)}
+          onBlur={() => setPaused(false)}
+          className="divide-y divide-border border-y border-border">
           {faqItems.map(({ question, answer }, index) => {
             const isOpen = openIndex === index
             return (
-              <div key={question}>
+              <div key={question} className="relative">
+                {/* Time left before the list moves on; it restarts whenever the open answer changes. */}
+                {isOpen && cycling && (
+                  <m.span
+                    key={openIndex}
+                    aria-hidden="true"
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{ duration: CYCLE_MS / 1000, ease: 'linear' }}
+                    className="absolute inset-x-0 -bottom-px h-px origin-left bg-foreground/60"
+                  />
+                )}
                 <h3>
                   <button
                     type="button"
