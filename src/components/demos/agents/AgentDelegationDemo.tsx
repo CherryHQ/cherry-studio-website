@@ -87,6 +87,7 @@ export default function AgentDelegationDemo({ bezel }: { bezel?: boolean }) {
   const { locale, tag } = useDemoLocale()
   const copy = delegationDemo[locale]
   const agent = agentDemo[locale]
+  const targets = delegationScript.targets[locale]
   const reduced = useReducedMotion() ?? false
   const ref = useRef<HTMLDivElement>(null)
   const scroller = useRef<HTMLDivElement>(null)
@@ -184,8 +185,8 @@ export default function AgentDelegationDemo({ bezel }: { bezel?: boolean }) {
       <div className={cn(SIDEBAR_ROW, 'bg-accent pl-9 font-medium text-foreground')}>
         <span className="truncate">{copy.session}</span>
       </div>
-      {delegationScript.roster.map((runtime) => {
-        const target = delegationScript.targets.findIndex((item) => item.id === runtime.id)
+      {delegationScript.roster[locale].map((runtime) => {
+        const target = targets.findIndex((item) => item.id === runtime.id)
         const delegated = target >= 0 && state.cards[target] && state.cards[target] !== 'pending'
         return (
           <div key={runtime.id}>
@@ -228,7 +229,7 @@ export default function AgentDelegationDemo({ bezel }: { bezel?: boolean }) {
       <p className="mt-1 flex flex-wrap items-center gap-x-1.5 px-1 text-xs text-muted-foreground">
         <span>{copy.approval.source}</span>
         <span className="text-foreground">
-          {delegationScript.targets[0].name} / {copy.targets[0].session}
+          {targets[0].name} / {copy.targets[0].session}
         </span>
       </p>
       <div className="mt-2 rounded-[12px] bg-muted px-3 py-2 dark:bg-muted/30">
@@ -392,7 +393,7 @@ export default function AgentDelegationDemo({ bezel }: { bezel?: boolean }) {
               <AgentSessionBar
                 agentName={copy.agentName}
                 workspace={delegationScript.workspace}
-                model={agentScript.model}
+                model={agentScript.model[locale]}
                 picking={false}
                 pane={state.preview ? 'files' : undefined}
               />
@@ -428,7 +429,7 @@ export default function AgentDelegationDemo({ bezel }: { bezel?: boolean }) {
                             {state.busy && <BeatDots className="text-muted-foreground/80" />}
                           </div>
                           {state.cards.map((status, index) => {
-                            const target = delegationScript.targets[index]
+                            const target = targets[index]
                             return (
                               <m.div
                                 key={target.id}
@@ -476,7 +477,7 @@ export default function AgentDelegationDemo({ bezel }: { bezel?: boolean }) {
                     </div>
                   </m.div>
                   {state.results.map((index) => {
-                    const target = delegationScript.targets[index]
+                    const target = targets[index]
                     return (
                       <m.div key={target.id} {...blockEnter} className="flex flex-col items-end gap-1.5">
                         <span className="mr-10 flex items-center gap-1.5 text-xs text-muted-foreground">

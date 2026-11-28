@@ -524,6 +524,7 @@ function ModelRow({
 
 /** The chat behind the sheet, with the composer in its editing layout where the model pill opened it. */
 function ChatBackdrop({ copy }: { copy: ModelPickerCopy }) {
+  const provider = copy.providers.find((item) => item.models.some((model) => model.name === copy.selected))?.id ?? ''
   return (
     <div aria-hidden="true" className={cn('relative h-full', tone.chat)}>
       <div className="flex flex-col gap-4 px-4 pt-[122px]">
@@ -531,7 +532,7 @@ function ChatBackdrop({ copy }: { copy: ModelPickerCopy }) {
         <div className="flex items-center gap-2 text-[14px] leading-5">
           <CherryAvatar />
           <span className="font-semibold">{copy.agentName}</span>
-          <BrandAvatar id="anthropic" size={16} />
+          <BrandAvatar id={provider} size={16} />
           <span className={tone.tertiary}>{copy.selected}</span>
         </div>
         <p className="text-[16px] leading-[26px]">{copy.answer}</p>
@@ -545,7 +546,7 @@ function ChatBackdrop({ copy }: { copy: ModelPickerCopy }) {
               <Plus className="size-[18px]" strokeWidth={1.9} />
             </ComposerCircle>
             <span className={cn('flex h-8 items-center gap-[6px] rounded-full px-[10px]', tone.secondary)}>
-              <BrandAvatar id="anthropic" size={20} />
+              <BrandAvatar id={provider} size={20} />
               <span className="text-[14px] font-semibold">{copy.selected}</span>
             </span>
             <span className="ms-auto">

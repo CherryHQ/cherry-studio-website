@@ -88,8 +88,6 @@ const zhParagraphs = [
   '如果电话沟通更方便，周四或周五下午都可以约 20 分钟。'
 ]
 
-const model = { name: 'Claude Sonnet 4.6', provider: 'anthropic', providerName: 'Anthropic' }
-
 export const selectionAgentDemo: Record<DemoLocale, SelectionAgentCopy> = {
   en: {
     region: 'Interactive demo: select text in any app and hand it to an agent',
@@ -215,7 +213,7 @@ export const selectionAgentDemo: Record<DemoLocale, SelectionAgentCopy> = {
     ],
     main: {
       placeholder: 'Type a message. Type / to search paths or commands, @ for files and sessions.',
-      model
+      model: { name: 'Claude Sonnet 5.5', provider: 'anthropic', providerName: 'Anthropic' }
     }
   },
   zh: {
@@ -333,6 +331,9 @@ export const selectionAgentDemo: Record<DemoLocale, SelectionAgentCopy> = {
         items: ['约林雅通话 20 分钟 · 周四或周五下午']
       }
     ],
-    main: { placeholder: '输入消息，输入 / 搜索路径或命令，输入 @ 引用文件或会话', model }
+    main: {
+      placeholder: '输入消息，输入 / 搜索路径或命令，输入 @ 引用文件或会话',
+      model: { name: 'DeepSeek V4 Pro', provider: 'deepseek', providerName: '深度求索' }
+    }
   }
 }

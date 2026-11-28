@@ -36,7 +36,6 @@ const CAPS: Record<Capability, { Icon: typeof Eye; text: string; bg: string }> =
 }
 // Desktop MODEL_DISPLAY_TAGS order: input modalities, capabilities, then web search.
 const CAP_ORDER: Capability[] = ['vision', 'reasoning', 'tools', 'embedding', 'rerank', 'web']
-const AVAILABLE_TAGS = CAP_ORDER.filter((tag) => selectorModels.some((model) => model.caps.includes(tag)))
 
 // Desktop HoverCard waits 1500ms; the demo shortens it so the card shows up while people are still looking.
 const DETAIL_DELAY = 500
@@ -62,6 +61,8 @@ interface Group {
 export default function ModelSelectorDemo() {
   const { locale } = useDemoLocale()
   const copy = modelSelectorDemo[locale]
+  const models = selectorModels[locale]
+  const availableTags = CAP_ORDER.filter((tag) => models.some((model) => model.caps.includes(tag)))
   const ref = useRef<HTMLDivElement>(null)
   const bodyRef = useRef<HTMLDivElement>(null)
   const triggerRef = useRef<HTMLButtonElement>(null)
@@ -87,7 +88,7 @@ export default function ModelSelectorDemo() {
       tags.every((tag) => model.caps.includes(tag)) &&
       (!needle ||
         [model.name, model.id, copy.providers[model.provider]].some((value) => value.toLowerCase().includes(needle)))
-    const visible = selectorModels.filter(matches)
+    const visible = models.filter(matches)
     // Like desktop useModelSelectorData: the pinned group only shows without a query, and then owns those rows.
     const showPinned = !needle
     const pinnedRows = showPinned
@@ -107,12 +108,12 @@ export default function ModelSelectorDemo() {
       ...(pinnedRows.length ? [{ key: 'pinned', title: copy.pinned, rows: pinnedRows }] : []),
       ...[...byProvider].map(([provider, rows]) => ({ key: provider, title: copy.providers[provider], provider, rows }))
     ]
-  }, [copy, query, tags, pinnedIds])
+  }, [copy, models, query, tags, pinnedIds])
 
   const rows = useMemo(() => groups.flatMap((group) => group.rows), [groups])
   const focusedRow = rows.find((row) => row.key === focusedKey)
   const detailRow = rows.find((row) => row.key === detailKey)
-  const currentModel = selectorModels.find((model) => model.id === current) ?? selectorModels[0]
+  const currentModel = models.find((model) => model.id === current) ?? models[0]
 
   const { replay, reduced } = useDemoScript(async ({ wait, reduced }) => {
     touched.current = false
@@ -391,7 +392,7 @@ export default function ModelSelectorDemo() {
 
                     <div className="flex shrink-0 items-center gap-2 border-b border-border/60 px-3 py-2">
                       <div className="flex min-w-0 flex-1 items-center gap-1.5 overflow-x-auto [mask-image:linear-gradient(to_right,black_calc(100%-24px),transparent)] [scrollbar-width:none]">
-                        {AVAILABLE_TAGS.map((tag) => {
+                        {availableTags.map((tag) => {
                           const { Icon, text, bg } = CAPS[tag]
                           const active = tags.includes(tag)
                           return (

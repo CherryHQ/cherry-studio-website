@@ -491,7 +491,8 @@ export default function PaintingsDemo() {
   const control =
     'w-full rounded-[8px] border border-border bg-secondary px-2.5 py-1.5 text-xs text-foreground outline-none focus-visible:outline-2 focus-visible:outline-primary'
   const query = search.trim().toLowerCase()
-  const groups = (['openai', 'gemini', 'dashscope'] as const)
+  // The Chinese site offers only the domestic image provider.
+  const groups = (locale === 'zh' ? (['dashscope'] as const) : (['openai', 'gemini', 'dashscope'] as const))
     .map((provider) => ({
       provider,
       models: MODELS.filter((entry) => entry.provider === provider && entry.name.toLowerCase().includes(query))

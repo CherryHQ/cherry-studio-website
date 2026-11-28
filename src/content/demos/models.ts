@@ -38,128 +38,244 @@ export interface ModelSelectorCopy {
   initialModel: string
 }
 
-export const selectorModels: SelectorModel[] = [
-  {
-    id: 'claude-opus-4-8',
-    name: 'Claude Opus 4.8',
-    provider: 'anthropic',
-    caps: ['vision', 'reasoning', 'tools', 'web'],
-    context: 1000000,
-    maxOutput: 128000
-  },
-  {
-    id: 'claude-sonnet-4-6',
-    name: 'Claude Sonnet 4.6',
-    provider: 'anthropic',
-    caps: ['vision', 'reasoning', 'tools', 'web'],
-    context: 1000000,
-    maxOutput: 128000
-  },
-  {
-    id: 'claude-haiku-4-5',
-    name: 'Claude Haiku 4.5',
-    provider: 'anthropic',
-    caps: ['vision', 'reasoning', 'tools', 'web'],
-    context: 200000,
-    maxOutput: 64000
-  },
-  {
-    id: 'gpt-5-6',
-    name: 'GPT-5.6',
-    provider: 'openai',
-    caps: ['vision', 'reasoning', 'tools', 'web'],
-    context: 1050000,
-    maxOutput: 128000
-  },
-  {
-    id: 'gpt-5-4-mini',
-    name: 'GPT 5.4 Mini',
-    provider: 'openai',
-    caps: ['vision', 'reasoning', 'tools', 'web'],
-    context: 400000,
-    maxOutput: 128000
-  },
-  {
-    id: 'gemini-3-1-pro-preview',
-    name: 'Gemini 3.1 Pro Preview',
-    provider: 'google',
-    caps: ['vision', 'reasoning', 'tools', 'web'],
-    context: 1048576,
-    maxOutput: 65536
-  },
-  {
-    id: 'gemini-3-5-flash',
-    name: 'Gemini 3.5 Flash',
-    provider: 'google',
-    caps: ['vision', 'reasoning', 'tools', 'web'],
-    context: 1048576,
-    maxOutput: 65536
-  },
-  {
-    id: 'deepseek-v4-pro',
-    name: 'DeepSeek V4 Pro',
-    provider: 'deepseek',
-    caps: ['reasoning', 'tools'],
-    context: 1048576,
-    maxOutput: 393216
-  },
-  {
-    id: 'deepseek-v4-flash',
-    name: 'DeepSeek V4 Flash',
-    provider: 'deepseek',
-    caps: ['reasoning', 'tools'],
-    context: 1048576,
-    maxOutput: 393216
-  },
-  {
-    id: 'qwen3-7-max',
-    name: 'Qwen3.7 Max',
-    provider: 'qwen',
-    caps: ['reasoning', 'tools'],
-    context: 1000000,
-    maxOutput: 65536
-  },
-  {
-    id: 'qwen3-6-plus',
-    name: 'Qwen3.6 Plus',
-    provider: 'qwen',
-    caps: ['vision', 'reasoning', 'tools'],
-    context: 1000000,
-    maxOutput: 65536
-  },
-  {
-    id: 'kimi-k3',
-    name: 'Kimi K3',
-    provider: 'moonshot',
-    caps: ['vision', 'reasoning', 'tools'],
-    context: 1048576,
-    maxOutput: 131072
-  },
-  {
-    id: 'kimi-k2-6',
-    name: 'Kimi K2.6',
-    provider: 'moonshot',
-    caps: ['vision', 'reasoning', 'tools'],
-    context: 262144,
-    maxOutput: 262144
-  },
-  {
-    id: 'glm-5-3',
-    name: 'GLM 5.3',
-    provider: 'zhipu',
-    caps: ['reasoning', 'tools'],
-    context: 1048576,
-    maxOutput: 131072
-  },
-  {
-    id: 'glm-5v-turbo',
-    name: 'GLM 5V Turbo',
-    provider: 'zhipu',
-    caps: ['vision', 'reasoning', 'tools'],
-    context: 202752,
-    maxOutput: 131072
-  }
-]
+// The Chinese site lists only domestic providers.
+export const selectorModels: Record<DemoLocale, SelectorModel[]> = {
+  en: [
+    {
+      id: 'claude-opus-5-5',
+      name: 'Claude Opus 5.5',
+      provider: 'anthropic',
+      caps: ['vision', 'reasoning', 'tools', 'web'],
+      context: 1000000,
+      maxOutput: 128000
+    },
+    {
+      id: 'claude-sonnet-5-5',
+      name: 'Claude Sonnet 5.5',
+      provider: 'anthropic',
+      caps: ['vision', 'reasoning', 'tools', 'web'],
+      context: 1000000,
+      maxOutput: 128000
+    },
+    {
+      id: 'claude-haiku-5-5',
+      name: 'Claude Haiku 5.5',
+      provider: 'anthropic',
+      caps: ['vision', 'reasoning', 'tools', 'web'],
+      context: 1000000,
+      maxOutput: 128000
+    },
+    {
+      id: 'gpt-6-2-sol',
+      name: 'GPT-6.2 Sol',
+      provider: 'openai',
+      caps: ['vision', 'reasoning', 'tools', 'web'],
+      context: 1050000,
+      maxOutput: 128000
+    },
+    {
+      id: 'gpt-6-2-astra',
+      name: 'GPT-6.2 Astra',
+      provider: 'openai',
+      caps: ['vision', 'reasoning', 'tools', 'web'],
+      context: 1050000,
+      maxOutput: 128000
+    },
+    {
+      id: 'gemini-4-neon',
+      name: 'Gemini 4 Neon',
+      provider: 'google',
+      caps: ['vision', 'reasoning', 'tools', 'web'],
+      context: 1048576,
+      maxOutput: 1048576
+    },
+    {
+      id: 'gemini-4-carbon',
+      name: 'Gemini 4 Carbon',
+      provider: 'google',
+      caps: ['vision', 'reasoning', 'tools', 'web'],
+      context: 1048576,
+      maxOutput: 1048576
+    },
+    {
+      id: 'grok-4-7',
+      name: 'Grok 4.7',
+      provider: 'grok',
+      caps: ['vision', 'reasoning', 'tools'],
+      context: 500000,
+      maxOutput: 500000
+    },
+    {
+      id: 'deepseek-v4-pro',
+      name: 'DeepSeek V4 Pro',
+      provider: 'deepseek',
+      caps: ['reasoning', 'tools'],
+      context: 1048576,
+      maxOutput: 393216
+    },
+    {
+      id: 'deepseek-v4-1-flash',
+      name: 'DeepSeek V4.1 Flash',
+      provider: 'deepseek',
+      caps: ['vision', 'reasoning', 'tools'],
+      context: 1048576,
+      maxOutput: 393216
+    },
+    {
+      id: 'qwen3-8-max',
+      name: 'Qwen3.8 Max',
+      provider: 'qwen',
+      caps: ['reasoning', 'tools'],
+      context: 1000000,
+      maxOutput: 128000
+    },
+    {
+      id: 'qwen3-8-flash',
+      name: 'Qwen3.8 Flash',
+      provider: 'qwen',
+      caps: ['vision', 'reasoning', 'tools'],
+      context: 1000000,
+      maxOutput: 131072
+    },
+    {
+      id: 'kimi-k3-1-pro',
+      name: 'Kimi K3.1 Pro',
+      provider: 'moonshot',
+      caps: ['vision', 'reasoning', 'tools'],
+      context: 1048576,
+      maxOutput: 1048576
+    },
+    {
+      id: 'glm-5-3',
+      name: 'GLM 5.3',
+      provider: 'zhipu',
+      caps: ['reasoning', 'tools'],
+      context: 1048576,
+      maxOutput: 131072
+    },
+    {
+      id: 'minimax-m3',
+      name: 'MiniMax-M3',
+      provider: 'minimax',
+      caps: ['vision', 'reasoning', 'tools'],
+      context: 1048576,
+      maxOutput: 524288
+    },
+    {
+      id: 'mistral-large',
+      name: 'Mistral Large 3',
+      provider: 'mistral',
+      caps: ['vision', 'tools'],
+      context: 262144,
+      maxOutput: 262144
+    }
+  ],
+  zh: [
+    {
+      id: 'deepseek-v4-pro',
+      name: 'DeepSeek V4 Pro',
+      provider: 'deepseek',
+      caps: ['reasoning', 'tools'],
+      context: 1048576,
+      maxOutput: 393216
+    },
+    {
+      id: 'deepseek-v4-1-flash',
+      name: 'DeepSeek V4.1 Flash',
+      provider: 'deepseek',
+      caps: ['vision', 'reasoning', 'tools'],
+      context: 1048576,
+      maxOutput: 393216
+    },
+    {
+      id: 'qwen3-8-max',
+      name: 'Qwen3.8 Max',
+      provider: 'qwen',
+      caps: ['reasoning', 'tools'],
+      context: 1000000,
+      maxOutput: 128000
+    },
+    {
+      id: 'qwen3-8-flash',
+      name: 'Qwen3.8 Flash',
+      provider: 'qwen',
+      caps: ['vision', 'reasoning', 'tools'],
+      context: 1000000,
+      maxOutput: 131072
+    },
+    {
+      id: 'kimi-k3-1-pro',
+      name: 'Kimi K3.1 Pro',
+      provider: 'moonshot',
+      caps: ['vision', 'reasoning', 'tools'],
+      context: 1048576,
+      maxOutput: 1048576
+    },
+    {
+      id: 'glm-5-3',
+      name: 'GLM 5.3',
+      provider: 'zhipu',
+      caps: ['reasoning', 'tools'],
+      context: 1048576,
+      maxOutput: 131072
+    },
+    {
+      id: 'glm-5-3-flash',
+      name: 'GLM-5.3-Flash',
+      provider: 'zhipu',
+      caps: ['vision', 'reasoning', 'tools'],
+      context: 1000000,
+      maxOutput: 131072
+    },
+    {
+      id: 'minimax-m3',
+      name: 'MiniMax-M3',
+      provider: 'minimax',
+      caps: ['vision', 'reasoning', 'tools'],
+      context: 1048576,
+      maxOutput: 524288
+    },
+    {
+      id: 'doubao-seed-2-1-pro',
+      name: 'Doubao Seed 2.1 Pro',
+      provider: 'doubao',
+      caps: ['vision', 'reasoning', 'tools'],
+      context: 262144,
+      maxOutput: 262144
+    },
+    {
+      id: 'mimo-v2-6-pro',
+      name: 'MiMo-V2.6-Pro',
+      provider: 'mimo',
+      caps: ['vision', 'reasoning', 'tools'],
+      context: 1048576,
+      maxOutput: 131072
+    },
+    {
+      id: 'ernie-5-0',
+      name: 'ERNIE 5.0',
+      provider: 'wenxin',
+      caps: ['reasoning', 'tools'],
+      context: 131072
+    },
+    {
+      id: 'longcat-2-5',
+      name: 'LongCat-2.5',
+      provider: 'longcat',
+      caps: ['vision', 'reasoning', 'tools'],
+      context: 1048576,
+      maxOutput: 262144
+    },
+    {
+      id: 'step-5-preview',
+      name: 'Step 5 Preview',
+      provider: 'step',
+      caps: ['vision', 'reasoning', 'tools'],
+      context: 1048576,
+      maxOutput: 1048576
+    }
+  ]
+}
 
 export const modelSelectorDemo: Record<DemoLocale, ModelSelectorCopy> = {
   en: {
@@ -188,15 +304,18 @@ export const modelSelectorDemo: Record<DemoLocale, ModelSelectorCopy> = {
       anthropic: 'Anthropic',
       openai: 'OpenAI',
       google: 'Gemini',
+      grok: 'Grok',
       deepseek: 'DeepSeek',
       qwen: 'Qianwen AI platform',
       moonshot: 'Moonshot AI',
-      zhipu: 'BigModel'
+      zhipu: 'BigModel',
+      minimax: 'MiniMax',
+      mistral: 'Mistral'
     },
     detail: { provider: 'Provider', modelId: 'Model ID', contextWindow: 'Context window', maxOutput: 'Max output' },
     autoQuery: 'gemini',
-    pinnedIds: ['claude-sonnet-4-6', 'gpt-5-6'],
-    initialModel: 'claude-sonnet-4-6'
+    pinnedIds: ['claude-sonnet-5-5', 'gpt-6-2-sol'],
+    initialModel: 'claude-sonnet-5-5'
   },
   zh: {
     window: 'Cherry Studio — 选择模型',
@@ -221,17 +340,20 @@ export const modelSelectorDemo: Record<DemoLocale, ModelSelectorCopy> = {
       rerank: '重排'
     },
     providers: {
-      anthropic: 'Anthropic',
-      openai: 'OpenAI',
-      google: 'Gemini',
       deepseek: '深度求索',
       qwen: '千问 AI 平台',
       moonshot: '月之暗面',
-      zhipu: '智谱开放平台'
+      zhipu: '智谱开放平台',
+      minimax: 'MiniMax',
+      doubao: '豆包（火山引擎 Ark）',
+      mimo: 'Xiaomi MiMo',
+      wenxin: '百度云千帆',
+      longcat: '龙猫',
+      step: '阶跃星辰'
     },
     detail: { provider: '服务商', modelId: '模型 ID', contextWindow: '上下文窗口', maxOutput: '最大输出' },
     autoQuery: 'qwen',
-    pinnedIds: ['deepseek-v4-pro', 'kimi-k3'],
+    pinnedIds: ['deepseek-v4-pro', 'kimi-k3-1-pro'],
     initialModel: 'deepseek-v4-pro'
   }
 }

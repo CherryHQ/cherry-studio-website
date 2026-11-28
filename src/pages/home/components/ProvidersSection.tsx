@@ -91,26 +91,29 @@ const cnLogos: LogoInfo[] = [
 
 // Model names from the provider registry for the second, reversed marquee row.
 const globalModels = [
-  'Claude Opus 4.8',
-  'GPT-5.6',
-  'Gemini 3.1 Pro',
+  'Claude Opus 5.5',
+  'GPT-6.2 Sol',
+  'Gemini 4 Neon',
   'DeepSeek V4 Pro',
-  'Grok 4',
-  'Qwen3.7 Max',
-  'Kimi K3',
+  'Grok 4.7',
+  'Qwen3.8 Max',
+  'Kimi K3.1 Pro',
   'GLM 5.3',
-  'Mistral Large',
-  'MiniMax M2.7'
+  'Mistral Large 3',
+  'MiniMax-M3'
 ]
+// The Chinese site shows domestic models only.
 const cnModels = [
   'DeepSeek V4 Pro',
-  'Qwen3.7 Max',
-  'Kimi K3',
+  'Qwen3.8 Max',
+  'Kimi K3.1 Pro',
   'GLM 5.3',
-  'MiniMax M2.7',
-  'Claude Opus 4.8',
-  'GPT-5.6',
-  'Gemini 3.1 Pro'
+  'MiniMax-M3',
+  'Doubao Seed 2.1 Pro',
+  'ERNIE 5.0',
+  'MiMo-V2.6-Pro',
+  'LongCat-2.5',
+  'Step 5 Preview'
 ]
 
 /** One marquee row: the items twice, so translating by -50% loops seamlessly. Hovering the row pauses it. */

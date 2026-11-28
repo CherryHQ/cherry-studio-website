@@ -60,7 +60,7 @@ export const mobileComposerDemo: Record<DemoLocale, MobileComposerCopy> = {
     media: { camera: 'Camera', photos: 'Photos', file: 'File' },
     tools: { folders: 'Folders', noFolder: 'No folder selected', plugins: 'Plugins', skills: 'Skills' },
     closeSheet: 'Close',
-    model: 'MiniMax: MiniMax-M2.7',
+    model: 'MiniMax: MiniMax-M3',
     modelProvider: 'minimax',
     time: '09/15 19:58',
     prompt: 'I have a free afternoon. Suggest three small creative projects I can finish today. Keep it short.',
@@ -99,7 +99,7 @@ export const mobileComposerDemo: Record<DemoLocale, MobileComposerCopy> = {
     media: { camera: '相机', photos: '照片', file: '文件' },
     tools: { folders: '文件夹', noFolder: '未选择文件夹', plugins: '插件', skills: '技能' },
     closeSheet: '关闭',
-    model: 'MiniMax: MiniMax-M2.7',
+    model: 'MiniMax: MiniMax-M3',
     modelProvider: 'minimax',
     time: '09/15 19:58',
     prompt: '下午有空，推荐三个今天就能做完的小创意项目，简短一点。',
@@ -152,46 +152,70 @@ export interface ModelPickerCopy extends MobileChromeCopy {
   providers: PickerProvider[]
 }
 
-const providerModels = {
+type PickerModels = Record<string, PickerProvider['models']>
+
+const globalProviderModels = {
   anthropic: [
-    { name: 'Claude Opus 4.8', badges: ['vision'] },
-    { name: 'Claude Sonnet 4.6', badges: ['vision'] },
-    { name: 'Claude Haiku 4.5', badges: ['vision'] }
+    { name: 'Claude Opus 5.5', badges: ['vision'] },
+    { name: 'Claude Sonnet 5.5', badges: ['vision'] },
+    { name: 'Claude Haiku 5.5', badges: ['vision'] }
   ],
   openai: [
-    { name: 'GPT-5.6', badges: ['vision'] },
-    { name: 'GPT 5.4 Mini', badges: ['vision'] }
+    { name: 'GPT-6.2 Sol', badges: ['vision'] },
+    { name: 'GPT-6.2 Astra', badges: ['vision'] }
   ],
   google: [
-    { name: 'Gemini 3.1 Pro Preview', badges: ['vision'] },
-    { name: 'Gemini 3.5 Flash', badges: ['vision'] }
+    { name: 'Gemini 4 Neon', badges: ['vision'] },
+    { name: 'Gemini 4 Carbon', badges: ['vision'] }
   ],
   deepseek: [
     { name: 'DeepSeek V4 Pro', badges: [] },
-    { name: 'DeepSeek V4 Flash', badges: [] }
+    { name: 'DeepSeek V4.1 Flash', badges: ['vision'] }
   ],
-  minimax: [{ name: 'MiniMax-M2.7', badges: [] }],
+  minimax: [{ name: 'MiniMax-M3', badges: ['vision'] }],
   qwen: [
-    { name: 'Qwen3.7 Max', badges: [] },
-    { name: 'Qwen3.6 Plus', badges: ['vision'] }
+    { name: 'Qwen3.8 Max', badges: [] },
+    { name: 'Qwen3.8 Flash', badges: ['vision'] }
   ],
-  moonshot: [{ name: 'Kimi K3', badges: ['vision'] }],
-  zhipu: [{ name: 'GLM-4.6', badges: [] }],
-  mistral: [{ name: 'Mistral Large', badges: ['vision'] }],
-  grok: [{ name: 'Grok 4', badges: ['vision'] }],
+  moonshot: [{ name: 'Kimi K3.1 Pro', badges: ['vision'] }],
+  zhipu: [{ name: 'GLM 5.3', badges: [] }],
+  mistral: [{ name: 'Mistral Large 3', badges: ['vision'] }],
+  grok: [{ name: 'Grok 4.7', badges: ['vision'] }],
   openrouter: [
-    { name: 'DeepSeek V3.1 (free)', badges: ['free'] },
-    { name: 'Llama 3.3 70B', badges: [] }
+    { name: 'MiniMax-M3.1-Flash', badges: ['free', 'vision'] },
+    { name: 'Llama-4-Maverick-17B-128E-Instruct-FP8', badges: ['vision'] }
   ],
-  ollama: [{ name: 'Qwen3 8B', badges: [] }]
-} satisfies Record<string, PickerProvider['models']>
+  ollama: [{ name: 'Qwen3.8 27B', badges: ['vision'] }]
+} satisfies PickerModels
 
-const pickerProviders = (names: Record<keyof typeof providerModels, string>): PickerProvider[] =>
-  (Object.keys(providerModels) as (keyof typeof providerModels)[]).map((id) => ({
-    id,
-    name: names[id],
-    models: providerModels[id]
-  }))
+// The Chinese site lists only domestic providers.
+const cnProviderModels = {
+  deepseek: [
+    { name: 'DeepSeek V4 Pro', badges: [] },
+    { name: 'DeepSeek V4.1 Flash', badges: ['vision'] }
+  ],
+  qwen: [
+    { name: 'Qwen3.8 Max', badges: [] },
+    { name: 'Qwen3.8 Flash', badges: ['vision'] }
+  ],
+  moonshot: [{ name: 'Kimi K3.1 Pro', badges: ['vision'] }],
+  zhipu: [
+    { name: 'GLM 5.3', badges: [] },
+    { name: 'GLM-5.3-Flash', badges: ['vision'] }
+  ],
+  minimax: [
+    { name: 'MiniMax-M3', badges: ['vision'] },
+    { name: 'MiniMax-M3.1-Flash', badges: ['vision'] }
+  ],
+  doubao: [{ name: 'Doubao Seed 2.1 Pro', badges: ['vision'] }],
+  mimo: [{ name: 'MiMo-V2.6-Pro', badges: ['vision'] }],
+  longcat: [{ name: 'LongCat-2.5', badges: ['vision'] }],
+  step: [{ name: 'Step 5 Preview', badges: ['vision'] }],
+  wenxin: [{ name: 'ERNIE 5.0', badges: [] }]
+} satisfies PickerModels
+
+const pickerProviders = <T extends PickerModels>(models: T, names: Record<keyof T, string>): PickerProvider[] =>
+  (Object.keys(models) as (keyof T & string)[]).map((id) => ({ id, name: names[id], models: models[id] }))
 
 export const modelPickerDemo: Record<DemoLocale, ModelPickerCopy> = {
   en: {
@@ -208,10 +232,10 @@ export const modelPickerDemo: Record<DemoLocale, ModelPickerCopy> = {
     detents: { medium: 'Medium', full: 'Full' },
     badges: { free: 'Free', vision: 'Vision' },
     freeChip: 'free',
-    selected: 'Claude Sonnet 4.6',
+    selected: 'Claude Sonnet 5.5',
     prompt: 'Which model should I use for long documents?',
     answer: 'Pick one with a large context window. Open the model picker under the composer to compare.',
-    providers: pickerProviders({
+    providers: pickerProviders(globalProviderModels, {
       anthropic: 'Anthropic',
       openai: 'OpenAI',
       google: 'Gemini',
@@ -240,22 +264,20 @@ export const modelPickerDemo: Record<DemoLocale, ModelPickerCopy> = {
     detents: { medium: '半屏', full: '全屏' },
     badges: { free: '免费', vision: '视觉' },
     freeChip: '免费',
-    selected: 'Claude Sonnet 4.6',
+    selected: 'Kimi K3.1 Pro',
     prompt: '处理长文档该用哪个模型？',
     answer: '选上下文窗口大的模型。点输入框下方的模型按钮，就能打开选择器对比。',
-    providers: pickerProviders({
-      anthropic: 'Anthropic',
-      openai: 'OpenAI',
-      google: 'Gemini',
+    providers: pickerProviders(cnProviderModels, {
       deepseek: '深度求索',
-      minimax: 'MiniMax',
       qwen: '阿里云百炼',
       moonshot: '月之暗面',
       zhipu: '智谱开放平台',
-      mistral: 'Mistral',
-      grok: 'Grok',
-      openrouter: 'OpenRouter',
-      ollama: 'Ollama'
+      minimax: 'MiniMax',
+      doubao: '豆包（火山引擎 Ark）',
+      mimo: 'Xiaomi MiMo',
+      longcat: '龙猫',
+      step: '阶跃星辰',
+      wenxin: '百度云千帆'
     })
   }
 }
@@ -468,10 +490,10 @@ export const pairingDemo: Record<DemoLocale, PairingCopy> = {
       source: '来源：MacBook Pro',
       fetching: '正在获取已启用的服务商……',
       providers: [
-        { name: 'Anthropic', provider: 'anthropic', models: 3 },
-        { name: 'OpenAI', provider: 'openai', models: 4 },
-        { name: '深度求索', provider: 'deepseek', models: 2 },
-        { name: 'OpenRouter', provider: 'openrouter', models: 6 }
+        { name: '深度求索', provider: 'deepseek', models: 3 },
+        { name: '月之暗面', provider: 'moonshot', models: 4 },
+        { name: '智谱开放平台', provider: 'zhipu', models: 2 },
+        { name: '阿里云百炼', provider: 'qwen', models: 6 }
       ],
       modelCount: (count) => `${count} 个模型`,
       notice:
@@ -725,10 +747,10 @@ export const tabletLayoutDemo: Record<DemoLocale, TabletLayoutCopy> = {
       create: 'New agent',
       edit: 'Edit',
       items: [
-        { name: 'Cherie', emoji: '🍒', model: 'MiniMax-M2.7' },
-        { name: 'Translator', emoji: '🌐', model: 'GPT-5.6' },
-        { name: 'Code Reviewer', emoji: '🧑‍💻', model: 'Claude Sonnet 4.6' },
-        { name: 'Travel Planner', emoji: '🧳', model: 'Gemini 3.5 Flash' }
+        { name: 'Cherie', emoji: '🍒', model: 'MiniMax-M3' },
+        { name: 'Translator', emoji: '🌐', model: 'GPT-6.2 Sol' },
+        { name: 'Code Reviewer', emoji: '🧑‍💻', model: 'Claude Sonnet 5.5' },
+        { name: 'Travel Planner', emoji: '🧳', model: 'Gemini 4 Neon' }
       ]
     },
     drawings: {
@@ -786,10 +808,10 @@ export const tabletLayoutDemo: Record<DemoLocale, TabletLayoutCopy> = {
       create: '新建智能体',
       edit: '编辑',
       items: [
-        { name: 'Cherry 小助手', emoji: '🍒', model: 'MiniMax-M2.7' },
-        { name: '翻译官', emoji: '🌐', model: 'GPT-5.6' },
-        { name: '代码审查', emoji: '🧑‍💻', model: 'Claude Sonnet 4.6' },
-        { name: '旅行规划', emoji: '🧳', model: 'Gemini 3.5 Flash' }
+        { name: 'Cherry 小助手', emoji: '🍒', model: 'MiniMax-M3' },
+        { name: '翻译官', emoji: '🌐', model: 'Qwen3.8 Flash' },
+        { name: '代码审查', emoji: '🧑‍💻', model: 'Kimi K3.1 Pro' },
+        { name: '旅行规划', emoji: '🧳', model: 'DeepSeek V4 Pro' }
       ]
     },
     drawings: {

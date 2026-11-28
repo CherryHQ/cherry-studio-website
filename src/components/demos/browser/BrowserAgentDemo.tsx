@@ -856,7 +856,7 @@ export default function BrowserAgentDemo() {
               <AgentSessionBar
                 agentName={copy.agentName}
                 workspace="trips"
-                model={agentScript.model}
+                model={agentScript.model[locale]}
                 picking={false}
                 pane="browser"
               />

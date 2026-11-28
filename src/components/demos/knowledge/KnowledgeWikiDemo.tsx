@@ -332,7 +332,7 @@ export default function KnowledgeWikiDemo() {
               <AgentSessionBar
                 agentName={copy.agentName}
                 workspace={agent.workspace}
-                model={agentScript.model}
+                model={agentScript.model[locale]}
                 picking={false}
               />
               <div

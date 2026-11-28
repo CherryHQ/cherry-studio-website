@@ -238,7 +238,7 @@ export const paintingsDemo: Record<DemoLocale, PaintingsDemoCopy> = {
 export const artifactsDemo: Record<DemoLocale, ArtifactsDemoCopy> = {
   en: {
     window: 'Cherry Studio — HTML Artifacts',
-    model: { name: 'Claude Sonnet 4.6', provider: 'anthropic' },
+    model: { name: 'Claude Sonnet 5.5', provider: 'anthropic' },
     prompt: 'Make me a live silk wallpaper I can recolor.',
     intro:
       'Here is a single-file live wallpaper: flowing silk rendered on the GPU with Paper Shaders, four palettes and a speed control.',
@@ -272,7 +272,7 @@ export const artifactsDemo: Record<DemoLocale, ArtifactsDemoCopy> = {
   },
   zh: {
     window: 'Cherry Studio — HTML 预览',
-    model: { name: 'Claude Sonnet 4.6', provider: 'anthropic' },
+    model: { name: 'GLM 5.3', provider: 'zhipu' },
     prompt: '帮我做一个能换颜色的丝绸动态壁纸。',
     intro: '给你一个单文件的动态壁纸：用 Paper Shaders 在 GPU 上渲染流动的丝绸，带四套配色和速度调节。',
     outro: '在预览里点色块换配色，拖动滑块调速度。',

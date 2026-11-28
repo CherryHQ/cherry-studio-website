@@ -651,7 +651,7 @@ export default function AgentJobDemo() {
               <AgentSessionBar
                 agentName={copy.agentName}
                 workspace={agentJobScript.workspace}
-                model={agentScript.model}
+                model={agentScript.model[locale]}
                 picking={false}
                 pane={detailsVisible ? 'details' : pane?.kind === 'deck' ? 'files' : undefined}
                 onPane={{

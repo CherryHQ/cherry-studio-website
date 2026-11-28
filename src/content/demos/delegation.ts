@@ -4,6 +4,11 @@
 // agent.toolPermission.*, local_agents.*, chat.profile_pane.tabs.outputs and chat.input.tools.*.
 import type { DemoLocale } from './chat'
 
+interface Runtime {
+  id: string
+  name: string
+}
+
 export type DelegationStatus = 'pending' | 'running' | 'awaiting' | 'completed' | 'cancelled'
 
 export interface DelegationCopy {
@@ -41,56 +46,99 @@ export interface DelegationCopy {
 }
 
 /**
- * Every local Agent runtime of #21221 (packages/agent-runtime-* and the ACP presets), with its logo asset from
- * packages/ui/icons/general. The first three take part in the delegation.
+ * Local Agent runtimes of #21221 (packages/agent-runtime-* and the ACP presets), with their logo assets from
+ * packages/ui/icons/general. The three targets take part in the delegation. The Chinese site delegates to domestic
+ * Agents, lists them first, and leaves out runtimes tied to overseas models.
  */
 export const delegationScript = {
   workspace: 'launch',
   workspacePath: '~/code/launch',
-  targets: [
-    { id: 'claude-code', name: 'Claude Code' },
-    { id: 'openai-codex', name: 'Codex' },
-    { id: 'grok-build-cli', name: 'Grok Build' }
-  ],
-  roster: [
-    { id: 'claude-code', name: 'Claude Code' },
-    { id: 'openai-codex', name: 'Codex' },
-    { id: 'grok-build-cli', name: 'Grok Build' },
-    { id: 'cursor-cli', name: 'Cursor' },
-    { id: 'antigravity-cli', name: 'Antigravity' },
-    { id: 'open-code', name: 'OpenCode' },
-    { id: 'pi-cli', name: 'Pi' },
-    { id: 'omp-cli', name: 'Oh My Pi' },
-    { id: 'qwen-code', name: 'Qwen Code' },
-    { id: 'kimi-cli', name: 'Kimi' },
-    { id: 'qoder-cli', name: 'Qoder' },
-    { id: 'github-copilot-cli', name: 'GitHub Copilot' },
-    { id: 'amp-cli', name: 'Amp' },
-    { id: 'cline-cli', name: 'Cline' },
-    { id: 'codebuddy-code-cli', name: 'Codebuddy Code' },
-    { id: 'factory-droid-cli', name: 'Factory Droid' },
-    { id: 'goose-cli', name: 'goose' },
-    { id: 'junie-cli', name: 'Junie' },
-    { id: 'kiro-cli', name: 'Kiro' },
-    { id: 'trae-cli', name: 'TRAE' },
-    { id: 'mistral-vibe-cli', name: 'Mistral Vibe' },
-    { id: 'poolside-cli', name: 'Poolside' },
-    { id: 'deepseek-harness-cli', name: 'DeepSeek Harness' },
-    { id: 'minimax-code', name: 'MiniMax Code' },
-    { id: 'glm-acp-agent-cli', name: 'GLM Agent' },
-    { id: 'openclaw', name: 'OpenClaw' },
-    { id: 'hermes', name: 'Hermes' },
-    { id: 'deepagents-cli', name: 'DeepAgents' },
-    { id: 'dimcode-cli', name: 'DimAgent' },
-    { id: 'muse-code-cli', name: 'Muse Code' },
-    { id: 'snow-cli', name: 'Snow CLI' },
-    { id: 'zcode-cli', name: 'ZCode' },
-    { id: 'kilo-cli', name: 'Kilo' },
-    { id: 'auggie-cli', name: 'Auggie' },
-    { id: 'devin-cli', name: 'Devin' },
-    { id: 'cortex-code-cli', name: 'Cortex Code' },
-    { id: 'command-code-cli', name: 'Command Code' }
-  ],
+  targets: {
+    en: [
+      { id: 'claude-code', name: 'Claude Code' },
+      { id: 'openai-codex', name: 'Codex' },
+      { id: 'grok-build-cli', name: 'Grok Build' }
+    ],
+    zh: [
+      { id: 'qwen-code', name: 'Qwen Code' },
+      { id: 'kimi-cli', name: 'Kimi' },
+      { id: 'deepseek-harness-cli', name: 'DeepSeek Harness' }
+    ]
+  } satisfies Record<DemoLocale, Runtime[]>,
+  roster: {
+    en: [
+      { id: 'claude-code', name: 'Claude Code' },
+      { id: 'openai-codex', name: 'Codex' },
+      { id: 'grok-build-cli', name: 'Grok Build' },
+      { id: 'cursor-cli', name: 'Cursor' },
+      { id: 'antigravity-cli', name: 'Antigravity' },
+      { id: 'open-code', name: 'OpenCode' },
+      { id: 'pi-cli', name: 'Pi' },
+      { id: 'omp-cli', name: 'Oh My Pi' },
+      { id: 'qwen-code', name: 'Qwen Code' },
+      { id: 'kimi-cli', name: 'Kimi' },
+      { id: 'qoder-cli', name: 'Qoder' },
+      { id: 'github-copilot-cli', name: 'GitHub Copilot' },
+      { id: 'amp-cli', name: 'Amp' },
+      { id: 'cline-cli', name: 'Cline' },
+      { id: 'codebuddy-code-cli', name: 'Codebuddy Code' },
+      { id: 'factory-droid-cli', name: 'Factory Droid' },
+      { id: 'goose-cli', name: 'goose' },
+      { id: 'junie-cli', name: 'Junie' },
+      { id: 'kiro-cli', name: 'Kiro' },
+      { id: 'trae-cli', name: 'TRAE' },
+      { id: 'mistral-vibe-cli', name: 'Mistral Vibe' },
+      { id: 'poolside-cli', name: 'Poolside' },
+      { id: 'deepseek-harness-cli', name: 'DeepSeek Harness' },
+      { id: 'minimax-code', name: 'MiniMax Code' },
+      { id: 'glm-acp-agent-cli', name: 'GLM Agent' },
+      { id: 'openclaw', name: 'OpenClaw' },
+      { id: 'hermes', name: 'Hermes' },
+      { id: 'deepagents-cli', name: 'DeepAgents' },
+      { id: 'dimcode-cli', name: 'DimAgent' },
+      { id: 'muse-code-cli', name: 'Muse Code' },
+      { id: 'snow-cli', name: 'Snow CLI' },
+      { id: 'zcode-cli', name: 'ZCode' },
+      { id: 'kilo-cli', name: 'Kilo' },
+      { id: 'auggie-cli', name: 'Auggie' },
+      { id: 'devin-cli', name: 'Devin' },
+      { id: 'cortex-code-cli', name: 'Cortex Code' },
+      { id: 'command-code-cli', name: 'Command Code' }
+    ],
+    zh: [
+      { id: 'qwen-code', name: 'Qwen Code' },
+      { id: 'kimi-cli', name: 'Kimi' },
+      { id: 'deepseek-harness-cli', name: 'DeepSeek Harness' },
+      { id: 'glm-acp-agent-cli', name: 'GLM Agent' },
+      { id: 'minimax-code', name: 'MiniMax Code' },
+      { id: 'qoder-cli', name: 'Qoder' },
+      { id: 'trae-cli', name: 'TRAE' },
+      { id: 'codebuddy-code-cli', name: 'Codebuddy Code' },
+      { id: 'cursor-cli', name: 'Cursor' },
+      { id: 'open-code', name: 'OpenCode' },
+      { id: 'pi-cli', name: 'Pi' },
+      { id: 'omp-cli', name: 'Oh My Pi' },
+      { id: 'github-copilot-cli', name: 'GitHub Copilot' },
+      { id: 'amp-cli', name: 'Amp' },
+      { id: 'cline-cli', name: 'Cline' },
+      { id: 'factory-droid-cli', name: 'Factory Droid' },
+      { id: 'goose-cli', name: 'goose' },
+      { id: 'junie-cli', name: 'Junie' },
+      { id: 'kiro-cli', name: 'Kiro' },
+      { id: 'openclaw', name: 'OpenClaw' },
+      { id: 'hermes', name: 'Hermes' },
+      { id: 'deepagents-cli', name: 'DeepAgents' },
+      { id: 'dimcode-cli', name: 'DimAgent' },
+      { id: 'muse-code-cli', name: 'Muse Code' },
+      { id: 'snow-cli', name: 'Snow CLI' },
+      { id: 'zcode-cli', name: 'ZCode' },
+      { id: 'kilo-cli', name: 'Kilo' },
+      { id: 'auggie-cli', name: 'Auggie' },
+      { id: 'devin-cli', name: 'Devin' },
+      { id: 'cortex-code-cli', name: 'Cortex Code' },
+      { id: 'command-code-cli', name: 'Command Code' }
+    ]
+  } satisfies Record<DemoLocale, Runtime[]>,
   approvalCommand: 'pnpm add @paper-design/shaders-react',
   approvalTarget: 'pnpm add',
   /** report_artifacts paths, in display order; the first is the previewable web page. */
@@ -176,8 +224,8 @@ export const delegationDemo: Record<DemoLocale, DelegationCopy> = {
     addAgent: '添加智能体',
     agentName: '发布助手',
     session: 'v2.3 发布页',
-    task: '做一个 v2.3 发布页，主视觉用液态金属 logo：Claude Code 做页面，Codex 补冒烟测试，Grok Build 起草发布说明。',
-    intro: '委派给 launch 项目里的三个本地 Agent：Claude Code 做页面，Codex 写冒烟测试，Grok Build 写发布说明。',
+    task: '做一个 v2.3 发布页，主视觉用液态金属 logo：Qwen Code 做页面，Kimi 补冒烟测试，DeepSeek Harness 起草发布说明。',
+    intro: '委派给 launch 项目里的三个本地 Agent：Qwen Code 做页面，Kimi 写冒烟测试，DeepSeek Harness 写发布说明。',
     summary: 'v2.3 发布页做好了：用 Paper Shaders 做的液态金属 logo、通过的冒烟测试和发布说明。右侧直接预览。',
     from: '来自 {agent} / {session}',
     targets: [
@@ -201,10 +249,9 @@ export const delegationDemo: Record<DemoLocale, DelegationCopy> = {
       }
     ],
     history: {
-      'claude-code': ['重构登录 hooks'],
-      'cursor-cli': ['修复不稳定的登录 e2e'],
-      'pi-cli': ['起草发布说明'],
-      'qwen-code': ['翻译设置页']
+      'glm-acp-agent-cli': ['重构登录 hooks'],
+      'qoder-cli': ['修复不稳定的登录 e2e'],
+      'trae-cli': ['翻译设置页']
     },
     status: { pending: '等待中', running: '运行中', awaiting: '待输入', completed: '已完成', cancelled: '已取消' },
     cancel: '取消',
@@ -226,7 +273,7 @@ export const delegationDemo: Record<DemoLocale, DelegationCopy> = {
     launch: {
       badge: 'v2.3 · 本地 Agent',
       title: '所有 Agent，一个工作台。',
-      subtitle: 'Claude Code、Codex、Grok Build 等 30 多个本地 Agent，在 Cherry Studio 里并肩工作。',
+      subtitle: 'Qwen Code、Kimi、DeepSeek Harness 等 30 多个本地 Agent，在 Cherry Studio 里并肩工作。',
       primary: '下载',
       secondary: '发布说明'
     }

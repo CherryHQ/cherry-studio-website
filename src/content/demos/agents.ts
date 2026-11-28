@@ -13,9 +13,12 @@ export interface AgentDemoCopy {
   running: string
 }
 
-/** The model shown in the agent session bar. */
+/** The model shown in the agent session bar; the Chinese site shows a domestic one. */
 export const agentScript = {
-  model: { name: 'Claude Sonnet 4.6', provider: 'anthropic', providerName: 'Anthropic' }
+  model: {
+    en: { name: 'Claude Sonnet 5.5', provider: 'anthropic', providerName: 'Anthropic' },
+    zh: { name: 'Kimi K3.1 Pro', provider: 'moonshot', providerName: '月之暗面' }
+  } satisfies Record<DemoLocale, { name: string; provider: string; providerName: string }>
 }
 
 export const agentDemo: Record<DemoLocale, AgentDemoCopy> = {
