@@ -21,7 +21,8 @@ interface RepoStats {
 }
 
 const GITHUB_REPO = 'https://api.github.com/repos/CherryHQ/cherry-studio'
-const FEATURED_CONTRIBUTORS = 10
+// The first page of contributors (GitHub's maximum) fills the avatar wall; the rest are counted.
+const FEATURED_CONTRIBUTORS = 100
 const VISIBLE_CONTRIBUTORS = 15
 const CONTRIBUTOR_URL = 'https://github.com/CherryHQ/cherry-studio/graphs/contributors'
 
@@ -135,8 +136,8 @@ const ContributorsSection: FC = () => {
             </a>
           </div>
 
-          <div className="glass-card mx-auto max-w-[560px] rounded-[20px] p-6">
-            <dl className="grid grid-cols-3 gap-4">
+          <div className="glass-card mx-auto max-w-4xl rounded-[20px] p-6 sm:p-8">
+            <dl className="mx-auto grid max-w-[560px] grid-cols-3 gap-4">
               {stats.map((stat) => (
                 <div key={stat.label} className="text-center">
                   <dd className="font-display text-3xl text-foreground tabular-nums sm:text-3xl">
@@ -147,31 +148,43 @@ const ContributorsSection: FC = () => {
               ))}
             </dl>
 
-            <div className="border-border/50 mt-6 flex flex-col items-center justify-center gap-4 border-t pt-5 sm:flex-row sm:gap-3">
-              {featuredContributors.length > 0 && (
-                <div className="flex items-center -space-x-3 sm:-space-x-2">
-                  {featuredContributors.map((contributor) => (
-                    <a
-                      key={contributor.id}
-                      href={contributor.html_url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title={contributor.login}
-                      className="border-background focus-visible:ring-primary relative rounded-full border-2 transition-transform hover:z-10 hover:-translate-y-1 focus-visible:z-10 focus-visible:outline-none focus-visible:ring-2">
-                      <img
-                        src={contributor.avatar_url}
-                        alt={contributor.login}
-                        className="h-7 w-7 rounded-full sm:h-8 sm:w-8"
-                      />
-                    </a>
-                  ))}
-                  {repoStats.contributors !== null && repoStats.contributors > featuredContributors.length && (
-                    <span className="border-background bg-secondary text-muted-foreground relative flex h-8 min-w-8 items-center justify-center rounded-full border-2 px-1 text-[10px] font-medium sm:h-9 sm:min-w-9">
-                      +{repoStats.contributors - featuredContributors.length}
-                    </span>
-                  )}
-                </div>
+            <ul
+              aria-label={t('statistics.contributors')}
+              className="border-border/50 mt-6 flex flex-wrap justify-center gap-1.5 border-t pt-6">
+              {featuredContributors.map((contributor) => (
+                <li key={contributor.id}>
+                  <a
+                    href={contributor.html_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={contributor.login}
+                    className="group relative block rounded-full transition-transform duration-200 hover:z-10 hover:-translate-y-1 hover:scale-125 focus-visible:z-10 focus-visible:outline-2 focus-visible:outline-primary">
+                    <img
+                      src={
+                        contributor.avatar_url.includes('?')
+                          ? `${contributor.avatar_url}&s=64`
+                          : `${contributor.avatar_url}?s=64`
+                      }
+                      alt={contributor.login}
+                      loading="lazy"
+                      className="size-8 rounded-full bg-secondary ring-1 ring-border"
+                    />
+                  </a>
+                </li>
+              ))}
+              {repoStats.contributors !== null && repoStats.contributors > featuredContributors.length && (
+                <li>
+                  <a
+                    href={CONTRIBUTOR_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex h-8 min-w-8 items-center justify-center rounded-full bg-secondary px-2.5 text-xs font-medium text-muted-foreground ring-1 ring-border transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-primary">
+                    +{repoStats.contributors - featuredContributors.length}
+                  </a>
+                </li>
               )}
+            </ul>
+            <div className="mt-5 flex justify-center">
               <a
                 href={CONTRIBUTOR_URL}
                 target="_blank"
