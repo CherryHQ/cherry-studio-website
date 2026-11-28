@@ -124,7 +124,6 @@ export default function AgentJobDemo() {
   const thread = useRef<HTMLDivElement>(null)
   const popupRef = useRef<HTMLDivElement>(null)
   const paneRef = useRef<Pane>(null)
-  const followRef = useRef(true)
   const playing = useDemoPlayback(ref)
   const [state, setState] = useState<RunState>(INITIAL)
   const [elapsed, setElapsed] = useState(0)
@@ -153,7 +152,6 @@ export default function AgentJobDemo() {
     }))
 
   const { replay } = useDemoScript(async ({ wait, reduced: skip }) => {
-    followRef.current = true
     setPopupOpen(false)
     setGroupOpen(true)
     if (skip) {
@@ -208,13 +206,12 @@ export default function AgentJobDemo() {
     push({ id: 'w1', kind: 'write', done: false })
     await wait(120)
     setPane((current) => current ?? { kind: 'deck' })
+    // The cover stays in view while the thumbnail rail fills; flipping the main view per slide read as a blur.
     for (let built = 1; built <= SLIDE_COUNT; built += 1) {
       update({ built })
-      if (followRef.current) setSlide(built - 1)
       await wait(170)
     }
     finish('w1')
-    if (followRef.current) setSlide(0)
     update({ todos: ['completed', 'completed', 'completed', 'running'] })
     push({ id: 'r1', kind: 'run', done: false })
     await wait(380)
@@ -261,10 +258,6 @@ export default function AgentJobDemo() {
   const openFlow = (index: number) => {
     setPopupOpen(false)
     setPane({ kind: 'flow', index })
-  }
-  const selectSlide = (index: number) => {
-    followRef.current = false
-    setSlide(index)
   }
 
   const showInline = inline && detailsOpen
@@ -630,7 +623,7 @@ export default function AgentJobDemo() {
             </button>
           </div>
           <div className="min-h-0 flex-1">
-            <DeckViewer copy={copy.deck} built={state.built} current={slide} onSelect={selectSlide} />
+            <DeckViewer copy={copy.deck} built={state.built} current={slide} onSelect={setSlide} />
           </div>
         </>
       ) : (
