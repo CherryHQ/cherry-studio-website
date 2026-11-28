@@ -182,7 +182,7 @@ export default function CapabilitiesSection() {
               ref={(element) => {
                 articles.current[chapter] = element
               }}
-              className="pb-16 sm:pb-20">
+              className="pb-16 sm:pb-20 lg:flex lg:min-h-[calc(100svh-var(--site-header-height))] lg:flex-col lg:justify-center lg:py-12">
               <div className="mb-8 lg:hidden">
                 <ChapterText chapter={chapter} />
               </div>
