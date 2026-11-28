@@ -49,7 +49,8 @@ export default function PhoneFrame({
   }, [])
 
   return (
-    <figure className={cn('mx-auto w-full max-w-[320px] min-w-0', className)}>
+    // A set width, not w-full: placed in a flex row the frame would otherwise shrink to its caption's width.
+    <figure className={cn('mx-auto w-[320px] max-w-full min-w-0 lg:w-[350px] 2xl:w-[390px]', className)}>
       <div className="relative w-full rounded-[52px] p-[10px] bg-[linear-gradient(150deg,#3a3a3e_0%,#1b1b1d_38%,#141416_62%,#2e2e32_100%)] shadow-[0_0_0_1px_rgb(0_0_0/0.35),0_30px_60px_-30px_rgb(0_0_0/0.65)] dark:shadow-[0_0_0_1px_rgb(255_255_255/0.22),0_0_90px_-12px_rgb(255_255_255/0.14),0_40px_80px_-30px_rgb(0_0_0/0.9)]">
         <span
           aria-hidden="true"

@@ -89,7 +89,15 @@ function ToolsVisual() {
           const y = Math.sin(angle) * ORBIT
           return (
             <g key={index}>
-              <line x1={0} y1={0} x2={x} y2={y} className="stroke-foreground/20" strokeWidth={1.25} strokeDasharray="2 3" />
+              <line
+                x1={0}
+                y1={0}
+                x2={x}
+                y2={y}
+                className="stroke-foreground/20"
+                strokeWidth={1.25}
+                strokeDasharray="2 3"
+              />
               {beat === index && (
                 <m.circle
                   r={2.5}

@@ -111,7 +111,7 @@ export default function TabletLayoutDemo() {
 
   return (
     <div ref={ref} role="region" aria-label={copy.region}>
-      <figure className="mx-auto w-full max-w-[900px] min-w-0">
+      <figure className="mx-auto w-[900px] max-w-full min-w-0">
         <div className="relative rounded-[30px] p-[12px] bg-[linear-gradient(150deg,#3a3a3e_0%,#1b1b1d_38%,#141416_62%,#2e2e32_100%)] shadow-[0_0_0_1px_rgb(0_0_0/0.35),0_30px_60px_-30px_rgb(0_0_0/0.65)] dark:shadow-[0_0_0_1px_rgb(255_255_255/0.22),0_0_90px_-12px_rgb(255_255_255/0.14),0_40px_80px_-30px_rgb(0_0_0/0.9)]">
           <div ref={screen} className="relative aspect-[1180/820] w-full overflow-hidden rounded-[18px] bg-black">
             <div
