@@ -18,12 +18,6 @@ const EN_ONLY = new Set([
   'contributors.commit_count_other',
   'download_page.join_discord',
   'footer.community.title',
-  'highlights.agents.description',
-  'highlights.agents.title',
-  'highlights.images.description',
-  'highlights.images.title',
-  'highlights.knowledge.description',
-  'highlights.knowledge.title',
   'page_description.compare_claude_desktop_app',
   'page_title.compare_claude_desktop_app',
   'statistics.forks'
@@ -33,10 +27,6 @@ const ZH_ONLY_SUBTREES = [
   'compare.links.claude-code',
   'contribution',
   'contributors.commit_count',
-  'highlights.customizable',
-  'highlights.extensible',
-  'highlights.productivity',
-  'highlights.stats',
   'home_faq.subtitle',
   'page_description.compare_claude_code',
   'page_title.compare_claude_code'

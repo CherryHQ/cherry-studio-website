@@ -8,25 +8,44 @@ import trainWindow from '@/assets/images/paintings/train-window.webp'
 import y2kStreet from '@/assets/images/paintings/y2k-street.webp'
 import { cliIcon } from '@/components/demos/primitives/brand'
 import ProviderIcon from '@/components/demos/primitives/ProviderIcon'
+import { useDemoLocale } from '@/components/demos/primitives/useDemoLocale'
 import BlurInText from '@/components/website/BlurInText'
 import Marquee from '@/components/website/Marquee'
+import type { DemoLocale } from '@/content/demos/chat'
 import productStats from '@/content/product-stats.json'
 import { reveal } from '@/lib/motion'
 import { cn } from '@/lib/utils'
 
 const TILE = 'flex shrink-0 items-center justify-center bg-background shadow-[inset_0_0_0_1px_var(--color-border)]'
-const CLIS = [
-  { id: 'claude-code' },
-  { id: 'openai-codex' },
-  { id: 'grok-build-cli', mono: true },
-  { id: 'cursor-cli', mono: true },
-  { id: 'gemini-cli' },
-  { id: 'kiro-cli' }
-]
-const PROVIDER_ROWS = [
-  ['anthropic', 'openai', 'google', 'grok', 'mistral', 'openrouter', 'ollama'],
-  ['deepseek', 'qwen', 'moonshot', 'zhipu', 'minimax', 'doubao', 'step']
-]
+// The Chinese site shows only domestic providers and coding agents.
+const CLIS: Record<DemoLocale, { id: string; mono?: boolean }[]> = {
+  en: [
+    { id: 'claude-code' },
+    { id: 'openai-codex' },
+    { id: 'grok-build-cli', mono: true },
+    { id: 'cursor-cli', mono: true },
+    { id: 'gemini-cli' },
+    { id: 'kiro-cli' }
+  ],
+  zh: [
+    { id: 'qwen-code' },
+    { id: 'kimi-cli' },
+    { id: 'deepseek-harness-cli' },
+    { id: 'glm-acp-agent-cli', mono: true },
+    { id: 'qoder-cli', mono: true },
+    { id: 'trae-cli' }
+  ]
+}
+const PROVIDER_ROWS: Record<DemoLocale, string[][]> = {
+  en: [
+    ['anthropic', 'openai', 'google', 'grok', 'mistral', 'openrouter', 'ollama'],
+    ['deepseek', 'qwen', 'moonshot', 'zhipu', 'minimax', 'doubao', 'step']
+  ],
+  zh: [
+    ['deepseek', 'qwen', 'moonshot', 'zhipu', 'minimax'],
+    ['doubao', 'step', 'wenxin', 'mimo', 'longcat']
+  ]
+}
 const FILES = [
   { label: 'PDF', tone: 'text-red-600 dark:text-red-400' },
   { label: 'DOCX', tone: 'text-blue-600 dark:text-blue-400' },
@@ -93,6 +112,7 @@ function useCycle(length: number, ms: number) {
 
 const WhySection: FC = () => {
   const { t } = useTranslation()
+  const { locale } = useDemoLocale()
   const { ref: stripRef, index: phrase } = useCycle(PHRASES.length, 1800)
   const copy = (key: string) => ({
     title: t(`highlights.${key}.title`),
@@ -143,7 +163,7 @@ const WhySection: FC = () => {
               <div
                 aria-hidden="true"
                 className="grid min-h-48 flex-1 content-center gap-3 py-8 [mask-image:linear-gradient(90deg,transparent,black_18%,black_82%,transparent)]">
-                {PROVIDER_ROWS.map((row, index) => (
+                {PROVIDER_ROWS[locale].map((row, index) => (
                   <Marquee key={index} reverse={index === 1} seconds={28}>
                     {(hidden) => (
                       <ul aria-hidden={hidden || undefined} className="flex shrink-0 gap-3 pr-3">
@@ -169,7 +189,7 @@ const WhySection: FC = () => {
             {...copy('agents')}
             visual={
               <div className="flex items-center -space-x-3 transition-[gap] duration-500 ease-settle group-hover:space-x-1">
-                {CLIS.map(({ id, mono }, index) => (
+                {CLIS[locale].map(({ id, mono }, index) => (
                   <span
                     key={id}
                     className={cn(

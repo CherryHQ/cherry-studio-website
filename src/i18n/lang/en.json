@@ -221,35 +221,6 @@
     "knowledge_base_description": "Cherry Studio has now launched the knowledge base function, which supports importing files in various formats and importing web pages to build your personalized knowledge base.",
     "download_client": "Download Client"
   },
-  "features": {
-    "title": "Unlock the Power of AI",
-    "description": "From creative conversations to knowledge management, enjoy a complete AI experience. Learn more in the <1>Official Documentation</1>.",
-    "learn_more": "Learn More",
-    "conversation": {
-      "title": "AI Chat",
-      "description": "In addition to basic AI conversations, it can also help you with document or image conversations, and even formula and HTML previews."
-    },
-    "drawing": {
-      "title": "AI Drawing",
-      "description": "Supports a variety of drawing models, so you can give full play to your imagination and let Cherry Studio help you complete it."
-    },
-    "translation": {
-      "title": "AI Translation",
-      "description": "Whether it's the translation page or the conversation bar, Cherry Studio can quickly translate the content you enter."
-    },
-    "assistants": {
-      "title": "{{assistants}} Built-in Assistants",
-      "description": "Cherry Studio has {{assistants}} built-in assistants in various categories, making you more efficient when using AI."
-    },
-    "knowledge_base": {
-      "title": "Multi-source Knowledge Base",
-      "description": "Whether it's a local file or a web page, it can be used as a knowledge source to quickly build your exclusive knowledge base."
-    },
-    "backup": {
-      "title": "Multiple Backup Methods",
-      "description": "Including local backup and cloud backup, worry-free switching between multiple devices, more convenient and safer."
-    }
-  },
   "team_collaboration": {
     "eyebrow": "Team collaboration",
     "title": "Turn AI into team productivity",
@@ -627,25 +598,6 @@
   "telegram": {
     "channel_members": "Channel Members: ",
     "current_online": "Currently Online: "
-  },
-  "flagship_models": {
-    "title": "Day-One Flagship Support",
-    "subtitle": "Latest flagship models through partners like CherryIN, OpenRouter, and SiliconFlow",
-    "deepseek": {
-      "name": "DeepSeek V4 Pro",
-      "description": "DeepSeek's latest flagship release brings major Agent and production-workload gains, with a 1M-token context window, up to 384K output, flexible reasoning effort, and native OpenAI Responses API support.",
-      "feature1": "1M Context",
-      "feature2": "384K Max Output",
-      "feature3": "Agent + Reasoning"
-    },
-    "featured": {
-      "name": "GLM-5.3",
-      "description": "Zhipu AI's latest flagship model is built for complex software engineering and Agent tasks, with a 1M-token context window, up to 128K output, and stronger coding and long-horizon performance than GLM-5.2.",
-      "feature1": "1M Context",
-      "feature2": "128K Max Output",
-      "feature3": "Coding + Agent"
-    },
-    "cta": "Continuously integrating future flagships…"
   },
   "theme_page": {
     "title": "Theme Market",

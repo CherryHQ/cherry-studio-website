@@ -1,10 +1,8 @@
 import type { FC } from 'react'
-import { useTranslation } from 'react-i18next'
 
 import Footer from '@/components/website/Footer'
 import WebsiteBanner from '@/components/website/WebsiteBanner'
 import { usePageMeta } from '@/hooks/usePageMeta'
-import { isEnglishSite } from '@/utils/urls'
 import CapabilitiesSection from './components/CapabilitiesSection'
 import CommunitySection from './components/CommunitySection'
 import ContributorsSection from './components/ContributorsSection'
@@ -12,10 +10,7 @@ import DownloadDock from './components/DownloadDock'
 import DownloadSection from './components/DownloadSection'
 import EverywhereSection from './components/EverywhereSection'
 import FAQSection from './components/FAQSection'
-import FeaturesSection from './components/FeaturesSection'
-import FlagshipModelsSection from './components/FlagshipModelsSection'
 import HeroSection from './components/HeroSection'
-import HighlightsSection from './components/HighlightsSection'
 import ProvidersSection from './components/ProvidersSection'
 import TeamCollaborationSection from './components/TeamCollaborationSection'
 import TestimonialsSection from './components/TestimonialsSection'
@@ -23,20 +18,6 @@ import WhySection from './components/WhySection'
 
 const HomePage: FC = () => {
   usePageMeta('home')
-  const { i18n } = useTranslation()
-  const isEn = isEnglishSite(i18n.resolvedLanguage || i18n.language)
-
-  // 中文站额外展示国产旗舰模型与本地化功能入口。
-  const sections = isEn
-    ? [WhySection, TeamCollaborationSection, TestimonialsSection, ContributorsSection]
-    : [
-        FlagshipModelsSection,
-        FeaturesSection,
-        TeamCollaborationSection,
-        TestimonialsSection,
-        HighlightsSection,
-        ContributorsSection
-      ]
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -47,9 +28,10 @@ const HomePage: FC = () => {
         <CapabilitiesSection />
         <EverywhereSection />
         <div className="bg-background [&>section]:border-t [&>section]:border-border">
-          {sections.map((Section, index) => (
-            <Section key={index} />
-          ))}
+          <WhySection />
+          <TeamCollaborationSection />
+          <TestimonialsSection />
+          <ContributorsSection />
           <FAQSection />
           <CommunitySection />
         </div>
