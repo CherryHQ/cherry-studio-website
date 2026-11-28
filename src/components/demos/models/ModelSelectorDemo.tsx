@@ -271,7 +271,7 @@ export default function ModelSelectorDemo() {
 
   return (
     <div ref={ref} role="region" aria-label={copy.window} onKeyDown={onRegionKeyDown}>
-      <DemoFrame chromeless title={copy.window} onReplay={replay} bodyClassName="h-[490px]">
+      <DemoFrame chromeless title={copy.window} onReplay={replay} bodyClassName="h-[580px]">
         <AppShell active="assistants" tab={{ title: tabTitle(copy.window), emoji: '😀' }}>
           <div ref={bodyRef} className="@container relative flex h-full flex-col">
             {/* Desktop ChatNavbar: sidebar toggle, then the conversation controls portal; it turns icon-only when crowded. */}

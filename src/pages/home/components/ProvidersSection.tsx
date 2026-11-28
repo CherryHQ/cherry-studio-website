@@ -142,14 +142,19 @@ export default function ProvidersSection() {
 
   return (
     <section className="relative border-y border-border bg-card/40" aria-labelledby="home-providers">
-      <div className="site-container grid gap-10 py-14 sm:py-20 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:items-center lg:gap-16">
-        <div>
-          <p className="mb-3 text-sm font-medium text-muted-foreground">{t('home_page.providers')}</p>
-          <h2 id="home-providers" className="text-4xl font-display text-balance sm:text-5xl">
-            <BlurInText text={t('providers.title')} />
-          </h2>
-          <p className="mt-4 max-w-md text-pretty text-muted-foreground zh:leading-[1.8]">{t('providers.subtitle')}</p>
-          <dl className="mt-8 grid max-w-md grid-cols-3 divide-x divide-border rounded-[20px] border border-border">
+      {/* Copy and stats share one row so the app window below gets the full width a real window has. */}
+      <div className="site-container py-14 sm:py-20">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end lg:gap-16">
+          <div>
+            <p className="mb-3 text-sm font-medium text-muted-foreground">{t('home_page.providers')}</p>
+            <h2 id="home-providers" className="text-4xl font-display text-balance sm:text-5xl">
+              <BlurInText text={t('providers.title')} />
+            </h2>
+            <p className="mt-4 max-w-xl text-pretty text-muted-foreground zh:leading-[1.8]">
+              {t('providers.subtitle')}
+            </p>
+          </div>
+          <dl className="grid grid-cols-3 divide-x divide-border rounded-[20px] border border-border lg:w-[420px]">
             {stats.map((stat) => (
               <div key={stat.label} className="px-4 py-3.5">
                 <dt className="text-xs text-muted-foreground">{stat.label}</dt>
@@ -158,7 +163,10 @@ export default function ProvidersSection() {
             ))}
           </dl>
         </div>
-        <DemoMount load={() => import('@/components/demos/models/ModelSelectorDemo')} className="min-h-[520px]" />
+        <DemoMount
+          load={() => import('@/components/demos/models/ModelSelectorDemo')}
+          className="mx-auto mt-10 min-h-[620px] max-w-5xl xl:max-w-6xl"
+        />
       </div>
 
       {/* Marquee after Incidental AI Design Academy's MIT "Marquee": provider chips over a reversed row of model names. */}
