@@ -945,7 +945,10 @@ export default function MarketplaceDemo({ bezel }: { bezel?: boolean }) {
     const text = skillText(skill.id)
     const installed = state.installed.includes(skill.id)
     const job = state.installing === skill.id
-    const published = new Intl.DateTimeFormat(tag, { dateStyle: 'medium' }).format(new Date(skill.released))
+    // A calendar date: format it in UTC so viewers behind UTC don't see the day before.
+    const published = new Intl.DateTimeFormat(tag, { dateStyle: 'medium', timeZone: 'UTC' }).format(
+      new Date(skill.released)
+    )
     const downloads = new Intl.NumberFormat(tag, { notation: 'compact' }).format(skill.downloads)
     return (
       <>

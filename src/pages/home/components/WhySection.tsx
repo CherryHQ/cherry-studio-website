@@ -3,6 +3,10 @@ import { ArrowRight } from 'lucide-react'
 import { type FC, type ReactNode, useEffect, useRef, useState } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 
+import pdfIcon from '@/assets/images/brand/skill/pdf.svg'
+import powerpointIcon from '@/assets/images/brand/skill/powerpoint.svg'
+import tableIcon from '@/assets/images/brand/skill/table.svg'
+import wordIcon from '@/assets/images/brand/skill/word.svg'
 import lightTrails from '@/assets/images/paintings/light-trails.webp'
 import trainWindow from '@/assets/images/paintings/train-window.webp'
 import y2kStreet from '@/assets/images/paintings/y2k-street.webp'
@@ -46,11 +50,12 @@ const PROVIDER_ROWS: Record<DemoLocale, string[][]> = {
     ['doubao', 'step', 'wenxin', 'mimo', 'longcat']
   ]
 }
+// File-type marks from the desktop FileIcon set (material-icon-theme).
 const FILES = [
-  { label: 'PDF', tone: 'text-red-600 dark:text-red-400' },
-  { label: 'DOCX', tone: 'text-blue-600 dark:text-blue-400' },
-  { label: 'MD', tone: 'text-foreground' },
-  { label: 'URL', tone: 'text-emerald-600 dark:text-emerald-400' }
+  { label: 'PDF', icon: pdfIcon },
+  { label: 'DOCX', icon: wordIcon },
+  { label: 'XLSX', icon: tableIcon },
+  { label: 'PPTX', icon: powerpointIcon }
 ]
 const PAINTINGS = [lightTrails, y2kStreet, trainWindow]
 // A gentle fan for stacked tiles; hover straightens and spreads them.
@@ -171,7 +176,7 @@ const WhySection: FC = () => {
                           // Provider logos are full-bleed tile artwork, so they fill the tile and take its rounding.
                           <li
                             key={id}
-                            className="size-16 shrink-0 overflow-hidden rounded-2xl ring-1 ring-foreground/10 ring-inset">
+                            className="size-16 shrink-0 overflow-hidden rounded-2xl bg-white ring-1 ring-foreground/10 ring-inset">
                             <ProviderIcon id={id} className="size-full object-cover" />
                           </li>
                         ))}
@@ -197,7 +202,7 @@ const WhySection: FC = () => {
                       'size-16 rounded-2xl ring-4 ring-card transition-transform duration-500 ease-settle group-hover:rotate-0',
                       FAN[index]
                     )}>
-                    <img src={cliIcon(id)} alt="" className={cn('size-8', mono && 'dark:invert')} />
+                    <img src={cliIcon(id)} alt="" className={cn('size-11', mono && 'dark:invert')} />
                   </span>
                 ))}
               </div>
@@ -267,13 +272,11 @@ const WhySection: FC = () => {
                     key={file.label}
                     className={cn(
                       TILE,
-                      'h-28 w-[88px] flex-col justify-end gap-1.5 rounded-xl pb-3 shadow-md ring-4 ring-card transition-transform duration-500 ease-settle group-hover:rotate-0',
+                      'h-28 w-[88px] flex-col gap-1.5 rounded-xl pb-3 shadow-md ring-4 ring-card transition-transform duration-500 ease-settle group-hover:rotate-0',
                       FAN[index + 1]
                     )}>
-                    <span className="h-0.5 w-12 rounded-full bg-foreground/10" />
-                    <span className="h-0.5 w-10 rounded-full bg-foreground/10" />
-                    <span className="h-0.5 w-12 rounded-full bg-foreground/10" />
-                    <span className={cn('mt-1.5 text-[10px] font-semibold', file.tone)}>{file.label}</span>
+                    <img src={file.icon} alt="" className="mb-auto mt-5 size-10" />
+                    <span className="text-[10px] font-semibold text-muted-foreground">{file.label}</span>
                   </span>
                 ))}
               </div>

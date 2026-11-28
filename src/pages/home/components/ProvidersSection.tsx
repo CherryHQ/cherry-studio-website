@@ -80,7 +80,7 @@ const cnLogos: LogoInfo[] = [
   { src: baiduCloudLogo, name: '百度智能云' },
   { src: sparkLogo, name: '讯飞星火' },
   { src: modelscopeLogo, name: 'ModelScope 魔搭' },
-  { src: giteeAiLogo, name: 'Gitee AI' },
+  { src: giteeAiLogo, name: 'Gitee AI', darkInvert: true },
   { src: ai360Logo, name: '360 智脑' },
   { src: zeroOneLogo, name: '零一万物', darkInvert: true },
   { src: ai302Logo, name: '302.AI' },
@@ -146,7 +146,7 @@ export default function ProvidersSection() {
   )
 
   return (
-    <section className="relative overflow-hidden py-16 sm:py-24" aria-labelledby="home-providers">
+    <section className="relative overflow-hidden pt-4 pb-12 sm:pt-6 sm:pb-12" aria-labelledby="home-providers">
       <div className="site-container relative text-center">
         <p className="mb-3 text-sm font-medium text-muted-foreground">{t('home_page.providers')}</p>
         <h2 id="home-providers" className="text-4xl font-display text-balance sm:text-6xl 2xl:text-7xl">
