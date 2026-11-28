@@ -87,10 +87,11 @@ export default function HeroSection() {
         }>
         <div
           className={cn(
-            'overflow-hidden',
+            // Clip sideways only, so the window's soft shadow fades out instead of ending on the stage's bottom edge.
+            'overflow-x-clip',
             !reduced && 'sticky top-(--site-header-height) h-[calc(100svh-var(--site-header-height))]'
           )}>
-          <HeroBackdrop className="inset-0 -z-10" />
+          <HeroBackdrop className="inset-0 -z-10 [mask-image:linear-gradient(to_bottom,#000_45%,transparent)]" />
           <m.div
             ref={headline}
             style={reduced ? undefined : { y: headlineY, opacity: headlineOpacity }}

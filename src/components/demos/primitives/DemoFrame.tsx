@@ -55,7 +55,7 @@ export default function DemoFrame({
   return (
     <figure className={cn('min-w-0', className)}>
       {bezel ? (
-        <div className="relative rounded-[28px] bg-white/15 p-2 shadow-[0_60px_140px_-40px_rgb(11_29_38/0.6),0_24px_70px_-30px_rgb(255_111_97/0.55)] ring-1 ring-white/35 ring-inset backdrop-blur-2xl dark:bg-white/8 dark:ring-white/15">
+        <div className="relative rounded-[28px] bg-white/15 p-2 shadow-[0_40px_100px_-40px_rgb(11_29_38/0.45),0_16px_48px_-24px_rgb(255_111_97/0.35)] ring-1 ring-white/35 ring-inset backdrop-blur-2xl dark:bg-white/8 dark:ring-white/15">
           <span
             aria-hidden="true"
             className="pointer-events-none absolute inset-x-0 top-0 h-1/2 rounded-t-[28px] bg-linear-to-b from-white/35 to-transparent dark:from-white/15"
