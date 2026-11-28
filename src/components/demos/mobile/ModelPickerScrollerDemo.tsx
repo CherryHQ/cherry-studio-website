@@ -391,8 +391,8 @@ export default function ModelPickerScrollerDemo() {
                               canvasFocus,
                               index === highlighted ? tone.secondary : 'opacity-80'
                             )}>
-                            <span className="flex size-5 items-center justify-center overflow-hidden rounded-sm bg-white">
-                              <BrandMark id={provider.id} className="size-[17px]" />
+                            <span className="flex size-5 overflow-hidden rounded-[5px] ring-1 ring-black/[0.06] dark:ring-white/10">
+                              <BrandMark id={provider.id} className="size-full" />
                             </span>
                           </button>
                         </div>
@@ -416,8 +416,8 @@ export default function ModelPickerScrollerDemo() {
                           exit={{ opacity: 0, transition: { duration: 0.12 } }}
                           style={{ top: previewTop }}
                           className="pointer-events-none absolute right-16 flex min-h-36 w-38 flex-col items-center justify-center gap-3 rounded-3xl border border-white/65 bg-white/60 px-4 py-5 shadow-md shadow-black/10 backdrop-blur-2xl dark:border-white/[0.09] dark:bg-[#1a1a1a]/65 dark:shadow-black/25">
-                          <span className="flex size-12 items-center justify-center overflow-hidden rounded-xl bg-white">
-                            <BrandMark id={previewProvider.id} className="size-9" />
+                          <span className="flex size-12 overflow-hidden rounded-xl ring-1 ring-black/[0.06] dark:ring-white/10">
+                            <BrandMark id={previewProvider.id} className="size-full" />
                           </span>
                           <span className="line-clamp-2 w-full text-center text-[18px] leading-7 font-semibold">
                             {previewProvider.name}

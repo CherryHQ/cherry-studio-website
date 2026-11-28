@@ -147,22 +147,22 @@ export function CherryAvatar({ size = 24, className }: { size?: number; classNam
   )
 }
 
-/** Light provider artwork, since the app draws brand marks on a white tile in both themes. */
+/** Light provider artwork. It is full-bleed tile art, so it fills whatever shape clips it. */
 export function BrandMark({ id, className }: { id: string; className?: string }) {
-  return <img src={providerIcon(id).light} alt="" className={cn('object-contain', className)} />
+  return <img src={providerIcon(id).light} alt="" className={cn('object-cover', className)} />
 }
 
-/** Brand artwork in a white disc, as the model and provider avatars draw it. */
+/** Brand artwork clipped to a disc, as the model and provider avatars draw it. */
 export function BrandAvatar({ id, size = 28, className }: { id: string; size?: number; className?: string }) {
   return (
     <span
       aria-hidden="true"
       style={{ width: size, height: size }}
       className={cn(
-        'flex shrink-0 items-center justify-center overflow-hidden rounded-full bg-white ring-1 ring-black/[0.06] dark:ring-white/10',
+        'flex shrink-0 overflow-hidden rounded-full bg-white ring-1 ring-black/[0.06] dark:ring-white/10',
         className
       )}>
-      <BrandMark id={id} className="size-[62%]" />
+      <BrandMark id={id} className="size-full" />
     </span>
   )
 }
