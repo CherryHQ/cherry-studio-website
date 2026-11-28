@@ -28,46 +28,46 @@ const FAQSection: FC = () => {
     <section
       id="faq"
       aria-labelledby="home-faq-heading"
-      className="relative isolate border-t border-border py-20 sm:py-28">
-      <div className="site-container site-split">
-        <div className="max-w-sm">
-          <h2 id="home-faq-heading" className="text-4xl font-display text-balance sm:text-5xl">
-            <BlurInText text={t('home_faq.title')} />
-          </h2>
-          {isZh && <p className="mt-3 text-base text-muted-foreground">{t('home_faq.subtitle')}</p>}
+      className="relative isolate border-t border-border py-16 sm:py-24">
+      <div className="site-container mx-auto max-w-3xl">
+        <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <h2 id="home-faq-heading" className="text-3xl font-display text-balance sm:text-4xl">
+              <BlurInText text={t('home_faq.title')} />
+            </h2>
+            {isZh && <p className="mt-2 text-sm text-muted-foreground">{t('home_faq.subtitle')}</p>}
+          </div>
           <a
             href={getDocsUrl(i18n.language)}
-            className="mt-4 inline-flex rounded-sm text-sm font-medium text-primary underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
+            className="inline-flex items-center gap-1 rounded-sm text-sm font-medium text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
             {t('nav.docs')}
-            <ArrowRight className="ml-1 size-4" aria-hidden="true" />
+            <ArrowRight className="size-4" aria-hidden="true" />
           </a>
         </div>
 
-        <div className="space-y-2">
+        <div className="divide-y divide-border border-y border-border">
           {faqItems.map(({ question, answer }, index) => {
             const isOpen = openIndex === index
             return (
-              <div
-                key={question}
-                className={cn(
-                  'rounded-2xl border px-5 transition-colors duration-200',
-                  isOpen ? 'glass-card border-hairline-strong' : 'border-border hover:border-hairline-strong'
-                )}>
+              <div key={question}>
                 <h3>
                   <button
                     type="button"
                     aria-expanded={isOpen}
                     aria-controls={`home-faq-answer-${index}`}
                     onClick={() => toggleItem(index)}
-                    className="flex w-full cursor-pointer items-center justify-between gap-4 py-4 pr-1 text-left text-base font-medium text-foreground transition-colors hover:text-primary focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-primary">
-                    <span>{question}</span>
-                    <Plus
-                      aria-hidden="true"
+                    className="group flex w-full cursor-pointer items-center justify-between gap-4 py-5 text-left text-base font-medium text-foreground focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-primary">
+                    <span className="transition-colors group-hover:text-muted-foreground">{question}</span>
+                    <span
                       className={cn(
-                        'size-4 shrink-0 text-muted-foreground transition-transform duration-200 ease-settle',
-                        isOpen && 'rotate-45 text-primary'
-                      )}
-                    />
+                        'flex size-7 shrink-0 items-center justify-center rounded-full border border-border transition-[background-color,border-color,color] duration-200',
+                        isOpen ? 'border-foreground bg-foreground text-background' : 'text-muted-foreground'
+                      )}>
+                      <Plus
+                        aria-hidden="true"
+                        className={cn('size-3.5 transition-transform duration-200 ease-settle', isOpen && 'rotate-45')}
+                      />
+                    </span>
                   </button>
                 </h3>
                 {/* Desktop tool accordions open in 200ms and close in 160ms. */}
@@ -78,7 +78,7 @@ const FAQSection: FC = () => {
                   transition={{ duration: isOpen ? 0.2 : 0.16, ease: ease.settle }}
                   aria-hidden={!isOpen}
                   className="overflow-hidden">
-                  <p className="max-w-2xl pr-6 pb-5 text-pretty text-sm leading-6 text-muted-foreground zh:leading-7">
+                  <p className="max-w-2xl pr-10 pb-5 text-pretty text-sm leading-6 text-muted-foreground zh:leading-7">
                     {answer}
                   </p>
                 </m.div>

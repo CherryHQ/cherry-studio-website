@@ -1,4 +1,4 @@
-import { ArrowUpRight, ChevronRight, MessageCircle, QrCode, X } from 'lucide-react'
+import { ArrowUpRight, MessageCircle, QrCode, X } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -12,6 +12,7 @@ import tgIcon from '@/assets/images/icons/tg.svg'
 import xIcon from '@/assets/images/icons/x.svg'
 import { fetchChannelData, getRandomWechatQRCode } from '@/assets/js/data'
 import BlurInText from '@/components/website/BlurInText'
+import HeroBackdrop from '@/components/website/HeroBackdrop'
 import { isEnglishSite } from '@/utils/urls'
 
 const DISCORD_URL = 'https://discord.gg/wez8HtpxqQ'
@@ -37,9 +38,9 @@ function DiscordMark({ className }: { className?: string }) {
   )
 }
 
+// Frosted pills on the silk card; icons are drawn white so every brand mark reads on the coral.
 const linkStyle =
-  'flex min-w-0 cursor-pointer items-center gap-3 bg-card px-4 py-4 text-left text-sm font-medium text-foreground transition-colors hover:bg-accent focus-visible:z-10 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-primary sm:[&:last-child:nth-child(odd)]:col-span-2'
-const arrowStyle = 'ml-auto size-4 shrink-0 text-muted-foreground'
+  'inline-flex h-10 cursor-pointer items-center gap-2 rounded-full bg-white/15 px-4 text-sm font-medium text-white ring-1 ring-white/25 backdrop-blur-md transition-colors ring-inset hover:bg-white/25 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white'
 
 export default function CommunitySection() {
   const { t, i18n } = useTranslation()
@@ -62,62 +63,55 @@ export default function CommunitySection() {
   }, [isEn])
 
   return (
-    <section
-      id="Community"
-      aria-labelledby="home-community-heading"
-      className="relative isolate border-t border-border py-20 sm:py-28">
-      <div className="site-container site-split">
-        <div className="max-w-md">
-          <h2 id="home-community-heading" className="text-4xl font-display text-balance sm:text-5xl">
-            <BlurInText text={t('community.title')} />
-          </h2>
-          <p className="mt-3 text-pretty text-base text-muted-foreground">{t('community.subtitle')}</p>
+    <section id="Community" aria-labelledby="home-community-heading" className="relative isolate py-16 sm:py-24">
+      <div className="site-container">
+        <div className="relative isolate overflow-hidden rounded-[28px] px-6 py-12 text-center sm:px-12 sm:py-16">
+          <HeroBackdrop className="inset-0 -z-10 [mask-image:none]" />
+          <div className="on-silk mx-auto max-w-2xl">
+            <h2 id="home-community-heading" className="text-3xl font-display text-balance sm:text-5xl">
+              <BlurInText text={t('community.title')} />
+            </h2>
+            <p className="mt-3 text-pretty text-base text-muted-foreground">{t('community.subtitle')}</p>
+          </div>
+
           {isEn && (
             <a
               href={DISCORD_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="group glass-card relative mt-8 flex items-center gap-4 overflow-hidden rounded-[20px] p-5 transition-[border-color,transform] duration-300 ease-settle hover:-translate-y-0.5 hover:border-[#5865f2]/50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
-              <span className="relative flex size-11 shrink-0 items-center justify-center rounded-xl bg-[#5865f2] text-white shadow-[0_8px_24px_-6px_#5865f2]">
-                <DiscordMark className="size-6" />
-              </span>
-              <span className="relative min-w-0">
-                <span className="flex items-center gap-1.5 font-semibold text-foreground">
-                  {t('community.join_discord')}
-                  <ArrowUpRight aria-hidden="true" className="size-4 text-muted-foreground" />
-                </span>
-                <span className="mt-0.5 block text-sm text-muted-foreground">{t('community.discord_prompt')}</span>
-              </span>
+              className="mt-8 inline-flex h-12 items-center gap-2.5 rounded-full bg-white px-6 text-[15px] font-semibold text-[#2b1a1f] shadow-[0_12px_32px_-12px_rgb(11_29_38/0.6)] transition-transform hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white active:scale-[0.97]">
+              <DiscordMark className="size-5 text-[#5865f2]" />
+              {t('community.join_discord')}
+              <ArrowUpRight aria-hidden="true" className="size-4 opacity-60" />
             </a>
           )}
-        </div>
 
-        <div className="grid gap-px self-start overflow-hidden rounded-[20px] border border-border bg-border sm:grid-cols-2">
-          {(isEn ? enSocialLinks : zhSocialLinks).map(({ label, href, icon }) => (
-            <a key={href} href={href} target="_blank" rel="noopener noreferrer" className={linkStyle}>
-              <img src={icon} alt="" className="size-4 shrink-0 brightness-0 dark:invert" />
-              <span>{label}</span>
-              <ArrowUpRight aria-hidden="true" className={arrowStyle} />
-            </a>
-          ))}
-          {!isEn && channels.qq && (
-            <a href={channels.qq} target="_blank" rel="noopener noreferrer" className={linkStyle}>
-              <MessageCircle aria-hidden="true" className="size-4 shrink-0" />
-              <span>{t('community.qq_group')}</span>
-              <ArrowUpRight aria-hidden="true" className={arrowStyle} />
-            </a>
-          )}
-          {!isEn && channels.wechat && (
-            <button
-              type="button"
-              aria-haspopup="dialog"
-              onClick={() => qrDialog.current?.showModal()}
-              className={linkStyle}>
-              <QrCode aria-hidden="true" className="size-4 shrink-0" />
-              <span>{t('community.wechat_scan_prompt')}</span>
-              <ChevronRight aria-hidden="true" className={arrowStyle} />
-            </button>
-          )}
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
+            {(isEn ? enSocialLinks.filter(({ href }) => href !== DISCORD_URL) : zhSocialLinks).map(
+              ({ label, href, icon }) => (
+                <a key={href} href={href} target="_blank" rel="noopener noreferrer" className={linkStyle}>
+                  <img src={icon} alt="" className="size-4 shrink-0 brightness-0 invert" />
+                  {label}
+                </a>
+              )
+            )}
+            {!isEn && channels.qq && (
+              <a href={channels.qq} target="_blank" rel="noopener noreferrer" className={linkStyle}>
+                <MessageCircle aria-hidden="true" className="size-4 shrink-0" />
+                {t('community.qq_group')}
+              </a>
+            )}
+            {!isEn && channels.wechat && (
+              <button
+                type="button"
+                aria-haspopup="dialog"
+                onClick={() => qrDialog.current?.showModal()}
+                className={linkStyle}>
+                <QrCode aria-hidden="true" className="size-4 shrink-0" />
+                {t('community.wechat_scan_prompt')}
+              </button>
+            )}
+          </div>
         </div>
       </div>
 

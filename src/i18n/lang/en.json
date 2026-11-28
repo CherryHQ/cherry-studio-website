@@ -303,8 +303,7 @@
     "qr_click_to_enlarge": "Click to enlarge QR code",
     "contact_us": "Contact Us",
     "qq_group": "QQ Group",
-    "join_discord": "Join our Discord",
-    "discord_prompt": "Ask questions, share setups and get help from the team and other users."
+    "join_discord": "Join our Discord"
   },
   "careers": {
     "badge": "We're Hiring",
@@ -525,12 +524,6 @@
     "platforms": "Open source · macOS / Windows / Linux",
     "providers": "Supported providers",
     "skip": "Skip to content",
-    "apps_label": "Cherry Studio apps",
-    "apps_title": "Cherry Studio for desktop",
-    "apps_intro": "Use leading AI models and keep your chats, agents, and files in one desktop workspace. Choose your operating system to see the available packages.",
-    "apps_platform_macos": "Installers for Apple silicon and Intel Macs.",
-    "apps_platform_windows": "Installers and portable builds for x64 and ARM64.",
-    "apps_platform_linux": "Available as AppImage, DEB, and RPM packages.",
     "cta_download": "Download Cherry Studio",
     "stat_providers": "Providers",
     "stat_models": "Models",

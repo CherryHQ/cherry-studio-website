@@ -1,5 +1,5 @@
 import { m } from 'framer-motion'
-import { Download, Smartphone } from 'lucide-react'
+import { Apple, Download, Monitor, Smartphone, Terminal } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
@@ -8,6 +8,14 @@ import BlurInText from '@/components/website/BlurInText'
 import { reveal } from '@/lib/motion'
 import { cn } from '@/lib/utils'
 import { isMobileDevice } from '@/utils/systemDetection'
+
+// The home page's only platform list: each chip opens the download page on that platform.
+const PLATFORMS = [
+  { id: 'macos', icon: Apple },
+  { id: 'windows', icon: Monitor },
+  { id: 'linux', icon: Terminal },
+  { id: 'mobile', icon: Smartphone }
+] as const
 
 export default function DownloadSection() {
   const { t } = useTranslation()
@@ -29,7 +37,18 @@ export default function DownloadSection() {
         <h2 id="home-download-heading" className="max-w-3xl text-5xl font-display text-balance sm:text-7xl">
           <BlurInText text={t('home_page.cta_download')} />
         </h2>
-        <p className="mt-4 text-sm text-muted-foreground">{t('home_page.platforms')}</p>
+        <ul className="mt-5 flex flex-wrap items-center justify-center gap-2" aria-label={t('home_page.platforms')}>
+          {PLATFORMS.map(({ id, icon: Icon }) => (
+            <li key={id}>
+              <Link
+                to={`/download?platform=${id}`}
+                className="inline-flex h-8 items-center gap-1.5 rounded-full border border-border px-3 text-xs font-medium text-muted-foreground transition-colors hover:border-hairline-strong hover:text-foreground focus-visible:outline-2 focus-visible:outline-primary">
+                <Icon className="size-3.5" aria-hidden="true" />
+                {t(`download_page.platform_${id}`)}
+              </Link>
+            </li>
+          ))}
+        </ul>
         <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
           {(isMobile ? [actions[1], actions[0]] : actions).map(({ href, label, icon: Icon }, index) => (
             <Link

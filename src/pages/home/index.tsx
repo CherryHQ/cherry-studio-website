@@ -5,7 +5,6 @@ import Footer from '@/components/website/Footer'
 import WebsiteBanner from '@/components/website/WebsiteBanner'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { isEnglishSite } from '@/utils/urls'
-import AppsSection from './components/AppsSection'
 import CapabilitiesSection from './components/CapabilitiesSection'
 import CommunitySection from './components/CommunitySection'
 import ContributorsSection from './components/ContributorsSection'
@@ -51,7 +50,6 @@ const HomePage: FC = () => {
           {sections.map((Section, index) => (
             <Section key={index} />
           ))}
-          <AppsSection />
           <FAQSection />
           <CommunitySection />
         </div>
