@@ -60,27 +60,36 @@ const FAQSection: FC = () => {
                     <span className="transition-colors group-hover:text-muted-foreground">{question}</span>
                     <span
                       className={cn(
-                        'flex size-7 shrink-0 items-center justify-center rounded-full border border-border transition-[background-color,border-color,color] duration-200',
+                        'flex size-7 shrink-0 items-center justify-center rounded-full border border-border transition-[background-color,border-color,color,scale] duration-300 ease-overshoot group-active:scale-90',
                         isOpen ? 'border-foreground bg-foreground text-background' : 'text-muted-foreground'
                       )}>
                       <Plus
                         aria-hidden="true"
-                        className={cn('size-3.5 transition-transform duration-200 ease-settle', isOpen && 'rotate-45')}
+                        className={cn(
+                          'size-3.5 transition-transform duration-300 ease-overshoot',
+                          isOpen && 'rotate-[135deg]'
+                        )}
                       />
                     </span>
                   </button>
                 </h3>
-                {/* Desktop tool accordions open in 200ms and close in 160ms. */}
+                {/* The panel opens to its height while the answer drifts in from slightly above; closing is quicker. */}
                 <m.div
                   id={`home-faq-answer-${index}`}
                   initial={false}
-                  animate={isOpen ? { height: 'auto', opacity: 1 } : { height: 0, opacity: 0 }}
-                  transition={{ duration: isOpen ? 0.2 : 0.16, ease: ease.settle }}
+                  animate={isOpen ? { height: 'auto' } : { height: 0 }}
+                  transition={{ duration: isOpen ? 0.38 : 0.26, ease: ease.settle }}
                   aria-hidden={!isOpen}
                   className="overflow-hidden">
-                  <p className="max-w-2xl pr-10 pb-5 text-pretty text-sm leading-6 text-muted-foreground zh:leading-7">
+                  <m.p
+                    initial={false}
+                    animate={
+                      isOpen ? { opacity: 1, y: 0, filter: 'blur(0px)' } : { opacity: 0, y: -8, filter: 'blur(4px)' }
+                    }
+                    transition={{ duration: isOpen ? 0.34 : 0.18, delay: isOpen ? 0.06 : 0, ease: ease.settle }}
+                    className="max-w-2xl pr-10 pb-5 text-pretty text-sm leading-6 text-muted-foreground zh:leading-7">
                     {answer}
-                  </p>
+                  </m.p>
                 </m.div>
               </div>
             )
