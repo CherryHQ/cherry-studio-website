@@ -63,7 +63,7 @@
     "careers": "Careers",
     "enterprise": "Enterprise",
     "docs": "Docs",
-    "contact": "Contact Us",
+    "contact": "Contact us",
     "pricing": "Pricing",
     "pricing_badge": "20% off",
     "menu": "Site navigation",
@@ -116,7 +116,7 @@
     },
     "mobile_first": {
       "eyebrow": "Your AI workspace, anywhere",
-      "title": "Start with a message. Take it through to a result.",
+      "title": "From one message to a finished result",
       "description": "From research to finished files, bring models, reusable workflows, and connected tools together so agents can work within the permissions you grant.",
       "docs": "Learn how to use these features",
       "items": {
@@ -148,7 +148,7 @@
     },
     "workflows": {
       "eyebrow": "Built around your work",
-      "title": "An easier start. More ways to keep going.",
+      "title": "Quick to set up. Easy to keep going.",
       "description": "First-use setup walks you through privacy, permissions, accounts, and models. Edit agents and refine tasks as you work, keeping conversations, source material, and results together.",
       "items": {
         "accounts": {
@@ -177,7 +177,7 @@
     },
     "cta": {
       "eyebrow": "Get started",
-      "title": "Your next idea does not have to wait for your desk",
+      "title": "Your next idea doesn't have to wait until you're at your desk",
       "description": "Download Cherry Studio Mobile, or read the installation and model setup guide first.",
       "download": "Get the mobile app",
       "docs": "Read mobile docs"
@@ -264,8 +264,8 @@
     }
   },
   "community": {
-    "title": "Become Part of the Cherry Family",
-    "subtitle": "Share experiences and grow together with AI enthusiasts worldwide",
+    "title": "Join the Cherry community",
+    "subtitle": "Share tips and get help from other Cherry Studio users.",
     "follow_us": "Follow Us",
     "wechat_group": "Discord Group",
     "wechat_qr_alt": "Discord Group QR Code",
@@ -277,31 +277,31 @@
     "join_discord": "Join our Discord"
   },
   "careers": {
-    "badge": "We're Hiring",
+    "badge": "We're hiring",
     "title": "Join Cherry Studio",
     "subtitle": "Join us in engineering, design, enterprise AI delivery, and operations to build the next generation of AI products",
-    "apply_button": "Send Your Resume",
-    "view_full_jd": "View Full JD",
-    "why_join": "Why Join Us",
+    "apply_button": "Send your resume",
+    "view_full_jd": "View full job description",
+    "why_join": "Why join us",
     "benefits": {
       "ai_native": {
-        "title": "AI-native Practices",
+        "title": "AI-native practice",
         "description": "Put AI tools and workflows into practice across engineering, design, delivery, and operations"
       },
       "open_source": {
-        "title": "Open-source Impact",
+        "title": "Open source impact",
         "description": "Help build Cherry Studio and improve the product with its community and real users"
       },
       "early_team": {
-        "title": "Early-stage Team",
+        "title": "Early-stage team",
         "description": "Join an early-stage team and contribute to building both the product and the team"
       },
       "product": {
-        "title": "Real Product Work",
+        "title": "Real product work",
         "description": "Contribute to AI product design, engineering, delivery, and operations around real use cases"
       }
     },
-    "positions_title": "Open Positions",
+    "positions_title": "Open positions",
     "positions": {
       "designer": {
         "title": "AI Product Designer",
@@ -342,13 +342,13 @@
     },
     "location_title": "Location",
     "location": "Shanghai (see each role for specific arrangements)",
-    "cta_title": "Ready to Join?",
+    "cta_title": "Ready to join?",
     "cta_subtitle": "We look forward to building the next generation of AI products with you",
-    "view_position": "View Role Details"
+    "view_position": "View role details"
   },
   "footer": {
-    "rss_copied": "RSS copied",
-    "description": "Cherry Studio is a multi-platform AI client, and we are committed to allowing more people to enjoy the convenience brought by AI.",
+    "rss_copied": "RSS link copied",
+    "description": "Cherry Studio is an open source AI desktop client for macOS, Windows and Linux, bringing agents, a knowledge base and leading models into one app.",
     "cherry_studio": {
       "title": "Cherry Studio",
       "enterprise": "Enterprise",
@@ -359,7 +359,7 @@
       "feedback": "Feedback"
     },
     "friendly_links": {
-      "title": "Friendly Links"
+      "title": "Links"
     },
     "contact_us": {
       "wechat_qr_alt": "WeChat Official Account QR Code",
@@ -380,51 +380,51 @@
     "forks": "Forks"
   },
   "providers": {
-    "title": "One Hub, All AI Models",
-    "subtitle": "Seamlessly integrate {{models}} leading AI models from {{providers}} providers. Switch freely, use effortlessly."
+    "title": "One hub for every major model",
+    "subtitle": "{{models}} models from {{providers}} providers, switchable in any conversation."
   },
   "download_page": {
-    "click_download": "Click to Download",
-    "stable_release": "Stable Release",
+    "click_download": "Download",
+    "stable_release": "Stable release",
     "loading_version": "Getting version info...",
-    "version_error": "Failed to get version info, please download from the cloud drive temporarily",
-    "published_at": "Published At",
-    "published_at_label": "Published At: ",
-    "current_system": "Current System",
-    "detected_system_arch": "Detected System: {{platform}}\nCPU Architecture: {{arch}}",
+    "version_error": "Couldn't load version info. Please download from the cloud drive for now.",
+    "published_at": "Published",
+    "published_at_label": "Published: ",
+    "current_system": "Your system",
+    "detected_system_arch": "Detected system: {{platform}}\nCPU architecture: {{arch}}",
     "arch_arm64": "ARM64",
     "arch_x64": "x64",
     "arch_ia32": "x86 (32-bit)",
     "arch_unknown": "Unknown",
-    "other_versions": "Other Versions or Alternative Download",
+    "other_versions": "Other versions and mirrors",
     "changelog": "Changelog",
     "close_changelog": "Close changelog",
     "version": "Version",
-    "other_downloads_title": "Other Versions Download",
+    "other_downloads_title": "Other versions",
     "download_with_arch": "Download ({{arch}})",
     "download_apple": "Download (Apple Silicon)",
     "download_intel": "Download (Intel)",
     "download_now": "Download {{package}}",
-    "release_history": "Download Previous Releases",
+    "release_history": "Previous releases",
     "cloud_drive_download": "Download from Quark Cloud Drive",
-    "windows_package": "Windows Installer Packages",
-    "windows_standard": "Windows Standard",
-    "windows_portable": "Windows Portable",
-    "windows_standard_arm": "Windows Standard (ARM)",
-    "windows_portable_arm": "Windows Portable (ARM)",
-    "macos_package": "macOS Installer Packages",
-    "macos_intel": "Intel Chip",
-    "macos_apple": "Apple Chip",
-    "linux_package": "Linux Installer Packages",
-    "linux_appimage": "AppImage Version",
-    "linux_appimage_arm": "AppImage Version (ARM)",
-    "linux_deb": "Deb Version",
-    "linux_deb_arm": "Deb Version (ARM)",
-    "linux_rpm": "RPM Version",
-    "linux_rpm_arm": "RPM Version (ARM)",
-    "mobile_detected": "Mobile Device Detected",
+    "windows_package": "Windows installers",
+    "windows_standard": "Windows standard",
+    "windows_portable": "Windows portable",
+    "windows_standard_arm": "Windows standard (ARM)",
+    "windows_portable_arm": "Windows portable (ARM)",
+    "macos_package": "macOS installers",
+    "macos_intel": "Intel",
+    "macos_apple": "Apple silicon",
+    "linux_package": "Linux installers",
+    "linux_appimage": "AppImage",
+    "linux_appimage_arm": "AppImage (ARM)",
+    "linux_deb": "Deb",
+    "linux_deb_arm": "Deb (ARM)",
+    "linux_rpm": "RPM",
+    "linux_rpm_arm": "RPM (ARM)",
+    "mobile_detected": "Mobile device detected",
     "mobile_hint": "The packages below are for desktop computers.",
-    "view_all_downloads": "View All Downloads",
+    "view_all_downloads": "View all downloads",
     "platform_windows": "Windows",
     "platform_macos": "macOS",
     "platform_linux": "Linux",
@@ -432,11 +432,11 @@
     "recommended": "Recommended",
     "recommended_download": "Recommended for your device",
     "best_for_most": "Best for most computers",
-    "no_install_needed": "No installation needed, portable",
+    "no_install_needed": "Portable, no installation needed",
     "for_arm_devices": "For ARM devices",
-    "apple_silicon": "Apple Silicon (M Series)",
-    "intel_mac": "Intel Chip",
-    "universal_linux": "Universal Linux version",
+    "apple_silicon": "Apple silicon (M series)",
+    "intel_mac": "Intel",
+    "universal_linux": "Works on most Linux distributions",
     "for_debian_ubuntu": "For Debian/Ubuntu",
     "for_fedora_rhel": "For Fedora/RHEL",
     "join_discord": "Join Discord for help"
@@ -450,30 +450,30 @@
     "partial": "(Partial)"
   },
   "highlights": {
-    "title": "Why Choose Cherry Studio",
-    "subtitle": "Agents, chat, images and your own knowledge base — in one desktop app you own.",
+    "title": "Why choose Cherry Studio",
+    "subtitle": "Agents, chat, images and your own knowledge base in one desktop app, with your data on your machine.",
     "agents": {
-      "title": "Autonomous Agents",
+      "title": "Autonomous agents",
       "description": "Hand an agent a multi-step job and it plans, uses tools and reports back. Plug in your own tools through <highlight>MCP servers and mini-programs</highlight>."
     },
     "multi_model": {
-      "title": "Multi-Model Freedom",
+      "title": "Switch models freely",
       "description": "Switch between <highlight>{{models}} models from {{providers}} providers</highlight> — OpenAI, Anthropic, Google, DeepSeek and more — or run locally with Ollama and LM Studio, on your own API keys."
     },
     "knowledge": {
-      "title": "Your Own Knowledge Base",
+      "title": "Your own knowledge base",
       "description": "Build a searchable base from <highlight>local files and web pages</highlight>, then ask questions against it. The documents stay on your machine."
     },
     "images": {
-      "title": "AI Image Generation",
-      "description": "Create and edit images across <highlight>multiple drawing models</highlight>, without leaving the app or paying for another subscription."
+      "title": "AI image generation",
+      "description": "Create and edit images across <highlight>multiple image models</highlight>, without leaving the app or paying for another subscription."
     },
     "assistants": {
-      "title": "{{assistants}} Smart Assistants",
+      "title": "{{assistants}} ready-made assistants",
       "description": "Ready-made assistants for writing, coding, learning, translation and marketing. <highlight>No prompt engineering needed</highlight> — pick one and start."
     },
     "documents": {
-      "title": "Documents and Translation",
+      "title": "Documents and translation",
       "description": "Work with text, images, Office files and PDFs. <highlight>Inline and full-page translation</highlight>, Mermaid diagrams and syntax highlighting are built in."
     }
   },
@@ -523,7 +523,7 @@
         },
         "create": {
           "nav": "Create",
-          "title": "Images from every model",
+          "title": "One canvas, many image models",
           "description": "Start from a painting template and generate across image models, then refine and keep every version together.",
           "points": [
             "Painting templates for multiple image models",
@@ -537,7 +537,7 @@
           "description": "Agents open pages in the built-in browser, click, scroll and read them, with a pointer that shows every move.",
           "points": [
             "Watch each action as it happens",
-            "Finds elements again after the page changes",
+            "Keeps its place when the page changes",
             "Reads console and network activity when debugging"
           ]
         },
@@ -548,18 +548,14 @@
           "points": [
             "Skill catalogs and external skill sources",
             "Ready-made Agent templates",
-            "MCP servers with focused management"
+            "All your MCP servers in one place"
           ]
         },
         "tasks": {
           "nav": "Scheduled tasks",
           "title": "Work that runs while you are away",
           "description": "Put an agent on a schedule. Results land in the notification drawer, and every run keeps its own conversation.",
-          "points": [
-            "Daily, weekly or custom schedules",
-            "Unread results gathered beside the sidebar",
-            "Run history for every task"
-          ]
+          "points": ["Daily, weekly or custom schedules", "Unread results at a glance", "Run history for every task"]
         }
       }
     },
