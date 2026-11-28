@@ -853,7 +853,13 @@ export default function BrowserAgentDemo() {
         <AppShell active="agents" tab={{ title: copy.session, emoji: '🤖' }}>
           <div className="flex h-full min-h-0">
             <div className="flex min-w-0 flex-1 flex-col">
-              <AgentSessionBar agentName={copy.agentName} workspace="trips" model={agentScript.model} picking={false} />
+              <AgentSessionBar
+                agentName={copy.agentName}
+                workspace="trips"
+                model={agentScript.model}
+                picking={false}
+                pane="browser"
+              />
               <div
                 ref={scroller}
                 className="relative min-h-0 flex-1 overflow-y-auto px-4 [scrollbar-width:none] @5xl:px-6">

@@ -394,6 +394,7 @@ export default function AgentDelegationDemo({ bezel }: { bezel?: boolean }) {
                 workspace={delegationScript.workspace}
                 model={agentScript.model}
                 picking={false}
+                pane={state.preview ? 'files' : undefined}
               />
               <div
                 ref={scroller}

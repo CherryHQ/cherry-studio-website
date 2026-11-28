@@ -1,4 +1,4 @@
-import { ChevronDown, Folder, FolderOpen, ListCollapse, Waypoints } from 'lucide-react'
+import { ChevronDown, Folder, FolderOpen, Globe, ListCollapse, type LucideIcon, Waypoints } from 'lucide-react'
 
 import { spring } from '@/lib/motion'
 import { cn } from '@/lib/utils'
@@ -93,18 +93,30 @@ export function CliLogo({ id, name }: { id: string; name: string }) {
   )
 }
 
+export type AgentPane = 'files' | 'browser' | 'details' | 'trace'
+// AgentRightPane shortcuts in order: Files, Browser (when browser control is on), Session details, Call chain.
+const PANE_SHORTCUTS: { id: AgentPane; icon: LucideIcon }[] = [
+  { id: 'files', icon: FolderOpen },
+  { id: 'browser', icon: Globe },
+  { id: 'details', icon: ListCollapse },
+  { id: 'trace', icon: Waypoints }
+]
+
 /** Agent session top bar: sidebar toggle, agent, model and workspace pickers, then the side-panel tabs. */
 export function AgentSessionBar({
   agentName,
   workspace,
   model,
-  picking
+  picking,
+  pane
 }: {
   agentName: string
   workspace: string
   model: { name: string; provider: string; providerName: string }
   /** The agent picker shows its chevron until the session's first message. */
   picking: boolean
+  /** The right pane that is open; its shortcut shows the active state. */
+  pane?: AgentPane
 }) {
   return (
     <div className="flex h-11 shrink-0 items-center justify-between gap-2 px-3" aria-hidden="true">
@@ -138,8 +150,13 @@ export function AgentSessionBar({
         </span>
       </div>
       <div className="flex shrink-0 items-center gap-0.5 text-muted-foreground">
-        {[FolderOpen, ListCollapse, Waypoints].map((Icon, index) => (
-          <span key={index} className="flex size-[30px] items-center justify-center">
+        {PANE_SHORTCUTS.map(({ id, icon: Icon }) => (
+          <span
+            key={id}
+            className={cn(
+              'flex size-[30px] items-center justify-center rounded-md',
+              pane === id && 'bg-secondary text-foreground'
+            )}>
             <Icon className="size-3.5" />
           </span>
         ))}
