@@ -126,54 +126,29 @@ const SKILL_ICONS: Record<SkillIconName, LucideIcon> = {
   code: Code
 }
 // Deliberately unlike the app's grey line icons: file-type and brand marks (FileIcon's material-icon-theme set, the
-// MCP tile) on tiles, else a white glyph on a gradient. `accent` tints the detail dialog's included-skill marks.
-const SKILL_ART: Record<string, { logo?: string; dark?: string; fill?: boolean; tint: string; accent: string }> = {
-  pdf: {
-    logo: pdfLogo,
-    tint: 'from-red-50 to-red-100',
-    accent: 'text-red-500'
-  },
-  'frontend-design': { tint: 'from-pink-400 to-fuchsia-600', accent: 'text-fuchsia-500' },
-  'webapp-testing': {
-    logo: playwrightLogo,
-    tint: 'from-emerald-50 to-emerald-100',
-    accent: 'text-emerald-500'
-  },
-  docx: {
-    logo: wordLogo,
-    tint: 'from-blue-50 to-blue-100',
-    accent: 'text-blue-600 dark:text-blue-400'
-  },
-  'mcp-builder': { logo: mcpLogo, dark: mcpDarkLogo, fill: true, tint: '', accent: 'text-foreground' },
-  xlsx: {
-    logo: tableLogo,
-    tint: 'from-lime-50 to-lime-100',
-    accent: 'text-lime-600 dark:text-lime-400'
-  },
-  'skill-creator': { tint: 'from-violet-400 to-purple-600', accent: 'text-violet-500' },
-  pptx: {
-    logo: powerpointLogo,
-    tint: 'from-orange-50 to-orange-100',
-    accent: 'text-orange-500'
-  },
-  'deep-research': { tint: 'from-cyan-400 to-teal-600', accent: 'text-teal-500' },
-  changelog: { tint: 'from-indigo-400 to-blue-600', accent: 'text-indigo-500' }
+// MCP tile) where the repo has one, else a glyph; all on one neutral raised tile.
+const SKILL_ART: Record<string, { logo?: string; dark?: string; fill?: boolean }> = {
+  pdf: { logo: pdfLogo },
+  'webapp-testing': { logo: playwrightLogo },
+  docx: { logo: wordLogo },
+  'mcp-builder': { logo: mcpLogo, dark: mcpDarkLogo, fill: true },
+  xlsx: { logo: tableLogo },
+  pptx: { logo: powerpointLogo }
 }
-// Deliberately unlike the app's grey line-icon tiles: brand logos where the repo has one, else colour tiles.
 // Glyphs follow builtinMcpIcons in MarketplaceMcp.tsx.
 const MCP_LOGOS: Record<string, string> = { difyKnowledge: difyLogo }
-const MCP_TILES: Record<string, { icon: LucideIcon; tint: string }> = {
-  flomo: { icon: NotebookPen, tint: 'from-emerald-400 to-green-600' },
-  qveris: { icon: SearchCode, tint: 'from-cyan-400 to-teal-600' },
-  mcpAutoInstall: { icon: PackagePlus, tint: 'from-violet-400 to-purple-600' },
-  sequentialThinking: { icon: Workflow, tint: 'from-amber-400 to-orange-500' },
-  fetch: { icon: Globe, tint: 'from-sky-400 to-blue-600' },
-  memory: { icon: BrainCircuit, tint: 'from-pink-400 to-fuchsia-600' },
-  filesystem: { icon: Folder, tint: 'from-yellow-400 to-amber-600' },
-  braveSearch: { icon: Search, tint: 'from-orange-500 to-red-600' },
-  python: { icon: CodeXml, tint: 'from-blue-500 to-indigo-700' },
-  didiMcp: { icon: Car, tint: 'from-lime-400 to-emerald-600' },
-  nowledgeMem: { icon: Database, tint: 'from-rose-400 to-pink-600' }
+const MCP_GLYPHS: Record<string, LucideIcon> = {
+  flomo: NotebookPen,
+  qveris: SearchCode,
+  mcpAutoInstall: PackagePlus,
+  sequentialThinking: Workflow,
+  fetch: Globe,
+  memory: BrainCircuit,
+  filesystem: Folder,
+  braveSearch: Search,
+  python: CodeXml,
+  didiMcp: Car,
+  nowledgeMem: Database
 }
 // Registry tiles keep one artwork in both themes, except the zhipu and MCP marks.
 const zhipu = providerIcon('zhipu')
@@ -223,13 +198,14 @@ function Logo({ src, dark, className }: { src: string; dark?: string; className?
   )
 }
 
-const GRADIENT_TILE = 'bg-linear-to-br text-white shadow-[inset_0_1px_0_rgb(255_255_255/0.25)]'
+const RAISED_TILE =
+  'bg-linear-to-b from-white to-neutral-100 text-neutral-800 shadow-[0_1px_2px_rgb(0_0_0/0.06)] dark:from-neutral-700 dark:to-neutral-800 dark:text-neutral-100'
 // A hairline drawn above the artwork, so white tiles keep an edge on white cards.
 const TILE_EDGE =
   'relative after:pointer-events-none after:absolute after:inset-0 after:rounded-[inherit] after:ring-1 after:ring-black/5 after:ring-inset dark:after:ring-white/10'
 
 function SkillIcon({ skill, large }: { skill: MarketplaceSkillItem; large?: boolean }) {
-  const { logo, dark, fill, tint } = SKILL_ART[skill.id]
+  const { logo, dark, fill } = SKILL_ART[skill.id] ?? {}
   const Icon = SKILL_ICONS[skill.icon]
   return (
     <span
@@ -237,8 +213,8 @@ function SkillIcon({ skill, large }: { skill: MarketplaceSkillItem; large?: bool
       className={cn(
         'flex shrink-0 items-center justify-center overflow-hidden',
         TILE_EDGE,
-        large ? 'size-14 rounded-2xl shadow-sm' : 'size-10 rounded-xl',
-        logo ? cn('bg-linear-to-br', tint) : cn(GRADIENT_TILE, tint)
+        RAISED_TILE,
+        large ? 'size-14 rounded-2xl' : 'size-10 rounded-xl'
       )}>
       {fill && logo ? (
         <Logo src={logo} dark={dark} className="size-full" />
@@ -261,11 +237,11 @@ function McpIcon({ icon, large }: { icon: string; large?: boolean }) {
         <Logo src={logo} className="size-full" />
       </span>
     )
-  const { icon: Icon, tint } = MCP_TILES[icon]
+  const Icon = MCP_GLYPHS[icon]
   return (
     <span
       aria-hidden="true"
-      className={cn('flex shrink-0 items-center justify-center rounded-[10px]', GRADIENT_TILE, tint, size)}>
+      className={cn('flex shrink-0 items-center justify-center rounded-[10px]', TILE_EDGE, RAISED_TILE, size)}>
       <Icon className={large ? 'size-8' : 'size-6'} strokeWidth={1.75} />
     </span>
   )
@@ -988,7 +964,7 @@ export default function MarketplaceDemo({ bezel }: { bezel?: boolean }) {
                 <div
                   key={member}
                   className={cn('flex min-w-0 items-start gap-2 rounded-xl border p-3', SUBTLE_BORDER, SUBTLE_BG)}>
-                  <Sparkles className={cn('mt-0.5 size-3 shrink-0', SKILL_ART[skill.id].accent)} />
+                  <Sparkles className="mt-0.5 size-3 shrink-0 text-muted-foreground" />
                   <span className="text-xs leading-5 break-words">{member}</span>
                 </div>
               ))}
