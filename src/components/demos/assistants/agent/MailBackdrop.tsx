@@ -14,6 +14,24 @@ interface MailBackdropProps {
   onBodyPointerDown: () => void
 }
 
+// An original desktop wallpaper in the spirit of recent macOS ones: broad bands of blue, violet, pink and orange.
+const WALLPAPER = {
+  light: [
+    'radial-gradient(70% 90% at 10% 110%, #ff9a3c 0%, transparent 60%)',
+    'radial-gradient(60% 80% at 55% 105%, #ff5c8a 0%, transparent 62%)',
+    'radial-gradient(80% 100% at 100% 70%, #8f5cff 0%, transparent 60%)',
+    'radial-gradient(90% 90% at 25% 10%, #4f8dff 0%, transparent 65%)',
+    'linear-gradient(160deg, #6ea8ff 0%, #7c6cff 55%, #ff8fb1 100%)'
+  ].join(', '),
+  dark: [
+    'radial-gradient(70% 90% at 10% 110%, #b4531a 0%, transparent 60%)',
+    'radial-gradient(60% 80% at 55% 105%, #a3204f 0%, transparent 62%)',
+    'radial-gradient(80% 100% at 100% 70%, #4a23a8 0%, transparent 60%)',
+    'radial-gradient(90% 90% at 25% 10%, #173f9e 0%, transparent 65%)',
+    'linear-gradient(160deg, #0d1b4a 0%, #24145c 55%, #4a1435 100%)'
+  ].join(', ')
+}
+
 /** The menu bar clock: the visitor's own weekday and time, ticking on the minute. */
 function MenuClock() {
   const { tag } = useDemoLocale()
@@ -41,10 +59,8 @@ export function MailBackdrop({ copy, bodyRef, scrollerRef, onScroll, onBodyPoint
 
   return (
     <>
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 bg-linear-to-br from-[#d9e4f2] via-[#e7def0] to-[#f3e1d6] dark:from-[#141b29] dark:via-[#1d1829] dark:to-[#261c17]"
-      />
+      <div aria-hidden="true" className="absolute inset-0 dark:hidden" style={{ background: WALLPAPER.light }} />
+      <div aria-hidden="true" className="absolute inset-0 hidden dark:block" style={{ background: WALLPAPER.dark }} />
       <div
         aria-hidden="true"
         className="absolute inset-x-0 top-0 flex h-6 items-center gap-4 bg-white/45 px-3 text-[12px] text-zinc-800 backdrop-blur-md dark:bg-black/35 dark:text-zinc-200">
