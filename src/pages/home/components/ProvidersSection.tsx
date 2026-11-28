@@ -1,208 +1,346 @@
-import { type FC, useEffect, useState } from 'react'
+import {
+  AnimatePresence,
+  motion,
+  useInView,
+  useMotionValueEvent,
+  useReducedMotion,
+  useScroll,
+  useSpring,
+  useTransform
+} from 'framer-motion'
+import { type FC, useEffect, useId, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
-// Import logos
-import ai302Logo from '@/assets/images/provider_logo/302ai.svg'
-import ai360Logo from '@/assets/images/provider_logo/ai360-color.svg'
-import aimassLogo from '@/assets/images/provider_logo/aimass-color.svg'
-import anthropicLogo from '@/assets/images/provider_logo/anthropic.svg'
-import azureLogo from '@/assets/images/provider_logo/azure-color.svg'
-import baichuanLogo from '@/assets/images/provider_logo/baichuan-color.svg'
-import baiduCloudLogo from '@/assets/images/provider_logo/baiducloud-color.svg'
-import bytedanceLogo from '@/assets/images/provider_logo/bytedance-color.svg'
-import deepseekLogo from '@/assets/images/provider_logo/deepseek-color.svg'
-import giteeAiLogo from '@/assets/images/provider_logo/gitee-ai.svg'
-import googleLogo from '@/assets/images/provider_logo/google-color.svg'
-import groqLogo from '@/assets/images/provider_logo/groq.svg'
-import higressLogo from '@/assets/images/provider_logo/higress-color.svg'
-import huggingfaceLogo from '@/assets/images/provider_logo/huggingface-color.svg'
-import hunyuanLogo from '@/assets/images/provider_logo/hunyuan-color.svg'
-import metaLogo from '@/assets/images/provider_logo/meta-color.svg'
-import minimaxLogo from '@/assets/images/provider_logo/minimax-color.svg'
-import mistralLogo from '@/assets/images/provider_logo/mistral-color.svg'
-import modelscopeLogo from '@/assets/images/provider_logo/modelscope.webp'
-import moonshotLogo from '@/assets/images/provider_logo/moonshot.svg'
-import ollamaLogo from '@/assets/images/provider_logo/ollama.svg'
-import openaiLogo from '@/assets/images/provider_logo/openai.svg'
-import openrouterLogo from '@/assets/images/provider_logo/openrouter.svg'
-import qwenLogo from '@/assets/images/provider_logo/qwen-color.svg'
-import siliconcloudLogo from '@/assets/images/provider_logo/siliconcloud-color.svg'
-import sparkLogo from '@/assets/images/provider_logo/spark-color.svg'
-import stepfunLogo from '@/assets/images/provider_logo/stepfun-color.svg'
-import xaiLogo from '@/assets/images/provider_logo/xai.svg'
-import zeroOneLogo from '@/assets/images/provider_logo/zeroone.svg'
-import zhipuLogo from '@/assets/images/provider_logo/zhipu-color.svg'
-
-interface LogoInfo {
-  src: string
-  name: string
-  darkInvert?: boolean
-}
-
-// 海外站内环 logos (6个) - 最知名的顶级服务商
-const globalInnerLogos: LogoInfo[] = [
-  { src: openaiLogo, name: 'OpenAI', darkInvert: true },
-  { src: anthropicLogo, name: 'Anthropic', darkInvert: true },
-  { src: googleLogo, name: 'Google' },
-  { src: xaiLogo, name: 'xAI', darkInvert: true },
-  { src: metaLogo, name: 'Meta' },
-  { src: deepseekLogo, name: 'DeepSeek' }
-]
-
-// 海外站外环 logos - 其他知名服务商
-const globalOuterLogos: LogoInfo[] = [
-  { src: mistralLogo, name: 'Mistral' },
-  { src: azureLogo, name: 'Azure' },
-  { src: qwenLogo, name: 'Qwen' },
-  { src: ollamaLogo, name: 'Ollama', darkInvert: true },
-  { src: groqLogo, name: 'Groq', darkInvert: true },
-  { src: huggingfaceLogo, name: 'Hugging Face' },
-  { src: openrouterLogo, name: 'OpenRouter', darkInvert: true },
-  { src: zhipuLogo, name: 'Zhipu AI' },
-  { src: ai302Logo, name: '302.AI' },
-  { src: bytedanceLogo, name: 'ByteDance' },
-  { src: moonshotLogo, name: 'Moonshot', darkInvert: true },
-  { src: baichuanLogo, name: 'Baichuan' },
-  { src: minimaxLogo, name: 'MiniMax' },
-  { src: siliconcloudLogo, name: 'SiliconCloud' },
-  { src: stepfunLogo, name: 'StepFun' }
-]
-
-// 中文站突出展示国产模型及服务商，海外站保持原有全球服务商阵容。
-const cnInnerLogos: LogoInfo[] = [
-  { src: deepseekLogo, name: 'DeepSeek' },
-  { src: qwenLogo, name: '通义千问' },
-  { src: zhipuLogo, name: '智谱 AI' },
-  { src: moonshotLogo, name: 'Kimi', darkInvert: true },
-  { src: minimaxLogo, name: 'MiniMax' },
-  { src: bytedanceLogo, name: '豆包' }
-]
-
-const cnOuterLogos: LogoInfo[] = [
-  { src: siliconcloudLogo, name: '硅基流动' },
-  { src: baichuanLogo, name: '百川智能' },
-  { src: stepfunLogo, name: '阶跃星辰' },
-  { src: hunyuanLogo, name: '腾讯混元' },
-  { src: baiduCloudLogo, name: '百度智能云' },
-  { src: sparkLogo, name: '讯飞星火' },
-  { src: modelscopeLogo, name: 'ModelScope 魔搭' },
-  { src: giteeAiLogo, name: 'Gitee AI' },
-  { src: ai360Logo, name: '360 智脑' },
-  { src: zeroOneLogo, name: '零一万物', darkInvert: true },
-  { src: ai302Logo, name: '302.AI' },
-  { src: aimassLogo, name: 'AiMass' },
-  { src: higressLogo, name: 'Higress' }
-]
+import { cn } from '@/lib/utils'
+import {
+  AnimatedCounter,
+  EASE_APPLE,
+  getOrbitPosition,
+  OrbitLogoBadge,
+  useOrbitRotation
+} from './providers/OrbitShared'
+import { getProviderLogos } from './providers/providerLogos'
 
 const ProvidersSection: FC = () => {
   const { t, i18n } = useTranslation()
-  const [outerAngle, setOuterAngle] = useState(0)
-  const [innerAngle, setInnerAngle] = useState(0)
+  const { isZh, innerLogos, outerLogos } = getProviderLogos(i18n.language)
 
-  const isZh = i18n.language === 'zh-CN'
-  const innerLogos = isZh ? cnInnerLogos : globalInnerLogos
-  const outerLogos = isZh ? cnOuterLogos : globalOuterLogos
+  const trackRef = useRef<HTMLElement>(null)
+  const gradientId = useId().replace(/:/g, '')
+  const reducedMotion = Boolean(useReducedMotion())
+  const isInViewport = useInView(trackRef, { amount: 0.02 })
+
+  const [isDesktop, setIsDesktop] = useState(() =>
+    typeof window !== 'undefined' ? window.matchMedia('(min-width: 768px)').matches : true
+  )
+  const [hovered, setHovered] = useState<{ ring: 'inner' | 'outer'; name: string } | null>(null)
+  const [activeAct, setActiveAct] = useState<0 | 1 | 2>(0)
 
   useEffect(() => {
-    let animationId: number
-    let lastTime = performance.now()
-
-    const animate = (currentTime: number) => {
-      const deltaTime = currentTime - lastTime
-      lastTime = currentTime
-
-      // 外环顺时针慢，内环逆时针快
-      setOuterAngle((prev) => (prev + deltaTime * 0.008) % 360)
-      setInnerAngle((prev) => (prev - deltaTime * 0.02) % 360)
-
-      animationId = requestAnimationFrame(animate)
-    }
-
-    animationId = requestAnimationFrame(animate)
-    return () => cancelAnimationFrame(animationId)
+    const mq = window.matchMedia('(min-width: 768px)')
+    const update = () => setIsDesktop(mq.matches)
+    update()
+    mq.addEventListener('change', update)
+    return () => mq.removeEventListener('change', update)
   }, [])
 
-  const getPosition = (index: number, total: number, radius: number, baseAngle: number) => {
-    const angle = ((index * 360) / total + baseAngle - 90) * (Math.PI / 180)
-    return {
-      x: 50 + radius * Math.cos(angle),
-      y: 50 + radius * Math.sin(angle)
+  const enableStickyScrub = isDesktop && !reducedMotion
+
+  const { scrollYProgress } = useScroll({
+    target: trackRef,
+    offset: ['start start', 'end end']
+  })
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 120,
+    damping: 26,
+    mass: 0.25
+  })
+
+  useMotionValueEvent(smoothProgress, 'change', (latest) => {
+    if (!enableStickyScrub) return
+    if (latest < 0.25) {
+      setActiveAct(0)
+    } else if (latest < 0.52) {
+      setActiveAct(1)
+    } else {
+      setActiveAct(2)
     }
-  }
+  })
+
+  // Ambient rotation layered with scroll-scrubbed swirl
+  const { outerRotate, innerRotate } = useOrbitRotation({
+    isActive: isInViewport,
+    outerSpeed: 5.5,
+    innerSpeed: -11.5,
+    outerPaused: hovered?.ring === 'outer',
+    innerPaused: hovered?.ring === 'inner',
+    reducedMotion
+  })
+
+  // Act 1 (0.00 -> 0.22): Header & Core Ignition
+  const headerOpacity = useTransform(smoothProgress, [0, 0.16, 0.78, 1], [0.25, 1, 1, 0.18])
+  const headerY = useTransform(smoothProgress, [0, 0.18, 0.78, 1], [24, 0, 0, -28])
+  const coreScale = useTransform(smoothProgress, [0, 0.14, 0.24, 0.78, 1], [0.72, 1.06, 1, 1, 0.9])
+  const coreHaloOpacity = useTransform(smoothProgress, [0, 0.22, 0.78, 1], [0.06, 0.22, 0.18, 0.04])
+  const counterProgress = useTransform(smoothProgress, [0, 0.24], [0, 1])
+
+  // Act 2 (0.16 -> 0.48): Inner Ring Bloom
+  const innerPathLength = useTransform(smoothProgress, [0.16, 0.42], [0, 1])
+  const innerScale = useTransform(smoothProgress, [0.16, 0.46, 0.78, 1], [0.55, 1, 1, 0.93])
+  const innerOpacity = useTransform(smoothProgress, [0.16, 0.36, 0.78, 1], [0, 1, 1, 0.2])
+  const innerScrollSpin = useTransform(smoothProgress, [0.16, 0.48], [-35, 0])
+
+  // Act 3 (0.40 -> 0.72): Outer Ecosystem Unfurl
+  const outerPathLength = useTransform(smoothProgress, [0.4, 0.68], [0, 1])
+  const outerScale = useTransform(smoothProgress, [0.4, 0.7, 0.78, 1], [0.68, 1, 1, 1.07])
+  const outerOpacity = useTransform(smoothProgress, [0.4, 0.6, 0.78, 1], [0, 1, 1, 0.16])
+  const outerScrollSpin = useTransform(smoothProgress, [0.4, 0.72], [25, 0])
+  const cometOpacity = useTransform(smoothProgress, [0.48, 0.7, 0.78, 1], [0, 0.75, 0.75, 0.1])
+
+  // Act 4 (0.78 -> 1.00): Graceful Recession Exit
+  const stageScale = useTransform(smoothProgress, [0.78, 1], [1, 0.86])
+  const stageOpacity = useTransform(smoothProgress, [0.78, 1], [1, 0.16])
+  const stageY = useTransform(smoothProgress, [0.78, 1], [0, -36])
+
+  const combinedOuterRotate = useTransform([outerRotate, outerScrollSpin], ([a, b]: number[]) =>
+    enableStickyScrub ? a + b : a
+  )
+  const combinedInnerRotate = useTransform([innerRotate, innerScrollSpin], ([a, b]: number[]) =>
+    enableStickyScrub ? a + b : a
+  )
+  const combinedOuterCounter = useTransform(combinedOuterRotate, (v) => -v)
+  const combinedInnerCounter = useTransform(combinedInnerRotate, (v) => -v)
+
+  const stageLabels = isZh
+    ? ['01 核心汇聚', '02 旗舰模型', '03 生态互联']
+    : ['01 Core Hub', '02 Flagship', '03 Ecosystem']
 
   return (
-    <section className="bg-background relative overflow-hidden py-8 sm:py-16">
-      <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
+    <section ref={trackRef} className="bg-background relative md:h-[250vh]">
+      <div className="flex min-h-[600px] flex-col items-center justify-center overflow-x-clip px-4 pt-20 pb-6 sm:px-6 md:sticky md:top-0 md:h-screen lg:px-8">
         {/* Section Header */}
-        <div className="mx-auto mb-8 max-w-3xl text-center sm:mb-16">
-          <h2 className="text-foreground mb-3 text-2xl font-bold sm:mb-4 sm:text-4xl lg:text-5xl">
+        <motion.div
+          style={enableStickyScrub ? { opacity: headerOpacity, y: headerY } : undefined}
+          className="mx-auto mb-5 max-w-3xl text-center sm:mb-7">
+          <h2 className="text-foreground mb-2 text-2xl font-bold sm:mb-3 sm:text-4xl lg:text-5xl">
             {t('providers.title')}
           </h2>
           <p className="text-muted-foreground text-sm sm:text-base">{t('providers.subtitle')}</p>
-        </div>
+        </motion.div>
 
-        {/* Orbital Animation */}
-        <div className="relative mx-auto h-[320px] w-[320px] sm:h-[500px] sm:w-[500px] lg:h-[600px] lg:w-[600px]">
-          {/* Outer orbit ring */}
-          <div className="border-border/60 absolute inset-0 rounded-full border" />
+        {/* Orbital Stage */}
+        <motion.div
+          style={enableStickyScrub ? { scale: stageScale, opacity: stageOpacity, y: stageY } : undefined}
+          className="relative mx-auto h-[300px] w-[300px] sm:h-[420px] sm:w-[420px] md:h-[min(56vh,520px)] md:w-[min(56vh,520px)]">
+          {/* Core Halo */}
+          <motion.div
+            aria-hidden
+            style={enableStickyScrub ? { opacity: coreHaloOpacity } : { opacity: 0.16 }}
+            className="bg-primary/30 pointer-events-none absolute top-1/2 left-1/2 h-44 w-44 -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl sm:h-56 sm:w-56"
+          />
 
-          {/* Inner orbit ring */}
-          <div className="border-border/60 absolute inset-[25%] rounded-full border" />
+          {/* SVG Orbit Rings + Comet Beams */}
+          <svg
+            viewBox="0 0 600 600"
+            className="pointer-events-none absolute inset-0 h-full w-full overflow-visible"
+            aria-hidden>
+            <defs>
+              <linearGradient id={`${gradientId}-sticky-outer`} x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="var(--primary)" stopOpacity="0" />
+                <stop offset="55%" stopColor="#f97316" stopOpacity="0.35" />
+                <stop offset="100%" stopColor="var(--primary)" stopOpacity="0.85" />
+              </linearGradient>
+              <linearGradient id={`${gradientId}-sticky-inner`} x1="100%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stopColor="var(--primary)" stopOpacity="0" />
+                <stop offset="60%" stopColor="var(--primary)" stopOpacity="0.45" />
+                <stop offset="100%" stopColor="#f97316" stopOpacity="0.85" />
+              </linearGradient>
+            </defs>
 
-          {/* Outer orbit logos */}
-          {outerLogos.map((logo, index) => {
-            const pos = getPosition(index, outerLogos.length, 50, outerAngle)
-            return (
-              <div
-                key={logo.name}
-                className="absolute -translate-x-1/2 -translate-y-1/2 transition-none"
-                style={{
-                  left: `${pos.x}%`,
-                  top: `${pos.y}%`
-                }}>
-                <div className="bg-background border-border/50 flex h-14 w-14 items-center justify-center rounded-full border shadow-sm sm:h-16 sm:w-16 lg:h-18 lg:w-18">
-                  <img
-                    src={logo.src}
-                    alt={logo.name}
-                    title={logo.name}
-                    className={`h-7 w-7 object-contain sm:h-8 sm:w-8 lg:h-9 lg:w-9 ${logo.darkInvert ? 'dark:invert' : ''}`}
+            <motion.circle
+              cx={300}
+              cy={300}
+              r={299}
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={1}
+              className="text-border/65"
+              style={enableStickyScrub ? { pathLength: outerPathLength, opacity: outerOpacity } : undefined}
+            />
+            <motion.circle
+              cx={300}
+              cy={300}
+              r={149.5}
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={1}
+              className="text-border/65"
+              style={enableStickyScrub ? { pathLength: innerPathLength, opacity: innerOpacity } : undefined}
+            />
+
+            {!reducedMotion && (
+              <motion.g style={enableStickyScrub ? { opacity: cometOpacity } : { opacity: 0.65 }}>
+                <motion.g
+                  style={{ transformOrigin: '300px 300px' }}
+                  animate={isInViewport ? { rotate: 360 } : undefined}
+                  transition={{ duration: 14, repeat: Number.POSITIVE_INFINITY, ease: 'linear' }}>
+                  <circle
+                    cx={300}
+                    cy={300}
+                    r={299}
+                    fill="none"
+                    stroke={`url(#${gradientId}-sticky-outer)`}
+                    strokeWidth={2}
+                    strokeLinecap="round"
+                    strokeDasharray="190 1690"
                   />
-                </div>
-              </div>
-            )
-          })}
-
-          {/* Inner orbit logos */}
-          {innerLogos.map((logo, index) => {
-            const pos = getPosition(index, innerLogos.length, 25, innerAngle)
-            return (
-              <div
-                key={logo.name}
-                className="absolute -translate-x-1/2 -translate-y-1/2 transition-none"
-                style={{
-                  left: `${pos.x}%`,
-                  top: `${pos.y}%`
-                }}>
-                <div className="bg-background border-border/50 flex h-11 w-11 items-center justify-center rounded-full border shadow-sm sm:h-13 sm:w-13 lg:h-14 lg:w-14">
-                  <img
-                    src={logo.src}
-                    alt={logo.name}
-                    title={logo.name}
-                    className={`h-5 w-5 object-contain sm:h-6 sm:w-6 lg:h-7 lg:w-7 ${logo.darkInvert ? 'dark:invert' : ''}`}
+                </motion.g>
+                <motion.g
+                  style={{ transformOrigin: '300px 300px' }}
+                  animate={isInViewport ? { rotate: -360 } : undefined}
+                  transition={{ duration: 10, repeat: Number.POSITIVE_INFINITY, ease: 'linear' }}>
+                  <circle
+                    cx={300}
+                    cy={300}
+                    r={149.5}
+                    fill="none"
+                    stroke={`url(#${gradientId}-sticky-inner)`}
+                    strokeWidth={2}
+                    strokeLinecap="round"
+                    strokeDasharray="115 830"
                   />
-                </div>
-              </div>
-            )
-          })}
+                </motion.g>
+              </motion.g>
+            )}
+          </svg>
 
-          {/* Center text */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-center">
-              <div className="text-primary text-4xl font-bold sm:text-5xl lg:text-6xl">300+</div>
-              <div className="text-muted-foreground mt-1 text-sm sm:text-base">Models</div>
+          {/* Outer Orbit Ring */}
+          <motion.div
+            style={{
+              rotate: combinedOuterRotate,
+              scale: enableStickyScrub ? outerScale : 1,
+              opacity: enableStickyScrub ? outerOpacity : 1
+            }}
+            className={cn(
+              'pointer-events-none absolute inset-0 will-change-transform',
+              hovered?.ring === 'outer' ? 'z-30' : 'z-20'
+            )}>
+            {outerLogos.map((logo, index) => {
+              const pos = getOrbitPosition(index, outerLogos.length, 50)
+              const isHovered = hovered?.ring === 'outer' && hovered.name === logo.name
+              const isDimmed = hovered !== null && !isHovered
+              return (
+                <OrbitLogoBadge
+                  key={logo.name}
+                  logo={logo}
+                  pos={pos}
+                  counterRotate={combinedOuterCounter}
+                  size="outer"
+                  isHovered={isHovered}
+                  isDimmed={isDimmed}
+                  dimGrayscale
+                  showBeamGlow
+                  enterReady
+                  reducedMotion={reducedMotion}
+                  onHoverStart={() => setHovered({ ring: 'outer', name: logo.name })}
+                  onHoverEnd={() => setHovered((prev) => (prev?.name === logo.name ? null : prev))}
+                />
+              )
+            })}
+          </motion.div>
+
+          {/* Inner Orbit Ring */}
+          <motion.div
+            style={{
+              rotate: combinedInnerRotate,
+              scale: enableStickyScrub ? innerScale : 1,
+              opacity: enableStickyScrub ? innerOpacity : 1
+            }}
+            className={cn(
+              'pointer-events-none absolute inset-0 will-change-transform',
+              hovered?.ring === 'inner' ? 'z-30' : 'z-20'
+            )}>
+            {innerLogos.map((logo, index) => {
+              const pos = getOrbitPosition(index, innerLogos.length, 25)
+              const isHovered = hovered?.ring === 'inner' && hovered.name === logo.name
+              const isDimmed = hovered !== null && !isHovered
+              return (
+                <OrbitLogoBadge
+                  key={logo.name}
+                  logo={logo}
+                  pos={pos}
+                  counterRotate={combinedInnerCounter}
+                  size="inner"
+                  isHovered={isHovered}
+                  isDimmed={isDimmed}
+                  dimGrayscale
+                  showBeamGlow
+                  enterReady
+                  reducedMotion={reducedMotion}
+                  onHoverStart={() => setHovered({ ring: 'inner', name: logo.name })}
+                  onHoverEnd={() => setHovered((prev) => (prev?.name === logo.name ? null : prev))}
+                />
+              )
+            })}
+          </motion.div>
+
+          {/* Center Core */}
+          <motion.div
+            style={enableStickyScrub ? { scale: coreScale } : undefined}
+            className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center">
+            <div className="flex flex-col items-center text-center">
+              <div className="text-primary text-4xl font-bold sm:text-5xl lg:text-6xl">
+                <AnimatedCounter
+                  active
+                  progress={enableStickyScrub ? counterProgress : undefined}
+                  reducedMotion={reducedMotion}
+                />
+              </div>
+              <div className="mt-1.5 flex h-6 items-center justify-center">
+                <AnimatePresence mode="wait">
+                  {hovered ? (
+                    <motion.span
+                      key={hovered.name}
+                      initial={{ opacity: 0, y: 4 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -4 }}
+                      transition={{ duration: 0.18, ease: EASE_APPLE }}
+                      className="border-primary/25 bg-primary/10 text-primary inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-medium">
+                      <span className="bg-primary h-1.5 w-1.5 animate-pulse rounded-full" />
+                      {hovered.name}
+                    </motion.span>
+                  ) : (
+                    <motion.span
+                      key="models-label"
+                      initial={{ opacity: 0, y: 4 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -4 }}
+                      transition={{ duration: 0.18, ease: EASE_APPLE }}
+                      className="text-muted-foreground text-sm sm:text-base">
+                      Models
+                    </motion.span>
+                  )}
+                </AnimatePresence>
+              </div>
             </div>
+          </motion.div>
+        </motion.div>
+
+        {/* Minimalist 3-Stage Sticky Progress Indicator (Desktop) */}
+        {enableStickyScrub && (
+          <div className="border-border/60 bg-background/80 mt-5 hidden items-center gap-1.5 rounded-full border px-2 py-1 text-xs backdrop-blur-md md:inline-flex">
+            {stageLabels.map((label, idx) => (
+              <span
+                key={label}
+                className={cn(
+                  'rounded-full px-2.5 py-0.5 transition-colors duration-300',
+                  activeAct === idx ? 'bg-primary/12 text-primary font-medium' : 'text-muted-foreground/70'
+                )}>
+                {label}
+              </span>
+            ))}
           </div>
-        </div>
+        )}
       </div>
     </section>
   )
