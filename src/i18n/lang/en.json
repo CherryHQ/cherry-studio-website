@@ -531,7 +531,7 @@
     "capabilities": {
       "eyebrow": "Inside Cherry Studio",
       "title": "Agents that get real work done",
-      "subtitle": "Each demo below replays a real Cherry Studio 2 interaction: same layouts, same timings, same details.",
+      "subtitle": "Every window below is clickable. Try it right here.",
       "chapters": {
         "agents": {
           "nav": "Agents",

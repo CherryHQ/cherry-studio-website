@@ -528,7 +528,7 @@
     "capabilities": {
       "eyebrow": "走进 Cherry Studio",
       "title": "真正把活干完的 Agent",
-      "subtitle": "下面每个演示都重现了 Cherry Studio 2 里的真实交互：一样的布局、一样的节奏、一样的细节。",
+      "subtitle": "下面每个窗口都能点，直接上手试试。",
       "chapters": {
         "agents": {
           "nav": "智能体",
@@ -1054,7 +1054,7 @@
     }
   },
   "demos": {
-    "simulated": "可交互演示 · 按 Cherry Studio 应用的真实交互重现",
+    "simulated": "可交互演示 · 仿照 Cherry Studio 应用制作",
     "replay": "重播"
   }
 }
