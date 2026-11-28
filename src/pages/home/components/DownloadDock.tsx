@@ -29,8 +29,9 @@ export default function DownloadDock() {
   return (
     <div
       className={cn(
-        'pointer-events-none fixed inset-x-0 bottom-0 z-40 flex flex-col items-center pt-10 pb-4 transition-transform duration-500 ease-dock motion-reduce:transition-none',
-        !visible && 'translate-y-full'
+        'pointer-events-none fixed inset-x-0 bottom-0 z-40 flex flex-col items-center pt-10 pb-4 transition-[transform,opacity] duration-500 ease-dock motion-reduce:transition-none',
+        // The curve's upward shadow would still peek over the screen edge, so it fades out as it slides away.
+        !visible && 'translate-y-full opacity-0'
       )}>
       <span
         aria-hidden="true"
