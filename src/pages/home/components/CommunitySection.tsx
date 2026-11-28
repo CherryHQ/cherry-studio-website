@@ -66,7 +66,7 @@ export default function CommunitySection() {
     <section id="Community" aria-labelledby="home-community-heading" className="relative isolate py-16 sm:py-24">
       <div className="site-container">
         <div className="relative isolate overflow-hidden rounded-[28px] px-6 py-12 text-center sm:px-12 sm:py-16">
-          <HeroBackdrop className="inset-0 -z-10 [mask-image:none]" />
+          <HeroBackdrop className="inset-0 -z-10" fade={false} />
           <div className="on-silk mx-auto max-w-2xl">
             <h2 id="home-community-heading" className="text-3xl font-display text-balance sm:text-5xl">
               <BlurInText text={t('community.title')} />

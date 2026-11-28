@@ -168,7 +168,7 @@ export default function MobilePage() {
     <div className="min-h-screen bg-background pt-[60px] text-foreground">
       <main>
         <section className="relative isolate overflow-hidden border-b border-border py-12 sm:py-20">
-          <HeroBackdrop className="inset-x-0 top-0 -z-10 h-full [mask-image:linear-gradient(to_bottom,#000_72%,transparent)]" />
+          <HeroBackdrop className="inset-x-0 top-0 -z-10 h-full" fade={72} />
           <div className="site-container site-split lg:items-center">
             <div className="max-w-xl">
               <LogoDrawDemo bare size={44} className="mb-6" />

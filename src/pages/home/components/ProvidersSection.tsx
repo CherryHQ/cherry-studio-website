@@ -146,14 +146,7 @@ export default function ProvidersSection() {
   )
 
   return (
-    <section
-      className="relative overflow-hidden border-y border-border bg-card/40 py-16 sm:py-24"
-      aria-labelledby="home-providers">
-      {/* A soft glow behind the heading so the band is not a flat strip on wide screens. */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 h-full bg-[radial-gradient(60%_55%_at_50%_0%,color-mix(in_oklab,var(--color-foreground)_7%,transparent),transparent)]"
-      />
+    <section className="relative overflow-hidden py-16 sm:py-24" aria-labelledby="home-providers">
       <div className="site-container relative text-center">
         <p className="mb-3 text-sm font-medium text-muted-foreground">{t('home_page.providers')}</p>
         <h2 id="home-providers" className="text-4xl font-display text-balance sm:text-6xl 2xl:text-7xl">

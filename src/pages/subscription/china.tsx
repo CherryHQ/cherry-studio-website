@@ -43,7 +43,7 @@ export default function ChinaPricingPage() {
         {t('plus_page.skip_link')}
       </a>
       <main id="plus-main" className="relative isolate overflow-hidden bg-background text-foreground">
-        <HeroBackdrop className="inset-x-0 top-0 -z-10 h-[760px] sm:h-[860px] [mask-image:linear-gradient(to_bottom,#000_62%,transparent)]" />
+        <HeroBackdrop className="inset-x-0 top-0 -z-10 h-[760px] sm:h-[860px]" fade={62} />
         <section aria-labelledby="plus-title" className="site-container site-page-top pb-16 text-center sm:pb-24">
           <h1 id="plus-title" className="on-silk font-display text-6xl leading-none text-balance sm:text-8xl">
             <span>Cherry</span> <span className="font-accent text-muted-foreground">Plus</span>

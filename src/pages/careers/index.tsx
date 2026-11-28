@@ -52,7 +52,7 @@ const CareersPage: FC = () => {
 
   return (
     <div className="relative isolate overflow-hidden bg-background min-h-screen">
-      <HeroBackdrop className="inset-x-0 top-0 -z-10 h-[560px] sm:h-[620px] [mask-image:linear-gradient(to_bottom,#000_72%,transparent)]" />
+      <HeroBackdrop className="inset-x-0 top-0 -z-10 h-[560px] sm:h-[620px]" fade={72} />
       {/* Hero */}
       <section className="site-page-top pb-12 sm:pb-16">
         <div className="site-container">

@@ -485,7 +485,7 @@ export default function AiPptUseCasePage() {
       <main>
         {/* 1. 首屏：左边提示词，右边生成过程 */}
         <section className="relative isolate">
-          <HeroBackdrop className="inset-x-0 top-0 -z-10 h-[min(100%,760px)] [mask-image:linear-gradient(to_bottom,#000_72%,transparent)]" />
+          <HeroBackdrop className="inset-x-0 top-0 -z-10 h-[min(100%,760px)]" fade={72} />
           <div className="site-container site-page-top site-split relative pb-12 sm:pb-16 lg:items-center">
             <div>
               <nav aria-label={copy.breadcrumb.label} className="on-silk text-muted-foreground text-sm">

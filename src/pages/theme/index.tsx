@@ -981,7 +981,7 @@ const ThemePage: React.FC = () => {
   return (
     <ErrorBoundary>
       <div className="relative isolate min-h-screen overflow-hidden bg-background">
-        <HeroBackdrop className="inset-x-0 top-0 -z-10 h-[440px] sm:h-[500px] [mask-image:linear-gradient(to_bottom,#000_72%,transparent)]" />
+        <HeroBackdrop className="inset-x-0 top-0 -z-10 h-[440px] sm:h-[500px]" fade={72} />
         <main className="site-page-top relative z-10 pb-16">
           <div className="site-container">
             <h1 className="mb-4 on-silk text-balance text-5xl font-display sm:text-7xl">{t('theme_page.title')}</h1>

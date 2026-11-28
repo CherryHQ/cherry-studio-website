@@ -66,7 +66,7 @@ function UsageContent() {
 
   return (
     <div className="relative isolate overflow-hidden bg-background min-h-screen">
-      <HeroBackdrop className="inset-x-0 top-0 -z-10 h-[440px] sm:h-[520px] [mask-image:linear-gradient(to_bottom,#000_72%,transparent)]" />
+      <HeroBackdrop className="inset-x-0 top-0 -z-10 h-[440px] sm:h-[520px]" fade={72} />
       <article className="site-page-top mx-auto max-w-3xl px-6 pb-16">
         <header className="on-silk">
           <h1 className="text-balance text-5xl font-display sm:text-7xl">{t('usage.title')}</h1>

@@ -91,7 +91,7 @@ export default function HeroSection() {
             'overflow-x-clip',
             !reduced && 'sticky top-(--site-header-height) h-[calc(100svh-var(--site-header-height))]'
           )}>
-          <HeroBackdrop className="inset-0 -z-10 [mask-image:linear-gradient(to_bottom,#000_45%,transparent)]" />
+          <HeroBackdrop className="inset-0 -z-10" fade={45} />
           <m.div
             ref={headline}
             style={reduced ? undefined : { y: headlineY, opacity: headlineOpacity }}

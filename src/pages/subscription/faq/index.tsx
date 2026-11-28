@@ -16,7 +16,7 @@ export default function SubscriptionFaqPage() {
   return (
     <>
       <main className="site-page-top relative isolate min-h-[70vh] overflow-hidden bg-background px-6 pb-16 text-foreground">
-        <HeroBackdrop className="inset-x-0 top-0 -z-10 h-[440px] sm:h-[500px] [mask-image:linear-gradient(to_bottom,#000_72%,transparent)]" />
+        <HeroBackdrop className="inset-x-0 top-0 -z-10 h-[440px] sm:h-[500px]" fade={72} />
         <div className="mx-auto max-w-3xl">
           <Link
             to="/subscription"

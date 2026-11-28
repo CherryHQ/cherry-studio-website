@@ -15,7 +15,7 @@ const NotFoundPage: FC = () => {
 
   return (
     <div className="relative isolate overflow-hidden bg-background flex min-h-screen flex-col">
-      <HeroBackdrop className="inset-x-0 top-0 -z-10 h-full [mask-image:linear-gradient(to_bottom,#000_72%,transparent)]" />
+      <HeroBackdrop className="inset-x-0 top-0 -z-10 h-full" fade={72} />
       <main className="site-container site-page-top flex flex-1 flex-col items-start justify-center pb-16">
         <LogoDrawDemo bare size={72} className="mb-8" />
         <p className="on-silk text-sm font-medium text-muted-foreground">{t('not_found.code')}</p>
