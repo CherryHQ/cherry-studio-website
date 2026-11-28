@@ -14,13 +14,14 @@ import { usePageMeta } from '@/hooks/usePageMeta'
 import { getMobileDocsUrl } from '@/utils/urls'
 import { capabilityVisuals } from './components/CapabilityVisuals'
 
+// Rows alternate their split (wide + narrow, narrow + wide, then even) so the grid doesn't read as six equal tiles.
 const capabilities = [
-  { key: 'skills', icon: Sparkles },
-  { key: 'tools', icon: Plug },
-  { key: 'files', icon: Files },
-  { key: 'images', icon: ImagePlus },
-  { key: 'desktop', icon: Monitor },
-  { key: 'ssh', icon: Terminal }
+  { key: 'desktop', icon: Monitor, className: 'sm:col-span-2 lg:col-span-4', wide: true },
+  { key: 'tools', icon: Plug, className: 'lg:col-span-2' },
+  { key: 'skills', icon: Sparkles, className: 'lg:col-span-2' },
+  { key: 'images', icon: ImagePlus, className: 'sm:col-span-2 lg:col-span-4', wide: true },
+  { key: 'files', icon: Files, className: 'lg:col-span-3' },
+  { key: 'ssh', icon: Terminal, className: 'lg:col-span-3' }
 ] as const
 
 export default function MobilePage() {
@@ -82,10 +83,11 @@ export default function MobilePage() {
               </p>
             </div>
             <FeatureBento
-              className="mt-12"
-              items={capabilities.map(({ key, icon }) => ({
+              className="mt-12 lg:grid-cols-6"
+              items={capabilities.map(({ key, icon, ...placement }) => ({
                 key,
                 icon,
+                ...placement,
                 visual: capabilityVisuals[key],
                 title: t(`mobile_site.mobile_first.items.${key}.title`),
                 description: t(`mobile_site.mobile_first.items.${key}.description`)

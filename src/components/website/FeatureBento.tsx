@@ -13,6 +13,10 @@ export interface FeatureBentoItem {
   href?: string
   /** Small illustration shown in place of the icon. */
   visual?: ReactNode
+  /** Grid placement, e.g. column and row spans. */
+  className?: string
+  /** Set the illustration beside the copy on large screens, for a card spanning extra columns. */
+  wide?: boolean
 }
 
 const SPOT = 'color-mix(in oklab, var(--color-foreground) 4.5%, transparent)'
@@ -57,7 +61,7 @@ export default function FeatureBento({ items, className }: { items: FeatureBento
       {items.map((item, index) => {
         const Card = item.href ? 'a' : 'div'
         return (
-          <m.li key={item.key} {...reveal(index)} className="min-w-0">
+          <m.li key={item.key} {...reveal(index)} className={cn('min-w-0', item.className)}>
             <Card
               {...(item.href ? { href: item.href } : {})}
               data-card=""
@@ -68,6 +72,7 @@ export default function FeatureBento({ items, className }: { items: FeatureBento
               }}
               className={cn(
                 'group relative flex h-full flex-col overflow-hidden glass-card rounded-[20px] p-6 [transform:rotateX(var(--rx,0deg))_rotateY(var(--ry,0deg))] transition-transform duration-200 ease-out will-change-transform motion-reduce:transform-none',
+                item.wide && 'lg:flex-row-reverse lg:items-stretch lg:gap-8',
                 item.href && 'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary'
               )}>
               {/* Surface light and rim light both follow the grid-wide pointer; they fade in while it is over the grid. */}
@@ -88,7 +93,11 @@ export default function FeatureBento({ items, className }: { items: FeatureBento
               />
               {item.visual ? (
                 <div
-                  className="relative -mx-6 -mt-6 flex h-40 items-center justify-center overflow-hidden bg-[radial-gradient(120%_90%_at_50%_0%,color-mix(in_oklab,var(--color-foreground)_6%,transparent),transparent)]"
+                  className={cn(
+                    'relative -mx-6 -mt-6 flex h-40 items-center justify-center overflow-hidden bg-[radial-gradient(120%_90%_at_50%_0%,color-mix(in_oklab,var(--color-foreground)_6%,transparent),transparent)]',
+                    item.wide &&
+                      'lg:-my-6 lg:-mr-6 lg:ml-0 lg:h-auto lg:flex-1 lg:bg-[radial-gradient(90%_120%_at_100%_50%,color-mix(in_oklab,var(--color-foreground)_6%,transparent),transparent)]'
+                  )}
                   aria-hidden="true">
                   {item.visual}
                 </div>
@@ -97,7 +106,7 @@ export default function FeatureBento({ items, className }: { items: FeatureBento
                   <item.icon className="size-[18px]" aria-hidden="true" />
                 </span>
               )}
-              <div className="relative mt-auto pt-5">
+              <div className={cn('relative mt-auto pt-5', item.wide && 'lg:max-w-sm lg:self-end lg:pt-0')}>
                 <h3 className="font-display flex items-center gap-2 text-xl leading-tight text-balance text-foreground">
                   {item.title}
                   {item.href && (
