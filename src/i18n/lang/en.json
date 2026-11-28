@@ -542,12 +542,12 @@
       "chapters": {
         "agents": {
           "nav": "Agents",
-          "title": "Agents that finish the job",
-          "description": "Hand off a task. The agent plans with a todo list, runs commands, edits files and asks before risky steps.",
+          "title": "Agents that finish the whole job",
+          "description": "Ask for research, a report or a deck. The agent plans, runs sub-agents in parallel and hands back finished files you can preview in one click.",
           "points": [
-            "Permission modes from ask-every-time to auto-accept",
-            "Diffs and terminal output right in the thread",
-            "Launch {{codeClis}} coding CLIs with your own models"
+            "Background sub-agents work side by side",
+            "Plan, progress and context in Session details",
+            "Decks, documents and reports with instant preview"
           ]
         },
         "knowledge": {
@@ -604,8 +604,8 @@
     },
     "everywhere": {
       "eyebrow": "Everywhere on your desktop",
-      "title": "Help in any app, one shortcut away",
-      "subtitle": "Select text anywhere to translate, explain or summarize it, or bring up the quick assistant without leaving what you are doing.",
+      "title": "Select anything, ask an agent",
+      "subtitle": "Highlight text in any app and hand it to an agent. Each answer opens in its own window that tucks into a capsule, and any of them continues in the main window.",
       "stats": {
         "mcp": "Built-in MCP servers",
         "mini_apps": "Mini apps",

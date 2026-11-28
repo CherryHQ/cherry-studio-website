@@ -58,7 +58,7 @@ export function UserAvatar({ className }: { className?: string }) {
   )
 }
 
-export function EmojiAvatar({ size }: { size: number }) {
+export function EmojiAvatar({ size, emoji = '🤖' }: { size: number; emoji?: string }) {
   return (
     <span
       aria-hidden="true"
@@ -67,10 +67,10 @@ export function EmojiAvatar({ size }: { size: number }) {
       <span
         className="absolute inset-0 flex scale-150 items-center justify-center opacity-40 blur-sm"
         style={{ fontSize: size * 1.2 }}>
-        🤖
+        {emoji}
       </span>
       <span className="relative leading-none" style={{ fontSize: size * 0.7 }}>
-        🤖
+        {emoji}
       </span>
     </span>
   )
@@ -105,61 +105,85 @@ const PANE_SHORTCUTS: { id: AgentPane; icon: LucideIcon }[] = [
 /** Agent session top bar: sidebar toggle, agent, model and workspace pickers, then the side-panel tabs. */
 export function AgentSessionBar({
   agentName,
+  avatar,
   workspace,
   model,
   picking,
-  pane
+  pane,
+  onPane
 }: {
   agentName: string
+  avatar?: string
   workspace: string
   model: { name: string; provider: string; providerName: string }
   /** The agent picker shows its chevron until the session's first message. */
   picking: boolean
   /** The right pane that is open; its shortcut shows the active state. */
   pane?: AgentPane
+  /** Makes the listed shortcuts clickable, each with its accessible label. */
+  onPane?: { labels: Partial<Record<AgentPane, string>>; toggle: (pane: AgentPane) => void }
 }) {
   return (
-    <div className="flex h-11 shrink-0 items-center justify-between gap-2 px-3" aria-hidden="true">
-      <div className="flex min-w-0 items-center gap-0.5">
-        <span className="flex size-[30px] shrink-0 items-center justify-center text-muted-foreground">
-          <svg viewBox="0 0 24 24" fill="none" className="size-[18px]">
-            <rect x="3.5" y="4" width="17" height="16" rx="4" stroke="currentColor" strokeWidth="1.7" />
-            <path d="M9.5 5v14" stroke="currentColor" strokeLinecap="round" strokeWidth="1.7" />
-          </svg>
-        </span>
-        <span className="flex size-7 shrink-0 items-center justify-center">
-          <EmojiAvatar size={20} />
-        </span>
-        <span className="hidden h-8 shrink-0 items-center gap-1.5 rounded-lg px-2.5 text-xs font-medium md:flex">
-          {agentName}
-          {picking && <ChevronDown className="size-3.5 text-muted-foreground" />}
-        </span>
-        <span className="flex h-8 min-w-0 items-center gap-1.5 rounded-lg px-2.5 text-xs font-medium">
-          <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-background">
-            <ProviderIcon id={model.provider} className="size-3.5" />
+    // Sized by its own column rather than the viewport, so a narrow chat beside a pane stays tidy.
+    <div className="@container/bar shrink-0">
+      <div className="flex h-11 items-center justify-between gap-2 px-3">
+        <div className="flex min-w-0 items-center gap-0.5" aria-hidden="true">
+          <span className="flex size-[30px] shrink-0 items-center justify-center text-muted-foreground">
+            <svg viewBox="0 0 24 24" fill="none" className="size-[18px]">
+              <rect x="3.5" y="4" width="17" height="16" rx="4" stroke="currentColor" strokeWidth="1.7" />
+              <path d="M9.5 5v14" stroke="currentColor" strokeLinecap="round" strokeWidth="1.7" />
+            </svg>
           </span>
-          <span className="hidden truncate sm:inline">
-            {model.name} | {model.providerName}
+          <span className="flex size-7 shrink-0 items-center justify-center">
+            <EmojiAvatar size={20} emoji={avatar} />
           </span>
-          <ChevronDown className="hidden size-3.5 shrink-0 text-muted-foreground sm:block" />
-        </span>
-        <span className="flex h-8 shrink-0 items-center gap-1.5 rounded-lg px-2.5 text-xs font-medium">
-          <Folder className="size-5 text-muted-foreground" />
-          <span className="hidden sm:inline">{workspace}</span>
-          <ChevronDown className="hidden size-3.5 text-muted-foreground sm:block" />
-        </span>
-      </div>
-      <div className="flex shrink-0 items-center gap-0.5 text-muted-foreground">
-        {PANE_SHORTCUTS.map(({ id, icon: Icon }) => (
-          <span
-            key={id}
-            className={cn(
+          <span className="hidden h-8 shrink-0 items-center gap-1.5 rounded-lg px-2.5 text-xs font-medium @lg/bar:flex">
+            {agentName}
+            {picking && <ChevronDown className="size-3.5 text-muted-foreground" />}
+          </span>
+          <span className="flex h-8 min-w-0 items-center gap-1.5 overflow-hidden rounded-lg px-2.5 text-xs font-medium">
+            <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-background">
+              <ProviderIcon id={model.provider} className="size-3.5" />
+            </span>
+            <span className="hidden truncate @md/bar:inline">
+              {model.name} | {model.providerName}
+            </span>
+            <ChevronDown className="hidden size-3.5 shrink-0 text-muted-foreground @md/bar:block" />
+          </span>
+          <span className="flex h-8 shrink-0 items-center gap-1.5 rounded-lg px-2.5 text-xs font-medium">
+            <Folder className="size-5 text-muted-foreground" />
+            <span className="hidden @sm/bar:inline">{workspace}</span>
+            <ChevronDown className="hidden size-3.5 text-muted-foreground @sm/bar:block" />
+          </span>
+        </div>
+        <div className="flex shrink-0 items-center gap-0.5 text-muted-foreground">
+          {PANE_SHORTCUTS.map(({ id, icon: Icon }) => {
+            const className = cn(
               'flex size-[30px] items-center justify-center rounded-md',
               pane === id && 'bg-secondary text-foreground'
-            )}>
-            <Icon className="size-3.5" />
-          </span>
-        ))}
+            )
+            const label = onPane?.labels[id]
+            return label ? (
+              <button
+                key={id}
+                type="button"
+                aria-label={label}
+                aria-pressed={pane === id}
+                data-pane={id}
+                onClick={() => onPane?.toggle(id)}
+                className={cn(
+                  className,
+                  'cursor-pointer hover:bg-accent/60 hover:text-foreground focus-visible:outline-2 focus-visible:outline-primary'
+                )}>
+                <Icon className="size-3.5" />
+              </button>
+            ) : (
+              <span key={id} className={className} aria-hidden="true">
+                <Icon className="size-3.5" />
+              </span>
+            )
+          })}
+        </div>
       </div>
     </div>
   )

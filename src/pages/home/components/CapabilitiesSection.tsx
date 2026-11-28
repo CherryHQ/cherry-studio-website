@@ -27,7 +27,7 @@ interface Step {
 const steps: Step[] = [
   {
     chapter: 'agents',
-    demos: [{ load: () => import('@/components/demos/agents/AgentRunDemo'), height: 'min-h-[680px]' }]
+    demos: [{ load: () => import('@/components/demos/agents/AgentJobDemo'), height: 'min-h-[610px]' }]
   },
   {
     chapter: 'browser',
