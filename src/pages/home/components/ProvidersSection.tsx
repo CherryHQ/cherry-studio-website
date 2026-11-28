@@ -1,4 +1,3 @@
-import type { ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import ai302Logo from '@/assets/images/provider_logo/302ai.svg'
@@ -33,6 +32,7 @@ import zeroOneLogo from '@/assets/images/provider_logo/zeroone.svg'
 import zhipuLogo from '@/assets/images/provider_logo/zhipu-color.svg'
 import DemoMount from '@/components/demos/primitives/DemoMount'
 import BlurInText from '@/components/website/BlurInText'
+import Marquee from '@/components/website/Marquee'
 import productStats from '@/content/product-stats.json'
 import { cn } from '@/lib/utils'
 import { isEnglishSite } from '@/utils/urls'
@@ -114,21 +114,6 @@ const cnModels = [
 ]
 
 /** One marquee row: the items twice, so translating by -50% loops seamlessly. Hovering the row pauses it. */
-function MarqueeRow({ children, reverse }: { children: (hidden: boolean) => ReactNode; reverse?: boolean }) {
-  return (
-    <div className="group flex overflow-hidden">
-      <div
-        className={cn(
-          'flex w-max motion-safe:animate-marquee group-hover:[animation-play-state:paused]',
-          reverse && '[animation-direction:reverse]'
-        )}>
-        {children(false)}
-        {children(true)}
-      </div>
-    </div>
-  )
-}
-
 export default function ProvidersSection() {
   const { t, i18n } = useTranslation()
   const isEn = isEnglishSite(i18n.resolvedLanguage || i18n.language)
@@ -171,7 +156,7 @@ export default function ProvidersSection() {
 
       {/* Marquee after Incidental AI Design Academy's MIT "Marquee": provider chips over a reversed row of model names. */}
       <div className="grid gap-3.5 border-t border-border py-10 [mask-image:linear-gradient(90deg,transparent,black_12%,black_88%,transparent)]">
-        <MarqueeRow>
+        <Marquee>
           {(hidden) => (
             <ul aria-hidden={hidden || undefined} className="flex shrink-0 gap-3 pr-3">
               {logos.map(({ name, src, darkInvert }) => (
@@ -184,8 +169,8 @@ export default function ProvidersSection() {
               ))}
             </ul>
           )}
-        </MarqueeRow>
-        <MarqueeRow reverse>
+        </Marquee>
+        <Marquee reverse>
           {(hidden) => (
             <ul aria-hidden={hidden || undefined} className="flex shrink-0">
               {models.map((model) => (
@@ -197,7 +182,7 @@ export default function ProvidersSection() {
               ))}
             </ul>
           )}
-        </MarqueeRow>
+        </Marquee>
       </div>
     </section>
   )

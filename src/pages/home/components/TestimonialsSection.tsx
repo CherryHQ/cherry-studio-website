@@ -3,6 +3,7 @@ import type { FC, ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import BlurInText from '@/components/website/BlurInText'
+import Marquee from '@/components/website/Marquee'
 import { type TestimonialPlatform, testimonials } from '@/content/testimonials'
 import { isEnglishSite } from '@/utils/urls'
 
@@ -57,12 +58,12 @@ const communitySources: { platform: SourcePlatform; url: string }[] = [
 
 function Avatar({ name, src }: { name: string; src?: string }) {
   if (src) {
-    return <img src={src} alt="" loading="lazy" className="size-10 rounded-full object-cover ring-1 ring-border" />
+    return <img src={src} alt="" loading="lazy" className="size-8 rounded-full object-cover ring-1 ring-border" />
   }
   return (
     <span
       aria-hidden="true"
-      className="flex size-10 items-center justify-center rounded-full bg-secondary font-mono text-sm font-medium text-muted-foreground ring-1 ring-border">
+      className="flex size-8 items-center justify-center rounded-full bg-secondary text-xs font-medium text-muted-foreground ring-1 ring-border">
       {name.slice(0, 1).toUpperCase()}
     </span>
   )
@@ -71,67 +72,77 @@ function Avatar({ name, src }: { name: string; src?: string }) {
 const TestimonialsSection: FC = () => {
   const { t, i18n } = useTranslation()
   const isEn = isEnglishSite(i18n.resolvedLanguage || i18n.language)
+  // Two rows drift in opposite directions; each carries every review, offset so neighbours differ, and is wider
+  // than the screen so the loop never shows a card twice at once.
+  const rows = [testimonials, [...testimonials.slice(4), ...testimonials.slice(0, 4)]]
+
+  const card = (item: (typeof testimonials)[number], hidden: boolean) => (
+    <li key={item.id} className="w-[340px] shrink-0 pr-4">
+      <a
+        href={item.url}
+        target="_blank"
+        rel="noopener noreferrer nofollow"
+        tabIndex={hidden ? -1 : undefined}
+        aria-label={
+          hidden ? undefined : `${item.name} · ${t('testimonials.view_on', { platform: platformNames[item.platform] })}`
+        }
+        className="glass-card group/card flex h-full flex-col gap-4 rounded-[20px] p-5 transition-[border-color,transform] duration-300 ease-settle hover:-translate-y-0.5 hover:border-hairline-strong focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+        <blockquote className="line-clamp-4 text-sm leading-relaxed text-pretty text-foreground/90 zh:leading-[1.75]">
+          “{isEn ? item.content.en : item.content.zh}”
+        </blockquote>
+        <div className="mt-auto flex items-center gap-2.5">
+          <Avatar name={item.handle?.replace('@', '') ?? item.name} src={item.avatar} />
+          <div className="min-w-0 flex-1">
+            <p className="truncate text-[13px] font-medium text-foreground">{item.name}</p>
+            {item.handle && <p className="truncate text-xs text-muted-foreground">{item.handle}</p>}
+          </div>
+          <span className="inline-flex items-center gap-1 text-muted-foreground transition-colors group-hover/card:text-foreground">
+            {platformIcons[item.platform]}
+            <ArrowUpRight className="size-3.5" aria-hidden="true" />
+          </span>
+        </div>
+      </a>
+    </li>
+  )
 
   return (
     <section
       className="site-section relative isolate overflow-hidden bg-background"
       aria-labelledby="home-testimonials">
-      <div className="site-container relative">
-        <div className="mb-10 max-w-2xl sm:mb-14">
+      <div className="site-container mb-10 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+        <div className="max-w-2xl">
           <p className="mb-3 text-sm font-medium text-muted-foreground">{t('testimonials.eyebrow')}</p>
           <h2 id="home-testimonials" className="text-4xl font-display text-balance sm:text-5xl">
             <BlurInText text={t('testimonials.title')} />
           </h2>
           <p className="mt-4 text-pretty text-muted-foreground">{t('testimonials.subtitle')}</p>
         </div>
-
-        <ul className="columns-1 gap-4 md:columns-2 lg:columns-3">
-          {testimonials.map((item) => (
-            <li key={item.id} className="mb-4 break-inside-avoid">
+        <ul className="flex flex-wrap items-center gap-2" aria-label={t('testimonials.source_hint')}>
+          {communitySources.map((source) => (
+            <li key={source.platform}>
               <a
-                href={item.url}
+                href={source.url}
                 target="_blank"
                 rel="noopener noreferrer nofollow"
-                className="glass-card group flex flex-col gap-5 rounded-[20px] p-6 transition-[border-color,transform] duration-300 ease-settle hover:-translate-y-0.5 hover:border-hairline-strong focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
-                <blockquote className="text-pretty text-[15px] leading-relaxed text-foreground/90 zh:leading-[1.8]">
-                  “{isEn ? item.content.en : item.content.zh}”
-                </blockquote>
-                <div className="mt-auto flex items-center gap-3">
-                  <Avatar name={item.handle?.replace('@', '') ?? item.name} src={item.avatar} />
-                  <div className="min-w-0 flex-1">
-                    <p className="truncate text-sm font-medium text-foreground">{item.name}</p>
-                    {item.handle && <p className="truncate text-xs text-muted-foreground">{item.handle}</p>}
-                  </div>
-                  <span className="inline-flex items-center gap-1 text-xs text-muted-foreground transition-colors group-hover:text-primary">
-                    {platformIcons[item.platform]}
-                    <span className="sr-only sm:not-sr-only">
-                      {t('testimonials.view_on', { platform: platformNames[item.platform] })}
-                    </span>
-                    <ArrowUpRight className="size-3.5" aria-hidden="true" />
-                  </span>
-                </div>
+                className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1 text-xs text-muted-foreground transition-colors hover:border-hairline-strong hover:text-foreground focus-visible:outline-2 focus-visible:outline-primary">
+                {platformIcons[source.platform]}
+                {platformNames[source.platform]}
               </a>
             </li>
           ))}
         </ul>
+      </div>
 
-        <div className="mt-10 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
-          <p className="text-sm text-muted-foreground">{t('testimonials.source_hint')}</p>
-          <ul className="flex flex-wrap items-center gap-2">
-            {communitySources.map((source) => (
-              <li key={source.platform}>
-                <a
-                  href={source.url}
-                  target="_blank"
-                  rel="noopener noreferrer nofollow"
-                  className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1 text-xs text-muted-foreground transition-colors hover:border-hairline-strong hover:text-foreground focus-visible:outline-2 focus-visible:outline-primary">
-                  {platformIcons[source.platform]}
-                  {platformNames[source.platform]}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
+      <div className="grid gap-4 [mask-image:linear-gradient(90deg,transparent,black_8%,black_92%,transparent)]">
+        {rows.map((row, index) => (
+          <Marquee key={index} reverse={index === 1} seconds={70}>
+            {(hidden) => (
+              <ul aria-hidden={hidden || undefined} className="flex shrink-0">
+                {row.map((item) => card(item, hidden))}
+              </ul>
+            )}
+          </Marquee>
+        ))}
       </div>
     </section>
   )
