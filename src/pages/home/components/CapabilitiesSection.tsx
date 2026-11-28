@@ -80,6 +80,7 @@ export default function CapabilitiesSection() {
   const [active, setActive] = useState<ChapterId>(chapterIds[0])
   const reduced = useReducedMotion() ?? false
   const articles = useRef<Partial<Record<ChapterId, HTMLElement | null>>>({})
+  const stack = useRef<HTMLDivElement>(null)
 
   // Puts a chapter's demo in the middle of the screen, level with the copy beside it. A demo that mounts on the
   // way can change height, so the target is measured again on arrival and corrected.
@@ -115,7 +116,41 @@ export default function CapabilitiesSection() {
       { rootMargin: '-45% 0px -45% 0px' }
     )
     for (const element of Object.values(articles.current)) if (element) observer.observe(element)
-    return () => observer.disconnect()
+    // Between the first and last demo, scrolling always comes to rest on one of them, centred. Snapping switches on
+    // and off only where a demo is already centred, so it never jumps, and past either end the page scrolls freely.
+    const root = document.documentElement
+    const desktop = window.matchMedia('(min-width: 1024px)')
+    let frame = 0
+    const sync = () => {
+      frame = 0
+      const demos = stack.current?.querySelectorAll('[data-snap]')
+      const header = Number.parseFloat(getComputedStyle(root).getPropertyValue('--site-header-height'))
+      const middle = header + (window.innerHeight - header) / 2
+      const centre = (element?: Element) => {
+        const rect = element?.getBoundingClientRect()
+        return rect ? rect.top + rect.height / 2 : Number.NaN
+      }
+      const inside =
+        desktop.matches &&
+        !!demos?.length &&
+        centre(demos[0]) <= middle + 2 &&
+        centre(demos[demos.length - 1]) >= middle - 2
+      root.classList.toggle('snap-y', inside)
+      root.classList.toggle('snap-mandatory', inside)
+    }
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(sync)
+    }
+    sync()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    desktop.addEventListener('change', sync)
+    return () => {
+      observer.disconnect()
+      cancelAnimationFrame(frame)
+      window.removeEventListener('scroll', onScroll)
+      desktop.removeEventListener('change', sync)
+      root.classList.remove('snap-y', 'snap-mandatory')
+    }
   }, [])
 
   return (
@@ -173,7 +208,7 @@ export default function CapabilitiesSection() {
           </div>
         </aside>
 
-        <div>
+        <div ref={stack}>
           {chapterIds.map((chapter) => (
             <article
               key={chapter}
@@ -192,7 +227,9 @@ export default function CapabilitiesSection() {
                   .filter((step) => step.chapter === chapter)
                   .flatMap((step) => step.demos)
                   .map((demo, index) => (
-                    <DemoMount key={index} load={demo.load} className={demo.height} />
+                    <div key={index} data-snap="" className="lg:snap-center">
+                      <DemoMount load={demo.load} className={demo.height} />
+                    </div>
                   ))}
               </div>
             </article>
