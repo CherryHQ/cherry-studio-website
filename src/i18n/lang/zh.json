@@ -995,7 +995,6 @@
     }
   },
   "demos": {
-    "simulated": "可交互演示 · 仿照 Cherry Studio 应用制作",
     "replay": "重播"
   }
 }

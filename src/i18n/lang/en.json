@@ -1005,7 +1005,6 @@
     }
   },
   "demos": {
-    "simulated": "Interactive demo · recreated from the Cherry Studio app",
     "replay": "Replay"
   }
 }

@@ -19,7 +19,7 @@ interface PhoneFrameProps {
   /** `light` draws white status bar glyphs for a dark screen such as the camera. */
   statusBar?: 'auto' | 'light'
   onReplay?: () => void
-  /** Hide the "simulated" caption when a section already explains the demo. */
+  /** Hide the replay row, for placements that replay on their own. */
   bare?: boolean
 }
 
@@ -77,18 +77,15 @@ export default function PhoneFrame({
           </div>
         </div>
       </div>
-      {!bare && (
-        <figcaption className="mt-3 flex items-center justify-between gap-3 px-1 text-xs text-muted-foreground">
-          <span>{t('demos.simulated')}</span>
-          {onReplay && (
-            <button
-              type="button"
-              onClick={onReplay}
-              className="inline-flex shrink-0 cursor-pointer items-center gap-1 rounded-sm whitespace-nowrap hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
-              <RotateCcw className="size-3" aria-hidden="true" />
-              {t('demos.replay')}
-            </button>
-          )}
+      {!bare && onReplay && (
+        <figcaption className="mt-3 flex items-center justify-end gap-3 px-1 text-xs text-muted-foreground">
+          <button
+            type="button"
+            onClick={onReplay}
+            className="inline-flex shrink-0 cursor-pointer items-center gap-1 rounded-sm whitespace-nowrap hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+            <RotateCcw className="size-3" aria-hidden="true" />
+            {t('demos.replay')}
+          </button>
         </figcaption>
       )}
     </figure>

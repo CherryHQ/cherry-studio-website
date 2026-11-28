@@ -211,8 +211,7 @@ export default function TabletLayoutDemo() {
 function TabletCaption({ onReplay }: { onReplay: () => void }) {
   const { t } = useTranslation()
   return (
-    <figcaption className="mt-3 flex items-center justify-between gap-3 px-1 font-mono text-[11px] text-muted-foreground">
-      <span>{t('demos.simulated')}</span>
+    <figcaption className="mt-3 flex items-center justify-end gap-3 px-1 text-xs text-muted-foreground">
       <button
         type="button"
         onClick={onReplay}
