@@ -31,9 +31,8 @@ export default function DownloadSection() {
       data-dock-hide=""
       className="relative isolate overflow-hidden border-t border-border py-24 sm:py-32">
       <m.div {...reveal()} className="site-container flex flex-col items-center text-center">
-        <span className="mb-8 flex size-16 items-center justify-center rounded-2xl bg-card shadow-[inset_0_0_0_1px_var(--color-border),var(--shadow-float)]">
-          <img src={logo} alt="" className="size-10 rounded-xl" />
-        </span>
+        {/* The app icon is full-bleed artwork, so it is the tile rather than sitting inside one. */}
+        <img src={logo} alt="" className="mb-8 size-16 rounded-2xl shadow-(--shadow-float)" />
         <h2 id="home-download-heading" className="max-w-3xl text-5xl font-display text-balance sm:text-7xl">
           <BlurInText text={t('home_page.cta_download')} />
         </h2>
