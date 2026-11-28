@@ -20,7 +20,7 @@ export interface SelectionAgentCopy {
   hint: string
   sample: string
   autoClose: { title: string; description: string }
-  menubar: { app: string; items: string[]; clock: string }
+  menubar: { app: string; items: string[] }
   mail: {
     mailbox: string
     list: { from: string; subject: string; time: string }[]
@@ -97,7 +97,7 @@ export const selectionAgentDemo: Record<DemoLocale, SelectionAgentCopy> = {
       title: 'Auto Close',
       description: "Automatically close the window when it's not pinned and loses focus"
     },
-    menubar: { app: 'Mail', items: ['File', 'Edit', 'View', 'Message'], clock: 'Tue 9:44' },
+    menubar: { app: 'Mail', items: ['File', 'Edit', 'View', 'Message'] },
     mail: {
       mailbox: 'Inbox',
       list: [
@@ -221,7 +221,7 @@ export const selectionAgentDemo: Record<DemoLocale, SelectionAgentCopy> = {
     hint: '在邮件里随意划选文字，或',
     sample: '试试示例',
     autoClose: { title: '自动关闭', description: '当窗口未置顶且失去焦点时，将自动关闭该窗口' },
-    menubar: { app: '邮件', items: ['文件', '编辑', '显示', '邮件'], clock: '周二 9:44' },
+    menubar: { app: '邮件', items: ['文件', '编辑', '显示', '邮件'] },
     mail: {
       mailbox: '收件箱',
       list: [

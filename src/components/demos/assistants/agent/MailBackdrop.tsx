@@ -1,7 +1,8 @@
 import { Archive, Forward, Reply, Search, SquarePen, Trash2, Wifi } from 'lucide-react'
-import type { RefObject } from 'react'
+import { type RefObject, useEffect, useState } from 'react'
 
 import logo from '@/assets/images/logo.png'
+import { useDemoLocale } from '@/components/demos/primitives/useDemoLocale'
 import type { SelectionAgentCopy } from '@/content/demos/selectionAgent'
 import { cn } from '@/lib/utils'
 
@@ -11,6 +12,27 @@ interface MailBackdropProps {
   scrollerRef: RefObject<HTMLDivElement>
   onScroll: () => void
   onBodyPointerDown: () => void
+}
+
+/** The menu bar clock: the visitor's own weekday and time, ticking on the minute. */
+function MenuClock() {
+  const { tag } = useDemoLocale()
+  const [now, setNow] = useState(() => new Date())
+  useEffect(() => {
+    let timer: number
+    const tick = () => {
+      setNow(new Date())
+      timer = window.setTimeout(tick, 60_000 - (Date.now() % 60_000))
+    }
+    timer = window.setTimeout(tick, 60_000 - (Date.now() % 60_000))
+    return () => window.clearTimeout(timer)
+  }, [])
+  return (
+    <span className="tabular-nums">
+      {now.toLocaleDateString(tag, { weekday: 'short' })}{' '}
+      {now.toLocaleTimeString(tag, { hour: 'numeric', minute: '2-digit' })}
+    </span>
+  )
 }
 
 /** Someone else's app on the desktop: a mail client whose message text the visitor can select. */
@@ -35,7 +57,7 @@ export function MailBackdrop({ copy, bodyRef, scrollerRef, onScroll, onBodyPoint
         <span className="ml-auto flex items-center gap-3">
           <img src={logo} alt="" className="size-3.5 rounded-full grayscale" draggable={false} />
           <Wifi className="size-3.5" />
-          <span className="tabular-nums">{menubar.clock}</span>
+          <MenuClock />
         </span>
       </div>
 
