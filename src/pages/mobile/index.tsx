@@ -2,152 +2,97 @@ import { ArrowRight, Download, Files, ImagePlus, Monitor, Plug, Sparkles, Termin
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
-import fileLibraryEn from '@/assets/images/screenshots/mobile/en/file-library.webp'
-import htmlPreviewEn from '@/assets/images/screenshots/mobile/en/html-preview.webp'
-import ipadConversationEn from '@/assets/images/screenshots/mobile/en/ipad-conversation.webp'
-import ipadImagePreviewEn from '@/assets/images/screenshots/mobile/en/ipad-image-preview.webp'
-import iphoneConversationEn from '@/assets/images/screenshots/mobile/en/iphone-conversation.webp'
-import iphoneDrawingEn from '@/assets/images/screenshots/mobile/en/iphone-drawing.webp'
-import sidebarEn from '@/assets/images/screenshots/mobile/en/sidebar.webp'
-import fileLibraryZh from '@/assets/images/screenshots/mobile/zh/file-library.webp'
-import htmlPreviewZh from '@/assets/images/screenshots/mobile/zh/html-preview.webp'
-import ipadConversationZh from '@/assets/images/screenshots/mobile/zh/ipad-conversation.webp'
-import ipadImagePreviewZh from '@/assets/images/screenshots/mobile/zh/ipad-image-preview.webp'
-import iphoneConversationZh from '@/assets/images/screenshots/mobile/zh/iphone-conversation.webp'
-import iphoneDrawingZh from '@/assets/images/screenshots/mobile/zh/iphone-drawing.webp'
-import sidebarZh from '@/assets/images/screenshots/mobile/zh/sidebar.webp'
+import LogoDrawDemo from '@/components/demos/mobile/LogoDrawDemo'
+import MobileComposerDemo from '@/components/demos/mobile/MobileComposerDemo'
+import DemoMount from '@/components/demos/primitives/DemoMount'
 import { Button } from '@/components/ui/button'
+import FeatureBento from '@/components/website/FeatureBento'
 import Footer from '@/components/website/Footer'
+import HeroBackdrop from '@/components/website/HeroBackdrop'
+import Phrases from '@/components/website/Phrases'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { getMobileDocsUrl } from '@/utils/urls'
+import { capabilityVisuals } from './components/CapabilityVisuals'
 
-const screenshotsByLanguage = {
-  zh: {
-    conversation: iphoneConversationZh,
-    drawing: iphoneDrawingZh,
-    sidebar: sidebarZh,
-    files: fileLibraryZh,
-    preview: htmlPreviewZh,
-    tabletConversation: ipadConversationZh,
-    tabletDrawing: ipadImagePreviewZh
-  },
-  en: {
-    conversation: iphoneConversationEn,
-    drawing: iphoneDrawingEn,
-    sidebar: sidebarEn,
-    files: fileLibraryEn,
-    preview: htmlPreviewEn,
-    tabletConversation: ipadConversationEn,
-    tabletDrawing: ipadImagePreviewEn
-  }
-}
-
+// Rows alternate their split (wide + narrow, narrow + wide, then even) so the grid doesn't read as six equal tiles.
 const capabilities = [
-  { key: 'skills', icon: Sparkles },
-  { key: 'tools', icon: Plug },
-  { key: 'files', icon: Files },
-  { key: 'images', icon: ImagePlus },
-  { key: 'desktop', icon: Monitor },
-  { key: 'ssh', icon: Terminal }
+  { key: 'desktop', icon: Monitor, className: 'sm:col-span-2 lg:col-span-4', wide: true },
+  { key: 'tools', icon: Plug, className: 'lg:col-span-2' },
+  { key: 'skills', icon: Sparkles, className: 'lg:col-span-2' },
+  { key: 'images', icon: ImagePlus, className: 'sm:col-span-2 lg:col-span-4', wide: true },
+  { key: 'files', icon: Files, className: 'lg:col-span-3' },
+  { key: 'ssh', icon: Terminal, className: 'lg:col-span-3' }
 ] as const
 
 export default function MobilePage() {
   const { t, i18n } = useTranslation()
   const mobileDocsUrl = getMobileDocsUrl(i18n.language)
-  const screenshots = screenshotsByLanguage[(i18n.resolvedLanguage || i18n.language).startsWith('zh') ? 'zh' : 'en']
   usePageMeta('mobile')
 
   return (
-    <div className="min-h-screen bg-background pt-[60px] text-foreground">
+    <div className="min-h-screen bg-background text-foreground">
       <main>
-        <section className="overflow-hidden border-b border-border py-12 sm:py-16">
+        <section className="site-page-top relative isolate overflow-hidden border-b border-border pb-12 sm:pb-20">
+          <HeroBackdrop className="inset-x-0 top-0 -z-10 h-full" fade={72} />
           <div className="site-container site-split lg:items-center">
             <div className="max-w-xl">
-              <p className="text-primary mb-4 font-mono text-xs tracking-widest uppercase">
-                {t('mobile_site.hero.eyebrow')}
-              </p>
-              <h1 className="text-4xl leading-[1.04] font-semibold tracking-[-0.045em] text-balance sm:text-5xl">
-                {t('mobile_site.hero.title')}
+              <LogoDrawDemo bare size={44} className="mb-6" />
+              <p className="mb-4 on-silk text-sm font-medium text-muted-foreground">{t('mobile_site.hero.eyebrow')}</p>
+              <h1 className="on-silk text-5xl leading-[1.04] font-display text-balance sm:text-7xl">
+                <Phrases text={t('mobile_site.hero.title')} />
               </h1>
-              <p className="mt-5 max-w-lg text-pretty text-base leading-7 text-muted-foreground sm:text-lg">
+              <p className="mt-5 on-silk max-w-lg text-pretty text-base leading-7 text-muted-foreground sm:text-lg">
                 {t('mobile_site.hero.description')}
               </p>
               <div className="mt-6 flex flex-wrap items-center gap-3">
-                <Button asChild size="lg" className="rounded-md px-4">
+                <Button asChild size="lg" className="rounded-full px-5">
                   <Link to="/download?platform=mobile">
                     <Download aria-hidden="true" />
                     {t('mobile_site.hero.download')}
                   </Link>
                 </Button>
-                <Button asChild variant="outline" size="lg" className="rounded-md px-4">
+                <Button
+                  asChild
+                  variant="outline"
+                  size="lg"
+                  className="rounded-full border-white/40 bg-white/10 px-5 text-white backdrop-blur hover:bg-white/20 hover:text-white">
                   <a href={mobileDocsUrl}>
                     {t('mobile_site.hero.docs')}
                     <ArrowRight aria-hidden="true" />
                   </a>
                 </Button>
               </div>
-              <p className="mt-4 font-mono text-xs leading-6 text-muted-foreground">
-                {t('mobile_site.hero.platforms')}
-              </p>
+              <p className="mt-4 on-silk text-sm leading-6 text-muted-foreground">{t('mobile_site.hero.platforms')}</p>
             </div>
 
-            <div
-              role="group"
-              aria-label={t('mobile_site.screenshots.group_alt')}
-              className="grid w-full grid-cols-[1fr_1.12fr_1fr] items-center gap-2 rounded-lg border border-border bg-card p-3 sm:gap-4 sm:p-6">
-              <img
-                src={screenshots.sidebar}
-                alt={t('mobile_site.screenshots.sidebar')}
-                width={1206}
-                height={2622}
-                loading="eager"
-                className="block h-auto w-full rounded-lg border border-border"
-              />
-              <img
-                src={screenshots.drawing}
-                alt={t('mobile_site.screenshots.drawing')}
-                width={1206}
-                height={2622}
-                loading="eager"
-                className="order-last block h-auto w-full rounded-lg border border-border"
-              />
-              <img
-                src={screenshots.conversation}
-                alt={t('mobile_site.screenshots.conversation')}
-                width={1206}
-                height={2622}
-                loading="eager"
-                fetchPriority="high"
-                className="block h-auto w-full rounded-lg border border-primary/50"
-              />
+            <div className="relative flex justify-center">
+              <MobileComposerDemo />
             </div>
           </div>
         </section>
 
-        <section className="border-b border-border bg-card py-12 sm:py-16">
+        <section className="border-b border-border py-12 sm:py-20">
           <div className="site-container">
             <div className="max-w-3xl">
-              <p className="text-primary mb-4 text-sm font-semibold tracking-[0.16em] uppercase">
-                {t('mobile_site.mobile_first.eyebrow')}
-              </p>
-              <h2 className="text-3xl leading-tight font-semibold tracking-[-0.035em] text-balance sm:text-5xl">
+              <p className="mb-4 text-sm font-medium text-muted-foreground">{t('mobile_site.mobile_first.eyebrow')}</p>
+              <h2 className="text-4xl leading-tight font-display text-balance sm:text-6xl">
                 {t('mobile_site.mobile_first.title')}
               </h2>
               <p className="mt-6 max-w-xl text-lg leading-8 text-muted-foreground">
                 {t('mobile_site.mobile_first.description')}
               </p>
             </div>
-            <ul className="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
-              {capabilities.map(({ key, icon: Icon }) => (
-                <li key={key} className="min-w-0 border-t border-border pt-6">
-                  <Icon aria-hidden="true" className="text-muted-foreground mb-5 h-6 w-6" />
-                  <h3 className="text-lg font-semibold">{t(`mobile_site.mobile_first.items.${key}.title`)}</h3>
-                  <p className="mt-3 leading-7 text-muted-foreground">
-                    {t(`mobile_site.mobile_first.items.${key}.description`)}
-                  </p>
-                </li>
-              ))}
-            </ul>
+            <FeatureBento
+              className="mt-12 lg:grid-cols-6"
+              items={capabilities.map(({ key, icon, ...placement }) => ({
+                key,
+                icon,
+                ...placement,
+                visual: capabilityVisuals[key],
+                title: t(`mobile_site.mobile_first.items.${key}.title`),
+                description: t(`mobile_site.mobile_first.items.${key}.description`)
+              }))}
+            />
             <a
               href={mobileDocsUrl}
               className="mt-10 inline-flex items-center gap-2 rounded-sm text-sm font-semibold underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current">
@@ -157,13 +102,40 @@ export default function MobilePage() {
           </div>
         </section>
 
+        <section className="relative isolate overflow-hidden border-b border-border py-16 sm:py-24">
+          <div className="site-container grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+            <div className="min-w-0">
+              <p className="mb-4 text-sm font-medium text-muted-foreground">{t('mobile_site.picker.eyebrow')}</p>
+              <h2 className="text-4xl leading-tight font-display text-balance sm:text-6xl">
+                {t('mobile_site.picker.title')}
+              </h2>
+              <p className="mt-6 text-lg leading-8 text-muted-foreground">{t('mobile_site.picker.description')}</p>
+            </div>
+            <DemoMount
+              load={() => import('@/components/demos/mobile/ModelPickerScrollerDemo')}
+              className="flex min-h-[700px] justify-center"
+            />
+          </div>
+        </section>
+
+        <section className="relative isolate overflow-hidden border-b border-border py-16 sm:py-24">
+          <div className="site-container">
+            <div className="mx-auto mb-12 max-w-3xl text-center">
+              <p className="mb-4 text-sm font-medium text-muted-foreground">{t('mobile_site.pairing.eyebrow')}</p>
+              <h2 className="text-4xl leading-tight font-display text-balance sm:text-6xl">
+                {t('mobile_site.pairing.title')}
+              </h2>
+              <p className="mt-6 text-lg leading-8 text-muted-foreground">{t('mobile_site.pairing.description')}</p>
+            </div>
+            <DemoMount load={() => import('@/components/demos/mobile/PairingDemo')} className="min-h-[760px]" />
+          </div>
+        </section>
+
         <section className="border-b border-border py-12 sm:py-16">
           <div className="site-container grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
             <div className="min-w-0">
-              <p className="text-primary mb-4 text-sm font-semibold tracking-[0.14em]">
-                {t('mobile_site.workflows.eyebrow')}
-              </p>
-              <h2 className="text-3xl leading-tight font-semibold tracking-[-0.035em] text-balance sm:text-5xl">
+              <p className="mb-4 text-sm font-medium text-muted-foreground">{t('mobile_site.workflows.eyebrow')}</p>
+              <h2 className="text-4xl leading-tight font-display text-balance sm:text-6xl">
                 {t('mobile_site.workflows.title')}
               </h2>
               <p className="mt-6 text-lg leading-8 text-muted-foreground">{t('mobile_site.workflows.description')}</p>
@@ -185,80 +157,47 @@ export default function MobilePage() {
               </a>
             </div>
 
-            <div className="mx-auto grid w-full max-w-lg grid-cols-2 items-start gap-4 sm:gap-6">
-              {[
-                { key: 'files', src: screenshots.files },
-                { key: 'preview', src: screenshots.preview }
-              ].map(({ key, src }) => (
-                <figure key={key} className="min-w-0">
-                  <img
-                    src={src}
-                    alt={t(`mobile_site.screenshots.${key}`)}
-                    width={1206}
-                    height={2622}
-                    loading="lazy"
-                    className="block h-auto w-full rounded-lg border border-border"
-                  />
-                  <figcaption className="mt-4 text-center text-sm leading-6 text-muted-foreground">
-                    {t(`mobile_site.workflows.captions.${key}`)}
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
+            <DemoMount
+              load={() => import('@/components/demos/mobile/MobileFilesDemo')}
+              className="flex min-h-[720px] justify-center"
+            />
           </div>
         </section>
 
-        <section className="border-b border-border bg-card py-12 sm:py-16">
+        <section className="border-b border-border py-12 sm:py-20">
           <div className="site-container">
             <div className="mx-auto max-w-3xl text-center">
-              <p className="text-primary mb-4 text-sm font-semibold tracking-[0.16em] uppercase">
-                {t('mobile_site.tablet.eyebrow')}
-              </p>
-              <h2 className="text-3xl leading-tight font-semibold tracking-[-0.035em] text-balance sm:text-5xl">
+              <p className="mb-4 text-sm font-medium text-muted-foreground">{t('mobile_site.tablet.eyebrow')}</p>
+              <h2 className="text-4xl leading-tight font-display text-balance sm:text-6xl">
                 {t('mobile_site.tablet.title')}
               </h2>
               <p className="mt-5 text-lg leading-8 text-muted-foreground">{t('mobile_site.tablet.description')}</p>
             </div>
-            <div className="mx-auto mt-8 grid max-w-4xl grid-cols-2 items-start gap-3 rounded-lg border border-border bg-background p-3 sm:gap-6 sm:p-6">
-              <img
-                src={screenshots.tabletDrawing}
-                alt={t('mobile_site.screenshots.tablet_drawing')}
-                width={2064}
-                height={2752}
-                loading="lazy"
-                className="block h-auto w-full rounded-lg border border-border"
-              />
-              <img
-                src={screenshots.tabletConversation}
-                alt={t('mobile_site.screenshots.tablet_conversation')}
-                width={2064}
-                height={2752}
-                loading="lazy"
-                className="block h-auto w-full rounded-lg border border-border"
-              />
-            </div>
+            {/* The iPad canvas is unreadable on phones, so it only mounts from the md breakpoint. */}
+            <DemoMount
+              load={() => import('@/components/demos/mobile/TabletLayoutDemo')}
+              className="mx-auto mt-10 hidden min-h-[680px] max-w-[900px] md:block"
+            />
           </div>
         </section>
 
         <section className="py-12 sm:py-16">
           <div className="site-container text-center">
-            <p className="text-primary text-sm font-semibold tracking-[0.16em] uppercase">
-              {t('mobile_site.cta.eyebrow')}
-            </p>
-            <h2 className="mx-auto mt-4 max-w-3xl text-3xl font-semibold tracking-[-0.035em] text-balance sm:text-5xl">
+            <p className="text-sm font-medium text-muted-foreground">{t('mobile_site.cta.eyebrow')}</p>
+            <h2 className="mx-auto mt-4 max-w-3xl text-4xl font-display text-balance sm:text-6xl">
               {t('mobile_site.cta.title')}
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-muted-foreground">
               {t('mobile_site.cta.description')}
             </p>
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-              <Button asChild size="lg" className="rounded-md px-4">
+              <Button asChild size="lg" className="rounded-full px-5">
                 <Link to="/download?platform=mobile">
                   <Download aria-hidden="true" />
                   {t('mobile_site.cta.download')}
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="rounded-md px-4">
+              <Button asChild variant="outline" size="lg" className="rounded-full px-5">
                 <a href={mobileDocsUrl}>{t('mobile_site.cta.docs')}</a>
               </Button>
             </div>

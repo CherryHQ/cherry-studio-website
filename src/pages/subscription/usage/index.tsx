@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { Link, Navigate } from 'react-router-dom'
 
 import Footer from '@/components/website/Footer'
+import HeroBackdrop from '@/components/website/HeroBackdrop'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { isEnglishSite } from '@/utils/urls'
 
@@ -64,17 +65,17 @@ function UsageContent() {
   const models = t('pricing.models', { returnObjects: true }) as UsageModel[]
 
   return (
-    <div className="bg-background min-h-screen">
+    <div className="relative isolate overflow-hidden bg-background min-h-screen">
+      <HeroBackdrop className="inset-x-0 top-0 -z-10 h-[400px] sm:h-[440px]" fade={66} />
       <article className="site-page-top mx-auto max-w-3xl px-6 pb-16">
-        <header>
-          <h1 className="text-foreground text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
-            {t('usage.title')}
-          </h1>
+        <header className="on-silk">
+          <h1 className="text-balance text-5xl font-display sm:text-7xl">{t('usage.title')}</h1>
           <p className="text-muted-foreground mt-4 text-lg leading-8">{t('usage.subtitle')}</p>
         </header>
 
-        <section className="mt-12">
-          <h2 className="text-foreground text-xl font-semibold">{intro.title}</h2>
+        {/* Room for the silk to fade out between the white header copy and the dark body copy. */}
+        <section className="mt-24">
+          <h2 className="font-display text-3xl text-foreground">{intro.title}</h2>
           {intro.body.map((paragraph) => (
             <p key={paragraph} className="text-muted-foreground mt-4 leading-7">
               {paragraph}
@@ -83,7 +84,7 @@ function UsageContent() {
         </section>
 
         <section className="mt-12">
-          <h2 className="text-foreground text-xl font-semibold">{background.title}</h2>
+          <h2 className="font-display text-3xl text-foreground">{background.title}</h2>
           {background.body.map((paragraph) => (
             <p key={paragraph} className="text-muted-foreground mt-4 leading-7">
               {paragraph}
@@ -103,7 +104,7 @@ function UsageContent() {
         </section>
 
         <section className="mt-12">
-          <h2 className="text-foreground text-xl font-semibold">{how.title}</h2>
+          <h2 className="font-display text-3xl text-foreground">{how.title}</h2>
           {how.body.map((paragraph) => (
             <p key={paragraph} className="text-muted-foreground mt-4 leading-7">
               {paragraph}
@@ -115,7 +116,7 @@ function UsageContent() {
         </section>
 
         <section className="mt-12">
-          <h2 className="text-foreground text-xl font-semibold">{modelsSection.title}</h2>
+          <h2 className="font-display text-3xl text-foreground">{modelsSection.title}</h2>
           <ul className="mt-4 space-y-2">
             {models.map((model) => (
               <li key={model.id} className="text-muted-foreground flex items-baseline gap-2.5 leading-7">
@@ -128,7 +129,7 @@ function UsageContent() {
         </section>
 
         <section className="mt-12">
-          <h2 className="text-foreground text-xl font-semibold">{limits.title}</h2>
+          <h2 className="font-display text-3xl text-foreground">{limits.title}</h2>
           <p className="text-muted-foreground mt-4 leading-7">{limits.intro}</p>
           <div className="mt-6 overflow-x-auto">
             <table className="w-full min-w-[620px] border-collapse text-sm">
@@ -166,12 +167,12 @@ function UsageContent() {
         </section>
 
         <section className="mt-12">
-          <h2 className="text-foreground text-xl font-semibold">{overage.title}</h2>
+          <h2 className="font-display text-3xl text-foreground">{overage.title}</h2>
           <p className="text-muted-foreground mt-4 leading-7">{overage.body}</p>
         </section>
 
         <section className="mt-12">
-          <h2 className="text-foreground text-xl font-semibold">{privacy.title}</h2>
+          <h2 className="font-display text-3xl text-foreground">{privacy.title}</h2>
           {privacy.body.map((paragraph) => (
             <p key={paragraph} className="text-muted-foreground mt-4 leading-7">
               {paragraph}
@@ -180,7 +181,7 @@ function UsageContent() {
         </section>
 
         <section className="mt-12">
-          <h2 className="text-foreground text-xl font-semibold">{goals.title}</h2>
+          <h2 className="font-display text-3xl text-foreground">{goals.title}</h2>
           <ul className="mt-4 space-y-3">
             {goals.items.map((item) => (
               <li key={item} className="text-muted-foreground flex gap-3 leading-7">

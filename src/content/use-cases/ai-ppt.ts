@@ -117,7 +117,7 @@ export const AI_PPT_COPY: Record<UseCaseLocale, AiPptCopy> = {
     features: [
       { title: '基于你自己的资料', body: '不是凭空编内容：智能体会先读工作目录里的文档和数据，再整理成幻灯片。' },
       { title: '真正能编辑的 .pptx', body: '交付的是标准 PPT 文件，不是一张图片。标题、文字和图表都能继续改。' },
-      { title: '模型随你选', body: 'Claude、GPT、DeepSeek、通义千问等模型都能用，复杂的排版交给能力更强的模型。' },
+      { title: '模型随你选', body: 'DeepSeek、通义千问、Kimi、智谱 GLM 等模型都能用，复杂的排版交给能力更强的模型。' },
       { title: '改到满意为止', body: '「第 3 页换成柱状图」「整体再简洁一点」，用对话的方式一页一页调整。' }
     ],
     faqTitle: '常见问题',

@@ -37,7 +37,7 @@ const VersionInfo: FC<VersionInfoProps> = ({ versionData, loading, unavailableMe
   }
 
   return (
-    <p className="mt-4 max-w-xl text-sm leading-6 text-muted-foreground">
+    <p className="mx-auto mt-4 max-w-xl text-sm leading-6 text-muted-foreground">
       {unavailableMessage ?? t('download_page.version_error')}
     </p>
   )

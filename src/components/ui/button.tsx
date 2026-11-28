@@ -18,9 +18,7 @@ const buttonVariants = cva(
         ghost: 'text-foreground hover:bg-foreground/10 hover:text-foreground',
         link: 'text-foreground underline-offset-4 hover:underline',
         // Glow variant - same as default now, clean look
-        glow: 'bg-foreground text-background hover:bg-foreground/90 active:scale-[0.98]',
-        gradient:
-          'bg-gradient-to-r from-foreground via-muted-foreground to-foreground bg-[length:200%_100%] text-background hover:animate-gradient active:scale-[0.98]'
+        glow: 'bg-foreground text-background hover:bg-foreground/90 active:scale-[0.98]'
       },
       size: {
         default: 'h-10 px-5 py-2',

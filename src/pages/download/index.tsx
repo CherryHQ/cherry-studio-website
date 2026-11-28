@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { useSearchParams } from 'react-router-dom'
 
 import Footer from '@/components/website/Footer'
+import HeroBackdrop from '@/components/website/HeroBackdrop'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { useVersionData } from '@/hooks/useVersionData'
 import { type DetectedArch, detectPlatform, detectSystem, isMobileDevice } from '@/utils/systemDetection'
@@ -137,40 +138,48 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
-      <main className="site-page-top flex-1 pb-16 sm:pb-24">
-        <div className="site-container site-split">
-          <div className="min-w-0">
-            <p className="mb-4 font-mono text-xs tracking-widest text-primary uppercase">{t('download')}</p>
-            <h1 className="text-balance text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
+      <main className="site-page-top relative isolate flex-1 overflow-hidden pb-16 sm:pb-24">
+        <HeroBackdrop className="inset-x-0 top-0 -z-10 h-[560px] sm:h-[660px]" fade={72} />
+        <div className="site-container flex flex-col items-center">
+          <div className="flex min-w-0 flex-col items-center text-center [&>div]:justify-center">
+            <p className="mb-4 on-silk text-sm font-medium text-muted-foreground">{t('download')}</p>
+            <h1 className="on-silk font-display text-6xl leading-none text-balance sm:text-8xl">
               {showMobile
                 ? t('mobile_download.title')
                 : isMobile
                   ? t('mobile_download.desktop_title')
                   : 'Cherry Studio'}
               {!showMobile && versionData && (
-                <span className="mt-2 block font-mono text-xl font-medium text-primary">{versionData.version}</span>
+                <span className="mt-6 flex justify-center">
+                  <span className="glass-card inline-flex items-center gap-2 rounded-full px-3 py-1 font-mono text-sm font-medium tracking-normal text-primary [-webkit-text-fill-color:currentColor]">
+                    <span className="size-1.5 rounded-full bg-primary" />
+                    {versionData.version}
+                  </span>
+                </span>
               )}
             </h1>
             {showMobile ? (
-              <p className="text-muted-foreground mt-4 text-sm">{t('mobile_page.availability')}</p>
+              <p className="on-silk text-muted-foreground mt-4 text-sm">{t('mobile_page.availability')}</p>
             ) : (
-              <VersionInfo
-                versionData={versionData}
-                loading={loading}
-                changelog={<Changelog versionData={versionData} />}
-                unavailableMessage={error ? t('download_page.version_error') : undefined}
-              />
+              <div className="on-silk">
+                <VersionInfo
+                  versionData={versionData}
+                  loading={loading}
+                  changelog={<Changelog versionData={versionData} />}
+                  unavailableMessage={error ? t('download_page.version_error') : undefined}
+                />
+              </div>
             )}
             {isMobile && !showMobile && (
-              <div className="mt-5 flex max-w-md items-start gap-2 text-xs text-muted-foreground">
+              <div className="mt-5 flex max-w-md items-start justify-center gap-2 text-xs text-muted-foreground">
                 <Laptop className="mt-0.5 h-4 w-4 shrink-0" />
                 <span>{t('download_page.mobile_hint')}</span>
               </div>
             )}
           </div>
 
-          <div className="min-w-0">
-            <div className="overflow-hidden rounded-lg border border-border bg-card text-left">
+          <div className="relative mt-12 w-full max-w-3xl min-w-0">
+            <div className="overflow-hidden rounded-[28px] bg-card text-left shadow-[inset_0_0_0_1px_var(--color-border),var(--shadow-float)]">
               <PlatformTabs
                 activePlatform={displayPlatform}
                 detectedPlatform={detectedPlatform}
@@ -208,12 +217,12 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
             </div>
 
             {!showMobile && (
-              <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2">
+              <div className="mt-6 flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
                 <a
                   href={releaseHistoryUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1.5 text-sm underline-offset-4 transition-colors hover:underline">
+                  className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1 text-sm text-muted-foreground transition-colors hover:border-hairline-strong hover:text-foreground focus-visible:outline-2 focus-visible:outline-primary">
                   {t('download_page.release_history')}
                   <ExternalLink className="h-3.5 w-3.5" />
                 </a>
@@ -222,7 +231,7 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
                     href="https://discord.gg/wez8HtpxqQ"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1.5 text-sm underline-offset-4 transition-colors hover:underline">
+                    className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1 text-sm text-muted-foreground transition-colors hover:border-hairline-strong hover:text-foreground focus-visible:outline-2 focus-visible:outline-primary">
                     {t('download_page.join_discord')}
                     <ExternalLink className="h-3.5 w-3.5" />
                   </a>
@@ -232,7 +241,7 @@ const DownloadPage: FC<DownloadPageProps> = ({ edition = 'stable' }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   data-ph-no-autocapture={!isV1 ? '' : undefined}
-                  className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1.5 text-sm underline-offset-4 transition-colors hover:underline">
+                  className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1 text-sm text-muted-foreground transition-colors hover:border-hairline-strong hover:text-foreground focus-visible:outline-2 focus-visible:outline-primary">
                   {t('download_page.cloud_drive_download')}
                   <ExternalLink className="h-3.5 w-3.5" />
                 </a>

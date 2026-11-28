@@ -1,4 +1,3 @@
-import { ChevronDown } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 
 import ai302Logo from '@/assets/images/provider_logo/302ai.svg'
@@ -31,7 +30,11 @@ import stepfunLogo from '@/assets/images/provider_logo/stepfun-color.svg'
 import xaiLogo from '@/assets/images/provider_logo/xai.svg'
 import zeroOneLogo from '@/assets/images/provider_logo/zeroone.svg'
 import zhipuLogo from '@/assets/images/provider_logo/zhipu-color.svg'
+import BlurInText from '@/components/website/BlurInText'
+import Marquee from '@/components/website/Marquee'
+import productStats from '@/content/product-stats.json'
 import { cn } from '@/lib/utils'
+import { isEnglishSite } from '@/utils/urls'
 
 interface LogoInfo {
   src: string
@@ -39,16 +42,13 @@ interface LogoInfo {
   darkInvert?: boolean
 }
 
-const globalFeatured: LogoInfo[] = [
+const globalLogos: LogoInfo[] = [
   { src: openaiLogo, name: 'OpenAI', darkInvert: true },
   { src: anthropicLogo, name: 'Anthropic', darkInvert: true },
   { src: googleLogo, name: 'Google' },
   { src: xaiLogo, name: 'xAI', darkInvert: true },
   { src: metaLogo, name: 'Meta' },
-  { src: deepseekLogo, name: 'DeepSeek' }
-]
-
-const globalAdditional: LogoInfo[] = [
+  { src: deepseekLogo, name: 'DeepSeek' },
   { src: mistralLogo, name: 'Mistral' },
   { src: azureLogo, name: 'Azure' },
   { src: qwenLogo, name: 'Qwen' },
@@ -66,16 +66,13 @@ const globalAdditional: LogoInfo[] = [
   { src: stepfunLogo, name: 'StepFun' }
 ]
 
-const cnFeatured: LogoInfo[] = [
+const cnLogos: LogoInfo[] = [
   { src: deepseekLogo, name: 'DeepSeek' },
   { src: qwenLogo, name: '通义千问' },
   { src: zhipuLogo, name: '智谱 AI' },
   { src: moonshotLogo, name: 'Kimi', darkInvert: true },
   { src: minimaxLogo, name: 'MiniMax' },
-  { src: bytedanceLogo, name: '豆包' }
-]
-
-const cnAdditional: LogoInfo[] = [
+  { src: bytedanceLogo, name: '豆包' },
   { src: siliconcloudLogo, name: '硅基流动' },
   { src: baichuanLogo, name: '百川智能' },
   { src: stepfunLogo, name: '阶跃星辰' },
@@ -83,7 +80,7 @@ const cnAdditional: LogoInfo[] = [
   { src: baiduCloudLogo, name: '百度智能云' },
   { src: sparkLogo, name: '讯飞星火' },
   { src: modelscopeLogo, name: 'ModelScope 魔搭' },
-  { src: giteeAiLogo, name: 'Gitee AI' },
+  { src: giteeAiLogo, name: 'Gitee AI', darkInvert: true },
   { src: ai360Logo, name: '360 智脑' },
   { src: zeroOneLogo, name: '零一万物', darkInvert: true },
   { src: ai302Logo, name: '302.AI' },
@@ -91,44 +88,100 @@ const cnAdditional: LogoInfo[] = [
   { src: higressLogo, name: 'Higress' }
 ]
 
-function ProviderList({ logos, className }: { logos: LogoInfo[]; className?: string }) {
-  return (
-    <ul className={cn('flex flex-wrap gap-x-6 gap-y-3', className)}>
-      {logos.map(({ name, src, darkInvert }) => (
-        <li key={name} className="flex items-center gap-2 text-sm font-medium">
-          <img src={src} alt="" className={cn('size-4 object-contain saturate-60', darkInvert && 'dark:invert')} />
-          {name}
-        </li>
-      ))}
-    </ul>
-  )
-}
+// Model names from the provider registry for the second, reversed marquee row.
+const globalModels = [
+  'Claude Opus 5.5',
+  'GPT-6.2 Sol',
+  'Gemini 4 Neon',
+  'DeepSeek V4 Pro',
+  'Grok 4.7',
+  'Qwen3.8 Max',
+  'Kimi K3.1 Pro',
+  'GLM 5.3',
+  'Mistral Large 3',
+  'MiniMax-M3'
+]
+// The Chinese site shows domestic models only.
+const cnModels = [
+  'DeepSeek V4 Pro',
+  'Qwen3.8 Max',
+  'Kimi K3.1 Pro',
+  'GLM 5.3',
+  'MiniMax-M3',
+  'Doubao Seed 2.1 Pro',
+  'ERNIE 5.0',
+  'MiMo-V2.6-Pro',
+  'LongCat-2.5',
+  'Step 5 Preview'
+]
 
+/** One marquee row: the items twice, so translating by -50% loops seamlessly. Hovering the row pauses it. */
 export default function ProvidersSection() {
   const { t, i18n } = useTranslation()
-  const isZh = i18n.language.startsWith('zh')
-  const featured = isZh ? cnFeatured : globalFeatured
-  const additional = isZh ? cnAdditional : globalAdditional
+  const isEn = isEnglishSite(i18n.resolvedLanguage || i18n.language)
+  const logos = isEn ? globalLogos : cnLogos
+  const models = isEn ? globalModels : cnModels
+  const stats = [
+    { value: productStats.labels.providers, label: t('home_page.stat_providers') },
+    { value: productStats.labels.models, label: t('home_page.stat_models') },
+    { value: productStats.labels.assistants, label: t('home_page.stat_assistants') }
+  ]
+
+  const half = Math.ceil(logos.length / 2)
+  const chipRow = (row: LogoInfo[], reverse?: boolean) => (
+    <Marquee reverse={reverse}>
+      {(hidden) => (
+        <ul aria-hidden={hidden || undefined} className="flex shrink-0 gap-3 pr-3">
+          {row.map(({ name, src, darkInvert }) => (
+            <li
+              key={name}
+              className="flex shrink-0 items-center gap-3 rounded-full bg-card px-5 py-3.5 text-base font-medium whitespace-nowrap shadow-[inset_0_0_0_1px_rgb(127_127_127/0.18)] 2xl:px-6 2xl:py-4 2xl:text-lg">
+              <img src={src} alt="" className={cn('size-5 object-contain 2xl:size-6', darkInvert && 'dark:invert')} />
+              {name}
+            </li>
+          ))}
+        </ul>
+      )}
+    </Marquee>
+  )
 
   return (
-    <section className="border-b border-border bg-card" aria-labelledby="home-providers">
-      <div className="site-container py-6 lg:grid lg:grid-cols-[1fr_auto] lg:items-center lg:gap-x-6 lg:gap-y-3">
-        <h2
-          id="home-providers"
-          className="mb-3 font-mono lg:col-span-2 lg:mb-0 text-xs font-medium tracking-wider text-muted-foreground uppercase">
-          {t('home_page.providers')}
+    <section className="relative overflow-hidden pt-4 pb-12 sm:pt-6 sm:pb-12" aria-labelledby="home-providers">
+      <div className="site-container relative text-center">
+        <p className="mb-3 text-sm font-medium text-muted-foreground">{t('home_page.providers')}</p>
+        <h2 id="home-providers" className="text-4xl font-display text-balance sm:text-6xl 2xl:text-7xl">
+          <BlurInText text={t('providers.title')} />
         </h2>
-        <ProviderList logos={featured} />
-        <details className="group mt-3 lg:contents">
-          <summary className="inline-flex cursor-pointer list-none items-center gap-1.5 rounded-sm text-xs text-muted-foreground hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 lg:justify-self-end [&::-webkit-details-marker]:hidden">
-            {t('home_page.more_providers')}
-            <ChevronDown
-              aria-hidden="true"
-              className="size-3.5 group-open:rotate-180 motion-safe:transition-transform"
-            />
-          </summary>
-          <ProviderList logos={additional} className="mt-4 border-t border-border pt-4 lg:col-span-2 lg:mt-0" />
-        </details>
+        <p className="mx-auto mt-5 max-w-2xl text-pretty text-muted-foreground sm:text-lg zh:leading-[1.8]">
+          {t('providers.subtitle')}
+        </p>
+        <dl className="mx-auto mt-10 flex w-fit divide-x divide-border">
+          {stats.map((stat) => (
+            <div key={stat.label} className="flex flex-col-reverse px-6 sm:px-12 2xl:px-16">
+              <dt className="mt-2 text-sm text-muted-foreground">{stat.label}</dt>
+              <dd className="font-display text-4xl leading-none tabular-nums sm:text-6xl">{stat.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+
+      {/* Marquee after Incidental AI Design Academy's MIT "Marquee": model names between two rows of provider chips. */}
+      <div className="relative mt-14 grid gap-5 sm:mt-16 [mask-image:linear-gradient(90deg,transparent,black_10%,black_90%,transparent)]">
+        {chipRow(logos.slice(0, half))}
+        <Marquee reverse>
+          {(hidden) => (
+            <ul aria-hidden={hidden || undefined} className="flex shrink-0">
+              {models.map((model) => (
+                <li
+                  key={model}
+                  className="shrink-0 px-6 font-serif text-[40px] leading-none whitespace-nowrap italic sm:text-[56px] 2xl:text-[68px]">
+                  {model}
+                </li>
+              ))}
+            </ul>
+          )}
+        </Marquee>
+        {chipRow(logos.slice(half))}
       </div>
     </section>
   )

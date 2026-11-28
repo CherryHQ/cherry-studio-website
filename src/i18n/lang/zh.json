@@ -30,13 +30,13 @@
     "articles": "Cherry Studio 的文章：怎么选、怎么用 AI 工具的实用内容，帮你把 AI 真正用到日常工作里。",
     "use_case_ai_ppt": "用 Cherry Studio 的智能体生成 PPT：把资料放进文件夹，一句话说清需求，读完你的文件后做出可直接编辑的 .pptx，附四种风格的提示词模板。",
     "home": "Cherry Studio AI桌面客户端，开源、免费、且功能强大。AI agent、AI 对话、AI绘图、知识库等功能齐全，支持所有主流大模型，支持Windows/macOS/Linux，支持数据本地存储，是AI深度使用者的首选",
-    "download": "下载 Cherry Studio AI 客户端，支持 Windows、macOS、Linux 平台。集成 100+ AI 模型，完全免费开源。",
+    "download": "下载 Cherry Studio AI 客户端，支持 Windows、macOS、Linux 平台。集成 {{providers}} 家服务商的 {{models}} AI 模型，完全免费开源。",
     "mobile": "Cherry Studio 移动版支持 Android、iPhone 与 iPad。接入模型，使用智能体、技能、插件、文件创作与绘图，也可连接电脑智能体、远程服务器和组织空间。",
     "mobile_download": "下载 Cherry Studio 移动版：iPhone 与 iPad 可从国区 App Store 安装，Android 推荐下载 APK，也保留 Google Play 与 TestFlight 测试版入口。",
     "theme": "发现和分享美丽的 Cherry Studio 主题，个性化你的 AI 助手界面。支持浅色和深色模式主题。",
     "careers": "加入 Cherry Studio，探索研发、设计、企业 AI 交付、运营及实习岗位，一起打造下一代 AI 产品。",
-    "download_v1": "下载 Cherry Studio AI 客户端，支持 Windows、macOS、Linux 平台。集成 100+ AI 模型，完全免费开源。",
-    "download_v2": "下载 Cherry Studio AI 客户端，支持 Windows、macOS、Linux 平台。集成 100+ AI 模型，完全免费开源。",
+    "download_v1": "下载 Cherry Studio AI 客户端，支持 Windows、macOS、Linux 平台。集成 {{providers}} 家服务商的 {{models}} AI 模型，完全免费开源。",
+    "download_v2": "下载 Cherry Studio AI 客户端，支持 Windows、macOS、Linux 平台。集成 {{providers}} 家服务商的 {{models}} AI 模型，完全免费开源。",
     "flash": "Flash 用一份每月 $8 的订阅，把 DeepSeek V4.1、Qwen 3.8 和 GLM 5.3 放在一起。不用再单独注册各家服务商，随时可以取消。",
     "flash_usage": "Cherry Flash 订阅包含什么：套餐内的模型、每百万 token 单价、每月额度、峰谷时段与隐私说明。",
     "not_found": "你访问的页面不存在。",
@@ -114,18 +114,8 @@
       "docs": "查看移动端文档",
       "platforms": "支持 Android、iPhone 与 iPad，可通过官方商店或下载页安装。"
     },
-    "screenshots": {
-      "group_alt": "Cherry Studio Mobile 对话、绘画与导航界面",
-      "conversation": "Cherry Studio Mobile 的 AI 对话界面",
-      "drawing": "Cherry Studio Mobile 的绘画模板界面",
-      "sidebar": "Cherry Studio Mobile 的导航与对话列表",
-      "tablet_conversation": "Cherry Studio Mobile 的 iPad 对话界面",
-      "tablet_drawing": "Cherry Studio Mobile 的 iPad 图片预览界面",
-      "files": "Cherry Studio Mobile 的文件库与项目文件夹",
-      "preview": "Cherry Studio Mobile 中的 HTML 文件预览示例"
-    },
     "mobile_first": {
-      "eyebrow": "随身的 AI 工作站",
+      "eyebrow": "随身的 AI 工作台",
       "title": "从一句话开始，把事情做完",
       "description": "从查找资料到交付文件，把模型、常用流程和外部工具接到一起，让智能体在你的授权范围内完成任务。",
       "docs": "了解这些功能怎么用",
@@ -158,7 +148,7 @@
     },
     "workflows": {
       "eyebrow": "围绕你的工作方式",
-      "title": "开始更简单，任务继续向前",
+      "title": "上手更快，任务不断线",
       "description": "首次设置带你完成隐私、权限、账号和模型配置。日常使用中，随时编辑智能体、补充任务要求，让对话、资料和成果接在一起。",
       "items": {
         "accounts": {
@@ -191,6 +181,16 @@
       "description": "下载 Cherry Studio Mobile，或先阅读安装与模型配置文档。",
       "download": "获取移动版",
       "docs": "阅读移动端文档"
+    },
+    "picker": {
+      "eyebrow": "模型选择",
+      "title": "所有模型，拇指一划就到",
+      "description": "在服务商索引上滑动，就能在服务商之间快速跳转；松手前先预览，抽屉高度随手调整。"
+    },
+    "pairing": {
+      "eyebrow": "桌面互联",
+      "title": "配对一次，桌面随身带",
+      "description": "用手机扫描电脑上 Cherry Studio 的二维码，核对六位验证码，就能导入服务商和模型；之后还能在手机上和桌面智能体对话，并审批它的每一步操作。"
     }
   },
   "stable_badge": "正式版",
@@ -219,41 +219,12 @@
     "knowledge_base_description": "Cherry Studio 目前已上线知识库功能，支持多种格式文件的导入和网页导入等来组件您的个性化知识库。",
     "download_client": "下载客户端"
   },
-  "features": {
-    "title": "释放 AI 的无限可能",
-    "description": "从对话创作到知识管理，为你打造全方位的 AI 体验。更多功能可在<1>官方文档</1>中了解。",
-    "learn_more": "详细了解",
-    "conversation": {
-      "title": "大模型对话",
-      "description": "除了基础的 AI 对话，文档或图像对话，甚至是公式和 HTML 预览都能帮你完成。"
-    },
-    "drawing": {
-      "title": "AI 绘图",
-      "description": "支持多种绘图模型，你可以尽情发挥你的想象让 Cherry Studio 帮你完成。"
-    },
-    "translation": {
-      "title": "AI 翻译",
-      "description": "无论是翻译页还是对话栏，Cherry Studio 都能快速翻译你输入的内容。"
-    },
-    "assistants": {
-      "title": "千余内置助手",
-      "description": "Cherry Studio 内置了各种分类的千余助手，让你使用大模型更加高效。"
-    },
-    "knowledge_base": {
-      "title": "多数据源知识库",
-      "description": "无论是本地文件还是网页，都能作为知识源快速构建你的专属知识库。"
-    },
-    "backup": {
-      "title": "多种备份方式",
-      "description": "包括本地备份和云端备份，多个设备无忧切换，更便捷更安全。"
-    }
-  },
   "team_collaboration": {
     "eyebrow": "团队协作能力",
     "title": "让 AI 真正成为团队生产力",
     "description": "统一模型、知识与权限，让团队共享同一套 AI 工作方式，把个人效率自然扩展为组织效率。",
     "cta": "了解企业版",
-    "activity": "限时活动-注册企业版赠送88元体验金",
+    "activity": "限时活动：注册企业版赠送 88 元体验金",
     "mockup": {
       "title": "团队 AI 工作空间",
       "subtitle": "统一管理 · 协同使用",
@@ -291,8 +262,8 @@
     }
   },
   "community": {
-    "title": "成为 Cherry 社区的一员",
-    "subtitle": "与全球 AI 爱好者分享经验、共同成长",
+    "title": "加入 Cherry 社区",
+    "subtitle": "和其他用户交流经验、互相帮助",
     "follow_us": "关注我们",
     "wechat_group": "微信群",
     "wechat_qr_alt": "微信群二维码",
@@ -307,7 +278,7 @@
     "title": "加入 Cherry Studio",
     "subtitle": "寻找研发、设计、企业 AI 交付与运营人才，与我们一起打造下一代 AI 产品",
     "apply_button": "发送简历",
-    "view_full_jd": "查看完整 JD",
+    "view_full_jd": "查看完整职位描述",
     "why_join": "为什么加入我们",
     "benefits": {
       "ai_native": {
@@ -373,8 +344,8 @@
     "view_position": "查看岗位详情"
   },
   "footer": {
-    "rss_copied": "已复制RSS",
-    "description": "Cherry Studio 是一个支持多平台的 AI 客户端，我们致力于让更多人能够享受到 AI 带来的便利。",
+    "rss_copied": "已复制 RSS 地址",
+    "description": "Cherry Studio 是一款开源的桌面 AI 客户端，支持 macOS、Windows 和 Linux，把 Agent、知识库和主流大模型放进同一个应用。",
     "cherry_studio": {
       "title": "Cherry Studio",
       "enterprise": "企业版",
@@ -390,8 +361,8 @@
     "contact_us": {
       "wechat_qr_alt": "微信公众号二维码",
       "wechat_official_account": "官方微信公众号",
-      "support_email": "技术支持",
-      "business_email": "商务合作",
+      "support_email": "技术支持：",
+      "business_email": "商务合作：",
       "feedback": "功能建议"
     },
     "copyright": "Copyright © 2026 上海千彗科技有限公司 <0>沪ICP备2021031071号-3</0>"
@@ -399,17 +370,18 @@
   "statistics": {
     "days_online": "上线天数",
     "contributors": "贡献者",
-    "stars": "收藏量"
+    "stars": "收藏量",
+    "forks": "复刻"
   },
   "providers": {
-    "title": "一个入口，连接所有 AI",
-    "subtitle": "无缝集成 300+ 主流大模型，自由切换，随心所用"
+    "title": "一个入口，接入主流大模型",
+    "subtitle": "{{providers}} 家服务商的 {{models}} 个模型，对话中随时切换。"
   },
   "download_page": {
     "click_download": "点此下载",
     "stable_release": "正式版",
     "loading_version": "正在获取版本信息...",
-    "version_error": "无法获取版本信息，请临时使用网盘链接下载",
+    "version_error": "暂时无法获取版本信息，请先使用网盘链接下载",
     "published_at": "发布时间",
     "published_at_label": "发布时间：",
     "current_system": "当前系统",
@@ -429,15 +401,15 @@
     "download_now": "下载 {{package}}",
     "release_history": "历史版本下载",
     "cloud_drive_download": "夸克网盘下载",
-    "windows_package": "Windows 系统安装包",
+    "windows_package": "Windows 安装包",
     "windows_standard": "Windows 标准版",
     "windows_portable": "Windows 便携版",
     "windows_standard_arm": "Windows 标准版 (ARM 版)",
     "windows_portable_arm": "Windows 便携版 (ARM 版)",
-    "macos_package": "MacOS 系统安装包",
+    "macos_package": "macOS 安装包",
     "macos_intel": "Intel 芯片",
     "macos_apple": "Apple 芯片",
-    "linux_package": "Linux 系统安装包",
+    "linux_package": "Linux 安装包",
     "linux_appimage": "AppImage 版本",
     "linux_appimage_arm": "AppImage 版本 (ARM 版)",
     "linux_deb": "Deb 版本",
@@ -452,13 +424,13 @@
     "platform_linux": "Linux",
     "platform_mobile": "移动端",
     "recommended": "推荐",
-    "recommended_download": "为您的设备推荐",
+    "recommended_download": "为你的设备推荐",
     "best_for_most": "适合大多数电脑",
     "no_install_needed": "无需安装，解压即用",
     "for_arm_devices": "适用于 ARM 设备",
     "apple_silicon": "Apple 芯片 (M 系列 / A 系列)",
     "intel_mac": "Intel 芯片",
-    "universal_linux": "通用 Linux 版本",
+    "universal_linux": "适用于大多数 Linux 发行版",
     "for_debian_ubuntu": "适用于 Debian/Ubuntu",
     "for_fedora_rhel": "适用于 Fedora/RHEL"
   },
@@ -466,85 +438,111 @@
     "project_contributors": "与优秀的人同行",
     "project_contributors_subtitle": "感谢每一位贡献者的热情与付出",
     "view_all_on_github": "在 GitHub 查看全部",
-    "commit_count": "{{count}} 次提交",
-    "show_more": "展开其余 {{count}} 位贡献者",
     "doc_contributors": "文档贡献者",
     "contribution_stats": "贡献: {{contributions}} commits ({{rate}}%)",
     "partial": "(部分)"
   },
   "highlights": {
     "title": "为什么选择 Cherry Studio",
-    "subtitle": "一站式 AI 助手平台，让 AI 触手可及",
+    "subtitle": "Agent、对话、绘画和你自己的知识库，都在一个桌面应用里，数据留在你的电脑上。",
+    "agents": {
+      "title": "自主 Agent",
+      "description": "把多步骤任务交给 Agent，它会自己规划、调用工具并汇报结果。还能通过 <highlight>MCP 服务器和小程序</highlight>接入你自己的工具。"
+    },
     "multi_model": {
       "title": "多模型自由切换",
-      "description": "支持 <highlight>50+ AI 服务商</highlight>，包括 DeepSeek、Kimi、通义千问、智谱 GLM 等国产模型，并支持本地模型部署，<highlight>一个客户端满足所有需求</highlight>。"
+      "description": "在 <highlight>{{providers}} 家服务商的 {{models}} 个模型</highlight>之间自由切换，DeepSeek、通义千问、Kimi、智谱 GLM 等国产模型一应俱全，也支持本地部署，用你自己的 API Key。"
+    },
+    "knowledge": {
+      "title": "你自己的知识库",
+      "description": "把<highlight>本地文件和网页</highlight>建成可检索的知识库，再直接向它提问。文档始终留在你的电脑上。"
+    },
+    "images": {
+      "title": "AI 绘画",
+      "description": "用<highlight>多种绘画模型</highlight>创作和编辑图片，不用离开应用，也不用另外订阅。"
     },
     "assistants": {
-      "title": "300+ 智能助手",
-      "description": "内置 <highlight>300+ 预配置助手</highlight>，覆盖写作、编程、学习、翻译、营销等场景，<highlight>无需编写提示词</highlight>，开箱即用。"
+      "title": "{{assistants}} 个现成助手",
+      "description": "内置 <highlight>{{assistants}} 个预配置助手</highlight>，覆盖写作、编程、学习、翻译、营销等场景，<highlight>无需编写提示词</highlight>，开箱即用。"
     },
     "documents": {
-      "title": "智能文档处理",
-      "description": "支持文本、图片、Office 文档、PDF 等多种格式，<highlight>WebDAV 文件管理</highlight>，Mermaid 图表渲染，代码高亮显示。"
-    },
-    "productivity": {
-      "title": "效率工具集成",
-      "description": "<highlight>全局搜索</highlight>、话题管理、AI 翻译、拖拽排序等功能，让工作流程更加顺畅高效。"
-    },
-    "customizable": {
-      "title": "个性化体验",
-      "description": "支持亮色/暗色主题、<highlight>透明窗口</highlight>、完整 Markdown 渲染，界面美观，<highlight>即开即用</highlight>。"
-    },
-    "extensible": {
-      "title": "强大的扩展能力",
-      "description": "支持小程序和 <highlight>MCP 服务器</highlight>，功能可无限扩展，打造属于你的专属 AI 工作台。"
-    },
-    "stats": {
-      "providers": "AI 服务商",
-      "assistants": "内置助手",
-      "stars": "GitHub Stars",
-      "platforms": "支持平台"
+      "title": "文档与翻译",
+      "description": "支持文本、图片、Office 文档和 PDF。内置<highlight>划词翻译与整页翻译</highlight>、Mermaid 图表和代码高亮。"
     }
   },
   "testimonials": {
     "title": "用户为何喜欢 Cherry Studio",
-    "subtitle": "听听社区用户对 Cherry Studio 的真实评价",
-    "source_hint": "来自各平台的真实评价"
+    "subtitle": "来自 Product Hunt、AlternativeTo 和 Medium 的用户评价（原文为英文，此处为翻译），点击卡片可查看出处。",
+    "source_hint": "在这些平台查看更多评价",
+    "eyebrow": "社区评价",
+    "view_on": "在 {{platform}} 查看"
   },
   "home_page": {
-    "title_first": "你的模型。",
+    "title_first": "你的 Agent。",
     "title_second": "你的 AI 工作台。",
-    "intro": "在一个开源桌面应用里切换主流大模型，和 AI 对话，让智能体处理多步骤任务，也能用自己的资料构建知识库。",
+    "intro": "在一个开源桌面应用里切换主流大模型，和 AI 对话，让 Agent 处理多步骤任务，也能用自己的资料构建知识库。",
     "download_desktop": "下载桌面版",
-    "explore": "探索功能",
     "platforms": "开源 · macOS / Windows / Linux",
-    "workspace_panel": "工作台能力",
-    "workflow_models": "模型",
-    "workflow_agent_output": "任务结果",
-    "workflow_agent_detail": "让智能体调用工具，执行多步骤任务并交付结果。",
-    "workflow_chat_output": "回答",
-    "workflow_chat_detail": "选择常用模型，提问、写作或分析附件。",
-    "workflow_knowledge_output": "资料问答",
-    "workflow_knowledge_detail": "把自己的文件加入知识库，再围绕资料提问。",
-    "preview_title": "打开桌面工作台。",
-    "preview_intro": "切换功能，查看智能体、对话、生图、知识库与模型配置在客户端里的实际界面。",
-    "preview": "产品界面预览",
-    "preview_agent": "智能体",
-    "preview_chat": "AI 对话",
-    "preview_drawing": "AI 生图",
-    "preview_knowledge": "知识库",
-    "preview_providers": "模型服务商",
     "providers": "支持的模型服务商",
-    "more_providers": "查看全部服务商",
     "skip": "跳到内容",
-    "apps_label": "客户端介绍",
-    "apps_title": "Cherry Studio 桌面版",
-    "apps_intro": "在电脑上使用主流 AI 模型，把对话、智能体和资料放在同一个工作区。选择你的操作系统，查看适用的安装包。",
-    "apps_platform_macos": "提供 Apple 芯片和 Intel 芯片安装包。",
-    "apps_platform_windows": "提供 x64 和 ARM64 的安装版及便携版。",
-    "apps_platform_linux": "提供 AppImage、DEB 和 RPM。",
-    "desktop_app_screenshot": "Cherry Studio 桌面版的对话界面",
-    "cta_download": "下载 Cherry Studio"
+    "cta_download": "下载 Cherry Studio",
+    "stat_providers": "服务商",
+    "stat_models": "模型",
+    "stat_assistants": "智能助手",
+    "capabilities": {
+      "eyebrow": "走进 Cherry Studio",
+      "title": "真正把活干完的 Agent",
+      "subtitle": "下面每个窗口都能点，直接上手试试。",
+      "chapters": {
+        "agents": {
+          "nav": "Agent",
+          "title": "把整件事交给 Agent",
+          "description": "要调研、要报告、要一份 PPT，Agent 会先做计划，再让多个子 Agent 并行干活，最后交回可以一键预览的成品文件。",
+          "points": ["后台子 Agent 并行工作", "计划、进度和上下文都在会话详情里", "PPT、文档、报告，成品直接预览"]
+        },
+        "knowledge": {
+          "nav": "知识库",
+          "title": "会自己更新的知识库",
+          "description": "Agent 读取你的知识库，也会把学到的东西写回去，让它像团队 Wiki 一样不断生长。",
+          "points": ["Agent 边干活边新增和更新页面", "回答会标出引用的页面", "支持 PDF、Office、Markdown、网址和文件夹"]
+        },
+        "create": {
+          "nav": "创作",
+          "title": "一个画板，多种绘图模型",
+          "description": "从绘画模板出发，用多个绘图模型生成图片，再接着修改，每个版本都留在一起。",
+          "points": ["多个绘图模型共用的绘画模板", "支持参考图和图片编辑", "每个版本并排保留"]
+        },
+        "browser": {
+          "nav": "浏览器",
+          "title": "替你上网办事的 Agent",
+          "description": "Agent 在内置浏览器里打开网页、点击、滚动、读取内容，每一步都用指针标给你看。",
+          "points": ["每个操作实时可见", "页面变了也能找准位置", "调试时可查看控制台和网络请求"]
+        },
+        "marketplace": {
+          "nav": "市场",
+          "title": "技能、Agent、MCP 都在一个市场里",
+          "description": "浏览技能目录、Agent 模板和 MCP 服务，按引导一步装好。",
+          "points": ["技能目录和外部技能源", "开箱即用的 Agent 模板", "所有 MCP 服务集中管理"]
+        },
+        "tasks": {
+          "nav": "定时任务",
+          "title": "你不在，任务照样跑",
+          "description": "给 Agent 定个时间表，结果送进通知抽屉，每次运行都有自己的对话记录。",
+          "points": ["每天、每周或自定义时间", "未读结果一眼可见", "每个任务都有运行历史"]
+        }
+      }
+    },
+    "everywhere": {
+      "eyebrow": "在桌面的任何地方",
+      "title": "选中什么，就问 Agent 什么",
+      "subtitle": "在任意应用里划词交给 Agent，每个回答都在独立小窗里打开，可以收成胶囊，也能接着在主窗口继续。",
+      "stats": {
+        "mcp": "个内置 MCP 服务器",
+        "mini_apps": "个小程序",
+        "translate": "种翻译语言",
+        "locales": "种界面语言"
+      }
+    }
   },
   "home_faq": {
     "title": "常见问题",
@@ -552,60 +550,41 @@
     "items": [
       {
         "question": "Cherry Studio 是什么？",
-        "answer": "Cherry Studio 是一款跨平台的 AI 对话客户端，支持 Windows、macOS 和 Linux。它集成了 300+ 主流 AI 模型，包括 DeepSeek、Kimi、通义千问、智谱 GLM 等国产模型，也支持本地模型部署。除了 AI 助手之外，Cherry Studio 还具备强大的智能体能力——自主思考、规划和行动的 AI。给智能体一个目标，它会自动推理问题、拆解步骤、调用工具并独立执行，同时您始终保持控制权。"
+        "answer": "Cherry Studio 是一款开源的桌面 AI 客户端，支持 Windows、macOS 和 Linux。它把 {{providers}} 家服务商的 {{models}} 个模型放进同一个应用，DeepSeek、Kimi、通义千问、智谱 GLM 等国产模型都能用，也支持本地模型。除了对话，还有 Agent、知识库、AI 绘画和翻译。"
       },
       {
         "question": "Cherry Studio 是免费的吗？",
-        "answer": "是的，Cherry Studio 社区版完全免费且开源，采用 AGPL-3.0 开源协议。个人使用完全免费。如需商业使用，请遵守 AGPL 协议要求，或联系我们获取企业授权。"
+        "answer": "是的。Cherry Studio 社区版免费且开源，采用 AGPL-3.0 协议，个人使用完全免费。商业使用请遵守 AGPL 协议，或联系我们获取企业授权。"
       },
       {
         "question": "我的数据是如何存储的？安全吗？",
-        "answer": "您的所有数据（对话记录、设置、知识库文件）都存储在本地设备上，Cherry Studio 不会将任何数据上传到第三方服务器。您对数据隐私拥有完全的控制权。我们还支持 WebDAV 备份，方便多设备同步。"
+        "answer": "你的所有数据（对话记录、设置、知识库文件）都存储在本地设备上，Cherry Studio 不会将任何数据上传到第三方服务器。你对数据隐私拥有完全的控制权。我们还支持 WebDAV 备份，方便多设备同步。"
       },
       {
         "question": "Cherry Studio 支持哪些 AI 模型？",
-        "answer": "Cherry Studio 支持 50+ AI 服务商，包括 DeepSeek、Kimi、通义千问、智谱 GLM、豆包、MiniMax 等众多国产模型。同时支持本地模型部署，实现完全离线运行。"
+        "answer": "Cherry Studio 支持 {{providers}} 家 AI 服务商，包括 DeepSeek、Kimi、通义千问、智谱 GLM、豆包、MiniMax 等众多国产模型。同时支持本地模型部署，实现完全离线运行。"
       },
       {
         "question": "知识库功能是什么？",
-        "answer": "知识库功能允许您导入文档（PDF、Word、Excel、TXT、Markdown）和网页来创建个人 AI 助手。AI 可以基于您导入的内容回答问题，非常适合研究、文档分析和个性化问答场景。"
+        "answer": "知识库可以导入 PDF、Word、Excel、TXT、Markdown 等文档和网页，AI 会基于这些内容回答问题，适合做研究、分析文档和针对资料的问答。"
       },
       {
         "question": "Cherry Studio 支持 MCP（模型上下文协议）吗？",
-        "answer": "是的，Cherry Studio 完全支持 MCP 服务器，允许您通过外部工具和服务扩展其功能。您可以连接数据库、文件系统、Web 服务等，将 Cherry Studio 打造成强大的 AI 工作台。"
+        "answer": "支持。你可以连接 MCP 服务器，让模型调用数据库、文件系统、网页服务等外部工具和数据。"
       },
       {
         "question": "我想为项目做贡献，可以做什么？",
-        "answer": "您可以通过多种方式贡献：在 GitHub 给我们 Star、报告 Bug、提交代码改进的 PR、帮助完善文档，或在社区帮助其他用户答疑。请查看我们的 GitHub 仓库了解贡献指南和待解决的 Issue。"
+        "answer": "你可以通过多种方式贡献：在 GitHub 给我们 Star、报告 Bug、提交代码改进的 PR、帮助完善文档，或在社区帮助其他用户答疑。请查看我们的 GitHub 仓库了解贡献指南和待解决的 Issue。"
       },
       {
         "question": "遇到问题在哪里可以获得帮助？",
-        "answer": "您可以通过 Telegram、Discord 或 QQ 群加入我们的社区（链接在官网首页）。也可以在 GitHub 提交 Issue、发送邮件至 support@cherry-ai.com，或访问官网文档查看详细的使用文档和教程。"
+        "answer": "你可以加入我们的 QQ 群、微信群、Telegram 或 Discord 社区，也可以在 GitHub 提交 Issue、发送邮件至 support@cherry-ai.com，或查看官网文档里的使用教程。"
       }
     ]
   },
   "telegram": {
     "channel_members": "频道成员：",
     "current_online": "当前在线："
-  },
-  "flagship_models": {
-    "title": "旗舰模型，首发适配",
-    "subtitle": "通过 CherryIN、硅基流动、阿里云百炼等合作伙伴，使用最新旗舰模型",
-    "deepseek": {
-      "name": "DeepSeek V4 Pro",
-      "description": "DeepSeek 最新旗舰正式版，智能体能力与生产环境表现显著增强；支持 1M 上下文、最高 384K 输出和三档思考强度，工具调用与复杂任务执行能力进一步提升。",
-      "feature1": "1M 上下文",
-      "feature2": "384K 最大输出",
-      "feature3": "智能体 + 推理"
-    },
-    "featured": {
-      "name": "GLM-5.3",
-      "description": "智谱最新旗舰模型，面向复杂软件工程与智能体任务；支持 1M 上下文与 128K 最大输出，编程和长程任务能力较 GLM-5.2 全面提升。",
-      "feature1": "1M 上下文",
-      "feature2": "128K 最大输出",
-      "feature3": "编程 + 智能体"
-    },
-    "cta": "持续接入未来新模型…"
   },
   "theme_page": {
     "title": "主题市场",
@@ -927,15 +906,15 @@
     "benefits": {
       "cost": {
         "title": "成本更低",
-        "description": "以更便宜的价格享受多家模型服务，\n额度充足，覆盖一整月的日常工作"
+        "description": "以更便宜的价格享受多家模型服务，额度充足，覆盖一整月的日常工作"
       },
       "freedom": {
         "title": "不限时段，自由使用<limited>（限时）</limited>",
-        "description": "没有滚动时间窗口，也没有每日限额。\n整月额度，由你自由安排。"
+        "description": "没有滚动时间窗口，也没有每日限额。整月额度，由你自由安排。"
       },
       "transparency": {
         "title": "价格透明，用量实时可见",
-        "description": "Token 计费单价和用量完全公开，\n使用额度透明可查"
+        "description": "Token 计费单价和用量完全公开，使用额度透明可查"
       }
     },
     "pricing_label": "Plus 月度订阅价格",
@@ -987,7 +966,7 @@
       },
       "invoice": {
         "question": "可以开发票吗？",
-        "answer": "如需开具发票请发送订阅账号及开票信息至 <email>support@cherry-ai.com</email> 。"
+        "answer": "如需开具发票请发送订阅账号及开票信息至 <email>support@cherry-ai.com</email>。"
       },
       "cancel": {
         "question": "可以随时取消订阅吗？",
@@ -1014,5 +993,8 @@
       "email": "发送邮件给支持团队",
       "faq": "查看订阅 FAQ"
     }
+  },
+  "demos": {
+    "replay": "重播"
   }
 }

@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next'
 import { fetchWebsiteConfigs, safePublicURL } from '@/assets/js/website-api'
 import { Button } from '@/components/ui/button'
 import Footer from '@/components/website/Footer'
+import HeroBackdrop from '@/components/website/HeroBackdrop'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { cn } from '@/lib/utils'
 
@@ -979,14 +980,13 @@ const ThemePage: React.FC = () => {
 
   return (
     <ErrorBoundary>
-      <div className="bg-background min-h-screen">
+      <div className="relative isolate min-h-screen overflow-hidden bg-background">
+        <HeroBackdrop className="inset-x-0 top-0 -z-10 h-[440px] sm:h-[500px]" fade={72} />
         <main className="site-page-top relative z-10 pb-16">
           <div className="site-container">
-            <h1 className="text-foreground mb-4 text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
-              {t('theme_page.title')}
-            </h1>
+            <h1 className="mb-4 on-silk text-balance text-5xl font-display sm:text-7xl">{t('theme_page.title')}</h1>
             <div className="mb-6">
-              <p className="text-muted-foreground">{t('theme_page.subtitle')}</p>
+              <p className="on-silk text-muted-foreground">{t('theme_page.subtitle')}</p>
               <div className="mt-4 flex items-center gap-4">
                 <details ref={searchHelp} className="relative">
                   <summary
@@ -1043,7 +1043,7 @@ const ThemePage: React.FC = () => {
             </div>
 
             {fetchError && (
-              <div className="mb-6 flex flex-wrap items-center justify-between gap-4 rounded-lg border border-border bg-card p-4">
+              <div className="glass-card mb-6 flex flex-wrap items-center justify-between gap-4 rounded-[20px] p-4">
                 <p role="alert" className="text-sm text-muted-foreground">
                   {t('theme_page.notifications.data_fetch_error')}
                 </p>
@@ -1111,11 +1111,8 @@ const ThemePage: React.FC = () => {
               <div className="grid gap-6 md:grid-cols-2" role="status">
                 <span className="sr-only">{t('theme_page.loading')}</span>
                 {[0, 1].map((index) => (
-                  <div
-                    key={index}
-                    aria-hidden="true"
-                    className="rounded-lg border border-border bg-card p-4 motion-safe:animate-pulse">
-                    <div className="aspect-video rounded-md bg-muted" />
+                  <div key={index} aria-hidden="true" className="glass-card rounded-[20px] p-4">
+                    <div className="aspect-video rounded-md bg-muted motion-safe:animate-blink" />
                     <div className="mt-4 h-5 w-1/2 rounded-sm bg-muted" />
                     <div className="mt-3 h-3 w-3/4 rounded-sm bg-muted" />
                   </div>
@@ -1129,7 +1126,7 @@ const ThemePage: React.FC = () => {
                     return (
                       <div
                         key={item.id}
-                        className="group border-border bg-card flex flex-col overflow-hidden rounded-lg border transition-colors duration-300 hover:border-primary/35">
+                        className="glass-card group flex flex-col overflow-hidden rounded-[20px] transition-[border-color,transform] duration-300 ease-settle hover:-translate-y-0.5 hover:border-hairline-strong">
                         <ThemeCardPreview
                           key={imageUrl}
                           src={imageUrl}

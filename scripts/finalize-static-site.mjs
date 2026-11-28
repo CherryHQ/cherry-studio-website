@@ -61,7 +61,19 @@ if (!config) {
   throw new Error(`Unsupported SITE_LOCALE "${target}". Expected "zh" or "en".`)
 }
 
-const translations = JSON.parse(readFileSync(join(process.cwd(), `src/i18n/lang/${target}.json`), 'utf8'))
+const PRODUCT_STATS = JSON.parse(readFileSync(join(process.cwd(), 'src/content/product-stats.json'), 'utf8')).labels
+// Mirrors i18next defaultVariables so static HTML shows the same product numbers as the hydrated page.
+const interpolateStats = (value) => {
+  if (typeof value === 'string') return value.replace(/\{\{(\w+)\}\}/g, (match, key) => PRODUCT_STATS[key] ?? match)
+  if (Array.isArray(value)) return value.map(interpolateStats)
+  if (value && typeof value === 'object') {
+    return Object.fromEntries(Object.entries(value).map(([key, item]) => [key, interpolateStats(item)]))
+  }
+  return value
+}
+const translations = interpolateStats(
+  JSON.parse(readFileSync(join(process.cwd(), `src/i18n/lang/${target}.json`), 'utf8'))
+)
 
 const DEFAULT_ROBOTS = 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
 const NOINDEX_ROBOTS = 'noindex, follow'
@@ -650,11 +662,11 @@ function applyIndexTarget() {
       target === 'zh'
         ? data.featureList
         : [
-            '50+ AI providers',
-            '300+ AI models',
+            `${PRODUCT_STATS.providers} AI providers`,
+            `${PRODUCT_STATS.models} AI models`,
             'Local LLM support with Ollama and LM Studio',
             'AI chat, knowledge base, image generation, and translation',
-            '300+ built-in assistants',
+            `${PRODUCT_STATS.assistants} built-in assistants`,
             'Cross-platform support for Windows, macOS, and Linux',
             'Free and open source'
           ]
@@ -747,7 +759,7 @@ ${entries}${extras ? `\n${extras}` : ''}
 }
 
 const LLMS_INTRO =
-  'Open-source AI desktop client for macOS, Windows and Linux. Run 300+ models from 50+ providers in one app, with conversations stored locally.'
+  `Open-source AI desktop client for macOS, Windows and Linux. Run ${PRODUCT_STATS.models} models from ${PRODUCT_STATS.providers} providers in one app, with conversations stored locally.`
 
 const LLMS_PAGES = ['home', 'download', 'flash', 'flash_usage', 'theme', 'articles', ...compareRoutes.map(({ key }) => key)]
 const LLMS_PATH_BY_KEY = {
@@ -772,11 +784,11 @@ released under the AGPL-3.0 licence.
 - Inline and full-page translation
 - Knowledge base built from local files and web pages
 - Works with text, images, Office documents and PDFs
-- 300+ built-in assistants, no prompt engineering required
+- ${PRODUCT_STATS.assistants} built-in assistants, no prompt engineering required
 
 ## Models and providers
 
-- 300+ models from 50+ providers, including OpenAI, Anthropic, Google, DeepSeek, Qwen and GLM
+- ${PRODUCT_STATS.models} models from ${PRODUCT_STATS.providers} providers, including OpenAI, Anthropic, Google, DeepSeek, Qwen and GLM
 - Local models via Ollama and LM Studio
 - Bring your own API keys, or subscribe to the Flash plan
 

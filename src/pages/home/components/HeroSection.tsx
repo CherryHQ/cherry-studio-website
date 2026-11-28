@@ -1,14 +1,28 @@
-import { ArrowDown, ArrowRight, Download, History } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { m, useReducedMotion, useScroll, useTransform } from 'framer-motion'
+import { ArrowRight, History } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
 import { fetchNotice, type NoticeResponse } from '@/assets/js/notice'
+import AgentDelegationDemo from '@/components/demos/agents/AgentDelegationDemo'
+import BlurInText from '@/components/website/BlurInText'
+import HeroBackdrop from '@/components/website/HeroBackdrop'
 import MobileDownloadButton from '@/components/website/MobileDownloadButton'
+import ParticleTitle from '@/components/website/ParticleTitle'
 import { useVersionData } from '@/hooks/useVersionData'
+import { spring } from '@/lib/motion'
+import { cn } from '@/lib/utils'
 import { isMobileDevice } from '@/utils/systemDetection'
 import { getDocsUrl, isEnglishSite } from '@/utils/urls'
-import WorkspacePanel from './WorkspacePanel'
+
+/**
+ * The opening reads like unwrapping a gift: a sunlit colour panel, the wordmark assembling out of scattered dots, and
+ * the app window resting over it. Scrolling lifts the window over the wordmark and opens onto the page below.
+ */
+const EXPAND_SCREENS = 0.6
+// Height kept clear at the bottom of the screen for the download dock.
+const DOCK_SPACE = 104
 
 export default function HeroSection() {
   const { t, i18n } = useTranslation()
@@ -19,6 +33,40 @@ export default function HeroSection() {
   const isEn = isEnglishSite(language)
   const isMobile = isMobileDevice()
   const stableMajorVersion = Number(versionData?.version.match(/^v?(\d+)\./)?.[1])
+
+  const reduced = useReducedMotion() ?? false
+  const headline = useRef<HTMLDivElement>(null)
+  const frame = useRef<HTMLDivElement>(null)
+  const { scrollY } = useScroll()
+  // Over the first ~60% of a screen of scrolling the stage stays pinned: the headline lifts away while the window
+  // grows from resting under the wordmark to filling the screen, centred.
+  const progress = useTransform(scrollY, (y) => {
+    const p = Math.min(1, Math.max(0, y / (window.innerHeight * EXPAND_SCREENS)))
+    return 1 - (1 - p) ** 3
+  })
+  // Start: tucked under the wordmark. End: as large as fits above the download dock, centred in that space.
+  const layout = () => {
+    const stage = frame.current?.parentElement?.clientHeight ?? window.innerHeight
+    const height = frame.current?.offsetHeight || 1
+    const room = stage - DOCK_SPACE - 16
+    const endScale = Math.min(1, room / height)
+    return {
+      startScale: Math.min(window.innerWidth < 768 ? 0.94 : 0.8, endScale),
+      endScale,
+      startY: (headline.current?.offsetHeight ?? 0) - Math.min(96, Math.max(36, window.innerWidth * 0.066)),
+      endY: 16 + Math.max(0, (room - height * endScale) / 2)
+    }
+  }
+  const windowScale = useTransform(progress, (p) => {
+    const { startScale, endScale } = layout()
+    return startScale + (endScale - startScale) * p
+  })
+  const windowY = useTransform(progress, (p) => {
+    const { startY, endY } = layout()
+    return startY + (endY - startY) * p
+  })
+  const headlineY = useTransform(progress, [0, 1], [0, -80])
+  const headlineOpacity = useTransform(progress, [0, 0.6], [1, 0])
 
   useEffect(() => {
     let active = true
@@ -31,100 +79,93 @@ export default function HeroSection() {
   }, [language])
 
   return (
-    <section className="relative overflow-hidden border-b border-border bg-background text-foreground">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-y-0 left-[40%] hidden w-[70%] [mask-image:linear-gradient(to_right,transparent,black_34%)] lg:block">
-        <div className="absolute -top-16 left-10 grid w-[1000px] origin-center -rotate-[24deg] skew-x-[22deg] grid-cols-12 border-t border-l border-border/70">
-          {Array.from({ length: 96 }, (_, index) => (
-            <span
-              key={index}
-              className={
-                [9, 20, 21, 31, 42, 43, 56, 67, 69, 77, 89, 91].includes(index)
-                  ? 'relative z-10 aspect-square -translate-x-1.5 -translate-y-1.5 border border-input/65 bg-secondary shadow-[5px_5px_0_var(--border)]'
-                  : 'aspect-square border-r border-b border-border/70'
-              }
-            />
-          ))}
-        </div>
-      </div>
-      <div className="site-container site-split site-section relative">
-        <div className="min-w-0">
-          <Link
-            to="/download"
-            className="mb-6 inline-flex flex-wrap items-center gap-2 rounded-md border border-border bg-card px-2 py-1 font-mono text-xs text-muted-foreground transition-colors duration-300 hover:border-primary/60 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
-            <span className="size-1.5 rounded-full bg-primary" aria-hidden="true" />
-            <span>
-              {versionData?.version ? `Cherry Studio ${versionData.version}` : t('mobile_download.desktop_title')}
-            </span>
-            {versionData?.version && <span className="text-primary">{t('stable_badge')}</span>}
-          </Link>
-
-          <h1 className="text-balance text-4xl font-semibold tracking-tight sm:text-5xl xl:text-6xl">
-            <span className="block">{t('home_page.title_first')}</span>
-            <span className="mt-2 block text-foreground">{t('home_page.title_second')}</span>
-          </h1>
-          <p className="mt-5 max-w-lg text-pretty text-base text-muted-foreground sm:text-lg">{t('home_page.intro')}</p>
-
-          {notice?.status && notice.notice && (
-            <p className="mt-4 text-muted-foreground" style={{ fontSize: notice.text_size }}>
-              {notice.notice}
-            </p>
-          )}
-
-          <div className="mt-6 flex flex-wrap items-center gap-3">
-            {isMobile ? (
-              <MobileDownloadButton
-                variant="primary"
-                className="rounded-md bg-foreground px-4 font-semibold text-background hover:bg-foreground/85"
+    <>
+      <section
+        className="relative isolate bg-background"
+        style={
+          reduced ? undefined : { height: `calc(100svh - var(--site-header-height) + ${EXPAND_SCREENS * 100}svh)` }
+        }>
+        <div
+          className={cn(
+            // Clip sideways only, so the window's soft shadow fades out instead of ending on the stage's bottom edge.
+            'overflow-x-clip',
+            !reduced && 'sticky top-(--site-header-height) h-[calc(100svh-var(--site-header-height))]'
+          )}>
+          <HeroBackdrop className="inset-0 -z-10" fade={45} />
+          <m.div
+            ref={headline}
+            style={reduced ? undefined : { y: headlineY, opacity: headlineOpacity }}
+            className="site-container flex flex-col items-center pt-10 text-center text-white sm:pt-14">
+            <h1 className="w-full max-w-6xl">
+              <span className="block text-[clamp(24px,3vw,44px)] leading-tight font-accent text-balance">
+                <BlurInText text={`${t('home_page.title_first')}${isEn ? ' ' : ''}${t('home_page.title_second')}`} />
+              </span>
+              <span className="sr-only">Cherry Studio</span>
+              <ParticleTitle
+                className="mt-1 h-[clamp(110px,19vw,290px)]"
+                density={1 / 210}
+                lines={[{ text: 'Cherry Studio', font: '650 {size}px "Inter Tight", sans-serif' }]}
               />
-            ) : (
-              <Link
-                to="/download"
-                data-ph-no-autocapture=""
-                className="inline-flex items-center gap-2 rounded-md bg-foreground px-4 py-2.5 text-base font-semibold text-background transition-colors duration-300 hover:bg-foreground/85 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary active:translate-y-px">
-                <Download className="size-4" aria-hidden="true" />
-                {t('home_page.download_desktop')}
-              </Link>
+            </h1>
+            {notice?.status && notice.notice && (
+              <p className="mt-2" style={{ color: notice.text_color, fontSize: notice.text_size }}>
+                {notice.notice}
+              </p>
             )}
-            <a
-              href="#home-capabilities"
-              className="inline-flex items-center gap-2 rounded-md border border-border px-4 py-2.5 text-sm font-semibold text-foreground transition-colors duration-300 hover:bg-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary active:translate-y-px">
-              {t('home_page.explore')}
-              <ArrowDown className="size-3.5" aria-hidden="true" />
-            </a>
-          </div>
+          </m.div>
 
-          <p className="mt-4 font-mono text-xs text-muted-foreground">{t('home_page.platforms')}</p>
-
-          <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground">
-            {!isMobile && <MobileDownloadButton className="hover:text-foreground" />}
-            {!isEn && isMobile && (
-              <Link to="/download" className="rounded-sm hover:text-foreground focus-visible:outline-2">
-                {t('mobile_download.desktop')}
-              </Link>
-            )}
-            {!isEn && !isMobile && stableMajorVersion >= 2 && (
-              <Link
-                to="/download/v1"
-                className="inline-flex items-center gap-1.5 rounded-sm hover:text-foreground focus-visible:outline-2">
-                <History className="size-3.5" aria-hidden="true" />
-                {t('download_v1')}
-              </Link>
-            )}
-            {!isEn && (
-              <a
-                href={getDocsUrl(language)}
-                className="inline-flex items-center gap-1.5 rounded-sm hover:text-foreground focus-visible:outline-2">
-                {t('nav.docs')}
-                <ArrowRight className="size-3.5" aria-hidden="true" />
-              </a>
-            )}
-          </div>
+          <m.div
+            ref={frame}
+            style={reduced ? undefined : { y: windowY, scale: windowScale }}
+            className={cn(
+              // Width follows the screen height too, so the window keeps a 16:10 desktop shape instead of stretching flat.
+              'z-10 w-[min(1480px,calc(100vw-32px),125svh)] origin-top text-left sm:w-[min(1480px,calc(100vw-48px),125svh)]',
+              reduced ? 'mx-auto -mt-[clamp(36px,6.6vw,96px)] pb-6' : 'absolute inset-x-0 top-0 mx-auto'
+            )}>
+            <m.div
+              initial={{ opacity: 0, y: 120 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ ...spring.gentle, delay: 0.1 }}>
+              <AgentDelegationDemo bezel />
+            </m.div>
+          </m.div>
         </div>
+      </section>
 
-        <WorkspacePanel />
+      <div className="site-container flex flex-col items-center pt-12 pb-20 text-center sm:pb-28">
+        <p className="max-w-2xl text-pretty text-base text-muted-foreground sm:text-lg zh:leading-[1.8]">
+          {t('home_page.intro')}
+        </p>
+        <div className="mt-5 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-muted-foreground">
+          {versionData?.version && (
+            <Link to="/download" className="rounded-sm hover:text-foreground focus-visible:outline-2">
+              {t('stable_badge')} · Cherry Studio {versionData.version}
+            </Link>
+          )}
+          {!isMobile && <MobileDownloadButton className="hover:text-foreground" />}
+          {!isEn && isMobile && (
+            <Link to="/download" className="rounded-sm hover:text-foreground focus-visible:outline-2">
+              {t('mobile_download.desktop')}
+            </Link>
+          )}
+          {!isEn && !isMobile && stableMajorVersion >= 2 && (
+            <Link
+              to="/download/v1"
+              className="inline-flex items-center gap-1.5 rounded-sm hover:text-foreground focus-visible:outline-2">
+              <History className="size-3.5" aria-hidden="true" />
+              {t('download_v1')}
+            </Link>
+          )}
+          {!isEn && (
+            <a
+              href={getDocsUrl(language)}
+              className="inline-flex items-center gap-1.5 rounded-sm hover:text-foreground focus-visible:outline-2">
+              {t('nav.docs')}
+              <ArrowRight className="size-3.5" aria-hidden="true" />
+            </a>
+          )}
+        </div>
       </div>
-    </section>
+    </>
   )
 }

@@ -135,8 +135,9 @@ export function SiteHeader({
 
   return (
     <>
-      <header className="site-header fixed inset-x-0 top-0 z-50 flex h-[60px] items-center border-b border-border bg-background/95 text-foreground antialiased backdrop-blur-md">
-        <div className="mx-auto flex h-full w-full max-w-(--site-layout-width) items-center justify-between gap-3 px-6 lg:px-8">
+      <header className="site-header fixed inset-x-0 top-0 z-50 flex h-[60px] items-center px-3 text-foreground antialiased sm:px-4">
+        {/* Floating pill bar inside the fixed 60px band, so docs offsets stay unchanged. */}
+        <div className="mx-auto flex h-12 w-full max-w-(--site-layout-width) items-center justify-between gap-3 rounded-full border border-border bg-background/70 pr-2 pl-4 shadow-[0_10px_40px_-18px_rgb(0_0_0/0.25)] backdrop-blur-xl backdrop-saturate-150 sm:pl-5">
           <div className="flex h-full min-w-0 items-center gap-7">
             {renderLink({
               href: '/',
@@ -151,7 +152,7 @@ export function SiteHeader({
             })}
             <nav
               aria-label={menuLabel}
-              className="hidden h-full shrink-0 items-center gap-1 whitespace-nowrap min-[1100px]:flex">
+              className="hidden h-full shrink-0 items-center gap-0.5 whitespace-nowrap min-[1100px]:flex">
               {links.map((item) => (
                 <span key={item.href} className="flex h-full items-center">
                   {item.children ? (
@@ -160,10 +161,8 @@ export function SiteHeader({
                     link(
                       item,
                       cn(
-                        'flex h-full items-center gap-1.5 border-b-2 border-transparent px-2 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-primary',
-                        item.active
-                          ? 'border-foreground text-foreground'
-                          : 'text-muted-foreground hover:text-foreground'
+                        'flex h-8 items-center gap-1.5 rounded-full px-3 text-sm font-medium transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-primary',
+                        item.active ? 'bg-accent text-foreground' : 'text-muted-foreground hover:text-foreground'
                       )
                     )
                   )}
@@ -177,7 +176,7 @@ export function SiteHeader({
               target="_blank"
               rel="noopener noreferrer"
               title="GitHub"
-              className="hidden h-8 shrink-0 items-center justify-center gap-2 rounded-md px-1 text-sm font-medium text-muted-foreground transition-colors duration-300 hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:flex">
+              className="hidden h-8 shrink-0 items-center justify-center gap-2 rounded-full border border-border px-3 text-sm font-medium text-muted-foreground transition-colors duration-300 hover:bg-accent hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:flex">
               <img src={githubIcon} alt="GitHub" className="size-4 dark:invert" />
               <span className="flex w-[3.25rem] shrink-0 items-center gap-1">
                 <Star aria-hidden="true" className="size-3.5 shrink-0" />
@@ -189,14 +188,14 @@ export function SiteHeader({
               renderLink({
                 href: downloadAction.href,
                 className:
-                  'inline-flex h-8 items-center whitespace-nowrap rounded-md bg-foreground px-2 text-xs sm:px-3 sm:text-sm font-semibold text-background transition-colors duration-300 hover:bg-foreground/85 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary active:translate-y-px',
+                  'inline-flex h-8 items-center whitespace-nowrap rounded-full bg-foreground px-3 text-xs sm:px-4 sm:text-sm font-semibold text-background transition-[background-color,transform] duration-200 hover:bg-foreground/85 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary active:scale-[0.97]',
                 children: downloadAction.label
               })}
             <button
               type="button"
               aria-label={menuLabel}
               aria-haspopup="dialog"
-              className="flex size-8 items-center justify-center rounded-md border border-border text-foreground hover:bg-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary min-[1100px]:hidden"
+              className="flex size-8 items-center justify-center rounded-full border border-border text-foreground hover:bg-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary min-[1100px]:hidden"
               onClick={() => dialog.current?.showModal()}>
               <Menu className="h-5 w-5" />
             </button>

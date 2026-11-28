@@ -1,0 +1,22 @@
+{
+  "_sources": {
+    "providers": "CherryHQ/cherry-studio packages/provider-registry/data/providers.json (68 entries)",
+    "models": "CherryHQ/cherry-studio packages/provider-registry/data/models.json (966 entries)",
+    "assistants": "CherryHQ/cherry-studio resources/data/agents-{en,zh}.json (780 entries each)",
+    "miniApps": "CherryHQ/cherry-studio src/shared/data/presets/miniApps.ts (70 presets)",
+    "mcpServers": "CherryHQ/cherry-studio src/shared/data/presets/mcpServers.ts (12 built-in servers)",
+    "codeClis": "CherryHQ/cherry-studio src/shared/types/codeCli.ts (14 CLIs)",
+    "translateLanguages": "CherryHQ/cherry-studio src/shared/data/presets/translateLanguages.ts (21 languages)",
+    "uiLocales": "CherryHQ/cherry-studio src/renderer/i18n/locales (18 locales)"
+  },
+  "labels": {
+    "providers": "68",
+    "models": "900+",
+    "assistants": "780",
+    "miniApps": "70",
+    "mcpServers": "12",
+    "codeClis": "14",
+    "translateLanguages": "21",
+    "uiLocales": "18"
+  }
+}

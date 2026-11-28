@@ -107,7 +107,11 @@ const Footer: FC = () => {
   ]
 
   return (
-    <footer className="border-border bg-secondary/30 relative border-t">
+    <footer className="relative overflow-hidden border-t border-border bg-background">
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-primary/60 to-transparent"
+      />
       {/* Main Footer */}
       <div className="site-container py-12">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-12">
@@ -126,7 +130,7 @@ const Footer: FC = () => {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group border-border bg-secondary/50 hover:bg-secondary relative flex size-9 items-center justify-center rounded-md border transition-all duration-200">
+                    className="group border-border bg-surface-glass hover:border-hairline-strong hover:bg-accent relative flex size-9 items-center justify-center rounded-md border transition-all duration-200">
                     <img
                       src={link.icon}
                       alt={link.alt}
@@ -138,7 +142,7 @@ const Footer: FC = () => {
                   <button
                     type="button"
                     onClick={handleCopyRSS}
-                    className="group border-border bg-secondary/50 hover:bg-secondary relative flex size-9 cursor-pointer items-center justify-center rounded-md border transition-colors">
+                    className="group border-border bg-surface-glass hover:border-hairline-strong hover:bg-accent relative flex size-9 cursor-pointer items-center justify-center rounded-md border transition-colors">
                     <img
                       src={rssIcon}
                       alt="RSS"
@@ -229,13 +233,13 @@ const Footer: FC = () => {
             <h4 className="text-foreground mb-4 text-sm font-semibold">{t('nav.contact')}</h4>
             <ul className="space-y-2.5">
               <li>
-                <span className="text-muted-foreground text-sm">{t('footer.contact_us.support_email')}: </span>
+                <span className="text-muted-foreground text-sm">{t('footer.contact_us.support_email')}</span>
                 <a href="mailto:support@cherry-ai.com" className="text-primary text-sm hover:underline">
                   support@cherry-ai.com
                 </a>
               </li>
               <li>
-                <span className="text-muted-foreground text-sm">{t('footer.contact_us.business_email')}: </span>
+                <span className="text-muted-foreground text-sm">{t('footer.contact_us.business_email')}</span>
                 <a href="mailto:bd@cherry-ai.com" className="text-primary text-sm hover:underline">
                   bd@cherry-ai.com
                 </a>
@@ -263,8 +267,14 @@ const Footer: FC = () => {
         </div>
       </div>
 
+      <div aria-hidden="true" className="site-container pointer-events-none select-none">
+        <p className="-mb-[0.18em] text-[clamp(3.5rem,13vw,11rem)] leading-none font-display whitespace-nowrap opacity-20 [mask-image:linear-gradient(to_bottom,black_40%,transparent)]">
+          Cherry Studio
+        </p>
+      </div>
+
       {/* Bottom Bar */}
-      <div className="border-border border-t">
+      <div className="relative border-t border-border bg-background">
         <div className="site-container py-5">
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
             {/* Copyright */}

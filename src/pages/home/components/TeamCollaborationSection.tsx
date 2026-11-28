@@ -6,8 +6,8 @@ import teamAvatar1 from '@/assets/images/team-avatars/avatar-1-v2.png'
 import teamAvatar2 from '@/assets/images/team-avatars/avatar-2-v2.png'
 import teamAvatar3 from '@/assets/images/team-avatars/avatar-3-v2.png'
 import teamAvatar4 from '@/assets/images/team-avatars/avatar-4-v2.png'
+import BlurInText from '@/components/website/BlurInText'
 import { goToEnterprise } from '@/utils/analytics'
-import SectionBackdrop from './SectionBackdrop'
 
 const capabilities = [
   {
@@ -39,11 +39,10 @@ const TeamCollaborationSection: FC = () => {
 
   return (
     <section className="isolate bg-background relative overflow-hidden site-section">
-      <SectionBackdrop variant="modules" />
       <div className="site-container site-split relative z-10">
         <div className="min-w-0">
-          <h2 className="text-foreground mb-4 text-3xl font-semibold tracking-tight sm:text-4xl">
-            {t('team_collaboration.title')}
+          <h2 className="mb-4 text-4xl font-display text-balance sm:text-5xl">
+            <BlurInText text={t('team_collaboration.title')} />
           </h2>
           <p className="text-muted-foreground max-w-md text-sm leading-7 sm:text-base">
             {t('team_collaboration.description')}
@@ -53,7 +52,7 @@ const TeamCollaborationSection: FC = () => {
             <button
               type="button"
               onClick={() => goToEnterprise('team_collaboration_section')}
-              className="border-border bg-secondary text-foreground hover:bg-accent inline-flex items-center gap-2 rounded-md border px-4 py-2.5 text-sm font-semibold transition-colors">
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-surface-glass px-4 py-2.5 text-sm font-semibold text-foreground transition-colors hover:border-hairline-strong hover:bg-accent">
               {t('team_collaboration.cta')}
               <ArrowUpRight className="h-4 w-4" />
             </button>
@@ -61,7 +60,7 @@ const TeamCollaborationSection: FC = () => {
           </div>
         </div>
 
-        <div className="border-border/70 bg-card/70 relative min-w-0 overflow-hidden rounded-lg border p-3 sm:p-5">
+        <div className="glass-card relative min-w-0 overflow-hidden rounded-[20px] p-3 sm:p-5">
           <div className="bg-secondary/50 flex items-center justify-between rounded-lg px-4 py-3 sm:px-5">
             <div className="flex items-center gap-3">
               <div className="bg-background text-muted-foreground flex h-9 w-9 items-center justify-center rounded-xl">
@@ -79,8 +78,8 @@ const TeamCollaborationSection: FC = () => {
 
           <div className="grid gap-3 py-3 sm:grid-cols-3 sm:py-5">
             {capabilities.map(({ icon: Icon, titleKey, descriptionKey }) => (
-              <div key={titleKey} className="border-border/60 bg-background/60 rounded-lg border p-4 sm:p-5">
-                <Icon className="text-muted-foreground mb-4 h-5 w-5" />
+              <div key={titleKey} className="rounded-xl border border-border bg-background/60 p-4 sm:p-5">
+                <Icon className="mb-4 h-5 w-5 text-primary" />
                 <h3 className="text-foreground mb-2 text-sm font-semibold">{t(titleKey)}</h3>
                 <p className="text-muted-foreground text-xs leading-5">{t(descriptionKey)}</p>
               </div>
