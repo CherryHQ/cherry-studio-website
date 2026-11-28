@@ -906,15 +906,15 @@
     "benefits": {
       "cost": {
         "title": "成本更低",
-        "description": "以更便宜的价格享受多家模型服务，\n额度充足，覆盖一整月的日常工作"
+        "description": "以更便宜的价格享受多家模型服务，额度充足，覆盖一整月的日常工作"
       },
       "freedom": {
         "title": "不限时段，自由使用<limited>（限时）</limited>",
-        "description": "没有滚动时间窗口，也没有每日限额。\n整月额度，由你自由安排。"
+        "description": "没有滚动时间窗口，也没有每日限额。整月额度，由你自由安排。"
       },
       "transparency": {
         "title": "价格透明，用量实时可见",
-        "description": "Token 计费单价和用量完全公开，\n使用额度透明可查"
+        "description": "Token 计费单价和用量完全公开，使用额度透明可查"
       }
     },
     "pricing_label": "Plus 月度订阅价格",
@@ -966,7 +966,7 @@
       },
       "invoice": {
         "question": "可以开发票吗？",
-        "answer": "如需开具发票请发送订阅账号及开票信息至 <email>support@cherry-ai.com</email> 。"
+        "answer": "如需开具发票请发送订阅账号及开票信息至 <email>support@cherry-ai.com</email>。"
       },
       "cancel": {
         "question": "可以随时取消订阅吗？",
