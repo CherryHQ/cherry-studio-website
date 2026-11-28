@@ -58,8 +58,8 @@ interface MarketState {
   agentCategory: string
   detail: Detail | null
   installed: string[]
-  /** The skill being installed and how many of its member skills are done. */
-  installing: { id: string; step: number } | null
+  /** The skill being installed. */
+  installing: string | null
   added: string[]
   adding: string | null
   pressed: string | null
@@ -346,7 +346,7 @@ export default function MarketplaceDemo({ bezel }: { bezel?: boolean }) {
 
   const startInstall = (id: string) =>
     setState((previous) =>
-      previous.installing || previous.installed.includes(id) ? previous : { ...previous, installing: { id, step: 0 } }
+      previous.installing || previous.installed.includes(id) ? previous : { ...previous, installing: id }
     )
   const startAdd = (name: string) =>
     setState((previous) =>
@@ -387,24 +387,23 @@ export default function MarketplaceDemo({ bezel }: { bezel?: boolean }) {
     startInstall(marketplaceScript.skill)
   }, playing)
 
-  // Member skills land one by one, then the whole package is marked installed.
+  // As in the app, the button shows Loading… until the package is installed.
   useEffect(() => {
-    const job = state.installing
-    if (!job) return
-    const total = marketplaceScript.skills.find((skill) => skill.id === job.id)?.members.length ?? 1
+    const id = state.installing
+    if (!id) return
     const timer = setTimeout(
       () =>
-        setState((previous) => {
-          if (previous.installing?.id !== job.id) return previous
-          if (job.step < total) return { ...previous, installing: { id: job.id, step: job.step + 1 } }
-          return {
-            ...previous,
-            installing: null,
-            installed: [...previous.installed, job.id],
-            toast: { key: Date.now(), kind: 'skill', id: job.id }
-          }
-        }),
-      job.step < total ? 150 : 140
+        setState((previous) =>
+          previous.installing !== id
+            ? previous
+            : {
+                ...previous,
+                installing: null,
+                installed: [...previous.installed, id],
+                toast: { key: Date.now(), kind: 'skill', id }
+              }
+        ),
+      700
     )
     return () => clearTimeout(timer)
   }, [state.installing])
@@ -431,10 +430,10 @@ export default function MarketplaceDemo({ bezel }: { bezel?: boolean }) {
     return () => clearTimeout(timer)
   }, [state.toast])
 
-  // Keep the install progress and its result in view inside the detail body.
+  // Keep the install result in view inside the detail body.
   const openSkill = state.detail?.kind === 'skill' ? state.detail.id : ''
   const scrollTarget =
-    openSkill && state.installing?.id === openSkill
+    openSkill && state.installing === openSkill
       ? `${openSkill}:busy`
       : openSkill && state.installed.includes(openSkill)
         ? `${openSkill}:done`
@@ -478,7 +477,7 @@ export default function MarketplaceDemo({ bezel }: { bezel?: boolean }) {
   const skillCard = (skill: MarketplaceSkillItem) => {
     const text = skillText(skill.id)
     const installed = state.installed.includes(skill.id)
-    const busy = state.installing?.id === skill.id
+    const busy = state.installing === skill.id
     const label = installed ? copy.uninstall : copy.install
     return gridItem(
       skill.id,
@@ -797,21 +796,8 @@ export default function MarketplaceDemo({ bezel }: { bezel?: boolean }) {
     </div>
   )
 
-  const footer = (left: ReactNode, right: ReactNode, progress?: number) => (
-    <div
-      className={cn(
-        'relative flex shrink-0 items-center justify-between gap-3 border-t bg-card px-5 py-3',
-        SUBTLE_BORDER
-      )}>
-      {progress !== undefined && (
-        <m.span
-          aria-hidden="true"
-          className="absolute -top-px left-0 h-0.5 rounded-full bg-[#00b96b]"
-          initial={{ width: '0%' }}
-          animate={{ width: `${progress * 100}%`, opacity: progress >= 1 ? 0 : 1 }}
-          transition={{ width: { duration: 0.15, ease: 'linear' }, opacity: { delay: 0.25, duration: 0.3 } }}
-        />
-      )}
+  const footer = (left: ReactNode, right: ReactNode) => (
+    <div className={cn('flex shrink-0 items-center justify-between gap-3 border-t bg-card px-5 py-3', SUBTLE_BORDER)}>
       {left}
       {right}
     </div>
@@ -827,8 +813,7 @@ export default function MarketplaceDemo({ bezel }: { bezel?: boolean }) {
   const skillDetail = (skill: MarketplaceSkillItem) => {
     const text = skillText(skill.id)
     const installed = state.installed.includes(skill.id)
-    const job = state.installing?.id === skill.id ? state.installing : null
-    const done = installed ? skill.members.length : (job?.step ?? 0)
+    const job = state.installing === skill.id
     const published = new Intl.DateTimeFormat(tag, { dateStyle: 'medium' }).format(new Date(skill.released))
     const downloads = new Intl.NumberFormat(tag, { notation: 'compact' }).format(skill.downloads)
     return (
@@ -867,39 +852,14 @@ export default function MarketplaceDemo({ bezel }: { bezel?: boolean }) {
               {copy.includedSkills.replace('{total}', String(skill.members.length))}
             </h4>
             <div className="grid grid-cols-2 gap-2">
-              {skill.members.map((member, index) => {
-                const landed = index < done
-                const active = Boolean(job) && index === done
-                return (
-                  <div
-                    key={member}
-                    className={cn(
-                      'flex min-w-0 items-start gap-2 rounded-xl border p-3 transition-colors duration-300',
-                      landed ? 'border-green-500/25 bg-green-500/[0.06]' : cn(SUBTLE_BORDER, SUBTLE_BG)
-                    )}>
-                    <span className="relative mt-0.5 flex size-3 shrink-0 items-center justify-center">
-                      <AnimatePresence mode="popLayout" initial={false}>
-                        <m.span
-                          key={landed ? 'done' : active ? 'busy' : 'idle'}
-                          initial={{ opacity: 0, scale: 0.4 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          exit={{ opacity: 0, scale: 0.4 }}
-                          transition={{ duration: 0.18, ease: ease.overshoot }}
-                          className="flex">
-                          {landed ? (
-                            <Check className={cn('size-3', SUCCESS)} strokeWidth={3} />
-                          ) : active ? (
-                            <Loader2 className="size-3 animate-spin text-muted-foreground" />
-                          ) : (
-                            <Sparkles className={cn('size-3', TERTIARY)} />
-                          )}
-                        </m.span>
-                      </AnimatePresence>
-                    </span>
-                    <span className="text-xs leading-5 break-words">{member}</span>
-                  </div>
-                )
-              })}
+              {skill.members.map((member) => (
+                <div
+                  key={member}
+                  className={cn('flex min-w-0 items-start gap-2 rounded-xl border p-3', SUBTLE_BORDER, SUBTLE_BG)}>
+                  <Sparkles className={cn('mt-0.5 size-3 shrink-0', TERTIARY)} />
+                  <span className="text-xs leading-5 break-words">{member}</span>
+                </div>
+              ))}
             </div>
           </section>
           <AnimatePresence initial={false}>
@@ -920,8 +880,8 @@ export default function MarketplaceDemo({ bezel }: { bezel?: boolean }) {
           repository,
           <button
             type="button"
-            aria-busy={Boolean(job)}
-            disabled={installed || Boolean(job)}
+            aria-busy={job}
+            disabled={installed || job}
             onClick={() => startInstall(skill.id)}
             className={cn(
               BUTTON_SM,
@@ -940,8 +900,7 @@ export default function MarketplaceDemo({ bezel }: { bezel?: boolean }) {
               <Download className="size-4" />
             )}
             {installed ? copy.installed : job ? copy.loading : copy.installNow}
-          </button>,
-          job || installed ? done / skill.members.length : undefined
+          </button>
         )}
       </>
     )
@@ -1082,7 +1041,7 @@ export default function MarketplaceDemo({ bezel }: { bezel?: boolean }) {
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.97, y: 4 }}
                   transition={{ duration: 0.26, ease: ease.expo }}
-                  className="pointer-events-auto flex max-h-full w-full max-w-lg flex-col overflow-hidden rounded-3xl bg-card shadow-xl">
+                  className="pointer-events-auto flex max-h-full w-full max-w-lg flex-col overflow-hidden rounded-3xl bg-card shadow-xl [zoom:0.8] @6xl:[zoom:0.9]">
                   {detail()}
                 </m.div>
               </div>

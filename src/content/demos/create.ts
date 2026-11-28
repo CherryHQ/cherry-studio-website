@@ -77,12 +77,10 @@ export interface ArtifactsDemoCopy {
   app: {
     lang: string
     title: string
-    focus: string
-    break: string
-    start: string
-    pause: string
-    reset: string
-    skip: string
+    palette: string
+    /** Names of SILK_PALETTES, in order. */
+    palettes: string[]
+    speed: string
     comment: string
   }
 }
@@ -241,10 +239,10 @@ export const artifactsDemo: Record<DemoLocale, ArtifactsDemoCopy> = {
   en: {
     window: 'Cherry Studio — HTML Artifacts',
     model: { name: 'Claude Sonnet 4.6', provider: 'anthropic' },
-    prompt: 'Make me a tiny pomodoro timer I can actually click.',
+    prompt: 'Make me a live silk wallpaper I can recolor.',
     intro:
-      'Here is a single-file pomodoro timer: 25 minutes of focus, a 5-minute break, and a ring that drains as the clock runs down.',
-    outro: 'Press Start in the preview to try it.',
+      'Here is a single-file live wallpaper: flowing silk rendered on the GPU with Paper Shaders, four palettes and a speed control.',
+    outro: 'Pick a palette or drag the speed slider in the preview.',
     htmlPreview: 'HTML Preview',
     viewWebpage: 'View webpage',
     viewWebpageHint:
@@ -265,22 +263,19 @@ export const artifactsDemo: Record<DemoLocale, ArtifactsDemoCopy> = {
     save: 'Save Changes',
     app: {
       lang: 'en',
-      title: 'Pomodoro',
-      focus: 'Focus',
-      break: 'Break',
-      start: 'Start',
-      pause: 'Pause',
-      reset: 'Reset',
-      skip: 'Skip',
-      comment: '25 minutes of focus, then a 5-minute break'
+      title: 'Silk wallpaper',
+      palette: 'Palette',
+      palettes: ['Cherry', 'Ocean', 'Lavender', 'Citrus'],
+      speed: 'Speed',
+      comment: 'GPU-rendered silk; swatches recolor it, the slider sets its speed'
     }
   },
   zh: {
     window: 'Cherry Studio — HTML 预览',
     model: { name: 'Claude Sonnet 4.6', provider: 'anthropic' },
-    prompt: '帮我做一个能直接点着用的番茄钟小网页。',
-    intro: '给你一个单文件的番茄钟：专注 25 分钟、休息 5 分钟，进度环会随着倒计时一点点走完。',
-    outro: '在预览里点「开始」就能试用。',
+    prompt: '帮我做一个能换颜色的丝绸动态壁纸。',
+    intro: '给你一个单文件的动态壁纸：用 Paper Shaders 在 GPU 上渲染流动的丝绸，带四套配色和速度调节。',
+    outro: '在预览里点色块换配色，拖动滑块调速度。',
     htmlPreview: 'HTML 预览',
     viewWebpage: '查看网页',
     viewWebpageHint: '此网页包含脚本或外部资源，打开后可能运行代码并连接网络。',
@@ -300,14 +295,11 @@ export const artifactsDemo: Record<DemoLocale, ArtifactsDemoCopy> = {
     save: '保存修改',
     app: {
       lang: 'zh-CN',
-      title: '番茄钟',
-      focus: '专注',
-      break: '休息',
-      start: '开始',
-      pause: '暂停',
-      reset: '重置',
-      skip: '跳过',
-      comment: '先专注 25 分钟，再休息 5 分钟'
+      title: '丝绸壁纸',
+      palette: '配色',
+      palettes: ['樱桃', '海洋', '薰衣草', '柑橘'],
+      speed: '速度',
+      comment: 'GPU 渲染的丝绸；色块切换配色，滑块调节速度'
     }
   }
 }

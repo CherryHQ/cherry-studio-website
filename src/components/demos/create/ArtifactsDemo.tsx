@@ -31,7 +31,7 @@ import { useDemoPlayback, useDemoScript } from '../primitives/useDemoScript'
 import { useStickToBottom } from '../primitives/useStickToBottom'
 import { buildArtifactSource, type CodeLine } from './artifactSource'
 import { CodeView } from './CodeView'
-import { PomodoroApp } from './PomodoroApp'
+import { SilkWallpaperApp } from './SilkWallpaperApp'
 
 type Phase = 'idle' | 'sent' | 'intro' | 'code' | 'done'
 type ViewMode = 'split' | 'code' | 'preview'
@@ -221,7 +221,7 @@ export default function ArtifactsDemo() {
           <div
             className="origin-top-left"
             style={{ width: `${10000 / zoom}%`, height: `${10000 / zoom}%`, transform: `scale(${zoom / 100})` }}>
-            <PomodoroApp app={copy.app} playing={playing} />
+            <SilkWallpaperApp app={copy.app} playing={playing} />
           </div>
         )}
         <div className="pointer-events-none absolute top-1.5 right-1.5 z-10 flex items-center gap-0.5 rounded-md border border-border bg-popover p-0.5 opacity-0 shadow-sm transition-opacity duration-150 group-hover:pointer-events-auto group-hover:opacity-100 group-has-[:focus-visible]:pointer-events-auto group-has-[:focus-visible]:opacity-100 motion-reduce:transition-none">
@@ -334,7 +334,7 @@ export default function ArtifactsDemo() {
   )
   const previewPanel = (
     <div className="h-full min-h-0 min-w-0">
-      <PomodoroApp app={copy.app} playing={playing} />
+      <SilkWallpaperApp app={copy.app} playing={playing} />
     </div>
   )
 

@@ -54,50 +54,53 @@ function highlightLine(text: string, mode: Mode): CodeLine {
   return parts
 }
 
+/** Palettes offered by the wallpaper; [deep, mid, light] for Warp's three colour stops. */
+export const SILK_PALETTES = [
+  { id: 'cherry', colors: ['#2a0a12', '#b23a55', '#ffc49a'] },
+  { id: 'ocean', colors: ['#031428', '#0a5f8a', '#cbf3f0'] },
+  { id: 'lavender', colors: ['#1c1233', '#7b5cff', '#ffe1f5'] },
+  { id: 'citrus', colors: ['#1a1200', '#ff8a00', '#fff6c2'] }
+]
+
 /** The single-file HTML the assistant "writes"; visible strings follow the demo locale. */
 export function buildArtifactSource(app: ArtifactsDemoCopy['app']): CodeLine[] {
+  const palettes = SILK_PALETTES.map((item) => `      ${item.id}: ['${item.colors.join("', '")}'],`)
   const source = [
     '<!doctype html>',
     `<html lang="${app.lang}">`,
     '<head>',
     `  <title>${app.title}</title>`,
     '  <style>',
-    '    body { display: grid; place-items: center; font: 14px system-ui; }',
-    '    .ring { stroke: #f43f5e; transition: stroke-dashoffset 1s linear; }',
-    '    .break .ring { stroke: #10b981; }',
-    '    button { border: 0; border-radius: 999px; padding: 6px 14px; }',
+    '    body { margin: 0; height: 100vh; background: #000; }',
+    '    #silk { position: fixed; inset: 0; }',
+    '    .controls { position: fixed; bottom: 12px; display: flex; gap: 8px; }',
+    '    .swatch { width: 24px; height: 24px; border-radius: 999px; }',
     '  </style>',
     '</head>',
     '<body>',
     `  <!-- ${app.comment} -->`,
-    '  <nav>',
-    `    <button data-mode="focus">${app.focus}</button>`,
-    `    <button data-mode="break">${app.break}</button>`,
-    '  </nav>',
-    '  <svg viewBox="0 0 120 120">',
-    '    <circle class="ring" cx="60" cy="60" r="52" />',
-    '  </svg>',
-    '  <output id="clock">25:00</output>',
-    `  <button id="toggle">${app.start}</button>`,
-    `  <button id="reset">${app.reset}</button>`,
-    '  <script>',
-    '    const MODES = { focus: 25 * 60, break: 5 * 60 }',
-    "    let mode = 'focus'",
-    '    let left = MODES[mode]',
-    '    let timer = null',
-    '',
-    '    function render() {',
-    "      const mm = String(Math.floor(left / 60)).padStart(2, '0')",
-    "      const ss = String(left % 60).padStart(2, '0')",
-    // biome-ignore lint/suspicious/noTemplateCurlyInString: this is the artifact's own JS source text
-    '      clock.textContent = `${mm}:${ss}`',
-    '      ring.style.strokeDashoffset = 327 * (1 - left / MODES[mode])',
+    '  <div id="silk"></div>',
+    '  <div class="controls">',
+    '    <button class="swatch" data-palette="cherry"></button>',
+    '    <button class="swatch" data-palette="ocean"></button>',
+    '    <button class="swatch" data-palette="lavender"></button>',
+    '    <button class="swatch" data-palette="citrus"></button>',
+    `    <label>${app.speed} <input id="speed" type="range" min="0" max="3" step="0.1" value="1.2"></label>`,
+    '  </div>',
+    '  <script type="module">',
+    "    import { ShaderMount, warpFragmentShader, getShaderColorFromString } from 'https://esm.sh/@paper-design/shaders'",
+    '    const PALETTES = {',
+    ...palettes,
     '    }',
+    '    const colors = (name) => PALETTES[name].map(getShaderColorFromString)',
+    "    const silk = new ShaderMount(document.getElementById('silk'), warpFragmentShader, {",
+    "      u_colors: colors('cherry'), u_colorsCount: 3, u_swirl: 0.9, u_softness: 1",
+    '    }, undefined, 1.2)',
     '',
-    '    toggle.onclick = () => {',
-    '      if (timer) return pause()',
-    '      timer = setInterval(tick, 1000)',
-    '    }',
+    "    document.querySelectorAll('.swatch').forEach((swatch) => {",
+    '      swatch.onclick = () => silk.setUniforms({ u_colors: colors(swatch.dataset.palette) })',
+    '    })',
+    '    speed.oninput = () => silk.setSpeed(Number(speed.value))',
     '  </script>',
     '</body>',
     '</html>'
@@ -107,7 +110,7 @@ export function buildArtifactSource(app: ArtifactsDemoCopy['app']): CodeLine[] {
     if (line.includes('</style>') || line.includes('</script>')) mode = 'html'
     const highlighted = highlightLine(line, mode)
     if (line.includes('<style>')) mode = 'css'
-    if (line.includes('<script>')) mode = 'js'
+    if (line.includes('<script')) mode = 'js'
     return highlighted
   })
 }
