@@ -614,7 +614,7 @@ export default function SelectionAgentDemo() {
 
   return (
     <div ref={ref} role="region" aria-label={copy.region} className="@container">
-      <DemoFrame chromeless title={copy.region} onReplay={replay} bodyClassName="h-[clamp(480px,62.5cqw,680px)]">
+      <DemoFrame chromeless title={copy.region} onReplay={replay} bodyClassName="h-[clamp(480px,62.5cqw,800px)]">
         <SelectionDesktop key={`${locale}-${replayKey}`} copy={copy} locale={locale} tag={tag} playing={playing} />
       </DemoFrame>
     </div>

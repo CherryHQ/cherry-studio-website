@@ -31,10 +31,10 @@ export default function EverywhereSection() {
 
         <DemoMount
           load={() => import('@/components/demos/assistants/SelectionAgentDemo')}
-          className="mx-auto min-h-[620px] max-w-5xl"
+          className="mx-auto min-h-[620px] max-w-7xl"
         />
 
-        <dl className="mx-auto mt-14 grid max-w-5xl grid-cols-2 gap-px overflow-hidden rounded-[20px] border border-border bg-border md:grid-cols-4">
+        <dl className="mx-auto mt-14 grid max-w-7xl grid-cols-2 gap-px overflow-hidden rounded-[20px] border border-border bg-border md:grid-cols-4">
           {stats.map((stat, index) => (
             <m.div key={stat.key} {...reveal(index)} className="flex flex-col-reverse bg-background px-6 py-6">
               <dt className="mt-1 text-sm text-muted-foreground">{t(`home_page.everywhere.stats.${stat.key}`)}</dt>
