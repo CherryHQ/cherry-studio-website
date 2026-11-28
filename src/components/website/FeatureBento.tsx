@@ -15,9 +15,6 @@ export interface FeatureBentoItem {
   visual?: ReactNode
 }
 
-// Column spans on the 6-column grid: wide/narrow, narrow/wide, then halves; the pattern repeats.
-const SPANS = ['lg:col-span-4', 'lg:col-span-2', 'lg:col-span-2', 'lg:col-span-4', 'lg:col-span-3', 'lg:col-span-3']
-
 const SPOT = 'color-mix(in oklab, var(--color-foreground) 4.5%, transparent)'
 const RIM = 'color-mix(in oklab, var(--color-foreground) 45%, transparent)'
 // Keep only the 1px padding ring: the content-box layer is subtracted from the full layer.
@@ -56,13 +53,11 @@ export default function FeatureBento({ items, className }: { items: FeatureBento
     <ul
       ref={grid}
       onPointerMove={onMove}
-      className={cn('group/grid grid gap-4 [perspective:1200px] md:grid-cols-2 lg:grid-cols-6', className)}>
+      className={cn('group/grid grid gap-4 [perspective:1200px] sm:grid-cols-2 lg:grid-cols-3', className)}>
       {items.map((item, index) => {
-        const span = SPANS[index % SPANS.length]
-        const wide = span === 'lg:col-span-4'
         const Card = item.href ? 'a' : 'div'
         return (
-          <m.li key={item.key} {...reveal(index)} className={cn('min-w-0', span)}>
+          <m.li key={item.key} {...reveal(index)} className="min-w-0">
             <Card
               {...(item.href ? { href: item.href } : {})}
               data-card=""
@@ -100,7 +95,7 @@ export default function FeatureBento({ items, className }: { items: FeatureBento
                   <item.icon className="size-[18px]" aria-hidden="true" />
                 </span>
               )}
-              <div className={cn('relative mt-auto pt-6', wide && 'max-w-md')}>
+              <div className="relative mt-auto pt-5">
                 <h3 className="font-display flex items-center gap-2 text-xl leading-tight text-balance text-foreground">
                   {item.title}
                   {item.href && (

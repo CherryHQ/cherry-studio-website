@@ -48,14 +48,18 @@ export default function MobilePage() {
                     {t('mobile_site.hero.download')}
                   </Link>
                 </Button>
-                <Button asChild variant="outline" size="lg" className="rounded-full px-5">
+                <Button
+                  asChild
+                  variant="outline"
+                  size="lg"
+                  className="rounded-full border-white/40 bg-white/10 px-5 text-white backdrop-blur hover:bg-white/20 hover:text-white">
                   <a href={mobileDocsUrl}>
                     {t('mobile_site.hero.docs')}
                     <ArrowRight aria-hidden="true" />
                   </a>
                 </Button>
               </div>
-              <p className="mt-4 text-sm leading-6 text-muted-foreground">{t('mobile_site.hero.platforms')}</p>
+              <p className="mt-4 on-silk text-sm leading-6 text-muted-foreground">{t('mobile_site.hero.platforms')}</p>
             </div>
 
             <div className="relative flex justify-center">

@@ -56,7 +56,7 @@ function FlashContent() {
 
   return (
     <div className="relative isolate overflow-hidden bg-background min-h-screen">
-      <HeroBackdrop className="inset-x-0 top-0 -z-10 h-[480px] sm:h-[560px] [mask-image:linear-gradient(to_bottom,#000_72%,transparent)]" />
+      <HeroBackdrop className="inset-x-0 top-0 -z-10 h-[760px] sm:h-[860px] [mask-image:linear-gradient(to_bottom,#000_62%,transparent)]" />
       <section className="site-container site-page-top pb-16 text-center sm:pb-24">
         <h1 className="on-silk font-display text-6xl leading-none text-balance sm:text-8xl">
           <span>{t('pricing.headline_brand')}</span>{' '}

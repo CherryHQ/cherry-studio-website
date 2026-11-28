@@ -17,6 +17,7 @@ export default function HeroBackdrop({ className }: { className?: string }) {
         className
       )}>
       <MeshGradient
+        style={{ position: 'absolute', inset: 0 }}
         width="100%"
         height="100%"
         // Soft colour fields lose nothing at a capped resolution, and scrolling stays smooth.
@@ -28,6 +29,8 @@ export default function HeroBackdrop({ className }: { className?: string }) {
         grainOverlay={0.12}
         speed={reduced ? 0 : 0.35}
       />
+      {/* A rose tint evens out the silk's lightest patches so white copy stays readable on every part of it. */}
+      <span className="absolute inset-0 bg-[rgb(46_14_24/0.42)]" />
     </div>
   )
 }
